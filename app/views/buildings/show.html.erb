@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @building.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @building.description %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @building.address1 %>
+</p>
+
+<p>
+  <strong>Temple building code:</strong>
+  <%= @building.temple_building_code %>
+</p>
+
+<p>
+  <strong>Directions map:</strong>
+  <%= @building.directions_map %>
+</p>
+
+<p>
+  <strong>Hours:</strong>
+  <%= @building.hours %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @building.phone_number %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @building.image %>
+</p>
+
+<p>
+  <strong>Campus:</strong>
+  <%= @building.campus %>
+</p>
+
+<p>
+  <strong>Accessibility:</strong>
+  <%= @building.accessibility %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @building.email %>
+</p>
+
+<%= link_to 'Edit', edit_building_path(@building) %> |
+<%= link_to 'Back', buildings_path %>

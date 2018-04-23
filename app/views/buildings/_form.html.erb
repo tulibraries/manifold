@@ -1,0 +1,72 @@
+<%= form_with(model: building, local: true) do |form| %>
+  <% if building.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(building.errors.count, "error") %> prohibited this building from being saved:</h2>
+
+      <ul>
+      <% building.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address1 %>
+    <%= form.text_field :address1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :temple_building_code %>
+    <%= form.text_field :temple_building_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :directions_map %>
+    <%= form.text_field :directions_map %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hours %>
+    <%= form.text_field :hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :campus %>
+    <%= form.text_field :campus %>
+  </div>
+
+  <div class="field">
+    <%= form.label :accessibility %>
+    <%= form.text_area :accessibility %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

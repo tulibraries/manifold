@@ -34,14 +34,25 @@ RSpec.describe Building, type: :model do
         "image",
         "campus",
         "accessibility",
-        "email"
       ]
       required_fields.each do |f|
-        @building = FactoryBot.build(:building)
-				@building[f] = ""
-        expect { @building.save! }.to raise_error("Validation failed: #{f.humanize(capitalize: true)} can't be blank")
+        building = FactoryBot.build(:building)
+				building[f] = ""
+        expect { building.save! }.to raise_error("Validation failed: #{f.humanize(capitalize: true)} can't be blank")
       end
     end
   end
 
+  context 'Email validation' do
+    example 'invalid email' do
+      building = FactoryBot.build(:building)
+      building.email = "abc"
+      expect { building.save! }.to raise_error("Validation failed: Email is not an email")
+    end
+    example 'invalid email - blank ' do
+      building = FactoryBot.build(:building)
+      building.email = ""
+      expect { building.save! }.to raise_error("Validation failed: Email can't be blank, Email is not an email")
+    end
+  end
 end

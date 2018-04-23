@@ -30,7 +30,6 @@ RSpec.describe Building, type: :model do
         "temple_building_code",
         "directions_map",
         "hours",
-        "phone_number",
         "image",
         "campus",
         "accessibility",
@@ -44,6 +43,11 @@ RSpec.describe Building, type: :model do
   end
 
   context 'Email validation' do
+    example 'valid email' do
+      building = FactoryBot.build(:building)
+      building.email = "chas@example.edu"
+      expect { building.save! }.to_not raise_error
+    end
     example 'invalid email' do
       building = FactoryBot.build(:building)
       building.email = "abc"
@@ -53,6 +57,24 @@ RSpec.describe Building, type: :model do
       building = FactoryBot.build(:building)
       building.email = ""
       expect { building.save! }.to raise_error("Validation failed: Email can't be blank, Email is not an email")
+    end
+  end
+
+  context 'Phone number validation' do
+    example 'valid phone number' do
+      building = FactoryBot.build(:building)
+      building.phone_number = "2155551212"
+      expect { building.save! }.to_not raise_error
+    end
+    example 'invalid phone number' do
+      building = FactoryBot.build(:building)
+      building.phone_number = "215555121"
+      expect { building.save! }.to raise_error("Validation failed: Phone number is not a telephone number")
+    end
+    example 'invalid phone number - blank ' do
+      building = FactoryBot.build(:building)
+      building.phone_number = ""
+      expect { building.save! }.to raise_error("Validation failed: Phone number can't be blank, Phone number is not a telephone number")
     end
   end
 end

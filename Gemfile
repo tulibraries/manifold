@@ -58,6 +58,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'database_cleaner'
 end
 
 group :development, :test do

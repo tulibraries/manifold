@@ -16,6 +16,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+*.sw[p-z]
 
 # Ignore uploaded files in development
 /storage/*

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_23_144959) do
+ActiveRecord::Schema.define(version: 2018_05_07_191843) do
 
   create_table "buildings", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,22 @@ ActiveRecord::Schema.define(version: 2018_04_23_144959) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "spaces", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "hours"
+    t.text "accessibility"
+    t.string "location"
+    t.string "phone_number"
+    t.string "image"
+    t.integer "building_id"
+    t.integer "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_spaces_on_building_id"
+    t.index ["space_id"], name: "index_spaces_on_space_id"
   end
 
 end

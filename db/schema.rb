@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_05_07_191843) do
     t.string "location"
     t.string "phone_number"
     t.string "image"
+    t.string "email"
     t.integer "building_id"
     t.integer "space_id"
     t.datetime "created_at", null: false

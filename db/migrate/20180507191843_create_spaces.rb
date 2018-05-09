@@ -8,8 +8,9 @@ class CreateSpaces < ActiveRecord::Migration[5.2]
       t.string :location
       t.string :phone_number
       t.string :image
-      t.references :building, foreign_key: true
-      t.references :space, foreign_key: true
+      t.string :email
+      t.references :building, foreign_key: true, required: true
+      t.references :space, foreign_key: true, requred: false
 
       t.timestamps
     end

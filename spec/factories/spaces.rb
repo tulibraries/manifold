@@ -6,6 +6,9 @@ FactoryBot.define do
     accessibility "Yes"
     location "Charles Samuel Addams Library"
     phone_number "2155551213"
+    email "mmuffley@example.com"
     image "https://diefenbunker.files.wordpress.com/2012/05/dr-strangelove-warroom.jpg"
+    building_id FactoryBot.create(:building)
+    space_id 2
   end
 end

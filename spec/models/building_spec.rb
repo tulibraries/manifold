@@ -22,59 +22,59 @@ RSpec.describe Building, type: :model do
   end
 
   context 'Required Fields' do
-    example 'missing name field' do
-      required_fields = [
-        "name",
-        "description",
-        "address1",
-        "temple_building_code",
-        "directions_map",
-        "hours",
-        "image",
-        "campus",
-        "accessibility",
-      ]
-      required_fields.each do |f|
+    required_fields = [
+      "name",
+      "description",
+      "address1",
+      "temple_building_code",
+      "directions_map",
+      "hours",
+      "image",
+      "campus",
+      "accessibility",
+    ]
+    required_fields.each do |f|
+      example "missing #{f} field" do
         building = FactoryBot.build(:building)
 				building[f] = ""
-        expect { building.save! }.to raise_error("Validation failed: #{f.humanize(capitalize: true)} can't be blank")
+        expect { building.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
       end
     end
   end
 
-  context 'Email validation' do
-    example 'valid email' do
+  context "Email validation" do
+    example "valid email" do
       building = FactoryBot.build(:building)
       building.email = "chas@example.edu"
       expect { building.save! }.to_not raise_error
     end
-    example 'invalid email' do
+    example "invalid email" do
       building = FactoryBot.build(:building)
       building.email = "abc"
-      expect { building.save! }.to raise_error("Validation failed: Email is not an email")
+      expect { building.save! }.to raise_error(/Email is not an email/)
     end
-    example 'invalid email - blank ' do
+    example "invalid email - blank " do
       building = FactoryBot.build(:building)
       building.email = ""
-      expect { building.save! }.to raise_error("Validation failed: Email can't be blank, Email is not an email")
+      expect { building.save! }.to raise_error(/Email can't be blank/)
     end
   end
 
-  context 'Phone number validation' do
-    example 'valid phone number' do
+  context "Phone number validation" do
+    example "valid phone number" do
       building = FactoryBot.build(:building)
       building.phone_number = "2155551212"
       expect { building.save! }.to_not raise_error
     end
-    example 'invalid phone number' do
+    example "invalid phone number" do
       building = FactoryBot.build(:building)
       building.phone_number = "215555121"
-      expect { building.save! }.to raise_error("Validation failed: Phone number is not a telephone number")
+      expect { building.save! }.to raise_error(/Phone number is not a telephone number/)
     end
-    example 'invalid phone number - blank ' do
+    example "invalid phone number - blank " do
       building = FactoryBot.build(:building)
       building.phone_number = ""
-      expect { building.save! }.to raise_error("Validation failed: Phone number can't be blank, Phone number is not a telephone number")
+      expect { building.save! }.to raise_error(/Phone number can't be blank/)
     end
   end
 end

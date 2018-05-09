@@ -49,52 +49,52 @@ RSpec.describe Space, type: :model do
     end
   end
 
-  context "Email validation" do
-    let (:space) { FactoryBot.build(:space) }
-    let (:building) { FactoryBot.create(:building) }
-    example "valid email" do
-      space.email = "chas@example.edu"
-      space.building_id = building.id
-      expect { space.save! }.to_not raise_error
-    end
-    example "invalid email" do
-      space.email = "abc"
-      expect { space.save! }.to raise_error(/Email is not an email/)
-    end
-    example "invalid email - blank " do
-      space.email = ""
-      expect { space.save! }.to raise_error(/Email can't be blank/)
-    end
-  end
+  describe "field validators" do
 
-  context "Phone number validation" do
     let (:space) { FactoryBot.build(:space) }
     let (:building) { FactoryBot.create(:building) }
-    example "valid phone number" do
-      space.building_id = building.id
-      space.phone_number = "2155551212"
-      expect { space.save! }.to_not raise_error
-    end
-    example "invalid phone number" do
-      space.phone_number = "215555121"
-      expect { space.save! }.to raise_error(/Phone number is not a telephone number/)
-    end
-    example "invalid phone number - blank " do
-      space.phone_number = ""
-      expect { space.save! }.to raise_error(/Phone number can't be blank/)
-    end
-  end
 
-  context "Building reference" do
-    let (:space) { FactoryBot.build(:space) }
-    let (:building) { FactoryBot.create(:building) }
-    example "valid building" do
-      space.building_id = building.id
-      expect { space.save! }.to_not raise_error
+    context "Email validation" do
+      example "valid email" do
+        space.email = "chas@example.edu"
+        space.building_id = building.id
+        expect { space.save! }.to_not raise_error
+      end
+      example "invalid email" do
+        space.email = "abc"
+        expect { space.save! }.to raise_error(/Email is not an email/)
+      end
+      example "invalid email - blank " do
+        space.email = ""
+        expect { space.save! }.to raise_error(/Email can't be blank/)
+      end
     end
-    example "invalid building" do
-      space.building_id = building.id + 1
-      expect { space.save! }.to raise_error(/Building reference is invalid/)
+
+    context "Phone number validation" do
+      example "valid phone number" do
+        space.building_id = building.id
+        space.phone_number = "2155551212"
+        expect { space.save! }.to_not raise_error
+      end
+      example "invalid phone number" do
+        space.phone_number = "215555121"
+        expect { space.save! }.to raise_error(/Phone number is not a telephone number/)
+      end
+      example "invalid phone number - blank " do
+        space.phone_number = ""
+        expect { space.save! }.to raise_error(/Phone number can't be blank/)
+      end
+    end
+
+    context "Building reference" do
+      example "valid building" do
+        space.building_id = building.id
+        expect { space.save! }.to_not raise_error
+      end
+      example "invalid building" do
+        space.building_id = building.id + 1
+        expect { space.save! }.to raise_error(/Building reference is invalid/)
+      end
     end
   end
 end

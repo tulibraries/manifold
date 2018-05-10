@@ -17,7 +17,7 @@ RSpec.describe Space, type: :model do
     it { is_expected.to include("image") }
     it { is_expected.to include("email") }
     it { is_expected.to include("building_id") }
-    it { is_expected.to include("space_id") }
+    it { is_expected.to include("parent_space_id") }
   end
 
   context 'Required Fields' do
@@ -45,6 +45,21 @@ RSpec.describe Space, type: :model do
         space = FactoryBot.build(:space)
 				space[f] = nil
         expect { space.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
+      end
+    end
+  end
+
+  context "Optional Fields" do
+    optional_references = [
+      "parent_space_id",
+    ]
+    optional_references.each do |f|
+      example "missing #{f}" do
+        space = FactoryBot.build(:space) 
+        building = FactoryBot.create(:building) 
+        space.building_id = building.id
+				space[f] = nil
+        expect { space.save! }.to_not raise_error
       end
     end
   end
@@ -77,7 +92,7 @@ RSpec.describe Space, type: :model do
         expect { space.save! }.to_not raise_error
       end
       example "invalid phone number" do
-        space.phone_number = "215555121"
+        space.phone_number = "215555122"
         expect { space.save! }.to raise_error(/Phone number is not a telephone number/)
       end
       example "invalid phone number - blank " do
@@ -94,6 +109,24 @@ RSpec.describe Space, type: :model do
       example "invalid building" do
         space.building_id = building.id + 1
         expect { space.save! }.to raise_error(/Building reference is invalid/)
+      end
+    end
+
+    context "Optional parent space reference" do
+      example "no space ID" do
+        space.building_id = building.id
+        space.parent_space_id = nil
+        expect { space.save! }.to_not raise_error
+      end
+      example "valid space ID" do
+        space.building_id = building.id
+        space.parent_space_id = space.id
+        expect { space.save! }.to_not raise_error
+      end
+      example "invalid space ID" do
+        space.building_id = building.id
+        space.parent_space_id = 9999
+        expect { space.save! }.to raise_error(/Parent space reference is invalid/)
       end
     end
   end

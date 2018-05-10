@@ -9,6 +9,6 @@ FactoryBot.define do
     email "mmuffley@example.com"
     image "https://diefenbunker.files.wordpress.com/2012/05/dr-strangelove-warroom.jpg"
     building_id FactoryBot.create(:building)
-    space_id 2
+    parent_space_id nil
   end
 end

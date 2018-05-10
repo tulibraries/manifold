@@ -10,7 +10,7 @@ class CreateSpaces < ActiveRecord::Migration[5.2]
       t.string :image
       t.string :email
       t.references :building, foreign_key: true, required: true
-      t.references :space, foreign_key: true, requred: false
+      t.references :parent_space, foreign_key: true, requred: false
 
       t.timestamps
     end

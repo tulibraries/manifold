@@ -23,5 +23,13 @@ module Validators
       end
     end
   end
+
+  class ValidSpaceIdValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value)
+      unless value.nil?
+        record.errors[attribute] << (options[:message] || "reference is invalid") if Space.where(id: value).empty? 
+      end
+    end
+  end
 end
 

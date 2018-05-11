@@ -5,6 +5,18 @@ RSpec.describe Person, type: :model do
     DatabaseCleaner.clean
   end
 
+  let (:building) { FactoryBot.create(:building) }
+  let (:space) { s = FactoryBot.build(:space)
+                 s.building_id = building.id
+                 s.save!
+                 s
+  }
+  let (:person) { p = FactoryBot.build(:person)
+                  p.building_id = building.id
+                  p.space_id = space.id
+                  p
+  }
+
   context 'Person Class Attributes' do
     subject { Person.new.attributes.keys }
 
@@ -20,8 +32,6 @@ RSpec.describe Person, type: :model do
   end
 
   context 'Required Fields' do
-    let (:space) { FactoryBot.build(:space) }
-    let (:building) { FactoryBot.create(:building) }
 
     required_fields = [
       "first_name",
@@ -33,7 +43,6 @@ RSpec.describe Person, type: :model do
     ]
     required_fields.each do |f|
       example "missing #{f} fields" do
-        person = FactoryBot.build(:person)
 				person[f] = ""
         expect { person.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
       end
@@ -45,32 +54,30 @@ RSpec.describe Person, type: :model do
     ]
     required_references.each do |f|
       example "missing #{f}" do
-        person = FactoryBot.build(:person)
 				person[f] = nil
-        expect { person.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
+        expect { person.save! }.to raise_error(/Validation failed:.* #{f.humanize(capitalize: true)} must exist/)
       end
     end
   end
 
   describe "field validators" do
-
-    let (:person) { FactoryBot.build(:person) }
-    let (:space) { FactoryBot.build(:space) }
-    let (:building) { FactoryBot.create(:building) }
-
     context "Email validation" do
-      example "valid email" do
+      example "valid email", focus: true do
         person.email_address = "chas@example.edu"
         person.building_id = building.id
         person.space_id = space.id
-        expect { space.save! }.to_not raise_error
+        expect { person.save! }.to_not raise_error
       end
       example "invalid email" do
         person.email_address = "abc"
+        person.building_id = building.id
+        person.space_id = space.id
         expect { person.save! }.to raise_error(/Email address is not an email/)
       end
       example "invalid email - blank " do
         person.email_address = ""
+        person.building_id = building.id
+        person.space_id = space.id
         expect { person.save! }.to raise_error(/Email address can't be blank/)
       end
     end

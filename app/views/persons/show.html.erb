@@ -1,0 +1,44 @@
+<h1>People</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.first_name %> %= @person.last_name %>
+</p>
+
+<p>
+  <strong>Phone number</strong>
+  <%=@person.phone_number %>
+</p>
+
+<p>
+  <strong>Email</strong>
+  <%=@person.email_address %>
+</p>
+
+<p>
+  <strong>Chat:</strong>
+  <%= @person.chat_handle %>
+</p>
+
+<p>
+  <strong>Job Title</strong>
+  <td><%=@person.job_title %>
+</p>
+
+<p>
+  <strong>Identifier</strong>
+  <%=@person.identifier %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @person.building %>
+</p>
+
+<p>
+  <strong>Parent space:</strong>
+  <%= @person.space %>
+</p>
+
+<%= link_to 'Back', people_path %>

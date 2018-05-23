@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "buildings/show.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "displays the sample building name" do
+    @building = FactoryBot.build(:building)
+    render
+    expect(rendered).to match /#{@building.name}/
+  end
 end

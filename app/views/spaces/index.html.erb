@@ -1,0 +1,41 @@
+<h1>Spaces</h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Hours</th>
+      <th>Accessibility</th>
+      <th>Location</th>
+      <th>Phone number</th>
+      <th>Image</th>
+      <th>Email</th>
+      <th>Building</th>
+      <th>Parent Space</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spaces.each do |space| %>
+      <tr>
+        <td><%= space.name %></td>
+        <td><%= space.description %></td>
+        <td><%= space.hours %></td>
+        <td><%= space.accessibility %></td>
+        <td><%= space.location %></td>
+        <td><%= space.phone_number %></td>
+        <td><%= space.image %></td>
+        <td><%= space.email %></td>
+        <td><%= space.building_id %></td>
+        <td><%= space.parent_space_id %></td>
+        <td><%= link_to 'Show', space %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

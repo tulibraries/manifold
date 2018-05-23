@@ -10,8 +10,10 @@ RSpec.describe SpacesController, type: :controller do
   end
 
   describe "GET #show" do
+    let(:space) { FactoryBot.create(:space) }
+
     it "returns http success" do
-      get :show
+      get :show, params: { id: space.id }
       expect(response).to have_http_status(:success)
     end
   end

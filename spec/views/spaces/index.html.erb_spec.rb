@@ -4,7 +4,7 @@ RSpec.describe "spaces/index.html.erb", type: :view do
   it "displays the space template" do
     @spaces = [ ]
     render
-    expect(rendered).to match /Buildings/
+    expect(rendered).to match /Spaces/
   end
 
   it "displays the sample space name" do

@@ -1,0 +1,54 @@
+<h1>Spaces</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @space.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @space.description %>
+</p>
+
+<p>
+  <strong>Hours</strong>
+  <td><%=@space.hours %>
+</p>
+
+<p>
+  <strong>Accessibility</strong>
+  <%=@space.accessibility %>
+</p>
+
+<p>
+  <strong>Location</strong>
+  <%=@space.location %>
+</p>
+
+<p>
+  <strong>Phone number</strong>
+  <%=@space.phone_number %>
+</p>
+
+<p>
+  <strong>Image</strong>
+  <%=@space.image %>
+</p>
+
+<p>
+  <strong>Email</strong>
+  <%=@space.email %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @space.building %>
+</p>
+
+<p>
+  <strong>Parent space:</strong>
+  <%= @space.parent_space %>
+</p>
+
+<%= link_to 'Back', spaces_path %>

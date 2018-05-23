@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "buildings/index.html.erb", type: :view do
-
   it "displays the building template" do
     @buildings = [ ]
     render

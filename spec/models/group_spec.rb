@@ -18,9 +18,10 @@ RSpec.describe Group, type: :model do
                   p
   }
   let (:group) { g = FactoryBot.build(:group)
+    # binding.pry
                   g.building_id = building.id
                   g.space_id = space.id
-                  g.group_id = group.id
+                  g.person_id = person.id
                   g
   }
 
@@ -43,10 +44,7 @@ RSpec.describe Group, type: :model do
       "name",
       "description",
       "phone_number",
-      "email_address",
-      "space_id",
-      "building_id",
-      "person_id",
+      "email_address"
     ]
     required_fields.each do |f|
       example "missing #{f} fields" do
@@ -111,7 +109,7 @@ RSpec.describe Group, type: :model do
         expect { group.save! }.to_not raise_error
       end
       example "invalid building" do
-        group.building_id = building.id + 1
+        group.building_id = building.id + 100
         expect { group.save! }.to raise_error(/Building reference is invalid/)
       end
     end
@@ -131,7 +129,7 @@ RSpec.describe Group, type: :model do
       example "no space ID" do
         group.building_id = building.id
         group.space_id = nil
-        expect { group.save! }.to_not raise_error
+        expect { group.save! }.to raise_error(/Space must exist/)
       end
       example "valid space ID" do
         group.building_id = building.id

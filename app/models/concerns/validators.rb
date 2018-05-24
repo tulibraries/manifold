@@ -31,5 +31,22 @@ module Validators
       end
     end
   end
+
+  class ValidPersonIdValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value)
+      unless value.nil?
+        record.errors[attribute] << (options[:message] || "reference is invalid") if Person.where(id: value).empty? 
+      end
+    end
+  end
+
+  class ValidGroupIdValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value)
+      unless value.nil?
+        record.errors[attribute] << (options[:message] || "reference is invalid") if Group.where(id: value).empty? 
+      end
+    end
+  end
+
 end
 

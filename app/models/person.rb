@@ -9,4 +9,5 @@ class Person < ApplicationRecord
 
   belongs_to :building
   belongs_to :space
+  belongs_to :group
 end

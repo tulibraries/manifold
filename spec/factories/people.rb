@@ -9,5 +9,6 @@ FactoryBot.define do
     identifier "PREZBEEB"
     building_id 0
     space_id 0
+    group_id 0
   end
 end

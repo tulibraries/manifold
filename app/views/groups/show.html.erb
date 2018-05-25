@@ -1,0 +1,39 @@
+<h1>Groups</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.description %>
+</p>
+
+<p>
+  <strong>Phone number</strong>
+  <%=@group.phone_number %>
+</p>
+
+<p>
+  <strong>Email</strong>
+  <%=@group.email_address %>
+</p>
+
+<p>
+  <strong>Person</strong>
+  <td><%=@group.person%>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @group.building %>
+</p>
+
+<p>
+  <strong>space:</strong>
+  <%= @group.space %>
+</p>
+
+<%= link_to 'Back', groups_path %>

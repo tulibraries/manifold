@@ -1,5 +1,5 @@
 class BuildingsController < ApplicationController
-  before_action :set_building, only: [:show, :edit, :update, :destroy]
+  before_action :set_building, only: [:show]
 
   # GET /buildings
   # GET /buildings.json
@@ -20,6 +20,6 @@ class BuildingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def building_params
-      params.require(:building).permit(:name, :description, :address1, :temple_building_code, :directions_map, :hours, :phone_number, :image, :campus, :accessibility, :email)
+      params.require(:building).permit()
     end
 end

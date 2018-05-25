@@ -1,0 +1,39 @@
+<h1>Persons</h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Chat Handle</th>
+      <th>Job Title</th>
+      <th>Identifier</th>
+      <th>Building</th>
+      <th>Space</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @persons.each do |person| %>
+      <tr>
+        <td><%= person.first_name %></td>
+        <td><%= person.last_name %></td>
+        <td><%= person.phone_number %></td>
+        <td><%= person.email_address %></td>
+        <td><%= person.chat_handle %></td>
+        <td><%= person.job_title  %></td>
+        <td><%= person.identifier %></td>
+        <td><%= person.building %></td>
+        <td><%= person.space %></td>
+        <td><%= link_to 'Show', person %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

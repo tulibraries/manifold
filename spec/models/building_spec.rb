@@ -42,39 +42,38 @@ RSpec.describe Building, type: :model do
     end
   end
 
-  context "Email validation" do
-    example "valid email" do
-      building = FactoryBot.build(:building)
-      building.email = "chas@example.edu"
-      expect { building.save! }.to_not raise_error
-    end
-    example "invalid email" do
-      building = FactoryBot.build(:building)
-      building.email = "abc"
-      expect { building.save! }.to raise_error(/Email is not an email/)
-    end
-    example "invalid email - blank " do
-      building = FactoryBot.build(:building)
-      building.email = ""
-      expect { building.save! }.to raise_error(/Email can't be blank/)
-    end
-  end
+  describe "field validators" do
 
-  context "Phone number validation" do
-    example "valid phone number" do
-      building = FactoryBot.build(:building)
-      building.phone_number = "2155551212"
-      expect { building.save! }.to_not raise_error
+    let(:building) { FactoryBot.build(:building) }
+
+    context "Email validation" do
+      example "valid email" do
+        building.email = "chas@example.edu"
+        expect { building.save! }.to_not raise_error
+      end
+      example "invalid email" do
+        building.email = "abc"
+        expect { building.save! }.to raise_error(/Email is not an email/)
+      end
+      example "invalid email - blank " do
+        building.email = ""
+        expect { building.save! }.to raise_error(/Email can't be blank/)
+      end
     end
-    example "invalid phone number" do
-      building = FactoryBot.build(:building)
-      building.phone_number = "215555121"
-      expect { building.save! }.to raise_error(/Phone number is not a telephone number/)
-    end
-    example "invalid phone number - blank " do
-      building = FactoryBot.build(:building)
-      building.phone_number = ""
-      expect { building.save! }.to raise_error(/Phone number can't be blank/)
+
+    context "Phone number validation" do
+      example "valid phone number" do
+        building.phone_number = "2155551212"
+        expect { building.save! }.to_not raise_error
+      end
+      example "invalid phone number" do
+        building.phone_number = "215555121"
+        expect { building.save! }.to raise_error(/Phone number is not a telephone number/)
+      end
+      example "invalid phone number - blank " do
+        building.phone_number = ""
+        expect { building.save! }.to raise_error(/Phone number can't be blank/)
+      end
     end
   end
 end

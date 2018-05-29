@@ -60,6 +60,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (8.4.1)
       execjs
+    bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.0)
       msgpack (~> 1.0)
@@ -90,6 +91,12 @@ GEM
     database_cleaner (1.7.0)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
+    devise (4.4.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 6.0)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.3)
     erubi (1.7.1)
     execjs (2.7.0)
@@ -116,6 +123,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hashie (3.5.7)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -166,6 +174,18 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oauth (0.5.4)
+    omniauth (1.8.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-google (1.0.2)
+      multi_json
+      omniauth (~> 1.0)
+      omniauth-oauth
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    orm_adapter (0.5.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -204,6 +224,9 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -266,6 +289,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (3.6.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -288,10 +313,13 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   database_cleaner
+  devise
   factory_bot_rails
   guard-rspec
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  omniauth
+  omniauth-google
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.0)

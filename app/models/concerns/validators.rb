@@ -8,6 +8,14 @@ module Validators
     end
   end
 
+  class AcceptableEmailAddressValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value)
+      unless value =~ /\A([^@\s]+)@temple\.edu\z/i
+        record.errors[attribute] << (options[:message] || "is not an acceptable email address")
+      end
+    end
+  end
+
   class PhoneNumberValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       unless value =~ /\d{10}/i

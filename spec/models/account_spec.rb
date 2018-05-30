@@ -29,16 +29,24 @@ RSpec.describe Account, type: :model do
       example "valid email", focus: true do
         expect { account.save! }.to_not raise_error
       end
-      example "unpermitted email" do
-        account.email = "abc.example.edu"
-        expect { account.save! }.to raise_error(email_error)
-      end
       example "invalid email" do
         account.email = "abc"
         expect { account.save! }.to raise_error(email_error)
       end
       example "invalid email - blank " do
         account.email = ""
+        expect { account.save! }.to raise_error(email_error)
+      end
+      example "non TU access ID" do
+        account.email = "stella@temple.edu"
+        expect { account.save! }.to raise_error(email_error)
+      end
+      example "no quite a TU access ID" do
+        account.email = "tua1234@temple.edu"
+        expect { account.save! }.to raise_error(email_error)
+      end
+      example "no quite a TU access ID" do
+        account.email = "tua123456@temple.edu"
         expect { account.save! }.to raise_error(email_error)
       end
     end

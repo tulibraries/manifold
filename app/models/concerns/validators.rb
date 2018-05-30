@@ -8,9 +8,9 @@ module Validators
     end
   end
 
-  class AcceptableEmailAddressValidator < ActiveModel::EachValidator
+  class TuAccessEmailValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
-      unless value =~ /\A([^@\s]+)@temple\.edu\z/i
+      unless value =~ /\Atu[a-z]\d{5}@temple\.edu\z/i
         record.errors[attribute] << (options[:message] || "is not an acceptable email address")
       end
     end
@@ -27,7 +27,7 @@ module Validators
   class ValidBuildingIdValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       if Building.where(id: value).empty?
-        record.errors[attribute] << (options[:message] || "reference is invalid") 
+        record.errors[attribute] << (options[:message] || "reference is invalid")
       end
     end
   end
@@ -35,7 +35,7 @@ module Validators
   class ValidSpaceIdValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       unless value.nil?
-        record.errors[attribute] << (options[:message] || "reference is invalid") if Space.where(id: value).empty? 
+        record.errors[attribute] << (options[:message] || "reference is invalid") if Space.where(id: value).empty?
       end
     end
   end
@@ -43,7 +43,7 @@ module Validators
   class ValidPersonIdValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       unless value.nil?
-        record.errors[attribute] << (options[:message] || "reference is invalid") if Person.where(id: value).empty? 
+        record.errors[attribute] << (options[:message] || "reference is invalid") if Person.where(id: value).empty?
       end
     end
   end
@@ -51,10 +51,9 @@ module Validators
   class ValidGroupIdValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       unless value.nil?
-        record.errors[attribute] << (options[:message] || "reference is invalid") if Group.where(id: value).empty? 
+        record.errors[attribute] << (options[:message] || "reference is invalid") if Group.where(id: value).empty?
       end
     end
   end
 
 end
-

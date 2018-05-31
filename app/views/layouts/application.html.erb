@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tude</title>
+    <title>Temple University Libraries</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <div id="skip-link">
+    <%= link_to "Skip to main content", "#skiplink_ada", :class => "element-invisible", :tabindex => "1" %>
+    <%= link_to "Skip to site search", "#", :class => "element-invisible", :onclick => "document.getElementById('search-block').focus();", :tabindex => "2" %>
+  </div>
+
+  <%= render "header_navbar.html.erb" %>
 
     <%= yield %>
+
+  <%= render "footer.html.erb" %>
+
   </body>
 </html>
+
+

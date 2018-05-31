@@ -1,0 +1,121 @@
+#site-footer {
+	background-color:#222222;
+	border-top: solid #303030 1.4rem;
+	padding-bottom:0;
+	width:100%;
+	color:#fff;
+	font-size:.95rem;
+	position: absolute;
+	bottom: 0;
+	clear: both;
+	a {
+		color: #903
+	}
+	.row {
+		margin-left: 0;
+		margin-right: 0; 
+	}
+	.col {
+		padding-left: 0;
+		padding-right: 0;
+	}
+.postscript {
+		font-weight: normal;
+		padding-left: 30px;
+		margin:10px auto;
+		width:100%;
+		max-width:1140px;
+		.region-postscript-first {
+			padding-left: 42px;
+			width:35%;
+			display:inline-block;
+			background:asset-data-url('location.png') no-repeat 5px 9px transparent;
+			@media only screen and (max-width : 650px) {
+		    padding-left: 6%;
+		    width: 100%;
+    	}
+		}
+		.region-postscript-second {
+			padding-left: 2.5%;
+			width:32%;
+			display:inline-block;
+			ul {
+				list-style-type:none;
+				li {
+					a, a:active, a:focus, a:hover {
+						color: #fff;
+					}
+				}
+			}
+			@media only screen and (max-width : 650px) {
+				display: block;
+		    margin-bottom: 21px;
+		    padding-left: 6%;
+		    width: 100%;
+    	}
+		}
+		.region-postscript-third {
+			padding-left: 2.5%;
+			width:32%;
+			display:inline-block;
+			height: 100%;
+			vertical-align: middle;
+			ul {
+				list-style-type:none;
+				li {
+					a, a:active, a:focus, a:hover {
+						color: #fff;
+					}
+				}
+			}
+			@media only screen and (max-width : 760px) {
+		    display: block;
+		    padding-left: 42px;
+		  }
+			@media only screen and (max-width : 650px) {
+		    padding-left: 6%;
+		    width: 100%;
+    	}
+		}
+		address {
+			.place-title {
+				font-size: 35px;
+			}
+			.place-location {
+				font-size: 21px;
+			}
+		}
+	}
+	.tu-links {
+		border-top: solid #303030 2px;
+		background-color:#000; 
+		padding: 24px 0 16px 0;
+		clear:both;
+		.region-footer {
+			margin:0 auto;
+			width:100%;
+			max-width:1140px;
+			p {
+				padding-left:42px;
+				a, a:link, a:hover, a:focus, a:visited {
+					text-decoration:none;
+					border-bottom:solid #fff 1px;
+					color:#fff;
+				}
+			}
+		}
+		ul {
+			list-style-type:none;
+			li {
+				display:inline;
+				line-height: 1.2;
+				text-decoration: none;
+				text-transform: uppercase;
+				padding-right:28px;
+				a {
+					color: #fff;
+				}
+			}
+		}
+	}
+}

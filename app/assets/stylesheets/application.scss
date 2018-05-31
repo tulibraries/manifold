@@ -1,0 +1,107 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+	@import "bootstrap";
+
+	html, body {
+		background-color: #f1f1f1;
+		height: 100%;
+		overflow: hidden;
+	}
+	#wrapper {
+		min-height: 100%;
+		position: relative;
+	}
+	h1 {
+		margin-top:14px;
+		font-size: 28px;
+		margin-bottom: 21px;
+	}
+	h2 {
+		font-size: 21px;
+		margin-top:21px;
+		background-color: #f1f1f1;
+		padding:14px 7px;
+		border-left: solid #903 1px;
+	}
+	h3 {
+		font-size: 16px;
+	}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #fff;
+	font-size:1.10rem;
+}
+.flash {
+	background-color: cornsilk;
+	padding:10px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 21px;
+	color: green;
+	.error {
+		color: red;
+	}
+}
+a:not(.dropdown-item) {
+		color: #903;
+	a:active, a:hover, a:visited {
+		color: #903;
+	}
+}
+#content {
+	padding-top: 14px;
+	background-color: #fff;
+	padding-bottom: 310px;
+	min-height: calc(100vh - 291px)
+}
+#skip-link {
+	left: 50%;
+  margin-left: -5.25em;
+  margin-top: 0;
+  position: absolute;
+  width: auto;
+  z-index: 50;
+  a, a:visited, a:link {
+  	background: rgba(0,0,0,0.6);
+    color: white;
+    display: block;
+    font-size: 0.94em;
+    line-height: 1.7;
+    padding: 1px 10px 2px 10px;
+    text-decoration: none;
+  }
+}
+.element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px);
+	overflow: hidden;
+	height: 1px;
+}
+form {
+	#q-error, #email-error {
+	 	color: red;
+	 	font-size: 85%;
+ 	}
+ label {
+ 	font-weight: 600;
+ 	padding-right: 10px;
+ }
+}
+.no-padding {
+	padding: 0;
+}

@@ -4,7 +4,7 @@
 <% unless @spaces.nil? %>
     <% @spaces.each do |space| %>
       <p>
-        <%= link_to space.name, controller: 'spaces', action: 'show', id: space.id %>
+        <%= link_to space.name, space %>
       </p>
     <% end %>
 <% end %>

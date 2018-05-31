@@ -7,7 +7,7 @@ FactoryBot.define do
     chat_handle "zbeeblebrox"
     job_title "President of the Galaxy"
     identifier "PREZBEEB"
-    building_id 0
+    association :building
     space_id 0
     group_id 0
   end

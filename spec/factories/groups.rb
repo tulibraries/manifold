@@ -4,8 +4,8 @@ FactoryBot.define do
     description "Able bodied men and women of adventure"
     phone_number "2155551213"
     email_address "we@example.com"
-    person_id 0
-    building_id 0
-    space_id 0
+    association :building
+    association :space
+    association :person
   end
 end

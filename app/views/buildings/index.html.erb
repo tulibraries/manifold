@@ -5,7 +5,7 @@
 <% unless @buildings.nil? %>
     <% @buildings.each do |building| %>
       <p>
-        <%= link_to building.name, controller: 'buildings', action: 'show', id: building.id %>
+        <%= link_to building.name, building %>
       </p>
     <% end %>
 <% end %>

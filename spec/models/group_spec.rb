@@ -18,9 +18,6 @@ RSpec.describe Group, type: :model do
                   p
   }
   let (:group) { g = FactoryBot.build(:group)
-                  g.building_id = building.id
-                  g.space_id = space.id
-                  g.person_id = person.id
                   g
   }
 

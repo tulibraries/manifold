@@ -5,9 +5,8 @@ class Account < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :trackable, :timeoutable, :omniauthable,
-         :database_authenticatable, :registerable,   # TODO: Remove after OAuth implemented
-         :recoverable, :rememberable, :validatable   # TODO: Remove after OAuth implemented
+  devise :trackable, :timeoutable, :omniauthable, :database_authenticatable
+         
  	validates :email, tu_access_email: true
 
   def self.from_omniauth(access_token)

@@ -1,0 +1,7 @@
+<% content_for :title, "Redirect to TUAccess" %>
+<% content_for :head do %>
+  <meta http-equiv="refresh" content="0; url=http://localhost:3000/accounts/auth/google_oauth2" />
+<% end %>
+<h2>Log in with TU Access</h2>
+
+<%= render "devise/shared/links" %>

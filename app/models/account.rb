@@ -9,4 +9,9 @@ class Account < ApplicationRecord
          :database_authenticatable, :registerable,   # TODO: Remove after OAuth implemented
          :recoverable, :rememberable, :validatable   # TODO: Remove after OAuth implemented
  	validates :email, tu_access_email: true
+
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    account = Account.where(email: data['email']).first
+  end
 end

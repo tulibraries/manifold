@@ -8,7 +8,7 @@ class Group < ApplicationRecord
 	validates :space_id, presence: true, valid_space_id: true
 	validates :person_id, presence: true, valid_person_id: true
 
-  belongs_to :person
+  has_and_belongs_to_many :person
   belongs_to :space
   belongs_to :building
 end

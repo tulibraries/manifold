@@ -3,15 +3,18 @@ class Accounts::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
 		# You need to implement the method below in your model (e.g. app/models/account.rb)
 		@account = Account.from_omniauth(request.env['omniauth.auth'])
 
+    # [TODO] Refactor this if/elsif/else
 		if @account.nil?
       flash[:alert] = "User or password not found"
-      redirect_to buildings_path
+      # [TODO] Temporary redirection - so we can see the error message
+      redirect_to buildings_path #
 	  elsif @account.persisted?
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
       sign_in_and_redirect @account, event: :authentication
     else
-      session['devise.google_data'] = request.env['omniauth.auth'].except(:extra) # Removing extra as it can overflow some session stores
-      redirect_to new_account_registration_url, alert: @account.errors.full_messages.join("\n")
+      flash[:alert] = "User or password not found"
+      # [TODO] Temporary redirection - so we can see the error message
+      redirect_to buildings_path 
 		end
 	end
 end

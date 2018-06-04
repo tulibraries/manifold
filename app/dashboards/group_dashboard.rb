@@ -13,7 +13,7 @@ class GroupDashboard < Administrate::BaseDashboard
     building: Field::BelongsTo,
     id: Field::Number,
     name: Field::String,
-    description: Field::Text,
+    description: DescriptionField,
     phone_number: Field::String,
     email_address: Field::String,
     created_at: Field::DateTime,

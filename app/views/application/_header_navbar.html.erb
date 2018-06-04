@@ -1,0 +1,55 @@
+  <div id="header-navbar" class="navbar navbar-static-top" role="navigation">
+    <div class="col">
+      <div class="container navbar-header">
+        <div class="row">
+          <div class="col col-med-1">
+            <%= link_to image_tag('NewCherryLogo.jpg', alt: 'Temple University Libraries', class: 'site-title'), root_path %> 
+          </div>
+          <div class="navbar-right col col-med-11">
+            <ul> 
+              <li>
+                <a href="/">link 1</a>
+              </li>
+              <li>|</li>
+              <li>
+                <a href="/">link 2</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div id="wrapper">
+
+  <div id="header" class="row">
+    <div class="col">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-8">
+            <!-- navigation links -->
+          </div>
+
+          <div class="col-md-4">
+            <!-- search bar? -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div> <!-- #header -->
+
+  <div id="content" class="container">
+    <a href="#" name="skiplink_ada" id="skiplink_ada"></a>
+    <div class="container">
+
+    <% flash.each do |key, value| %>
+       <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+
+    
+

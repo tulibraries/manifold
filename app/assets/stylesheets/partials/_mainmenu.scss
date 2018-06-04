@@ -1,0 +1,18 @@
+.navbar {
+		background-color: #fff;
+	.nav-item {
+		/*margin-right:14px;*/
+	}
+	.nav-link, .nav-link:focus, .nav-link:hover {
+		color: #fff!important;
+	}
+	.dropdown-menu {
+		.dropdown-item, .dropdown-toggle {
+			color: #fff;
+		}
+		.dropdown-item:hover, .dropdown-item:focus {
+			color: #fff;
+			background-color:#760027;
+		}
+	}
+}

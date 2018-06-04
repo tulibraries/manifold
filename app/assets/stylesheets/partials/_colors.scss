@@ -1,0 +1,24 @@
+@import "_vars.scss";
+
+body {
+	background-color: $white;
+}
+a, a:hover, a:active, a:visited {
+	color: $red;
+}
+
+.btn-primary, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary:active:hover, .btn-primary:active:focus {
+	background-color: $red;
+	border-color: $aged-red;
+}
+
+.btn-danger, .btn-danger:hover {
+	background-color: $red;
+	border-color: $red;
+}
+
+.alert-info {
+	background-color: $cinnamon;
+	border-color: $dark-grey;
+	color: $grey;
+}

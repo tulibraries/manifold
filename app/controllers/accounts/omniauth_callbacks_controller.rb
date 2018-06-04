@@ -5,16 +5,14 @@ class Accounts::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
 
     # [TODO] Refactor this if/elsif/else
 		if @account.nil?
-      flash[:alert] = "User or password not found"
-      # [TODO] Temporary redirection - so we can see the error message
-      redirect_to buildings_path #
+      flash[:alert] = I18n.t 'fortytude.error.user_not_registered'
+      redirect_to '/'
 	  elsif @account.persisted?
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
       sign_in_and_redirect @account, event: :authentication
     else
-      flash[:alert] = "User or password not found"
-      # [TODO] Temporary redirection - so we can see the error message
-      redirect_to buildings_path 
+      flash[:alert] = I18n.t 'fortytude.error.user_not_registered'
+      redirect_to '/'
 		end
 	end
 end

@@ -30,4 +30,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  fortytude:
+    error:
+      user_not_registered: "User not registered."

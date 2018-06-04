@@ -43,12 +43,13 @@
 
 <p>
   <strong>Building:</strong>
-  <%= @space.building %>
+  <%= @space.building.name %>
 </p>
-
-<p>
-  <strong>Parent space:</strong>
-  <%= @space.parent_space %>
-</p>
+<% unless @space.parent_space.nil? %>
+  <p>
+    <strong>Parent space:</strong>
+    <%= @space.parent_space.name %>
+  </p>
+<% end %>
 
 <%= link_to 'Back', spaces_path %>

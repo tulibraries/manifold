@@ -2,43 +2,12 @@
 
 <h1>Buildings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Address1</th>
-      <th>Temple building code</th>
-      <th>Directions map</th>
-      <th>Hours</th>
-      <th>Phone number</th>
-      <th>Image</th>
-      <th>Campus</th>
-      <th>Accessibility</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<% unless @buildings.nil? %>
     <% @buildings.each do |building| %>
-      <tr>
-        <td><%= building.name %></td>
-        <td><%= building.description %></td>
-        <td><%= building.address1 %></td>
-        <td><%= building.temple_building_code %></td>
-        <td><%= building.directions_map %></td>
-        <td><%= building.hours %></td>
-        <td><%= building.phone_number %></td>
-        <td><%= building.image %></td>
-        <td><%= building.campus %></td>
-        <td><%= building.accessibility %></td>
-        <td><%= building.email %></td>
-        <td><%= link_to 'Show', building %></td>
-      </tr>
+      <p>
+        <%= link_to building.name, building %>
+      </p>
     <% end %>
-  </tbody>
-</table>
-
+<% end %>
 <br>
 

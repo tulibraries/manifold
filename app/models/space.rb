@@ -8,5 +8,5 @@ class Space < ApplicationRecord
  	validates :parent_space_id, valid_space_id: true
 
   belongs_to :building
-  belongs_to :parent_space, optional: true
+  has_and_belongs_to_many :parent_space, optional: true
 end

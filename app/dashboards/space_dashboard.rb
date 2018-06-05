@@ -10,7 +10,7 @@ class SpaceDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    description: Field::Text,
+    description: DescriptionField,
     hours: Field::String,
     accessibility: Field::Text,
     location: Field::String,

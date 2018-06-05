@@ -9,9 +9,21 @@ Things you may want to cover:
 
 * System dependencies
 
+Install Ruby Gem dependencies
+
+`bundle install`
+
 * Configuration
 
 * Database creation
+
+Create data tables
+
+`rake db:migrate`
+
+Seed initial user from the command line
+
+`rails runner 'Account.create(email: "<YOURTUACCESSID>@temple.edu", password: Devise.friendly_token[0,20]).save'`
 
 * Database initialization
 

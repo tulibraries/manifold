@@ -10,7 +10,7 @@ class BuildingDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    description: Field::Text,
+    description: DescriptionField,
     address1: Field::String,
     temple_building_code: Field::String,
     directions_map: Field::String,
@@ -51,8 +51,6 @@ class BuildingDashboard < Administrate::BaseDashboard
     :campus,
     :accessibility,
     :email,
-    :created_at,
-    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES

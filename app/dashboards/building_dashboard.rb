@@ -16,7 +16,7 @@ class BuildingDashboard < Administrate::BaseDashboard
     directions_map: Field::String,
     hours: Field::String,
     phone_number: Field::String,
-    image: Field::String,
+    image: Field::ImageField,
     campus: Field::String,
     accessibility: Field::Text,
     email: Field::String,

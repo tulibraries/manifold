@@ -15,6 +15,11 @@ module Admin
     #   Building.find_by!(slug: param)
     # end
 
+  # Rails 5.1 and above requires permitted params to be defined in the Controller
+  # BL doesn't do that, but might in the future. This allows us to use the pre 5.1
+  # behavior until we can define all possible param  in the future.
+  ActionController::Parameters.permit_all_parameters = true
+
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
   end

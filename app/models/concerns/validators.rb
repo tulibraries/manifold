@@ -8,14 +8,6 @@ module Validators
     end
   end
 
-  class TuAccessEmailValidator < ActiveModel::EachValidator
-    def validate_each(record, attribute, value)
-      unless value =~ /\Atu[a-z]\d{5}@temple\.edu\z/i
-        record.errors[attribute] << (options[:message] || "is not an acceptable email address")
-      end
-    end
-  end
-
   class PhoneNumberValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       unless value =~ /\d{10}/i

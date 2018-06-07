@@ -7,9 +7,9 @@ class Person < ApplicationRecord
 	validates :building_id, presence: true, valid_building_id: true
 	validates :space_id, valid_space_id: true
 
-  has_and_belongs_to_many :building
-  has_and_belongs_to_many :space
-
   has_many :memberships
   has_many :groups, through: :memberships
+
+  has_and_belongs_to_many :building
+  has_and_belongs_to_many :space
 end

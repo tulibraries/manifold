@@ -1,7 +1,7 @@
-require 'rails_helper'
+require 'rails_helper' # ~> LoadError: cannot load such file -- rails_helper
 
 RSpec.describe Person, type: :model do
-  after(:all) do
+  after(:each) do
     DatabaseCleaner.clean
   end
 
@@ -11,11 +11,7 @@ RSpec.describe Person, type: :model do
                  s.save!
                  s
   }
-  let (:person) { p = FactoryBot.build(:person)
-                  p.building_id = building.id
-                  p.space_id = space.id
-                  p
-  }
+  let (:person) { FactoryBot.build(:person) }
 
   context 'Person Class Attributes' do
     subject { Person.new.attributes.keys }
@@ -50,12 +46,12 @@ RSpec.describe Person, type: :model do
 
     required_references = [
       "building_id",
-      "space_id",
+      #"space_id",
     ]
     required_references.each do |f|
       example "missing #{f}" do
-				person[f] = nil
-        expect { person.save! }.to raise_error(/Validation failed:.* #{f.humanize(capitalize: true)} must exist/)
+				person[f] = [nil]
+        expect { person.save! }.to raise_error(/Validation failed:.* #{f.humanize(capitalize: true)} can't be blank/) # => 
       end
     end
   end
@@ -63,6 +59,7 @@ RSpec.describe Person, type: :model do
   describe "field validators" do
     context "Email validation" do
       example "valid email", focus: true do
+        p = FactoryBot.build(:person)
         person.email_address = "chas@example.edu"
         person.building_id = building.id
         person.space_id = space.id
@@ -83,3 +80,10 @@ RSpec.describe Person, type: :model do
     end
   end
 end
+
+# ~> LoadError
+# ~> cannot load such file -- rails_helper
+# ~>
+# ~> /Users/skng/.rbenv/versions/2.5.1/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+# ~> /Users/skng/.rbenv/versions/2.5.1/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+# ~> /var/folders/57/jyqj6xp12_76sctf9ndkb26r0000gp/T/seeing_is_believing_temp_dir20180607-25877-mcd5tl/program.rb:1:in `<main>'

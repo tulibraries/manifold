@@ -9,5 +9,7 @@ class Person < ApplicationRecord
 
   has_and_belongs_to_many :building
   has_and_belongs_to_many :space
-  has_and_belongs_to_many :group, optional: true
+
+  has_many :memberships
+  has_many :groups, through: :memberships
 end

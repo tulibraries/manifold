@@ -15,7 +15,7 @@ RSpec.describe "groups/show.html.erb", type: :view do
     @group = FactoryBot.build(:group)
     @group.building_id = building.id
     @group.space_id = space.id
-    @group.person_id = person.id
+    @group.person_ids = [person.id]
     @group.save!
 
     render

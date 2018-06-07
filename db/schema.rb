@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_152100) do
+ActiveRecord::Schema.define(version: 2018_06_07_143243) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -50,14 +50,21 @@ ActiveRecord::Schema.define(version: 2018_05_29_152100) do
     t.text "description"
     t.string "phone_number"
     t.string "email_address"
-    t.integer "person_id"
     t.integer "space_id"
     t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["building_id"], name: "index_groups_on_building_id"
-    t.index ["person_id"], name: "index_groups_on_person_id"
     t.index ["space_id"], name: "index_groups_on_space_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["person_id"], name: "index_memberships_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -72,9 +79,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_152100) do
     t.integer "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "group_id"
     t.index ["building_id"], name: "index_people_on_building_id"
-    t.index ["group_id"], name: "index_people_on_group_id"
     t.index ["space_id"], name: "index_people_on_space_id"
   end
 

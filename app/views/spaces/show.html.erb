@@ -45,7 +45,7 @@
   <strong>Building:</strong>
   <%= @space.building.name %>
 </p>
-<% unless @space.parent_space.nil? %>
+<% unless @space.parent_space_id.nil? %>
   <p>
     <strong>Parent space:</strong>
     <%= @space.parent_space.name %>

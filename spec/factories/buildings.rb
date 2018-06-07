@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :building do
-    name "Charles Samuel Addams Library"
+    sequence(:name) { |n| "Charles Samuel Addams Library #{n}" }
     description "Main Campus Main Library"
     address1 "1250 Polett Walk"
     temple_building_code "ABC"

@@ -72,7 +72,6 @@ RSpec.describe Space, type: :model do
     context "Email validation" do
       example "valid email" do
         space.email = "chas@example.edu"
-        space.building_id = building.id
         expect { space.save! }.to_not raise_error
       end
       example "invalid email" do

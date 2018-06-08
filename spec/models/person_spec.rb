@@ -45,8 +45,8 @@ RSpec.describe Person, type: :model do
     end
 
     required_references = [
-      "building_id",
-      # [TODO] Fix: missing space doesn't raise exception
+      # [FIXME] Reinstate after join table implemented
+      #"building_id",
       #"space_id",
     ]
     required_references.each do |f|
@@ -58,9 +58,8 @@ RSpec.describe Person, type: :model do
   end
 
   describe "relation to" do
-    # [TODO] Fix: Resolve the duplicate let (:person) below, without it results in 'undefined method name for nil:NilClass error'
+    # [FIXME] Resolve the duplicate let (:person) below, without it results in 'undefined method name for nil:NilClass error'
     let (:person) { FactoryBot.create(:person_with_groups, building_id: building.id, space_id: space.id) }
-
     context "Group" do
       example "attach group" do
         expect(person.groups.first.name).to match(/#{Group.first.name}/)

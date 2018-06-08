@@ -7,15 +7,23 @@ FactoryBot.define do
     chat_handle "zbeeblebrox"
     job_title "President of the Galaxy"
     identifier "PREZBEEB"
+
+    factory :person_with_groups do
+      after(:create) do |person|
+        create_list(:group, 1, persons: [person]) 
+      end
+    end
+
     factory :person_with_buildings do
       after(:create) do |person|
-        create(:building, person: person)
+        create_list(:building, 1)
       end
     end
     factory :person_with_spaces do
       after(:create) do |person|
-        create(:space, person: person)
+        create_list(:space, 1, persons: [person])
       end
     end
   end
+
 end

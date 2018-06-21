@@ -33,4 +33,8 @@ Seed initial user from the command line
 
 * Deployment instructions
 
+Seed domain data (buildings, spaces, etc.)
+
+`bundle exec rake db:populate`
+
 * ...

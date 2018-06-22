@@ -10,5 +10,11 @@ FactoryBot.define do
     image "https://diefenbunker.files.wordpress.com/2012/05/dr-strangelove-warroom.jpg"
     association :building
     parent_space_id nil
+
+    factory :space_with_people do
+      after(:create) do |space|
+        create_list(:person, 1, spaces: [space]) 
+      end
+    end
   end
 end

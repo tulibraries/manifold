@@ -8,11 +8,9 @@ RSpec.describe "groups/show.html.erb", type: :view do
     space.save!
 
     person = FactoryBot.build(:person)
-    person.space_id = space.id
     person.save!
 
     @group = FactoryBot.build(:group)
-    @group.space_id = space.id
     @group.person_ids = [person.id]
     @group.save!
 

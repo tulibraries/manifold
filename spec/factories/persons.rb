@@ -22,7 +22,7 @@ FactoryBot.define do
 
     factory :person_with_spaces do
       after(:create) do |person|
-        create_list(:space, 1, persons: [person])
+        create_list(:space_with_people, 1, persons: [person])
       end
     end
   end

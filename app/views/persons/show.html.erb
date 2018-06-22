@@ -38,7 +38,7 @@
 
 <p>
   <strong>Space:</strong>
-  <%= @person.space.name %>
+  <%= @person.spaces.last.name unless @person.spaces.empty? %>
 </p>
 
 <%= link_to 'Back', people_path %>

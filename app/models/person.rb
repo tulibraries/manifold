@@ -14,5 +14,6 @@ class Person < ApplicationRecord
   has_many :buildings_people, class_name: "BuildingsPeople"
   has_many :buildings, through: :buildings_people
 
-  has_and_belongs_to_many :space
+  has_many :spaces_people, class_name: "SpacesPeople"
+  has_many :spaces, through: :spaces_people
 end

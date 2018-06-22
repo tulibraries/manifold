@@ -5,13 +5,7 @@ RSpec.describe Person, type: :model do
     DatabaseCleaner.clean
   end
 
-  let(:building) { FactoryBot.create(:building) }
-  let(:space) { s = FactoryBot.build(:space)
-                 s.building_id = building.id
-                 s.save!
-                 s
-  }
-  let(:person) { FactoryBot.build(:person_with_groups, space_id: space.id) }
+  let(:person) { FactoryBot.build(:person_with_groups) }
 
   context 'Person Class Attributes' do
     subject { Person.new.attributes.keys }
@@ -23,7 +17,6 @@ RSpec.describe Person, type: :model do
     it { is_expected.to include("chat_handle") }
     it { is_expected.to include("job_title") }
     it { is_expected.to include("identifier") }
-    it { is_expected.to include("space_id") }
   end
 
   context 'Required Fields' do
@@ -45,8 +38,8 @@ RSpec.describe Person, type: :model do
 
     required_references = [
       # [FIXME] Reinstate after join table implemented
-      #"building_id",
-      #"space_id",
+      #"building",
+      #"space",
     ]
     required_references.each do |f|
       example "missing #{f}" do
@@ -58,16 +51,22 @@ RSpec.describe Person, type: :model do
 
   describe "relation to" do
     # [FIXME] Resolve the duplicate let (:person) below, without it results in 'undefined method name for nil:NilClass error'
-    let (:person) { FactoryBot.create(:person_with_groups, space_id: space.id) }
+    let (:person) { FactoryBot.create(:person_with_groups) }
     context "Group" do
       example "attach group" do
         expect(person.groups.first.name).to match(/#{Group.first.name}/)
       end
     end
     context "Building" do
-      let (:person) { FactoryBot.create(:person_with_buildings, space_id: space.id) }
+      let (:person) { FactoryBot.create(:person_with_buildings) }
       example "attach building" do
         expect(person.buildings.first.name).to match(/#{Building.last.name}/)
+      end
+    end
+    context "Space" do
+      let (:person) { FactoryBot.create(:person_with_spaces) }
+      example "attach space" do
+        expect(person.spaces.first.name).to match(/#{Space.last.name}/)
       end
     end
   end

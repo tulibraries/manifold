@@ -11,6 +11,8 @@ class Person < ApplicationRecord
   has_many :memberships
   has_many :groups, through: :memberships
 
-  has_and_belongs_to_many :building
+  has_many :buildings_people, class_name: "BuildingsPeople"
+  has_many :buildings, through: :buildings_people
+
   has_and_belongs_to_many :space
 end

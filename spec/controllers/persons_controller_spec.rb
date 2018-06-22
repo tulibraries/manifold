@@ -10,7 +10,6 @@ RSpec.describe PersonsController, type: :controller do
     space.save!
 
     person = FactoryBot.build(:person)
-    person.building_id = building.id
     person.space_id = space.id
     person.save!
     person

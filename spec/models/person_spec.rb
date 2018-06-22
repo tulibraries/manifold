@@ -11,7 +11,7 @@ RSpec.describe Person, type: :model do
                  s.save!
                  s
   }
-  let(:person) { FactoryBot.build(:person_with_groups, building_id: building.id, space_id: space.id) }
+  let(:person) { FactoryBot.build(:person_with_groups, space_id: space.id) }
 
   context 'Person Class Attributes' do
     subject { Person.new.attributes.keys }
@@ -23,7 +23,6 @@ RSpec.describe Person, type: :model do
     it { is_expected.to include("chat_handle") }
     it { is_expected.to include("job_title") }
     it { is_expected.to include("identifier") }
-    it { is_expected.to include("building_id") }
     it { is_expected.to include("space_id") }
   end
 
@@ -59,10 +58,16 @@ RSpec.describe Person, type: :model do
 
   describe "relation to" do
     # [FIXME] Resolve the duplicate let (:person) below, without it results in 'undefined method name for nil:NilClass error'
-    let (:person) { FactoryBot.create(:person_with_groups, building_id: building.id, space_id: space.id) }
+    let (:person) { FactoryBot.create(:person_with_groups, space_id: space.id) }
     context "Group" do
       example "attach group" do
         expect(person.groups.first.name).to match(/#{Group.first.name}/)
+      end
+    end
+    context "Building" do
+      let (:person) { FactoryBot.create(:person_with_buildings, space_id: space.id) }
+      example "attach building" do
+        expect(person.buildings.first.name).to match(/#{Building.last.name}/)
       end
     end
   end

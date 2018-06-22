@@ -11,5 +11,11 @@ FactoryBot.define do
     campus "Main Campus"
     accessibility "Yes"
     email "csa@example.edu"
+
+    factory :building_with_people do
+      after(:create) do |building|
+        create_list(:person, 1, buildings: [building]) 
+      end
+    end
   end
 end

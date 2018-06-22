@@ -16,9 +16,10 @@ FactoryBot.define do
 
     factory :person_with_buildings do
       after(:create) do |person|
-        create_list(:building, 1)
+        create_list(:building_with_people, 1, persons: [person])
       end
     end
+
     factory :person_with_spaces do
       after(:create) do |person|
         create_list(:space, 1, persons: [person])

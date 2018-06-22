@@ -33,7 +33,7 @@
 
 <p>
   <strong>Building:</strong>
-  <%= @person.building.name %>
+  <%= @person.buildings.first.name unless @person.buildings.empty? %>
 </p>
 
 <p>

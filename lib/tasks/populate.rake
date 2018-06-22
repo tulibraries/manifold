@@ -48,8 +48,11 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         chat_handle:   Faker::Twitter.screen_name,
         job_title:     Faker::Job.title,
         identifier:    "TU" + Faker::Number.number(6),
-        building_id:   Building.order("RANDOM()").first.id,
         space_id:      Space.order("RANDOM()").first.id)
+
+        building_person = BuildingsPeople.create!(
+          person_id:   person.id,
+          building_id: Building.order("RANDOM()").first.id)
     end
 
     for g in 1..10 do

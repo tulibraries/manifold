@@ -105,10 +105,6 @@ RSpec.describe Space, type: :model do
         space.building_id = building.id
         expect { space.save! }.to_not raise_error
       end
-      example "invalid building" do
-        space.building_id = building.id + 1
-        expect { space.save! }.to raise_error(/Building reference is invalid/)
-      end
     end
 
     context "Optional parent space reference" do
@@ -121,11 +117,6 @@ RSpec.describe Space, type: :model do
         space.building_id = building.id
         space.parent_space_id = space.id
         expect { space.save! }.to_not raise_error
-      end
-      example "invalid space ID" do
-        space.building_id = building.id
-        space.parent_space_id = 9999
-        expect { space.save! }.to raise_error(/Parent space reference is invalid/)
       end
     end
   end

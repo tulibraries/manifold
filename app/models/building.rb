@@ -7,4 +7,7 @@ class Building < ApplicationRecord
 
   has_many :buildings_people, class_name: "BuildingsPeople"
   has_many :persons, through: :buildings_people
+
+  has_many :buildings_groups, class_name: "BuildingsGroups"
+  has_many :groups, through: :buildings_groups
 end

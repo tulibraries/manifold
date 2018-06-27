@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_210545) do
+ActiveRecord::Schema.define(version: 2018_06_27_155123) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2018_06_22_210545) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "buildings_groups", force: :cascade do |t|
+    t.integer "building_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_buildings_groups_on_building_id"
+    t.index ["group_id"], name: "index_buildings_groups_on_group_id"
+  end
+
   create_table "buildings_people", force: :cascade do |t|
     t.integer "building_id"
     t.integer "person_id"
@@ -60,10 +69,8 @@ ActiveRecord::Schema.define(version: 2018_06_22_210545) do
     t.string "phone_number"
     t.string "email_address"
     t.integer "space_id"
-    t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["building_id"], name: "index_groups_on_building_id"
     t.index ["space_id"], name: "index_groups_on_space_id"
   end
 

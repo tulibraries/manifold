@@ -44,7 +44,7 @@ RSpec.describe Space, type: :model do
       example "missing #{f}" do
         space = FactoryBot.build(:space)
 				space[f] = nil
-        expect { space.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
+        expect { space.save! }.to raise_error(/#{f.humanize(capitalize: true)} must exist/)
       end
     end
   end

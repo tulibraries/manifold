@@ -18,7 +18,6 @@ RSpec.describe Group, type: :model do
     s.save!
     s
   }
-  let(:group) { FactoryBot.build(:group_with_persons, building_id: building.id, space_id: space.id) }
 
   context 'Group Class Attributes' do
     subject { Group.new.attributes.keys }
@@ -27,12 +26,12 @@ RSpec.describe Group, type: :model do
     it { is_expected.to include("description") }
     it { is_expected.to include("phone_number") }
     it { is_expected.to include("email_address") }
-    it { is_expected.to include("building_id") }
     it { is_expected.to include("space_id") }
 
   end
 
   context 'Required Fields' do
+    let(:group) { FactoryBot.build(:group) }
 
     required_fields = [
       "name",
@@ -48,8 +47,9 @@ RSpec.describe Group, type: :model do
     end
 
     required_references = [
-      "building_id",
-      "space_id",
+      # [FIXME] Reinstate after join table implemented
+      #"building",
+      #"space",
     ]
     required_references.each do |f|
       example "missing #{f}" do
@@ -61,28 +61,41 @@ RSpec.describe Group, type: :model do
   end
 
   describe "has many through membership" do
-    let(:group) { FactoryBot.create(:group_with_persons, building_id: building.id, space_id: space.id) }
     context "Attach person" do
+      let(:group) { FactoryBot.create(:group_with_people) }
       example "valid" do
-        group = FactoryBot.create(:group_with_persons, building_id: building.id, space_id: space.id) 
-        expect(group.persons.first.last_name).to match(/#{Person.first.last_name}/)
-        expect(group.persons.first.first_name).to match(/#{Person.first.first_name}/)
-      end
-
-      example "invalid - has no members", skip: true do
-        # [FIXME] Determine how to verify if there is at least one associated person"
-        group = FactoryBot.build(:group, building_id: building.id, space_id: space.id) 
-        expect { group.save! }.to raise_error
+        expect(group.persons.last.last_name).to match(/#{Person.last.last_name}/)
+        expect(group.persons.last.first_name).to match(/#{Person.last.first_name}/)
       end
     end
 
-    context "group belongs to a member" do
-      example "Attach group to a person"
+    context "No person" do
+      example "valid" do
+        group = FactoryBot.build(:group) 
+        expect {group.save!}.to_not raise_error 
+      end
     end
-
   end
 
+  describe "has many buildings through" do
+    context "Attach building" do
+      let(:group) { FactoryBot.create(:group_with_buildings) }
+      example "valid" do
+        expect(group.buildings.last.name).to match(/#{Building.last.name}/)
+      end
+    end
+
+    context "No building" do
+      example "valid" do
+        group = FactoryBot.build(:group) 
+        expect {group.save!}.to_not raise_error 
+      end
+    end
+  end
+
+
   describe "field validators" do
+    let(:group) { FactoryBot.build(:group) }
     context "Email validation" do
       example "valid email", focus: true do
         group.email_address = "we@example.edu"
@@ -119,7 +132,7 @@ RSpec.describe Group, type: :model do
       end
       example "invalid building" do
         skip "[FIXME] Reinstate after implementing Has Many Through"
-        group = FactoryBot.build(:group_with_persons, building_id: -1, space_id: space.id) 
+        group = FactoryBot.build(:group, building_id: -1, space_id: space.id) 
         expect { group.save! }.to raise_error(/Building reference is invalid/)
       end
     end
@@ -130,7 +143,7 @@ RSpec.describe Group, type: :model do
       end
       example "invalid space ID" do
         skip "[FIXME] Reinstate after implementing Has Many Through"
-        group = FactoryBot.build(:group_with_persons, building_id: building.id, space_id: -1) 
+        group = FactoryBot.build(:group, building_id: building.id, space_id: -1) 
         expect { group.save! }.to raise_error(/Space reference is invalid/)
       end
     end

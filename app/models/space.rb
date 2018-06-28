@@ -10,4 +10,7 @@ class Space < ApplicationRecord
 
   has_many :spaces_people, class_name: "SpacesPeople"
   has_many :persons, through: :spaces_people
+
+  has_many :spaces_groups, class_name: "SpacesGroups"
+  has_many :groups, through: :spaces_groups
 end

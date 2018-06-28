@@ -16,5 +16,11 @@ FactoryBot.define do
         create_list(:person, 1, spaces: [space]) 
       end
     end
+
+    factory :space_with_groups do
+      after(:create) do |space|
+        create_list(:group, 1, spaces: [space]) 
+      end
+    end
   end
 end

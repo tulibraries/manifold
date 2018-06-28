@@ -5,20 +5,6 @@ RSpec.describe Group, type: :model do
     DatabaseCleaner.clean
   end
 
-  let(:person) { p = FactoryBot.build(:person)
-                  p.building_id = building.id
-                  p.space_id = space.id
-                  p.save!
-                  p
-  }
-  let(:building) { FactoryBot.create(:building) }
-  let(:space) {  
-    s = FactoryBot.build(:space)
-    s.building_id = building.id
-    s.save!
-    s
-  }
-
   context 'Group Class Attributes' do
     subject { Group.new.attributes.keys }
 
@@ -26,7 +12,6 @@ RSpec.describe Group, type: :model do
     it { is_expected.to include("description") }
     it { is_expected.to include("phone_number") }
     it { is_expected.to include("email_address") }
-    it { is_expected.to include("space_id") }
 
   end
 
@@ -48,12 +33,12 @@ RSpec.describe Group, type: :model do
 
     required_references = [
       # [FIXME] Reinstate after join table implemented
-      #"building",
-      #"space",
+      "building",
+      "space",
     ]
     required_references.each do |f|
       example "missing #{f}" do
-        skip "Reinstate after implemting Has Many Through"
+        skip "Test for required #{f} reference"
 				group[f] = nil
         expect { group.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
       end
@@ -86,6 +71,22 @@ RSpec.describe Group, type: :model do
     end
 
     context "No building" do
+      example "valid" do
+        group = FactoryBot.build(:group) 
+        expect {group.save!}.to_not raise_error 
+      end
+    end
+  end
+
+  describe "has many spaces through" do
+    context "Attach space" do
+      let(:group) { FactoryBot.create(:group_with_spaces) }
+      example "valid" do
+        expect(group.spaces.last.name).to match(/#{Space.last.name}/)
+      end
+    end
+
+    context "No space" do
       example "valid" do
         group = FactoryBot.build(:group) 
         expect {group.save!}.to_not raise_error 

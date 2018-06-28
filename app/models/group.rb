@@ -11,5 +11,6 @@ class Group < ApplicationRecord
   has_many :buildings_groups, class_name: "BuildingsGroups"
   has_many :buildings, through: :buildings_groups
 
-  has_and_belongs_to_many :space
+  has_many :spaces_groups, class_name: "SpacesGroups"
+  has_many :spaces, through: :spaces_groups
 end

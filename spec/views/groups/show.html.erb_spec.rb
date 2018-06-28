@@ -12,4 +12,16 @@ RSpec.describe "groups/show.html.erb", type: :view do
     render
     expect(rendered).to match /#{Person.last.last_name}/
   end
+
+  it "displays the building" do
+    @group = FactoryBot.create(:group_with_buildings)
+    render
+    expect(rendered).to match /#{Building.last.name}/
+  end
+
+  it "displays the space" do
+    @group = FactoryBot.create(:group_with_spaces)
+    render
+    expect(rendered).to match /#{Space.last.name}/
+  end
 end

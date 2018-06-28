@@ -35,7 +35,7 @@
 
 <p>
   <strong>Space: </strong>
-  <%= @group.space.name %>
+  <%= @group.spaces.first.name unless @group.spaces.empty? %>
 </p>
 
 <%= link_to 'Back', groups_path %>

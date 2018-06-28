@@ -8,9 +8,9 @@ class Space < ApplicationRecord
   belongs_to :building
   has_and_belongs_to_many :parent_space, optional: true
 
-  has_many :spaces_people, class_name: "SpacesPeople"
-  has_many :persons, through: :spaces_people
+  has_many :space_person
+  has_many :persons, through: :space_person
 
-  has_many :spaces_groups, class_name: "SpacesGroups"
-  has_many :groups, through: :spaces_groups
+  has_many :space_group
+  has_many :groups, through: :space_group
 end

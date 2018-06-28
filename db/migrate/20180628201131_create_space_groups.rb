@@ -1,6 +1,6 @@
-class CreateSpacesGroups < ActiveRecord::Migration[5.2]
+class CreateSpaceGroups < ActiveRecord::Migration[5.2]
   def change
-    create_table :spaces_groups do |t|
+    create_table :space_groups do |t|
       t.references :space, foreign_key: true
       t.references :group, foreign_key: true
 

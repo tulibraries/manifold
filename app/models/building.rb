@@ -5,9 +5,9 @@ class Building < ApplicationRecord
 	validates :email, presence: true, email: true
 	validates :phone_number, presence: true, phone_number: true
 
-  has_many :buildings_people, class_name: "BuildingsPeople"
-  has_many :persons, through: :buildings_people
+  has_many :building_person
+  has_many :persons, through: :building_person
 
-  has_many :buildings_groups, class_name: "BuildingsGroups"
-  has_many :groups, through: :buildings_groups
+  has_many :building_group
+  has_many :groups, through: :building_group
 end

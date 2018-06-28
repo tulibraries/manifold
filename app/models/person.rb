@@ -5,12 +5,12 @@ class Person < ApplicationRecord
  	validates :email_address, presence: true, email: true
  	validates :phone_number, presence: true, phone_number: true
 
-  has_many :memberships
-  has_many :groups, through: :memberships
+  has_many :group_person
+  has_many :groups, through: :group_person
 
-  has_many :buildings_people, class_name: "BuildingsPeople"
-  has_many :buildings, through: :buildings_people
+  has_many :building_person
+  has_many :buildings, through: :building_person
 
-  has_many :spaces_people, class_name: "SpacesPeople"
-  has_many :spaces, through: :spaces_people
+  has_many :space_person
+  has_many :spaces, through: :space_person
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_143243) do
+ActiveRecord::Schema.define(version: 2018_06_28_201144) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,24 @@ ActiveRecord::Schema.define(version: 2018_06_07_143243) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
+  create_table "building_groups", force: :cascade do |t|
+    t.integer "building_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_building_groups_on_building_id"
+    t.index ["group_id"], name: "index_building_groups_on_group_id"
+  end
+
+  create_table "building_people", force: :cascade do |t|
+    t.integer "building_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_building_people_on_building_id"
+    t.index ["person_id"], name: "index_building_people_on_person_id"
+  end
+
   create_table "buildings", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -45,26 +63,22 @@ ActiveRecord::Schema.define(version: 2018_06_07_143243) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "group_people", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_people_on_group_id"
+    t.index ["person_id"], name: "index_group_people_on_person_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "phone_number"
     t.string "email_address"
-    t.integer "space_id"
-    t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["building_id"], name: "index_groups_on_building_id"
-    t.index ["space_id"], name: "index_groups_on_space_id"
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_memberships_on_group_id"
-    t.index ["person_id"], name: "index_memberships_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -75,12 +89,26 @@ ActiveRecord::Schema.define(version: 2018_06_07_143243) do
     t.string "chat_handle"
     t.string "job_title"
     t.string "identifier"
-    t.integer "building_id"
-    t.integer "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["building_id"], name: "index_people_on_building_id"
-    t.index ["space_id"], name: "index_people_on_space_id"
+  end
+
+  create_table "space_groups", force: :cascade do |t|
+    t.integer "space_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_space_groups_on_group_id"
+    t.index ["space_id"], name: "index_space_groups_on_space_id"
+  end
+
+  create_table "space_people", force: :cascade do |t|
+    t.integer "space_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_space_people_on_person_id"
+    t.index ["space_id"], name: "index_space_people_on_space_id"
   end
 
   create_table "spaces", force: :cascade do |t|

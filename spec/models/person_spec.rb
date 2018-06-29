@@ -5,13 +5,7 @@ RSpec.describe Person, type: :model do
     DatabaseCleaner.clean
   end
 
-  let (:building) { FactoryBot.create(:building) }
-  let (:space) { s = FactoryBot.build(:space)
-                 s.building_id = building.id
-                 s.save!
-                 s
-  }
-  let (:person) { FactoryBot.build(:person) }
+  let(:person) { FactoryBot.build(:person_with_groups) }
 
   context 'Person Class Attributes' do
     subject { Person.new.attributes.keys }
@@ -23,8 +17,6 @@ RSpec.describe Person, type: :model do
     it { is_expected.to include("chat_handle") }
     it { is_expected.to include("job_title") }
     it { is_expected.to include("identifier") }
-    it { is_expected.to include("building_id") }
-    it { is_expected.to include("space_id") }
   end
 
   context 'Required Fields' do
@@ -45,8 +37,9 @@ RSpec.describe Person, type: :model do
     end
 
     required_references = [
-      "building_id",
-      #"space_id",
+      # [FIXME] Reinstate after join table implemented
+      #"building",
+      #"space",
     ]
     required_references.each do |f|
       example "missing #{f}" do
@@ -56,34 +49,43 @@ RSpec.describe Person, type: :model do
     end
   end
 
+  describe "relation to" do
+    # [FIXME] Resolve the duplicate let (:person) below, without it results in 'undefined method name for nil:NilClass error'
+    let (:person) { FactoryBot.create(:person_with_groups) }
+    context "Group" do
+      example "attach group" do
+        expect(person.groups.first.name).to match(/#{Group.first.name}/)
+      end
+    end
+    context "Building" do
+      let (:person) { FactoryBot.create(:person_with_buildings) }
+      example "attach building" do
+        expect(person.buildings.first.name).to match(/#{Building.last.name}/)
+      end
+    end
+    context "Space" do
+      let (:person) { FactoryBot.create(:person_with_spaces) }
+      example "attach space" do
+        expect(person.spaces.first.name).to match(/#{Space.last.name}/)
+      end
+    end
+  end
+
   describe "field validators" do
     context "Email validation" do
-      example "valid email", focus: true do
-        p = FactoryBot.build(:person)
+      example "valid email" do
         person.email_address = "chas@example.edu"
-        person.building_id = building.id
-        person.space_id = space.id
         expect { person.save! }.to_not raise_error
       end
       example "invalid email" do
         person.email_address = "abc"
-        person.building_id = building.id
-        person.space_id = space.id
         expect { person.save! }.to raise_error(/Email address is not an email/)
       end
       example "invalid email - blank " do
         person.email_address = ""
-        person.building_id = building.id
-        person.space_id = space.id
         expect { person.save! }.to raise_error(/Email address can't be blank/)
       end
     end
   end
 end
 
-# ~> LoadError
-# ~> cannot load such file -- rails_helper
-# ~>
-# ~> /Users/skng/.rbenv/versions/2.5.1/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
-# ~> /Users/skng/.rbenv/versions/2.5.1/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
-# ~> /var/folders/57/jyqj6xp12_76sctf9ndkb26r0000gp/T/seeing_is_believing_temp_dir20180607-25877-mcd5tl/program.rb:1:in `<main>'

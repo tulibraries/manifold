@@ -3,15 +3,7 @@ require 'rails_helper'
 RSpec.describe PersonsController, type: :controller do
 
   let (:person) {
-    building = FactoryBot.create(:building) 
-
-    space = FactoryBot.build(:space)
-    space.building_id = building.id
-    space.save!
-
     person = FactoryBot.build(:person)
-    person.building_id = building.id
-    person.space_id = space.id
     person.save!
     person
   }

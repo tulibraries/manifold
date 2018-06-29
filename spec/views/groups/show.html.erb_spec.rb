@@ -2,23 +2,26 @@ require 'rails_helper'
 
 RSpec.describe "groups/show.html.erb", type: :view do
   it "displays the sample group name" do
-    building = FactoryBot.create(:building) 
-    space = FactoryBot.build(:space)
-    space.building_id = building.id
-    space.save!
-
-    person = FactoryBot.build(:person)
-    person.building_id = building.id
-    person.space_id = space.id
-    person.save!
-
-    @group = FactoryBot.build(:group)
-    @group.building_id = building.id
-    @group.space_id = space.id
-    @group.person_ids = [person.id]
-    @group.save!
-
+    @group = FactoryBot.create(:group)
     render
     expect(rendered).to match /#{@group.name}/
+  end
+
+  it "displays the person" do
+    @group = FactoryBot.create(:group_with_people)
+    render
+    expect(rendered).to match /#{Person.last.last_name}/
+  end
+
+  it "displays the building" do
+    @group = FactoryBot.create(:group_with_buildings)
+    render
+    expect(rendered).to match /#{Building.last.name}/
+  end
+
+  it "displays the space" do
+    @group = FactoryBot.create(:group_with_spaces)
+    render
+    expect(rendered).to match /#{Space.last.name}/
   end
 end

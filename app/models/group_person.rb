@@ -1,4 +1,4 @@
-class Membership < ApplicationRecord
+class GroupPerson < ApplicationRecord
   belongs_to :group
   belongs_to :person
 end

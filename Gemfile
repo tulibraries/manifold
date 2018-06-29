@@ -60,6 +60,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'yaml_db'
+  gem 'faker'
+  gem 'populate'
 end
 
 group :test do

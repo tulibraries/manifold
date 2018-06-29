@@ -21,19 +21,21 @@
   <%= @group.email_address %>
 </p>
 
+<% unless @group.persons.empty? %>
 <p>
   <strong>Owner: </strong>
-  <%= link_to (@group.persons.first.first_name+' '+@group.persons.first.last_name), controller: 'persons', action: 'show', id: @group.person_ids.first %>
+  <%= link_to (@group.persons.first.first_name+' '+@group.persons.last.last_name), controller: 'persons', action: 'show', id: @group.persons.last.id %>
 </p>
+<% end %>
 
 <p>
   <strong>Building: </strong>
-  <%= @group.building.name %>
+  <%= @group.buildings.first.name unless @group.buildings.empty? %>
 </p>
 
 <p>
   <strong>Space: </strong>
-  <%= @group.space.name %>
+  <%= @group.spaces.first.name unless @group.spaces.empty? %>
 </p>
 
 <%= link_to 'Back', groups_path %>

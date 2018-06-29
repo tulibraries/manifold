@@ -45,10 +45,10 @@
   <strong>Building:</strong>
   <%= @space.building.name %>
 </p>
-<% unless @space.parent_space_id.nil? %>
+<% unless @space.parent_id.nil? %>
   <p>
     <strong>Parent space:</strong>
-    <%= @space.parent_space.name %>
+    <%= @space.parent.name %>
   </p>
 <% end %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_28_201144) do
+ActiveRecord::Schema.define(version: 2018_06_29_185137) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -121,11 +121,11 @@ ActiveRecord::Schema.define(version: 2018_06_28_201144) do
     t.string "image"
     t.string "email"
     t.integer "building_id"
-    t.integer "parent_space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
-    t.index ["parent_space_id"], name: "index_spaces_on_parent_space_id"
   end
 
 end

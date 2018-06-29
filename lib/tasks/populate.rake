@@ -43,7 +43,20 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           location:        Faker::Lorem.sentence,
           phone_number:    Faker::Number.number(10),
           image:           Faker::File.file_name('images', 'tubldg', 'jpg'),
-          #parent_space_id: 0,
+          parent_id:       nil,
+          building_id:     building.id)
+      end
+      for s in 1..10 do
+        space = Space.create!(
+          name:            "Room " + Faker::Number.number(2) + "0",
+          description:     Faker::Lorem.paragraph,
+          hours:           "0800-2100",
+          accessibility:   "Yes",
+          email:           fake_email,
+          location:        Faker::Lorem.sentence,
+          phone_number:    Faker::Number.number(10),
+          image:           Faker::File.file_name('images', 'tubldg', 'jpg'),
+          parent:          Space.order("RANDOM()").first,
           building_id:     building.id)
       end
     end

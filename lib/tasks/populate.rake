@@ -4,7 +4,16 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
     require 'populate'
     require 'faker'
     
-    [Building, Space, Group, Person].each(&:delete_all)
+    [BuildingPerson,
+     BuildingGroup,
+     SpacePerson,
+     SpaceGroup,
+     GroupPerson,
+     Building,
+     Space,
+     Group,
+     Person].each(&:delete_all)
+
 
     def fake_email
       Faker::Internet.user_name + "@temple.edu"
@@ -49,11 +58,11 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         job_title:     Faker::Job.title,
         identifier:    "TU" + Faker::Number.number(6))
 
-        building_person = BuildingsPeople.create!(
+        building_person = BuildingPerson.create!(
           person_id:   person.id,
           building_id: Building.order("RANDOM()").first.id)
 
-        space_person = SpacesPeople.create!(
+        space_person = SpacePerson.create!(
           person_id:   person.id,
           space_id: Space.order("RANDOM()").first.id)
     end
@@ -63,13 +72,19 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         name:          Faker::Job.field,
         description:   Faker::Lorem.paragraph,
         phone_number:  Faker::Number.number(10),
-        email_address: fake_email,
-        building_id:   Building.order("RANDOM()").first.id,
-        space_id:      Space.order("RANDOM()").first.id)
+        email_address: fake_email)
 
-      membership = Membership.create!(
-        group_id:  group.id,
-        person_id: Person.order("RANDOM()").first.id)
+        group_person= GroupPerson.create!(
+          group_id:  group.id,
+          person_id: Person.order("RANDOM()").first.id)
+
+        building_group = BuildingGroup.create!(
+          group_id:   group.id,
+          building_id: Building.order("RANDOM()").first.id)
+
+        space_group = SpaceGroup.create!(
+          group_id:   group.id,
+          space_id: Space.order("RANDOM()").first.id)
     end
   end
 end

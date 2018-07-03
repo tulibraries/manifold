@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class SpaceDashboard < Administrate::BaseDashboard
+class BuildingGroupDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,22 +9,10 @@ class SpaceDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     building: Field::BelongsTo,
-    space_person: Field::HasMany,
-    persons: Field::HasMany,
-    space_group: Field::HasMany,
-    groups: Field::HasMany,
+    group: Field::BelongsTo,
     id: Field::Number,
-    name: Field::String,
-    description: Field::Text,
-    hours: Field::String,
-    accessibility: Field::Text,
-    location: Field::String,
-    phone_number: Field::String,
-    image: Field::String,
-    email: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    ancestry: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,31 +22,19 @@ class SpaceDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :building,
-    :space_person,
-    :persons,
-    :space_group,
+    :group,
+    :id,
+    :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :building,
-    :space_person,
-    :persons,
-    :space_group,
-    :groups,
+    :group,
     :id,
-    :name,
-    :description,
-    :hours,
-    :accessibility,
-    :location,
-    :phone_number,
-    :image,
-    :email,
     :created_at,
     :updated_at,
-    :ancestry,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -66,25 +42,13 @@ class SpaceDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :building,
-    :space_person,
-    :persons,
-    :space_group,
-    :groups,
-    :name,
-    :description,
-    :hours,
-    :accessibility,
-    :location,
-    :phone_number,
-    :image,
-    :email,
-    :ancestry,
+    :group,
   ].freeze
 
-  # Overwrite this method to customize how spaces are displayed
+  # Overwrite this method to customize how building groups are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(space)
-  #   "Space ##{space.id}"
+  # def display_resource(building_group)
+  #   "BuildingGroup ##{building_group.id}"
   # end
 end

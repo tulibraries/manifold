@@ -6,8 +6,8 @@ class Building < ApplicationRecord
 	validates :phone_number, presence: true, phone_number: true
 
   has_many :building_person
-  has_many :persons, through: :building_person
+  has_many :persons, through: :building_person, source: :person
 
   has_many :building_group
-  has_many :groups, through: :building_group
+  has_many :groups, through: :building_group, source: :group
 end

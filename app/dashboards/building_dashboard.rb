@@ -8,9 +8,13 @@ class BuildingDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    building_person: Field::HasMany,
+    persons: Field::HasMany,
+    building_group: Field::HasMany,
+    groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    description: DescriptionField,
+    description: Field::Text,
     address1: Field::String,
     temple_building_code: Field::String,
     directions_map: Field::String,
@@ -30,15 +34,19 @@ class BuildingDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
-    :name,
-    :description,
-    :address1,
+    :building_person,
+    :persons,
+    :building_group,
+    :groups,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :building_person,
+    :persons,
+    :building_group,
+    :groups,
     :id,
     :name,
     :description,
@@ -51,12 +59,18 @@ class BuildingDashboard < Administrate::BaseDashboard
     :campus,
     :accessibility,
     :email,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :building_person,
+    :persons,
+    :building_group,
+    :groups,
     :name,
     :description,
     :address1,

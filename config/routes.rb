@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
+  # [TODO] Restore when google configured: devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
+  devise_for :accounts
   namespace :admin do
       resources :buildings
       resources :spaces

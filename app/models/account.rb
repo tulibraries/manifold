@@ -5,7 +5,7 @@ class Account < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  #devise :trackable, :timeoutable, :omniauthable, :database_authenticatable
+  # [TODO] Replace line below with this: devise :trackable, :timeoutable, :omniauthable, :database_authenticatable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

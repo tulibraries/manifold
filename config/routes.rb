@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :accounts #, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
+  # [TODO] Replace line below with this: devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
+  devise_for :accounts
   namespace :admin do
       resources :buildings
       resources :building_people

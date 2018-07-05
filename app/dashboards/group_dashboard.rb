@@ -29,9 +29,10 @@ class GroupDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :name,
     :group_person,
-    :persons,
-    :building_group,
+    :phone_number,
+    :email_address,
     :buildings,
   ].freeze
 
@@ -39,18 +40,18 @@ class GroupDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :group_person,
-    :persons,
-    :building_group,
+    # :persons,
+    # :building_group,
     :buildings,
-    :space_group,
+    # :space_group,
     :spaces,
-    :id,
+    # :id,
     :name,
     :description,
     :phone_number,
     :email_address,
-    :created_at,
-    :updated_at,
+    # :created_at,
+    # :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -58,10 +59,10 @@ class GroupDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :group_person,
-    :persons,
-    :building_group,
+    # :persons,
+    # :building_group,
     :buildings,
-    :space_group,
+    # :space_group,
     :spaces,
     :name,
     :description,

@@ -34,20 +34,20 @@ class BuildingDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :building_person,
-    :persons,
-    :building_group,
-    :groups,
+    :name,
+    :address1,
+    :campus,
+    :phone_number,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :building_person,
-    :persons,
-    :building_group,
-    :groups,
-    :id,
+    # :building_person,
+    # :persons,
+    # :building_group,
+    # :groups,
+    # :id,
     :name,
     :description,
     :address1,
@@ -59,8 +59,8 @@ class BuildingDashboard < Administrate::BaseDashboard
     :campus,
     :accessibility,
     :email,
-    :created_at,
-    :updated_at,
+    # :created_at,
+    # :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES

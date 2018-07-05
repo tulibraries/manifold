@@ -8,19 +8,23 @@ class SpaceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    building: Field::BelongsTo,
+    space_person: Field::HasMany,
+    persons: Field::HasMany,
+    space_group: Field::HasMany,
+    groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    description: DescriptionField,
+    description: Field::Text,
     hours: Field::String,
     accessibility: Field::Text,
     location: Field::String,
     phone_number: Field::String,
     image: Field::String,
     email: Field::String,
-    building_id: Field::Number,
-    parent_space_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    ancestry: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -29,15 +33,20 @@ class SpaceDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
     :name,
-    :description,
-    :hours,
+    :building,
+    :location,
+    :phone_number,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :building,
+    :space_person,
+    :persons,
+    :space_group,
+    :groups,
     :id,
     :name,
     :description,
@@ -47,16 +56,20 @@ class SpaceDashboard < Administrate::BaseDashboard
     :phone_number,
     :image,
     :email,
-    :building_id,
-    :parent_space_id,
     :created_at,
     :updated_at,
+    :ancestry,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :building,
+    :space_person,
+    :persons,
+    :space_group,
+    :groups,
     :name,
     :description,
     :hours,
@@ -65,8 +78,7 @@ class SpaceDashboard < Administrate::BaseDashboard
     :phone_number,
     :image,
     :email,
-    :building_id,
-    :parent_space_id,
+    :ancestry,
   ].freeze
 
   # Overwrite this method to customize how spaces are displayed

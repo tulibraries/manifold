@@ -8,8 +8,12 @@ class PersonDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    building: Field::BelongsTo,
-    space: Field::BelongsTo,
+    group_person: Field::HasMany,
+    groups: Field::HasMany,
+    building_person: Field::HasMany,
+    buildings: Field::HasMany,
+    space_person: Field::HasMany,
+    spaces: Field::HasMany,
     id: Field::Number,
     first_name: Field::String,
     last_name: Field::String,
@@ -28,17 +32,21 @@ class PersonDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :building,
-    :space,
-    :id,
     :first_name,
+    :last_name,
+    :job_title,
+    :phone_number,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :building,
-    :space,
+    :group_person,
+    :groups,
+    :building_person,
+    :buildings,
+    :space_person,
+    :spaces,
     :id,
     :first_name,
     :last_name,
@@ -55,8 +63,12 @@ class PersonDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :building,
-    :space,
+    :group_person,
+    :groups,
+    :building_person,
+    :buildings,
+    :space_person,
+    :spaces,
     :first_name,
     :last_name,
     :phone_number,

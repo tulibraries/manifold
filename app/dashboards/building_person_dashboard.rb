@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class GroupDashboard < Administrate::BaseDashboard
+class BuildingPersonDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,17 +8,9 @@ class GroupDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    group_person: Field::HasMany,
-    persons: Field::HasMany,
-    building_group: Field::HasMany,
-    buildings: Field::HasMany,
-    space_group: Field::HasMany,
-    spaces: Field::HasMany,
+    building: Field::BelongsTo,
+    person: Field::BelongsTo,
     id: Field::Number,
-    name: Field::String,
-    description: Field::Text,
-    phone_number: Field::String,
-    email_address: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -29,51 +21,34 @@ class GroupDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :name,
-    :group_person,
-    :phone_number,
-    :email_address,
-    :buildings,
+    :building,
+    :person,
+    :id,
+    :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :group_person,
-    # :persons,
-    # :building_group,
-    :buildings,
-    # :space_group,
-    :spaces,
-    # :id,
-    :name,
-    :description,
-    :phone_number,
-    :email_address,
-    # :created_at,
-    # :updated_at,
+    :building,
+    :person,
+    :id,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :group_person,
-    # :persons,
-    # :building_group,
-    :buildings,
-    # :space_group,
-    :spaces,
-    :name,
-    :description,
-    :phone_number,
-    :email_address,
+    :building,
+    :person,
   ].freeze
 
-  # Overwrite this method to customize how groups are displayed
+  # Overwrite this method to customize how building people are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(group)
-  #   "Group ##{group.id}"
+  # def display_resource(building_person)
+  #   "BuildingPerson ##{building_person.id}"
   # end
 end

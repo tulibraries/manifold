@@ -6,11 +6,11 @@ class Group < ApplicationRecord
  	validates :phone_number, presence: true, phone_number: true
 
   has_many :group_person
-  has_many :persons, through: :group_person
+  has_many :persons, through: :group_person, source: :person
 
   has_many :building_group
-  has_many :buildings, through: :building_group
+  has_many :buildings, through: :building_group, source: :building
 
   has_many :space_group
-  has_many :spaces, through: :space_group
+  has_many :spaces, through: :space_group, source: :space
 end

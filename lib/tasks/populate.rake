@@ -42,9 +42,8 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           email:           fake_email,
           location:        Faker::Lorem.sentence,
           phone_number:    Faker::Number.number(10),
-          image:           Faker::File.file_name('images', 'tubldg', 'jpg'),
-          parent_id:       nil,
-          building_id:     building.id)
+          building:        building,
+          image:           Faker::File.file_name('images', 'tubldg', 'jpg'))
       end
       for s in 1..10 do
         space = Space.create!(
@@ -57,7 +56,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           phone_number:    Faker::Number.number(10),
           image:           Faker::File.file_name('images', 'tubldg', 'jpg'),
           parent:          Space.order("RANDOM()").first,
-          building_id:     building.id)
+          building:        building)
       end
     end
 
@@ -69,15 +68,9 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         email_address: fake_email,
         chat_handle:   Faker::Twitter.screen_name,
         job_title:     Faker::Job.title,
-        identifier:    "TU" + Faker::Number.number(6))
-
-        building_person = BuildingPerson.create!(
-          person_id:   person.id,
-          building_id: Building.order("RANDOM()").first.id)
-
-        space_person = SpacePerson.create!(
-          person_id:   person.id,
-          space_id: Space.order("RANDOM()").first.id)
+        identifier:    "TU" + Faker::Number.number(6),
+        buildings:     [Building.order("RANDOM()").first],
+        spaces:        [Space.order("RANDOM()").first])
     end
 
     for g in 1..10 do
@@ -85,19 +78,10 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         name:          Faker::Job.field,
         description:   Faker::Lorem.paragraph,
         phone_number:  Faker::Number.number(10),
-        email_address: fake_email)
-
-        group_person= GroupPerson.create!(
-          group_id:  group.id,
-          person_id: Person.order("RANDOM()").first.id)
-
-        building_group = BuildingGroup.create!(
-          group_id:   group.id,
-          building_id: Building.order("RANDOM()").first.id)
-
-        space_group = SpaceGroup.create!(
-          group_id:   group.id,
-          space_id: Space.order("RANDOM()").first.id)
+        email_address: fake_email,
+        persons:       [Person.order("RANDOM()").first],
+        buildings:     [Building.order("RANDOM()").first],
+        spaces:        [Space.order("RANDOM()").first])
     end
   end
 end

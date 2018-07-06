@@ -19,36 +19,6 @@ RSpec.describe Group, type: :model do
 
   end
 
-  context 'Required Fields' do
-    let(:group) { FactoryBot.build(:group) }
-
-    required_fields = [
-      "name",
-      "description",
-      "phone_number",
-      "email_address"
-    ]
-    required_fields.each do |f|
-      example "missing #{f} fields" do
-				group[f] = ""
-        expect { group.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
-      end
-    end
-
-    required_references = [
-      # [FIXME] Reinstate after join table implemented
-      "building",
-      "space",
-    ]
-    required_references.each do |f|
-      example "missing #{f}" do
-        skip "Test for required #{f} reference"
-				group[f] = nil
-        expect { group.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
-      end
-    end
-  end
-
   describe "has many through membership" do
     context "Attach person" do
       let(:group) { FactoryBot.create(:group, persons: [person], buildings: [building], spaces: [space]) }

@@ -9,36 +9,6 @@ RSpec.describe Person, type: :model do
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:person) { FactoryBot.build(:person, buildings: [building], spaces: [space]) }
 
-  context 'Person Class Attributes' do
-    subject { Person.new.attributes.keys }
-
-    it { is_expected.to include("first_name") }
-    it { is_expected.to include("last_name") }
-    it { is_expected.to include("phone_number") }
-    it { is_expected.to include("email_address") }
-    it { is_expected.to include("chat_handle") }
-    it { is_expected.to include("job_title") }
-    it { is_expected.to include("identifier") }
-  end
-
-  context 'Required Fields' do
-
-    required_fields = [
-      "first_name",
-      "last_name",
-      "phone_number",
-      "chat_handle",
-      "email_address",
-      "job_title",
-    ]
-    required_fields.each do |f|
-      example "missing #{f} fields" do
-				person[f] = ""
-        expect { person.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
-      end
-    end
-  end
-
   describe "relation to" do
     let(:group) { FactoryBot.create(:group, buildings: [building], spaces: [space]) }
     let(:person) { FactoryBot.create(:person, groups: [group], buildings: [building], spaces: [space]) }

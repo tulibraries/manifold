@@ -57,7 +57,7 @@ RSpec.describe Space, type: :model do
       example "missing #{f}" do
         space = FactoryBot.build(:space) 
         building = FactoryBot.create(:building) 
-        space.building_id = building.id
+        space.building = building
 				space[f] = nil
         expect { space.save! }.to_not raise_error
       end
@@ -86,7 +86,7 @@ RSpec.describe Space, type: :model do
 
     context "Phone number validation" do
       example "valid phone number" do
-        space.building_id = building.id
+        space.building = building
         space.phone_number = "2155551212"
         expect { space.save! }.to_not raise_error
       end
@@ -102,15 +102,15 @@ RSpec.describe Space, type: :model do
 
     context "Building reference" do
       example "valid building" do
-        space.building_id = building.id
+        space.building = building
         expect { space.save! }.to_not raise_error
       end
     end
 
     context "Optional parent space reference" do
       example "no space ID" do
-        space.building_id = building.id
-        space.parent_id = nil
+        space.building = building
+        space.parent = nil
         expect { space.save! }.to_not raise_error
       end
       example "valid space ID" do
@@ -119,7 +119,7 @@ RSpec.describe Space, type: :model do
       end
       example "parent space" do
         space = FactoryBot.create(:space_with_parent)
-        expect(space.parent.id).to eq(Space.last.id)
+        expect(space.parent).to eq(Space.last)
       end
     end
   end

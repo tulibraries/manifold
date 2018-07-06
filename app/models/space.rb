@@ -12,5 +12,5 @@ class Space < ApplicationRecord
   has_many :persons, through: :space_person, source: :person
 
   has_many :space_group
-  has_many :groups, through: :space_group, source: :space
+  has_many :groups, through: :space_group, source: :group
 end

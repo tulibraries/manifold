@@ -7,24 +7,10 @@ FactoryBot.define do
     chat_handle "zbeeblebrox"
     job_title "President of the Galaxy"
     identifier "PREZBEEB"
-
-    factory :person_with_groups do
-      after(:create) do |person|
-        create_list(:group, 1, persons: [person]) 
-      end
-    end
-
-    factory :person_with_buildings do
-      after(:create) do |person|
-        create_list(:building_with_people, 1, persons: [person])
-      end
-    end
-
-    factory :person_with_spaces do
-      after(:create) do |person|
-        create_list(:space_with_people, 1, persons: [person])
-      end
-    end
+    # Add related objects in create.
+    # e.g.
+    #   let(:building) { FactoryBot.create(:building) }
+    #   let(:space) { FactoryBot.create(:space, building: building) }
+    #   let(:person) { FactoryBot.create(:person, buildings: [building], spaces: [space]) }
   end
-
 end

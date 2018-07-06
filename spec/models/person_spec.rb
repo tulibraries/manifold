@@ -5,7 +5,9 @@ RSpec.describe Person, type: :model do
     DatabaseCleaner.clean
   end
 
-  let(:person) { FactoryBot.build(:person_with_groups) }
+  let(:building) { FactoryBot.create(:building) }
+  let(:space) { FactoryBot.create(:space, building: building) }
+  let(:person) { FactoryBot.build(:person, buildings: [building], spaces: [space]) }
 
   context 'Person Class Attributes' do
     subject { Person.new.attributes.keys }
@@ -35,38 +37,39 @@ RSpec.describe Person, type: :model do
         expect { person.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
       end
     end
-
-    required_references = [
-      # [FIXME] Reinstate after join table implemented
-      #"building",
-      #"space",
-    ]
-    required_references.each do |f|
-      example "missing #{f}" do
-				person[f] = [nil]
-        expect { person.save! }.to raise_error(/Validation failed:.* #{f.humanize(capitalize: true)} can't be blank/) # => 
-      end
-    end
   end
 
   describe "relation to" do
-    # [FIXME] Resolve the duplicate let (:person) below, without it results in 'undefined method name for nil:NilClass error'
-    let (:person) { FactoryBot.create(:person_with_groups) }
+    let(:group) { FactoryBot.create(:group, buildings: [building], spaces: [space]) }
+    let(:person) { FactoryBot.create(:person, groups: [group], buildings: [building], spaces: [space]) }
     context "Group" do
       example "attach group" do
         expect(person.groups.first.name).to match(/#{Group.first.name}/)
       end
     end
+  end
+
+  describe "required relations" do
     context "Building" do
-      let (:person) { FactoryBot.create(:person_with_buildings) }
       example "attach building" do
-        expect(person.buildings.first.name).to match(/#{Building.last.name}/)
+        person = FactoryBot.create(:person, buildings: [building], spaces: [space]) 
+        expect { person.save! }.to_not raise_error
+        expect(person.buildings.first.name).to match(/#{Building.first.name}/)
+      end
+      example "no building" do
+        person = FactoryBot.build(:person, spaces: [space]) 
+        expect { person.save! }.to raise_error(/Buildings can't be blank/)
       end
     end
     context "Space" do
-      let (:person) { FactoryBot.create(:person_with_spaces) }
       example "attach space" do
-        expect(person.spaces.first.name).to match(/#{Space.last.name}/)
+        person = FactoryBot.create(:person, buildings: [building], spaces: [space]) 
+        expect { person.save! }.to_not raise_error
+        expect(person.buildings.first.name).to match(/#{Building.first.name}/)
+      end
+      example "no space" do
+        person = FactoryBot.build(:person, buildings: [building]) 
+        expect { person.save! }.to raise_error(/Spaces can't be blank/)
       end
     end
   end

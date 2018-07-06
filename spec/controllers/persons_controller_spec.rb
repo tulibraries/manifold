@@ -2,11 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PersonsController, type: :controller do
 
-  let (:person) {
-    person = FactoryBot.build(:person)
-    person.save!
-    person
-  }
+  let (:building) { FactoryBot.create(:building) }
+  let (:space) { FactoryBot.create(:space, building: building) }
+  let (:person) { person = FactoryBot.create(:person, buildings: [building], spaces: [space]) }
 
   describe "GET #index" do
     it "returns http success" do

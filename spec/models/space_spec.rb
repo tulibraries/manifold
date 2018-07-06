@@ -55,9 +55,7 @@ RSpec.describe Space, type: :model do
     ]
     optional_references.each do |f|
       example "missing #{f}" do
-        space = FactoryBot.build(:space) 
-        building = FactoryBot.create(:building) 
-        space.building_id = building.id
+        space = FactoryBot.build(:space_with_building)
 				space[f] = nil
         expect { space.save! }.to_not raise_error
       end
@@ -66,8 +64,7 @@ RSpec.describe Space, type: :model do
 
   describe "field validators" do
 
-    let (:space) { FactoryBot.build(:space) }
-    let (:building) { FactoryBot.create(:building) }
+    let (:space) { FactoryBot.build(:space_with_building) }
 
     context "Email validation" do
       example "valid email" do
@@ -86,7 +83,6 @@ RSpec.describe Space, type: :model do
 
     context "Phone number validation" do
       example "valid phone number" do
-        space.building_id = building.id
         space.phone_number = "2155551212"
         expect { space.save! }.to_not raise_error
       end
@@ -102,24 +98,22 @@ RSpec.describe Space, type: :model do
 
     context "Building reference" do
       example "valid building" do
-        space.building_id = building.id
         expect { space.save! }.to_not raise_error
+      end
+      example "no building" do
+        space = FactoryBot.build(:space)
+        expect { space.save! }.to raise_error(/Building can't be blank/)
       end
     end
 
     context "Optional parent space reference" do
       example "no space ID" do
-        space.building_id = building.id
-        space.parent_id = nil
+        space.parent = nil
         expect { space.save! }.to_not raise_error
       end
       example "valid space ID" do
         space = FactoryBot.build(:space_with_parent)
         expect { space.save! }.to_not raise_error
-      end
-      example "parent space" do
-        space = FactoryBot.create(:space_with_parent)
-        expect(space.parent.id).to eq(Space.last.id)
       end
     end
   end

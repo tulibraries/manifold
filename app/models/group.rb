@@ -4,6 +4,8 @@ class Group < ApplicationRecord
 	validates :name, :description, presence: true
  	validates :email_address, presence: true, email: true
  	validates :phone_number, presence: true, phone_number: true
+ 	validates :buildings, presence: true
+ 	validates :spaces, presence: true
 
   has_many :group_person
   has_many :persons, through: :group_person, source: :person

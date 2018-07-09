@@ -39,6 +39,10 @@ class GroupDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :name,
+    :description,
+    :phone_number,
+    :email_address,
     :group_person,
     # :persons,
     # :building_group,
@@ -46,10 +50,6 @@ class GroupDashboard < Administrate::BaseDashboard
     # :space_group,
     :spaces,
     # :id,
-    :name,
-    :description,
-    :phone_number,
-    :email_address,
     # :created_at,
     # :updated_at,
   ].freeze
@@ -58,16 +58,16 @@ class GroupDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :name,
+    :description,
+    :phone_number,
+    :email_address,
     :group_person,
     # :persons,
     # :building_group,
     :buildings,
     # :space_group,
     :spaces,
-    :name,
-    :description,
-    :phone_number,
-    :email_address,
   ].freeze
 
   # Overwrite this method to customize how groups are displayed

@@ -41,13 +41,6 @@ class PersonDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :group_person,
-    :groups,
-    :building_person,
-    :buildings,
-    :space_person,
-    :spaces,
-    :id,
     :first_name,
     :last_name,
     :phone_number,
@@ -55,20 +48,21 @@ class PersonDashboard < Administrate::BaseDashboard
     :chat_handle,
     :job_title,
     :identifier,
-    :created_at,
-    :updated_at,
+    # :group_person,
+    :groups,
+    # :building_person,
+    :buildings,
+    # :space_person,
+    :spaces,
+    # :id,
+    # :created_at,
+    # :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :group_person,
-    :groups,
-    :building_person,
-    :buildings,
-    :space_person,
-    :spaces,
     :first_name,
     :last_name,
     :phone_number,
@@ -76,6 +70,12 @@ class PersonDashboard < Administrate::BaseDashboard
     :chat_handle,
     :job_title,
     :identifier,
+    # :group_person,
+    :groups,
+    # :building_person,
+    :buildings,
+    # :space_person,
+    :spaces,
   ].freeze
 
   # Overwrite this method to customize how people are displayed

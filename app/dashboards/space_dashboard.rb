@@ -42,43 +42,43 @@ class SpaceDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    # :id,
+    :name,
+    :image,
+    :description,
     :building,
     :space_person,
     :persons,
-    :space_group,
+    # :space_group,
     :groups,
-    :id,
-    :name,
-    :description,
     :hours,
     :accessibility,
     :location,
     :phone_number,
-    :image,
     :email,
-    :created_at,
-    :updated_at,
-    :ancestry,
+    # :created_at,
+    # :updated_at,
+    # :ancestry,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :name,
+    :image,
+    :description,
     :building,
     :space_person,
     :persons,
-    :space_group,
+    # :space_group,
     :groups,
-    :name,
-    :description,
     :hours,
     :accessibility,
     :location,
     :phone_number,
-    :image,
     :email,
-    :ancestry,
+    # :ancestry,
   ].freeze
 
   # Overwrite this method to customize how spaces are displayed

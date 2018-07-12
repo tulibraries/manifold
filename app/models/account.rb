@@ -5,8 +5,7 @@ class Account < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # [TODO] Restore when google configured: devise :trackable, :timeoutable, :omniauthable, :database_authenticatable
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
+  devise :trackable, :timeoutable, :omniauthable, :database_authenticatable
 
   validates :email, presence: true, email: true
 

@@ -31,3 +31,5 @@ tags
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore real account seed
+/db/account_seeds.rb

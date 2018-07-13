@@ -25,6 +25,14 @@ Seed initial user from the command line
 
 `rails runner 'Account.create(email: "<YOURTUACCESSID>@temple.edu", password: Devise.friendly_token[0,20]).save'`
 
+*Or* Create a account seed file 
+
+`mv db/account_seeds.rb.example db/account_seeds.rb`
+
+Edit `db/account_seeds.rb`, Replace contents of email array with the desired email addresses
+
+`rake db:seed`
+
 * Database initialization
 
 * How to run the test suite

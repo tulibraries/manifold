@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+require "#{Rails.root}/db/account_seeds.rb" if File.exists?("db/account_seeds.rb")

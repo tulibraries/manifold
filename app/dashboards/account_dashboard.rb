@@ -10,6 +10,7 @@ class AccountDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     email: Field::String,
+    admin: Field::Boolean,
     encrypted_password: Field::String,
     reset_password_token: Field::String,
     reset_password_sent_at: Field::DateTime,
@@ -21,7 +22,6 @@ class AccountDashboard < Administrate::BaseDashboard
     last_sign_in_ip: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    is_admin: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -39,6 +39,7 @@ class AccountDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :email,
+    :admin,
     :encrypted_password,
     :reset_password_token,
     :reset_password_sent_at,
@@ -50,7 +51,6 @@ class AccountDashboard < Administrate::BaseDashboard
     :last_sign_in_ip,
     :created_at,
     :updated_at,
-    :is_admin,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -59,6 +59,7 @@ class AccountDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :email,
     :encrypted_password,
+    :admin,
     :reset_password_token,
     :reset_password_sent_at,
     :remember_created_at,
@@ -67,7 +68,6 @@ class AccountDashboard < Administrate::BaseDashboard
     :last_sign_in_at,
     :current_sign_in_ip,
     :last_sign_in_ip,
-    :is_admin,
   ].freeze
 
   # Overwrite this method to customize how accounts are displayed

@@ -1,7 +1,8 @@
-emails = ["admin@example.com", 
-          "user1@example.com",
-          ]
+accts = [
+  { email: "admin@example.com", admin: true },
+  { email: "user1@example.com", admin: false },
+]
 
-emails.each do |e|
-  Account.create!(email: e, password: Devise.friendly_token[0,20]) unless Account.find_by(email: e)
+accts.each do |accts|
+  Account.create!(email: accts[:email], admin: accts[:admin], password: Devise.friendly_token[0,20]) unless Account.find_by(email: accts[:email])
 end

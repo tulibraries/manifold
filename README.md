@@ -23,7 +23,7 @@ Create data tables
 
 Seed initial user from the command line
 
-`rails runner 'Account.create(email: "<YOURTUACCESSID>@temple.edu", password: Devise.friendly_token[0,20]).save'`
+`rails runner 'Account.create(email: "<YOURTUACCESSID>@temple.edu", admin: true, password: Devise.friendly_token[0,20]).save'`
 
 *Or* Create a account seed file 
 

@@ -1,5 +1,11 @@
 module Admin
   class AccountsController < Admin::ApplicationController
+    load_and_authorize_resource
+
+    def current_user
+      current_account
+    end
+
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #

@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe BuildingsController, type: :controller do
 
+  include Devise::Test::ControllerHelpers
+
   describe "GET #index" do
     it "returns http success" do
       get :index

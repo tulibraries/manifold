@@ -4,8 +4,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
     require 'populate'
     require 'faker'
     
-    [BuildingPerson,
-     BuildingGroup,
+    [BuildingGroup,
      SpacePerson,
      SpaceGroup,
      GroupPerson,
@@ -69,7 +68,6 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         chat_handle:   Faker::Twitter.screen_name,
         job_title:     Faker::Job.title,
         identifier:    "TU" + Faker::Number.number(6),
-        buildings:     [Building.order("RANDOM()").first],
         spaces:        [Space.order("RANDOM()").first])
     end
 

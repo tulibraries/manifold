@@ -39,15 +39,6 @@ ActiveRecord::Schema.define(version: 2018_07_16_193150) do
     t.index ["group_id"], name: "index_building_groups_on_group_id"
   end
 
-  create_table "building_people", force: :cascade do |t|
-    t.integer "building_id"
-    t.integer "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["building_id"], name: "index_building_people_on_building_id"
-    t.index ["person_id"], name: "index_building_people_on_person_id"
-  end
-
   create_table "buildings", force: :cascade do |t|
     t.string "name"
     t.text "description"

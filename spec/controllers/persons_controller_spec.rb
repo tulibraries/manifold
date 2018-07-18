@@ -6,7 +6,7 @@ RSpec.describe PersonsController, type: :controller do
 
   let (:building) { FactoryBot.create(:building) }
   let (:space) { FactoryBot.create(:space, building: building) }
-  let (:person) { person = FactoryBot.create(:person, buildings: [building], spaces: [space]) }
+  let (:person) { person = FactoryBot.create(:person, spaces: [space]) }
 
   describe "GET #index" do
     it "returns http success" do

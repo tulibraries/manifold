@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "groups/show.html.erb", type: :view do
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
-  let(:person) { FactoryBot.build(:person, buildings: [building], spaces: [space]) }
+  let(:person) { FactoryBot.build(:person, spaces: [space]) }
 
   it "displays the sample group name" do
     @group = FactoryBot.create(:group, buildings: [building], spaces: [space])

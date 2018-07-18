@@ -7,7 +7,7 @@ RSpec.describe Group, type: :model do
 
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
-  let(:person) { FactoryBot.build(:person, buildings: [building], spaces: [space]) }
+  let(:person) { FactoryBot.build(:person, spaces: [space]) }
 
   context 'Group Class Attributes' do
     subject { Group.new.attributes.keys }

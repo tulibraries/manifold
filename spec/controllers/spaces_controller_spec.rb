@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe SpacesController, type: :controller do
+
+  include Devise::Test::ControllerHelpers
+
   let(:space) { 
     building = FactoryBot.create(:building) 
     space = FactoryBot.build(:space)

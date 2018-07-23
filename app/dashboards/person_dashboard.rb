@@ -10,8 +10,6 @@ class PersonDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     group_person: Field::HasMany,
     groups: Field::HasMany,
-    building_person: Field::HasMany,
-    buildings: Field::HasMany,
     space_person: Field::HasMany,
     spaces: Field::HasMany,
     id: Field::Number,
@@ -50,8 +48,6 @@ class PersonDashboard < Administrate::BaseDashboard
     :identifier,
     # :group_person,
     :groups,
-    # :building_person,
-    :buildings,
     # :space_person,
     :spaces,
     # :id,
@@ -72,8 +68,6 @@ class PersonDashboard < Administrate::BaseDashboard
     :identifier,
     # :group_person,
     :groups,
-    # :building_person,
-    :buildings,
     # :space_person,
     :spaces,
   ].freeze

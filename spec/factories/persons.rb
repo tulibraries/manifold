@@ -11,6 +11,6 @@ FactoryBot.define do
     # e.g.
     #   let(:building) { FactoryBot.create(:building) }
     #   let(:space) { FactoryBot.create(:space, building: building) }
-    #   let(:person) { FactoryBot.create(:person, buildings: [building], spaces: [space]) }
+    #   let(:person) { FactoryBot.create(:person, spaces: [space]) }
   end
 end

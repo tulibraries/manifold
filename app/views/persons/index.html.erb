@@ -14,7 +14,7 @@
         <td><%= link_to (person.first_name+' '+person.last_name), person %></td>
         <td><%= person.phone_number %></td>
         <td><%= person.email_address %></td>
-        <td><%= person.buildings.last.name unless person.buildings.empty? %></td>
+        <td><%= person.spaces.last.name unless person.spaces.empty? %></td>
       </tr>
     <% end %>
   </tbody>

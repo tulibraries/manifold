@@ -7,11 +7,11 @@ RSpec.describe Person, type: :model do
 
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
-  let(:person) { FactoryBot.build(:person, buildings: [building], spaces: [space]) }
+  let(:person) { FactoryBot.build(:person, spaces: [space]) }
 
   describe "relation to" do
     let(:group) { FactoryBot.create(:group, buildings: [building], spaces: [space]) }
-    let(:person) { FactoryBot.create(:person, groups: [group], buildings: [building], spaces: [space]) }
+    let(:person) { FactoryBot.create(:person, groups: [group], spaces: [space]) }
     context "Group" do
       example "attach group" do
         expect(person.groups.first.name).to match(/#{Group.first.name}/)
@@ -20,25 +20,14 @@ RSpec.describe Person, type: :model do
   end
 
   describe "required relations" do
-    context "Building" do
-      example "attach building" do
-        person = FactoryBot.create(:person, buildings: [building], spaces: [space]) 
-        expect { person.save! }.to_not raise_error
-        expect(person.buildings.first.name).to match(/#{Building.first.name}/)
-      end
-      example "no building" do
-        person = FactoryBot.build(:person, spaces: [space]) 
-        expect { person.save! }.to raise_error(/Buildings can't be blank/)
-      end
-    end
     context "Space" do
       example "attach space" do
-        person = FactoryBot.create(:person, buildings: [building], spaces: [space]) 
+        person = FactoryBot.create(:person, spaces: [space]) 
         expect { person.save! }.to_not raise_error
-        expect(person.buildings.first.name).to match(/#{Building.first.name}/)
+        expect(person.spaces.first.name).to match(/#{Space.first.name}/)
       end
       example "no space" do
-        person = FactoryBot.build(:person, buildings: [building]) 
+        person = FactoryBot.build(:person) 
         expect { person.save! }.to raise_error(/Spaces can't be blank/)
       end
     end

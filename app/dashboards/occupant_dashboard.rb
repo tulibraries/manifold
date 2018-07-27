@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class SpacePersonDashboard < Administrate::BaseDashboard
+class OccupantDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -48,7 +48,7 @@ class SpacePersonDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how space people are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(space_person)
-  #   "SpacePerson ##{space_person.id}"
+  # def display_resource(occupant)
+  #   "SpacePerson ##{occupant.id}"
   # end
 end

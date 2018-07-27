@@ -9,8 +9,8 @@ class Space < ApplicationRecord
 
   belongs_to :building
 
-  has_many :space_person
-  has_many :persons, through: :space_person, source: :person
+  has_many :occupant
+  has_many :persons, through: :occupant, source: :person
 
   has_many :space_group
   has_many :groups, through: :space_group, source: :group

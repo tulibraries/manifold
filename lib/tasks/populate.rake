@@ -5,7 +5,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
     require 'faker'
     
     [BuildingGroup,
-     SpacePerson,
+     Occupant,
      SpaceGroup,
      Member,
      Building,

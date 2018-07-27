@@ -646,7 +646,7 @@ space_groups:
     - '2018-07-05 14:40:08.377295'
 
 ---
-space_people:
+occupants:
   columns:
   - id
   - space_id

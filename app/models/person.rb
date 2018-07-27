@@ -9,6 +9,6 @@ class Person < ApplicationRecord
   has_many :member
   has_many :groups, through: :member, source: :group
 
-  has_many :space_person
-  has_many :spaces, through: :space_person, source: :space
+  has_many :occupant
+  has_many :spaces, through: :occupant, source: :space
 end

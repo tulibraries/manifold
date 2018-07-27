@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 2018_07_16_193150) do
     t.index ["person_id"], name: "index_members_on_person_id"
   end
 
+  create_table "occupants", force: :cascade do |t|
+    t.integer "space_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_occupants_on_person_id"
+    t.index ["space_id"], name: "index_occupants_on_space_id"
+  end
+
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -92,15 +101,6 @@ ActiveRecord::Schema.define(version: 2018_07_16_193150) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_space_groups_on_group_id"
     t.index ["space_id"], name: "index_space_groups_on_space_id"
-  end
-
-  create_table "space_people", force: :cascade do |t|
-    t.integer "space_id"
-    t.integer "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_space_people_on_person_id"
-    t.index ["space_id"], name: "index_space_people_on_space_id"
   end
 
   create_table "spaces", force: :cascade do |t|

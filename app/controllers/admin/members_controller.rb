@@ -1,5 +1,5 @@
 module Admin
-  class GroupMembersController < Admin::ApplicationController
+  class MembersController < Admin::ApplicationController
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #

@@ -8,7 +8,7 @@ class GroupDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    group_person: Field::HasMany,
+    member: Field::HasMany,
     persons: Field::HasMany,
     building_group: Field::HasMany,
     buildings: Field::HasMany,
@@ -30,7 +30,7 @@ class GroupDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :group_person,
+    :member,
     :phone_number,
     :email_address,
     :buildings,
@@ -43,7 +43,7 @@ class GroupDashboard < Administrate::BaseDashboard
     :description,
     :phone_number,
     :email_address,
-    :group_person,
+    :member,
     # :persons,
     # :building_group,
     :buildings,
@@ -62,7 +62,7 @@ class GroupDashboard < Administrate::BaseDashboard
     :description,
     :phone_number,
     :email_address,
-    :group_person,
+    :member,
     # :persons,
     # :building_group,
     :buildings,

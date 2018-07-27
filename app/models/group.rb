@@ -7,8 +7,8 @@ class Group < ApplicationRecord
  	validates :buildings, presence: true
  	validates :spaces, presence: true
 
-  has_many :group_person
-  has_many :persons, through: :group_person, source: :person
+  has_many :member
+  has_many :persons, through: :member, source: :person
 
   has_many :building_group
   has_many :buildings, through: :building_group, source: :building

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :space_groups
       resources :people
       resources :groups
-      resources :group_people
+      resources :members
 
       root to: "buildings#index"
     end

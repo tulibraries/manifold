@@ -1,6 +1,6 @@
-class CreateSpacePeople < ActiveRecord::Migration[5.2]
+class CreateOccupants < ActiveRecord::Migration[5.2]
   def change
-    create_table :space_people do |t|
+    create_table :occupants do |t|
       t.references :space, foreign_key: true
       t.references :person, foreign_key: true
 

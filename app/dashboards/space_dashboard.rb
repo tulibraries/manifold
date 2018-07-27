@@ -9,7 +9,7 @@ class SpaceDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     building: Field::BelongsTo,
-    space_person: Field::HasMany,
+    occupant: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
     groups: Field::HasMany,
@@ -47,7 +47,7 @@ class SpaceDashboard < Administrate::BaseDashboard
     :image,
     :description,
     :building,
-    :space_person,
+    :occupant,
     :persons,
     # :space_group,
     :groups,
@@ -69,7 +69,7 @@ class SpaceDashboard < Administrate::BaseDashboard
     :image,
     :description,
     :building,
-    :space_person,
+    :occupant,
     :persons,
     # :space_group,
     :groups,

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :space_person do
+  factory :occupant do
     space nil
     person nil
   end

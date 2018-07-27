@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :buildings
       resources :building_groups
       resources :spaces
-      resources :space_people
+      resources :occupants
       resources :space_groups
       resources :people
       resources :groups

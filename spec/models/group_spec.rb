@@ -19,7 +19,7 @@ RSpec.describe Group, type: :model do
 
   end
 
-  describe "has many through membership" do
+  describe "has many through member" do
     context "Attach person" do
       let(:group) { FactoryBot.create(:group, persons: [person], buildings: [building], spaces: [space]) }
       example "valid" do

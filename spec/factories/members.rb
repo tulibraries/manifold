@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :group_person do
+  factory :member do
     group nil
     person nil
   end

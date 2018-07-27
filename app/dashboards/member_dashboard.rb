@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class GroupPersonDashboard < Administrate::BaseDashboard
+class MemberDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -48,7 +48,7 @@ class GroupPersonDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how group people are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(group_person)
-  #   "GroupPerson ##{group_person.id}"
+  # def display_resource(member)
+  #   "Member ##{member.id}"
   # end
 end

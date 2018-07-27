@@ -8,7 +8,7 @@ class PersonDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    group_person: Field::HasMany,
+    member: Field::HasMany,
     groups: Field::HasMany,
     space_person: Field::HasMany,
     spaces: Field::HasMany,
@@ -46,7 +46,7 @@ class PersonDashboard < Administrate::BaseDashboard
     :chat_handle,
     :job_title,
     :identifier,
-    # :group_person,
+    # :member,
     :groups,
     # :space_person,
     :spaces,
@@ -66,7 +66,7 @@ class PersonDashboard < Administrate::BaseDashboard
     :chat_handle,
     :job_title,
     :identifier,
-    # :group_person,
+    # :member,
     :groups,
     # :space_person,
     :spaces,

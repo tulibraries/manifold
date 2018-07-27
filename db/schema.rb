@@ -55,15 +55,6 @@ ActiveRecord::Schema.define(version: 2018_07_16_193150) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "group_people", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_group_people_on_group_id"
-    t.index ["person_id"], name: "index_group_people_on_person_id"
-  end
-
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -71,6 +62,15 @@ ActiveRecord::Schema.define(version: 2018_07_16_193150) do
     t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_members_on_group_id"
+    t.index ["person_id"], name: "index_members_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|

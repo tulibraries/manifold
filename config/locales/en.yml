@@ -33,3 +33,4 @@ en:
   fortytude:
     error:
       user_not_registered: "User not registered."
+    signout: "Log Out"  

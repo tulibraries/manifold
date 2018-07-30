@@ -33,3 +33,5 @@ en:
   fortytude:
     error:
       user_not_registered: "User not registered."
+      access_denied: "Account modification - Access denied"
+    signout: "Log Out"  

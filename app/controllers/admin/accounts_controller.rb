@@ -27,5 +27,9 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+    
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to admin_root_url, alert: t('fortytude.error.access_denied')
+    end
   end
 end

@@ -30,15 +30,6 @@ ActiveRecord::Schema.define(version: 2018_07_31_152527) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
-  create_table "building_groups", force: :cascade do |t|
-    t.integer "building_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["building_id"], name: "index_building_groups_on_building_id"
-    t.index ["group_id"], name: "index_building_groups_on_group_id"
-  end
-
   create_table "buildings", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -60,9 +51,11 @@ ActiveRecord::Schema.define(version: 2018_07_31_152527) do
     t.text "description"
     t.string "phone_number"
     t.string "email_address"
+    t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "chair_dept_head_id"
+    t.index ["building_id"], name: "index_groups_on_building_id"
     t.index ["chair_dept_head_id"], name: "index_groups_on_chair_dept_head_id"
   end
 

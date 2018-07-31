@@ -10,8 +10,6 @@ class GroupDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     member: Field::HasMany,
     persons: Field::HasMany,
-    building_group: Field::HasMany,
-    buildings: Field::HasMany,
     space_group: Field::HasMany,
     spaces: Field::HasMany,
     id: Field::Number,
@@ -33,7 +31,6 @@ class GroupDashboard < Administrate::BaseDashboard
     :member,
     :phone_number,
     :email_address,
-    :buildings,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -45,8 +42,6 @@ class GroupDashboard < Administrate::BaseDashboard
     :email_address,
     :member,
     # :persons,
-    # :building_group,
-    :buildings,
     # :space_group,
     :spaces,
     # :id,
@@ -64,8 +59,6 @@ class GroupDashboard < Administrate::BaseDashboard
     :email_address,
     :member,
     # :persons,
-    # :building_group,
-    :buildings,
     # :space_group,
     :spaces,
   ].freeze

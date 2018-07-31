@@ -8,8 +8,6 @@ class BuildingDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    building_group: Field::HasMany,
-    groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
@@ -41,8 +39,6 @@ class BuildingDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    # :building_group,
-    # :groups,
     # :id,
     :name,
     :description,
@@ -63,8 +59,6 @@ class BuildingDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :building_group,
-    :groups,
     :name,
     :description,
     :address1,

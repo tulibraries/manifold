@@ -21,7 +21,7 @@ RSpec.describe Group, type: :model do
 
   describe "has many through member" do
     context "Attach person" do
-      let(:group) { FactoryBot.create(:group, persons: [person], buildings: [building], spaces: [space]) }
+      let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space]) }
       example "valid" do
         expect(group.persons.last.last_name).to match(/#{Person.last.last_name}/)
         expect(group.persons.last.first_name).to match(/#{Person.last.first_name}/)
@@ -29,7 +29,7 @@ RSpec.describe Group, type: :model do
     end
 
     context "No person" do
-      let(:group) { FactoryBot.create(:group, buildings: [building], spaces: [space]) }
+      let(:group) { FactoryBot.create(:group, spaces: [space]) }
       example "valid" do
         expect {group.save!}.to_not raise_error
       end
@@ -39,26 +39,16 @@ RSpec.describe Group, type: :model do
   describe "has one char_dept_head" do
     context "Attach a char_dept_head" do
       let(:chair_person) { FactoryBot.create(:person, spaces: [space]) }
-      let(:group) { FactoryBot.create(:group, persons: [], chair_dept_head: chair_person, buildings: [building], spaces: [space]) }
+      let(:group) { FactoryBot.create(:group, persons: [], chair_dept_head: chair_person, spaces: [space]) }
       example "valid" do
         expect(group.chair_dept_head.last_name).to match /#{chair_person.last_name}/
       end
     end
   end
 
-  describe "has many buildings through" do
-    context "Attach building" do
-      let(:group) { FactoryBot.create(:group, persons: [person], buildings: [building], spaces: [space]) }
-      example "valid" do
-        expect {group.save!}.to_not raise_error
-        expect(group.buildings.last.name).to match(/#{Building.last.name}/)
-      end
-    end
-  end
-
   describe "has many spaces through" do
     context "Attach space" do
-      let(:group) { FactoryBot.create(:group, persons: [person], buildings: [building], spaces: [space]) }
+      let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space]) }
       example "valid" do
         expect {group.save!}.to_not raise_error
         expect(group.spaces.last.name).to match(/#{Space.last.name}/)
@@ -68,7 +58,7 @@ RSpec.describe Group, type: :model do
 
 
   describe "field validators" do
-    let(:group) { FactoryBot.build(:group, buildings: [building], spaces: [space]) }
+    let(:group) { FactoryBot.build(:group, spaces: [space]) }
     context "Email validation" do
       example "valid email", focus: true do
         group.email_address = "we@example.edu"
@@ -99,23 +89,12 @@ RSpec.describe Group, type: :model do
       end
     end
 
-    context "Building reference" do
-      example "valid building" do
-        group = FactoryBot.create(:group, buildings: [building], spaces: [space])
-        expect { group.save! }.to_not raise_error
-      end
-      example "no building" do
-        group = FactoryBot.build(:group, spaces: [space])
-        expect { group.save! }.to raise_error(/Buildings can't be blank/)
-      end
-    end
-
     context "Space reference" do
       example "valid space ID" do
         expect { group.save! }.to_not raise_error
       end
       example "No space" do
-        group = FactoryBot.build(:group, buildings: [building])
+        group = FactoryBot.build(:group)
         expect { group.save! }.to raise_error(/Spaces can't be blank/)
       end
     end

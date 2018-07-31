@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   namespace :admin do
       resources :accounts
       resources :buildings
-      resources :building_groups
       resources :spaces
       resources :occupants
       resources :space_groups

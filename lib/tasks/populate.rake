@@ -3,7 +3,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
   task :populate => :environment do
     require 'populate'
     require 'faker'
-    
+
     [BuildingGroup,
      Occupant,
      SpaceGroup,
@@ -77,10 +77,10 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         description:   Faker::Lorem.paragraph,
         phone_number:  Faker::Number.number(10),
         email_address: fake_email,
+        chair_dept_head: Person.order("RANDOM()").first,
         persons:       [Person.order("RANDOM()").first],
         buildings:     [Building.order("RANDOM()").first],
         spaces:        [Space.order("RANDOM()").first])
     end
   end
 end
-

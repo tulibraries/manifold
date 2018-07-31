@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_193150) do
+ActiveRecord::Schema.define(version: 2018_07_31_152527) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 2018_07_16_193150) do
     t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "chair_dept_head_id"
+    t.index ["chair_dept_head_id"], name: "index_groups_on_chair_dept_head_id"
   end
 
   create_table "members", force: :cascade do |t|

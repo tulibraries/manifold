@@ -21,9 +21,14 @@
   <%= @group.email_address %>
 </p>
 
-<% unless @group.persons.empty? %>
 <p>
   <strong>Owner: </strong>
+  <%= link_to (@group.chair_dept_head.first_name+' '+@group.chair_dept_head.last_name), controller: 'persons', action: 'show', id: @group.chair_dept_head.id %>
+</p>
+
+<% unless @group.persons.empty? %>
+<p>
+  <strong>Members: </strong>
   <%= link_to (@group.persons.first.first_name+' '+@group.persons.last.last_name), controller: 'persons', action: 'show', id: @group.persons.last.id %>
 </p>
 <% end %>

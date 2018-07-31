@@ -31,7 +31,17 @@ RSpec.describe Group, type: :model do
     context "No person" do
       let(:group) { FactoryBot.create(:group, buildings: [building], spaces: [space]) }
       example "valid" do
-        expect {group.save!}.to_not raise_error 
+        expect {group.save!}.to_not raise_error
+      end
+    end
+  end
+
+  describe "has one char_dept_head" do
+    context "Attach a char_dept_head" do
+      let(:chair_person) { FactoryBot.create(:person, spaces: [space]) }
+      let(:group) { FactoryBot.create(:group, persons: [], chair_dept_head: chair_person, buildings: [building], spaces: [space]) }
+      example "valid" do
+        expect(group.chair_dept_head.last_name).to match /#{chair_person.last_name}/
       end
     end
   end
@@ -40,7 +50,7 @@ RSpec.describe Group, type: :model do
     context "Attach building" do
       let(:group) { FactoryBot.create(:group, persons: [person], buildings: [building], spaces: [space]) }
       example "valid" do
-        expect {group.save!}.to_not raise_error 
+        expect {group.save!}.to_not raise_error
         expect(group.buildings.last.name).to match(/#{Building.last.name}/)
       end
     end
@@ -50,7 +60,7 @@ RSpec.describe Group, type: :model do
     context "Attach space" do
       let(:group) { FactoryBot.create(:group, persons: [person], buildings: [building], spaces: [space]) }
       example "valid" do
-        expect {group.save!}.to_not raise_error 
+        expect {group.save!}.to_not raise_error
         expect(group.spaces.last.name).to match(/#{Space.last.name}/)
       end
     end
@@ -91,11 +101,11 @@ RSpec.describe Group, type: :model do
 
     context "Building reference" do
       example "valid building" do
-        group = FactoryBot.create(:group, buildings: [building], spaces: [space]) 
+        group = FactoryBot.create(:group, buildings: [building], spaces: [space])
         expect { group.save! }.to_not raise_error
       end
       example "no building" do
-        group = FactoryBot.build(:group, spaces: [space]) 
+        group = FactoryBot.build(:group, spaces: [space])
         expect { group.save! }.to raise_error(/Buildings can't be blank/)
       end
     end
@@ -105,7 +115,7 @@ RSpec.describe Group, type: :model do
         expect { group.save! }.to_not raise_error
       end
       example "No space" do
-        group = FactoryBot.build(:group, buildings: [building]) 
+        group = FactoryBot.build(:group, buildings: [building])
         expect { group.save! }.to raise_error(/Spaces can't be blank/)
       end
     end

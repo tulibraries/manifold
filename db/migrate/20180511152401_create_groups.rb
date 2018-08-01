@@ -7,7 +7,6 @@ class CreateGroups < ActiveRecord::Migration[5.2]
       t.string :email_address
       t.references :person, foreign_key: true
       t.references :space, foreign_key: true
-      t.references :building, foreign_key: true
 
       t.timestamps
     end

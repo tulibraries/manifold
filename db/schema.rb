@@ -51,11 +51,9 @@ ActiveRecord::Schema.define(version: 2018_07_31_152527) do
     t.text "description"
     t.string "phone_number"
     t.string "email_address"
-    t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "chair_dept_head_id"
-    t.index ["building_id"], name: "index_groups_on_building_id"
     t.index ["chair_dept_head_id"], name: "index_groups_on_chair_dept_head_id"
   end
 

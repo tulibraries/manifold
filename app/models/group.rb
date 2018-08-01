@@ -12,5 +12,6 @@ class Group < ApplicationRecord
   has_many :space_group
   has_many :spaces, through: :space_group, source: :space
 
-  has_one :chair_dept_head, class_name: "Person", foreign_key: "id"
+  has_one :group_contact
+  has_one :chair_dept_head, through: :group_contact, source: :person
 end

@@ -7,6 +7,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
     [Occupant,
      SpaceGroup,
      Member,
+     GroupContact,
      Building,
      Space,
      Group,

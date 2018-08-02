@@ -42,8 +42,8 @@ class GroupDashboard < Administrate::BaseDashboard
     :phone_number,
     :email_address,
     :chair_dept_head,
-    :member,
-    # :persons,
+    # :member,
+    :persons,
     # :space_group,
     :spaces,
     # :id,
@@ -60,8 +60,8 @@ class GroupDashboard < Administrate::BaseDashboard
     :phone_number,
     :email_address,
     :chair_dept_head,
-    :member,
-    # :persons,
+    # :member,
+    :persons,
     # :space_group,
     :spaces,
   ].freeze
@@ -72,4 +72,8 @@ class GroupDashboard < Administrate::BaseDashboard
   # def display_resource(group)
   #   "Group ##{group.id}"
   # end
+  def display_resource(group)
+    "#{group.name}"
+  end
+
 end

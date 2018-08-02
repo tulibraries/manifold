@@ -84,7 +84,7 @@ class SpaceDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how spaces are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(space)
-  #   "Space ##{space.id}"
-  # end
+  def display_resource(space)
+    "#{space.name}"
+  end
 end

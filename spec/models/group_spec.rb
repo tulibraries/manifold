@@ -44,6 +44,17 @@ RSpec.describe Group, type: :model do
         expect(group.chair_dept_head.last_name).to match /#{chair_person.last_name}/
       end
     end
+    context "Change a char_dept_head" do
+      let(:chair_person_1) { FactoryBot.create(:person, spaces: [space]) }
+      let(:chair_person_2) { FactoryBot.create(:person, last_name: "Fawlty", first_name: "Basil", spaces: [space]) }
+      let(:group) { FactoryBot.create(:group, persons: [], chair_dept_head: chair_person_1, spaces: [space]) }
+      example "valid" do
+        expect(group.chair_dept_head.last_name).to match /#{chair_person_1.last_name}/
+        group.chair_dept_head = chair_person_2
+        group.save!
+        expect(group.chair_dept_head.last_name).to match /#{chair_person_2.last_name}/
+      end
+    end
   end
 
   describe "has many spaces through" do

@@ -14,4 +14,5 @@ class Group < ApplicationRecord
 
   has_one :group_contact
   has_one :chair_dept_head, through: :group_contact, source: :person
+
 end

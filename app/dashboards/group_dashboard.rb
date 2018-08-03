@@ -13,7 +13,7 @@ class GroupDashboard < Administrate::BaseDashboard
     description: Field::Text,
     phone_number: Field::String,
     email_address: Field::String,
-    chair_dept_head: Field::HasOne,
+    chair_dept_head: ContactField,
     member: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,

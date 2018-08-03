@@ -1,0 +1,11 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+	<%
+		@person = Person.find_by("id = ?", field.data.id);
+	%>
+
+  <%= f.collection_select :chair_dept_head, Person.order(:last_name), :id, :name, include_blank: true %>
+
+</div>

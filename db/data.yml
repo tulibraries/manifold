@@ -6,71 +6,11 @@ ar_internal_metadata:
   - value
   - created_at
   - updated_at
-  records: 
+  records:
   - - environment
     - development
     - '2018-07-05 14:39:43.291575'
     - '2018-07-05 14:39:43.291575'
-
----
-building_groups:
-  columns:
-  - id
-  - building_id
-  - group_id
-  - created_at
-  - updated_at
-  records: 
-  - - 1
-    - 6
-    - 1
-    - '2018-07-05 14:40:08.286212'
-    - '2018-07-05 14:40:08.286212'
-  - - 2
-    - 5
-    - 2
-    - '2018-07-05 14:40:08.297040'
-    - '2018-07-05 14:40:08.297040'
-  - - 3
-    - 1
-    - 3
-    - '2018-07-05 14:40:08.306704'
-    - '2018-07-05 14:40:08.306704'
-  - - 4
-    - 2
-    - 4
-    - '2018-07-05 14:40:08.316378'
-    - '2018-07-05 14:40:08.316378'
-  - - 5
-    - 5
-    - 5
-    - '2018-07-05 14:40:08.325688'
-    - '2018-07-05 14:40:08.325688'
-  - - 6
-    - 3
-    - 6
-    - '2018-07-05 14:40:08.335807'
-    - '2018-07-05 14:40:08.335807'
-  - - 7
-    - 3
-    - 7
-    - '2018-07-05 14:40:08.345267'
-    - '2018-07-05 14:40:08.345267'
-  - - 8
-    - 2
-    - 8
-    - '2018-07-05 14:40:08.355365'
-    - '2018-07-05 14:40:08.355365'
-  - - 9
-    - 5
-    - 9
-    - '2018-07-05 14:40:08.365986'
-    - '2018-07-05 14:40:08.365986'
-  - - 10
-    - 5
-    - 10
-    - '2018-07-05 14:40:08.376446'
-    - '2018-07-05 14:40:08.376446'
 
 ---
 buildings:
@@ -89,13 +29,13 @@ buildings:
   - email
   - created_at
   - updated_at
-  records: 
+  records:
   - - 1
     - Samuel L. Paley Library
     - Centrally located on Main Campus, this building holds the majority of the University Libraries'
       book and journal collections in most subject areas, including business, humanities, the sciences,
       and social sciences.
-      
+
       It is also home to the University Libraries' administrative offices, the Special Collections
       Research Center, Urban Archives, the University Archives, the microforms collections and
       reader/printers, and a limited number of study rooms.
@@ -116,7 +56,7 @@ buildings:
       landscape architecture, horticulture, business, education, criminal justice, and community and
       regional planning, with a collection of books, bound journals, reference materials, microforms, and
       maps.
-      
+
       The Library also operates a media center that houses audio-visual equipment to use materials such
       as recordings, tapes, slides, and videos.
     - 580 Meetinghouse Road, Ambler, PA 19002
@@ -147,14 +87,14 @@ buildings:
     - '2018-07-05 14:40:07.898704'
     - '2018-07-05 14:40:07.898704'
   - - 4
-    - Krausz Library of Podiatric Medicine 
+    - Krausz Library of Podiatric Medicine
     - The library provides research support for all the programs of the School of Podiatric Medicine.
     - 8th and Race Streets, 6th FloorPhiladelphia, PA 19107
     - '482'
     - https://library.temple.edu/about/locations/krausz-podiatric/directions
     - '0800-2100'
     - '2156256205'
-    - https://library.temple.edu/sites/default/files/libraries/hsc_krausz.jpg 
+    - https://library.temple.edu/sites/default/files/libraries/hsc_krausz.jpg
     - School of Podiatric Medicine
     - 'Yes'
     - Podiatry.Library@temple.edu
@@ -170,13 +110,13 @@ buildings:
       library has since that time restored and enriched its collection.
     - 1719 N. Broad Street, Philadelphia, PA, 19122
     - '32'
-    - http://www.law.temple.edu/site/wp-content/uploads/2015/03/Temple-Law_Campus-Map.pdf 
+    - http://www.law.temple.edu/site/wp-content/uploads/2015/03/Temple-Law_Campus-Map.pdf
     - '0900-1800'
     - '2152045819'
-    - https://www.law.temple.edu/site/wp-content/uploads/2014/06/20100202_Klein_072-970x320.jpg 
+    - https://www.law.temple.edu/site/wp-content/uploads/2014/06/20100202_Klein_072-970x320.jpg
     - University Acres
     - 'Yes'
-    - tulawlib@temple.edu 
+    - tulawlib@temple.edu
     - '2018-07-05 14:40:08.028454'
     - '2018-07-05 14:40:08.028454'
   - - 6
@@ -187,11 +127,11 @@ buildings:
       and the humanities and social sciences. Most of the collection is English language and focuses
       on Italy-related subjects. It is one of the largest English language libraries in Rome, and in
       the field of international study.
-      
+
       The library also maintaiins rare and precious books, a
       contemporary artists' archive, and a collection of past exhibit announcements of Temple's
       visual arts faculty and students.
-      
+
       There is no Interlibrary loan service available to or from the
       library, nor Intralibrary loans between other Temple campuses. Access to the library is limited
       to persons currently affiliated with Temple University.
@@ -200,7 +140,7 @@ buildings:
     - images/maps/tubldg.jpg
     - '0800-2100'
     - '8721486910'
-    - https://library.temple.edu/sites/default/files/libraries/rome.jpg 
+    - https://library.temple.edu/sites/default/files/libraries/rome.jpg
     - Temple Rome
     - 'Yes'
     - rome.library@temple.edu
@@ -222,7 +162,7 @@ buildings:
     - images/maps/tubldg.jpg
     - '0800-2100'
     - '8721486910'
-    - https://library.temple.edu/sites/default/files/libraries/japan.jpg 
+    - https://library.temple.edu/sites/default/files/libraries/japan.jpg
     - Temple Japan
     - 'Yes'
     - tokyo.library@temple.edu
@@ -244,7 +184,7 @@ buildings:
     - images/maps/tubldg.jpg
     - '0800-2100'
     - '8721486910'
-    - https://library.temple.edu/sites/default/files/libraries/japan.jpg 
+    - https://library.temple.edu/sites/default/files/libraries/japan.jpg
     - Temple Japan
     - 'Yes'
     - osaka.library@temple.edu
@@ -259,7 +199,7 @@ members:
   - person_id
   - created_at
   - updated_at
-  records: 
+  records:
   - - 1
     - 1
     - 8
@@ -321,7 +261,7 @@ groups:
   - email_address
   - created_at
   - updated_at
-  records: 
+  records:
   - - 1
     - Access and Media Services
     - Sapiente et delectus corrupti id. Error autem consequatur. Quam doloribus est
@@ -420,7 +360,7 @@ groups:
     - Phasellus sollicitudin consectetur arcu. Proin aliquet justo molestie neque cursus
       cursus. Aenean in nulla quis tellus tempus mollis sed non ligula. Nulla facilisi.
       Aenean dapibus, orci vitae convallis vehicula, sem dolor tincidunt velit, a
-      ullamcorper mi nisl ut purus. Pellentesque vestibulum euismod leo a tincidunt. 
+      ullamcorper mi nisl ut purus. Pellentesque vestibulum euismod leo a tincidunt.
     - '1935092626'
     - colten@temple.edu
     - '2018-07-05 14:40:08.374748'
@@ -429,7 +369,7 @@ groups:
     - Temple University Press
     - Morbi orci magna, pharetra sit amet rhoncus sagittis, elementum et purus.  Maecenas
       non hendrerit dolor. Etiam diam dui, convallis non iaculis et, ultrices ut risus.
-      Suspendisse ac felis eu dui interdum vehicula. Etiam ornare id erat non fringilla. 
+      Suspendisse ac felis eu dui interdum vehicula. Etiam ornare id erat non fringilla.
     - '1935092626'
     - colten@temple.edu
     - '2018-07-05 14:40:08.374748'
@@ -483,7 +423,7 @@ people:
   - identifier
   - created_at
   - updated_at
-  records: 
+  records:
   - - 1
     - Margret
     - Miller
@@ -593,7 +533,7 @@ space_groups:
   - group_id
   - created_at
   - updated_at
-  records: 
+  records:
   - - 1
     - 22
     - 1
@@ -653,7 +593,7 @@ occupants:
   - person_id
   - created_at
   - updated_at
-  records: 
+  records:
   - - 1
     - 66
     - 1
@@ -721,7 +661,7 @@ spaces:
   - created_at
   - updated_at
   - ancestry
-  records: 
+  records:
   - - 1
     - Special Collections Research Center
     - The SCRC is the principal repository for and steward of the Libraries’ rare books,
@@ -733,31 +673,31 @@ spaces:
       researchers.
     - '0830-1730'
     - 'Yes'
-    - https://library.temple.edu/about/locations/scrc/directions 
+    - https://library.temple.edu/about/locations/scrc/directions
     - '2152048257'
-    - http://library.temple.edu/sites/default/files/scrc3.png 
+    - http://library.temple.edu/sites/default/files/scrc3.png
     - scrc@temple.edu
     - 1
     - '2018-07-05 14:40:07.781067'
     - '2018-07-05 14:40:07.781067'
-    - 
+    -
   - - 2
     - Digital Scholarship Center
     - The Digital Scholarship Center is a space for collaborative work in areas of
       research and technology; digital humanities, digital arts, gaming, making, big
       data and others. It contains technical equipment and software for a variety of
       activities including textual analysis, working with big data, working in and
-      creating 3D spaces, geospatial technology, games and visualizations. 
+      creating 3D spaces, geospatial technology, games and visualizations.
     - '0900-1700'
     - 'Yes'
-    - https://library.temple.edu/about/locations/dsc/directions 
+    - https://library.temple.edu/about/locations/dsc/directions
     - '2155551212'
-    - https://library.temple.edu/sites/default/files/styles/homepage_highlight/public/DSC.jpg?itok=nEmbQXkI 
+    - https://library.temple.edu/sites/default/files/styles/homepage_highlight/public/DSC.jpg?itok=nEmbQXkI
     - dsc@temple.edu
     - 1
     - '2018-07-05 14:40:07.791708'
     - '2018-07-05 14:40:07.791708'
-    - 
+    -
   - - 3
     - Room 250
     - Consequuntur amet temporibus perspiciatis. Eligendi et laboriosam qui dolore
@@ -772,7 +712,7 @@ spaces:
     - 1
     - '2018-07-05 14:40:07.794154'
     - '2018-07-05 14:40:07.794154'
-    - 
+    -
   - - 4
     - Room 980
     - Molestias eligendi eius earum. Corrupti earum eum autem. Nihil non officiis
@@ -786,7 +726,7 @@ spaces:
     - 1
     - '2018-07-05 14:40:07.796373'
     - '2018-07-05 14:40:07.796373'
-    - 
+    -
   - - 5
     - Room 380
     - Quia vel nesciunt sunt ut. Quam ipsam eum qui qui. Illum molestias optio consequuntur
@@ -800,7 +740,7 @@ spaces:
     - 1
     - '2018-07-05 14:40:07.798556'
     - '2018-07-05 14:40:07.798556'
-    - 
+    -
   - - 6
     - Room 960
     - Qui dolorem et voluptatibus. Quia consequatur reiciendis eaque inventore totam
@@ -815,7 +755,7 @@ spaces:
     - 1
     - '2018-07-05 14:40:07.801088'
     - '2018-07-05 14:40:07.801088'
-    - 
+    -
   - - 7
     - Room 720
     - Ab nam eos quam qui voluptatum veniam ducimus. Ut voluptatum et reprehenderit
@@ -829,7 +769,7 @@ spaces:
     - 1
     - '2018-07-05 14:40:07.803266'
     - '2018-07-05 14:40:07.803266'
-    - 
+    -
   - - 8
     - Room 130
     - Debitis deserunt alias. Inventore debitis quia illum unde. In et doloribus et
@@ -843,7 +783,7 @@ spaces:
     - 1
     - '2018-07-05 14:40:07.805422'
     - '2018-07-05 14:40:07.805422'
-    - 
+    -
   - - 9
     - Room 290
     - Sint aliquid est repellendus qui sint. Laboriosam aut sunt ipsum sit natus eaque
@@ -858,7 +798,7 @@ spaces:
     - 1
     - '2018-07-05 14:40:07.807486'
     - '2018-07-05 14:40:07.807486'
-    - 
+    -
   - - 10
     - Room 540
     - Molestiae nihil rerum quam labore. Eos neque aliquam id animi nulla aut. Voluptatem
@@ -873,7 +813,7 @@ spaces:
     - 1
     - '2018-07-05 14:40:07.809988'
     - '2018-07-05 14:40:07.809988'
-    - 
+    -
   - - 11
     - Room 170
     - Voluptate dicta quia porro. Quis earum iusto. Eum tempore voluptatibus quia.
@@ -1031,7 +971,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.842332'
     - '2018-07-05 14:40:07.842332'
-    - 
+    -
   - - 22
     - Room 970
     - Iure dolorem voluptatem. Assumenda et nihil tenetur. Velit nemo in. Ea dolores
@@ -1045,7 +985,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.844649'
     - '2018-07-05 14:40:07.844649'
-    - 
+    -
   - - 23
     - Room 970
     - Et non officia reprehenderit. Aliquid et labore. Cum qui vel modi fugiat aut
@@ -1059,7 +999,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.846704'
     - '2018-07-05 14:40:07.846704'
-    - 
+    -
   - - 24
     - Room 490
     - Aut ut eligendi. Voluptatibus nostrum eveniet numquam qui. Qui eos omnis voluptatem
@@ -1075,7 +1015,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.848776'
     - '2018-07-05 14:40:07.848776'
-    - 
+    -
   - - 25
     - Room 710
     - Hic odio eum. Reiciendis ipsam culpa corporis eos. Mollitia necessitatibus dolorem
@@ -1089,7 +1029,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.850924'
     - '2018-07-05 14:40:07.850924'
-    - 
+    -
   - - 26
     - Room 680
     - Est quibusdam unde. At ut quia velit. Cum voluptatum et sit libero. Est possimus
@@ -1103,7 +1043,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.853275'
     - '2018-07-05 14:40:07.853275'
-    - 
+    -
   - - 27
     - Room 910
     - Eaque nihil nemo quo nulla voluptatem distinctio. Porro explicabo aut quibusdam
@@ -1117,7 +1057,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.855712'
     - '2018-07-05 14:40:07.855712'
-    - 
+    -
   - - 28
     - Room 290
     - Est occaecati nihil necessitatibus repudiandae similique. Id ea dignissimos
@@ -1132,7 +1072,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.858337'
     - '2018-07-05 14:40:07.858337'
-    - 
+    -
   - - 29
     - Room 310
     - Quibusdam nam unde dolorum veniam laboriosam. Aliquid perspiciatis nam sunt.
@@ -1146,7 +1086,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.861645'
     - '2018-07-05 14:40:07.861645'
-    - 
+    -
   - - 30
     - Room 440
     - Optio qui enim impedit dolores temporibus quaerat maxime. Quisquam iste praesentium
@@ -1161,7 +1101,7 @@ spaces:
     - 2
     - '2018-07-05 14:40:07.864738'
     - '2018-07-05 14:40:07.864738'
-    - 
+    -
   - - 31
     - Room 240
     - Perferendis quam a doloribus eaque rerum quisquam. Eligendi veritatis reiciendis
@@ -1317,7 +1257,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.901242'
     - '2018-07-05 14:40:07.901242'
-    - 
+    -
   - - 42
     - Room 200
     - Officia dolor deleniti voluptas. Fugiat earum consequatur deleniti. Qui dolores
@@ -1331,7 +1271,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.903755'
     - '2018-07-05 14:40:07.903755'
-    - 
+    -
   - - 43
     - Room 900
     - Ab incidunt doloribus error nihil ea. Eum qui debitis atque nesciunt. Cum est
@@ -1345,7 +1285,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.906136'
     - '2018-07-05 14:40:07.906136'
-    - 
+    -
   - - 44
     - Room 140
     - Magni dolorum temporibus ipsum ut veniam ad reiciendis. Cum qui sint maxime.
@@ -1360,7 +1300,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.908528'
     - '2018-07-05 14:40:07.908528'
-    - 
+    -
   - - 45
     - Room 130
     - Non dolores et. Natus illum dolorum soluta sint. Necessitatibus ratione dignissimos
@@ -1374,7 +1314,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.910869'
     - '2018-07-05 14:40:07.910869'
-    - 
+    -
   - - 46
     - Room 560
     - Ipsa suscipit temporibus. Qui ullam saepe dolores inventore cumque vel illum.
@@ -1388,7 +1328,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.913023'
     - '2018-07-05 14:40:07.913023'
-    - 
+    -
   - - 47
     - Room 380
     - Rerum nobis tenetur. Pariatur quos nihil. Et et nostrum omnis ea repellendus.
@@ -1401,7 +1341,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.915210'
     - '2018-07-05 14:40:07.915210'
-    - 
+    -
   - - 48
     - Room 960
     - Error illo aut odio. Voluptatem deserunt excepturi aut perspiciatis aperiam
@@ -1416,7 +1356,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.917790'
     - '2018-07-05 14:40:07.917790'
-    - 
+    -
   - - 49
     - Room 600
     - Ea vero eveniet libero. Delectus repellendus quidem dolores corrupti accusamus
@@ -1431,7 +1371,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.920276'
     - '2018-07-05 14:40:07.920276'
-    - 
+    -
   - - 50
     - Room 930
     - Magni impedit rerum beatae consectetur et facere dolor. Et eum provident sed
@@ -1445,7 +1385,7 @@ spaces:
     - 3
     - '2018-07-05 14:40:07.922447'
     - '2018-07-05 14:40:07.922447'
-    - 
+    -
   - - 51
     - Room 740
     - Voluptas necessitatibus quis ducimus cumque. Tempore alias minima nulla veritatis
@@ -1604,7 +1544,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.957655'
     - '2018-07-05 14:40:07.957655'
-    - 
+    -
   - - 62
     - Room 630
     - Autem qui quasi. Rerum fugiat quod nesciunt sunt ad voluptate. Atque a inventore
@@ -1618,7 +1558,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.960529'
     - '2018-07-05 14:40:07.960529'
-    - 
+    -
   - - 63
     - Room 990
     - In sapiente totam necessitatibus. Numquam necessitatibus ut et mollitia. Odio
@@ -1632,7 +1572,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.963108'
     - '2018-07-05 14:40:07.963108'
-    - 
+    -
   - - 64
     - Room 630
     - Odit velit et minima dolorum officiis culpa. Numquam iure occaecati non alias
@@ -1646,7 +1586,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.965594'
     - '2018-07-05 14:40:07.965594'
-    - 
+    -
   - - 65
     - Room 770
     - Non aut enim. Aut illum veniam quae quo vitae. Recusandae et omnis et at molestias
@@ -1660,7 +1600,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.968300'
     - '2018-07-05 14:40:07.968300'
-    - 
+    -
   - - 66
     - Room 250
     - Ratione vel sunt eum aut praesentium. Iure suscipit sint eligendi unde est nostrum
@@ -1675,7 +1615,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.971301'
     - '2018-07-05 14:40:07.971301'
-    - 
+    -
   - - 67
     - Room 580
     - Omnis delectus recusandae. Illo ratione cupiditate expedita vitae. Enim voluptatem
@@ -1690,7 +1630,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.974066'
     - '2018-07-05 14:40:07.974066'
-    - 
+    -
   - - 68
     - Room 470
     - Laboriosam consequatur ea dignissimos est necessitatibus similique. Minima voluptas
@@ -1706,7 +1646,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.977188'
     - '2018-07-05 14:40:07.977188'
-    - 
+    -
   - - 69
     - Room 400
     - Porro qui voluptas iusto. Quia inventore delectus. Ratione sit vero minima.
@@ -1720,7 +1660,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.979982'
     - '2018-07-05 14:40:07.979982'
-    - 
+    -
   - - 70
     - Room 200
     - Est voluptatem animi vel. Unde sed excepturi voluptates hic. Consequatur nulla
@@ -1734,7 +1674,7 @@ spaces:
     - 4
     - '2018-07-05 14:40:07.982884'
     - '2018-07-05 14:40:07.982884'
-    - 
+    -
   - - 71
     - Room 940
     - Mollitia aut unde voluptas aut omnis illo aliquid. Dolores repellendus voluptates.
@@ -1891,7 +1831,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.032656'
     - '2018-07-05 14:40:08.032656'
-    - 
+    -
   - - 82
     - Room 280
     - Similique officiis magnam porro aspernatur repudiandae. Ad pariatur et doloremque
@@ -1906,7 +1846,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.036092'
     - '2018-07-05 14:40:08.036092'
-    - 
+    -
   - - 83
     - Room 960
     - Harum alias fugiat non quia tempore laboriosam quaerat. Ut quos aliquam nesciunt
@@ -1920,7 +1860,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.039499'
     - '2018-07-05 14:40:08.039499'
-    - 
+    -
   - - 84
     - Room 970
     - Possimus quia sed est excepturi deleniti perferendis. Nesciunt voluptate eum
@@ -1935,7 +1875,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.042651'
     - '2018-07-05 14:40:08.042651'
-    - 
+    -
   - - 85
     - Room 170
     - Fugiat laborum vitae quo. Non sint voluptatem consequatur quos. Quia quisquam
@@ -1949,7 +1889,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.045832'
     - '2018-07-05 14:40:08.045832'
-    - 
+    -
   - - 86
     - Room 800
     - Excepturi vero et. Voluptates velit labore aut debitis sed sapiente. Ab non
@@ -1963,7 +1903,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.048340'
     - '2018-07-05 14:40:08.048340'
-    - 
+    -
   - - 87
     - Room 880
     - Quia quae molestiae et alias explicabo. In suscipit deserunt rerum delectus
@@ -1978,7 +1918,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.050824'
     - '2018-07-05 14:40:08.050824'
-    - 
+    -
   - - 88
     - Room 590
     - Et dolor eum. Voluptas reiciendis ut ad. Odit consequatur magnam.
@@ -1991,7 +1931,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.053332'
     - '2018-07-05 14:40:08.053332'
-    - 
+    -
   - - 89
     - Room 710
     - Deserunt suscipit neque quod aut dolor deleniti odit. Consequatur et id vel
@@ -2007,7 +1947,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.055961'
     - '2018-07-05 14:40:08.055961'
-    - 
+    -
   - - 90
     - Room 820
     - Autem perspiciatis fugiat. Aut dolores excepturi eum harum. Nulla quod est et
@@ -2021,7 +1961,7 @@ spaces:
     - 5
     - '2018-07-05 14:40:08.058435'
     - '2018-07-05 14:40:08.058435'
-    - 
+    -
   - - 91
     - Room 940
     - Aliquam laborum explicabo. Velit tempore pariatur veniam voluptas. Aut reprehenderit
@@ -2176,7 +2116,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.098798'
     - '2018-07-05 14:40:08.098798'
-    - 
+    -
   - - 102
     - Room 630
     - Blanditiis recusandae corrupti dicta eius porro. Id dolore architecto est earum
@@ -2190,7 +2130,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.101405'
     - '2018-07-05 14:40:08.101405'
-    - 
+    -
   - - 103
     - Room 720
     - Alias distinctio dolores in. Totam dolor ea omnis voluptatem facilis. Cupiditate
@@ -2204,7 +2144,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.104783'
     - '2018-07-05 14:40:08.104783'
-    - 
+    -
   - - 104
     - Room 380
     - Autem similique voluptas. Voluptas reiciendis ab. Deleniti quia sit sed amet
@@ -2219,7 +2159,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.108015'
     - '2018-07-05 14:40:08.108015'
-    - 
+    -
   - - 105
     - Room 440
     - Cum aliquam non soluta. Dolorem earum tenetur nostrum accusantium necessitatibus
@@ -2234,7 +2174,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.110856'
     - '2018-07-05 14:40:08.110856'
-    - 
+    -
   - - 106
     - Room 390
     - Et explicabo eveniet cupiditate non iste in. Impedit enim sed aut. Quisquam
@@ -2248,7 +2188,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.113494'
     - '2018-07-05 14:40:08.113494'
-    - 
+    -
   - - 107
     - Room 450
     - Minus et quaerat. Ex aut nemo facere sed. Dicta ut quos minus vel temporibus
@@ -2262,7 +2202,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.116016'
     - '2018-07-05 14:40:08.116016'
-    - 
+    -
   - - 108
     - Room 570
     - Atque qui quis qui. Delectus quia doloribus aut et. Autem molestiae voluptatibus
@@ -2276,7 +2216,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.118290'
     - '2018-07-05 14:40:08.118290'
-    - 
+    -
   - - 109
     - Room 590
     - Accusantium ipsam cum at ut alias dolore. Dicta placeat nobis pariatur. Iste
@@ -2291,7 +2231,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.121483'
     - '2018-07-05 14:40:08.121483'
-    - 
+    -
   - - 110
     - Room 120
     - Ut velit facilis nulla dignissimos. Illum impedit minus placeat facilis sequi
@@ -2306,7 +2246,7 @@ spaces:
     - 6
     - '2018-07-05 14:40:08.124545'
     - '2018-07-05 14:40:08.124545'
-    - 
+    -
   - - 111
     - Room 260
     - Quia beatae hic consequatur debitis ut sed. Corrupti eligendi itaque expedita

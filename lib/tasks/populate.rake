@@ -7,6 +7,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
     [Occupant,
      SpaceGroup,
      Member,
+     GroupContact,
      Building,
      Space,
      Group,
@@ -76,7 +77,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         description:   Faker::Lorem.paragraph,
         phone_number:  Faker::Number.number(10),
         email_address: fake_email,
-        chair_dept_head_id: Person.order("RANDOM()").first.id,
+        chair_dept_head: Person.all.sample,
         persons:       [Person.order("RANDOM()").first],
         spaces:        [Space.order("RANDOM()").first])
     end

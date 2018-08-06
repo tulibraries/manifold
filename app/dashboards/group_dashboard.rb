@@ -8,15 +8,16 @@ class GroupDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    member: Field::HasMany,
-    persons: Field::HasMany,
-    space_group: Field::HasMany,
-    spaces: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
     phone_number: Field::String,
     email_address: Field::String,
+    chair_dept_head: ContactField,
+    member: Field::HasMany,
+    persons: Field::HasMany,
+    space_group: Field::HasMany,
+    spaces: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -40,8 +41,9 @@ class GroupDashboard < Administrate::BaseDashboard
     :description,
     :phone_number,
     :email_address,
-    :member,
-    # :persons,
+    :chair_dept_head,
+    # :member,
+    :persons,
     # :space_group,
     :spaces,
     # :id,
@@ -57,8 +59,9 @@ class GroupDashboard < Administrate::BaseDashboard
     :description,
     :phone_number,
     :email_address,
-    :member,
-    # :persons,
+    :chair_dept_head,
+    # :member,
+    :persons,
     # :space_group,
     :spaces,
   ].freeze
@@ -69,4 +72,8 @@ class GroupDashboard < Administrate::BaseDashboard
   # def display_resource(group)
   #   "Group ##{group.id}"
   # end
+  def display_resource(group)
+    "#{group.name}"
+  end
+
 end

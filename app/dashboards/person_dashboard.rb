@@ -75,7 +75,7 @@ class PersonDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how people are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(person)
-  #   "Person ##{person.id}"
-  # end
+  def display_resource(person)
+    "#{person.first_name} #{person.last_name}"
+  end
 end

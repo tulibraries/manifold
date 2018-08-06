@@ -11,4 +11,9 @@ class Person < ApplicationRecord
 
   has_many :occupant
   has_many :spaces, through: :occupant, source: :space
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
 end

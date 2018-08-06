@@ -48,7 +48,7 @@ class OccupantDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how space people are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(occupant)
-  #   "SpacePerson ##{occupant.id}"
-  # end
+  def display_resource(occupant)
+    "#{occupant.name}"
+  end
 end

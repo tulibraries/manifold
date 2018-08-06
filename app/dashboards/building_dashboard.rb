@@ -75,7 +75,7 @@ class BuildingDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how buildings are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(building)
-  #   "Building ##{building.id}"
-  # end
+  def display_resource(building)
+    "#{building.name}"
+  end
 end

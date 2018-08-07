@@ -6,6 +6,8 @@ class Person < ApplicationRecord
  	validates :phone_number, presence: true, phone_number: true
  	validates :spaces, presence: true
 
+  auto_strip_attributes :email_address
+
   has_many :member
   has_many :groups, through: :member, source: :group
 

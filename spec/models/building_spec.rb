@@ -55,6 +55,10 @@ RSpec.describe Building, type: :model do
         building.email = "abc"
         expect { building.save! }.to raise_error(/Email is not an email/)
       end
+      example "strip email with trailing blank" do
+        building.email = "chas@example.edu "
+        expect { building.save! }.to_not raise_error
+      end
       example "invalid email - blank " do
         building.email = ""
         expect { building.save! }.to raise_error(/Email can't be blank/)

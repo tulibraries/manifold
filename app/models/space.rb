@@ -7,6 +7,8 @@ class Space < ApplicationRecord
  	validates :phone_number, presence: true, phone_number: true
   validates :building_id, presence: true
 
+  auto_strip_attributes :email
+
   belongs_to :building
 
   has_many :occupant

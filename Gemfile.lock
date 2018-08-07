@@ -60,6 +60,8 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    auto_strip_attributes (2.4.0)
+      activerecord (>= 4.0)
     autoprefixer-rails (8.6.4)
       execjs
     bcrypt (3.1.12)
@@ -339,6 +341,7 @@ PLATFORMS
 DEPENDENCIES
   administrate
   ancestry
+  auto_strip_attributes
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.1.0)
   byebug

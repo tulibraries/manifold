@@ -7,6 +7,8 @@ class Account < ApplicationRecord
 
   validates :email, presence: true, email: true
 
+  auto_strip_attributes :email
+
   def self.from_omniauth(access_token)
     data = access_token.info
     account = Account.where(email: data['email']).first

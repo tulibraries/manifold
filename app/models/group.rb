@@ -7,6 +7,8 @@ class Group < ApplicationRecord
  	validates :spaces, presence: true
 	validates :chair_dept_head, presence: true
 
+	auto_strip_attributes :email_address
+
   has_many :member
   has_many :persons, through: :member, source: :person
 

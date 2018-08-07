@@ -29,7 +29,6 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         phone_number:         Faker::Number.number(10),
         image:                Faker::File.file_name('images', 'tubldg', 'jpg'),
         campus:               Faker::Address.community,
-        accessibility:        "Yes",
         email:                fake_email)
 
       for s in 1..10 do

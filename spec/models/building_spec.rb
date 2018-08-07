@@ -17,7 +17,6 @@ RSpec.describe Building, type: :model do
     it { is_expected.to include("phone_number") }
     it { is_expected.to include("image") }
     it { is_expected.to include("campus") }
-    it { is_expected.to include("accessibility") }
     it { is_expected.to include("email") }
   end
 
@@ -31,7 +30,6 @@ RSpec.describe Building, type: :model do
       "hours",
       "image",
       "campus",
-      "accessibility",
     ]
     required_fields.each do |f|
       example "missing #{f} field" do

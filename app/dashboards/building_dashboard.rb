@@ -18,7 +18,6 @@ class BuildingDashboard < Administrate::BaseDashboard
     phone_number: Field::String,
     image: Field::String,
     campus: Field::String,
-    accessibility: Field::Text,
     email: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -49,7 +48,6 @@ class BuildingDashboard < Administrate::BaseDashboard
     :phone_number,
     :image,
     :campus,
-    :accessibility,
     :email,
     # :created_at,
     # :updated_at,
@@ -68,7 +66,6 @@ class BuildingDashboard < Administrate::BaseDashboard
     :phone_number,
     :image,
     :campus,
-    :accessibility,
     :email,
   ].freeze
 

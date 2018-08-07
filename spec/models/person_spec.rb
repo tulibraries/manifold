@@ -8,9 +8,10 @@ RSpec.describe Person, type: :model do
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:person) { FactoryBot.build(:person, spaces: [space]) }
+  let(:chair_person) { FactoryBot.build(:person, spaces: [space]) }
 
   describe "relation to" do
-    let(:group) { FactoryBot.create(:group, spaces: [space]) }
+    let(:group) { FactoryBot.create(:group, chair_dept_head: chair_person, spaces: [space]) }
     let(:person) { FactoryBot.create(:person, groups: [group], spaces: [space]) }
     context "Group" do
       example "attach group" do

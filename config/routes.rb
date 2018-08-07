@@ -4,11 +4,8 @@ Rails.application.routes.draw do
       resources :accounts
       resources :buildings
       resources :spaces
-      resources :occupants
-      resources :space_groups
       resources :people
       resources :groups
-      resources :members
 
       root to: "buildings#index"
     end

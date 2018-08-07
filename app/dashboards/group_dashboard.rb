@@ -42,13 +42,8 @@ class GroupDashboard < Administrate::BaseDashboard
     :phone_number,
     :email_address,
     :chair_dept_head,
-    # :member,
     :persons,
-    # :space_group,
     :spaces,
-    # :id,
-    # :created_at,
-    # :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -60,9 +55,7 @@ class GroupDashboard < Administrate::BaseDashboard
     :phone_number,
     :email_address,
     :chair_dept_head,
-    # :member,
     :persons,
-    # :space_group,
     :spaces,
   ].freeze
 

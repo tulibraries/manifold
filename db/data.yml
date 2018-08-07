@@ -25,7 +25,6 @@ buildings:
   - phone_number
   - image
   - campus
-  - accessibility
   - email
   - created_at
   - updated_at
@@ -46,7 +45,6 @@ buildings:
     - '2152048212'
     - https://library.temple.edu/sites/default/files/libraries/paley_tower.jpg
     - Temple University Campus
-    - 'Yes'
     - diglib@temple.edu
     - '2018-07-05 14:40:07.767650'
     - '2018-07-05 14:40:07.767650'
@@ -66,7 +64,6 @@ buildings:
     - '2674688648'
     - https://library.temple.edu/sites/default/files/libraries/ambler.jpg
     - Ambler Campus
-    - 'Yes'
     - tulamblr@temple.edu
     - '2018-07-05 14:40:07.840064'
     - '2018-07-05 14:40:07.840064'
@@ -82,7 +79,6 @@ buildings:
     - '2157072665'
     - https://library.temple.edu/sites/default/files/ginsburgExterior_0.jpg
     - Medical Education and Research Building
-    - 'Yes'
     - rowena@temple.edu
     - '2018-07-05 14:40:07.898704'
     - '2018-07-05 14:40:07.898704'
@@ -96,7 +92,6 @@ buildings:
     - '2156256205'
     - https://library.temple.edu/sites/default/files/libraries/hsc_krausz.jpg
     - School of Podiatric Medicine
-    - 'Yes'
     - Podiatry.Library@temple.edu
     - '2018-07-05 14:40:07.954940'
     - '2018-07-05 14:40:07.954940'
@@ -115,7 +110,6 @@ buildings:
     - '2152045819'
     - https://www.law.temple.edu/site/wp-content/uploads/2014/06/20100202_Klein_072-970x320.jpg
     - University Acres
-    - 'Yes'
     - tulawlib@temple.edu
     - '2018-07-05 14:40:08.028454'
     - '2018-07-05 14:40:08.028454'
@@ -142,7 +136,6 @@ buildings:
     - '8721486910'
     - https://library.temple.edu/sites/default/files/libraries/rome.jpg
     - Temple Rome
-    - 'Yes'
     - rome.library@temple.edu
     - '2018-07-05 14:40:08.094579'
     - '2018-07-05 14:40:08.094579'
@@ -164,7 +157,6 @@ buildings:
     - '8721486910'
     - https://library.temple.edu/sites/default/files/libraries/japan.jpg
     - Temple Japan
-    - 'Yes'
     - tokyo.library@temple.edu
     - '2018-07-05 14:40:08.094579'
     - '2018-07-05 14:40:08.094579'
@@ -186,7 +178,6 @@ buildings:
     - '8721486910'
     - https://library.temple.edu/sites/default/files/libraries/japan.jpg
     - Temple Japan
-    - 'Yes'
     - osaka.library@temple.edu
     - '2018-07-05 14:40:08.094579'
     - '2018-07-05 14:40:08.094579'

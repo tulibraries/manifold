@@ -18,7 +18,6 @@ class SpaceDashboard < Administrate::BaseDashboard
     description: Field::Text,
     hours: Field::String,
     accessibility: Field::Text,
-    location: Field::String,
     phone_number: Field::String,
     image: Field::String,
     email: Field::String,
@@ -35,7 +34,6 @@ class SpaceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :building,
-    :location,
     :phone_number,
   ].freeze
 
@@ -53,7 +51,6 @@ class SpaceDashboard < Administrate::BaseDashboard
     # :groups,
     :hours,
     :accessibility,
-    :location,
     :phone_number,
     :email,
     # :created_at,
@@ -75,7 +72,6 @@ class SpaceDashboard < Administrate::BaseDashboard
     # :groups,
     :hours,
     :accessibility,
-    :location,
     :phone_number,
     :email,
     # :ancestry,

@@ -12,7 +12,6 @@ RSpec.describe Space, type: :model do
     it { is_expected.to include("description") }
     it { is_expected.to include("hours") }
     it { is_expected.to include("accessibility") }
-    it { is_expected.to include("location") }
     it { is_expected.to include("phone_number") }
     it { is_expected.to include("image") }
     it { is_expected.to include("email") }
@@ -26,7 +25,6 @@ RSpec.describe Space, type: :model do
       "description",
       "hours",
       "accessibility",
-      "location",
       "image",
     ]
     required_fields.each do |f|
@@ -118,4 +116,3 @@ RSpec.describe Space, type: :model do
     end
   end
 end
-

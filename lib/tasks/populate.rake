@@ -38,7 +38,6 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           hours:           "0800-2100",
           accessibility:   "Yes",
           email:           fake_email,
-          location:        Faker::Lorem.sentence,
           phone_number:    Faker::Number.number(10),
           building:        building,
           image:           Faker::File.file_name('images', 'tubldg', 'jpg'))
@@ -50,7 +49,6 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           hours:           "0800-2100",
           accessibility:   "Yes",
           email:           fake_email,
-          location:        Faker::Lorem.sentence,
           phone_number:    Faker::Number.number(10),
           image:           Faker::File.file_name('images', 'tubldg', 'jpg'),
           parent:          Space.order("RANDOM()").first,

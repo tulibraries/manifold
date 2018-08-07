@@ -644,7 +644,6 @@ spaces:
   - description
   - hours
   - accessibility
-  - location
   - phone_number
   - image
   - email
@@ -664,7 +663,6 @@ spaces:
       researchers.
     - '0830-1730'
     - 'Yes'
-    - https://library.temple.edu/about/locations/scrc/directions
     - '2152048257'
     - http://library.temple.edu/sites/default/files/scrc3.png
     - scrc@temple.edu
@@ -681,7 +679,6 @@ spaces:
       creating 3D spaces, geospatial technology, games and visualizations.
     - '0900-1700'
     - 'Yes'
-    - https://library.temple.edu/about/locations/dsc/directions
     - '2155551212'
     - https://library.temple.edu/sites/default/files/styles/homepage_highlight/public/DSC.jpg?itok=nEmbQXkI
     - dsc@temple.edu
@@ -696,7 +693,6 @@ spaces:
       Quaerat fuga provident cum dolorem.
     - '0800-2100'
     - 'Yes'
-    - Veritatis voluptas nobis culpa alias exercitationem dicta quod.
     - '4791980916'
     - images/tubldg.jpg
     - ike@temple.edu
@@ -710,7 +706,6 @@ spaces:
       unde reiciendis fuga odio.
     - '0800-2100'
     - 'Yes'
-    - Non quia recusandae architecto dolorem ut.
     - '1009507769'
     - images/tubldg.jpg
     - mona@temple.edu
@@ -724,7 +719,6 @@ spaces:
       veniam quo voluptatem odio.
     - '0800-2100'
     - 'Yes'
-    - Ducimus et temporibus fugiat.
     - '3424613162'
     - images/tubldg.jpg
     - bria_reichel@temple.edu
@@ -739,7 +733,6 @@ spaces:
       quod. Ut aliquam recusandae eaque voluptatem.
     - '0800-2100'
     - 'Yes'
-    - Voluptatem quasi eligendi illum quos.
     - '2689426374'
     - images/tubldg.jpg
     - elsa@temple.edu
@@ -753,7 +746,6 @@ spaces:
       vero. Temporibus incidunt occaecati nihil praesentium suscipit.
     - '0800-2100'
     - 'Yes'
-    - Neque enim asperiores inventore ut molestiae est nobis.
     - '7040235600'
     - images/tubldg.jpg
     - sophia@temple.edu
@@ -767,7 +759,6 @@ spaces:
       minima. Corporis sequi dicta. Error qui ab sunt eius aliquam non et.
     - '0800-2100'
     - 'Yes'
-    - Ut quod fugiat recusandae pariatur libero totam magni aut.
     - '4029848930'
     - images/tubldg.jpg
     - ardella_price@temple.edu
@@ -782,7 +773,6 @@ spaces:
       possimus.
     - '0800-2100'
     - 'Yes'
-    - Dicta aut voluptates laborum voluptatem voluptas magnam.
     - '7584406813'
     - images/tubldg.jpg
     - melvin@temple.edu
@@ -797,7 +787,6 @@ spaces:
       non aut veniam explicabo fugiat.
     - '0800-2100'
     - 'Yes'
-    - Velit in nihil non.
     - '9274406819'
     - images/tubldg.jpg
     - bud@temple.edu
@@ -812,7 +801,6 @@ spaces:
       rem unde.
     - '0800-2100'
     - 'Yes'
-    - Tempora ducimus soluta similique.
     - '3119643296'
     - images/tubldg.jpg
     - abby@temple.edu
@@ -826,7 +814,6 @@ spaces:
       Dolores distinctio iste quae.
     - '0800-2100'
     - 'Yes'
-    - Velit voluptatem itaque accusamus impedit voluptas alias fugit ut.
     - '7872874232'
     - images/tubldg.jpg
     - breanna@temple.edu
@@ -841,7 +828,6 @@ spaces:
       vel aut rerum quo.
     - '0800-2100'
     - 'Yes'
-    - Laborum minima quis sed impedit.
     - '2142401328'
     - images/tubldg.jpg
     - isaiah@temple.edu
@@ -855,7 +841,6 @@ spaces:
       quia. Adipisci sed consequatur excepturi sint non nam ut.
     - '0800-2100'
     - 'Yes'
-    - Nemo mollitia facere non pariatur.
     - '6335816788'
     - images/tubldg.jpg
     - santiago@temple.edu
@@ -870,7 +855,6 @@ spaces:
       ut autem dolor sed. Aspernatur ut quisquam ea consequatur inventore recusandae.
     - '0800-2100'
     - 'Yes'
-    - Odio nihil temporibus quia sed.
     - '5380843422'
     - images/tubldg.jpg
     - evangeline.turcotte@temple.edu
@@ -884,7 +868,6 @@ spaces:
       Illum reprehenderit in est recusandae corporis aliquid iste.
     - '0800-2100'
     - 'Yes'
-    - Asperiores ipsum ad quo.
     - '5924599132'
     - images/tubldg.jpg
     - khalil.buckridge@temple.edu
@@ -898,7 +881,6 @@ spaces:
       Quas iste et magni et inventore.
     - '0800-2100'
     - 'Yes'
-    - Error consectetur omnis neque.
     - '6526184730'
     - images/tubldg.jpg
     - eva.hilpert@temple.edu
@@ -912,7 +894,6 @@ spaces:
       sunt explicabo. Mollitia ipsa eveniet vel corrupti pariatur.
     - '0800-2100'
     - 'Yes'
-    - Qui itaque enim beatae voluptate hic corrupti sapiente quis.
     - '1593870392'
     - images/tubldg.jpg
     - chandler_altenwerth@temple.edu
@@ -926,7 +907,6 @@ spaces:
       expedita eos placeat officiis.
     - '0800-2100'
     - 'Yes'
-    - Voluptatem molestiae assumenda temporibus.
     - '9218549372'
     - images/tubldg.jpg
     - abner.pacocha@temple.edu
@@ -941,7 +921,6 @@ spaces:
       consequuntur quod sint. Ex reprehenderit dolorem at et consequatur.
     - '0800-2100'
     - 'Yes'
-    - Nobis et pariatur incidunt non asperiores.
     - '9295045653'
     - images/tubldg.jpg
     - kelton@temple.edu
@@ -955,7 +934,6 @@ spaces:
       accusantium magni magnam. Et suscipit voluptatem nobis nulla.
     - '0800-2100'
     - 'Yes'
-    - Tempora eveniet dolore at deleniti accusamus delectus officiis corporis.
     - '1562910371'
     - images/tubldg.jpg
     - briana@temple.edu
@@ -969,7 +947,6 @@ spaces:
       magni nobis.
     - '0800-2100'
     - 'Yes'
-    - Id autem rerum voluptatem.
     - '2574695808'
     - images/tubldg.jpg
     - watson@temple.edu
@@ -983,7 +960,6 @@ spaces:
       et. Eos qui repudiandae placeat sed.
     - '0800-2100'
     - 'Yes'
-    - Explicabo perspiciatis voluptates ut non et consequatur ipsa est.
     - '5999303229'
     - images/tubldg.jpg
     - justyn@temple.edu
@@ -998,8 +974,6 @@ spaces:
       nisi accusamus sunt.
     - '0800-2100'
     - 'Yes'
-    - Neque consectetur consequuntur similique distinctio deserunt quis praesentium
-      delectus.
     - '5906936087'
     - images/tubldg.jpg
     - wilber.reynolds@temple.edu
@@ -1013,7 +987,6 @@ spaces:
       sit. Et occaecati qui culpa.
     - '0800-2100'
     - 'Yes'
-    - Quisquam aut quis aut iure odio harum quos.
     - '8308978932'
     - images/tubldg.jpg
     - marielle@temple.edu
@@ -1027,7 +1000,6 @@ spaces:
       est itaque id ut enim saepe. Aut atque quam occaecati earum rerum ad et.
     - '0800-2100'
     - 'Yes'
-    - Qui consequuntur aperiam sit occaecati inventore.
     - '6443167946'
     - images/tubldg.jpg
     - shanon.hand@temple.edu
@@ -1041,7 +1013,6 @@ spaces:
       qui. Ab atque deleniti nesciunt.
     - '0800-2100'
     - 'Yes'
-    - Est amet vero nam consequatur et dicta sed.
     - '6390394416'
     - images/tubldg.jpg
     - virgil@temple.edu
@@ -1056,7 +1027,6 @@ spaces:
       dolores et quibusdam ut accusamus. Eos illum quibusdam.
     - '0800-2100'
     - 'Yes'
-    - Provident autem possimus eos ut laboriosam qui sit.
     - '5461661230'
     - images/tubldg.jpg
     - cydney_ortiz@temple.edu
@@ -1070,7 +1040,6 @@ spaces:
       Ipsam magni excepturi aut minus reiciendis sint aut.
     - '0800-2100'
     - 'Yes'
-    - Repudiandae ea aut sed voluptas odio.
     - '7422829830'
     - images/tubldg.jpg
     - magnolia.hirthe@temple.edu
@@ -1085,7 +1054,6 @@ spaces:
       dolorem provident qui. Eius dolorum accusantium debitis ducimus et in.
     - '0800-2100'
     - 'Yes'
-    - Et ipsa quam quasi aut sed porro.
     - '6334465074'
     - images/tubldg.jpg
     - mertie.langosh@temple.edu
@@ -1099,7 +1067,6 @@ spaces:
       cupiditate cumque perferendis. Laboriosam debitis odio sunt sed velit.
     - '0800-2100'
     - 'Yes'
-    - Est ducimus tempora voluptas corrupti.
     - '2886406708'
     - images/tubldg.jpg
     - carlos_gaylord@temple.edu
@@ -1113,7 +1080,6 @@ spaces:
       Ducimus ad voluptatum. Porro suscipit sunt. Officiis ipsa dolores pariatur placeat.
     - '0800-2100'
     - 'Yes'
-    - Corrupti voluptatem ea architecto laboriosam.
     - '9299990154'
     - images/tubldg.jpg
     - glen_haag@temple.edu
@@ -1127,7 +1093,6 @@ spaces:
       suscipit tenetur quo natus aspernatur voluptatem. Consequatur quo dolorem dolores.
     - '0800-2100'
     - 'Yes'
-    - Aut architecto necessitatibus eum perspiciatis eveniet quo.
     - '1733219092'
     - images/tubldg.jpg
     - bulah.cummerata@temple.edu
@@ -1141,7 +1106,6 @@ spaces:
       Iste commodi voluptas sunt dolorum non quia deleniti.
     - '0800-2100'
     - 'Yes'
-    - Error voluptatibus veritatis nulla aut recusandae aut aut.
     - '9522419637'
     - images/tubldg.jpg
     - celia.jast@temple.edu
@@ -1155,7 +1119,6 @@ spaces:
       beatae. Vitae perferendis impedit facilis natus illum ea assumenda.
     - '0800-2100'
     - 'Yes'
-    - Delectus sunt quis veniam mollitia ad quas.
     - '8819628515'
     - images/tubldg.jpg
     - shemar_wilkinson@temple.edu
@@ -1170,7 +1133,6 @@ spaces:
       vero veniam.
     - '0800-2100'
     - 'Yes'
-    - Sed et aut nobis.
     - '6290594979'
     - images/tubldg.jpg
     - zackery@temple.edu
@@ -1183,7 +1145,6 @@ spaces:
     - Nesciunt est magnam. Iusto molestias odit non. Est et aut explicabo natus veniam.
     - '0800-2100'
     - 'Yes'
-    - Commodi sunt nisi hic accusantium.
     - '2235574182'
     - images/tubldg.jpg
     - lori.thompson@temple.edu
@@ -1197,7 +1158,6 @@ spaces:
       iste eius sed eveniet. Pariatur odit id nisi. Aut corrupti est et qui rerum.
     - '0800-2100'
     - 'Yes'
-    - Consequatur quae corporis et sit officiis quis hic.
     - '6581535183'
     - images/tubldg.jpg
     - antonina.ruel@temple.edu
@@ -1211,7 +1171,6 @@ spaces:
       ex.
     - '0800-2100'
     - 'Yes'
-    - Facilis velit reiciendis dolorum voluptatem tempora incidunt amet ipsa.
     - '8357849973'
     - images/tubldg.jpg
     - gunnar_ratke@temple.edu
@@ -1226,7 +1185,6 @@ spaces:
       est illo architecto incidunt. Velit laborum quia aliquam.
     - '0800-2100'
     - 'Yes'
-    - Ipsam animi id neque vero dolor odit harum.
     - '4483839675'
     - images/tubldg.jpg
     - bridgette@temple.edu
@@ -1241,7 +1199,6 @@ spaces:
       inventore. Rem esse est illo nulla ut.
     - '0800-2100'
     - 'Yes'
-    - Facilis autem cum officiis aut corrupti necessitatibus placeat.
     - '4755544647'
     - images/tubldg.jpg
     - mayra@temple.edu
@@ -1255,7 +1212,6 @@ spaces:
       aut qui aut atque animi. Mollitia et qui repellendus.
     - '0800-2100'
     - 'Yes'
-    - Atque maxime reiciendis aut cupiditate minus ab id dolorem.
     - '7410194609'
     - images/tubldg.jpg
     - jack.blick@temple.edu
@@ -1269,7 +1225,6 @@ spaces:
       magni.
     - '0800-2100'
     - 'Yes'
-    - Sapiente ducimus omnis quasi velit dolor facere ea in.
     - '4287094616'
     - images/tubldg.jpg
     - michele@temple.edu
@@ -1284,7 +1239,6 @@ spaces:
       reprehenderit illo.
     - '0800-2100'
     - 'Yes'
-    - Ut ut qui provident amet.
     - '7877519180'
     - images/tubldg.jpg
     - kathleen_schuppe@temple.edu
@@ -1298,7 +1252,6 @@ spaces:
       aspernatur quidem excepturi aut ab. Non corrupti explicabo.
     - '0800-2100'
     - 'Yes'
-    - Quisquam et corporis numquam corrupti quos nemo deleniti.
     - '2553045103'
     - images/tubldg.jpg
     - carlee@temple.edu
@@ -1312,7 +1265,6 @@ spaces:
       Vero dignissimos accusantium sit enim aliquid est.
     - '0800-2100'
     - 'Yes'
-    - Laudantium corrupti quia officiis.
     - '6230122023'
     - images/tubldg.jpg
     - myrtie@temple.edu
@@ -1325,7 +1277,6 @@ spaces:
     - Rerum nobis tenetur. Pariatur quos nihil. Et et nostrum omnis ea repellendus.
     - '0800-2100'
     - 'Yes'
-    - Maiores et veritatis autem laboriosam.
     - '8849054827'
     - images/tubldg.jpg
     - sam.johnson@temple.edu
@@ -1340,7 +1291,6 @@ spaces:
       et quisquam. Quis minus sit quaerat earum.
     - '0800-2100'
     - 'Yes'
-    - Illo ut voluptatem incidunt voluptatem assumenda velit dolorum.
     - '4809421890'
     - images/tubldg.jpg
     - jordane@temple.edu
@@ -1355,7 +1305,6 @@ spaces:
       dolore.
     - '0800-2100'
     - 'Yes'
-    - Hic sunt iste eos temporibus in.
     - '3236063067'
     - images/tubldg.jpg
     - cornelius@temple.edu
@@ -1369,7 +1318,6 @@ spaces:
       natus quod. A vel quis natus.
     - '0800-2100'
     - 'Yes'
-    - Non delectus eveniet quo autem voluptas dignissimos alias est.
     - '9537369544'
     - images/tubldg.jpg
     - garnett@temple.edu
@@ -1383,7 +1331,6 @@ spaces:
       sed aut. Optio nihil assumenda delectus voluptate. Quia corrupti veniam.
     - '0800-2100'
     - 'Yes'
-    - Illum quia quo alias commodi.
     - '2384160047'
     - images/tubldg.jpg
     - kendrick_ledner@temple.edu
@@ -1397,7 +1344,6 @@ spaces:
       ut ipsam in.
     - '0800-2100'
     - 'Yes'
-    - Vero quia saepe sed omnis eius et sit quibusdam.
     - '2000311422'
     - images/tubldg.jpg
     - haie.hahn@temple.edu
@@ -1411,7 +1357,6 @@ spaces:
       magnam sunt soluta magni quod rerum.
     - '0800-2100'
     - 'Yes'
-    - Velit nihil dolores eum ut in.
     - '6757364170'
     - images/tubldg.jpg
     - asha@temple.edu
@@ -1425,7 +1370,6 @@ spaces:
       Sit porro perspiciatis neque. Ipsam quia excepturi.
     - '0800-2100'
     - 'Yes'
-    - Saepe consequatur debitis itaque veritatis.
     - '4743064191'
     - images/tubldg.jpg
     - gilda@temple.edu
@@ -1440,7 +1384,6 @@ spaces:
       enim.
     - '0800-2100'
     - 'Yes'
-    - Sapiente repudiandae reprehenderit quia.
     - '2398432150'
     - images/tubldg.jpg
     - virginie@temple.edu
@@ -1455,7 +1398,6 @@ spaces:
       adipisci numquam. Impedit sint et quia qui est.
     - '0800-2100'
     - 'Yes'
-    - Vel et accusantium cupiditate eos autem.
     - '6885018147'
     - images/tubldg.jpg
     - danika.thompson@temple.edu
@@ -1469,7 +1411,6 @@ spaces:
       magni asperiores. Nisi eum quos suscipit excepturi.
     - '0800-2100'
     - 'Yes'
-    - A vel reprehenderit necessitatibus autem.
     - '2833039749'
     - images/tubldg.jpg
     - milton@temple.edu
@@ -1483,7 +1424,6 @@ spaces:
       quo natus voluptatem excepturi eveniet omnis. Enim quibusdam saepe.
     - '0800-2100'
     - 'Yes'
-    - Reprehenderit et quasi consequuntur debitis velit ab.
     - '5155851436'
     - images/tubldg.jpg
     - lavern.harvey@temple.edu
@@ -1498,7 +1438,6 @@ spaces:
       repellendus ex.
     - '0800-2100'
     - 'Yes'
-    - Dicta et dolore est.
     - '9606210433'
     - images/tubldg.jpg
     - sigurd_kilback@temple.edu
@@ -1513,7 +1452,6 @@ spaces:
       sed sit accusantium.
     - '0800-2100'
     - 'Yes'
-    - Tempora enim unde ut ullam.
     - '9887714274'
     - images/tubldg.jpg
     - sanford_lehner@temple.edu
@@ -1528,7 +1466,6 @@ spaces:
       non distinctio nisi. Perspiciatis nihil architecto dignissimos quas.
     - '0800-2100'
     - 'Yes'
-    - Cupiditate eius corrupti itaque ut soluta repellendus natus.
     - '9970796163'
     - images/tubldg.jpg
     - justine@temple.edu
@@ -1542,7 +1479,6 @@ spaces:
       dolorem accusamus aut.
     - '0800-2100'
     - 'Yes'
-    - Ullam expedita nesciunt ipsum quae.
     - '5171605048'
     - images/tubldg.jpg
     - shad.hand@temple.edu
@@ -1556,7 +1492,6 @@ spaces:
       consectetur ratione dicta minima.
     - '0800-2100'
     - 'Yes'
-    - Quia quaerat et consequatur assumenda consectetur vero alias.
     - '3479324685'
     - images/tubldg.jpg
     - perry_leannon@temple.edu
@@ -1570,7 +1505,6 @@ spaces:
       inventore architecto praesentium. Sed molestiae nemo ad. Odit non iusto ipsum.
     - '0800-2100'
     - 'Yes'
-    - Quos sit officiis aut libero esse quia hic.
     - '5533673680'
     - images/tubldg.jpg
     - verner.howe@temple.edu
@@ -1584,7 +1518,6 @@ spaces:
       id alias. Quia voluptate doloremque velit a.
     - '0800-2100'
     - 'Yes'
-    - Corrupti modi id quia.
     - '9992630906'
     - images/tubldg.jpg
     - maryjane@temple.edu
@@ -1599,7 +1532,6 @@ spaces:
       fuga nulla pariatur ut sit.
     - '0800-2100'
     - 'Yes'
-    - Ut dolores asperiores est ea rem exercitationem.
     - '5809007792'
     - images/tubldg.jpg
     - alta_lindgren@temple.edu
@@ -1614,7 +1546,6 @@ spaces:
       accusantium corrupti eaque maiores qui.
     - '0800-2100'
     - 'Yes'
-    - Reiciendis accusantium voluptatibus quia quidem inventore omnis nemo.
     - '3210342421'
     - images/tubldg.jpg
     - porter_schiller@temple.edu
@@ -1630,7 +1561,6 @@ spaces:
       voluptate.
     - '0800-2100'
     - 'Yes'
-    - Et architecto quae sunt dolor explicabo sed.
     - '3800285527'
     - images/tubldg.jpg
     - daphne_kulas@temple.edu
@@ -1644,7 +1574,6 @@ spaces:
       Ut suscipit odio facilis aut animi perferendis.
     - '0800-2100'
     - 'Yes'
-    - Impedit quibusdam qui laborum quis.
     - '9297498176'
     - images/tubldg.jpg
     - susana@temple.edu
@@ -1658,7 +1587,6 @@ spaces:
       ipsa quibusdam. Rerum sit adipisci. At voluptate numquam aut.
     - '0800-2100'
     - 'Yes'
-    - Labore id consequatur velit culpa consequuntur.
     - '2854566408'
     - images/tubldg.jpg
     - marcellus.greenfelder@temple.edu
@@ -1672,7 +1600,6 @@ spaces:
       Id architecto in et repellendus et cum earum.
     - '0800-2100'
     - 'Yes'
-    - Quo aut laboriosam eos omnis et.
     - '2826991168'
     - images/tubldg.jpg
     - griffin@temple.edu
@@ -1686,7 +1613,6 @@ spaces:
       nisi suscipit. Esse hic consectetur consequatur quod.
     - '0800-2100'
     - 'Yes'
-    - Laudantium blanditiis doloremque sit autem consequatur at excepturi et.
     - '1393719529'
     - images/tubldg.jpg
     - torrance_wyman@temple.edu
@@ -1701,7 +1627,6 @@ spaces:
       veniam. Excepturi dolorem sint id.
     - '0800-2100'
     - 'Yes'
-    - Fugiat enim aut eligendi dicta qui.
     - '2017071595'
     - images/tubldg.jpg
     - fannie@temple.edu
@@ -1715,7 +1640,6 @@ spaces:
       Consequatur eos dolore omnis aut impedit est. Labore eveniet quos facere.
     - '0800-2100'
     - 'Yes'
-    - Sed accusantium fuga quae.
     - '1790960445'
     - images/tubldg.jpg
     - sean@temple.edu
@@ -1729,7 +1653,6 @@ spaces:
       assumenda quaerat ab. Impedit ut dolores ab itaque natus amet.
     - '0800-2100'
     - 'Yes'
-    - Voluptatem libero nesciunt similique eum distinctio nam omnis totam.
     - '7246186527'
     - images/tubldg.jpg
     - laisha@temple.edu
@@ -1742,7 +1665,6 @@ spaces:
     - Est ea et quia aut assumenda. Quas non rerum suscipit. Ab eos omnis provident.
     - '0800-2100'
     - 'Yes'
-    - Deleniti asperiores eligendi voluptatem itaque.
     - '2872029590'
     - images/tubldg.jpg
     - khalid.olson@temple.edu
@@ -1758,7 +1680,6 @@ spaces:
       corporis.
     - '0800-2100'
     - 'Yes'
-    - Exercitationem ea cum et veritatis nobis animi omnis.
     - '9272907878'
     - images/tubldg.jpg
     - wilfredo.tremblay@temple.edu
@@ -1773,7 +1694,6 @@ spaces:
       adipisci sapiente. Sunt minima cumque pariatur possimus ea quis occaecati.
     - '0800-2100'
     - 'Yes'
-    - Quidem voluptatum non necessitatibus similique.
     - '7538509005'
     - images/tubldg.jpg
     - shemar.friesen@temple.edu
@@ -1787,7 +1707,6 @@ spaces:
       in delectus dolorem commodi perspiciatis.
     - '0800-2100'
     - 'Yes'
-    - Iste quia voluptatem quia est quaerat dolorem.
     - '1441330087'
     - images/tubldg.jpg
     - soledad@temple.edu
@@ -1801,7 +1720,6 @@ spaces:
       quia qui. Ad sit quam et.
     - '0800-2100'
     - 'Yes'
-    - Est magni aperiam dicta ad beatae.
     - '6381498372'
     - images/tubldg.jpg
     - melody.mertz@temple.edu
@@ -1815,7 +1733,6 @@ spaces:
       illum ad.
     - '0800-2100'
     - 'Yes'
-    - Architecto vero occaecati est et sit amet non voluptate.
     - '5231875346'
     - images/tubldg.jpg
     - macey_goldner@temple.edu
@@ -1830,7 +1747,6 @@ spaces:
       nobis unde consequatur.
     - '0800-2100'
     - 'Yes'
-    - Sint quia voluptatem iusto qui nisi vel.
     - '7107124459'
     - images/tubldg.jpg
     - litzy@temple.edu
@@ -1844,7 +1760,6 @@ spaces:
       nemo similique possimus. Amet et aspernatur quisquam voluptas eius.
     - '0800-2100'
     - 'Yes'
-    - Quia officia doloribus ad quia consectetur in.
     - '9244911147'
     - images/tubldg.jpg
     - aric@temple.edu
@@ -1859,7 +1774,6 @@ spaces:
       voluptas.
     - '0800-2100'
     - 'Yes'
-    - Deserunt dolor eaque illo molestias.
     - '1975282628'
     - images/tubldg.jpg
     - geovanny.boyle@temple.edu
@@ -1873,7 +1787,6 @@ spaces:
       delectus.
     - '0800-2100'
     - 'Yes'
-    - Ipsa possimus voluptatem eligendi beatae incidunt amet qui.
     - '7512839539'
     - images/tubldg.jpg
     - cade@temple.edu
@@ -1887,7 +1800,6 @@ spaces:
       sed totam sit ut.
     - '0800-2100'
     - 'Yes'
-    - Reiciendis laudantium eaque reprehenderit voluptatem.
     - '3133401531'
     - images/tubldg.jpg
     - nikolas@temple.edu
@@ -1902,7 +1814,6 @@ spaces:
       non in delectus ut.
     - '0800-2100'
     - 'Yes'
-    - A corporis et rerum non eos beatae.
     - '4208285156'
     - images/tubldg.jpg
     - branson_abbott@temple.edu
@@ -1915,7 +1826,6 @@ spaces:
     - Et dolor eum. Voluptas reiciendis ut ad. Odit consequatur magnam.
     - '0800-2100'
     - 'Yes'
-    - Autem omnis at eum vel optio non.
     - '5015368579'
     - images/tubldg.jpg
     - lilly@temple.edu
@@ -1931,7 +1841,6 @@ spaces:
       similique.
     - '0800-2100'
     - 'Yes'
-    - Distinctio amet est provident quos.
     - '7043882835'
     - images/tubldg.jpg
     - maci_koelpin@temple.edu
@@ -1945,7 +1854,6 @@ spaces:
       voluptatem ea nam aspernatur.
     - '0800-2100'
     - 'Yes'
-    - Omnis maiores dolores iure labore accusantium praesentium impedit.
     - '9996530571'
     - images/tubldg.jpg
     - fabian.witting@temple.edu
@@ -1959,7 +1867,6 @@ spaces:
       soluta mollitia sit recusandae ducimus iste.
     - '0800-2100'
     - 'Yes'
-    - Tempore magni dolorem atque aliquid nostrum nobis quae sed.
     - '3990902743'
     - images/tubldg.jpg
     - lionel@temple.edu
@@ -1973,7 +1880,6 @@ spaces:
       ex dolorum libero.
     - '0800-2100'
     - 'Yes'
-    - Omnis ut facere quas inventore repellat.
     - '4192749805'
     - images/tubldg.jpg
     - kamille@temple.edu
@@ -1987,7 +1893,6 @@ spaces:
       iure. Distinctio deserunt architecto perferendis.
     - '0800-2100'
     - 'Yes'
-    - Illum repellendus sed quia animi totam quae.
     - '2950955866'
     - images/tubldg.jpg
     - brian_bins@temple.edu
@@ -2001,7 +1906,6 @@ spaces:
       laboriosam ipsa et. Quia voluptas repellendus esse cupiditate.
     - '0800-2100'
     - 'Yes'
-    - Explicabo omnis porro unde placeat dicta officia.
     - '2215980062'
     - images/tubldg.jpg
     - amos.mcclure@temple.edu
@@ -2015,7 +1919,6 @@ spaces:
       adipisci esse placeat. Delectus quasi omnis sit libero sed debitis optio.
     - '0800-2100'
     - 'Yes'
-    - Nihil error quaerat iusto iste.
     - '8724858417'
     - images/tubldg.jpg
     - rupert.howe@temple.edu
@@ -2029,7 +1932,6 @@ spaces:
       nihil. Commodi reprehenderit dignissimos.
     - '0800-2100'
     - 'Yes'
-    - Autem accusantium facere et accusamus vel deleniti.
     - '2959419039'
     - images/tubldg.jpg
     - lafayette@temple.edu
@@ -2043,7 +1945,6 @@ spaces:
       enim exercitationem in est repudiandae magnam sint. Perspiciatis et molestiae.
     - '0800-2100'
     - 'Yes'
-    - Eaque magni accusamus vitae quibusdam esse voluptatem repudiandae.
     - '7129702348'
     - images/tubldg.jpg
     - fritz@temple.edu
@@ -2058,7 +1959,6 @@ spaces:
       praesentium.
     - '0800-2100'
     - 'Yes'
-    - Neque vero commodi id ut ut ut doloremque quaerat.
     - '8419785344'
     - images/tubldg.jpg
     - cordelia@temple.edu
@@ -2072,7 +1972,6 @@ spaces:
       necessitatibus quo sed illo. Blanditiis praesentium tempora quis magnam aut.
     - '0800-2100'
     - 'Yes'
-    - Quos soluta laudantium inventore.
     - '4599674224'
     - images/tubldg.jpg
     - carolina_brekke@temple.edu
@@ -2086,7 +1985,6 @@ spaces:
       Qui aperiam repudiandae. Et sint qui ea tempore.
     - '0800-2100'
     - 'Yes'
-    - Ut magni delectus corrupti in culpa.
     - '5873839829'
     - images/tubldg.jpg
     - triston.heller@temple.edu
@@ -2100,7 +1998,6 @@ spaces:
       aut. Dolor dolorum hic odio. Aliquid neque voluptatum sit.
     - '0800-2100'
     - 'Yes'
-    - Possimus et est dicta dolores.
     - '1696397406'
     - images/tubldg.jpg
     - rosa.ruel@temple.edu
@@ -2114,7 +2011,6 @@ spaces:
       in non qui. Quaerat dolores sed.
     - '0800-2100'
     - 'Yes'
-    - Non molestiae adipisci in quia.
     - '5488316964'
     - images/tubldg.jpg
     - andres@temple.edu
@@ -2128,7 +2024,6 @@ spaces:
       consequatur et ea odit.
     - '0800-2100'
     - 'Yes'
-    - Voluptas et soluta culpa consequatur.
     - '5488214839'
     - images/tubldg.jpg
     - brigitte_boyer@temple.edu
@@ -2143,7 +2038,6 @@ spaces:
       iste ea nisi aut velit.
     - '0800-2100'
     - 'Yes'
-    - Vel a eos occaecati.
     - '8447436969'
     - images/tubldg.jpg
     - aiyana_conn@temple.edu
@@ -2158,7 +2052,6 @@ spaces:
       totam atque et. Quia unde quos dolor ut pariatur.
     - '0800-2100'
     - 'Yes'
-    - Explicabo deleniti natus possimus quaerat hic.
     - '1718929423'
     - images/tubldg.jpg
     - mattie@temple.edu
@@ -2172,7 +2065,6 @@ spaces:
       voluptas dolor sed.
     - '0800-2100'
     - 'Yes'
-    - Doloremque autem aliquam doloribus aut repellat error maiores accusantium.
     - '8448027778'
     - images/tubldg.jpg
     - wilma.spencer@temple.edu
@@ -2186,7 +2078,6 @@ spaces:
       et repudiandae. Omnis similique quasi. Placeat id rem.
     - '0800-2100'
     - 'Yes'
-    - Nobis suscipit voluptas totam excepturi vel maxime ut.
     - '6868954982'
     - images/tubldg.jpg
     - theresa@temple.edu
@@ -2200,7 +2091,6 @@ spaces:
       sit dolore quia.
     - '0800-2100'
     - 'Yes'
-    - Molestiae iure et sit aliquam quis et provident.
     - '8845316269'
     - images/tubldg.jpg
     - shane@temple.edu
@@ -2215,7 +2105,6 @@ spaces:
       praesentium voluptatum.
     - '0800-2100'
     - 'Yes'
-    - Repellat illum praesentium sapiente rerum.
     - '1847429259'
     - images/tubldg.jpg
     - cary_walker@temple.edu
@@ -2230,7 +2119,6 @@ spaces:
       enim voluptatem deserunt. Exercitationem perspiciatis asperiores cumque.
     - '0800-2100'
     - 'Yes'
-    - Laudantium perferendis accusamus odio accusantium ad.
     - '4186615782'
     - images/tubldg.jpg
     - jovany@temple.edu
@@ -2245,7 +2133,6 @@ spaces:
       Nisi delectus recusandae.
     - '0800-2100'
     - 'Yes'
-    - Sit aut saepe et.
     - '7559167452'
     - images/tubldg.jpg
     - jermaine.roob@temple.edu
@@ -2260,7 +2147,6 @@ spaces:
       voluptatem voluptates porro non sit commodi.
     - '0800-2100'
     - 'Yes'
-    - Asperiores rerum fugiat non laboriosam.
     - '1383085977'
     - images/tubldg.jpg
     - jordan_hammes@temple.edu
@@ -2274,7 +2160,6 @@ spaces:
       Ad ea quod. Asperiores quia animi est quibusdam et.
     - '0800-2100'
     - 'Yes'
-    - Voluptatum officia aliquid ipsum facere.
     - '6773741028'
     - images/tubldg.jpg
     - mina_bruen@temple.edu
@@ -2288,7 +2173,6 @@ spaces:
       optio voluptatum autem.
     - '0800-2100'
     - 'Yes'
-    - Necessitatibus voluptatum quo debitis provident aliquam.
     - '6920241731'
     - images/tubldg.jpg
     - joany@temple.edu
@@ -2302,7 +2186,6 @@ spaces:
       fuga. Eaque non dolorum.
     - '0800-2100'
     - 'Yes'
-    - Illum mollitia possimus deserunt dolores et.
     - '8504537423'
     - images/tubldg.jpg
     - jordan@temple.edu
@@ -2317,7 +2200,6 @@ spaces:
       laudantium qui voluptatum. Quasi id eaque quis deleniti quod cum quisquam.
     - '0800-2100'
     - 'Yes'
-    - Eos maiores voluptas amet eum assumenda hic laboriosam.
     - '9300920484'
     - images/tubldg.jpg
     - bethany_abernathy@temple.edu
@@ -2332,7 +2214,6 @@ spaces:
       culpa.
     - '0800-2100'
     - 'Yes'
-    - Exercitationem iure et nisi.
     - '3526727185'
     - images/tubldg.jpg
     - sydni_parker@temple.edu
@@ -2346,7 +2227,6 @@ spaces:
       Est nihil repellat et quo.
     - '0800-2100'
     - 'Yes'
-    - Et voluptates deleniti et nam quidem.
     - '8702484395'
     - images/tubldg.jpg
     - clara@temple.edu
@@ -2360,7 +2240,6 @@ spaces:
       voluptatem quia.
     - '0800-2100'
     - 'Yes'
-    - Sunt facere omnis qui odit quibusdam.
     - '1799632829'
     - images/tubldg.jpg
     - tristian_welch@temple.edu
@@ -2374,7 +2253,6 @@ spaces:
       animi aut cupiditate.
     - '0800-2100'
     - 'Yes'
-    - Eius aliquam molestiae explicabo eveniet facere.
     - '2924969880'
     - images/tubldg.jpg
     - nannie@temple.edu

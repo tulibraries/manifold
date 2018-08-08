@@ -8,15 +8,15 @@ class SpaceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    building: Field::BelongsTo,
+    building: RequiredBelongsToField,
     occupant: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
     groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    description: Field::Text,
-    hours: Field::String,
+    description: RequiredTextField,
+    hours: RequiredStringField,
     accessibility: Field::Text,
     phone_number: Field::String,
     image: Field::String,

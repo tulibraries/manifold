@@ -15,7 +15,7 @@ class SpaceDashboard < Administrate::BaseDashboard
     groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    description: RequiredTextField,
+    description: DescriptionField,
     hours: RequiredStringField,
     accessibility: Field::Text,
     phone_number: Field::String,

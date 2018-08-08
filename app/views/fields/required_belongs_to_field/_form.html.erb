@@ -3,7 +3,7 @@
 </div>
 <span class="required-input" title="Required Field">*</span>
 <div class="field-unit__field">
-  <%= f.select(field.permitted_attribute) do %>
+  <%= f.select(field.permitted_attribute, required: true, aria: { required: true }) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
   <% end %>
 </div>

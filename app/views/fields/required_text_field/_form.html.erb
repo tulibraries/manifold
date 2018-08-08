@@ -1,7 +1,7 @@
 <div class="field-unit__label" title="Required Field">
   <%= f.label field.attribute %>
 </div>
-<span class="required-input" title="Required Field"> *</span>
+<span class="required-input" title="Required Field">*</span>
 <div class="field-unit__field">
-  <%= f.text_field field.attribute, { required: true } %>
+  <%= f.text_field field.attribute, required: true, aria: { required: true } %>
 </div>

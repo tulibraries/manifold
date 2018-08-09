@@ -10,7 +10,7 @@ class BuildingDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: RequiredStringField,
-    description: RequiredTextField,
+    description: DescriptionField,
     address1: RequiredStringField,
     temple_building_code: RequiredStringField,
     directions_map: RequiredStringField,

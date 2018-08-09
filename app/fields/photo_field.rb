@@ -3,6 +3,7 @@ require "administrate/field/base"
 class PhotoField < Administrate::Field::Base
   def url
   	if data.attached?
+  		# binding.pry
 	    data.url
 	  end
   end

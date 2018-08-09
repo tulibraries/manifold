@@ -411,7 +411,7 @@ people:
   - email_address
   - chat_handle
   - job_title
-  - identifier
+  - research_identifier
   - created_at
   - updated_at
   records:

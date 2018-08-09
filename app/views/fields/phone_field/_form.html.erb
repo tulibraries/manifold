@@ -1,0 +1,6 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+  <%= f.telephone_field field.attribute, placeholder: 'xxx-xxx-xxxx', value: number_to_phone(field.data) %>
+</div>

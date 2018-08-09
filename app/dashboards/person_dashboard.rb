@@ -40,21 +40,16 @@ class PersonDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :photo,
     :first_name,
     :last_name,
+    :photo,
     :phone_number,
     :email_address,
     :chat_handle,
     :job_title,
     :identifier,
-    # :member,
     :groups,
-    # :occupant,
     :spaces,
-    # :id,
-    # :created_at,
-    # :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -69,9 +64,7 @@ class PersonDashboard < Administrate::BaseDashboard
     :chat_handle,
     :job_title,
     :identifier,
-    # :member,
     :groups,
-    # :occupant,
     :spaces,
   ].freeze
 

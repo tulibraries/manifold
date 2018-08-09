@@ -6,7 +6,7 @@ class Person < ApplicationRecord
  	validates :phone_number, presence: true, phone_number: true
  	validates :spaces, presence: true
 
-  has_one_attached :photo
+  has_one_attached :photo, dependent: :destroy
 
   auto_strip_attributes :email_address
 

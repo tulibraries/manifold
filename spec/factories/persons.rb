@@ -6,7 +6,7 @@ FactoryBot.define do
     email_address "zbeeblebrox@example.com"
     chat_handle "zbeeblebrox"
     job_title "President of the Galaxy"
-    identifier "PREZBEEB"
+    research_identifier "PREZBEEB"
     # Add related objects in create.
     # e.g.
     #   let(:building) { FactoryBot.create(:building) }

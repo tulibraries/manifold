@@ -19,8 +19,8 @@ class PersonDashboard < Administrate::BaseDashboard
     email_address: Field::String,
     chat_handle: Field::String,
     job_title: Field::String,
-    identifier: Field::String,
     photo: Field::PhotoField,
+    research_identifier: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -47,7 +47,7 @@ class PersonDashboard < Administrate::BaseDashboard
     :email_address,
     :chat_handle,
     :job_title,
-    :identifier,
+    :research_identifier,
     :groups,
     :spaces,
   ].freeze
@@ -63,7 +63,7 @@ class PersonDashboard < Administrate::BaseDashboard
     :email_address,
     :chat_handle,
     :job_title,
-    :identifier,
+    :research_identifier,
     :groups,
     :spaces,
   ].freeze

@@ -64,7 +64,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         email_address: fake_email,
         chat_handle:   Faker::Twitter.screen_name,
         job_title:     Faker::Job.title,
-        identifier:    "TU" + Faker::Number.number(6),
+        research_identifier:    "TU" + Faker::Number.number(6),
         spaces:        [Space.order("RANDOM()").first])
     end
 

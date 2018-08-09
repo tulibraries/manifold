@@ -52,5 +52,12 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def update
+        # binding.pry 
+        # Group.find_by("group_id = ?", :id)
+        
+        super
+    end
   end
 end

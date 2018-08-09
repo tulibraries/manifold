@@ -20,6 +20,7 @@ class PersonDashboard < Administrate::BaseDashboard
     chat_handle: Field::String,
     job_title: Field::String,
     identifier: Field::String,
+    photo: Field::PhotoField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -39,6 +40,7 @@ class PersonDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :photo,
     :first_name,
     :last_name,
     :phone_number,
@@ -59,6 +61,7 @@ class PersonDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :photo,
     :first_name,
     :last_name,
     :phone_number,

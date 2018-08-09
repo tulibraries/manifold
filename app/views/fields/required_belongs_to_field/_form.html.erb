@@ -1,7 +1,7 @@
 <div class="field-unit__label">
   <%= f.label field.permitted_attribute %>
 </div>
-<span class="required-input" title="Required Field">*</span>
+<span class="required-input">*</span>
 <div class="field-unit__field">
   <%= f.select(field.permitted_attribute, required: true, aria: { required: true }) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>

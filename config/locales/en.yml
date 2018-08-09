@@ -34,4 +34,6 @@ en:
     error:
       user_not_registered: "User not registered."
       access_denied: "Account modification - Access denied"
-    signout: "Log Out"  
+      invalid_email: "is not an email address."
+      invalid_phone_format: "is not a valid format. It should be xxx-xxx-xxxx."
+    signout: "Log Out"

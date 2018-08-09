@@ -15,10 +15,10 @@ class BuildingDashboard < Administrate::BaseDashboard
     temple_building_code: RequiredStringField,
     directions_map: RequiredStringField,
     hours: Field::String,
-    phone_number: RequiredStringField,
+    phone_number: RequiredPhoneField,
     image: Field::String,
     campus: RequiredStringField,
-    email: RequiredStringField,
+    email: Field::Email,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

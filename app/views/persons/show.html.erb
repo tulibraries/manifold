@@ -19,12 +19,12 @@
       <div class="col col-sm-3">
         <p>
         <strong>Phone number:</strong><br />
-          <%=@person.phone_number %>
+          <%= @person.phone_number %>
         </p>
 
         <p>
           <strong>Email Address:</strong><br />
-          <%=@person.email_address %>
+          <%= @person.email_address %>
         </p>
       </div>
 
@@ -44,8 +44,15 @@
         <% end %>
       </div>
 
-
       <div class="col col-sm-4">
+        
+        <% unless @person.springshare_id.nil? %>
+          <p>
+            <strong>LibCal Scheduler:</strong><br />
+            <%= link_to "Schedule an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment" %>
+          </p>
+        <% end %>
+
         <% unless @person.chat_handle.nil? %>
           <p>
             <strong>Chat:</strong><br />

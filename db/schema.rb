@@ -112,10 +112,7 @@ ActiveRecord::Schema.define(version: 2018_08_10_174011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "personal_site"
-<<<<<<< Updated upstream
-=======
     t.string "springshare_id"
->>>>>>> Stashed changes
   end
 
   create_table "space_groups", force: :cascade do |t|

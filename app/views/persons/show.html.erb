@@ -36,7 +36,6 @@
           </p>
         <% end %>
 
-
         <% unless @person.research_identifier.nil? %>
           <p>
             <strong>Identifier:</strong><br />
@@ -44,7 +43,6 @@
           </p>
         <% end %>
       </div>
-
 
       <div class="col col-sm-4">
         
@@ -54,6 +52,7 @@
             <%= link_to "Schedule an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment" %>
           </p>
         <% end %>
+
         <% unless @person.chat_handle.nil? %>
           <p>
             <strong>Chat:</strong><br />

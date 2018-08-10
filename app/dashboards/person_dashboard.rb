@@ -20,7 +20,7 @@ class PersonDashboard < Administrate::BaseDashboard
     chat_handle: Field::String,
     job_title: Field::String,
     identifier: Field::String,
-    photo: Field::PhotoField,
+    photo: Field::PersonPhotoField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

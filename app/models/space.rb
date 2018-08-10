@@ -9,6 +9,8 @@ class Space < ApplicationRecord
 
   auto_strip_attributes :email
 
+  has_one_attached :photo, dependent: :destroy
+
   belongs_to :building
 
   has_many :occupant

@@ -16,7 +16,7 @@ class BuildingDashboard < Administrate::BaseDashboard
     directions_map: RequiredStringField,
     hours: Field::String,
     phone_number: RequiredStringField,
-    image: Field::String,
+    photo: Field::BuildingPhotoField,
     campus: RequiredStringField,
     email: RequiredStringField,
     created_at: Field::DateTime,
@@ -38,19 +38,16 @@ class BuildingDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    # :id,
     :name,
+    :photo,
     :description,
     :address1,
     :temple_building_code,
     :directions_map,
     :hours,
     :phone_number,
-    :image,
     :campus,
     :email,
-    # :created_at,
-    # :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -58,13 +55,13 @@ class BuildingDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :photo,
     :description,
     :address1,
     :temple_building_code,
     :directions_map,
     :hours,
     :phone_number,
-    :image,
     :campus,
     :email,
   ].freeze

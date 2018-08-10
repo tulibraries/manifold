@@ -11,12 +11,40 @@ module Admin
         
     # end
 
-    # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   Building.find_by!(slug: param)
-    # end
+    def create
+      building_params = params[:building]
+      building_params.permit!
+      building = Building.new(building_params)
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
+      if person.save
+        redirect_to(
+          [namespace, building],
+          notice: translate_with_resource("create.success"),
+        )
+      else
+        render :new, locals: {
+          page: Administrate::Page::Form.new(dashboard, building),
+        }
+      end
+    end
+
+
+    def update
+      building = Building.find(params[:id])
+      building_params = params[:building]
+      building_params.permit!
+      if building.update(building_params)
+        redirect_to(
+          [namespace, building],
+          notice: translate_with_resource("update.success"),
+        )
+      else
+        render :edit, locals: {
+          page: Administrate::Page::Form.new(dashboard, building),
+        }
+      end
+    end
+
+
   end
 end

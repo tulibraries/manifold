@@ -2,13 +2,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @person.first_name %> <%= @person.last_name %></h1>
-</p>
 
-<p>
-  <% if @person.photo.attached?  %>
-    <%= image_tag @person.photo %>
-  <% end %>
-</p>
+<% if @person.photo.attached?  %>
+  <p>
+    <%= image_tag @person.photo, class: "small" %>
+  </p>
+<% end %>
 
 <p>
   <strong>Phone number</strong>

@@ -10,12 +10,38 @@ module Admin
     #     per(10)
     # end
 
-    # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   Space.find_by!(slug: param)
-    # end
+    def create
+      space_params = params[:space]
+      space_params.permit!
+      space = Space.new(space_params)
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
+      if space.save
+        redirect_to(
+          [namespace, space],
+          notice: translate_with_resource("create.success"),
+        )
+      else
+        render :new, locals: {
+          page: Administrate::Page::Form.new(dashboard, space),
+        }
+      end
+    end
+
+
+    def update
+      space = Space.find(params[:id])
+      space_params = params[:space]
+      space_params.permit!
+      if space.update(space_params)
+        redirect_to(
+          [namespace, space],
+          notice: translate_with_resource("update.success"),
+        )
+      else
+        render :edit, locals: {
+          page: Administrate::Page::Form.new(dashboard, space),
+        }
+      end
+    end
   end
 end

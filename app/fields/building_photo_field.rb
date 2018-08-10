@@ -1,6 +1,6 @@
 require "administrate/field/base"
 
-class PhotoField < Administrate::Field::Base
+class BuildingPhotoField < Administrate::Field::Base
   def to_s
 	    data
   end

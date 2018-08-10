@@ -4,40 +4,64 @@
 <h1><%= @person.first_name %> <%= @person.last_name %></h1>
 </p>
 
-<p>
-  <% if @person.photo.attached?  %>
-    <%= image_tag @person.photo %>
-  <% end %>
-</p>
+<div class="row" style="border-bottom: solid #ccc 1px;margin-bottom: 14px;padding-bottom: 7px;">
+  <div class="col col-sm-2">
+    <% if @person.photo.attached?  %>
+      <%= image_tag @person.photo %>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Phone number</strong>
-  <%=@person.phone_number %>
-</p>
+  <div class="col col-sm-10">
+        <p style="border-bottom: solid #ccc 1px;font-size:115%;">
+          <strong><%=@person.job_title %></strong>
+        </p>
+    <div class="row">
+      <div class="col col-sm-3">
+        <p>
+        <strong>Phone number:</strong><br />
+          <%=@person.phone_number %>
+        </p>
 
-<p>
-  <strong>Email</strong>
-  <%=@person.email_address %>
-</p>
+        <p>
+          <strong>Email Address:</strong><br />
+          <%=@person.email_address %>
+        </p>
+      </div>
 
-<p>
-  <strong>Chat:</strong>
-  <%= @person.chat_handle %>
-</p>
+      <div class="col col-sm-5">
+        <% unless @person.spaces.empty? %>
+          <p>
+            <strong>Location:</strong><br />
+            <%= @building.name %>, <%= @person.spaces.last.name %>
+          </p>
+        <% end %>
 
-<p>
-  <strong>Job Title</strong>
-  <td><%=@person.job_title %>
-</p>
+        <% unless @person.research_identifier.nil? %>
+          <p>
+            <strong>Identifier:</strong><br />
+            <%=@person.research_identifier %>
+          </p>
+        <% end %>
+      </div>
 
-<p>
-  <strong>Identifier</strong>
-  <%=@person.research_identifier %>
-</p>
 
-<p>
-  <strong>Space:</strong>
-  <%= @person.spaces.last.name unless @person.spaces.empty? %>
-</p>
+      <div class="col col-sm-4">
+        <% unless @person.chat_handle.nil? %>
+          <p>
+            <strong>Chat:</strong><br />
+            <%= @person.chat_handle %>
+          </p>
+        <% end %>
+
+        <% unless @person.personal_site.nil? %>
+          <p>
+            <strong>Personal Web Site:</strong><br />
+            <%= link_to @person.personal_site, @person.personal_site %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Back', people_path %>

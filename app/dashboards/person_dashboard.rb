@@ -21,6 +21,7 @@ class PersonDashboard < Administrate::BaseDashboard
     job_title: Field::String,
     photo: Field::PhotoField,
     research_identifier: Field::String,
+    personal_site: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -50,6 +51,7 @@ class PersonDashboard < Administrate::BaseDashboard
     :research_identifier,
     :groups,
     :spaces,
+    :personal_site,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -66,6 +68,7 @@ class PersonDashboard < Administrate::BaseDashboard
     :research_identifier,
     :groups,
     :spaces,
+    :personal_site,
   ].freeze
 
   # Overwrite this method to customize how people are displayed

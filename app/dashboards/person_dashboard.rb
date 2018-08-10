@@ -9,16 +9,16 @@ class PersonDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     member: Field::HasMany,
-    groups: Field::HasMany,
+    groups: Field::HasMany, #TODO Should be required
     occupant: Field::HasMany,
     spaces: Field::HasMany,
     id: Field::Number,
-    first_name: Field::String,
-    last_name: Field::String,
+    first_name: RequiredStringField,
+    last_name: RequiredStringField,
     phone_number: Field::String,
-    email_address: Field::String,
+    email_address: RequiredStringField,
     chat_handle: Field::String,
-    job_title: Field::String,
+    job_title: RequiredStringField,
     photo: Field::PhotoField,
     springshare_id: Field::String,
     research_identifier: Field::String,

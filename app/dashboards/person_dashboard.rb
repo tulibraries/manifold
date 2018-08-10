@@ -19,6 +19,7 @@ class PersonDashboard < Administrate::BaseDashboard
     email_address: Field::String,
     chat_handle: Field::String,
     job_title: Field::String,
+    photo: Field::PhotoField,
     research_identifier: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -41,24 +42,21 @@ class PersonDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :first_name,
     :last_name,
+    :photo,
     :phone_number,
     :email_address,
     :chat_handle,
     :job_title,
     :research_identifier,
-    # :member,
     :groups,
-    # :occupant,
     :spaces,
-    # :id,
-    # :created_at,
-    # :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :photo,
     :first_name,
     :last_name,
     :phone_number,
@@ -66,9 +64,7 @@ class PersonDashboard < Administrate::BaseDashboard
     :chat_handle,
     :job_title,
     :research_identifier,
-    # :member,
     :groups,
-    # :occupant,
     :spaces,
   ].freeze
 

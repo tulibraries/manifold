@@ -1,9 +1,13 @@
-<h1>People</h1>
+
 <p id="notice"><%= notice %></p>
 
+<h1><%= @person.first_name %> <%= @person.last_name %></h1>
+</p>
+
 <p>
-  <strong>Name:</strong>
-  <%= @person.first_name %> <%= @person.last_name %>
+  <% if @person.photo.attached?  %>
+    <%= image_tag @person.photo %>
+  <% end %>
 </p>
 
 <p>

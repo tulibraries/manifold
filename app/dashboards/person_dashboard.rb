@@ -9,7 +9,7 @@ class PersonDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     member: Field::HasMany,
-    groups: Field::HasMany, #TODO Should be required
+    groups: RequiredHasManyField,
     occupant: Field::HasMany,
     spaces: Field::HasMany,
     id: Field::Number,

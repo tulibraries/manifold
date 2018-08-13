@@ -5,27 +5,11 @@ RSpec.describe Space, type: :model do
     DatabaseCleaner.clean
   end
 
-  context 'Space Class Attributes' do
-    subject { Space.new.attributes.keys }
-
-    it { is_expected.to include("name") }
-    it { is_expected.to include("description") }
-    it { is_expected.to include("hours") }
-    it { is_expected.to include("accessibility") }
-    it { is_expected.to include("phone_number") }
-    it { is_expected.to include("image") }
-    it { is_expected.to include("email") }
-    it { is_expected.to include("building_id") }
-    it { is_expected.to include("ancestry") }
-  end
-
   context 'Required Fields' do
     required_fields = [
       "name",
       "description",
-      "hours",
-      "accessibility",
-      "image",
+      "building_id",
     ]
     required_fields.each do |f|
       example "missing #{f} fields" do
@@ -86,11 +70,11 @@ RSpec.describe Space, type: :model do
       end
       example "invalid phone number" do
         space.phone_number = "215555122"
-        expect { space.save! }.to raise_error(/Phone number is not a telephone number/)
+        expect { space.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
       end
       example "invalid phone number - blank " do
         space.phone_number = ""
-        expect { space.save! }.to raise_error(/Phone number can't be blank/)
+        expect { space.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
       end
     end
 

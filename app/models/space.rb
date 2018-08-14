@@ -3,7 +3,7 @@ class Space < ApplicationRecord
   has_ancestry
 
   validates :name, :description, :hours, presence: true
- 	validates :email, email: true
+ 	validates :email, presence: true, email: true
  	validates :phone_number, phone_number: true
   validates :building_id, presence: true
 

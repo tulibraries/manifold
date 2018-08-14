@@ -27,7 +27,6 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         directions_map:       Faker::File.file_name('images/maps', 'tubldg', 'jpg'),
         hours:                "0800-2100",
         phone_number:         Faker::Number.number(10),
-        image:                Faker::File.file_name('images', 'tubldg', 'jpg'),
         campus:               Faker::Address.community,
         email:                fake_email)
 

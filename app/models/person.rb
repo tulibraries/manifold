@@ -1,7 +1,7 @@
 class Person < ApplicationRecord
   include Validators
 
-  validates :first_name, :last_name, :chat_handle, :job_title, :identifier, presence: true
+  validates :first_name, :last_name, :job_title, :research_identifier, presence: true
  	validates :email_address, presence: true, email: true
  	validates :phone_number, presence: true, phone_number: true
  	validates :spaces, presence: true

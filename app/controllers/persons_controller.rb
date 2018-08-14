@@ -11,6 +11,7 @@ class PersonsController < ApplicationController
   # GET /persons/1
   # GET /persons/1.json
   def show
+    @building = Building.find_by("id = ?", @person.spaces.last.building_id)
   end
 
   private

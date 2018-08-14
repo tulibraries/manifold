@@ -10,15 +10,15 @@ class BuildingDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: RequiredStringField,
-    description: RequiredTextField,
+    description: DescriptionField,
     address1: RequiredStringField,
     temple_building_code: RequiredStringField,
     directions_map: RequiredStringField,
     hours: Field::String,
-    phone_number: RequiredStringField,
     photo: Field::BuildingPhotoField,
+    phone_number: RequiredPhoneField,
     campus: RequiredStringField,
-    email: RequiredStringField,
+    email: Field::Email,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

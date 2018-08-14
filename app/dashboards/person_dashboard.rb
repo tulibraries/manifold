@@ -9,18 +9,20 @@ class PersonDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     member: Field::HasMany,
-    groups: Field::HasMany,
+    groups: RequiredHasManyField,
     occupant: Field::HasMany,
     spaces: Field::HasMany,
     id: Field::Number,
-    first_name: Field::String,
-    last_name: Field::String,
+    first_name: RequiredStringField,
+    last_name: RequiredStringField,
     phone_number: Field::String,
-    email_address: Field::String,
+    email_address: RequiredStringField,
     chat_handle: Field::String,
-    job_title: Field::String,
-    identifier: Field::String,
     photo: Field::PersonPhotoField,
+    job_title: RequiredStringField,
+    springshare_id: Field::String,
+    research_identifier: Field::String,
+    personal_site: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -47,9 +49,11 @@ class PersonDashboard < Administrate::BaseDashboard
     :email_address,
     :chat_handle,
     :job_title,
-    :identifier,
+    :springshare_id,
+    :research_identifier,
     :groups,
     :spaces,
+    :personal_site,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -63,9 +67,11 @@ class PersonDashboard < Administrate::BaseDashboard
     :email_address,
     :chat_handle,
     :job_title,
-    :identifier,
+    :springshare_id,
+    :research_identifier,
     :groups,
     :spaces,
+    :personal_site,
   ].freeze
 
   # Overwrite this method to customize how people are displayed

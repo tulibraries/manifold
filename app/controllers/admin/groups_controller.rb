@@ -1,19 +1,5 @@
 module Admin
   class GroupsController < Admin::ApplicationController
-    # To customize the behavior of this controller,
-    # you can overwrite any of the RESTful actions. For example:
-    #
-    # def index
-    #   super
-    #   @resources = Group.
-    #     page(params[:page]).
-    #     per(10)
-    # end
-
-    # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   Group.find_by!(slug: param)
-    # end
 
     def create
       group_params = params[:group]
@@ -50,14 +36,5 @@ module Admin
       end
     end
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
-
-    def update
-        # binding.pry 
-        # Group.find_by("group_id = ?", :id)
-        
-        super
-    end
   end
 end

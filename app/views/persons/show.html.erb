@@ -1,25 +1,33 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1><%= @person.first_name %> <%= @person.last_name %></h1>
-
-<% if @person.photo.attached?  %>
-  <p>
-    <%= image_tag @person.photo, class: "small" %>
-  </p>
-<% end %>
+<h1 style="margin-bottom: 0;"><%= @person.first_name %> <%= @person.last_name %></h1>
 
 <div class="row" style="border-bottom: solid #ccc 1px;margin-bottom: 14px;padding-bottom: 7px;">
-  <div class="col col-sm-2">
+  <div class="col col-sm-3">
     <% if @person.photo.attached?  %>
-      <%= image_tag @person.photo %>
+      <%= image_tag @person.photo.variant(resize: '300x300', gravity: 'center', extent: '300x300'), style: 'margin-top: 35px;' %>
+    <% else %>
+      <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
     <% end %>
   </div>
 
-  <div class="col col-sm-10">
+  <div class="col col-sm-9">
         <p style="border-bottom: solid #ccc 1px;font-size:115%;">
           <strong><%=@person.job_title %></strong>
         </p>
+
+        <% unless @person.spaces.empty? %>
+          <div class="row">
+            <div class="col">
+              <p>
+                <strong>Location:</strong><br />
+                <%= link_to @building.name, @building %>, <%= link_to @person.spaces.last.name, @person.spaces.last %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+
     <div class="row">
       <div class="col col-sm-3">
         <p>
@@ -33,15 +41,15 @@
         </p>
       </div>
 
-      <div class="col col-sm-5">
-        <% unless @person.spaces.empty? %>
+      <div class="col col-sm-4">
+        <% unless @person.springshare_id.blank? %>
           <p>
-            <strong>Location:</strong><br />
-            <%= @building.name %>, <%= @person.spaces.last.name %>
+            <strong>LibCal Scheduler:</strong><br />
+            <%= link_to "Schedule an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment" %>
           </p>
         <% end %>
 
-        <% unless @person.research_identifier.nil? %>
+        <% unless @person.research_identifier.blank? %>
           <p>
             <strong>Identifier:</strong><br />
             <%=@person.research_identifier %>
@@ -49,23 +57,15 @@
         <% end %>
       </div>
 
-      <div class="col col-sm-4">
-        
-        <% unless @person.springshare_id.nil? %>
-          <p>
-            <strong>LibCal Scheduler:</strong><br />
-            <%= link_to "Schedule an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment" %>
-          </p>
-        <% end %>
-
-        <% unless @person.chat_handle.nil? %>
+      <div class="col col-sm-5">
+        <% unless @person.chat_handle.blank? %>
           <p>
             <strong>Chat:</strong><br />
             <%= @person.chat_handle %>
           </p>
         <% end %>
 
-        <% unless @person.personal_site.nil? %>
+        <% unless @person.personal_site.blank? %>
           <p>
             <strong>Personal Web Site:</strong><br />
             <%= link_to @person.personal_site, @person.personal_site %>

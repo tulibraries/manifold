@@ -16,7 +16,7 @@ module Admin
       building_params.permit!
       building = Building.new(building_params)
 
-      if person.save
+      if building.save
         redirect_to(
           [namespace, building],
           notice: translate_with_resource("create.success"),

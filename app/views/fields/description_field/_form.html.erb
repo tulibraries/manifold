@@ -1,18 +1,7 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<span class="required-input">*</span>
+<!-- <span class="required-input">*</span> -->
 <div class="field-unit__field">
-  <%= f.text_area field.attribute, class: "tinymce", rows: 10, cols: 120, required: true, aria: { required: true } %>
+  <%= f.text_area field.attribute, class: "tinymce", rows: 10, cols: 120 %>
 </div>
-<style>
-<!--
-  .tinymce {
-  	display: block !important;
-		height: 0px;
-	  opacity: 0;
-	  position: relative;
-	  top: -72px;
-  }
--->
-</style>

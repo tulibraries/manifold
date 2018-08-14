@@ -1,7 +1,7 @@
 class Group < ApplicationRecord
 	include Validators
 
-	validates :name, :description, presence: true
+	validates :name, presence: true
  	validates :email_address, presence: true, email: true
  	validates :phone_number, presence: true, phone_number: true
  	validates :spaces, presence: true

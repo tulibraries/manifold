@@ -5,21 +5,6 @@ RSpec.describe Building, type: :model do
     DatabaseCleaner.clean
   end
 
-  context 'Building Class Attributes' do
-    subject { Building.new.attributes.keys }
-
-    it { is_expected.to include("name") }
-    it { is_expected.to include("description") }
-    it { is_expected.to include("address1") }
-    it { is_expected.to include("temple_building_code") }
-    it { is_expected.to include("directions_map") }
-    it { is_expected.to include("hours") }
-    it { is_expected.to include("phone_number") }
-    it { is_expected.to include("image") }
-    it { is_expected.to include("campus") }
-    it { is_expected.to include("email") }
-  end
-
   context 'Required Fields' do
     required_fields = [
       "name",
@@ -28,8 +13,6 @@ RSpec.describe Building, type: :model do
       "temple_building_code",
       "directions_map",
       "hours",
-      "image",
-      "campus",
     ]
     required_fields.each do |f|
       example "missing #{f} field" do
@@ -70,11 +53,11 @@ RSpec.describe Building, type: :model do
       end
       example "invalid phone number" do
         building.phone_number = "215555121"
-        expect { building.save! }.to raise_error(/Phone number is not a telephone number/)
+        expect { building.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
       end
       example "invalid phone number - blank " do
         building.phone_number = ""
-        expect { building.save! }.to raise_error(/Phone number can't be blank/)
+        expect { building.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
       end
     end
   end

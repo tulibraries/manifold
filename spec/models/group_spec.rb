@@ -92,7 +92,7 @@ RSpec.describe Group, type: :model do
       end
       example "invalid phone number" do
         group.phone_number = "215555122"
-        expect { group.save! }.to raise_error(/Phone number is not a telephone number/)
+        expect { group.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
       end
       example "invalid phone number - blank " do
         group.phone_number = ""

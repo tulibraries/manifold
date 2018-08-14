@@ -23,7 +23,6 @@ buildings:
   - directions_map
   - hours
   - phone_number
-  - image
   - campus
   - email
   - created_at
@@ -43,7 +42,6 @@ buildings:
     - https://library.temple.edu/about/locations/paley/directions
     - '0800-2200'
     - '2152048212'
-    - https://library.temple.edu/sites/default/files/libraries/paley_tower.jpg
     - Temple University Campus
     - diglib@temple.edu
     - '2018-07-05 14:40:07.767650'
@@ -62,7 +60,6 @@ buildings:
     - https://library.temple.edu/about/locations/ambler/directions
     - '0800-2100'
     - '2674688648'
-    - https://library.temple.edu/sites/default/files/libraries/ambler.jpg
     - Ambler Campus
     - tulamblr@temple.edu
     - '2018-07-05 14:40:07.840064'
@@ -77,7 +74,6 @@ buildings:
     - https://library.temple.edu/about/locations/simmy-and-harry-ginsb/directions
     - '0800-2100'
     - '2157072665'
-    - https://library.temple.edu/sites/default/files/ginsburgExterior_0.jpg
     - Medical Education and Research Building
     - rowena@temple.edu
     - '2018-07-05 14:40:07.898704'
@@ -90,7 +86,6 @@ buildings:
     - https://library.temple.edu/about/locations/krausz-podiatric/directions
     - '0800-2100'
     - '2156256205'
-    - https://library.temple.edu/sites/default/files/libraries/hsc_krausz.jpg
     - School of Podiatric Medicine
     - Podiatry.Library@temple.edu
     - '2018-07-05 14:40:07.954940'
@@ -108,7 +103,6 @@ buildings:
     - http://www.law.temple.edu/site/wp-content/uploads/2015/03/Temple-Law_Campus-Map.pdf
     - '0900-1800'
     - '2152045819'
-    - https://www.law.temple.edu/site/wp-content/uploads/2014/06/20100202_Klein_072-970x320.jpg
     - University Acres
     - tulawlib@temple.edu
     - '2018-07-05 14:40:08.028454'
@@ -134,7 +128,6 @@ buildings:
     - images/maps/tubldg.jpg
     - '0800-2100'
     - '8721486910'
-    - https://library.temple.edu/sites/default/files/libraries/rome.jpg
     - Temple Rome
     - rome.library@temple.edu
     - '2018-07-05 14:40:08.094579'
@@ -155,7 +148,6 @@ buildings:
     - images/maps/tubldg.jpg
     - '0800-2100'
     - '8721486910'
-    - https://library.temple.edu/sites/default/files/libraries/japan.jpg
     - Temple Japan
     - tokyo.library@temple.edu
     - '2018-07-05 14:40:08.094579'
@@ -176,7 +168,6 @@ buildings:
     - images/maps/tubldg.jpg
     - '0800-2100'
     - '8721486910'
-    - https://library.temple.edu/sites/default/files/libraries/japan.jpg
     - Temple Japan
     - osaka.library@temple.edu
     - '2018-07-05 14:40:08.094579'
@@ -645,7 +636,6 @@ spaces:
   - hours
   - accessibility
   - phone_number
-  - image
   - email
   - building_id
   - created_at
@@ -664,7 +654,6 @@ spaces:
     - '0830-1730'
     - 'Yes'
     - '2152048257'
-    - http://library.temple.edu/sites/default/files/scrc3.png
     - scrc@temple.edu
     - 1
     - '2018-07-05 14:40:07.781067'
@@ -680,7 +669,6 @@ spaces:
     - '0900-1700'
     - 'Yes'
     - '2155551212'
-    - https://library.temple.edu/sites/default/files/styles/homepage_highlight/public/DSC.jpg?itok=nEmbQXkI
     - dsc@temple.edu
     - 1
     - '2018-07-05 14:40:07.791708'
@@ -694,7 +682,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4791980916'
-    - images/tubldg.jpg
     - ike@temple.edu
     - 1
     - '2018-07-05 14:40:07.794154'
@@ -707,7 +694,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1009507769'
-    - images/tubldg.jpg
     - mona@temple.edu
     - 1
     - '2018-07-05 14:40:07.796373'
@@ -720,7 +706,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3424613162'
-    - images/tubldg.jpg
     - bria_reichel@temple.edu
     - 1
     - '2018-07-05 14:40:07.798556'
@@ -734,7 +719,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2689426374'
-    - images/tubldg.jpg
     - elsa@temple.edu
     - 1
     - '2018-07-05 14:40:07.801088'
@@ -747,7 +731,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7040235600'
-    - images/tubldg.jpg
     - sophia@temple.edu
     - 1
     - '2018-07-05 14:40:07.803266'
@@ -760,7 +743,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4029848930'
-    - images/tubldg.jpg
     - ardella_price@temple.edu
     - 1
     - '2018-07-05 14:40:07.805422'
@@ -774,7 +756,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7584406813'
-    - images/tubldg.jpg
     - melvin@temple.edu
     - 1
     - '2018-07-05 14:40:07.807486'
@@ -788,7 +769,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9274406819'
-    - images/tubldg.jpg
     - bud@temple.edu
     - 1
     - '2018-07-05 14:40:07.809988'
@@ -802,7 +782,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3119643296'
-    - images/tubldg.jpg
     - abby@temple.edu
     - 1
     - '2018-07-05 14:40:07.813163'
@@ -815,7 +794,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7872874232'
-    - images/tubldg.jpg
     - breanna@temple.edu
     - 1
     - '2018-07-05 14:40:07.816129'
@@ -829,7 +807,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2142401328'
-    - images/tubldg.jpg
     - isaiah@temple.edu
     - 1
     - '2018-07-05 14:40:07.818731'
@@ -842,7 +819,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6335816788'
-    - images/tubldg.jpg
     - santiago@temple.edu
     - 1
     - '2018-07-05 14:40:07.821375'
@@ -856,7 +832,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5380843422'
-    - images/tubldg.jpg
     - evangeline.turcotte@temple.edu
     - 1
     - '2018-07-05 14:40:07.823738'
@@ -869,7 +844,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5924599132'
-    - images/tubldg.jpg
     - khalil.buckridge@temple.edu
     - 1
     - '2018-07-05 14:40:07.826290'
@@ -882,7 +856,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6526184730'
-    - images/tubldg.jpg
     - eva.hilpert@temple.edu
     - 1
     - '2018-07-05 14:40:07.829131'
@@ -895,7 +868,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1593870392'
-    - images/tubldg.jpg
     - chandler_altenwerth@temple.edu
     - 1
     - '2018-07-05 14:40:07.831892'
@@ -908,7 +880,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9218549372'
-    - images/tubldg.jpg
     - abner.pacocha@temple.edu
     - 1
     - '2018-07-05 14:40:07.834915'
@@ -922,7 +893,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9295045653'
-    - images/tubldg.jpg
     - kelton@temple.edu
     - 1
     - '2018-07-05 14:40:07.837642'
@@ -935,7 +905,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1562910371'
-    - images/tubldg.jpg
     - briana@temple.edu
     - 2
     - '2018-07-05 14:40:07.842332'
@@ -948,7 +917,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2574695808'
-    - images/tubldg.jpg
     - watson@temple.edu
     - 2
     - '2018-07-05 14:40:07.844649'
@@ -961,7 +929,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5999303229'
-    - images/tubldg.jpg
     - justyn@temple.edu
     - 2
     - '2018-07-05 14:40:07.846704'
@@ -975,7 +942,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5906936087'
-    - images/tubldg.jpg
     - wilber.reynolds@temple.edu
     - 2
     - '2018-07-05 14:40:07.848776'
@@ -988,7 +954,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8308978932'
-    - images/tubldg.jpg
     - marielle@temple.edu
     - 2
     - '2018-07-05 14:40:07.850924'
@@ -1001,7 +966,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6443167946'
-    - images/tubldg.jpg
     - shanon.hand@temple.edu
     - 2
     - '2018-07-05 14:40:07.853275'
@@ -1014,7 +978,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6390394416'
-    - images/tubldg.jpg
     - virgil@temple.edu
     - 2
     - '2018-07-05 14:40:07.855712'
@@ -1028,7 +991,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5461661230'
-    - images/tubldg.jpg
     - cydney_ortiz@temple.edu
     - 2
     - '2018-07-05 14:40:07.858337'
@@ -1041,7 +1003,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7422829830'
-    - images/tubldg.jpg
     - magnolia.hirthe@temple.edu
     - 2
     - '2018-07-05 14:40:07.861645'
@@ -1055,7 +1016,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6334465074'
-    - images/tubldg.jpg
     - mertie.langosh@temple.edu
     - 2
     - '2018-07-05 14:40:07.864738'
@@ -1068,7 +1028,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2886406708'
-    - images/tubldg.jpg
     - carlos_gaylord@temple.edu
     - 2
     - '2018-07-05 14:40:07.867746'
@@ -1081,7 +1040,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9299990154'
-    - images/tubldg.jpg
     - glen_haag@temple.edu
     - 2
     - '2018-07-05 14:40:07.870659'
@@ -1094,7 +1052,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1733219092'
-    - images/tubldg.jpg
     - bulah.cummerata@temple.edu
     - 2
     - '2018-07-05 14:40:07.873819'
@@ -1107,7 +1064,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9522419637'
-    - images/tubldg.jpg
     - celia.jast@temple.edu
     - 2
     - '2018-07-05 14:40:07.876873'
@@ -1120,7 +1076,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8819628515'
-    - images/tubldg.jpg
     - shemar_wilkinson@temple.edu
     - 2
     - '2018-07-05 14:40:07.879793'
@@ -1134,7 +1089,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6290594979'
-    - images/tubldg.jpg
     - zackery@temple.edu
     - 2
     - '2018-07-05 14:40:07.883604'
@@ -1146,7 +1100,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2235574182'
-    - images/tubldg.jpg
     - lori.thompson@temple.edu
     - 2
     - '2018-07-05 14:40:07.886713'
@@ -1159,7 +1112,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6581535183'
-    - images/tubldg.jpg
     - antonina.ruel@temple.edu
     - 2
     - '2018-07-05 14:40:07.889761'
@@ -1172,7 +1124,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8357849973'
-    - images/tubldg.jpg
     - gunnar_ratke@temple.edu
     - 2
     - '2018-07-05 14:40:07.892437'
@@ -1186,7 +1137,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4483839675'
-    - images/tubldg.jpg
     - bridgette@temple.edu
     - 2
     - '2018-07-05 14:40:07.896007'
@@ -1200,7 +1150,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4755544647'
-    - images/tubldg.jpg
     - mayra@temple.edu
     - 3
     - '2018-07-05 14:40:07.901242'
@@ -1213,7 +1162,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7410194609'
-    - images/tubldg.jpg
     - jack.blick@temple.edu
     - 3
     - '2018-07-05 14:40:07.903755'
@@ -1226,7 +1174,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4287094616'
-    - images/tubldg.jpg
     - michele@temple.edu
     - 3
     - '2018-07-05 14:40:07.906136'
@@ -1240,7 +1187,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7877519180'
-    - images/tubldg.jpg
     - kathleen_schuppe@temple.edu
     - 3
     - '2018-07-05 14:40:07.908528'
@@ -1253,7 +1199,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2553045103'
-    - images/tubldg.jpg
     - carlee@temple.edu
     - 3
     - '2018-07-05 14:40:07.910869'
@@ -1266,7 +1211,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6230122023'
-    - images/tubldg.jpg
     - myrtie@temple.edu
     - 3
     - '2018-07-05 14:40:07.913023'
@@ -1278,7 +1222,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8849054827'
-    - images/tubldg.jpg
     - sam.johnson@temple.edu
     - 3
     - '2018-07-05 14:40:07.915210'
@@ -1292,7 +1235,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4809421890'
-    - images/tubldg.jpg
     - jordane@temple.edu
     - 3
     - '2018-07-05 14:40:07.917790'
@@ -1306,7 +1248,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3236063067'
-    - images/tubldg.jpg
     - cornelius@temple.edu
     - 3
     - '2018-07-05 14:40:07.920276'
@@ -1319,7 +1260,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9537369544'
-    - images/tubldg.jpg
     - garnett@temple.edu
     - 3
     - '2018-07-05 14:40:07.922447'
@@ -1332,7 +1272,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2384160047'
-    - images/tubldg.jpg
     - kendrick_ledner@temple.edu
     - 3
     - '2018-07-05 14:40:07.925616'
@@ -1345,7 +1284,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2000311422'
-    - images/tubldg.jpg
     - haie.hahn@temple.edu
     - 3
     - '2018-07-05 14:40:07.928675'
@@ -1358,7 +1296,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6757364170'
-    - images/tubldg.jpg
     - asha@temple.edu
     - 3
     - '2018-07-05 14:40:07.931472'
@@ -1371,7 +1308,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4743064191'
-    - images/tubldg.jpg
     - gilda@temple.edu
     - 3
     - '2018-07-05 14:40:07.934278'
@@ -1385,7 +1321,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2398432150'
-    - images/tubldg.jpg
     - virginie@temple.edu
     - 3
     - '2018-07-05 14:40:07.937020'
@@ -1399,7 +1334,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6885018147'
-    - images/tubldg.jpg
     - danika.thompson@temple.edu
     - 3
     - '2018-07-05 14:40:07.940469'
@@ -1412,7 +1346,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2833039749'
-    - images/tubldg.jpg
     - milton@temple.edu
     - 3
     - '2018-07-05 14:40:07.943188'
@@ -1425,7 +1358,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5155851436'
-    - images/tubldg.jpg
     - lavern.harvey@temple.edu
     - 3
     - '2018-07-05 14:40:07.946398'
@@ -1439,7 +1371,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9606210433'
-    - images/tubldg.jpg
     - sigurd_kilback@temple.edu
     - 3
     - '2018-07-05 14:40:07.949179'
@@ -1453,7 +1384,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9887714274'
-    - images/tubldg.jpg
     - sanford_lehner@temple.edu
     - 3
     - '2018-07-05 14:40:07.951886'
@@ -1467,7 +1397,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9970796163'
-    - images/tubldg.jpg
     - justine@temple.edu
     - 4
     - '2018-07-05 14:40:07.957655'
@@ -1480,7 +1409,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5171605048'
-    - images/tubldg.jpg
     - shad.hand@temple.edu
     - 4
     - '2018-07-05 14:40:07.960529'
@@ -1493,7 +1421,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3479324685'
-    - images/tubldg.jpg
     - perry_leannon@temple.edu
     - 4
     - '2018-07-05 14:40:07.963108'
@@ -1506,7 +1433,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5533673680'
-    - images/tubldg.jpg
     - verner.howe@temple.edu
     - 4
     - '2018-07-05 14:40:07.965594'
@@ -1519,7 +1445,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9992630906'
-    - images/tubldg.jpg
     - maryjane@temple.edu
     - 4
     - '2018-07-05 14:40:07.968300'
@@ -1533,7 +1458,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5809007792'
-    - images/tubldg.jpg
     - alta_lindgren@temple.edu
     - 4
     - '2018-07-05 14:40:07.971301'
@@ -1547,7 +1471,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3210342421'
-    - images/tubldg.jpg
     - porter_schiller@temple.edu
     - 4
     - '2018-07-05 14:40:07.974066'
@@ -1562,7 +1485,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3800285527'
-    - images/tubldg.jpg
     - daphne_kulas@temple.edu
     - 4
     - '2018-07-05 14:40:07.977188'
@@ -1575,7 +1497,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9297498176'
-    - images/tubldg.jpg
     - susana@temple.edu
     - 4
     - '2018-07-05 14:40:07.979982'
@@ -1588,7 +1509,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2854566408'
-    - images/tubldg.jpg
     - marcellus.greenfelder@temple.edu
     - 4
     - '2018-07-05 14:40:07.982884'
@@ -1601,7 +1521,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2826991168'
-    - images/tubldg.jpg
     - griffin@temple.edu
     - 4
     - '2018-07-05 14:40:07.986527'
@@ -1614,7 +1533,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1393719529'
-    - images/tubldg.jpg
     - torrance_wyman@temple.edu
     - 4
     - '2018-07-05 14:40:07.990108'
@@ -1628,7 +1546,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2017071595'
-    - images/tubldg.jpg
     - fannie@temple.edu
     - 4
     - '2018-07-05 14:40:07.993430'
@@ -1641,7 +1558,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1790960445'
-    - images/tubldg.jpg
     - sean@temple.edu
     - 4
     - '2018-07-05 14:40:07.996754'
@@ -1654,7 +1570,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7246186527'
-    - images/tubldg.jpg
     - laisha@temple.edu
     - 4
     - '2018-07-05 14:40:07.999718'
@@ -1666,7 +1581,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2872029590'
-    - images/tubldg.jpg
     - khalid.olson@temple.edu
     - 4
     - '2018-07-05 14:40:08.007251'
@@ -1681,7 +1595,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9272907878'
-    - images/tubldg.jpg
     - wilfredo.tremblay@temple.edu
     - 4
     - '2018-07-05 14:40:08.011535'
@@ -1695,7 +1608,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7538509005'
-    - images/tubldg.jpg
     - shemar.friesen@temple.edu
     - 4
     - '2018-07-05 14:40:08.015713'
@@ -1708,7 +1620,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1441330087'
-    - images/tubldg.jpg
     - soledad@temple.edu
     - 4
     - '2018-07-05 14:40:08.020273'
@@ -1721,7 +1632,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6381498372'
-    - images/tubldg.jpg
     - melody.mertz@temple.edu
     - 4
     - '2018-07-05 14:40:08.024780'
@@ -1734,7 +1644,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5231875346'
-    - images/tubldg.jpg
     - macey_goldner@temple.edu
     - 5
     - '2018-07-05 14:40:08.032656'
@@ -1748,7 +1657,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7107124459'
-    - images/tubldg.jpg
     - litzy@temple.edu
     - 5
     - '2018-07-05 14:40:08.036092'
@@ -1761,7 +1669,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9244911147'
-    - images/tubldg.jpg
     - aric@temple.edu
     - 5
     - '2018-07-05 14:40:08.039499'
@@ -1775,7 +1682,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1975282628'
-    - images/tubldg.jpg
     - geovanny.boyle@temple.edu
     - 5
     - '2018-07-05 14:40:08.042651'
@@ -1788,7 +1694,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7512839539'
-    - images/tubldg.jpg
     - cade@temple.edu
     - 5
     - '2018-07-05 14:40:08.045832'
@@ -1801,7 +1706,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3133401531'
-    - images/tubldg.jpg
     - nikolas@temple.edu
     - 5
     - '2018-07-05 14:40:08.048340'
@@ -1815,7 +1719,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4208285156'
-    - images/tubldg.jpg
     - branson_abbott@temple.edu
     - 5
     - '2018-07-05 14:40:08.050824'
@@ -1827,7 +1730,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5015368579'
-    - images/tubldg.jpg
     - lilly@temple.edu
     - 5
     - '2018-07-05 14:40:08.053332'
@@ -1842,7 +1744,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7043882835'
-    - images/tubldg.jpg
     - maci_koelpin@temple.edu
     - 5
     - '2018-07-05 14:40:08.055961'
@@ -1855,7 +1756,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9996530571'
-    - images/tubldg.jpg
     - fabian.witting@temple.edu
     - 5
     - '2018-07-05 14:40:08.058435'
@@ -1868,7 +1768,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3990902743'
-    - images/tubldg.jpg
     - lionel@temple.edu
     - 5
     - '2018-07-05 14:40:08.061513'
@@ -1881,7 +1780,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4192749805'
-    - images/tubldg.jpg
     - kamille@temple.edu
     - 5
     - '2018-07-05 14:40:08.064431'
@@ -1894,7 +1792,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2950955866'
-    - images/tubldg.jpg
     - brian_bins@temple.edu
     - 5
     - '2018-07-05 14:40:08.067421'
@@ -1907,7 +1804,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2215980062'
-    - images/tubldg.jpg
     - amos.mcclure@temple.edu
     - 5
     - '2018-07-05 14:40:08.070316'
@@ -1920,7 +1816,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8724858417'
-    - images/tubldg.jpg
     - rupert.howe@temple.edu
     - 5
     - '2018-07-05 14:40:08.073219'
@@ -1933,7 +1828,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2959419039'
-    - images/tubldg.jpg
     - lafayette@temple.edu
     - 5
     - '2018-07-05 14:40:08.076241'
@@ -1946,7 +1840,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7129702348'
-    - images/tubldg.jpg
     - fritz@temple.edu
     - 5
     - '2018-07-05 14:40:08.079339'
@@ -1960,7 +1853,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8419785344'
-    - images/tubldg.jpg
     - cordelia@temple.edu
     - 5
     - '2018-07-05 14:40:08.082401'
@@ -1973,7 +1865,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4599674224'
-    - images/tubldg.jpg
     - carolina_brekke@temple.edu
     - 5
     - '2018-07-05 14:40:08.086403'
@@ -1986,7 +1877,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5873839829'
-    - images/tubldg.jpg
     - triston.heller@temple.edu
     - 5
     - '2018-07-05 14:40:08.090833'
@@ -1999,7 +1889,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1696397406'
-    - images/tubldg.jpg
     - rosa.ruel@temple.edu
     - 6
     - '2018-07-05 14:40:08.098798'
@@ -2012,7 +1901,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5488316964'
-    - images/tubldg.jpg
     - andres@temple.edu
     - 6
     - '2018-07-05 14:40:08.101405'
@@ -2025,7 +1913,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '5488214839'
-    - images/tubldg.jpg
     - brigitte_boyer@temple.edu
     - 6
     - '2018-07-05 14:40:08.104783'
@@ -2039,7 +1926,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8447436969'
-    - images/tubldg.jpg
     - aiyana_conn@temple.edu
     - 6
     - '2018-07-05 14:40:08.108015'
@@ -2053,7 +1939,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1718929423'
-    - images/tubldg.jpg
     - mattie@temple.edu
     - 6
     - '2018-07-05 14:40:08.110856'
@@ -2066,7 +1951,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8448027778'
-    - images/tubldg.jpg
     - wilma.spencer@temple.edu
     - 6
     - '2018-07-05 14:40:08.113494'
@@ -2079,7 +1963,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6868954982'
-    - images/tubldg.jpg
     - theresa@temple.edu
     - 6
     - '2018-07-05 14:40:08.116016'
@@ -2092,7 +1975,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8845316269'
-    - images/tubldg.jpg
     - shane@temple.edu
     - 6
     - '2018-07-05 14:40:08.118290'
@@ -2106,7 +1988,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1847429259'
-    - images/tubldg.jpg
     - cary_walker@temple.edu
     - 6
     - '2018-07-05 14:40:08.121483'
@@ -2120,7 +2001,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '4186615782'
-    - images/tubldg.jpg
     - jovany@temple.edu
     - 6
     - '2018-07-05 14:40:08.124545'
@@ -2134,7 +2014,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '7559167452'
-    - images/tubldg.jpg
     - jermaine.roob@temple.edu
     - 6
     - '2018-07-05 14:40:08.128428'
@@ -2148,7 +2027,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1383085977'
-    - images/tubldg.jpg
     - jordan_hammes@temple.edu
     - 6
     - '2018-07-05 14:40:08.131598'
@@ -2161,7 +2039,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6773741028'
-    - images/tubldg.jpg
     - mina_bruen@temple.edu
     - 6
     - '2018-07-05 14:40:08.135369'
@@ -2174,7 +2051,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '6920241731'
-    - images/tubldg.jpg
     - joany@temple.edu
     - 6
     - '2018-07-05 14:40:08.138218'
@@ -2187,7 +2063,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8504537423'
-    - images/tubldg.jpg
     - jordan@temple.edu
     - 6
     - '2018-07-05 14:40:08.141995'
@@ -2201,7 +2076,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '9300920484'
-    - images/tubldg.jpg
     - bethany_abernathy@temple.edu
     - 6
     - '2018-07-05 14:40:08.144945'
@@ -2215,7 +2089,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '3526727185'
-    - images/tubldg.jpg
     - sydni_parker@temple.edu
     - 6
     - '2018-07-05 14:40:08.147922'
@@ -2228,7 +2101,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '8702484395'
-    - images/tubldg.jpg
     - clara@temple.edu
     - 6
     - '2018-07-05 14:40:08.150611'
@@ -2241,7 +2113,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '1799632829'
-    - images/tubldg.jpg
     - tristian_welch@temple.edu
     - 6
     - '2018-07-05 14:40:08.153705'
@@ -2254,7 +2125,6 @@ spaces:
     - '0800-2100'
     - 'Yes'
     - '2924969880'
-    - images/tubldg.jpg
     - nannie@temple.edu
     - 6
     - '2018-07-05 14:40:08.157152'

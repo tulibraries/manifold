@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @building.name %>
-</p>
+</h1>
+
+<% if @building.photo.attached?  %>
+  <p>
+    <%= image_tag @building.photo, class: "large" %>
+  </p>
+<% end %>
 
 <p>
   <strong>Description:</strong>

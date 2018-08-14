@@ -1,50 +1,61 @@
-<h1>Spaces</h1>
+<h1><%= @space.name %></h1>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @space.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @space.description %>
-</p>
+<div class="row" style="border-bottom: solid #ccc 1px;margin-bottom: 14px;padding-bottom: 7px;">
+  <div class="col col-sm-3">
+    <% if @space.photo.attached?  %>
+      <%= image_tag @space.photo.variant(resize: '300x300', gravity: 'center', extent: '300x300'), style: 'margin-top: 35px;' %>
+    <% else %>
+      <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
+    <% end %>
+  </div>
+  <div class="col col-sm-9">
+    <p>
+    <strong>Location:</strong>
+      <%= @space.building.name %>
+    </p>
 
-<p>
-  <strong>Hours</strong>
-  <td><%=@space.hours %>
-</p>
+    <% unless @space.parent_id.blank? %>
+      <p>
+        <strong>Parent space:</strong>
+        <%= @space.parent.name %>
+      </p>
+    <% end %>
 
-<p>
-  <strong>Accessibility</strong>
-  <%=@space.accessibility %>
-</p>
+    <% unless @space.hours.blank? %>
+    <p>
+      <strong>Hours</strong>
+      <%= @space.hours %>
+    </p>
+    <% end %>
 
-<p>
-  <strong>Phone number</strong>
-  <%=@space.phone_number %>
-</p>
+    <p>
+      <%= @space.description.html_safe %>
+    </p>
 
-<p>
-  <strong>Image</strong>
-  <%=@space.image %>
-</p>
+    <% unless @space.phone_number.blank? %>
+    <p>
+      <strong>Phone number</strong>
+      <%= @space.phone_number %>
+    </p>
+    <% end %>
 
-<p>
-  <strong>Email</strong>
-  <%=@space.email %>
-</p>
+    <% unless @space.email.blank? %>
+    <p>
+      <strong>Email</strong>
+      <%=@space.email %>
+    </p>
+    <% end %>
 
-<p>
-  <strong>Building:</strong>
-  <%= @space.building.name %>
-</p>
-<% unless @space.parent_id.nil? %>
-  <p>
-    <strong>Parent space:</strong>
-    <%= @space.parent.name %>
-  </p>
-<% end %>
+    <% unless @space.accessibility.blank? %>
+    <p>
+      <strong>Accessibility</strong>
+      <%= @space.accessibility %>
+    </p>
+    <% end %>
 
+    </div>
+
+  </div>
 <%= link_to 'Back', spaces_path %>

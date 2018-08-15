@@ -15,7 +15,7 @@ class BuildingDashboard < Administrate::BaseDashboard
     temple_building_code: Field::String,
     directions_map: Field::String,
     hours: Field::String,
-    phone_number: RequiredPhoneField,
+    phone_number: PhoneField,
     campus: Field::String,
     email: Field::Email,
     created_at: Field::DateTime,

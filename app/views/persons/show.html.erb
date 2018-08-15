@@ -6,7 +6,7 @@
 <div class="row" style="border-bottom: solid #ccc 1px;margin-bottom: 14px;padding-bottom: 7px;">
   <div class="col col-sm-3">
     <% if @person.photo.attached?  %>
-      <%= image_tag @person.photo.variant(resize: '300x300', gravity: 'center', extent: '300x300'), style: 'margin-top: 35px;' %>
+      <%= image_tag @person.photo.variant(resize: '280x280', gravity: 'center', extent: '300x300'), style: 'margin-top: 35px;' %>
     <% else %>
       <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
     <% end %>

@@ -18,7 +18,7 @@ class SpaceDashboard < Administrate::BaseDashboard
     description: DescriptionField,
     hours: RequiredStringField,
     accessibility: Field::Text,
-    photo: Field::SpacePhotoField,
+    photo: PhotoField,
     phone_number: PhoneField,
     email: Field::Email,
     created_at: Field::DateTime,

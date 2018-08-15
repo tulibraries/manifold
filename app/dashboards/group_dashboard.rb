@@ -18,6 +18,11 @@ class GroupDashboard < Administrate::BaseDashboard
     persons: Field::HasMany,
     space_group: Field::HasMany,
     spaces: Field::HasMany,
+    document: DocumentField,
+    external: Field::Boolean,
+    group_type: Field::Select.with_options(
+      collection: ["Assembly","Committee","Department","Functional Team","Strategic Steering Team","Working Group"]
+      ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -39,11 +44,14 @@ class GroupDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :description,
+    :group_type,
     :phone_number,
     :email_address,
     :chair_dept_head,
     :persons,
     :spaces,
+    :external,
+    :document,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -52,11 +60,14 @@ class GroupDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
+    :group_type,
+    :external,
     :phone_number,
     :email_address,
     :chair_dept_head,
     :persons,
     :spaces,
+    :document,
   ].freeze
 
   # Overwrite this method to customize how groups are displayed

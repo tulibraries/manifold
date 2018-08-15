@@ -7,9 +7,24 @@
 </p>
 
 <p>
-  <strong>Description: </strong>
-  <%= @group.description %>
+  <strong>Group Type: </strong>
+  <%= @group.group_type %>
 </p>
+
+
+<% unless @group.description.blank? %>
+<p>
+  <strong>Description: </strong>
+  <%= @group.description.html_safe %>
+</p>
+<% end %>
+
+<% unless @group.external.nil? %>
+<p>
+  <strong>External Group: </strong>
+  <%= @group.external %>
+</p>
+<% end %>
 
 <p>
   <strong>Phone number: </strong>
@@ -39,5 +54,12 @@
   <strong>Space: </strong>
   <%= @group.spaces.first.name unless @group.spaces.empty? %>
 </p>
+
+<% if @group.document.attached? %>
+  <p>
+    <strong>Documentation: </strong>
+    <%= link_to @group.document.filename.to_s, rails_blob_path(@group.document, disposition: "attachment") %>
+  </p>
+<% end %>
 
 <%= link_to 'Back', groups_path %>

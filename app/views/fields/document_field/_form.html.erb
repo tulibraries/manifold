@@ -1,0 +1,11 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+  <% if field.data.attached? %>
+	  <p><%= link_to field.data.attachment.filename.to_s, rails_blob_path(field.data.attachment, disposition: "attachment") %></p>
+	  <%= f.file_field field.attribute %>
+	<% else %>
+	  <%= f.file_field field.attribute %>    
+	<% end %>
+</div>

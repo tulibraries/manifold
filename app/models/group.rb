@@ -1,13 +1,13 @@
 class Group < ApplicationRecord
 	include Validators
 
-	validates :name, presence: true
+  auto_strip_attributes :email_address
+
+	validates :name, :group_type, :spaces, :chair_dept_head, presence: true
  	validates :email_address, presence: true, email: true
  	validates :phone_number, presence: true, phone_number: true
- 	validates :spaces, presence: true
-	validates :chair_dept_head, presence: true
 
-	auto_strip_attributes :email_address
+  has_one_attached :document, dependent: :destroy
 
   has_many :member
   has_many :persons, through: :member, source: :person

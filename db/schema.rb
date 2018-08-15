@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_201245) do
+ActiveRecord::Schema.define(version: 2018_08_15_181937) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2018_08_13_201245) do
     t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "group_type"
+    t.boolean "external"
   end
 
   create_table "members", force: :cascade do |t|

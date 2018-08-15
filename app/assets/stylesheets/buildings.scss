@@ -12,47 +12,32 @@
 }
 
 .field-unit__label {
-
-  label[for="building_name"] {
-    color: $red;
-   }
   label[for="building_name"]::after {
     content: " * ";
-   }
-  label[for="building_description"] {
     color: $red;
    }
   label[for="building_description"]::after {
     content: " * ";
-   }
-  label[for="building_address1"] {
     color: $red;
    }
   label[for="building_address1"]::after {
     content: " * ";
-   }
-  label[for="building_temple_building_code"] {
     color: $red;
    }
   label[for="building_temple_building_code"]::after {
     content: " * ";
-   }
-  label[for="building_directions_map"] {
     color: $red;
    }
   label[for="building_directions_map"]::after {
     content: " * ";
-   }
-  label[for="building_phone_number"] {
     color: $red;
    }
   label[for="building_phone_number"]::after {
     content: " * ";
-   }
-  label[for="building_campus"] {
     color: $red;
    }
   label[for="building_campus"]::after {
     content: " * ";
+    color: $red;
    }
 }

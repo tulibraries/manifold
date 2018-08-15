@@ -2,5 +2,10 @@
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
-  <%= f.file_field field.attribute %>
+	<% if field.data.attached? %>
+	  <%= image_tag field.data %><br />
+	  <%= f.file_field field.attribute %>
+	<% else %>
+	  <%= f.file_field field.attribute %>    
+	<% end %>
 </div>

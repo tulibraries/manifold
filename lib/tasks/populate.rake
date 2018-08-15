@@ -30,7 +30,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         campus:               Faker::Address.community,
         email:                fake_email)
 
-      for s in 1..10 do
+      for s in 1..4 do
         space = Space.create!(
           name:            "Room " + Faker::Number.number(2) + "0",
           description:     Faker::Lorem.paragraph,
@@ -41,7 +41,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           building:        building,
           image:           Faker::File.file_name('images', 'tubldg', 'jpg'))
       end
-      for s in 1..10 do
+      for s in 1..2 do
         space = Space.create!(
           name:            "Room " + Faker::Number.number(2) + "0",
           description:     Faker::Lorem.paragraph,
@@ -50,7 +50,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           email:           fake_email,
           phone_number:    Faker::Number.number(10),
           image:           Faker::File.file_name('images', 'tubldg', 'jpg'),
-          parent:          Space.order("RANDOM()").first,
+          parent:          Space.all.sample,
           building:        building)
       end
     end
@@ -64,18 +64,18 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         chat_handle:   Faker::Twitter.screen_name,
         job_title:     Faker::Job.title,
         research_identifier:    "TU" + Faker::Number.number(6),
-        spaces:        [Space.order("RANDOM()").first])
+        spaces:        [Space.all.sample])
     end
 
-    for g in 1..10 do
+    for g in 1..5 do
       group = Group.create!(
         name:          Faker::Job.field,
         description:   Faker::Lorem.paragraph,
         phone_number:  Faker::Number.number(10),
         email_address: fake_email,
         chair_dept_head: Person.all.sample,
-        persons:       [Person.order("RANDOM()").first],
-        spaces:        [Space.order("RANDOM()").first])
+        persons:       Person.all.sample(4),
+        spaces:        [Space.all.sample])
     end
   end
 end

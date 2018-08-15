@@ -1,5 +1,6 @@
 class Space < ApplicationRecord
   include Validators
+  include InputCleaner
   has_ancestry
 
   validates :name, :hours, presence: true
@@ -10,6 +11,8 @@ class Space < ApplicationRecord
   auto_strip_attributes :email
 
   has_one_attached :photo, dependent: :destroy
+
+  before_validation :normalize_phone_number
 
   belongs_to :building
 

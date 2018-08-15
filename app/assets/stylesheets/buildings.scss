@@ -4,14 +4,8 @@
 
 @import "administrate/library/_variables.scss";
 
-.field-unit--required-phone-field {
-  label {
-  position: relative;
-  top: -14px;
-  }
-}
-
 .field-unit__label {
+
   label[for="building_name"]::after {
     content: " * ";
     color: $red;
@@ -19,7 +13,7 @@
   label[for="building_description"]::after {
     content: " * ";
     color: $red;
-   }
+  }
   label[for="building_address1"]::after {
     content: " * ";
     color: $red;
@@ -37,6 +31,79 @@
     color: $red;
    }
   label[for="building_campus"]::after {
+    content: " * ";
+    color: $red;
+   }
+
+   /*SPACES*/
+  
+  label[for="space_name"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="space_description"]::after {
+    content: " * ";
+    color: $red;
+  }
+  label[for="space_building_id"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="space_hours"]::after {
+    content: " * ";
+    color: $red;
+   }
+
+      /*PERSON*/
+  
+  label[for="person_first_name"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="person_last_name"]::after {
+    content: " * ";
+    color: $red;
+  }
+  label[for="person_phone_number"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="person_email_address"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="person_job_title"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="person_space_ids-selectized"]::after {
+    content: " * ";
+    color: $red;
+   }
+
+   /*GROUPS*/
+
+  label[for="group_name"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="group_description"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="group_space_ids-selectized"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="group_phone_number"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="group_email_address"]::after {
+    content: " * ";
+    color: $red;
+   }
+  label[for="group_chair_dept_head"]::after {
     content: " * ";
     color: $red;
    }

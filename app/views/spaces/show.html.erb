@@ -11,6 +11,12 @@
     <% end %>
   </div>
   <div class="col col-sm-9">
+    <% unless @space.description.blank? %>
+    <p>
+      <%= @space.description.html_safe %>
+    </p>
+    <% end %>
+
     <p>
     <strong>Location:</strong>
       <%= @space.building.name %>
@@ -29,10 +35,6 @@
       <%= @space.hours %>
     </p>
     <% end %>
-
-    <p>
-      <%= @space.description.html_safe %>
-    </p>
 
     <% unless @space.phone_number.blank? %>
     <p>

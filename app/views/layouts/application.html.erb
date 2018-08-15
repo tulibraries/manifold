@@ -15,7 +15,18 @@
 
   <%= render "header_navbar.html.erb" %>
 
+  <div id="content" class="container">
+    <a href="#" name="skiplink_ada" id="skiplink_ada"></a>
+    <div class="container">
+
+    <% flash.each do |key, value| %>
+       <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+
     <%= yield %>
+
+    </div>
+  </div>
 
   <%= render "footer.html.erb" %>
 

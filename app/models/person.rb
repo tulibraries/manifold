@@ -1,14 +1,17 @@
 class Person < ApplicationRecord
   include Validators
+  include InputCleaner
 
-  validates :first_name, :last_name, :job_title, :research_identifier, presence: true
+  validates :first_name, :last_name, :job_title, presence: true
  	validates :email_address, presence: true, email: true
- 	validates :phone_number, presence: true, phone_number: true
+ 	validates :phone_number, phone_number: true
  	validates :spaces, presence: true
 
   has_one_attached :photo, dependent: :destroy
 
   auto_strip_attributes :email_address
+
+  before_validation :normalize_phone_number
 
   has_many :member
   has_many :groups, through: :member, source: :group

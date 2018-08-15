@@ -10,7 +10,7 @@ class GroupDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    description: Field::Text,
+    description: DescriptionField,
     phone_number: Field::String,
     email_address: Field::String,
     chair_dept_head: ContactField,

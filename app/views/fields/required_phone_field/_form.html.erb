@@ -1,7 +1,7 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
-<span class="required-input" title="Required Field">*</span>
-<div class="field-unit__field">
+<div class="field-unit__field" style="vertical-align: baseline;">
   <%= f.telephone_field field.attribute, placeholder: 'xxx-xxx-xxxx', value: number_to_phone(field.data) %>
+  <p style="font-size: 85%;padding: 0 0 0 7px;">Enter digits in the format 012-345-6789 (dashes included)</p>
 </div>

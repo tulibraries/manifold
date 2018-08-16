@@ -21,7 +21,7 @@ class GroupDashboard < Administrate::BaseDashboard
     document: DocumentField,
     external: Field::Boolean,
     group_type: Field::Select.with_options(
-      collection: ["Assembly","Committee","Department","Functional Team","Strategic Steering Team","Working Group"]
+      collection: Rails.configuration.select_options_for_group
       ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

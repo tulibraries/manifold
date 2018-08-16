@@ -30,6 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  helpers:
+    label:
+      building:
+        address1: "Address"
   fortytude:
     error:
       user_not_registered: "User not registered."

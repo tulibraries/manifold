@@ -13,7 +13,7 @@ class BuildingDashboard < Administrate::BaseDashboard
     description: DescriptionField,
     address1: Field::String,
     temple_building_code: Field::String,
-    directions_map: Field::String,
+    directions_map: GmapField,
     hours: Field::String,
     phone_number: PhoneField,
     campus: Field::String,

@@ -22,6 +22,6 @@ module Tude
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.select_options_for_group = ["Assembly","Committee","Department","Functional Team","Strategic Steering Team","Working Group"]
+    config.group_types = ["Assembly","Committee","Department","Functional Team","Strategic Steering Team","Working Group"]
   end
 end

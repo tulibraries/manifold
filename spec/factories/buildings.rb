@@ -1,14 +1,14 @@
 FactoryBot.define do
   factory :building do
     sequence(:name) { |n| "Charles Samuel Addams Library #{n}" }
-    description "Main Campus Main Library"
-    address1 "1250 Polett Walk"
-    temple_building_code "ABC"
-    directions_map "http://maps.exammple.edu/CSA.jpg"
-    hours "Always Open"
-    phone_number "2155551212"
-    campus "Main Campus"
-    email "csa@example.edu"
+    description { "Main Campus Main Library" }
+    address1 { "1250 Polett Walk" }
+    temple_building_code { "ABC" }
+    directions_map { "http://maps.exammple.edu/CSA.jpg" }
+    hours { "Always Open" }
+    phone_number { "2155551212" }
+    campus { "Main Campus" }
+    email { "csa@example.edu" }
 
     factory :building_with_people do
       after(:create) do |building|

@@ -60,7 +60,7 @@ RSpec.describe Space, type: :model do
       end
       example "invalid email - blank " do
         space.email = ""
-        expect { space.save! }.to raise_error(/Email can't be blank/)
+        expect { space.save! }.to raise_error(/#{ I18n.t('fortytude.error.invalid_email') }/)
       end
     end
 

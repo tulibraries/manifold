@@ -20,6 +20,17 @@ RSpec.describe Person, type: :model do
     end
   end
 
+  describe "Required fields" do
+    example "Person must have a last name" do
+      person = FactoryBot.build(:person, last_name: "", spaces: [space])
+      expect { person.save! }.to raise_error(/Last name can't be blank/)
+    end
+    example "Person must have a first name" do
+      person = FactoryBot.build(:person, first_name: "", spaces: [space])
+      expect { person.save! }.to raise_error(/First name can't be blank/)
+    end
+  end
+
   describe "required relations" do
     context "Space" do
       example "attach space" do
@@ -48,6 +59,13 @@ RSpec.describe Person, type: :model do
         person.email_address = ""
         expect { person.save! }.to raise_error(/Email address can't be blank/)
       end
+    end
+  end
+
+  describe "show name" do
+    example "with first and last name" do
+      person = FactoryBot.create(:person, spaces: [space])
+      expect(person.name).to match(/Zaphod Beeblebrox/)
     end
   end
 end

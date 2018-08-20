@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :space do
-    name { "Map Room" }
+    sequence(:name) { |n| "Room #{n}" }
     description { "Situation room where maps were consulted to track the project's progress" }
     hours { "Always Open" }
     accessibility { "Yes" }

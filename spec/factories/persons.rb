@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :person do
     first_name { "Zaphod" }
-    last_name { "Beeblebrox" }
+    sequence(:last_name) { |n| "Beeblebrox #{n}" }
     phone_number { "2155551213" }
     email_address { "zbeeblebrox@example.com" }
     chat_handle { "zbeeblebrox" }

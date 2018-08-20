@@ -13,7 +13,7 @@ RSpec.describe Space, type: :model do
     ]
     required_fields.each do |f|
       example "missing #{f} fields" do
-        skip
+        skip "Need to implement presence validation for `#{f}`" if ["description"].include?(f)
         space = FactoryBot.build(:space)
 				space[f] = ""
         expect { space.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)

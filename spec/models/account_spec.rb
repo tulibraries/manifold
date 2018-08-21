@@ -5,23 +5,6 @@ RSpec.describe Account, type: :model do
     DatabaseCleaner.clean
   end
 
-  context 'Account Class Attributes' do
-    subject { Account.new.attributes.keys }
-
-    it { is_expected.to include("email") }
-    it { is_expected.to include("encrypted_password") }
-    it { is_expected.to include("reset_password_token") }
-    it { is_expected.to include("reset_password_sent_at") }
-    it { is_expected.to include("remember_created_at") }
-    it { is_expected.to include("sign_in_count") }
-    it { is_expected.to include("current_sign_in_at") }
-    it { is_expected.to include("last_sign_in_at") }
-    it { is_expected.to include("current_sign_in_ip") }
-    it { is_expected.to include("last_sign_in_ip") }
-    it { is_expected.to include("created_at") }
-    it { is_expected.to include("updated_at") }
-  end
-
   describe "field validators" do
     let (:account) { FactoryBot.build(:account) }
     let (:email_error) { /Email is not an email/ }
@@ -49,6 +32,38 @@ RSpec.describe Account, type: :model do
         account.email = "tua123456@temple.edu"
         expect { account.save! }.to_not raise_error
       end
+    end
+  end
+
+  context "from_omniauth" do
+    before(:each) do
+      OmniAuth.config.test_mode = true
+    end
+    let(:account) { FactoryBot.create(:account) }
+    let(:valid_access_token) {
+      a = OmniAuth::AuthHash.new
+      a.info = {
+        "email"=>account.attributes["email"]
+      }
+      return a
+    }
+    let(:invalid_access_token) {
+      a = OmniAuth::AuthHash.new
+      a.info = {
+        "email"=>"zaphod@universe.gov"
+      }
+      return a
+    }
+
+    example "Valid account" do
+      a = Account.from_omniauth(valid_access_token)
+      expect(a).to_not be_nil
+      expect(a.email).to match /#{account["email"]}/
+    end
+
+    example "Invalid account" do
+      a = Account.from_omniauth(invalid_access_token)
+      expect(a).to be_nil
     end
   end
 end

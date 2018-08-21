@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :group do
-    name { "Conquerors" }
+    sequence(:name) { |n| "Conquerors #{n}" }
     description { "Able bodied men and women of adventure" }
     phone_number { "2155551213" }
     email_address { "we@example.com" }

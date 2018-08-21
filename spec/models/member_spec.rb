@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
-  context "Group has space" do
+  context "Group has person" do
     let(:building) { FactoryBot.create(:building) }
     let(:space) { FactoryBot.create(:space, building: building) }
     let(:person1) { FactoryBot.build(:person, spaces: [space]) }

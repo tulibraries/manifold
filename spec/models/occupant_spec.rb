@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Occupant, type: :model do
-  context "Group has space" do
+  context "Person has space" do
     let(:building) { FactoryBot.create(:building) }
     let(:space1) { FactoryBot.create(:space, building: building) }
     let(:space2) { FactoryBot.create(:space, building: building) }
     let(:person) { FactoryBot.build(:person, spaces: [space1]) }
 
-    example "Create group with space" do
+    example "Create person with space" do
       expect(person.spaces).to include space1
       expect(person.spaces).to_not include space2
     end
@@ -19,7 +19,7 @@ RSpec.describe Occupant, type: :model do
     end
   end
 
-  context "Space has group" do
+  context "Space has person" do
     let(:building) { FactoryBot.create(:building) }
     let(:space1) { FactoryBot.create(:space, building: building) }
     let(:space2) { FactoryBot.create(:space, building: building) }

@@ -16,4 +16,12 @@ module Validators
     end
   end
 
+  class GroupTypeValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value)
+      unless Rails.configuration.group_types.include?(value)
+        record.errors[attribute] << (options[:message] || I18n.t('fortytude.error.invalid_group_type'))
+      end
+    end
+  end
+
 end

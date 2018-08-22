@@ -9,7 +9,7 @@ RSpec.describe Account, type: :model do
     let (:account) { FactoryBot.build(:account) }
     let (:email_error) { /Email is not an email/ }
     context "Email validation" do
-      example "valid email", focus: true do
+      example "valid email" do
         expect { account.save! }.to_not raise_error
       end
       example "invalid email" do

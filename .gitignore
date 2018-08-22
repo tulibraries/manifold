@@ -27,7 +27,7 @@
 /public/assets
 .byebug_history
 tags
-.tags
+.tags*
 gem.tags
 
 # Ignore master key for decrypting credentials and more.

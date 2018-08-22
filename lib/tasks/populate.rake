@@ -73,6 +73,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         description:   Faker::Lorem.paragraph,
         phone_number:  Faker::Number.number(10),
         email_address: fake_email,
+        group_type:    Rails.configuration.group_types.sample,
         chair_dept_head: Person.all.sample,
         persons:       Person.all.sample(4),
         spaces:        [Space.all.sample])

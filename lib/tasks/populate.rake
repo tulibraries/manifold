@@ -75,7 +75,8 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         email_address: fake_email,
         group_type:    Rails.configuration.group_types.sample,
         chair_dept_head: Person.all.sample,
-        persons:       Person.all.sample(4),
+        external:      [false, true].sample,
+        persons:       Person.all.sample(rand(Person.count)),
         spaces:        [Space.all.sample])
     end
   end

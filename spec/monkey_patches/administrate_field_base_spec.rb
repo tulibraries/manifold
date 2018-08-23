@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'administrate/field/string'
 
-describe Administrate::Field::String do
+RSpec.describe Administrate::Field::String do
   let(:field){ Administrate::Field::String.new(:string, "hello", :new, (options|| {})) }
 
   describe "#html_attributes" do

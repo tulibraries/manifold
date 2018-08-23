@@ -12,11 +12,9 @@ jdk:
 before_script:
 - RAILS_ENV=test bundle exec rake db:migrate
 - RAILS_ENV=test bundle exec rake db:seed
-- RAILS_ENV=test bundle exec yarn
-- RAILS_ENV=test bundle exec rails webpacker:compile
 script:
 - bundle exec rubocop
-- RELEVANCE=y bundle exec rake ci
+- bundle exec rspec spec
 notifications:
   slack:
     secure: z6UU1WNCrXgtBohGmts6+dY11pQzoQi9bY3WlNVL9ce0M81HNhUE+5SjjSECWxUBLakiazhp5g3K6sTodXESozz918T0oT8RoXF1dbWjD/Q/DT130nszze8UTmRZL+nOaA5bwGNgdGxV+iAHs8RycqshCuikJHTms1ndyn0y2h8jYAO2ImD/cuvcX9gM2Lxq4KIZJGO5ApAi+JqxFdawo43Hnmc/VRyA3aS8izZseZcta+nVoipAL21CVucXlCqVMKkEeflutr4NDhj8WbqdQONArzs7VUVk1TtUP1NXNrhJyZmG9ZhM/3fo3Infq8+vZk8XOGTrqroJUhY8uw6KOQXWw05we/CZuRDsql4mmKKOMUtHg/uUU32U0HRDSHrQs+gY1U89j2TOtdcRzmmbPMhpz70yRf5HnFaMSrzfSsDbkNb/M51NDfv5dikZ44dsXOYDWT6MA1EqWkEOC0pdrygmS4WWRZgW3gpo97ea8GezFWFvw77oAiOH+iYo/rb39y6S5wnHiMACGdubH8O8AULH4qqOAQR4C5ZEcJMDbmI2KfWtq3DGyWASwol4xeOhYq/339GkFGLYUd6yc48Adl8ZrkweaIw+EV10X8HxqzPEG7T1srzLt/IH8fhUV+HTGbpbQyldBzrNa/XnmATEWEfyONXqzlfMzmgCe4tJ/38=

@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class BuildingDashboard < Administrate::BaseDashboard
+class BuildingDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,14 +7,14 @@ class BuildingDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String,
-    description: DescriptionField,
-    address1: Field::String,
-    temple_building_code: Field::String,
-    directions_map: GmapField,
+    name: Field::String.with_options(required: true),
+    description: DescriptionField.with_options(required: true),
+    address1: Field::String.with_options(required: true),
+    temple_building_code: Field::String.with_options(required: true),
+    directions_map: GmapField.with_options(required: true),
     hours: Field::String,
-    phone_number: PhoneField,
-    campus: Field::String,
+    phone_number: PhoneField.with_options(required: true),
+    campus: Field::String.with_options(required: true),
     email: Field::Email,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -68,5 +66,9 @@ class BuildingDashboard < Administrate::BaseDashboard
   #
   def display_resource(building)
     "#{building.name}"
+  end
+
+  def tinymce?
+    true
   end
 end

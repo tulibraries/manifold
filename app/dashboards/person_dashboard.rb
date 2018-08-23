@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class PersonDashboard < Administrate::BaseDashboard
+class PersonDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,17 +7,17 @@ class PersonDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     member: Field::HasMany,
-    groups: RequiredHasManyField,
+    groups: Field::HasMany.with_options(required: true),
     occupant: Field::HasMany,
-    spaces: Field::HasMany,
+    spaces: Field::HasMany.with_options(required: true),
     id: Field::Number,
-    first_name: RequiredStringField,
-    last_name: RequiredStringField,
-    phone_number: PhoneField,
-    email_address: Field::Email,
+    first_name: Field::String.with_options(required: true),
+    last_name: Field::String.with_options(required: true),
+    phone_number: PhoneField.with_options(required: true),
+    email_address: Field::Email.with_options(required: true),
     chat_handle: Field::String,
     photo: PhotoField,
-    job_title: RequiredStringField,
+    job_title: Field::String.with_options(required: true),
     springshare_id: Field::String,
     research_identifier: Field::String,
     personal_site: Field::String,

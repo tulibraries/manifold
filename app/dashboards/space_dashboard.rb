@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class SpaceDashboard < Administrate::BaseDashboard
+class SpaceDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,15 +6,15 @@ class SpaceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    building: RequiredBelongsToField,
+    building: Field::BelongsTo.with_options(required: true),
     occupant: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
     groups: Field::HasMany,
     id: Field::Number,
-    name: Field::String,
-    description: DescriptionField,
-    hours: RequiredStringField,
+    name: Field::String.with_options(required: true),
+    description: DescriptionField.with_options(required: true),
+    hours: Field::String.with_options(required: true),
     accessibility: Field::Text,
     photo: PhotoField,
     phone_number: PhoneField,
@@ -71,5 +69,9 @@ class SpaceDashboard < Administrate::BaseDashboard
   #
   def display_resource(space)
     "#{space.name}"
+  end
+
+  def tinymce?
+    true
   end
 end

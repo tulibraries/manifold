@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class GroupDashboard < Administrate::BaseDashboard
+class GroupDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,15 +7,15 @@ class GroupDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String,
-    description: DescriptionField,
-    phone_number: Field::String,
-    email_address: Field::String,
-    chair_dept_head: ContactField,
+    name: Field::String.with_options(required: true),
+    description: DescriptionField.with_options(required: true),
+    phone_number: Field::String.with_options(required: true),
+    email_address: Field::String.with_options(required: true),
+    chair_dept_head: ContactField.with_options(required: true),
     member: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
-    spaces: Field::HasMany,
+    spaces: Field::HasMany.with_options(required: true),
     document: DocumentField,
     external: Field::Boolean,
     group_type: Field::Select.with_options(
@@ -80,4 +78,7 @@ class GroupDashboard < Administrate::BaseDashboard
     "#{group.name}"
   end
 
+  def tinymce?
+    true
+  end
 end

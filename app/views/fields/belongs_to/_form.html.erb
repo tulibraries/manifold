@@ -2,7 +2,7 @@
   <%= f.label field.permitted_attribute %>
 </div>
 <div class="field-unit__field">
-  <%= f.select(field.permitted_attribute, required: true, aria: { required: true }) do %>
+  <%= f.select(field.permitted_attribute, field.html_attributes) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
   <% end %>
 </div>

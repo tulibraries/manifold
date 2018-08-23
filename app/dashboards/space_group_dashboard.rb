@@ -1,6 +1,4 @@
-require "administrate/base_dashboard"
-
-class SpaceGroupDashboard < Administrate::BaseDashboard
+class SpaceGroupDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #

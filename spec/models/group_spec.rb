@@ -71,7 +71,7 @@ RSpec.describe Group, type: :model do
   describe "field validators" do
     let(:group) { FactoryBot.build(:group, spaces: [space], chair_dept_head: chair_person) }
     context "Email validation" do
-      example "valid email", focus: true do
+      example "valid email" do
         group.email_address = "we@example.edu"
         expect { group.save! }.to_not raise_error
       end
@@ -107,6 +107,23 @@ RSpec.describe Group, type: :model do
       example "No space" do
         group = FactoryBot.build(:group, chair_dept_head: chair_person)
         expect { group.save! }.to raise_error(/Spaces can't be blank/)
+      end
+    end
+
+    context "Group Type Validation" do
+      Rails.configuration.group_types.each do |group_type|
+        example "valid group type #{group_type}" do
+          group.group_type = group_type
+          expect { group.save! }.to_not raise_error
+        end
+      end
+      example "invalid group type" do
+        group.group_type = "not a group"
+        expect { group.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_group_type')}/)
+      end
+      example "invalid group type - blank " do
+        group.group_type= ""
+        expect { group.save! }.to raise_error(/Group type can't be blank/)
       end
     end
   end

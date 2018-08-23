@@ -8,6 +8,12 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_account!
 
+    helper_method :required?
+
+    def required?(attribute)
+      "required" if attribute.required?
+    end
+
     def authenticate_admin
       # TODO Add authentication logic here.
     end

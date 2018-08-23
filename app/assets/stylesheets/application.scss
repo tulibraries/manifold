@@ -104,3 +104,9 @@ form {
 .no-padding {
 	padding: 0;
 }
+
+
+div.required  label::after {
+    content: " * ";
+    color: $red;
+  }

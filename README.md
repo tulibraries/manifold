@@ -2,7 +2,21 @@
 
 Fortytude is an object oriented based website for the Temple University Libraries.
 
+## System Requirements
+
+- Ruby 2.5.1
+- Google OmniAuth2
+
 ##  Getting Started
+
+* Set up environment variables:
+
+```
+export GOOGLE_OAUTH_CLIENT_ID="Google client ID goes here"
+export GOOGLE_OAUTH_SECRET="Google OAuth secret goes here"
+```
+Add these same lines to your `.bash_profile` or `.bashrc` file, depending on
+how you've setup your shee, depending on how you've setup your Bash shell:
 
 * Clone the repository and navigate to the souce code directory
 
@@ -17,7 +31,7 @@ git clone git@github.com:tulibraries/fortytude.git`
 bundle install
 ```
 
-* Create data tables
+* Create database tables
 
 ```
 bundle exec rake db:migrate

@@ -1,48 +1,106 @@
-# README
+* `# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fortytude is an object oriented based website for the Temple University Libraries.
 
-Things you may want to cover:
+##  Getting Started
 
-* Ruby version
+* Clone the repository and navigate to the souce code directory
 
-* System dependencies
+```
+git clone git@github.com:tulibraries/fortytude.git`
+`cd fortytude
+```
 
-Install Ruby Gem dependencies
+* Install dependencies
 
-`bundle install`
+```
+bundle install
+```
 
-* Configuration
+* Create data tables
 
-* Database creation
+```
+bundle exec rake db:migrate
+```
 
-Create data tables
+* Populate the database with fake data
 
-`rake db:migrate`
+```
+bundle exec rake db:populate
+```
 
-Seed initial user from the command line
+* Seed initial user from the command line
 
-`rails runner 'Account.create(email: "<YOURTUACCESSID>@temple.edu", admin: true, password: Devise.friendly_token[0,20]).save'`
+```
+rails runner 'Account.create(email: "<YOURTUACCESSID>@temple.edu", admin: true, password: Devise.friendly_token[0,20]).save'
+```
 
-*Or* Create a account seed file 
+* *Or* create an account seed file with a list of the initial TUAccess ID's of the
+admin users. Set the `admin` field to true if the user will have the role of a site user
+administor, capable of adding and deleting admin users.
 
-`mv db/account_seeds.rb.example db/account_seeds.rb`
+```
+mv db/account_seeds.rb.example db/account_seeds.rb
+```
 
 Edit `db/account_seeds.rb`, Replace contents of email array with the desired email addresses
 
-`rake db:seed`
+* Seed the user admin accounts
 
-* Database initialization
+```
+bundle exec rake db:seed
+```
 
-* How to run the test suite
+* Test the code
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+bundle exec rspec spec
+```
 
-* Deployment instructions
+* Run the application
 
-Seed domain data (buildings, spaces, etc.)
+```
+bundle exec rails server
+```
 
-`bundle exec rake db:populate`
+* On your browser, navigate to `http:localhost:3000`.
 
-* ...
+* To administer site objects, navigate to: `http://localhost:3000/admin`
+
+You will be redirected to the Temple University Google OAuth site. Log in with your TUAccess ID credentials and the
+browser will return to the site administration home page.
+
+## Test the code
+
+To test the code, run the RSpec tests.
+
+```
+bundle exec rspec spec
+```
+
+To run continuous testing which will run the appropirate specs as you save
+source code, execute Guard
+
+```
+guard
+```
+
+To perform mutation tests, which helps gage code coverage and test soundness on a class by class basis
+run mutant as below.  Available class names are:
+
+* Building
+* Space
+* Person
+* Group
+* BuildingsController
+* SpacesController
+* PersonsController
+* GroupsController
+
+Note: Class names are case sensitive and in pluralized in controller.
+
+```
+RAILS_ENV=test bundle exec mutant -j 1 -r ./config/environment --use rspec <class name>
+```
+
+For more information on mutation testing, see https://github.com/mbj/mutant.

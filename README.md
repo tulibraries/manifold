@@ -1,11 +1,10 @@
-* `# README
+# Fortytude
 
-Fortytude is an object oriented based website for the Temple University Libraries.
+Fortytude is the Temple University Library's website built on Ruby on Rails.
 
 ## System Requirements
 
 - Ruby 2.5.1
-- Google OmniAuth2
 
 ##  Getting Started
 
@@ -16,7 +15,7 @@ export GOOGLE_OAUTH_CLIENT_ID="Google client ID goes here"
 export GOOGLE_OAUTH_SECRET="Google OAuth secret goes here"
 ```
 Add these same lines to your `.bash_profile` or `.bashrc` file, depending on
-how you've setup your shee, depending on how you've setup your Bash shell:
+how you've setup your Bash shell:
 
 * Clone the repository and navigate to the souce code directory
 
@@ -43,7 +42,8 @@ bundle exec rake db:migrate
 bundle exec rake db:populate
 ```
 
-* Seed initial user from the command line
+* Seed initial user from the command line. Note that the email address should be a TUAccess email address.
+Aliased email addresses will not work.
 
 ```
 rails runner 'Account.create(email: "<YOURTUACCESSID>@temple.edu", admin: true, password: Devise.friendly_token[0,20]).save'
@@ -99,7 +99,7 @@ source code, execute Guard
 guard
 ```
 
-To perform mutation tests, which helps gage code coverage and test soundness on a class by class basis
+To perform mutation tests, which helps guage code coverage and test soundness on a class by class basis
 run mutant as below.  Available class names are:
 
 * Building

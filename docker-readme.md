@@ -7,10 +7,16 @@ Build the Docker Image
   docker-compose run web rake db:migrate
 ```
 
-To run the container, detached
+To run the container
 
 ```
-  docker-compose up
+  docker-compose up -d
+```
+
+To stop the container
+
+```
+  docker-compose down
 ```
 
 If the container does not start up because it Docker thinks that the server is already running,

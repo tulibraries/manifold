@@ -49,6 +49,22 @@ Aliased email addresses will not work.
 rails runner 'Account.create(email: "<YOURTUACCESSID>@temple.edu", admin: true, password: Devise.friendly_token[0,20]).save'
 ```
 
+If this application will be running in development mode and you wish to use standard authentication, seed the initial user
+with an email address and password.
+
+```
+rails runner 'Account.create(email: "admin_user@example.com", admin: true, password: "initial_password_goes_here").save'
+```
+
+Add additional users with this method, as the account admin page is configured for administering users in a production environment. Set the admin field to true to allow this user to administer users, otherwise it defaults to non-admin
+
+```
+# Regular user
+rails runner 'Account.create(email: "regular_user@example.com", admin: false, password: "initial_password_goes_here").save'
+# Admin user
+rails runner 'Account.create(email: "admin_user@example.com", admin: true, password: "initial_password_goes_here").save'
+```
+
 * *Or* create an account seed file with a list of the initial TUAccess ID's of the
 admin users. Set the `admin` field to true if the user will have the role of a site user
 administor, capable of adding and deleting admin users.

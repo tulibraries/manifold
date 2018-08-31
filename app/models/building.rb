@@ -12,5 +12,6 @@ class Building < ApplicationRecord
   auto_strip_attributes :email
 
   before_validation :normalize_phone_number
+  before_validation :sanitize_description
 
 end

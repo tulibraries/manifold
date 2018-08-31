@@ -9,6 +9,8 @@ class Space < ApplicationRecord
  	validates :phone_number, phone_number: true
   validates :building_id, presence: true
 
+  before_validation :sanitize_description
+
   auto_strip_attributes :email
 
   has_one_attached :photo, dependent: :destroy

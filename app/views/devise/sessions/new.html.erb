@@ -1,6 +1,6 @@
 <% content_for :title, "Redirect to TUAccess" %>
 <% content_for :head do %>
-  <meta http-equiv="refresh" content="0; url=http://localhost:3000/accounts/auth/google_oauth2" />
+  <meta http-equiv="refresh" content="0; url=<%= google_oauth_redirect_uri %>" />
 <% end %>
 <h2>Log in with TU Access</h2>
 

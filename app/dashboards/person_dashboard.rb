@@ -7,7 +7,7 @@ class PersonDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     member: Field::HasMany,
-    groups: Field::HasMany.with_options(required: true),
+    groups: Field::HasMany,
     occupant: Field::HasMany,
     spaces: Field::HasMany.with_options(required: true),
     id: Field::Number,

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @library_hour.location %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @library_hour.date %>
+</p>
+
+<p>
+  <strong>Hours:</strong>
+  <%= @library_hour.hours %>
+</p>
+
+<%= link_to 'Edit', edit_library_hour_path(@library_hour) %> |
+<%= link_to 'Back', library_hours_index_path %>

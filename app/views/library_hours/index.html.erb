@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Library Hours</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Hours</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @library_hours.each do |library_hour| %>
+      <tr>
+        <td><%= library_hour.location %></td>
+        <td><%= library_hour.date %></td>
+        <td><%= library_hour.hours %></td>
+        <td><%= link_to 'Show', library_hour %></td>
+        <td><%= link_to 'Edit', edit_library_hour_path(library_hour) %></td>
+        <td><%= link_to 'Destroy', library_hour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Library Hour', new_library_hour_path %>

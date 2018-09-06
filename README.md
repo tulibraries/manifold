@@ -14,8 +14,9 @@ Fortytude is the Temple University Library's website built on Ruby on Rails.
 export GOOGLE_OAUTH_CLIENT_ID="Google client ID goes here"
 export GOOGLE_OAUTH_SECRET="Google OAuth secret goes here"
 ```
+
 Add these same lines to your `.bash_profile` or `.bashrc` file, depending on
-how you've setup your Bash shell:
+how you've setup your Bash shell.
 
 * Clone the repository and navigate to the souce code directory
 

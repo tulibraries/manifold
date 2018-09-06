@@ -1,7 +1,7 @@
 <% content_for :title, "Redirect to TUAccess" %>
 <% if Rails.env != "development" %>
   <% content_for :head do %>
-    <meta http-equiv="refresh" content="0; url=http://localhost:3000/accounts/auth/google_oauth2" />
+      <meta http-equiv="refresh" content="0; url=<%= account_google_oauth2_omniauth_authorize_url %>" />
   <% end %>
 <% end %>
 <% if Rails.env != "development" %>
@@ -31,5 +31,4 @@
     </div>
   <% end %>
 <% end %>
-
 <%= render "devise/shared/links" %>

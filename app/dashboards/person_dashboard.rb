@@ -16,7 +16,7 @@ class PersonDashboard < BaseDashboard
     phone_number: PhoneField.with_options(required: true),
     email_address: Field::Email.with_options(required: true),
     chat_handle: Field::String,
-    photo: PhotoField,
+    photo: PhotoField.with_options(admin_only: true),
     job_title: Field::String.with_options(required: true),
     springshare_id: Field::String,
     research_identifier: Field::String,

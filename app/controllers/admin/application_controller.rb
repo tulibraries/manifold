@@ -9,9 +9,14 @@ module Admin
     before_action :authenticate_account!
 
     helper_method :required?
+    helper_method :admin_only?
 
     def required?(attribute)
       "required" if attribute.required?
+    end
+
+    def admin_only?(attribute)
+      attribute.admin_only?
     end
 
     def authenticate_admin

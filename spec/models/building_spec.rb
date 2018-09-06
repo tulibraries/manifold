@@ -16,7 +16,6 @@ RSpec.describe Building, type: :model do
     ]
     required_fields.each do |f|
       example "missing #{f} field" do
-        skip "Need to implement presence validation for `#{f}`" if ["description"].include?(f)
         building = FactoryBot.build(:building)
 				building[f] = ""
         expect { building.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)

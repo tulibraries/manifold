@@ -4,7 +4,7 @@ class Space < ApplicationRecord
   has_ancestry
 
   validates :name, :hours, presence: true
-  # TODO implement: validates :description, presence: true
+  validates :description, presence: true
  	validates :email, email: true
  	validates :phone_number, phone_number: true
   validates :building_id, presence: true

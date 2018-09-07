@@ -14,7 +14,7 @@ class SpaceDashboard < BaseDashboard
     id: Field::Number,
     name: Field::String.with_options(required: true),
     description: DescriptionField.with_options(required: true),
-    hours: Field::String,
+    hours: HoursField,
     accessibility: Field::Text,
     photo: PhotoField,
     phone_number: PhoneField,

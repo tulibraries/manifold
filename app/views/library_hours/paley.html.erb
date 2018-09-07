@@ -2,16 +2,6 @@
 
 <h1><%= @location.first.name %> Hours</h1>
 
-<h2>Next 5 Days</h2>
-<div class="row" style="margin-bottom: 28px;">
-	<% @seven[2..-1].each do |hour| %>
-		<div class="col col-sm-2" style="padding:21px;">
-			<strong><%= hour.date.strftime("%A") %></strong><br/>
-			<%= hour.hours %>
-		</div>
-	<% end %>
-</div>
-
 <table>
   <thead>
     <tr>

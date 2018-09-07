@@ -103,7 +103,7 @@ namespace :db do
           dates_array.push(date)
         end
         paley_hours.values.each do |hour|
-          paley_hours_array.push(hour.to_s)
+          paley_hours_array.push(hour)
         end
         media_hours.values.each do |hour|
           media_hours_array.push(hour)
@@ -139,7 +139,8 @@ namespace :db do
         paley_hours_hash = Hash[dates_array.zip(paley_hours_array)]
 
         paley_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Paley Library', 
+          time = LibraryHours.new(location: 'Paley Library',
+                                    location_id: "1", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
@@ -147,70 +148,80 @@ namespace :db do
 
         media_hours_hash = Hash[dates_array.zip(media_hours_array)]
         media_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Media Services', 
+          time = LibraryHours.new(location: 'Media Services',
+                                    location_id: "2", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         doc_del_hours_hash = Hash[dates_array.zip(doc_del_hours_array)]
         doc_del_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Document Delivery', 
+          time = LibraryHours.new(location: 'Document Delivery',
+                                    location_id: "3", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         ref_desk_hours_hash = Hash[dates_array.zip(ref_desk_hours_array)]
         ref_desk_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Reference Desk', 
+          time = LibraryHours.new(location: 'Reference Desk',
+                                    location_id: "4", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         v_ref_hours_hash = Hash[dates_array.zip(v_ref_hours_array)]
         v_ref_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Virtual Reference', 
+          time = LibraryHours.new(location: 'Virtual Reference',
+                                    location_id: "5", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         thinktank_hours_hash = Hash[dates_array.zip(thinktank_hours_array)]
         thinktank_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Think Tank', 
+          time = LibraryHours.new(location: 'Think Tank',
+                                    location_id: "6", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         scrc_hours_hash = Hash[dates_array.zip(scrc_hours_array)]
         scrc_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Special Collections Research Center', 
+          time = LibraryHours.new(location: 'Special Collections Research Center',
+                                    location_id: "7", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         blockson_hours_hash = Hash[dates_array.zip(blockson_hours_array)]
         blockson_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Charles L. Blockson Collection', 
+          time = LibraryHours.new(location: 'Charles L. Blockson Collection',
+                                    location_id: "8", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         dsc_hours_hash = Hash[dates_array.zip(dsc_hours_array)]
         dsc_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Digital Scholarship Center', 
+          time = LibraryHours.new(location: 'Digital Scholarship Center',
+                                    location_id: "9", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         ambler_hours_hash = Hash[dates_array.zip(ambler_hours_array)]
         ambler_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Ambler Campus Library', 
+          time = LibraryHours.new(location: 'Ambler Campus Library',
+                                    location_id: "10", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save
         end
         guest_computers_hours_hash = Hash[dates_array.zip(guest_computers_hours_array)]
         guest_computers_hours_hash.each do |hours|
-          time = LibraryHours.new(location: 'Guest Computers', 
+          time = LibraryHours.new(location: 'Guest Computers',
+                                    location_id: "11", 
                                     date: hours.first.to_s.to_date, 
                                     hours: hours.last.to_s.gsub(/[\["\]]/, ''))
           time.save

@@ -7,13 +7,13 @@ class PersonDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     member: Field::HasMany,
-    groups: Field::HasMany.with_options(required: true),
+    groups: Field::HasMany,
     occupant: Field::HasMany,
     spaces: Field::HasMany.with_options(required: true),
     id: Field::Number,
     first_name: Field::String.with_options(required: true),
     last_name: Field::String.with_options(required: true),
-    phone_number: PhoneField.with_options(required: true),
+    phone_number: PhoneField,
     email_address: Field::Email.with_options(required: true),
     chat_handle: Field::String,
     photo: PhotoField,

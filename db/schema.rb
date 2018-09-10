@@ -135,6 +135,18 @@ ActiveRecord::Schema.define(version: 2018_09_13_154916) do
     t.string "springshare_id"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "access_description"
+    t.string "access_link"
+    t.text "service_policies"
+    t.string "intended_audience"
+    t.string "service_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "space_groups", force: :cascade do |t|
     t.integer "space_id"
     t.integer "group_id"

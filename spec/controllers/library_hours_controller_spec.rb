@@ -25,6 +25,11 @@ require 'rails_helper'
 
 RSpec.describe LibraryHoursController, type: :controller do
 
+  include Devise::Test::ControllerHelpers
+
+  let(:building) { FactoryBot.create(:building) }
+  let(:space) { FactoryBot.create(:space, building: building) }
+
   # This should return the minimal set of attributes required to create a valid
   # LibraryHours. As you add validations to LibraryHours, be sure to
   # adjust the attributes here as well.
@@ -54,87 +59,6 @@ RSpec.describe LibraryHoursController, type: :controller do
       library_hours = LibraryHours.create! valid_attributes
       get :show, params: {id: library_hours.to_param}, session: valid_session
       expect(response).to be_success
-    end
-  end
-
-  describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET #edit" do
-    it "returns a success response" do
-      library_hours = LibraryHours.create! valid_attributes
-      get :edit, params: {id: library_hours.to_param}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new LibraryHours" do
-        expect {
-          post :create, params: {library_hours: valid_attributes}, session: valid_session
-        }.to change(LibraryHours, :count).by(1)
-      end
-
-      it "redirects to the created library_hours" do
-        post :create, params: {library_hours: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(LibraryHours.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {library_hours: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested library_hours" do
-        library_hours = LibraryHours.create! valid_attributes
-        put :update, params: {id: library_hours.to_param, library_hours: new_attributes}, session: valid_session
-        library_hours.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the library_hours" do
-        library_hours = LibraryHours.create! valid_attributes
-        put :update, params: {id: library_hours.to_param, library_hours: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(library_hours)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        library_hours = LibraryHours.create! valid_attributes
-        put :update, params: {id: library_hours.to_param, library_hours: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    it "destroys the requested library_hours" do
-      library_hours = LibraryHours.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: library_hours.to_param}, session: valid_session
-      }.to change(LibraryHours, :count).by(-1)
-    end
-
-    it "redirects to the library_hours list" do
-      library_hours = LibraryHours.create! valid_attributes
-      delete :destroy, params: {id: library_hours.to_param}, session: valid_session
-      expect(response).to redirect_to(library_hours_index_url)
     end
   end
 

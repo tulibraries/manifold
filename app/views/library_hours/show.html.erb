@@ -2,9 +2,9 @@
 
 <h1><%= @location.first.name %> Hours</h1>
 
-<h2>Next 5 Days</h2>
+<h2>Current Week</h2>
 <div class="row" style="margin-bottom: 28px;">
-	<% @five.each do |hour| %>
+	<% @seven.each do |hour| %>
 		<div class="col col-sm-2" style="padding:21px;">
 			<% if hour.date.to_date == @today %>
 			<strong>Today</strong><br/>

@@ -8,15 +8,22 @@ class LibraryHoursController < ApplicationController
     @library_hours = LibraryHours.all
     @today = Date.today
     @hours = LibraryHours.where('location_id = ?', params[:id])
-    five = Array.new
+
+    sunday = Date.today.beginning_of_week - 1
+    saturday = Date.today.end_of_week - 1
+
+    @week = (sunday..saturday).to_a
+
+    seven = Array.new
+
     @hours.each do |hour|
-      unless hour.date.to_date < @today
-        five.push(hour)
+      if hour.date.to_date >= sunday && hour.date.to_date <= saturday
+        seven.push(hour)
       end
     end
-    @five = five[0,5]
+    # binding.pry
+    @seven = seven[0,7]
     @location = Building.where('hours = ?', params[:id])
-    binding.pry
   end
 
 

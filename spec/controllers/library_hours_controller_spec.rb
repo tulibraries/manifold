@@ -25,11 +25,6 @@ require 'rails_helper'
 
 RSpec.describe LibraryHoursController, type: :controller do
 
-  include Devise::Test::ControllerHelpers
-
-  let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
-
   # This should return the minimal set of attributes required to create a valid
   # LibraryHours. As you add validations to LibraryHours, be sure to
   # adjust the attributes here as well.

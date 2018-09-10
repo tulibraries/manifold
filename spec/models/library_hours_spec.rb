@@ -5,20 +5,24 @@ RSpec.describe LibraryHours, type: :model do
     DatabaseCleaner.clean
   end
 
-  context 'Required Fields' do
-    required_fields = [
-      "location",
-      "date",
-      "hours",
-      "location_id",
-    ]
-    required_fields.each do |f|
-      example "missing #{f} field" do
-        # skip "Need to implement presence validation for `#{f}`" if ["description"].include?(f)
-        library_hours = FactoryBot.build(:library_hours)
-				library_hours[f] = ""
-        expect { library_hours.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
-      end
+  let(:library_hour) { FactoryBot.create(:library_hour) }
+
+  describe "Required fields" do
+    example "Library Hour must have a location" do
+      hour = FactoryBot.build(:library_hour, location: "")
+      expect { hour.save! }.to raise_error(/Location can't be blank/)
+    end
+    example "Library Hour must have a location_id" do
+      hour = FactoryBot.build(:library_hour, location_id: "")
+      expect { hour.save! }.to raise_error(/Location can't be blank/)
+    end
+    example "Library Hour must have a date" do
+      hour = FactoryBot.build(:library_hour, date: "")
+      expect { hour.save! }.to raise_error(/Date can't be blank/)
+    end
+    example "Library Hour must have hours" do
+      hour = FactoryBot.build(:library_hour, hours: "")
+      expect { hour.save! }.to raise_error(/Hours can't be blank/)
     end
   end
 end

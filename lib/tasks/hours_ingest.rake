@@ -2,7 +2,6 @@ require 'google/apis/sheets_v4'
 require 'googleauth'
 require 'googleauth/stores/file_token_store'
 require 'fileutils'
-require 'pry'
 
 namespace :db do
     namespace :update do
@@ -16,12 +15,6 @@ namespace :db do
         TOKEN_PATH = 'token.yaml'.freeze
         SCOPE = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
 
-        ##
-        # Ensure valid credentials, either by restoring from the saved credentials
-        # files or intitiating an OAuth2 authorization. If authorization is required,
-        # the user's default browser will be launched to approve the request.
-        #
-        # @return [Google::Auth::UserRefreshCredentials] OAuth2 credentials
         def authorize
           client_id = Google::Auth::ClientId.from_file(CREDENTIALS_PATH)
           token_store = Google::Auth::Stores::FileTokenStore.new(file: TOKEN_PATH)
@@ -44,10 +37,6 @@ namespace :db do
         service = Google::Apis::SheetsV4::SheetsService.new
         service.client_options.application_name = APPLICATION_NAME
         service.authorization = authorize
-
-        # Prints the names and majors of students in a sample spreadsheet:
-        # https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-        # spreadsheet_id = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
 
         spreadsheet_id = '1nZkmNzNwMsVlTa4sg3V1M1KOAvXcoyexLkeqTzqV_gs'
 

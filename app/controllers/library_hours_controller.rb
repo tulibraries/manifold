@@ -21,7 +21,7 @@ class LibraryHoursController < ApplicationController
         seven.push(hour)
       end
     end
-    # binding.pry
+
     @seven = seven[0,7]
     @location = Building.where('hours = ?', params[:id])
   end

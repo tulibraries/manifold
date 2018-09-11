@@ -23,5 +23,6 @@ module Tude
     # the framework and any gems in your application.
 
     config.group_types = ["Assembly","Committee","Department","Functional Team","Strategic Steering Team","Working Group"]
+    config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
   end
 end

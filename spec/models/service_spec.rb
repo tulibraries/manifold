@@ -30,13 +30,15 @@ RSpec.describe Service, type: :model do
   describe "associated class" do
     let(:building) { FactoryBot.create(:building) }
     let(:space) { FactoryBot.create(:space, building: building) }
+    let(:person) { FactoryBot.build(:person, spaces: [space]) }
+    let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_head: person) }
     context "Space" do
       example "attach space" do
-        service = FactoryBot.create(:service, related_spaces: [space])
+        service = FactoryBot.create(:service, related_spaces: [space], related_groups: [group])
         expect(service.related_spaces.first.name).to match(/#{Space.first.name}/)
       end
       example "no space" do
-        service = FactoryBot.create(:service)
+        service = FactoryBot.create(:service, related_groups: [group])
         expect { service.save! }.to_not raise_error
       end
     end
@@ -48,9 +50,8 @@ RSpec.describe Service, type: :model do
         expect(service.related_groups.first.name).to match(/#{Group.first.name}/)
       end
       example "not present" do
-        skip "not implemented"
-        service = FactoryBot.create(:service)
-        expect { service.save! }.to raise_error
+        service = FactoryBot.build(:service)
+        expect { service.save! }.to raise_error(/Related groups #{I18n.t('errors.messages.blank')}/)
       end
     end
     context "Policy" do

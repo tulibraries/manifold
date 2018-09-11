@@ -6,10 +6,10 @@ FactoryBot.define do
       of which is like having your brains smashed out by a slice of lemon wrapped
       round a large gold brick.
     EOD
-    access_description "Fully accessible"
+    access_description { "Fully accessible" }
     access_link { |n| "http://www.example.com/#{n}" }
-    service_policies "Plenary"
-    intended_audience "General"
-    service_category "Hospitality"
+    service_policies { "Plenary" }
+    intended_audience { "General" }
+    service_category { "Hospitality" }
   end
 end

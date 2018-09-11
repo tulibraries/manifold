@@ -1,6 +1,7 @@
-# Fortytude
+# manifold
+*adj.* - **many and varied**
 
-Fortytude is the Temple University Library's website built on Ruby on Rails.
+manifold manages, orchestrates, and displays data about Temple UNiversity Libraries.
 
 ## System Requirements
 

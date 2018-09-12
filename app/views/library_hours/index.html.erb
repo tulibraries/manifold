@@ -8,7 +8,8 @@
       <ul>
         <% @locations.each do |location| %>
           <li>
-            <%= link_to location.first, root_path+"hours/"+location.last %>
+            <%= link_to location_name(location), root_path+"hours/"+location %>
+
           </li>
         <% end %>
         </ul>

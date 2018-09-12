@@ -32,18 +32,28 @@ namespace :db do
                     ]
 
         locations.each do |location|
-          dates.zip(service.get_spreadsheet_values(spreadsheet_id, location[:coordinates]).values.flatten).each do |hours|
+          dates.zip(service.get_spreadsheet_values(spreadsheet_id, location[:coordinates]).values.map { |a| a == [] ? nil : a }.flatten).each do |hours|
+          # flattening removes empty arrays, and subsequent rows are thus off by one. changing empty array to nil gets around this
+
             if hours.last.nil?
               time = "TBD"
             else 
               time = hours.last
             end
-            LibraryHours.create!(location_id: location[:slug],
+            mid = LibraryHours.find_by(location_id: location[:slug], date: DateTime.parse(hours.first))
+            if mid
+              mid.hours = time
+              if mid.hours_changed?
+                mid.save 
+              end
+            else 
+              LibraryHours.create!(location_id: location[:slug],
                                     date: hours.first.to_s.to_date,
                                     hours: time )
-            # binding.pry
-          end
+            end
+
         end
+      end
 
     end # hours
   end # update

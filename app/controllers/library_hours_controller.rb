@@ -2,7 +2,7 @@ class LibraryHoursController < ApplicationController
 
   def index
     @library_hours = LibraryHours.all
-    @locations = LibraryHours.all.pluck(:location,:location_id).uniq
+    @locations = LibraryHours.all.pluck(:location_id).uniq
   end
   def show
     @library_hours = LibraryHours.all

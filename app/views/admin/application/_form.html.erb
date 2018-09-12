@@ -30,7 +30,7 @@ and renders all form fields for a resource's editable attributes.
   <% end %>
 
   <% page.attributes.each do |attribute| -%>
-    <% if !admin_only?(attribute) || (admin_only?(attribute) && current_account.admin) %>
+    <% if user_editable_field?(current_account, attribute) %>
       <div class="field-unit field-unit--<%= attribute.html_class %> <%= required?(attribute) %>" >
         <%= render_field attribute, f: f %>
       </div>

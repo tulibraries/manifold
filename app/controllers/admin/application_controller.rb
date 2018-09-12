@@ -10,6 +10,7 @@ module Admin
 
     helper_method :required?
     helper_method :admin_only?
+    helper_method :user_editable_field?
 
     def required?(attribute)
       "required" if attribute.required?
@@ -17,6 +18,10 @@ module Admin
 
     def admin_only?(attribute)
       attribute.admin_only?
+    end
+
+    def user_editable_field?(account, attribute)
+      !admin_only?(attribute) || account.admin
     end
 
     def authenticate_admin

@@ -1,0 +1,5 @@
+<% unless field.nil? %>
+	<%= link_to "Schedule an Appointment", "https://api3.libcal.com/appointments-widget.php?u=8632&iid=#{field.to_s}&t=Make%20an%20Appointment" %>
+<% else %>
+	<%= field.to_s %>
+<% end %>

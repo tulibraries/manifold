@@ -19,4 +19,8 @@ Administrate::Field::Base.class_eval do
   def required?
     !!options.fetch(:required, false)
   end
+
+  def admin_only?
+    !!options.fetch(:admin_only, false)
+  end
 end

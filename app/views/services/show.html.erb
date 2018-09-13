@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @service.title %>
+</h1>
+
+<p>
+  <strong>Description:</strong>
+  <%= @service.description.html_safe %>
+</p>
+
+<p>
+  <strong>Access Description:</strong>
+  <%= @service.access_description.html_safe %>
+</p>
+
+<p>
+  <strong>Access Link:</strong>
+  <%= @service.access_link%>
+</p>
+
+<p>
+  <strong>Related Spaces: </strong>
+  <% unless @service.related_spaces.empty? %>
+    <%= link_to (@service.related_spaces.first.name, controller: 'spaces', action: 'show', id: @serivce.spaces.last.id %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Related Groups: </strong>
+  <% unless @service.related_groups.empty? %>
+    <%= link_to (@service.related_groups.first.name, controller: 'groups', action: 'show', id: @serivce.groups.last.id %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Service Policies:</strong>
+  <%= @service.service_policies.html_safe %>
+</p>
+
+<p>
+  <strong>Intended Audience:</strong>
+  <%= @service.intended_audience.html_safe %>
+</p>
+
+<p>
+  <strong>Service Category:</strong>
+  <%= @service.service_category.html_safe %>
+</p>
+
+<%= link_to 'Back', services_path %>

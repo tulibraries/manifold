@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+
+<% unless @services.nil? %>
+    <% @services.each do |service| %>
+      <p>
+        <%= link_to service.name, service %>
+      </p>
+    <% end %>
+<% end %>
+<br>

@@ -1,6 +1,7 @@
-# Manifold
+# manifold
+*adj.* - **many and varied**
 
-Manifold is the Temple University Library's website built on Ruby on Rails.
+manifold manages, orchestrates, and displays data about Temple University Libraries.
 
 ## System Requirements
 

@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
   devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
   namespace :admin do
-      resources :accounts
-      resources :buildings
-      resources :spaces
-      resources :people
-      resources :groups
+    resources :accounts
+    resources :alerts
+    resources :buildings
+    resources :groups
+    resources :people
+    resources :spaces
 
-      root to: "buildings#index"
-    end
+    root to: "people#index"
+  end
   root  'application#index'
+  resources :alerts, only: [:index, :show]
   resources :persons, only: [:index, :show], as: :people
   resources :spaces, only: [:index, :show]
   resources :buildings, only: [:index, :show]

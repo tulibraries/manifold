@@ -1,7 +1,7 @@
 # manifold
 *adj.* - **many and varied**
 
-manifold manages, orchestrates, and displays data about Temple UNiversity Libraries.
+manifold manages, orchestrates, and displays data about Temple University Libraries.
 
 ## System Requirements
 

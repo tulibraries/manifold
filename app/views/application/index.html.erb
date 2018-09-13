@@ -1,5 +1,53 @@
-<h1>Welcome</h1>
-<p id="notice"><%= notice %></p>
+
+
+<div id="searchFields">
+
+	<form>
+		<input type="text" name="q" id="librarySearch" placeholder="Search for library materials" autocomplete="off" />
+	</form>
+	<div id="searchOptions">
+		<ul>
+			<li>Books</li>
+			<li>Articles</li>
+			<li>Databases</li>
+			<li>Digitized Archival Materials</li>
+		</ul>
+		<div id="advancedSearchLink">
+			Advanced Search
+		</div>
+	</div>
+		<div id="dateTime">
+			<div id="date">
+				FRIDAY, AUGUST 17, 2018
+			</div>
+			<div id="time">
+				Paley Library | 8am - 7pm
+			</div>
+			<div id="allHours">
+				See all library hours >
+			</div>
+		</div>
+</div>
+
+<div class="row" id="ctaRow" style="margin-top: 42px;">
+	<div class="col col-sm-3 ctaOne">
+		Help with Research
+	</div>
+	<div class="col col-sm-3 ctaTwo">
+		Find a study space
+	</div>
+	<div class="col col-sm-3 ctaThree">
+		Print my paper
+	</div>
+	<div class="col col-sm-3 ctaFour">
+		<ul>
+			<li>Health Sciences Libraries</li>
+			<li>Special Collections Research Center</li>
+			<li>Ambler Library</li>
+			<li>All Libraries</li>
+		</ul>
+	</div>
+</div>
 
 <ul>
 	<li><%= link_to 'Buildings', controller: 'buildings', action: 'index' %></li>

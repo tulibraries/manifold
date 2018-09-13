@@ -81,6 +81,7 @@ group :test do
   gem 'database_cleaner'
   gem 'guard-rspec', require: false
   gem 'mutant-rspec'
+  gem 'rspec-activemodel-mocks'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

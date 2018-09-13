@@ -1,6 +1,7 @@
 # We can't test base field directly, so we'll test our
 # monkey patch on a field that inherits from it
 require 'rails_helper'
+require "spec_helper"
 require 'administrate/field/string'
 
 RSpec.describe Administrate::Field::String do
@@ -20,15 +21,6 @@ RSpec.describe Administrate::Field::String do
         expect(field.html_attributes).to eql({})
       end
     end
-
-    context "if required option is passed, html_attributes includes extra attributes" do
-      let(:options){ {required: true, html_attributes: {foo: "bar2"}} }
-      it "returns the expected value" do
-        expect(field.html_attributes).to include(:foo, :aria, :required)
-      end
-    end
-
-
   end
 
   describe "#public_options" do
@@ -39,32 +31,39 @@ RSpec.describe Administrate::Field::String do
   end
 
   describe "#required?" do
-    context 'required option passed is true' do
-      let(:options) { {required: true}}
-      it "is true" do
-        expect(field.required?).to be true
-      end
-    end
-
-    context 'required option passed is "required"' do
-      let(:options) { {required: "required"}}
+    context 'resource class validates for presence' do
+      let(:resource) {mock_model ValidateTrue }
+      let(:options) { {resource: resource}}
       it "is true" do
         expect(field.required?).to be true
       end
     end
 
     context 'required option passed is false' do
-      let(:options) { {required: false}}
-      it "is fasle" do
+      let(:resource) {mock_model ValidateFalse }
+      let(:options) { {resource: resource}}
+      it "is false" do
         expect(field.required?).to be false
       end
     end
 
     context 'required option is not passed' do
-      let(:options) { {}}
+      let(:resource) {mock_model ValidateMissing }
+      let(:options) { {resource: resource}}
       it "is false" do
         expect(field.required?).to be false
       end
     end
   end
+end
+
+class ValidateTrue < ApplicationRecord
+  validates :string, presence: true
+end
+
+class ValidateFalse < ApplicationRecord
+  validates :string, presence: false
+end
+
+class ValidateMissing < ApplicationRecord
 end

@@ -7,15 +7,15 @@ class GroupDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String.with_options(required: true),
-    description: DescriptionField.with_options(required: true),
-    phone_number: Field::String.with_options(required: true),
-    email_address: Field::String.with_options(required: true),
-    chair_dept_head: ContactField.with_options(required: true),
+    name: Field::String,
+    description: DescriptionField,
+    phone_number: Field::String,
+    email_address: Field::String,
+    chair_dept_head: ContactField,
     member: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
-    spaces: Field::HasMany.with_options(required: true),
+    spaces: Field::HasMany,
     document: DocumentField,
     external: Field::Boolean,
     group_type: Field::Select.with_options(

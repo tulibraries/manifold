@@ -10,6 +10,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
      GroupContact,
      Building,
      Space,
+     Service,
      Group,
      Person].each(&:delete_all)
 
@@ -78,6 +79,18 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         external:      [false, true].sample,
         persons:       Person.all.sample(rand(Person.count)),
         spaces:        [Space.all.sample])
+    end
+
+    for v in 1..5 do
+      service = Service.create!(
+        title:              Faker::Job.field,
+        description:        Faker::Lorem.paragraph,
+        access_description: Faker::Lorem.paragraph,
+        service_policies:   Faker::Lorem.paragraph,
+        intended_audience:  Rails.configuration.audience_types.sample,
+        service_category:   Rails.configuration.service_types.sample,
+        related_groups:     Group.all.sample(rand(Group.count)),
+        related_spaces:     Space.all.sample(rand(Space.count)))
     end
   end
 end

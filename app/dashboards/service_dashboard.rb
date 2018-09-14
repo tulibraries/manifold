@@ -8,9 +8,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    service_space: Field::HasMany,
     related_spaces: Field::HasMany.with_options(class_name: "Space"),
-    service_group: Field::HasMany,
     related_groups: Field::HasMany.with_options(class_name: "Group"),
     id: Field::Number,
     title: Field::String,
@@ -43,9 +41,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :service_space,
     :related_spaces,
-    :service_group,
     :related_groups,
     :id,
     :title,
@@ -63,9 +59,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :service_space,
     :related_spaces,
-    :service_group,
     :related_groups,
     :title,
     :description,

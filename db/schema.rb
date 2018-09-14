@@ -98,15 +98,6 @@ ActiveRecord::Schema.define(version: 2018_09_10_203753) do
     t.boolean "external"
   end
 
-  create_table "library_hours", force: :cascade do |t|
-    t.string "location"
-    t.datetime "date"
-    t.string "hours"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "location_id"
-  end
-
   create_table "members", force: :cascade do |t|
     t.integer "group_id"
     t.integer "person_id"

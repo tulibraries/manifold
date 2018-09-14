@@ -17,6 +17,7 @@ class EventDashboard < Administrate::BaseDashboard
     time: Field::Time,
     type: Field::String,
     tags: Field::String,
+    promoted: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,6 +29,7 @@ class EventDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
+    :promoted,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -55,6 +57,7 @@ class EventDashboard < Administrate::BaseDashboard
     :time,
     :type,
     :tags,
+    :promoted,
   ].freeze
 
   # Overwrite this method to customize how events are displayed
@@ -63,7 +66,7 @@ class EventDashboard < Administrate::BaseDashboard
   # def display_resource(event)
   #   "Event ##{event.id}"
   # end
-  
+
   def tinymce?
     true
   end

@@ -15,8 +15,9 @@ class HighlightDashboard < Administrate::BaseDashboard
     link: Field::String,
     date: Field::DateTime,
     time: Field::Time,
-    type: Field::String,
+    highlight_type: Field::String,
     tags: Field::String,
+    promoted: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,6 +29,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
+    :promoted,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,10 +41,8 @@ class HighlightDashboard < Administrate::BaseDashboard
     :link,
     :date,
     :time,
-    :type,
+    :highlight_type,
     :tags,
-    :created_at,
-    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -55,8 +55,9 @@ class HighlightDashboard < Administrate::BaseDashboard
     :link,
     :date,
     :time,
-    :type,
+    :highlight_type,
     :tags,
+    :promoted,
   ].freeze
 
   # Overwrite this method to customize how highlights are displayed
@@ -65,7 +66,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   # def display_resource(highlight)
   #   "Highlight ##{highlight.id}"
   # end
-    
+
   def tinymce?
     true
   end

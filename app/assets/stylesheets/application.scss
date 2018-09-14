@@ -138,23 +138,157 @@
 	}
 }
 
-#ctaRow {
+.ctaRow {
+	padding-left: 3%;
+   padding-right: 3%;
+   margin-top: 63px;
+   .card {
+   	width: 100%;
+   	display: inline-block;
+   	padding: 0;
+   	margin-left: 7px;
+   	margin-right: 7px;
+   	overflow:hidden;
+   	img {
+   		opacity: 0.5;
+   	}
+   	.card-body {
+   		text-align:center;
+   		padding: .35rem;
+   	}
+   	.card-title {
+   		width: 100%;
+   		font-size: 150%;
+   		text-align:center;
+   	}
+   	.card-text {
+   		text-align: left;
+   	}
+   }
 	.ctaOne {
 		background-color: $foamgreen;
+		color: $white;
+		border-top-left-radius: 42px;
+		border-bottom-left-radius: 42px;
 	}
 	.ctaTwo {
 		background-color: $seagreen;
+		color: $white;
+		margin-top: 35px;
 	}
 	.ctaThree {
 		background-color: $purple;
+		color: $white;
 	}
 	.ctaFour {
 		background-color: $darkgold;
+		margin-top: 35px;
+		border-top-right-radius: 42px;
+		border-bottom-right-radius: 42px;
+		ul {
+			margin-bottom: 0;
+		}
+		li {
+			padding:16px;
+			font-size: 115%;
+			white-space: nowrap;
+		}
 		.oddrow {
 			background-color: $gold;
 		}
 	}
+	.news {
+		background-color: $white;
+		border: solid $seagreen 2px;
+		color: black;
+		margin-top: 0;
+		img {
+			opacity: 1;
+		}
+   	.card-body {
+   		text-align: left;
+   		padding: 10px 14px 4px 14px;
+   	}
+   	.card-title {
+   		font-size: 105%;
+   		font-weight: 600;
+   	}
+   	.card-text {
+   		font-size: 90%;
+   		margin-bottom: 0;
+   	}
+   	a.see-more {
+   		float: right;
+   		padding-bottom: 10px;
+   		padding-right: 10px;
+   		color: $seagreen;
+   	}
+	}
+	.events {
+		background-color: $white;
+		border: solid $purple 0;
+		color: black;
+		margin-top: 0;
+		img {
+			opacity: 1;
+		}
+   	.card-body {
+   		text-align: left;
+   		padding: 14px 21px 14px 21px;
+			border: solid $purple 2px;
+			max-height: 180px;
+			overflow:hidden;
+   	}
+   	.info {
+   		margin: 4px 0;
+   		position: relative;
+   		.when {
+   			width: 55%;
+   			color: $white;
+   			background-color: $purple;
+   			font-size: 100%;
+   			display: inline-block;
+   			padding: 7px;
+   			text-align:center;
+   		}
+   		.details {
+   			width: 43%;
+   			position: absolute;
+   			right: 0;
+   			color: $white;
+   			background-color: $purple;
+   			font-size: 103%;
+   			opacity: .75;
+   			display: inline-block;
+   			padding: 7px;
+   			text-align:center;
+   			margin-right: 0;
+   		}
+   	}
+	}
+	.events.ctaOne {
+ 		.card-body {
+			border-bottom-left-radius: 42px;
+ 		}
+ 	}
+	.events.ctaFour {
+ 		.card-body {
+			border-bottom-right-radius: 42px;
+ 		}
+ 	}
 }
+
+.vertical-stripes {
+  background: repeating-linear-gradient( 
+  90deg,
+  #fff,
+  #fff 20px,
+  #eee 20px,
+  #eee 40px);
+  height: 84px;
+  width: 7px;
+}
+
 	html, body {
 		background-color: #f1f1f1;
 	}
@@ -202,7 +336,7 @@ a:not(.dropdown-item) {
 #content {
 	margin: 0;
 	background-color: #fff;
-	padding-bottom: 310px;
+	padding-bottom: 42px;
 	min-height: calc(100vh - 291px)
 }
 #skip-link {

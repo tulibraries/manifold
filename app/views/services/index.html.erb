@@ -5,7 +5,7 @@
 <% unless @services.nil? %>
     <% @services.each do |service| %>
       <p>
-        <%= link_to service.name, service %>
+        <%= link_to service.title, service %>
       </p>
     <% end %>
 <% end %>

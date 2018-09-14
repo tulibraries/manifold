@@ -21,16 +21,20 @@
 
 <p>
   <strong>Related Spaces: </strong>
-  <% unless @service.related_spaces.empty? %>
-    <%= link_to (@service.related_spaces.first.name, controller: 'spaces', action: 'show', id: @serivce.spaces.last.id %>
-  <% end %>
+  <ul>
+    <% @service.related_spaces.each do |s| %>
+      <li><%= link_to s.name, controller: 'spaces', action: 'show', id: s.id %></li>
+    <% end %>
+  </ul>
 </p>
 
 <p>
   <strong>Related Groups: </strong>
-  <% unless @service.related_groups.empty? %>
-    <%= link_to (@service.related_groups.first.name, controller: 'groups', action: 'show', id: @serivce.groups.last.id %>
-  <% end %>
+  <ul>
+    <% @service.related_groups.each do |g| %>
+      <li><%= link_to g.name, controller: 'groups', action: 'show', id: g.id %></li>
+    <% end %>
+  </ul>
 </p>
 
 <p>

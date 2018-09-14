@@ -1,6 +1,3 @@
-<% if @highlights.nil? %>
-	false
-<% end %>
 
 <div id="searchFields">
 
@@ -75,16 +72,18 @@
 </div>
 
 <div class="row ctaRow">
+	<% @highlights.each do |highlight| %>
 	<div class="col col-sm-3">
 		<div class="card ctaOne news">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag(highlight.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
-		    <span class="card-title">Help with Research</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <span class="card-title"><%= highlight.title %></span>
+		    <p class="card-text"><%= highlight.blurb %></p>
 		    <%= link_to "See more >", "#", class: 'see-more' %>
 		  </div>
 		</div>
 	</div>
+	<% end %>
 	<div class="col col-sm-3">
 		<div class="card ctaTwo news">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>

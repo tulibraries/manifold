@@ -1,9 +1,193 @@
-<h1>Welcome</h1>
-<p id="notice"><%= notice %></p>
 
-<ul>
-	<li><%= link_to 'Buildings', controller: 'buildings', action: 'index' %></li>
-	<li><%= link_to 'Spaces', controller: 'spaces', action: 'index' %></li>
-	<li><%= link_to 'People', controller: 'persons', action: 'index' %></li>
-	<li><%= link_to 'Groups', controller: 'groups', action: 'index' %></li>
-</ul>
+
+<div id="searchFields">
+
+	<form>
+		<input type="text" name="q" id="librarySearch" placeholder="Search for library materials" autocomplete="off" />
+	</form>
+	<div id="searchOptions">
+		<ul>
+			<li>Books</li>
+			<li>Articles</li>
+			<li>Databases</li>
+			<li>Digitized Archival Materials</li>
+		</ul>
+		<div id="advancedSearchLink">
+			Advanced Search
+		</div>
+	</div>
+		<div id="dateTime">
+			<div id="date">
+				FRIDAY, AUGUST 17, 2018
+			</div>
+			<div id="time">
+				Paley Library | 8am - 7pm
+			</div>
+			<div id="allHours">
+				See all library hours >
+			</div>
+		</div>
+</div>
+
+<div class="row ctaRow">
+	<div class="col col-sm-3 ">
+		<div class="card ctaOne">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Help with Research</span>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaTwo">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Find a study space</span>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaThree">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Print my paper</span>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaFour">
+			<div class="">
+				<ul>
+					<li class="oddrow">Health Sciences Libraries ></li>
+					<li>Special Collections Research Center ></li>
+					<li class="oddrow">Ambler Library ></li>
+					<li>All Libraries ></li>
+				</ul>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="vertical-stripes" style="margin-top: 63px;text-align: center;width: 100%;">
+	<h1 style="white-space: nowrap;padding:14px;font-size: 250%;letter-spacing:.15rem;background-color:white!important;width: 25%;margin:auto;height:84px"> News &amp; Highlights</h1>
+</div>
+
+<div class="row ctaRow">
+	<div class="col col-sm-3">
+		<div class="card ctaOne news">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Help with Research</span>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "See more >", "#", class: 'see-more' %>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaTwo news">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Find a study space</span>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "See more >", "#", class: 'see-more' %>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaThree news">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Print my paper</span>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "See more >", "#", class: 'see-more' %>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaFour news">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Print my paper</span>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "See more >", "#", class: 'see-more' %>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="vertical-stripes" style="margin-top: 63px;text-align: center;width: 100%;">
+	<h1 style="white-space: nowrap;padding:14px;font-size: 250%;letter-spacing:.15rem;background-color:white!important;width: 25%;margin:auto;height:84px">Events</h1>
+</div>
+
+<div class="row ctaRow">
+	<div class="col col-sm-3">
+		<div class="card ctaOne events">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<div class="info">
+				<div class="when">
+					Sep 14 @ 2PM
+				</div>
+				<div class="details">
+					Details >
+				</div>
+			</div>
+		  <div class="card-body">
+		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaTwo events">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<div class="info">
+				<div class="when">
+					Sep 14 @ 2PM
+				</div>
+				<div class="details">
+					Details >
+				</div>
+			</div>
+		  <div class="card-body">
+		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaThree events">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<div class="info">
+				<div class="when">
+					Sep 30 @ 12:30PM
+				</div>
+				<div class="details">
+					Details >
+				</div>
+			</div>
+		  <div class="card-body">
+		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-3">
+		<div class="card ctaFour events">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<div class="info">
+				<div class="when">
+					Sep 14 @ 2PM
+				</div>
+				<div class="details">
+					Details >
+				</div>
+			</div>
+		  <div class="card-body">
+		    <p class="card-text">
+		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
+		    Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		  </div>
+		</div>
+	</div>
+</div>
+

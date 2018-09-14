@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_154916) do
+ActiveRecord::Schema.define(version: 2018_09_14_211023) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -74,6 +74,18 @@ ActiveRecord::Schema.define(version: 2018_09_13_154916) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "blurb"
+    t.string "link"
+    t.date "date"
+    t.time "time"
+    t.string "type"
+    t.string "tags"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "group_contacts", force: :cascade do |t|
     t.integer "group_id"
     t.integer "person_id"
@@ -92,6 +104,18 @@ ActiveRecord::Schema.define(version: 2018_09_13_154916) do
     t.datetime "updated_at", null: false
     t.string "group_type"
     t.boolean "external"
+  end
+
+  create_table "highlights", force: :cascade do |t|
+    t.string "title"
+    t.text "blurb"
+    t.string "link"
+    t.date "date"
+    t.time "time"
+    t.string "type"
+    t.string "tags"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "library_hours", force: :cascade do |t|

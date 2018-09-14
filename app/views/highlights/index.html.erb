@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Highlights</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Blurb</th>
+      <th>Link</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Type</th>
+      <th>Tags</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @highlights.each do |highlight| %>
+      <tr>
+        <td><%= highlight.title %></td>
+        <td><%= highlight.blurb %></td>
+        <td><%= highlight.link %></td>
+        <td><%= highlight.date %></td>
+        <td><%= highlight.time %></td>
+        <td><%= highlight.type %></td>
+        <td><%= highlight.tags %></td>
+        <td><%= link_to 'Show', highlight %></td>
+        <td><%= link_to 'Edit', edit_highlight_path(highlight) %></td>
+        <td><%= link_to 'Destroy', highlight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Highlight', new_highlight_path %>

@@ -9,25 +9,49 @@
 		background-color: cornsilk;
 	}
 }
+#seagreen {
+	background-color: $seagreen;
+	height: 77px;
+}
 #header-navbar {
-	border-bottom: solid $red 1px;
 	padding-top: 14px;
-	padding-bottom: 14px;
+	.header-logo {
+		padding-left: 7px;
+	  max-width: 107px;
+	  max-height: 77px;
+	}
+	a.header-name, a.header-name:hover, a.header-name:focus {
+		color: #000;
+		font-size: 2.45rem;
+		font-family: "Crimson Text",serif;
+		vertical-align:bottom;
+		margin-left: 10px;
+		text-decoration: none;
+		white-space: nowrap;
+		line-height: 1.25;
+	}
 }
 .navbar-default {
 	background-color: $tan;
 }
 
 .navbar-right {
+	position: relative;
 	ul {
-	float: right;
-	margin-right: 28px;
+		position: absolute;
+		bottom: 0;
+		float: right;
+		width: 100%;
+		margin-right: 28px;
+		margin-bottom: 0;
+		text-align:right;
 		li {
 			a, a:visited, a:hover, a:active {
-				font-size: 95%;
+				font-size: 140%;
+				font-family: 'Droid';
 			}
 			display: inline-block;
-			padding: 7px 7px 0 7px;
+			padding: 7px 24px 0 24px;
 		}
 	}
 }

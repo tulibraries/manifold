@@ -1,19 +1,32 @@
   <div id="header-navbar" class="navbar navbar-static-top" role="navigation">
     <div class="col">
-      <div class="container navbar-header">
+      <div class="navbar-header">
         <div class="row">
-          <div class="col col-med-1">
-            <%= link_to image_tag('NewCherryLogo.jpg', alt: 'Temple University Libraries', class: 'site-title'), root_path %> 
+          <div class="col col-md-1">
+            <%= link_to root_path, class: "header-name", id: "header-logo" do %>
+              <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> University Libraries
+            <% end %>
           </div>
-          <div class="navbar-right col col-med-11">
+          <div class="navbar-right col col-md-11">
             <ul> 
               <li>
-                <a href="/">link 1</a>
+                <a href="/">About</a>
               </li>
-              <li>|</li>
+   
               <li>
-                <a href="/">link 2</a>
+                <a href="/">Research</a>
               </li>
+              <li>
+                <a href="/">Services</a>
+              </li>
+
+              <li>
+                <a href="/">Chat</a>
+              </li>
+              <li>
+                <a href="/">My Account</a>
+              </li>
+              <li>
             </ul>
           </div>
         </div>
@@ -43,6 +56,8 @@
       <% end %>
     </div>
   </div> <!-- #header -->
+
+  <div id="seagreen"></div>
 
     
 

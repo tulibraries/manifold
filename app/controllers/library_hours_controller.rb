@@ -4,10 +4,10 @@ class LibraryHoursController < ApplicationController
     @locations = LibraryHours.all.pluck(:location_id).uniq
   end
   def show
-    @locations = LibraryHours.all.pluck(:location_id).uniq
+    @locations = LibraryHours.distinct.pluck(:location_id)
     @today = Date.today
     sunday = @today.beginning_of_week - 1
-    saturday = @today.end_of_week 
+    saturday = @today.end_of_week
 
     @location = Building.where(hours: params[:id])
     if @location.nil?

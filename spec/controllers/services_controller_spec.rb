@@ -4,6 +4,7 @@ RSpec.describe ServicesController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
+      skip "Add next"
       get :index
       expect(response).to have_http_status(:success)
     end
@@ -11,6 +12,7 @@ RSpec.describe ServicesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
+      skip "Add next"
       get :show
       expect(response).to have_http_status(:success)
     end

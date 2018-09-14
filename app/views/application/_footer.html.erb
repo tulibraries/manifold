@@ -1,52 +1,129 @@
 <div id="site-footer" class="">
   <div class="row">
     <div class="col">
+      <%= link_to root_path, class: "footer-name", id: "footer-logo" do %>
+        <%= image_tag('temple-logo-t-box.svg', class: "footer-logo") %> University Libraries
+      <% end %>
 
-      <div class="postscript">
-    
-        <div class="region region-postscript-first">        
-          <div class="dept-address">
-            <address><span class="place-title bebas">Temple University</span><br /><span class="place-location">University Libraries</span><br />1210 Pollet Walk<br />Philadelphia, PA 19122</address>
-          </div>
-         </div>
-            
-        <div class="region region-postscript-second">        
-          <nav role="navigation">
-            <ul>
-              <li><a href="https://directory.temple.edu/">Cherry and White Directory</a></li>
-              <li><a href="http://temple.edu/maps-and-directions">Maps and Directions</a></li>
-              <li><a href="http://temple.edu/contact">Contact</a></li>
+      <div class="postscript row" style="margin-top: 56px;">      
+        <div class="col col-sm-2" id="footer-buildings">
+          <strong>Buildings</strong>
+          <hr />
+          <ul>
+            <li>Building 1</li>
+            <li>Building 2</li>
+            <li>Building 3</li>
+            <li>Building 4</li>
+            <li>Building 5</li>
+            <li>Building 6</li>
+            <li class="see-all">View all Buildings</li>
             </ul>
-          </nav>
-        </div>   
-
-        <div class="region region-postscript-third">        
-          <nav role="navigation">
-            <ul>
-              <li style="display:inline;margin-right:14px;"><%= link_to image_tag('fb.png', class: 'social-icon', alt: 'Facebook Icon', :style => 'width:32px;height:32px;'), 'https://www.facebook.com/templelibraries/' %></li>
-              <li style="display:inline;margin-right:14px;"><%= link_to image_tag('twitter.png', class: 'social-icon', alt: 'Twitter Icon', :style => 'width:36px;height:36px;margin-top:2px;'), 'https://twitter.com/TempleLibraries' %></li>
-              <li style="display:inline"><%= link_to image_tag('instagram.png', class: 'social-icon', alt: 'Instagram Icon', :style => 'width:34px;height:34px;'), 'http://instagram.com/tulibraries' %></li>
-            </ul>
-            <br /><br />
-          </nav>
         </div>
+        <div class="col col-sm-2" id="footer-spaces">
+          <strong>Spaces</strong>
+          <hr style="border: solid white 1px;color: white" />
+          <ul>
+            <li>Space 1</li>
+            <li>Spaces 2</li>
+            <li>Spaces 3</li>
+            <li>Spaces 4</li>
+            <li>Spaces 5</li>
+            <li>Spaces 6</li>
+            <li class="see-all">View all Spaces</li>
+            </ul>
+        </div>
+        <div class="col col-sm-2" id="footer-services">
+          <strong>Services</strong>
+          <hr style="border: solid white 1px;color: white" />
+          <ul>
+            <li>Service 1</li>
+            <li>Service 2</li>
+            <li>Service 3</li>
+            <li>Service 4</li>
+            <li>Service 5</li>
+            <li>Service 6</li>
+            <li class="see-all">View all Services</li>
+            </ul>
+        </div>
+        <div class="col col-sm-2" id="footer-groups">
+          <strong>Groups</strong>
+          <hr style="border: solid white 1px;color: white" />
+          <ul>
+            <li>Group 1</li>
+            <li>Group 2</li>
+            <li>Group 3</li>
+            <li>Group 4</li>
+            <li>Group 5</li>
+            <li>Group 6</li>
+            <li class="see-all">View all Groups</li>
+            </ul>
+        </div>
+        <div class="col col-sm-2" id="footer-collections">
+          <strong>Collections</strong>
+          <hr style="border: solid white 1px;color: white" />
+          <ul>
+            <li>Collection 1</li>
+            <li>Collection 2</li>
+            <li>Collection 3</li>
+            <li>Collection 4</li>
+            <li>Collection 5</li>
+            <li>Collection 6</li>
+            <li class="see-all">View all Collections</li>
+            </ul>
+        </div>
+      </div>
 
-      </div> 
 
       <div class="tu-links">    
 
         <div class="region region-footer">
-          <div>
-            <ul>
-              <li><a class="droid" href="http://tuportal.temple.edu/">TUportal</a></li>
-              <li><a class="droid" href="http://tumail.temple.edu/">TUmail</a></li>
-              <li><a class="droid" href="http://temple.edu/sitemap/">Sitemap</a></li>
-              <li><a class="droid" href="http://temple.edu/about/temple-university-accessibility-statement/">Accessibility</a></li>
-              <li><a class="droid" href="http://policies.temple.edu/">Policies</a></li>
-              <li><a class="droid" href="http://temple.edu/hr/departments/employment/jobs_within.htm">Careers at Temple</a></li>
-              <li><small>Copyright <%= Time.current.year %> Temple University | All Rights Reserved</small></li>
-            </ul>
+          <div class="row">
+            <div class="col col-sm-12 tools">
+              Staff Tools
+              <hr />
+            </div>
           </div>
+          <div class="row">
+            <div class="col col-sm-2">
+              <ul>
+                <li>EZ-borrow</li>
+                <li>ILLiad</li>
+                <li>RefWorks</li>
+              </ul>
+            </div>
+            <div class="col col-sm-2">
+              <ul>
+                <li>Staff directory</li>
+                <li>Contact us</li>
+                <li>Memberships</li>
+              </ul>
+            </div>
+            <div class="col col-sm-2">
+              <ul>
+                <li>Jobs</li>
+                <li>Publications</li>
+                <li>Donate</li>
+              </ul>
+            </div>
+            <div class="col col-sm-2">
+              <ul>
+                <li>Policies</li>
+              </ul>
+            </div>
+            <div class="col col-sm-4">
+              <ul>
+                <li class="social-footer instagram">
+                  <%= link_to image_tag('instagram-logo_white.svg'), 'http://instagram.com/tulibraries' %>
+                </li>
+                <li class="social-footer facebook">
+                  <%= link_to image_tag('facebook-logo_white.svg'), 'https://www.facebook.com/pages/Temple-University-Libraries/6340283058' %>
+                </li>
+                <li class="social-footer twitter">
+                  <%= link_to image_tag('twitter-logo_white.svg'), 'http://twitter.com/TempleLibraries' %>
+                </li>
+              </ul>
+            </div>
+
         </div>
       </div>
     </div>

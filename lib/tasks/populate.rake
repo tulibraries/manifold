@@ -4,13 +4,15 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
     require 'populate'
     require 'faker'
 
-    [Occupant,
+    [ServiceGroup,
+     ServiceSpace,
+     Service,
+     Occupant,
      SpaceGroup,
      Member,
      GroupContact,
      Building,
      Space,
-     Service,
      Group,
      Person].each(&:delete_all)
 
@@ -89,7 +91,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         service_policies:   Faker::Lorem.paragraph,
         intended_audience:  Rails.configuration.audience_types.sample,
         service_category:   Rails.configuration.service_types.sample,
-        related_groups:     Group.all.sample(rand(Group.count)),
+        related_groups:     Group.all.sample(rand(1..Group.count)),
         related_spaces:     Space.all.sample(rand(Space.count)))
     end
   end

@@ -18,7 +18,7 @@ class PersonDashboard < BaseDashboard
     chat_handle: Field::String,
     photo: PhotoField.with_options(admin_only: true),
     job_title: Field::String.with_options(required: true),
-    springshare_id: Field::String,
+    springshare_id: SpringshareIdField,
     research_identifier: Field::String,
     personal_site: Field::String,
     created_at: Field::DateTime,

@@ -39,20 +39,21 @@
 
   <div id="header" class="row">
     <div class="col">
+      <% if @alert %>
       <div class="container">
-        <div class="row">
-          
-          <div class="col-md-8">
-            <!-- navigation links -->
-          </div>
-
-          <div class="col-md-4">
-            <!-- search bar? -->
+        <div class="row">   
+          <div class="col-md-12">
+            <marquee>
+              <% unless @alert.link.blank? %>
+                <%= link_to @alert.scroll_text+", click here to see full details...", @alert.link %>
+              <% else %>
+                <%= link_to @alert.scroll_text+", click here to see full details...", alerts_path, id: @alert.id %>
+              <% end %>
+            </marquee>
           </div>
         </div>
-
       </div>
-
+      <% end %>
     </div>
   </div> <!-- #header -->
 

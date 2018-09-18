@@ -1,6 +1,7 @@
-# Fortytude
+# manifold
+*adj.* - **many and varied**
 
-Fortytude is the Temple University Library's website built on Ruby on Rails.
+manifold manages, orchestrates, and displays data about Temple University Libraries.
 
 ## System Requirements
 
@@ -21,8 +22,8 @@ how you've setup your Bash shell.
 * Clone the repository and navigate to the souce code directory
 
 ```
-git clone git@github.com:tulibraries/fortytude.git`
-`cd fortytude
+git clone git@github.com:tulibraries/manifold.git
+cd manifold
 ```
 
 * Install dependencies

@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Locations and Services Hours</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ul>
+        <% @locations.each do |location| %>
+          <li>
+            <%= link_to location_name(location), root_path+"hours/"+location %>
+
+          </li>
+        <% end %>
+        </ul>
+    </div>
+  </div>
+</div>

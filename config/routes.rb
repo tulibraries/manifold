@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   resources :spaces, only: [:index, :show]
   resources :buildings, only: [:index, :show]
   resources :groups, only: [:index, :show]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  controller :library_hours do
+    get 'hours' => :index
+    get 'hours/:id' => :show
+  end
 end

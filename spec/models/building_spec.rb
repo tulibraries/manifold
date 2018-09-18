@@ -12,7 +12,6 @@ RSpec.describe Building, type: :model do
       "address1",
       "temple_building_code",
       "directions_map",
-      "hours",
     ]
     required_fields.each do |f|
       example "missing #{f} field" do

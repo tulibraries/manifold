@@ -12,7 +12,7 @@ class BuildingDashboard < BaseDashboard
     address1: Field::String.with_options(required: true),
     temple_building_code: Field::String.with_options(required: true),
     directions_map: GmapField.with_options(required: true),
-    hours: Field::String,
+    hours: HoursField,
     phone_number: PhoneField.with_options(required: true),
     campus: Field::String.with_options(required: true),
     email: Field::Email,
@@ -52,12 +52,12 @@ class BuildingDashboard < BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
+    :campus,
     :address1,
+    :phone_number,
     :temple_building_code,
     :directions_map,
     :hours,
-    :phone_number,
-    :campus,
     :email,
   ].freeze
 

@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_09_13_154916) do
 
   create_table "accounts", force: :cascade do |t|

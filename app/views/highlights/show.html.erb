@@ -1,8 +1,15 @@
-<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
   <%= @highlight.title %>
+</p>
+
+<p>
+  <%= image_tag @highlight.photo, class: "large" %>
 </p>
 
 <p>
@@ -27,7 +34,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @highlight.type %>
+  <%= @highlight.highlight_type %>
 </p>
 
 <p>
@@ -35,5 +42,4 @@
   <%= @highlight.tags %>
 </p>
 
-<%= link_to 'Edit', edit_highlight_path(@highlight) %> |
-<%= link_to 'Back', highlights_path %>
+</div>

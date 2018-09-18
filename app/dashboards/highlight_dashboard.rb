@@ -15,7 +15,10 @@ class HighlightDashboard < Administrate::BaseDashboard
     link: Field::String,
     date: Field::DateTime,
     time: Field::Time,
-    highlight_type: Field::String,
+    highlight_type: Field::Select.with_options(
+      collection: Rails.configuration.highlight_types,
+      multiple: true,
+      ),
     tags: Field::String,
     promoted: Field::Boolean,
     created_at: Field::DateTime,

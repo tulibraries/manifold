@@ -5,6 +5,11 @@ RSpec.describe Service, type: :model do
     DatabaseCleaner.clean
   end
 
+  let(:building) { FactoryBot.create(:building) }
+  let(:space) { FactoryBot.create(:space, building: building) }
+  let(:person) { FactoryBot.build(:person, spaces: [space]) }
+  let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_head: person) }
+
   describe "Required attributes" do
     example "Missing title" do
       service = FactoryBot.build(:service, title: "")
@@ -27,11 +32,22 @@ RSpec.describe Service, type: :model do
     end
   end
 
+  describe "multiple intended audiences" do
+    example "select more than one" do
+      service = FactoryBot.create(:service,
+        related_groups: [group],
+        intended_audience: [
+          Rails.configuration.audience_types.first,
+          Rails.configuration.audience_types.last])
+      expect(service.intended_audience).to include(Rails.configuration.audience_types.first)
+      expect(service.intended_audience).to include(Rails.configuration.audience_types.last)
+    end
+    example "audience doesn't exist" do
+      skip "behavior is TBD"
+    end
+  end
+
   describe "associated class" do
-    let(:building) { FactoryBot.create(:building) }
-    let(:space) { FactoryBot.create(:space, building: building) }
-    let(:person) { FactoryBot.build(:person, spaces: [space]) }
-    let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_head: person) }
     context "Space" do
       example "attach space" do
         service = FactoryBot.create(:service, related_spaces: [space], related_groups: [group])

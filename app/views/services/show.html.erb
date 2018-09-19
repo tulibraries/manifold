@@ -44,7 +44,7 @@
 
 <p>
   <strong>Intended Audience:</strong>
-  <%= @service.intended_audience.html_safe %>
+  <%= @service.intended_audience.join(", ").html_safe %>
 </p>
 
 <p>

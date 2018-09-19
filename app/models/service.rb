@@ -2,6 +2,8 @@ class Service < ApplicationRecord
   validates :title, :description, :intended_audience, :service_category, presence: true
   validates :related_groups, presence: true
 
+  serialize :intended_audience
+
   has_many :service_space
   has_many :related_spaces, through: :service_space, source: :space
 

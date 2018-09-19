@@ -6,7 +6,7 @@ class CreateServices < ActiveRecord::Migration[5.2]
       t.text :access_description
       t.string :access_link
       t.text :service_policies
-      t.string :intended_audience
+      t.text :intended_audience
       t.string :service_category
 
       t.timestamps

@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_203753) do
     t.text "access_description"
     t.string "access_link"
     t.text "service_policies"
-    t.string "intended_audience"
+    t.text "intended_audience"
     t.string "service_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -9,7 +9,7 @@ FactoryBot.define do
     access_description { "Fully accessible" }
     access_link { |n| "http://www.example.com/#{n}" }
     service_policies { "Plenary" }
-    intended_audience { "General" }
+    intended_audience { ["General"] }
     service_category { "Hospitality" }
   end
 end

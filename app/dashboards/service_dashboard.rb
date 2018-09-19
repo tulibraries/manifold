@@ -14,8 +14,8 @@ class ServiceDashboard < Administrate::BaseDashboard
     access_description: DescriptionField.with_options(required: true),
     access_link: Field::String,
     service_policies: DescriptionField.with_options(required: true),
-    intended_audience: Field::Select.with_options(
-      collection: Rails.configuration.audience_types
+    intended_audience: MultiSelectField.with_options(
+      collection: Rails.configuration.audience_types,
     ),
     service_category: Field::Select.with_options(
       collection: Rails.configuration.service_types
@@ -36,6 +36,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :service_category,
+    :intended_audience,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

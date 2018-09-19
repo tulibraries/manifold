@@ -5,4 +5,7 @@
   <%= f.select(field.attribute, nil, {}, multiple: true) do %>
     <%= options_for_select(field.selectable_options, field.data) %>
   <% end %>
+  <div class="select-all">
+    <input type="button" id="select_all" name="select_all" value="Select All">
+  </div>
 </div>

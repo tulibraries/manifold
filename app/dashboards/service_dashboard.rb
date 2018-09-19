@@ -36,7 +36,6 @@ class ServiceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :title,
     :service_category,
-    :intended_audience,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

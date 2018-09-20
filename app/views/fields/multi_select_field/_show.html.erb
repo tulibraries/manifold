@@ -1,1 +1,7 @@
-<%= field.to_s %>
+<ol>
+  <% field.data.each do |item| %>
+  <li>
+    <%= item %>
+  </li>
+  <% end %>
+</ol>

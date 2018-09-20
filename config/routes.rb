@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'services/index'
-  get 'services/show'
   devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
   namespace :admin do
     resources :accounts

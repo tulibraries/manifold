@@ -10,7 +10,7 @@ class Service < ApplicationRecord
   has_many :service_group
   has_many :related_groups, through: :service_group, source: :group
 
-  before_validation :remove_empty_audience
+  before_create :remove_empty_audience
 
   def remove_empty_audience
     # Rails tends to return an empty string in multi-selects array

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :service do
-    title { |n| "Service #{n}" }
+    sequence(:title) { |n| "Service #{n}" }
     description <<~EOD.strip.gsub(/\n/," ")
       The best drink in existence is the Pan Galactic Gargle Blaster, the effect
       of which is like having your brains smashed out by a slice of lemon wrapped

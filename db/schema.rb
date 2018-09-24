@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_154916) do
+ActiveRecord::Schema.define(version: 2018_09_24_153213) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -72,6 +72,34 @@ ActiveRecord::Schema.define(version: 2018_09_13_154916) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "building_id"
+    t.integer "space_id"
+    t.string "external_building"
+    t.string "external_space"
+    t.string "external_address"
+    t.string "external_city"
+    t.string "external_state"
+    t.string "external_zip"
+    t.integer "person_id"
+    t.string "external_contact_name"
+    t.string "external_contact_email"
+    t.string "external_contact_phone"
+    t.boolean "cancelled"
+    t.boolean "registration_status"
+    t.string "registration_link"
+    t.string "content_hash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_events_on_building_id"
+    t.index ["person_id"], name: "index_events_on_person_id"
+    t.index ["space_id"], name: "index_events_on_space_id"
   end
 
   create_table "group_contacts", force: :cascade do |t|

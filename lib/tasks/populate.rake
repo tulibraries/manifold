@@ -1,3 +1,5 @@
+require "factory_bot_rails"
+
 namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Object
   desc "Erase and fill database"
   task :populate => :environment do
@@ -8,6 +10,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
      SpaceGroup,
      Member,
      GroupContact,
+     Event,
      Building,
      Space,
      Group,
@@ -79,5 +82,19 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         persons:       Person.all.sample(rand(Person.count)),
         spaces:        [Space.all.sample])
     end
+
+    for e in 1..5 do
+      event = Event.create!(
+        title:                Faker::Lorem.sentence(1+rand(4)),
+        description:          Faker::Lorem.paragraph,
+        start_time:           "2018-09-24 11:32:13", #Faker::DateTime.dateTimeBetween($startDate = 'now', $endDate = 'tomorrow', $timezone = null),
+        end_time:             "2018-09-24 11:32:13", #Faker::DateTime.dateTimeBetween($startDate = 'now', $endDate = 'tomorrow', $timezone = null),
+        building:             Building.all.sample,
+        space:                Space.all.sample,
+        person:               Person.all.sample,
+        cancelled:            [false, true].sample,
+        registration_status:  [false, true].sample)
+    end
+
   end
 end

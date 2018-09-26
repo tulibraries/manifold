@@ -21,4 +21,7 @@ class Group < ApplicationRecord
 
   has_one :group_contact
   has_one :chair_dept_head, through: :group_contact, source: :person
+
+  has_many :service_group
+  has_many :related_services, through: :service_group, source: :service
 end

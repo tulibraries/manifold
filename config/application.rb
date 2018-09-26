@@ -23,6 +23,27 @@ module Tude
     # the framework and any gems in your application.
 
     config.group_types = ["Assembly","Committee","Department","Functional Team","Strategic Steering Team","Working Group"]
+    config.service_types = ["Access to collections & resource sharing",
+                            "Building & space use",
+                            "Research & instruction support",
+                            "Digital scholarship",
+                            "Scholarly communication",
+                            "Technology use & supportResearch data services"]
+    config.audience_types = ["Undergraduate students",
+                             "Graduate students",
+                             "Faculty",
+                             "Instructors",
+                             "Students w/ disabilities",
+                             "Alumni",
+                             "Visitors & community members",
+                             "Pennsylvania residents",
+                             "Non-credit students",
+                             "Temple University Hospital employees",
+                             "Temple University Hospital residents",
+                             "Continuing education students",
+                             "Visiting scholars",
+                             "University staff & administration"]
+
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
   end
 end

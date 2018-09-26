@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :people
     resources :spaces
     resources :events
+    resources :services
 
     root to: "people#index"
   end
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   resources :buildings, only: [:index, :show]
   resources :groups, only: [:index, :show]
   resources :events, only: [:index, :show]
+  resources :services, only: [:index, :show]
   controller :library_hours do
     get 'hours' => :index
     get 'hours/:id' => :show

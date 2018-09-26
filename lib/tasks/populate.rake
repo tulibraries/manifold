@@ -1,5 +1,3 @@
-require "factory_bot_rails"
-
 namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Object
   desc "Erase and fill database"
   task :populate => :environment do

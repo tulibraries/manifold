@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :alerts
     resources :buildings
     resources :groups
+    resources :highlights
     resources :people
     resources :spaces
     resources :events
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   resources :spaces, only: [:index, :show]
   resources :buildings, only: [:index, :show]
   resources :groups, only: [:index, :show]
+  resources :highlights, only: [:show]
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
   controller :library_hours do

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # user, we have no access to the devise object. So, we need to override
   # current_user to return the current account. This is needed both
   # in ApplicationController and in Admin::ApplicationController
-	before_action :get_alert
+	before_action :get_alert, :get_highlights
 
   def current_user
     current_account
@@ -12,5 +12,9 @@ class ApplicationController < ActionController::Base
 	def get_alert
 	    @alert = Alert.find_by(published: true)
 	end
+
+  def get_highlights
+    @highlights = Highlight.where(promoted: true).take(4)
+  end
 
 end

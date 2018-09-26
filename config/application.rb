@@ -23,6 +23,9 @@ module Tude
     # the framework and any gems in your application.
 
     config.group_types = ["Assembly","Committee","Department","Functional Team","Strategic Steering Team","Working Group"]
+
+    config.highlight_types = ["Program/Event","Featured Staff","Featured Resource","Featured Location","Staff Recommendation","DSC Event","HSL Highlight"]
+
     config.service_types = ["Access to collections & resource sharing",
                             "Building & space use",
                             "Research & instruction support",
@@ -45,5 +48,6 @@ module Tude
                              "University staff & administration"]
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
+
   end
 end

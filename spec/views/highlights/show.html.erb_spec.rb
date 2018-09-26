@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActionDispatch::TestProcess
 
 RSpec.describe "highlights/show", type: :view do
   before(:each) do
@@ -6,7 +7,7 @@ RSpec.describe "highlights/show", type: :view do
       :title => "Title",
       :blurb => "MyText",
       :link => "Link",
-      :type => "Type",
+      :highlight_type => "Type",
       :tags => "Tags"
     ))
   end

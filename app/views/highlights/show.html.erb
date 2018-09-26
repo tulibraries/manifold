@@ -8,9 +8,11 @@
   <%= @highlight.title %>
 </p>
 
-<p>
-  <%= image_tag @highlight.photo, class: "large" %>
-</p>
+<% if @highlight.photo.attached? %>
+  <p>
+    <%= image_tag @highlight.photo, class: "large" %>
+  </p>
+<% end %>
 
 <p>
   <strong>Blurb:</strong>

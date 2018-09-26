@@ -5,7 +5,8 @@ FactoryBot.define do
     link "MyString"
     date "2018-09-14"
     time "2018-09-14 17:10:23"
-    type ""
+    highlight_type ""
     tags "MyString"
+    photo "photo"
   end
 end

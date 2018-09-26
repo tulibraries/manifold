@@ -102,10 +102,9 @@ ActiveRecord::Schema.define(version: 2018_09_14_213649) do
     t.time "time"
     t.string "highlight_type"
     t.string "tags"
-    t.boolean "promoted"
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "promoted"
   end
 
   create_table "library_hours", force: :cascade do |t|

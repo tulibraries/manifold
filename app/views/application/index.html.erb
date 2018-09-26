@@ -75,11 +75,17 @@
 <div class="row ctaRow">
 	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaOne news">
-			<%= image_tag(@highlights.first.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag(@highlights.first.photo.variant(extent: "370x196"), class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
 		    <span class="card-title"><%= @highlights.first.title.truncate(34) %></span>
 		    <p class="card-text"><%= @highlights.first.blurb.truncate(120) %></p>
-		    <p><%= link_to "See more >", @highlights.first.link, class: 'see-more' %></p>
+		    <p>
+		    	<% unless @highlights.first.link.blank? %>
+		    		<%= link_to "See more >", @highlights.first.link, class: 'see-more' %>
+		    	<% else %>
+		    		<%= link_to "See more >", @highlights.first, class: 'see-more' %>
+		    	<% end %>
+		    </p>
 		  </div>
 		</div>
 	</div>
@@ -87,11 +93,17 @@
 	<% unless @highlights.second == @highlights.last %>
 	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaTwo news">
-			<%= image_tag(@highlights.second.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag(@highlights.second.photo.variant(extent: "370x196"), class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
 		    <span class="card-title"><%= @highlights.second.title.truncate(34) %></span>
 		    <p class="card-text"><%= @highlights.second.blurb.truncate(120) %></p>
-		    <p><%= link_to "See more >", @highlights.second.link, class: 'see-more' %></p>
+		    <p>
+		    	<% unless @highlights.second.link.blank? %>
+		    		<%= link_to "See more >", @highlights.second.link, class: 'see-more' %>
+		    	<% else %>
+		    		<%= link_to "See more >", @highlights.second, class: 'see-more' %>
+		    	<% end %>
+		    </p>
 		  </div>
 		</div>
 	</div>
@@ -102,7 +114,13 @@
 		  <div class="card-body">
 		    <span class="card-title"><%= @highlights.last.title.truncate(34) %></span>
 		    <p class="card-text"><%= @highlights.last.blurb.truncate(120) %></p>
-		    <p><%= link_to "See more >", @highlights.last.link, class: 'see-more' %></p>
+		    <p>
+		    	<% unless @highlights.last.link.blank? %>
+		    		<%= link_to "See more >", @highlights.last.link, class: 'see-more' %>
+		    	<% else %>
+		    		<%= link_to "See more >", @highlights.last, class: 'see-more' %>
+		    	<% end %>
+		    </p>
 		  </div>
 		</div>
 	</div>
@@ -118,7 +136,13 @@
 		  <div class="card-body">
 		    <span class="card-title"><%= @highlights.third.title.truncate(34) %></span>
 		    <p class="card-text"><%= @highlights.third.blurb.truncate(120) %></p>
-		    <p><%= link_to "See more >", @highlights.third.link, class: 'see-more' %></p>
+		    <p>
+		    	<% unless @highlights.third.link.blank? %>
+		    		<%= link_to "See more >", @highlights.third.link, class: 'see-more' %>
+		    	<% else %>
+		    		<%= link_to "See more >", @highlights.third, class: 'see-more' %>
+		    	<% end %>
+		    </p>
 		  </div>
 		</div>
 	</div>
@@ -129,7 +153,13 @@
 		  <div class="card-body">
 		    <span class="card-title"><%= @highlights.last.title.truncate(34) %></span>
 		    <p class="card-text"><%= @highlights.last.blurb.truncate(120) %></p>
-		    <p><%= link_to "See more >", @highlights.last.link, class: 'see-more' %></p>
+		    <p>
+		    	<% unless @highlights.last.link.blank? %>
+		    		<%= link_to "See more >", @highlights.last.link, class: 'see-more' %>
+		    	<% else %>
+		    		<%= link_to "See more >", @highlights.last, class: 'see-more' %>
+		    	<% end %>
+		    </p>
 		  </div>
 		</div>
 	</div>
@@ -143,7 +173,13 @@
 		  <div class="card-body">
 		    <span class="card-title"><%= @highlights.fourth.title.truncate(34) %></span>
 		    <p class="card-text"><%= @highlights.fourth.blurb.truncate(120) %></p>
-		    <p><%= link_to "See more >", @highlights.fourth.link, class: 'see-more' %></p>
+		    <p>
+		    	<% unless @highlights.fourth.link.blank? %>
+		    		<%= link_to "See more >", @highlights.fourth.link, class: 'see-more' %>
+		    	<% else %>
+		    		<%= link_to "See more >", @highlights.fourth, class: 'see-more' %>
+		    	<% end %>
+		    </p>
 		  </div>
 		</div>
 	</div>

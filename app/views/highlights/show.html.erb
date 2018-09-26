@@ -3,16 +3,17 @@
 
   <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @highlight.title %>
-</p>
-
 <% if @highlight.photo.attached? %>
   <p>
     <%= image_tag @highlight.photo, class: "large" %>
   </p>
 <% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @highlight.title %>
+</p>
+
 
 <p>
   <strong>Blurb:</strong>

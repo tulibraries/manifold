@@ -4,7 +4,7 @@ Build the Docker Image
 
 ```
   docker-compose build  --build-arg GOOGLE_OAUTH_CLIENT_ID=$GOOGLE_OAUTH_CLIENT_ID --build-arg GOOGLE_OAUTH_SECRET=$GOOGLE_OAUTH_SECRET
-  docker-compose run web rake db:migrate
+  docker-compose run --rm web rake db:migrate
 ```
 
 To run the container
@@ -31,19 +31,19 @@ Visit http://localhost:3000
 To populate the database:
 
 ```
-  docker-compose run web rake db:populate
+  docker-compose run --rm web rake db:populate
 ```
 
 To seed the database:
 
 ```
-  docker-compose run web rake db:seed
+  docker-compose run --rm web rake db:seed
 ```
 
 To run specs:
 
 ```
-  docker-compose run web rspec spec
+  docker-compose run --rm web rspec spec
 ```
 
 To access the container's shell

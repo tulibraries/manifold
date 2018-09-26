@@ -3,8 +3,9 @@ class Space < ApplicationRecord
   include InputCleaner
   has_ancestry
 
-  validates :name, :hours, presence: true
+  validates :name, presence: true
   validates :description, presence: true
+
  	validates :email, email: true
  	validates :phone_number, phone_number: true
   validates :building_id, presence: true
@@ -24,4 +25,7 @@ class Space < ApplicationRecord
 
   has_many :space_group
   has_many :groups, through: :space_group, source: :group
+
+  has_many :service_space
+  has_many :related_services, through: :service_space, source: :service
 end

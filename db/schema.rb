@@ -74,6 +74,34 @@ ActiveRecord::Schema.define(version: 2018_09_14_213649) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "building_id"
+    t.integer "space_id"
+    t.string "external_building"
+    t.string "external_space"
+    t.string "external_address"
+    t.string "external_city"
+    t.string "external_state"
+    t.string "external_zip"
+    t.integer "person_id"
+    t.string "external_contact_name"
+    t.string "external_contact_email"
+    t.string "external_contact_phone"
+    t.boolean "cancelled"
+    t.boolean "registration_status"
+    t.string "registration_link"
+    t.string "content_hash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_events_on_building_id"
+    t.index ["person_id"], name: "index_events_on_person_id"
+    t.index ["space_id"], name: "index_events_on_space_id"
+  end
+
   create_table "group_contacts", force: :cascade do |t|
     t.integer "group_id"
     t.integer "person_id"
@@ -146,6 +174,36 @@ ActiveRecord::Schema.define(version: 2018_09_14_213649) do
     t.datetime "updated_at", null: false
     t.string "personal_site"
     t.string "springshare_id"
+  end
+
+  create_table "service_groups", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_service_groups_on_group_id"
+    t.index ["service_id"], name: "index_service_groups_on_service_id"
+  end
+
+  create_table "service_spaces", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_service_spaces_on_service_id"
+    t.index ["space_id"], name: "index_service_spaces_on_space_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "access_description"
+    t.string "access_link"
+    t.text "service_policies"
+    t.text "intended_audience"
+    t.string "service_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "space_groups", force: :cascade do |t|

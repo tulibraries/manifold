@@ -1,0 +1,9 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field" id="<%= field.attribute %>_select">
+  <%= f.select(field.attribute, nil, {}, multiple: true, size: field.selectable_options.count) do %>
+    <%= options_for_select(field.selectable_options, field.data) %>
+  <% end %>
+  <input type="button" id="<%= field.attribute %>_select_all" class="select-all" name="select_all" value="Select All">
+</div>

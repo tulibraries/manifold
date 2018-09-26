@@ -74,19 +74,6 @@ ActiveRecord::Schema.define(version: 2018_09_14_213649) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.text "blurb"
-    t.string "link"
-    t.date "date"
-    t.time "time"
-    t.string "type"
-    t.string "tags"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "promoted"
-  end
-
   create_table "group_contacts", force: :cascade do |t|
     t.integer "group_id"
     t.integer "person_id"
@@ -115,9 +102,10 @@ ActiveRecord::Schema.define(version: 2018_09_14_213649) do
     t.time "time"
     t.string "highlight_type"
     t.string "tags"
+    t.boolean "promoted"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "promoted"
   end
 
   create_table "library_hours", force: :cascade do |t|

@@ -25,4 +25,7 @@ class Space < ApplicationRecord
 
   has_many :space_group
   has_many :groups, through: :space_group, source: :group
+
+  has_many :service_space
+  has_many :related_services, through: :service_space, source: :service
 end

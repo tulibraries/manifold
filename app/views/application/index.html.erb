@@ -29,7 +29,7 @@
 </div>
 
 <div class="row ctaRow">
-	<div class="col col-sm-3 ">
+	<div class="col-12 col-sm-6 col-lg-3 ">
 		<div class="card ctaOne">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
@@ -37,7 +37,7 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaTwo">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
@@ -45,7 +45,7 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaThree">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
@@ -53,7 +53,7 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaFour">
 			<div class="">
 				<ul>
@@ -71,57 +71,96 @@
 	<h1 style="white-space: nowrap;padding:14px;font-size: 250%;letter-spacing:.15rem;background-color:white!important;width: 25%;margin:auto;height:84px"> News &amp; Highlights</h1>
 </div>
 
+<% unless @highlights.empty? %>
 <div class="row ctaRow">
-	<% @highlights.each do |highlight| %>
-	<div class="col col-sm-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaOne news">
-			<%= image_tag(highlight.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag(@highlights.first.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
-		    <span class="card-title"><%= highlight.title %></span>
-		    <p class="card-text"><%= highlight.blurb %></p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
+		    <span class="card-title"><%= @highlights.first.title.truncate(34) %></span>
+		    <p class="card-text"><%= @highlights.first.blurb.truncate(120) %></p>
+		    <p><%= link_to "See more >", @highlights.first.link, class: 'see-more' %></p>
+		  </div>
+		</div>
+	</div>
+	<% unless @highlights.second.nil? %>
+	<% unless @highlights.second == @highlights.last %>
+	<div class="col-12 col-sm-6 col-lg-3">
+		<div class="card ctaTwo news">
+			<%= image_tag(@highlights.second.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title"><%= @highlights.second.title.truncate(34) %></span>
+		    <p class="card-text"><%= @highlights.second.blurb.truncate(120) %></p>
+		    <p><%= link_to "See more >", @highlights.second.link, class: 'see-more' %></p>
+		  </div>
+		</div>
+	</div>
+	<% else %>
+	<div class="col-12 col-sm-6 col-lg-3">
+		<div class="card ctaFour news">
+			<%= image_tag(@highlights.last.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title"><%= @highlights.last.title.truncate(34) %></span>
+		    <p class="card-text"><%= @highlights.last.blurb.truncate(120) %></p>
+		    <p><%= link_to "See more >", @highlights.last.link, class: 'see-more' %></p>
 		  </div>
 		</div>
 	</div>
 	<% end %>
-	<div class="col col-sm-3">
-		<div class="card ctaTwo news">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-		  <div class="card-body">
-		    <span class="card-title">Find a study space</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-3">
+	<% end %>
+
+
+	<% unless @highlights.third.nil? %>
+	<% unless @highlights.third == @highlights.last %>
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaThree news">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag(@highlights.third.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
-		    <span class="card-title">Print my paper</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
+		    <span class="card-title"><%= @highlights.third.title.truncate(34) %></span>
+		    <p class="card-text"><%= @highlights.third.blurb.truncate(120) %></p>
+		    <p><%= link_to "See more >", @highlights.third.link, class: 'see-more' %></p>
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
+	<% else %>
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaFour news">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag(@highlights.last.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
-		    <span class="card-title">Print my paper</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
+		    <span class="card-title"><%= @highlights.last.title.truncate(34) %></span>
+		    <p class="card-text"><%= @highlights.last.blurb.truncate(120) %></p>
+		    <p><%= link_to "See more >", @highlights.last.link, class: 'see-more' %></p>
 		  </div>
 		</div>
+	</div>
+	<% end %>
+	<% end %>
+
+	<% unless @highlights.fourth.nil? %>
+	<div class="col-12 col-sm-6 col-lg-3">
+		<div class="card ctaFour news">
+			<%= image_tag(@highlights.fourth.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title"><%= @highlights.fourth.title.truncate(34) %></span>
+		    <p class="card-text"><%= @highlights.fourth.blurb.truncate(120) %></p>
+		    <p><%= link_to "See more >", @highlights.fourth.link, class: 'see-more' %></p>
+		  </div>
+		</div>
+	</div>
+	<% end %>
+</div>
+<% else %>
+<div class="row ctaRow">
+	<div class="col col-12">
 	</div>
 </div>
-
+<% end %>
 <div class="vertical-stripes" style="margin-top: 63px;text-align: center;width: 100%;">
 	<h1 style="white-space: nowrap;padding:14px;font-size: 250%;letter-spacing:.15rem;background-color:white!important;width: 25%;margin:auto;height:84px">Events</h1>
 </div>
 
 <div class="row ctaRow">
-	<div class="col col-sm-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaOne events">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 			<div class="info">
@@ -138,7 +177,7 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaTwo events">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 			<div class="info">
@@ -155,7 +194,7 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaThree events">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 			<div class="info">
@@ -172,7 +211,7 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaFour events">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 			<div class="info">

@@ -4,8 +4,7 @@ Rails.application.routes.draw do
     resources :accounts
     resources :alerts
     resources :buildings
-    resources :events
-    resources :groups
+      resources :groups
     resources :highlights
     resources :people
     resources :spaces

@@ -1,0 +1,104 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @event.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @event.end_time %>
+</p>
+
+<p>
+  <strong>Building:</strong>
+  <%= @event.building.name %>
+</p>
+
+<p>
+  <strong>Space:</strong>
+  <%= @event.space.name %>
+</p>
+
+<p>
+  <strong>External building:</strong>
+  <%= @event.external_building %>
+</p>
+
+<p>
+  <strong>External space:</strong>
+  <%= @event.external_space %>
+</p>
+
+<p>
+  <strong>External address:</strong>
+  <%= @event.external_address %>
+</p>
+
+<p>
+  <strong>External city:</strong>
+  <%= @event.external_city %>
+</p>
+
+<p>
+  <strong>External state:</strong>
+  <%= @event.external_state %>
+</p>
+
+<p>
+  <strong>External zip:</strong>
+  <%= @event.external_zip %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @event.person.first_name %>
+  <%= @event.person.last_name %>
+</p>
+
+<p>
+  <strong>External contact name:</strong>
+  <%= @event.external_contact_name %>
+</p>
+
+<p>
+  <strong>External contact email:</strong>
+  <%= @event.external_contact_email %>
+</p>
+
+<p>
+  <strong>External contact phone:</strong>
+  <%= @event.external_contact_phone %>
+</p>
+
+<p>
+  <strong>Cancelled:</strong>
+  <%= @event.cancelled %>
+</p>
+
+<p>
+  <strong>Registration status:</strong>
+  <%= @event.registration_status %>
+</p>
+
+<p>
+  <strong>Registration link:</strong>
+  <%= @event.registration_link %>
+</p>
+
+<p>
+  <strong>Content hash:</strong>
+  <%= @event.content_hash %>
+</p>
+
+<%= link_to 'Back', events_path %>

@@ -74,7 +74,9 @@
 <div class="row ctaRow">
 	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaOne news">
-			<%= image_tag(@highlights.first.photo.variant(extent: "370x196"), class: "card-img-top", alt: "Card image cap") %>
+			<div class="card-image">
+			<%= image_tag(@highlights.first.photo.variant(gravity: 'center', crop: "370x196+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap") %>
+			</div>
 		  <div class="card-body">
 		    <span class="card-title"><%= @highlights.first.title.truncate(34) %></span>
 		    <p class="card-text"><%= @highlights.first.blurb.truncate(120) %></p>
@@ -109,7 +111,9 @@
 	<% else %>
 	<div class="col-12 col-sm-6 col-lg-3">
 		<div class="card ctaFour news">
-			<%= image_tag(@highlights.last.photo.variant(extent: '370x196'), class: "card-img-top", alt: "Card image cap") %>
+			<div class="card-image">
+			<%= image_tag(@highlights.last.photo.variant(gravity: 'center', crop: "370x196+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap") %>
+		</div>
 		  <div class="card-body">
 		    <span class="card-title"><%= @highlights.last.title.truncate(34) %></span>
 		    <p class="card-text"><%= @highlights.last.blurb.truncate(120) %></p>

@@ -207,6 +207,12 @@
 		height: 320px;
 		max-height: 320px;
 		position: relative;
+		.card-image {
+			height:196px;
+			max-height:196px;
+			overflow:hidden;
+			background-color:#ccc;
+		}
 		img {
 			opacity: 1;
 		}
@@ -217,10 +223,12 @@
    	.card-title {
    		font-size: 105%;
    		font-weight: 600;
+   		white-space: nowrap;
    	}
    	.card-text {
    		font-size: 90%;
    		margin-bottom: 0;
+   		line-height: 1.15rem;
    	}
    	a.see-more {
    		padding-bottom: 10px;

@@ -1,53 +1,55 @@
 <p id="notice"><%= notice %></p>
 
 <h1>
-  <%= @building.name %>
+  Library: <%= @building.name %>
 </h1>
 
-<% if @building.photo.attached?  %>
-  <p>
-    <%= image_tag @building.photo, class: "large" %>
-  </p>
-<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @building.description.html_safe %>
-</p>
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes">
+        <h2>Description</h2>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @building.address1 %>
-</p>
+  <div class="row">
+    <div class="col">
+      <p>
+        <%= @building.description.html_safe %>
+      </p>
+    </div>
+  </div>
 
-<p>
-  <strong>Temple building code:</strong>
-  <%= @building.temple_building_code %>
-</p>
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes">
+        <h2>Plan your visit</h2>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Directions map:</strong>
-  <%= link_to "Google Map!", @building.directions_map %>
-</p>
+  <div class="row">
+    <div class="col-12 col-lg-4 card">
+      <%= @building.phone_number %><br />
+      <%= @building.email %><br />
+      <%= @building.address1 %>
+    </div>
+    <div class="col-12 col-lg-4 card">
+      <div id="dateTime">
+      <div id="date">
+        FRIDAY, AUGUST 17, 2018
+      </div>
+      <div id="time">
+        Paley Library | 8am - 7pm
+      </div>
+      <div id="allHours">
+        See all library hours >
+      </div>
+    </div>
+    </div>
+    <div class="col-12 col-lg-4 card">
+      <%= link_to "Google Map!", @building.directions_map %>
+    </div>
+  </div>
 
-<p>
-  <strong>Hours:</strong>
-  <%= @building.hours %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @building.phone_number %>
-</p>
-
-<p>
-  <strong>Campus:</strong>
-  <%= @building.campus %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @building.email %>
-</p>
-
-<%= link_to 'Back', buildings_path %>

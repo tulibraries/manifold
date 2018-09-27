@@ -277,6 +277,33 @@
  	}
 }
 
+.spacesRow {
+ 	.ctaTwo .related_space {
+ 		text-align: center;
+		border: solid $purple 2px;
+		border-radius: 50%;
+ 		background-color: $white;
+ 		color: $black;
+ 		overflow: hidden;
+ 		display:inline-block;
+    padding: 0;
+    margin: 35px;
+    margin-bottom: 0;
+    line-height: 100px;
+    width: 200px;
+    height: 190px;
+ 		img {
+ 			object-fit: cover;
+ 			min-height: 100%;
+ 		}
+ 	}
+ 	.card-body {
+ 		padding-top: 7px;
+ 		width: 100%;
+ 		text-align: center;
+ 	}
+ }
+
 .vertical-stripes {
   background: repeating-linear-gradient( 
   90deg,
@@ -290,6 +317,29 @@
   text-align: center;
   width: 100%;
   h1 {
+  	white-space: nowrap;
+  	padding:14px;
+  	font-size: 250%;
+  	letter-spacing:.15rem;
+  	background-color:white!important;
+  	width: 25%;
+  	margin:auto;
+  	height:84px;
+  }
+}
+.vertical-stripes-sm {
+  background: repeating-linear-gradient( 
+  90deg,
+  #fff,
+  #fff 20px,
+  #eee 20px,
+  #eee 40px);
+  height: 42px;
+  width: 7px;
+  margin-top: 63px;
+  text-align: center;
+  width: 100%;
+  h2 {
   	white-space: nowrap;
   	padding:14px;
   	font-size: 250%;

@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_213649) do
     t.string "link"
     t.date "date"
     t.time "time"
-    t.string "highlight_type"
+    t.string "type_of_highlight"
     t.string "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

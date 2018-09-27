@@ -15,7 +15,7 @@ class HighlightDashboard < Administrate::BaseDashboard
     link: Field::String,
     date: Field::DateTime,
     time: Field::Time,
-    highlight_type: Field::Select.with_options(
+    type_of_highlight: Field::Select.with_options(
       collection: Rails.configuration.highlight_types,
       multiple: true,
       ),
@@ -44,7 +44,7 @@ class HighlightDashboard < Administrate::BaseDashboard
     :link,
     :date,
     :time,
-    :highlight_type,
+    :type_of_highlight,
     :tags,
   ].freeze
 
@@ -58,7 +58,7 @@ class HighlightDashboard < Administrate::BaseDashboard
     :link,
     :date,
     :time,
-    :highlight_type,
+    :type_of_highlight,
     :tags,
     :promoted,
   ].freeze

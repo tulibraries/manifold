@@ -7,7 +7,7 @@ RSpec.describe "highlights/show", type: :view do
       :title => "Title",
       :blurb => "MyText",
       :link => "Link",
-      :highlight_type => "Type",
+      :type_of_highlight => "Type",
       :tags => "Tags"
     ))
   end

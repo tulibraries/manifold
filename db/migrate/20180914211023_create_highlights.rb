@@ -9,7 +9,6 @@ class CreateHighlights < ActiveRecord::Migration[5.2]
       t.string :type_of_highlight
       t.string :tags
       t.boolean :promoted
-      t.type :string
 
       t.timestamps
     end

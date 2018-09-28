@@ -1,13 +1,19 @@
-<h1>Groups</h1>
-<p id="notice"><%= notice %></p>
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Groups
+    </h1>
+  </div>
+</div>
 
+<div class="container">
+<div class="row">
+<% unless @groups.nil? %>
 <ul>
-    <% @groups.each do |group| %>
-
-      <li><%= link_to group.name, group %></li>
-
-    <% end %>
+  <% @groups.each do |group| %>
+    <li><%= link_to group.name, group %></li>
+  <% end %>
 </ul>
-
-<br>
-
+<% end %>
+</div>
+</div>

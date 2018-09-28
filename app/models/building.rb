@@ -9,6 +9,8 @@ class Building < ApplicationRecord
 
   has_many :library_hours
 
+  has_many :spaces
+
 	has_one_attached :photo, dependent: :destroy
 
   auto_strip_attributes :email

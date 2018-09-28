@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>
   Library: <%= @building.name %>
@@ -31,132 +30,67 @@
     </div>
   </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-lg-4 card">
-      <%= @building.phone_number %><br />
-      <%= @building.email %><br />
-      <%= @building.address1 %>
+<!-- <div class="container"> -->
+  <div class="row ctaRow building-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-body">
+        <%= number_to_phone(@building.phone_number, area_code: true) %><br />
+        <%= mail_to @building.email, @building.email, {style: "color: white;"} %><br />
+        <%= @building.address1 %>
+      </div>
+      <div class="card-title complement">
+        Contact
+      </div>
     </div>
-    <div class="col-12 col-lg-4 card">
+    <div class="col-12 col-lg-4 card ctaMidOne">
       <div id="dateTime">
-      <div id="date">
-        FRIDAY, AUGUST 17, 2018
+        <div id="date">
+          FRIDAY, AUGUST 17, 2018
+        </div>
+        <div id="time">
+          Paley Library | 8am - 7pm
+        </div>
+        <div id="allHours">
+          See all library hours >
+        </div>
       </div>
-      <div id="time">
-        Paley Library | 8am - 7pm
-      </div>
-      <div id="allHours">
-        See all library hours >
+      <div class="card-title complement">
+        Hours
       </div>
     </div>
-    </div>
-    <div class="col-12 col-lg-4 card">
-      <%= link_to "Google Map!", @building.directions_map %>
+    <div class="col-12 col-lg-4 card ctaLast">
+
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.directions_map}&zoom=12&scale=1&size=500x220&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{@building.name.gsub(' ', '+')}&key=AIzaSyCuDPY1yKhyo73IuASxiXGMR3RyLyNC07Y", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/dir//#{@building.directions_map}/" %>
+
+      <div class="card-title complement">
+        Map!
+      </div>
     </div>
   </div>
-</div>
+<!-- </div> -->
 
+<% unless @building.spaces.nil? %>
   <div class="row">
     <div class="col">
       <div class="vertical-stripes-sm">
-        <h1>Paley Spaces</h1>
+        <h1><%= @building.name %> Spaces</h1>
       </div>
     </div>
   </div>
 
-  <div class="">
+  <div class="margin-left: 77px;margin-right: 77px">
     <div class="row spacesRow">
 
-      <div class="col-12 col-md-6 col-lg-2 offset-lg-1 ctaTwo text-center">
+<% @building.spaces.each do |space| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
         <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+          <%= link_to image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
         </div>
         <div class="card-body">
-          <span class="card-title">Find a study space</span>
+          <span class="card-title"><%= space.name %></span>
         </div>
       </div>
-
-      <div class="col-12 col-md-6 col-lg-2 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Find a study space</span>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-2 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Find a study space</span>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-2 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Find a study space</span>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-2 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Charles L. Blockson Afro-American Collection</span>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-2 offset-lg-1 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Find a study space</span>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-2 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Find a study space</span>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-2 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Find a study space</span>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-2 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Find a study space</span>
-        </div>
-      </div>
-      
-      <div class="col-12 col-md-6 col-lg-2 ctaTwo text-center">
-        <div class="related_space">
-          <%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-        </div>
-        <div class="card-body">
-          <span class="card-title">Find a study space</span>
-        </div>
-      </div>
-
+<% end %>
+<% end %>
   </div>
 

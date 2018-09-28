@@ -36,16 +36,17 @@
 <!-- <div class="container"> -->
   <div class="row ctaRow building-info">
     <div class="col-12 col-lg-4 card ctaFirst">
-      <div class="card-body">
-        <%= number_to_phone(@building.phone_number, area_code: true) %><br />
-        <%= mail_to @building.email, @building.email, {style: "color: white;"} %><br />
-        <%= @building.address1 %>
+      <div class="card-body" style="padding-top:10%;line-height: 3.0rem;font-size: larger">
+        <span class="phone"><%= number_to_phone(@building.phone_number, area_code: true) %></span><br />
+        <span class="email"><%= mail_to @building.email, @building.email, {style: "color: white;"} %></span><br />
+        <span class="address"><%= @building.address1 %></span>
       </div>
       <div class="card-title complement">
         Contact
       </div>
     </div>
     <div class="col-12 col-lg-4 card ctaMidOne">
+      <div class="card-body">
       <div id="dateTime">
         <div id="date">
           FRIDAY, AUGUST 17, 2018
@@ -57,14 +58,15 @@
           See all library hours >
         </div>
       </div>
+      </div>
       <div class="card-title complement">
         Hours
       </div>
     </div>
     <div class="col-12 col-lg-4 card ctaLast">
-
-      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.directions_map}&zoom=12&scale=1&size=500x220&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{@building.name.gsub(' ', '+')}&key=AIzaSyCuDPY1yKhyo73IuASxiXGMR3RyLyNC07Y", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/dir//#{@building.directions_map}/" %>
-
+      <div class="card-body">
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.directions_map}&zoom=12&scale=1&size=500x305&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{@building.name.gsub(' ', '+')}&key=AIzaSyCuDPY1yKhyo73IuASxiXGMR3RyLyNC07Y", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/dir//#{@building.directions_map}/" %>
+      </div>
       <div class="card-title complement">
         Map!
       </div>

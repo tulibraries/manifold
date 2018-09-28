@@ -18,6 +18,23 @@
 	@import "bootstrap";
 	@import "partials/_vars.scss";
 
+#seagreen {
+	margin-bottom: 21px;
+	h1 {
+		position:absolute;
+		top: 22%;
+		font-size: 235%;
+		margin-top: 0;
+		color: white;
+		text-align:center;
+		vertical-align:middle;
+	}
+	span {
+		color: black;
+		display:inline-block;
+		margin-right:21px;
+	}
+}
 #librarySearch {
 	height: 56px;
 	font-size: 1.75rem;

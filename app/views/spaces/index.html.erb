@@ -1,14 +1,21 @@
-<h1>Spaces</h1>
-<p id="notice"><%= notice %></p>
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Spaces
+    </h1>
+  </div>
+</div>
+
+<div class="container">
 
 <% unless @spaces.nil? %>
-    <% @spaces.each do |space| %>
-      <p>
-        <%= link_to space.name, space %>
-      </p>
-    <% end %>
+	<ul>
+  <% @spaces.each do |space| %>
+  	<li>
+    	<%= link_to space.name, space %>
+  	</li>
+	<% end %>
+	</ul>
 <% end %>
-<br>
 
-
-
+</div>

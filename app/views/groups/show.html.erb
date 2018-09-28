@@ -1,11 +1,12 @@
-<h1>Groups</h1>
-<p id="notice"><%= notice %></p>
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      <%= @group.name %>
+    </h1>
+  </div>
+</div>
 
-<p>
-  <strong>Name: </strong>
-  <%= @group.name %>
-</p>
-
+<div class="container">
 <p>
   <strong>Group Type: </strong>
   <%= @group.group_type %>
@@ -62,4 +63,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', groups_path %>
+</div>

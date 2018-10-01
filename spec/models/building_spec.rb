@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'BuildingHelper'
 
 RSpec.describe Building, type: :model do
   after(:all) do

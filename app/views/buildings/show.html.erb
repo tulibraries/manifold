@@ -17,7 +17,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col bldg_description">
       <p>
         <%= @building.description.html_safe %>
       </p>
@@ -36,10 +36,10 @@
 <!-- <div class="container"> -->
   <div class="row ctaRow building-info">
     <div class="col-12 col-lg-4 card ctaFirst">
-      <div class="card-body" style="padding-top:10%;line-height: 3.0rem;font-size: larger">
-        <span class="phone"><%= number_to_phone(@building.phone_number, area_code: true) %></span><br />
-        <span class="email"><%= mail_to @building.email, @building.email, {style: "color: white;"} %></span><br />
-        <span class="address"><%= @building.address1 %></span>
+      <div class="card-body">
+        <span class="phone"><%= phone_formatted %></span><br />
+        <span class="email"><%= mail_to @building.email, @building.email %></span><br />
+        <div class="address"><%= @building.address1 %><br /><%= @building.address2 %></div>
       </div>
       <div class="card-title complement">
         Contact
@@ -49,13 +49,13 @@
       <div class="card-body">
       <div id="dateTime">
         <div id="date">
-          FRIDAY, AUGUST 17, 2018
-        </div>
+          <%= todays_date %>
         <div id="time">
-          Paley Library | 8am - 7pm
+          <%= @building.name %> | <%= todays_hours %>
+        </div>
         </div>
         <div id="allHours">
-          See all library hours >
+          <%= link_to "See all library hours", hours_path() %> >
         </div>
       </div>
       </div>

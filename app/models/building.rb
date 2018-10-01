@@ -2,7 +2,7 @@ class Building < ApplicationRecord
   include Validators
   include InputCleaner
 
-  validates :name, :address1, :temple_building_code, :coordinates, :google_id, :campus, presence: true
+  validates :name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, presence: true
 	validates :email, presence: true, email: true
 	validates :phone_number, presence: true, phone_number: true
   validates :description, presence: true

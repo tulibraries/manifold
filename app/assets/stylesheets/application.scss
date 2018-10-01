@@ -178,6 +178,9 @@
    	.card-text {
    		text-align: left;
    	}
+   	#time, #allHours {
+   		font-size: 85%;
+   	}
    }
 	.ctaFirst {
 		background-color: $foamgreen;
@@ -311,69 +314,6 @@
  		}
  	}
 }
-.ctaRow.building-info {
-	max-width: 1420px;
-	margin-left: auto;
-	margin-right: auto;
-	.card {
-		margin:auto;
-		max-width: 415px;
-		min-width: 415px;
-		height: 290px;
-		position: relative;
-	}
-	.card-title {
-		position: absolute;
-		bottom: 0;
-		margin-bottom: 0;
-	}
-	.ctaLast {
-		background-color: $purple;
-		max-width: 415px;
-		min-width: 415px;
-		.card-title.complement {
-			background-color: $purple-complement;
-			color: $black;
-		}
-		.card-body {
-			padding:0;
-		}
-		img {
-			opacity: 1;
-			object-fit: cover;
-		}
-	}
-
-}
-.spacesRow {
-	margin-left: 77px;
-	margin-right: 77px;
- 	.ctaTwo .related_space {
- 		text-align: center;
-		border: solid $purple 2px;
-		border-radius: 50%;
- 		background-color: $white;
- 		color: $black;
- 		overflow: hidden;
- 		display:inline-block;
-    padding: 0;
-    margin: 35px;
-    margin-bottom: 0;
-    line-height: 100px;
-    width: 200px;
-    height: 190px;
- 		img {
- 			object-fit: cover;
- 			min-height: 100%;
- 		}
- 	}
- 	.card-body {
- 		padding-top: 7px;
- 		width: 100%;
- 		text-align: center;
- 	}
- }
-
 .vertical-stripes {
   background: repeating-linear-gradient( 
   90deg,

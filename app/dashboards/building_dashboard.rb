@@ -10,6 +10,7 @@ class BuildingDashboard < BaseDashboard
     name: Field::String.with_options(required: true),
     description: DescriptionField.with_options(required: true),
     address1: Field::String.with_options(required: true),
+    address2: Field::String.with_options(required: true),
     temple_building_code: Field::String.with_options(required: true),
     coordinates: Field::String.with_options(required: true),
     google_id: Field::String.with_options(required: true),
@@ -28,7 +29,6 @@ class BuildingDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :address1,
     :campus,
     :phone_number,
   ].freeze
@@ -39,6 +39,7 @@ class BuildingDashboard < BaseDashboard
     :name,
     :description,
     :address1,
+    :address2,
     :temple_building_code,
     :hours,
     :phone_number,
@@ -54,6 +55,7 @@ class BuildingDashboard < BaseDashboard
     :description,
     :campus,
     :address1,
+    :address2,
     :phone_number,
     :temple_building_code,
     :coordinates,

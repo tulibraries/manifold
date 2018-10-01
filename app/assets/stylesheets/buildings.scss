@@ -5,8 +5,97 @@
 
 // Can't seem to define this in applicaiton.scss. So, for now, it stays here
 @import "administrate/library/_variables.scss";
+@import "partials/_vars.scss";
 
 div.required  label::after {
     content: " * ";
     color: $red;
   }
+
+.bldg-description {
+	font-size: larger;
+}
+.phone {
+	font-size: 120%;
+}
+.address {
+	line-height: 1.75rem;
+}
+.email {
+	font-size: 95%;
+	a {
+		color: $white;
+		text-decoration: underline;
+	}
+}
+
+.ctaRow.building-info {
+	max-width: 1420px;
+	margin-left: auto;
+	margin-right: auto;
+	.card {
+		margin:auto;
+		padding-top: 2.75rem;
+		max-width: 415px;
+		min-width: 415px;
+		height: 290px;
+		position: relative;
+		/*padding-top:10%;*/
+		line-height: 3.0rem;
+			a {
+				color: $white;
+			};
+		font-size: larger
+	}
+	.card-title {
+		position: absolute;
+		bottom: 0;
+		margin-bottom: 0;
+	}
+	.ctaLast {
+		background-color: $purple;
+		padding-top: 0;
+		max-width: 415px;
+		min-width: 415px;
+		.card-title.complement {
+			background-color: $purple-complement;
+			color: $black;
+		}
+		.card-body {
+			padding:0;
+		}
+		img {
+			opacity: 1;
+			object-fit: cover;
+		}
+	}
+
+}
+.spacesRow {
+	margin-left: 77px;
+	margin-right: 77px;
+ 	.ctaTwo .related_space {
+ 		text-align: center;
+		border: solid $purple 2px;
+		border-radius: 50%;
+ 		background-color: $white;
+ 		color: $black;
+ 		overflow: hidden;
+ 		display:inline-block;
+    padding: 0;
+    margin: 35px;
+    margin-bottom: 0;
+    line-height: 100px;
+    width: 200px;
+    height: 190px;
+ 		img {
+ 			object-fit: cover;
+ 			min-height: 100%;
+ 		}
+ 	}
+ 	.card-body {
+ 		padding-top: 7px;
+ 		width: 100%;
+ 		text-align: center;
+ 	}
+ }

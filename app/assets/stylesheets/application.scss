@@ -162,8 +162,6 @@
    	width: 100%;
    	display: inline-block;
    	padding: 0;
-   	margin-left: 7px;
-   	margin-right: 7px;
    	overflow:hidden;
    	img {
    		opacity: 0.5;
@@ -180,27 +178,47 @@
    	.card-text {
    		text-align: left;
    	}
+   	#time, #allHours {
+   		font-size: 85%;
+   	}
    }
-	.ctaOne {
+	.ctaFirst {
 		background-color: $foamgreen;
 		color: $white;
 		border-top-left-radius: 42px;
 		border-bottom-left-radius: 42px;
+		.card-title.complement {
+			background-color: $foamgreen-complement;
+			color: $black;
+		}
 	}
-	.ctaTwo {
+	.ctaMidOne {
 		background-color: $seagreen;
 		color: $white;
+		.card-title.complement {
+			background-color: $seagreen-complement;
+			color: $black;
+		}
+	}
+	.ctaMidOne.staggered {
 		margin-top: 35px;
 	}
-	.ctaThree {
+	.ctaMidTwo {
 		background-color: $purple;
 		color: $white;
+		.card-title.complement {
+			background-color: $purple-complement;
+			color: $black;
+		}
 	}
-	.ctaFour {
+	.ctaLast {
 		background-color: $darkgold;
-		margin-top: 35px;
 		border-top-right-radius: 42px;
 		border-bottom-right-radius: 42px;
+		.card-title.complement {
+			background-color: $darkgold-complement;
+			color: $black;
+		}
 		ul {
 			margin-bottom: 0;
 		}
@@ -212,6 +230,9 @@
 		.oddrow {
 			background-color: $gold;
 		}
+	}
+	.ctaLast.staggered {
+		margin-top: 35px;
 	}
 	.news {
 		background-color: $white;
@@ -293,7 +314,6 @@
  		}
  	}
 }
-
 .vertical-stripes {
   background: repeating-linear-gradient( 
   90deg,
@@ -307,6 +327,29 @@
   text-align: center;
   width: 100%;
   h1 {
+  	white-space: nowrap;
+  	padding:14px;
+  	font-size: 250%;
+  	letter-spacing:.15rem;
+  	background-color:white!important;
+  	width: 25%;
+  	margin:auto;
+  	height:84px;
+  }
+}
+.vertical-stripes-sm {
+  background: repeating-linear-gradient( 
+  90deg,
+  #fff,
+  #fff 20px,
+  #eee 20px,
+  #eee 40px);
+  height: 42px;
+  width: 7px;
+  margin-top: 63px;
+  text-align: center;
+  width: 100%;
+  h2 {
   	white-space: nowrap;
   	padding:14px;
   	font-size: 250%;

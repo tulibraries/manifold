@@ -7,51 +7,99 @@
   </div>
 </div>
 
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h1>Description</h1>
+      </div>
+    </div>
+  </div>
 
-<% if @building.photo.attached?  %>
-  <p>
-    <%= image_tag @building.photo, class: "large" %>
-  </p>
+<div class="container">
+  <div class="row">
+    <div class="col bldg_description">
+      <p>
+        <%= @building.description.html_safe %>
+      </p>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h1>Plan your visit</h1>
+      </div>
+    </div>
+  </div>
+
+<!-- <div class="container"> -->
+  <div class="row ctaRow building-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-body">
+        <span class="phone"><%= phone_formatted %></span><br />
+        <span class="email"><%= mail_to @building.email, @building.email %></span><br />
+        <div class="address"><%= @building.address1 %><br /><%= @building.address2 %></div>
+      </div>
+      <div class="card-title complement">
+        Contact
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaMidOne">
+      <div class="card-body">
+      <div id="dateTime">
+        <div id="date">
+          <%= todays_date %>
+        <div id="time">
+          <%= @building.name %> | <%= todays_hours %>
+        </div>
+        </div>
+        <div id="allHours">
+          <%= link_to "See all library hours", hours_path() %> >
+        </div>
+      </div>
+      </div>
+      <div class="card-title complement">
+        Hours
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaLast">
+      <div class="card-body">
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@building.coordinates}&query_place_id=#{@building.google_id}" %>
+      </div>
+      <div class="card-title complement">
+        Map!
+      </div>
+    </div>
+  </div>
+<!-- </div> -->
+
+<% unless @building.spaces.nil? %>
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h1><%= @building.name %> Spaces</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin-left: 77px;margin-right: 77px">
+    <div class="row spacesRow">
+
+<% @building.spaces.each do |space| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
+        <div class="related_space">
+          <% if space.photo.attached? %>
+            <%= link_to image_tag(space.photo.variant(gravity: 'center', crop: "200x200+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% else %>
+            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <span class="card-title"><%= space.name %></span>
+        </div>
+      </div>
 <% end %>
+<% end %>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @building.description.html_safe %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @building.address1 %>
-</p>
-
-<p>
-  <strong>Temple building code:</strong>
-  <%= @building.temple_building_code %>
-</p>
-
-<p>
-  <strong>Directions map:</strong>
-  <%= link_to "Google Map!", @building.directions_map %>
-</p>
-
-<p>
-  <strong>Hours:</strong>
-  <%= @building.hours %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @building.phone_number %>
-</p>
-
-<p>
-  <strong>Campus:</strong>
-  <%= @building.campus %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @building.email %>
-</p>
-
-<%= link_to 'Back', buildings_path %>

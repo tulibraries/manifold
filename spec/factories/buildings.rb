@@ -3,9 +3,11 @@ FactoryBot.define do
     sequence(:name) { |n| "Charles Samuel Addams Library #{n}" }
     description { "Main Campus Main Library" }
     address1 { "1250 Polett Walk" }
+    address2 { "Philadelphia, PA 19122" }
     temple_building_code { "ABC" }
-    directions_map { "http://maps.exammple.edu/CSA.jpg" }
-    hours { "Always Open" }
+    coordinates { "test,coordinated" }
+    google_id { "12345678910azby-kk"}
+    hours { "paley" }
     phone_number { "2155551212" }
     campus { "Main Campus" }
     email { "csa@example.edu" }

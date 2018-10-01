@@ -20,7 +20,7 @@ gem "administrate"
 gem 'bootstrap', '~> 4.1.0'
 gem 'tinymce-rails'
 gem 'google-api-client', '~> 0.11'
-
+gem 'fuzzy_match'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

@@ -335,6 +335,9 @@
 			background-color: $purple-complement;
 			color: $black;
 		}
+		.card-body {
+			padding:0;
+		}
 		img {
 			opacity: 1;
 			object-fit: cover;

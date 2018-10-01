@@ -65,7 +65,7 @@
     </div>
     <div class="col-12 col-lg-4 card ctaLast">
       <div class="card-body">
-      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.directions_map}&zoom=12&scale=1&size=500x305&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C#{@building.name.gsub(' ', '+')}&key=AIzaSyCuDPY1yKhyo73IuASxiXGMR3RyLyNC07Y", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/dir//#{@building.directions_map}/" %>
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@building.coordinates}&query_place_id=#{@building.google_id}" %>
       </div>
       <div class="card-title complement">
         Map!

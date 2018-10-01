@@ -89,7 +89,11 @@
 <% @building.spaces.each do |space| %>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
         <div class="related_space">
-          <%= link_to image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% if space.photo.attached? %>
+            <%= link_to image_tag(space.photo.variant(gravity: 'center', crop: "200x200+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% else %>
+            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% end %>
         </div>
         <div class="card-body">
           <span class="card-title"><%= space.name %></span>

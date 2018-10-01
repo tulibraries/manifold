@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
 	def get_alert
-	    @alert = Alert.find_by(published: true)
+	    @alert = Alert.where(published: true)
 	end
 
 end

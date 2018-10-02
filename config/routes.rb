@@ -22,8 +22,5 @@ Rails.application.routes.draw do
   resources :highlights, only: [:show]
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
-  controller :library_hours do
-    get 'hours' => :index
-    get 'hours/:id' => :show
-  end
+  resources :library_hours, only: [:index, :show], as: :hours, path: '/hours'
 end

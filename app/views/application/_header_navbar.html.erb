@@ -39,15 +39,17 @@
 
   <div id="header" class="row">
     <div class="col">
-      <% if @alert %>
+      <% unless @alert.blank? %>
       <div class="container">
         <div class="row">   
           <div class="col-md-12">
             <marquee>
-              <% unless @alert.link.blank? %>
-                <%= link_to @alert.scroll_text+", click here to see full details...", @alert.link %>
+              <% @alert.each do |alert| %>
+              <% unless alert.link.blank? %>
+                <%= link_to alert.scroll_text+", click here to see full details...", alert.link %>
               <% else %>
-                <%= link_to @alert.scroll_text+", click here to see full details...", alerts_path, id: @alert.id %>
+                <%= link_to alert.scroll_text+", click here to see full details...", alerts_path, id: alert.id %>
+              <% end %>
               <% end %>
             </marquee>
           </div>
@@ -56,8 +58,3 @@
       <% end %>
     </div>
   </div> <!-- #header -->
-
-  <div id="seagreen"></div>
-
-    
-

@@ -1,12 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Services
+    </h1>
+  </div>
+</div>
 
-<h1>Services</h1>
+<div class="container">
 
-<% unless @services.nil? %>
+	<% unless @services.nil? %>
+		<ul>
     <% @services.each do |service| %>
-      <p>
-        <%= link_to service.title, service %>
-      </p>
-    <% end %>
-<% end %>
-<br>
+      <li><%= link_to service.title, service %></li>
+   	<% end %>
+    </ul>
+	<% end %>
+
+</div>

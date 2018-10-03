@@ -13,8 +13,4 @@ class ApplicationController < ActionController::Base
 	    @alert = Alert.where(published: true)
 	end
 
-  def get_highlights
-    @highlights = Highlight.where(promoted: true).take(4)
-  end
-
 end

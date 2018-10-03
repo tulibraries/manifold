@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
     root to: "people#index"
   end
-  root  'application#index'
+  root  'pages#home'
   resources :alerts, only: [:index, :show]
   resources :persons, only: [:index, :show], as: :people
   resources :spaces, only: [:index, :show]

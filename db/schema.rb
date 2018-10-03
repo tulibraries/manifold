@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_213649) do
+ActiveRecord::Schema.define(version: 2018_09_24_153213) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -130,9 +130,9 @@ ActiveRecord::Schema.define(version: 2018_09_14_213649) do
     t.time "time"
     t.string "type_of_highlight"
     t.string "tags"
+    t.boolean "promoted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "promoted"
   end
 
   create_table "library_hours", force: :cascade do |t|

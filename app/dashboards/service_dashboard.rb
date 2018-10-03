@@ -10,12 +10,11 @@ class ServiceDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     title: Field::String,
-    description: DescriptionField.with_options(required: true),
-    access_description: DescriptionField.with_options(required: true),
+    description: DescriptionField,
+    access_description: DescriptionField,
     access_link: Field::String,
-    service_policies: DescriptionField.with_options(required: true),
+    service_policies: DescriptionField,
     intended_audience: MultiSelectField.with_options(
-      required: true,
       collection: Rails.configuration.audience_types,
     ),
     service_category: Field::Select.with_options(
@@ -24,7 +23,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     service_space: Field::HasMany,
     related_spaces: Field::HasMany.with_options(class_name: "Space"),
     service_group: Field::HasMany,
-    related_groups: Field::HasMany.with_options(class_name: "Group", required: true),
+    related_groups: Field::HasMany.with_options(class_name: "Group"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

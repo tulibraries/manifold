@@ -20,7 +20,7 @@ gem "administrate"
 gem 'bootstrap', '~> 4.1.0'
 gem 'tinymce-rails'
 gem 'google-api-client', '~> 0.11'
-
+gem 'fuzzy_match'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -81,6 +81,7 @@ group :test do
   gem 'database_cleaner'
   gem 'guard-rspec', require: false
   gem 'mutant-rspec'
+  gem 'rspec-activemodel-mocks'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

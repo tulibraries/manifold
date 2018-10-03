@@ -13,7 +13,7 @@ class EventDashboard < Administrate::BaseDashboard
     person: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
-    description: DescriptionField.with_options(required: true),
+    description: DescriptionField,
     start_time: Field::DateTime,
     end_time: Field::DateTime,
     external_building: Field::String,

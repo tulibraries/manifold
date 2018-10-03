@@ -17,10 +17,15 @@ Administrate::Field::Base.class_eval do
   end
 
   def required?
-    !!options.fetch(:required, false)
+    validators.any? {|validator| validator.kind_of?(ActiveModel::Validations::PresenceValidator) }
   end
 
   def admin_only?
     !!options.fetch(:admin_only, false)
   end
+
+  private
+    def validators
+      resource&.class&.validators_on(attribute) || []
+    end
 end

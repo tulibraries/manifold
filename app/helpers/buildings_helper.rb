@@ -1,6 +1,11 @@
 module BuildingsHelper
 	def todays_hours
-		@todays_hours.first.hours
+		hours = @todays_hours.first.hours
+		unless hours.nil?
+			todays_hours = " | "+hours
+		else
+			""
+		end
 	end
 	def todays_date
 		@today.to_date.strftime("%^A, %^B %d, %Y ")

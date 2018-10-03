@@ -11,7 +11,6 @@ FactoryBot.define do
     phone_number { "2155551212" }
     campus { "Main Campus" }
     email { "csa@example.edu" }
-    @todays_hours.first.hours = "9am-5pm"
 
     factory :building_with_people do
       after(:create) do |building|

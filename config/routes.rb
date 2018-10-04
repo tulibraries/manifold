@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: '/hours'
+
+  controller :forms do 
+    get 'forms/missing-book'  => :missing_book
+  end
+
 end

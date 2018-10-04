@@ -1,0 +1,37 @@
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Missing Book Search Request
+    </h1>
+  </div>
+</div>
+
+<div class="container" style="border:solid #ccc 1px;border-radius: 7px;padding: 21px;">
+
+<div class="row">
+  <div class="col-12">
+    Replace existing text with "Please use this form if the status of a book is "Available" in the Library Search, but you cannot find it on the shelf. If we cannot find the book we will mark it Missing and notify you, so you may request it through E-ZBorrow or ILLiad. We will also place a hold for you on our copy of the book and notify you if we find it.
+  </div>
+</div>
+<div class="row" style="margin-bottom: 42px;margin-top:21px;">
+<div class="col col-md-10">
+<div id="contactform">
+<%= form_tag("http://www.temple.edu/cgi-bin/mail?tempress@temple.edu", method: "post", :class=>"contact-form") do %>
+  <%= render 'requestor_info.html.erb' %>
+
+  <%= render 'book_info.html.erb' %>
+
+  <%= render 'comments.html.erb' %>
+
+  
+  <div class="row">
+    <div class="col-12">
+      <%= submit_tag("Submit Request") %>
+    </div>
+  </div>
+
+<% end %>
+</div>
+</div>
+</div>
+</div>

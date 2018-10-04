@@ -45,5 +45,8 @@ module Tude
                              "University staff & administration"]
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
+
+    config.gmail_username = ENV["gmail_username"]
+    config.gmail_password = ENV["gmail_password"]
   end
 end

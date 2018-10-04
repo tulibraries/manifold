@@ -1,0 +1,28 @@
+<%= field_set_tag 'Book Information' do %>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:title, "Title: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= text_field_tag(:title, "", :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:author, "Author: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= text_field_tag(:author,'', :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:callnum, "Call Number: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= text_field_tag(:callnum,'', :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+ 
+<% end %>

@@ -118,7 +118,7 @@
 		margin: 0;
 		width: 80%;
 		display: inline-block;
-		padding-left: 5%;
+		padding-left: 21px;
 		padding-right: 21px;
 		padding-top: 10px;
 		height: 56px;
@@ -128,17 +128,18 @@
 		border-top: 0;
 		border-bottom-left-radius: 7px;
 		border-bottom-right-radius: 7px;
+		text-align: center;
 		color: $white;
 		position:relative;
 		top: -27px;
 		background-color: $foamgreen;
 		li {
-			margin-left: 14px;
 			display: inline-block;
+			padding-left: 4px;
+			padding-right: 4px;
 			font-family: 'PT Sans', verdana, sans;
 		}
 		li::after {
-			margin-left: 14px;
 			content: " | ";
 		}
 		li:last-child:after {
@@ -165,6 +166,8 @@
    	margin-left: 7px;
    	margin-right: 7px;
    	overflow:hidden;
+   	min-width: 265px;
+   	max-width: 375px;
    	img {
    		opacity: 0.5;
    	}
@@ -218,6 +221,15 @@
 		border: solid $seagreen 2px;
 		color: black;
 		margin-top: 0;
+		height: 320px;
+		max-height: 320px;
+		position: relative;
+		.card-image {
+			height:196px;
+			max-height:196px;
+			overflow:hidden;
+			background-color:#ccc;
+		}
 		img {
 			opacity: 1;
 		}
@@ -228,16 +240,21 @@
    	.card-title {
    		font-size: 105%;
    		font-weight: 600;
+   		white-space: nowrap;
    	}
    	.card-text {
    		font-size: 90%;
    		margin-bottom: 0;
+   		line-height: 1.15rem;
    	}
    	a.see-more {
-   		float: right;
    		padding-bottom: 10px;
-   		padding-right: 10px;
+   		padding-right: 17px;
    		color: $seagreen;
+   		float: right;
+   		position: absolute;
+   		bottom: 0;
+   		right: 0;
    	}
 	}
 	.events {
@@ -303,19 +320,6 @@
   #eee 40px);
   height: 84px;
   width: 7px;
-  margin-top: 63px;
-  text-align: center;
-  width: 100%;
-  h1 {
-  	white-space: nowrap;
-  	padding:14px;
-  	font-size: 250%;
-  	letter-spacing:.15rem;
-  	background-color:white!important;
-  	width: 25%;
-  	margin:auto;
-  	height:84px;
-  }
 }
 
 	html, body {

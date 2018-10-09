@@ -122,6 +122,19 @@ ActiveRecord::Schema.define(version: 2018_09_24_153213) do
     t.boolean "external"
   end
 
+  create_table "highlights", force: :cascade do |t|
+    t.string "title"
+    t.text "blurb"
+    t.string "link"
+    t.date "date"
+    t.time "time"
+    t.string "type_of_highlight"
+    t.string "tags"
+    t.boolean "promoted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "library_hours", force: :cascade do |t|
     t.string "location"
     t.datetime "date"

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :alerts
     resources :buildings
     resources :groups
+    resources :highlights
     resources :people
     resources :spaces
     resources :events
@@ -12,12 +13,13 @@ Rails.application.routes.draw do
 
     root to: "people#index"
   end
-  root  'application#index'
+  root  'pages#home'
   resources :alerts, only: [:index, :show]
   resources :persons, only: [:index, :show], as: :people
   resources :spaces, only: [:index, :show]
   resources :buildings, only: [:index, :show]
   resources :groups, only: [:index, :show]
+  resources :highlights, only: [:show]
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: '/hours'

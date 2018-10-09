@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Admin
   class ServicesController < Admin::ApplicationController
-
     def create
       service_params = params[:service]
       service_params.permit!

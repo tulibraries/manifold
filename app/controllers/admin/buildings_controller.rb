@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class BuildingsController < Admin::ApplicationController
     # To customize the behavior of this controller,
@@ -8,7 +10,7 @@ module Admin
     #   @resources = Building.
     #     page(params[:page]).
     #     per(10)
-        
+
     # end
 
     def create
@@ -44,7 +46,5 @@ module Admin
         }
       end
     end
-
-
   end
 end

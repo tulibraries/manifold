@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class Group < ApplicationRecord
-	include Validators
+  include Validators
   include InputCleaner
 
   auto_strip_attributes :email_address  # Auto strip must occur prior to validates
 
-	validates :name, :spaces, :chair_dept_head, presence: true
- 	validates :email_address, presence: true, email: true
- 	validates :phone_number, presence: true, phone_number: true
-	validates :group_type, presence: true, group_type: true
+  validates :name, :spaces, :chair_dept_head, presence: true
+  validates :email_address, presence: true, email: true
+  validates :phone_number, presence: true, phone_number: true
+  validates :group_type, presence: true, group_type: true
 
   before_validation :sanitize_description
 

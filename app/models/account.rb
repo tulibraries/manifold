@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Account < ApplicationRecord
   include Validators
 
@@ -11,6 +13,6 @@ class Account < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token.info
-    account = Account.where(email: data['email']).first
+    account = Account.where(email: data["email"]).first
   end
 end

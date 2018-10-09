@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "administrate/field/base"
 
 class PhotoField < Administrate::Field::Base
   def to_s
-	    data
+    data
   end
 end

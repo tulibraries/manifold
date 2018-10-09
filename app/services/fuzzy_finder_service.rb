@@ -1,6 +1,7 @@
-module FuzzyFinderService
+# frozen_string_literal: true
 
-  require 'fuzzy_match'
+module FuzzyFinderService
+  require "fuzzy_match"
 
   class Error < StandardError; end
 
@@ -30,18 +31,17 @@ module FuzzyFinderService
   #   Can include Associations. `{groups: groupObject }` or `{groups}`
   # @option addl_attribute [Object, String, Integer] :attribute_
   # @return [String] the object converted into the expected format.
-  def self.call(needle: ,haystack_model:, attribute: :name, addl_attribute: {})
+  def self.call(needle: , haystack_model:, attribute: :name, addl_attribute: {})
     Finder.new(haystack_model: haystack_model, attribute: attribute, addl_attribute: addl_attribute)
       .find(needle)
   end
 
   class Finder
-
     def initialize(haystack_model:, attribute: nil, addl_attribute: {})
-        @model = ensure_is_a_class_name(haystack_model)
-        validate_is_a_defined_active_model!
-        @attribute =  attribute
-        @addl_attribute = format_addl_attribute(addl_attribute)
+      @model = ensure_is_a_class_name(haystack_model)
+      validate_is_a_defined_active_model!
+      @attribute = attribute
+      @addl_attribute = format_addl_attribute(addl_attribute)
     end
 
     def find(needle)
@@ -66,7 +66,7 @@ module FuzzyFinderService
 
       def model_query
         if attribute_is_has_many_through?(addl_attribute)
-          model.joins(addl_attribute.key).where(addl_attribute.key => {id: pick_addl_attribute_value})
+          model.joins(addl_attribute.key).where(addl_attribute.key => { id: pick_addl_attribute_value })
         else
           model.where(addl_attribute.to_h)
         end
@@ -102,7 +102,7 @@ module FuzzyFinderService
 
       class AddlAttribute < OpenStruct
         def to_h
-          {key => value}
+          { key => value }
         end
       end
   end

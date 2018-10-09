@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class AlertDashboard < Administrate::BaseDashboard
@@ -57,7 +59,7 @@ class AlertDashboard < Administrate::BaseDashboard
   # def display_resource(alert)
   #   "Alert ##{alert.id}"
   # end
-  
+
   def tinymce?
     true
   end

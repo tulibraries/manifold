@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :space do
     sequence(:name) { |n| "Room #{n}" }

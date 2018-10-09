@@ -1,5 +1,6 @@
-class LibraryHoursController < ApplicationController
+# frozen_string_literal: true
 
+class LibraryHoursController < ApplicationController
   def index
     @locations = LibraryHours.all.pluck(:location_id).uniq
   end
@@ -19,5 +20,4 @@ class LibraryHoursController < ApplicationController
     @hours = LibraryHours.where(location_id: params[:id])
     @seven = LibraryHours.where(location_id: params[:id], date: sunday..saturday)
   end
-
 end

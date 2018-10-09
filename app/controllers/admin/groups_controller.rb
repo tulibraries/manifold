@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Admin
   class GroupsController < Admin::ApplicationController
-
     def create
       group_params = params[:group]
       group_params.permit!
@@ -35,6 +36,5 @@ module Admin
         }
       end
     end
-
   end
 end

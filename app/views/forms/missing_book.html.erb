@@ -16,7 +16,7 @@
 <div class="row" style="margin-bottom: 42px;margin-top:21px;">
 <div class="col col-md-10">
 <div id="contactform">
-<%= form_tag("http://www.temple.edu/cgi-bin/mail?tempress@temple.edu", method: "post", :class=>"contact-form") do %>
+<%= form_tag({controller: 'email_dispatcher', action: 'missing_book'}, method: "post", :class=>"contact-form") do %>
   <%= render 'requestor_info.html.erb' %>
 
   <%= render 'book_info.html.erb' %>

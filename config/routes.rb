@@ -26,4 +26,8 @@ Rails.application.routes.draw do
     get 'forms/missing-book'  => :missing_book
   end
 
+  controller :email_dispatcher do
+    post  'mail/missing-book' => :missing_book
+  end
+
 end

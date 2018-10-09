@@ -1,0 +1,325 @@
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Incident Report
+    </h1>
+  </div>
+</div>
+
+<div class="container" style="border:solid #ccc 1px;border-radius: 7px;padding: 21px;">
+
+<div class="row">
+  <div class="col-12" class="text-center">
+    <h1>EMERGENCY - call <span style="color: red;">1-1234</span> &nbsp;&nbsp;[Temple Campus Police <span style="color: red;">215-204-1234</span>]&nbsp;</h1>
+      <p>If this incident involves injury to Library staff or student assistant, a Worker’s Compensation form needs to be filled out also.</p>
+    </ul>
+  </div>
+</div>
+<div class="row" style="margin-bottom: 42px;margin-top:21px;">
+<div class="col col-md-10">
+<div id="contactform">
+<%= form_tag({controller: 'email_dispatcher', action: 'incident_report'}, method: "post", :class=>"contact-form") do %>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:type, "Incident Type: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= label_tag 'type_vandalism' do %>
+          <%= radio_button_tag :type, "vandalism" %>
+          Vandalism
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'type_accident/medical' do %>
+          <%= radio_button_tag :type, "accident/medical" %>
+          Accident/Medical
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'type_theft' do %>
+          <%= radio_button_tag :type, "theft" %>
+          Theft
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'type_harassment' do %>
+          <%= radio_button_tag :type, "harassment" %>
+          Harassment/Fight/Abusive Language
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'type_building_issue' do %>
+          <%= radio_button_tag :type, "building_issue" %>
+          Building Issue
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'type_other' do %>
+          <%= radio_button_tag :type, "other" %>
+          Other, please specify...
+        <% end %>
+        <%= text_field_tag(:other,'', :class => 'form-control') %>
+      </div>
+      </div>
+    </div>
+  </div>
+
+<h2>Staff Member Submitting Form </h2>
+   <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:name, "Name: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= text_field_tag(:name,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:email, "Email: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+          <%= text_field_tag(:email,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:department, "Department: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= text_field_tag(:department,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+
+
+  <h2>Incident Details</h2>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:time, "Time of Incident: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= time_field_tag(:time,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:date, "Date of Incident: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= date_field_tag(:date,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:location, "Location of Incident: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= text_field_tag(:location,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+  <h3>Primary Relevant Person </h3>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:primary_person_involved, "Identify Relevant Person: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= text_field_tag(:primary_person_involved,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:primary_involved_email, "Provide Email, if needed: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <% email_field_tag(:primary_involved_email,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:primary_involved_affiliation, "Affiliation: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= select_tag :primary_involved_afiliation, options_for_select([ "Student", "Accident/Medical", "Student Assistant", "Library Staff", "Visitor/Guest" ], include_blank: true) %>
+      </div>
+      
+    </div>
+  </div>
+
+<h3>Secondary Relevant Person</h3> 
+
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:secondary_person_involved, "Identify Relevant Person: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= text_field_tag(:secondary_person_involved,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:secondary_involved_email, "Provide Email, if needed: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <% email_field_tag(:secondary_involved_email,'', :class => 'form-control', :required => true) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:secondary_involved_affiliation, "Affiliation: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= select_tag :secondary_involved_afiliation, options_for_select([ "Student", "Accident/Medical", "Student Assistant", "Library Staff", "Visitor/Guest" ], include_blank: true) %>
+      </div>
+      
+    </div>
+  </div>
+
+<h3>Incident Description</h3>
+    <div class="form-group row">
+    <div class="col-12">
+      <div class="field">
+        <%= text_area_tag(:incident_description, "", size: "48x6", :class=>"form-control") %>
+        <p class="small" style="margin-top:14px;">What happened? Provide names, who did what to whom, what was stolen, etc. Be as detailed as possible. Describe a suspect if appropriate.</p>
+      </div>
+      
+    </div>
+  </div>
+
+<h3>Victim/Complainant Statement</h3>
+    <div class="form-group row">
+    <div class="col-12">
+      <div class="field">
+        <%= text_area_tag(:victim_statement, "", size: "48x6", :class=>"form-control") %>
+      </div>
+    </div>
+  </div>
+
+<h3>Action Taken</h3>
+  <div class="form-group row">
+    <div class="col-12">
+      <div class="field">
+        <%= label_tag 'library_administration_notified' do %>
+         <%= check_box_tag :library_administration_notified %>
+          Library Administration Notified
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'facilities_notified' do %>
+         <%= check_box_tag :facilities_notified %>
+          Facilities Notified (1-1385)
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'staff_injury_report' do %>
+         <%= check_box_tag :staff_injury_report %>
+         Completed Staff Injury Report
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'referred_to_legal' do %>
+         <%= check_box_tag :referred_to_legal %>
+         Referred to Legal or Risk Management
+        <% end %>
+      </div>
+      <div class="field">
+        <%= label_tag 'called_campus_police' do %>
+         <%= check_box_tag :called_campus_police %>
+         Called Campus Police
+        <% end %>
+      </div>
+      <p class="small" style="margin-top:14px;">Check all that apply. Provide police report # if available.</p>
+    </div>
+  </div>
+
+
+   <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:police_report, "Polic Report Number: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= text_field_tag(:police_report,'', :class => 'form-control') %>
+      </div>
+    </div>
+  </div>
+    <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:police_report, "Other Action Taken: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= text_field_tag(:other_actions,'', :class => 'form-control') %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+
+    <div class="col col-md-3">
+      <%= label_tag(:supervisor_notified, "Supervisor Notified?") %>
+    </div>
+    <div class="field">
+      <%= label_tag 'Superviser Notified?' do %>
+        <%= radio_button_tag :supervisor_notified, "yes" %>
+        Yes
+      <% end %>
+
+      <%= label_tag 'Superviser Notified?' do %>
+        <%= radio_button_tag :supervisor_notified, "no" %>
+        No
+      <% end %>
+    </div>
+  </div>
+
+
+</div> <!-- container -->
+
+
+
+
+  <div class="row">
+    <div class="col-12">
+      <%= submit_tag("Submit Request") %>
+    </div>
+  </div>
+
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

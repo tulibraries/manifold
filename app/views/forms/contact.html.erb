@@ -1,0 +1,43 @@
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Contact Us
+    </h1>
+  </div>
+</div>
+
+<div class="container" style="border:solid #ccc 1px;border-radius: 7px;padding: 21px;">
+
+<div class="row">
+  <div class="col-12">
+    <p>Other ways to contact us: &nbsp;<a class="inline" href="/asktulibraries">Ask a Librarian</a>, our <a class="inline" href="http://sites.temple.edu/librarysuggestions">What's Your Suggestion?</a> blog,&nbsp;<a class="inline" href="help/numbers">Frequently Called Numbers</a>, <a class="inline" href="/services/library-instruction/specialists">Subject Librarians</a>, and <a class="inline" href="/about/locations">Library Locations</a>.</p>
+  </div>
+</div>
+<div class="row" style="margin-bottom: 42px;margin-top:21px;">
+<div class="col col-md-10">
+<div id="contactform">
+<%= form_tag({controller: 'email_dispatcher', action: 'contact'}, method: "post", :class=>"contact-form") do %>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:email, "Email: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= text_field_tag(:email,'', :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+
+  <%= render 'comments.html.erb' %>
+
+  <div class="row">
+    <div class="col-12">
+      <%= submit_tag("Submit Request") %>
+    </div>
+  </div>
+
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

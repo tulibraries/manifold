@@ -1,0 +1,97 @@
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Recall Request
+    </h1>
+  </div>
+</div>
+
+<div class="container" style="border:solid #ccc 1px;border-radius: 7px;padding: 21px;">
+
+<div class="row">
+  <div class="col-12">
+    <p>When you recall a book, the person who has it checked out has two weeks to return it. Only recall requests submitted by current Temple University staff and faculty will be reviewed. One request per form. You must complete the form again for another request.</p>
+    <p>Try <a class="inline" href="https://e-zborrow.relaisd2d.com/gateway/TEMPLE.html" class="inline">E-ZBorrow</a> instead. Books generally arrive in three to five days.</p>
+  </div>
+</div>
+<div class="row" style="margin-bottom: 42px;margin-top:21px;">
+<div class="col col-md-10">
+<div id="contactform">
+<%= form_tag({controller: 'email_dispatcher', action: 'recall'}, method: "post", :class=>"contact-form") do %>
+
+<%= field_set_tag 'Your Information' do %>
+
+  <%= render 'requestor_info.html.erb' %>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:department, "Department: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= text_field_tag(:department,'', :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:pickup_location, "Pickup Location: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <div class="field">
+        <%= radio_button_tag(:pickup_location, "paley") %>
+        <%= label_tag(:pickup_location, "Paley") %>
+        <%= radio_button_tag(:pickup_location, "ambler") %>
+        <%= label_tag(:pickup_location, "Ambler") %>
+        <%= radio_button_tag(:pickup_location, "harrisburg") %>
+        <%= label_tag(:pickup_location, "Harrisburg") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:cancel_by, "Cancellation Date: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= date_field_tag(:cancel_by,'', :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+
+<% end %>
+
+<%= field_set_tag 'Book Information' do %>
+
+  <%= render 'book_info.html.erb' %>
+
+  <%= render 'comments.html.erb' %>
+
+<div class="form-group row">
+  <div class="col-9 offset-sm-3">
+    <%= label_tag(:subsitute_edition, "Substitute another edition of same book, if necessary?") %>
+  </div>
+</div>
+
+  <div class="form-group row">
+    <div class="offset-md-3 col-9">
+      <div class="field">
+        <%= radio_button_tag(:subsitute_edition, "yes") %>
+        <%= label_tag(:subsitute_edition, "Yes") %>
+        <%= radio_button_tag(:subsitute_edition, "no") %>
+        <%= label_tag(:subsitute_edition, "No") %>
+      </div>
+    </div>
+  </div>
+<% end %>
+  
+  <div class="row">
+    <div class="col-12">
+      <%= submit_tag("Submit Request") %>
+    </div>
+  </div>
+
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

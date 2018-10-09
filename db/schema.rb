@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_153213) do
+ActiveRecord::Schema.define(version: 2018_10_01_185526) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -65,13 +65,15 @@ ActiveRecord::Schema.define(version: 2018_09_24_153213) do
     t.text "description"
     t.string "address1"
     t.string "temple_building_code"
-    t.string "directions_map"
+    t.string "coordinates"
     t.string "hours"
     t.string "phone_number"
     t.string "campus"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "google_id"
+    t.string "address2"
   end
 
   create_table "events", force: :cascade do |t|

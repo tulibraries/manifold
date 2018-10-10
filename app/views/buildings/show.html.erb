@@ -5,6 +5,21 @@
     </h1>
   </div>
 </div>
+<div id="searchFields" class="building-show">
+  <form>
+    <input type="text" name="q" id="librarySearch" placeholder="Search for library materials" autocomplete="off" />
+  </form>
+  <div id="searchOptions">
+    <ul>
+      <li>Books</li>
+      <li>Articles</li>
+      <li>Databases</li>
+    </ul>
+    <div id="advancedSearchLink">
+      Advanced Search
+    </div>
+  </div>
+</div>
 <div class="row building-image">
   <div class="col-5 offset-1 text-center building-image">
     <%= image_tag @building.photo.variant(gravity: 'center', crop: "680x450+50%+50%", extent: "100%x100%") %>

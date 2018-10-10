@@ -113,3 +113,14 @@ div.required  label::after {
  		text-align: center;
  	}
  }
+
+ #searchFields.building-show {
+	position: relative;
+	width: 100%;
+	form {
+		width: 60%;
+		margin:auto;
+		position:relative;
+		top: -27px;
+	}
+}

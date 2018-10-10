@@ -1,4 +1,6 @@
-class BuildingDashboard < BaseDashboard
+require "administrate/base_dashboard"
+
+class HighlightDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -7,17 +9,18 @@ class BuildingDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String,
-    description: DescriptionField,
-    address1: Field::String,
-    address2: Field::String,
-    temple_building_code: Field::String,
-    coordinates: Field::String,
-    google_id: Field::String,
-    hours: HoursField,
-    phone_number: PhoneField,
-    campus: Field::String,
-    email: Field::Email,
+    photo: PhotoField,
+    title: Field::String,
+    blurb: Field::Text,
+    link: Field::String,
+    date: Field::DateTime.with_options(format: "%A %B %Y"),
+    time: Field::Time,
+    type_of_highlight: Field::Select.with_options(
+      collection: Rails.configuration.highlight_types,
+      multiple: true,
+      ),
+    tags: Field::String,
+    promoted: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,48 +31,44 @@ class BuildingDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :name,
-    :campus,
-    :phone_number,
+    :title,
+    :promoted,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :name,
-    :description,
-    :address1,
-    :address2,
-    :temple_building_code,
-    :hours,
-    :phone_number,
-    :campus,
-    :email,
+    :photo,
+    :title,
+    :blurb,
+    :link,
+    :date,
+    :time,
+    :type_of_highlight,
+    :tags,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :name,
-    :description,
-    :campus,
-    :address1,
-    :address2,
-    :phone_number,
-    :temple_building_code,
-    :coordinates,
-    :google_id,
-    :hours,
-    :email,
+    :photo,
+    :title,
+    :blurb,
+    :link,
+    :date,
+    :time,
+    :type_of_highlight,
+    :tags,
+    :promoted,
   ].freeze
 
-  # Overwrite this method to customize how buildings are displayed
+  # Overwrite this method to customize how highlights are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(building)
-    "#{building.name}"
-  end
+  # def display_resource(highlight)
+  #   "Highlight ##{highlight.id}"
+  # end
 
   def tinymce?
     true

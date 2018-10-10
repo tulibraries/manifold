@@ -130,11 +130,11 @@ ActiveRecord::Schema.define(version: 2018_10_01_185526) do
     t.string "link"
     t.date "date"
     t.time "time"
-    t.string "highlight_type"
+    t.string "type_of_highlight"
     t.string "tags"
+    t.boolean "promoted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "promoted"
   end
 
   create_table "library_hours", force: :cascade do |t|

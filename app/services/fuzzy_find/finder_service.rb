@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module FuzzyFinderService
+module FuzzyFind::FinderService
   require "fuzzy_match"
 
   class Error < StandardError; end
@@ -59,7 +59,7 @@ module FuzzyFinderService
         #Eager load classes if not in production (is already
         # done in production) so ApplicationRecord.descendants works
         Rails.application.eager_load! unless Rails.env.production?
-        raise FuzzyFinderService::Error.new(
+        raise Error.new(
           "#{model} is not an ActiveModel in this application"
         ) unless ApplicationRecord.descendants.include? model
       end

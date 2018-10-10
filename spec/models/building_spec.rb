@@ -1,5 +1,7 @@
-require 'rails_helper'
-require './spec/helpers/buildings_helper.rb'
+# frozen_string_literal: true
+
+require "rails_helper"
+require "./spec/helpers/buildings_helper.rb"
 
 RSpec.configure do |c|
   c.include BuildingsHelper
@@ -10,7 +12,7 @@ RSpec.describe Building, type: :model do
     DatabaseCleaner.clean
   end
 
-  context 'Required Fields' do
+  context "Required Fields" do
     required_fields = [
       "name",
       "description",
@@ -23,7 +25,7 @@ RSpec.describe Building, type: :model do
     required_fields.each do |f|
       example "missing #{f} field" do
         building = FactoryBot.build(:building)
-				building[f] = ""
+        building[f] = ""
         expect { building.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
       end
     end

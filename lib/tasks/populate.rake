@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Object
   desc "Erase and fill database"
-  task :populate => :environment do
-    require 'populate'
-    require 'faker'
+  task populate: :environment do
+    require "populate"
+    require "faker"
 
     [ServiceGroup,
      ServiceSpace,
@@ -30,8 +32,8 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         address2:             Faker::Address.street_address,
         temple_building_code: Faker::Address.building_number,
         coordinates:          "blip",
-	      google_id:	          "bleep",
-	      hours:                "0800-2100",
+        google_id:            "bleep",
+        hours:                "0800-2100",
         phone_number:         Faker::Number.number(10),
         campus:               Faker::Address.community,
         email:                fake_email)
@@ -45,7 +47,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           email:           fake_email,
           phone_number:    Faker::Number.number(10),
           building:        building,
-          image:           Faker::File.file_name('images', 'tubldg', 'jpg'))
+          image:           Faker::File.file_name("images", "tubldg", "jpg"))
       end
       for s in 1..2 do
         space = Space.create!(
@@ -55,7 +57,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           accessibility:   "Yes",
           email:           fake_email,
           phone_number:    Faker::Number.number(10),
-          image:           Faker::File.file_name('images', 'tubldg', 'jpg'),
+          image:           Faker::File.file_name("images", "tubldg", "jpg"),
           parent:          Space.all.sample,
           building:        building)
       end
@@ -88,7 +90,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
 
     for e in 1..5 do
       event = Event.create!(
-        title:                Faker::Lorem.sentence(1+rand(4)),
+        title:                Faker::Lorem.sentence(1 + rand(4)),
         description:          Faker::Lorem.paragraph,
         start_time:           "2018-09-24 11:32:13", #Faker::DateTime.dateTimeBetween($startDate = 'now', $endDate = 'tomorrow', $timezone = null),
         end_time:             "2018-09-24 11:32:13", #Faker::DateTime.dateTimeBetween($startDate = 'now', $endDate = 'tomorrow', $timezone = null),

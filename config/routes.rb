@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :accounts, controllers: { omniauth_callbacks: 'accounts/omniauth_callbacks' }
+  devise_for :accounts, controllers: { omniauth_callbacks: "accounts/omniauth_callbacks" }
   namespace :admin do
     resources :accounts
     resources :alerts
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
 
     root to: "people#index"
   end
-  root  'pages#home'
+  root "pages#home"
   resources :alerts, only: [:index, :show]
   resources :persons, only: [:index, :show], as: :people
   resources :spaces, only: [:index, :show]
@@ -22,5 +24,5 @@ Rails.application.routes.draw do
   resources :highlights, only: [:show]
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
-  resources :library_hours, only: [:index, :show], as: :hours, path: '/hours'
+  resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
 end

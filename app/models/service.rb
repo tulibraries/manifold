@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Service < ApplicationRecord
   validates :title, :description, :intended_audience, :service_category, presence: true
   validates :related_groups, presence: true

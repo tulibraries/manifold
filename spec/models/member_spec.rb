@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Member, type: :model do
   context "Group has person" do
@@ -25,7 +27,7 @@ RSpec.describe Member, type: :model do
     let(:space) { FactoryBot.create(:space, building: building) }
     let(:person1) { FactoryBot.create(:person, spaces: [space]) }
     let(:person2) { FactoryBot.create(:person, spaces: [space]) }
-    let(:group) { FactoryBot.create(:group, spaces:[space], persons: [person1], chair_dept_head: person1) }
+    let(:group) { FactoryBot.create(:group, spaces: [space], persons: [person1], chair_dept_head: person1) }
 
     example "Person includes a group" do
       expect(person1.groups).to include group

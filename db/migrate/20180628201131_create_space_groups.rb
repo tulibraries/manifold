@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateSpaceGroups < ActiveRecord::Migration[5.2]
   def change
     create_table :space_groups do |t|

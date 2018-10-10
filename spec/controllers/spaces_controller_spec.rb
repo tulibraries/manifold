@@ -1,11 +1,13 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe SpacesController, type: :controller do
 
   include Devise::Test::ControllerHelpers
 
-  let(:space) { 
-    building = FactoryBot.create(:building) 
+  let(:space) {
+    building = FactoryBot.create(:building)
     space = FactoryBot.build(:space)
     space.building_id = building.id
     space.save

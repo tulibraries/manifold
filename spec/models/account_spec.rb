@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Account, type: :model do
   after(:all) do
@@ -43,14 +45,14 @@ RSpec.describe Account, type: :model do
     let(:valid_access_token) {
       a = OmniAuth::AuthHash.new
       a.info = {
-        "email"=>account.attributes["email"]
+        "email" => account.attributes["email"]
       }
       return a
     }
     let(:invalid_access_token) {
       a = OmniAuth::AuthHash.new
       a.info = {
-        "email"=>"zaphod@universe.gov"
+        "email" => "zaphod@universe.gov"
       }
       return a
     }

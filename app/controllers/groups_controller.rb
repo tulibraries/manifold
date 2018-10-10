@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GroupsController < ApplicationController
   load_and_authorize_resource
   before_action :set_group, only: [:show]

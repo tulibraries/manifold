@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :building do
     sequence(:name) { |n| "Charles Samuel Addams Library #{n}" }
@@ -6,7 +8,7 @@ FactoryBot.define do
     address2 { "Philadelphia, PA 19122" }
     temple_building_code { "ABC" }
     coordinates { "test,coordinated" }
-    google_id { "12345678910azby-kk"}
+    google_id { "12345678910azby-kk" }
     hours { "paley" }
     phone_number { "2155551212" }
     campus { "Main Campus" }

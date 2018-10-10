@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateServiceSpaces < ActiveRecord::Migration[5.2]
   def change
     create_table :service_spaces do |t|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BuildingsController < ApplicationController
   load_and_authorize_resource
   before_action :set_building, only: [:show]
@@ -23,5 +25,4 @@ class BuildingsController < ApplicationController
     def set_date
       @today = Date.today.strftime("%Y-%m-%d 00:00:00")
     end
-
 end

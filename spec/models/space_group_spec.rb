@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe SpaceGroup, type: :model do
   context "Group has space" do
@@ -25,7 +27,7 @@ RSpec.describe SpaceGroup, type: :model do
     let(:space1) { FactoryBot.create(:space, building: building) }
     let(:space2) { FactoryBot.create(:space, building: building) }
     let(:person) { FactoryBot.create(:person, spaces: [space1]) }
-    let(:group) { FactoryBot.create(:group, spaces:[space1], persons: [person], chair_dept_head: person) }
+    let(:group) { FactoryBot.create(:group, spaces: [space1], persons: [person], chair_dept_head: person) }
 
     example "valid" do
       expect(space1.groups).to include group

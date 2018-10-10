@@ -1,14 +1,16 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 include ActionDispatch::TestProcess
 
 RSpec.describe "highlights/show", type: :view do
   before(:each) do
     @highlight = assign(:highlight, Highlight.create!(
-      :title => "Title",
-      :blurb => "MyText",
-      :link => "Link",
-      :type_of_highlight => "Type",
-      :tags => "Tags"
+                                      title: "Title",
+                                      blurb: "MyText",
+                                      link: "Link",
+                                      type_of_highlight: "Type",
+                                      tags: "Tags"
     ))
   end
 

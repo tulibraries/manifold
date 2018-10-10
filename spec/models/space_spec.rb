@@ -1,11 +1,13 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Space, type: :model do
   after(:all) do
     DatabaseCleaner.clean
   end
 
-  context 'Required Fields' do
+  context "Required Fields" do
     required_fields = [
       "name",
       "description",
@@ -14,7 +16,7 @@ RSpec.describe Space, type: :model do
     required_fields.each do |f|
       example "missing #{f} fields" do
         space = FactoryBot.build(:space)
-				space[f] = ""
+        space[f] = ""
         expect { space.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
       end
     end
@@ -25,7 +27,7 @@ RSpec.describe Space, type: :model do
     required_references.each do |f|
       example "missing #{f}" do
         space = FactoryBot.build(:space)
-				space[f] = nil
+        space[f] = nil
         expect { space.save! }.to raise_error(/#{f.humanize(capitalize: true)} must exist/)
       end
     end
@@ -38,7 +40,7 @@ RSpec.describe Space, type: :model do
     optional_references.each do |f|
       example "missing #{f}" do
         space = FactoryBot.build(:space_with_building)
-				space[f] = nil
+        space[f] = nil
         expect { space.save! }.to_not raise_error
       end
     end

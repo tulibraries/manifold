@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class EventDashboard < Administrate::BaseDashboard
@@ -108,7 +110,7 @@ class EventDashboard < Administrate::BaseDashboard
   def display_resource(event)
     "Event ##{event.id}"
   end
-  
+
   def tinymce?
     true
   end

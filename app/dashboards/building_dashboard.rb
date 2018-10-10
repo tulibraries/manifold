@@ -9,6 +9,7 @@ class BuildingDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    photo: PhotoField.with_options(admin_only: true),
     name: Field::String,
     description: DescriptionField,
     address1: Field::String,
@@ -38,6 +39,7 @@ class BuildingDashboard < BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :photo,
     :name,
     :description,
     :address1,
@@ -54,6 +56,7 @@ class BuildingDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :photo,
     :description,
     :campus,
     :address1,

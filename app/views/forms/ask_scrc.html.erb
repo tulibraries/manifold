@@ -1,0 +1,71 @@
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Special Collections Research Center: Ask a Question
+    </h1>
+  </div>
+</div>
+
+<div class="container" style="border:solid #ccc 1px;border-radius: 7px;padding: 21px;">
+
+<div class="row">
+  <div class="col-12">
+    <p>If you are planning a research visit in the near future, please telephone us at <strong>215-204-8257</strong> to ask any questions you may have and to ensure the availability of the materials you wish to consult.</p>
+  </div>
+</div>
+<div class="row" style="margin-bottom: 42px;margin-top:21px;">
+<div class="col col-md-10">
+<div id="contactform">
+<%= form_tag({controller: 'email_dispatcher', action: 'contact'}, method: "post", :class=>"contact-form") do %>
+
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:name, "Name: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= text_field_tag(:name,'', :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:email, "Email: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= text_field_tag(:email,'', :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:phone, "Phone: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= text_field_tag(:phone,'', :class => 'form-control', :required => true) %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-3">
+      <%= label_tag(:affiliation, "Affiliation: ") %>
+    </div>
+    <div class="col col-md-9 col-12">
+      <%= select_tag :affiliation, options_for_select([ "Temple Undergraduate", "Temple Graduate Student", "Temple Faculty", "Temple Alumna/us", "Temple Staff", "Non-Temple Undergraduate", "Non-Temple Graduate Student", "Non-Temple Faculty", "General Public" ], include_blank: true) %>  
+    </div>
+  </div>
+
+<div class="row">
+<div class="col-12">
+  <p>What is your question? Be sure to include names, locations, and dates that are particularly pertinent to your research.  Please list manuscript collections or print materials in which you are or may be interested.</p>
+  <%= render 'comments.html.erb' %>
+</div>
+</div>
+  <div class="row">
+    <div class="col-12">
+      <%= submit_tag("Submit Request") %>
+    </div>
+  </div>
+
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

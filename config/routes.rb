@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'forms/recall'  => :recall
     get 'forms/contact'  => :contact
     get 'forms/incident-report'  => :incident_report
+    get 'forms/ask-scrc'  => :ask_scrc
   end
 
   controller :email_dispatcher do
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
     post  'mail/recall' => :recall
     post  'mail/contact' => :contact
     post  'mail/incident-report' => :incident_report
+    post  'mail/ask-scrc' => :ask_scrc
   end
 
 end

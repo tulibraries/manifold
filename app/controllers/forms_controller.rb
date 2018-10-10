@@ -7,4 +7,6 @@ class FormsController < ApplicationController
 	end
 	def recall
 	end
+	def ask_scrc
+	end
 end

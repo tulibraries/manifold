@@ -12,8 +12,22 @@ div.required  label::after {
     color: $red;
   }
 
-.bldg-description {
-	font-size: larger;
+.building-description {
+	font-size: 115%;
+	padding-left:14px;
+	margin-right: 2%;
+	background-color: #eee;
+	height: auto;
+	width:680px;
+	height:450px;
+	div.text {
+		padding:21px;
+	}
+}
+.building-image {
+	padding-right:14px;
+	max-height:450px;
+	overflow:hidden;
 }
 .phone {
 	font-size: 120%;

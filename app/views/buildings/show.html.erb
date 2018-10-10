@@ -5,12 +5,12 @@
     </h1>
   </div>
 </div>
-<div class="row">
-  <div class="col-5 offset-1 text-center" style="padding-right:14px;height: ">
+<div class="row building-image">
+  <div class="col-5 offset-1 text-center building-image">
     <%= image_tag @building.photo.variant(gravity: 'center', crop: "680x450+50%+50%", extent: "100%x100%") %>
   </div>
-  <div class="col-5" style="padding-left:14px;margin-right: 2%;background-color: #eee;height: auto;width:680px;height:450px">
-    <div style="padding:21px;"><%= @building.description.html_safe %></div>
+  <div class="col-5 building-description">
+    <div class="text"><%= @building.description.html_safe %></div>
   </div>
 </div>
 

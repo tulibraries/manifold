@@ -351,14 +351,18 @@
   text-align: center;
   width: 100%;
   h2 {
+  	padding: 0;
+		background-color: transparent!important;
+		span {
+		display: inline-block;
   	white-space: nowrap;
-  	padding:14px;
-  	font-size: 250%;
+  	padding: 2px 14px;
+  	font-size: 150%;
   	letter-spacing:.15rem;
   	background-color:white!important;
-  	width: 25%;
   	margin:auto;
-  	height:84px;
+  	height:88px;
+  	}
   }
 }
 

@@ -33,7 +33,8 @@ en:
   helpers:
     label:
       building:
-        address1: "Address"
+        address1: "Street Address"
+        address2: "City, State Zip"
   fortytude:
     error:
       user_not_registered: "User not registered."

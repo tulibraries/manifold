@@ -48,6 +48,6 @@ module Tude
                              "University staff & administration"]
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
-
+    config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
   end
 end

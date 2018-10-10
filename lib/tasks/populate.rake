@@ -27,9 +27,11 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         name:                 Faker::Name.name_with_middle + " Library",
         description:          Faker::Lorem.paragraph,
         address1:             Faker::Address.street_address,
+        address2:             Faker::Address.street_address,
         temple_building_code: Faker::Address.building_number,
-        directions_map:       Faker::File.file_name('images/maps', 'tubldg', 'jpg'),
-        hours:                "0800-2100",
+        coordinates:          "blip",
+	      google_id:	          "bleep",
+	      hours:                "0800-2100",
         phone_number:         Faker::Number.number(10),
         campus:               Faker::Address.community,
         email:                fake_email)

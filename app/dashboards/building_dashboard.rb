@@ -10,8 +10,10 @@ class BuildingDashboard < BaseDashboard
     name: Field::String,
     description: DescriptionField,
     address1: Field::String,
+    address2: Field::String,
     temple_building_code: Field::String,
-    directions_map: GmapField,
+    coordinates: Field::String,
+    google_id: Field::String,
     hours: HoursField,
     phone_number: PhoneField,
     campus: Field::String,
@@ -27,7 +29,6 @@ class BuildingDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :address1,
     :campus,
     :phone_number,
   ].freeze
@@ -38,8 +39,8 @@ class BuildingDashboard < BaseDashboard
     :name,
     :description,
     :address1,
+    :address2,
     :temple_building_code,
-    :directions_map,
     :hours,
     :phone_number,
     :campus,
@@ -54,9 +55,11 @@ class BuildingDashboard < BaseDashboard
     :description,
     :campus,
     :address1,
+    :address2,
     :phone_number,
     :temple_building_code,
-    :directions_map,
+    :coordinates,
+    :google_id,
     :hours,
     :email,
   ].freeze

@@ -9,4 +9,6 @@ class FormsController < ApplicationController
 	end
 	def ask_scrc
 	end
+	def index
+	end
 end

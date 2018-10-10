@@ -1,0 +1,23 @@
+<div class="row" id="seagreen">
+  <div class="col-11 offset-1">
+    <h1>
+      Service Request Forms
+    </h1>
+  </div>
+</div>
+
+<div class="container" style="border:solid #ccc 1px;border-radius: 7px;padding: 21px;">
+
+<div class="row">
+  <div class="col-12">
+    <ul>
+      <li><%= link_to "Contact us", {controller: :forms, action: :contact} %></li>
+      <li><%= link_to "Ask SCRC", {controller: :forms, action: :ask_scrc} %></li>
+      <li><%= link_to "Missing Books Search", {controller: :forms, action: :missing_book} %></li>
+      <li><%= link_to "Recall Request", {controller: :forms, action: :recall} %></li>
+      <li><%= link_to "Incident Report", {controller: :forms, action: :incident_report} %></li>
+    </ul>
+  </div>
+</div>
+
+</div>

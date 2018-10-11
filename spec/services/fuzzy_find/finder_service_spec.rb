@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe FuzzyFinderService do
+RSpec.describe FuzzyFind::FinderService do
 
   class UndefinedModel; end
   class MockModel < ApplicationRecord
@@ -48,8 +48,8 @@ RSpec.describe FuzzyFinderService do
 
     context "haystack_model is not a defined model" do
       let(:haystack_model) { UndefinedModel }
-      it "raises a FuzzyFinderService Error" do
-        expect { called_service }.to raise_error(FuzzyFinderService::Error)
+      it "raises a FuzzyFind::FindererService Error" do
+        expect { called_service }.to raise_error(described_class::Error)
       end
     end
 
@@ -70,7 +70,7 @@ RSpec.describe FuzzyFinderService do
 
       context "with a similar name" do
         it "returns the expected person" do
-          expect(FuzzyFinderService.call(
+          expect(described_class.call(
                    needle: "Newish Person",
                    haystack_model: Person,
                    attribute: :name)
@@ -80,7 +80,7 @@ RSpec.describe FuzzyFinderService do
         context "and an simple additional attribute" do
           it "returns the expected person" do
             expect(
-              FuzzyFinderService.call(
+              described_class.call(
                 needle: "Newish Person",
                 haystack_model: Person,
                 attribute: :name,
@@ -94,7 +94,7 @@ RSpec.describe FuzzyFinderService do
           context "passing an object" do
             it "returns the expected person" do
               expect(
-                FuzzyFinderService.call(
+                described_class.call(
                   needle: "Newish Person",
                   haystack_model: Person,
                   attribute: :name,
@@ -107,7 +107,7 @@ RSpec.describe FuzzyFinderService do
           context "passing an id string" do
             it "returns the expected person" do
               expect(
-                FuzzyFinderService.call(
+                described_class.call(
                   needle: "Newish Person",
                   haystack_model: Person,
                   attribute: :name,
@@ -120,7 +120,7 @@ RSpec.describe FuzzyFinderService do
           context "passing an id int" do
             it "returns the expected person" do
               expect(
-                FuzzyFinderService.call(
+                described_class.call(
                   needle: "Newish Person",
                   haystack_model: Person,
                   attribute: :name,
@@ -134,7 +134,7 @@ RSpec.describe FuzzyFinderService do
 
       context "with a name that does not match at all" do
         it "returns nil" do
-          expect(FuzzyFinderService.call(
+          expect(described_class.call(
                    needle: "kikkilij mqwwewe",
                    haystack_model: Person,
                    attribute: :name)

@@ -1,31 +1,27 @@
+<div id="building-show">
 <div class="row" id="seagreen">
   <div class="col-10 offset-1">
-    <h1>
-      <%= @building.name %>
-    </h1>
   </div>
 </div>
-<div id="searchFields" class="building-show">
-  <form>
-    <input type="text" name="q" id="librarySearch" placeholder="Search for library materials" autocomplete="off" />
-  </form>
-  <div id="searchOptions">
-    <ul>
-      <li>Books</li>
-      <li>Articles</li>
-      <li>Databases</li>
-    </ul>
-    <div id="advancedSearchLink">
-      Advanced Search
+<%= render 'searchfields.html.erb' %>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", Rails.root.to_s %> 
+    <%= link_to "Buildings", controller: 'buildings', action: :index %> 
+    <%= @building.name %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12 col-xl-6 text-center text-xl-right building-image">
+    <%= image_tag @building.photo %>
+  </div>
+  <div class="col-lg-12 col-xl-6 text-center text-xl-left">
+    <div class="building-description">
+      <h1 class="text-md-center text-xl-left"><%= @building.name %></h1>
+      <div class="text-left text"><%= @building.description.html_safe %></div>
     </div>
-  </div>
-</div>
-<div class="row building-image">
-  <div class="col-5 offset-1 text-center building-image">
-    <%= image_tag @building.photo.variant(gravity: 'center', crop: "680x450+50%+50%", extent: "100%x100%") %>
-  </div>
-  <div class="col-5 building-description">
-    <div class="text"><%= @building.description.html_safe %></div>
   </div>
 </div>
 
@@ -87,10 +83,11 @@
     </div>
   </div>
 
-  <div class="margin-left: 77px;margin-right: 77px">
-    <div class="row spacesRow">
+<div class="container">
+<div class="row spacesRow">
+<% unless @building.spaces.nil? %>
 
-<% @building.spaces.each do |space| %>
+    <% @building.spaces.each do |space| %>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
         <div class="related_space">
           <% if space.photo.attached? %>
@@ -99,11 +96,13 @@
             <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
           <% end %>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="padding: 0;">
           <span class="card-title"><%= space.name %></span>
         </div>
       </div>
-<% end %>
-<% end %>
-  </div>
+    <% end %>
 
+<% end %>
+</div>
+</div>
+<% end %>

@@ -1,4 +1,22 @@
 <div id="site-footer" class="">
+  <div class="row social">
+    <div class="col-4">
+      <%= link_to "Donate to the Libraries", "#", class: 'donate' %>
+    </div>
+    <div class="col-8 text-right">
+      <ul>
+        <li class="social-footer instagram">
+          <%= link_to image_tag('instagram-logo_white.svg'), 'http://instagram.com/tulibraries' %>
+        </li>
+        <li class="social-footer facebook">
+          <%= link_to image_tag('facebook-logo_white.svg'), 'https://www.facebook.com/pages/Temple-University-Libraries/6340283058' %>
+        </li>
+        <li class="social-footer twitter">
+          <%= link_to image_tag('twitter-logo_white.svg'), 'http://twitter.com/TempleLibraries' %>
+        </li>
+      </ul>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
       <%= link_to root_path, class: "footer-name", id: "footer-logo" do %>
@@ -111,17 +129,7 @@
               </ul>
             </div>
             <div class="col col-sm-4">
-              <ul>
-                <li class="social-footer instagram">
-                  <%= link_to image_tag('instagram-logo_white.svg'), 'http://instagram.com/tulibraries' %>
-                </li>
-                <li class="social-footer facebook">
-                  <%= link_to image_tag('facebook-logo_white.svg'), 'https://www.facebook.com/pages/Temple-University-Libraries/6340283058' %>
-                </li>
-                <li class="social-footer twitter">
-                  <%= link_to image_tag('twitter-logo_white.svg'), 'http://twitter.com/TempleLibraries' %>
-                </li>
-              </ul>
+              
             </div>
 
         </div>

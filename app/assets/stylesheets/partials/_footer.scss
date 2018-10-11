@@ -52,14 +52,6 @@
 	  max-width: 107px;
 	  max-height: 77px;
 	}
-	.social-footer {
-		img {
-			width: 36px;
-			height: 36px;
-		  max-width: 36px;
-		  max-height: 36px;
-		}
-	}
 	a.footer-name, a.footer-name:hover, a.footer-name:focus {
 		color: $white;
 		font-size: 2.45rem;
@@ -121,18 +113,7 @@
 		font-size: .9rem;
 		font-family: droid, sans;
 		.region-footer {
-			li.social-footer {
-				display: inline-block;
-			}
-			li.facebook {
-				display: inline-block;
-			}
-			li.instagram {
-				display: inline-block;
-			}
-			li.twitter {
-				display: inline-block;
-			}
+
 			margin:0 auto;
 			width:100%;
 			max-width:1140px;
@@ -149,5 +130,28 @@
 				}
 			}
 		}
+	}
+}
+
+.social {
+	background-color: $med-grey;
+	li.social-footer {
+		display: inline-block;
+		img {
+			width: 36px;
+			height: 36px;
+		  max-width: 36px;
+		  max-height: 36px;
+		  margin: 7px;
+		}
+	}
+	li.facebook {
+		display: inline-block;
+	}
+	li.instagram {
+		display: inline-block;
+	}
+	li.twitter {
+		display: inline-block;
 	}
 }

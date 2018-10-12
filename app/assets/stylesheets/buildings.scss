@@ -23,26 +23,27 @@ div.required  label::after {
 	padding-top: 7px;
 	margin: auto;
 	background-color: #eee;
-	height: auto;
-	max-width:680px!important;
+	max-width:680px;
 	height:450px;
 	div.text {
 		padding:21px;
 		margin:auto;
 	}
 	padding-right:21px;
-	@media screen and (max-width: 1200px) {
-		padding-right: 0;
+	@media screen and (min-width: 1200px) {
+		margin-left: 0;
 	}
 }
 .building-image {
 	max-height:450px;
+	max-width: 680px;
 	overflow:hidden;
+	margin: auto;
+	@media screen and (min-width: 1200px) {
+		margin-right: 0;
+	}
 	img {
 		min-height:450px;
-		@media screen and (max-width: 1200px) {
-			padding-left: 0;
-		}
 	}
 }
 .phone {

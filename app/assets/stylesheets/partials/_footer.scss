@@ -126,17 +126,31 @@
 				text-decoration: none;
 				padding-right:28px;
 				a {
-					color: #fff;
+					color: $white;
 				}
 			}
 		}
 	}
 }
 
+a.donate {
+	color: white!important;
+	font-size: 1.15rem;
+	vertical-align: middle;
+	padding: 7px 21px;
+	border: solid $white 1px;
+	background-color: $seagreen;
+	border-radius: 7px;
+	position: relative;
+	top: 21px;
+	left: 21px;
+}
 .social {
-	background-color: $med-grey;
+	background-color: $footer-grey;
 	li.social-footer {
 		display: inline-block;
+		position: relative;
+		top: 7px;
 		img {
 			width: 36px;
 			height: 36px;

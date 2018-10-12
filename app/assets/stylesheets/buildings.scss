@@ -22,7 +22,7 @@ div.required  label::after {
 	font-size: 115%;
 	padding-top: 7px;
 	margin: auto;
-	background-color: #eee;
+	background-color: $background-grey;
 	max-width:680px;
 	height:450px;
 	div.text {

@@ -30,7 +30,7 @@
           <% if building.photo.attached? %>
             <%= link_to image_tag(building.photo.variant(gravity: 'center', crop: "200x200+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap"), building_path(building) %>
           <% else %>
-            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), building_path(building.id) %>
+            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), building_path(building) %>
           <% end %>
         </div>
         <div class="card-body" style="padding: 0;">

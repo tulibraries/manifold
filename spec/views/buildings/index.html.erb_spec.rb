@@ -11,7 +11,7 @@ RSpec.describe "buildings/index.html.erb", type: :view do
   end
 
   it "displays the sample building name" do
-    @buildings = [ FactoryBot.build(:building) ]
+    @buildings = [ FactoryBot.create(:building) ]
     stub_template "_searchfields.html.erb" => "This content"
     render
     expect(rendered).to match /#{@buildings.first.name}/

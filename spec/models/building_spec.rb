@@ -30,7 +30,7 @@ RSpec.describe Building, type: :model do
       end
     end
   end
-
+    
   describe "field validators" do
 
     let(:building) { FactoryBot.build(:building) }
@@ -69,4 +69,5 @@ RSpec.describe Building, type: :model do
       end
     end
   end
+
 end

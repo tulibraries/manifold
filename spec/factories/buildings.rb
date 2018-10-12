@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+include ActionDispatch::TestProcess
 
 FactoryBot.define do
   factory :building do
@@ -13,6 +14,7 @@ FactoryBot.define do
     phone_number { "2155551212" }
     campus { "Main Campus" }
     email { "csa@example.edu" }
+    photo { fixture_file_upload(fixture_path+'/charles.jpg'), 'image/jpg') }
 
     factory :building_with_people do
       after(:create) do |building|

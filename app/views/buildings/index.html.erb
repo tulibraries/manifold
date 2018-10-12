@@ -15,14 +15,14 @@
 <div class="row" style="position:relative;top: -77px;">
   <div class="col">
     <div class="vertical-stripes-sm">
-    <h2><span>Buildings</span></h2>
-  </div>
+      <h2><span>Buildings</span></h2>
+    </div>
   </div>
 </div>
+
 <div class="container">
 <div class="row spacesRow">
 <% unless @buildings.nil? %>
-
 
     <% @buildings.each do |building| %>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
@@ -30,7 +30,7 @@
           <% if building.photo.attached? %>
             <%= link_to image_tag(building.photo.variant(gravity: 'center', crop: "200x200+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap"), building_path(building) %>
           <% else %>
-            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), building_path(building) %>
+            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), building_path(building.id) %>
           <% end %>
         </div>
         <div class="card-body" style="padding: 0;">

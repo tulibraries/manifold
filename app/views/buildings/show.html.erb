@@ -1,34 +1,36 @@
+<div id="building-show">
 <div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      <span>Library: </span>
-      <%= @building.name %>
-    </h1>
+  <div class="col-10 offset-1">
+  </div>
+</div>
+<%= render 'searchfields.html.erb' %>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", Rails.root.to_s %> 
+    <%= link_to "Buildings", controller: 'buildings', action: :index %> 
+    <%= @building.name %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12 col-xl-6 text-center text-xl-right">
+    <div class="building-image">
+      <%= image_tag @building.photo.variant(gravity: 'center', extent: "100%x100%") %>
+    </div>
+  </div>
+  <div class="col-lg-12 col-xl-6 text-center text-xl-left">
+    <div class="building-description">
+      <h1 class="text-md-center text-xl-left"><%= @building.name %></h1>
+      <div class="text-left text"><%= @building.description.html_safe %></div>
+    </div>
   </div>
 </div>
 
   <div class="row">
     <div class="col">
       <div class="vertical-stripes-sm">
-        <h1>Description</h1>
-      </div>
-    </div>
-  </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col bldg_description">
-      <p>
-        <%= @building.description.html_safe %>
-      </p>
-    </div>
-  </div>
-</div>
-
-  <div class="row">
-    <div class="col">
-      <div class="vertical-stripes-sm">
-        <h1>Plan your visit</h1>
+        <h2><span>Plan your visit</span></h2>
       </div>
     </div>
   </div>
@@ -78,15 +80,16 @@
   <div class="row">
     <div class="col">
       <div class="vertical-stripes-sm">
-        <h1><%= @building.name %> Spaces</h1>
+        <h2><span><%= @building.name %> Spaces</span></h2>
       </div>
     </div>
   </div>
 
-  <div class="margin-left: 77px;margin-right: 77px">
-    <div class="row spacesRow">
+<div class="container">
+<div class="row spacesRow">
+<% unless @building.spaces.nil? %>
 
-<% @building.spaces.each do |space| %>
+    <% @building.spaces.each do |space| %>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
         <div class="related_space">
           <% if space.photo.attached? %>
@@ -95,11 +98,13 @@
             <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
           <% end %>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="padding: 0;">
           <span class="card-title"><%= space.name %></span>
         </div>
       </div>
-<% end %>
-<% end %>
-  </div>
+    <% end %>
 
+<% end %>
+</div>
+</div>
+<% end %>

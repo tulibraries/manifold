@@ -21,10 +21,7 @@
 #seagreen {
 	margin-bottom: 21px;
 	h1 {
-		position:absolute;
-		top: 22%;
 		font-size: 235%;
-		margin-top: 0;
 		color: white;
 		text-align:center;
 		vertical-align:middle;
@@ -41,6 +38,7 @@
 	font-style: normal;
 	border-radius: 7px;
 	padding-left: 77px;
+	min-width: 500px;
 }
 #librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-style: normal;
@@ -58,7 +56,7 @@
   font-style: normal;
   font-family: 'PT Sans';
 }
-#searchFields {
+#home #searchFields {
 	position: relative;
 	width: 100%;
 	form {
@@ -116,12 +114,11 @@
 	position: relative;
 	ul {
 		margin: 0;
-		width: 80%;
+		width: 75%;
+		min-width: 400px;
 		display: inline-block;
-		padding-left: 21px;
-		padding-right: 21px;
-		padding-top: 10px;
-		height: 56px;
+		padding-top: 7px;
+		height: 45px;
 		font-weight: 100;
 		font-size: 1.25rem;
 		border: solid $white 1px;
@@ -152,6 +149,9 @@
 		top: -27px;
 		padding-left: 14px;
 		text-decoration: underline;
+		@media screen and (max-width: 1057px) {
+			display:block;
+		}
 	}
 }
 
@@ -354,14 +354,19 @@
   text-align: center;
   width: 100%;
   h2 {
+  	padding: 0;
+		background-color: transparent!important;
+		span {
+		display: inline-block;
   	white-space: nowrap;
-  	padding:14px;
-  	font-size: 250%;
+  	padding: 2px 14px;
+  	font-size: 150%;
   	letter-spacing:.15rem;
   	background-color:white!important;
-  	width: 25%;
+  	color: $dark-grey;
   	margin:auto;
-  	height:84px;
+  	height:88px;
+  	}
   }
 }
 
@@ -453,4 +458,15 @@ form {
 }
 #header {
 	background-color: cornsilk;
+}
+.breadcrumbs {
+	padding-left: 35px;
+	top: -35px;
+	a {
+		display: inline-block;
+		color: $dark-grey;
+	}
+	a::after {
+		content: ' > ';
+	}
 }

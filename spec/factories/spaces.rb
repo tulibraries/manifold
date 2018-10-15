@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+include ActionDispatch::TestProcess
+
 FactoryBot.define do
   factory :space do
     sequence(:name) { |n| "Room #{n}" }

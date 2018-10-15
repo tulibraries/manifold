@@ -69,4 +69,5 @@ RSpec.describe Building, type: :model do
       end
     end
   end
+
 end

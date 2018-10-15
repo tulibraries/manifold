@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+include ActionDispatch::TestProcess
+
 FactoryBot.define do
   factory :building do
     sequence(:name) { |n| "Charles Samuel Addams Library #{n}" }
@@ -13,6 +15,7 @@ FactoryBot.define do
     phone_number { "2155551212" }
     campus { "Main Campus" }
     email { "csa@example.edu" }
+    photo { fixture_file_upload(Rails.root.join("spec", "fixtures", "charles.jpg"), "image/jpg") }
 
     factory :building_with_people do
       after(:create) do |building|

@@ -12,8 +12,39 @@ div.required  label::after {
     color: $red;
   }
 
-.bldg-description {
-	font-size: larger;
+.building-description {
+	h1 {
+		padding-left: 14px;
+		@media screen and (max-width: 1200px) {
+			padding-left: 0;
+		}
+	}
+	font-size: 115%;
+	padding-top: 7px;
+	margin: auto;
+	background-color: $background-grey;
+	max-width:680px;
+	height:450px;
+	div.text {
+		padding:21px;
+		margin:auto;
+	}
+	padding-right:21px;
+	@media screen and (min-width: 1200px) {
+		margin-left: 0;
+	}
+}
+.building-image {
+	max-height:450px;
+	max-width: 680px;
+	overflow:hidden;
+	margin: auto;
+	@media screen and (min-width: 1200px) {
+		margin-right: 0;
+	}
+	img {
+		min-height:450px;
+	}
 }
 .phone {
 	font-size: 120%;
@@ -40,12 +71,12 @@ div.required  label::after {
 		min-width: 415px;
 		height: 290px;
 		position: relative;
-		/*padding-top:10%;*/
 		line-height: 3.0rem;
 			a {
 				color: $white;
 			};
-		font-size: larger
+		font-size: larger;
+		margin-bottom: 21px;
 	}
 	.card-title {
 		position: absolute;
@@ -74,6 +105,7 @@ div.required  label::after {
 .spacesRow {
 	margin-left: 77px;
 	margin-right: 77px;
+	margin-bottom: 35px;
  	.ctaTwo .related_space {
  		text-align: center;
 		border: solid $purple 2px;
@@ -83,8 +115,7 @@ div.required  label::after {
  		overflow: hidden;
  		display:inline-block;
     padding: 0;
-    margin: 35px;
-    margin-bottom: 0;
+    margin-top: 35px;
     line-height: 100px;
     width: 200px;
     height: 190px;
@@ -99,3 +130,14 @@ div.required  label::after {
  		text-align: center;
  	}
  }
+
+ #searchFields.building-show {
+	position: relative;
+	width: 100%;
+	form {
+		width: 60%;
+		margin:auto;
+		position:relative;
+		top: -27px;
+	}
+}

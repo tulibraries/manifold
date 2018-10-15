@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Events>
+  <Event>
+    <Title>What, Me Worry?</Title>
+    <Path>https://events.temple.edu/how-to-use-a-library</Path>
+    <Description>&lt;p&gt;Join us for a webinar library best practices.&lt;/p&gt;</Description>
+    <Sessions></Sessions>
+    <Department>Temple University Libraries</Department>
+    <Interest>Professional Development</Interest>
+    <Type>Workshop /  Webinar</Type>
+    <EventStartDate>October 02, 2018</EventStartDate>
+    <EventStartTime>12:00 pm</EventStartTime>
+    <EventEndDate>October 02, 2018</EventEndDate>
+    <EventEndTime>1:00 pm</EventEndTime>
+    <Timestamp>&lt;span class="date-display-single"&gt;02/10/2018 &lt;span class="date-display-range"&gt;&lt;span class="date-display-start" property="dc:date" datatype="xsd:dateTime" content="2018-10-02T12:45:00-04:00"&gt;12:45&lt;/span&gt; to &lt;span class="date-display-end" property="dc:date" datatype="xsd:dateTime" content="2018-10-02T14:00:00-04:00"&gt;14:00&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;</Timestamp>
+    <TimestampStart>1538498700</TimestampStart>
+    <TimestampEnd>1538503200</TimestampEnd>
+    <Tags>library workshops</Tags>
+    <PrivateTags></PrivateTags>
+    <Campus>Main Campus</Campus>
+    <Location>Gladfelter Hall</Location>
+    <Room>Lecture Hall</Room>
+    <Address>1115 W. Berks Street</Address>
+    <City>Philadelphia</City>
+    <State>PA</State>
+    <Zip>19122</Zip>
+    <Sponsors>Temple University Libraries</Sponsors>
+    <Audience>Public</Audience>
+    <ContactName>Alfred E. Neuman</ContactName>
+    <ContactEmail>alfred.neuman@temple.edu</ContactEmail>
+    <ContactPhone>215-555-1234</ContactPhone>
+    <Image>&lt;img typeof="foaf:Image" src="https://library.temple.edu/sites/default/files/libraries/paley_tower.jpg" alt="Paley Library" /&gt;</Image>
+    <Files></Files>
+    <GAFFunding>0</GAFFunding>
+    <Private>0</Private>
+    <RegistrationStatus>Closed</RegistrationStatus>
+    <Canceled>0</Canceled>
+    <Highlighted>1</Highlighted>
+    <Promoted>0</Promoted>
+    <Weight>1</Weight>
+    <GUID>45321</GUID>
+  </Event>
+</Events>

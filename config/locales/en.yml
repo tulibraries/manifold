@@ -36,6 +36,20 @@ en:
         address1: "Street Address"
         address2: "City, State Zip"
   fortytude:
+    default:
+      event:
+        title: "No Title"
+        description: "No Description"
+        external_building: "No Building Given"
+        external_space: "No Room Given"
+        external_address: "No Address Given"
+        external_city: "Philadelphia"
+        external_state: "PA"
+        external_zip: "19122"
+        external_contact_name: "No Contact Given"
+        external_contact_email: "No Contact Email Given"
+        external_contact_phone: "No Contact Phone Number"
+        registration_status: "No Registration Required"
     error:
       user_not_registered: "User not registered."
       access_denied: "Account modification - Access denied"

@@ -78,10 +78,6 @@ RSpec.describe SyncService::Events, type: :service do
         expect(subject["registration_status"]).to match(events.first["RegistrationStatus"])
       end
 
-      it "maps RegistrationLink to registration_link field", skip: "Missing registration link from source XML" do
-        expect(subject["registration_link"]).to match(events.first["RegistrationLink"])
-      end
-
       it "maps document's digest to content_has field" do
         expect(subject["content_hash"]).to match(Digest::SHA1.hexdigest(events.first[:xml]))
       end
@@ -104,7 +100,7 @@ RSpec.describe SyncService::Events, type: :service do
     end
   end
 
-  context "fuzzy logic" do
+  context "fuzzy logic", :focus do
     let(:internal_events) { described_class.call(events_url: file_fixture("fuzzy_events_internal.xml").to_path) }
     let(:external_events) { described_class.call(events_url: file_fixture("fuzzy_events_external.xml").to_path) }
 
@@ -117,12 +113,14 @@ RSpec.describe SyncService::Events, type: :service do
 
     describe "contact" do
       it "has a person reference" do
+        allow(::FuzzyFind::Person).to receive(:find).with(kind_of(String)).and_return(@person)
         internal_events.sync
         event = Event.find_by(person_id: @person.id)
         expect(event.person_id).to eq @person.id
         expect(event.external_contact_name).to eq nil
       end
       it "doesn't have a person reference" do
+        allow(::FuzzyFind::Person).to receive(:find).with(kind_of(String)).and_return(nil)
         external_events.sync
         event = Event.find_by(person_id: @person.id)
         expect(event).to_not be
@@ -131,6 +129,7 @@ RSpec.describe SyncService::Events, type: :service do
 
     describe "location/building" do
       it "has a building reference" do
+        allow(::FuzzyFind::Building).to receive(:find).with(kind_of(String)).and_return(@building)
         internal_events.sync
         event = Event.find_by(building_id: @building.id)
         expect(event.building_id).to eq @building.id
@@ -138,6 +137,7 @@ RSpec.describe SyncService::Events, type: :service do
         expect(event.external_building).to eq nil
       end
       it "doesn't have a building reference" do
+        allow(::FuzzyFind::Building).to receive(:find).with(kind_of(String)).and_return(nil)
         external_events.sync
         event = Event.find_by(building_id: @building.id)
         expect(event).to_not be
@@ -146,6 +146,7 @@ RSpec.describe SyncService::Events, type: :service do
 
     context "space" do
       it "has a space reference" do
+      allow(::FuzzyFind::Space).to receive(:find).with(kind_of(String), anything).and_return(@space)
       internal_events.sync
       event = Event.find_by(space_id: @space.id)
       expect(event.space_id).to eq @space.id
@@ -153,6 +154,7 @@ RSpec.describe SyncService::Events, type: :service do
       expect(event.external_space).to eq nil
     end
       it "doesn't have a space reference" do
+        allow(::FuzzyFind::Space).to receive(:find).with(kind_of(String), anything).and_return(nil)
         external_events.sync
         event = Event.find_by(space_id: @space.id)
         expect(event).to_not be

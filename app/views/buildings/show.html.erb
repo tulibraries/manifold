@@ -6,7 +6,7 @@
 <%= render 'searchfields.html.erb' %>
 <div class="row">
   <div class="col breadcrumbs">
-    <%= link_to "Home", Rails.root.to_s %> 
+    <%= link_to "Home", root_path.to_s %> 
     <%= link_to "Buildings", controller: 'buildings', action: :index %> 
     <%= @building.name %>
   </div>
@@ -39,7 +39,7 @@
   <div class="row ctaRow building-info">
     <div class="col-12 col-lg-4 card ctaFirst">
       <div class="card-body">
-        <span class="phone"><%= phone_formatted %></span><br />
+        <span class="phone"><%= phone_formatted(@building.phone_number) %></span><br />
         <span class="email"><%= mail_to @building.email, @building.email %></span><br />
         <div class="address"><%= @building.address1 %><br /><%= @building.address2 %></div>
       </div>

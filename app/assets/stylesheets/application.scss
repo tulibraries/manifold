@@ -195,25 +195,22 @@
 			color: $black;
 		}
 	}
-	.ctaMidOne {
+	.ctaMidOne, .ctaMid {
 		background-color: $seagreen;
 		color: $white;
 		.card-title.complement {
 			background-color: $seagreen-complement;
 			color: $black;
+			}
 		}
-	}
-	.ctaMidOne.staggered {
-		margin-top: 35px;
-	}
 	.ctaMidTwo {
 		background-color: $purple;
 		color: $white;
 		.card-title.complement {
 			background-color: $purple-complement;
 			color: $black;
-		}
-	}
+			}
+		}	
 	.ctaLast {
 		background-color: $darkgold;
 		border-top-right-radius: 42px;
@@ -221,7 +218,24 @@
 		.card-title.complement {
 			background-color: $darkgold-complement;
 			color: $black;
+			}
 		}
+	.ctaBoth {
+		background-color: $seagreen-complement;
+		border-radius: 42px;
+		vertical-align: middle;
+	}
+	.service {
+		height: 99px;
+		margin: auto;
+		h2 {
+			border: 0;
+			background-color: transparent;
+			vertical-align: middle;
+		font-size: 2rem;
+		margin: auto;
+		}
+	}
 		ul {
 			margin-bottom: 0;
 		}
@@ -233,9 +247,6 @@
 		.oddrow {
 			background-color: $gold;
 		}
-	}
-	.ctaLast.staggered {
-		margin-top: 35px;
 	}
 	.news {
 		background-color: $white;
@@ -330,16 +341,33 @@
 			border-bottom-right-radius: 42px;
  		}
  	}
-}
+
 .vertical-stripes {
   background: repeating-linear-gradient( 
-  90deg,
-  #fff,
-  #fff 20px,
-  #eee 20px,
-  #eee 40px);
-  height: 84px;
-  width: 7px;
+	  90deg,
+	  #fff,
+	  #fff 20px,
+	  #eee 20px,
+	  #eee 40px);
+  height: 56px;
+  margin-top: 63px;
+  text-align: center;
+  width: 100%;
+  h1 {
+  	padding: 0;
+		background-color: transparent!important;
+		span {
+			display: inline-block;
+	  	white-space: nowrap;
+	  	padding: 2px 14px;
+	  	font-size: 150%;
+	  	letter-spacing:.15rem;
+	  	background-color:white!important;
+	  	color: $dark-grey;
+	  	margin:auto;
+	  	height:56px;
+  	}
+  }
 }
 .vertical-stripes-sm {
   background: repeating-linear-gradient( 
@@ -349,23 +377,22 @@
   #eee 20px,
   #eee 40px);
   height: 42px;
-  width: 7px;
-  margin-top: 63px;
   text-align: center;
+  margin-top: 42px;
   width: 100%;
   h2 {
   	padding: 0;
 		background-color: transparent!important;
 		span {
-		display: inline-block;
-  	white-space: nowrap;
-  	padding: 2px 14px;
-  	font-size: 150%;
-  	letter-spacing:.15rem;
-  	background-color:white!important;
-  	color: $dark-grey;
-  	margin:auto;
-  	height:88px;
+			display: inline-block;
+	  	white-space: nowrap;
+	  	padding: 2px 14px;
+	  	font-size: 150%;
+	  	letter-spacing:.15rem;
+	  	background-color:white!important;
+	  	color: $dark-grey;
+	  	margin:auto;
+	  	height:88px;
   	}
   }
 }
@@ -461,7 +488,8 @@ form {
 }
 .breadcrumbs {
 	padding-left: 35px;
-	top: -35px;
+	margin-bottom: 14px;
+	top: -21px;
 	a {
 		display: inline-block;
 		color: $dark-grey;

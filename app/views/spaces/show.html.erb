@@ -1,67 +1,164 @@
+<div id="space-show">
 <div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      <%= @space.name %>
-    </h1>
+  <div class="col-10 offset-1">
+  </div>
+</div>
+<%= render 'searchfields.html.erb' %>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Spaces", controller: 'spaces', action: :index %> 
+    <%= @space.name %>
   </div>
 </div>
 
-<div class="row" style="border-bottom: solid #ccc 1px;margin-bottom: 14px;padding-bottom: 7px;">
-  <div class="col col-sm-3">
-    <% if @space.photo.attached?  %>
-      <%= image_tag @space.photo.variant(resize: '300x300', gravity: 'center', extent: '300x300'), style: 'margin-top: 35px;' %>
-    <% else %>
-      <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
-    <% end %>
-  </div>
-  <div class="col col-sm-9">
-    <% unless @space.description.blank? %>
-    <p>
-      <%= @space.description.html_safe %>
-    </p>
-    <% end %>
 
-    <p>
-    <strong>Location:</strong>
-      <%= @space.building.name %>
-    </p>
-
-    <% unless @space.parent_id.blank? %>
-      <p>
-        <strong>Parent space:</strong>
-        <%= @space.parent.name %>
-      </p>
-    <% end %>
-
-    <% unless @space.hours.blank? %>
-    <p>
-      <strong>Hours</strong>
-      <%= @space.hours %>
-    </p>
-    <% end %>
-
-    <% unless @space.phone_number.blank? %>
-    <p>
-      <strong>Phone number</strong>
-      <%= @space.phone_number %>
-    </p>
-    <% end %>
-
-    <% unless @space.email.blank? %>
-    <p>
-      <strong>Email</strong>
-      <%=@space.email %>
-    </p>
-    <% end %>
-
-    <% unless @space.accessibility.blank? %>
-    <p>
-      <strong>Accessibility</strong>
-      <%= @space.accessibility %>
-    </p>
-    <% end %>
-
+<div class="row">
+  <div class="col-lg-12 col-xl-6 text-center text-xl-right">
+    <div class="space-image">
+      <%= image_tag @space.photo.variant(gravity: 'center', extent: "100%x100%") %>
     </div>
-
   </div>
-<%= link_to 'Back', spaces_path %>
+  <div class="col-lg-12 col-xl-6 text-center text-xl-left">
+    <div class="space-description">
+      <h1 class="text-md-center text-xl-left"><%= @space.name %></h1>
+      <div class="text-left text"><%= @space.description.html_safe %></div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span>Services</span></h2>
+    </div>
+  </div>
+</div>
+
+<% unless @space.service_space.nil? %>
+  <div class="row servicesRow">
+    <% @space.service_space.in_groups_of(3, false).each do |group| %>
+      <% unless @space.service_space.size < 3 %>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 cta first">
+          <div class="service">
+            <%= group.first.service.title %>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 cta">
+          <div class="service">
+            <%= group.second.service.title %>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 cta last">
+          <div class="service">
+            <%= group.third.service.title %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @space.service_space.size == 2 %>
+        <div class="col-md-4 offset-md-2 cta first">
+          <div class="service">
+            <%= group.first.service.title %>
+          </div>
+        </div>
+        <div class="col-md-4 cta last">
+          <div class="service">
+            <%= group.second.service.title %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if  @space.service_space.size == 1  %>
+        <div class="col-xs-6 offset-xs-3 col-md-4 offset-md-4 cta both">
+          <div class="service">
+           <%= group.first.service.title %>
+          </div>
+        </div>
+      <% end %>
+
+    <% end %>
+<% end %>
+</div>
+
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Plan your visit</span></h2>
+      </div>
+    </div>
+  </div>
+
+<!-- <div class="container"> -->
+  <div class="row ctaRow space-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-body">
+        <span class="phone"><%= phone_formatted(@space.phone_number) %></span><br />
+        <span class="email"><%= mail_to @space.email, @space.email %></span><br />
+        <div class="address"><%= @space.building %></div>
+      </div>
+      <div class="card-title complement">
+        Contact
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaMidOne">
+      <div class="card-body">
+      <div id="dateTime">
+        <div id="date">
+          <%= todays_date %>
+        <div id="time">
+          <%= @space.name %>
+        </div>
+        </div>
+        <div id="allHours">
+          <%= link_to "See all library hours", hours_path() %> >
+        </div>
+      </div>
+      </div>
+      <div class="card-title complement">
+        Hours
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaLast">
+      <div class="card-body">
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@space.building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@space.building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@space.building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@space.building.coordinates}&query_place_id=#{@space.building.google_id}" %>
+      </div>
+      <div class="card-title complement">
+        Map!
+      </div>
+    </div>
+  </div>
+<!-- </div> -->
+
+<% if @space.ancestors? %>
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span><%= @space.name %> Spaces</span></h2>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+<div class="row spacesRow">
+<% if @space.ancestors? %>
+
+    <% @space.arrange_as_array.each do |n| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
+        <div class="related_space">
+          <% if space.photo.attached? %>
+            <%= link_to image_tag(space.photo.variant(gravity: 'center', crop: "200x200+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% else %>
+            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% end %>
+        </div>
+        <div class="card-body" style="padding: 0;">
+          <span class="card-title"><%= space.name %></span>
+        </div>
+      </div>
+    <% end %>
+
+<% end %>
+</div>
+</div>
+<% end %>

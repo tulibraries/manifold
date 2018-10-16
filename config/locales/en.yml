@@ -42,4 +42,5 @@ en:
       invalid_email: "is not an email address."
       invalid_phone_format: "is not a valid format. It should be xxx-xxx-xxxx."
       invalid_group_type: "is not a valid group type"
+      invalid_url: "is not a valid url"
     signout: "Log Out"

@@ -16,7 +16,11 @@
 <div class="row">
   <div class="col-lg-12 col-xl-6 text-center text-xl-right">
     <div class="building-image">
-      <%= image_tag @building.photo.variant(gravity: 'center', extent: "100%x100%") %>
+      <% if @building.photo.attached? %>
+        <%= image_tag @building.photo.variant(gravity: 'center', extent: "100%x100%") %>
+      <% else %>
+        <%= image_tag 'T-borderless.gif' %>
+      <% end %>
     </div>
   </div>
   <div class="col-lg-12 col-xl-6 text-center text-xl-left">
@@ -53,7 +57,11 @@
         <div id="date">
           <%= todays_date %>
         <div id="time">
-          <%= @building.name %> <%= todays_hours %>
+          <%= @building.name %> 
+          <%# binding.pry %>
+          <% unless @building.hours.blank? %>
+            <%= todays_hours %>
+          <% end %>
         </div>
         </div>
         <div id="allHours">

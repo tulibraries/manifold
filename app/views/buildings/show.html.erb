@@ -43,7 +43,7 @@
   <div class="row ctaRow building-info">
     <div class="col-12 col-lg-4 card ctaFirst">
       <div class="card-body">
-        <span class="phone"><%= phone_formatted(@building.phone_number) %></span><br />
+        <span class="phone"><%= phone_formatted %></span><br />
         <span class="email"><%= mail_to @building.email, @building.email %></span><br />
         <div class="address"><%= @building.address1 %><br /><%= @building.address2 %></div>
       </div>

@@ -20,15 +20,19 @@
   <%= @event.end_time %>
 </p>
 
-<p>
-  <strong>Building:</strong>
-  <%= @event.building.name %>
-</p>
+<% unless @event.building.nil? %>
+  <p>
+    <strong>Building:</strong>
+    <%= @event.building.name %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Space:</strong>
-  <%= @event.space.name %>
-</p>
+<% unless @event.space.nil? %>
+  <p>
+    <strong>Space:</strong>
+    <%= @event.space.name %>
+  </p>
+<% end %>
 
 <p>
   <strong>External building:</strong>
@@ -60,11 +64,13 @@
   <%= @event.external_zip %>
 </p>
 
-<p>
-  <strong>Person:</strong>
-  <%= @event.person.first_name %>
-  <%= @event.person.last_name %>
-</p>
+<% unless @event.space.nil? %>
+  <p>
+    <strong>Person:</strong>
+    <%= @event.person.first_name %>
+    <%= @event.person.last_name %>
+  </p>
+<% end %>
 
 <p>
   <strong>External contact name:</strong>

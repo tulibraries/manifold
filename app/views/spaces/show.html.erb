@@ -1,11 +1,3 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      <%= @space.name %>
-    </h1>
-  </div>
-</div>
-
 <div class="row" style="border-bottom: solid #ccc 1px;margin-bottom: 14px;padding-bottom: 7px;">
   <div class="col col-sm-3">
     <% if @space.photo.attached?  %>
@@ -15,6 +7,7 @@
     <% end %>
   </div>
   <div class="col col-sm-9">
+    <h1 class="text-md-center text-xl-left"><%= @space.name %></h1>
     <% unless @space.description.blank? %>
     <p>
       <%= @space.description.html_safe %>

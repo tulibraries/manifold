@@ -1,6 +1,7 @@
 @import "_vars.scss";
 
 #header {	
+	background-color: cornsilk;
 	.container {
 		padding: 14px 10px;
 		height: 49px;
@@ -10,7 +11,20 @@
 #seagreen {
 	background-color: $seagreen;
 	height: 77px;
+	margin-bottom: 21px;
+	h1 {
+		font-size: 235%;
+		color: white;
+		text-align:center;
+		vertical-align:middle;
+	}
+	span {
+		color: black;
+		display:inline-block;
+		margin-right:21px;
+	}
 }
+
 #header-navbar {
 	padding-top: 14px;
 	.header-logo {

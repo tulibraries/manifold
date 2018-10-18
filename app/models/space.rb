@@ -30,4 +30,15 @@ class Space < ApplicationRecord
 
   has_many :service_space
   has_many :related_services, through: :service_space, source: :service
+
+  def self.arrange_as_array(options = {}, hash = nil)
+    hash ||= arrange(options)
+
+    arr = []
+    hash.each do |node, children|
+      arr << node
+      arr += arrange_as_array(options, children) unless children.empty?
+    end
+    arr
+  end
 end

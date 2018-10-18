@@ -1,0 +1,124 @@
+@import "partials/_vars.scss";
+
+#librarySearch {
+	height: 56px;
+	font-size: 1.75rem;
+	font-style: normal;
+	border-radius: 7px;
+	padding-left: 77px;
+	min-width: 500px;
+}
+#librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-style: normal;
+  font-family: 'PT Sans';
+}
+#librarySearch::-moz-placeholder { /* Firefox 19+ */
+  font-style: normal;
+  font-family: 'PT Sans';
+}
+#librarySearch:-ms-input-placeholder { /* IE 10+ */
+  font-style: normal;
+  font-family: 'PT Sans';
+}
+#librarySearch:-moz-placeholder { /* Firefox 18- */
+  font-style: normal;
+  font-family: 'PT Sans';
+}
+#home #searchFields {
+	position: relative;
+	width: 100%;
+	form {
+		width: 60%;
+		margin:auto;
+		position:relative;
+		top: -27px;
+	}
+	height:550px;
+	background: transparent asset-data-url('charles.jpg') no-repeat 0% 0%;
+	background-size:cover;
+	background-position-y: center;
+	#dateTime {
+		position: absolute;
+		bottom: 0px;
+		background-color: $white;
+		border-top-left-radius: 7px;
+		border-top-right-radius: 7px;
+		width: 40%;
+		margin: auto;
+		margin-left: 30%;
+		text-align: center;
+		#date {
+			background-color: $purple;
+			width: 85%;
+			margin: auto;
+			padding-top: 7px;
+			padding-bottom: 7px;
+			color: white;
+			font-size: 1.3rem;
+		}
+		#time {
+			width: 50%;
+			padding-top: 7px;
+			padding-bottom: 0;
+			font-size: 1.1rem;
+			display: inline-block;
+			font-weight: 600;
+			float: left;
+			padding-left: 7.5%;
+		}
+		#allHours {
+			width: 50%;
+			padding-top: 7px;
+			padding-bottom: 0;
+			font-size: 1.1rem;
+			display: inline-block;
+		}
+	}
+}
+#searchOptions {
+	width: 55%;
+	margin: auto;
+	margin-top: 0;
+	position: relative;
+	ul {
+		margin: 0;
+		width: 75%;
+		min-width: 400px;
+		display: inline-block;
+		padding-top: 7px;
+		height: 45px;
+		font-weight: 100;
+		font-size: 1.25rem;
+		border: solid $white 1px;
+		border-top: 0;
+		border-bottom-left-radius: 7px;
+		border-bottom-right-radius: 7px;
+		text-align: center;
+		color: $white;
+		position:relative;
+		top: -27px;
+		background-color: $foamgreen;
+		li {
+			display: inline-block;
+			padding-left: 4px;
+			padding-right: 4px;
+			font-family: 'PT Sans', verdana, sans;
+		}
+		li::after {
+			content: " | ";
+		}
+		li:last-child:after {
+			content: "";
+		}
+	}
+	#advancedSearchLink {
+		display: inline-block;
+		position:relative;
+		top: -27px;
+		padding-left: 14px;
+		text-decoration: underline;
+		@media screen and (max-width: 1057px) {
+			display:block;
+		}
+	}
+}

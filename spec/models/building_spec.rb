@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require "./spec/helpers/buildings_helper.rb"
-
-RSpec.configure do |c|
-  c.include BuildingsHelper
-end
 
 RSpec.describe Building, type: :model do
   after(:all) do

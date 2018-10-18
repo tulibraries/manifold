@@ -2,6 +2,7 @@
 
 class PagesController < ApplicationController
   def home
+  	# render :layout => false
   end
 
   def get_highlights

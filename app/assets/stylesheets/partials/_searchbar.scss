@@ -28,11 +28,12 @@
 #searchFields {
 	position: relative;
 	width: 100%;
+	z-index: 1;
 	form {
 		width: 60%;
 		margin:auto;
 		position:relative;
-		top: 42px;
+		top: 48px;
 		.fa-search { 
 		  position: absolute;
 		  top: 12px;
@@ -45,10 +46,13 @@
 #home #searchFields {
 	position: relative;
 	width: 100%;
+	z-index: 0;
 	form {
 		width: 60%;
 		margin:auto;
 		position:relative;
+		top: 48px;
+		outline: solid red 1px;
 		.fa-search { 
 		  position: absolute;
 		  top: 12px;
@@ -120,7 +124,7 @@
 		text-align: center;
 		color: $white;
 		position:relative;
-		top: -27px;
+		top: 27px;
 		background-color: $foamgreen;
 		li {
 			display: inline-block;
@@ -138,7 +142,7 @@
 	#advancedSearchLink {
 		display: inline-block;
 		position:relative;
-		top: -27px;
+		top: 27px;
 		padding-left: 14px;
 		text-decoration: underline;
 		@media screen and (max-width: 1057px) {

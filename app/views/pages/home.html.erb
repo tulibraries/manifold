@@ -1,11 +1,5 @@
 <div id="home">
-<div class="row" id="seagreen" style="margin-bottom: 0"></div>
-
 <div id="searchFields">
-  <form action="https://librarysearch.temple.edu/bento">
-    <span class="fa fa-search"></span>
-    <input type="text" name="q" id="librarySearch" placeholder="Search for library materials" autocomplete="off" style="border: solid #1f9584 1px !important" />
-  </form>
 	<div id="searchOptions">
 		<ul>
 			<li>Everything</li>
@@ -31,7 +25,7 @@
 </div>
 
 <div class="row ctaRow">
-	<div class="col col-sm-3 ">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
 		<div class="card ctaFirst">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
@@ -39,15 +33,15 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
-		<div class="card ctaMidOne staggered">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMidOne">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
 		    <span class="card-title">Find a study space</span>
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
 		<div class="card ctaMidTwo">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
@@ -55,8 +49,8 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
-		<div class="card ctaLast staggered">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaLast">
 			<div class="">
 				<ul>
 					<li class="oddrow">Health Sciences Libraries ></li>
@@ -69,13 +63,17 @@
 	</div>
 </div>
 
-<div class="vertical-stripes">
-	<h1> News &amp; Highlights</h1>
+<div class="row">
+	<div class="col">
+		<div class="vertical-stripes">
+			<h1><span>News &amp; Highlights</span></h1>
+		</div>
+	</div>
 </div>
 
-<div class="row ctaRow">
-	<div class="col col-sm-3">
-		<div class="card ctaOne news">
+<div class="row ctaRow news">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaFirst">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
 		    <span class="card-title">Help with Research</span>
@@ -84,8 +82,8 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
-		<div class="card ctaTwo news">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMid">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
 		    <span class="card-title">Find a study space</span>
@@ -94,8 +92,8 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
-		<div class="card ctaThree news">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMid">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
 		    <span class="card-title">Print my paper</span>
@@ -104,8 +102,8 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
-		<div class="card ctaFour news">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaLast">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 		  <div class="card-body">
 		    <span class="card-title">Print my paper</span>
@@ -116,13 +114,17 @@
 	</div>
 </div>
 
-<div class="vertical-stripes">
-	<h1>Events</h1>
+<div class="row">
+	<div class="col">
+		<div class="vertical-stripes">
+			<h1><span>Events</span></h1>
+		</div>
+	</div>
 </div>
 
-<div class="row ctaRow">
-	<div class="col col-sm-3">
-		<div class="card ctaOne events">
+<div class="row ctaRow events">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaFirst">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 			<div class="info">
 				<div class="when">
@@ -138,8 +140,8 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
-		<div class="card ctaTwo events">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMid">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 			<div class="info">
 				<div class="when">
@@ -155,8 +157,8 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
-		<div class="card ctaThree events">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMid">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 			<div class="info">
 				<div class="when">
@@ -172,8 +174,8 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-3">
-		<div class="card ctaFour events">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaLast">
 			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
 			<div class="info">
 				<div class="when">

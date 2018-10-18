@@ -36,43 +36,44 @@
 <!-- <div class="container"> -->
   <div class="row ctaRow building-info">
     <div class="col-12 col-lg-4 card ctaFirst">
-      <div class="card-body">
-        <span class="phone"><%= phone_formatted %></span><br />
-        <span class="email"><%= mail_to @building.email, @building.email %></span><br />
-        <div class="address"><%= @building.address1 %><br /><%= @building.address2 %></div>
-      </div>
       <div class="card-title complement">
         Contact
       </div>
+      <div class="card-body">
+        <span class="phone"><%= phone_formatted(@building.phone_number) %></span><br />
+        <span class="email"><%= mail_to @building.email, @building.email %></span><br />
+        <div class="address"><%= @building.address1 %><br /><%= @building.address2 %></div>
+      </div>
     </div>
     <div class="col-12 col-lg-4 card ctaMidOne">
+      <div class="card-title complement">
+        Hours
+      </div>
       <div class="card-body">
       <div id="dateTime">
         <div id="date">
           <%= todays_date %>
         <div id="time">
-          <%= @building.name %> 
           <% unless @building.hours.blank? %>
             <%= todays_hours %>
           <% end %>
         </div>
         </div>
         <div id="allHours">
-          <%= link_to "See all library hours", hours_path() %> >
+          <% unless @building.hours.blank? %>
+            <%= link_to "See all hours", hour_path(@building.hours) %> >
+          <% end %>
         </div>
       </div>
       </div>
-      <div class="card-title complement">
-        Hours
-      </div>
     </div>
     <div class="col-12 col-lg-4 card ctaLast">
-      <div class="card-body">
-      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@building.coordinates}&query_place_id=#{@building.google_id}" %>
-      </div>
       <div class="card-title complement">
         Map!
       </div>
+      <div class="card-body">
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@building.coordinates}&query_place_id=#{@building.google_id}" %>
+      </div>    
     </div>
   </div>
 <!-- </div> -->

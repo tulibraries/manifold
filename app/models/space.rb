@@ -31,7 +31,7 @@ class Space < ApplicationRecord
   has_many :service_space
   has_many :related_services, through: :service_space, source: :service
 
-  def self.arrange_as_array(options={}, hash=nil)                                                                                                                                                            
+  def self.arrange_as_array(options = {}, hash = nil)
     hash ||= arrange(options)
 
     arr = []
@@ -41,5 +41,4 @@ class Space < ApplicationRecord
     end
     arr
   end
-  
 end

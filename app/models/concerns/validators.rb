@@ -25,4 +25,14 @@ module Validators
       end
     end
   end
+
+  class UrlValidator < ActiveModel::EachValidator
+    URL_REGEXP = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+    def validate_each(record, attribute, value)
+      unless value =~ URL_REGEXP
+        record.errors[attribute] << (options[:message] || I18n.t("fortytude.error.invalid_url"))
+      end
+    end
+  end
 end
+1

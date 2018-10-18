@@ -23,8 +23,9 @@ div.required  label::after {
 	padding-top: 7px;
 	margin: auto;
 	background-color: $background-grey;
-	max-width:680px;
-	height:450px;
+	max-width: 680px;
+	height: 450px;
+	overflow: auto;
 	div.text {
 		padding:21px;
 		margin:auto;

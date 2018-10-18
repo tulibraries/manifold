@@ -51,5 +51,6 @@ module Tude
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
+    config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://events.temple.edu/feed/xml/events?department=2566")
   end
 end

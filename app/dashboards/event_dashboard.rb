@@ -16,8 +16,8 @@ class EventDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     description: DescriptionField,
-    start_time: Field::DateTime,
-    end_time: Field::DateTime,
+    start_time: Field::DateTime.with_options(format: "%D - %I:%M %p"),
+    end_time: Field::DateTime.with_options(format: "%D - %I:%M %p"),
     external_building: Field::String,
     external_space: Field::String,
     external_address: Field::String,
@@ -31,6 +31,8 @@ class EventDashboard < Administrate::BaseDashboard
     registration_status: Field::Boolean,
     registration_link: Field::String,
     content_hash: Field::String,
+    image: PhotoField,
+    alt_text: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -41,13 +43,9 @@ class EventDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
     :title,
     :start_time,
     :end_time,
-    :person,
-    :building,
-    :space,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -58,6 +56,8 @@ class EventDashboard < Administrate::BaseDashboard
     :description,
     :start_time,
     :end_time,
+    :image,
+    :alt_text,
     :building,
     :space,
     :external_building,

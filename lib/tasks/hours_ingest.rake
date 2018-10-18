@@ -30,7 +30,10 @@ namespace :db do
                 { coordinates: "Sheet1!I2:I", slug: "blockson" },
                 { coordinates: "Sheet1!J2:J", slug: "dsc" },
                 { coordinates: "Sheet1!K2:K", slug: "ambler" },
-                { coordinates: "Sheet1!L2:L", slug: "guest_computers" }
+                { coordinates: "Sheet1!L2:L", slug: "guest_computers" },
+                { coordinates: "Sheet1!M2:M", slug: "ginsburg" },
+                { coordinates: "Sheet1!N2:N", slug: "podiatry" },
+                { coordinates: "Sheet1!O2:O", slug: "innovation" }
               ]
 
   locations.each do |location|

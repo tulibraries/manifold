@@ -16,7 +16,11 @@
 <div class="row">
   <div class="col-lg-12 col-xl-6 text-center text-xl-right">
     <div class="building-image">
-      <%= image_tag @building.photo.variant(gravity: 'center', extent: "100%x100%") %>
+      <% if @building.photo.attached? %>
+        <%= image_tag @building.photo.variant(gravity: 'center', extent: "100%x100%") %>
+      <% else %>
+        <%= image_tag 'T-borderless.gif' %>
+      <% end %>
     </div>
   </div>
   <div class="col-lg-12 col-xl-6 text-center text-xl-left">
@@ -53,11 +57,15 @@
         <div id="date">
           <%= todays_date %>
         <div id="time">
-          <%= @building.name %> <%= todays_hours %>
+          <% unless @building.hours.blank? %>
+            <%= todays_hours %>
+          <% end %>
         </div>
         </div>
         <div id="allHours">
-          <%= link_to "See all library hours", hours_path() %> >
+          <% unless @building.hours.blank? %>
+            <%= link_to "See all hours", hour_path(@building.hours) %> >
+          <% end %>
         </div>
       </div>
       </div>
@@ -67,6 +75,7 @@
     </div>
     <div class="col-12 col-lg-4 card ctaLast">
       <div class="card-body">
+      <% binding.pry %>
       <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@building.coordinates}&query_place_id=#{@building.google_id}" %>
       </div>
       <div class="card-title complement">

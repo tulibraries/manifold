@@ -4,7 +4,7 @@ module BuildingsHelper
   def todays_hours
     hours = @todays_hours.first.hours
     unless hours.nil?
-      todays_hours = " | " + hours
+      todays_hours = hours
     else
       ""
     end

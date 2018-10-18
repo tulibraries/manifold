@@ -66,26 +66,29 @@ div.required  label::after {
 	margin-right: auto;
 	.card {
 		margin:auto;
-		padding-top: 2.75rem;
 		max-width: 415px;
 		min-width: 415px;
 		height: 290px;
 		position: relative;
 		line-height: 3.0rem;
+  	display: table;
 			a {
 				color: $white;
 			};
 		font-size: larger;
 		margin-bottom: 21px;
 	}
+	.card-body {
+    display: table-cell;
+    vertical-align: middle;
+	}
 	.card-title {
 		position: absolute;
-		bottom: 0;
-		margin-bottom: 0;
+		top: 0;
+		margin-top: 0;
 	}
 	.ctaLast {
 		background-color: $purple;
-		padding-top: 0;
 		max-width: 415px;
 		min-width: 415px;
 		.card-title.complement {
@@ -94,6 +97,7 @@ div.required  label::after {
 		}
 		.card-body {
 			padding:0;
+    	vertical-align: bottom;
 		}
 		img {
 			opacity: 1;

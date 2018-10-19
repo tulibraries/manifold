@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-    before_action :set_date, only: [:about_ambler]
-
 class PagesController < ApplicationController
+  before_action :set_date, only: [:about_ambler]
+  
   def home
   end
 

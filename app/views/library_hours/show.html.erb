@@ -17,7 +17,7 @@
 	<% @seven.each do |hour| %>
 		<div class="col col-sm-2">
 			<% if hour.date.to_date == @today %>
-			<strong style="color: red;">Today</strong><br/>
+			<span class="today">Today</span><br/>
 			<% else %>
 				<strong><%= hour.date.strftime("%A") %></strong><br/>
 			<% end %>

@@ -1,5 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Events", controller: "events", action: :index %>
+    <%= @event.title %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span><%= @event.title %></span></h2>
+    </div>
+  </div>
+</div>
 
+
+<div class="container">
 <p>
   <strong>Title:</strong>
   <%= @event.title %>
@@ -106,5 +121,4 @@
   <strong>Content hash:</strong>
   <%= @event.content_hash %>
 </p>
-
-<%= link_to 'Back', events_path %>
+</div>

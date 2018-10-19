@@ -1,4 +1,5 @@
 @import "partials/_vars.scss";
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 
 #librarySearch {
 	height: 56px;
@@ -24,14 +25,41 @@
   font-style: normal;
   font-family: 'PT Sans';
 }
-#home #searchFields {
+#searchFields {
 	position: relative;
 	width: 100%;
+	z-index: 1;
 	form {
 		width: 60%;
 		margin:auto;
 		position:relative;
-		top: -27px;
+		top: 48px;
+		.fa-search { 
+		  position: absolute;
+		  top: 12px;
+		  left: 21px;
+		  font-size: 2rem;
+		  color: $light-grey;
+		}
+	}
+}
+#home #searchFields {
+	position: relative;
+	width: 100%;
+	z-index: 0;
+	form {
+		width: 60%;
+		margin:auto;
+		position:relative;
+		top: 48px;
+		outline: solid red 1px;
+		.fa-search { 
+		  position: absolute;
+		  top: 12px;
+		  left: 21px;
+		  font-size: 2rem;
+		  color: $light-grey;
+		}
 	}
 	height:550px;
 	background: transparent asset-data-url('charles.jpg') no-repeat 0% 0%;
@@ -96,7 +124,7 @@
 		text-align: center;
 		color: $white;
 		position:relative;
-		top: -27px;
+		top: 27px;
 		background-color: $foamgreen;
 		li {
 			display: inline-block;
@@ -114,7 +142,7 @@
 	#advancedSearchLink {
 		display: inline-block;
 		position:relative;
-		top: -27px;
+		top: 27px;
 		padding-left: 14px;
 		text-decoration: underline;
 		@media screen and (max-width: 1057px) {

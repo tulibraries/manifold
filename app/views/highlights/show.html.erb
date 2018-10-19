@@ -1,7 +1,18 @@
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    Highlights
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span>Highlights</span></h2>
+    </div>
+  </div>
+</div>
 
 <div class="container">
-
-  <p id="notice"><%= notice %></p>
 
 <% if @highlight.photo.attached? %>
   <p>

@@ -11,39 +11,42 @@ div.required  label::after {
     content: " * ";
     color: $red;
   }
-
-.building-description, .space-description {
-	h1 {
-		padding-left: 14px;
-		@media screen and (max-width: 1200px) {
-			padding-left: 0;
+.building-info, .space-info {
+	margin-top: 35px;
+	margin-bottom: 21px;
+	.building-description, .space-description {
+		h1 {
+			padding-left: 14px;
+			@media screen and (max-width: 1200px) {
+				padding-left: 0;
+			}
+		}
+		font-size: 115%;
+		padding-top: 7px;
+		margin: auto;
+		background-color: $background-grey;
+		max-width:680px;
+		height:450px;
+		div.text {
+			padding:21px;
+			margin:auto;
+		}
+		padding-right:21px;
+		@media screen and (min-width: 1200px) {
+			margin-left: 0;
 		}
 	}
-	font-size: 115%;
-	padding-top: 7px;
-	margin: auto;
-	background-color: $background-grey;
-	max-width:680px;
-	height:450px;
-	div.text {
-		padding:21px;
-		margin:auto;
-	}
-	padding-right:21px;
-	@media screen and (min-width: 1200px) {
-		margin-left: 0;
-	}
-}
-.building-image, .space-image {
-	max-height:450px;
-	max-width: 680px;
-	overflow:hidden;
-	margin: auto;
-	@media screen and (min-width: 1200px) {
-		margin-right: 0;
-	}
-	img {
-		min-height:450px;
+	.building-image, .space-image {
+		max-height:450px;
+		max-width: 680px;
+		overflow:hidden;
+		margin: auto;
+		@media screen and (min-width: 1200px) {
+			margin-right: 0;
+		}
+		img {
+			min-height:450px;
+		}
 	}
 }
 .phone {

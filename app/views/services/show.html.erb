@@ -1,11 +1,18 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      <%= @service.title %>
-    </h1>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Services", controller: 'spaces', action: :index %> 
+    <%= @service.title %>
   </div>
 </div>
 
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span><%= @service.title %></span></h2>
+    </div>
+  </div>
+</div>
 <p>
   <strong>Description:</strong>
   <%= @service.description.html_safe %>

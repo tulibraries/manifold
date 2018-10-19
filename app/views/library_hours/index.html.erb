@@ -1,11 +1,16 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      Locations and Services Hours
-    </h1>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    Hours
   </div>
 </div>
-
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm" style="margin-top: 0;margin-bottom: 35px;">
+      <h2><span>Locations and Services Hours</span></h2>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="row">
     <div class="col">
@@ -13,7 +18,6 @@
         <% @locations.each do |location| %>
           <li>
             <%= link_to location_name(location), root_path+"hours/"+location %>
-
           </li>
         <% end %>
         </ul>

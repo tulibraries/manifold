@@ -1,18 +1,23 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      <%= @location.first.name %> Hours
-    </h1>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Hours", controller: 'library_hours', action: :index %> 
+    <%= @location.first.name %>
   </div>
 </div>
-
-
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span><%= @location.first.name %> Hours</span></h2>
+    </div>
+  </div>
+</div>
 <h2>Current Week</h2>
-<div class="row" style="margin-bottom: 28px;">
+<div class="row current-week">
 	<% @seven.each do |hour| %>
-		<div class="col col-sm-2" style="padding:21px;">
+		<div class="col col-sm-2">
 			<% if hour.date.to_date == @today %>
-			<strong>Today</strong><br/>
+			<strong style="color: red;">Today</strong><br/>
 			<% else %>
 				<strong><%= hour.date.strftime("%A") %></strong><br/>
 			<% end %>

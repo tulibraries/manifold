@@ -20,6 +20,7 @@
 		.card-body {
 			text-align:center;
 			padding: .35rem;
+			max-height: 36px;
 		}
 		.card-title {
 			width: 100%;
@@ -85,6 +86,12 @@
 	}
 	.oddrow {
 		background-color: $gold;
+	}
+	.ambler-list {
+		li {
+			padding: 8px;
+			font-size: 13px;
+		}
 	}
 }
 

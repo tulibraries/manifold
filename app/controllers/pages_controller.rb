@@ -9,4 +9,10 @@ class PagesController < ApplicationController
   def index
     @buildings = Building.all
   end
+
+  def home
+  end
+
+  def ambler
+  end
 end

@@ -6,10 +6,6 @@ class PagesController < ApplicationController
     @highlights = Highlight.where(promoted: true).take(4)
   end
 
-  def index
-    @buildings = Building.all
-  end
-
   def home
   end
 

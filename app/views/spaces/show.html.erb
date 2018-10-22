@@ -168,7 +168,8 @@
       <div class="card-body">
         <span class="phone"><%= phone_formatted(@space.phone_number) %></span><br />
         <span class="email"><%= mail_to @space.email, @space.email %></span><br />
-        <div class="address"><%= link_to @space.building.name, @space.building %></div>
+        <div class="building"><%= link_to @space.building.name, building_path(@space.building) %></div>
+        <div class="address"><%= @space.building.address1 %><br /><%= @space.building.address2 %></div>
       </div>
     </div>
     <div class="col-12 col-lg-4 card ctaMidOne">
@@ -180,14 +181,13 @@
         <div id="date">
           <%= todays_date %>
         <div id="time" style="line-height: 1.5rem;">
-          <%= @space.building.name %> <br /> <%= @space.name %>
-          <% unless @space.hours.blank? %>
-            <br /><%= todays_hours %>
+          <% if @space.hours.blank? %>
+            <br /><%= todays_space_hours %>
           <% end %>
         </div>
         </div>
         <div id="allHours">
-          <%= link_to "See all library hours", hours_path() %> >
+          <%= future_space_hours %> >
         </div>
       </div>
       </div>

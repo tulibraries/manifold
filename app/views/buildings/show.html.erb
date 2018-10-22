@@ -55,13 +55,13 @@
           <%= todays_date %>
         <div id="time">
           <% unless @building.hours.blank? %>
-            <%= todays_hours %>
+            <%= todays_building_hours %>
           <% end %>
         </div>
         </div>
         <div id="allHours">
           <% unless @building.hours.blank? %>
-            <%= link_to "See all hours", hour_path(@building.hours) %> >
+            <%= future_building_hours %> >
           <% end %>
         </div>
       </div>

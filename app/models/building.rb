@@ -18,4 +18,11 @@ class Building < ApplicationRecord
 
   before_validation :normalize_phone_number
   before_validation :sanitize_description
+
+  def todays_hours
+    @today = Date.today.strftime("%Y-%m-%d 00:00:00")
+    unless self.hours.blank?
+      todays_hours = LibraryHours.where(location_id: self.hours, date: @today).pluck(:hours).first
+    end
+  end
 end

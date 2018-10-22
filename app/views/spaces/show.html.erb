@@ -179,15 +179,15 @@
       <div class="card-body">
       <div id="dateTime">
         <div id="date">
-          <%= todays_date %>
+          <%= @space.todays_date %>
         <div id="time" style="line-height: 1.5rem;">
           <% if @space.hours.blank? %>
-            <br /><%= todays_space_hours %>
+            <br /><%= @space.todays_hours %>
           <% end %>
         </div>
         </div>
         <div id="allHours">
-          <%= future_space_hours %> >
+          <%= link_to "See all library hours", hours_path() %> >
         </div>
       </div>
       </div>

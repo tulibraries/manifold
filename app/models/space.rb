@@ -41,4 +41,13 @@ class Space < ApplicationRecord
     end
     arr
   end
+
+  def todays_hours
+    @today = Date.today.strftime("%Y-%m-%d 00:00:00")
+    unless self.hours.blank?
+      todays_hours = LibraryHours.where(location_id: self.hours, date: @today).pluck(:hours).first
+    else
+      todays_hours = self.building.todays_hours
+    end
+  end
 end

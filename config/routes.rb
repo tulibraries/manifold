@@ -28,16 +28,16 @@ Rails.application.routes.draw do
   resources :highlights, only: [:show]
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
-  resources :library_hours, only: [:index, :show], as: :hours, path: '/hours'
+  resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
 
-  controller :forms do 
-    get 'forms/missing-book'  => :missing_book
-    get 'forms/recall'  => :recall
-    post 'forms/recall'  => :recall
-    get 'forms/contact'  => :contact
-    get 'forms/incident-report'  => :incident_report
-    get 'forms/ask-scrc'  => :ask_scrc
-    get 'forms' => :index
+  controller :forms do
+    get "forms/missing-book" => :missing_book
+    get "forms/recall" => :recall
+    post "forms/recall"  => :recall
+    get "forms/contact"  => :contact
+    get "forms/incident-report" => :incident_report
+    get "forms/ask-scrc" => :ask_scrc
+    get "forms" => :index
   end
 
 end

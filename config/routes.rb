@@ -25,17 +25,11 @@ Rails.application.routes.draw do
   controller :forms do 
     get 'forms/missing-book'  => :missing_book
     get 'forms/recall'  => :recall
+    post 'forms/recall'  => :recall
     get 'forms/contact'  => :contact
     get 'forms/incident-report'  => :incident_report
     get 'forms/ask-scrc'  => :ask_scrc
-  end
-
-  controller :email_dispatcher do
-    post  'mail/missing-book' => :missing_book
-    post  'mail/recall' => :recall
-    post  'mail/contact' => :contact
-    post  'mail/incident-report' => :incident_report
-    post  'mail/ask-scrc' => :ask_scrc
+    get 'forms' => :index
   end
 
 end

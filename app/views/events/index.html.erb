@@ -1,30 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Events</h1>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    Events
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span>Events</span></h2>
+    </div>
+  </div>
+</div>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Start time</th>
       <th>End time</th>
       <th>Building</th>
       <th>Space</th>
-      <th>External building</th>
-      <th>External space</th>
-      <th>External address</th>
-      <th>External city</th>
-      <th>External state</th>
-      <th>External zip</th>
-      <th>Person</th>
-      <th>External contact name</th>
-      <th>External contact email</th>
-      <th>External contact phone</th>
-      <th>Cancelled</th>
-      <th>Registration status</th>
-      <th>Registration link</th>
-      <th>Content hash</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,25 +28,15 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.title %></td>
-        <td><%= event.description %></td>
         <td><%= event.start_time %></td>
         <td><%= event.end_time %></td>
-        <td><%= event.building.name %></td>
-        <td><%= event.space.name %></td>
-        <td><%= event.external_building %></td>
-        <td><%= event.external_space %></td>
-        <td><%= event.external_address %></td>
-        <td><%= event.external_city %></td>
-        <td><%= event.external_state %></td>
-        <td><%= event.external_zip %></td>
-        <td><%= event.person.first_name %> <%= event.person.last_name %></td>
-        <td><%= event.external_contact_name %></td>
-        <td><%= event.external_contact_email %></td>
-        <td><%= event.external_contact_phone %></td>
-        <td><%= event.cancelled %></td>
-        <td><%= event.registration_status %></td>
-        <td><%= event.registration_link %></td>
-        <td><%= event.content_hash %></td>
+        <% unless event.building.nil? %>
+          <td><%= event.building.name %></td>
+          <td><%= event.space.name unless event.space.nil? %></td>
+        <% else %>
+          <td><%= event.external_building %></td>
+          <td><%= event.external_space %></td>
+        <% end %>
         <td><%= link_to 'Show', event %></td>
       </tr>
     <% end %>

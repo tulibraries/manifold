@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SpaceDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
@@ -14,7 +16,7 @@ class SpaceDashboard < BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
-    hours: HoursField,
+    hours: Field::String,
     accessibility: Field::Text,
     photo: PhotoField,
     phone_number: PhoneField,
@@ -57,10 +59,11 @@ class SpaceDashboard < BaseDashboard
     :photo,
     :description,
     :building,
+    :email,
     :persons,
+    :hours,
     :accessibility,
     :phone_number,
-    :email,
   ].freeze
 
   # Overwrite this method to customize how spaces are displayed

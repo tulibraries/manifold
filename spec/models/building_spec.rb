@@ -1,22 +1,26 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Building, type: :model do
   after(:all) do
     DatabaseCleaner.clean
   end
 
-  context 'Required Fields' do
+  context "Required Fields" do
     required_fields = [
       "name",
       "description",
       "address1",
+      "address2",
       "temple_building_code",
-      "directions_map",
+      "coordinates",
+      "google_id",
     ]
     required_fields.each do |f|
       example "missing #{f} field" do
         building = FactoryBot.build(:building)
-				building[f] = ""
+        building[f] = ""
         expect { building.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
       end
     end
@@ -60,4 +64,5 @@ RSpec.describe Building, type: :model do
       end
     end
   end
+
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BuildingDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
@@ -7,11 +9,14 @@ class BuildingDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    photo: PhotoField.with_options(admin_only: true),
     name: Field::String,
     description: DescriptionField,
     address1: Field::String,
+    address2: Field::String,
     temple_building_code: Field::String,
-    directions_map: GmapField,
+    coordinates: Field::String,
+    google_id: Field::String,
     hours: HoursField,
     phone_number: PhoneField,
     campus: Field::String,
@@ -27,7 +32,6 @@ class BuildingDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :address1,
     :campus,
     :phone_number,
   ].freeze
@@ -35,11 +39,12 @@ class BuildingDashboard < BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :photo,
     :name,
     :description,
     :address1,
+    :address2,
     :temple_building_code,
-    :directions_map,
     :hours,
     :phone_number,
     :campus,
@@ -51,12 +56,15 @@ class BuildingDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :photo,
     :description,
     :campus,
     :address1,
+    :address2,
     :phone_number,
     :temple_building_code,
-    :directions_map,
+    :coordinates,
+    :google_id,
     :hours,
     :email,
   ].freeze

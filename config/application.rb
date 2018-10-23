@@ -1,6 +1,8 @@
-require_relative 'boot'
+# frozen_string_literal: true
 
-require 'rails/all'
+require_relative "boot"
+
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -13,7 +15,7 @@ module Tude
     config.tinymce.install
 
     config.generators do |g|
-      g.test_framework :rspec, :spec => true
+      g.test_framework :rspec, spec: true
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
@@ -22,7 +24,10 @@ module Tude
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.group_types = ["Assembly","Committee","Department","Functional Team","Strategic Steering Team","Working Group"]
+    config.group_types = ["Assembly", "Committee", "Department", "Functional Team", "Strategic Steering Team", "Working Group"]
+
+    config.highlight_types = ["Program/Event", "Featured Staff", "Featured Resource", "Featured Location", "Staff Recommendation", "DSC Event", "HSL Highlight"]
+
     config.service_types = ["Access to collections & resource sharing",
                             "Building & space use",
                             "Research & instruction support",
@@ -48,5 +53,7 @@ module Tude
 
     config.gmail_username = ENV["gmail_username"]
     config.gmail_password = ENV["gmail_password"]
+    config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
+    config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://events.temple.edu/feed/xml/events?department=2566")
   end
 end

@@ -1,0 +1,197 @@
+@import "partials/_vars.scss";
+
+	/* //////////////////////////// HOMEPAGE SPECIFIC & BASE FOR SITE-WIDE CARDS ///////////////////////////// */ 
+
+.ctaRow {
+	padding-left: 14px;
+	padding-right:14px;
+	margin-top: 50px;
+	.card {
+		width: 100%;
+		height: 100%;
+		display: inline-block;
+		padding: 0;
+		overflow:hidden;
+		min-width: 265px;
+		max-width: 375px;
+		img {
+			opacity: 0.5;
+		}
+		.card-body {
+			text-align:center;
+			padding: .35rem;
+		}
+		.card-title {
+			width: 100%;
+			font-size: 150%;
+			text-align:center;
+		}
+		.card-text {
+			text-align: left;
+		}
+		#time {
+			font-size: 115%;
+			font-weight: 600;
+		}
+		#allHours {
+			font-size: 85%;
+		}
+	}
+
+	/* //////////////////////////// TOP COLORED BOXES ///////////////////////////// */ 
+
+	.ctaFirst {
+		background-color: $foamgreen;
+		color: $white;
+		border-top-left-radius: 42px;
+		border-bottom-left-radius: 42px;
+		.card-title.complement {
+			background-color: $foamgreen-complement;
+			color: $black;
+		}
+	}
+	.ctaMidOne, .ctaMid {
+		background-color: $seagreen;
+		color: $white;
+		.card-title.complement {
+			background-color: $seagreen-complement;
+			color: $black;
+		}
+	}
+	.ctaMidTwo {
+		background-color: $purple;
+		color: $white;
+		.card-title.complement {
+			background-color: $purple-complement;
+			color: $black;
+		}
+	}	
+	.ctaLast {
+		background-color: $darkgold;
+		border-top-right-radius: 42px;
+		border-bottom-right-radius: 42px;
+		.card-title.complement {
+			background-color: $darkgold-complement;
+			color: $black;
+		}
+	}
+	ul {
+		margin-bottom: 0;
+	}
+	li {
+		padding:16px;
+		font-size: 115%;
+		white-space: nowrap;
+	}
+	.oddrow {
+		background-color: $gold;
+	}
+}
+
+	/* //////////////////////////// EVENTS ///////////////////////////// */
+
+	.ctaRow.events {
+		.ctaFirst, .ctaMid, .ctaLast {
+			background-color: $white;
+			border: solid $purple 0;
+			color: black;
+			min-width: 265px;
+			max-width: 375px;
+			img {
+				opacity: 1;
+			}
+			.card-body {
+				text-align: left;
+				padding: 14px 21px 14px 21px;
+				border: solid $purple 2px;
+				max-height: 180px;
+				overflow:hidden;
+			}
+			.info {
+				margin: 4px 0;
+				position: relative;
+				.when {
+					width: 55%;
+					color: $white;
+					background-color: $purple;
+					font-size: 100%;
+					display: inline-block;
+					padding: 7px;
+					text-align:center;
+					max-height: 38px;
+					overflow: hidden;
+				}
+				.details {
+					width: 43%;
+					position: absolute;
+					right: 0;
+					color: $white;
+					background-color: $purple;
+					font-size: 103%;
+					opacity: .75;
+					display: inline-block;
+					padding: 7px;
+					text-align:center;
+					margin-right: 0;
+				}
+			}
+		}
+	.ctaFirst {
+		.card-body {
+			border-bottom-left-radius: 42px;
+		}
+	}
+	.ctaLast {
+		.card-body {
+			border-bottom-right-radius: 42px;
+		}
+	}
+}
+
+/* //////////////////////////// NEWS & HIGHLIGHTS ///////////////////////////// */
+
+.ctaRow.news {
+	.card {	
+		background-color: $white;
+		border: solid $seagreen 2px;
+		color: black;
+		margin-top: 0;
+		height: 320px;
+		max-height: 320px;
+		position: relative;
+	}
+	.card-image {
+		height:196px;
+		max-height:196px;
+		overflow:hidden;
+		background-color:#ccc;
+	}
+	img {
+		opacity: 1;
+	}
+ 	.card-body {
+ 		text-align: left;
+ 		padding: 10px 14px 4px 14px;
+ 	}
+ 	.card-title {
+ 		font-size: 105%;
+ 		font-weight: 600;
+ 		white-space: nowrap;
+ 	}
+ 	.card-text {
+ 		font-size: 90%;
+ 		margin-bottom: 0;
+ 		line-height: 1.15rem;
+ 	}
+ 	a.see-more {
+ 		padding-bottom: 10px;
+ 		padding-right: 17px;
+ 		color: $seagreen;
+ 		float: right;
+ 		position: absolute;
+ 		bottom: 0;
+ 		right: 0;
+ 	}
+}
+
+

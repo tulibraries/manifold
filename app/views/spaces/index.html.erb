@@ -1,21 +1,37 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      Spaces
-    </h1>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    Spaces
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span>Spaces</span></h2>
+    </div>
   </div>
 </div>
 
 <div class="container">
-
+<div class="row spacesRow">
 <% unless @spaces.nil? %>
-	<ul>
-  <% @spaces.each do |space| %>
-  	<li>
-    	<%= link_to space.name, space %>
-  	</li>
-	<% end %>
-	</ul>
-<% end %>
 
+    <% @spaces.each do |space| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
+        <div class="related_space">
+          <% if space.photo.attached? %>
+            <%= link_to image_tag(space.photo.variant(gravity: 'center', crop: "200x200+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% else %>
+            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% end %>
+        </div>
+        <div class="card-body" style="padding: 0;">
+          <span class="card-title"><%= space.name %></span>
+        </div>
+      </div>
+    <% end %>
+
+<% end %>
+</div>
 </div>

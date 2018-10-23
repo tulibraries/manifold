@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Person < ApplicationRecord
   include Validators
   include InputCleaner
 
   validates :first_name, :last_name, :job_title, presence: true
- 	validates :email_address, presence: true, email: true
- 	validates :phone_number, phone_number: true
- 	validates :spaces, presence: true
+  validates :email_address, presence: true, email: true
+  validates :phone_number, phone_number: true
+  validates :spaces, presence: true
 
   has_one_attached :photo, dependent: :destroy
 
@@ -22,5 +24,4 @@ class Person < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
-
 end

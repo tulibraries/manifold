@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Admin
   class PeopleController < Admin::ApplicationController
-
     def create
       person_params = params[:person]
       person_params.permit!
@@ -34,6 +35,5 @@ module Admin
         }
       end
     end
-    
   end
 end

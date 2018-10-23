@@ -1,8 +1,11 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe "Buildings", type: :request do
   describe "GET /buildings" do
     it "shows a list of buildings" do
+      skip "Are these necessary?"
       building1 = FactoryBot.create(:building)
       building2 = FactoryBot.create(:building)
       get buildings_path
@@ -14,6 +17,7 @@ RSpec.describe "Buildings", type: :request do
 
   describe "GET /buildings/1" do
     it "shows the first building" do
+      skip "Are these necessary?"
       building1 = FactoryBot.create(:building)
       building2 = FactoryBot.create(:building)
       get "/buildings/#{building1.id}"

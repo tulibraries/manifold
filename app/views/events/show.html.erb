@@ -1,5 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Events", controller: "events", action: :index %>
+    <%= @event.title %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span><%= @event.title %></span></h2>
+    </div>
+  </div>
+</div>
 
+
+<div class="container">
 <p>
   <strong>Title:</strong>
   <%= @event.title %>
@@ -20,15 +35,19 @@
   <%= @event.end_time %>
 </p>
 
-<p>
-  <strong>Building:</strong>
-  <%= @event.building.name %>
-</p>
+<% unless @event.building.nil? %>
+  <p>
+    <strong>Building:</strong>
+    <%= @event.building.name %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Space:</strong>
-  <%= @event.space.name %>
-</p>
+<% unless @event.space.nil? %>
+  <p>
+    <strong>Space:</strong>
+    <%= @event.space.name %>
+  </p>
+<% end %>
 
 <p>
   <strong>External building:</strong>
@@ -60,11 +79,13 @@
   <%= @event.external_zip %>
 </p>
 
-<p>
-  <strong>Person:</strong>
-  <%= @event.person.first_name %>
-  <%= @event.person.last_name %>
-</p>
+<% unless @event.space.nil? %>
+  <p>
+    <strong>Person:</strong>
+    <%= @event.person.first_name %>
+    <%= @event.person.last_name %>
+  </p>
+<% end %>
 
 <p>
   <strong>External contact name:</strong>
@@ -100,5 +121,4 @@
   <strong>Content hash:</strong>
   <%= @event.content_hash %>
 </p>
-
-<%= link_to 'Back', events_path %>
+</div>

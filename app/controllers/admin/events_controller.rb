@@ -1,5 +1,13 @@
+# frozen_string_literal: true
+
 module Admin
   class EventsController < Admin::ApplicationController
+    include Admin::SortByAttribute
+    # Override the default sort of id
+    def sort_by
+      :start_time
+    end
+
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #

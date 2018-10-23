@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe Group, type: :model do
   after(:each) do
@@ -10,7 +12,7 @@ RSpec.describe Group, type: :model do
   let(:person) { FactoryBot.build(:person, spaces: [space]) }
   let(:chair_person) { FactoryBot.create(:person, spaces: [space]) }
 
-  context 'Group Class Attributes' do
+  context "Group Class Attributes" do
     subject { Group.new.attributes.keys }
 
     it { is_expected.to include("name") }
@@ -32,7 +34,7 @@ RSpec.describe Group, type: :model do
     context "No person" do
       let(:group) { FactoryBot.create(:group, spaces: [space], chair_dept_head: chair_person) }
       example "valid" do
-        expect {group.save!}.to_not raise_error
+        expect { group.save! }.to_not raise_error
       end
     end
   end
@@ -61,7 +63,7 @@ RSpec.describe Group, type: :model do
     context "Attach space" do
       let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_head: chair_person) }
       example "valid" do
-        expect {group.save!}.to_not raise_error
+        expect { group.save! }.to_not raise_error
         expect(group.spaces.last.name).to match(/#{Space.last.name}/)
       end
     end
@@ -122,7 +124,7 @@ RSpec.describe Group, type: :model do
         expect { group.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_group_type')}/)
       end
       example "invalid group type - blank " do
-        group.group_type= ""
+        group.group_type = ""
         expect { group.save! }.to raise_error(/Group type can't be blank/)
       end
     end

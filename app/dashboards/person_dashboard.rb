@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PersonDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.

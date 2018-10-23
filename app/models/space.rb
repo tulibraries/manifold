@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Space < ApplicationRecord
   include Validators
   include InputCleaner
@@ -6,8 +8,8 @@ class Space < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
- 	validates :email, email: true
- 	validates :phone_number, phone_number: true
+  validates :email, email: true
+  validates :phone_number, phone_number: true
   validates :building_id, presence: true
 
   before_validation :sanitize_description
@@ -28,4 +30,15 @@ class Space < ApplicationRecord
 
   has_many :service_space
   has_many :related_services, through: :service_space, source: :service
+
+  def self.arrange_as_array(options = {}, hash = nil)
+    hash ||= arrange(options)
+
+    arr = []
+    hash.each do |node, children|
+      arr << node
+      arr += arrange_as_array(options, children) unless children.empty?
+    end
+    arr
+  end
 end

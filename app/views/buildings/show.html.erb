@@ -1,57 +1,112 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      <span>Library: </span>
-      <%= @building.name %>
-    </h1>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Buildings", controller: 'buildings', action: :index %> 
+    <%= @building.name %>
   </div>
 </div>
 
 
-<% if @building.photo.attached?  %>
-  <p>
-    <%= image_tag @building.photo, class: "large" %>
-  </p>
+<div class="row building-info">
+  <div class="col-lg-12 col-xl-6 text-center text-xl-right">
+    <div class="building-image">
+      <% if @building.photo.attached? %>
+        <%= image_tag @building.photo.variant(gravity: 'center', extent: "100%x100%") %>
+      <% else %>
+        <%= image_tag 'T-borderless.gif' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-12 col-xl-6 text-center text-xl-left">
+    <div class="building-description">
+      <h1 class="text-md-center text-xl-left"><%= @building.name %></h1>
+      <div class="text-left text"><%= @building.description.html_safe %></div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Plan your visit</span></h2>
+      </div>
+    </div>
+  </div>
+
+<!-- <div class="container"> -->
+  <div class="row ctaRow building-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-title complement">
+        Contact
+      </div>
+      <div class="card-body">
+        <span class="phone"><%= phone_formatted(@building.phone_number) %></span><br />
+        <span class="email"><%= mail_to @building.email, @building.email %></span><br />
+        <div class="address"><%= @building.address1 %><br /><%= @building.address2 %></div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaMidOne">
+      <div class="card-title complement">
+        Hours
+      </div>
+      <div class="card-body">
+      <div id="dateTime">
+        <div id="date">
+          <%= todays_date %>
+        <div id="time">
+          <% unless @building.hours.blank? %>
+            <%= todays_hours %>
+          <% end %>
+        </div>
+        </div>
+        <div id="allHours">
+          <% unless @building.hours.blank? %>
+            <%= link_to "See all hours", hour_path(@building.hours) %> >
+          <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaLast">
+      <div class="card-title complement">
+        Map!
+      </div>
+      <div class="card-body">
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@building.coordinates}&query_place_id=#{@building.google_id}" %>
+      </div>    
+    </div>
+  </div>
+<!-- </div> -->
+
+<% unless @building.spaces.nil? %>
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span><%= @building.name %> Spaces</span></h2>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+<div class="row spacesRow">
+<% unless @building.spaces.nil? %>
+
+    <% @building.spaces.each do |space| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
+        <div class="related_space">
+          <% if space.photo.attached? %>
+            <%= link_to image_tag(space.photo.variant(gravity: 'center', crop: "200x200+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% else %>
+            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), space_path(space) %>
+          <% end %>
+        </div>
+        <div class="card-body" style="padding: 0;">
+          <span class="card-title"><%= space.name %></span>
+        </div>
+      </div>
+    <% end %>
+
 <% end %>
-
-<p>
-  <strong>Description:</strong>
-  <%= @building.description.html_safe %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @building.address1 %>
-</p>
-
-<p>
-  <strong>Temple building code:</strong>
-  <%= @building.temple_building_code %>
-</p>
-
-<p>
-  <strong>Directions map:</strong>
-  <%= link_to "Google Map!", @building.directions_map %>
-</p>
-
-<p>
-  <strong>Hours:</strong>
-  <%= @building.hours %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @building.phone_number %>
-</p>
-
-<p>
-  <strong>Campus:</strong>
-  <%= @building.campus %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @building.email %>
-</p>
-
-<%= link_to 'Back', buildings_path %>
+</div>
+</div>
+<% end %>

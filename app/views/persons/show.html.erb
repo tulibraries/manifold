@@ -1,11 +1,18 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      <%= @person.first_name %> <%= @person.last_name %>
-    </h1>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "People", controller: 'spaces', action: :index %> 
+    <%= @person.first_name %> <%= @person.last_name %>
   </div>
 </div>
 
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span><%= @person.first_name %> <%= @person.last_name %></span></h2>
+    </div>
+  </div>
+</div>
 <div class="row" style="border-bottom: solid #ccc 1px;margin-bottom: 14px;padding-bottom: 7px;">
   <div class="col col-sm-3">
     <% if @person.photo.attached?  %>

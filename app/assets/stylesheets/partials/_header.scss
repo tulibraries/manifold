@@ -1,23 +1,37 @@
 @import "_vars.scss";
 
 #header {	
+	background-color: cornsilk;
 	.container {
 		padding: 14px 10px;
 		height: 49px;
 		vertical-align: middle;
-
 	}
 }
 #seagreen {
 	background-color: $seagreen;
 	height: 77px;
+	margin-bottom: 47px;
+	h1 {
+		font-size: 235%;
+		color: white;
+		text-align:center;
+		vertical-align:middle;
+	}
+	span {
+		color: black;
+		display:inline-block;
+		margin-right:21px;
+	}
 }
+
 #header-navbar {
 	padding-top: 14px;
 	.header-logo {
 		padding-left: 7px;
 	  max-width: 107px;
 	  max-height: 77px;
+	  vertical-align: bottom;
 	}
 	a.header-name, a.header-name:hover, a.header-name:focus {
 		color: #000;

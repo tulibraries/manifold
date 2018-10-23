@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    Highlights
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span>Highlights</span></h2>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<% if @highlight.photo.attached? %>
+  <p>
+    <%= image_tag @highlight.photo, class: "large" %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @highlight.title %>
+</p>
+
+
+<p>
+  <strong>Blurb:</strong>
+  <%= @highlight.blurb %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @highlight.link %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @highlight.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @highlight.time %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @highlight.type_of_highlight %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @highlight.tags %>
+</p>
+
+</div>

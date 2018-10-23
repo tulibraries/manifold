@@ -1,13 +1,20 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
-    <h1>
-      Groups
-    </h1>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    Groups
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h2><span>Groups</span></h2>
+    </div>
   </div>
 </div>
 
 <div class="container">
 <div class="row">
+	<div class="col">
 <% unless @groups.nil? %>
 <ul>
   <% @groups.each do |group| %>
@@ -15,5 +22,6 @@
   <% end %>
 </ul>
 <% end %>
+</div>
 </div>
 </div>

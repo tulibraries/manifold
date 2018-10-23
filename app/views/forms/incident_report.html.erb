@@ -1,5 +1,5 @@
-<div class="row" id="seagreen">
-  <div class="col-11 offset-1">
+<div class="row">
+  <div class="col vertical-stripes-sm">
     <h1>
       Incident Report
     </h1>
@@ -18,7 +18,7 @@
 <div class="row" style="margin-bottom: 42px;margin-top:21px;">
 <div class="col col-md-10">
 <div id="contactform">
-<%= form_tag({controller: 'email_dispatcher', action: 'incident_report'}, method: "post", :class=>"contact-form") do %>
+<%= form_tag('/forms/incident-report', method: "post", :class=>"contact-form") do %>
 
   <div class="form-group row">
     <div class="col col-md-3">

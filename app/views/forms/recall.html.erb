@@ -17,7 +17,7 @@
 <div class="row" style="margin-bottom: 42px;margin-top:21px;">
 <div class="col col-md-10">
 <div id="contactform">
-<%= form_tag({controller: 'forms_controller', action: 'recall'}, method: "post", :class=>"contact-form") do %>
+<%= form_tag('/forms/recall', method: "post", :class=>"contact-form") do %>
 
 <%= field_set_tag 'Your Information' do %>
 

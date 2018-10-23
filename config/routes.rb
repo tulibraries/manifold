@@ -30,18 +30,18 @@ Rails.application.routes.draw do
   resources :services, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
 
-  controller :forms do 
-    get 'forms' => :index
-    get 'forms/missing-book'  => :missing_book
-    get 'forms/recall'  => :recall
-    get 'forms/contact'  => :contact
-    get 'forms/incident-report'  => :incident_report
-    get 'forms/ask-scrc'  => :ask_scrc
-    post 'forms/missing-book'  => :missing_book
-    post 'forms/recall'  => :recall
-    post 'forms/contact'  => :contact
-    post 'forms/incident-report'  => :incident_report
-    post 'forms/ask-scrc'  => :ask_scrc
+  controller :forms do
+    get "forms" => :index
+    get "forms/missing-book" => :missing_book
+    get "forms/recall" => :recall
+    get "forms/contact" => :contact
+    get "forms/incident-report" => :incident_report
+    get "forms/ask-scrc" => :ask_scrc
+    post "forms/missing-book" => :missing_book
+    post "forms/recall" => :recall
+    post "forms/contact" => :contact
+    post "forms/incident-report" => :incident_report
+    post "forms/ask-scrc" => :ask_scrc
   end
 
 end

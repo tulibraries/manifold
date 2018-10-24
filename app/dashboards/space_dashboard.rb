@@ -18,7 +18,7 @@ class SpaceDashboard < BaseDashboard
     description: DescriptionField,
     hours: Field::String,
     accessibility: Field::Text,
-    photo: PhotoField,
+    photo: PhotoField.with_options(admin_only: true),
     phone_number: PhoneField,
     email: Field::Email,
     created_at: Field::DateTime,

@@ -13,7 +13,7 @@ class Group < ApplicationRecord
 
   before_validation :sanitize_description
 
-  has_one_attached :document, dependent: :destroy
+  has_many_attached :documents, dependent: :destroy
 
   has_many :member
   has_many :persons, through: :member, source: :person
@@ -26,4 +26,23 @@ class Group < ApplicationRecord
 
   has_many :service_group
   has_many :related_services, through: :service_group, source: :service
+
+
+    def todays_date
+      @today = Date.today.strftime("%Y-%m-%d 00:00:00")
+      @today.to_date.strftime("%^A, %^B %d, %Y ")
+    end
+    def todays_hours
+      @today = Date.today.strftime("%Y-%m-%d 00:00:00")
+      unless self.spaces.first.hours.blank? 
+        todays_hours = LibraryHours.where(location_id: self.spaces.first.hours, date: @today)
+        todays_hours.first.hours
+      else
+        unless self.spaces.first.building.hours.blank?
+          todays_hours = LibraryHours.where(location_id: self.spaces.first.building.hours, date: @today)
+          todays_hours.first.hours
+        end
+      end
+    end
+
 end

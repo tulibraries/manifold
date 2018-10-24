@@ -83,6 +83,7 @@ class EventDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
+    :image,
     :description,
     :start_time,
     :end_time,

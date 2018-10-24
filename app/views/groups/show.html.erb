@@ -13,61 +13,110 @@
   </div>
 </div>
 
-<div class="container">
-<p>
-  <strong>Group Type: </strong>
-  <%= @group.group_type %>
-</p>
 
 
 <% unless @group.description.blank? %>
-<p>
-  <strong>Description: </strong>
-  <%= @group.description.html_safe %>
-</p>
-<% end %>
-
-<% unless @group.external.nil? %>
-<p>
-  <strong>External Group: </strong>
-  <%= @group.external %>
-</p>
-<% end %>
-
-<p>
-  <strong>Phone number: </strong>
-  <%= @group.phone_number %>
-</p>
-
-<p>
-  <strong>Email: </strong>
-  <%= @group.email_address %>
-</p>
-
-<p>
-  <strong>Owner: </strong>
-  <% unless @group.chair_dept_head.nil? %>
-    <%= link_to (@group.chair_dept_head.first_name+' '+@group.chair_dept_head.last_name), controller: 'persons', action: 'show', id: @group.chair_dept_head.id %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Members: </strong>
-  <% unless @group.persons.empty? %>
-    <%= link_to (@group.persons.first.first_name+' '+@group.persons.last.last_name), controller: 'persons', action: 'show', id: @group.persons.last.id %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Space: </strong>
-  <%= @group.spaces.first.name unless @group.spaces.empty? %>
-</p>
-
-<% if @group.document.attached? %>
-  <p>
-    <strong>Documentation: </strong>
-    <%= link_to @group.document.filename.to_s, rails_blob_path(@group.document, disposition: "attachment") %>
-  </p>
-<% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col" style="margin-bottom: 35px;">
+      <%= @group.description.html_safe %>
+    </div>
+  </div>
 </div>
+<% end %>
+
+
+
+<% if @group.documents.attached? %>
+    <div class="container">
+    <div class="row">
+    <p><strong>Documentation: </strong></p>
+    <% @group.documents.each do |document| %>
+    <div class="col-xs-12 col-md-3 text-center">
+    <% if document.previewable? %>
+      <%= image_tag document.preview(resize: "200x200>", extent: "150x150") %>
+    <% end %>
+      <p>
+        <%= link_to document.filename.base, url_for(document), disposition: "attachment" %>
+      </p>
+    </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+  <% unless @group.persons.empty? %>
+  <div class="container">
+    <div class="row" style="margin-top: 77px;">
+    <% @group.persons.each do |person| %>
+      <% if person.id == @group.chair_dept_head.id %>
+      <div class="col-xs-12 col-md-4 text-center card staff-card head">
+        <%= link_to (person.first_name+' '+person.last_name), 
+                      controller: 'persons', action: 'show', id: person.id %>
+      </div>
+      <% else %>
+      <div class="col-xs-12 col-md-4 text-center card staff-card">
+        <%= link_to (person.first_name+' '+person.last_name), 
+                      controller: 'persons', action: 'show', id: person.id %>
+      </div>
+       <% end %>
+      <% end %>
+     </div>
+   </div>
+  <% end %>
+
+<div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Plan your visit</span></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ctaRow space-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-title complement">
+        Contact
+      </div>
+      <div class="card-body">
+        <% unless @group.spaces.empty? %>
+          <div class="address"><%= link_to @group.spaces.first.building.name, building_path(@group.spaces.first.building) %>
+            <br />
+            <%= @group.spaces.first.name %>
+          </div>
+          <span class="phone"><%= phone_formatted(@group.phone_number) %></span><br />
+          <span class="email"><%= mail_to @group.email_address, @group.email_address %></span><br />
+        <% end %>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaMid">
+      <div class="card-title complement">
+        Hours
+      </div>
+      <div class="card-body">
+      <div id="dateTime">
+        <div id="date">
+          <%= @group.todays_date %>
+        </div>
+        <div id="time" style="line-height: 1.5rem;">
+          <%= @group.todays_hours %>
+        </div>
+        <div id="allHours">
+          <% unless @group.spaces.first.hours.blank? %>
+            <%= link_to "See future hours", hour_path(@group.spaces.first.hours) %> >
+          <% else %>
+            <%= link_to "See future hours", hour_path(@group.spaces.first.building.hours) %> >
+          <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaLast">
+      <div class="card-title complement">
+        Map!
+      </div>
+      <div class="card-body">
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@group.spaces.first.building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@group.spaces.first.building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@group.spaces.first.building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@group.spaces.first.building.coordinates}&query_place_id=#{@group.spaces.first.building.google_id}" %>
+      </div>
+    </div>
+  </div>

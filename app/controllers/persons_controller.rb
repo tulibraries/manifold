@@ -21,9 +21,4 @@ class PersonsController < ApplicationController
     def set_person
       @person = Person.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def person_params
-      params.require(:person).permit!
-    end
 end

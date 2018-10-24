@@ -178,11 +178,11 @@
       <div class="card-body">
       <div id="dateTime">
         <div id="date">
-          <%= todays_date %>
+          <%= @space.todays_date %>
         <div id="time" style="line-height: 1.5rem;">
           <%= @space.building.name %> <br /> <%= @space.name %>
           <% unless @space.hours.blank? %>
-            <br /><%= todays_hours %>
+            <br /><%= @space.todays_hours %>
           <% end %>
         </div>
         </div>

@@ -23,7 +23,7 @@ class Space < ApplicationRecord
   belongs_to :building
 
   has_many :occupant
-  has_many :persons, through: :occupant, source: :person
+  has_many :persons, -> { order "last_name ASC" }, through: :occupant, source: :person
 
   has_many :space_group
   has_many :groups, through: :space_group, source: :group
@@ -40,5 +40,14 @@ class Space < ApplicationRecord
       arr += arrange_as_array(options, children) unless children.empty?
     end
     arr
+  end
+
+  def todays_hours
+    @today = Date.today.strftime("%Y-%m-%d 00:00:00")
+    unless self.hours.blank?
+      todays_hours = LibraryHours.where(location_id: self.hours, date: @today).pluck(:hours).first
+    else
+      todays_hours = self.building.todays_hours
+    end 
   end
 end

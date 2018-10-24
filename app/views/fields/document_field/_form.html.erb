@@ -3,8 +3,10 @@
 </div>
 <div class="field-unit__field">
   <% if field.data.attached? %>
-	  <p><%= link_to field.data.attachment.filename.to_s, rails_blob_path(field.data.attachment, disposition: "attachment") %></p>
 	  <%= f.file_field field.attribute %>
+  	<% field.data.attachments.each do |attachment| %>
+	  	<%= link_to attachment.filename, url_for(attachment), disposition: "attachment" %><br />
+	  <% end %>
 	<% else %>
 	  <%= f.file_field field.attribute %>    
 	<% end %>

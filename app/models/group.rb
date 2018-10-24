@@ -13,10 +13,10 @@ class Group < ApplicationRecord
 
   before_validation :sanitize_description
 
-  has_one_attached :document, dependent: :destroy
+  has_many_attached :documents, dependent: :destroy
 
   has_many :member
-  has_many :persons, through: :member, source: :person
+  has_many :persons, -> { order "last_name ASC" }, through: :member, source: :person 
 
   has_many :space_group
   has_many :spaces, through: :space_group, source: :space
@@ -26,4 +26,12 @@ class Group < ApplicationRecord
 
   has_many :service_group
   has_many :related_services, through: :service_group, source: :service
+
+    def get_chair
+      chair = self.persons.find(self.chair_dept_head.id)
+      self.persons.to_a.unshift(chair).uniq
+    end
+    def todays_hours
+      todays_hours = self.spaces.first.todays_hours
+    end
 end

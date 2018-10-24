@@ -7,7 +7,8 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @departments = Group.where(group_type: "Department") 
+    @teams = Group.where.not(group_type: "Department")
   end
 
   # GET /groups/1

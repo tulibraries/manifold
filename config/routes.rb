@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   resources :services, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
 
-  controller :pages do 
-    get 'ambler' => :ambler
+  controller :pages do
+    get "ambler" => :ambler
   end
 end

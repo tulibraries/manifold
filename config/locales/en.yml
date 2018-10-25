@@ -35,6 +35,8 @@ en:
       building:
         address1: "Street Address"
         address2: "City, State Zip"
+      account:
+        alertability: "Can Administrate Alerts"
   fortytude:
     default:
       event:

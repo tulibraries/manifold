@@ -43,7 +43,18 @@
 		}
 	}
 }
+
+.minipage #searchFields form {
+	top: 64px;
+}
+
 #home #searchFields {
+	background: transparent asset-data-url('charles.jpg') no-repeat 0% 0%;
+}
+#ambler #searchFields {
+	background: transparent asset-data-url('ambler.jpg') no-repeat 0% 0%;
+}
+#home #searchFields, #ambler #searchFields {
 	position: relative;
 	width: 100%;
 	z-index: 0;
@@ -62,7 +73,6 @@
 		}
 	}
 	height:550px;
-	background: transparent asset-data-url('charles.jpg') no-repeat 0% 0%;
 	background-size:cover;
 	background-position-y: center;
 	#dateTime {

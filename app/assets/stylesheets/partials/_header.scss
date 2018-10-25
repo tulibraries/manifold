@@ -12,17 +12,9 @@
 	background-color: $seagreen;
 	height: 77px;
 	margin-bottom: 47px;
-	h1 {
-		font-size: 235%;
-		color: white;
-		text-align:center;
-		vertical-align:middle;
-	}
-	span {
-		color: black;
-		display:inline-block;
-		margin-right:21px;
-	}
+}
+.minipage #seagreen {
+	height: 100px;
 }
 
 #header-navbar {
@@ -31,6 +23,8 @@
 		padding-left: 7px;
 	  max-width: 107px;
 	  max-height: 77px;
+	  min-width: 107px;
+	  min-height: 77px;
 	  vertical-align: bottom;
 	}
 	a.header-name, a.header-name:hover, a.header-name:focus {

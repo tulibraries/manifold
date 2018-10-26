@@ -82,7 +82,7 @@ class GroupDashboard < BaseDashboard
 
   # permitted for has_many_attached
   def permitted_attributes
-    super + [:documents => []]
+    super + [documents: []]
   end
 
   def tinymce?

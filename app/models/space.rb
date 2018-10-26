@@ -48,6 +48,6 @@ class Space < ApplicationRecord
       todays_hours = LibraryHours.where(location_id: self.hours, date: @today).pluck(:hours).first
     else
       todays_hours = self.building.todays_hours
-    end 
+    end
   end
 end

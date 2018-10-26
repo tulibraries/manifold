@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     resources :events
     resources :services
 
-
     root to: "people#index"
   end
   root "pages#home"
@@ -42,6 +41,10 @@ Rails.application.routes.draw do
     post "forms/contact" => :contact
     post "forms/incident-report" => :incident_report
     post "forms/ask-scrc" => :ask_scrc
+  end
+
+  controller :pages do
+    get "ambler" => :ambler
   end
 
 end

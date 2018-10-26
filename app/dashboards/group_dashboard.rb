@@ -16,8 +16,8 @@ class GroupDashboard < BaseDashboard
     chair_dept_head: ContactField,
     member: Field::HasMany,
     persons: Field::HasMany,
-    space_group: Field::HasMany,
-    spaces: Field::HasMany,
+    space_group: Field::BelongsTo,
+    spaces: SpaceField,
     documents: DocumentField,
     external: Field::Boolean,
     group_type: Field::Select.with_options(

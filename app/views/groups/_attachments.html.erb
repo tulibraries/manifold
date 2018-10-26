@@ -1,0 +1,18 @@
+
+<% if @group.documents.attached? %>
+    <div class="container">
+    <div class="row">
+    <p><strong>Documentation: </strong></p>
+    <% @group.documents.each do |document| %>
+    <div class="col-xs-12 col-md-3 text-center">
+    <% if document.previewable? %>
+      <%= image_tag document.preview(resize: "200x200>", extent: "150x150") %>
+    <% end %>
+      <p>
+        <%= link_to document.filename.base, url_for(document), disposition: "attachment" %>
+      </p>
+    </div>
+    <% end %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,50 @@
+
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Plan your visit</span></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ctaRow space-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-title complement">
+        Contact
+      </div>
+      <div class="card-body">
+        <span class="phone"><%= phone_formatted(@space.phone_number) %></span><br />
+        <span class="email"><%= mail_to @space.email, @space.email %></span><br />
+        <div class="address"><%= link_to @space.building.name, @space.building %></div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaMidOne">
+      <div class="card-title complement">
+        Hours
+      </div>
+      <div class="card-body">
+      <div id="dateTime">
+        <div id="date">
+          <%= @space.todays_date %>
+        <div id="time" style="line-height: 1.5rem;">
+          <%= @space.building.name %> <br /> <%= @space.name %>
+          <% unless @space.hours.blank? %>
+            <br /><%= @space.todays_hours %>
+          <% end %>
+        </div>
+        </div>
+        <div id="allHours">
+          <%= link_to "See all library hours", hours_path() %> >
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaLast">
+      <div class="card-title complement">
+        Map!
+      </div>
+      <div class="card-body">
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@space.building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@space.building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@space.building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@space.building.coordinates}&query_place_id=#{@space.building.google_id}" %>
+      </div>
+    </div>
+  </div>

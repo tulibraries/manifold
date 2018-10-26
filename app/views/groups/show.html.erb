@@ -1,3 +1,4 @@
+<% content_for :body_class, "minipage" %>
 <div class="row">
   <div class="col breadcrumbs">
     <%= link_to "Home", root_path.to_s %> 
@@ -13,8 +14,6 @@
   </div>
 </div>
 
-
-
 <% unless @group.description.blank? %>
 <div class="container">
   <div class="row">
@@ -25,117 +24,8 @@
 </div>
 <% end %>
 
+<%= render "attachments" %>
 
+<%= render "show_members" %>
 
-<% if @group.documents.attached? %>
-    <div class="container">
-    <div class="row">
-    <p><strong>Documentation: </strong></p>
-    <% @group.documents.each do |document| %>
-    <div class="col-xs-12 col-md-3 text-center">
-    <% if document.previewable? %>
-      <%= image_tag document.preview(resize: "200x200>", extent: "150x150") %>
-    <% end %>
-      <p>
-        <%= link_to document.filename.base, url_for(document), disposition: "attachment" %>
-      </p>
-    </div>
-    <% end %>
-  </div>
-</div>
-<% end %>
-
-  <% unless @group.persons.empty? %>
-  <div class="container" style="margin-top: 77px;margin-bottom: 77px;">
-    <p><strong>Members: </strong></p>
-    <div class="row">
-    <% @group.get_chair.each do |person| %>
-      <% if person.id == @group.chair_dept_head.id %>
-      <div class="col-xs-12 col-md-6 col-lg-4 staff-card head">
-      <% else %>
-      <div class="col-xs-12 col-md-6 col-lg-4 staff-card">
-      <% end %>
-        <div class="title"><%= person.job_title %></div>
-        <div class="info">
-          <div class="photo">
-        <% if person.photo.attached? %>
-          <%= image_tag person.photo.variant(resize: "120x120>", extent: "120x120") %>
-        <% else %>
-          <%= image_tag 'T-borderless.gif' %>
-        <% end %>
-        </div>
-        <div class="details">
-          <%= link_to (person.first_name+' '+person.last_name), 
-                      controller: 'persons', action: 'show', id: person.id %>
-          <br />
-          <%= phone_formatted(person.phone_number) %>
-          <br />
-          <%= person.email_address %>
-        <% unless person.springshare_id.blank? %>
-          <div class="appt_button">
-            <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
-          </div>
-        <% end %>
-        </div>
-        </div>
-      </div>
-      <% end %>
-     </div>
-   </div>
-  <% end %>
-
-<div class="row">
-    <div class="col">
-      <div class="vertical-stripes-sm">
-        <h2><span>Plan your visit</span></h2>
-      </div>
-    </div>
-  </div>
-
-  <div class="row ctaRow space-info">
-    <div class="col-12 col-lg-4 card ctaFirst">
-      <div class="card-title complement">
-        Contact
-      </div>
-      <div class="card-body">
-        <% unless @group.spaces.empty? %>
-          <div class="address"><%= link_to @group.spaces.first.building.name, building_path(@group.spaces.first.building) %>
-            <br />
-            <%= @group.spaces.first.name %>
-          </div>
-          <span class="phone"><%= phone_formatted(@group.phone_number) %></span><br />
-          <span class="email"><%= mail_to @group.email_address, @group.email_address %></span><br />
-        <% end %>
-      </div>
-    </div>
-    <div class="col-12 col-lg-4 card ctaMid">
-      <div class="card-title complement">
-        Hours
-      </div>
-      <div class="card-body">
-      <div id="dateTime">
-        <div id="date">
-          <%= @group.todays_date %>
-        </div>
-        <div id="time" style="line-height: 1.5rem;">
-          <%= @group.todays_hours %>
-        </div>
-        <div id="allHours">
-          <% unless @group.spaces.first.hours.blank? %>
-            <%= link_to "See future hours", hour_path(@group.spaces.first.hours) %> >
-          <% else %>
-            <%= link_to "See future hours", hour_path(@group.spaces.first.building.hours) %> >
-          <% end %>
-        </div>
-      </div>
-      </div>
-    </div>
-    <div class="col-12 col-lg-4 card ctaLast">
-      <div class="card-title complement">
-        Map!
-      </div>
-      <div class="card-body">
-      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@group.spaces.first.building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@group.spaces.first.building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@group.spaces.first.building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@group.spaces.first.building.coordinates}&query_place_id=#{@group.spaces.first.building.google_id}" %>
-      </div>
-    </div>
-  </div>
+<%= render "visit" %>

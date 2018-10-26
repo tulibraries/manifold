@@ -6,7 +6,7 @@ class Group < ApplicationRecord
 
   auto_strip_attributes :email_address  # Auto strip must occur prior to validates
 
-  validates :name, :spaces, :chair_dept_head, presence: true
+  validates :name, :chair_dept_head, presence: true
   validates :email_address, presence: true, email: true
   validates :phone_number, presence: true, phone_number: true
   validates :group_type, presence: true, group_type: true
@@ -18,8 +18,8 @@ class Group < ApplicationRecord
   has_many :member
   has_many :persons, -> { order "last_name ASC" }, through: :member, source: :person
 
-  has_many :space_group
-  has_many :spaces, through: :space_group, source: :space
+  has_one :space_group
+  has_one :spaces, through: :space_group, source: :space
 
   has_one :group_contact
   has_one :chair_dept_head, through: :group_contact, source: :person
@@ -28,11 +28,12 @@ class Group < ApplicationRecord
   has_many :related_services, through: :service_group, source: :service
 
   def get_chair
-    # binding.pry
     chair = persons.find(chair_dept_head.id)
     persons.to_a.unshift(chair).uniq
   end
   def todays_hours
-    todays_hours = self.spaces.first.todays_hours
+    unless spaces.nil?
+      todays_hours = spaces.todays_hours
+    end
   end
 end

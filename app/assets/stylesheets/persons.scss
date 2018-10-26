@@ -2,36 +2,62 @@
 @import "partials/_vars.scss";
 
 .staff-card {
-	padding: 7px;
-	border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-	.title {
-		text-align:center;
-		font-weight:600;
-		padding: 10px;
-		width: 100%;
-		display: none;
-	}
-	.info {
-		display: table;
-		vertical-align:middle;
-		line-height: 1.75rem;
-		img {
+	.spacer {
+		height: 228px!important;
+		min-height: 228px!important;
+		max-height: 228px!important;
+		margin: 10px 0;
+		padding: 0!important;
+		border: 1px solid $seagreen;
+	  border-radius: 0.25rem;
+		.title {
+			font-weight:600;
+			padding: 10px;
+			padding-left: 28px;
+			border-bottom: 1px solid $seagreen;
 		}
-		.details {
-			display: table-cell;
-			vertical-align: middle;
+		.info {
+			display: table;
+			vertical-align:middle;
 			position: relative;
-			left: 21px;
+			line-height: 1.75rem;
+			height: 180px;
+			.photo {
+				display: table-cell;
+				padding-left: 14px;
+				vertical-align:middle;
+				img {
+					min-width: 140px;
+					min-height: 140px;
+					vertical-align: middle;
+					display: table-cell;
+				}
+			}
+			.details {
+				display: table-cell;
+				vertical-align: middle;
+				position: relative;
+				left: 21px;
+				padding-right: 21px;
+				min-height: 180px;
+				max-height: 180px;
+				height: 180px;
+				.job-title {
+					line-height: 1.2rem;
+					margin-bottom: .5rem;
+				}
+			}
 		}
 	}
 }
 .staff-card.head {
-	background-color: #efefef;
+	.spacer {
+		background-color: #efefef;
+	}
 }
 .appt_button {
 	margin-top: 21px;
-	margin-bottom: 14px;
+	margin-bottom: 7px;
 }
 .appointmentbutton, .appointmentbutton:hover {
 	text-decoration: none;

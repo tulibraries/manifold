@@ -1,0 +1,56 @@
+<% unless @group.spaces.blank? %>
+<div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Plan your visit</span></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ctaRow space-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-title complement">
+        Contact
+      </div>
+      <div class="card-body">
+          <div class="address">
+            <%= link_to @group.spaces.building.name, building_path(@group.spaces.building) %>
+            <br />
+            <%= @group.spaces.name %>
+          </div>
+          <span class="phone"><%= phone_formatted(@group.phone_number) %></span><br />
+          <span class="email"><%= mail_to @group.email_address, @group.email_address %></span><br />
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaMid">
+      <div class="card-title complement">
+        Hours
+      </div>
+      <div class="card-body">
+      <div id="dateTime">
+        <div id="date">
+          <%= @group.todays_date %>
+        </div>
+        <div id="time" style="line-height: 1.5rem;">
+          <%= @group.todays_hours %>
+        </div>
+        <div id="allHours">
+          <% unless @group.spaces.hours.blank? %>
+            <%= link_to "See future hours", hour_path(@group.spaces.hours) %> >
+          <% else %>
+            <%= link_to "See future hours", hour_path(@group.spaces.building.hours) %> >
+          <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaLast">
+      <div class="card-title complement">
+        Map!
+      </div>
+      <div class="card-body">
+      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@group.spaces.building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@group.spaces.building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@group.spaces.building.name}"), "https://www.google.com/maps/search/?api=1&query=#{@group.spaces.building.coordinates}&query_place_id=#{@group.spaces.building.google_id}" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -24,15 +24,17 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span>Services</span></h2>
-    </div>
-  </div>
-</div>
 
 <% unless @space.service_space.nil? %>
+
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Services</span></h2>
+      </div>
+    </div>
+  </div>
+
   <div class="row servicesRow">
     <% @space.service_space.in_groups_of(3).each do |group| %>
       <% unless @space.service_space.size < 3 %>

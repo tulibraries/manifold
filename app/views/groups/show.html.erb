@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Home", root_path.to_s %>
     <%= link_to "Groups", controller: "groups", action: :index %>
     <%= @group.name %>
   </div>
@@ -46,8 +46,8 @@
 
 <p>
   <strong>Owner: </strong>
-  <% unless @group.chair_dept_head.nil? %>
-    <%= link_to (@group.chair_dept_head.first_name+' '+@group.chair_dept_head.last_name), controller: 'persons', action: 'show', id: @group.chair_dept_head.id %>
+  <% unless @group.chair_dept_heads.nil? %>
+    <%= link_to (@group.chair_dept_heads.first.first_name+' '+@group.chair_dept_heads.first.last_name), controller: 'persons', action: 'show', id: @group.chair_dept_heads.first.id %>
   <% end %>
 </p>
 

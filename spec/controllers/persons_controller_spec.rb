@@ -9,7 +9,7 @@ RSpec.describe PersonsController, type: :controller do
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:chair_person) { FactoryBot.create(:person, spaces: [space]) }
-  let(:group) { FactoryBot.create(:group, spaces: [space], chair_dept_head: chair_person) }
+  let(:group) { FactoryBot.create(:group, spaces: [space], chair_dept_heads: [chair_person]) }
   let(:person) { person = FactoryBot.create(:person, groups: [group], spaces: [space]) }
 
   describe "GET #index" do

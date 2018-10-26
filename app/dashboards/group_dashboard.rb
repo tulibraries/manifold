@@ -13,7 +13,9 @@ class GroupDashboard < BaseDashboard
     description: DescriptionField,
     phone_number: Field::String,
     email_address: Field::String,
-    chair_dept_head: ContactField,
+    chair_dept_heads: Field::HasMany.with_options(
+      class_name: "Person"
+    ),
     member: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
@@ -47,7 +49,7 @@ class GroupDashboard < BaseDashboard
     :group_type,
     :phone_number,
     :email_address,
-    :chair_dept_head,
+    :chair_dept_heads,
     :persons,
     :spaces,
     :external,
@@ -64,7 +66,7 @@ class GroupDashboard < BaseDashboard
     :external,
     :phone_number,
     :email_address,
-    :chair_dept_head,
+    :chair_dept_heads,
     :persons,
     :spaces,
     :document,

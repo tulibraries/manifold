@@ -5,7 +5,6 @@ module Admin
     def create
       group_params = params[:group]
       group_params.permit!
-      group_params[:chair_dept_head] = Person.find_by_id(group_params[:chair_dept_head].to_i)
       group = Group.new(group_params)
 
       if group.save
@@ -24,7 +23,6 @@ module Admin
       group = Group.find(params[:id])
       group_params = params[:group]
       group_params.permit!
-      group_params[:chair_dept_head] = Person.find_by_id(group_params[:chair_dept_head].to_i)
       if group.update(group_params)
         redirect_to(
           [namespace, group],

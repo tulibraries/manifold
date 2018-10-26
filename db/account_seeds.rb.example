@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 accts = [
   { email: "admin@example.com", admin: true },
   { email: "user1@example.com", admin: false },
 ]
 
 accts.each do |accts|
-  Account.create!(email: accts[:email], admin: accts[:admin], password: Devise.friendly_token[0,20]) unless Account.find_by(email: accts[:email])
+  Account.create!(email: accts[:email], admin: accts[:admin], password: Devise.friendly_token[0, 20]) unless Account.find_by(email: accts[:email])
 end

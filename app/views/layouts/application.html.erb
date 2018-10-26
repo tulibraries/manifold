@@ -7,20 +7,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class="<%= yield (:body_class) %>">
   <div id="skip-link">
     <%= link_to "Skip to main content", "#skiplink_ada", :class => "element-invisible", :tabindex => "1" %>
     <%= link_to "Skip to site search", "#", :class => "element-invisible", :onclick => "document.getElementById('search-block').focus();", :tabindex => "2" %>
   </div>
+  
+    <% flash.each do |key, value| %>
+       <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+
 
   <%= render "header_navbar.html.erb" %>
 
   <div id="content">
     <a href="#" name="skiplink_ada" id="skiplink_ada"></a>
-    <% flash.each do |key, value| %>
-       <div class="flash <%= key %>"><%= value %></div>
-    <% end %>
-
     <%= yield %>
 
   </div>

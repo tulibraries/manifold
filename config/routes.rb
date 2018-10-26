@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     resources :events
     resources :services
 
-
     root to: "people#index"
   end
   root "pages#home"
@@ -29,4 +28,8 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
+
+  controller :pages do
+    get "ambler" => :ambler
+  end
 end

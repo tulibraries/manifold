@@ -35,6 +35,16 @@
 <% end %>
 
 <p>
+  <strong>Phone number: </strong>
+  <%= @group.phone_number %>
+</p>
+
+<p>
+  <strong>Email: </strong>
+  <%= @group.email_address %>
+</p>
+
+<p>
   <strong>Owner: </strong>
   <% unless @group.chair_dept_head.nil? %>
     <%= link_to (@group.chair_dept_head.first_name+' '+@group.chair_dept_head.last_name), controller: 'persons', action: 'show', id: @group.chair_dept_head.id %>

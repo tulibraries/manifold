@@ -17,6 +17,8 @@ RSpec.describe Group, type: :model do
 
     it { is_expected.to include("name") }
     it { is_expected.to include("description") }
+    it { is_expected.to include("phone_number") }
+    it { is_expected.to include("email_address") }
 
   end
 
@@ -70,6 +72,36 @@ RSpec.describe Group, type: :model do
 
   describe "field validators" do
     let(:group) { FactoryBot.build(:group, spaces: [space], chair_dept_head: chair_person) }
+    context "Email validation" do
+      example "valid email" do
+        group.email_address = "we@example.edu"
+        expect { group.save! }.to_not raise_error
+      end
+      example "invalid email" do
+        group.email_address = "abc"
+        expect { group.save! }.to raise_error(/Email address is not an email/)
+      end
+      example "invalid email - blank " do
+        group.email_address = ""
+        expect { group.save! }.to raise_error(/Email address can't be blank/)
+      end
+    end
+
+    context "Phone number validation" do
+      example "valid phone number" do
+        group.phone_number = "2155551213"
+        expect { group.save! }.to_not raise_error
+      end
+      example "invalid phone number" do
+        group.phone_number = "215555122"
+        expect { group.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
+      end
+      example "invalid phone number - blank " do
+        group.phone_number = ""
+        expect { group.save! }.to raise_error(/Phone number can't be blank/)
+      end
+    end
+
     context "Space reference" do
       example "valid space ID" do
         expect { group.save! }.to_not raise_error

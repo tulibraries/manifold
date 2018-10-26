@@ -28,7 +28,6 @@ class Group < ApplicationRecord
   has_many :related_services, through: :service_group, source: :service
 
   def get_chair
-    # binding.pry
     chair = persons.find(chair_dept_head.id)
     persons.to_a.unshift(chair).uniq
   end

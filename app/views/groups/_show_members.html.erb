@@ -6,13 +6,13 @@
 
     <% @group.get_chair.in_groups_of(3, false).each do |person| %>
 
-<% unless person.size < 3 %>
+    <% unless person.size < 3 %>
 
-      <!-- <%# if person.id == @group.chair_dept_head.id %>
+      <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
         <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
-      <%# else %> -->
+      <% else %> 
         <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
-      <!-- <%# end %> -->
+      <% end %>
         <div class="spacer l-end">
           <div class="title">
                 <%= link_to (person.first.first_name+' '+person.first.last_name), 
@@ -42,7 +42,11 @@
             </div>
           </div> <!-- spacer -->
         </div>
+      <% if @group.chair_dept_heads.ids.include?(person.second.id) %>
+        <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+      <% else %> 
         <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+      <% end %>
         <div class="spacer">
           <div class="title">
                 <%= link_to (person.second.first_name+' '+person.second.last_name), 
@@ -73,7 +77,11 @@
           </div> <!-- spacer -->
         </div>
 
+      <% if @group.chair_dept_heads.ids.include?(person.third.id) %>
+        <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+      <% else %> 
         <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+      <% end %>
         <div class="spacer r-end">
           <div class="title">
                 <%= link_to (person.third.first_name+' '+person.third.last_name), 
@@ -107,7 +115,12 @@
       <% end %> <!-- unless -->
 
       <% if person.size == 2 %>
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+
+        <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <% else %> 
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <% end %>
         <div class="spacer l-end">
           <div class="title">
                 <%= link_to (person.first.first_name+' '+person.first.last_name), 
@@ -137,7 +150,12 @@
             </div>
           </div> <!-- spacer -->
         </div>
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        
+        <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <% else %> 
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <% end %>
         <div class="spacer r-end">
           <div class="title">
                 <%= link_to (person.second.first_name+' '+person.second.last_name), 
@@ -170,7 +188,12 @@
       <% end %>
 
       <% if person.size == 1  %>
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+      
+        <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <% else %> 
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <% end %>
         <div class="spacer both-ends">
           <div class="title">
                 <%= link_to (person.first.first_name+' '+person.first.last_name), 
@@ -181,7 +204,7 @@
                   <%= link_to image_tag(person.first.photo.variant(resize: "120x120>", extent: "120x120")), 
                       controller: 'persons', action: 'show', id: person.first.id %>
                 <% else %>
-                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.first.id %>
+                  <%= link_to image_tag('T-borderless.gif'), controller: 'persons', action: 'show', id: person.first.id %>
                 <% end %>
               </div>
               <div class="details">

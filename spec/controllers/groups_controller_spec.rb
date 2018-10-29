@@ -9,7 +9,7 @@ RSpec.describe GroupsController, type: :controller do
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:chair_person) { FactoryBot.create(:person, spaces: [space]) }
-  let(:group) { FactoryBot.create(:group, spaces: [space], chair_dept_heads: [chair_person]) }
+  let(:group) { FactoryBot.create(:group, space: space, chair_dept_heads: [chair_person]) }
 
   describe "GET #index" do
     it "returns http success" do

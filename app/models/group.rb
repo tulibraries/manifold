@@ -19,7 +19,7 @@ class Group < ApplicationRecord
   has_many :persons, -> { order "last_name ASC" }, through: :member, source: :person
 
   has_one :space_group
-  has_one :spaces, through: :space_group, source: :space
+  has_one :space, through: :space_group, source: :space
 
   has_many :group_contact
   has_many :chair_dept_heads, through: :group_contact, source: :person
@@ -28,12 +28,19 @@ class Group < ApplicationRecord
   has_many :related_services, through: :service_group, source: :service
 
   def get_chair
-    chair = persons.find(chair_dept_head.id)
-    persons.to_a.unshift(chair).uniq
+    members = Array.new
+    chair = persons.select { |p| chair_dept_heads.include?(p) }
+    persons.to_a.each do |p|
+      members << p
+    end
+    chair.sort_by { |p| p.last_name }.reverse.each do |q|
+      members.unshift(q)
+    end
+    members.uniq
   end
   def todays_hours
-    unless spaces.nil?
-      todays_hours = spaces.todays_hours
+    unless space.nil?
+      todays_hours = space.todays_hours
     end
   end
 end

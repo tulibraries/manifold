@@ -5,8 +5,8 @@
   <% @space = (field.data.respond_to? :id) ? Space.find_by("id = ?", field.data.id) : nil; %>
 
   <% unless @space.nil? %>
-		<%= f.collection_select :spaces, Space.order(:name), :id, :name, selected: @space.id ? @space.id : 0, include_blank: true %>
+		<%= f.collection_select :space, Space.order(:name), :id, :name, selected: @space.id ? @space.id : 0, include_blank: true %>
 		<% else %>
-			<%= f.collection_select :spaces, Space.order(:name), :id, :name, selected: 0, include_blank: true %>
+			<%= f.collection_select :space, Space.order(:name), :id, :name, selected: 0, include_blank: true %>
 		<% end %>
 </div>

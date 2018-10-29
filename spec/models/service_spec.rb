@@ -10,7 +10,7 @@ RSpec.describe Service, type: :model do
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:person) { FactoryBot.build(:person, spaces: [space]) }
-  let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_heads: [person]) }
+  let(:group) { FactoryBot.create(:group, persons: [person], space: space, chair_dept_heads: [person]) }
 
   describe "Required attributes" do
     example "Missing title" do
@@ -62,7 +62,7 @@ RSpec.describe Service, type: :model do
     end
     context "Group" do
       let(:person) { FactoryBot.build(:person, spaces: [space]) }
-      let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_heads: [person]) }
+      let(:group) { FactoryBot.create(:group, persons: [person], space: space, chair_dept_heads: [person]) }
       example "attach group" do
         service = FactoryBot.create(:service, related_groups: [group])
         expect(service.related_groups.first.name).to match(/#{Group.first.name}/)

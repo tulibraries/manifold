@@ -19,7 +19,7 @@ class GroupDashboard < BaseDashboard
     member: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::BelongsTo,
-    spaces: SpaceField,
+    space: SpaceField,
     documents: DocumentField,
     external: Field::Boolean,
     group_type: Field::Select.with_options(
@@ -51,7 +51,7 @@ class GroupDashboard < BaseDashboard
     :email_address,
     :chair_dept_heads,
     :persons,
-    :spaces,
+    :space,
     :external,
     :documents,
   ].freeze
@@ -68,7 +68,7 @@ class GroupDashboard < BaseDashboard
     :email_address,
     :chair_dept_heads,
     :persons,
-    :spaces,
+    :space,
     :documents,
   ].freeze
 

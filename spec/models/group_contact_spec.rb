@@ -8,8 +8,8 @@ RSpec.describe GroupContact, type: :model do
     let(:space) { FactoryBot.create(:space, building: building) }
     let(:person1) { FactoryBot.create(:person, spaces: [space]) }
     let(:person2) { FactoryBot.create(:person, spaces: [space]) }
-    let(:group) { FactoryBot.create(:group, persons: [person1], spaces: [space], chair_dept_heads: [person1]) }
-    let(:another_group) { FactoryBot.create(:group, persons: [person1], spaces: [space], chair_dept_heads: [person1]) }
+    let(:group) { FactoryBot.create(:group, persons: [person1], space: space, chair_dept_heads: [person1]) }
+    let(:another_group) { FactoryBot.create(:group, persons: [person1], space: space, chair_dept_heads: [person1]) }
 
     example "Create group with chair or department head" do
       expect(group.chair_dept_heads).to include person1

@@ -58,7 +58,7 @@ RSpec.describe FuzzyFind::FinderService do
         building = FactoryBot.create(:building)
         @space = FactoryBot.create(:space, building: building)
         FactoryBot.create(:person, spaces: [@space])
-        @group = FactoryBot.create(:group, spaces: [@space], chair_dept_head: Person.take(1).first)
+        @group = FactoryBot.create(:group, spaces: [@space], chair_dept_heads: [Person.take(1).first])
 
         @new_person = Person.create!(
           first_name: "New", last_name: "Person",

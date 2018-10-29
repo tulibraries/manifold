@@ -5,7 +5,6 @@ module Admin
     def create
       group_params = params[:group]
       group_params.permit!
-      group_params[:chair_dept_head] = Person.find_by_id(group_params[:chair_dept_head].to_i)
       group_params[:spaces] = Space.find(group_params[:spaces])
       group = Group.new(group_params)
 
@@ -25,7 +24,6 @@ module Admin
       group = Group.find(params[:id])
       group_params = params[:group]
       group_params.permit!
-      group_params[:chair_dept_head] = Person.find_by_id(group_params[:chair_dept_head].to_i)
       unless group_params[:spaces].blank?
         group_params[:spaces] = Space.find(group_params[:spaces]) 
       else 

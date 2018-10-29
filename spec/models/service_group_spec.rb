@@ -6,8 +6,8 @@ RSpec.describe ServiceGroup, type: :model do
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:person) { FactoryBot.build(:person, spaces: [space]) }
-  let(:group1) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_head: person) }
-  let(:group2) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_head: person) }
+  let(:group1) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_heads: [person]) }
+  let(:group2) { FactoryBot.create(:group, persons: [person], spaces: [space], chair_dept_heads: [person]) }
   context "Service has space" do
     let(:service) { FactoryBot.build(:service, related_groups: [group1]) }
 

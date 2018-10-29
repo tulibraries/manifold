@@ -35,6 +35,8 @@ en:
       building:
         address1: "Street Address"
         address2: "City, State Zip"
+      account:
+        alertability: "Can Administrate Alerts"
   fortytude:
     default:
       event:
@@ -53,6 +55,7 @@ en:
     error:
       user_not_registered: "User not registered."
       access_denied: "Account modification - Access denied"
+      modification_denied: "%{class} modification - Access denied"
       invalid_email: "is not an email address."
       invalid_phone_format: "is not a valid format. It should be xxx-xxx-xxxx."
       invalid_group_type: "is not a valid group type"

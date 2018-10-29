@@ -11,6 +11,7 @@ class AccountDashboard < BaseDashboard
     id: Field::Number,
     email: Field::String,
     admin: Field::Boolean,
+    alertability: Field::Boolean,
     encrypted_password: Field::String,
     reset_password_token: Field::String,
     reset_password_sent_at: Field::DateTime,
@@ -32,6 +33,8 @@ class AccountDashboard < BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :email,
+    :admin,
+    :alertability,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -40,6 +43,7 @@ class AccountDashboard < BaseDashboard
     :id,
     :email,
     :admin,
+    :alertability,
     :encrypted_password,
     :reset_password_token,
     :reset_password_sent_at,
@@ -60,6 +64,7 @@ class AccountDashboard < BaseDashboard
     :email,
     #:encrypted_password,
     :admin,
+    :alertability,
     #:reset_password_token,
     #:reset_password_sent_at,
     #:remember_created_at,

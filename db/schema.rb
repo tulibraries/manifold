@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_23_203933) do
+ActiveRecord::Schema.define(version: 2018_10_31_173928) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -87,6 +87,15 @@ ActiveRecord::Schema.define(version: 2018_10_23_203933) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "building_policies", force: :cascade do |t|
+    t.integer "building_id"
+    t.integer "policy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_building_policies_on_building_id"
+    t.index ["policy_id"], name: "index_building_policies_on_policy_id"
+  end
+
   create_table "buildings", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -139,6 +148,15 @@ ActiveRecord::Schema.define(version: 2018_10_23_203933) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_group_contacts_on_group_id"
     t.index ["person_id"], name: "index_group_contacts_on_person_id"
+  end
+
+  create_table "group_policies", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "policy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_policies_on_group_id"
+    t.index ["policy_id"], name: "index_group_policies_on_policy_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -206,6 +224,15 @@ ActiveRecord::Schema.define(version: 2018_10_23_203933) do
     t.string "springshare_id"
   end
 
+  create_table "policies", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.date "effective_date"
+    t.date "expiration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "service_groups", force: :cascade do |t|
     t.integer "service_id"
     t.integer "group_id"
@@ -243,6 +270,15 @@ ActiveRecord::Schema.define(version: 2018_10_23_203933) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_space_groups_on_group_id"
     t.index ["space_id"], name: "index_space_groups_on_space_id"
+  end
+
+  create_table "space_policies", force: :cascade do |t|
+    t.integer "space_id"
+    t.integer "policy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["policy_id"], name: "index_space_policies_on_policy_id"
+    t.index ["space_id"], name: "index_space_policies_on_space_id"
   end
 
   create_table "spaces", force: :cascade do |t|

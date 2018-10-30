@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :spaces
     resources :events
     resources :services
+    resources :policies
 
     root to: "people#index"
   end
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
   resources :highlights, only: [:show]
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
+  resources :policies, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
 
   controller :pages do

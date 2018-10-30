@@ -14,6 +14,9 @@ class Building < ApplicationRecord
 
   has_one_attached :photo, dependent: :destroy
 
+  has_many :building_policy
+  has_many :policies, through: :building_policy
+
   auto_strip_attributes :email
 
   before_validation :normalize_phone_number

@@ -60,6 +60,14 @@ RSpec.describe Building, type: :model do
         expect { building.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
       end
     end
+
+    context "Policy reference" do
+      example "Add building policy" do
+        policy = FactoryBot.create(:policy)
+        building.policies = [policy]
+        expect { building.save! }.to_not raise_error
+      end
+    end
   end
 
 end

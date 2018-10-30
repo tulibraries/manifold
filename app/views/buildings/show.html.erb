@@ -52,10 +52,10 @@
       <div class="card-body">
       <div id="dateTime">
         <div id="date">
-          <%= todays_date %>
+          <%= @building.todays_date %>
         <div id="time">
           <% unless @building.hours.blank? %>
-            <%= todays_hours %>
+            <%= @building.todays_hours %>
           <% end %>
         </div>
         </div>

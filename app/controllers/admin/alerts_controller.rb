@@ -2,6 +2,16 @@
 
 module Admin
   class AlertsController < Admin::ApplicationController
+    load_and_authorize_resource
+
+    # Devise has current_user hard_coded so if we us anything other than
+    # user, we have no access to the devise object. So, we need to override
+    # current_user to return the current account. This is needed both
+    # in ApplicationController and in Admin::ApplicationController
+    def current_user
+      current_account
+    end
+
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #
@@ -19,5 +29,9 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    rescue_from CanCan::AccessDenied do |exception|
+      redirect_to admin_root_url, alert: t("fortytude.error.modification_denied", class: "Alert")
+    end
   end
 end

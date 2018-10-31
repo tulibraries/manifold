@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %> 
-    <%= link_to "Services", controller: 'spaces', action: :index %> 
+    <%= link_to "Home", root_path.to_s %>
+    <%= link_to "Services", controller: 'spaces', action: :index %>
     <%= @service.title %>
   </div>
 </div>
@@ -53,12 +53,12 @@
 
 <p>
   <strong>Intended Audience:</strong>
-  <%= @service.intended_audience.join(", ").html_safe %>
+  <%= @service.intended_audience.join(", ") %>
 </p>
 
 <p>
   <strong>Service Category:</strong>
-  <%= @service.service_category.html_safe %>
+  <%= @service.service_category %>
 </p>
 
 <%= link_to 'Back', services_path %>

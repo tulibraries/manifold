@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Service < ApplicationRecord
+  include InputCleaner
+
   validates :title, :description, :intended_audience, :service_category, presence: true
   validates :related_groups, presence: true
 
@@ -13,6 +15,7 @@ class Service < ApplicationRecord
   has_many :related_groups, through: :service_group, source: :group
 
   before_create :remove_empty_audience
+  before_validation :sanitize_description
 
   def remove_empty_audience
     # Rails tends to return an empty string in multi-selects array

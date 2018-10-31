@@ -13,8 +13,7 @@ FactoryBot.define do
     springshare_id { "0123-4567-8901" }
     # Add related objects in create.
     # e.g.
-    #   let(:building) { FactoryBot.create(:building) }
-    #   let(:space) { FactoryBot.create(:space, building: building) }
+    spaces { [FactoryBot.create(:space, building: FactoryBot.create(:building))] }
     #   let(:person) { FactoryBot.create(:person, spaces: [space]) }
   end
 end

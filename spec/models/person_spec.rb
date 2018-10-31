@@ -42,6 +42,7 @@ RSpec.describe Person, type: :model do
       end
       example "no space" do
         person = FactoryBot.build(:person)
+        person.spaces = []
         expect { person.save! }.to raise_error(/Spaces can't be blank/)
       end
     end

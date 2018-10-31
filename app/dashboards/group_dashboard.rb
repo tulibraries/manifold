@@ -11,8 +11,6 @@ class GroupDashboard < BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
-    phone_number: Field::String,
-    email_address: Field::String,
     chair_dept_heads: Field::HasMany.with_options(
       class_name: "Person"
     ),
@@ -37,8 +35,6 @@ class GroupDashboard < BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :member,
-    :phone_number,
-    :email_address,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -47,8 +43,6 @@ class GroupDashboard < BaseDashboard
     :name,
     :description,
     :group_type,
-    :phone_number,
-    :email_address,
     :chair_dept_heads,
     :persons,
     :space,
@@ -64,8 +58,6 @@ class GroupDashboard < BaseDashboard
     :description,
     :group_type,
     :external,
-    :phone_number,
-    :email_address,
     :chair_dept_heads,
     :persons,
     :space,

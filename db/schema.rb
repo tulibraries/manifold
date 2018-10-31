@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_16_161524) do
+ActiveRecord::Schema.define(version: 2018_10_25_181642) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_10_16_161524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.boolean "alertability"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
@@ -58,6 +59,22 @@ ActiveRecord::Schema.define(version: 2018_10_16_161524) do
     t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "path"
+    t.string "post_guid"
+    t.datetime "last_updated_date"
+    t.text "categories"
+    t.string "external_author_name"
+    t.integer "person_id"
+    t.integer "blog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_blog_posts_on_blog_id"
+    t.index ["person_id"], name: "index_blog_posts_on_person_id"
   end
 
   create_table "blogs", force: :cascade do |t|
@@ -127,8 +144,6 @@ ActiveRecord::Schema.define(version: 2018_10_16_161524) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "phone_number"
-    t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "group_type"

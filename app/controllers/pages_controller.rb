@@ -10,4 +10,8 @@ class PagesController < ApplicationController
 
   def ambler
   end
+
+  def hsl
+  	@departments = Group.where(group_type: "Department")
+  end
 end

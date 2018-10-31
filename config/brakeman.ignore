@@ -1,0 +1,198 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 70,
+      "fingerprint": "26de2923c8b3a419d65fd503ec16fa41f1a3f68c7fa9083e6c8af2e1589f8764",
+      "check_name": "MassAssignment",
+      "message": "Parameters should be whitelisted for mass assignment",
+      "file": "app/controllers/admin/groups_controller.rb",
+      "line": 26,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params[:group].permit!",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::GroupsController",
+        "method": "update"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "2f5050be2e4f765ee44dbc8f315035da8e7a850b6b052a26c24584bd22d214ac",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/spaces/show.html.erb",
+      "line": 22,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Space.find(params[:id]).description",
+      "render_path": [{"type":"controller","class":"SpacesController","method":"show","line":18,"file":"app/controllers/spaces_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "spaces/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "763644b1f48229772aa4051d7b05f838fb7c5cd5c365dfb2692b5753d310cb4e",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in link_to href",
+      "file": "app/views/persons/show.html.erb",
+      "line": 81,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(Person.find(params[:id]).personal_site, Person.find(params[:id]).personal_site)",
+      "render_path": [{"type":"controller","class":"PersonsController","method":"show","line":17,"file":"app/controllers/persons_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "persons/show"
+      },
+      "user_input": "Person.find(params[:id]).personal_site",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 70,
+      "fingerprint": "7a8e4552d89bb53cf073729b06e4f1f6489e74f3657f7bc5f521e847f1e28b88",
+      "check_name": "MassAssignment",
+      "message": "Parameters should be whitelisted for mass assignment",
+      "file": "app/controllers/admin/groups_controller.rb",
+      "line": 7,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params[:group].permit!",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::GroupsController",
+        "method": "create"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "7cc2e4fc326f01fedcba809289b57eba4ecdf3158b5cdd87556dcffbffb3e96b",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/alerts/show.html.erb",
+      "line": 9,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Alert.find(params[:id]).description",
+      "render_path": [{"type":"controller","class":"AlertsController","method":"show","line":10,"file":"app/controllers/alerts_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "alerts/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "8565de7e4b8461b446d6342a7ba798cc202300676b5d855de2aa1491b3e1f1d4",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/services/show.html.erb",
+      "line": 23,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Service.find(params[:id]).access_description",
+      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":17,"file":"app/controllers/services_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "services/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "8ed936dfee4c6801a01abc80551ffe5797ccfb5482b4038baab19853ba89fca6",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/services/show.html.erb",
+      "line": 51,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Service.find(params[:id]).service_policies",
+      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":17,"file":"app/controllers/services_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "services/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "c7566ea26dd4099cfd507f585975c8c03630ceab28f939df166c074a518b22d4",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/buildings/show.html.erb",
+      "line": 23,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Building.find(params[:id]).description",
+      "render_path": [{"type":"controller","class":"BuildingsController","method":"show","line":14,"file":"app/controllers/buildings_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "buildings/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "f443eecf775a20b975f19f3f2de2e0d6b8fd7aedcd831f0112958ac77c0ac703",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/groups/show.html.erb",
+      "line": 26,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Group.find(params[:id]).description",
+      "render_path": [{"type":"controller","class":"GroupsController","method":"show","line":17,"file":"app/controllers/groups_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "groups/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "fe84c6dd3e8830d9abdcaff1faaf21be55a2e8426ff22822a8a9407f7ca0bfd9",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/services/show.html.erb",
+      "line": 18,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Service.find(params[:id]).description",
+      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":17,"file":"app/controllers/services_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "services/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    }
+  ],
+  "updated": "2018-10-30 15:46:40 -0400",
+  "brakeman_version": "4.3.1"
+}

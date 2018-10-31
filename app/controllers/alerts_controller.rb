@@ -6,6 +6,6 @@ class AlertsController < ApplicationController
     @alerts = Alert.all
   end
   def show
-    @alert = Alert.find_by(id: params[:id])
+    @alert = Alert.find(params[:id])
   end
 end

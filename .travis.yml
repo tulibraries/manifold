@@ -14,6 +14,7 @@ before_script:
 - RAILS_ENV=test bundle exec rake db:seed
 script:
 - bundle exec rubocop
+- bundle exec brakeman
 - bundle exec rspec spec
 notifications:
   slack:

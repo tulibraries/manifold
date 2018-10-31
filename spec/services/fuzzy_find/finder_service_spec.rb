@@ -141,11 +141,6 @@ RSpec.describe FuzzyFind::FinderService do
           ).to eql nil
         end
       end
-
-
-      after do
-        DatabaseCleaner.clean
-      end
     end
   end
 end

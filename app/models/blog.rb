@@ -3,6 +3,8 @@
 class Blog < ApplicationRecord
   include Validators
 
+  has_many :blog_posts
+
   validates :title, presence: true
   validates :base_url, presence: true, url: true
 

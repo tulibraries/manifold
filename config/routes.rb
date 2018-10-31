@@ -17,8 +17,10 @@ Rails.application.routes.draw do
 
     root to: "people#index"
   end
+
   root "pages#home"
   resources :alerts, only: [:index, :show]
+  resources :blog_posts, only: [:index, :show]
   resources :persons, only: [:index, :show], as: :people
   resources :spaces, only: [:index, :show]
   resources :blogs, only: [:index, :show]

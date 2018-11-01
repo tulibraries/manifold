@@ -17,18 +17,24 @@
 		<div id="dateTime">
 			<div class="displayRow">
 				<div id="date">
-					FRIDAY, AUGUST 17, 2018
+					<%= @todays_date %>
 				</div>
 			</div>
 			<div class="displayRow">
 				<div id="time">
-					<%= link_to "Ginsburg Library", hour_path("ginsburg") %> | 8am - 7pm<br />
-					<%= link_to "Podiatry Library", hour_path("podiatry") %> | 8am - 7pm<br />
-					<%= link_to "Innovation Space", hour_path("innovation") %> | 8am - 7pm<br />
+					<% unless @ginsburg_hours.nil? %> 
+						<%= link_to "Ginsburg Library", hour_path("ginsburg") %> | <%= @ginsburg_hours %><br />
+          <% end %>
+					<% unless @podiatry_hours.nil? %><%= link_to "Podiatry Library", hour_path("podiatry") %> | <%= @podiatry_hours %>
+          <% end %>						
+				</div>
+				<div id="allHours">
+					<%= link_to "See all libraries hours", hours_path %> >
 				</div>
 			</div>
 		</div>
 </div>
+
 
 <div class="row ctaRow">
 	<div class="col col-sm-6 col-lg-4 col-xl-3">
@@ -60,10 +66,10 @@
 			<div class="hsl-list">
 				<ul>
 					<li class="oddrow">
-						<%= link_to "Ginsburg Library", building_path(2) %> >
+						<%= link_to "Ginsburg Library", building_path(3) %> >
 					</li>
 					<li>
-						<%= link_to "Podiatry Library", building_path(2) %> >
+						<%= link_to "Podiatry Library", building_path(4) %> >
 					</li>
 					<li class="oddrow">HSL Staff Directory ></li>
 					<li>HSL Services ></li>

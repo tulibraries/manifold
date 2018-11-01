@@ -18,8 +18,8 @@
             <br />
             <%= @group.space.name %>
           </div>
-          <span class="phone"><%= phone_formatted(@group.phone_number) %></span><br />
-          <span class="email"><%= mail_to @group.email_address, @group.email_address %></span><br />
+          <span class="phone"><%= phone_formatted(@group.chair_dept_heads.first.phone_number) %></span><br />
+          <span class="email"><%= mail_to @group.chair_dept_heads.first.email_address, @group.chair_dept_heads.first.email_address %></span><br />
       </div>
     </div>
     <div class="col-12 col-lg-4 card ctaMid">

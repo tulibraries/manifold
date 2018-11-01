@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 accts = [
   { email: "admin@example.com", admin: true, alertability: true },
   { email: "user1@example.com", admin: false, alertability: false },

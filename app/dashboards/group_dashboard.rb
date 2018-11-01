@@ -11,12 +11,14 @@ class GroupDashboard < BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
-    chair_dept_head: ContactField,
+    chair_dept_heads: Field::HasMany.with_options(
+      class_name: "Person"
+    ),
     member: Field::HasMany,
     persons: Field::HasMany,
-    space_group: Field::HasMany,
-    spaces: Field::HasMany,
-    document: DocumentField,
+    space_group: Field::BelongsTo,
+    space: SpaceField,
+    documents: DocumentField,
     external: Field::Boolean,
     group_type: Field::Select.with_options(
       collection: Rails.configuration.group_types
@@ -41,11 +43,11 @@ class GroupDashboard < BaseDashboard
     :name,
     :description,
     :group_type,
-    :chair_dept_head,
+    :chair_dept_heads,
     :persons,
-    :spaces,
+    :space,
     :external,
-    :document,
+    :documents,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -56,10 +58,10 @@ class GroupDashboard < BaseDashboard
     :description,
     :group_type,
     :external,
-    :chair_dept_head,
+    :chair_dept_heads,
     :persons,
-    :spaces,
-    :document,
+    :space,
+    :documents,
   ].freeze
 
   # Overwrite this method to customize how groups are displayed
@@ -70,6 +72,11 @@ class GroupDashboard < BaseDashboard
   # end
   def display_resource(group)
     "#{group.name}"
+  end
+
+  # permitted for has_many_attached
+  def permitted_attributes
+    super + [documents: []]
   end
 
   def tinymce?

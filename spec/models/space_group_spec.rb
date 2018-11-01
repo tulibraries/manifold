@@ -8,17 +8,19 @@ RSpec.describe SpaceGroup, type: :model do
     let(:space1) { FactoryBot.create(:space, building: building) }
     let(:space2) { FactoryBot.create(:space, building: building) }
     let(:person) { FactoryBot.build(:person, spaces: [space1]) }
-    let(:group) { FactoryBot.create(:group, persons: [person], spaces: [space1], chair_dept_head: person) }
+    let(:group) { FactoryBot.create(:group, persons: [person], space: space1, chair_dept_heads: [person]) }
 
     example "Create group with space" do
-      expect(group.spaces).to include space1
-      expect(group.spaces).to_not include space2
+      expect(group.space.name).to match(/#{space1.name}/)
+      # expect(group.space).to include space1
+      # expect(group.space).to_not include space2
     end
 
     example "Assign group with different space" do
-      group.spaces = [space2]
-      expect(group.spaces).to_not include space1
-      expect(group.spaces).to include space2
+      group.space = space2
+      expect(group.space.name).to match(/#{space2.name}/)
+      # expect(group.space).to_not include space1
+      # expect(group.space).to include space2
     end
   end
 
@@ -27,7 +29,7 @@ RSpec.describe SpaceGroup, type: :model do
     let(:space1) { FactoryBot.create(:space, building: building) }
     let(:space2) { FactoryBot.create(:space, building: building) }
     let(:person) { FactoryBot.create(:person, spaces: [space1]) }
-    let(:group) { FactoryBot.create(:group, spaces: [space1], persons: [person], chair_dept_head: person) }
+    let(:group) { FactoryBot.create(:group, space: space1, persons: [person], chair_dept_heads: [person]) }
 
     example "valid" do
       expect(space1.groups).to include group

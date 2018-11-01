@@ -23,7 +23,7 @@ FactoryBot.define do
 
       factory :space_with_groups do
         after(:create) do |space|
-          create_list(:group, 1, spaces: [space])
+          create_list(:group, 1, space: space)
         end
       end
 

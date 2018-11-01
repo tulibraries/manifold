@@ -1,3 +1,16 @@
-// Place all the styles related to the groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "partials/_vars.scss";
+
+.l-end {
+		border-top-left-radius: 42px!important;
+		border-bottom-left-radius: 42px!important;
+}
+
+.r-end {
+		border-top-right-radius: 42px!important;
+		border-bottom-right-radius: 42px!important;
+}
+
+.both-ends {
+
+		border-radius: 42px!important;
+}

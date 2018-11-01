@@ -1,6 +1,7 @@
+<% content_for :body_class, "minipage" %>
 <div class="row">
   <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Home", root_path.to_s %>
     <%= link_to "Groups", controller: "groups", action: :index %>
     <%= @group.name %>
   </div>
@@ -13,51 +14,18 @@
   </div>
 </div>
 
-<div class="container">
-<p>
-  <strong>Group Type: </strong>
-  <%= @group.group_type %>
-</p>
-
-
 <% unless @group.description.blank? %>
-<p>
-  <strong>Description: </strong>
-  <%= @group.description.html_safe %>
-</p>
-<% end %>
-
-<% unless @group.external.nil? %>
-<p>
-  <strong>External Group: </strong>
-  <%= @group.external %>
-</p>
-<% end %>
-
-<p>
-  <strong>Owner: </strong>
-  <% unless @group.chair_dept_head.nil? %>
-    <%= link_to (@group.chair_dept_head.first_name+' '+@group.chair_dept_head.last_name), controller: 'persons', action: 'show', id: @group.chair_dept_head.id %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Members: </strong>
-  <% unless @group.persons.empty? %>
-    <%= link_to (@group.persons.first.first_name+' '+@group.persons.last.last_name), controller: 'persons', action: 'show', id: @group.persons.last.id %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Space: </strong>
-  <%= @group.spaces.first.name unless @group.spaces.empty? %>
-</p>
-
-<% if @group.document.attached? %>
-  <p>
-    <strong>Documentation: </strong>
-    <%= link_to @group.document.filename.to_s, rails_blob_path(@group.document, disposition: "attachment") %>
-  </p>
-<% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col" style="margin-bottom: 35px;">
+      <%= @group.description.html_safe %>
+    </div>
+  </div>
 </div>
+<% end %>
+
+<%= render "attachments" %>
+
+<%= render "show_members" %>
+
+<%= render "visit" %>

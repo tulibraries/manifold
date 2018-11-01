@@ -7,13 +7,13 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @departments = Group.where(group_type: "Department")
+    @teams = Group.where.not(group_type: "Department")
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @person = Person.find_by("id = ?", @group.person_ids.first)
   end
 
   private

@@ -6,6 +6,7 @@
 		@person = (field.data.respond_to? :id) ? Person.find_by("id = ?", field.data.id) : nil;
 	%>
 
-  <%= f.collection_select :chair_dept_head, Person.order(:last_name), :id, :name, selected: @person ? @person.id : 0, include_blank: true %>
+  <%= f.collection_select :chair_dept_head, Members.where(group_id: field.data.id).order(:last_name), :id, :name, 
+  												selected: @member ? @member.person_.id : 0, include_blank: true %>
 
 </div>

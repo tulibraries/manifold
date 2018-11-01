@@ -1,0 +1,234 @@
+<% unless @group.persons.empty? %>
+<div class="" style="margin-top: 77px;margin-bottom: 77px;padding-left: 21px;padding-right: 21px;">
+  <p><strong>Members: </strong></p>
+
+  <div class="row">
+
+    <% @group.get_chair.in_groups_of(3, false).each do |person| %>
+
+    <% unless person.size < 3 %>
+
+      <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
+        <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+      <% else %> 
+        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+      <% end %>
+        <div class="spacer l-end">
+          <div class="title">
+                <%= link_to (person.first.first_name+' '+person.first.last_name), 
+                      controller: 'persons', action: 'show', id: person.first.id %></div>
+            <div class="info">
+              <div class="photo">
+                <% if person.first.photo.attached? %>
+                  <%= link_to image_tag(person.first.photo.variant(resize: "120x120>", extent: "120x120")), 
+                      controller: 'persons', action: 'show', id: person.first.id %>
+                <% else %>
+                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.first.id %>
+                <% end %>
+              </div>
+              <div class="details">
+                <div class="job-title">
+                  <%= person.first.job_title %>
+                </div>
+                <%= phone_formatted(person.first.phone_number) %>
+                <br />
+                <%= person.first.email_address %>
+                <% unless person.first.springshare_id.blank? %>
+                  <div class="appt_button">
+                    <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.first.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div> <!-- spacer -->
+        </div>
+      <% if @group.chair_dept_heads.ids.include?(person.second.id) %>
+        <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+      <% else %> 
+        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+      <% end %>
+        <div class="spacer">
+          <div class="title">
+                <%= link_to (person.second.first_name+' '+person.second.last_name), 
+                      controller: 'persons', action: 'show', id: person.second.id %></div>
+            <div class="info">
+              <div class="photo">
+                <% if person.second.photo.attached? %>
+                  <%= link_to image_tag(person.second.photo.variant(resize: "120x120>", extent: "120x120")), 
+                      controller: 'persons', action: 'show', id: person.second.id %>
+                <% else %>
+                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.second.id %>
+                <% end %>
+              </div>
+              <div class="details">
+                <div class="job-title">
+                  <%= person.second.job_title %>
+                </div>
+                <%= phone_formatted(person.second.phone_number) %>
+                <br />
+                <%= person.second.email_address %>
+                <% unless person.second.springshare_id.blank? %>
+                  <div class="appt_button">
+                    <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.second.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div> <!-- spacer -->
+        </div>
+
+      <% if @group.chair_dept_heads.ids.include?(person.third.id) %>
+        <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+      <% else %> 
+        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+      <% end %>
+        <div class="spacer r-end">
+          <div class="title">
+                <%= link_to (person.third.first_name+' '+person.third.last_name), 
+                      controller: 'persons', action: 'show', id: person.third.id %></div>
+            <div class="info">
+              <div class="photo">
+                <% if person.third.photo.attached? %>
+                  <%= link_to image_tag(person.third.photo.variant(resize: "120x120>", extent: "120x120")), 
+                      controller: 'persons', action: 'show', id: person.third.id %>
+                <% else %>
+                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.third.id %>
+                <% end %>
+              </div>
+              <div class="details">
+                <div class="job-title">
+                  <%= person.third.job_title %>
+                </div>
+                <%= phone_formatted(person.third.phone_number) %>
+                <br />
+                <%= person.third.email_address %>
+                <% unless person.third.springshare_id.blank? %>
+                  <div class="appt_button">
+                    <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.third.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div> <!-- spacer -->
+        </div>
+
+      <% end %> <!-- unless -->
+
+      <% if person.size == 2 %>
+
+        <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <% else %> 
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <% end %>
+        <div class="spacer l-end">
+          <div class="title">
+                <%= link_to (person.first.first_name+' '+person.first.last_name), 
+                      controller: 'persons', action: 'show', id: person.first.id %></div>
+            <div class="info">
+              <div class="photo">
+                <% if person.first.photo.attached? %>
+                  <%= link_to image_tag(person.first.photo.variant(resize: "120x120>", extent: "120x120")), 
+                      controller: 'persons', action: 'show', id: person.first.id %>
+                <% else %>
+                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.first.id %>
+                <% end %>
+              </div>
+              <div class="details">
+                <div class="job-title">
+                  <%= person.first.job_title %>
+                </div>
+                <%= phone_formatted(person.first.phone_number) %>
+                <br />
+                <%= person.first.email_address %>
+                <% unless person.first.springshare_id.blank? %>
+                  <div class="appt_button">
+                    <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.first.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div> <!-- spacer -->
+        </div>
+        
+        <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <% else %> 
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <% end %>
+        <div class="spacer r-end">
+          <div class="title">
+                <%= link_to (person.second.first_name+' '+person.second.last_name), 
+                      controller: 'persons', action: 'show', id: person.second.id %></div>
+            <div class="info">
+              <div class="photo">
+                <% if person.second.photo.attached? %>
+                  <%= link_to image_tag(person.second.photo.variant(resize: "120x120>", extent: "120x120")), 
+                      controller: 'persons', action: 'show', id: person.second.id %>
+                <% else %>
+                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.second.id %>
+                <% end %>
+              </div>
+              <div class="details">
+                <div class="job-title">
+                  <%= person.second.job_title %>
+                </div>
+                <%= phone_formatted(person.second.phone_number) %>
+                <br />
+                <%= person.second.email_address %>
+                <% unless person.second.springshare_id.blank? %>
+                  <div class="appt_button">
+                    <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.second.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div> <!-- spacer -->
+        </div>
+      <% end %>
+
+      <% if person.size == 1  %>
+      
+        <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <% else %> 
+          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <% end %>
+        <div class="spacer both-ends">
+          <div class="title">
+                <%= link_to (person.first.first_name+' '+person.first.last_name), 
+                      controller: 'persons', action: 'show', id: person.first.id %></div>
+            <div class="info">
+              <div class="photo">
+                <% if person.first.photo.attached? %>
+                  <%= link_to image_tag(person.first.photo.variant(resize: "120x120>", extent: "120x120")), 
+                      controller: 'persons', action: 'show', id: person.first.id %>
+                <% else %>
+                  <%= link_to image_tag('T-borderless.gif'), controller: 'persons', action: 'show', id: person.first.id %>
+                <% end %>
+              </div>
+              <div class="details">
+                <div class="job-title">
+                  <%= person.first.job_title %>
+                </div>
+                <%= phone_formatted(person.first.phone_number) %>
+                <br />
+                <%= person.first.email_address %>
+                <% unless person.first.springshare_id.blank? %>
+                  <div class="appt_button">
+                    <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.first.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div> <!-- spacer -->
+        </div>
+      <% end %>
+
+      <% end %> <!-- each -->
+    </div>
+
+
+  </div>
+</div>
+<% end %>

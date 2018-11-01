@@ -36,6 +36,42 @@
     }
 	}
 }
+.groupsRow {
+  margin-top: 42px;
+  margin-bottom: 42px;
+  .cta {
+		background-color: $seagreen-complement;
+		border: solid $seagreen 1px;
+		text-align: center;
+  	display: table;
+  }
+	.cta.first {
+		border-top-left-radius: 42px;
+		border-bottom-left-radius: 42px;
+	}
+	.cta.last {
+		border-top-right-radius: 42px;
+		border-bottom-right-radius: 42px;
+	}
+	.cta.both {
+		border-radius: 42px;
+		vertical-align: middle;
+	}
+	.group {
+		height: 99px;
+		margin: auto;
+		border: 0;
+		background-color: transparent;
+		vertical-align: middle;
+	  font-size: 1.15rem;
+	  margin: auto;
+    display: table-cell;
+    vertical-align: middle;
+    a {
+    	color: $black;
+    }
+	}
+}
 
 .policiesRow {
   margin-top: 42px;

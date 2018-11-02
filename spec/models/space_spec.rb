@@ -97,5 +97,12 @@ RSpec.describe Space, type: :model do
         expect { space.save! }.to_not raise_error
       end
     end
+
+    context "Policy reference" do
+      example "Add space policy" do
+        space = FactoryBot.create(:space_with_building,  policies: [Policy.create(name: "Prime Directive", description: "Don't Interfere", effective_date: Date.new(2001, 1, 1), expiration_date: Date.new(2001, 1, 2))])
+        expect(space.policies.first).to eq(Policy.first)
+      end
+    end
   end
 end

@@ -96,4 +96,12 @@ RSpec.describe Group, type: :model do
       end
     end
   end
+
+  context "Policy reference" do
+    let(:group) { FactoryBot.build(:group, spaces: [space], chair_dept_head: chair_person) }
+    example "Add group policy" do
+      group = FactoryBot.create(:space_with_building,  policies: [Policy.create(name: "Prime Directive", description: "Don't Interfere", effective_date: Date.new(2001, 1, 1), expiration_date: Date.new(2001, 1, 2))])
+      expect(space.policies.first).to eq(Policy.first)
+    end
+  end
 end

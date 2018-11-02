@@ -14,8 +14,7 @@ class Building < ApplicationRecord
 
   has_one_attached :photo, dependent: :destroy
 
-  has_many :building_policy
-  has_many :policies, through: :building_policy
+  has_many :policies, as: :policy_makeable
 
   auto_strip_attributes :email
 

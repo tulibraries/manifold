@@ -11,7 +11,6 @@ FactoryBot.define do
       And boundary lines.
       EOD
     }
-
     effective_date { "2018-10-29" }
     expiration_date { "2018-10-29" }
   end

@@ -31,8 +31,7 @@ class Space < ApplicationRecord
   has_many :service_space
   has_many :related_services, through: :service_space, source: :service
 
-  has_many :space_policy
-  has_many :policies, through: :space_policy
+  has_many :policies, as: :policy_makeable
 
   def self.arrange_as_array(options = {}, hash = nil)
     hash ||= arrange(options)

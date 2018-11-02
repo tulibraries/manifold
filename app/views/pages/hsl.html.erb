@@ -1,0 +1,186 @@
+<% content_for :body_class, "minipage" %>
+<h1 class="title">
+	Health Sciences Libraries
+</h1>
+<div id="hsl">
+<div id="searchFields">
+	<div id="searchOptions">
+		<ul>
+			<li>Pubmed</li>
+			<li>Everything</li>
+			<li>Journals</li>
+		</ul>
+		<div id="advancedSearchLink">
+			Advanced Search
+		</div>
+	</div>
+		<div id="dateTime">
+			<div class="displayRow">
+				<div id="date">
+					<%= @todays_date %>
+				</div>
+			</div>
+			<div class="displayRow">
+				<div id="time">
+					<% unless @ginsburg_hours.nil? %> 
+						<%= link_to "Ginsburg Library", hour_path("ginsburg") %> | <%= @ginsburg_hours %><br />
+          <% end %>
+					<% unless @podiatry_hours.nil? %><%= link_to "Podiatry Library", hour_path("podiatry") %> | <%= @podiatry_hours %>
+          <% end %>						
+				</div>
+				<div id="allHours">
+					<%= link_to "See all libraries hours", hours_path %> >
+				</div>
+			</div>
+		</div>
+</div>
+
+
+<div class="row ctaRow">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaFirst">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Help with Research</span>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMidOne">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Resources &amp; Media</span>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMidTwo">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Innovation Space</span>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaLast">
+			<div class="hsl-list">
+				<ul>
+					<li class="oddrow">
+						<%= link_to "Ginsburg Library", building_path(3) %> >
+					</li>
+					<li>
+						<%= link_to "Podiatry Library", building_path(4) %> >
+					</li>
+					<li class="oddrow">HSL Staff Directory ></li>
+					<li>HSL Services ></li>
+				</ul>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<div class="vertical-stripes">
+			<h1><span>News &amp; Highlights</span></h1>
+		</div>
+	</div>
+</div>
+
+<div class="row ctaRow news">
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaFirst">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Help with Research</span>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "See more >", "#", class: 'see-more' %>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMid">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Find a study space</span>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "See more >", "#", class: 'see-more' %>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaMid">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Print my paper</span>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "See more >", "#", class: 'see-more' %>
+		  </div>
+		</div>
+	</div>
+	<div class="col col-sm-6 col-lg-4 col-xl-3">
+		<div class="card ctaLast">
+			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+		  <div class="card-body">
+		    <span class="card-title">Print my paper</span>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "See more >", "#", class: 'see-more' %>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<div class="vertical-stripes">
+			<h1><span>Selected Resources</span></h1>
+		</div>
+	</div>
+</div>
+
+  <div class="row hslResourcesRow">
+    
+      <div class="col-md-1"></div>
+        <div class="col-sm-10 offset-sm-1 col-md-3 offset-md-1 m-2 cta first">
+          <div class="resource">
+            <%= link_to "Dynamed-Plus", "http://libproxy.temple.edu/login?url=http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=dynamed&custid=s8483746" %>
+          </div>
+        </div>
+ 
+        <div class="col-sm-10 offset-sm-1 col-md-3 m-2 cta">
+          <div class="resource">
+              <%= link_to "Access Pharmacy", "http://libproxy.temple.edu/login?url=http://accesspharmacy.mhmedical.com/" %>
+          </div>
+        </div>
+
+        <div class="col-sm-10 offset-sm-1 col-md-3 m-2 cta last">
+          <div class="resource">
+              <%= link_to "Access Medicine", "http://libproxy.temple.edu/login?url=http://accessmedicine.mhmedical.com/" %>
+          </div>
+        </div>
+      <div class="col-md-1"></div>
+
+      <div class="col-md-1"></div>
+        <div class="col-sm-10 offset-sm-1 col-md-3 offset-md-1 m-2 cta first">
+          <div class="resource">
+            <%= link_to "Access Surgery", "http://libproxy.temple.edu/login?url=http://accesssurgery.mhmedical.com/" %>
+          </div>
+        </div>
+ 
+        <div class="col-sm-10 offset-sm-1 col-md-3 m-2 cta">
+          <div class="resource">
+              <%= link_to "CINAHL", "http://libproxy.temple.edu/login?url=http://search.ebscohost.com/login.aspx?profile=ehost&defaultdb=cin20" %>
+          </div>
+        </div>
+
+        <div class="col-sm-10 offset-sm-1 col-md-3 m-2 cta last">
+          <div class="resource">
+              <%= link_to "OVID", "http://libproxy.temple.edu/login?url=http://ovidsp.ovid.com/autologin" %>
+          </div>
+        </div>
+      <div class="col-md-1"></div>
+
+    </div>
+
+
+

@@ -33,5 +33,6 @@ Rails.application.routes.draw do
 
   controller :pages do
     get "ambler" => :ambler
+    get "hsl" => :hsl
   end
 end

@@ -48,13 +48,27 @@
 	top: 64px;
 }
 
+#home {
+	position: relative; top: -47px; 
+}
+#ambler {
+	position: relative; top: -126px; 
+}
+#hsl {
+	position: relative; top: -126px; 
+}
+
 #home #searchFields {
 	background: transparent asset-data-url('charles.jpg') no-repeat 0% 0%;
 }
 #ambler #searchFields {
 	background: transparent asset-data-url('ambler.jpg') no-repeat 0% 0%;
 }
-#home #searchFields, #ambler #searchFields {
+#hsl #searchFields {
+	background: transparent asset-data-url('hsl.jpg') no-repeat 0% 0%;
+}
+
+#home #searchFields, #ambler #searchFields, #hsl #searchFields {
 	position: relative;
 	width: 100%;
 	z-index: 0;
@@ -73,7 +87,7 @@
 		}
 	}
 	height:550px;
-	background-size:cover;
+	background-size: cover;
 	background-position-y: center;
 	#dateTime {
 		position: absolute;
@@ -113,6 +127,33 @@
 		}
 	}
 }
+
+#hsl #searchFields {
+	#dateTime {
+		width: 50%;
+		margin-left: 25%;
+		display: table;
+		#date {
+			width: 85%;
+			margin: auto;
+		}
+		.displayRow {
+			display: table;
+			width: 100%;
+		}
+		#time {
+			display: table-cell;
+			vertical-align: middle;
+			width: 100%;
+			/*font-size: 99%;*/
+		}
+		#allHours {
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+}
+
 #searchOptions {
 	width: 55%;
 	margin: auto;

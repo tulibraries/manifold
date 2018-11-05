@@ -203,4 +203,37 @@
  	}
 }
 
+/* //////////////////////////// PEOPLE ///////////////////////////// */
 
+.ctaRow.person {
+	margin-top: 0;
+	text-align: right;
+	.card {	
+		background-color: $white;
+		border: solid $purple 2px;
+		color: black;
+	}
+ 	.card-body {
+ 		text-align: left;
+ 		padding: 10px 14px 4px 14px;
+		max-height: 1500px;
+		line-height: 2rem;
+ 	}
+ 	.card-title {
+ 		font-size: 145%;
+ 		padding: 7px;
+ 		padding-left: 21px;
+ 		text-align: left;
+ 		font-weight: 600;
+ 		white-space: nowrap;
+ 		background-color: $purple-complement;
+ 	}
+ 	.card-text {
+ 		font-size: 90%;
+ 		margin-bottom: 0;
+ 		line-height: 1.15rem;
+ 	}
+
+	.ctaLast.contact {
+	}
+}

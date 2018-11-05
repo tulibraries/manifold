@@ -53,6 +53,8 @@ gem "cancancan", "~> 2.0"
 gem "listen", ">= 3.0.5", "< 3.2"
 gem "yaml_db"
 gem "auto_strip_attributes"
+gem "simple_form"
+gem "mail_form"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -28,20 +28,23 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
+  resources :forms, only: [:new, :create]
+  get 'forms/*type', to: 'forms#new'
 
-  controller :forms do
-    get "forms" => :index
-    get "forms/missing-book" => :missing_book
-    get "forms/recall" => :recall
-    get "forms/contact" => :contact
-    get "forms/incident-report" => :incident_report
-    get "forms/ask-scrc" => :ask_scrc
-    post "forms/missing-book" => :missing_book
-    post "forms/recall" => :recall
-    post "forms/contact" => :contact
-    post "forms/incident-report" => :incident_report
-    post "forms/ask-scrc" => :ask_scrc
-  end
+
+  # controller :forms do
+  #   get "forms" => :index
+  #   get "forms/missing-book" => :missing_book
+  #   get "forms/recall" => :recall
+  #   get "forms/contact" => :contact
+  #   get "forms/incident-report" => :incident_report
+  #   get "forms/ask-scrc" => :ask_scrc
+  #   post "forms/missing-book" => :missing_book
+  #   post "forms/recall" => :recall
+  #   post "forms/contact" => :contact
+  #   post "forms/incident-report" => :incident_report
+  #   post "forms/ask-scrc" => :ask_scrc
+  # end
 
   controller :pages do
     get "ambler" => :ambler

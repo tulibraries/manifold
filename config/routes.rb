@@ -39,6 +39,10 @@ Rails.application.routes.draw do
   resources :services, only: [:index, :show]
   resources :policies, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
+  resources :forms, only: [:new, :create]
+
+  get 'forms/*type', to: 'forms#new'
+
 
   controller :pages do
     get "ambler" => :ambler

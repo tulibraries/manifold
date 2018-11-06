@@ -1,15 +1,46 @@
 # frozen_string_literal: true
 
 class LibraryHoursController < ApplicationController
+  before_action :get_locations, only: [:index, :show]
+  before_action :set_location, only: [:show]
+  before_action :set_dates, only: [:index, :show]
+
   def index
-    @locations = LibraryHours.all.pluck(:location_id).uniq
+    @all_hours = Array.new
+    locations = [
+      "paley",
+      "media",
+      "doc_del",
+      "ref_desk",
+      "v_ref",
+      "thinktank",
+      "scrc",
+      "dsc",
+      "guest_computers",
+      "ambler",
+      "ginsburg",
+      "innovation",
+      "podiatry",
+      "blockson",
+    ] 
+    locations.map { |x| 
+      
+      @hours = {x => LibraryHours.where(location_id: x, date: @sunday..@saturday)}
+      @all_hours << @hours
+    }
   end
   def show
-    @locations = LibraryHours.distinct.pluck(:location_id)
-    @today = Date.today
-    sunday = @today.beginning_of_week - 1
-    saturday = @today.end_of_week
+    @hours = LibraryHours.where(location_id: params[:id])
+    @seven = LibraryHours.where(location_id: params[:id], date: @sunday..@saturday)
+  end
 
+  def set_dates
+    @today = Date.today
+    @sunday = @today.beginning_of_week - 1
+    @saturday = @today.end_of_week
+  end
+
+  def set_location
     @location = Building.where(hours: params[:id])
     if @location.blank?
       @location = Space.where(hours: params[:id])
@@ -17,8 +48,9 @@ class LibraryHoursController < ApplicationController
     if @location.blank?
       @location = Service.where(hours: params[:id])
     end
+  end
 
-    @hours = LibraryHours.where(location_id: params[:id])
-    @seven = LibraryHours.where(location_id: params[:id], date: sunday..saturday)
+  def get_locations
+    @locatio = LibraryHours.distinct.pluck(:location_id)
   end
 end

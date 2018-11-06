@@ -108,7 +108,7 @@ GEM
     concord (0.1.5)
       adamantium (~> 0.2.0)
       equalizer (~> 0.0.9)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.1)
     crass (1.0.4)
     database_cleaner (1.7.0)
     datetime_picker_rails (0.0.7)
@@ -177,7 +177,7 @@ GEM
     ice_nine (0.11.2)
     io-like (0.3.0)
     jaro_winkler (1.5.1)
-    jbuilder (2.7.0)
+    jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jquery-rails (4.3.3)
@@ -473,7 +473,7 @@ DEPENDENCIES
   google-api-client (~> 0.24)
   guard-rspec
   honeybadger (~> 4.0)
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.8)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.8)

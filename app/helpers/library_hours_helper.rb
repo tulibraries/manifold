@@ -9,6 +9,7 @@ module LibraryHoursHelper
     # if location.nil?
     #   location = Service.find_by(hours: slug)
     # end
+    # binding.pry
     unless location.nil?
       location.name
     end

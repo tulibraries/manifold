@@ -6,21 +6,31 @@
 </div>
 <div class="row">
   <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span>Locations and Services Hours</span></h2>
+    <div class="vertical-stripes">
+      <h1><span>Locations and Services Hours</span></h1>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
     <div class="col">
+      <%# binding.pry %>
+      <% @all_hours.each do |location| %>
+      <% unless location_name(location.first.first).nil? %>
+      <h2><%= location_name(location.first.first)  %></h2>
+      
       <ul>
-        <% @locations.each do |location| %>
-          <li>
-            <%= link_to location_name(location), root_path+"hours/"+location %>
-          </li>
+        <% unless location_name(location.first.first).nil? %>
+          <% location.first.second.each do |hours| %>
+            <li>
+              <%= hours.date %>, <%=hours.hours %>
+            </li>
+          <% end %>
         <% end %>
-        </ul>
+      </ul>
+
+      <% end %>
+      <% end %>
     </div>
   </div>
 </div>

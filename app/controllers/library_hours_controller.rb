@@ -24,11 +24,9 @@ class LibraryHoursController < ApplicationController
       "blockson",
     ] 
     locations.map { |x| 
-      # binding.pry
       if ["paley","media","doc_del","ref_desk","v_ref","thinktank","scrc","dsc","scrc","guest_computers"].include?(x) {
         @hours = {"paley" => [x, LibraryHours.where(location_id: x, date: @sunday..@saturday)]}
         @paley_hours.push(@hours)
-      binding.pry
       }
       elsif ["ginsburg","podiatry","innovation"].include?(x) {
         @hours = {"hsl" => [x, LibraryHours.where(location_id: x, date: @sunday..@saturday)]}

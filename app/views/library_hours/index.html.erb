@@ -14,8 +14,8 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%# binding.pry %>
       <% @all_hours.each do |location| %>
+      <% binding.pry %>
       <% unless location_name(location.first.first).nil? %>
       <h2><%= location_name(location.first.first)  %></h2>
       

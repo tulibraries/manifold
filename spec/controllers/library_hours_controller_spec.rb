@@ -58,5 +58,48 @@ RSpec.describe LibraryHoursController, type: :controller do
       expect(response).to be_success
     end
   end
+  describe "build hours data structure" do 
+    let(:input) {
+      [{building: "paley", spaces: ["paley","media"]}]
+    }
+    let(:output) {
+      [{
+        building: "paley",
+        spaces: [{slug: "media", hours: [["12/10/2018","7am - 8pm"]]}]
+      }]
+    }
+    let(:data_structure) {
+      controller.send(:build_hours_data_structure, input)
+    }
+    
+    it "returns the expected output" do 
+      expect(data_structure).to be_an Array
+      expect(data_structure.first).to have_key :building
+      expect(data_structure.first).to have_key :spaces
+      expect(data_structure.first).to be_a Hash
+      expect(data_structure.first).to have_key :building
+      expect(data_structure.first[:building]).to be_a String 
+      expect(data_structure.first[:spaces].first).to be_a Hash 
+      expect(data_structure.first[:spaces].first).to have_key :slug
+      expect(data_structure.first[:spaces].first[:slug]).to be_a String
+      expect(data_structure.first[:spaces].first).to have_key :hours
+      expect(data_structure.first[:spaces].first[:hours]).to be_an Array 
+      expect(data_structure.first[:spaces].first[:hours].first).to be_an Array
+      expect(data_structure.first[:spaces].first[:hours].first.first).to be_a String
+    end
+  end
+end
 
+class LibraryHours
+  def self.where(location_id:, date:)
+    [
+      ["12/10/2018","7am - 8pm"], 
+      ["12/10/2018","7am - 8pm"], 
+      ["12/10/2018","7am - 8pm"], 
+      ["12/10/2018","7am - 8pm"], 
+      ["12/10/2018","7am - 8pm"], 
+      ["12/10/2018","7am - 8pm"], 
+      ["12/10/2018","7am - 8pm"]
+    ]
+  end
 end

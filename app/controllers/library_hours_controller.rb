@@ -6,45 +6,40 @@ class LibraryHoursController < ApplicationController
   before_action :set_dates, only: [:index, :show]
 
   def index
-    @all_hours = Array.new
-    locations = [
-      "paley",
-      "media",
-      "doc_del",
-      "ref_desk",
-      "v_ref",
-      "thinktank",
-      "scrc",
-      "dsc",
-      "guest_computers",
-      "ambler",
-      "ginsburg",
-      "innovation",
-      "podiatry",
-      "blockson",
+    @buildings = [
+      {
+        slug: "paley",
+        spaces: [ 
+                  "paley",
+                  "media",
+                  "doc_del",
+                  "ref_desk",
+                  "v_ref",
+                  "thinktank",
+                  "scrc",
+                  "dsc",
+                  "guest_computers"
+                ]
+      },
+      {
+        slug: "hsl",
+        spaces: ["ginsburg","innovation","podiatry"]
+      },
+      {
+        slug: "ambler",
+        spaces: ["ambler"]
+      },
+      {
+        slug: "blockson",
+        spaces: ["blockson"]
+      }
     ] 
-    locations.map { |x| 
-      # binding.pry
-      if ["paley","media","doc_del","ref_desk","v_ref","thinktank","scrc","dsc","scrc","guest_computers"].include?(x) {
-        @hours = {"paley" => [x, LibraryHours.where(location_id: x, date: @sunday..@saturday)]}
-        @paley_hours.push(@hours)
-      binding.pry
-      }
-      elsif ["ginsburg","podiatry","innovation"].include?(x) {
-        @hours = {"hsl" => [x, LibraryHours.where(location_id: x, date: @sunday..@saturday)]}
-        @hsl_hours.push(@hours)
-      }
-      elsif ["ambler"].include?(x) {
-        hours = {"ambler" => [x, LibraryHours.where(location_id: x, date: @sunday..@saturday)]}
-        @ambler_hours.push(@hours)
-      }
-      elsif ["blockson"].include?(x) {
-        hours = {"blockson" => [x, LibraryHours.where(location_id: x, date: @sunday..@saturday)]}
-        @blockson_hours.push(@hours)
-      }
+    @buildings.each do |building|
+        # binding.pry
+      building.values.second.map! do |space| 
+        space = [building.values.first, LibraryHours.where(location_id: space, date: @sunday..@saturday)]
       end
-      @all_hours = @paley_hours + @hsl_hours + @ambler_hours + @blockson_hours
-    }
+    end
   end
   def show
     @hours = LibraryHours.where(location_id: params[:id])
@@ -68,6 +63,15 @@ class LibraryHoursController < ApplicationController
   end
 
   def get_locations
-    @locatio = LibraryHours.distinct.pluck(:location_id)
+    @location = LibraryHours.distinct.pluck(:location_id)
+  end
+
+  def build_hours_data_structure(input)
+    input.map do |building|
+      building[:spaces].map! do |space|
+        {slug: space, hours: LibraryHours.where(location_id: space, date: @sunday..@saturday)}
+      end
+      building
+    end
   end
 end

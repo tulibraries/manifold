@@ -82,10 +82,10 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
         phone_number:  Faker::Number.number(10),
         email_address: fake_email,
         group_type:    Rails.configuration.group_types.sample,
-        chair_dept_head: Person.all.sample,
+        chair_dept_heads: [Person.all.sample],
         external:      [false, true].sample,
         persons:       Person.all.sample(rand(Person.count)),
-        spaces:        [Space.all.sample])
+        space:        Space.all.sample)
     end
 
     for e in 1..5 do

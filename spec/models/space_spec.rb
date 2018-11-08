@@ -3,9 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Space, type: :model do
-  after(:all) do
-    DatabaseCleaner.clean
-  end
 
   context "Required Fields" do
     required_fields = [

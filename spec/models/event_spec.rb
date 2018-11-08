@@ -3,9 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Event, type: :model do
-  after(:all) do
-    DatabaseCleaner.clean
-  end
 
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }

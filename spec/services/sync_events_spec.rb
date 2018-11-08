@@ -105,7 +105,6 @@ RSpec.describe SyncService::Events, type: :service do
     let(:external_events) { described_class.call(events_url: file_fixture("fuzzy_events_external.xml").to_path) }
 
     before(:example) do
-      DatabaseCleaner.clean
       @building = FactoryBot.create(:building)
       @space = FactoryBot.create(:space, building: @building)
       @person = FactoryBot.create(:person, spaces: [@space])
@@ -175,10 +174,6 @@ RSpec.describe SyncService::Events, type: :service do
   end
 
   context "trying to ingest the same record twice" do
-    before(:example) do
-      DatabaseCleaner.clean
-    end
-
     let(:sync_event) { described_class.call(events_url: file_fixture("single_event.xml").to_path) }
 
     it "does not update the record" do

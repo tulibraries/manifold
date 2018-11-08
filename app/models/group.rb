@@ -3,6 +3,7 @@
 class Group < ApplicationRecord
   include Validators
   include InputCleaner
+  include HasPolicies
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true
@@ -22,6 +23,7 @@ class Group < ApplicationRecord
 
   has_many :service_group
   has_many :related_services, through: :service_group, source: :service
+
 
   def get_chair
     members = Array.new

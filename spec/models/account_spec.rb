@@ -3,9 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Account, type: :model do
-  after(:all) do
-    DatabaseCleaner.clean
-  end
 
   describe "field validators" do
     let (:account) { FactoryBot.build(:account) }

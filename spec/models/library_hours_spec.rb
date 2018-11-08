@@ -3,9 +3,6 @@
 require "rails_helper"
 
 RSpec.describe LibraryHours, type: :model do
-  after(:all) do
-    DatabaseCleaner.clean
-  end
 
   let(:library_hour) { FactoryBot.create(:library_hour) }
 

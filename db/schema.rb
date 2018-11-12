@@ -221,6 +221,16 @@ ActiveRecord::Schema.define(version: 2018_10_29_194113) do
     t.index ["policy_makeable_type", "policy_makeable_id"], name: "index_policies_on_policy_makeable_type_and_policy_makeable_id"
   end
 
+  create_table "policy_applications", force: :cascade do |t|
+    t.string "policyable_type"
+    t.integer "policyable_id"
+    t.integer "policy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["policy_id"], name: "index_policy_applications_on_policy_id"
+    t.index ["policyable_type", "policyable_id", "policy_id"], name: "index_uniqueness_policy_application", unique: true
+  end
+
   create_table "service_groups", force: :cascade do |t|
     t.integer "service_id"
     t.integer "group_id"

@@ -3,6 +3,7 @@
 class Group < ApplicationRecord
   include Validators
   include InputCleaner
+  include HasPolicies
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true
@@ -23,6 +24,21 @@ class Group < ApplicationRecord
   has_many :service_group
   has_many :related_services, through: :service_group, source: :service
 
-  has_many :group_policy
-  has_many :policies, through: :group_policy
+
+  def get_chair
+    members = Array.new
+    chair = persons.select { |p| chair_dept_heads.include?(p) }
+    persons.to_a.each do |p|
+      members << p
+    end
+    chair.sort_by { |p| p.last_name }.reverse.each do |q|
+      members.unshift(q)
+    end
+    members.uniq
+  end
+  def todays_hours
+    unless space.nil?
+      todays_hours = space.todays_hours
+    end
+  end
 end

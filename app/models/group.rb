@@ -24,7 +24,6 @@ class Group < ApplicationRecord
   has_many :service_group
   has_many :related_services, through: :service_group, source: :service
 
-
   def get_chair
     members = Array.new
     chair = persons.select { |p| chair_dept_heads.include?(p) }

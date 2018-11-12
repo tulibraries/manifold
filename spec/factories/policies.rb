@@ -2,16 +2,9 @@
 
 FactoryBot.define do
   factory :policy do
-    sequence(:name) { |n| "Policy #{n}" }
-    description {
-      <<~EOD.strip.gsub(/\n/, " ")
-      No dogs allowed,
-      You're not our crowd,
-      Obey the signs,
-      And boundary lines.
-      EOD
-    }
-    effective_date { "2018-10-29" }
-    expiration_date { "2018-10-29" }
+    sequence(:name) { |n| "Prime Directive #{n}" }
+    description { "Don't Interfere" }
+    effective_date { Date.new(2001, 1, 1) }
+    expiration_date { Date.new(2001, 1, 2) }
   end
 end

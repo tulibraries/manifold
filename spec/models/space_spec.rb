@@ -100,8 +100,10 @@ RSpec.describe Space, type: :model do
 
     context "Policy reference" do
       example "Add space policy" do
-        space = FactoryBot.create(:space_with_building,  policies: [Policy.create(name: "Prime Directive", description: "Don't Interfere", effective_date: Date.new(2001, 1, 1), expiration_date: Date.new(2001, 1, 2))])
-        expect(space.policies.first).to eq(Policy.first)
+        policy = FactoryBot.create(:policy)
+        space = FactoryBot.create(:space_with_building)
+        space.policies << policy
+        expect(space.policies).to include(policy)
       end
     end
   end

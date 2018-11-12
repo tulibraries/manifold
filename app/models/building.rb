@@ -3,6 +3,7 @@
 class Building < ApplicationRecord
   include Validators
   include InputCleaner
+  include HasPolicies
 
   validates :name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, presence: true
   validates :email, presence: true, email: true
@@ -13,8 +14,6 @@ class Building < ApplicationRecord
   has_many :spaces
 
   has_one_attached :photo, dependent: :destroy
-
-  has_many :policies, as: :policy_makeable
 
   auto_strip_attributes :email
 

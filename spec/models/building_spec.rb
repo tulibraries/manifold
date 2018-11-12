@@ -63,8 +63,10 @@ RSpec.describe Building, type: :model do
 
     context "Policy reference" do
       example "Add building policy" do
-        building = FactoryBot.create(:building,  policies: [Policy.create(name: "Prime Directive", description: "Don't Interfere", effective_date: Date.new(2001, 1, 1), expiration_date: Date.new(2001, 1, 2))])
-        expect(building.policies.first).to eq(Policy.first)
+        policy = FactoryBot.create(:policy)
+        building = FactoryBot.create(:building)
+        building.policies << policy
+        expect(building.policies).to include(policy)
       end
     end
   end

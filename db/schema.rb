@@ -211,14 +211,8 @@ ActiveRecord::Schema.define(version: 2018_10_29_194113) do
     t.text "description"
     t.date "effective_date"
     t.date "expiration_date"
-    t.string "policies_type"
-    t.integer "policies_id"
-    t.string "policy_makeable_type"
-    t.integer "policy_makeable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["policies_type", "policies_id"], name: "index_policies_on_policies_type_and_policies_id"
-    t.index ["policy_makeable_type", "policy_makeable_id"], name: "index_policies_on_policy_makeable_type_and_policy_makeable_id"
   end
 
   create_table "policy_applications", force: :cascade do |t|

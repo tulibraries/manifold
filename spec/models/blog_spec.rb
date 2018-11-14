@@ -3,10 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Blog, type: :model do
-  after(:all) do
-    DatabaseCleaner.clean
-  end
-
 
   let(:blog) { FactoryBot.build(:blog) }
 

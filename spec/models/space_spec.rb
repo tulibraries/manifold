@@ -3,9 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Space, type: :model do
-  after(:all) do
-    DatabaseCleaner.clean
-  end
 
   context "Required Fields" do
     required_fields = [
@@ -98,6 +95,15 @@ RSpec.describe Space, type: :model do
       example "valid space ID" do
         space = FactoryBot.build(:space_with_parent)
         expect { space.save! }.to_not raise_error
+      end
+    end
+
+    context "Policy reference" do
+      example "Add space policy" do
+        policy = FactoryBot.create(:policy)
+        space = FactoryBot.create(:space_with_building)
+        space.policies << policy
+        expect(space.policies).to include(policy)
       end
     end
   end

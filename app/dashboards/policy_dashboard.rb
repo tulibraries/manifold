@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class SpaceDashboard < BaseDashboard
+require "administrate/base_dashboard"
+
+class PolicyDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,23 +10,13 @@ class SpaceDashboard < BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    building: Field::BelongsTo,
-    occupant: Field::HasMany,
-    persons: Field::HasMany,
-    space_group: Field::HasMany,
-    groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
-    hours: Field::String,
-    accessibility: Field::Text,
-    photo: PhotoField.with_options(admin_only: true),
-    phone_number: PhoneField,
-    email: Field::Email,
-    policies: Field::HasMany,
+    effective_date: Field::DateTime,
+    expiration_date: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    ancestry: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -33,24 +25,22 @@ class SpaceDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
     :name,
-    :building,
-    :phone_number,
+    :description,
+    :effective_date,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :id,
     :name,
-    :photo,
     :description,
-    :building,
-    :persons,
-    :hours,
-    :accessibility,
-    :phone_number,
-    :email,
-    :policies,
+    :effective_date,
+    :expiration_date,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -58,22 +48,13 @@ class SpaceDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :photo,
     :description,
-    :building,
-    :email,
-    :persons,
-    :hours,
-    :accessibility,
-    :phone_number,
-    :policies,
+    :effective_date,
+    :expiration_date,
   ].freeze
 
-  # Overwrite this method to customize how spaces are displayed
-  # across all pages of the admin dashboard.
-  #
-  def display_resource(space)
-    "#{space.name}"
+  def display_resource(policy)
+    "##{policy.id} #{policy.name}"
   end
 
   def tinymce?

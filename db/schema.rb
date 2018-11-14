@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_23_203933) do
+ActiveRecord::Schema.define(version: 2018_11_14_161748) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -144,8 +144,6 @@ ActiveRecord::Schema.define(version: 2018_10_23_203933) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "phone_number"
-    t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "group_type"
@@ -206,6 +204,25 @@ ActiveRecord::Schema.define(version: 2018_10_23_203933) do
     t.string "springshare_id"
   end
 
+  create_table "policies", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.date "effective_date"
+    t.date "expiration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "policy_applications", force: :cascade do |t|
+    t.string "policyable_type"
+    t.integer "policyable_id"
+    t.integer "policy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["policy_id"], name: "index_policy_applications_on_policy_id"
+    t.index ["policyable_type", "policyable_id", "policy_id"], name: "index_uniqueness_policy_application", unique: true
+  end
+
   create_table "service_groups", force: :cascade do |t|
     t.integer "service_id"
     t.integer "group_id"
@@ -234,6 +251,7 @@ ActiveRecord::Schema.define(version: 2018_10_23_203933) do
     t.string "service_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "hours"
   end
 
   create_table "space_groups", force: :cascade do |t|

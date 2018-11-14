@@ -21,6 +21,7 @@ class BuildingDashboard < BaseDashboard
     phone_number: PhoneField,
     campus: Field::String,
     email: Field::Email,
+    policies: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -49,6 +50,7 @@ class BuildingDashboard < BaseDashboard
     :phone_number,
     :campus,
     :email,
+    :policies,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -67,6 +69,7 @@ class BuildingDashboard < BaseDashboard
     :google_id,
     :hours,
     :email,
+    :policies,
   ].freeze
 
   # Overwrite this method to customize how buildings are displayed

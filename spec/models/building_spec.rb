@@ -3,9 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Building, type: :model do
-  after(:all) do
-    DatabaseCleaner.clean
-  end
 
   context "Required Fields" do
     required_fields = [
@@ -61,6 +58,15 @@ RSpec.describe Building, type: :model do
       example "invalid phone number - blank " do
         building.phone_number = ""
         expect { building.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
+      end
+    end
+
+    context "Policy reference" do
+      example "Add building policy" do
+        policy = FactoryBot.create(:policy)
+        building = FactoryBot.create(:building)
+        building.policies << policy
+        expect(building.policies).to include(policy)
       end
     end
   end

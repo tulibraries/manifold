@@ -1,40 +1,74 @@
 <div class="row">
   <div class="col breadcrumbs">
     <%= link_to "Home", root_path.to_s %> 
-    Hours
+    Library Hours
   </div>
 </div>
 <div class="row">
   <div class="col">
     <div class="vertical-stripes">
-      <h1><span>Locations and Services Hours</span></h1>
+      <h1><span>Library Hours</span></h1>
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
+
+<div class="row date-nav text-center">
+  <div class="col"><%= @week %>
+    <%= link_to "<-", {controller: "library_hours", action: "index", week: (@week-1)} %> 
+    <%= @sunday.strftime("%b %d, %Y") %> - <%= (@saturday-1).strftime("%b %d, %Y") %> 
+    <%= link_to "->", {controller: "library_hours", action: "index", week: (@week+1)} %>
+  </div>
+</div>
+
+<% @buildings.each do |location| %>
+<% unless location_name(location.values.first).nil? %>
+
+  <div class="row" style="margin-top: 35px;">
     <div class="col">
-      <% @buildings.each do |location| %>
-      <%# binding.pry %>
-      <% unless location_name(location.values.first).nil? %>
-      <h2><%= location_name(location.values.first)  %></h2>
-
-      <ul>
-        <% unless location_name(location.values.first).nil? %>
-     <%# binding.pry %>
-          <% location.values.second.each do |hours| %>
-          <%= location_name(hours.second.first.location_id) %>
-            <% hours.second.each do |time| %>
-              <li>
-                <%= time.date %>, <%= time.hours %>
-              </li>
-            <% end %>
-          <% end %>
-        <% end %>
-      </ul>
-
-      <% end %>
-      <% end %>
+      <h2 style="padding-left: 21px;border-width: 4px;color: #A50030">
+        <%= location_name(location.values.first) %>
+      </h2>
     </div>
   </div>
-</div>
+  <div class="row" style="border-bottom: solid #ccc 1px;padding-bottom:10px;margin-bottom: 14px;">
+    <div class="col offset-md-2"></div>
+      <% 7.times do |date| %>
+      <% if @sunday+date == @today %>
+        <div class="col today day-of-week">
+        <% else %>
+        <div class="col">
+      <% end %>
+          <%= (@sunday+date).strftime("%a %d") %> 
+        </div>
+      <% end %>
+   </div>
+
+    <% unless location_name(location.values.first).nil? %>
+      <% location.values.second.each do |hours| %>
+
+        <div class="row" style="margin-top: 14px;">>
+          <div class="col-3"> 
+            <h3 style="padding-left: 28px;"><%= location_name(hours.second.first.location_id) %></h3>
+          </div>
+
+            <% hours.second.each_with_index do |time,index| %> 
+              <% if @today.strftime("%w") == index.to_s %>
+                <div class="col today">
+                <% else %>
+                <div class="col">
+              <% end %>
+              <% if time.hours.downcase == "closed" %>
+                <span class="closed"><%= time.hours %></span>
+                <% else %>
+                <%= time.hours %>
+              <% end %>
+              </div>
+            <% end %>
+
+        </div>
+      <% end %>
+    <% end %>
+
+<% end %>
+<% end %>
+

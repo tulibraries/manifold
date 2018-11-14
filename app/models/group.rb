@@ -3,6 +3,7 @@
 class Group < ApplicationRecord
   include Validators
   include InputCleaner
+  include HasPolicies
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true

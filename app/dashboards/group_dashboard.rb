@@ -23,6 +23,7 @@ class GroupDashboard < BaseDashboard
     group_type: Field::Select.with_options(
       collection: Rails.configuration.group_types
       ),
+    policies: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -47,7 +48,8 @@ class GroupDashboard < BaseDashboard
     :persons,
     :space,
     :external,
-    :documents,
+    :document,
+    :policies,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -60,8 +62,9 @@ class GroupDashboard < BaseDashboard
     :external,
     :chair_dept_heads,
     :persons,
-    :space,
-    :documents,
+    :spaces,
+    :document,
+    :policies,
   ].freeze
 
   # Overwrite this method to customize how groups are displayed

@@ -22,8 +22,12 @@ class LibraryHoursController < ApplicationController
                 ]
       },
       {
-        slug: "hsl",
-        spaces: ["ginsburg","innovation","podiatry"]
+        slug: "ginsburg",
+        spaces: ["ginsburg","innovation"]
+      },
+      {
+        slug: "podiatry",
+        spaces: ["podiatry"]
       },
       {
         slug: "ambler",
@@ -35,21 +39,26 @@ class LibraryHoursController < ApplicationController
       }
     ] 
     @buildings.each do |building|
-        # binding.pry
       building.values.second.map! do |space| 
         space = [building.values.first, LibraryHours.where(location_id: space, date: @sunday..@saturday)]
       end
     end
   end
-  def show
-    @hours = LibraryHours.where(location_id: params[:id])
-    @seven = LibraryHours.where(location_id: params[:id], date: @sunday..@saturday)
-  end
 
   def set_dates
     @today = Date.today
-    @sunday = @today.beginning_of_week - 1
-    @saturday = @today.end_of_week
+    @year = @today.year
+    @cweek = Date.today.cweek
+    @week =  params[:week].nil? ? @cweek : params[:week].to_i
+    if @week == 53
+      @week = 1
+      @year = @year + 1
+    end
+    @next_week = @week+1
+    @prev_week = @week-1
+    @sunday = Date.commercial(@year, @week) - 1
+    @saturday = Date.commercial(@year, @week) + 6
+    # binding.pry
   end
 
   def set_location

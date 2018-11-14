@@ -97,5 +97,14 @@ RSpec.describe Space, type: :model do
         expect { space.save! }.to_not raise_error
       end
     end
+
+    context "Policy reference" do
+      example "Add space policy" do
+        policy = FactoryBot.create(:policy)
+        space = FactoryBot.create(:space_with_building)
+        space.policies << policy
+        expect(space.policies).to include(policy)
+      end
+    end
   end
 end

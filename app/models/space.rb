@@ -3,6 +3,7 @@
 class Space < ApplicationRecord
   include Validators
   include InputCleaner
+  include HasPolicies
   has_ancestry
 
   validates :name, presence: true

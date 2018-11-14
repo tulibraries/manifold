@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Policies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Effective date</th>
+      <th>Expiration date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @policies.each do |policy| %>
+      <tr>
+        <td><%= policy.name %></td>
+        <td><%= policy.description %></td>
+        <td><%= policy.effective_date %></td>
+        <td><%= policy.expiration_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

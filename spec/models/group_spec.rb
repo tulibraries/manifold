@@ -96,4 +96,13 @@ RSpec.describe Group, type: :model do
       end
     end
   end
+
+  context "Policy reference" do
+    example "Add group policy" do
+      policy = FactoryBot.create(:policy)
+      group = FactoryBot.create(:group, space: space, chair_dept_heads: [chair_person])
+      group.policies << policy
+      expect(group.policies).to include(policy)
+    end
+  end
 end

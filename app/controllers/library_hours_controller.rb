@@ -47,15 +47,31 @@ class LibraryHoursController < ApplicationController
 
   def set_dates
     @today = Date.today
-    @year = @today.year
-    @cweek = Date.today.cweek
-    @week =  params[:week].nil? ? @cweek : params[:week].to_i
-    if @week == 53
-      @week = 1
-      @year = @year + 1
-    end
+    @year =  @today.year
+    @week =  params[:week].nil? ? Date.today.cweek : params[:week].to_i
+    @first_week = LibraryHours.where(location_id: "paley").first.date.to_date.cweek
+    @first_year = LibraryHours.where(location_id: "paley").first.date.to_date.year
+    @last_week = LibraryHours.where(location_id: "paley").last.date.to_date.cweek
+    @last_year = LibraryHours.where(location_id: "paley").last.date.to_date.year
+
     @next_week = @week+1
     @prev_week = @week-1
+
+    @next_year = params[:nyear].nil? ? @year : params[:nyear].to_i
+    @prev_year = params[:pyear].nil? ? @year : params[:pyear].to_i
+
+    if @week == 52
+      @next_week = 1
+      @next_year = @next_year + 1
+      @year = @year + 1
+
+    end
+
+    if @week == 1
+      @prev_week = 52 
+      @prev_year = @prev_year - 1
+    end
+
     @sunday = Date.commercial(@year, @week) - 1
     @saturday = Date.commercial(@year, @week) + 6
     # binding.pry

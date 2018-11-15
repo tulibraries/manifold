@@ -19,3 +19,13 @@
 		padding-left: 3%;
 		color: $red;
 	}
+	.today_button {
+		padding: 10px;
+		background-color: $white;
+		border: solid $red 1px;
+		border-radius: 7px;
+		text-decoration: none!important;
+	}
+	.date-range {
+		font-size: large;
+	}

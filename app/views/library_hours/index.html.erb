@@ -12,11 +12,22 @@
   </div>
 </div>
 
-<div class="row date-nav text-center">
-  <div class="col"><%= @week %>
-    <%= link_to "<-", {controller: "library_hours", action: "index", week: (@week-1)} %> 
-    <%= @sunday.strftime("%b %d, %Y") %> - <%= (@saturday-1).strftime("%b %d, %Y") %> 
-    <%= link_to "->", {controller: "library_hours", action: "index", week: (@week+1)} %>
+<div class="row date-nav">
+  <div class="col-md-6 text-center date-range">
+
+    <% unless @year == @first_year && @prev_week == @first_week %>
+      <%= link_to "<-", {controller: "library_hours", action: "index", week: @prev_week, pyear: @prev_year} %> 
+    <% end %>
+
+    <%= @sunday.strftime("%b %d, %Y") %> - <%= (@saturday-1).strftime("%b %d, %Y") %>
+    
+    <% unless @year == @last_year && @next_week == @last_week %> 
+      <%= link_to "->", {controller: "library_hours", action: "index", week: @next_week, nyear: @next_year} %>
+    <% end %>
+
+  </div>
+  <div class="col-md-6 text-center">
+    <%= link_to "Go to Today", {controller: :library_hours, action: :index}, class: "today_button"  %>
   </div>
 </div>
 
@@ -46,7 +57,7 @@
     <% unless location_name(location.values.first).nil? %>
       <% location.values.second.each do |hours| %>
 
-        <div class="row" style="margin-top: 14px;">>
+        <div class="row" style="margin-top: 14px;">
           <div class="col-3"> 
             <h3 style="padding-left: 28px;"><%= location_name(hours.second.first.location_id) %></h3>
           </div>

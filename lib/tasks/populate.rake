@@ -2,8 +2,10 @@
 
 namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Object
   namespace :populate do
-    require "populate"
-    require "faker"
+    unless Rails.env.production?
+      require "populate"
+      require "faker"
+    end
 
     task policies: :environment do
       Policy.delete_all

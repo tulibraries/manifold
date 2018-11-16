@@ -48,7 +48,7 @@ class GroupDashboard < BaseDashboard
     :persons,
     :space,
     :external,
-    :document,
+    :documents,
     :policies,
   ].freeze
 
@@ -62,8 +62,8 @@ class GroupDashboard < BaseDashboard
     :external,
     :chair_dept_heads,
     :persons,
-    :spaces,
-    :document,
+    :space,
+    :documents,
     :policies,
   ].freeze
 

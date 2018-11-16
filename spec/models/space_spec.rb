@@ -36,7 +36,7 @@ RSpec.describe Space, type: :model do
     ]
     optional_references.each do |f|
       example "missing #{f}" do
-        space = FactoryBot.build(:space_with_building)
+        space = FactoryBot.build(:space)
         space[f] = nil
         expect { space.save! }.to_not raise_error
       end
@@ -45,7 +45,7 @@ RSpec.describe Space, type: :model do
 
   describe "field validators" do
 
-    let (:space) { FactoryBot.build(:space_with_building) }
+    let (:space) { FactoryBot.build(:space) }
 
     context "Email validation" do
       example "valid email" do
@@ -82,7 +82,7 @@ RSpec.describe Space, type: :model do
         expect { space.save! }.to_not raise_error
       end
       example "no building" do
-        space = FactoryBot.build(:space)
+        space = FactoryBot.build(:space, building: nil)
         expect { space.save! }.to raise_error(/Building can't be blank/)
       end
     end
@@ -101,7 +101,7 @@ RSpec.describe Space, type: :model do
     context "Policy reference" do
       example "Add space policy" do
         policy = FactoryBot.create(:policy)
-        space = FactoryBot.create(:space_with_building)
+        space = FactoryBot.create(:space)
         space.policies << policy
         expect(space.policies).to include(policy)
       end

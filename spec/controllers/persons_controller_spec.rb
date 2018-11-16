@@ -6,11 +6,7 @@ RSpec.describe PersonsController, type: :controller do
 
   include Devise::Test::ControllerHelpers
 
-  let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
-  let(:chair_person) { FactoryBot.create(:person, spaces: [space]) }
-  let(:group) { FactoryBot.create(:group, space: space, chair_dept_heads: [chair_person]) }
-  let(:person) { person = FactoryBot.create(:person, groups: [group], spaces: [space]) }
+  let(:person) { FactoryBot.create(:person) }
 
   describe "GET #index" do
     it "returns http success" do

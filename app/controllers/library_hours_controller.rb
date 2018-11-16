@@ -9,7 +9,7 @@ class LibraryHoursController < ApplicationController
     @buildings = [
       {
         slug: "paley",
-        spaces: [ 
+        spaces: [
                   "paley",
                   "media",
                   "doc_del",
@@ -23,7 +23,7 @@ class LibraryHoursController < ApplicationController
       },
       {
         slug: "ginsburg",
-        spaces: ["ginsburg","innovation"]
+        spaces: ["ginsburg", "innovation"]
       },
       {
         slug: "podiatry",
@@ -37,9 +37,9 @@ class LibraryHoursController < ApplicationController
         slug: "blockson",
         spaces: ["blockson"]
       }
-    ] 
+    ]
     @buildings.each do |building|
-      building.values.second.map! do |space| 
+      building.values.second.map! do |space|
         space = [building.values.first, LibraryHours.where(location_id: space, date: @sunday..@saturday)]
       end
     end
@@ -47,19 +47,19 @@ class LibraryHoursController < ApplicationController
 
   def set_dates
     @today = Date.today
-    @cyear =  @today.year
+    @cyear = @today.year
     @cweek = @today.cweek
 
     @week =  params[:week].nil? ? @cweek : params[:week].to_i
     @year = params[:year].nil? ? @cyear : params[:year].to_i
-    
+
     @first_week = LibraryHours.where(location_id: "paley").first.date.to_date.cweek
     @first_year = LibraryHours.where(location_id: "paley").first.date.to_date.year
     @last_week = LibraryHours.where(location_id: "paley").last.date.to_date.cweek
     @last_year = LibraryHours.where(location_id: "paley").last.date.to_date.year
 
-    @next_week = @week+1
-    @prev_week = @week-1
+    @next_week = @week + 1
+    @prev_week = @week - 1
 
     if @week == 52
       @next_week = 1
@@ -69,18 +69,17 @@ class LibraryHoursController < ApplicationController
       @next_year = @year + 1
     elsif @week == 1
       # binding.pry
-      @prev_week = 52 
+      @prev_week = 52
       @sunday = Date.commercial(@year, @week) - 1
       @saturday = Date.commercial(@year, @week) + 6
       @prev_year = @year - 1
       @next_year = @year
     else
       @sunday = Date.commercial(@year, @week) - 1
-      @saturday = Date.commercial(@year, @week) + 6 
+      @saturday = Date.commercial(@year, @week) + 6
       @next_year = @year
       @prev_year = @year
     end
-    
   end
 
 
@@ -101,7 +100,7 @@ class LibraryHoursController < ApplicationController
   def build_hours_data_structure(input)
     input.map do |building|
       building[:spaces].map! do |space|
-        {slug: space, hours: LibraryHours.where(location_id: space, date: @sunday..@saturday)}
+        { slug: space, hours: LibraryHours.where(location_id: space, date: @sunday..@saturday) }
       end
       building
     end

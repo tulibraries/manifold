@@ -4,21 +4,21 @@ module Validators
   extend ActiveSupport::Concerns
   class EmailValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
-      unless value.blank?
-        unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-          record.errors[attribute] << (options[:message] || I18n.t("fortytude.error.invalid_email"))
-        end
+      # unless value.blank?
+      unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+        record.errors[attribute] << (options[:message] || I18n.t("fortytude.error.invalid_email"))
       end
+      # end
     end
   end
 
   class PhoneNumberValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
-      unless value.blank?
-        unless value =~ /\d{10}/i
-          record.errors[attribute] << (options[:message] || I18n.t("fortytude.error.invalid_phone_format"))
-        end
+      # unless value.blank?
+      unless value =~ /\d{10}/i
+        record.errors[attribute] << (options[:message] || I18n.t("fortytude.error.invalid_phone_format"))
       end
+      # end
     end
   end
 

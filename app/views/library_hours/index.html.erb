@@ -33,6 +33,8 @@
   </div>
 </div>
 
+<div style="padding-left: 10px;padding-right:10px;">
+
 <% @buildings.each do |location| %>
 <% unless location_name(location.values.first).nil? %>
 
@@ -43,13 +45,13 @@
       </h2>
     </div>
   </div>
-  <div class="row" style="border-bottom: solid #ccc 1px;padding-bottom:10px;margin-bottom: 14px;">
-    <div class="col offset-md-2"></div>
+  <div class="row">
+    <div class="col-3"></div>
       <% 7.times do |date| %>
       <% if @sunday+date == @today %>
-        <div class="col today day-of-week">
-        <% else %>
-        <div class="col">
+        <div class="col hours-dates today day-of-week text-center">
+      <% else %>
+        <div class="col hours-dates text-center">
       <% end %>
           <%= (@sunday+date).strftime("%a %d") %> 
         </div>
@@ -57,17 +59,17 @@
    </div>
 
     <% location.values.second.each do |hours| %>
-      <% unless location_name(hours.second.first.location_id).nil? %>
+      <%# unless location_name(hours.second.first.location_id).nil? %>
         <div class="row" style="margin-top: 14px;">
-          <div class="col-3"> 
-            <h3 style="padding-left: 28px;"><%= location_name(hours.second.first.location_id) %></h3>
+          <div class="col-3 text-right"> 
+            <h3 style="padding-right: 28px;"><%= location_name(hours.second.first.location_id) %></h3>
           </div>
 
             <% hours.second.each_with_index do |time,index| %> 
               <% if @today.strftime("%w") == index.to_s && @cweek == @week && @cyear == @year %>
                 <div class="col today">
                 <% else %>
-                <div class="col" style="padding-left: 0;">
+                <div class="col">
               <% end %>
               <% if time.hours.downcase == "closed" %>
                 <span class="closed"><%= time.hours %></span>
@@ -78,9 +80,9 @@
             <% end %>
 
         </div>
-      <% end %>
+      <%# end %>
     <% end %>
 
 <% end %>
 <% end %>
-
+</div>

@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class LibraryHoursController < ApplicationController
-  before_action :get_locations, only: [:index, :show]
-  before_action :set_location, only: [:show]
-  before_action :set_dates, only: [:index, :show]
+  before_action :get_locations, only: [:index]
+  before_action :set_dates, only: [:index]
 
   def index
     @buildings = [

@@ -17,7 +17,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     access_link: Field::String,
     service_policies: DescriptionField,
     intended_audience: MultiSelectField.with_options(
-      collection: Rails.configuration.audience_types,
+      collection: Rails.configuration.audience_types
     ),
     service_category: Field::Select.with_options(
       collection: Rails.configuration.service_types

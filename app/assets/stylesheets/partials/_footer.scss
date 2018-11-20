@@ -11,18 +11,33 @@
 }
 #footer-buildings {
 	color: $lightest-purple;
+	a {
+		color: $lightest-purple!important;
+	}
 }
 #footer-spaces {
 	color: $baby-puke-green;
+	a {
+		color: $baby-puke-green!important;
+	}
 }
 #footer-services {
 	color: $honeydew;
+	a {
+		color: $honeydew!important;
+	}
 }
 #footer-groups {
 	color: $musk-melon;
+	a {
+		color: $musk-melon!important;
+	}
 }
 #footer-collections {
 	color: $saffron;
+	a {
+		color: $saffron!important;
+	}
 }
 #site-footer {
 		background-color: $footer-gray;

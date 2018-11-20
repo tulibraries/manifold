@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-  before_action :set_date, :todays_date, only: [:home, :hsl, :ambler]
+  before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
 
   def get_highlights
     @highlights = Highlight.where(promoted: true).take(4)

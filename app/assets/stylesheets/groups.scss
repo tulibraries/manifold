@@ -1,16 +1,20 @@
 @import "partials/_vars.scss";
 
 .l-end {
-		border-top-left-radius: 42px!important;
-		border-bottom-left-radius: 42px!important;
+	border-top-left-radius: 42px!important;
+	border-bottom-left-radius: 42px!important;
 }
 
 .r-end {
-		border-top-right-radius: 42px!important;
-		border-bottom-right-radius: 42px!important;
+	border-top-right-radius: 42px!important;
+	border-bottom-right-radius: 42px!important;
 }
 
 .both-ends {
+  border-radius: 42px!important;
+}
 
-		border-radius: 42px!important;
+.group-members {
+	padding-left: 21px;
+	padding-right: 21px;
 }

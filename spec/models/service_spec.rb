@@ -21,7 +21,7 @@ RSpec.describe Service, type: :model do
     end
 
     example "Missing intended audience" do
-      service = FactoryBot.build(:service, intended_audience: "")
+      service = FactoryBot.build(:service, intended_audience: [""])
       expect { service.save! }.to raise_error(/Intended audience can't be blank/)
     end
 

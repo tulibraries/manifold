@@ -11,9 +11,6 @@ FactoryBot.define do
     research_identifier { "PREZBEEB" }
     personal_site { "http://prez.example.com" }
     springshare_id { "0123-4567-8901" }
-    # Add related objects in create.
-    # e.g.
-    spaces { [FactoryBot.create(:space, building: FactoryBot.create(:building))] }
-    #   let(:person) { FactoryBot.create(:person, spaces: [space]) }
+    spaces { [FactoryBot.create(:space)] }
   end
 end

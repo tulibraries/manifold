@@ -1,89 +1,71 @@
 <div class="row">
-  <div class="col breadcrumbs">
+  <div class="col breadcrumbs" style="margin-bottom: 35px;">
     <%= link_to "Home", root_path.to_s %> 
-    <%= link_to "People", controller: 'spaces', action: :index %> 
+    <%= link_to "People", controller: 'persons', action: :index %> 
     <%= @person.first_name %> <%= @person.last_name %>
   </div>
 </div>
 
+
 <div class="row">
-  <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span><%= @person.first_name %> <%= @person.last_name %></span></h2>
-    </div>
-  </div>
-</div>
-<div class="row" style="border-bottom: solid #ccc 1px;margin-bottom: 14px;padding-bottom: 7px;">
-  <div class="col col-sm-3">
-    <% if @person.photo.attached?  %>
-      <%= image_tag @person.photo.variant(resize: '280x280', gravity: 'center', extent: '300x300'), style: 'margin-top: 35px;' %>
-    <% else %>
-      <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
-    <% end %>
-  </div>
-
-  <div class="col col-sm-9">
-        <p style="border-bottom: solid #ccc 1px;font-size:115%;">
-          <strong><%=@person.job_title %></strong>
-        </p>
-
-        <% unless @person.spaces.empty? %>
-          <div class="row">
-            <div class="col">
-              <p>
-                <strong>Location:</strong><br />
-                <%= link_to @building.name, @building %>, <%= link_to @person.spaces.last.name, @person.spaces.last %>
-              </p>
-            </div>
+  <div class="col-xs-1"></div>
+  <div class="col-sm-12 offset-sm-1 col-lg-6">
+    <div class="row" style="display: table;">
+      <div class="col-3" style="width: 35%;display: table-cell;vertical-align:middle;">
+        <% if @person.photo.attached?  %>
+          <%= image_tag @person.photo.variant(resize: '300x300', gravity: 'center', extent: '300x300'), style: '' %>
+        <% else %>
+          <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
+        <% end %>
+      </div>
+      <div class="col-9" style="width:65%;display: table-cell;vertical-align:middle;">
+        <h1><%= @person.first_name %> <%= @person.last_name %></h1>
+        <strong><%= @person.job_title %></strong><br />
+        <% unless @person.groups.first.nil? %>
+          <%= @person.groups.first.name %>
+        <% end %>
+        <br /><br />
+        <% unless @person.springshare_id.blank? %>
+          <div class="appt_button">
+            <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
           </div>
         <% end %>
-
-    <div class="row">
-      <div class="col col-sm-3">
-        <p>
-        <strong>Phone number:</strong><br />
-          <%= @person.phone_number %>
-        </p>
-
-        <p>
-          <strong>Email Address:</strong><br />
-          <%= @person.email_address %>
-        </p>
-      </div>
-
-      <div class="col col-sm-4">
-        <% unless @person.springshare_id.blank? %>
-          <p>
-            <strong>LibCal Scheduler:</strong><br />
-            <%= link_to "Schedule an Appointment", "https://api3.libcal.com/appointments-widget.php?u=8632&iid=#{@person.springshare_id}&t=Make%20an%20Appointment" %>
-          </p>
-        <% end %>
-
-        <% unless @person.research_identifier.blank? %>
-          <p>
-            <strong>Research Identifier:</strong><br />
-            <%=@person.research_identifier %>
-          </p>
-        <% end %>
-      </div>
-
-      <div class="col col-sm-5">
-        <% unless @person.chat_handle.blank? %>
-          <p>
-            <strong>Chat:</strong><br />
-            <%= @person.chat_handle %>
-          </p>
-        <% end %>
-
-        <% unless @person.personal_site.blank? %>
-          <p>
-            <strong>Personal Web Site:</strong><br />
-            <%= link_to @person.personal_site, @person.personal_site %>
-          </p>
-        <% end %>
       </div>
     </div>
   </div>
+
+  <div class="col-sm-12 col-lg-4 ctaRow person">
+    <div class="col">
+      <div class="card ctaLast contact">
+        <div class="card-title">
+          Contact
+        </div>
+         <div class="card-body">
+            <%= phone_formatted(@person.phone_number) %><br />
+            <%= @person.email_address %><br />
+            <% unless @person.chat_handle.blank? %>
+              <p>
+                <%= @person.chat_handle %><br />
+              </p>
+            <% end %>
+            <% unless @person.personal_site.blank? %>
+              <p>
+                <%= link_to @person.personal_site, @person.personal_site %><br />
+              </p>
+            <% end %>
+            <% unless @person.spaces.empty? %>
+              <p>
+                <%= link_to @building.name, @building %>: <%= link_to @person.spaces.first.name, @person.spaces.first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+
+        <%# render "subjects" %>
+
+      </div>
+    </div>
+  <div class="col-xs-1"></div>
 </div>
 
-<%= link_to 'Back', people_path %>
+</div>

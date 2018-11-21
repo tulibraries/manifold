@@ -2,8 +2,16 @@
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field" id="<%= field.attribute %>_select">
-  <%= f.select(field.attribute, nil, {}, multiple: true, size: field.selectable_options.count) do %>
-    <%= options_for_select(field.selectable_options, field.data) %>
-  <% end %>
+  <%= f.select(
+        field.attribute,
+        options_from_collection_for_select(
+        field.selectable_options,
+          :to_s,
+          :to_s,
+          field.data.presence,
+        ),
+        { include_blank: false}, 
+        { multiple: true, size: field.selectable_options.count }
+      )  %>
   <input type="button" id="<%= field.attribute %>_select_all" class="select-all" name="select_all" value="Select All">
 </div>

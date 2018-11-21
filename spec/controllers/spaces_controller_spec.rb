@@ -6,13 +6,7 @@ RSpec.describe SpacesController, type: :controller do
 
   include Devise::Test::ControllerHelpers
 
-  let(:space) {
-    building = FactoryBot.create(:building)
-    space = FactoryBot.build(:space)
-    space.building_id = building.id
-    space.save
-    space
-  }
+  let(:space) { FactoryBot.create(:space) }
 
   describe "GET #index" do
     it "returns http success" do

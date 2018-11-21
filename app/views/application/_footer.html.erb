@@ -25,7 +25,7 @@
 
       <div class="postscript row" style="margin-top: 56px;">      
         <div class="col col-sm-2" id="footer-buildings">
-          <strong>Buildings</strong>
+          <%= link_to "Buildings", buildings_path, style: "font-weight:600" %>
           <hr />
           <ul>
             <li>Building 1</li>
@@ -38,7 +38,7 @@
             </ul>
         </div>
         <div class="col col-sm-2" id="footer-spaces">
-          <strong>Spaces</strong>
+          <%= link_to "Spaces", spaces_path, style: "font-weight:600" %>
           <hr style="border: solid white 1px;color: white" />
           <ul>
             <li>Space 1</li>
@@ -51,7 +51,7 @@
             </ul>
         </div>
         <div class="col col-sm-2" id="footer-services">
-          <strong>Services</strong>
+          <%= link_to "Services", services_path, style: "font-weight:600" %>
           <hr style="border: solid white 1px;color: white" />
           <ul>
             <li>Service 1</li>
@@ -64,7 +64,7 @@
             </ul>
         </div>
         <div class="col col-sm-2" id="footer-groups">
-          <strong>Groups</strong>
+          <%= link_to "Groups", groups_path, style: "font-weight:600" %>
           <hr style="border: solid white 1px;color: white" />
           <ul>
             <li>Group 1</li>
@@ -78,6 +78,7 @@
         </div>
         <div class="col col-sm-2" id="footer-collections">
           <strong>Collections</strong>
+          <%# link_to "Collections", collections_path, style: "font-weight:600" %>
           <hr style="border: solid white 1px;color: white" />
           <ul>
             <li>Collection 1</li>

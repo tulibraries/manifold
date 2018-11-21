@@ -1,0 +1,29 @@
+<% unless @person.subjects.blank? %>
+<div class="card ctaLast subjects">
+  <div class="card-title">
+    Subject Areas
+  </div>
+   <div class="card-body">
+      <ul>
+        <% @person.subjects.each do |s| %>
+          <li><%= s.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% unless @person.specialties.blank? %>
+<div class="card ctaLast specialties">
+  <div class="card-title">
+    University Disciplines
+  </div>
+   <div class="card-body">
+      <ul>
+        <% @person.specialties.each do |s| %>
+          <li><%= s.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

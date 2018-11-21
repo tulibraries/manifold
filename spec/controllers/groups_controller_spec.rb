@@ -5,11 +5,7 @@ require "rails_helper"
 RSpec.describe GroupsController, type: :controller do
   include Devise::Test::ControllerHelpers
 
-  #let (:person) { FactoryBot.build(:person) }
-  let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
-  let(:chair_person) { FactoryBot.create(:person, spaces: [space]) }
-  let(:group) { FactoryBot.create(:group, space: space, chair_dept_heads: [chair_person]) }
+  let(:group) { FactoryBot.create(:group) }
 
   describe "GET #index" do
     it "returns http success" do

@@ -15,7 +15,7 @@ class HighlightDashboard < Administrate::BaseDashboard
     title: Field::String,
     blurb: Field::Text,
     link: Field::String,
-    date: Field::DateTime.with_options(format: "%A %B %Y"),
+    date: Field::DateTime.with_options(format: "%A %B %Y"), #optional field, can't format blank field
     time: Field::Time,
     type_of_highlight: Field::Select.with_options(
       collection: Rails.configuration.highlight_types,

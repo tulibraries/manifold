@@ -58,8 +58,24 @@
                 <%= link_to @building.name, @building %>: <%= link_to @person.spaces.first.name, @person.spaces.first %>
               </p>
             <% end %>
-          </div>
+          </div> <!-- card body -->
         </div>
+
+        <% unless @person.specialties.nil? %>
+          <div class="card ctaLast subjects">
+            <div class="card-title">
+              Subject Areas
+            </div>
+             <div class="card-body">
+                <ul class="list-unstyled">
+                  <% @person.specialties.drop(1).each do |specialty| %>
+                    <li><%= specialty %></li>
+                  <% end %>
+                </ul>
+              </div> <!-- card body -->
+            </div>
+          <% end %>
+
 
         <%# render "subjects" %>
 

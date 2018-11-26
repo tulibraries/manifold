@@ -12,5 +12,6 @@ FactoryBot.define do
     personal_site { "http://prez.example.com" }
     springshare_id { "0123-4567-8901" }
     spaces { [FactoryBot.create(:space)] }
+    specialties { ["", "first subject"] }
   end
 end

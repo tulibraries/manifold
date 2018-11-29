@@ -8,6 +8,12 @@ module Admin
       :start_time
     end
 
+    def sync
+      SyncService::Events.call()
+      flash[:notice] = "Events synced"
+      redirect_to admin_events_path
+    end
+
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #

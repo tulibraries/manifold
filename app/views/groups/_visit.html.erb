@@ -49,7 +49,7 @@
         Map!
       </div>
       <div class="card-body">
-      <%= link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{@group.space.building.coordinates}&zoom=15&size=420x275&markers=size:mid%7Ccolor:red%7Clabel:%7C#{@group.space.building.coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{@group.space.building.name}", class: "map"), "https://www.google.com/maps/search/?api=1&query=#{@group.space.building.coordinates}&query_place_id=#{@group.space.building.google_id}" %>
+        <%= render_map(@group.space.building.name,@group.space.building.coordinates,@group.space.building.google_id) %>
       </div>
     </div>
   </div>

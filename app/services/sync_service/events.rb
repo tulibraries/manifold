@@ -4,7 +4,7 @@ require "open-uri"
 
 class SyncService::Events
   def self.call(events_url: nil)
-    new(events_url: events_url)
+    new(events_url: events_url).sync
   end
 
   def initialize(params = {})

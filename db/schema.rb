@@ -103,6 +103,17 @@ ActiveRecord::Schema.define(version: 2018_11_26_152030) do
     t.string "address2"
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "subject"
+    t.text "contents"
+    t.integer "building_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_collections_on_building_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -144,6 +155,8 @@ ActiveRecord::Schema.define(version: 2018_11_26_152030) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.string "phone_number"
+    t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "group_type"

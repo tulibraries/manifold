@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :events
     resources :services
     resources :policies
+    resources :collections
 
     resource :events do
       member do
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
   resources :blogs, only: [:index, :show]
   resources :buildings, only: [:index, :show]
   resources :groups, only: [:index, :show]
+  resources :collections, only: [:index, :show]
   resources :highlights, only: [:show]
   resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]

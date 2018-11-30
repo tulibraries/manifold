@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     resources :services
     resources :policies
 
+    resource :events do
+      member do
+        post :sync
+      end
+    end
+
     root to: "people#index"
   end
 

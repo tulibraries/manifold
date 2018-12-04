@@ -15,7 +15,7 @@ module LibraryHoursHelper
     if location.nil?
       location = Service.find_by(hours: slug)
       unless location.nil?
-        name = location.name
+        name = location.title
       end
     end
     name

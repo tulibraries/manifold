@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class EventDashboard < Administrate::BaseDashboard
+class EventDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -33,6 +33,7 @@ class EventDashboard < Administrate::BaseDashboard
     content_hash: Field::String,
     image: PhotoField,
     alt_text: Field::String,
+    ensemble_identifier: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -74,6 +75,7 @@ class EventDashboard < Administrate::BaseDashboard
     :registration_status,
     :registration_link,
     :content_hash,
+    :ensemble_identifier,
     :created_at,
     :updated_at,
   ].freeze
@@ -84,6 +86,7 @@ class EventDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :title,
     :image,
+    :alt_text,
     :description,
     :start_time,
     :end_time,
@@ -103,6 +106,7 @@ class EventDashboard < Administrate::BaseDashboard
     :registration_status,
     :registration_link,
     :content_hash,
+    :ensemble_identifier,
   ].freeze
 
   # Overwrite this method to customize how events are displayed

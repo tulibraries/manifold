@@ -22,5 +22,6 @@ FactoryBot.define do
     registration_status { false }
     registration_link { "MyString" }
     content_hash { "MyString" }
+    ensemble_identifier { "MyString" }
   end
 end

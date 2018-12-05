@@ -17,15 +17,11 @@
 <div class="row date-nav">
   <div class="col-md-6 text-center date-range">
 
-    <% unless @year == @first_year && @prev_week == @first_week %>
-      <%= link_to "<-", {controller: "library_hours", action: "index", anchor: "top", week: @prev_week, year: @prev_year} %> 
-    <% end %>
+      <%= link_to "<-", {controller: "library_hours", action: "index", date: @last_week} %> 
 
-    <%= @sunday.strftime("%b %d, %Y") %> - <%= (@saturday-1).strftime("%b %d, %Y") %>
-    
-    <% unless @year == @last_year && @next_week > @last_week %> 
-      <%= link_to "->", {controller: "library_hours", action: "index", anchor: "top", week: @next_week, year: @next_year} %>
-    <% end %>
+      <%= @monday.strftime("%b %d, %Y") unless @monday.nil? %> - <%= @sunday.strftime("%b %d, %Y") unless @sunday.nil? %>
+     
+      <%= link_to "->", {controller: "library_hours", action: "index", date: @next_week} %>
 
   </div>
   <div class="col-md-6 text-center">
@@ -45,28 +41,27 @@
       </h2>
     </div>
   </div>
-  <div class="row">
+  <div class="row"> <!-- dates header -->
     <div class="col-3"></div>
       <% 7.times do |date| %>
-      <% if @sunday+date == @today %>
+      <% if @monday+date == @today %>
         <div class="col hours-dates today day-of-week text-center">
       <% else %>
         <div class="col hours-dates text-center">
       <% end %>
-          <%= (@sunday+date).strftime("%a %d") %> 
+          <%= (@monday+date).strftime("%a %d") %> 
         </div>
       <% end %>
    </div>
 
+    <% unless location.values.second.first.second.empty? %>
     <% location.values.second.each do |hours| %>
-      <%# unless location_name(hours.second.first.location_id).nil? %>
-        <div class="row" style="margin-top: 14px;">
+        <div class="row" style="margin-top: 14px;"> <!-- spaces -->
           <div class="col-3 text-right"> 
             <h3 style="padding-right: 28px;"><%= location_name(hours.second.first.location_id) %></h3>
           </div>
-
-            <% hours.second.each_with_index do |time,index| %> 
-              <% if @today.strftime("%w") == index.to_s && @cweek == @week && @cyear == @year %>
+            <% hours.second.each_with_index do |time,index| %> <!-- hours -->
+              <% if @monday+index == @today %>
                 <div class="col today">
                 <% else %>
                 <div class="col">
@@ -78,9 +73,14 @@
               <% end %>
               </div>
             <% end %>
-
         </div>
-      <%# end %>
+      <% end %>
+    <% else %> <!-- unless -->
+      <div class="row" style="margin-top: 14px;">
+        <div class="col-12 text-center">
+          <h3>No data for current date range</h3>
+        </div>
+      </div> 
     <% end %>
 
 <% end %>

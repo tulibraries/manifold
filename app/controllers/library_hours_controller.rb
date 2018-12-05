@@ -45,40 +45,12 @@ class LibraryHoursController < ApplicationController
   end
 
   def set_dates
-    @today = Date.today
-    @cyear = @today.year
-    @cweek = @today.cweek
-
-    @week =  params[:week].nil? ? @cweek : params[:week].to_i
-    @year = params[:year].nil? ? @cyear : params[:year].to_i
-
-    @first_week = LibraryHours.where(location_id: "paley").first.date.to_date.cweek
-    @first_year = LibraryHours.where(location_id: "paley").first.date.to_date.year
-    @last_week = LibraryHours.where(location_id: "paley").last.date.to_date.cweek
-    @last_year = LibraryHours.where(location_id: "paley").last.date.to_date.year
-
-    @next_week = @week + 1
-    @prev_week = @week - 1
-
-    if @week == 52
-      @next_week = 1
-      @sunday = Date.commercial(@year, @week) - 1
-      @saturday = Date.commercial(@year, @week) + 6
-      @prev_year = @year
-      @next_year = @year + 1
-    elsif @week == 1
-      # binding.pry
-      @prev_week = 52
-      @sunday = Date.commercial(@year, @week) - 1
-      @saturday = Date.commercial(@year, @week) + 6
-      @prev_year = @year - 1
-      @next_year = @year
-    else
-      @sunday = Date.commercial(@year, @week) - 1
-      @saturday = Date.commercial(@year, @week) + 6
-      @next_year = @year
-      @prev_year = @year
-    end
+    @today = params[:date].nil? ? Date.today : params[:date]
+    @sunday = @today.beginning_of_week(start_day = :monday)
+    @saturday = @today.end_of_week(end_day = :saturday)
+    @next_week = @today.next_week(start_day = :monday)
+    @last_week = @today.last_week(end_day = :saturday)
+# binding.pry
   end
 
 

@@ -17,15 +17,11 @@
 <div class="row date-nav">
   <div class="col-md-6 text-center date-range">
 
-    <% unless @year == @first_year && @prev_week == @first_week %>
-      <%= link_to "<-", {controller: "library_hours", action: "index", anchor: "top", week: @prev_week, year: @prev_year} %> 
-    <% end %>
+      <%= link_to "<-", {controller: "library_hours", action: "index", anchor: "top", week: @last_week} %> 
 
-    <%= @sunday.strftime("%b %d, %Y") %> - <%= (@saturday-1).strftime("%b %d, %Y") %>
-    
-    <% unless @year == @last_year && @next_week > @last_week %> 
-      <%= link_to "->", {controller: "library_hours", action: "index", anchor: "top", week: @next_week, year: @next_year} %>
-    <% end %>
+      <%= @sunday.strftime("%b %d, %Y") %> - <%= @saturday.strftime("%b %d, %Y") %>
+     
+      <%= link_to "->", {controller: "library_hours", action: "index", anchor: "top", week: @next_week} %>
 
   </div>
   <div class="col-md-6 text-center">

@@ -14,9 +14,8 @@ class HighlightDashboard < Administrate::BaseDashboard
     photo: PhotoField,
     title: Field::String,
     blurb: Field::Text,
+    link_label: Field::String,
     link: Field::String,
-    date: Field::DateTime.with_options(format: "%A %B %Y"), #optional field, can't format blank field
-    time: Field::Time,
     type_of_highlight: Field::Select.with_options(
       collection: Rails.configuration.highlight_types,
       multiple: true,
@@ -43,9 +42,8 @@ class HighlightDashboard < Administrate::BaseDashboard
     :photo,
     :title,
     :blurb,
+    :link_label,
     :link,
-    :date,
-    :time,
     :type_of_highlight,
     :tags,
   ].freeze
@@ -57,9 +55,8 @@ class HighlightDashboard < Administrate::BaseDashboard
     :photo,
     :title,
     :blurb,
+    :link_label,
     :link,
-    :date,
-    :time,
     :type_of_highlight,
     :tags,
     :promoted,

@@ -39,48 +39,27 @@ class LibraryHoursController < ApplicationController
     ]
     @buildings.each do |building|
       building.values.second.map! do |space|
-        space = [building.values.first, LibraryHours.where(location_id: space, date: @sunday..@saturday)]
+        space = [building.values.first, LibraryHours.where(location_id: space, date: @monday..@sunday)]
       end
     end
   end
 
   def set_dates
     @today = Date.today
-    @cyear = @today.year
-    @cweek = @today.cweek
+    @date = params[:date].nil? ? @today : Date.parse(params[:date])
 
-    @week =  params[:week].nil? ? @cweek : params[:week].to_i
-    @year = params[:year].nil? ? @cyear : params[:year].to_i
-
-    @first_week = LibraryHours.where(location_id: "paley").first.date.to_date.cweek
-    @first_year = LibraryHours.where(location_id: "paley").first.date.to_date.year
-    @last_week = LibraryHours.where(location_id: "paley").last.date.to_date.cweek
-    @last_year = LibraryHours.where(location_id: "paley").last.date.to_date.year
-
-    @next_week = @week + 1
-    @prev_week = @week - 1
-
-    if @week == 52
-      @next_week = 1
-      @sunday = Date.commercial(@year, @week) - 1
-      @saturday = Date.commercial(@year, @week) + 6
-      @prev_year = @year
-      @next_year = @year + 1
-    elsif @week == 1
-      # binding.pry
-      @prev_week = 52
-      @sunday = Date.commercial(@year, @week) - 1
-      @saturday = Date.commercial(@year, @week) + 6
-      @prev_year = @year - 1
-      @next_year = @year
+    unless params[:date].nil?
+      @monday = @date.beginning_of_week
+      @sunday = @date.next_occurring(:monday)
+      @next_week = @date.next_week
+      @last_week = @date.prev_week
     else
-      @sunday = Date.commercial(@year, @week) - 1
-      @saturday = Date.commercial(@year, @week) + 6
-      @next_year = @year
-      @prev_year = @year
+      @monday = @today.beginning_of_week
+      @sunday = @today.next_occurring(:monday)
+      @next_week = @today.next_week
+      @last_week = @today.prev_week
     end
   end
-
 
   def set_location
     @location = Building.where(hours: params[:id])
@@ -99,7 +78,7 @@ class LibraryHoursController < ApplicationController
   def build_hours_data_structure(input)
     input.map do |building|
       building[:spaces].map! do |space|
-        { slug: space, hours: LibraryHours.where(location_id: space, date: @sunday..@saturday) }
+        { slug: space, hours: LibraryHours.where(location_id: space, date: @monday..@sunday) }
       end
       building
     end

@@ -12,48 +12,32 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container highlight">
 
-<% if @highlight.photo.attached? %>
-  <p>
-    <%= image_tag @highlight.photo, class: "large" %>
-  </p>
-<% end %>
+      <div class="card ctaFirst">
+        <% if @highlight.photo.attached?  %>
+          <%= image_tag @highlight.photo.variant(resize: '360x360', gravity: 'center'), :class => "card-img-top", :alt => "alt text field needs to be added to model" %>
+        <% else %>
+          <%= image_tag "T.gif", style: 'width: 300px;' %>
+        <% end %>
+        <div class="card-body">
+            <%= link_to @highlight.link_label, strip_tags(@highlight.link) %>
+            <br /><br />
+          <span>Tags:</span> 
+            <% @highlight.tags.split(', ').each do |tag| %>
+                <%= tag %><% unless @highlight.tags.split(', ').last == tag %>, <% end %>
+            <% end %>
+          </div>
+        </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @highlight.title %>
-</p>
+        <div class="description">
 
+          <h3><%= @highlight.title %></h3>
 
-<p>
-  <strong>Blurb:</strong>
-  <%= @highlight.blurb %>
-</p>
+          <%= sanitize @highlight.blurb.html_safe %>
 
-<p>
-  <strong>Link:</strong>
-  <%= @highlight.link %>
-</p>
+        </div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @highlight.date %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @highlight.time %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @highlight.type_of_highlight %>
-</p>
-
-<p>
-  <strong>Tags:</strong>
-  <%= @highlight.tags %>
-</p>
 
 </div>
+<div style="clear: both;"></div>

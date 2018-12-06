@@ -1,10 +1,45 @@
-.current-week {
-	margin-bottom: 28px;
-	.col {
-		margin-bottom: 28px;
-	}
+@import "_vars.scss";
+
 	.today {
-		color: red;
 		font-weight: 600;
+		border-left: solid $red 1px;
+		border-right: solid $red 1px;
+		background-color: #efefef;
+		padding: 7px;
 	}
-}
+	.day-of-week {
+		border: 0;
+		color: $red;
+		padding: 7px;
+		background-color: transparent;
+	}
+	.hours-dates {
+		border-bottom: solid #ccc 1px;
+		margin-bottom: 4px;
+		.col {
+			padding: 7px;
+		}
+	}
+	.closed {
+		color: $red;
+		/*display:inline-block;
+		width: 100%;
+		text-align:center;*/
+	}
+	.date-nav {
+		background-color: $light-grey;
+		margin-top: 35px;
+		padding: 14px;
+		padding-left: 3%;
+		color: $red;
+	}
+	.today_button {
+		padding: 10px;
+		background-color: $white;
+		border: solid $red 1px;
+		border-radius: 7px;
+		text-decoration: none!important;
+	}
+	.date-range {
+		font-size: large;
+	}

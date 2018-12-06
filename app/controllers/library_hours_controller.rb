@@ -39,7 +39,7 @@ class LibraryHoursController < ApplicationController
     ]
     @buildings.each do |building|
       building.values.second.map! do |space|
-        space = [building.values.first, LibraryHours.where(location_id: space, date: @monday..@sunday)]
+        space = [building.values.first, LibraryHours.where(location_id: space, date: @monday..@sunday + 1)]
       end
     end
   end
@@ -50,12 +50,12 @@ class LibraryHoursController < ApplicationController
 
     unless params[:date].nil?
       @monday = @date.beginning_of_week
-      @sunday = @date.next_occurring(:monday)
+      @sunday = @date.end_of_week
       @next_week = @date.next_week
       @last_week = @date.prev_week
     else
       @monday = @today.beginning_of_week
-      @sunday = @today.next_occurring(:monday)
+      @sunday = @today.end_of_week
       @next_week = @today.next_week
       @last_week = @today.prev_week
     end

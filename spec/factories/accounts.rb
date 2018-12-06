@@ -2,8 +2,14 @@
 
 FactoryBot.define do
   factory :account do
-    email { "tuz12345@temple.edu" }
+    sequence(:email) { |n| "tuz000#{n}@temple.edu" }
     password { "MyPassword" }
     admin { false }
+  end
+
+  factory :administrator, class: Account do
+    sequence(:email) { |n| "tuadmin#{n}@temple.edu" }
+    password { "MyPassword" }
+    admin { true }
   end
 end

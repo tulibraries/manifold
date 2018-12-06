@@ -27,7 +27,7 @@
         <br /><br />
         <% unless @person.springshare_id.blank? %>
           <div class="appt_button">
-            <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton", target: "_new" %>
+            <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton solo", target: "_new" %>
           </div>
         <% end %>
       </div>

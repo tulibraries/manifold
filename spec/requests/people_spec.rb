@@ -10,7 +10,7 @@ RSpec.describe "People", type: :request do
       person = FactoryBot.create(:person, space_ids: [space.id])
       get people_path
       expect(response).to render_template(:index)
-      expect(response.body).to include(person.name)
+      expect(response.body).to include(person.last_name)
     end
 
     it "works! (now write some real specs)" do

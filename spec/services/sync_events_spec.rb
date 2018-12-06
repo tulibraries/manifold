@@ -3,91 +3,95 @@
 require "rails_helper"
 
 RSpec.describe SyncService::Events, type: :service do
+  before(:all) do
+    @sync_events = described_class.new(events_url: file_fixture("events.xml").to_path)
+    @events = @sync_events.read_events
+  end
   context "valid events" do
-    let(:sync_events) { described_class.call(events_url: file_fixture("events.xml").to_path) }
-    let(:events) { sync_events.read_events }
+    # let(:sync_events) {  }
+    # let(:events) { sync_events.read_events }
 
     it "extracts the event hash" do
-      expect(events.first["Title"]).to match(/^Data Transparency: Policies and Best Practices$/)
+      expect(@events.first["Title"]).to match(/^Data Transparency: Policies and Best Practices$/)
     end
 
     it "extracts all of the events" do
-      expect(events.count).to equal(37)
+      expect(@events.count).to equal(37)
     end
 
     describe "maps events xml to db schema" do
-      subject { sync_events.record_hash(events.first) }
+      subject { @sync_events.record_hash(@events.first) }
 
       it "maps Title to title field" do
-        expect(subject["title"]).to match(events.first["Title"])
+        expect(subject["title"]).to match(@events.first["Title"])
       end
 
       it "maps Description to description field" do
-        expect(subject["description"]).to match(events.first["Description"])
+        expect(subject["description"]).to match(@events.first["Description"])
       end
 
       it "maps EventStartDate and EventStartTime to start_time field" do
-        expect(Time.parse(subject["start_time"])).to eq(Time.parse(events.first["EventStartDate"] + " " + events.first["EventStartTime"]))
+        expect(Time.parse(subject["start_time"])).to eq(Time.parse(@events.first["EventStartDate"] + " " + @events.first["EventStartTime"]))
       end
 
       it "maps EventEndDate and EventEndTime to start_time field" do
-        expect(Time.parse(subject["end_time"])).to eq(Time.parse(events.first["EventEndDate"] + " " + events.first["EventEndTime"]))
+        expect(Time.parse(subject["end_time"])).to eq(Time.parse(@events.first["EventEndDate"] + " " + @events.first["EventEndTime"]))
       end
 
       it "maps Location to external_building field" do
-        expect(subject["external_building"]).to match(events.first["Location"])
+        expect(subject["external_building"]).to match(@events.first["Location"])
       end
 
       it "maps Room to external_building field" do
-        expect(subject["external_space"]).to match(events.first["Room"])
+        expect(subject["external_space"]).to match(@events.first["Room"])
       end
 
       it "maps Address to external_building field" do
-        expect(subject["external_address"]).to match(events.first["Address"])
+        expect(subject["external_address"]).to match(@events.first["Address"])
       end
 
       it "maps City to external_building field" do
-        expect(subject["external_city"]).to match(events.first["City"])
+        expect(subject["external_city"]).to match(@events.first["City"])
       end
 
       it "maps State to external_state field" do
-        expect(subject["external_state"]).to match(events.first["State"])
+        expect(subject["external_state"]).to match(@events.first["State"])
       end
 
       it "maps Zip to external_zip field" do
-        expect(subject["external_zip"]).to match(events.first["Zip"])
+        expect(subject["external_zip"]).to match(@events.first["Zip"])
       end
 
       it "maps ContactName to external_contact_name field" do
-        expect(subject["external_contact_name"]).to match(events.first["ContactName"])
+        expect(subject["external_contact_name"]).to match(@events.first["ContactName"])
       end
 
       it "maps ContactEmail to external_contact_email field" do
-        expect(subject["external_contact_email"]).to match(events.first["ContactEmail"])
+        expect(subject["external_contact_email"]).to match(@events.first["ContactEmail"])
       end
 
       it "maps ContactPhone to external_contact_phone field" do
-        expect(subject["external_contact_phone"]).to match(events.first["ContactPhone"])
+        expect(subject["external_contact_phone"]).to match(@events.first["ContactPhone"])
       end
 
       it "maps Canceled to cancelled field" do
-        expect(subject["cancelled"]).to match(events.first["Canceled"])
+        expect(subject["cancelled"]).to match(@events.first["Canceled"])
       end
 
       it "maps RegistrationStatus to registration_status field" do
-        expect(subject["registration_status"]).to match(events.first["RegistrationStatus"])
+        expect(subject["registration_status"]).to match(@events.first["RegistrationStatus"])
       end
 
       it "maps document's digest to content_has field" do
-        expect(subject["content_hash"]).to match(Digest::SHA1.hexdigest(events.first[:xml]))
+        expect(subject["content_hash"]).to match(Digest::SHA1.hexdigest(@events.first[:xml]))
       end
     end
   end
 
   context "write event to event table" do
     before(:all) do
-      sync_events = described_class.call(events_url: file_fixture("events.xml").to_path)
-      sync_events.sync
+      #sync_events = described_class.call(events_url: file_fixture("events.xml").to_path)
+      @sync_events.sync
     end
 
     it "syncs events to the table" do
@@ -101,8 +105,8 @@ RSpec.describe SyncService::Events, type: :service do
   end
 
   context "fuzzy logic", :focus do
-    let(:internal_events) { described_class.call(events_url: file_fixture("fuzzy_events_internal.xml").to_path) }
-    let(:external_events) { described_class.call(events_url: file_fixture("fuzzy_events_external.xml").to_path) }
+    let(:internal_events) { described_class.new(events_url: file_fixture("fuzzy_events_internal.xml").to_path) }
+    let(:external_events) { described_class.new(events_url: file_fixture("fuzzy_events_external.xml").to_path) }
 
     before(:example) do
       @building = FactoryBot.create(:building)
@@ -162,7 +166,7 @@ RSpec.describe SyncService::Events, type: :service do
   end
 
   context "trying to ingest the same record twice" do
-    let(:sync_event) { described_class.call(events_url: file_fixture("single_event.xml").to_path) }
+    let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
 
     it "does not update the record" do
       sync_event.sync
@@ -174,7 +178,7 @@ RSpec.describe SyncService::Events, type: :service do
   end
 
   context "trying to ingest the same record twice" do
-    let(:sync_event) { described_class.call(events_url: file_fixture("single_event.xml").to_path) }
+    let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
 
     it "does not update the record" do
       sync_event.sync
@@ -193,8 +197,8 @@ RSpec.describe SyncService::Events, type: :service do
   end
 
   context "trying to ingest an existing record with slight changes" do
-    let(:sync_event) { described_class.call(events_url: file_fixture("single_event.xml").to_path) }
-    let(:altered_event) { described_class.call(events_url: file_fixture("single_altered_event.xml").to_path) }
+    let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
+    let(:altered_event) { described_class.new(events_url: file_fixture("single_altered_event.xml").to_path) }
 
     it "does not update the record" do
       sync_event.sync

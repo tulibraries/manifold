@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.5.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 5.2.0"
+gem "rails", "~> 5.2.2"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3"
 # Use Puma as the app server
@@ -71,6 +71,7 @@ group :development do
   gem "faker"
   gem "populate"
   gem "brakeman"
+  gem "rails-erd"
 end
 
 group :test do

@@ -20,6 +20,16 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "past event video" do
+    let(:ensemble_id) { "12345ABCDEF09876ZYXWVU" }
+    example "Can set an ensemble ID" do
+      event = FactoryBot.create(:event)
+      event.ensemble_identifier = ensemble_id
+      event.save
+      expect(event.ensemble_identifier).to match(/#{ensemble_id}/)
+    end
+  end
+
   describe "has associations" do
     let(:event) { FactoryBot.create(:event, building: building, space: space, person: person) }
     example "building" do

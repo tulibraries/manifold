@@ -236,4 +236,16 @@
 
 	.ctaLast.contact {
 	}
+	.ctaLast.subjects {
+			border: solid 2px $seagreen;
+		.card-title {
+			background-color: $seagreen-complement;
+		}
+		.card-body {
+			margin-bottom: 12px;
+		}
+		li {
+			padding: 0;
+		}
+	}
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_161748) do
+ActiveRecord::Schema.define(version: 2018_12_05_173332) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -103,6 +103,17 @@ ActiveRecord::Schema.define(version: 2018_11_14_161748) do
     t.string "address2"
   end
 
+  create_table "collections", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "subject"
+    t.text "contents"
+    t.integer "building_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_collections_on_building_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -127,6 +138,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_161748) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "alt_text"
+    t.string "ensemble_identifier"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -156,13 +168,12 @@ ActiveRecord::Schema.define(version: 2018_11_14_161748) do
     t.string "title"
     t.text "blurb"
     t.string "link"
-    t.date "date"
-    t.time "time"
     t.string "type_of_highlight"
     t.string "tags"
     t.boolean "promoted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "link_label"
   end
 
   create_table "library_hours", force: :cascade do |t|
@@ -204,6 +215,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_161748) do
     t.datetime "updated_at", null: false
     t.string "personal_site"
     t.string "springshare_id"
+    t.string "specialties"
   end
 
   create_table "policies", force: :cascade do |t|

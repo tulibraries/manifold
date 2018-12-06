@@ -14,12 +14,11 @@ RSpec.describe "highlights/show", type: :view do
     ))
   end
 
-  it "renders attributes in <p>" do
+  it "renders attributes in <div>" do
     render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/Link/)
-    expect(rendered).to match(/Type/)
     expect(rendered).to match(/Tags/)
   end
 end

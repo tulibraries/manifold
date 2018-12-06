@@ -107,3 +107,12 @@ select {
     outline-offset: $focus-outline-offset;
   }
 }
+
+#person_specialties {
+  padding: 3px;
+  height: 147px;
+  overflow:scroll;
+}
+#specialties_select_all {
+  display: none;
+}

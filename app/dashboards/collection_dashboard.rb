@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class HighlightDashboard < Administrate::BaseDashboard
+class CollectionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,17 +11,11 @@ class HighlightDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    photo: PhotoField,
-    title: Field::String,
-    blurb: Field::Text,
-    link_label: Field::String,
-    link: Field::String,
-    type_of_highlight: Field::Select.with_options(
-      collection: Rails.configuration.highlight_types,
-      multiple: true,
-      ),
-    tags: Field::String,
-    promoted: Field::Boolean,
+    name: Field::String,
+    description: DescriptionField,
+    subject: DescriptionField,
+    contents: DescriptionField,
+    building: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -32,42 +26,42 @@ class HighlightDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :title,
-    :promoted,
+    :id,
+    :name,
+    :description,
+    :building,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :photo,
-    :title,
-    :blurb,
-    :link_label,
-    :link,
-    :type_of_highlight,
-    :tags,
+    :id,
+    :name,
+    :description,
+    :subject,
+    :contents,
+    :building,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :photo,
-    :title,
-    :blurb,
-    :link_label,
-    :link,
-    :type_of_highlight,
-    :tags,
-    :promoted,
+    :name,
+    :description,
+    :subject,
+    :contents,
+    :building,
   ].freeze
 
-  # Overwrite this method to customize how highlights are displayed
+  # Overwrite this method to customize how collections are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(highlight)
-  #   "Highlight ##{highlight.id}"
-  # end
+  def display_resource(collection)
+    "Collection #{collection.name}"
+  end
 
   def tinymce?
     true

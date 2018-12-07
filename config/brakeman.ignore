@@ -46,7 +46,7 @@
       "check_name": "LinkToHref",
       "message": "Potentially unsafe model attribute in link_to href",
       "file": "app/views/persons/show.html.erb",
-      "line": 81,
+      "line": 53,
       "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
       "code": "link_to(Person.find(params[:id]).personal_site, Person.find(params[:id]).personal_site)",
       "render_path": [{"type":"controller","class":"PersonsController","method":"show","line":17,"file":"app/controllers/persons_controller.rb"}],
@@ -56,6 +56,25 @@
       },
       "user_input": "Person.find(params[:id]).personal_site",
       "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "78784fc5ffd54937cee492ad6ab5bdef1d7854ae81b27154a9a76abfa1fde64c",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/policies/show.html.erb",
+      "line": 10,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Policy.find(params[:id]).description",
+      "render_path": [{"type":"controller","class":"PoliciesController","method":"show","line":17,"file":"app/controllers/policies_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "policies/show"
+      },
+      "user_input": null,
+      "confidence": "High",
       "note": ""
     },
     {
@@ -161,10 +180,10 @@
       "check_name": "CrossSiteScripting",
       "message": "Unescaped model attribute",
       "file": "app/views/groups/show.html.erb",
-      "line": 26,
+      "line": 21,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Group.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"GroupsController","method":"show","line":17,"file":"app/controllers/groups_controller.rb"}],
+      "render_path": [{"type":"controller","class":"GroupsController","method":"show","line":18,"file":"app/controllers/groups_controller.rb"}],
       "location": {
         "type": "template",
         "template": "groups/show"
@@ -193,6 +212,6 @@
       "note": ""
     }
   ],
-  "updated": "2018-10-30 15:46:40 -0400",
+  "updated": "2018-12-07 14:05:15 -0500",
   "brakeman_version": "4.3.1"
 }

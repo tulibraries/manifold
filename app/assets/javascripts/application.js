@@ -15,3 +15,8 @@
 //= require tinymce-jquery
 //= require turbolinks
 //= require_tree .
+
+function myFunction(x) {
+    x.classList.toggle("change");
+    document.getElementById("main-menu").classList.toggle("d-none");
+  }

@@ -8,7 +8,32 @@
             <% end %>
           </div>
           <div class="navbar-right col col-md-11">
-            <ul> 
+            <ul class="d-none d-xl-block"> 
+              <li>
+                <a href="/">About</a>
+              </li>
+   
+              <li>
+                <a href="/">Research</a>
+              </li>
+              <li>
+                <a href="/">Services</a>
+              </li>
+
+              <li>
+                <a href="/">Chat</a>
+              </li>
+              <li>
+                <a href="/">My Account</a>
+              </li>
+              <li>
+            </ul>
+            <div class="d-block d-xl-none" id="burger" onclick="myFunction(this)">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+            </div>
+            <ul class="d-none" id="main-menu"> 
               <li>
                 <a href="/">About</a>
               </li>
@@ -34,7 +59,6 @@
     </div>
   </div>
 
-
 <div id="wrapper">
 
   <div id="header" class="row">
@@ -45,11 +69,11 @@
           <div class="col-md-12">
             <marquee>
               <% @alert.each do |alert| %>
-              <% unless alert.link.blank? %>
-                <%= link_to alert.scroll_text+", click here to see full details...", alert.link %>
-              <% else %>
-                <%= link_to alert.scroll_text+", click here to see full details...", alerts_path, id: alert.id %>
-              <% end %>
+                <% unless alert.link.blank? %>
+                  <%= link_to alert.scroll_text+", click here to see full details...", alert.link %>
+                <% else %>
+                  <%= link_to alert.scroll_text+", click here to see full details...", alerts_path, id: alert.id %>
+                <% end %>
               <% end %>
             </marquee>
           </div>

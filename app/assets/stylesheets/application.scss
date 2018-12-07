@@ -28,6 +28,7 @@
 
 html, body {
 	background-color: $white;
+	font-family: "PT Sans";
 }
 #wrapper {
 	min-height: 100%;
@@ -119,7 +120,7 @@ form {
 	margin-top: 7px;
 	a {
 		display: inline-block;
-		color: $dark-grey;
+		color: $med-grey;
 	}
 	a::after {
 		content: ' > ';
@@ -146,7 +147,7 @@ form {
 	  	font-size: 150%;
 	  	letter-spacing:.15rem;
 	  	background-color:white!important;
-	  	color: $dark-grey;
+	  	color: $med-grey;
 	  	margin:auto;
 	  	height:56px;
   	}
@@ -176,7 +177,7 @@ form {
 	  	font-size: 150%;
 	  	letter-spacing:.15rem;
 	  	background-color:white!important;
-	  	color: $dark-grey;
+	  	color: $med-grey;
 	  	margin:auto;
 	  	height:56px;
   	}

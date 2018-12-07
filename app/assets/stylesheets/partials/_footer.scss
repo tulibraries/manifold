@@ -3,66 +3,53 @@
 #footer {
 	width: 100%;
 }
-#footer-buildings,
-#footer-spaces,
-#footer-services,
-#footer-groups {
-	margin-right: 28px;
-}
-#footer-buildings {
-	color: $lightest-purple;
-	a {
-		color: $lightest-purple!important;
+.footer-col {
+	border-right: solid $med-grey 1px;
+	padding-right: 28px!important;
+	padding-left: 3rem!important;
+	color: $light-grey!important;
+	line-height: 2em;
+		text-transform: uppercase;
+	h2 {
+		background-color: transparent!important;
+		border-left: 0;
+		font-size: 1rem;
+		padding: 0;
 	}
-}
-#footer-spaces {
-	color: $baby-puke-green;
 	a {
-		color: $baby-puke-green!important;
+		color: $light-grey!important;
+		font-size: 125%;
+		letter-spacing: .15rem;
+		text-transform: uppercase;
 	}
-}
-#footer-services {
-	color: $honeydew;
-	a {
-		color: $honeydew!important;
+	a.col-heading {
+		color: $white!important;
+		font-size: 135%;
+		letter-spacing: .15rem;
+		text-transform: none;
 	}
-}
-#footer-groups {
-	color: $musk-melon;
-	a {
-		color: $musk-melon!important;
+	ul {
+		margin-top: 1rem;
 	}
 }
 #footer-collections {
-	color: $saffron;
-	a {
-		color: $saffron!important;
-	}
+	border-right: 0;
 }
 #site-footer {
 		background-color: $footer-gray;
 	.postscript {
-		.col {
-			strong {
-				font-size: 105%;
-			}
-			hr {
-				border: solid $white 1px;
-				margin-top: 4px;
-				margin-bottom: 8px;
-			}
+		.footer-col {
 			ul li {
-				line-height: 1.5rem;
-				font-size: 90%;
 				letter-spacing: .1rem;
 			}
 			li.see-all {
 				font-style: italic;
+				font-size: 80%;
 			}
 		}
 	}
 	.footer-logo {
-		margin-top: 21px;
+		margin-top: 14px;
 		padding-left: 7px;
 	  max-width: 107px;
 	  max-height: 77px;
@@ -91,16 +78,12 @@
 		margin-left: 0;
 		margin-right: 0; 
 	}
-	.col {
-		padding-left: 0;
-		padding-right: 0;
-	}
+
 	.postscript {
 		font-weight: normal;
 		padding-left: 30px;
 		margin:10px auto;
 		width:100%;
-		max-width:1140px;
 		.region-postscript-first {
 			padding-left: 42px;
 			width:35%;
@@ -116,22 +99,26 @@
 		border-top: solid #303030 0;
 		background-color: $footer-dark-gray; 
 		hr {
-			border: solid $white 1px;
+			border: solid $light-grey 1px;
 			margin-top: 8px;
 		}
 		.tools {
 			font-size: 125%;
 			letter-spacing: .15rem;
+			h2 {
+				background-color: transparent!important;
+				border-left: 0;
+				font-size: 1.35rem;
+				padding: 0;
+			}
 		}
 		padding: 24px 0 56px 0;
 		clear:both;
 		font-size: .9rem;
-		font-family: droid, sans;
 		.region-footer {
 
-			margin:0 auto;
+			margin: auto;
 			width:100%;
-			max-width:1140px;
 			padding-left:2.5%;
 		}
 		ul {
@@ -140,8 +127,12 @@
 				line-height: 2;
 				text-decoration: none;
 				padding-right:28px;
+				font-size: 120%;
+				color: $light-grey;
+				text-transform: uppercase;
 				a {
-					color: $white;
+					color: $light-grey;
+					text-transform: uppercase;
 				}
 			}
 		}

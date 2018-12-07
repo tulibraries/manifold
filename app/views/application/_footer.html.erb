@@ -18,15 +18,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col" style="padding:0;">
       <%= link_to root_path, class: "footer-name", id: "footer-logo" do %>
         <%= image_tag('temple-logo-t-box.svg', class: "footer-logo") %> University Libraries
       <% end %>
-
-      <div class="postscript row" style="margin-top: 56px;">      
-        <div class="col col-sm-2" id="footer-buildings">
-          <%= link_to "Buildings", buildings_path, style: "font-weight:600" %>
-          <hr />
+      <h1 class="element-invisible">More Resources</h1>
+      <div class="postscript row" style="margin-top: 28px;">      
+        <div class="col-md-6 col-lg-3 footer-col" id="footer-buildings">
+          <h2><%= link_to "Buildings", buildings_path, class: "col-heading" %></h2>
           <ul>
             <li>Building 1</li>
             <li>Building 2</li>
@@ -37,9 +36,8 @@
             <li class="see-all">View all Buildings</li>
             </ul>
         </div>
-        <div class="col col-sm-2" id="footer-spaces">
-          <%= link_to "Spaces", spaces_path, style: "font-weight:600" %>
-          <hr style="border: solid white 1px;color: white" />
+        <div class="col-md-6 col-lg-3 footer-col" id="footer-spaces">
+          <h2><%= link_to "Spaces", spaces_path, class: "col-heading" %></h2>
           <ul>
             <li>Space 1</li>
             <li>Spaces 2</li>
@@ -50,22 +48,8 @@
             <li class="see-all">View all Spaces</li>
             </ul>
         </div>
-        <div class="col col-sm-2" id="footer-services">
-          <%= link_to "Services", services_path, style: "font-weight:600" %>
-          <hr style="border: solid white 1px;color: white" />
-          <ul>
-            <li>Service 1</li>
-            <li>Service 2</li>
-            <li>Service 3</li>
-            <li>Service 4</li>
-            <li>Service 5</li>
-            <li>Service 6</li>
-            <li class="see-all">View all Services</li>
-            </ul>
-        </div>
-        <div class="col col-sm-2" id="footer-groups">
-          <%= link_to "Groups", groups_path, style: "font-weight:600" %>
-          <hr style="border: solid white 1px;color: white" />
+        <div class="col-md-6 col-lg-3 footer-col" id="footer-groups">
+          <h2><%= link_to "Groups", groups_path, class: "col-heading" %></h2>
           <ul>
             <li>Group 1</li>
             <li>Group 2</li>
@@ -76,10 +60,8 @@
             <li class="see-all">View all Groups</li>
             </ul>
         </div>
-        <div class="col col-sm-2" id="footer-collections">
-          <strong>Collections</strong>
-          <%# link_to "Collections", collections_path, style: "font-weight:600" %>
-          <hr style="border: solid white 1px;color: white" />
+        <div class="col-md-6 col-lg-3 footer-col" id="footer-collections">
+          <h2><%= link_to "Collections", collections_path, class: "col-heading" %></h2>
           <ul>
             <li>Collection 1</li>
             <li>Collection 2</li>
@@ -96,43 +78,34 @@
       <div class="tu-links">    
 
         <div class="region region-footer">
-          <div class="row">
-            <div class="col col-sm-12 tools">
-              Staff Tools
-              <hr />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col col-sm-2">
+
+          <div class="row" style="margin-left: 7vw">
+            <div class="col-xs-5 offset-xs-7 col-sm-6 col-md-4 col-lg-2">
               <ul>
                 <li>EZ-borrow</li>
                 <li>ILLiad</li>
                 <li>RefWorks</li>
               </ul>
             </div>
-            <div class="col col-sm-2">
+            <div class="col-xs-5 offset-xs-7 col-sm-6 col-md-4 col-lg-2 offset-lg-1">
               <ul>
-                <li>Staff directory</li>
+                <li>Staff&nbsp;directory</li>
                 <li>Contact us</li>
                 <li>Memberships</li>
               </ul>
             </div>
-            <div class="col col-sm-2">
+            <div class="col-xs-5 offset-xs-7 col-sm-6 col-md-4 col-lg-2 offset-lg-1">
               <ul>
                 <li>Jobs</li>
                 <li>Publications</li>
                 <li>Donate</li>
               </ul>
             </div>
-            <div class="col col-sm-2">
+             <div class="col-xs-5 offset-xs-7 col-sm-6 col-md-4 col-lg-2 offset-lg-1">
               <ul>
                 <li>Policies</li>
               </ul>
             </div>
-            <div class="col col-sm-4">
-              
-            </div>
-
         </div>
       </div>
     </div>

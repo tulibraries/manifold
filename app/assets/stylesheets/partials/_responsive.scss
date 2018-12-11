@@ -1,0 +1,56 @@
+@import "_vars.scss";
+
+.inner-wrapper {
+	width: 100%;
+	/*max-width: 1194px;*/
+/*	margin:auto;*/
+}
+.not-rounded {
+	border-radius: 0!important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .space-description {
+    height: auto!important;
+  }
+}
+.responsive .space-info {
+		.r-title {
+			padding: 14px 0 14px 0;
+			color: $white;
+			background-color: $seagreen;
+			margin:auto;
+			max-width: 90%;
+			width: 90%;
+			height:auto;
+			max-height: 100%;
+			min-height: 49px;
+			color: $white;
+			font-size: 200%;
+		}
+		.r-body {
+			padding: 14px 0 21px 0;
+			background-color: $seagreen-complement;
+			color: $black;
+			margin:auto;
+			max-width: 90%;
+			width: 90%;
+			height:auto;
+			max-height: 100%;
+			min-height: 49px;
+			a {
+				color: $black!important;
+			}
+			.phone, .time {
+				font-size: 150%;
+				padding: 10px;
+			}
+			.email, #date {
+				font-size: 115%;
+			}
+		}
+		#map-body {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+}

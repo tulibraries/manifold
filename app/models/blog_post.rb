@@ -5,7 +5,7 @@ class BlogPost < ApplicationRecord
 
   belongs_to :blog
   belongs_to :person, optional: true
-  validates :blog, :last_updated_date, :path, :post_guid, :title, presence: true
+  validates :blog, :publication_date, :path, :post_guid, :title, :content_hash, presence: true
 
   def author
     @author = (person&.name || external_author_name || "Unknown")

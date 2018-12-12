@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :accounts
     resources :alerts
-    #resources :blogs
+    resources :blogs
+    resources :blog_posts
     resources :buildings
     resources :groups
     resources :highlights

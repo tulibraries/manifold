@@ -8,10 +8,11 @@ RSpec.describe BlogPost, type: :model do
   context "Validations" do
     required_fields = [
       "title",
-      "last_updated_date",
+      "publication_date",
       "path",
       "post_guid",
-      "blog"
+      "blog",
+      "content_hash"
     ]
     required_fields.each do |field|
       it "raise an error when #{field} is not present" do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_05_173332) do
+ActiveRecord::Schema.define(version: 2018_12_11_214307) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -66,13 +66,14 @@ ActiveRecord::Schema.define(version: 2018_12_05_173332) do
     t.text "content"
     t.string "path"
     t.string "post_guid"
-    t.datetime "last_updated_date"
+    t.datetime "publication_date"
     t.text "categories"
     t.string "external_author_name"
     t.integer "person_id"
     t.integer "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content_hash"
     t.index ["blog_id"], name: "index_blog_posts_on_blog_id"
     t.index ["person_id"], name: "index_blog_posts_on_person_id"
   end

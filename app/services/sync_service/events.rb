@@ -32,7 +32,7 @@ class SyncService::Events
       "description" => event.fetch("Description",  I18n.t("fortytude.default.event.description")),
       "cancelled" => event.fetch("Canceled", 0),
       "registration_status" => event.fetch("RegistrationStatus", I18n.t("fortytude.default.event.registration_status")),
-      "registration_link" => event.fetch("RegistrationLink", "#"),
+      "registration_link" => event.fetch("RegistrationLink", nil),
       "start_time" => start_time(event),
       "end_time" => end_time(event),
       "content_hash" => xml_hash(event)

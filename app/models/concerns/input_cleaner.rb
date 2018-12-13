@@ -7,7 +7,7 @@ module InputCleaner
     phone_number.gsub!(/\D/, "")
   end
   def sanitize_description
-    self.description.gsub!(/<p>&nbsp;<\/p>/, '')
+    self.description.gsub!(/<p>\W<\/p>/, "")
     self.description = ActionController::Base.helpers.sanitize(self.description)
   end
 end

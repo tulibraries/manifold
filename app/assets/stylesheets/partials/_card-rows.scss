@@ -99,52 +99,52 @@
 
 	/* //////////////////////////// EVENTS ///////////////////////////// */
 
-	.ctaRow.events {
-		.ctaFirst, .ctaMid, .ctaLast {
-			background-color: $white;
-			border: solid $purple 0;
-			color: black;
-			min-width: 265px;
-			max-width: 375px;
-			img {
-				opacity: 1;
+.ctaRow.events {
+	.ctaFirst, .ctaMid, .ctaLast {
+		background-color: $white;
+		border: solid $purple 0;
+		color: black;
+		min-width: 265px;
+		max-width: 375px;
+		img {
+			opacity: 1;
+		}
+		.card-body {
+			text-align: left;
+			padding: 14px 21px 14px 21px;
+			border: solid $purple 2px;
+			max-height: 180px;
+			overflow:hidden;
+		}
+		.info {
+			margin: 4px 0;
+			position: relative;
+			.when {
+				width: 55%;
+				color: $white;
+				background-color: $purple;
+				font-size: 100%;
+				display: inline-block;
+				padding: 7px;
+				text-align:center;
+				max-height: 38px;
+				overflow: hidden;
 			}
-			.card-body {
-				text-align: left;
-				padding: 14px 21px 14px 21px;
-				border: solid $purple 2px;
-				max-height: 180px;
-				overflow:hidden;
-			}
-			.info {
-				margin: 4px 0;
-				position: relative;
-				.when {
-					width: 55%;
-					color: $white;
-					background-color: $purple;
-					font-size: 100%;
-					display: inline-block;
-					padding: 7px;
-					text-align:center;
-					max-height: 38px;
-					overflow: hidden;
-				}
-				.details {
-					width: 43%;
-					position: absolute;
-					right: 0;
-					color: $white;
-					background-color: $purple;
-					font-size: 103%;
-					opacity: .75;
-					display: inline-block;
-					padding: 7px;
-					text-align:center;
-					margin-right: 0;
-				}
+			.details {
+				width: 43%;
+				position: absolute;
+				right: 0;
+				color: $white;
+				background-color: $purple;
+				font-size: 103%;
+				opacity: .75;
+				display: inline-block;
+				padding: 7px;
+				text-align:center;
+				margin-right: 0;
 			}
 		}
+	}
 	.ctaFirst {
 		.card-body {
 			border-bottom-left-radius: 42px;

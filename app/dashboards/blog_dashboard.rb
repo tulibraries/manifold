@@ -59,12 +59,9 @@ class BlogDashboard < Administrate::BaseDashboard
     :public_status,
   ].freeze
 
-  # Overwrite this method to customize how blogs are displayed
-  # across all pages of the admin dashboard.
-  #
-  # def display_resource(blog)
-  #   "Blog ##{blog.id}"
-  # end
+  def display_resource(blog)
+    "##{blog.id} #{blog.title}"
+  end
 
   def tinymce?
     true

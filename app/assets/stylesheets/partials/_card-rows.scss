@@ -46,8 +46,8 @@
 	.ctaFirst, .cta1st {
 		background-color: $foamgreen;
 		color: $white;
-		border-top-left-radius: 42px;
-		border-bottom-left-radius: 42px;
+		border-top-left-radius: 14px;
+		border-bottom-left-radius: 14px;
 		.card-title.complement {
 			background-color: $foamgreen-complement;
 			color: $black;
@@ -71,8 +71,8 @@
 	}	
 	.ctaLast, .cta4th {
 		background-color: $darkgold;
-		border-top-right-radius: 42px;
-		border-bottom-right-radius: 42px;
+		border-top-right-radius: 14px;
+		border-bottom-right-radius: 14px;
 		.card-title.complement {
 			background-color: $darkgold-complement;
 			color: $black;
@@ -147,12 +147,12 @@
 		}
 	.ctaFirst {
 		.card-body {
-			border-bottom-left-radius: 42px;
+			border-bottom-left-radius: 14px;
 		}
 	}
 	.ctaLast {
 		.card-body {
-			border-bottom-right-radius: 42px;
+			border-bottom-right-radius: 14px;
 		}
 	}
 }

@@ -1,20 +1,57 @@
 @import "partials/_vars.scss";
 
 .l-end {
-	border-top-left-radius: 42px!important;
-	border-bottom-left-radius: 42px!important;
+	border-top-left-radius: 14px!important;
+	border-bottom-left-radius: 14px!important;
 }
 
 .r-end {
-	border-top-right-radius: 42px!important;
-	border-bottom-right-radius: 42px!important;
+	border-top-right-radius: 14px!important;
+	border-bottom-right-radius: 14px!important;
 }
 
 .both-ends {
-  border-radius: 42px!important;
+  border-radius: 14px!important;
 }
 
 .group-members {
 	padding-left: 21px;
 	padding-right: 21px;
+}
+
+
+.groupsRow {
+  margin-top: 42px;
+  margin-bottom: 42px;
+  .cta {
+		border: solid $seagreen 2px;
+		text-align: center;
+  	display: table;
+  }
+	.cta.first {
+		border-top-left-radius: 14px;
+		border-bottom-left-radius: 14px;
+	}
+	.cta.last {
+		border-top-right-radius: 14px;
+		border-bottom-right-radius: 14px;
+	}
+	.cta.both {
+		border-radius: 14px;
+		vertical-align: middle;
+	}
+	.group {
+		height: 99px;
+		margin: auto;
+		border: 0;
+		background-color: transparent;
+		vertical-align: middle;
+	  font-size: 1.15rem;
+	  margin: auto;
+    display: table-cell;
+    vertical-align: middle;
+    a {
+    	color: $black;
+    }
+	}
 }

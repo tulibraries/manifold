@@ -1,77 +1,5 @@
 @import "partials/_vars.scss";
 
-.servicesRow {
-  margin-top: 42px;
-  margin-bottom: 42px;
-  .cta {
-		background-color: $seagreen-complement;
-		border: solid $seagreen 1px;
-		text-align: center;
-  	display: table;
-  }
-	.cta.first {
-		border-top-left-radius: 42px;
-		border-bottom-left-radius: 42px;
-	}
-	.cta.last {
-		border-top-right-radius: 42px;
-		border-bottom-right-radius: 42px;
-	}
-	.cta.both {
-		border-radius: 42px;
-		vertical-align: middle;
-	}
-	.service {
-		height: 99px;
-		margin: auto;
-		border: 0;
-		background-color: transparent;
-		vertical-align: middle;
-	  font-size: 1.15rem;
-	  margin: auto;
-    display: table-cell;
-    vertical-align: middle;
-    a {
-    	color: $black;
-    }
-	}
-}
-.groupsRow {
-  margin-top: 42px;
-  margin-bottom: 42px;
-  .cta {
-		background-color: $seagreen-complement;
-		border: solid $seagreen 1px;
-		text-align: center;
-  	display: table;
-  }
-	.cta.first {
-		border-top-left-radius: 42px;
-		border-bottom-left-radius: 42px;
-	}
-	.cta.last {
-		border-top-right-radius: 42px;
-		border-bottom-right-radius: 42px;
-	}
-	.cta.both {
-		border-radius: 42px;
-		vertical-align: middle;
-	}
-	.group {
-		height: 99px;
-		margin: auto;
-		border: 0;
-		background-color: transparent;
-		vertical-align: middle;
-	  font-size: 1.15rem;
-	  margin: auto;
-    display: table-cell;
-    vertical-align: middle;
-    a {
-    	color: $black;
-    }
-	}
-}
 
 .policiesRow {
   margin-top: 42px;
@@ -83,15 +11,15 @@
   	display: table;
   }
 	.cta.first {
-		border-top-left-radius: 42px;
-		border-bottom-left-radius: 42px;
+		border-top-left-radius: 14px;
+		border-bottom-left-radius: 14px;
 	}
 	.cta.last {
-		border-top-right-radius: 42px;
-		border-bottom-right-radius: 42px;
+		border-top-right-radius: 14px;
+		border-bottom-right-radius: 14px;
 	}
 	.cta.both {
-		border-radius: 42px;
+		border-radius: 14px;
 	}
 	.policy {
 		height: 99px;
@@ -119,15 +47,15 @@
   	display: table;
   }
 	.cta.first {
-		border-top-left-radius: 42px;
-		border-bottom-left-radius: 42px;
+		border-top-left-radius: 14px;
+		border-bottom-left-radius: 14px;
 	}
 	.cta.last {
-		border-top-right-radius: 42px;
-		border-bottom-right-radius: 42px;
+		border-top-right-radius: 14px;
+		border-bottom-right-radius: 14px;
 	}
 	.cta.both {
-		border-radius: 42px;
+		border-radius: 14px;
 	}
 	.resource {
 		height: 99px;

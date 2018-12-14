@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-  <div class="col-3">
+  <div class="col-3 text-center">
     <% if @event.image.attached? %>
         <%= image_tag @event.image.variant(gravity: 'center', extent: "100%x100%") %>
       <% else %>

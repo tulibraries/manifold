@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    @events = Event.take(4)
   end
 
   def ambler

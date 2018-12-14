@@ -13,9 +13,13 @@
         Contact
       </div>
       <div class="card-body">
-        <span class="phone"><%= phone_formatted(@event.space.phone_number) %></span><br />
-        <span class="email"><%= mail_to @event.space.email, @event.space.email %></span><br />
-        <div class="address"><%= link_to @event.space.building.name, @event.space.building %></div>
+        <%  unless @event.space.nil? %>
+          <span class="phone"><%= phone_formatted(@event.space.phone_number) %></span><br />
+          <span class="email"><%= mail_to @event.space.email, @event.space.email %></span><br />
+          <div class="address"><%= link_to @event.space.building.name, @event.space.building %></div>
+        <% else %>
+          <div class="address"><%= link_to @event.building.name, @event.building %></div>
+        <% end %>
       </div>
     </div>
     <div class="col-12 col-lg-4 card ctaMidOne">
@@ -24,6 +28,7 @@
       </div>
       <div class="card-body">
       <div id="dateTime">
+        <% unless @event.space.nil? %>
         <div id="date">
           <%= @event.space.todays_date %>
         <div id="time" style="line-height: 1.5rem;">
@@ -32,6 +37,16 @@
             <br /><%= @event.space.todays_hours %>
           <% end %>
         </div>
+        <% else %>
+        <div id="date">
+          <%= @event.building.todays_date %>
+        <div id="time" style="line-height: 1.5rem;">
+          <%= @event.building.name %> <br />
+          <% unless @event.building.hours.blank? %>
+            <br /><%= @event.building.todays_hours %>
+          <% end %>
+        </div>
+        <% end %>
         </div>
         <div id="allHours">
           <%= link_to "See all library hours", hours_path() %> >
@@ -44,7 +59,11 @@
         Map!
       </div>
       <div class="card-body">
-        <%= render_map(@event.space.building.name,@event.space.building.coordinates,@event.space.building.google_id) %>
+        <% unless @event.space.nil? %>
+          <%= render_map(@event.space.building.name,@event.space.building.coordinates,@event.space.building.google_id) %>
+        <% else %>
+          <%= render_map(@event.building.name,@event.building.coordinates,@event.building.google_id) %>
+        <% end %>
       </div>
     </div>
   </div>

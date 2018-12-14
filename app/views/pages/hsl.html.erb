@@ -79,6 +79,7 @@
 	</div>
 </div>
 
+<% unless @events.blank? %>
 <div class="row">
 	<div class="col">
 		<div class="vertical-stripes">
@@ -87,48 +88,103 @@
 	</div>
 </div>
 
-<div class="row ctaRow news">
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+<div class="container">
+<div class="row ctaRow events">
+	<% @events.in_groups_of(4).each do |event| %>
+	<div class="col-12 col-xl-3">
 		<div class="card ctaFirst">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+    	<% if event.first.image.attached? %>
+        <%= image_tag event.first.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
+      <% else %>
+        <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: ""), event_path(event.first) %>
+      <% end %>
+			<div class="info">
+				<div class="d-none d-xl-inline-block when">
+					<%= event.first.start_time.strftime("%b %d @ %l%p") %>
+				</div>
+				<div class="details">
+					<%= link_to "Details >", event_path(event.first) %>
+				</div>
+			</div>
 		  <div class="card-body">
-		    <span class="card-title">Help with Research</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
+		    <span><%= link_to event.first.title, events_path(event.first) %></span>
+		    <p class="d-none d-xl-block"><%= strip_tags event.first.description[0..120] %>...</p>
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<% unless event.second.nil? %>
+	<div class="col-12 col-xl-3">
 		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<% if event.second.image.attached? %>
+        <%= image_tag event.second.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
+      <% else %>
+        <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: ""), event_path(event.second) %>
+      <% end %>
+			<div class="info">
+				<div class="d-none d-xl-inline-block when">
+					<%= event.second.start_time.strftime("%b %d @ %l%p") %>
+				</div>
+				<div class="details">
+					<%= link_to "Details >", event_path(event.second) %>
+				</div>
+			</div>
 		  <div class="card-body">
-		    <span class="card-title">Find a study space</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
+		    <span><%= link_to event.second.title, events_path(event.second) %></span>
+		    <p class="d-none d-xl-block"><%= strip_tags event.second.description[0..120] %>...</p>
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<% end %>
+	<% unless event.third.nil? %>
+	<div class="col-12 col-xl-3">
 		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<% if event.third.image.attached? %>
+        <%= image_tag event.third.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
+      <% else %>
+        <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: ""), event_path(event.third) %>
+      <% end %>
+			<div class="info">
+				<div class="d-none d-xl-inline-block when">
+					<%= event.third.start_time.strftime("%b %d @ %l%p") %>
+				</div>
+				<div class="details">
+					<%= link_to "Details >", event_path(event.third) %>
+				</div>
+			</div>
 		  <div class="card-body">
-		    <span class="card-title">Print my paper</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
+		    <span><%= link_to event.third.title, events_path(event.third) %></span>
+		    <p class="d-none d-xl-block"><%= strip_tags event.third.description[0..120] %>...</p>
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<% end %>
+	<% unless event.fourth.nil? %>
+	<div class="col-12 col-xl-3">
 		<div class="card ctaLast">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<% if event.fourth.image.attached? %>
+        <%= image_tag event.fourth.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
+      <% else %>
+        <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: "Card image cap"), event_path(event.fourth) %>
+      <% end %>
+			<div class="info">
+				<div class="d-none d-xl-inline-block when">
+					<%= event.fourth.start_time.strftime("%b %d @ %l%p") %>
+				</div>
+				<div class="details">
+					<%= link_to "Details >", event_path(event.fourth) %>
+				</div>
+			</div>
 		  <div class="card-body">
-		    <span class="card-title">Print my paper</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
+		    <span><%= link_to event.fourth.title, events_path(event.fourth) %></span>
+		    <p class="d-none d-xl-block"><%= strip_tags event.fourth.description[0..120] %>...</p>
 		  </div>
 		</div>
 	</div>
+	<% end %>
+<% end %>
 </div>
+</div>
+<% end %>
 
 <div class="row">
 	<div class="col">

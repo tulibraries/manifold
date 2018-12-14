@@ -30,6 +30,7 @@ class SyncService::Events
     {
       "title" => event.fetch("Title", I18n.t("fortytude.default.event.title")),
       "description" => event.fetch("Description",  I18n.t("fortytude.default.event.description")),
+      "tags" => event.fetch("Tags", nil),
       "cancelled" => event.fetch("Canceled", 0),
       "registration_status" => event.fetch("RegistrationStatus", I18n.t("fortytude.default.event.registration_status")),
       "registration_link" => event.fetch("RegistrationLink", nil),
@@ -53,6 +54,7 @@ class SyncService::Events
       event.assign_attributes(record_hash.except("person", "building", "image"))
       event.person = record_hash["person"]
       event.building = record_hash["building"]
+      event.tags = record_hash["tags"]
       unless (record_hash[:image].nil? || event.image.attached?)
         event.image.attach(
           io: record_hash[:image][:io],

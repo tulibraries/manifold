@@ -1,75 +1,33 @@
 @import "partials/_vars.scss";
 
 
-.policiesRow {
-  margin-top: 42px;
-  margin-bottom: 42px;
-  .cta {
-		background-color: $foamgreen-complement;
-		border: solid $foamgreen 1px;
-		text-align: center;
-  	display: table;
-  }
-	.cta.first {
-		border-top-left-radius: 14px;
-		border-bottom-left-radius: 14px;
-	}
-	.cta.last {
-		border-top-right-radius: 14px;
-		border-bottom-right-radius: 14px;
-	}
-	.cta.both {
+.spacesRow {
+	margin-left: 77px;
+	margin-right: 77px;
+	margin-bottom: 35px;
+ 	.ctaTwo .related_space {
+ 		text-align: center;
+		border: solid $purple 2px;
 		border-radius: 14px;
-	}
-	.policy {
-		height: 99px;
-		margin: auto;
-		border: 0;
-		background-color: transparent;
-		vertical-align: middle;
-	  font-size: 1.15rem;
-	  margin: auto;
-    display: table-cell;
-    vertical-align: middle;
-    a {
-    	color: $black;
-    }
-	}
-}
+ 		background-color: $white;
+ 		color: $black;
+ 		overflow: hidden;
+ 		display:inline-block;
+    padding: 0;
+    margin-top: 35px;
+    line-height: 100px;
+    width: 200px;
+    height: 190px;
+ 		img {
+ 			object-fit: cover;
+ 			min-height: 100%;
+ 		}
+ 	}
+ 	.card-body {
+ 		padding-top: 7px;
+ 		width: 100%;
+ 		text-align: center;
+ 	}
+ }
 
-.hslResourcesRow {
-  margin-top: 42px;
-  margin-bottom: 42px;
-  .cta {
-		background-color: $purple-complement;
-		border: solid $purple 1px;
-		text-align: center;
-  	display: table;
-  }
-	.cta.first {
-		border-top-left-radius: 14px;
-		border-bottom-left-radius: 14px;
-	}
-	.cta.last {
-		border-top-right-radius: 14px;
-		border-bottom-right-radius: 14px;
-	}
-	.cta.both {
-		border-radius: 14px;
-	}
-	.resource {
-		height: 99px;
-		margin: auto;
-		border: 0;
-		background-color: transparent;
-		vertical-align: middle;
-	  font-size: 1.15rem;
-	  margin: auto;
-    display: table-cell;
-    vertical-align: middle;
-    a {
-    	color: $black;
-    }
-	}
-}
 

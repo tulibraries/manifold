@@ -1,9 +1,5 @@
-// Place all the styles related to the buildings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-// Can't seem to define this in applicaiton.scss. So, for now, it stays here
+// Can't seem to define this in application.scss. So, for now, it stays here
 @import "administrate/library/_variables.scss";
 @import "partials/_vars.scss";
 
@@ -68,7 +64,26 @@ div.required  label::after {
 		text-decoration: underline;
 	}
 }
-
+.buildingsRow {
+	.card {
+		display:table;
+		margin-top: 35px;
+    text-align: center;
+    border: solid #9a2e8c 2px;
+    border-radius: 14px;
+    background-color: #fff;
+    color: #000;
+    overflow: hidden;
+    padding: 0;
+    width: 320px;
+    height: 250px;
+    .card-title {
+    	display:table-row;
+    	vertical-align:middle;
+    	font-size:125%;
+    }
+	}
+}
 .ctaRow.building-info, .ctaRow.space-info  {
 	max-width: 1420px;
 	margin-left: auto;
@@ -115,31 +130,3 @@ div.required  label::after {
 	}
 
 }
-.spacesRow {
-	margin-left: 77px;
-	margin-right: 77px;
-	margin-bottom: 35px;
- 	.ctaTwo .related_space {
- 		text-align: center;
-		border: solid $purple 2px;
-		border-radius: 50%;
- 		background-color: $white;
- 		color: $black;
- 		overflow: hidden;
- 		display:inline-block;
-    padding: 0;
-    margin-top: 35px;
-    line-height: 100px;
-    width: 200px;
-    height: 190px;
- 		img {
- 			object-fit: cover;
- 			min-height: 100%;
- 		}
- 	}
- 	.card-body {
- 		padding-top: 7px;
- 		width: 100%;
- 		text-align: center;
- 	}
- }

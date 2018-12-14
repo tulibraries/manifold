@@ -1,0 +1,57 @@
+@import "partials/_vars.scss";
+
+.endcap {
+		h2 {
+			border-left: 0;
+			padding-left: 21px;
+			margin-top: 0;
+			margin-bottom: 14px;
+		}
+		p {
+			font-size: large;
+			padding-left: 21px;
+		}
+		padding: 0;
+		width: 90%;
+		overflow: hidden;
+		margin-bottom: 21px;
+		border-top-right-radius: 24px;
+		border-bottom-right-radius: 24px;
+}
+
+.purple {
+	h2 {
+		background-color: $purple-complement!important;
+	}
+	border: solid $purple 2px;
+}
+.green {
+	h2 {
+		background-color: $seagreen-complement!important;
+		margin-bottom: 0;
+		a {
+			color: $black;
+		}
+	}
+	h2.event-space {
+		text-align: center;
+		padding: 21px 0;
+	}
+	border: solid $seagreen 2px;
+
+}
+.olive {
+	h2 {
+		background-color: $baby-puke-green!important;
+		margin-bottom: 0;
+		text-align: center;
+		padding-top: 21px;
+		padding-bottom: 21px;
+		border: solid $seagreen 2px;
+		border-top-right-radius: 24px;
+		border-bottom-right-radius: 24px;
+		a {
+			color: $black;
+		}
+	}
+}

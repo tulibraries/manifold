@@ -21,10 +21,25 @@ class SyncService::BlogPosts
 
   def read_blog_posts
     @blog_postsDoc.xpath("//channel/item").map do |blog_post|
-      blog_post_xml = blog_post.to_xml
-      binding.pry
-      Hash.from_xml(blog_post_xml)["item"].merge(xml: blog_post_xml)
+      blog_post_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\">" + blog_post.to_xml + "</xml>"
+      #@blog_hash = blog_post_xml.to_sha5
+      @blog_post = Feedjira::Feed.parse(blog_post_xml).entries.first
+      #@blog_post.blog_id = 
     end
   end
 
+  def record_hash(blog_post)
+    {
+      "title" => blog_post.title,
+      "content" => blog_post.content,
+      "path" => blog_post.url,
+      "post_guid" => blog_post.entry_id,
+      "publication_date" => blog_post.published,
+      "categories" => blog_post.categories,
+      "external_author_name" => blog_post.author,
+      #"person_id" => FuzzyFind::Person.find(blog_post.author.to_s),
+      #"blog_id" => blog_post.blog_id,
+      #"content_hash" => blog_post.content_hash,
+    }
+  end
 end

@@ -24,6 +24,7 @@
 		</div>
 </div>
 
+<div class="container">
 <div class="row ctaRow">
 	<div class="col col-sm-6 col-lg-4 col-xl-3">
 		<div class="card ctaFirst">
@@ -53,14 +54,15 @@
 		<div class="card ctaLast">
 			<div class="">
 				<ul>
-					<li class="oddrow">Health Sciences Libraries ></li>
-					<li>Special Collections Research Center ></li>
-					<li class="oddrow">Ambler Library ></li>
-					<li>All Libraries ></li>
+					<li class="oddrow"><%= link_to "Health Sciences Libraries", {controller: "pages", action: "hsl"}, style: "color: black" %> ></li>
+					<li><%= link_to "Special Collections Research Center", {controller: "pages", action: "home"}, style: "color: black" %> ></li>
+					<li class="oddrow"><%= link_to "Ambler Library", {controller: "pages", action: "ambler"}, style: "color: black" %> ></li>
+					<li><%= link_to "All Libraries", buildings_path, style: "color: black" %> ></li>
 				</ul>
 		  </div>
 		</div>
 	</div>
+</div>
 </div>
 
 <% unless @highlights.blank? %>
@@ -73,6 +75,7 @@
 	</div>
 </div>
 
+<div class="container">
 <div class="row ctaRow news">
 	<% @highlights.each_with_index do |highlight, index| %>
 			<div class="col col-sm-6 col-lg-4 col-xl-3">
@@ -92,6 +95,7 @@
 			</div>
 		<% end %>
 </div>
+</div>
 <% end %>
 
 <% unless @events.nil? %>
@@ -103,7 +107,7 @@
 	</div>
 </div>
 
-<div calss="container">
+<div class="container">
 <div class="row ctaRow events">
 	<% @events.in_groups_of(4).each do |event| %>
 	<div class="col-12 col-xl-3">
@@ -122,7 +126,7 @@
 				</div>
 			</div>
 		  <div class="card-body">
-		    <span><%= link_to event.first.title, events_path(event.first) %></span>
+		    <span><%= link_to event.first.title, event_path(event.first) %></span>
 		    <p class="d-none d-xl-block"><%= strip_tags event.first.description[0..120] %>...</p>
 		  </div>
 		</div>
@@ -143,7 +147,7 @@
 				</div>
 			</div>
 		  <div class="card-body">
-		    <span><%= link_to event.second.title, events_path(event.second) %></span>
+		    <span><%= link_to event.second.title, event_path(event.second) %></span>
 		    <p class="d-none d-xl-block"><%= strip_tags event.second.description[0..120] %>...</p>
 		  </div>
 		</div>
@@ -164,7 +168,7 @@
 				</div>
 			</div>
 		  <div class="card-body">
-		    <span><%= link_to event.third.title, events_path(event.third) %></span>
+		    <span><%= link_to event.third.title, event_path(event.third) %></span>
 		    <p class="d-none d-xl-block"><%= strip_tags event.third.description[0..120] %>...</p>
 		  </div>
 		</div>
@@ -185,7 +189,7 @@
 				</div>
 			</div>
 		  <div class="card-body">
-		    <span><%= link_to event.fourth.title, events_path(event.fourth) %></span>
+		    <span><%= link_to event.fourth.title, event_path(event.fourth) %></span>
 		    <p class="d-none d-xl-block"><%= strip_tags event.fourth.description[0..120] %>...</p>
 		  </div>
 		</div>

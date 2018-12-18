@@ -8,6 +8,7 @@
   </div>
 </div>
 
+<div class="container">
   <div class="row policiesRow">
     <% @space.policy_space.in_groups_of(3).each do |group| %>
       <% unless @space.policy_space.size < 3 %>
@@ -57,7 +58,7 @@
           </div>
         </div>
       <% end %>
-
+      </div>
     <% end %>
-<% end %>
+  <% end %>
 </div>

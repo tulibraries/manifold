@@ -14,20 +14,20 @@
 </div>
 
 <div class="container">
-<div class="row spacesRow">
+<div class="row buildingsRow">
 <% unless @buildings.nil? %>
 
     <% @buildings.each do |building| %>
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 ctaTwo text-center">
-        <div class="related_space">
+      <div class="col-12 col-sm-6 col-md-4" >
+        <div class="card">
+        <div class="building-image">
           <% if building.photo.attached? %>
-            <%= link_to image_tag(building.photo.variant(gravity: 'center', crop: "200x200+50%+50%", extent: "100%x100%"), class: "card-img-top", alt: "Card image cap"), building_path(building) %>
+            <%= link_to image_tag(building.photo.variant(gravity: 'center', crop: "300x300+50%+50%", extent: "100%x85%"), class: "card-img-top", alt: "", style: "width:380px;max-height:190px"), building_path(building) %>
           <% else %>
-            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "Card image cap"), building_path(building) %>
+            <%= link_to image_tag('T-borderless.gif', class: "card-img-top", alt: "", style: "width:190px;height:190px"), building_path(building) %>
           <% end %>
-        </div>
-        <div class="card-body" style="padding: 0;">
-          <span class="card-title"><%= building.name %></span>
+          </div>
+          <div class="card-title"><%= building.name %></div>
         </div>
       </div>
     <% end %>

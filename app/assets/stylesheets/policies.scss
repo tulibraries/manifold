@@ -1,0 +1,37 @@
+@import "partials/_vars.scss";
+
+.policiesRow {
+  margin-top: 42px;
+  margin-bottom: 42px;
+  .cta {
+		background-color: $foamgreen-complement;
+		border: solid $foamgreen 1px;
+		text-align: center;
+  	display: table;
+  }
+	.cta.first {
+		border-top-left-radius: 14px;
+		border-bottom-left-radius: 14px;
+	}
+	.cta.last {
+		border-top-right-radius: 14px;
+		border-bottom-right-radius: 14px;
+	}
+	.cta.both {
+		border-radius: 14px;
+	}
+	.policy {
+		height: 99px;
+		margin: auto;
+		border: 0;
+		background-color: transparent;
+		vertical-align: middle;
+	  font-size: 1.15rem;
+	  margin: auto;
+    display: table-cell;
+    vertical-align: middle;
+    a {
+    	color: $black;
+    }
+	}
+}

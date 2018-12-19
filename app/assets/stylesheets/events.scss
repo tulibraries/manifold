@@ -10,14 +10,17 @@
 	}
 	.card {
 		.card-body {
-			height: 150px;
-			max-height: 150px!important;
+			height: 180px;
+			max-height: 180px!important;
 			overflow: hidden;
 			p {
 				padding-top: 10px;
+				line-height: 1rem;
 			}
 			span a {
 				color: black;
+				font-weight: 600;
+				font-size: 1.15rem;
 			}
 		}
 	}

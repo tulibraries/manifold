@@ -18,6 +18,29 @@
 	@import "bootstrap";
 	@import "partials/_vars.scss";
 
+.container {
+	@media (min-width: 576px) {
+		max-width: 100%; 
+	}
+	@media (min-width: 768px) {
+		max-width: 100%; 
+	}
+	@media (min-width: 1200px) {
+    max-width: 1500px;
+	}
+}
+.container.index {
+	@media (min-width: 576px) {
+		max-width: 100%; 
+	}
+	@media (min-width: 768px) {
+		max-width: 100%; 
+	}
+	@media (min-width: 1200px) {
+    max-width: 1200px;
+	}
+}
+
 .minipage h1.title {
 	position: relative;
 	text-align: center; 

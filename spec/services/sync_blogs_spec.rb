@@ -1,14 +1,20 @@
 # frozen_string_literal: true
 
+require "pry"
 require "rails_helper"
 
-RSpec.describe SyncService::BlogPosts, type: :service do
+RSpec.describe SyncService::Blogs, type: :service do
   before(:all) do
-    @sync_blog_posts = described_class.new(blog_posts_url: file_fixture("blog_posts.rss").to_path)
-    @blog_posts = @sync_blog_posts.read_blog_posts
+    @sync_blog = FactoryBot.create(:blog_fixture)
   end
 
   context "valid blog_posts" do
+    before(:all) do
+      blog_post_path = File.join(fixture_path, @sync_blog.feed_path)
+      @sync_blog_posts = SyncService::Blogs.new(blog_posts_url: blog_post_path, blog_id: @sync_blog.id)
+#      @blog_posts = @sync_blog_posts.read_blog_posts
+#      @content_hash = Digest::SHA1.hexdigest(@blog_posts.to_xml)
+    end
 
     it "extracts the blog_post title" do
       expect(@blog_posts.first.title).to match(/^A Look Back at Fall 2018 Beyond the Page Programs$/)
@@ -19,7 +25,7 @@ RSpec.describe SyncService::BlogPosts, type: :service do
     end
 
     describe "maps blog_posts xml to db schema" do
-      subject { @sync_blog_posts.record_hash(@blog_posts.first) }
+      subject { @sync_blog_posts.record_hash(@blog_posts.first, @sync_blog, @content_hash) }
 
       it "maps Title to title field" do
         expect(subject["title"]).to match(@blog_posts.first.title)
@@ -49,12 +55,15 @@ RSpec.describe SyncService::BlogPosts, type: :service do
         expect(subject["categories"]).to be(@blog_posts.first.categories)
       end
 
-      it "maps person_id inferred from author"
+      xit "maps person_id inferred from author"
 
-      it "maps blog_id from current blog "
+      it "maps blog_id from current blog" do
+        binding.pry
+        expect(subject[:blog_id]).to be(@sync_blog.id)
+      end
 
-      xit "maps blog entry's digest to blog entry hash field" do
-        expect(subject["content_hash"]).to match(Digest::SHA1.hexdigest(@blog_posts.first[:xml]))
+      it "maps blog entry's digest to blog entry hash field" do
+        expect(subject["content_hash"]).to match(@content_hash)
       end
     end
 

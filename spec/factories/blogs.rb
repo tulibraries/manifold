@@ -21,5 +21,10 @@ FactoryBot.define do
       base_url { "not://a:url" }
     end
 
+    factory :blog_fixture do
+      feed_path { "/files/blog_posts.rss" }
+    end
+
   end
+
 end

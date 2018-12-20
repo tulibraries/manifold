@@ -7,11 +7,11 @@
     <% @group.get_chair.in_groups_of(3, false).each do |person| %>
 
     <% unless person.size < 3 %>
-
+    <div class="col col-md-12 col-lg-6 col-xl-4">
       <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <div class="staff-card head">
       <% else %> 
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <div class="staff-card">
       <% end %>
         <div class="spacer l-end">
           <div class="title">
@@ -42,10 +42,13 @@
             </div>
           </div> <!-- spacer -->
         </div>
+      </div>
+
+      <div class="col col-md-12 col-lg-6 col-xl-4">
       <% if @group.chair_dept_heads.ids.include?(person.second.id) %>
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <div class="staff-card head">
       <% else %> 
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <div class="staff-card">
       <% end %>
         <div class="spacer">
           <div class="title">
@@ -76,11 +79,13 @@
             </div>
           </div> <!-- spacer -->
         </div>
+      </div>
 
+      <div class="col col-md-12 col-lg-6 col-xl-4">
       <% if @group.chair_dept_heads.ids.include?(person.third.id) %>
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+        <div class="staff-card head">
       <% else %> 
-        <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+        <div class="staff-card">
       <% end %>
         <div class="spacer r-end">
           <div class="title">
@@ -111,15 +116,16 @@
             </div>
           </div> <!-- spacer -->
         </div>
+      </div>
 
       <% end %> <!-- unless -->
 
       <% if person.size == 2 %>
-
+      <div class="col col-md-12 col-lg-6 col-xl-4">
         <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
-          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+          <div class="staff-card head">
         <% else %> 
-          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+          <div class="staff-card">
         <% end %>
         <div class="spacer l-end">
           <div class="title">
@@ -150,11 +156,12 @@
             </div>
           </div> <!-- spacer -->
         </div>
-        
+      </div>
+        <div class="col col-md-12 col-lg-6 col-xl-4">
         <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
-          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+          <div class="staff-card head">
         <% else %> 
-          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+          <div class="staff-card">
         <% end %>
         <div class="spacer r-end">
           <div class="title">
@@ -185,14 +192,15 @@
             </div>
           </div> <!-- spacer -->
         </div>
+      </div>
       <% end %>
 
       <% if person.size == 1  %>
-      
+      <div class="col col-md-12 col-lg-6 col-xl-4">
         <% if @group.chair_dept_heads.ids.include?(person.first.id) %>
-          <div class="col-xs-12 col-md-6 col-xl-4 staff-card head">
+          <div class="staff-card head">
         <% else %> 
-          <div class="col-xs-12 col-md-6 col-xl-4 staff-card">
+          <div class="staff-card">
         <% end %>
         <div class="spacer both-ends">
           <div class="title">
@@ -223,6 +231,7 @@
             </div>
           </div> <!-- spacer -->
         </div>
+      </div>
       <% end %>
 
       <% end %> <!-- each -->
@@ -230,6 +239,5 @@
 
 
   </div>
-</div>
 </div>
 <% end %>

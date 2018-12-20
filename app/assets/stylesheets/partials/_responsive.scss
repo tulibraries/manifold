@@ -14,7 +14,9 @@
     height: auto!important;
   }
 }
-.responsive .space-info {
+.responsive .space-info, .responsive .group-info {
+		margin-top: 35px;
+    margin-bottom: 21px;
 		.r-title {
 			padding: 14px 0 14px 0;
 			color: $white;

@@ -24,30 +24,44 @@ module Tude
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.group_types = ["Assembly", "Committee", "Department", "Functional Team", "Strategic Steering Team", "Working Group"]
+    config.group_types = ["Assembly", 
+                          "Committee", 
+                          "Department", 
+                          "Functional Team", 
+                          "Strategic Steering Team", 
+                          "Working Group"]
 
-    config.highlight_types = ["Program/Event", "Featured Staff", "Featured Resource", "Featured Location", "Staff Recommendation", "DSC Event", "HSL Highlight"]
+    config.highlight_types = ["DSC Event", 
+                              "Featured Staff", 
+                              "Featured Resource", 
+                              "Featured Location", 
+                              "HSL Highlight",
+                              "Program/Event",
+                              "Staff Recommendation"]
 
     config.service_types = ["Access to collections & resource sharing",
                             "Building & space use",
-                            "Research & instruction support",
                             "Digital scholarship",
+                            "Research & instruction support",
+                            "Research data services",
                             "Scholarly communication",
-                            "Technology use & supportResearch data services"]
-    config.audience_types = ["Undergraduate students",
-                             "Graduate students",
+                            "Technology use & support"]
+
+    config.audience_types = ["Alumni",
+                             "Continuing education students",
                              "Faculty",
+                             "Graduate students",
                              "Instructors",
-                             "Students w/ disabilities",
-                             "Alumni",
-                             "Visitors & community members",
-                             "Pennsylvania residents",
                              "Non-credit students",
+                             "Pennsylvania residents",
+                             "Students w/ disabilities",
                              "Temple University Hospital employees",
                              "Temple University Hospital residents",
-                             "Continuing education students",
-                             "Visiting scholars",
-                             "University staff & administration"]
+                             "Undergraduate students",
+                             "University staff & administration",
+                             "Visitors & community members",
+                             "Visiting scholars"]
+                             
     config.specialties = [  "Advertising",
                             "Africology & African-American Studies",
                             "American Studies",
@@ -62,7 +76,7 @@ module Tude
                             "Biomedical Science",
                             "Business",
                             "Chemistry",
-                            "Civll & Environmental Engineering",
+                            "Civil & Environmental Engineering",
                             "Classics",
                             "Communication & Social Influence",
                             "Communication Management",

@@ -24,6 +24,7 @@
 		</div>
 </div>
 
+<div class="container index">
 <div class="row ctaRow">
 	<div class="col col-sm-6 col-lg-4 col-xl-3">
 		<div class="card ctaFirst">
@@ -53,14 +54,15 @@
 		<div class="card ctaLast">
 			<div class="">
 				<ul>
-					<li class="oddrow">Health Sciences Libraries ></li>
-					<li>Special Collections Research Center ></li>
-					<li class="oddrow">Ambler Library ></li>
-					<li>All Libraries ></li>
+					<li class="oddrow"><%= link_to "Health Sciences Libraries", {controller: "pages", action: "hsl"}, style: "color: black" %> ></li>
+					<li><%= link_to "Special Collections Research Center", {controller: "pages", action: "home"}, style: "color: black" %> ></li>
+					<li class="oddrow"><%= link_to "Ambler Library", {controller: "pages", action: "ambler"}, style: "color: black" %> ></li>
+					<li><%= link_to "All Libraries", buildings_path, style: "color: black" %> ></li>
 				</ul>
 		  </div>
 		</div>
 	</div>
+</div>
 </div>
 
 <% unless @highlights.blank? %>
@@ -73,13 +75,14 @@
 	</div>
 </div>
 
+<div class="container index">
 <div class="row ctaRow news">
 	<% @highlights.each_with_index do |highlight, index| %>
 			<div class="col col-sm-6 col-lg-4 col-xl-3">
 				<div class="card cta<%= (index+1).ordinalize %> ">
 
 			    <% if highlight.photo.attached?  %>
-			      <%= image_tag highlight.photo.variant(resize: '360x360', gravity: 'center'), class: "card-img-top", alt: "alt text field needs to be added to model" %>
+			      <%= image_tag highlight.photo.variant(resize: '360x360', gravity: 'center'), class: "card-img-top", alt: "" %>
 			    <% else %>
 			      <%= image_tag "T.gif", style: 'width: 300px;' %>
 			    <% end %>
@@ -92,8 +95,10 @@
 			</div>
 		<% end %>
 </div>
+</div>
 <% end %>
 
+<% unless @events.nil? %>
 <div class="row">
 	<div class="col">
 		<div class="vertical-stripes">
@@ -102,75 +107,10 @@
 	</div>
 </div>
 
+
+<div class="container index">
 <div class="row ctaRow events">
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaFirst">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-			<div class="info">
-				<div class="when">
-					Sep 14 @ 2PM
-				</div>
-				<div class="details">
-					Details >
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-			<div class="info">
-				<div class="when">
-					Sep 14 @ 2PM
-				</div>
-				<div class="details">
-					Details >
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-			<div class="info">
-				<div class="when">
-					Sep 30 @ 12:30PM
-				</div>
-				<div class="details">
-					Details >
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaLast">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-			<div class="info">
-				<div class="when">
-					Sep 14 @ 2PM
-				</div>
-				<div class="details">
-					Details >
-				</div>
-			</div>
-		  <div class="card-body">
-		    <p class="card-text">
-		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
-		    Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-	</div>
+<%= render "events-row" %>
 </div>
 </div>
+<% end %>

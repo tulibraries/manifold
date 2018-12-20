@@ -1,0 +1,71 @@
+
+  <div class="row">
+    <div class="col-12">
+      <div class="vertical-stripes-sm">
+        <h2><span>Plan your visit</span></h2>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row ctaRow space-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-title complement">
+        Contact
+      </div>
+      <div class="card-body">
+        <%  unless @event.space.nil? %>
+          <span class="phone"><%= phone_formatted(@event.space.phone_number) %></span><br />
+          <span class="email"><%= mail_to @event.space.email, @event.space.email %></span><br />
+          <div class="address"><%= link_to @event.space.building.name, @event.space.building %></div>
+        <% else %>
+          <div class="address"><%= link_to @event.building.name, @event.building %></div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaMidOne">
+      <div class="card-title complement">
+        Hours
+      </div>
+      <div class="card-body">
+      <div id="dateTime">
+        <% unless @event.space.nil? %>
+        <div id="date">
+          <%= @event.space.todays_date %>
+        <div id="time" style="line-height: 1.5rem;">
+          <%= @event.space.building.name %> <br /> <%= @event.space.name %>
+          <% unless @event.space.hours.blank? %>
+            <br /><%= @event.space.todays_hours %>
+          <% end %>
+        </div>
+        <% else %>
+        <div id="date">
+          <%= @event.building.todays_date %>
+        <div id="time" style="line-height: 1.5rem;">
+          <%= @event.building.name %> <br />
+          <% unless @event.building.hours.blank? %>
+            <br /><%= @event.building.todays_hours %>
+          <% end %>
+        </div>
+        <% end %>
+        </div>
+        <div id="allHours">
+          <%= link_to "See all library hours", hours_path() %> >
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaLast">
+      <div class="card-title complement">
+        Map!
+      </div>
+      <div class="card-body">
+        <% unless @event.space.nil? %>
+          <%= render_map(@event.space.building.name,@event.space.building.coordinates,@event.space.building.google_id) %>
+        <% else %>
+          <%= render_map(@event.building.name,@event.building.coordinates,@event.building.google_id) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

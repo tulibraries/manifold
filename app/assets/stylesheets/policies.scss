@@ -1,11 +1,11 @@
 @import "partials/_vars.scss";
 
-
-.servicesRow {
+.policiesRow {
   margin-top: 42px;
   margin-bottom: 42px;
   .cta {
-		border: solid $seagreen 2px;
+		background-color: $foamgreen-complement;
+		border: solid $foamgreen 1px;
 		text-align: center;
   	display: table;
   }
@@ -19,9 +19,8 @@
 	}
 	.cta.both {
 		border-radius: 14px;
-		vertical-align: middle;
 	}
-	.service {
+	.policy {
 		height: 99px;
 		margin: auto;
 		border: 0;

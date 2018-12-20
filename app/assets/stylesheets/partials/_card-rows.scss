@@ -13,7 +13,7 @@
 		padding: 0;
 		overflow:hidden;
 		min-width: 265px;
-		max-width: 365px;
+		max-width: 265px;
 		img {
 			opacity: 0.5;
 			height:196px;
@@ -46,8 +46,8 @@
 	.ctaFirst, .cta1st {
 		background-color: $foamgreen;
 		color: $white;
-		border-top-left-radius: 42px;
-		border-bottom-left-radius: 42px;
+		border-top-left-radius: 14px;
+		border-bottom-left-radius: 14px;
 		.card-title.complement {
 			background-color: $foamgreen-complement;
 			color: $black;
@@ -71,8 +71,8 @@
 	}	
 	.ctaLast, .cta4th {
 		background-color: $darkgold;
-		border-top-right-radius: 42px;
-		border-bottom-right-radius: 42px;
+		border-top-right-radius: 14px;
+		border-bottom-right-radius: 14px;
 		.card-title.complement {
 			background-color: $darkgold-complement;
 			color: $black;
@@ -82,8 +82,8 @@
 		margin-bottom: 0;
 	}
 	li {
-		padding:16px;
-		font-size: 115%;
+		padding:16px 7px;
+		font-size: 95%;
 		white-space: nowrap;
 	}
 	.oddrow {
@@ -99,60 +99,60 @@
 
 	/* //////////////////////////// EVENTS ///////////////////////////// */
 
-	.ctaRow.events {
-		.ctaFirst, .ctaMid, .ctaLast {
-			background-color: $white;
-			border: solid $purple 0;
-			color: black;
-			min-width: 265px;
-			max-width: 365px;
-			img {
-				opacity: 1;
+.ctaRow.events {
+	.ctaFirst, .ctaMid, .ctaLast {
+		background-color: $white;
+		border: solid $purple 0;
+		color: black;
+		min-width: 265px;
+		max-width: 265px;
+		img {
+			opacity: 1;
+		}
+		.card-body {
+			text-align: left;
+			padding: 14px 10px 14px 10px;
+			border: solid $purple 2px;
+			max-height: 210px;
+			overflow:hidden;
+		}
+		.info {
+			margin: 4px 0;
+			position: relative;
+			.when {
+				width: 55%;
+				color: $white;
+				background-color: $purple;
+				font-size: 100%;
+				display: inline-block;
+				padding: 7px;
+				text-align:center;
+				max-height: 38px;
+				overflow: hidden;
 			}
-			.card-body {
-				text-align: left;
-				padding: 14px 21px 14px 21px;
-				border: solid $purple 2px;
-				max-height: 180px;
-				overflow:hidden;
-			}
-			.info {
-				margin: 4px 0;
-				position: relative;
-				.when {
-					width: 55%;
-					color: $white;
-					background-color: $purple;
-					font-size: 100%;
-					display: inline-block;
-					padding: 7px;
-					text-align:center;
-					max-height: 38px;
-					overflow: hidden;
-				}
-				.details {
-					width: 43%;
-					position: absolute;
-					right: 0;
-					color: $white;
-					background-color: $purple;
-					font-size: 103%;
-					opacity: .75;
-					display: inline-block;
-					padding: 7px;
-					text-align:center;
-					margin-right: 0;
-				}
+			.details {
+				width: 43%;
+				position: absolute;
+				right: 0;
+				color: $white;
+				background-color: $purple;
+				font-size: 103%;
+				opacity: .75;
+				display: inline-block;
+				padding: 7px;
+				text-align:center;
+				margin-right: 0;
 			}
 		}
+	}
 	.ctaFirst {
 		.card-body {
-			border-bottom-left-radius: 42px;
+			border-bottom-left-radius: 14px;
 		}
 	}
 	.ctaLast {
 		.card-body {
-			border-bottom-right-radius: 42px;
+			border-bottom-right-radius: 14px;
 		}
 	}
 }

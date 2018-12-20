@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   resources :groups, only: [:index, :show]
   resources :collections, only: [:index, :show]
   resources :highlights, only: [:show]
-  resources :events, only: [:index, :show]
+  resources :events, only: [:index, :show], path: "/beyondthepage"
   resources :services, only: [:index, :show]
   resources :policies, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"

@@ -1,124 +1,56 @@
 <div class="row">
   <div class="col breadcrumbs">
     <%= link_to "Home", root_path.to_s %> 
-    <%= link_to "Events", controller: "events", action: :index %>
+    <%= link_to "Events", events_path %>
     <%= @event.title %>
   </div>
 </div>
+
 <div class="row">
-  <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span><%= @event.title %></span></h2>
+  <div class="col-3 text-center">
+    <% if @event.image.attached? %>
+        <%= image_tag @event.image.variant(gravity: 'center', extent: "100%x100%") %>
+      <% else %>
+        <%= image_tag 'T-borderless.gif' %>
+      <% end %>
+  </div>
+  <div class="col-6 event-info">
+    <h1><%= @event.title %></h1>
+    <%= sanitize @event.description.html_safe %>
+  </div>
+  <div class="col-3 event-data">
+    <div class="row">
+      <div class="endcap purple">
+        <h2>Details</h2>
+          <p><%= @event.get_date %></p>
+          <p><%= @event.set_times %></p>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="endcap green">
+        <% unless @event.space.nil? %>
+          <h2 class="event-space"><%= link_to @event.space.name, space_path(@event.space) %></h2>
+        <% else %>
+          <h2><%= @event.external_space %></h2>
+          <p><%= @event.external_building %><br />
+          <%= @event.external_address %><br />
+          <%= @event.external_city %>, <%= @event.external_state %> <%= @event.external_zip %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <% unless @event.registration_link.blank? %>
+      <div class="row">
+        <div class="endcap olive">
+          <h2><%= link_to "Register", strip_tags(@event.registration_link) %></h2>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
+  <% if @event.can_visit %>
+    <%= render "visit" %>
+  <% end %>
 
 
-<div class="container">
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @event.end_time %>
-</p>
-
-<% unless @event.building.nil? %>
-  <p>
-    <strong>Building:</strong>
-    <%= @event.building.name %>
-  </p>
-<% end %>
-
-<% unless @event.space.nil? %>
-  <p>
-    <strong>Space:</strong>
-    <%= @event.space.name %>
-  </p>
-<% end %>
-
-<p>
-  <strong>External building:</strong>
-  <%= @event.external_building %>
-</p>
-
-<p>
-  <strong>External space:</strong>
-  <%= @event.external_space %>
-</p>
-
-<p>
-  <strong>External address:</strong>
-  <%= @event.external_address %>
-</p>
-
-<p>
-  <strong>External city:</strong>
-  <%= @event.external_city %>
-</p>
-
-<p>
-  <strong>External state:</strong>
-  <%= @event.external_state %>
-</p>
-
-<p>
-  <strong>External zip:</strong>
-  <%= @event.external_zip %>
-</p>
-
-<% unless @event.space.nil? %>
-  <p>
-    <strong>Person:</strong>
-    <%= @event.person.first_name %>
-    <%= @event.person.last_name %>
-  </p>
-<% end %>
-
-<p>
-  <strong>External contact name:</strong>
-  <%= @event.external_contact_name %>
-</p>
-
-<p>
-  <strong>External contact email:</strong>
-  <%= @event.external_contact_email %>
-</p>
-
-<p>
-  <strong>External contact phone:</strong>
-  <%= @event.external_contact_phone %>
-</p>
-
-<p>
-  <strong>Cancelled:</strong>
-  <%= @event.cancelled %>
-</p>
-
-<p>
-  <strong>Registration status:</strong>
-  <%= @event.registration_status %>
-</p>
-
-<p>
-  <strong>Registration link:</strong>
-  <%= @event.registration_link %>
-</p>
-
-<p>
-  <strong>Content hash:</strong>
-  <%= @event.content_hash %>
-</p>
-</div>

@@ -24,7 +24,7 @@
 		</div>
 </div>
 
-<div class="container">
+<div class="container index">
 <div class="row ctaRow">
 	<div class="col col-sm-6 col-lg-4 col-xl-3">
 		<div class="card ctaFirst">
@@ -75,14 +75,14 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container index">
 <div class="row ctaRow news">
 	<% @highlights.each_with_index do |highlight, index| %>
 			<div class="col col-sm-6 col-lg-4 col-xl-3">
 				<div class="card cta<%= (index+1).ordinalize %> ">
 
 			    <% if highlight.photo.attached?  %>
-			      <%= image_tag highlight.photo.variant(resize: '360x360', gravity: 'center'), class: "card-img-top", alt: "alt text field needs to be added to model" %>
+			      <%= image_tag highlight.photo.variant(resize: '360x360', gravity: 'center'), class: "card-img-top", alt: "" %>
 			    <% else %>
 			      <%= image_tag "T.gif", style: 'width: 300px;' %>
 			    <% end %>
@@ -107,95 +107,10 @@
 	</div>
 </div>
 
-<div class="container">
+
+<div class="container index">
 <div class="row ctaRow events">
-	<% @events.in_groups_of(4).each do |event| %>
-	<div class="col-12 col-xl-3">
-		<div class="card ctaFirst">
-    	<% if event.first.image.attached? %>
-        <%= image_tag event.first.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
-      <% else %>
-        <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: ""), event_path(event.first) %>
-      <% end %>
-			<div class="info">
-				<div class="d-none d-xl-inline-block when">
-					<%= event.first.start_time.strftime("%b %d @ %l%p") %>
-				</div>
-				<div class="details">
-					<%= link_to "Details >", event_path(event.first) %>
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span><%= link_to event.first.title, event_path(event.first) %></span>
-		    <p class="d-none d-xl-block"><%= strip_tags event.first.description[0..120] %>...</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col-12 col-xl-3">
-		<div class="card ctaMid">
-			<% if event.second.image.attached? %>
-        <%= image_tag event.second.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
-      <% else %>
-        <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: ""), event_path(event.second) %>
-      <% end %>
-			<div class="info">
-				<div class="d-none d-xl-inline-block when">
-					<%= event.second.start_time.strftime("%b %d @ %l%p") %>
-				</div>
-				<div class="details">
-					<%= link_to "Details >", event_path(event.second) %>
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span><%= link_to event.second.title, event_path(event.second) %></span>
-		    <p class="d-none d-xl-block"><%= strip_tags event.second.description[0..120] %>...</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col-12 col-xl-3">
-		<div class="card ctaMid">
-			<% if event.third.image.attached? %>
-        <%= image_tag event.third.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
-      <% else %>
-        <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: ""), event_path(event.third) %>
-      <% end %>
-			<div class="info">
-				<div class="d-none d-xl-inline-block when">
-					<%= event.third.start_time.strftime("%b %d @ %l%p") %>
-				</div>
-				<div class="details">
-					<%= link_to "Details >", event_path(event.third) %>
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span><%= link_to event.third.title, event_path(event.third) %></span>
-		    <p class="d-none d-xl-block"><%= strip_tags event.third.description[0..120] %>...</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col-12 col-xl-3">
-		<div class="card ctaLast">
-			<% if event.fourth.image.attached? %>
-        <%= image_tag event.fourth.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
-      <% else %>
-        <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: "Card image cap"), event_path(event.fourth) %>
-      <% end %>
-			<div class="info">
-				<div class="d-none d-xl-inline-block when">
-					<%= event.fourth.start_time.strftime("%b %d @ %l%p") %>
-				</div>
-				<div class="details">
-					<%= link_to "Details >", event_path(event.fourth) %>
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span><%= link_to event.fourth.title, event_path(event.fourth) %></span>
-		    <p class="d-none d-xl-block"><%= strip_tags event.fourth.description[0..120] %>...</p>
-		  </div>
-		</div>
-	</div>
-<% end %>
+<%= render "events-row" %>
 </div>
 </div>
 <% end %>
-</div>

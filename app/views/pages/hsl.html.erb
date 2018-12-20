@@ -35,7 +35,7 @@
 		</div>
 </div>
 
-<div class="container">
+<div class="container index">
 <div class="row ctaRow">
 	<div class="col col-sm-6 col-lg-4 col-xl-3">
 		<div class="card ctaFirst">
@@ -80,6 +80,7 @@
 </div>
 </div>
 
+<% unless @events.blank? %>
 <div class="row">
 	<div class="col">
 		<div class="vertical-stripes">
@@ -88,50 +89,13 @@
 	</div>
 </div>
 
-<div class="container">
-<div class="row ctaRow news">
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaFirst">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-		  <div class="card-body">
-		    <span class="card-title">Help with Research</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-		  <div class="card-body">
-		    <span class="card-title">Find a study space</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-		  <div class="card-body">
-		    <span class="card-title">Print my paper</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaLast">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-		  <div class="card-body">
-		    <span class="card-title">Print my paper</span>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <%= link_to "See more >", "#", class: 'see-more' %>
-		  </div>
-		</div>
-	</div>
+
+<div class="container index">
+<div class="row ctaRow events">
+<%= render "events-row" %>
 </div>
 </div>
+<% end %>
 
 <div class="row">
 	<div class="col">
@@ -141,9 +105,8 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container index">
   <div class="row hslResourcesRow">
-    
       <div class="col-md-1"></div>
         <div class="col-sm-10 offset-sm-1 col-md-3 offset-md-1 m-2 cta first">
           <div class="resource">

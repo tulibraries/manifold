@@ -13,7 +13,7 @@
 		padding: 0;
 		overflow:hidden;
 		min-width: 265px;
-		max-width: 375px;
+		max-width: 265px;
 		img {
 			opacity: 0.5;
 			height:196px;
@@ -82,8 +82,8 @@
 		margin-bottom: 0;
 	}
 	li {
-		padding:16px;
-		font-size: 115%;
+		padding:16px 7px;
+		font-size: 95%;
 		white-space: nowrap;
 	}
 	.oddrow {
@@ -105,15 +105,15 @@
 		border: solid $purple 0;
 		color: black;
 		min-width: 265px;
-		max-width: 375px;
+		max-width: 265px;
 		img {
 			opacity: 1;
 		}
 		.card-body {
 			text-align: left;
-			padding: 14px 21px 14px 21px;
+			padding: 14px 10px 14px 10px;
 			border: solid $purple 2px;
-			max-height: 180px;
+			max-height: 210px;
 			overflow:hidden;
 		}
 		.info {

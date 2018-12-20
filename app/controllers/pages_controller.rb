@@ -18,6 +18,7 @@ class PagesController < ApplicationController
     @departments = Group.where(group_type: "Department")
     @ginsburg_hours = LibraryHours.where(location_id: "ginsburg", date: @today).pluck(:hours).first
     @podiatry_hours = LibraryHours.where(location_id: "podiatry", date: @today).pluck(:hours).first
+    @events = Event.where("tags LIKE ?", "%HSL%").take(4)
   end
 
   private

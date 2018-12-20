@@ -1,0 +1,29 @@
+<% @events.each_with_index do |event,index| %>
+  <div class="col-12 col-xl-3">
+  <% if index == 0 %>
+    <div class="card ctaFirst">
+  <% elsif index == 1 || index == 2 %>
+    <div class="card ctaMid">
+  <% else %>
+    <div class="card ctaLast">
+  <% end %>
+    <% if event.image.attached? %>
+      <%= image_tag event.image.variant(gravity: 'center', extent: "100%x100%"), class: "d-none d-xl-block card-img-top", alt: "" %>
+    <% else %>
+      <%= link_to image_tag('T-borderless.gif', class: "d-none d-xl-block card-img-top", alt: ""), event_path(event) %>
+    <% end %>
+    <div class="info">
+      <div class="d-none d-xl-inline-block when">
+        <%= event.start_time.strftime("%b %d @ %l%p") %>
+      </div>
+      <div class="details">
+        <%= link_to "Details >", event_path(event) %>
+      </div>
+    </div>
+    <div class="card-body">
+      <span><%= link_to event.title, event_path(event) %></span>
+      <p class="d-none d-xl-block"><%= strip_tags event.description[0..120] %>...</p>
+    </div>
+  </div>
+  </div>
+<% end %>

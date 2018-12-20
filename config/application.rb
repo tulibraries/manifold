@@ -24,17 +24,17 @@ module Tude
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.group_types = ["Assembly", 
-                          "Committee", 
-                          "Department", 
-                          "Functional Team", 
-                          "Strategic Steering Team", 
+    config.group_types = ["Assembly",
+                          "Committee",
+                          "Department",
+                          "Functional Team",
+                          "Strategic Steering Team",
                           "Working Group"]
 
-    config.highlight_types = ["DSC Event", 
-                              "Featured Staff", 
-                              "Featured Resource", 
-                              "Featured Location", 
+    config.highlight_types = ["DSC Event",
+                              "Featured Staff",
+                              "Featured Resource",
+                              "Featured Location",
                               "HSL Highlight",
                               "Program/Event",
                               "Staff Recommendation"]
@@ -61,7 +61,7 @@ module Tude
                              "University staff & administration",
                              "Visitors & community members",
                              "Visiting scholars"]
-                             
+
     config.specialties = [  "Advertising",
                             "Africology & African-American Studies",
                             "American Studies",

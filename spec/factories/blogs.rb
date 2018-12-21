@@ -21,8 +21,13 @@ FactoryBot.define do
       base_url { "not://a:url" }
     end
 
+    factory :blog_iteration do
+      sequence(:title) { |n| "Gritty does Devopsing #{n}" }
+      sequence(:feed_path) { |n| "files/blog_posts#{n}.rss" }
+    end
+
     factory :blog_fixture do
-      feed_path { "/files/blog_posts.rss" }
+      feed_path { "files/blog_posts.rss" }
     end
 
   end

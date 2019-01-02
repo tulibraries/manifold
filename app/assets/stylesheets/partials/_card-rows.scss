@@ -41,6 +41,34 @@
 		}
 	}
 
+		@media only screen and (max-width: 1200px) {
+		.col-12 {
+			margin-bottom: 14px;
+		}
+		.card {
+	    max-width: 100%!important;
+	    display:block;
+	    height: auto;
+	    border-radius: 7px!important;
+	    display: table;
+			margin-bottom: 14px;
+		}
+		.card-body {
+	    border-radius: 7px!important;
+			height: 90px!important;
+			max-height: 90px!important;
+			display: table-cell;
+			vertical-align: middle;
+			span {
+				font-weight:600;
+				font-size: 135%;
+				a {
+					color: black;
+				}
+			}
+		}
+	}
+
 	/* //////////////////////////// TOP COLORED BOXES ///////////////////////////// */ 
 
 	.ctaFirst, .cta1st {
@@ -52,6 +80,9 @@
 			background-color: $foamgreen-complement;
 			color: $black;
 		}
+		@media only screen and (max-width: 1200px) {
+			background-color: $purple;
+		}
 	}
 	.ctaMidOne, .ctaMid, .cta2nd {
 		background-color: $seagreen;
@@ -60,6 +91,9 @@
 			background-color: $seagreen-complement;
 			color: $black;
 		}
+		@media only screen and (max-width: 1200px) {
+			background-color: $purple;
+		}
 	}
 	.ctaMidTwo, .cta3rd {
 		background-color: $purple;
@@ -67,6 +101,9 @@
 		.card-title.complement {
 			background-color: $purple-complement;
 			color: $black;
+		}
+		@media only screen and (max-width: 1200px) {
+			background-color: $purple;
 		}
 	}	
 	.ctaLast, .cta4th {
@@ -85,6 +122,9 @@
 		padding:16px 7px;
 		font-size: 95%;
 		white-space: nowrap;
+		@media only screen and (max-width: 1200px) {
+			font-size: larger;
+		}
 	}
 	.oddrow {
 		background-color: $gold;
@@ -186,6 +226,9 @@
  		font-size: 105%;
  		font-weight: 600;
  		white-space: nowrap;
+ 		a {
+ 			color: $black;
+ 		}
  	}
  	.card-text {
  		font-size: 90%;
@@ -201,6 +244,42 @@
  		bottom: 0;
  		right: 0;
  	}
+ 		@media only screen and (max-width: 1200px) {
+		.col-12 {
+			margin-bottom: 14px;
+		}
+		.card {
+	    max-width: 100%!important;
+	    display:block;
+	    height: auto;
+	    border-radius: 7px!important;
+	    display: table;
+			margin-bottom: 14px;
+			border: solid $seagreen 2px!important;
+		}
+		.card-body {
+	    border-radius: 7px!important;
+			height: 90px!important;
+			max-height: 90px!important;
+			display: table-cell;
+			vertical-align: middle;
+			p {
+				display: none;
+			}
+			span {
+				padding-left: 7%;
+				font-weight:600;
+				font-size: 135%;
+				a {
+					color: black;
+				}
+			}
+			.see-more {
+				position: relative;
+				font-size: larger;
+			}
+		}
+	}
 }
 
 /* //////////////////////////// PEOPLE ///////////////////////////// */

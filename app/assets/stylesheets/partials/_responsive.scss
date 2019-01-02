@@ -2,8 +2,6 @@
 
 .inner-wrapper {
 	width: 100%;
-	/*max-width: 1194px;*/
-/*	margin:auto;*/
 }
 .not-rounded {
 	border-radius: 0!important;
@@ -13,6 +11,78 @@
   .space-description {
     height: auto!important;
   }
+  .home {
+  	#searchFields {
+	  	background: none!important;
+	  	height: auto!important;
+  		.searchOptions {
+  			margin-top: 93px;
+  			.row {
+	  			padding-left:14px;
+	  			padding-right: 14px;
+	  		}
+  			.col-12 {
+	  			display: table;
+				  margin-top: 21px;
+				  text-align: center;
+	  			a, a:hover {
+		  			display: block;
+		  			color: $black;
+		  			font-size: 150%;
+		  			width: 95%!important;
+		  			background-color: $foamgreen;
+		  			border-radius: 7px;
+				    height: 90px !important;
+				    max-height: 90px !important;
+				    display: table-cell;
+				    vertical-align: middle;
+				    margin: 10px auto;
+				  }
+	  		}
+	  	}
+			#dateTime {
+		  	position: relative!important; 
+		  	margin-top: 35px;
+		    background-color: #fff;
+		    border-top-left-radius: 7px;
+		    border-top-right-radius: 7px;
+		    border-radius: 7px;
+		    width: 80%!important;
+		    padding-bottom: 14px;
+		    margin: 0!important;
+		    margin-left: auto!important;
+		    margin-right: auto!important;
+		    margin-top: 35px!important;
+		    text-align: center;
+		    border: solid $purple 2px;
+		    #date {
+		    	background-color: transparent!important;
+		    	color: $black!important;
+		    	font-size: 200%!important;
+		    	font-weight: 600 !important;
+		    }
+				#time {
+					width: 100%!important;
+					display: block!important;
+					float: none!important;
+					padding-left: 0!important;
+					font-size: 175%!important;
+				}
+				#allHours {
+					width: 100%!important;
+					display: block!important;
+					margin-top: 21px;
+					font-size: 125%!important;
+					a {
+						border-bottom: solid $black 1px;
+					}
+					a:hover {
+						border-bottom: 0;
+					}
+				}
+			}
+		}
+	}
 }
 .responsive .space-info, .responsive .group-info {
 		margin-top: 35px;

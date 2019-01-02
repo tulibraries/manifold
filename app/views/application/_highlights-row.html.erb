@@ -1,0 +1,17 @@
+<% @highlights.each_with_index do |highlight, index| %>
+  <div class="col-12 col-xl-3">
+    <div class="card cta<%= (index+1).ordinalize %> ">
+
+      <% if highlight.photo.attached?  %>
+        <%= image_tag highlight.photo.variant(resize: '360x360', gravity: 'center'), class: "d-none d-xl-block card-img-top", alt: "" %>
+      <% else %>
+        <%= image_tag "T.gif", style: 'width: 300px;' %>
+      <% end %>
+      <div class="card-body">
+        <span class="card-title"><%= link_to highlight.title, highlight_path(highlight) %></span>
+        <p class="card-text"><%= highlight.blurb %></p>
+        <%= link_to "See more >", highlight_path(highlight), class: 'see-more' %>
+      </div>
+    </div>
+  </div>
+<% end %>

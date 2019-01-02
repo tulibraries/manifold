@@ -30,31 +30,31 @@
 
 <div class="container">
 <div class="row ctaRow">
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<div class="col-12 col-xl-3">
 		<div class="card ctaFirst">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
 		  <div class="card-body">
 		    <span class="card-title">Help with Research</span>
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<div class="col-12 col-xl-3">
 		<div class="card ctaMidOne">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
 		  <div class="card-body">
 		    <span class="card-title">Collections</span>
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<div class="col-12 col-xl-3">
 		<div class="card ctaMidTwo">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
 		  <div class="card-body">
 		    <span class="card-title">Print my paper</span>
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<div class="col-12 col-xl-3">
 		<div class="card ctaLast">
 			<div class="ambler-list">
 				<ul>
@@ -82,9 +82,9 @@
 
 <div class="container">
 <div class="row ctaRow news">
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<div class="col-12 col-xl-3">
 		<div class="card ctaFirst">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
 		  <div class="card-body">
 		    <span class="card-title">Help with Research</span>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -92,9 +92,9 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<div class="col-12 col-xl-3">
 		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
 		  <div class="card-body">
 		    <span class="card-title">Find a study space</span>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -102,9 +102,9 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<div class="col-12 col-xl-3">
 		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
 		  <div class="card-body">
 		    <span class="card-title">Print my paper</span>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -112,9 +112,9 @@
 		  </div>
 		</div>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
+	<div class="col-12 col-xl-3">
 		<div class="card ctaLast">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
+			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
 		  <div class="card-body">
 		    <span class="card-title">Print my paper</span>
 		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -125,6 +125,8 @@
 </div>
 </div>
 
+<div class="container">
+	<% unless @events.nil? %>
 <div class="row">
 	<div class="col">
 		<div class="vertical-stripes">
@@ -133,77 +135,9 @@
 	</div>
 </div>
 
-<div class="container">
-<div class="row ctaRow events">
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaFirst">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-			<div class="info">
-				<div class="when">
-					Sep 14 @ 2PM
-				</div>
-				<div class="details">
-					Details >
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-			<div class="info">
-				<div class="when">
-					Sep 14 @ 2PM
-				</div>
-				<div class="details">
-					Details >
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaMid">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-			<div class="info">
-				<div class="when">
-					Sep 30 @ 12:30PM
-				</div>
-				<div class="details">
-					Details >
-				</div>
-			</div>
-		  <div class="card-body">
-		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaLast">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-			<div class="info">
-				<div class="when">
-					Sep 14 @ 2PM
-				</div>
-				<div class="details">
-					Details >
-				</div>
-			</div>
-		  <div class="card-body">
-		    <p class="card-text">
-		    <span style="font-weight:600">Quisque consecteteur null ut sucipit tincidunt</span><br />
-		    Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		  </div>
-		</div>
+<div class="container index">
+	<div class="row ctaRow events">
+		<%= render "events-row" %>
 	</div>
 </div>
-</div>
-</div>
+<% end %>

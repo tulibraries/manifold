@@ -36,3 +36,85 @@
     }
 	}
 }
+.service-show {
+	margin-top: 14px;
+  h2 {
+  	margin-top: 0;
+  	border-left: 0;
+  	padding-left: 0;
+  	padding-top: 0;
+  }
+	.col-3 {
+		height: auto;
+	}
+	.ctaFirst {
+		border-color: $seagreen;
+		background-color: transparent;
+		text-align: left;
+		height: auto;
+		p {
+			font-weight: 600;
+			color:black;
+		}
+		.card-title {
+			padding: 10px;
+			color: $black;
+			border-bottom: solid $seagreen 1px;
+			background-color: $background-grey;
+			text-align: left;
+			line-height: 1.75rem;
+		}
+		.card-body {
+			padding: 7px;
+			text-align: left;
+			max-height: 100%;
+			li {
+				padding: 0 14px 7px 14px;
+			}
+		}
+	}
+	.ctaLast {
+		border-color: $purple;
+		background-color: transparent;
+		text-align: left;
+		max-height: 210px;
+		height: auto;
+		.card-title {
+			padding: 10px;
+			color: $black;
+			border-bottom: solid $purple 1px;
+			background-color: $purple-complement;
+			text-align: left;
+			padding-left: 21px;
+			line-height: 1.75rem;
+		}
+		.card-body {
+			padding: 7px;
+			text-align: left;
+			max-height: 100%;
+		}
+	}
+}
+.service-spaces {
+	.cta {
+		a {
+		 font-size: 135%;
+		}
+	}
+}
+.service-policies {
+	.cta {
+		border-color: $foamgreen;
+		a {
+		 font-size: 135%;
+		}
+	}
+}
+.service-groups {
+	.cta {
+		border-color: $purple;
+		a {
+		 font-size: 135%;
+		}
+	}
+}

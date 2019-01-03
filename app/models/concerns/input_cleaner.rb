@@ -8,6 +8,6 @@ module InputCleaner
   end
   def sanitize_description
     self.description.gsub!(/<p>\W<\/p>/, "")
-    self.description = ActionController::Base.helpers.sanitize(self.description)
+    self.description = ActionController::Base.helpers.sanitize(self.description).strip
   end
 end

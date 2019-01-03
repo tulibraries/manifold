@@ -1,0 +1,35 @@
+<% content_for :body_class, "home" %>
+
+<div class="container searchOptions">
+  <div class="row">
+    <div class="col-12">
+     <%= link_to "Everything", "#" %>
+    </div>
+    <div class="col-12">
+     <%= link_to "Books", "#" %>
+    </div>
+    <div class="col-12">
+     <%= link_to "Articles", "#" %>
+    </div>
+    <div class="col-12">
+     <%= link_to "Databases", "#" %>
+    </div>
+    <div class="col-12">
+     <%= link_to "Advanced Search", "#" %>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center">
+  <div id="dateTime">
+    <div id="date">
+      FRIDAY, AUGUST 17, 2018
+    </div>
+    <div id="time">
+      Paley Library | 8am - 7pm
+    </div>
+    <div id="allHours">
+      <%= link_to "See all library hours", hours_path %> >
+    </div>
+  </div>
+</div>

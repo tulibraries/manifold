@@ -1,72 +1,22 @@
 <div id="home">
 <div id="searchFields">
-	<div id="searchOptions">
-		<ul>
-			<li>Everything</li>
-			<li>Books</li>
-			<li>Articles</li>
-			<li>Databases</li>
-		</ul>
-		<div id="advancedSearchLink">
-			Advanced Search
+		<div class="row d-none d-xl-block">
+		    <%= render "search-options" %>
 		</div>
-	</div>
-		<div id="dateTime">
-			<div id="date">
-				FRIDAY, AUGUST 17, 2018
-			</div>
-			<div id="time">
-				Paley Library | 8am - 7pm
-			</div>
-			<div id="allHours">
-				See all library hours >
-			</div>
+		<div class="row d-block d-xl-none">
+		  <div class="col">
+		    <%= render "responsive-search-options" %>
+		  </div>
 		</div>
 </div>
 
 <div class="container index">
-<div class="row ctaRow">
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaFirst">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-		  <div class="card-body">
-		    <span class="card-title">Help with Research</span>
-		  </div>
-		</div>
+	<div class="row ctaRow">
+		<%= render "home-row" %>
 	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaMidOne">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-		  <div class="card-body">
-		    <span class="card-title">Find a study space</span>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaMidTwo">
-			<%= image_tag('researchhelp.jpg', class: "card-img-top", alt: "Card image cap") %>
-		  <div class="card-body">
-		    <span class="card-title">Print my paper</span>
-		  </div>
-		</div>
-	</div>
-	<div class="col col-sm-6 col-lg-4 col-xl-3">
-		<div class="card ctaLast">
-			<div class="">
-				<ul>
-					<li class="oddrow"><%= link_to "Health Sciences Libraries", {controller: "pages", action: "hsl"}, style: "color: black" %> ></li>
-					<li><%= link_to "Special Collections Research Center", {controller: "pages", action: "home"}, style: "color: black" %> ></li>
-					<li class="oddrow"><%= link_to "Ambler Library", {controller: "pages", action: "ambler"}, style: "color: black" %> ></li>
-					<li><%= link_to "All Libraries", buildings_path, style: "color: black" %> ></li>
-				</ul>
-		  </div>
-		</div>
-	</div>
-</div>
 </div>
 
 <% unless @highlights.blank? %>
-
 <div class="row">
 	<div class="col">
 		<div class="vertical-stripes">
@@ -76,25 +26,9 @@
 </div>
 
 <div class="container index">
-<div class="row ctaRow news">
-	<% @highlights.each_with_index do |highlight, index| %>
-			<div class="col col-sm-6 col-lg-4 col-xl-3">
-				<div class="card cta<%= (index+1).ordinalize %> ">
-
-			    <% if highlight.photo.attached?  %>
-			      <%= image_tag highlight.photo.variant(resize: '360x360', gravity: 'center'), class: "card-img-top", alt: "" %>
-			    <% else %>
-			      <%= image_tag "T.gif", style: 'width: 300px;' %>
-			    <% end %>
-				  <div class="card-body">
-				    <span class="card-title"><%= highlight.title %></span>
-				    <p class="card-text"><%= highlight.blurb %></p>
-				    <%= link_to "See more >", highlight_path(highlight), class: 'see-more' %>
-				  </div>
-				</div>
-			</div>
-		<% end %>
-</div>
+	<div class="row ctaRow news">
+		<%= render "highlights-row" %>
+	</div>
 </div>
 <% end %>
 
@@ -107,10 +41,9 @@
 	</div>
 </div>
 
-
 <div class="container index">
-<div class="row ctaRow events">
-<%= render "events-row" %>
-</div>
+	<div class="row ctaRow events">
+		<%= render "events-row" %>
+	</div>
 </div>
 <% end %>

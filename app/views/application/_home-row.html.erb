@@ -1,0 +1,36 @@
+  <div class="col-12 col-xl-3">
+    <div class="card ctaFirst">
+      <%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top card-img-top", alt: "") %>
+      <div class="card-body">
+        <span class="card-title">Help with Research</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-xl-3">
+    <div class="card ctaMidOne">
+      <%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top card-img-top", alt: "") %>
+      <div class="card-body">
+        <span class="card-title">Find a study space</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-xl-3">
+    <div class="card ctaMidTwo">
+      <%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top card-img-top", alt: "") %>
+      <div class="card-body">
+        <span class="card-title">Print my paper</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-xl-3">
+    <div class="card ctaLast">
+      <div class="">
+        <ul>
+          <li class="oddrow"><%= link_to "Health Sciences Libraries", {controller: "pages", action: "hsl"}, style: "color: black" %> ></li>
+          <li><%= link_to "Special Collections Research Center", {controller: "pages", action: "home"}, style: "color: black" %> ></li>
+          <li class="oddrow"><%= link_to "Ambler Library", {controller: "pages", action: "ambler"}, style: "color: black" %> ></li>
+          <li><%= link_to "All Libraries", buildings_path, style: "color: black" %> ></li>
+        </ul>
+      </div>
+    </div>
+  </div>

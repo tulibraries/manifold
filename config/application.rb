@@ -42,6 +42,7 @@ module Tude
     config.service_types = ["Access to collections & resource sharing",
                             "Building & space use",
                             "Digital scholarship",
+                            "Publishing Services",
                             "Research & instruction support",
                             "Research data services",
                             "Scholarly communication",

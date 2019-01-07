@@ -36,7 +36,7 @@
   <% @persons.each do |person| %>
   <div class="row details">
     <div class="col-3">
-      <%= link_to (person.last_name+', '+person.first_name), person %>
+      <%= link_to (person.first_name+' '+person.last_name), person %>
     </div>
     <div class="col-3">
       <%= phone_formatted(person.phone_number) %>

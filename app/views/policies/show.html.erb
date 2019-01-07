@@ -1,21 +1,52 @@
-<p id="notice"><%= notice %></p>
+<nav>
+	<div class="row">
+	  <div class="col breadcrumbs">
+	    <%= link_to "Home", root_path.to_s %>
+	    <%= link_to "Policies", policies_path %>
+	    <%= @policy.name %>
+	  </div>
+	</div>
+</nav>
 
-<p>
-  <strong>Name:</strong>
-  <%= @policy.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @policy.description.html_safe %>
-</p>
-
-<p>
-  <strong>Effective date:</strong>
-  <%= @policy.effective_date %>
-</p>
-
-<p>
-  <strong>Expiration date:</strong>
-  <%= @policy.expiration_date %>
-</p>
+<section>
+	<div class="row ctaRow policy-show">
+	  <div class="col-8 offset-1 description">
+	    <h1 class="unstyled"><%= @policy.name %></h1>
+	    <%= sanitize @policy.description.html_safe %>
+	  </div>
+	  <div class="col-3 text-left">
+	    <div class="card ctaLast effective">
+	      <div class="card-title">
+	        Effective Date
+	      </div>
+	      <div class="card-body text-center">
+	        <p>
+	        	<strong>
+	        	<% unless @policy.effective_date.blank? %>
+	        	<%= @policy.effective_date.strftime("%B %d, %Y") %>
+	        	<% else %>
+	        	unknown
+	        	<% end %>
+	        	</strong>
+	        </p>
+	      </div>
+	    </div>
+	    <div class="card ctaLast expires">
+	      <div class="card-title">
+	        Expiration Date
+	      </div>
+	      <div class="card-body text-center">
+	        <p>
+	        	<strong>
+	        	<% unless @policy.expiration_date.blank? %>
+	        	<%= @policy.expiration_date.strftime("%B %d, %Y") %>
+	        	<% else %>
+	        	unknown
+	        	<% end %>
+	        	</strong>
+	        </p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</section>

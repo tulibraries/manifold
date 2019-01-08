@@ -18,8 +18,8 @@ class ServiceDashboard < Administrate::BaseDashboard
       service_policies: DescriptionField,
       related_policies: Field::HasMany.with_options(class_name: "Policy"),
       intended_audience: MultiSelectField.with_options(
-      collection: Rails.configuration.audience_types
-    ),
+       collection: Rails.configuration.audience_types
+      ),
     service_category: Field::Select.with_options(
       collection: Rails.configuration.service_types
     ),

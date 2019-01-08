@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   root "pages#home"
   resources :alerts, only: [:index, :show]
   resources :blog_posts, only: [:index, :show]
-  resources :persons, only: [:index, :show], as: :people
+  resources :persons, only: [:index, :show], as: :people, path: "people"
   resources :spaces, only: [:index, :show]
   resources :blogs, only: [:index, :show]
   resources :buildings, only: [:index, :show], path: "libraries"

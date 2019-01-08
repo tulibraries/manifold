@@ -1,6 +1,33 @@
 
 @import "partials/_vars.scss";
 
+#alphamenu {
+		background-color: $light-grey;
+		padding: 14px;
+		font-size: larger;
+	.alphalink {
+		display: inline;
+		padding: 7px;
+		font-size: larger;
+		font-weight: 600;
+	}
+}
+
+.container.staff {
+	.heading {
+		border-bottom: solid #ccc 2px;
+		padding: 21px 0;
+		.col-3 {
+			font-weight: 600;
+			font-size: larger;
+		}
+	}
+	.details {
+		border-bottom: solid #ccc 1px;
+		padding: 21px 0;
+	}
+}
+
 .staff-card {
 
 	.spacer {

@@ -16,7 +16,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     access_description: DescriptionField,
     access_link: Field::String,
     service_policies: DescriptionField,
-    policies: Field::HasMany.with_options(class_name: "Policy"),
+    related_policies: Field::HasMany.with_options(class_name: "Policy"),
     intended_audience: MultiSelectField.with_options(
       collection: Rails.configuration.audience_types
     ),
@@ -62,7 +62,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :access_description,
     :access_link,
     :service_policies,
-    :policies,
+    :related_policies,
     :intended_audience,
     :service_category,
     :related_spaces,

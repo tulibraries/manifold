@@ -15,8 +15,8 @@ class Service < ApplicationRecord
   has_many :service_group
   has_many :related_groups, through: :service_group, source: :group
 
-  # has_many :service_policy
-  # has_many :related_policies, through: :service_policy, source: :policy
+  has_many :service_policy
+  has_many :related_policies, through: :service_policy, source: :policy
 
   before_validation :remove_empty_audience
   before_validation :sanitize_description

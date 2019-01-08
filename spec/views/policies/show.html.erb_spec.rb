@@ -8,8 +8,8 @@ RSpec.describe "policies/show", type: :view do
       Policy.create!(
         name: "Name",
         description: "MyText",
-        effective_date: "2018-01-01",
-        expiration_date: "2018-12-31"
+        effective_date: "2018-01-01".to_date.strftime("%B %d, %Y"),
+        expiration_date: "2018-12-31".to_date.strftime("%B %d, %Y")
       ))
   end
 
@@ -17,7 +17,7 @@ RSpec.describe "policies/show", type: :view do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/2018-01-01/)
-    expect(rendered).to match(/2018-12-31/)
+    expect(rendered).to match(/January 01, 2018/)
+    expect(rendered).to match(/December 31, 2018/)
   end
 end

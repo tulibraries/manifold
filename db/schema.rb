@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_184821) do
+ActiveRecord::Schema.define(version: 2019_01_03_221045) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -244,6 +244,15 @@ ActiveRecord::Schema.define(version: 2018_12_19_184821) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_service_groups_on_group_id"
     t.index ["service_id"], name: "index_service_groups_on_service_id"
+  end
+
+  create_table "service_policies", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "policy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["policy_id"], name: "index_service_policies_on_policy_id"
+    t.index ["service_id"], name: "index_service_policies_on_service_id"
   end
 
   create_table "service_spaces", force: :cascade do |t|

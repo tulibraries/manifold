@@ -13,6 +13,7 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
+    @related_services = Service.where(service_category: @service.service_category).where.not(id: @service.id)
   end
 
   private

@@ -16,6 +16,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     access_description: DescriptionField,
     access_link: Field::String,
     service_policies: DescriptionField,
+    policies: Field::HasMany.with_options(class_name: "Policy"),
     intended_audience: MultiSelectField.with_options(
       collection: Rails.configuration.audience_types
     ),
@@ -46,14 +47,8 @@ class ServiceDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :title,
-    :description,
-    :access_description,
-    :access_link,
-    :service_policies,
     :intended_audience,
     :service_category,
-    :related_spaces,
-    :related_groups,
     :created_at,
     :updated_at,
   ].freeze
@@ -67,6 +62,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :access_description,
     :access_link,
     :service_policies,
+    :policies,
     :intended_audience,
     :service_category,
     :related_spaces,

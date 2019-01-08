@@ -2,6 +2,7 @@
 
 class Service < ApplicationRecord
   include InputCleaner
+  include HasPolicies
 
   validates :title, :description, :intended_audience, :service_category, presence: true
   validates :related_groups, presence: true

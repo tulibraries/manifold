@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   resources :persons, only: [:index, :show], as: :people
   resources :spaces, only: [:index, :show]
   resources :blogs, only: [:index, :show]
-  resources :buildings, only: [:index, :show]
+  resources :buildings, only: [:index, :show], path: "libraries"
   resources :groups, only: [:index, :show]
   resources :collections, only: [:index, :show]
   resources :highlights, only: [:show]

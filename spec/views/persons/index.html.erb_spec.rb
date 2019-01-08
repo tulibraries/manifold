@@ -7,7 +7,7 @@ RSpec.describe "persons/index.html.erb", type: :view do
     @persons = [ ]
     render partial: "persons/alphamenu"
     render
-    expect(rendered).to match /persons/
+    expect(rendered).to match /Library Staff Directory/
   end
 
   it "displays the sample person name" do

@@ -35,7 +35,6 @@ Rails.application.routes.draw do
   resources :buildings, only: [:index, :show], path: "libraries"
   resources :groups, only: [:index, :show]
   resources :collections, only: [:index, :show]
-  resources :highlights, only: [:show]
   resources :events, only: [:index, :show], path: "/beyondthepage"
   resources :services, only: [:index, :show]
   resources :policies, only: [:index, :show]

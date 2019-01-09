@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_221045) do
+ActiveRecord::Schema.define(version: 2019_01_09_153034) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_221045) do
     t.datetime "updated_at", null: false
     t.string "google_id"
     t.string "address2"
+    t.boolean "add_to_footer"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_221045) do
     t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "add_to_footer"
     t.index ["building_id"], name: "index_collections_on_building_id"
   end
 
@@ -162,6 +164,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_221045) do
     t.datetime "updated_at", null: false
     t.string "group_type"
     t.boolean "external"
+    t.boolean "add_to_footer"
   end
 
   create_table "highlights", force: :cascade do |t|
@@ -275,6 +278,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_221045) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "hours"
+    t.boolean "add_to_footer"
   end
 
   create_table "space_groups", force: :cascade do |t|

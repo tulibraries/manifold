@@ -28,6 +28,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     service_group: Field::HasMany,
     related_groups: Field::HasMany.with_options(class_name: "Group"),
     hours: Field::String,
+    add_to_footer: Field::Boolean.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -67,7 +68,8 @@ class ServiceDashboard < Administrate::BaseDashboard
     :service_category,
     :related_spaces,
     :related_groups,
-    :hours
+    :hours,
+    :add_to_footer
   ].freeze
 
   def display_resource(service)

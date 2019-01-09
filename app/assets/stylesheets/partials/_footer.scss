@@ -9,7 +9,6 @@
 	padding-left: 3rem!important;
 	color: $light-grey!important;
 	line-height: 2em;
-		text-transform: uppercase;
 	h2 {
 		background-color: transparent!important;
 		border-left: 0;
@@ -20,7 +19,6 @@
 		color: $light-grey!important;
 		font-size: 125%;
 		letter-spacing: .15rem;
-		text-transform: uppercase;
 	}
 	a.col-heading {
 		color: $white!important;
@@ -30,6 +28,13 @@
 	}
 	ul {
 		margin-top: 1rem;
+		li {
+			line-height:1.2rem;
+			margin-bottom: 10px;
+			a {
+				font-size: 16px;
+			}
+		}
 	}
 }
 #footer-collections {
@@ -38,14 +43,20 @@
 #site-footer {
 		background-color: $footer-gray;
 	.postscript {
+		margin-bottom: 0;
 		.footer-col {
 			ul li {
 				letter-spacing: .1rem;
 			}
-			li.see-all {
-				font-style: italic;
-				font-size: 80%;
-			}
+		}
+	}
+	.see-all {
+		font-style: italic;
+		padding-top: 0;
+		margin-top: 0;
+		margin-bottom: 10px!important;
+		a {
+			font-size: 85%;
 		}
 	}
 	.footer-logo {
@@ -82,7 +93,7 @@
 	.postscript {
 		font-weight: normal;
 		padding-left: 30px;
-		margin:10px auto;
+		margin:0 auto 0 auto;
 		width:100%;
 		.region-postscript-first {
 			padding-left: 42px;
@@ -129,10 +140,8 @@
 				padding-right:28px;
 				font-size: 120%;
 				color: $light-grey;
-				text-transform: uppercase;
 				a {
 					color: $light-grey;
-					text-transform: uppercase;
 				}
 			}
 		}

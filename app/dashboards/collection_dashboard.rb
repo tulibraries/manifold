@@ -16,6 +16,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     subject: DescriptionField,
     contents: DescriptionField,
     building: Field::BelongsTo,
+    add_to_footer: Field::Boolean.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -54,6 +55,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :subject,
     :contents,
     :building,
+    :add_to_footer,
   ].freeze
 
   # Overwrite this method to customize how collections are displayed

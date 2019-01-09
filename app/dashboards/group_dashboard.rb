@@ -24,6 +24,7 @@ class GroupDashboard < BaseDashboard
       collection: Rails.configuration.group_types
       ),
     policies: Field::HasMany,
+    add_to_footer: Field::Boolean.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -65,6 +66,7 @@ class GroupDashboard < BaseDashboard
     :space,
     :documents,
     :policies,
+    :add_to_footer,
   ].freeze
 
   # Overwrite this method to customize how groups are displayed

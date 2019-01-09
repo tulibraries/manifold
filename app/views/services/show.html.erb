@@ -8,7 +8,7 @@
 
 <div class="row ctaRow service-show">
   <% unless @related_services.blank? %>
-  <div class="col-3">
+  <div class="col-3 text-right">
     <div class="card ctaFirst">
       <div class="card-title">Related Services</div>
       <div class="card-body">
@@ -40,7 +40,7 @@
       <%= sanitize @service.service_policies.html_safe %>
     <% end %>
   </div>
-  <div class="col-3 text-right">
+  <div class="col-3 text-left">
     <div class="card ctaLast">
       <div class="card-title">
         Hours

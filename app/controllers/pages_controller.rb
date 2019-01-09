@@ -12,14 +12,14 @@ class PagesController < ApplicationController
   end
 
   def ambler
-    @events = Event.take(4)
+    @events = Event.where("tags LIKE ?", "Ambler Campus Library").take(4)
   end
 
   def hsl
     @departments = Group.where(group_type: "Department")
     @ginsburg_hours = LibraryHours.where(location_id: "ginsburg", date: @today).pluck(:hours).first
     @podiatry_hours = LibraryHours.where(location_id: "podiatry", date: @today).pluck(:hours).first
-    @events = Event.take(4)
+    @events = Event.where("tags LIKE ?", "Health Sciences Libraries").take(4)
   end
 
   private

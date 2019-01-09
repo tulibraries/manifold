@@ -160,6 +160,8 @@ ActiveRecord::Schema.define(version: 2019_01_09_153034) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.string "phone_number"
+    t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "group_type"

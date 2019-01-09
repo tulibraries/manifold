@@ -8,9 +8,9 @@
         <%= image_tag "T.gif", style: 'width: 300px;' %>
       <% end %>
       <div class="card-body">
-        <span class="card-title"><%= link_to highlight.title, highlight_path(highlight) %></span>
+        <span class="card-title"><%= link_to highlight.title, highlight.link %></span>
         <p class="card-text"><%= highlight.blurb %></p>
-        <%= link_to "See more >", highlight_path(highlight), class: 'see-more' %>
+        <%= link_to "See more >", highlight.link, class: 'see-more' %>
       </div>
     </div>
   </div>

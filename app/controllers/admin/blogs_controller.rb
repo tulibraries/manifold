@@ -2,22 +2,12 @@
 
 module Admin
   class BlogsController < Admin::ApplicationController
-    # To customize the behavior of this controller,
-    # you can overwrite any of the RESTful actions. For example:
-    #
-    # def index
-    #   super
-    #   @resources = Blog.
-    #     page(params[:page]).
-    #     per(10)
-    # end
-
-    # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   Blog.find_by!(slug: param)
-    # end
-
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
+    def sync
+      Blog.all.each do |b|
+        SyncService::Blogs.call({blog: b})
+      end
+      flash[:notice] = "Blogs synced"
+      redirect_to admin_blogs_path
+    end
   end
 end

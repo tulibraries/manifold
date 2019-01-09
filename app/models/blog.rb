@@ -6,7 +6,7 @@ class Blog < ApplicationRecord
   has_many :blog_posts
 
   validates :title, presence: true
-  #validates :base_url, presence: true, url: true
+  validates :base_url, presence: true, url: true
 
 
   def feed_path

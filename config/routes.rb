@@ -24,6 +24,11 @@ Rails.application.routes.draw do
       end
     end
 
+    resource :blogs do
+      member do
+        post :sync
+      end
+    end
     root to: "people#index"
   end
 

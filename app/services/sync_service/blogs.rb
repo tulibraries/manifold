@@ -4,12 +4,15 @@ require "open-uri"
 require "pry"
 
 class SyncService::Blogs
-  def self.call(blog_posts_url: nil)
-    new(blog_posts_url: blog_posts_url).sync
+  def self.call(params = {})
+    new(params).sync_blog_posts
   end
 
   def initialize(params = {})
-    @feed_path = params[:blog].feed_path
+    # can specify just a file path or feed_path
+    @feed_uri =  params[:blog].feed_path
+    # if URI, prepend the base url
+    @feed_uri.prepend(params[:blog].base_url) if params[:blog].base_url
     @blog_id = params[:blog].id
   end
 
@@ -21,7 +24,7 @@ class SyncService::Blogs
   end
 
   def read_blog_posts
-    blog_feed = Nokogiri::XML(open(@feed_path))
+    blog_feed = Nokogiri::XML(open(@feed_uri))
     blog_feed.xpath("//channel/item").map do |blog_post|
       blog_post_xml = blog_post.to_xml
       blog_post_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\">" + blog_post.to_xml + "</xml>"

@@ -56,18 +56,37 @@ RSpec.describe SyncService::Blogs, type: :service do
 
   context "trying to update the same record" do
     before(:all) do
-      @blog_feed1 = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author.rss", id: @blog.id)
-      @sync_blogs1 = described_class.new(blog: @blog_feed1)
-      @blog_feed2 = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author_modified.rss", id: @blog.id)
-      @sync_blogs2 = described_class.new(blog: @blog_feed2)
+      @original_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author.rss", id: @blog.id)
+      @original_sync = described_class.new(blog: @original_feed)
+      @modified_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author_modified.rss", id: @blog.id)
+      @modified_sync = described_class.new(blog: @modified_feed)
     end
 
     it "does updates the record" do
-      @sync_blogs1.sync_blog_posts
+      @original_sync.sync_blog_posts
       first_time = BlogPost.find_by(title: "Total Perspective Vortex: What I saw.").updated_at
-      @sync_blogs2.sync_blog_posts
+      @modified_sync.sync_blog_posts
       second_time = BlogPost.find_by(title: "Total Perspective Vortex: What I saw.").updated_at
       expect(first_time).to_not eql second_time
+    end
+  end
+
+  context "delete and restore post" do
+    before(:all) do
+      @blog_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author.rss", id: @blog.id)
+      @sync_blogs = described_class.new(blog: @blog_feed)
+    end
+
+    it "does updates the record" do
+      @sync_blogs.sync_blog_posts
+      blog_post = BlogPost.find_by(title: "Total Perspective Vortex: What I saw.")
+      expect(blog_post).to be
+      BlogPost.destroy(blog_post.id)
+      blog_post = BlogPost.find_by(title: "Total Perspective Vortex: What I saw.")
+      expect(blog_post).to_not be
+      @sync_blogs.sync_blog_posts
+      blog_post = BlogPost.find_by(title: "Total Perspective Vortex: What I saw.")
+      expect(blog_post).to be
     end
   end
 end

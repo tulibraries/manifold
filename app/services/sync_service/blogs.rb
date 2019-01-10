@@ -61,15 +61,15 @@ class SyncService::Blogs
     end
   end
 
-  # NB: Get EITHER author OR person or external author name field.
-  #     - If there's a person object, then external author_name will be blank.
-  #     - If there's a external author_name, then there will be no person object.
-	def author(blog_post)
-		person = FuzzyFind::Person.find(blog_post.author)
-		if person
-			{ "person" => person }
-		else
-      { "external_author_name"  => blog_post.author }
-		end
-	end
+  def author(blog_post)
+    # NB: Get EITHER author OR person or external author name field.
+    # - If there's a person object, then external author_name will be blank.
+    # - If there's a external author_name, then there will be no person object.
+    person = FuzzyFind::Person.find(blog_post.author)
+    if person
+      { "person" => person }
+    else
+      { "external_author_name" => blog_post.author }
+    end
+  end
 end

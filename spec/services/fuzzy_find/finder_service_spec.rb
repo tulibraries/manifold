@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe FuzzyFind::FinderService do
-
   class UndefinedModel; end
   class MockModel < ApplicationRecord
     #Stub this since we don't actually have a table for this
@@ -111,7 +110,7 @@ RSpec.describe FuzzyFind::FinderService do
                   needle: "Newish Person",
                   haystack_model: Person,
                   attribute: :name,
-                  addl_attribute: { groups: "1" }
+                  addl_attribute: { groups: ["1"] }
                 )
               ).to eql @new_person
             end
@@ -124,7 +123,7 @@ RSpec.describe FuzzyFind::FinderService do
                   needle: "Newish Person",
                   haystack_model: Person,
                   attribute: :name,
-                  addl_attribute: { groups: 1 }
+                  addl_attribute: { groups: [1] }
                 )
               ).to eql @new_person
             end

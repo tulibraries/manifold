@@ -6,7 +6,7 @@ require "ostruct"
 RSpec.describe SyncService::Blogs, type: :service do
   before(:all) do
     @person = FactoryBot.create(:person)
-    @blog = FactoryBot.create(:blog) 
+    @blog = FactoryBot.create(:blog)
   end
 
   context "Aggregate blog feed" do

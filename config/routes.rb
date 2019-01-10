@@ -41,7 +41,8 @@ Rails.application.routes.draw do
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
 
-  get 'forms/*type', to: 'forms#new'
+  get "forms", to: "forms#all"
+  get "forms/*type", to: "forms#new"
 
 
   controller :pages do

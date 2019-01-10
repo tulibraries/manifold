@@ -1,0 +1,8 @@
+<%= render "forms/#{@type}/material-type", f: f %>
+<%= f.input :author, label: "Author", required: true %>
+<%= f.input :title, label: "Title", required: true %>
+<%= f.input :year, required: true %>
+<%= f.input :publisher, required: true %>
+<%= f.input :source, as: :text, label: "Source of Information", hint: "(Indicate catalog, research database, bibliography or other source)" %>
+<%= f.input :reason, as: :text, label: "Reason for Purchase" %>
+<%= f.input :comments, as: :text, label: "Comments (optional)" %>

@@ -1,0 +1,7 @@
+<%= f.input :material_type, as: :radio_buttons, label: "Type of Material", collection: [
+                          "Book",
+                          "Newspaper",
+                          "Journal/Magazine",
+                          "Video",
+                          "Other..."], required: true %> 
+                          <%= f.input_field :material_type_other, placeholder: "specify other", class: "specify-other"  %>

@@ -1,0 +1,18 @@
+@import "partials/_vars.scss";
+
+.form {
+	.radio_buttons {
+		.form-check {
+			display: inline-block;
+			margin-right: 14px;
+		}
+	}
+	.specify-other {
+		display: inline-block;
+		width: auto;
+	}
+	.form_affiliation, .form_material_type {
+		display: inline-block!important;
+	}
+
+}

@@ -5,8 +5,8 @@ require "rails_helper"
 RSpec.describe "Admin::BlogPost", type: :request do
   before(:all) do
     @account = FactoryBot.create(:account)
-    @blog_post = FactoryBot.build(:blog_post)
-    @blog_post.save!
+    @blog = FactoryBot.build(:blog)
+    @blog_post = FactoryBot.create(:blog_post, blog: @blog)
   end
 
   before(:each) do
@@ -17,7 +17,7 @@ RSpec.describe "Admin::BlogPost", type: :request do
     sign_out @account
   end
 
-  describe "GET /admin/blog_posts/s" do
+  describe "GET /admin/blog_posts/" do
     it "access blog_post adminstrate" do
       get admin_blog_posts_path
       expect(response).to have_http_status(200)
@@ -25,9 +25,9 @@ RSpec.describe "Admin::BlogPost", type: :request do
     end
   end
 
-  describe "GET /admin/blog_posts/show" do
-    it "show blog_post" do
-      get [admin_blogs_path, @blog_post.id.to_s].join("/")
+  describe "GET /admin/blog/show" do
+    it "show blog with its posts" do
+      get [admin_blogs_path, @blog.id.to_s].join("/")
       expect(response).to have_http_status(200)
     end
   end

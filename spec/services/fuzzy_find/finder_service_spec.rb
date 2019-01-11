@@ -110,7 +110,7 @@ RSpec.describe FuzzyFind::FinderService do
                   needle: "Newish Person",
                   haystack_model: Person,
                   attribute: :name,
-                  addl_attribute: { groups: ["1"] }
+                  addl_attribute: { groups: "1" }
                 )
               ).to eql @new_person
             end
@@ -123,7 +123,7 @@ RSpec.describe FuzzyFind::FinderService do
                   needle: "Newish Person",
                   haystack_model: Person,
                   attribute: :name,
-                  addl_attribute: { groups: [1] }
+                  addl_attribute: { groups: 1 }
                 )
               ).to eql @new_person
             end

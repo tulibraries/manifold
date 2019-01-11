@@ -3,10 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Collection, type: :model do
-  after(:each) do
-    DatabaseCleaner.clean
-  end
-
   describe "Required attributes" do
     let(:collection) { FactoryBot.create(:collection) }
 

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :accounts
     resources :alerts
     resources :blogs
-    resources :blog_posts
     resources :buildings
     resources :groups
     resources :highlights

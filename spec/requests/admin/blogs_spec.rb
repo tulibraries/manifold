@@ -7,6 +7,7 @@ RSpec.describe "Admin::Blog", type: :request do
     @account = FactoryBot.create(:account)
     @blog = FactoryBot.build(:blog)
     @blog.save!
+    @blog_post = FactoryBot.build(:blog_post, blog: @blog)
   end
 
   before(:each) do

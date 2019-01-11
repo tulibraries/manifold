@@ -51,7 +51,6 @@ class SyncService::Blogs
   def create_or_update_if_needed!(record_hash)
     # If a record already exists with this content hash, then no update needed
     unless BlogPost.exists?(content_hash: record_hash["content_hash"])
-      # Fuzzy find record based on title and start time, and otherwise create a new one
       blog_post = BlogPost.find_by(blog: @blog_id, post_guid: record_hash["post_guid"]) || BlogPost.new
       blog_post.assign_attributes(record_hash)
       blog_post.save!

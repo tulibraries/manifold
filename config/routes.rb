@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :accounts
     resources :alerts
-    #resources :blogs
+    resources :blogs
     resources :buildings
     resources :groups
     resources :highlights
@@ -23,6 +23,11 @@ Rails.application.routes.draw do
       end
     end
 
+    resource :blogs do
+      member do
+        post :sync
+      end
+    end
     root to: "people#index"
   end
 

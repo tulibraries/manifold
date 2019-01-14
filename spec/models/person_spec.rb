@@ -14,7 +14,7 @@ RSpec.describe Person, type: :model do
     let(:person) { FactoryBot.create(:person, groups: [group], spaces: [space]) }
     context "Group" do
       example "attach group" do
-        expect(person.groups.first.name).to match(/#{Group.first.name}/)
+        expect(person.groups.last.name).to match(/#{group.name}/)
       end
     end
   end
@@ -35,7 +35,7 @@ RSpec.describe Person, type: :model do
       example "attach space" do
         person = FactoryBot.create(:person, spaces: [space])
         expect { person.save! }.to_not raise_error
-        expect(person.spaces.first.name).to match(/#{Space.first.name}/)
+        expect(person.spaces.last.name).to match(/#{Space.last.name}/)
       end
       example "no space" do
         person = FactoryBot.build(:person)

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "open-uri"
-require "pry"
 
 class SyncService::Blogs
   def self.call(params = {})

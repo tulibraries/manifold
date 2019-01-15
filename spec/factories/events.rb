@@ -23,5 +23,6 @@ FactoryBot.define do
     registration_link { "MyString" }
     content_hash { "MyString" }
     ensemble_identifier { "MyString" }
+    all_day { false }
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_09_153034) do
+ActiveRecord::Schema.define(version: 2019_01_15_184145) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 2019_01_09_153034) do
     t.string "alt_text"
     t.string "ensemble_identifier"
     t.text "tags"
+    t.boolean "all_day", default: false
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"

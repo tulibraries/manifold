@@ -47,7 +47,14 @@
     <div class="col-3">
       <% person.groups.each_with_index do |group, index| %>
         <% if group.group_type == "Department" %>
-          <%= group.name %><% unless index == (person.groups.size - 1) %>, <br /><% end %>
+          <%= group.name %><% if group.name == "Learning and Research Services" %>: 
+            <% person.groups.each do |unit| %>
+              <% if unit.group_type == "Departmental Unit" %>
+                <%= unit.name %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% unless index == (person.groups.size - 1) %> <br /><% end %>
         <% end %>
       <% end %>
     </div>

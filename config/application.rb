@@ -27,6 +27,7 @@ module Tude
     config.group_types = ["Assembly",
                           "Committee",
                           "Department",
+                          "Departmental Unit",
                           "Functional Team",
                           "Strategic Steering Team",
                           "Working Group"]

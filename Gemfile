@@ -56,6 +56,8 @@ gem "auto_strip_attributes"
 gem "honeybadger", "~> 4.0"
 gem "simple_form"
 gem "mail_form"
+gem "httparty"
+gem "feedjira"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1718,4 +1718,50 @@
     <Weight>0</Weight>
     <GUID>41501</GUID>
   </Event>
+	<Event>
+		<Title>Last Chance! A Long Separation Exhibition</Title>
+		<Path>
+			https://events.temple.edu/last-chance-a-long-separation-exhibition
+		</Path>
+		<Description>
+			<p>Join us for a interactive photo exhibit of people divided from family in North Korea since the Korean War on view at Paley Library from <strong>January 7 through February 28, 2019</strong>. Each portrait is paired with a phone number you can call to hear their stories. We are also pleased to welcome project director and photographer Laura Elizabeth Pohl to Paley Library on February 7th to discuss her work. Learn more about this project at <a href="https://www.alongseparation.com/" rel="nofollow noopener noreferrer" target="_blank">alongseparation.com</a></p> <p><strong>About the artist:</strong> Laura Elizabeth Pohl is a photographer and filmmaker based in Baltimore. Raised around the world as an Army brat, she began her career in Washington, D.C., as an editorial assistant at USA Weekend magazine. Laura’s photographs and short films have been been honored by FotoWeekDC and the United Nations Association Film Festival, among others. This exhibition is rooted in her deep interest in her family’s personal connection to the Korean War and North Korea.</p> <p>For more information on our <em>Beyond the Page</em> public programming series, please visit <a href="https://library.temple.edu/beyondthepage" rel="nofollow noopener noreferrer" target="_blank">https://library.temple.edu/beyondthepage</a>.</p> <p>Featured photo: Choi Chil-seong, 81, photo courtesy Laura Elizabeth Pohl</p> <p><em>Programs offered by Temple University Libraries are accessible to people with disabilities. Please contact Richie Holland, Director of Library Administration, at <a href="mailto:richieh@temple.edu">richieh@temple.edu</a> or 215-204-3455 for more information, to request an accommodation, or with questions/concerns. Please contact us at least a week in advance of the program to request accommodations.</em></p>
+		</Description>
+		<Sessions/>
+		<Department>Temple University Libraries</Department>
+		<Interest>History</Interest>
+		<Type>Exhibition</Type>
+		<EventStartDate>February 28, 2019</EventStartDate>
+		<EventStartTime>(All day)</EventStartTime>
+		<EventEndDate>February 28, 2019</EventEndDate>
+		<EventEndTime>(All day)</EventEndTime>
+		<Timestamp>
+			<span class="date-display-single" property="dc:date" datatype="xsd:dateTime" content="2019-02-28T00:00:00-05:00">28/02/2019 (All day)</span>
+		</Timestamp>
+		<TimestampStart>1551330000</TimestampStart>
+		<TimestampEnd>1551330000</TimestampEnd>
+		<Tags>Access and Opportunity</Tags>
+		<PrivateTags/>
+		<Campus>Main Campus</Campus>
+		<Location>Paley Library</Location>
+		<Room>First Floor</Room>
+		<Address>1210 W. Berks Street</Address>
+		<City>Philadelphia</City>
+		<State>PA</State>
+		<Zip>19122</Zip>
+		<Sponsors/>
+		<Audience>Public</Audience>
+		<ContactName>Sara Wilson</ContactName>
+		<ContactEmail>sarawilson@temple.edu</ContactEmail>
+		<ContactPhone>215-204-2828</ContactPhone>
+		<Image>&lt;img typeof="foaf:Image" src="https://events.temple.edu/sites/events/files/styles/event_thumbnail/public/events/tud29575/images/thumbnail/squareportrait.jpg?itok=QJbOSw4B&c=8c73bf5a6d6b2a6bdd5817f6732138c4" alt="Portrait of Choi Chil-seong, 81, by Laura Elizabeth Pohl" /&gt;</Image>
+		<Files/>
+		<GAFFunding>0</GAFFunding>
+		<Private>0</Private>
+		<RegistrationStatus>Closed</RegistrationStatus>
+		<Canceled>0</Canceled>
+		<Highlighted>1</Highlighted>
+		<Promoted>0</Promoted>
+		<Weight>1</Weight>
+		<GUID>48731</GUID>
+	</Event>
 </Events>

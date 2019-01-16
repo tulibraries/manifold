@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Blog &amp; Podcasts</title>
+	<atom:link href="https://sites.temple.edu/blogsandpodcasts/feed/" rel="self" type="application/rss+xml" />
+	<link>https://sites.temple.edu/libraryprograms</link>
+	<description>Blogs and podcast stuff</description>
+	<lastBuildDate>Tue, 11 Dec 2018 14:20:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+	<item>
+		<title>Your Show of Shows</title>
+    <link>https://sites.temple.edu/libraryprograms/first-post</link>
+		<comments>https://sites.temple.edu/libraryprograms/first-post#respond</comments>
+		<pubDate>Mon, 10 Dec 2018 20:09:54 +0000</pubDate>
+		<dc:creator><![CDATA[Joey Bishop]]></dc:creator>
+				<category><![CDATA[Programs & Events]]></category>
+		<category><![CDATA[Top News]]></category>
+		<category><![CDATA[beyondthepageTU]]></category>
+
+		<guid isPermaLink="false">https://sites.temple.edu/libraryprograms/?p=1</guid>
+		<description><![CDATA[This is your show of shows]]></description>
+				<content:encoded><![CDATA[<p><span style="font-weight: 400">This is your show of shows</span></p>
+]]></content:encoded>
+			<wfw:commentRss>https://sites.temple.edu/libraryprograms/2018/12/10/a-look-back-at-fall-2018-beyond-the-page-programs/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

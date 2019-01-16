@@ -88,3 +88,4 @@ en:
     admin:
       actions:
         sync_events: "Sync events"
+        sync_blogs: "Sync blogs"

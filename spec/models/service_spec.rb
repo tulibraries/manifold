@@ -50,7 +50,7 @@ RSpec.describe Service, type: :model do
     context "Space" do
       example "attach space" do
         service = FactoryBot.create(:service, related_spaces: [space], related_groups: [group])
-        expect(service.related_spaces.first.name).to match(/#{Space.first.name}/)
+        expect(service.related_spaces.last.name).to match(/#{space.name}/)
       end
       example "no space" do
         service = FactoryBot.create(:service, related_groups: [group])
@@ -62,7 +62,7 @@ RSpec.describe Service, type: :model do
       let(:group) { FactoryBot.create(:group, persons: [person], space: space, chair_dept_heads: [person]) }
       example "attach group" do
         service = FactoryBot.create(:service, related_groups: [group])
-        expect(service.related_groups.first.name).to match(/#{Group.first.name}/)
+        expect(service.related_groups.last.name).to match(/#{group.name}/)
       end
       example "not present" do
         service = FactoryBot.build(:service)

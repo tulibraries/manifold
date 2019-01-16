@@ -36,6 +36,7 @@ class SyncService::Events
       "registration_link" => event.fetch("RegistrationLink", nil),
       "start_time" => start_time(event),
       "end_time" => end_time(event),
+      "all_day" => all_day(event),
       "content_hash" => xml_hash(event)
     }
       .merge(contact(event))
@@ -76,6 +77,10 @@ class SyncService::Events
     Time.parse(
       event.values_at("EventEndDate", "EventEndTime").join(" ")
       ).to_s
+  end
+
+  def all_day(event)
+    event["EventStartTime"].include?("All day")
   end
 
   def xml_hash(event)

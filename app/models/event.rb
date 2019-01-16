@@ -20,10 +20,10 @@ class Event < ApplicationRecord
     start_time.strftime("%B %d, %Y")
   end
   def set_times
-    unless start_time == "(All day)"
+    unless all_day
       "#{start_time.strftime("%I:%M %p")} - #{end_time.strftime("%I:%M %p")}"
     else
-      start_time
+      "All Day"
     end
   end
 end

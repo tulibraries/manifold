@@ -16,7 +16,7 @@ RSpec.describe SyncService::Events, type: :service do
     end
 
     it "extracts all of the events" do
-      expect(@events.count).to equal(37)
+      expect(@events.count).to equal(38)
     end
 
     describe "maps events xml to db schema" do
@@ -36,6 +36,10 @@ RSpec.describe SyncService::Events, type: :service do
 
       it "maps EventEndDate and EventEndTime to start_time field" do
         expect(Time.parse(subject["end_time"])).to eq(Time.parse(@events.first["EventEndDate"] + " " + @events.first["EventEndTime"]))
+      end
+
+      it "maps AllDay to all_day field" do
+        expect(subject["all_day"]).to_not be
       end
 
       it "maps Location to external_building field" do
@@ -194,6 +198,15 @@ RSpec.describe SyncService::Events, type: :service do
     end
 
 
+  end
+
+  context "all day event", :skip do
+    let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
+    subject { @sync_events.record_hash(@events.last) }
+
+    it "maps AllDay to all_day field" do
+      expect(subject["all_day"]).to be
+    end
   end
 
   context "trying to ingest an existing record with slight changes" do

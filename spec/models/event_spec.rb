@@ -42,4 +42,47 @@ RSpec.describe Event, type: :model do
       expect(event.person.last_name).to match(/#{Person.last.last_name}/)
     end
   end
+
+  describe "can visit" do
+    example "event is visitable" do
+      event = FactoryBot.create(:event, building: building, space: space, person: person)
+      expect(event.can_visit).to be
+    end
+    example "event is not visitable" do
+      event = FactoryBot.create(:event, building: nil, space: nil, person: person)
+      expect(event.can_visit).to_not be
+    end
+  end
+
+  describe "get date" do
+    example "event date renders as month day, year" do
+      event = FactoryBot.create(:event, building: nil, space: nil, person: person)
+      expect(event.get_date).to match(/\w+ \d+\, \d\d\d\d/)
+    end
+  end
+
+  describe "set times" do
+    let(:start_time) { DateTime.parse "7/4/18 10:00 am" }
+    let(:start_date) { DateTime.parse "7/4/18" }
+    let(:end_time) { DateTime.parse "7/4/18 2:00 pm" }
+    example "event is all day long", :skip do
+      event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_date, all_day: true)
+      expect(event.set_times).to match(/^(All day)$/)
+    end
+    example "event has an start and end time" do
+      event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_time, end_time: end_time, all_day: false)
+      expect(event.set_times).to match(/^10:00 AM - 02:00 PM$/)
+    end
+  end
+
+  describe "all-day flag" do
+    example "Is all day event", :focus do
+    event = FactoryBot.create(:event, start_time: "1/1/2019", all_day: true)
+    expect(event.all_day).to be
+  end
+    example "Is not all day event" do
+      event = FactoryBot.create(:event, start_time: "1/1/2019", all_day: false)
+      expect(event.all_day).to_not be
+    end
+  end
 end

@@ -1,0 +1,52 @@
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Plan your visit</span></h2>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row ctaRow building-info">
+    <div class="col-12 col-lg-4 card ctaFirst">
+      <div class="card-title complement">
+        Contact
+      </div>
+      <div class="card-body">
+        <span class="phone"><%= phone_formatted(@exhibition.space.building.phone_number) %></span><br />
+        <span class="email"><%= mail_to @exhibition.space.building.email, @exhibition.space.building.email %></span><br />
+        <div class="address"><%= @exhibition.space.building.address1 %><br /><%= @exhibition.space.building.address2 %></div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaMidOne">
+      <div class="card-title complement">
+        Hours
+      </div>
+      <div class="card-body">
+      <div id="dateTime">
+        <div id="date">
+          <%= @exhibition.space.building.todays_date %>
+        <div id="time">
+          <% unless @exhibition.space.building.hours.blank? %>
+            <%= @exhibition.space.building.todays_hours %>
+          <% end %>
+        </div>
+        </div>
+        <div id="allHours">
+          <% unless @exhibition.space.building.hours.blank? %>
+            <%= link_to "See all hours", hour_path(@exhibition.space.building.hours) %> >
+          <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 card ctaLast">
+      <div class="card-title complement">
+        Map
+      </div>
+      <div class="card-body">
+        <%= render_map(@exhibition.space.building.name,@exhibition.space.building.coordinates,@exhibition.space.building.google_id) %>
+      </div>    
+    </div>
+  </div>
+</div>

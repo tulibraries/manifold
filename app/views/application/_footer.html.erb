@@ -1,4 +1,5 @@
 <div id="site-footer" class="">
+  <section>
   <div class="row social">
     <div class="col-7">
       <%= link_to "Donate to the Libraries", "#", class: 'donate' %>
@@ -17,6 +18,8 @@
       </ul>
     </div>
   </div>
+</section>
+<section>
   <div class="row">
     <div class="col" style="padding:0;">
       <%= link_to root_path, class: "footer-name", id: "footer-logo" do %>
@@ -25,83 +28,82 @@
       <h1 class="element-invisible">More Resources</h1>
       <div class="postscript row" style="margin-top: 28px;">      
         <div class="col-md-6 col-lg-3 footer-col" id="footer-buildings">
-          <h2><%= link_to "Buildings", buildings_path, class: "col-heading" %></h2>
+          <h2><%= link_to "Libraries", buildings_path, class: "col-heading" %></h2>
           <ul>
-            <li>Building 1</li>
-            <li>Building 2</li>
-            <li>Building 3</li>
-            <li>Building 4</li>
-            <li>Building 5</li>
-            <li>Building 6</li>
-            <li class="see-all">View all Buildings</li>
+            <% @footer_buildings.each do |library| %>
+              <li><%= link_to library.name, library %></li>
+            <% end %>
             </ul>
         </div>
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-spaces">
-          <h2><%= link_to "Spaces", spaces_path, class: "col-heading" %></h2>
+        <div class="col-md-6 col-lg-3 footer-col" id="footer-services">
+          <h2><%= link_to "Services", services_path, class: "col-heading" %></h2>
           <ul>
-            <li>Space 1</li>
-            <li>Spaces 2</li>
-            <li>Spaces 3</li>
-            <li>Spaces 4</li>
-            <li>Spaces 5</li>
-            <li>Spaces 6</li>
-            <li class="see-all">View all Spaces</li>
+            <% @footer_services.each do |service| %>
+              <li><%= link_to service.title, service %></li>
+            <% end %>
             </ul>
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-groups">
           <h2><%= link_to "Groups", groups_path, class: "col-heading" %></h2>
           <ul>
-            <li>Group 1</li>
-            <li>Group 2</li>
-            <li>Group 3</li>
-            <li>Group 4</li>
-            <li>Group 5</li>
-            <li>Group 6</li>
-            <li class="see-all">View all Groups</li>
+            <% @footer_groups.each do |group| %>
+              <li><%= link_to group.name, group %></li>
+            <% end %>
             </ul>
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-collections">
           <h2><%= link_to "Collections", collections_path, class: "col-heading" %></h2>
           <ul>
-            <li>Collection 1</li>
-            <li>Collection 2</li>
-            <li>Collection 3</li>
-            <li>Collection 4</li>
-            <li>Collection 5</li>
-            <li>Collection 6</li>
-            <li class="see-all">View all Collections</li>
+            <% @footer_collections.each do |collection| %>
+              <li><%= link_to collection.name, collection %></li>
+            <% end %>
             </ul>
         </div>
       </div>
 
+        <div class="postscript row see-all">
+          <div class="col-md-6 col-lg-3 footer-col">
+            <div><%= link_to "View all Libraries", buildings_path %></div>
+          </div>
+          <div class="col-md-6 col-lg-3 footer-col">
+            <div><%= link_to "View all Services", services_path %></div>
+          </div>
+          <div class="col-md-6 col-lg-3 footer-col">
+            <div><%= link_to "View all Groups", groups_path %></div>
+          </div>
+          <div class="col-md-6 col-lg-3 footer-col">
+            <div><%= link_to "View all Collections", collections_path %></div>
+          </div>
+      </div>
 
       <div class="tu-links">    
 
-        <div class="region region-footer">
+        <div class="region region-footer footer-col">
+          <h2 style="border-bottom: solid #ccc 1px;">Useful Links</h2>
 
-          <div class="row" style="margin-left: 7vw">
-            <div class="col-xs-5 offset-xs-7 col-sm-6 col-md-4 col-lg-2">
+          <div class="row">
+            <div class="col-md-6 col-lg-3 ">
               <ul>
                 <li>EZ-borrow</li>
                 <li>ILLiad</li>
                 <li>RefWorks</li>
               </ul>
             </div>
-            <div class="col-xs-5 offset-xs-7 col-sm-6 col-md-4 col-lg-2 offset-lg-1">
+            <div class="col-md-6 col-lg-3 ">
               <ul>
                 <li>Staff&nbsp;directory</li>
                 <li>Contact us</li>
                 <li>Memberships</li>
               </ul>
             </div>
-            <div class="col-xs-5 offset-xs-7 col-sm-6 col-md-4 col-lg-2 offset-lg-1">
+            <div class="col-md-6 col-lg-3 ">
               <ul>
                 <li>Jobs</li>
                 <li>Publications</li>
                 <li>Donate</li>
               </ul>
             </div>
-             <div class="col-xs-5 offset-xs-7 col-sm-6 col-md-4 col-lg-2 offset-lg-1">
+             <div class="col-md-6 col-lg-3 ">
               <ul>
                 <li>Policies</li>
               </ul>
@@ -110,4 +112,5 @@
       </div>
     </div>
   </div>
+</section>
 </div>

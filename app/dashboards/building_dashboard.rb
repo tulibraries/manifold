@@ -22,6 +22,7 @@ class BuildingDashboard < BaseDashboard
     campus: Field::String,
     email: Field::Email,
     policies: Field::HasMany,
+    add_to_footer: Field::Boolean.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -70,6 +71,7 @@ class BuildingDashboard < BaseDashboard
     :hours,
     :email,
     :policies,
+    :add_to_footer,
   ].freeze
 
   # Overwrite this method to customize how buildings are displayed

@@ -120,7 +120,7 @@ a:not(.dropdown-item) {
 	margin: 0;
 	background-color: $white;
 	padding-bottom: 42px;
-	min-height: calc(100vh - 291px)
+	/*min-height: calc(100vh - 291px)*/
 }
 #skip-link {
 	left: 50%;
@@ -207,11 +207,11 @@ form {
   #fff 18px,
   #eee 10px,
   #eee 30px);
-  height: 2.75rem;
+  height: 3.5rem;
   text-align: center;
   margin-bottom: 35px;
   width: 100%;
-  h2 {
+  h2, h1 {
   	padding: 0;
 		background-color: transparent!important;
 		span {

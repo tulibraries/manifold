@@ -8,29 +8,52 @@
 <div class="row">
   <div class="col">
     <div class="vertical-stripes-sm">
-      <h2><span>Persons</span></h2>
+      <h2><span>Library Staff Directory</span></h2>
     </div>
   </div>
 </div>
 
-  <table>
-    <tbody>
-      <tr>
-        <td width="25%">Name</td>
-        <td width="25%">Phone Number</td>
-        <td width="25%">Email Address</td>
-        <td width="25%">Location</td>
-      </tr>
-      <% @persons.each do |person| %>
-      <tr>
-        <td><%= link_to (person.last_name+', '+person.first_name), person %></td>
-        <td><%= person.phone_number %></td>
-        <td><%= person.email_address %></td>
-        <td><%= person.spaces.last.name unless person.spaces.empty? %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-12 text-center">
+    <%= render "alphamenu.html.erb" %>
+ </div>
+</div>
+<div class="container staff text-center">
+  <div class="row heading">
+    <div class="col-3">
+      Name
+    </div>
+    <div class="col-3">
+      Phone Number
+    </div>
+    <div class="col-3">
+      Email Address
+    </div>
+    <div class="col-3">
+      Department
+    </div>
+  </div>
+  <% @persons.each do |person| %>
+  <div class="row details">
+    <div class="col-3">
+      <%= link_to (person.first_name+' '+person.last_name), person %>
+    </div>
+    <div class="col-3">
+      <%= phone_formatted(person.phone_number) %>
+    </div>
+    <div class="col-3">
+      <%= person.email_address %>
+    </div>
+    <div class="col-3">
+      <% person.groups.each_with_index do |group, index| %>
+        <% if group.group_type == "Department" %>
+          <%= group.name %><% unless index == (person.groups.size - 1) %>, <br /><% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-<br>
+
 

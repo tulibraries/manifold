@@ -27,7 +27,6 @@ class PolicyDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :name,
-    :description,
     :effective_date,
   ].freeze
 

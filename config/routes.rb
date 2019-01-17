@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :accounts
     resources :alerts
-    #resources :blogs
+    resources :blogs
     resources :buildings
     resources :groups
     resources :highlights
@@ -23,19 +23,23 @@ Rails.application.routes.draw do
       end
     end
 
+    resource :blogs do
+      member do
+        post :sync
+      end
+    end
     root to: "people#index"
   end
 
   root "pages#home"
   resources :alerts, only: [:index, :show]
   resources :blog_posts, only: [:index, :show]
-  resources :persons, only: [:index, :show], as: :people
+  resources :persons, only: [:index, :show], as: :people, path: "people"
   resources :spaces, only: [:index, :show]
   resources :blogs, only: [:index, :show]
-  resources :buildings, only: [:index, :show]
+  resources :buildings, only: [:index, :show], path: "libraries"
   resources :groups, only: [:index, :show]
   resources :collections, only: [:index, :show]
-  resources :highlights, only: [:show]
   resources :events, only: [:index, :show], path: "/beyondthepage"
   resources :services, only: [:index, :show]
   resources :policies, only: [:index, :show]

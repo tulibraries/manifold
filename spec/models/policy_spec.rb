@@ -3,10 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Policy, type: :model do
-  after(:each) do
-    DatabaseCleaner.clean
-  end
-
   describe "Policy Creation" do
     example "Just create a policy" do
       policy = FactoryBot.create(:policy)

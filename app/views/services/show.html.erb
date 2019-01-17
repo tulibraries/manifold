@@ -1,64 +1,100 @@
 <div class="row">
   <div class="col breadcrumbs">
     <%= link_to "Home", root_path.to_s %>
-    <%= link_to "Services", controller: 'spaces', action: :index %>
+    <%= link_to "Services", services_path %>
     <%= @service.title %>
   </div>
 </div>
 
-<div class="row">
-  <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span><%= @service.title %></span></h2>
+<div class="row ctaRow service-show">
+  <% unless @related_services.blank? %>
+  <div class="col-3 text-right">
+    <div class="card ctaFirst">
+      <div class="card-title">Related Services</div>
+      <div class="card-body">
+        <p><%= @service.service_category %></p>
+        <ul class="list-unstyled">
+        <% @related_services.each do |service| %>
+          <li><%= link_to service.title, service_path(service) %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <% else %>
+  <div class="col-8 offset-1">
+    <% end %>
+    <h2 class="unstyled"><%= @service.title %></h2>
+    <%= sanitize @service.description.html_safe %>
+    <% unless @service.access_description.blank? %>
+      <h3>Access Description:</h3>
+      <%= sanitize @service.access_description.html_safe %>
+    <% end %>
+    <% unless @service.access_link.blank? %>
+      <h3>Access Link:</h3>
+      <p><%= link_to @service.title, strip_tags(@service.access_link) %></p>
+    <% end %>
+    <% unless @service.service_policies.blank? %>
+      <h3>Service Policies:</h3>
+      <%= sanitize @service.service_policies.html_safe %>
+    <% end %>
+  </div>
+  <div class="col-3 text-left">
+    <div class="card ctaLast">
+      <div class="card-title">
+        Hours
+      </div>
+      <div class="card-body text-center">
+        <p><strong><%= @service.todays_date.strftime("%A, %B %d, %Y") %></strong></p>
+        <% unless @service.hours.blank? %>
+          <p><%= @service.todays_hours %></p>
+          <p><%= link_to "see service hours >", hours_path(@service.hours) %></p>
+        <% else %>
+          <p>This service does not have hours</p>
+          <p><%= link_to "see all hours >", hours_path %></p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<p>
-  <strong>Description:</strong>
-  <%= @service.description.html_safe %>
-</p>
 
-<p>
-  <strong>Access Description:</strong>
-  <%= @service.access_description.html_safe %>
-</p>
 
-<p>
-  <strong>Access Link:</strong>
-  <%= @service.access_link%>
-</p>
+<% unless @service.related_spaces.blank? %>
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Spaces</span></h2>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Related Spaces: </strong>
-  <ul>
-    <% @service.related_spaces.each do |s| %>
-      <li><%= link_to s.name, controller: 'spaces', action: 'show', id: s.id %></li>
-    <% end %>
-  </ul>
-</p>
+  <%= render "related_spaces" %>
+<% end %>
 
-<p>
-  <strong>Related Groups: </strong>
-  <ul>
-    <% @service.related_groups.each do |g| %>
-      <li><%= link_to g.name, controller: 'groups', action: 'show', id: g.id %></li>
-    <% end %>
-  </ul>
-</p>
 
-<p>
-  <strong>Service Policies:</strong>
-  <%= @service.service_policies.html_safe %>
-</p>
+<% unless @service.related_policies.blank? %>
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Policies</span></h2>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Intended Audience:</strong>
-  <%= @service.intended_audience.join(", ") %>
-</p>
+  <%= render "related_policies" %>
+<% end %>
 
-<p>
-  <strong>Service Category:</strong>
-  <%= @service.service_category %>
-</p>
 
-<%= link_to 'Back', services_path %>
+<% unless @service.related_groups.blank? %>
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Groups</span></h2>
+      </div>
+    </div>
+  </div>
+
+  <%= render "related_groups" %>
+<% end %>
+

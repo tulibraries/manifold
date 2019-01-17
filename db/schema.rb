@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_184821) do
+ActiveRecord::Schema.define(version: 2019_01_15_184145) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_184821) do
     t.datetime "updated_at", null: false
     t.string "google_id"
     t.string "address2"
+    t.boolean "add_to_footer"
   end
 
   create_table "collections", force: :cascade do |t|
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_184821) do
     t.integer "building_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "add_to_footer"
     t.index ["building_id"], name: "index_collections_on_building_id"
   end
 
@@ -141,6 +143,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_184821) do
     t.string "alt_text"
     t.string "ensemble_identifier"
     t.text "tags"
+    t.boolean "all_day", default: false
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -158,10 +161,13 @@ ActiveRecord::Schema.define(version: 2018_12_19_184821) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.string "phone_number"
+    t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "group_type"
     t.boolean "external"
+    t.boolean "add_to_footer"
   end
 
   create_table "highlights", force: :cascade do |t|
@@ -246,6 +252,15 @@ ActiveRecord::Schema.define(version: 2018_12_19_184821) do
     t.index ["service_id"], name: "index_service_groups_on_service_id"
   end
 
+  create_table "service_policies", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "policy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["policy_id"], name: "index_service_policies_on_policy_id"
+    t.index ["service_id"], name: "index_service_policies_on_service_id"
+  end
+
   create_table "service_spaces", force: :cascade do |t|
     t.integer "service_id"
     t.integer "space_id"
@@ -266,6 +281,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_184821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "hours"
+    t.boolean "add_to_footer"
   end
 
   create_table "space_groups", force: :cascade do |t|

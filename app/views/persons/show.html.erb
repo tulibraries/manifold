@@ -15,7 +15,7 @@
       <div class="col-3" style="width: 35%;display: table-cell;vertical-align:middle;">
         <% if @person.photo.attached?  %>
           <%= image_tag @person.photo.variant(resize: '300x300', gravity: 'center', extent: '300x300'), style: '' %>
-        <% else %>
+        <% else %> 
           <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
         <% end %>
       </div>
@@ -76,9 +76,7 @@
               </div> <!-- card body -->
             </div>
           <% end %>
-
-        <%# render "subjects" %>
-
+          
       </div>
     </div>
   <div class="col-xs-1"></div>

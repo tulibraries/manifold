@@ -98,7 +98,7 @@ Rails.application.configure do
     address: "smtp.gmail.com",
     port: 587,
     user_name: "templelibraries@gmail.com",
-    password: ENV["GOOGLE_TEMPLELIBRARIES_PASSWORD"],
+    password: ENV["FORMS_EMAIL_PASSWORD"],
     authentication: :plain,
     enable_starttls_auto: true
   }

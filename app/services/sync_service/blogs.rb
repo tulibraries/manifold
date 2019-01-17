@@ -3,8 +3,16 @@
 require "open-uri"
 
 class SyncService::Blogs
-  def self.call(params = {})
-    new(params).sync_blog_posts
+  def self.call(blog_id: nil)
+    unless blog_id
+      blog_ids = Blog.all.map { |b| b.id }
+    else
+      blog_ids = [ blog_id.to_i ]
+    end
+    blog_ids.each do |blog_id|
+      blog = Blog.find(blog_id)
+      new(blog: blog).sync_blog_posts
+    end
   end
 
   def initialize(params = {})

@@ -1,0 +1,54 @@
+<% unless @type.nil? || @type == "all" %>
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %>
+    <%= link_to "Forms", forms_path  %>
+    <%= render "forms/#{@type}/title" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="vertical-stripes-sm">
+      <h1><span><%= render "forms/#{@type}/title" %></span></h1>
+    </div>
+  </div>
+</div>
+
+<div class="container form">
+  <div class="row">
+    <div class="col">
+      <%= render "forms/#{@type}/intro" %>
+    </div>
+  </div>
+
+  <%= simple_form_for @form, html: {class: "form-vertical" } do |f| %>
+  <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
+
+    <div class="row">
+      <div class="col">
+        <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
+          <legend style="width: auto;padding: 0 21px;">Your Information</legend>
+        <%= render "forms/shared/personal_info", f: f %>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;">
+          <legend style="width: auto;padding: 0 21px;">Request Information -- Please do not abbreviate</legend>
+          <%= render "forms/#{@type}/request-info", f: f %>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 28px;">
+      <div class="col">
+        <%= f.button :submit, 'Send Request', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% else %>
+  <%= render "all" %>
+<% end %>

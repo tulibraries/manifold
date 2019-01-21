@@ -219,6 +219,9 @@ GEM
     lumberjack (1.0.13)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mail_form (1.7.1)
+      actionmailer (>= 3.2, < 6)
+      activemodel (>= 3.2, < 6)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     memoist (0.16.0)
@@ -426,6 +429,9 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
+    simple_form (4.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -505,6 +511,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  mail_form
   mini_magick (~> 4.8)
   mutant-rspec
   omniauth
@@ -520,6 +527,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

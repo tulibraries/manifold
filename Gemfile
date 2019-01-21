@@ -54,6 +54,8 @@ gem "listen", ">= 3.0.5", "< 3.2"
 gem "yaml_db"
 gem "auto_strip_attributes"
 gem "honeybadger", "~> 4.0"
+gem "simple_form"
+gem "mail_form"
 gem "httparty"
 gem "feedjira"
 

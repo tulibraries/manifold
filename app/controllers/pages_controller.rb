@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   end
 
   def home
-    @events = Event.take(4)
+    @events = Event.order(:start_time).take(4)
   end
 
   def ambler

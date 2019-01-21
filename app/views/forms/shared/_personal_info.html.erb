@@ -1,0 +1,17 @@
+<% collection = ["Temple Graduate Student","Temple Undergraduate","Temple Faculty","Temple Alumna/us","Temple Staff","Non-Temple Undergraduate","Non-Temple Graduate Student","Non-Temple Faculty","General Public"] %>
+<% if ["missing-book","purchase-request"].include? params[:type] %>
+	<% collection = ["Faculty","Staff","Graduate","Undergraduate","Other..."] %>
+<% elsif ["recall-book"].include? params[:type] %>
+	<% collection = ["Faculty","Staff"]  %>
+<% end %>
+<%= f.input :name, required: true %>
+<%= f.input :email, as: :email, required: true %>
+<%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
+<% unless params[:type] == "ask-scrc" %>
+	<%= f.input :tu_id, label: "Temple ID Number", required: true %>
+	<%= f.input :department, required: true %>
+<% end %>
+<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: collection, required: true %> 
+<% if ["missing-book","purchase-request"].include? params[:type]  %>
+	<%= f.input_field :affiliation_other, placeholder: "specify other", class: "specify-other" %>
+<% end %>

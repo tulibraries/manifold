@@ -20,6 +20,7 @@ class SyncService::Blogs
     blog_posts.each do |p|
       create_or_update_if_needed!(p)
     end
+    set_sync_time
   end
 
   def read_blog_posts
@@ -66,5 +67,11 @@ class SyncService::Blogs
     else
       { "external_author_name" => blog_post.author }
     end
+  end
+
+  def set_sync_time
+    blog = Blog.find(@blog_id)
+    blog.last_sync_date = DateTime.now
+    blog.save!
   end
 end

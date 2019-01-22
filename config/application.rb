@@ -31,6 +31,13 @@ module Tude
                           "Strategic Steering Team",
                           "Working Group"]
 
+    config.policy_categories = ["Access Guidelines",
+                                "Borrowers",
+                                "Collection Development & Management Guidelines",
+                                "Conduct",
+                                "Miscellaneous",
+                                "Confidentiality & Privacy"]
+
     config.highlight_types = ["DSC Event",
                               "Featured Staff",
                               "Featured Resource",

@@ -13,6 +13,10 @@ class PolicyDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
+    category: MultiSelectField.with_options(
+      collection: Rails.configuration.policy_categories,
+      multiple: true,
+    ),
     effective_date: Field::DateTime,
     expiration_date: Field::DateTime,
     created_at: Field::DateTime,
@@ -36,6 +40,7 @@ class PolicyDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :category,
     :effective_date,
     :expiration_date,
     :created_at,
@@ -48,6 +53,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
+    :category,
     :effective_date,
     :expiration_date,
   ].freeze

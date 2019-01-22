@@ -46,7 +46,7 @@
       "check_name": "LinkToHref",
       "message": "Potentially unsafe model attribute in link_to href",
       "file": "app/views/persons/show.html.erb",
-      "line": 53,
+      "line": 54,
       "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
       "code": "link_to(Person.find(params[:id]).personal_site, Person.find(params[:id]).personal_site)",
       "render_path": [{"type":"controller","class":"PersonsController","method":"show","line":17,"file":"app/controllers/persons_controller.rb"}],
@@ -68,7 +68,15 @@
       "line": 10,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Policy.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"PoliciesController","method":"show","line":17,"file":"app/controllers/policies_controller.rb"}],
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "PoliciesController",
+          "method": "show",
+          "line": 17,
+          "file": "app/controllers/policies_controller.rb"
+        }
+      ],
       "location": {
         "type": "template",
         "template": "policies/show"
@@ -126,7 +134,15 @@
       "line": 23,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Service.find(params[:id]).access_description",
-      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":17,"file":"app/controllers/services_controller.rb"}],
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ServicesController",
+          "method": "show",
+          "line": 17,
+          "file": "app/controllers/services_controller.rb"
+        }
+      ],
       "location": {
         "type": "template",
         "template": "services/show"
@@ -145,10 +161,37 @@
       "line": 51,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Service.find(params[:id]).service_policies",
-      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":17,"file":"app/controllers/services_controller.rb"}],
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ServicesController",
+          "method": "show",
+          "line": 17,
+          "file": "app/controllers/services_controller.rb"
+        }
+      ],
       "location": {
         "type": "template",
         "template": "services/show"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "c2fab1996253d0446b6f777d8e7fb7a07a770b2b8e89a921d2c67a4c21a9fddf",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/blog_posts/show.html.erb",
+      "line": 14,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "BlogPost.new(blog_post_params).content",
+      "render_path": [{"type":"controller","class":"BlogPostsController","method":"create","line":34,"file":"app/controllers/blog_posts_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "blog_posts/show"
       },
       "user_input": null,
       "confidence": "High",
@@ -202,7 +245,15 @@
       "line": 18,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Service.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":17,"file":"app/controllers/services_controller.rb"}],
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ServicesController",
+          "method": "show",
+          "line": 17,
+          "file": "app/controllers/services_controller.rb"
+        }
+      ],
       "location": {
         "type": "template",
         "template": "services/show"
@@ -212,6 +263,6 @@
       "note": ""
     }
   ],
-  "updated": "2018-12-07 14:05:15 -0500",
+  "updated": "2019-01-18 15:52:24 -0500",
   "brakeman_version": "4.3.1"
 }

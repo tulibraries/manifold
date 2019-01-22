@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :blogs
     resources :buildings
     resources :groups
-    resources :exhibitions
     resources :highlights
     resources :people
     resources :spaces

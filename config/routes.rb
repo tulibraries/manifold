@@ -2,7 +2,6 @@
 
 Rails.application.routes.draw do
 
-  resources :exhibitions
   devise_for :accounts, controllers: { omniauth_callbacks: "accounts/omniauth_callbacks" }
   namespace :admin do
     resources :accounts
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
     resources :groups
     resources :highlights
     resources :people
+    resources :exhibitions
     resources :spaces
     resources :events
     resources :services

@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Exhibitions", exhibitions_path %> 
+    <%= @exhibition.title %>
+  </div>
+</div>
+
+
+<div class="row building-info">
+  <div class="col-lg-12 col-xl-6 text-center text-xl-right">
+    <div class="building-image">
+      <% if @exhibition.photo.attached? %>
+        <%= image_tag @exhibition.photo.variant(gravity: 'center', extent: "100%x100%") %>
+      <% else %>
+        <%= image_tag 'T-borderless.gif' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-lg-12 col-xl-6 text-center text-xl-left">
+    <div class="exhibition-description">
+      <h1 class="text-md-center text-xl-left"><%= @exhibition.title %></h1>
+      <div class="text-left text"><%= sanitize @exhibition.description.html_safe %></div>
+      <div><strong>Dates: </strong></div>
+      <% unless @exhibition.end_date.nil? %>
+      	<div class="text-left text"><%= @exhibition.start_date.strftime("%A, %B %d, %Y") %> - <%= @exhibition.end_date.strftime("%A, %B %d, %Y") %></div>
+      <% else %>
+      	<div class="text-left text"><%= @exhibition.start_date.strftime("%A, %B %d, %Y") %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

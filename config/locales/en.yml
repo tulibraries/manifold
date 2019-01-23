@@ -34,7 +34,7 @@ en:
     label:
       building:
         address1: "Street Address"
-        tddress2: "City, State Zip"
+        address2: "City, State Zip"
       account:
         alertability: "Can Administrate Alerts"
   manifold:

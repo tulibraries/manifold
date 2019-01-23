@@ -34,10 +34,10 @@ en:
     label:
       building:
         address1: "Street Address"
-        address2: "City, State Zip"
+        tddress2: "City, State Zip"
       account:
         alertability: "Can Administrate Alerts"
-  fortytude:
+  manifold:
     default:
       event:
         title: "No Title"

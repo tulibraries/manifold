@@ -11,8 +11,8 @@ RUN \
       nodejs build-essential libpq-dev
 ENV GOOGLE_OAUTH_CLIENT_ID=$GOOGLE_OAUTH_CLIENT_ID
 ENV GOOGLE_OAUTH_SECRET=$GOOGLE_OAUTH_SECRET
-RUN mkdir /fortytude
-WORKDIR /fortytude
+RUN mkdir /manifold
+WORKDIR /manifold
 ADD Gemfile .
 ADD Gemfile.lock .
 RUN bundle install

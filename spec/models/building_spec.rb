@@ -53,11 +53,11 @@ RSpec.describe Building, type: :model do
       end
       example "invalid phone number" do
         building.phone_number = "215555121"
-        expect { building.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
+        expect { building.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_phone_format')}/)
       end
       example "invalid phone number - blank " do
         building.phone_number = ""
-        expect { building.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
+        expect { building.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_phone_format')}/)
       end
     end
 

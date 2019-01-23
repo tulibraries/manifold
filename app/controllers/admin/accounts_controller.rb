@@ -31,7 +31,7 @@ module Admin
     # for more information
 
     rescue_from CanCan::AccessDenied do |exception|
-      redirect_to admin_root_url, alert: t("fortytude.error.access_denied")
+      redirect_to admin_root_url, alert: t("manifold.error.access_denied")
     end
   end
 end

@@ -58,7 +58,7 @@ RSpec.describe Space, type: :model do
       end
       example "invalid email - blank " do
         space.email = ""
-        expect { space.save! }.to raise_error(/#{ I18n.t('fortytude.error.invalid_email') }/)
+        expect { space.save! }.to raise_error(/#{ I18n.t('manifold.error.invalid_email') }/)
       end
     end
 
@@ -69,11 +69,11 @@ RSpec.describe Space, type: :model do
       end
       example "invalid phone number" do
         space.phone_number = "215555122"
-        expect { space.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
+        expect { space.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_phone_format')}/)
       end
       example "invalid phone number - blank " do
         space.phone_number = ""
-        expect { space.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_phone_format')}/)
+        expect { space.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_phone_format')}/)
       end
     end
 

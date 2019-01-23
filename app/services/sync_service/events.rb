@@ -28,11 +28,11 @@ class SyncService::Events
 
   def record_hash(event)
     {
-      "title" => event.fetch("Title", I18n.t("fortytude.default.event.title")),
-      "description" => event.fetch("Description",  I18n.t("fortytude.default.event.description")),
+      "title" => event.fetch("Title", I18n.t("manifold.default.event.title")),
+      "description" => event.fetch("Description",  I18n.t("manifold.default.event.description")),
       "tags" => event.fetch("Tags", nil),
       "cancelled" => event.fetch("Canceled", 0),
-      "registration_status" => event.fetch("RegistrationStatus", I18n.t("fortytude.default.event.registration_status")),
+      "registration_status" => event.fetch("RegistrationStatus", I18n.t("manifold.default.event.registration_status")),
       "registration_link" => event.fetch("RegistrationLink", nil),
       "start_time" => start_time(event),
       "end_time" => end_time(event),
@@ -96,9 +96,9 @@ class SyncService::Events
       { "person" => contact_person }
     else
       {
-        "external_contact_name"  => contact_name || I18n.t("fortytude.default.event.contact_name"),
-        "external_contact_email" => event.fetch("ContactEmail") { I18n.t("fortytude.default.event.contact_email") },
-        "external_contact_phone" => event.fetch("ContactPhone") { I18n.t("fortytude.default.event.contact_phone") }
+        "external_contact_name"  => contact_name || I18n.t("manifold.default.event.contact_name"),
+        "external_contact_email" => event.fetch("ContactEmail") { I18n.t("manifold.default.event.contact_email") },
+        "external_contact_phone" => event.fetch("ContactPhone") { I18n.t("manifold.default.event.contact_phone") }
       }
     end
   end
@@ -112,11 +112,11 @@ class SyncService::Events
     if building
       location_hash["building"] = building
     else
-      location_hash["external_building"] = location || I18n.t("fortytude.default.event.building")
-      location_hash["external_address"] = event.fetch("Address") { I18n.t("fortytude.default.event.external_address") }
-      location_hash["external_city"] = event.fetch("City") { I18n.t("fortytude.default.event.external_city") }
-      location_hash["external_state"] = event.fetch("State") { I18n.t("fortytude.default.event.external_state") }
-      location_hash["external_zip"] = event.fetch("Zip") { I18n.t("fortytude.default.event.external_zip") }
+      location_hash["external_building"] = location || I18n.t("manifold.default.event.building")
+      location_hash["external_address"] = event.fetch("Address") { I18n.t("manifold.default.event.external_address") }
+      location_hash["external_city"] = event.fetch("City") { I18n.t("manifold.default.event.external_city") }
+      location_hash["external_state"] = event.fetch("State") { I18n.t("manifold.default.event.external_state") }
+      location_hash["external_zip"] = event.fetch("Zip") { I18n.t("manifold.default.event.external_zip") }
     end
 
     room = event.fetch("Room", nil)
@@ -125,7 +125,7 @@ class SyncService::Events
     if space
       location_hash["space"] = space
     else
-      location_hash["external_space"] = room || I18n.t("fortytude.default.event.space")
+      location_hash["external_space"] = room || I18n.t("manifold.default.event.space")
     end
     location_hash
   end

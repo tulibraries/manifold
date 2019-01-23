@@ -18,7 +18,7 @@ RSpec.describe Blog, type: :model do
     end
     context "checks for a well formed url" do
       it "raises and error when an invalid url is submitted" do
-        expect { FactoryBot.create(:blog_bad_url) }.to raise_error(/#{I18n.t('fortytude.error.invalid_url')}/)
+        expect { FactoryBot.create(:blog_bad_url) }.to raise_error(/#{I18n.t('manifold.error.invalid_url')}/)
       end
     end
   end

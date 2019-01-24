@@ -1,6 +1,9 @@
+<script type="application/ld+json">
+  <%= json_ld(@event) %>
+</script>
 <div class="row">
   <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %> 
+    <%= link_to "Home", root_path.to_s %>
     <%= link_to "Events", events_path %>
     <%= @event.title %>
   </div>
@@ -52,5 +55,3 @@
   <% if @event.can_visit %>
     <%= render "visit" %>
   <% end %>
-
-

@@ -89,3 +89,7 @@ en:
       actions:
         sync_events: "Sync events"
         sync_blogs: "Sync blogs"
+        sync: "Sync"
+      notification:
+        all_blogs_synced: "Blogs: All synched"
+        blog_synced: "Blogs: %{id} - %{title} synced"

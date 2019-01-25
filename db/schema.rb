@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_01_22_151522) do
 
+
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -147,6 +148,21 @@ ActiveRecord::Schema.define(version: 2019_01_22_151522) do
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
+  end
+
+  create_table "exhibitions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "group_id"
+    t.integer "space_id"
+    t.integer "collection_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
+    t.index ["group_id"], name: "index_exhibitions_on_group_id"
+    t.index ["space_id"], name: "index_exhibitions_on_space_id"
   end
 
   create_table "group_contacts", force: :cascade do |t|

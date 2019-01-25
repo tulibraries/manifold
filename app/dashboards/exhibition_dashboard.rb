@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class BlogDashboard < Administrate::BaseDashboard
+class ExhibitionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,13 +10,15 @@ class BlogDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    blog_posts: Field::HasMany,
+    group: Field::BelongsTo,
+    space: Field::BelongsTo,
+    collection: Field::BelongsTo,
+    photo: PhotoField,
     id: Field::Number,
     title: Field::String,
-    base_url: Field::String,
-    feed_path: Field::String,
-    last_sync_date: Field::DateTime,
-    public_status: Field::Boolean,
+    description: Field::Text,
+    start_date: Field::DateTime,
+    end_date: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -27,24 +29,22 @@ class BlogDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :blog_posts,
-    :id,
-    :title,
-    :base_url,
-    :last_sync_date,
+    :group,
+    :space,
+    :collection,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :title,
-    :base_url,
-    :feed_path,
-    :last_sync_date,
-    :public_status,
-    :created_at,
-    :updated_at,
+    :photo,
+    :description,
+    :start_date,
+    :end_date,
+    :group,
+    :space,
+    :collection,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -52,15 +52,21 @@ class BlogDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
-    :base_url,
-    :feed_path,
-    :last_sync_date,
-    :public_status,
+    :photo,
+    :description,
+    :start_date,
+    :end_date,
+    :group,
+    :space,
+    :collection,
   ].freeze
 
-  def display_resource(blog)
-    "##{blog.id} #{blog.title}"
-  end
+  # Overwrite this method to customize how exhibitions are displayed
+  # across all pages of the admin dashboard.
+  #
+  # def display_resource(exhibition)
+  #   "Exhibition ##{exhibition.id}"
+  # end
 
   def tinymce?
     true

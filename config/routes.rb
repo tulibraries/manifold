@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
     resource :blogs do
       member do
+        post :sync_all
         post :sync
       end
     end

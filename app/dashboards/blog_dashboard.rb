@@ -31,6 +31,7 @@ class BlogDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :base_url,
+    :last_sync_date,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

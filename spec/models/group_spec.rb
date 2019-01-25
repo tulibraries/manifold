@@ -84,7 +84,7 @@ RSpec.describe Group, type: :model do
       end
       example "invalid group type" do
         group.group_type = "not a group"
-        expect { group.save! }.to raise_error(/#{I18n.t('fortytude.error.invalid_group_type')}/)
+        expect { group.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_group_type')}/)
       end
       example "invalid group type - blank " do
         group.group_type = ""

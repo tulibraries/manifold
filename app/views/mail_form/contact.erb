@@ -2,7 +2,7 @@
 
 <% @resource.mail_form_attributes.each do |attribute, value| next if value.blank? %>
  <% unless attribute == "form_type" %>
-  <p><b><%= I18n.t("fortytude.default.attributes.form.#{attribute}") %>:</b>
+  <p><b><%= I18n.t("manifold.default.attributes.form.#{attribute}") %>:</b>
   <%= case value
     when /\n/
       raw(simple_format(h(value)))
@@ -31,7 +31,7 @@
     end
   %>
 
-    <p><b><%= I18n.t "fortytude.default.attributes.form.#{attribute}", :scope => [ :mail_form, :request ], :default => attribute.to_s.humanize %>:</b>
+    <p><b><%= I18n.t "manifold.default.attributes.form.#{attribute}", :scope => [ :mail_form, :request ], :default => attribute.to_s.humanize %>:</b>
 
     <%= value.include?("\n") ? simple_format(value) : value %></p>
   <% end %>

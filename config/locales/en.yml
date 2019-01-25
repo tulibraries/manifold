@@ -37,7 +37,7 @@ en:
         address2: "City, State Zip"
       account:
         alertability: "Can Administrate Alerts"
-  fortytude:
+  manifold:
     default:
       event:
         title: "No Title"

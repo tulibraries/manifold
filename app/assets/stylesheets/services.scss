@@ -119,3 +119,22 @@
 		}
 	}
 }
+
+
+.services-responsive {
+	.service {
+		margin:auto;
+	  margin-top: 42px;
+	  margin-bottom: 42px;
+	  padding: 14px 0 14px 0;
+		background-color: $seagreen;
+		max-width: 90%;
+		width: 90%;
+		height:auto;
+		min-height: 70px;
+		font-size: 175%;
+		a {
+			color: $white;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+<% unless @space.policies.nil? %>
+<div class="policies-responsive">
+
+  <div class="row">
+    <div class="col">
+      <div class="vertical-stripes-sm">
+        <h2><span>Policies</span></h2>
+      </div>
+    </div>
+  </div>
+
+
+  <% @space.policies.each do |policy| %>
+    <div class="row policy">
+      <div class="col-12 text-center">
+        <%= link_to policy.name, policy %>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>
+<% end %>

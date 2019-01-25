@@ -1,5 +1,5 @@
 
-<% if @space.service_space.nil? %> <!-- change to: @space.policy_space.nil? -->
+<% unless @space.policies.nil? %>
 <div class="row">
   <div class="col">
     <div class="vertical-stripes-sm">
@@ -10,25 +10,25 @@
 
 <div class="container">
   <div class="row policiesRow">
-    <% @space.policy_space.in_groups_of(3).each do |group| %>
-      <% unless @space.policy_space.size < 3 %>
+    <% @space.policies.in_groups_of(3).each do |group| %>
+      <% unless @space.policies.size < 3 %>
       <div class="col-md-1"></div>
         <div class="col-sm-10 offset-sm-1 col-md-3 offset-md-1 m-2 cta first">
-          <div class="service">
-            <%= link_to group.first.policy.title, group.first.policy %>
+          <div class="policy">
+            <%= link_to group.first.name, group.first %>
           </div>
         </div>
         <% unless group.second.nil? %>
           <div class="col-sm-10 offset-sm-1 col-md-3 m-2 cta">
-            <div class="service">
-                <%= link_to group.second.policy.title, group.second.policy %>
+            <div class="policy">
+                <%= link_to group.second.name, group.second %>
             </div>
           </div>
         <% end %>
         <% unless group.third.nil? %>
           <div class="col-sm-10 offset-sm-1 col-md-3 m-2 cta last">
-            <div class="service">
-                <%= link_to group.third.policy.title, group.third.policy %>
+            <div class="policy">
+                <%= link_to group.third.name, group.third %>
             </div>
           </div>
         <% end %>
@@ -36,25 +36,25 @@
       <div class="col-md-1"></div>
       <% end %>
 
-      <% if @space.policy_space.size == 2 %>
+      <% if @space.policies.size == 2 %>
       <div class="col-md-2"></div>
         <div class="col-md-4 offset-md-2 m-2 cta first">
-          <div class="service">
-            <%= link_to group.first.policy.title, group.first.policy %>
+          <div class="policy">
+            <%= link_to group.first.name, group.first %>
           </div>
         </div>
         <div class="col-md-4 m-2 cta last">
-          <div class="service">
-            <%= link_to group.second.policy.title, group.second.policy %>
+          <div class="policy">
+            <%= link_to group.second.name, group.second %>
           </div>
         </div>
         <div class="col-md-1"></div>
       <% end %>
 
-      <% if @space.policy_space.size == 1  %>
+      <% if @space.policies.size == 1  %>
         <div class="col-xs-6 offset-xs-3 col-md-4 offset-md-4 cta both">
-          <div class="service">
-           <%= link_to group.first.policy.title, group.first.policy %>
+          <div class="policy">
+           <%= link_to group.first.name, group.first %>
           </div>
         </div>
       <% end %>

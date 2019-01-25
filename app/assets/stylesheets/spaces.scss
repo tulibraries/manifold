@@ -28,3 +28,87 @@
  		text-align: center;
  	}
  }
+.visit-info {
+	margin-top: 35px;
+	margin-bottom: 21px;
+	 .space-description {
+		h1 {
+			padding-left: 14px;
+			@media screen and (max-width: 1200px) {
+				padding-left: 0;
+			}
+		}
+		font-size: 115%;
+		padding-top: 7px;
+		margin: auto;
+		background-color: $background-grey;
+		max-width:680px;
+		height:450px;
+		div.text {
+			padding:21px;
+			margin:auto;
+		}
+		padding-right:21px;
+		@media screen and (min-width: 1200px) {
+			margin-left: 0;
+		}
+	}
+	.space-image {
+		max-height:450px;
+		max-width: 680px;
+		overflow:hidden;
+		margin: auto;
+		@media screen and (min-width: 1200px) {
+			margin-right: 0;
+		}
+		img {
+			min-height:450px;
+		}
+	}
+}
+.ctaRow.visit-info  {
+	max-width: 1420px;
+	margin-left: auto;
+	margin-right: auto;
+	.card {
+		margin:auto;
+		max-width: 415px;
+		min-width: 415px;
+		height: 290px;
+		position: relative;
+		line-height: 3.0rem;
+  	display: table;
+			a {
+				color: $white;
+			};
+		font-size: larger;
+		margin-bottom: 21px;
+	}
+	.card-body {
+    display: table-cell;
+    vertical-align: middle;
+	}
+	.card-title {
+		position: absolute;
+		top: 0;
+		margin-top: 0;
+	}
+	.ctaLast {
+		background-color: $purple;
+		max-width: 415px;
+		min-width: 415px;
+		.card-title.complement {
+			background-color: $purple-complement;
+			color: $black;
+		}
+		.card-body {
+			padding:0;
+    	vertical-align: bottom;
+		}
+		img {
+			opacity: 1;
+			object-fit: cover;
+		}
+	}
+
+}

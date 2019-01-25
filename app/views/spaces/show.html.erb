@@ -24,10 +24,26 @@
   </div>
 </div>
 
-<%= render "services" %>
-
-<%= render "policies" %>
-
+<div class="row d-none d-xl-block">
+  <div class="col">
+    <%= render "services" %>
+  </div>
+</div>
+<div class="row d-block d-xl-none">
+  <div class="col">
+    <%= render "spaces/responsive/services" %>
+  </div>
+</div>
+<div class="row d-none d-xl-block">
+  <div class="col">
+    <%= render "policies" %>
+  </div>
+</div>
+<div class="row d-block d-xl-none">
+  <div class="col">
+    <%= render "spaces/responsive/policies" %>
+  </div>
+</div>
 <div class="row d-none d-xl-block">
   <div class="col">
     <%= render "visit" %>
@@ -35,7 +51,7 @@
 </div>
 <div class="row d-block d-xl-none">
   <div class="col">
-    <%= render "responsive_visit" %>
+    <%= render "spaces/responsive/visit" %>
   </div>
 </div>
 

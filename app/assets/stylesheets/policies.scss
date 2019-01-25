@@ -4,8 +4,8 @@
   margin-top: 42px;
   margin-bottom: 42px;
   .cta {
-		background-color: $foamgreen-complement;
-		border: solid $foamgreen 1px;
+		background-color: transparent;
+		border: solid $foamgreen 2px;
 		text-align: center;
   	display: table;
   }
@@ -86,6 +86,24 @@
 		.card-title {
 			border-color: $seagreen;
 			background-color: $seagreen-complement;
+		}
+	}
+}
+
+.policies-responsive {
+	.policy {
+		margin:auto;
+	  margin-top: 42px;
+	  margin-bottom: 42px;
+	  padding: 14px 0 14px 0;
+		background-color: $foamgreen;
+		max-width: 90%;
+		width: 90%;
+		height:auto;
+		min-height: 70px;
+		font-size: 175%;
+		a {
+			color: $white;
 		}
 	}
 }

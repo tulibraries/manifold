@@ -1,3 +1,4 @@
+
 @import "_vars.scss";
 
 .inner-wrapper {
@@ -10,6 +11,9 @@
 @media only screen and (max-width: 1200px) {
   .space-description {
     height: auto!important;
+    max-width: 94%!important;
+		width: 94%!important;
+		margin: auto;	
   }
   .home {
   	#searchFields {
@@ -84,7 +88,7 @@
 		}
 	}
 }
-.responsive .space-info, .responsive .group-info {
+.responsive .visit-info, .responsive .group-info, .policies-responsive  {
 		margin-top: 35px;
     margin-bottom: 21px;
 		.r-title {
@@ -98,7 +102,7 @@
 			max-height: 100%;
 			min-height: 49px;
 			color: $white;
-			font-size: 200%;
+			font-size: 175%;
 		}
 		.r-body {
 			padding: 14px 0 21px 0;

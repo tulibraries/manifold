@@ -21,7 +21,7 @@ gem "administrate"
 #gem "tustyles", git: "https://github.com/tulibraries/tustyles"
 gem "bootstrap", "~> 4.2.1"
 gem "tinymce-rails"
-gem "google-api-client", "~> 0.27"
+gem "google-api-client", "~> 0.28"
 gem "fuzzy_match"
 # Use jquery as the JavaScript library
 gem "jquery-rails"

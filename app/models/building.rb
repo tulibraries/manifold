@@ -4,6 +4,7 @@ class Building < ApplicationRecord
   include Validators
   include InputCleaner
   include HasPolicies
+  require "uploads"
 
   validates :name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, presence: true
   validates :email, presence: true, email: true
@@ -19,6 +20,17 @@ class Building < ApplicationRecord
 
   before_validation :normalize_phone_number
   before_validation :sanitize_description
+
+  def index_image
+    variation =
+      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 250, height: 190, blob: photo.blob, gravity: "Center"))
+    ActiveStorage::Variant.new(photo.blob, variation)
+  end
+  def show_image
+    variation =
+      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 600, height: 450, blob: photo.blob, gravity: "Center"))
+    ActiveStorage::Variant.new(photo.blob, variation)
+  end
 
   def todays_hours
     @today = Date.today.strftime("%Y-%m-%d 00:00:00")

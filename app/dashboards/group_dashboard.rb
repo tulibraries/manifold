@@ -25,8 +25,11 @@ class GroupDashboard < BaseDashboard
       ),
     policies: Field::HasMany,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
-    parent_group: Field::BelongsTo,
-    child_groups: Field::HasMany,
+    parent_group: Field::BelongsTo.with_options(
+      class_name: "Group",
+      foreign_key: "parent_group_id",
+    ),
+    #child_groups: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -48,7 +51,7 @@ class GroupDashboard < BaseDashboard
     :description,
     :group_type,
     :parent_group,
-    :child_groups,
+    #:child_groups,
     :chair_dept_heads,
     :persons,
     :space,

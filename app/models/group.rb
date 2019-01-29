@@ -12,7 +12,7 @@ class Group < ApplicationRecord
 
   has_many_attached :documents, dependent: :destroy
 
-  belongs_to :parent_group, ->(group) {  where.not(id: group.id) }, optional: true, class_name: "Group"
+  belongs_to :parent_group, optional: true, class_name: "Group"
   has_many :child_groups, class_name: "Group", foreign_key: "parent_group_id"
 
   has_many :member

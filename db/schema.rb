@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_151522) do
-
+ActiveRecord::Schema.define(version: 2019_01_28_201026) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -184,6 +183,8 @@ ActiveRecord::Schema.define(version: 2019_01_22_151522) do
     t.string "group_type"
     t.boolean "external"
     t.boolean "add_to_footer"
+    t.integer "parent_group_id"
+    t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
   end
 
   create_table "highlights", force: :cascade do |t|

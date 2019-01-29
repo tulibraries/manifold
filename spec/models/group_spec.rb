@@ -101,4 +101,22 @@ RSpec.describe Group, type: :model do
       expect(group.policies).to include(policy)
     end
   end
+
+  context "Parent Group and child groups" do
+    let(:group)  { FactoryBot.create(:group) }
+    let(:pgroup) { FactoryBot.create(:group) }
+    it "can have an associated parent_group" do
+      group.parent_group = pgroup
+      group.save
+      expect(group.parent_group).to be pgroup
+    end
+    it "displays associated child groups" do
+      another_child = FactoryBot.create(:group)
+      group.parent_group = pgroup
+      another_child.parent_group = pgroup
+      group.save
+      another_child.save
+      expect(pgroup.child_groups).to match_array([group, another_child])
+    end
+  end
 end

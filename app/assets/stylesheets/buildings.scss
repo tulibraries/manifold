@@ -29,8 +29,9 @@ div.required  label::after {
 			margin:auto;
 		}
 		padding-right:21px;
-		@media screen and (min-width: 1200px) {
+		@media screen and (max-width: 1200px) {
 			margin-left: 0;
+			max-width:100%!important;
 		}
 	}
 	.building-image {

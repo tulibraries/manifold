@@ -90,20 +90,22 @@
 	}
 }
 
-.policies-responsive {
-	.policy {
-		margin:auto;
-	  margin-top: 42px;
-	  margin-bottom: 42px;
-	  padding: 14px 0 14px 0;
-		background-color: $foamgreen;
-		max-width: 90%;
-		width: 90%;
-		height:auto;
-		min-height: 70px;
-		font-size: 175%;
-		a {
-			color: $white;
+.responsive {
+	.policies-info {
+		.policy {
+			margin:auto;
+		  margin-top: 42px;
+		  margin-bottom: 42px;
+		  padding: 14px 0 14px 0;
+			background-color: $foamgreen;
+			max-width: 90%;
+			width: 90%;
+			height:auto;
+			min-height: 70px;
+			font-size: 175%;
+			a {
+				color: $white;
+			}
 		}
 	}
 }

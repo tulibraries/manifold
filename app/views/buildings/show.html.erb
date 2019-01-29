@@ -8,10 +8,10 @@
 
 
 <div class="row building-info">
-  <div class="col-lg-12 col-xl-6 text-center text-xl-right">
+  <div class="d-none d-xl-block col-xl-6 text-center text-xl-right">
     <div class="building-image">
       <% if @building.photo.attached? %>
-        <%= image_tag @building.show_image, alt: "" %>
+        <%= image_tag @building.photo.variant(gravity: 'center', extent: "100%x100%") %>
       <% else %>
         <%= image_tag 'T-borderless.gif' %>
       <% end %>
@@ -25,6 +25,33 @@
   </div>
 </div>
 
- <%= render "visit" %>
- 
- <%= render "spaces" %>
+<div class="row d-none d-xl-block">
+  <div class="col">
+    <%= render "spaces" %>
+  </div>
+</div>
+<div class="row d-block d-xl-none">
+  <div class="col">
+    <%= render "buildings/responsive/spaces" %>
+  </div>
+</div>
+<!-- <div class="row d-none d-xl-block">
+  <div class="col">
+    <%# render "collections" %>
+  </div>
+</div>
+<div class="row d-block d-xl-none">
+  <div class="col">
+    <%# render "buildings/responsive/collections" %>
+  </div>
+</div> -->
+<div class="row d-none d-xl-block">
+  <div class="col">
+    <%= render "visit" %>
+  </div>
+</div>
+<div class="row d-block d-xl-none">
+  <div class="col">
+    <%= render "buildings/responsive/visit" %>
+  </div>
+</div>

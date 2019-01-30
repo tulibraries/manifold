@@ -13,7 +13,11 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
-    @related_services = Service.where(service_category: @service.service_category).where.not(id: @service.id)
+    @services = Service.all
+    @categories = @services.group_by { |t| t.service_category }
+    # binding.pry
+    # @related_services = @services.where(service_category: @service.service_category).where.not(id: @service.id)
+    # @related_services = @services.where(service_category: @service.service_category).where.not(id: @service.id)
   end
 
   private

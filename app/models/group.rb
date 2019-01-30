@@ -12,7 +12,8 @@ class Group < ApplicationRecord
 
   has_many_attached :documents, dependent: :destroy
 
-  has_one :parent_group, required: false, class_name: "Group"
+  belongs_to :parent_group, optional: true, class_name: "Group"
+  has_many :child_groups, class_name: "Group", foreign_key: "parent_group_id"
 
   has_many :member
   has_many :persons, -> { order "last_name ASC" }, through: :member, source: :person

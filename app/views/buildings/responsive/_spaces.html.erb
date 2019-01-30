@@ -1,20 +1,19 @@
-<% unless @space.policies.blank? %>
-
+<% unless @building.spaces.nil? %>
 <div class="responsive">
-  <div class="policies-info">
+  <div class="spaces-info">
 
     <div class="row">
       <div class="col">
         <div class="vertical-stripes-sm">
-          <h2><span>Policies</span></h2>
+          <h2><span>Spaces</span></h2>
         </div>
       </div>
     </div>
 
-    <% @space.policies.each do |policy| %>
-      <div class="row policy">
+    <% @building.spaces.each do |space| %>
+      <div class="row space">
         <div class="col-12 text-center">
-          <%= link_to policy.name, policy %>
+          <%= link_to space.name, space %>
         </div>
       </div>
     <% end %>

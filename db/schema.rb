@@ -209,6 +209,8 @@ ActiveRecord::Schema.define(version: 2019_01_29_190531) do
     t.string "group_type"
     t.boolean "external"
     t.boolean "add_to_footer"
+    t.integer "parent_group_id"
+    t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
   end
 
   create_table "highlights", force: :cascade do |t|

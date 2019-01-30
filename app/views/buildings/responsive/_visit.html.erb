@@ -7,24 +7,20 @@
     </div>
   </div>
 
-  <div class="row group-info">
+  <div class="row visit-info">
     <div class="col-12 text-center">
       <div class="r-title" onClick="javascript:toggle('contact-body')">
         Contact
       </div>
       <div class="r-body d-none" id="contact-body">
-        <div class="address">
-          <%= link_to @group.space.building.name, building_path(@group.space.building) %>
-            <br />
-            <%= @group.space.name %>
-        </div>
-        <span class="phone"><%= phone_formatted(@group.chair_dept_heads.first.phone_number) %></span><br />
-          <span class="email"><%= mail_to @group.chair_dept_heads.first.email_address, @group.chair_dept_heads.first.email_address %></span><br />
+        <span class="phone"><%= phone_formatted(@building.phone_number) %></span><br />
+        <span class="email"><%= mail_to @building.email, @building.email %></span><br />
+        <div class="address"><%= link_to @building.name, @building %></div>
       </div>
     </div>
   </div>
 
-  <div class="row group-info">
+  <div class="row visit-info">
     <div class="col-12 text-center">
       <div class="r-title d-block" onClick="javascript:toggle('hours-body')">
         Hours
@@ -32,30 +28,29 @@
       <div class="r-body d-none" id="hours-body">
       <div id="dateTime">
         <div id="date">
-          <%= @group.todays_date %>
+          <%= @building.todays_date %>
         </div>
         <div id="time" style="line-height: 1.5rem;">
-          <%= @group.todays_hours %>
+          <% unless @building.hours.blank? %>
+            <div class="time"><%= @building.todays_hours %></div>
+          <% end %>
+          <%= @building.name %> 
+        </div>
         </div>
         <div id="allHours">
-          <% unless @group.space.hours.blank? %>
-            <%= link_to "See future hours", hour_path(@group.space.hours) %> >
-          <% else %>
-            <%= link_to "See future hours", hour_path(@group.space.building.hours) %> >
-          <% end %>
+          <%= link_to "See all library hours", hours_path() %> >
         </div>
       </div>
     </div>
   </div>
-</div>
 
-  <div class="row group-info">
+  <div class="row visit-info">
     <div class="col-12 text-center">
       <div class="r-title" onClick="javascript:toggle('map-body')">
         Map
       </div>
       <div class="r-body d-none" id="map-body">
-        <%= render_map(@group.space.building.name,@group.space.building.coordinates,@group.space.building.google_id) %>
+        <%= render_map(@building.name,@building.coordinates,@building.google_id) %>
       </div>
     </div>
   </div>

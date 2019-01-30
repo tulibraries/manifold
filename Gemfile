@@ -58,7 +58,7 @@ gem "simple_form"
 gem "mail_form"
 gem "httparty"
 gem "feedjira"
-gem 'json-ld'
+gem "json-ld"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -15,13 +15,11 @@ module EventHelper
       event_hash["endTime"] = event[:end_time] unless event[:end_time].nil?
     end
 
-    building = Building.find(event[:building_id])
-    unless building.nil?
-      event_hash["location"] = {}
+    if event.building
+      event_hash["location"] ||= {}
       event_hash["location"]["@type"] = "Place"
-      event_hash["location"]["name"] = building.name
-    end
-    if event["external_building"]
+      event_hash["location"]["name"] = event.building.name
+    elsif event.attributes.has_key?("external_building")
       event_hash["location"] = {}
       event_hash["location"]["@type"] = "Place"
       event_hash["location"]["name"] = event[:external_building]

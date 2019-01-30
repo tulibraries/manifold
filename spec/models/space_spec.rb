@@ -47,36 +47,6 @@ RSpec.describe Space, type: :model do
 
     let (:space) { FactoryBot.build(:space) }
 
-    context "Email validation" do
-      example "valid email" do
-        space.email = "chas@example.edu"
-        expect { space.save! }.to_not raise_error
-      end
-      example "invalid email" do
-        space.email = "abc"
-        expect { space.save! }.to raise_error(/Email is not an email/)
-      end
-      example "invalid email - blank " do
-        space.email = ""
-        expect { space.save! }.to raise_error(/#{ I18n.t('manifold.error.invalid_email') }/)
-      end
-    end
-
-    context "Phone number validation" do
-      example "valid phone number" do
-        space.phone_number = "2155551212"
-        expect { space.save! }.to_not raise_error
-      end
-      example "invalid phone number" do
-        space.phone_number = "215555122"
-        expect { space.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_phone_format')}/)
-      end
-      example "invalid phone number - blank " do
-        space.phone_number = ""
-        expect { space.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_phone_format')}/)
-      end
-    end
-
     context "Building reference" do
       example "valid building" do
         expect { space.save! }.to_not raise_error

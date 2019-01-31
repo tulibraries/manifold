@@ -8,21 +8,22 @@ FactoryBot.define do
     end_time { "2018-09-24 11:32:13" }
     building { nil }
     space { nil }
-    external_building { "MyString" }
-    external_space { "MyString" }
-    external_address { "MyString" }
-    external_city { "MyString" }
-    external_state { "MyString" }
-    external_zip { "MyString" }
+    external_building { "Off-site building" }
+    external_space { "Off-site space" }
+    external_address { "123 Main St" }
+    external_city { "Anytown" }
+    external_state { "PA" }
+    external_zip { "19122" }
     person { nil }
-    external_contact_name { "MyString" }
-    external_contact_email { "MyString" }
-    external_contact_phone { "MyString" }
+    external_contact_name { "Dirk Gently" }
+    external_contact_email { "dirk@example.com" }
+    external_contact_phone { "2155551212" }
     cancelled { false }
     registration_status { false }
     registration_link { "MyString" }
     content_hash { "MyString" }
     ensemble_identifier { "MyString" }
+    tags { nil }
     all_day { false }
   end
 end

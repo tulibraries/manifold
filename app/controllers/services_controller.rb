@@ -15,9 +15,7 @@ class ServicesController < ApplicationController
   def show
     @services = Service.all
     @categories = @services.group_by { |t| t.service_category }
-    # binding.pry
-    # @related_services = @services.where(service_category: @service.service_category).where.not(id: @service.id)
-    # @related_services = @services.where(service_category: @service.service_category).where.not(id: @service.id)
+    @related_services = @services.where(service_category: @service.service_category).where.not(id: @service.id)
   end
 
   private

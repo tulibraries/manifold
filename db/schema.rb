@@ -164,11 +164,6 @@ ActiveRecord::Schema.define(version: 2019_01_29_190531) do
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
   end
 
-  create_table "finding_aid_responsibilities", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "finding_aid_responsibility", force: :cascade do |t|
     t.integer "finding_aid_id"
     t.integer "person_id"

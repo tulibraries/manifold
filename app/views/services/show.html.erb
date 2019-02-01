@@ -7,19 +7,17 @@
 </div>
 
 <div class="row ctaRow service-show">
-  <% unless @services.blank? %>
+  <% unless @related_services.blank? %>
   <div class="col-3 text-right">
     <div class="card ctaFirst">
-      <div class="card-title">Services</div>
+      <div class="card-title">Related Services</div>
       <div class="card-body">
-        <% @categories.each do |category| %>
-          <p><%= category.first %></p>
-          <ul class="list-unstyled">
-          <% category.second.each do |service| %>
-            <li><%= link_to service.title, service_path(service) %></li>
-          <% end %>
-          </ul>
+        <p><%= @service.service_category %></p>
+        <ul class="list-unstyled">
+        <% @related_services.each do |service| %>
+          <li><%= link_to service.title, service_path(service) %></li>
         <% end %>
+        </ul>
       </div>
     </div>
   </div>

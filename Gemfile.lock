@@ -145,6 +145,8 @@ GEM
       sax-machine (>= 1.0)
     ffaker (2.10.0)
     ffi (1.9.25)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
     formatador (0.2.5)
     fuzzy_match (2.1.0)
     globalid (0.4.2)
@@ -512,6 +514,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   feedjira
+  font-awesome-rails
   fuzzy_match
   google-api-client (~> 0.28)
   guard-rspec
@@ -526,6 +529,7 @@ DEPENDENCIES
   mutant-rspec
   omniauth
   omniauth-google-oauth2
+  popper_js (~> 1.14.5)
   populate
   pry-rails
   puma (~> 3.11)

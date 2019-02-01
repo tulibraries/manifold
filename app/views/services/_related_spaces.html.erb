@@ -1,60 +1,16 @@
-<div class="container service-spaces">
-  <div class="row">
-    <div class="col">
-      <% unless @service.related_spaces.nil? %>
-        <div class="row groupsRow">
-          <% @service.related_spaces.in_groups_of(3).each do |space| %>
-            <% unless @service.related_spaces.size < 3 %>
-            <div class="col-md-1"></div>
-              <div class="col-sm-10 offset-sm-1 col-md-3 offset-md-1 m-2 cta first">
-                <div class="group">
-                  <%= link_to space.first.name, space_path(space.first) %>
-                </div>
-              </div>
-              <% unless space.second.nil? %>
-                <div class="col-sm-10 offset-sm-1 col-md-3 m-2 cta">
-                  <div class="group">
-                      <%= link_to space.second.name, space_path(space.second) %>
-                  </div>
-                </div>
-              <% end %>
-              <% unless space.third.nil? %>
-                <div class="col-sm-10 offset-sm-1 col-md-3 m-2 cta last">
-                  <div class="group">
-                      <%= link_to space.third.name, space_path(space.third) %>
-                  </div>
-                </div>
-              <% end %>
+<% unless @service.related_spaces.blank? %>
 
-            <div class="col-md-1"></div>
-            <% end %>
-
-            <% if @service.related_spaces.size == 2 %>
-            <div class="col-md-2"></div>
-              <div class="col-md-4 offset-md-2 m-2 cta first">
-                <div class="group">
-                  <%= link_to space.first.name, space_path(space.first) %>
-                </div>
-              </div>
-              <div class="col-md-4 m-2 cta last">
-                <div class="group">
-                  <%= link_to space.second.name, space_path(space.second) %>
-                </div>
-              </div>
-              <div class="col-md-1"></div>
-            <% end %>
-
-            <% if  @service.related_spaces.size == 1  %>
-              <div class="col-xs-6 offset-xs-3 col-md-4 offset-md-4 cta both">
-                <div class="group">
-                 <%= link_to space.first.name, space_path(space.first) %>
-                </div>
-              </div>
-            <% end %>
-
-          <% end %>
+<div class="card ctaLast">
+  <div class="card-title">
+    Spaces
+  </div>
+  <div class="card-body">
+    <ul class="unstyled">
+      <% @service.related_spaces.sort_by{|s| s.name}.each do |space| %>
+        <li><%= link_to space.name, space %></li>
       <% end %>
-    </div>
+    </ul> 
   </div>
 </div>
-</div>
+
+<% end %>

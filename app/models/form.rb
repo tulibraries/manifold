@@ -22,6 +22,23 @@ class Form < MailForm::Base
   attribute :reason
   attribute :pickup_location
   attribute :cancellation_date
+  attribute :type_of_incident
+  attribute :other_incident
+  attribute :time_of_incident
+  attribute :date_of_incident
+  attribute :location_where_incident_occured
+  attribute :primary_relevant_person
+  attribute :primary_email
+  attribute :primary_affiliation
+  attribute :secondary_relevant_person
+  attribute :secondary_email
+  attribute :secondary_affiliation
+  attribute :incident_description
+  attribute :victim_complaint_statement
+  attribute :action_taken
+  attribute :police_report_number
+  attribute :other_action_taken
+  attribute :supervisor_notified
 
 
   def get_subject
@@ -29,7 +46,8 @@ class Form < MailForm::Base
       "missing-book" => ["Missing Book Search Request", "cdoyle@temple.edu"],
       "recall-book" => ["Request Recall of Books Already Checked Out",  "cdoyle@temple.edu"],
       "purchase-request" => ["Purchase Request",  "cdoyle@temple.edu"],
-      "ask-scrc" => ["Special Collections Research Center: Ask a Question", "cdoyle@temple.edu"] }
+      "ask-scrc" => ["Special Collections Research Center: Ask a Question", "cdoyle@temple.edu"],
+      "incident-report" => ["Incident Report", "cdoyle@temple.edu"] }
 
     @forms.fetch(form_type)
   end

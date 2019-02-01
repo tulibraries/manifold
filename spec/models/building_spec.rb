@@ -27,25 +27,6 @@ RSpec.describe Building, type: :model do
 
     let(:building) { FactoryBot.build(:building) }
 
-    context "Email validation" do
-      example "valid email" do
-        building.email = "chas@example.edu"
-        expect { building.save! }.to_not raise_error
-      end
-      example "invalid email" do
-        building.email = "abc"
-        expect { building.save! }.to raise_error(/Email is not an email/)
-      end
-      example "strip email with trailing blank" do
-        building.email = "chas@example.edu "
-        expect { building.save! }.to_not raise_error
-      end
-      example "invalid email - blank " do
-        building.email = ""
-        expect { building.save! }.to raise_error(/Email can't be blank/)
-      end
-    end
-
     context "Phone number validation" do
       example "valid phone number" do
         building.phone_number = "2155551212"

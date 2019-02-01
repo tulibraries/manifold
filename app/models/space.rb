@@ -9,8 +9,6 @@ class Space < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
-  validates :email, email: true
-  validates :phone_number, phone_number: true
   validates :building_id, presence: true
 
   before_validation :sanitize_description

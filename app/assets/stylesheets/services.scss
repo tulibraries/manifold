@@ -56,16 +56,56 @@
 			font-weight: 600;
 			color:black;
 		}
+		.card {
+			border: 0;
+		}
 		.card-title {
-			padding: 10px;
+			padding: 14px;
 			color: $black;
 			border-bottom: solid $seagreen 1px;
 			background-color: $background-grey;
 			text-align: left;
 			line-height: 1.75rem;
 		}
+		.card-header {
+			background-color: transparent;
+			border: 0;
+			border-bottom: solid $seagreen 1px;
+			padding: 0;
+		}
+		a[data-toggle="collapse"] {
+			color: $seagreen;
+			background-color: $white;
+			text-align: left;
+			line-height: 1.75rem;	
+			display:block;
+			padding:7px;
+		}
+		a[data-toggle="collapse"]:after {
+			content: "\f054";
+    	float: right;
+    	padding-right: 7px;
+  	}
+		a[data-toggle="collapse"]:hover {
+			color: $seagreen;
+		}
+		a[aria-expanded="true"] {
+			background-color: $seagreen;
+			color: $white;
+			margin: 0!important;
+			display: block;
+		}
+		a[aria-expanded="true"]:after {
+			content: "\f078";
+    	float: right;
+    	padding-right: 7px;
+  	}
+		a[aria-expanded="true"]:hover {
+			color: $white;
+  	}
 		.card-body {
 			padding: 7px;
+			padding-left: 0;
 			text-align: left;
 			max-height: 100%;
 			li {
@@ -75,7 +115,7 @@
 		}
 	}
 	.ctaLast {
-		border-color: $purple;
+		border-color: $seagreen;
 		background-color: transparent;
 		text-align: left;
 		max-height: 210px;
@@ -83,8 +123,8 @@
 		.card-title {
 			padding: 10px;
 			color: $black;
-			border-bottom: solid $purple 1px;
-			background-color: $purple-complement;
+			border-bottom: solid $seagreen 1px;
+			background-color: $baby-puke-green;
 			text-align: left;
 			padding-left: 21px;
 			line-height: 1.75rem;
@@ -93,6 +133,13 @@
 			padding: 7px;
 			text-align: left;
 			max-height: 100%;
+			ul.unstyled {
+				margin-left: 14px;
+				margin-bottom: 14px;
+				li {
+					padding: 3px;
+				}
+			}
 		}
 	}
 }

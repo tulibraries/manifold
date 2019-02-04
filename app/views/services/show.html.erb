@@ -7,17 +7,12 @@
 </div>
 
 <div class="row ctaRow service-show">
-  <% unless @related_services.blank? %>
   <div class="col-3 text-right">
+  <% unless @grouped_services.blank? %>
     <div class="card ctaFirst">
-      <div class="card-title">Related Services</div>
+      <div class="card-title">All Services</div>
       <div class="card-body">
-        <p><%= @service.service_category %></p>
-        <ul class="list-unstyled">
-        <% @related_services.each do |service| %>
-          <li><%= link_to service.title, service_path(service) %></li>
-        <% end %>
-        </ul>
+        <%= render "all_services" %>
       </div>
     </div>
   </div>
@@ -56,45 +51,10 @@
         <% end %>
       </div>
     </div>
+    <%= render "related_spaces" %>
+    <%= render "related_policies" %>
+    <%= render "related_groups" %>
   </div>
 </div>
 
-
-<% unless @service.related_spaces.blank? %>
-  <div class="row">
-    <div class="col">
-      <div class="vertical-stripes-sm">
-        <h2><span>Spaces</span></h2>
-      </div>
-    </div>
-  </div>
-
-  <%= render "related_spaces" %>
-<% end %>
-
-
-<% unless @service.related_policies.blank? %>
-  <div class="row">
-    <div class="col">
-      <div class="vertical-stripes-sm">
-        <h2><span>Policies</span></h2>
-      </div>
-    </div>
-  </div>
-
-  <%= render "related_policies" %>
-<% end %>
-
-
-<% unless @service.related_groups.blank? %>
-  <div class="row">
-    <div class="col">
-      <div class="vertical-stripes-sm">
-        <h2><span>Groups</span></h2>
-      </div>
-    </div>
-  </div>
-
-  <%= render "related_groups" %>
-<% end %>
 

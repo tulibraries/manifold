@@ -1,0 +1,32 @@
+
+<div class="accordion" id="accordion">
+  <% @grouped_services.each_with_index do |group, index| %>
+    <div class="card">
+      <div class="card-header">
+        <% unless group.first == @key_group %>
+          <a style="cursor:pointer" class="collapsed" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse#<%= index %>">
+        <% else %>
+          <a style="cursor:pointer" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+        <% end %>
+          <%= group.first %>
+        </a>
+      </div>
+
+      <div id="collapse<%= index %>"  
+        <% unless group.first == @key_group %>
+          class="collapse in"
+        <% else %> 
+          class="collapse show in"
+        <% end %>
+        data-parent="#accordion">
+
+        <ul class="unstyled" style="margin-top:10px;">
+        <% group.second.sort_by{|s| s.title}.each do |service| %>
+          <li><%= link_to service.title, service_path(service), class: "collapse show in" %></li>
+        <% end %>
+        </ul>
+
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -20,6 +20,7 @@ gem "uglifier", ">= 1.3.0"
 gem "administrate"
 #gem "tustyles", git: "https://github.com/tulibraries/tustyles"
 gem "bootstrap", "~> 4.2.1"
+gem "popper_js", "~> 1.14.5"
 gem "tinymce-rails"
 gem "google-api-client", "~> 0.28"
 gem "fuzzy_match"
@@ -39,6 +40,7 @@ gem "jbuilder", "~> 2.5"
 
 # Use ActiveStorage variant
 gem "mini_magick", "~> 4.8"
+gem "font-awesome-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

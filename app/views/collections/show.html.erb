@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col breadcrumbs">
+    <%= link_to "Home", root_path.to_s %>
+    <%= link_to "Collections", collections_path %>
+    <%= @collection.name %>
+  </div>
+</div>
+
+
+<div class="row ctaRow collection-show">
+  <div class="col-8 offset-1">
+    <h2 class="unstyled"><%= @collection.name %></h2>
+    <div class="row">
+    	<div class="col-4">
+    	</div>
+    	<div class="col-8">
+    		<%= sanitize @collection.description.html_safe %>
+    	</div>
+    </div>
+  </div>
+  <div class="col-3 text-left">
+    <div class="card ctaLast">
+      <div class="card-title">
+        Subject List
+      </div>
+      <div class="card-body text-center">
+        <ul>
+        	<% @collection.finding_aids.each do |fa| %>
+        		<li><%= link_to fa.name, fa %></li>
+        	<% end %>
+        </ul>
+      </div>
+    </div>
+
+		<div class="card ctaLast">
+      <div class="card-title">
+        Location
+      </div>
+      <div class="card-body text-center">
+        <ul>
+        	<li><%= link_to @collection.space.name, @collection.space %></li>
+        </ul>
+      </div>
+    </div>    
+  </div>
+</div>
+
+
+
+

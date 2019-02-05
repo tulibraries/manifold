@@ -15,7 +15,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     description: DescriptionField,
     subject: DescriptionField,
     contents: DescriptionField,
-    building: Field::BelongsTo,
+    space: Field::BelongsTo,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -30,7 +30,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
-    :building,
+    :space,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -41,7 +41,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :description,
     :subject,
     :contents,
-    :building,
+    :space,
     :created_at,
     :updated_at,
   ].freeze
@@ -54,7 +54,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :description,
     :subject,
     :contents,
-    :building,
+    :space,
     :add_to_footer,
   ].freeze
 

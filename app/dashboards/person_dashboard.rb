@@ -20,7 +20,7 @@ class PersonDashboard < BaseDashboard
     chat_handle: Field::String,
     photo: PhotoField.with_options(admin_only: true),
     job_title: Field::String,
-    specialties: Field::MultiSelectField.with_options(
+    specialties: MultiSelectField.with_options(
       collection: Rails.configuration.specialties,
       multiple: true,
       include_blank: true,

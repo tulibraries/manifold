@@ -165,17 +165,12 @@ ActiveRecord::Schema.define(version: 2019_01_29_190531) do
   end
 
   create_table "finding_aid_responsibilities", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "finding_aid_responsibility", force: :cascade do |t|
     t.integer "finding_aid_id"
     t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["finding_aid_id"], name: "index_finding_aid_responsibility_on_finding_aid_id"
-    t.index ["person_id"], name: "index_finding_aid_responsibility_on_person_id"
+    t.index ["finding_aid_id"], name: "index_finding_aid_responsibilities_on_finding_aid_id"
+    t.index ["person_id"], name: "index_finding_aid_responsibilities_on_person_id"
   end
 
   create_table "finding_aids", force: :cascade do |t|

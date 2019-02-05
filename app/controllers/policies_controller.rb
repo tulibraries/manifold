@@ -4,25 +4,15 @@ class PoliciesController < ApplicationController
   load_and_authorize_resource
   before_action :set_policy, only: [:show]
 
-  # GET /policies
-  # GET /policies.json
-  def index
-    @policies = Policy.all
-  end
-
-  # GET /policies/1
-  # GET /policies/1.json
   def show
+    @policies = Policy.all
+    groups = @policies.group_by { |policy| policy.category }
+    @grouped_policies = Hash[ groups.sort_by { |key, val| key } ]
+    @key_group = @policy.category
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_policy
       @policy = Policy.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def policy_params
-      params.require(:policy).permit(:name, :description, :effective_date, :expiration_date)
     end
 end

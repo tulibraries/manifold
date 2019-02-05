@@ -37,20 +37,83 @@
 }
 .policy-show {
 	margin-top: 14px;
-	.description {
-		background-color: $lightest-grey;
-		padding: 21px;
-	}
   h2 {
   	margin-top: 0;
   	border-left: 0;
   	padding-left: 0;
   	padding-top: 0;
-  	background-color: $lightest-grey;
   }
 	.col-3 {
 		height: auto;
 	}
+	.ctaFirst {
+		border-color: $seagreen;
+		background-color: transparent;
+		text-align: left;
+		height: auto;
+		p {
+			font-weight: 600;
+			color:black;
+		}
+		.card {
+			border: 0;
+		}
+		.card-title {
+			padding: 14px;
+			color: $black;
+			border-bottom: solid $seagreen 1px;
+			background-color: $background-grey;
+			text-align: left;
+			line-height: 1.75rem;
+		}
+		.card-header {
+			background-color: transparent;
+			border: 0;
+			border-bottom: solid $seagreen 1px;
+			padding: 0;
+		}
+		a[data-toggle="collapse"] {
+			color: $seagreen;
+			background-color: $white;
+			text-align: left;
+			line-height: 1.75rem;	
+			display:block;
+			padding:7px;
+		}
+		a[data-toggle="collapse"]:after {
+			content: "\f054";
+    	float: right;
+    	padding-right: 7px;
+  	}
+		a[data-toggle="collapse"]:hover {
+			color: $seagreen;
+		}
+		a[aria-expanded="true"] {
+			background-color: $seagreen;
+			color: $white;
+			margin: 0!important;
+			display: block;
+		}
+		a[aria-expanded="true"]:after {
+			content: "\f078";
+    	float: right;
+    	padding-right: 7px;
+  	}
+		a[aria-expanded="true"]:hover {
+			color: $white;
+  	}
+		.card-body {
+			padding: 7px;
+			padding-left: 0;
+			text-align: left;
+			max-height: 100%;
+			li {
+				padding: 0 14px 7px 14px;
+				white-space: normal;
+			}
+		}
+	}
+	
 	.ctaLast {
 		border-color: $purple;
 		background-color: transparent;

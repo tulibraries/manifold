@@ -1,0 +1,32 @@
+
+<div class="accordion" id="accordion">
+  <% @grouped_policies.each_with_index do |policy, index| %>
+    <div class="card">
+      <div class="card-header">
+        <% unless policy.first == @key_group %>
+          <a style="cursor:pointer" class="collapsed" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse#<%= index %>">
+        <% else %>
+          <a style="cursor:pointer" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+        <% end %>
+          <%= policy.first.second %>
+        </a>
+      </div>
+
+      <div id="collapse<%= index %>"  
+        <% unless policy.first == @key_group %>
+          class="collapse in"
+        <% else %> 
+          class="collapse show in"
+        <% end %>
+        data-parent="#accordion">
+
+        <ul class="unstyled" style="margin-top:10px;">
+        <% policy.second.sort_by{|p| p.name}.each do |policy| %>
+          <li><%= link_to policy.name.to_s, policy_path(policy), class: "collapse show in" %></li>
+        <% end %>
+        </ul>
+
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_201026) do
+ActiveRecord::Schema.define(version: 2019_01_29_185647) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -162,6 +162,27 @@ ActiveRecord::Schema.define(version: 2019_01_28_201026) do
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
+  end
+
+  create_table "finding_aid_responsibilities", force: :cascade do |t|
+    t.integer "finding_aid_id"
+    t.integer "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["finding_aid_id"], name: "index_finding_aid_responsibilities_on_finding_aid_id"
+    t.index ["person_id"], name: "index_finding_aid_responsibilities_on_person_id"
+  end
+
+  create_table "finding_aids", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "subject"
+    t.string "content_link"
+    t.string "identifier"
+    t.integer "collection_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_finding_aids_on_collection_id"
   end
 
   create_table "group_contacts", force: :cascade do |t|

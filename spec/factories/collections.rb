@@ -10,10 +10,10 @@ FactoryBot.define do
         round a large gold brick.
       EOD
     }
-    subject { "MyText" }
+    subject { ["MyText"] }
     contents { "MyText" }
-    association :building
-    #association :policy
-    #association :resource
+
+    association :space
+    # association :finding_aid
   end
 end

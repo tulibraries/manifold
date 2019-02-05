@@ -17,11 +17,11 @@ RSpec.describe Collection, type: :model do
     end
   end
 
-  describe "Building association" do
-    example "Specify building in a collection" do
-      building = FactoryBot.build(:building)
-      collection = FactoryBot.create(:collection, building: building)
-      expect(collection.building).to be(building)
+  describe "Space association" do
+    example "Specify space in a collection" do
+      space = FactoryBot.build(:space)
+      collection = FactoryBot.create(:collection, space: space)
+      expect(collection.space).to be(space)
     end
   end
 end

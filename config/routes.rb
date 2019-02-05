@@ -8,15 +8,16 @@ Rails.application.routes.draw do
     resources :alerts
     resources :blogs
     resources :buildings
+    resources :collections
+    resources :events
+    resources :exhibitions
     resources :groups
+    resources :finding_aids
     resources :highlights
     resources :people
-    resources :exhibitions
-    resources :spaces
-    resources :events
-    resources :services
     resources :policies
-    resources :collections
+    resources :services
+    resources :spaces
 
     resource :events do
       member do
@@ -48,9 +49,14 @@ Rails.application.routes.draw do
   resources :exhibitions, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
+  resources :finding_aids, only: [:show]
 
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
+
+  controller :collections do
+    get "finding_aids/:id" => :finding_aids
+  end
 
 
   controller :pages do

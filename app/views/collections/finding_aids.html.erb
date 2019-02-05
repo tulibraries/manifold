@@ -6,26 +6,26 @@
   </div>
 </div>
 
-<div class="row collection-show">
-  <div class="col-10 description">
-    <h2 class="unstyled" style=""><%= @collection.name %></h2>
-    <div class="row info">
-    	<div class="col-4" style="padding-left: 0;">
+<div class="row ctaRow collection-show">
+  <div class="col-8 offset-1 description">
+    <h2 class="unstyled"><%= @collection.name %></h2>
+    <div class="row">
+    	<div class="col-4 text-center">
           <% if @collection.photo.attached? %>
             <%= image_tag @collection.photo.variant(gravity: 'center', extent: "100%x100%") %>
           <% else %>
             <%= image_tag 'T-borderless.gif' %>
           <% end %>
     	</div>
-    	<div class="col-8" style="padding-left:21px;">
+    	<div class="col-8">
     		<%= sanitize @collection.description.html_safe %>
     	</div>
     </div>
   </div>
-  <div class="col-2 text-left">
+  <div class="col-3 text-left">
     <div class="card ctaLast subjects">
       <div class="card-title">
-        Subject List
+        Subjects
       </div>
       <div class="card-body text-left">
         <ul>
@@ -38,7 +38,7 @@
 
 		<div class="card ctaLast spaces">
       <div class="card-title">
-        Space
+        Location
       </div>
       <div class="card-body text-left">
         <ul>
@@ -49,7 +49,7 @@
 
     <div class="card ctaBoth">
       <div class="card-title text-center">
-        <%= link_to "Contents", {controller: :collections, action: :finding_aids, id: @collection.id}, style: "vertical-align:middle;" %>
+        <%= link_to "Contents", {controller: :collections, action: :finding_aids, id: @collection.id} %>
       </div>
     </div>
 
@@ -57,7 +57,5 @@
 </div>
 
 
-<%= render "policies" %>
 
-<%= render "visit" %>
 

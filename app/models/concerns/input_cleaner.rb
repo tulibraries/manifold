@@ -10,4 +10,7 @@ module InputCleaner
     self.description.gsub!(/<p>\W<\/p>/, "")
     self.description = ActionController::Base.helpers.sanitize(self.description).strip
   end
+  def burpArray
+    self.subject.reject! { |s| s.empty? }
+  end
 end

@@ -54,6 +54,10 @@ Rails.application.routes.draw do
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
 
+  controller :collections do
+    get "finding_aids/:id" => :finding_aids
+  end
+
 
   controller :pages do
     get "ambler" => :ambler

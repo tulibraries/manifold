@@ -13,9 +13,14 @@ class CollectionDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
-    subject: DescriptionField,
-    contents: DescriptionField,
-    building: Field::BelongsTo,
+    subject: MultiSelectField.with_options(
+      collection: Rails.configuration.finding_aid_subjects,
+      multiple: true,
+      include_blank: false,
+    ),
+    # contents: DescriptionField,
+    space: Field::BelongsTo,
+    photo: PhotoField,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -27,23 +32,15 @@ class CollectionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
     :name,
-    :description,
-    :building,
+    :space,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :name,
-    :description,
-    :subject,
-    :contents,
-    :building,
-    :created_at,
-    :updated_at,
+    :space,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -51,10 +48,11 @@ class CollectionDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :photo,
     :description,
     :subject,
-    :contents,
-    :building,
+    # :contents,
+    :space,
     :add_to_footer,
   ].freeze
 

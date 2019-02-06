@@ -17,6 +17,7 @@ class EventDashboard < BaseDashboard
     title: Field::String,
     description: DescriptionField,
     tags: Field::String,
+    event_type: Field::String,
     start_time: Field::DateTime.with_options(format: "%D - %I:%M %p"),
     end_time: Field::DateTime.with_options(format: "%D - %I:%M %p"),
     all_day: Field::Boolean,
@@ -47,6 +48,7 @@ class EventDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
+    :event_type,
     :start_time,
     :end_time,
   ].freeze
@@ -57,6 +59,7 @@ class EventDashboard < BaseDashboard
     :id,
     :title,
     :description,
+    :event_type,
     :tags,
     :start_time,
     :end_time,
@@ -92,6 +95,7 @@ class EventDashboard < BaseDashboard
     :image,
     :alt_text,
     :description,
+    :event_type,
     :tags,
     :start_time,
     :end_time,

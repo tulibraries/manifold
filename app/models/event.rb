@@ -2,12 +2,22 @@
 
 class Event < ApplicationRecord
   include InputCleaner
+  paginates_per 5
   belongs_to :building, optional: true
   belongs_to :space, optional: true
   belongs_to :person, optional: true
   has_one_attached :image, dependent: :destroy
 
   before_save :sanitize_description
+
+  serialize :tags
+
+  def get_tags
+    self.tags.split(",").collect(&:strip)
+  end
+  def get_types
+    self.event_type.split(",").collect(&:strip)
+  end
 
   def can_visit
     unless building.nil?
@@ -25,5 +35,16 @@ class Event < ApplicationRecord
     else
       "All Day"
     end
+  end
+
+  def index_image
+    variation =
+      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
+    ActiveStorage::Variant.new(image.blob, variation)
+  end
+  def show_image
+    variation =
+      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
+    ActiveStorage::Variant.new(image.blob, variation)
   end
 end

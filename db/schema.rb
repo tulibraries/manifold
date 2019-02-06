@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_180724) do
+ActiveRecord::Schema.define(version: 2019_02_07_145221) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
     t.string "ensemble_identifier"
     t.text "tags"
     t.boolean "all_day", default: false
+    t.string "event_type"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
     t.integer "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "promoted_to_events"
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
@@ -171,8 +173,8 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
     t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["finding_aid_id"], name: "index_finding_aid_responsibilities_on_finding_aid_id"
-    t.index ["person_id"], name: "index_finding_aid_responsibilities_on_person_id"
+    t.index ["finding_aid_id"], name: "index_finding_aid_responsibility_on_finding_aid_id"
+    t.index ["person_id"], name: "index_finding_aid_responsibility_on_person_id"
   end
 
   create_table "finding_aids", force: :cascade do |t|

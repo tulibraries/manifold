@@ -3,3 +3,6 @@ toolbar:
 plugins:
   - image
   - link
+  - table
+  - lists
+  - advlist

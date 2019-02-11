@@ -1,5 +1,8 @@
 toolbar:
-  - styleselect | bold italic | undo redo | image link
+  - styleselect | bold italic | undo redo | bullist numlist | image link
 plugins:
   - image
   - link
+  - table
+  - lists
+  - advlist

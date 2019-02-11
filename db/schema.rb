@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_180724) do
+ActiveRecord::Schema.define(version: 2019_02_08_195724) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -199,8 +199,6 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "phone_number"
-    t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "group_type"
@@ -348,6 +346,17 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
     t.string "ancestry"
     t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object", limit: 1073741823
+    t.datetime "created_at"
+    t.text "object_changes", limit: 1073741823
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
 end

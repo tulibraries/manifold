@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
+  has_paper_trail
   include InputCleaner
   belongs_to :building, optional: true
   belongs_to :space, optional: true

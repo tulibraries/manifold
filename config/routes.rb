@@ -42,10 +42,10 @@ Rails.application.routes.draw do
   resources :blogs, only: [:index, :show]
   resources :buildings, only: [:index, :show], path: "libraries"
   resources :groups, only: [:index, :show]
-  resources :collections, only: [:index, :show]
+  resources :collections, only: [:show]
   resources :events, only: [:index, :show], path: "/beyondthepage"
-  resources :services, only: [:index, :show]
-  resources :policies, only: [:index, :show]
+  resources :services, only: [:show]
+  resources :policies, only: [:show]
   resources :exhibitions, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]

@@ -19,7 +19,7 @@ gem "uglifier", ">= 1.3.0"
 # gem 'mini_racer', platforms: :ruby
 gem "administrate"
 #gem "tustyles", git: "https://github.com/tulibraries/tustyles"
-gem "bootstrap", "~> 4.2.1"
+gem "bootstrap", "~> 4.3.0"
 gem "popper_js", "~> 1.14.5"
 gem "tinymce-rails"
 gem "google-api-client", "~> 0.28"

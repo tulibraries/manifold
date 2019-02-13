@@ -77,4 +77,25 @@ RSpec.describe Space, type: :model do
       end
     end
   end
+
+  describe "version field changes" do
+    fields = {
+      name: ["The Text 1", "The Text 2"],
+      description: ["The Text 1", "The Text 2"],
+      hours: ["The Text 1", "The Text 2"],
+      accessibility: ["https://example.com/doc1", "https://example.com/doc2"],
+      phone_number: ["2155551212", "2155551234"],
+      image: ["https://example.com/image1.jpg", "https://example.com/image2.png"],
+      email: ["first@example.com", "second@email.com"],
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        space = FactoryBot.create(:space, k => v.first)
+        space.update(k => v.last)
+        space.save!
+        expect(space.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

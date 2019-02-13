@@ -8,18 +8,6 @@ RSpec.describe Event, type: :model do
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:person) { FactoryBot.build(:person, spaces: [space]) }
 
-  context "Required Fields" do
-    skip "Required fields are TBD"
-    required_fields = []
-    required_fields.each do |f|
-      example "missing #{f} fields" do
-        event = FactoryBot.build(:event)
-        event[f] = ""
-        expect { event.save! }.to raise_error(/#{f.humanize(capitalize: true)} can't be blank/)
-      end
-    end
-  end
-
   describe "past event video" do
     let(:ensemble_id) { "12345ABCDEF09876ZYXWVU" }
     example "Can set an ensemble ID" do
@@ -65,9 +53,9 @@ RSpec.describe Event, type: :model do
     let(:start_time) { DateTime.parse "7/4/18 10:00 am" }
     let(:start_date) { DateTime.parse "7/4/18" }
     let(:end_time) { DateTime.parse "7/4/18 2:00 pm" }
-    example "event is all day long", :skip do
+    example "event is all day long" do
       event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_date, all_day: true)
-      expect(event.set_times).to match(/^(All day)$/)
+      expect(event.set_times).to match(/^All Day$/)
     end
     example "event has an start and end time" do
       event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_time, end_time: end_time, all_day: false)
@@ -77,12 +65,47 @@ RSpec.describe Event, type: :model do
 
   describe "all-day flag" do
     example "Is all day event", :focus do
-    event = FactoryBot.create(:event, start_time: "1/1/2019", all_day: true)
-    expect(event.all_day).to be
-  end
+      event = FactoryBot.create(:event, start_time: "1/1/2019", all_day: true)
+      expect(event.all_day).to be
+    end
     example "Is not all day event" do
       event = FactoryBot.create(:event, start_time: "1/1/2019", all_day: false)
       expect(event.all_day).to_not be
+    end
+  end
+
+  describe "version all fields" do
+    fields = {
+      title: ["The Text 1", "The Text 2"],
+      description: ["The Text 1", "The Text 2"],
+      start_time: [DateTime.parse("2018/9/24 11:00"), DateTime.parse("2018/9/24 11:30")],
+      end_time: [DateTime.parse("2018/9/24 12:00"), DateTime.parse("2018/9/24 12:30")],
+      external_building: ["The Text 1", "The Text 2"],
+      external_space: ["The Text 1", "The Text 2"],
+      external_address: ["The Text 1", "The Text 2"],
+      external_city: ["The Text 1", "The Text 2"],
+      external_state: ["The Text 1", "The Text 2"],
+      external_zip: ["The Text 1", "The Text 2"],
+      external_contact_name: ["The Text 1", "The Text 2"],
+      external_contact_email: ["The Text 1", "The Text 2"],
+      external_contact_phone: ["The Text 1", "The Text 2"],
+      cancelled: [false, true],
+      registration_status: [true, false],
+      registration_link: ["https://example.com/reg1", "https://example.com/reg2"],
+      content_hash: ["The Text 1", "The Text 2"],
+      alt_text: ["The Text 1", "The Text 2"],
+      ensemble_identifier: ["The Text 1", "The Text 2"],
+      tags: ["tag1, tag2", "tag3, tag4"],
+      all_day: [false, true]
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        event = FactoryBot.create(:event, k => v.first)
+        event.update(k => v.last)
+        event.save!
+        expect(event.versions.last.changeset[k]).to match_array(v)
+      end
     end
   end
 end

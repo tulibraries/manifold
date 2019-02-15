@@ -30,6 +30,7 @@ class GroupDashboard < BaseDashboard
       foreign_key: "parent_group_id",
     ),
     #child_groups: Field::HasMany,
+    pages: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -74,6 +75,7 @@ class GroupDashboard < BaseDashboard
     :space,
     :documents,
     :policies,
+    :pages,
     :add_to_footer,
   ].freeze
 

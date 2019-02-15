@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_180724) do
+ActiveRecord::Schema.define(version: 2019_02_15_183324) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
     t.string "ensemble_identifier"
     t.text "tags"
     t.boolean "all_day", default: false
+    t.string "event_type"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
     t.integer "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "promoted_to_events"
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
@@ -207,6 +209,8 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
     t.boolean "external"
     t.boolean "add_to_footer"
     t.integer "parent_group_id"
+    t.integer "page_id"
+    t.index ["page_id"], name: "index_groups_on_page_id"
     t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
   end
 
@@ -247,6 +251,16 @@ ActiveRecord::Schema.define(version: 2019_02_05_180724) do
     t.datetime "updated_at", null: false
     t.index ["person_id"], name: "index_occupants_on_person_id"
     t.index ["space_id"], name: "index_occupants_on_space_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "group_id"
+    t.string "layout"
+    t.index ["group_id"], name: "index_pages_on_group_id"
   end
 
   create_table "people", force: :cascade do |t|

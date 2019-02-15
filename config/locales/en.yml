@@ -84,6 +84,7 @@ en:
       invalid_phone_format: "is not a valid format. It should be xxx-xxx-xxxx."
       invalid_group_type: "is not a valid group type"
       invalid_url: "is not a valid url"
+      invalid_document_type: "is not a valid file type"
     signout: "Log Out"
     admin:
       actions:

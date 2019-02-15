@@ -36,7 +36,7 @@
             </ul>
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-services">
-          <h2><%= link_to "Services", service_path(2), class: "col-heading" %></h2>
+          <h2><%= link_to "Services", services_path, class: "col-heading" %></h2>
           <ul>
             <% @footer_services.each do |service| %>
               <li><%= link_to service.title, service %></li>
@@ -52,7 +52,7 @@
             </ul>
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-collections">
-          <h2><%= link_to "Collections", collection_path(1), class: "col-heading" %></h2>
+          <h2><%= link_to "Collections", collections_path, class: "col-heading" %></h2>
           <ul>
             <% @footer_collections.each do |collection| %>
               <li><%= link_to collection.name, collection %></li>
@@ -66,13 +66,13 @@
             <div><%= link_to "View all Libraries", buildings_path %></div>
           </div>
           <div class="col-md-6 col-lg-3 footer-col">
-            <div><%= link_to "View all Services", service_path(1) %></div>
+            <div><%= link_to "View all Services", services_path %></div>
           </div>
           <div class="col-md-6 col-lg-3 footer-col">
             <div><%= link_to "View all Groups", groups_path %></div>
           </div>
           <div class="col-md-6 col-lg-3 footer-col">
-            <div><%= link_to "View all Collections", collection_path(1) %></div>
+            <div><%= link_to "View all Collections", collections_path %></div>
           </div>
       </div>
 

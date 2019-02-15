@@ -8,7 +8,8 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
-    before_action :authenticate_account!, :set_paper_trail_whodunnit
+    before_action :authenticate_account!
+    before_action :set_paper_trail_whodunnit
 
     helper_method :required?
     helper_method :admin_only?

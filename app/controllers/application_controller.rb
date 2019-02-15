@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   # user, we have no access to the devise object. So, we need to override
   # current_user to return the current account. This is needed both
   # in ApplicationController and in Admin::ApplicationController
-  before_action :get_alert, :set_footer, :set_paper_trail_whodunnit
+  before_action :get_alert, :set_footer
+  before_action :set_paper_trail_whodunnit
 
   def get_alert
     @alert = Alert.where(published: true)

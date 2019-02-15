@@ -13,6 +13,11 @@ module Tude
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.tinymce.install
+    config.action_view.sanitized_allowed_tags = ["div", "p", "h1", "h2", "h3", "h4", "h5", "h6",
+        "ul", "ol", "li", "dl", "dt", "dd", "address", "hr", "pre", "blockquote", "center",
+        "a", "span", "bdo", "br", "em", "strong", "dfn", "code", "samp", "cite", "basefont",
+        "font", "object", "param", "img", "table", "caption", "colgroup", "col", "thead", "tfoot", "tbody",
+        "tr", "th", "td", "embed"]
 
     config.generators do |g|
       g.test_framework :rspec, spec: true

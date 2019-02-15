@@ -2,7 +2,7 @@
 
 class FindingAid < ApplicationRecord
   include InputCleaner
-  
+
   has_paper_trail
 
   before_validation :sanitize_description

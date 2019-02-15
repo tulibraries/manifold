@@ -7,10 +7,6 @@ class ApplicationController < ActionController::Base
   # in ApplicationController and in Admin::ApplicationController
   before_action :get_alert, :set_footer, :set_paper_trail_whodunnit
 
-  def current_user
-    current_account
-  end
-
   def get_alert
     @alert = Alert.where(published: true)
   end
@@ -21,4 +17,10 @@ class ApplicationController < ActionController::Base
     @footer_services = Service.where(add_to_footer: true).take(6)
     @footer_groups = Group.where(add_to_footer: true).take(6)
   end
+
+  protected
+
+    def current_user
+      current_account
+    end
 end

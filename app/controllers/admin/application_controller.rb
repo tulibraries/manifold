@@ -37,8 +37,8 @@ module Admin
     # end
 
     protected
-    def current_user
-      current_account
-    end
+      def current_user
+        current_account
+      end
   end
 end

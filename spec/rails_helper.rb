@@ -71,4 +71,5 @@ RSpec.configure do |config|
 
   # Allow log in in request specs
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end

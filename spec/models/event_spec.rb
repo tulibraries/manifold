@@ -108,4 +108,21 @@ RSpec.describe Event, type: :model do
       end
     end
   end
+
+  describe "who changed a field" do
+    before (:all) {
+      @account_1 = FactoryBot.create(:account)
+      @account_2 = FactoryBot.create(:account)
+    }
+
+    it "associated with the account" do
+      PaperTrail.request.whodunnit = @account_1.id
+      blog = FactoryBot.create(:blog, title: "Title 1")
+      expect(blog.versions.last.whodunnit).to match(/^#{@account_1.id.to_s}$/)
+      PaperTrail.request.whodunnit = @account_2.id
+      blog.update(title: "Title 2")
+      blog.save!
+      expect(blog.versions.last.whodunnit).to match(/^#{@account_2.id.to_s}$/)
+    end
+  end
 end

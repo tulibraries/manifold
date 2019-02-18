@@ -50,10 +50,7 @@
             "last_name",
             "job_title",
             "email_address",
-            "phone_number",
-            "specialties",
-            "photo",
-            "thumbnail_photo"
+            "phone_number"
           ],
           "properties": {
             "name": {

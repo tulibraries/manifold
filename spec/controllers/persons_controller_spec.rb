@@ -14,14 +14,14 @@ RSpec.describe PersonsController, type: :controller do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'returns html by default' do
+    it "returns html by default" do
       get :index
-      expect(response.header['Content-Type']).to include "html"
+      expect(response.header["Content-Type"]).to include "html"
     end
 
-    it 'returns json when requested' do
+    it "returns json when requested" do
       get :index, format: :json
-      expect(response.header['Content-Type']).to include "json"
+      expect(response.header["Content-Type"]).to include "json"
     end
   end
 
@@ -33,12 +33,12 @@ RSpec.describe PersonsController, type: :controller do
 
     it "returns html by default success" do
       get :show, params: { id: person.id }
-      expect(response.header['Content-Type']).to include "html"
+      expect(response.header["Content-Type"]).to include "html"
     end
 
     it "returns html by default success" do
       get :show, params: { id: person.id }, format: :json
-      expect(response.header['Content-Type']).to include "json"
+      expect(response.header["Content-Type"]).to include "json"
     end
   end
 

@@ -12,7 +12,7 @@ class PersonsController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.json { render json: PersonSerializer.new(@persons.to_a)}
+      format.json { render json: PersonSerializer.new(@persons.to_a) }
     end
   end
 
@@ -20,7 +20,7 @@ class PersonsController < ApplicationController
     @building = Building.find_by("id = ?", @person.spaces.last.building_id)
     respond_to do |format|
       format.html
-      format.json { render json: PersonSerializer.new(@person)}
+      format.json { render json: PersonSerializer.new(@person) }
     end
   end
 

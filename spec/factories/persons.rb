@@ -15,8 +15,8 @@ FactoryBot.define do
     specialties { ["", "first subject"] }
     trait :with_photo do
       after :create do |person|
-        file_path = Rails.root.join('spec', 'support', 'assets', 'hal.png')
-        file = fixture_file_upload(file_path, 'image/png')
+        file_path = Rails.root.join("spec", "support", "assets", "hal.png")
+        file = fixture_file_upload(file_path, "image/png")
         person.photo.attach(file)
       end
     end

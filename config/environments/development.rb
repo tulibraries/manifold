@@ -69,5 +69,6 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-
 end
+
+Rails.application.routes.default_url_options[:host] = "test.host"

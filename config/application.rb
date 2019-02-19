@@ -180,6 +180,10 @@ module Tude
                             "Theater",
                             "Urban Bioethics",
                             ]
+    config.incident_type = ["Vandalism", "Accident/Medical", "Theft", "Harassment/Fight/Abusive Language", "Building Issue", "Other"]
+    config.affiliation = ["TU Student", "TU Faculty or Staff", "Library Student Assistant", "Library Staff", "Visitor/Guest"]
+    config.action_taken = ["Library Administration Notified", "Facilities Notified (1-1385)", "Completed Staff Injury Report", "Referred to Legal or Risk Management", "Called Campus Police"]
+    config.form_yes_or_no = ["Yes", "No"]
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]

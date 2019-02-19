@@ -1,4 +1,4 @@
-<%= f.input :type_of_incident, as: :radio_buttons, collection: ["Vandalism", "Accident/Medical", "Theft", "Harassment/Fight/Abusive Language", "Building Issue", "Other"], required: :true %>
+<%= f.input :type_of_incident, as: :radio_buttons, collection: Rails.configuration.incident_type, required: :true %>
 <%= f.input :other_incident, label: "Other Incident Type", as: :text, required: :false, size: "60", maxlength: "128" %>
 <%= f.input :time_of_incident, label: "Time of Incident", as: :time, required: :true %>
 <%= f.input :date_of_incident, label: "Date of Incident", as: :date, required: :true %>
@@ -6,16 +6,16 @@
 <fieldset class="webform-component-fieldset form-wrapper" id="webform-component-primary-relevant-person"><legend><span class="fieldset-legend">Primary Relevant Person, if needed</span></legend><div class="fieldset-wrapper"><div class="form-item webform-component webform-component-textfield" id="webform-component-primary-relevant-person--identify-relevant-persons">
 <%= f.input :primary_relevant_person, label: "Primary Relevant Person", as: :text, required: :true %>
 <%= f.input :primary_email, label: "Provide Email, if needed", as: :text, required: :false %>
-<%= f.input :primary_affiliation, label: "Affiliation", as: :radio_buttons, collection: ["TU Student", "TU Faculty or Staff", "Library Student Assistant", "Library Staff", "Visitor/Guest"], required: :true %>
+<%= f.input :primary_affiliation, label: "Affiliation", as: :radio_buttons, collection: Rails.configuration.affiliation, required: :true %>
 <fieldset class="webform-component-fieldset form-wrapper" id="webform-component-secondary-relevant-person"><legend><span class="fieldset-legend">Secondary Relevant Person, if needed</span></legend><div class="fieldset-wrapper"><div class="form-item webform-component webform-component-textfield" id="webform-component-secondary-relevant-person--identify-relevant-persons">
-<%= f.input :secondary_relevant_person, label: "Secondary Relevant Person", as: :text, required: :true %>
+<%= f.input :secondary_relevant_person, label: "Secondary Relevant Person", as: :text, required: :false %>
 <%= f.input :secondary_email, label: "Provide Email, if needed", as: :text, required: :false %>
-<%= f.input :secondary_affiliation, label: "Affiliation", as: :radio_buttons, collection: ["TU Student", "TU Faculty or Staff", "Library Student Assistant", "Library Staff", "Visitor/Guest"], required: :true %>
+<%= f.input :secondary_affiliation, label: "Affiliation", as: :radio_buttons, collection: Rails.configuration.affiliation, required: :false %>
 <%= f.input :incident_description, label: "Incident Description", as: :text, required: :true, cols: 60, rows: 5 %>
 <div class="description">What happened?  Provide names, who did what to whom, what was stolen, etc. Be as detailed as possible. Describe a suspect if appropriate.</div>
-<%= f.input :victim_complaint_statement, label: "Victim/Complainant Statement", as: :text, required: :true, cols: 60, rows: 5 %>
-<%= f.input :action_taken, label: "Action Taken", as: :check_boxes, collection: ["Library Administration Notified", "Facilities Notified (1-1385)", "Completed Staff Injury Report", "Referred to Legal or Risk Management", "Called Campus Police"], required: :true %>
+<%= f.input :victim_complaint_statement, label: "Victim/Complainant Statement", as: :text, required: :false, cols: 60, rows: 5 %>
+<%= f.input :action_taken, label: "Action Taken", as: :check_boxes, collection: Rails.configuration.action_taken, required: :true %>
 <div class="description">Check all that apply. Provide police report # if available.</div>
-<%= f.input :police_report_number, label: "Police Report Number", as: :text, required: :true, cols: 60, rows: 128 %>
-<%= f.input :other_action_taken, label: "Other Action Taken", as: :text, required: :true, cols: 60, rows: 128 %>
-<%= f.input :supervisor_notified, as: :radio_buttons, collection: ["Yes", "No"], required: :true %></div>
+<%= f.input :police_report_number, label: "Police Report Number", as: :text, required: :false, cols: 60, rows: 128 %>
+<%= f.input :other_action_taken, label: "Other Action Taken", as: :text, required: :false, cols: 60, rows: 128 %>
+<%= f.input :supervisor_notified, as: :radio_buttons, collection: Rails.configuration.form_yes_or_no, required: :true %></div>

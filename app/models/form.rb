@@ -47,7 +47,7 @@ class Form < MailForm::Base
       "recall-book" => ["Request Recall of Books Already Checked Out",  "cdoyle@temple.edu"],
       "purchase-request" => ["Purchase Request",  "cdoyle@temple.edu"],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "cdoyle@temple.edu"],
-      "ir" => ["Incident Report", "steven.ng@temple.edu"] }
+      "ir" => ["Incident Report", "cdoyle@temple.edu"] }
 
     @forms.fetch(form_type)
   end

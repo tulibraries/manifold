@@ -43,11 +43,11 @@ class Form < MailForm::Base
 
   def get_subject
     @forms = {
-      "missing-book" => ["Missing Book Search Request", "cdoyle@temple.edu"],
+      "missing-book" => ["Missing Book Search Request", "steven.ng@temple.edu"],
       "recall-book" => ["Request Recall of Books Already Checked Out",  "cdoyle@temple.edu"],
       "purchase-request" => ["Purchase Request",  "cdoyle@temple.edu"],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "cdoyle@temple.edu"],
-      "incident-report" => ["Incident Report", "cdoyle@temple.edu"] }
+      "ir" => ["Incident Report", "steven.ng@temple.edu"] }
 
     @forms.fetch(form_type)
   end

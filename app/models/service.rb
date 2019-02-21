@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Service < ApplicationRecord
+  has_paper_trail
   include InputCleaner
   include HasPolicies
 

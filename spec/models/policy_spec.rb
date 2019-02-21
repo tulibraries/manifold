@@ -45,4 +45,22 @@ RSpec.describe Policy, type: :model do
     end
   end
 
+  describe "version all fields" do
+    fields = {
+      name: ["The Text 1", "The Text 2"],
+      description: ["The Text 1", "The Text 2"],
+      effective_date: [Date.parse("2018/9/24"), Date.parse("2018/10/24")],
+      expiration_date: [Date.parse("2018/9/24"), Date.parse("2018/10/24")],
+      category: ["The Text 1", "The Text 2"]
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        policy = FactoryBot.create(:policy, k => v.first)
+        policy.update(k => v.last)
+        policy.save!
+        expect(policy.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

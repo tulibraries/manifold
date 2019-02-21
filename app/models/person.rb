@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Person < ApplicationRecord
+  has_paper_trail
   include Validators
   include InputCleaner
 

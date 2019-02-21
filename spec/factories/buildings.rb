@@ -16,7 +16,7 @@ FactoryBot.define do
     campus { "Main Campus" }
     email { "csa@example.edu" }
     trait :with_photo do
-      after :create do |person|
+      after :create do |building|
         file_path = Rails.root.join("spec", "fixtures", "charles.jpg")
         file = fixture_file_upload(file_path, "image/png")
         building.photo.attach(file)

@@ -5,9 +5,8 @@ class PoliciesController < ApplicationController
   before_action :set_policy, only: [:show]
 
   def show
-    @policies = Policy.all
-    groups = @policies.group_by { |policy| policy.category }
-    @grouped_policies = Hash[ groups.sort_by { |key, val| key } ]
+    @policies = Policy.all.sort_by { |p| p.name }
+    @groups_list = @policies.map { |p| p.category }.flatten.reject(&:blank?).uniq
     @key_group = @policy.category
   end
 

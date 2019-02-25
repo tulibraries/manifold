@@ -1,0 +1,237 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "id"
+  ],
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "integer",
+      "title": "The Id Schema",
+      "default": 0,
+      "examples": [
+        1
+      ]
+    },
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "The Title Schema",
+      "default": "",
+      "examples": [
+        "2nd Annual Winter Concert"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "The Description Schema",
+      "default": "",
+      "examples": [
+        "<p>The Lewis Katz School of Medicine's student a cappella singing group, TachyChordia, will be performing a selection of holiday favorites and will lead us in a sing-a-long. Hot cocoa, marshmallows, cookies, candy canes, and chocolate will be served for those who stay for the performance!</p>"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "start_time": {
+      "$id": "#/properties/start_time",
+      "type": "string",
+      "title": "The Start_time Schema",
+      "default": "",
+      "examples": [
+        "2018-12-05T12:15:00.000Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "end_time": {
+      "$id": "#/properties/end_time",
+      "type": "string",
+      "title": "The End_time Schema",
+      "default": "",
+      "examples": [
+        "2018-12-05T12:15:00.000Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "building_id": {
+      "$id": "#/properties/building_id",
+      "type": "integer",
+      "title": "The Building_id Schema",
+      "default": 0,
+      "examples": [
+        3
+      ]
+    },
+    "space_id": {
+      "$id": "#/properties/space_id",
+      "type": "integer",
+      "title": "The Space_id Schema",
+      "default": 0,
+      "examples": [
+        6
+      ]
+    },
+    "building": {
+      "$id": "#/properties/building",
+      "type": "string",
+      "title": "The Building Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "space": {
+      "$id": "#/properties/space",
+      "type": "string",
+      "title": "The Space Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "address": {
+      "$id": "#/properties/address",
+      "type": "string",
+      "title": "The Address Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "city": {
+      "$id": "#/properties/city",
+      "type": "string",
+      "title": "The City Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "state": {
+      "$id": "#/properties/state",
+      "type": "string",
+      "title": "The State Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "zip": {
+      "$id": "#/properties/zip",
+      "type": "string",
+      "title": "The Zip Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "contact_name": {
+      "$id": "#/properties/contact_name",
+      "type": "string",
+      "title": "The Contact_name Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "contact_email": {
+      "$id": "#/properties/contact_email",
+      "type": "string",
+      "title": "The Contact_email Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "contact_phone": {
+      "$id": "#/properties/contact_phone",
+      "type": "string",
+      "title": "The Contact_phone Schema",
+      "default": "",
+      "examples": [
+        ""
+      ],
+      "pattern": "^(.*)$"
+    },
+    "cancelled": {
+      "$id": "#/properties/cancelled",
+      "type": "boolean",
+      "title": "The Cancelled Schema",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "registration_status": {
+      "$id": "#/properties/registration_status",
+      "type": "boolean",
+      "title": "The Registration_status Schema",
+      "default": false,
+      "examples": [
+        true
+      ]
+    },
+    "registration_link": {
+      "$id": "#/properties/registration_link",
+      "type": "string",
+      "title": "The Registration_link Schema",
+      "default": "",
+      "examples": [
+        "#"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "content_hash": {
+      "$id": "#/properties/content_hash",
+      "type": "string",
+      "title": "The Content_hash Schema",
+      "default": "",
+      "examples": [
+        "4b75124fd9ec91da03b45532de5febd0aebab00c"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "created_at": {
+      "$id": "#/properties/created_at",
+      "type": "string",
+      "title": "The Created_at Schema",
+      "default": "",
+      "examples": [
+        "2018-12-05T13:40:14.581Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "updated_at": {
+      "$id": "#/properties/updated_at",
+      "type": "string",
+      "title": "The Updated_at Schema",
+      "default": "",
+      "examples": [
+        "2018-12-05T14:24:00.754Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string",
+      "title": "The Url Schema",
+      "default": "",
+      "examples": [
+        "http://localhost:3000/beyondthepage/1.json"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

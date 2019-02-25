@@ -19,10 +19,6 @@ RSpec.describe EventSerializer do
       expect(data[:type]).to eql :event
     end
 
-    it "has the optional attributes" do
-      expect(data[:attributes].keys).to include(:title, :description, :start_time, :end_time, :content_hash)
-    end
-
     it "has a link to the object" do
       expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(event)
     end

@@ -3,12 +3,10 @@
 <%= f.input :time_of_incident, label: "Time of Incident", as: :time, required: :true %>
 <%= f.input :date_of_incident, label: "Date of Incident", as: :date, required: :true %>
 <%= f.input :location_where_incident_occured, label: "Location Where Incident Occured", as: :text, required: :true %>
-<fieldset class="webform-component-fieldset form-wrapper" id="webform-component-primary-relevant-person"><legend><span class="fieldset-legend">Primary Relevant Person, if needed</span></legend><div class="fieldset-wrapper"><div class="form-item webform-component webform-component-textfield" id="webform-component-primary-relevant-person--identify-relevant-persons">
-<%= f.input :primary_relevant_person, label: "Primary Relevant Person", as: :text, required: :true %>
+<%= f.input :primary_relevant_person, label: "Primary Relevant Person, if needed", as: :text, required: :true %>
 <%= f.input :primary_email, label: "Provide Email, if needed", as: :text, required: :false %>
 <%= f.input :primary_affiliation, label: "Affiliation", as: :radio_buttons, collection: Rails.configuration.affiliation, required: :true %>
-<fieldset class="webform-component-fieldset form-wrapper" id="webform-component-secondary-relevant-person"><legend><span class="fieldset-legend">Secondary Relevant Person, if needed</span></legend><div class="fieldset-wrapper"><div class="form-item webform-component webform-component-textfield" id="webform-component-secondary-relevant-person--identify-relevant-persons">
-<%= f.input :secondary_relevant_person, label: "Secondary Relevant Person", as: :text, required: :false %>
+<%= f.input :secondary_relevant_person, label: "Secondary Relevant Person, if needed", as: :text, required: :false %>
 <%= f.input :secondary_email, label: "Provide Email, if needed", as: :text, required: :false %>
 <%= f.input :secondary_affiliation, label: "Affiliation", as: :radio_buttons, collection: Rails.configuration.affiliation, required: :false %>
 <%= f.input :incident_description, label: "Incident Description", as: :text, required: :true, cols: 60, rows: 5 %>

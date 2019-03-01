@@ -39,30 +39,6 @@ class EventSerializer
     end
   end
 
-  attribute :city do |event|
-    if event.building.nil?
-      event.external_city
-    else
-      event.building.city
-    end
-  end
-
-  attribute :state do |event|
-    if event.building.nil?
-      event.external_state
-    else
-      event.building.state
-    end
-  end
-
-  attribute :zip do |event|
-    if event.building.nil?
-      event.external_zip
-    else
-      event.building.zip
-    end
-  end
-
   attribute :contact_name do |event|
     if event.person.nil?
       event.external_contact_name

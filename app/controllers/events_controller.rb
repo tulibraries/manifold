@@ -7,11 +7,19 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    respond_to do |format|
+      format.html
+      format.json { render json: EventSerializer.new(@events) }
+    end
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: EventSerializer.new(@event) }
+    end
   end
 
   private

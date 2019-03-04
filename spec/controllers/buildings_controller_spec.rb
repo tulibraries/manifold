@@ -31,7 +31,6 @@ RSpec.describe BuildingsController, type: :controller do
       expect(response).to have_http_status(:ok)
     end
 
-
     it "returns html by default success" do
       get :show, params: { id: building.id }
       expect(response.header["Content-Type"]).to include "html"
@@ -40,6 +39,20 @@ RSpec.describe BuildingsController, type: :controller do
     it "returns html by default success" do
       get :show, params: { id: building.id }, format: :json
       expect(response.header["Content-Type"]).to include "json"
+    end
+  end
+
+  describe "GET #show as JSON" do
+    let(:building) { FactoryBot.create(:building, :with_photo) }
+
+    it "returns valid json" do
+      get :show, format: :json, params: { id: building.to_param }
+      Tempfile.open(["serialized_building", ".json"]) do |serialized|
+        serialized.write(response.body)
+        serialized.close
+        args =  %W[validate -s app/schemas/building_schema.json -d #{serialized.path}]
+        expect(system("ajv", *args)).to be
+      end
     end
   end
 end

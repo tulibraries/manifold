@@ -51,8 +51,8 @@ RSpec.describe EventsController, type: :controller do
     let(:event) { FactoryBot.create(:event, :with_image) }
 
     it "returns valid json" do
-      get :show, format: :json, params: { id: event.to_param }
-      Tempfile.open(["serialized_event", ".json"]) do |serialized|
+      get :show, format: :json, params: { id: event.id }
+      Tempfile.open(["serialized_event-", ".json"]) do |serialized|
         serialized.write(response.body)
         serialized.close
         args =  %W[validate -s app/schemas/event_schema.json -d #{serialized.path}]

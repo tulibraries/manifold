@@ -1,12 +1,5 @@
-
-// Can't seem to define this in application.scss. So, for now, it stays here
-@import "administrate/library/_variables.scss";
 @import "partials/_vars.scss";
 
-div.required  label::after {
-    content: " * ";
-    color: $red;
-  }
 .building-info {
 	margin-top: 35px;
 	margin-bottom: 21px;

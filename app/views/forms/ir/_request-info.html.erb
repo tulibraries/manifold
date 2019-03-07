@@ -1,19 +1,60 @@
-<%= f.input :type_of_incident, as: :radio_buttons, collection: Rails.configuration.incident_type, required: :true %>
-<%= f.input :other_incident, label: "Other Incident Type", as: :text, required: :false, size: "60", maxlength: "128" %>
-<%= f.input :time_of_incident, label: "Time of Incident", as: :time, required: :true %>
-<%= f.input :date_of_incident, label: "Date of Incident", as: :date, required: :true %>
-<%= f.input :location_where_incident_occured, label: "Location Where Incident Occured", as: :text, required: :true %>
-<%= f.input :primary_relevant_person, label: "Primary Relevant Person, if needed", as: :text, required: :true %>
-<%= f.input :primary_email, label: "Provide Email, if needed", as: :text, required: :false %>
-<%= f.input :primary_affiliation, label: "Affiliation", as: :radio_buttons, collection: Rails.configuration.affiliation, required: :true %>
-<%= f.input :secondary_relevant_person, label: "Secondary Relevant Person, if needed", as: :text, required: :false %>
-<%= f.input :secondary_email, label: "Provide Email, if needed", as: :text, required: :false %>
-<%= f.input :secondary_affiliation, label: "Affiliation", as: :radio_buttons, collection: Rails.configuration.affiliation, required: :false %>
-<%= f.input :incident_description, label: "Incident Description", as: :text, required: :true, cols: 60, rows: 5 %>
-<div class="description">What happened?  Provide names, who did what to whom, what was stolen, etc. Be as detailed as possible. Describe a suspect if appropriate.</div>
-<%= f.input :victim_complaint_statement, label: "Victim/Complainant Statement", as: :text, required: :false, cols: 60, rows: 5 %>
-<%= f.input :action_taken, label: "Action Taken", as: :check_boxes, collection: Rails.configuration.action_taken, required: :true %>
-<div class="description">Check all that apply. Provide police report # if available.</div>
-<%= f.input :police_report_number, label: "Police Report Number", as: :text, required: :false, cols: 60, rows: 128 %>
-<%= f.input :other_action_taken, label: "Other Action Taken", as: :text, required: :false, cols: 60, rows: 128 %>
-<%= f.input :supervisor_notified, as: :radio_buttons, collection: Rails.configuration.form_yes_or_no, required: :true %></div>
+<% 
+incident_types = ["Vandalism", "Accident/Medical","Theft", "Harassment/Fight/Abusive Language","Building Issue", "Other"]
+action_taken = [["Library Administration Notified","Library Administration Notified"],
+["Facilities Notified (1-1385)","Facilities Notified (1-1385)"],
+["Completed Staff Injury Report","Completed Staff Injury Report"],
+["Referred to Legal or Risk Management","Referred to Legal or Risk Management"],
+["Called Campus Police","Called Campus Police"]]
+%>
+
+<fieldset class="form-section">
+	<legend>Staff Member Submitting Form</legend>
+	<%= f.input :name, label: "Name", required: :true %>
+	<%= f.input :email, label: "Email", required: :true %>
+	<%= f.input :department, label: "Department", required: :true %>
+</fieldset>
+
+<fieldset class="form-section">
+	<legend>Incident Details</legend>
+	<%= f.input :type_of_incident, as: :radio_buttons, label: "Type of Incident", collection: incident_types, wrapper_html: { class: "form_affiliation" }, required: :true %>
+	<%= f.input :other_incident, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
+	<%= f.input :date_of_incident, label: "Time/Date of Incident", as: :datetime, start_year: Date.today.year-1, end_year: Date.today.year, ampm: true, minute_step: 5, order: [:month, :day, :year], required: :true %>
+	<%= f.input :location_where_incident_occurred, label: "Location Where Incident Occurred", required: :true %>
+	<%= f.input :incident_description, label: "Incident Description", as: :text, required: :true, input_html: { cols: 60, rows: 5 }, hint: "What happened?  Provide names, who did what to whom, what was stolen, etc. Be as detailed as possible. Describe a suspect if appropriate." %>
+
+	<fieldset class="form-section">
+		<legend>Persons Involved, if needed</legend>
+		<%= f.input :primary_relevant_person, label: "Primary Relevant Person" %>
+		<%= f.input :primary_email, label: "Provide Email" %>
+		<%= f.input :primary_affiliation, label: "Affiliation", as: :select, collection: Rails.configuration.affiliation %>
+		<hr />
+		<%= f.input :secondary_relevant_person, label: "Secondary Relevant Person" %>
+		<%= f.input :secondary_email, label: "Provide Email" %>
+		<%= f.input :secondary_affiliation, label: "Affiliation", as: :select, collection: Rails.configuration.affiliation %>
+	</fieldset>
+</fieldset>
+
+<%= f.input :victim_complainant_statement, label: "Victim/Complainant Statement", as: :text, input_html: { cols: 60, rows: 5 } %>
+
+
+<%= f.input :action_taken, label: "Action Taken", as: :select, collection: action_taken, label: "Action Taken", name: "action", required: :true, hint: "Select all that apply. Hold [Ctrl] or [command] and click more than one if needed. Provide police report # if available.", input_html: { multiple: true, size: 5 } %>
+
+
+<%= f.input :other_action_taken, as: :text, label: "Other Action Taken" %>
+
+
+
+<%= f.input :police_report_number, label: "Police Report Number"%>
+<%= f.input :supervisor_notified, as: :radio_buttons, required: :true %>
+
+
+
+
+
+
+
+
+
+
+
+

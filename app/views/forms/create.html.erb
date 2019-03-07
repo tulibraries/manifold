@@ -25,6 +25,7 @@
   <%= simple_form_for @form, html: {class: "form-vertical" } do |f| %>
   <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
 
+  <% unless @type == "ir" %>
     <div class="row">
       <div class="col">
         <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
@@ -33,6 +34,7 @@
         </fieldset>
       </div>
     </div>
+  <% end %>
 
     <div class="row">
       <div class="col">

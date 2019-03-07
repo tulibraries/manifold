@@ -14,5 +14,27 @@
 	.form_affiliation, .form_material_type {
 		display: inline-block!important;
 	}
+}
 
+abbr[title="required"] {
+  color: $red;
+  text-decoration: none!important;
+  cursor: default!important;
+ }
+
+fieldset.form-section {
+	border: solid #ccc 2px;
+	padding: 21px;
+	border-radius:7px;
+	margin-bottom: 35px;
+	legend {
+		width: auto;
+		padding: 0 21px;
+	}
+	.form-group {
+		legend {
+			padding-left: 0;
+			margin-bottom: 0.5rem;
+		}
+	}
 }

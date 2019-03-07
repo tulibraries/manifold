@@ -35,7 +35,7 @@
           <%= @group.todays_date %>
         </div>
         <div id="time" style="line-height: 1.5rem;">
-          <%= @group.todays_hours %>
+          <%= @todays_hours.first.hours %>
         </div>
         <div id="allHours">
           <% unless @group.space.hours.blank? %>

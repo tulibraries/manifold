@@ -41,9 +41,9 @@
         Hours
       </div>
       <div class="card-body text-center">
-        <p><strong><%= @service.todays_date.strftime("%A, %B %d, %Y") %></strong></p>
+        <p><strong><%= @service.todays_date %></strong></p>
         <% unless @service.hours.blank? %>
-          <p><%= @service.todays_hours %></p>
+          <p><%= @todays_hours.first.hours %></p>
           <p><%= link_to "see service hours >", hours_path(@service.hours) %></p>
         <% else %>
           <p>This service does not have hours</p>

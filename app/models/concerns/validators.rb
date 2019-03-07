@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Validators
-  extend ActiveSupport::Concerns
+  extend ActiveSupport::Concern
   class EmailValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       # unless value.blank?

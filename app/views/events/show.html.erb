@@ -32,13 +32,23 @@
 
     <div class="row">
       <div class="endcap green">
-        <% unless @event.space.nil? %>
-          <h2 class="event-space"><%= link_to @event.space.name, space_path(@event.space) %></h2>
+        <% unless @event.building.nil? %>
+          <h3 class="event-space"><%= link_to @event.building.name, building_path(@event.building) %></h3>
+          <p>
+            <% unless @event.space.nil? %>
+              <%= @event.space.name %><br />
+            <% end %>
+            <%= @event.building.address1 %><br />
+            <%= @event.building.address2 %>
+          </p>
         <% else %>
-          <h2><%= @event.external_space %></h2>
-          <p><%= @event.external_building %><br />
-          <%= @event.external_address %><br />
-          <%= @event.external_city %>, <%= @event.external_state %> <%= @event.external_zip %></p>
+          <h3><%= @event.external_building %></h3>
+          <p><%= @event.external_space %>
+          <% unless @event.external_address.blank? %>
+            <br /><%= @event.external_address %><br />
+            <%= @event.external_city %>, <%= @event.external_state %> <%= @event.external_zip %>
+          <% end %>
+        </p>
         <% end %>
       </div>
     </div>

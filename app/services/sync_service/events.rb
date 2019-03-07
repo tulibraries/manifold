@@ -28,12 +28,12 @@ class SyncService::Events
 
   def record_hash(event)
     {
-      "title" => event.fetch("Title", I18n.t("manifold.default.event.title")),
-      "description" => event.fetch("Description",  I18n.t("manifold.default.event.description")),
+      "title" => event.fetch("Title", nil),
+      "description" => event.fetch("Description",  nil),
       "tags" => event.fetch("Tags", nil),
       "event_type" => event.fetch("Type", nil),
       "cancelled" => event.fetch("Canceled", 0),
-      "registration_status" => event.fetch("RegistrationStatus", I18n.t("manifold.default.event.registration_status")),
+      "registration_status" => event.fetch("RegistrationStatus", nil),
       "registration_link" => event.fetch("RegistrationLink", nil),
       "start_time" => start_time(event),
       "end_time" => end_time(event),
@@ -68,17 +68,16 @@ class SyncService::Events
     end
   end
 
-
   def start_time(event)
-    Time.parse(
-      event.values_at("EventStartDate", "EventStartTime").join(" ")
-      ).to_s
+    unless all_day(event)
+      Time.zone.parse(event.values_at("EventStartDate", "EventStartTime").join(" ")).to_s
+    end
   end
 
   def end_time(event)
-    Time.parse(
-      event.values_at("EventEndDate", "EventEndTime").join(" ")
-      ).to_s
+    unless all_day(event)
+      Time.zone.parse(event.values_at("EventEndDate", "EventEndTime").join(" ")).to_s
+    end
   end
 
   def all_day(event)
@@ -98,9 +97,9 @@ class SyncService::Events
       { "person" => contact_person }
     else
       {
-        "external_contact_name"  => contact_name || I18n.t("manifold.default.event.contact_name"),
-        "external_contact_email" => event.fetch("ContactEmail") { I18n.t("manifold.default.event.contact_email") },
-        "external_contact_phone" => event.fetch("ContactPhone") { I18n.t("manifold.default.event.contact_phone") }
+        "external_contact_name"  => contact_name || nil,
+        "external_contact_email" => event.fetch("ContactEmail") { nil },
+        "external_contact_phone" => event.fetch("ContactPhone") { nil }
       }
     end
   end
@@ -114,11 +113,11 @@ class SyncService::Events
     if building
       location_hash["building"] = building
     else
-      location_hash["external_building"] = location || I18n.t("manifold.default.event.building")
-      location_hash["external_address"] = event.fetch("Address") { I18n.t("manifold.default.event.external_address") }
-      location_hash["external_city"] = event.fetch("City") { I18n.t("manifold.default.event.external_city") }
-      location_hash["external_state"] = event.fetch("State") { I18n.t("manifold.default.event.external_state") }
-      location_hash["external_zip"] = event.fetch("Zip") { I18n.t("manifold.default.event.external_zip") }
+      location_hash["external_building"] = location || nil
+      location_hash["external_address"] = event.fetch("Address") { nil }
+      location_hash["external_city"] = event.fetch("City") { nil }
+      location_hash["external_state"] = event.fetch("State") { nil }
+      location_hash["external_zip"] = event.fetch("Zip") { nil }
     end
 
     room = event.fetch("Room", nil)
@@ -127,7 +126,7 @@ class SyncService::Events
     if space
       location_hash["space"] = space
     else
-      location_hash["external_space"] = room || I18n.t("manifold.default.event.space")
+      location_hash["external_space"] = room || nil
     end
     location_hash
   end

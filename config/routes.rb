@@ -43,9 +43,9 @@ Rails.application.routes.draw do
   resources :buildings, only: [:index, :show], path: "libraries"
   resources :groups, only: [:index, :show]
   resources :collections, only: [:index, :show]
-  resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
   resources :policies, only: [:index, :show]
+  resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }
   resources :exhibitions, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
@@ -59,9 +59,8 @@ Rails.application.routes.draw do
   end
 
   controller :events do
-    get "events/past" => :index
+    get "events/past" => :past
   end
-
 
   controller :pages do
     get "ambler" => :ambler

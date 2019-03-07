@@ -2,34 +2,39 @@
   <div class="row event">
     <div class="col-3">
     <% if event.image.attached? %>
-      <%= link_to (image_tag event.index_image), event %>
+      <%= link_to (image_tag event.index_image), event_path(event) %>
     <% else %>
       <%= image_tag 'T-borderless.gif' %>
     <% end %>
     </div>
     <div class="col-9">
-      <h3><%= link_to event.title, event %></h3>
+      <h3><%= link_to event.title, event_path(event) %></h3>
       <p><strong>
-        <%= event.start_time.strftime("%^A, %^B %d, %Y ").titleize %> | 
-        <%= event.start_time.strftime("%l:00 %P") %> | 
-        <% unless event.space.nil? %>
-          int: <%= event.space.building.name %>
+        <%= event.get_date %> | <%= event.set_times %> 
+        <% unless event.building.nil? %>
+          | <%= event.building.name %>
         <% else %>
-          ext: <%= event.external_space %>
+          | <%= event.external_building %>
         <% end %>
       </strong></p>
       <p><%= sanitize strip_tags(event.description.html_safe.truncate(250)) %></p>
       <p>
         <% unless event.get_types.nil? %>
           <% event.get_types.each do |type| %>
-            <%= link_to type, event, class: "event_type" %> 
+            <% unless request.env['PATH_INFO'].include?("past") %>
+              <%= link_to type, {controller: :events, action: :index, type: type}, class: "event_type" %> 
+              <% else %>
+                <%= link_to type, {controller: :events, action: :past, type: type}, class: "event_type" %> 
+              <% end %>
           <% end %>
         <% end %>
 
-        <% unless event.space.nil? %>
-          <%= link_to event.space.building.name, event.space.building, class: "event_location" %>
+        <% unless event.building.nil? %>
+          <%= link_to event.building.name, event.building, class: "event_location" %>
         <% else %>
-          <span class="event_location"><%= event.external_space %></span> 
+          <% unless event.external_building.nil? %>
+            <span class="event_location"><%= event.external_building %></span> 
+          <% end %>
         <% end %>
       </p>
     </div>

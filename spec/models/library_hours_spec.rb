@@ -20,4 +20,20 @@ RSpec.describe LibraryHours, type: :model do
       expect { hour.save! }.to raise_error(/Hours can't be blank/)
     end
   end
+
+  describe "version all fields" do
+    fields = {
+      date: [DateTime.parse("2018/9/24 11:00"), DateTime.parse("2018/9/24 11:30")],
+      hours: ["The Text 1", "The Text 2"],
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        library_hour = FactoryBot.create(:library_hour, k => v.first)
+        library_hour.update(k => v.last)
+        library_hour.save!
+        expect(library_hour.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

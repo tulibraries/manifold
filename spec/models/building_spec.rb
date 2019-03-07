@@ -52,4 +52,29 @@ RSpec.describe Building, type: :model do
     end
   end
 
+  describe "version all fields" do
+    fields = {
+      name: ["The Text 1", "The Text 2"],
+      description: ["The Text 1", "The Text 2"],
+      address1: ["The Text 1", "The Text 2"],
+      temple_building_code: ["The Text 1", "The Text 2"],
+      coordinates: ["The Text 1", "The Text 2"],
+      hours: ["The Text 1", "The Text 2"],
+      phone_number: ["2155551212", "2155551234"],
+      campus: ["The Text 1", "The Text 2"],
+      email: ["The Text 1", "The Text 2"],
+      google_id: ["The Text 1", "The Text 2"],
+      address2: ["The Text 1", "The Text 2"],
+      add_to_footer: [false, true]
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        building = FactoryBot.create(:building, k => v.first)
+        building.update(k => v.last)
+        building.save!
+        expect(building.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

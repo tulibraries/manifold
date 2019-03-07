@@ -1,22 +1,21 @@
 # frozen_string_literal: true
 
 class LibraryHoursController < ApplicationController
-  before_action :get_locations, only: [:index]
-  before_action :set_dates, only: [:index]
+  before_action :get_locations, :set_dates, only: [:index]
 
   def index
     @buildings = [
       {
-        slug: "paley",
+        slug: "charles",
         spaces: [
-                  "paley",
-                  "media",
-                  "doc_del",
-                  "ref_desk",
-                  "v_ref",
-                  "thinktank",
+                  "charles",
+                  "service_zone",
+                  "cafe",
                   "scrc",
-                  "dsc",
+                  "scholars_studio",
+                  "success_center",
+                  "ask_a_librarian",
+                  "asrs",
                   "guest_computers"
                 ]
       },

@@ -51,4 +51,22 @@ RSpec.describe Blog, type: :model do
       end
     end
   end
+
+  describe "version all fields" do
+    fields = {
+      title: ["The Text 1", "The Text 2"],
+      base_url: ["https://example.com/original.html", "https://example.com/modified.html"],
+      last_sync_date: [DateTime.parse("2018/9/24 11:00"), DateTime.parse("2018/9/24 11:30")],
+      public_status: [false, true],
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        blog = FactoryBot.create(:blog, k => v.first)
+        blog.update(k => v.last)
+        blog.save!
+        expect(blog.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

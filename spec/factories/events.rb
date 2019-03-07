@@ -25,5 +25,12 @@ FactoryBot.define do
     ensemble_identifier { "MyString" }
     tags { nil }
     all_day { false }
+    trait :with_image do
+      after :create do |event|
+        file_path = Rails.root.join("spec", "fixtures", "charles.jpg")
+        file = fixture_file_upload(file_path, "image/png")
+        event.image.attach(file)
+      end
+    end
   end
 end

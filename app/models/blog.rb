@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Blog < ApplicationRecord
+  has_paper_trail
   include Validators
 
   has_many :blog_posts

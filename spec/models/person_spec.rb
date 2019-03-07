@@ -68,4 +68,28 @@ RSpec.describe Person, type: :model do
       expect(person.name).to match(/Zaphod Beeblebrox/)
     end
   end
+
+  describe "version all fields" do
+    fields = {
+      first_name: ["The Text 1", "The Text 2"],
+      last_name: ["The Text 1", "The Text 2"],
+      phone_number: ["2155551212", "2155551234"],
+      email_address: ["myaddress@temple.edu", "mynewaddress@temple.edu"],
+      chat_handle: ["The Text 1", "The Text 2"],
+      job_title: ["The Text 1", "The Text 2"],
+      research_identifier: ["The Text 1", "The Text 2"],
+      personal_site: ["The Text 1", "The Text 2"],
+      springshare_id: ["The Text 1", "The Text 2"],
+      specialties: ["The Text 1", "The Text 2"]
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        person = FactoryBot.create(:person, k => v.first)
+        person.update(k => v.last)
+        person.save!
+        expect(person.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

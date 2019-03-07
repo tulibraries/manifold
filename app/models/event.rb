@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
+  has_paper_trail
   include InputCleaner
   paginates_per 5
   belongs_to :building, optional: true

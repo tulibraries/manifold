@@ -19,10 +19,9 @@ class EventsController < ApplicationController
       @event_spaces = return_locations(@events)
       @events = return_events(@events)
     end
-    
     respond_to do |format|
       format.html
-      format.json { render json: EventSerializer.new(@event) }
+      format.json { render json: EventSerializer.new(@events) }
     end
   end
 

@@ -24,11 +24,10 @@
           "$id": "#/properties/data/properties/id",
           "type": "string",
           "title": "The Id Schema",
-          "default": "",
+          "default": "0",
           "examples": [
             "1"
-          ],
-          "pattern": "^(.*)$"
+          ]
         },
         "type": {
           "$id": "#/properties/data/properties/type",
@@ -115,7 +114,7 @@
             },
             "specialties": {
               "$id": "#/properties/data/properties/attributes/properties/specialties",
-              "type": "null",
+              "type": "string",
               "title": "The Specialties Schema",
               "default": null,
               "examples": [

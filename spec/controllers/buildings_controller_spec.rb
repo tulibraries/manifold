@@ -46,7 +46,7 @@ RSpec.describe BuildingsController, type: :controller do
     let(:building) { FactoryBot.create(:building, :with_photo) }
 
     it "returns valid json" do
-      get :show, format: :json, params: { id: building.to_param }
+      get :show, format: :json, params: { id: building.id }
       Tempfile.open(["serialized_building", ".json"]) do |serialized|
         serialized.write(response.body)
         serialized.close

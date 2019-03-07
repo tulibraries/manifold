@@ -9,7 +9,7 @@ class BuildingsController < ApplicationController
     @buildings = Building.all
     respond_to do |format|
       format.html
-      format.json { render json: BuildingSerializer.new(@buildings.to_a) }
+      format.json { render json: buildingSerializer.new(@buildings) }
     end
   end
 

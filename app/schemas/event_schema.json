@@ -20,7 +20,8 @@
           "default": "0",
           "examples": [
             "1"
-          ]
+          ],
+          "pattern": "^([0-9]+)$"
         },
         "type": {
           "$id": "#/data/type",

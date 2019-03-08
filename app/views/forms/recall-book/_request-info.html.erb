@@ -1,7 +1,7 @@
 <div style="font-style:italic;margin-bottom: 2rem;">Recalled books are given a two week window to be returned after being recalled.</div>
 <%= f.input :author, label: "Author", required: true %>
 <%= f.input :title, label: "Title", required: true %>
-<%= f.input :call_num, label: "Call Number", required: true %>
+<%= f.input :call_number, label: "Call Number", required: true %>
 <%= f.input :substitute_edition, as: :radio_buttons, label: "Subsititute another edition of same book if necessary?", required: :true %>
 <%= f.input :pickup_location, as: :radio_buttons, collection: ["Paley","Ambler","Harrisburg"], required: :true %>
 <%= f.input :cancellation_date, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], required: :true %>

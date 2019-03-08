@@ -29,7 +29,7 @@
       <div class="postscript row" style="margin-top: 28px;">      
         <div class="col-md-6 col-lg-3 footer-col" id="footer-buildings">
           <h2><%= link_to "Libraries", buildings_path, class: "col-heading" %></h2>
-          <ul>
+          <ul class="list-unstyled">
             <% @footer_buildings.each do |library| %>
               <li><%= link_to library.name, library %></li>
             <% end %>
@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-services">
           <h2><%= link_to "Services", services_path, class: "col-heading" %></h2>
-          <ul>
+          <ul class="list-unstyled">
             <% @footer_services.each do |service| %>
               <li><%= link_to service.title, service %></li>
             <% end %>
@@ -47,7 +47,7 @@
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-groups">
           <h2><%= link_to "Groups", groups_path, class: "col-heading" %></h2>
-          <ul>
+          <ul class="list-unstyled">
             <% @footer_groups.each do |group| %>
               <li><%= link_to group.name, group %></li>
             <% end %>
@@ -56,7 +56,7 @@
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-collections">
           <h2><%= link_to "Collections", collections_path, class: "col-heading" %></h2>
-          <ul>
+          <ul class="list-unstyled">
             <% @footer_collections.each do |collection| %>
               <li><%= link_to collection.name, collection %></li>
             <% end %>
@@ -72,28 +72,28 @@
 
           <div class="row">
             <div class="col-md-6 col-lg-3 ">
-              <ul>
+              <ul class="list-unstyled">
                 <li>EZ-borrow</li>
                 <li>ILLiad</li>
                 <li>RefWorks</li>
               </ul>
             </div>
             <div class="col-md-6 col-lg-3 ">
-              <ul>
+              <ul class="list-unstyled">
                 <li>Staff&nbsp;directory</li>
                 <li>Contact us</li>
                 <li>Memberships</li>
               </ul>
             </div>
             <div class="col-md-6 col-lg-3 ">
-              <ul>
+              <ul class="list-unstyled">
                 <li>Jobs</li>
                 <li>Publications</li>
                 <li>Donate</li>
               </ul>
             </div>
              <div class="col-md-6 col-lg-3 ">
-              <ul>
+              <ul class="list-unstyled">
                 <li>Policies</li>
               </ul>
             </div>

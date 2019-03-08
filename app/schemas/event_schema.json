@@ -7,45 +7,47 @@
   ],
   "properties": {
     "data": {
+      "$id": "#/properties/data",
       "type": "object",
-      "title": "Data Wrapper Hash",
+      "title": "The Data Schema",
       "required": [
-        "id"
+        "id",
+        "type",
+        "attributes",
+        "links"
       ],
       "properties": {
         "id": {
-          "$id": "#/data/id",
+          "$id": "#/properties/data/properties/id",
           "type": "string",
           "title": "The Id Schema",
-          "default": "0",
+          "default": "",
           "examples": [
             "1"
           ],
-          "pattern": "^([0-9]+)$"
+          "pattern": "^(.*)$"
         },
         "type": {
-          "$id": "#/data/type",
+          "$id": "#/properties/data/properties/type",
           "type": "string",
-          "title": "Type of Object",
-          "enum": [
-            "event",
+          "title": "The Type Schema",
+          "default": "event",
+          "examples": [
+            "building",
             "person",
-            "building"
-          ]
-        },
-        "links": {
-          "$id": "#/data/links",
-          "type": "object",
-          "title": "Links related to Event",
-          "properties": {}
+            "event"
+          ],
+          "pattern": "^(.*)$"
         },
         "attributes": {
-          "$id": "#/data/attributes",
+          "$id": "#/properties/data/properties/attributes",
           "type": "object",
-          "title": "Object Attributes",
+          "title": "The Attributes Schema",
+          "required": [
+          ],
           "properties": {
             "title": {
-              "$id": "#/properties/title",
+              "$id": "#/properties/data/properties/attributes/properties/title",
               "type": "string",
               "title": "The Title Schema",
               "default": "",
@@ -55,7 +57,7 @@
               "pattern": "^(.*)$"
             },
             "description": {
-              "$id": "#/data/attributes/description",
+              "$id": "#/properties/data/properties/attributes/properties/description",
               "type": "string",
               "title": "The Description Schema",
               "default": "",
@@ -65,7 +67,7 @@
               "pattern": "^(.*)$"
             },
             "start_time": {
-              "$id": "#/data/attributes/start_time",
+              "$id": "#/properties/data/properties/attributes/properties/start_time",
               "type": "string",
               "title": "The Start_time Schema",
               "default": "",
@@ -75,7 +77,7 @@
               "pattern": "^(.*)$"
             },
             "end_time": {
-              "$id": "#/data/attributes/end_time",
+              "$id": "#/properties/data/properties/attributes/properties/end_time",
               "type": "string",
               "title": "The End_time Schema",
               "default": "",
@@ -84,116 +86,8 @@
               ],
               "pattern": "^(.*)$"
             },
-            "building_id": {
-              "$id": "#/data/attributes/building_id",
-              "type": "integer",
-              "title": "The Building_id Schema",
-              "default": 0,
-              "examples": [
-                3
-              ]
-            },
-            "space_id": {
-              "$id": "#/data/attributes/space_id",
-              "type": "integer",
-              "title": "The Space_id Schema",
-              "default": 0,
-              "examples": [
-                6
-              ]
-            },
-            "building": {
-              "$id": "#/data/attributes/building",
-              "type": "string",
-              "title": "The Building Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
-            "space": {
-              "$id": "#/data/attributes/space",
-              "type": "string",
-              "title": "The Space Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
-            "address": {
-              "$id": "#/data/attributes/address",
-              "type": "string",
-              "title": "The Address Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
-            "city": {
-              "$id": "#/data/attributes/city",
-              "type": "string",
-              "title": "The City Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
-            "state": {
-              "$id": "#/data/attributes/state",
-              "type": "string",
-              "title": "The State Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
-            "zip": {
-              "$id": "#/data/attributes/zip",
-              "type": "string",
-              "title": "The Zip Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
-            "contact_name": {
-              "$id": "#/data/attributes/contact_name",
-              "type": "string",
-              "title": "The Contact_name Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
-            "contact_email": {
-              "$id": "#/data/attributes/contact_email",
-              "type": "string",
-              "title": "The Contact_email Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
-            "contact_phone": {
-              "$id": "#/data/attributes/contact_phone",
-              "type": "string",
-              "title": "The Contact_phone Schema",
-              "default": "",
-              "examples": [
-                ""
-              ],
-              "pattern": "^(.*)$"
-            },
             "cancelled": {
-              "$id": "#/data/attributes/cancelled",
+              "$id": "#/properties/data/properties/attributes/properties/cancelled",
               "type": "boolean",
               "title": "The Cancelled Schema",
               "default": false,
@@ -202,7 +96,7 @@
               ]
             },
             "registration_status": {
-              "$id": "#/data/attributes/registration_status",
+              "$id": "#/properties/data/properties/attributes/properties/registration_status",
               "type": "boolean",
               "title": "The Registration_status Schema",
               "default": false,
@@ -211,7 +105,7 @@
               ]
             },
             "registration_link": {
-              "$id": "#/data/attributes/registration_link",
+              "$id": "#/properties/data/properties/attributes/properties/registration_link",
               "type": "string",
               "title": "The Registration_link Schema",
               "default": "",
@@ -221,7 +115,7 @@
               "pattern": "^(.*)$"
             },
             "content_hash": {
-              "$id": "#/data/attributes/content_hash",
+              "$id": "#/properties/data/properties/attributes/properties/content_hash",
               "type": "string",
               "title": "The Content_hash Schema",
               "default": "",
@@ -230,33 +124,142 @@
               ],
               "pattern": "^(.*)$"
             },
-            "created_at": {
-              "$id": "#/data/attributes/created_at",
+            "alt_text": {
+              "$id": "#/properties/data/properties/attributes/properties/alt_text",
               "type": "string",
-              "title": "The Created_at Schema",
+              "title": "The Alt_text Schema",
               "default": "",
               "examples": [
-                "2018-12-05T13:40:14.581Z"
+                "2nd Annual Winter Concert at Ginsburg library"
               ],
               "pattern": "^(.*)$"
             },
-            "updated_at": {
-              "$id": "#/data/attributes/updated_at",
+            "ensemble_identifier": {
+              "$id": "#/properties/data/properties/attributes/properties/ensemble_identifier",
               "type": "string",
-              "title": "The Updated_at Schema",
+              "title": "The Ensemble_identifier Schema",
               "default": "",
               "examples": [
-                "2018-12-05T14:24:00.754Z"
+                "0NnOvtHCoUKvUxJj6BVajg"
               ],
               "pattern": "^(.*)$"
             },
-            "url": {
-              "$id": "#/data/attributes/url",
+            "tags": {
+              "$id": "#/properties/data/properties/attributes/properties/tags",
               "type": "string",
-              "title": "The Url Schema",
+              "title": "The Tags Schema",
               "default": "",
               "examples": [
-                "http://localhost:3000/beyondthepage/1.json"
+                ""
+              ],
+              "pattern": "^(.*)$"
+            },
+            "all_day": {
+              "$id": "#/properties/data/properties/attributes/properties/all_day",
+              "type": "boolean",
+              "title": "The All_day Schema",
+              "default": false,
+              "examples": [
+                false
+              ]
+            },
+            "image": {
+              "$id": "#/properties/data/properties/attributes/properties/image",
+              "type": "string",
+              "title": "The Image Schema",
+              "default": "",
+              "examples": [
+                "http://test.host/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWlk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d12640749274b208e7e27c788f8dab20ad17cab0/winter_concert_square.jpg"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "space": {
+              "$id": "#/properties/data/properties/attributes/properties/space",
+              "type": "string",
+              "title": "The Space Schema",
+              "default": "",
+              "examples": [
+                "Ginsburg Room 243"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "address1": {
+              "$id": "#/properties/data/properties/attributes/properties/address1",
+              "type": "string",
+              "title": "The Address1 Schema",
+              "default": "",
+              "examples": [
+                "Medical Education and Research Building, 3500 N. Broad Street"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "address2": {
+              "$id": "#/properties/data/properties/attributes/properties/address2",
+              "type": "string",
+              "title": "The Address2 Schema",
+              "default": "",
+              "examples": [
+                "Philadelphia, PA 19140"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "contact_name": {
+              "$id": "#/properties/data/properties/attributes/properties/contact_name",
+              "type": "string",
+              "title": "The Contact_name Schema",
+              "default": "",
+              "examples": [
+                "Stephanie Roth"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "contact_email": {
+              "$id": "#/properties/data/properties/attributes/properties/contact_email",
+              "type": "string",
+              "title": "The Contact_email Schema",
+              "default": "",
+              "examples": [
+                "stephanie.roth@temple.edu"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "contact_phone": {
+              "$id": "#/properties/data/properties/attributes/properties/contact_phone",
+              "type": "string",
+              "title": "The Contact_phone Schema",
+              "default": "",
+              "examples": [
+                "2157079469"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "thumbnail_image": {
+              "$id": "#/properties/data/properties/attributes/properties/thumbnail_image",
+              "type": "string",
+              "title": "The Thumbnail_image Schema",
+              "default": "",
+              "examples": [
+                "http://test.host/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWlk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d12640749274b208e7e27c788f8dab20ad17cab0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1780aa09167cc24cd4beae09f819f90d80b64c3a/winter_concert_square.jpg"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        },
+        "links": {
+          "$id": "#/properties/data/properties/links",
+          "type": "object",
+          "title": "The Links Schema",
+          "required": [
+            "self"
+          ],
+          "properties": {
+            "self": {
+              "$id": "#/properties/data/properties/links/properties/self",
+              "type": "string",
+              "title": "The Self Schema",
+              "default": "",
+              "examples": [
+                "http://test.host/beyondthepage/1"
               ],
               "pattern": "^(.*)$"
             }

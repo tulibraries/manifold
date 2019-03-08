@@ -24,18 +24,21 @@
           "$id": "#/properties/data/properties/id",
           "type": "string",
           "title": "The Id Schema",
-          "default": "0",
+          "default": "",
           "examples": [
-            "1"
-          ]
+            "3"
+          ],
+          "pattern": "^(.*)$"
         },
         "type": {
           "$id": "#/properties/data/properties/type",
           "type": "string",
           "title": "The Type Schema",
-          "default": "",
+          "default": "person",
           "examples": [
-            "person"
+            "building",
+            "person",
+            "event"
           ],
           "pattern": "^(.*)$"
         },
@@ -58,7 +61,7 @@
               "title": "The Name Schema",
               "default": "",
               "examples": [
-                "Mirtha Larson"
+                "Zaphod Beeblebrox"
               ],
               "pattern": "^(.*)$"
             },
@@ -68,7 +71,7 @@
               "title": "The First_name Schema",
               "default": "",
               "examples": [
-                "Mirtha"
+                "Zaphod"
               ],
               "pattern": "^(.*)$"
             },
@@ -78,7 +81,7 @@
               "title": "The Last_name Schema",
               "default": "",
               "examples": [
-                "Larson"
+                "Beeblebrox"
               ],
               "pattern": "^(.*)$"
             },
@@ -88,7 +91,7 @@
               "title": "The Job_title Schema",
               "default": "",
               "examples": [
-                "Dynamic Advertising Orchestrator"
+                "President of the Galaxy"
               ],
               "pattern": "^(.*)$"
             },
@@ -98,7 +101,7 @@
               "title": "The Email_address Schema",
               "default": "",
               "examples": [
-                "stanford_koelpin@temple.edu"
+                "zaphod@galaxy.universe"
               ],
               "pattern": "^(.*)$"
             },
@@ -108,18 +111,24 @@
               "title": "The Phone_number Schema",
               "default": "",
               "examples": [
-                "9580329973"
+                "2155551213"
               ],
               "pattern": "^(.*)$"
             },
             "specialties": {
               "$id": "#/properties/data/properties/attributes/properties/specialties",
-              "type": "string",
+              "type": "array",
               "title": "The Specialties Schema",
-              "default": null,
-              "examples": [
-                null
-              ]
+              "items": {
+                "$id": "#/properties/data/properties/attributes/properties/specialties/items",
+                "type": "string",
+                "title": "The Items Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
             },
             "photo": {
               "$id": "#/properties/data/properties/attributes/properties/photo",
@@ -127,7 +136,7 @@
               "title": "The Photo Schema",
               "default": "",
               "examples": [
-                "http://test.host/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5bae44b342f201d4510c9c5878fdcb6747e6497d/hal.png"
+                "http://test.host/rails/active_storage/blobs/zaphod-1024x768.jpg"
               ],
               "pattern": "^(.*)$"
             },
@@ -137,7 +146,7 @@
               "title": "The Thumbnail_photo Schema",
               "default": "",
               "examples": [
-                "http://test.host/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5bae44b342f201d4510c9c5878fdcb6747e6497d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1780aa09167cc24cd4beae09f819f90d80b64c3a/hal.png"
+                "http://test.host/rails/active_storage/representations/zaphod2_1024x768.jpg"
               ],
               "pattern": "^(.*)$"
             }
@@ -225,7 +234,7 @@
                         "title": "The Id Schema",
                         "default": "",
                         "examples": [
-                          "31"
+                          "10"
                         ],
                         "pattern": "^(.*)$"
                       },
@@ -260,7 +269,7 @@
               "title": "The Self Schema",
               "default": "",
               "examples": [
-                "http://test.host/people/1"
+                "http://test.host/people/3"
               ],
               "pattern": "^(.*)$"
             }

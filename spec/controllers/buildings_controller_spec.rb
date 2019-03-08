@@ -42,6 +42,7 @@ RSpec.describe BuildingsController, type: :controller do
     end
   end
 
+
   describe "GET #show as JSON" do
     let(:building) { FactoryBot.create(:building, :with_photo) }
 

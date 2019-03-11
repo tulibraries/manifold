@@ -18,12 +18,19 @@ Rails.application.routes.draw do
     resources :policies
     resources :services
     resources :spaces
+    # resources :library_hours
 
     resource :events do
       member do
         post :sync
       end
     end
+
+    # resource :library_hours do
+    #   member do
+    #     post :sync
+    #   end
+    # end
 
     resource :blogs do
       member do

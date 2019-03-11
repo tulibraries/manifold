@@ -7,12 +7,14 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @finding_aid.description %>
+  <%= @finding_aid.description.html_safe %>
 </p>
 
 <p>
   <strong>Subject:</strong>
-  <%# @finding_aid.subject %>
+  <% @finding_aid.subject.each do |subject| %>
+    <%= subject %><br />
+  <% end %>
 </p>
 
 <p>

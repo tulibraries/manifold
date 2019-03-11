@@ -8,10 +8,13 @@
         field.selectable_options,
           :to_s,
           :to_s,
-          field.data.presence,
+          selected: field.data.presence,
         ),
-        { include_blank: false}, 
+        { include_blank: false }, 
         { multiple: true, size: field.selectable_options.count }
       )  %>
+      <div class="text-center">(Hold CTRL to select multiple options)</div>
   <input type="button" id="<%= field.attribute %>_select_all" class="select-all" name="select_all" value="Select All">
 </div>
+
+

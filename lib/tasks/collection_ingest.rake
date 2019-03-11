@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'open-uri'
-require 'nokogiri'
+# require 'open-uri'
+# require 'nokogiri'
 require 'json'
 
 namespace :db do
@@ -20,18 +20,7 @@ namespace :db do
 
   doc = args.fetch(:filepath, nil)
 
-  # doc = JSON.parse(open('http://oak.library.temple.edu/scrc/collections/pjac/export/json'))
-
-  # if BOOK_DATA 
-  #   doc = File.open(BOOK_DATA, 'rb:UTF-16le') { |f| Nokogiri::JSON(f) }
-  # else
-  #   doc = Nokogiri::JSON("")
-  # end
-
-  # @collections = JSON.parse(File.read(doc))
-
   @collections = JSON.parse(File.read("pjac.json"))
-
 
   error_ids = []
   created_ids = []
@@ -40,44 +29,69 @@ namespace :db do
 
   @collections.each do |record|
 
-    c = Collection.find_by(nid: record["Nid"])
+    c = FindingAid.find_by(drupal_id: record["Nid"])
 
     if c.nil?
-      c = Collection.new(nid: record["Nid"], title: " ")
+      c = FindingAid.new(drupal_id: record["Nid"], name: " ")
       new_collection = true
     end
 
-    c.tap do |c|
-      c.nid = record["Nid"],
-      c.published = record["Published"],
-      c.title = record["Title"],
-      c.title_for_alphabetical_sorting = record["Title For Alphabetical Sorting"],
-      c.collection_id = record["Collection Id"],
-      c.collecting_area = record["Collecting Area"],
-      c.date = record["Date"],
-      c.type_of_material = record["Type of Material"],
-      c.footage = record["Footage"],
-      c.subjects = record["Subjects"],
-      c.body = Loofah.fragment(record["Body"]).scrub!(:whitewash),
-      c.index_terms = record["Index Terms"]
-    end
+    # c.published = record["Published"]
+    # c.index_terms = record["Index Terms"]
+    # c.title_for_alphabetical_sorting = record["Title For Alphabetical Sorting"]
+    # c.date = record["Date"]
+    # c.type_of_material = record["Type of Material"]
+    # c.footage = record["Footage"]
+    c.name = record["Title"]
+    c.identifier = record["Collection ID"]
+    c.subject = record["Subjects"].split(',').map{|s| Rails::Html::FullSanitizer.new.sanitize(s)}
+    c.collection_id = collection_id(Rails::Html::FullSanitizer.new.sanitize(record["Collecting Area"]))
+    c.description = Loofah.fragment(record["Body"]).scrub!(:whitewash)
 
     if c.save
-      if !new_collection.nil?
-        created_ids << c.id
+      if new_collection == true
+        created_ids << c.drupal_id
       else
-        updated_ids << c.nid
+        updated_ids << c.drupal_id
       end
     else
-      error_ids << c.nid
+      error_ids << c.drupal_id
     end
 
-    puts "created: "+(created_ids.length).to_s+"\n"
-    puts "updated: "+(updated_ids.length).to_s+"\n"
-    puts "errors: "+error_ids.length.to_s
+    new_collection = false
 
   end
 
+  puts "created: "+(created_ids.length).to_s+"\n"
+  puts "updated: "+(updated_ids.length).to_s+"\n"
+  puts "errors: "+error_ids.length.to_s
+
 end # collections
+
+  def collection_id(name)
+    case  name
+    when "Philadelphia Jewish Archives"
+      1
+    when "Manuscripts and Archives Collection"
+      2
+    when "Paskow Science Fiction Collection"
+      3
+    when "Philadelphia Dance Collection"
+      4
+    when "Philadelphia Jewish Archives Collection"
+      5
+    when "Printing, Publishing, and Bookselling Collections"
+      6
+    when "Rare Books"
+      7
+    when "Conwellana-Templana Collection: University Archive"
+      8
+    when "Urban Archives"
+      9
+    else
+      nil
+    end
+  end
+
 end # update
 end # db

@@ -16,6 +16,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects,
       multiple: true,
+      include_blank: false,
     ),
     content_link: Field::String,
     identifier: Field::String,

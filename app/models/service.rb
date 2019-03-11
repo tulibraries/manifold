@@ -34,7 +34,7 @@ class Service < ApplicationRecord
   def todays_hours
     @today = Date.today.strftime("%Y-%m-%d 00:00:00")
     unless self.hours.blank?
-      todays_hours = LibraryHours.where(location_id: self.hours, date: @today).pluck(:hours).first
+      todays_hours = LibraryHour.where(location_id: self.hours, date: @today).pluck(:hours).first
     end
   end
 end

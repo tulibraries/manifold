@@ -38,7 +38,7 @@ class LibraryHoursController < ApplicationController
     ]
     @buildings.each do |building|
       building.values.second.map! do |space|
-        space = [building.values.first, LibraryHours.where(location_id: space, date: @monday..@sunday + 1)]
+        space = [building.values.first, LibraryHour.where(location_id: space, date: @monday..@sunday + 1)]
       end
     end
   end
@@ -71,13 +71,13 @@ class LibraryHoursController < ApplicationController
   end
 
   def get_locations
-    @location = LibraryHours.distinct.pluck(:location_id)
+    @location = LibraryHour.distinct.pluck(:location_id)
   end
 
   def build_hours_data_structure(input)
     input.map do |building|
       building[:spaces].map! do |space|
-        { slug: space, hours: LibraryHours.where(location_id: space, date: @monday..@sunday) }
+        { slug: space, hours: LibraryHour.where(location_id: space, date: @monday..@sunday) }
       end
       building
     end

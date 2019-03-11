@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :library_hour, class: "LibraryHours" do
+  factory :library_hour, class: "LibraryHour" do
     location { "MyString" }
     date { "2018-09-06 14:57:01" }
     hours { "MyString" }

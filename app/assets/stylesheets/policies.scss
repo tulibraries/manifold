@@ -81,7 +81,9 @@
 			padding:7px;
 		}
 		a[data-toggle="collapse"]:after {
-			content: "\f054";
+			content: "\f105";
+      font-family: "FontAwesome";
+      font-size: larger;
     	float: right;
     	padding-right: 7px;
   	}
@@ -95,12 +97,19 @@
 			display: block;
 		}
 		a[aria-expanded="true"]:after {
-			content: "\f078";
+			content: "\f107";
+      font-family: "FontAwesome";
+      font-size: larger;
     	float: right;
     	padding-right: 7px;
   	}
 		a[aria-expanded="true"]:hover {
 			color: $white;
+  	}
+  	i {
+  		padding-top: 7px;
+  		padding-right: 10px;
+  		float:right;
   	}
 		.card-body {
 			padding: 7px;

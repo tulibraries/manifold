@@ -51,7 +51,7 @@ RSpec.describe BuildingsController, type: :controller do
       Tempfile.open(["serialized_building", ".json"]) do |serialized|
         serialized.write(response.body)
         serialized.close
-        args =  %W[validate -s app/schemas/building_schema.json -d #{serialized.path}]
+        args = %W[validate -s app/schemas/building_schema.json -d #{serialized.path}]
         expect(system("ajv", *args)).to be
       end
     end

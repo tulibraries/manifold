@@ -55,7 +55,7 @@ RSpec.describe EventsController, type: :controller do
       Tempfile.open(["serialized_event-", ".json"]) do |serialized|
         serialized.write(response.body)
         serialized.close
-        args =  %W[validate -s app/schemas/event_schema.json -d #{serialized.path}]
+        args = %W[validate -s app/schemas/event_schema.json -d #{serialized.path}]
         expect(system("ajv", *args)).to be
       end
     end

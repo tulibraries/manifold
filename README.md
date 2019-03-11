@@ -35,6 +35,8 @@ bundle install
 * Install JSON validation tool
 
 ```
+sudo apt-get -y install npm
+sudo npm install -g ajv
 sudo npm install -g ajv-cli
 ```
 

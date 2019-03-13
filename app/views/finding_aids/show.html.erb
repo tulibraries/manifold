@@ -1,20 +1,21 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
-  <%= @finding_aid.name %>
+  <%= sanitize @finding_aid.name.html_safe %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @finding_aid.description.html_safe %>
+  <%= sanitize @finding_aid.description.html_safe %>
 </p>
 
 <p>
-  <strong>Subject:</strong>
+  <strong>Subjects:</strong>
+  <ul>
   <% @finding_aid.subject.each do |subject| %>
-    <%= subject %><br />
+    <li><%= subject %></li>
   <% end %>
+  </ul>
 </p>
 
 <p>

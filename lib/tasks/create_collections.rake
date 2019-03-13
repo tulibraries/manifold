@@ -8,18 +8,32 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
 
     task collections: :environment do
 
-      9.times do
-        name = SecureRandom.base58(24)
-        collection = Collection.new(name: name,
+      collections = ["Contemporary Culture Collections",
+                    "Manuscripts and Archives",
+                    "Paskow Science Fiction Collection (Science Fiction and Fantasy)",
+                    "Philadelphia Dance Collection",
+                    "Philadelphia Jewish Archives Collection",
+                    "Printing, Publishing, and Bookselling Collections",
+                    "Rare Books",
+                    "University Archives",
+                    "Urban Archives",
+                    "Charles L. Blockson Afro-American Collection"]
+
+      12.times.with_index do |c, i|
+
+        collection = Collection.new(name: collections[i],
                                     description: "test collection",
-                                    subject: ["test"], 
-                                    contents: "test", 
+                                    subject: ["test"],
+                                    contents: "test",
                                     building_id: 2,
                                     space_id: 2
                                     )
         collection.save
       end
-      
+
+      def get_names
+      end
+
     end
 
   end

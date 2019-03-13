@@ -22,8 +22,6 @@ class PersonDashboard < BaseDashboard
     job_title: Field::String,
     specialties: MultiSelectField.with_options(
       collection: Rails.configuration.specialties,
-      multiple: true,
-      include_blank: true,
     ),
     springshare_id: SpringshareIdField,
     research_identifier: Field::String,

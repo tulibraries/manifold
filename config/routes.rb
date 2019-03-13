@@ -18,19 +18,12 @@ Rails.application.routes.draw do
     resources :policies
     resources :services
     resources :spaces
-    # resources :library_hours
 
     resource :events do
       member do
         post :sync
       end
     end
-
-    # resource :library_hours do
-    #   member do
-    #     post :sync
-    #   end
-    # end
 
     resource :blogs do
       member do
@@ -61,9 +54,12 @@ Rails.application.routes.draw do
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
 
-  controller :collections do
-    get "finding_aids/:id" => :finding_aids
-  end
+  # controller :collections do
+  #   get "finding_aids/:id" => :finding_aids
+  # end
+  #
+  # If a finding aid can belong to multiple collections, we can't
+  # determine which collection to display as the parent collection
 
 
   controller :pages do

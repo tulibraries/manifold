@@ -16,7 +16,7 @@ namespace :db do
   # end
 
   desc "Pull in Finding Aids from Drupal Export"
-  task :collections, [:filepath] => :environment do |t, args|
+  task :finding_aids, [:filepath] => :environment do |t, args|
 
   doc = args.fetch(:filepath, nil)
 
@@ -55,6 +55,7 @@ namespace :db do
         updated_ids << c.drupal_id
       end
     else
+      binding.pry
       error_ids << c.drupal_id
     end
 

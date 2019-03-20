@@ -38,6 +38,10 @@
   font-family: 'PT Sans';
   src: font-url('PT_Sans-Web-Regular.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'FontAwesome';
+  src: font-url('fa-solid-900.svg') format('svg');
+}
 .bebas {
   font-family: BebasNeueRegular;
 }

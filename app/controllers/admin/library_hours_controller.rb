@@ -17,5 +17,12 @@ module Admin
     def valid_action?(name, resource = resource_class)
       %w[new edit destroy].exclude?(name.to_s) && super
     end
+
+    def index
+      # get the most recently updated record to find out when
+      # the last sync happened
+      @last_sync = LibraryHour.order(:updated_at).take      
+      super
+    end
   end
 end

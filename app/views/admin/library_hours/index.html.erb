@@ -32,25 +32,8 @@ It renders the `_table` partial to display details about the resources.
     <%= content_for(:title) %>
   </h1>
 
-  <% if show_search_bar %>
-    <%= render(
-      "search",
-      search_term: search_term,
-      resource_name: display_resource_name(page.resource_name)
-    ) %>
-  <% end %>
 
   <div>
-    <%= link_to(
-      t(
-        "administrate.actions.new_resource",
-        name: page.resource_name.titleize.downcase
-      ),
-      [:new, namespace, page.resource_path],
-      class: "button",
-    ) if valid_action?(:new) && show_action?(:new, new_resource) %>
-  </div>
-  &nbsp;
   <%= button_to(
     t(
       "manifold.admin.actions.sync_library_hours",
@@ -61,14 +44,7 @@ It renders the `_table` partial to display details about the resources.
 </header>
 
 <section class="main-content__body main-content__body--flush">
-  <%= render(
-    "collection",
-    collection_presenter: page,
-    collection_field_name: resource_name,
-    page: page,
-    resources: resources,
-    table_title: "page-title"
-  ) %>
-
-  <%= paginate resources %>
+  <div class="container">
+    <%= link_to "Library Hours Page", hours_path, {style: "padding-left: 2rem"}  %>
+  </div>
 </section>

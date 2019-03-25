@@ -14,11 +14,11 @@ Rails.application.routes.draw do
     resources :groups
     resources :finding_aids
     resources :highlights
+    resources :library_hours
     resources :people
     resources :policies
     resources :services
     resources :spaces
-    resources :library_hours
 
     resource :events do
       member do

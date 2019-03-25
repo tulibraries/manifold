@@ -3,9 +3,14 @@
 module Admin
   class LibraryHoursController < Admin::ApplicationController
     def sync
-      SyncService::LibraryHours.call
-      flash[:notice] = "Hours synced"
-      redirect_to admin_library_hours_path
+      begin
+        SyncService::LibraryHours.call
+        flash[:notice] = "Hours synced"
+        redirect_to admin_library_hours_path
+      rescue
+        flash[:notice] = "An error occurred during sync."
+        redirect_to admin_library_hours_path
+      end
     end
 
     # disable 'edit' and 'destroy' links

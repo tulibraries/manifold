@@ -14,8 +14,7 @@ class PolicyDashboard < Administrate::BaseDashboard
     name: Field::String,
     description: DescriptionField,
     category: MultiSelectField.with_options(
-      collection: Rails.configuration.policy_categories,
-      multiple: true,
+      collection: Rails.configuration.policy_categories
     ),
     effective_date: Field::DateTime,
     expiration_date: Field::DateTime,

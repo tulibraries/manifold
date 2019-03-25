@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_08_195724) do
+ActiveRecord::Schema.define(version: 2019_03_21_175032) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(version: 2019_02_08_195724) do
     t.boolean "add_to_footer"
   end
 
+  create_table "collection_aids", force: :cascade do |t|
+    t.integer "collection_id"
+    t.integer "finding_aid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_collection_aids_on_collection_id"
+    t.index ["finding_aid_id"], name: "index_collection_aids_on_finding_aid_id"
+  end
+
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -178,12 +187,13 @@ ActiveRecord::Schema.define(version: 2019_02_08_195724) do
   create_table "finding_aids", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "subject"
+    t.text "subject"
     t.string "content_link"
     t.string "identifier"
     t.integer "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "drupal_id"
     t.index ["collection_id"], name: "index_finding_aids_on_collection_id"
   end
 

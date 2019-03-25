@@ -14,13 +14,16 @@ class FindingAidDashboard < Administrate::BaseDashboard
     name: Field::String,
     description: DescriptionField,
     subject: MultiSelectField.with_options(
-      collection: Rails.configuration.finding_aid_subjects,
-      multiple: true,
+      collection: Rails.configuration.finding_aid_subjects
     ),
     content_link: Field::String,
     identifier: Field::String,
-    collection: Field::BelongsTo,
-    person: Field::HasMany,
+    collections: Field::HasMany.with_options(
+      class_name: "Collection"
+    ),
+    person: Field::HasMany.with_options(
+      class_name: "Person"
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -32,8 +35,8 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :collection,
-    :person,
+    # :collections,
+    # :person,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -43,7 +46,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :subject,
     :content_link,
     :identifier,
-    :collection,
+    :collections,
     :person,
     :updated_at,
   ].freeze
@@ -57,7 +60,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :description,
     :subject,
     :content_link,
-    :collection,
+    :collections,
     :person,
   ].freeze
 

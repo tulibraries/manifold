@@ -14,9 +14,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     name: Field::String,
     description: DescriptionField,
     subject: MultiSelectField.with_options(
-      collection: Rails.configuration.finding_aid_subjects,
-      multiple: true,
-      include_blank: false,
+      collection: Rails.configuration.finding_aid_subjects
     ),
     # contents: DescriptionField,
     space: Field::BelongsTo,
@@ -40,6 +38,7 @@ class CollectionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :subject,
     :space,
   ].freeze
 
@@ -60,7 +59,7 @@ class CollectionDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(collection)
-    "Collection #{collection.name}"
+    "#{collection.name}"
   end
 
   def tinymce?

@@ -21,7 +21,7 @@ module Admin
     def index
       # get the most recently updated record to find out when
       # the last sync happened
-      @last_sync = LibraryHour.order(:updated_at).take      
+      @last_sync = LibraryHour.order(:updated_at).take
       super
     end
   end

@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   resources :buildings, only: [:index, :show], path: "libraries"
   resources :groups, only: [:index, :show]
   resources :collections, only: [:index, :show]
-  resources :events, only: [:index, :show], path: "/beyondthepage"
+  resources :events, only: [:index, :show]
   resources :services, only: [:index, :show]
   resources :policies, only: [:index, :show]
   resources :exhibitions, only: [:index, :show]
@@ -67,6 +67,10 @@ Rails.application.routes.draw do
   #
   # If a finding aid can belong to multiple collections, we can't
   # determine which collection to display as the parent collection
+
+  controller :events do
+    get "events/past" => :index
+  end
 
 
   controller :pages do

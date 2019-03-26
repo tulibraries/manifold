@@ -534,6 +534,7 @@ DEPENDENCIES
   jquery-rails
   json-ld
   json-schema
+  kaminari
   listen (>= 3.0.5, < 3.2)
   mail_form
   mini_magick (~> 4.9)

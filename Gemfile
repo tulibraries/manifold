@@ -24,6 +24,7 @@ gem "popper_js", "~> 1.14.5"
 gem "tinymce-rails", "~> 4.9"
 gem "google-api-client", "~> 0.28"
 gem "fuzzy_match"
+gem "kaminari"
 # Use jquery as the JavaScript library
 gem "jquery-rails"
 

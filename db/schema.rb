@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_175032) do
     t.string "ensemble_identifier"
     t.text "tags"
     t.boolean "all_day", default: false
+    t.string "event_type"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -170,6 +171,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_175032) do
     t.integer "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "promoted_to_events"
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"

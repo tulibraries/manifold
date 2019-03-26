@@ -14,12 +14,19 @@ Rails.application.routes.draw do
     resources :groups
     resources :finding_aids
     resources :highlights
+    resources :library_hours
     resources :people
     resources :policies
     resources :services
     resources :spaces
 
     resource :events do
+      member do
+        post :sync
+      end
+    end
+
+    resource :library_hours do
       member do
         post :sync
       end

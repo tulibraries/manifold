@@ -14,7 +14,7 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   # GET /spaces/1.json
   def show
-    @todays_hours = LibraryHours.where(location_id: @space.hours, date: @today)
+    @todays_hours = LibraryHour.where(location_id: @space.hours, date: @today)
   end
 
   private

@@ -39,13 +39,15 @@ class Event < ApplicationRecord
   end
 
   def index_image
-    variation =
-      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
-    ActiveStorage::Variant.new(image.blob, variation)
+    image.variant(centered_image_variation).processed
   end
+  
   def show_image
-    variation =
-      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
-    ActiveStorage::Variant.new(image.blob, variation)
+    image.variant(centered_image_variation).processed
+  end
+
+  def centered_image_variation
+    ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
+    
   end
 end

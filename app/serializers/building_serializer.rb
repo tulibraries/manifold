@@ -15,7 +15,7 @@ class BuildingSerializer
   end
 
   attribute :thumbnail_photo, if: Proc.new { |building| building.photo.attached? } do |building|
-    helpers.rails_representation_url(building.photo.variant(resize: "100x100").processed)
+    helpers.rails_representation_url(building.index_image)
   end
 
   has_many :spaces

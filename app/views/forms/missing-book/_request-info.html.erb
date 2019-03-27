@@ -1,11 +1,4 @@
-<% unless params[:id] == "ask-scrc" %>
-	<%= f.input :author, label: "Author", required: true %>
-	<%= f.input :title, label: "Title", required: true %>
-	<%= f.input :call_num, label: "Call Number", required: true %>
-	<% if @type == "recall-book" %>
-	  <%= f.input :substitute_edition, as: :radio_buttons, label: "Subsititute another edition of same book if necessary?" %>
-	<% end %>
-	<%= f.input :comments, as: :text, label: "Comments (optional)" %>
-<% else %>
-	<%= f.input :comments, as: :text, label: "What is your Question?", hint: "Be sure to include names, locations, and dates that particularly pertinent to your research. Please list manuscript collections or print materials in which you are or may be interested.", required: true %>
-<% end %>
+<%= f.input :author, required: true %>
+<%= f.input :title, required: true %>
+<%= f.input :call_number, required: true %>
+<%= f.input :comments, as: :text, label: "Comments (optional)" %>

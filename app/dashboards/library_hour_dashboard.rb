@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class CollectionDashboard < Administrate::BaseDashboard
+class LibraryHourDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,18 +10,11 @@ class CollectionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
-    name: Field::String,
-    description: DescriptionField,
-    subject: MultiSelectField.with_options(
-      collection: Rails.configuration.finding_aid_subjects
-    ),
-    # contents: DescriptionField,
-    space: Field::BelongsTo,
-    photo: PhotoField,
-    add_to_footer: Field::Boolean.with_options(admin_only: true),
+    date: Field::DateTime,
+    hours: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    location_id: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -30,39 +23,32 @@ class CollectionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :name,
-    :space,
+    :date,
+    :hours,
+    :location_id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :name,
-    :subject,
-    :space,
+    :date,
+    :hours,
+    :location_id,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :name,
-    :photo,
-    :description,
-    :subject,
-    # :contents,
-    :space,
-    :add_to_footer,
+    :date,
+    :hours,
+    :location_id,
   ].freeze
 
-  # Overwrite this method to customize how collections are displayed
+  # Overwrite this method to customize how library hours are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(collection)
-    "#{collection.name}"
-  end
-
-  def tinymce?
-    true
-  end
+  # def display_resource(library_hour)
+  #   "LibraryHour ##{library_hour.id}"
+  # end
 end

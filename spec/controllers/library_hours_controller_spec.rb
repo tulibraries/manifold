@@ -45,7 +45,7 @@ RSpec.describe LibraryHoursController, type: :controller do
 
   describe "GET #index" do
     it "returns a success response" do
-      library_hours = LibraryHours.create! valid_attributes
+      library_hours = LibraryHour.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -53,7 +53,7 @@ RSpec.describe LibraryHoursController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      library_hours = LibraryHours.create! valid_attributes
+      library_hours = LibraryHour.create! valid_attributes
       get :show, params: { id: library_hours.to_param }, session: valid_session
       expect(response).to be_success
     end
@@ -61,11 +61,11 @@ RSpec.describe LibraryHoursController, type: :controller do
   describe "build hours data structure" do
 
     let(:input) {
-      [{ building: "paley", spaces: ["paley", "media"] }]
+      [{ building: "charles", spaces: ["charles", "media"] }]
     }
     let(:output) {
       [{
-        building: "paley",
+        building: "charles",
         spaces: [{ slug: "media", hours: [["12/10/2018", "7am - 8pm"]] }]
       }]
     }
@@ -74,7 +74,7 @@ RSpec.describe LibraryHoursController, type: :controller do
     }
 
     it "returns the expected output" do
-      allow(LibraryHours).to receive(:where).and_return([
+      allow(LibraryHour).to receive(:where).and_return([
         ["12/10/2018", "7am - 8pm"],
         ["12/10/2018", "7am - 8pm"],
         ["12/10/2018", "7am - 8pm"],

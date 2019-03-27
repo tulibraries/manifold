@@ -34,16 +34,6 @@
         <div id="date">
           <%= @group.todays_date %>
         </div>
-        <div id="time" style="line-height: 1.5rem;">
-          <%= @todays_hours.first.hours %>
-        </div>
-        <div id="allHours">
-          <% unless @group.space.hours.blank? %>
-            <%= link_to "See future hours", hour_path(@group.space.hours) %> >
-          <% else %>
-            <%= link_to "See future hours", hour_path(@group.space.building.hours) %> >
-          <% end %>
-        </div>
       </div>
     </div>
   </div>

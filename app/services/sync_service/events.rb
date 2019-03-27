@@ -31,6 +31,7 @@ class SyncService::Events
       "title" => event.fetch("Title", I18n.t("manifold.default.event.title")),
       "description" => event.fetch("Description",  I18n.t("manifold.default.event.description")),
       "tags" => event.fetch("Tags", nil),
+      "event_type" => event.fetch("Type", nil),
       "cancelled" => event.fetch("Canceled", 0),
       "registration_status" => event.fetch("RegistrationStatus", I18n.t("manifold.default.event.registration_status")),
       "registration_link" => event.fetch("RegistrationLink", nil),
@@ -56,6 +57,7 @@ class SyncService::Events
       event.person = record_hash["person"]
       event.building = record_hash["building"]
       event.tags = record_hash["tags"]
+      event.event_type = record_hash["event_type"]
       unless (record_hash[:image].nil? || event.image.attached?)
         event.image.attach(
           io: record_hash[:image][:io],

@@ -104,6 +104,7 @@ en:
       actions:
         sync_events: "Sync events"
         sync_blogs: "Sync blogs"
+        sync_library_hours: "Sync Hours"
         sync: "Sync"
       notification:
         all_blogs_synced: "Blogs: All synched"

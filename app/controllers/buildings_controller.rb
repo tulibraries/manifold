@@ -9,12 +9,12 @@ class BuildingsController < ApplicationController
     @buildings = Building.all
     respond_to do |format|
       format.html
-      format.json { render json: BuildingSerializer.new(@buildings.to_a) }
+      format.json { render json: BuildingSerializer.new(@buildings) }
     end
   end
 
   def show
-    @todays_hours = LibraryHours.where(location_id: @building.hours, date: @today)
+    @todays_hours = LibraryHour.where(location_id: @building.hours, date: @today)
     respond_to do |format|
       format.html
       format.json { render json: BuildingSerializer.new(@building) }

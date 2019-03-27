@@ -23,12 +23,13 @@ FactoryBot.define do
     registration_link { "MyString" }
     content_hash { "MyString" }
     ensemble_identifier { "MyString" }
-    tags { nil }
+    tags { "" }
     all_day { false }
+    alt_text { "Charles Library" }
     trait :with_image do
       after :create do |event|
         file_path = Rails.root.join("spec", "fixtures", "charles.jpg")
-        file = fixture_file_upload(file_path, "image/png")
+        file = fixture_file_upload(file_path, "image/jpeg")
         event.image.attach(file)
       end
     end

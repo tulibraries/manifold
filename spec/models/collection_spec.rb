@@ -24,4 +24,24 @@ RSpec.describe Collection, type: :model do
       expect(collection.space).to be(space)
     end
   end
+
+  describe "version all fields" do
+    fields = {
+      name: ["The Text 1", "The Text 2"],
+      description: ["The Text 1", "The Text 2"],
+      # Subject not testable in rspec in this context
+      #subject: ["The Text 1", "The Text 2"],
+      contents: ["The Text 1", "The Text 2"],
+      add_to_footer: [false, true],
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        collection = FactoryBot.create(:collection, k => v.first)
+        collection.update(k => v.last)
+        collection.save!
+        expect(collection.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

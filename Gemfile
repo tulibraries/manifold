@@ -10,7 +10,7 @@ gem "rails", "~> 5.2.2"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3"
 # Use Puma as the app server
-gem "puma", "~> 3.11"
+gem "puma", "~> 3.12"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
@@ -19,11 +19,12 @@ gem "uglifier", ">= 1.3.0"
 # gem 'mini_racer', platforms: :ruby
 gem "administrate"
 #gem "tustyles", git: "https://github.com/tulibraries/tustyles"
-gem "bootstrap", "~> 4.2.1"
+gem "bootstrap", "~> 4.3.1"
 gem "popper_js", "~> 1.14.5"
-gem "tinymce-rails"
+gem "tinymce-rails", "~> 4.9"
 gem "google-api-client", "~> 0.28"
 gem "fuzzy_match"
+gem "kaminari"
 # Use jquery as the JavaScript library
 gem "jquery-rails"
 
@@ -39,7 +40,7 @@ gem "jbuilder", "~> 2.5"
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-gem "mini_magick", "~> 4.8"
+gem "mini_magick", "~> 4.9"
 gem "font-awesome-rails"
 
 # Use Capistrano for deployment
@@ -61,12 +62,15 @@ gem "mail_form"
 gem "httparty"
 gem "feedjira"
 gem "json-ld"
+gem "fast_jsonapi", "~> 1.0"
+gem "paper_trail"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "pry-rails"
   gem "rubocop", require: false
+  gem "json-schema"
 end
 
 group :development do

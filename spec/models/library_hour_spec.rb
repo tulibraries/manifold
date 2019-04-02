@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe LibraryHours, type: :model do
+RSpec.describe LibraryHour, type: :model do
 
   let(:library_hour) { FactoryBot.create(:library_hour) }
 

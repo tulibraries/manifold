@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_183324) do
+ActiveRecord::Schema.define(version: 2019_03_21_175032) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(version: 2019_02_15_183324) do
     t.boolean "add_to_footer"
   end
 
+  create_table "collection_aids", force: :cascade do |t|
+    t.integer "collection_id"
+    t.integer "finding_aid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_collection_aids_on_collection_id"
+    t.index ["finding_aid_id"], name: "index_collection_aids_on_finding_aid_id"
+  end
+
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -180,12 +189,13 @@ ActiveRecord::Schema.define(version: 2019_02_15_183324) do
   create_table "finding_aids", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "subject"
+    t.text "subject"
     t.string "content_link"
     t.string "identifier"
     t.integer "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "drupal_id"
     t.index ["collection_id"], name: "index_finding_aids_on_collection_id"
   end
 
@@ -362,6 +372,17 @@ ActiveRecord::Schema.define(version: 2019_02_15_183324) do
     t.string "ancestry"
     t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object", limit: 1073741823
+    t.datetime "created_at"
+    t.text "object_changes", limit: 1073741823
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
 end

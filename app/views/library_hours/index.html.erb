@@ -18,11 +18,11 @@
 <div class="row date-nav">
   <div class="col-md-6 text-center date-range">
 
-      <%= link_to "<-", {controller: "library_hours", action: "index", date: @last_week} %> 
+      <%= link_to "<-", {controller: :library_hours, action: "index", date: @last_week} %> 
 
       <%= @monday.strftime("%b %d, %Y") unless @monday.nil? %> - <%= @sunday.strftime("%b %d, %Y") unless @sunday.nil? %>
      
-      <%= link_to "->", {controller: "library_hours", action: "index", date: @next_week} %>
+      <%= link_to "->", {controller: :library_hours, action: "index", date: @next_week} %>
 
   </div>
   <div class="col-md-6 text-center">
@@ -33,7 +33,6 @@
 <div style="padding-left: 10px;padding-right:10px;">
 
 <% @buildings.each do |location| %>
-<% unless location_name(location.values.first).nil? %>
 
   <div class="row" style="margin-top: 35px;">
     <div class="col">
@@ -84,7 +83,6 @@
       </div> 
     <% end %>
 
-<% end %>
 <% end %>
 </div>
 </div>

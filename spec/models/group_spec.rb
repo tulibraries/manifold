@@ -119,4 +119,22 @@ RSpec.describe Group, type: :model do
       expect(pgroup.child_groups).to match_array([group, another_child])
     end
   end
+
+  describe "version all fields" do
+    fields = {
+      name: ["The Text 1", "The Text 2"],
+      description: ["The Text 1", "The Text 2"],
+      external: [false, true],
+      add_to_footer: [false, true],
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        group = FactoryBot.create(:group, k => v.first)
+        group.update(k => v.last)
+        group.save!
+        expect(group.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

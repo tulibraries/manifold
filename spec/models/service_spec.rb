@@ -73,4 +73,27 @@ RSpec.describe Service, type: :model do
       skip "TBD"
     end
   end
+
+  describe "version all fields" do
+    fields = {
+      title: ["The Text 1", "The Text 2"],
+      description: ["The Text 1", "The Text 2"],
+      access_description: ["The Text 1", "The Text 2"],
+      access_link: ["The Text 1", "The Text 2"],
+      service_policies: ["The Text 1", "The Text 2"],
+      #intended_audience: ["The Text 1", "The Text 2"],
+      service_category: ["The Text 1", "The Text 2"],
+      hours: ["The Text 1", "The Text 2"],
+      add_to_footer: [false, true]
+    }
+
+    fields.each do |k, v|
+      example "#{k} changes" do
+        service = FactoryBot.create(:service, related_groups: [group], k => v.first)
+        service.update(k => v.last)
+        service.save!
+        expect(service.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
 end

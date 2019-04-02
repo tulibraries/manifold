@@ -1,0 +1,37 @@
+<% @events_list.each do |event| %>
+  <div class="row event">
+    <div class="col-3">
+    <% if event.image.attached? %>
+      <%= link_to (image_tag event.index_image), event %>
+    <% else %>
+      <%= image_tag 'T-borderless.gif' %>
+    <% end %>
+    </div>
+    <div class="col-9">
+      <h3><%= link_to event.title, event %></h3>
+      <p><strong>
+        <%= event.start_time.strftime("%^A, %^B %d, %Y ").titleize %> | 
+        <%= event.start_time.strftime("%l:00 %P") %> | 
+        <% unless event.space.nil? %>
+          int: <%= event.space.building.name %>
+        <% else %>
+          ext: <%= event.external_space %>
+        <% end %>
+      </strong></p>
+      <p><%= sanitize strip_tags(event.description.html_safe.truncate(250)) %></p>
+      <p>
+        <% unless event.get_types.nil? %>
+          <% event.get_types.each do |type| %>
+            <%= link_to type, event, class: "event_type" %> 
+          <% end %>
+        <% end %>
+
+        <% unless event.space.nil? %>
+          <%= link_to event.space.building.name, event.space.building, class: "event_location" %>
+        <% else %>
+          <span class="event_location"><%= event.external_space %></span> 
+        <% end %>
+      </p>
+    </div>
+  </div>
+<% end %>

@@ -10,10 +10,18 @@ class PersonsController < ApplicationController
     else
       @persons = Person.where("last_name LIKE ?", "#{params[:id]}%").order(:last_name, :first_name)
     end
+    respond_to do |format|
+      format.html
+      format.json { render json: PersonSerializer.new(@persons.to_a) }
+    end
   end
 
   def show
     @building = Building.find_by("id = ?", @person.spaces.last.building_id)
+    respond_to do |format|
+      format.html
+      format.json { render json: PersonSerializer.new(@person) }
+    end
   end
 
   private

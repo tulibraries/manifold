@@ -1,46 +1,63 @@
 <div class="row">
   <div class="col breadcrumbs">
     <%= link_to "Home", root_path.to_s %> 
-    Events
+    Events &amp; Exhibits
   </div>
 </div>
-<div class="row">
-  <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span>Events</span></h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Events &amp; Exhibits</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3 filters">
+      <%= render "facets" %>"
+    </div>
+    <div class="col-6 events">
+      <div class="row">
+        <div class="col-12 upcoming-header">
+          <% unless params[:id] == "past" %>
+            Upcoming Events
+          <% else %>
+            Past Events
+          <% end %>
+        </div>
+      </div>
+      
+      <%= render "events" %>
+
+      <div class="row text-center paginator">
+        <div class="col">
+          <%= paginate @events_list %>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 exhibits">
+      <div class="row">
+        <div class="col-12 exhibits-header">
+          Current Exhibits
+        </div>
+      </div>
+
+      <%= render "exhibitions" %>
+
+      <div class="row">
+        <div class="col-12">
+          <% unless params[:id] == "past" %>
+            <%= link_to "View past events & exhibits", events_path(id: "past"), class: "past-events-button" %>
+          <% else %>
+            <%= link_to "View current events & exhibits", events_path, class: "past-events-button" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <%= link_to "View video recordings from past events", events_path, class: "video-button" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Library</th>
-      <th>Space</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <% unless event.building.nil? %>
-          <td><%= event.building.name %></td>
-          <td><%= event.space.name unless event.space.nil? %></td>
-        <% else %>
-          <td><%= event.external_building %></td>
-          <td><%= event.external_space %></td>
-        <% end %>
-        <td><%= link_to 'Show', event %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>

@@ -1,22 +1,21 @@
 # frozen_string_literal: true
 
 class LibraryHoursController < ApplicationController
-  before_action :get_locations, only: [:index]
-  before_action :set_dates, only: [:index]
+  before_action :get_locations, :set_dates, only: [:index]
 
   def index
     @buildings = [
       {
-        slug: "paley",
+        slug: "charles",
         spaces: [
-                  "paley",
-                  "media",
-                  "doc_del",
-                  "ref_desk",
-                  "v_ref",
-                  "thinktank",
+                  "charles",
+                  "service_zone",
+                  "cafe",
                   "scrc",
-                  "dsc",
+                  "scholars_studio",
+                  "success_center",
+                  "ask_a_librarian",
+                  "asrs",
                   "guest_computers"
                 ]
       },
@@ -39,7 +38,7 @@ class LibraryHoursController < ApplicationController
     ]
     @buildings.each do |building|
       building.values.second.map! do |space|
-        space = [building.values.first, LibraryHours.where(location_id: space, date: @monday..@sunday + 1)]
+        space = [building.values.first, LibraryHour.where(location_id: space, date: @monday..@sunday + 1)]
       end
     end
   end
@@ -72,13 +71,13 @@ class LibraryHoursController < ApplicationController
   end
 
   def get_locations
-    @location = LibraryHours.distinct.pluck(:location_id)
+    @location = LibraryHour.distinct.pluck(:location_id)
   end
 
   def build_hours_data_structure(input)
     input.map do |building|
       building[:spaces].map! do |space|
-        { slug: space, hours: LibraryHours.where(location_id: space, date: @monday..@sunday) }
+        { slug: space, hours: LibraryHour.where(location_id: space, date: @monday..@sunday) }
       end
       building
     end

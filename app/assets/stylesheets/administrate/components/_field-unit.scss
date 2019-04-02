@@ -1,8 +1,5 @@
 @import "../library/variables.scss";
 @import "../library/clearfix.scss";
-@import "../../buildings.scss";
-
-
 
 .field-unit {
   @include administrate-clearfix;
@@ -11,6 +8,10 @@
   margin-bottom: $base-spacing;
   position: relative;
   width: 100%;
+  .required label::after {
+    content: " * ";
+    color: red;
+  }
 }
 
 .field-unit__label {

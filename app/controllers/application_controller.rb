@@ -6,10 +6,7 @@ class ApplicationController < ActionController::Base
   # current_user to return the current account. This is needed both
   # in ApplicationController and in Admin::ApplicationController
   before_action :get_alert, :set_footer
-
-  def current_user
-    current_account
-  end
+  before_action :set_paper_trail_whodunnit
 
   def get_alert
     @alert = Alert.where(published: true)
@@ -21,4 +18,10 @@ class ApplicationController < ActionController::Base
     @footer_services = Service.where(add_to_footer: true).take(6)
     @footer_groups = Group.where(add_to_footer: true).take(6)
   end
+
+  protected
+
+    def current_user
+      current_account
+    end
 end

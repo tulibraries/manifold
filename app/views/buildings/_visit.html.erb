@@ -28,7 +28,7 @@
           <%= @building.todays_date %>
         <div id="time">
           <% unless @building.hours.blank? %>
-            <%= @building.todays_hours %>
+            <%= @todays_hours.first.hours %>
           <% end %>
         </div>
         </div>

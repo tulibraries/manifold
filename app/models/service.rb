@@ -4,6 +4,7 @@ class Service < ApplicationRecord
   has_paper_trail
   include InputCleaner
   include HasPolicies
+  include SetDates
 
   validates :title, :description, :intended_audience, :service_category, presence: true
   validates :related_groups, presence: true
@@ -25,16 +26,5 @@ class Service < ApplicationRecord
   def remove_empty_audience
     # Rails tends to return an empty string in multi-selects array
     intended_audience&.reject! { |a| a.empty? }
-  end
-
-  def todays_date
-    @today = Date.today
-  end
-
-  def todays_hours
-    @today = Date.today.strftime("%Y-%m-%d 00:00:00")
-    unless self.hours.blank?
-      todays_hours = LibraryHour.where(location_id: self.hours, date: @today).pluck(:hours).first
-    end
   end
 end

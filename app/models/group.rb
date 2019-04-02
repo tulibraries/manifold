@@ -5,6 +5,7 @@ class Group < ApplicationRecord
   include Validators
   include InputCleaner
   include HasPolicies
+  include SetDates
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true
@@ -41,7 +42,7 @@ class Group < ApplicationRecord
   end
   def todays_hours
     unless space.nil?
-      todays_hours = space.todays_hours
+      space.todays_hours
     end
   end
 end

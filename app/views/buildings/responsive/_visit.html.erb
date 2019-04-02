@@ -32,7 +32,7 @@
         </div>
         <div id="time" style="line-height: 1.5rem;">
           <% unless @building.hours.blank? %>
-            <div class="time"><%= @building.todays_hours %></div>
+            <div class="time"><%= @todays_hours.first.hours %></div>
           <% end %>
           <%= @building.name %> 
         </div>

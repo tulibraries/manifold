@@ -5,6 +5,7 @@ class Space < ApplicationRecord
   include Validators
   include InputCleaner
   include HasPolicies
+  include SetDates
   has_ancestry
 
   validates :name, presence: true
@@ -40,14 +41,5 @@ class Space < ApplicationRecord
       arr += arrange_as_array(options, children) unless children.empty?
     end
     arr
-  end
-
-  def todays_hours
-    @today = Date.today.strftime("%Y-%m-%d 00:00:00")
-    unless self.hours.blank?
-      todays_hours = LibraryHour.where(location_id: self.hours, date: @today).pluck(:hours).first
-    else
-      todays_hours = self.building.todays_hours
-    end
   end
 end

@@ -222,5 +222,10 @@ RSpec.describe SyncService::Events, type: :service do
     end
   end
 
-
+  context "Error in field" do
+    let(:sync_events) { described_class.new(events_url: file_fixture("error_event.xml").to_path) }
+    it "does not raise error if an image is missing" do
+      expect(sync_events.sync).to_not raise_error
+    end
+  end
 end

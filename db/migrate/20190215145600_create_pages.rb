@@ -9,8 +9,5 @@ class CreatePages < ActiveRecord::Migration[5.2]
       t.references :group, foreign_key: true
       t.timestamps
     end
-    change_table :groups do |t|
-      t.references :page, foreign_key: true
-    end
   end
 end

@@ -18,11 +18,10 @@ class SyncService::Events
   def sync
     read_events.each do |e|
       begin
-        @log.info( %Q(Syncing Event #{e["Title"]} on #{e["EventStartDate"]}))
+        @log.info(%Q(Syncing Event #{e["Title"]} on #{e["EventStartDate"]}))
         record = record_hash(e)
         create_or_update_if_needed!(record)
       rescue Exception => err
-        #binding.pry
         @log.error("  #{err.message}")
       end
     end

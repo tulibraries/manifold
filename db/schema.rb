@@ -261,6 +261,16 @@ ActiveRecord::Schema.define(version: 2019_03_21_175032) do
     t.index ["space_id"], name: "index_occupants_on_space_id"
   end
 
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "layout"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_pages_on_group_id"
+  end
+
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"

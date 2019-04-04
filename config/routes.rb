@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :groups
     resources :finding_aids
     resources :highlights
+    resources :pages
     resources :library_hours
     resources :people
     resources :policies
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
   resources :finding_aids, only: [:show]
+  resources :pages, only: [:show]
 
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"

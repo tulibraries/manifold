@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "open-uri"
+require "logger"
 
 class SyncService::Events
   def self.call(events_url: nil)
@@ -8,14 +9,21 @@ class SyncService::Events
   end
 
   def initialize(params = {})
+    @log = Logger.new("log/sync-event.log")
     @eventsUrl = params.fetch(:events_url) || Rails.configuration.events_feed_url
     @eventsDoc = Nokogiri::XML(open(@eventsUrl))
+    @log.info("Syncing events from #{@eventsUrl}")
   end
 
   def sync
     read_events.each do |e|
-      record = record_hash(e)
-      create_or_update_if_needed!(record)
+      begin
+        @log.info(%Q(Syncing Event #{e["Title"]} on #{e["EventStartDate"]}))
+        record = record_hash(e)
+        create_or_update_if_needed!(record)
+      rescue Exception => err
+        @log.error("  #{err.message}")
+      end
     end
   end
 

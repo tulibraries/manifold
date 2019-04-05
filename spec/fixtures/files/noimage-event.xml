@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Events>
+  <Event>
+    <Title>Random Event 101</Title>
+    <Path>https://events.temple.edu/Random-Event-101</Path>
+    <Description>&lt;p&gt;Single Event Description&lt;/p&gt;</Description>
+    <Sessions></Sessions>
+    <Department>Temple University Libraries</Department>
+    <Interest>Research</Interest>
+    <Type>Workshop /  Webinar</Type>
+    <EventStartDate>April 03, 2019</EventStartDate>
+    <EventStartTime>12:00 pm</EventStartTime>
+    <EventEndDate>April 03, 2019</EventEndDate>
+    <EventEndTime>2:00 pm</EventEndTime>
+    <Timestamp>&lt;span class="date-display-single"&gt;03/04/2019 &lt;span class="date-display-range"&gt;&lt;span class="date-display-start" property="dc:date" datatype="xsd:dateTime" content="2019-04-03T12:00:00-04:00"&gt;12:00&lt;/span&gt; to &lt;span class="date-display-end" property="dc:date" datatype="xsd:dateTime" content="2019-04-03T14:00:00-04:00"&gt;14:00&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;</Timestamp>
+    <TimestampStart>1554307200</TimestampStart>
+    <TimestampEnd>1554314400</TimestampEnd>
+    <Tags>library workshops</Tags>
+    <PrivateTags></PrivateTags>
+    <Campus>Main Campus</Campus>
+    <Location>Paley Library</Location>
+    <Room>Digital Scholarship Center</Room>
+    <Address>1210 W. Berks Street</Address>
+    <City>Philadelphia</City>
+    <State>PA</State>
+    <Zip>19122</Zip>
+    <Sponsors></Sponsors>
+    <Audience>Faculty and Staff, Undergraduate Students, Graduate Students</Audience>
+    <ContactName>Gretchen Sneff</ContactName>
+    <ContactEmail>gsneff@temple.edu</ContactEmail>
+    <ContactPhone>215-204-4724</ContactPhone>
+    <Files></Files>
+    <GAFFunding>0</GAFFunding>
+    <Private>0</Private>
+    <RegistrationStatus>Closed</RegistrationStatus>
+    <Canceled>0</Canceled>
+    <Highlighted>1</Highlighted>
+    <Promoted>0</Promoted>
+    <Weight>1</Weight>
+    <GUID>52246</GUID>
+  </Event>
+</Events>

@@ -8,10 +8,10 @@ RSpec.describe "finding_aids/show", type: :view do
     @finding_aid = assign(:finding_aid, FindingAid.create!(
                                           name: "Name",
                                           description: "MyText",
-                                          subject: "Subject",
+                                          subject: ["Subject"],
                                           content_link: "Content Link",
                                           identifier: "Identifier",
-                                          collection: @collection
+      # collection: @collection
     ))
   end
 

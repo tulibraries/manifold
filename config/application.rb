@@ -37,6 +37,12 @@ module Tude
                           "Strategic Steering Team",
                           "Working Group"]
 
+    config.page_layouts = ["Statement",
+                            # "Publication",
+                            # "Orgchart",
+                            # "Form Other"
+                          ]
+
     config.finding_aid_subjects = ["African Americans",
                                     "Agriculture",
                                     "Arts and Entertainment",
@@ -179,12 +185,19 @@ module Tude
                             "Spanish",
                             "Sport, Tourism & Hospitality Management",
                             "Theater",
-                            "Urban Bioethics",
-                            ]
-    config.incident_type = ["Vandalism", "Accident/Medical", "Theft", "Harassment/Fight/Abusive Language", "Building Issue", "Other"]
-    config.affiliation = ["TU Student", "TU Faculty or Staff", "Library Student Assistant", "Library Staff", "Visitor/Guest"]
-    config.action_taken = ["Library Administration Notified", "Facilities Notified (1-1385)", "Completed Staff Injury Report", "Referred to Legal or Risk Management", "Called Campus Police"]
-    config.form_yes_or_no = ["Yes", "No"]
+                            "Urban Bioethics"]
+
+
+    config.affiliation = [  "Temple Graduate Student",
+                            "Temple Undergraduate",
+                            "Temple Faculty",
+                            "Temple Alumna/us",
+                            "Temple Staff",
+                            "Non-Temple Undergraduate",
+                            "Non-Temple Graduate Student",
+                            "Non-Temple Faculty",
+                            "General Public"]
+
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]

@@ -14,12 +14,20 @@ Rails.application.routes.draw do
     resources :groups
     resources :finding_aids
     resources :highlights
+    resources :pages
+    resources :library_hours
     resources :people
     resources :policies
     resources :services
     resources :spaces
 
     resource :events do
+      member do
+        post :sync
+      end
+    end
+
+    resource :library_hours do
       member do
         post :sync
       end
@@ -50,13 +58,14 @@ Rails.application.routes.draw do
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
   resources :finding_aids, only: [:show]
+  resources :pages, only: [:show]
 
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
 
-  controller :collections do
-    get "finding_aids/:id" => :finding_aids
-  end
+ controller :collections do
+   get "finding_aids/:id" => :finding_aids
+ end
 
   controller :events do
     get "events/past" => :past

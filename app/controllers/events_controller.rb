@@ -81,6 +81,7 @@ class EventsController < ApplicationController
       @exhibitions = Exhibition.where(promoted_to_events: true)
       @today = Date.today
     end
+
     def set_event
       @event = Event.find(params[:id])
     end

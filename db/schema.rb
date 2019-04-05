@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_175032) do
+ActiveRecord::Schema.define(version: 2019_04_05_154322) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -103,6 +103,13 @@ ActiveRecord::Schema.define(version: 2019_03_21_175032) do
     t.string "google_id"
     t.string "address2"
     t.boolean "add_to_footer"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "custom_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "collection_aids", force: :cascade do |t|

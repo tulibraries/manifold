@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe Category, type: :model do
 
   describe "A basic category" do
-    let(:category) { FactoryBot.create(:category)}
+    let(:category) { FactoryBot.create(:category) }
 
     context "has a name" do
       it "doesn't error when built" do
@@ -22,10 +22,10 @@ RSpec.describe Category, type: :model do
     end
 
     context "when it doesn't have a name" do
-      let(:category) { FactoryBot.build(:category)}
-      it 'should raise a validation error' do
+      let(:category) { FactoryBot.build(:category) }
+      it "should raise a validation error" do
         category.name = nil
-        expect{ category.save! }.to raise_error(/Name can't be blank/)
+        expect { category.save! }.to raise_error(/Name can't be blank/)
       end
     end
   end
@@ -44,7 +44,7 @@ RSpec.describe Category, type: :model do
 
   describe "#url" do
 
-    let(:category) { FactoryBot.create(:category)}
+    let(:category) { FactoryBot.create(:category) }
 
     it "responds to .url" do
       expect(category).to respond_to(:url)
@@ -58,7 +58,7 @@ RSpec.describe Category, type: :model do
     end
 
     context "with custom_url defined" do
-      let(:category) { FactoryBot.create(:category, :custom_url)}
+      let(:category) { FactoryBot.create(:category, :custom_url) }
 
       it "returns the expected path" do
         expect(category.url).to eq "http://sand.man"

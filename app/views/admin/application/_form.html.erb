@@ -40,6 +40,22 @@ and renders all form fields for a resource's editable attributes.
   <div class="form-actions">
     <%= f.submit %>
   </div>
+
+  <% if page.resource.versions%>
+  <hr/>
+  <div class="field-unit field-unit--has_many ">
+    <div class="field-unit__label">
+      <label for"versions">Versions</label>
+    </div>
+    <div class="field-unit__field">
+        <% page.resource.versions.each do |ver| %>
+          <div>
+            <%= ver.id %>: <%= ver.event %> <%= ver.created_at %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 
 <% if @dashboard&.tinymce? %>

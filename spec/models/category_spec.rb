@@ -31,7 +31,7 @@ RSpec.describe Category, type: :model do
   end
 
   describe "A category with an icon" do
-    let(:category) { FactoryBot.create(:category, :with_icon)}
+    let(:category) { FactoryBot.create(:category, :with_icon) }
 
     it "responds to icon" do
       expect(category).to respond_to(:icon)

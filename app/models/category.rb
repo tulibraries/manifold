@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
   include Rails.application.routes.url_helpers
   #TODO: should we validate that icon is svg?

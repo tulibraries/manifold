@@ -3,7 +3,7 @@
 
 FactoryBot.define do
   factory :category do
-    name { 'Dreaming' }
+    name { "Dreaming" }
 
     trait :custom_url do
       custom_url { "http://sand.man" }

@@ -21,8 +21,8 @@ class Event < ApplicationRecord
   end
 
   def building_name(event)
-    if event.building_id.is_a?(Integer)
-      Building.find(event.building_id).name
+    if event.building
+      event.building.name
     else
       event.external_building
     end

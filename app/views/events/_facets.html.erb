@@ -9,9 +9,9 @@
     <ul class="list-unstyled">
       <% @event_types.each do |type| %>
         <% unless type == params[:type] %>
-          <li><%= link_to type, {controller: :events, action: :index, type: type} %></li>
+          <li><%= link_to type, events_path(type: type) %></li>
         <% else %>
-          <li class="active"><%= link_to type, {controller: :events, action: :index, type: type} %></li>
+          <li class="active"><%= link_to type, events_path(type: type) %></li>
         <% end %>
       <% end %>
     </ul>
@@ -23,10 +23,18 @@
     <ul class="list-unstyled">
       <% @event_locations.each do |location| %>
         <% unless location == params[:location] %>
-          <% unless location.first.nil? %>
-            <li><%= link_to location.second, {controller: :events, action: :index, location: location.first} %></li>
+          <% unless action_name == "past" %>
+            <% unless location.first.nil? %>
+              <li><%= link_to location.second, events_path(location: location.first) %></li>
             <% else %>
-            <li><%= link_to location.second, {controller: :events, action: :index, location: location.second} %></li>
+              <li><%= link_to location.second, events_path(location: location.second) %></li>
+            <% end %>
+          <% else %>
+            <% unless location.first.nil? %>
+              <li><%= link_to location.second, past_events_path(location: location.first) %></li>
+            <% else %>
+              <li><%= link_to location.second, past_events_path(location: location.second) %></li>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>

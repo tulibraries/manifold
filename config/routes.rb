@@ -63,12 +63,12 @@ Rails.application.routes.draw do
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
 
- controller :collections do
-   get "finding_aids/:id" => :finding_aids
- end
+  controller :collections do
+    get "finding_aids/:id" => :finding_aids
+  end
 
   controller :events do
-    get "events/past" => :past
+    get "events/past" => :past, as: "past_events"
   end
 
   controller :pages do

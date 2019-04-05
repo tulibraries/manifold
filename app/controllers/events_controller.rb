@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def return_types(events)
-    @event_types = events.pluck(:event_type)
+    @event_types = @events.pluck(:event_type)
     @types = []
     @event_types.each do |type|
       types = type.split(",")
@@ -51,8 +51,8 @@ class EventsController < ApplicationController
 
   def return_locations(events)
     locations = []
-    internal_locations = events.pluck(:building_id)
-    external_locations = events.pluck(:external_building)
+    internal_locations = @events.pluck(:building_id)
+    external_locations = @events.pluck(:external_building)
     all_locations = internal_locations.concat(external_locations)
 
     events.each do |event|

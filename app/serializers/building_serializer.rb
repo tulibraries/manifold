@@ -9,13 +9,16 @@ class BuildingSerializer
 
   link :self, Proc.new { |building| helpers.url_for(building) }
 
-  attributes :name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number, :description
+  set_type :building
+
+  attributes :name, :description, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number
+
   attribute :photo, if: Proc.new { |building| building.photo.attached? } do |building|
     helpers.rails_blob_url(building.photo)
   end
 
   attribute :thumbnail_photo, if: Proc.new { |building| building.photo.attached? } do |building|
-    helpers.rails_representation_url(building.photo.variant(resize: "100x100").processed)
+    helpers.rails_representation_url(building.index_image)
   end
 
   has_many :spaces

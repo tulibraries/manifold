@@ -11,7 +11,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     group: Field::BelongsTo,
-    space: Field::BelongsTo,
+    space: Field::BelongsTo.with_options(required: true),
     collection: Field::BelongsTo,
     photo: PhotoField,
     id: Field::Number,
@@ -19,6 +19,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     description: Field::Text,
     start_date: Field::DateTime,
     end_date: Field::DateTime,
+    promoted_to_events: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -29,9 +30,9 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :group,
-    :space,
+    :title,
     :collection,
+    :space,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -56,6 +57,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :description,
     :start_date,
     :end_date,
+    :promoted_to_events,
     :group,
     :space,
     :collection,

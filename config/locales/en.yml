@@ -99,11 +99,13 @@ en:
       invalid_phone_format: "is not a valid format. It should be xxx-xxx-xxxx."
       invalid_group_type: "is not a valid group type"
       invalid_url: "is not a valid url"
+      invalid_document_type: "is not a valid file type"
     signout: "Log Out"
     admin:
       actions:
         sync_events: "Sync events"
         sync_blogs: "Sync blogs"
+        sync_library_hours: "Sync Hours"
         sync: "Sync"
       notification:
         all_blogs_synced: "Blogs: All synched"

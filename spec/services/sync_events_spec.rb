@@ -222,5 +222,43 @@ RSpec.describe SyncService::Events, type: :service do
     end
   end
 
+  context "Error in field" do
+    before (:each) { @starting_event_count = Event.count }
+    describe "no images specified" do
+      let (:sync_events) { described_class.new(events_url: file_fixture("noimage-event.xml").to_path) }
 
+      it "should not raise error if an image is missing" do
+        expect { sync_events.sync }.to_not raise_error
+      end
+
+      it "should add the event" do
+        sync_events.sync
+        expect(Event.count).to eq (@starting_event_count + 1)
+      end
+    end
+
+    describe "erroneous images specified" do
+      context "unit level" do
+        let (:sync_events) { described_class.new(events_url: file_fixture("badimage-event.xml").to_path) }
+
+        it "should not raise error if an image URL is bad" do
+          expect { sync_events.sync }.to_not raise_error
+        end
+
+        it "should not add the event" do
+          sync_events.sync
+          expect(Event.count).to eq @starting_event_count
+        end
+      end
+
+      context "feed level" do
+        let (:sync_events) { described_class.new(events_url: file_fixture("events-onebad.xml").to_path) }
+
+        it "should add subsequent valid events" do
+          sync_events.sync
+          expect(Event.count).to eq (@starting_event_count + 1)
+        end
+      end
+    end
+  end
 end

@@ -36,6 +36,12 @@ module Tude
                           "Strategic Steering Team",
                           "Working Group"]
 
+    config.page_layouts = ["Statement",
+                            # "Publication",
+                            # "Orgchart",
+                            # "Form Other"
+                          ]
+
     config.finding_aid_subjects = ["African Americans",
                                     "Agriculture",
                                     "Arts and Entertainment",

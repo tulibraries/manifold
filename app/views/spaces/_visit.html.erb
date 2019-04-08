@@ -29,7 +29,7 @@
         <div id="time" style="line-height: 1.5rem;">
           <%= @space.building.name %> <br /> <%= @space.name %>
           <% unless @space.hours.blank? %>
-            <br /><%= @space.todays_hours %>
+            <br /><%= @todays_hours.first.hours %>
           <% end %>
         </div>
         </div>

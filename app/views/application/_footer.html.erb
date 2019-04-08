@@ -34,6 +34,7 @@
               <li><%= link_to library.name, library %></li>
             <% end %>
             </ul>
+            <div class="see-all"><%= link_to "View all Libraries", buildings_path %></div>
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-services">
           <h2><%= link_to "Services", services_path, class: "col-heading" %></h2>
@@ -42,6 +43,7 @@
               <li><%= link_to service.title, service %></li>
             <% end %>
             </ul>
+            <div class="see-all"><%= link_to "View all Services", services_path %></div>
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-groups">
           <h2><%= link_to "Groups", groups_path, class: "col-heading" %></h2>
@@ -50,6 +52,7 @@
               <li><%= link_to group.name, group %></li>
             <% end %>
             </ul>
+            <div class="see-all"><%= link_to "View all Groups", groups_path %></div>
         </div>
         <div class="col-md-6 col-lg-3 footer-col" id="footer-collections">
           <h2><%= link_to "Collections", collections_path, class: "col-heading" %></h2>
@@ -58,22 +61,8 @@
               <li><%= link_to collection.name, collection %></li>
             <% end %>
             </ul>
+            <div class="see-all"><%= link_to "View all Collections", collections_path %></div>
         </div>
-      </div>
-
-        <div class="postscript row see-all">
-          <div class="col-md-6 col-lg-3 footer-col">
-            <div><%= link_to "View all Libraries", buildings_path %></div>
-          </div>
-          <div class="col-md-6 col-lg-3 footer-col">
-            <div><%= link_to "View all Services", services_path %></div>
-          </div>
-          <div class="col-md-6 col-lg-3 footer-col">
-            <div><%= link_to "View all Groups", groups_path %></div>
-          </div>
-          <div class="col-md-6 col-lg-3 footer-col">
-            <div><%= link_to "View all Collections", collections_path %></div>
-          </div>
       </div>
 
       <div class="tu-links">    

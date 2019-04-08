@@ -1,6 +1,6 @@
 <% 
 incident_types = ["Vandalism", "Accident/Medical","Theft", "Harassment/Fight/Abusive Language","Building Issue", "Other"]
-action_taken = ["Library Administration Notified","Facilities Notified (1-1385)","Staff Injury Report","Referred to Legal or Risk Management","Called Campus Police"]
+action_taken = ["Library Administration Notified","Facilities Notified (1-1385)","Completed Staff Injury Report","Referred to Legal or Risk Management","Called Campus Police"]
 %>
 
 <fieldset class="form-section">
@@ -31,26 +31,7 @@ action_taken = ["Library Administration Notified","Facilities Notified (1-1385)"
 </fieldset>
 
 <%= f.input :victim_complainant_statement, label: "Victim/Complainant Statement", as: :text, input_html: { cols: 60, rows: 5 } %>
-
-
 <%= f.input :action_taken, label: "Action Taken", as: :select, collection: action_taken, label: "Action Taken", name: "action", required: :true, hint: "Select all that apply. Hold [Ctrl] or [command] and click more than one if needed. Provide police report # if available.", input_html: { multiple: true, size: 5 } %>
-
-
 <%= f.input :other_action_taken, as: :text, label: "Other Action Taken" %>
-
-
-
 <%= f.input :police_report_number, label: "Police Report Number"%>
 <%= f.input :supervisor_notified, as: :radio_buttons, required: :true %>
-
-
-
-
-
-
-
-
-
-
-
-

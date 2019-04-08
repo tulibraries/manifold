@@ -5,6 +5,7 @@ class Building < ApplicationRecord
   include Validators
   include InputCleaner
   include HasPolicies
+  include SetDates
   require "uploads"
 
   validates :name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, presence: true
@@ -30,12 +31,5 @@ class Building < ApplicationRecord
     variation =
       ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 600, height: 450, blob: photo.blob, gravity: "Center"))
     ActiveStorage::Variant.new(photo.blob, variation)
-  end
-
-  def todays_hours
-    @today = Date.today.strftime("%Y-%m-%d 00:00:00")
-    unless self.hours.blank?
-      todays_hours = LibraryHours.where(location_id: self.hours, date: @today).pluck(:hours).first
-    end
   end
 end

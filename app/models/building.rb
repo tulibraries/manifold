@@ -22,6 +22,8 @@ class Building < ApplicationRecord
   before_validation :normalize_phone_number
   before_validation :sanitize_description
 
+  has_many :categorizations, as: :categorizable
+
   def index_image
     variation =
       ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 250, height: 190, blob: photo.blob, gravity: "Center"))

@@ -6,6 +6,7 @@ class Building < ApplicationRecord
   include InputCleaner
   include HasPolicies
   include SetDates
+  include Categorizable
   require "uploads"
 
   validates :name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, presence: true
@@ -22,7 +23,6 @@ class Building < ApplicationRecord
   before_validation :normalize_phone_number
   before_validation :sanitize_description
 
-  has_many :categorizations, as: :categorizable
 
   def index_image
     variation =

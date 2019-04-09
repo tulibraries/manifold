@@ -2,6 +2,7 @@
 
 class FindingAid < ApplicationRecord
   include InputCleaner
+  include Categorizable
 
   before_save :weed_nils
 

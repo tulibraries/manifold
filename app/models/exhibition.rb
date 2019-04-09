@@ -3,6 +3,8 @@
 class Exhibition < ApplicationRecord
   has_paper_trail
   include InputCleaner
+  include Categorizable
+
   belongs_to :group, optional: true
   belongs_to :space, optional: true
   belongs_to :collection, optional: true

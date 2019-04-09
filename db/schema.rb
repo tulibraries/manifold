@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_165735) do
     t.integer "categorizable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["categorizable_type", "categorizable_id"], name: "polymorphic_categorizations"
+    t.index ["category_id", "categorizable_id", "categorizable_type"], name: "polymorphic_categorizations", unique: true
     t.index ["category_id"], name: "index_categorizations_on_category_id"
   end
 

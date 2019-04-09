@@ -6,6 +6,7 @@ class Space < ApplicationRecord
   include InputCleaner
   include HasPolicies
   include SetDates
+  include Categorizable
   has_ancestry
 
   validates :name, presence: true

@@ -6,6 +6,7 @@ class Group < ApplicationRecord
   include InputCleaner
   include HasPolicies
   include SetDates
+  include Categorizable
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true

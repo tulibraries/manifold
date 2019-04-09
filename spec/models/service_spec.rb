@@ -66,6 +66,7 @@ RSpec.describe Service, type: :model do
       end
       example "not present" do
         service = FactoryBot.build(:service)
+        service.related_groups.clear
         expect { service.save! }.to raise_error(/Related groups #{I18n.t('errors.messages.blank')}/)
       end
     end
@@ -96,4 +97,6 @@ RSpec.describe Service, type: :model do
       end
     end
   end
+
+  it_behaves_like "categorizable"
 end

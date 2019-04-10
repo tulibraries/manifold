@@ -98,6 +98,7 @@ group :test do
   gem "guard-rspec", require: false
   gem "mutant-rspec"
   gem "rspec-activemodel-mocks"
+  gem "simplecov", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

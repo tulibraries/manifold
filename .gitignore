@@ -39,3 +39,4 @@ gem.tags
 
 # Ignore real account seed
 /db/account_seeds.rb
+coverage

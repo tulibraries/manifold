@@ -21,8 +21,8 @@
       <p>
         <% unless event.get_types.nil? %>
           <% event.get_types.each do |type| %>
-            <% unless request.env['PATH_INFO'].include?("past") %>
-              <%= link_to type, {controller: :events, action: :index, type: type}, class: "event_type" %> 
+            <% unless action_name == "past" %>
+              <%= link_to type, events_path(type: type), class: "event_type" %> 
               <% else %>
                 <%= link_to type, {controller: :events, action: :past, type: type}, class: "event_type" %> 
               <% end %>

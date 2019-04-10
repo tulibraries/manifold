@@ -9,10 +9,10 @@
 <div class="row space-info">
   <div class="d-none d-xl-block col-lg-12 col-xl-6 text-center text-xl-right">
     <div class="space-image">
-      <% if @space.photo.attached? %>
-        <%= image_tag @space.photo.variant(gravity: 'center', extent: "100%x100%") %>
+      <% if @space.image.attached? %>
+        <%= image_tag @space.show_image, alt: "" %>
       <% else %>
-        <%= image_tag 'T-borderless.gif' %>
+        <%= image_tag 'T-borderless.gif', alt: "" %>
       <% end %>
     </div>
   </div>

@@ -15,11 +15,11 @@ FactoryBot.define do
     phone_number { "2155551212" }
     campus { "Main Campus" }
     email { "csa@example.edu" }
-    trait :with_photo do
+    trait :with_image do
       after :create do |building|
         file_path = Rails.root.join("spec", "fixtures", "charles.jpg")
         file = fixture_file_upload(file_path, "image/png")
-        building.photo.attach(file)
+        building.image.attach(file)
       end
     end
 

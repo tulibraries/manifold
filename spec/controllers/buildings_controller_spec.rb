@@ -44,7 +44,7 @@ RSpec.describe BuildingsController, type: :controller do
 
 
   describe "GET #show as JSON" do
-    let(:building) { FactoryBot.create(:building, :with_photo) }
+    let(:building) { FactoryBot.create(:building, :with_image) }
 
     it "returns valid json" do
       get :show, format: :json, params: { id: building.id }

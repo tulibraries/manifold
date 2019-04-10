@@ -13,11 +13,11 @@ class BuildingSerializer
 
   attributes :name, :description, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number
 
-  attribute :photo, if: Proc.new { |building| building.photo.attached? } do |building|
-    helpers.rails_blob_url(building.photo)
+  attribute :image, if: Proc.new { |building| building.image.attached? } do |building|
+    helpers.rails_blob_url(building.image)
   end
 
-  attribute :thumbnail_photo, if: Proc.new { |building| building.photo.attached? } do |building|
+  attribute :thumbnail_image, if: Proc.new { |building| building.image.attached? } do |building|
     helpers.rails_representation_url(building.index_image)
   end
 

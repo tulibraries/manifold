@@ -18,7 +18,7 @@ class SpaceDashboard < BaseDashboard
     description: DescriptionField,
     hours: Field::String,
     accessibility: Field::Text,
-    photo: PhotoField.with_options(admin_only: true),
+    image: PhotoField.with_options(admin_only: true),
     phone_number: PhoneField,
     email: Field::Email,
     policies: Field::HasMany,
@@ -42,7 +42,7 @@ class SpaceDashboard < BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
-    :photo,
+    :image,
     :description,
     :building,
     :persons,
@@ -58,7 +58,7 @@ class SpaceDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :photo,
+    :image,
     :description,
     :building,
     :email,

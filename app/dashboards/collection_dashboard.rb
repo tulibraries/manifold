@@ -18,7 +18,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     ),
     # contents: DescriptionField,
     space: Field::BelongsTo,
-    photo: PhotoField,
+    image: PhotoField,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -47,7 +47,7 @@ class CollectionDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :photo,
+    :image,
     :description,
     :subject,
     # :contents,

@@ -5,6 +5,7 @@ class Person < ApplicationRecord
   include Validators
   include InputCleaner
   include Categorizable
+  include Photographable
 
   validates :first_name, :last_name, :job_title, presence: true
   validates :email_address, presence: true, email: true
@@ -13,7 +14,7 @@ class Person < ApplicationRecord
 
   serialize :specialties
 
-  has_one_attached :photo, dependent: :destroy
+  has_one_attached :image, dependent: :destroy
 
   auto_strip_attributes :email_address
 

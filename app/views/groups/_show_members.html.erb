@@ -16,14 +16,14 @@
         <div class="spacer l-end">
           <div class="title">
                 <%= link_to (person.first.first_name+' '+person.first.last_name), 
-                      controller: 'persons', action: 'show', id: person.first.id %></div>
+                      person_path(person.first) %></div>
             <div class="info">
               <div class="photo">
-                <% if person.first.photo.attached? %>
-                  <%= link_to image_tag(person.first.photo.variant(resize: "120x120>", extent: "120x120")), 
-                      controller: 'persons', action: 'show', id: person.first.id %>
+                <% if person.first.image.attached? %>
+                  <%= link_to image_tag(person.first.thumb_image), 
+                      person_path(person.first) %>
                 <% else %>
-                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.first.id %>
+                  <%= link_to (image_tag 'T-borderless.gif'), person_path(person.first) %>
                 <% end %>
               </div>
               <div class="details">
@@ -53,14 +53,13 @@
         <div class="spacer">
           <div class="title">
                 <%= link_to (person.second.first_name+' '+person.second.last_name), 
-                      controller: 'persons', action: 'show', id: person.second.id %></div>
+                      person_path(person.second) %></div>
             <div class="info">
               <div class="photo">
-                <% if person.second.photo.attached? %>
-                  <%= link_to image_tag(person.second.photo.variant(resize: "120x120>", extent: "120x120")), 
-                      controller: 'persons', action: 'show', id: person.second.id %>
+                <% if person.second.image.attached? %>
+                  <%= link_to image_tag(person.second.thumb_image), person_path(person.second) %>
                 <% else %>
-                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.second.id %>
+                  <%= link_to (image_tag 'T-borderless.gif'), person_path(person.second) %>
                 <% end %>
               </div>
               <div class="details">
@@ -90,14 +89,14 @@
         <div class="spacer r-end">
           <div class="title">
                 <%= link_to (person.third.first_name+' '+person.third.last_name), 
-                      controller: 'persons', action: 'show', id: person.third.id %></div>
+                      person_path(person.third) %></div>
             <div class="info">
               <div class="photo">
-                <% if person.third.photo.attached? %>
-                  <%= link_to image_tag(person.third.photo.variant(resize: "120x120>", extent: "120x120")), 
-                      controller: 'persons', action: 'show', id: person.third.id %>
+                <% if person.third.image.attached? %>
+                  <%= link_to image_tag(person.third.thumb_image), 
+                      person_path(person.third) %>
                 <% else %>
-                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.third.id %>
+                  <%= link_to (image_tag 'T-borderless.gif'), person_path(person.third) %>
                 <% end %>
               </div>
               <div class="details">
@@ -130,14 +129,13 @@
         <div class="spacer l-end">
           <div class="title">
                 <%= link_to (person.first.first_name+' '+person.first.last_name), 
-                      controller: 'persons', action: 'show', id: person.first.id %></div>
+                      person_path(person.first) %></div>
             <div class="info">
               <div class="photo">
-                <% if person.first.photo.attached? %>
-                  <%= link_to image_tag(person.first.photo.variant(resize: "120x120>", extent: "120x120")), 
-                      controller: 'persons', action: 'show', id: person.first.id %>
+                <% if person.first.image.attached? %>
+                  <%= link_to image_tag(person.first.thumb_image), person_path(person.first) %>
                 <% else %>
-                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.first.id %>
+                  <%= link_to (image_tag 'T-borderless.gif'), person_path(person.first) %>
                 <% end %>
               </div>
               <div class="details">
@@ -165,15 +163,13 @@
         <% end %>
         <div class="spacer r-end">
           <div class="title">
-                <%= link_to (person.second.first_name+' '+person.second.last_name), 
-                      controller: 'persons', action: 'show', id: person.second.id %></div>
+                <%= link_to (person.second.first_name+' '+person.second.last_name), person_path(person.second) %></div>
             <div class="info">
               <div class="photo">
-                <% if person.second.photo.attached? %>
-                  <%= link_to image_tag(person.second.photo.variant(resize: "120x120>", extent: "120x120")), 
-                      controller: 'persons', action: 'show', id: person.second.id %>
+                <% if person.second.image.attached? %>
+                  <%= link_to image_tag(person.second.thumb_image), person_path(person.second) %>
                 <% else %>
-                  <%= link_to image_tag 'T-borderless.gif',controller: 'persons', action: 'show', id: person.second.id %>
+                  <%= link_to (image_tag 'T-borderless.gif'), person_path(person.second) %>
                 <% end %>
               </div>
               <div class="details">
@@ -205,14 +201,13 @@
         <div class="spacer both-ends">
           <div class="title">
                 <%= link_to (person.first.first_name+' '+person.first.last_name), 
-                      controller: 'persons', action: 'show', id: person.first.id %></div>
+                      person_path(person.first) %></div>
             <div class="info">
               <div class="photo">
-                <% if person.first.photo.attached? %>
-                  <%= link_to image_tag(person.first.photo.variant(resize: "120x120>", extent: "120x120")), 
-                      controller: 'persons', action: 'show', id: person.first.id %>
+                <% if person.first.image.attached? %>
+                  <%= link_to image_tag(person.first.thumb_image), person_path(person.first) %>
                 <% else %>
-                  <%= link_to image_tag('T-borderless.gif'), controller: 'persons', action: 'show', id: person.first.id %>
+                  <%= link_to (image_tag 'T-borderless.gif'), person_path(person.first) %>
                 <% end %>
               </div>
               <div class="details">

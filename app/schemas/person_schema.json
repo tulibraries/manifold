@@ -140,10 +140,10 @@
               ],
               "pattern": "^(.*)$"
             },
-            "thumbnail_photo": {
-              "$id": "#/properties/data/properties/attributes/properties/thumbnail_photo",
+            "thumbnail_image": {
+              "$id": "#/properties/data/properties/attributes/properties/thumbnail_image",
               "type": "string",
-              "title": "The Thumbnail_photo Schema",
+              "title": "The Thumbnail_image Schema",
               "default": "",
               "examples": [
                 "http://test.host/rails/active_storage/representations/zaphod2_1024x768.jpg"

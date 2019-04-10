@@ -18,7 +18,7 @@ class PersonDashboard < BaseDashboard
     phone_number: PhoneField,
     email_address: Field::Email,
     chat_handle: Field::String,
-    photo: PhotoField.with_options(admin_only: true),
+    image: PhotoField.with_options(admin_only: true),
     job_title: Field::String,
     specialties: MultiSelectField.with_options(
       collection: Rails.configuration.specialties,
@@ -47,7 +47,7 @@ class PersonDashboard < BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :first_name,
     :last_name,
-    :photo,
+    :image,
     :phone_number,
     :email_address,
     :chat_handle,
@@ -64,7 +64,7 @@ class PersonDashboard < BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :photo,
+    :image,
     :first_name,
     :last_name,
     :phone_number,

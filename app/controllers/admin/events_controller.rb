@@ -14,6 +14,12 @@ module Admin
       redirect_to admin_events_path
     end
 
+    def revert
+			version = @event.versions.find(params[:id])
+			version.reify.save!
+		  redirect_to @event, notice: 'Event was successfully rollbacked.'
+    end
+
   private
 
     # Workaround that prevents updating event objects

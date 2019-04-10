@@ -48,11 +48,27 @@ and renders all form fields for a resource's editable attributes.
       <label for"versions">Versions</label>
     </div>
     <div class="field-unit__field">
-        <% page.resource.versions.each do |ver| %>
-          <div>
-            <%= ver.id %>: <%= ver.event %> <%= ver.created_at %>
-          </div>
-        <% end %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Version ID</th>
+            <th>Modifier</th>
+            <th>Event\nClick to revert</th>
+            <th>Date/Time</th>
+            <th>Diffs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% page.resource.versions.each do |version| %>
+            <%= tag.tr do %>
+              <%= tag.td version.id %>
+              <%= tag.td link_to(version.event, revert_version_path(version.id), method: :post)%>
+              <%= tag.td Account.find(version.whodunnit).email %>
+              <%= tag.td version.created_at %>
+              <%= tag.td changed_fields(version.changeset) %>
+            <% end %>
+          <% end %>
+        </tbody>
       <% end %>
     </div>
   </div>

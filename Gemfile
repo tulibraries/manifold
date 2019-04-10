@@ -64,6 +64,7 @@ gem "feedjira"
 gem "json-ld"
 gem "fast_jsonapi", "~> 1.0"
 gem "paper_trail"
+gem "diffy"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

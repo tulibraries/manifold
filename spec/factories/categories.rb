@@ -16,5 +16,10 @@ FactoryBot.define do
         category.icon.attach(file)
       end
     end
+    factory :category_parent do
+      name { "Dreaming while Dreaming" }
+    end
   end
+
+
 end

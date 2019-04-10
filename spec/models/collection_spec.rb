@@ -44,4 +44,6 @@ RSpec.describe Collection, type: :model do
       end
     end
   end
+
+  it_behaves_like "categorizable"
 end

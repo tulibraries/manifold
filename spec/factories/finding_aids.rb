@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :finding_aid do
     name { "MyString" }
     description { "MyText" }
-    subject { "MyString" }
+    subject { ["MyString"] }
     content_link { "MyString" }
     identifier { "MyString" }
   end

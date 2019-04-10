@@ -2,6 +2,7 @@
 
 class Page < ApplicationRecord
   include Validators
+  include Categorizable
 
   has_one_attached :document, dependent: :destroy
   # validates :document, content_type: ["application/pdf"]

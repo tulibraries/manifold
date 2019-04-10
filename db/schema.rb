@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_154322) do
+ActiveRecord::Schema.define(version: 2019_04_08_165735) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -110,6 +110,16 @@ ActiveRecord::Schema.define(version: 2019_04_05_154322) do
     t.string "custom_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer "category_id"
+    t.string "categorizable_type"
+    t.integer "categorizable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id", "categorizable_id", "categorizable_type"], name: "polymorphic_categorizations", unique: true
+    t.index ["category_id"], name: "index_categorizations_on_category_id"
   end
 
   create_table "collection_aids", force: :cascade do |t|

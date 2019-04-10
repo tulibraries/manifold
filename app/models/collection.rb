@@ -3,6 +3,7 @@
 class Collection < ApplicationRecord
   has_paper_trail
   include InputCleaner
+  include Categorizable
 
   validates :name, :description, presence: true
 

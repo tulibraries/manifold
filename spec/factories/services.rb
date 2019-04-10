@@ -15,5 +15,6 @@ FactoryBot.define do
     service_policies { "Plenary" }
     intended_audience { ["General"] }
     service_category { "Hospitality" }
+    related_groups { [FactoryBot.create(:group)] }
   end
 end

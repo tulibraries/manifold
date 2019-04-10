@@ -4,9 +4,9 @@ require "rails_helper"
 
 RSpec.describe Category, type: :model do
 
-  describe "A basic category" do
-    let(:category) { FactoryBot.create(:category) }
+  let(:category) { FactoryBot.create(:category) }
 
+  describe "A basic category" do
     context "has a name" do
       it "doesn't error when built" do
         expect { category }.not_to raise_error
@@ -64,5 +64,46 @@ RSpec.describe Category, type: :model do
         expect(category.url).to eq "http://sand.man"
       end
     end
+  end
+  describe "#items" do
+    let(:building) { FactoryBot.create(:building) }
+    let(:building2) { FactoryBot.create(:building) }
+    let(:event) { FactoryBot.create(:event) }
+
+    context "no items categorized" do
+      it "should return an array" do
+        expect(category.items).to be_a_kind_of(Array)
+      end
+
+      it "should be an empty array" do
+        expect(category.items).to eql []
+      end
+    end
+
+    context "items of one type in this category" do
+      before do
+        building.categories << category
+        building2.categories << category
+      end
+      it "should return an array" do
+        expect(category.items).to be_a_kind_of(Array)
+      end
+
+      it "should include expected items" do
+        expect(category.items).to include(building, building2)
+      end
+    end
+
+    context "items of one type in this category" do
+      before do
+        building.categories << category
+        event.categories << category
+      end
+
+      it "should include expected items" do
+        expect(category.items).to include(building, event)
+      end
+    end
+
   end
 end

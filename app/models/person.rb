@@ -4,6 +4,7 @@ class Person < ApplicationRecord
   has_paper_trail
   include Validators
   include InputCleaner
+  include Categorizable
 
   validates :first_name, :last_name, :job_title, presence: true
   validates :email_address, presence: true, email: true

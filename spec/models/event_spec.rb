@@ -125,4 +125,6 @@ RSpec.describe Event, type: :model do
       expect(blog.versions.last.whodunnit).to match(/^#{@account_2.id.to_s}$/)
     end
   end
+
+  it_behaves_like "categorizable"
 end

@@ -3,6 +3,8 @@
 class Event < ApplicationRecord
   has_paper_trail
   include InputCleaner
+  include Categorizable
+
   paginates_per 5
   belongs_to :building, optional: true
   belongs_to :space, optional: true

@@ -14,13 +14,6 @@ module Admin
       redirect_to admin_events_path
     end
 
-    def revert
-      event = Event.find(params[:event_id])
-      version = event.versions.find(params[:version_id])
-      version.reify.save!
-      redirect_to action: :show, id: event.id
-    end
-
   private
 
     # Workaround that prevents updating event objects

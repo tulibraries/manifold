@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resource :events do
       member do
         post :sync
-        post :rollback
+        post :revert
       end
     end
 

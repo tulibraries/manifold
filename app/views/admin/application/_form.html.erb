@@ -41,7 +41,7 @@ and renders all form fields for a resource's editable attributes.
     <%= f.submit %>
   </div>
 
-  <% if page.resource.versions%>
+  <% unless page.resource.versions.empty? %>
   <hr/>
   <div class="field-unit field-unit--has_many ">
     <div class="field-unit__label">
@@ -51,9 +51,9 @@ and renders all form fields for a resource's editable attributes.
       <table class="table">
         <thead>
           <tr>
-            <th>Version ID</th>
+            <th>Revert</th>
             <th>Modifier</th>
-            <th>Event\nClick to revert</th>
+            <th>Event</th>
             <th>Date/Time</th>
             <th>Diffs</th>
           </tr>
@@ -61,17 +61,20 @@ and renders all form fields for a resource's editable attributes.
         <tbody>
           <% page.resource.versions.each do |version| %>
             <%= tag.tr do %>
-              <%= tag.td version.id %>
-              <%= tag.td link_to(version.event, revert_version_path(version.id), method: :post)%>
+              <%= tag.td do %>
+                <%= button_to(t('manifold.admin.actions.revert'), action: "revert",  params: { version_id: version.id, event_id: params[:id] })  %>
+              <% end %>
+              <%= tag.td version.event %>
               <%= tag.td Account.find(version.whodunnit).email %>
               <%= tag.td version.created_at %>
               <%= tag.td changed_fields(version.changeset) %>
             <% end %>
           <% end %>
         </tbody>
-      <% end %>
     </div>
   </div>
+<% end %>
+
 <% end %>
 
 <% if @dashboard&.tinymce? %>

@@ -15,9 +15,10 @@ module Admin
     end
 
     def revert
-			version = @event.versions.find(params[:id])
-			version.reify.save!
-		  redirect_to @event, notice: 'Event was successfully rollbacked.'
+      event = Event.find(params[:event_id])
+      version = event.versions.find(params[:version_id])
+      version.reify.save!
+      redirect_to action: :show, id: event.id
     end
 
   private

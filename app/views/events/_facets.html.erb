@@ -3,30 +3,44 @@
     <span class="fa fa-search"></span>
     <input type="text" name="q" class="events_search" placeholder="Search events" />
   </form>
+  <% unless @event_types.empty? %>
   <div class="event_types">
     <h3 class="types_header">Event type</h3>
-    <ul class="unstyled">
+    <ul class="list-unstyled">
       <% @event_types.each do |type| %>
         <% unless type == params[:type] %>
-          <li><%= link_to type, {controller: :events, action: :index, type: type} %></li>
+          <li><%= link_to type, events_path(type: type) %></li>
         <% else %>
-          <li class="active"><%= link_to type, {controller: :events, action: :index, type: type} %></li>
+          <li class="active"><%= link_to type, events_path(type: type) %></li>
         <% end %>
       <% end %>
     </ul>
   </div>
+  <% end %>
+  <% unless @event_locations.empty? %>
   <div class="event_spaces">
     <h3 class="spaces_header">Location</h3>
-    <ul class="unstyled">
-      <% @event_spaces.each do |space| %>
-        <% unless space == params[:location] %>
-          <li><%= link_to space, {controller: :events, action: :index, location: space} %></li>
-        <% else %>
-          <li class="active"><%= link_to space, {controller: :events, action: :index, location: space} %></li>
+    <ul class="list-unstyled">
+      <% @event_locations.each do |location| %>
+        <% unless location == params[:location] %>
+          <% unless action_name == "past" %>
+            <% unless location.first.nil? %>
+              <li><%= link_to location.second, events_path(location: location.first) %></li>
+            <% else %>
+              <li><%= link_to location.second, events_path(location: location.second) %></li>
+            <% end %>
+          <% else %>
+            <% unless location.first.nil? %>
+              <li><%= link_to location.second, past_events_path(location: location.first) %></li>
+            <% else %>
+              <li><%= link_to location.second, past_events_path(location: location.second) %></li>
+            <% end %>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
   </div>
+  <% end %>
   <div class="row">
     <div class="col text-center">
       <%= link_to "[ reset all filters ]", events_path, class: "reset" %>

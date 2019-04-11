@@ -50,16 +50,17 @@ RSpec.describe Event, type: :model do
   end
 
   describe "set times" do
-    let(:start_time) { DateTime.parse "7/4/18 10:00 am" }
-    let(:start_date) { DateTime.parse "7/4/18" }
-    let(:end_time) { DateTime.parse "7/4/18 2:00 pm" }
+    let(:start_time) { Time.parse "7/4/18 10:00 am" }
+    let(:start_date) { Time.parse "7/4/18" }
+    let(:end_date) { Time.parse "7/4/18" }
+    let(:end_time) { Time.parse "7/4/18 2:00 pm" }
     example "event is all day long" do
       event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_date, all_day: true)
-      expect(event.set_times).to match(/^All Day$/)
+      expect(event.set_times).to match("(All day)")
     end
     example "event has an start and end time" do
       event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_time, end_time: end_time, all_day: false)
-      expect(event.set_times).to match(/^10:00 AM - 02:00 PM$/)
+      expect(event.set_times).to match("10:00 am -  2:00 pm")
     end
   end
 
@@ -78,8 +79,8 @@ RSpec.describe Event, type: :model do
     fields = {
       title: ["The Text 1", "The Text 2"],
       description: ["The Text 1", "The Text 2"],
-      start_time: [DateTime.parse("2018/9/24 11:00"), DateTime.parse("2018/9/24 11:30")],
-      end_time: [DateTime.parse("2018/9/24 12:00"), DateTime.parse("2018/9/24 12:30")],
+      start_time: [Time.parse("2018/9/24 11:00"), Time.parse("2018/9/24 11:30")],
+      end_time: [Time.parse("2018/9/24 12:00"), Time.parse("2018/9/24 12:30")],
       external_building: ["The Text 1", "The Text 2"],
       external_space: ["The Text 1", "The Text 2"],
       external_address: ["The Text 1", "The Text 2"],

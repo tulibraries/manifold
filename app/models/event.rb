@@ -22,6 +22,14 @@ class Event < ApplicationRecord
     self.event_type.split(",").collect(&:strip)
   end
 
+  def building_name(event)
+    if event.building
+      event.building.name
+    else
+      event.external_building
+    end
+  end
+
   def can_visit
     unless building.nil?
       true
@@ -29,26 +37,31 @@ class Event < ApplicationRecord
       false
     end
   end
+
   def get_date
-    start_time.strftime("%B %d, %Y")
+    start_time.strftime("%^A, %^B %d, %Y ").titleize
   end
+
   def set_times
     unless all_day
-      "#{start_time.strftime("%I:%M %p")} - #{end_time.strftime("%I:%M %p")}"
+      unless end_time.nil? || end_time == start_time
+        start_time.strftime("%l:00 %P") + " - " + end_time.strftime("%l:00 %P")
+      else
+        start_time.strftime("%l:00 %P")
+      end
     else
-      "All Day"
+      "(All day)"
     end
   end
 
   def index_image
-    image.variant(centered_image_variation(220, 220)).processed
+    variation =
+      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
+    ActiveStorage::Variant.new(image.blob, variation)
   end
-
   def show_image
-    image.variant(centered_image_variation(300, 300)).processed
-  end
-
-  def centered_image_variation(width, height)
-    ActiveStorage::Variation.new(Uploads.resize_to_fill(width: width, height: height, blob: image.blob, gravity: "Center"))
+    variation =
+      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
+    ActiveStorage::Variant.new(image.blob, variation)
   end
 end

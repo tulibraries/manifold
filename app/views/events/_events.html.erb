@@ -24,7 +24,7 @@
             <% unless action_name == "past" %>
               <%= link_to type, events_path(type: type), class: "event_type" %> 
               <% else %>
-                <%= link_to type, {controller: :events, action: :past, type: type}, class: "event_type" %> 
+                <%= link_to type, past_events_path(type: type), class: "event_type" %> 
               <% end %>
           <% end %>
         <% end %>

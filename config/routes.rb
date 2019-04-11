@@ -2,6 +2,11 @@
 
 Rails.application.routes.draw do
 
+  concern :imageable do
+    resources :images, only: [:index]
+  end
+
+
   devise_for :accounts, controllers: { omniauth_callbacks: "accounts/omniauth_callbacks" }
   namespace :admin do
     resources :accounts
@@ -46,7 +51,7 @@ Rails.application.routes.draw do
   root "pages#home"
   resources :alerts, only: [:index, :show]
   resources :blog_posts, only: [:index, :show]
-  resources :persons, only: [:index, :show], as: :people, path: "people"
+  resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
   resources :spaces, only: [:index, :show]
   resources :blogs, only: [:index, :show]
   resources :buildings, only: [:index, :show], path: "libraries"

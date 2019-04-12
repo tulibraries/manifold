@@ -4,13 +4,12 @@ class Event < ApplicationRecord
   has_paper_trail
   include InputCleaner
   include Categorizable
-  include Photographable
+  include Imageable
 
   paginates_per 5
   belongs_to :building, optional: true
   belongs_to :space, optional: true
   belongs_to :person, optional: true
-  has_one_attached :image, dependent: :destroy
 
   before_save :sanitize_description
 
@@ -54,5 +53,4 @@ class Event < ApplicationRecord
       "(All day)"
     end
   end
-
 end

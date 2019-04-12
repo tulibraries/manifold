@@ -99,5 +99,6 @@ RSpec.describe Space, type: :model do
   end
 
   it_behaves_like "categorizable"
+  it_behaves_like "imageable"
 
 end

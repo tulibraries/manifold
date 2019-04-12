@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
-module Photographable
+module Imageable
   extend ActiveSupport::Concern
+
+  included do
+    has_one_attached :image, dependent: :destroy
+  end
 
   def index_image
     image.variant(image_variation(220, 220)).processed

@@ -53,6 +53,7 @@ en:
         contact_phone: "No Contact Phone Number"
         registration_status: "No Registration Required"
         space: "No Space Given"
+        building: "Samuel L. Paley Library"
       attributes:
         form:
           name: "Name"

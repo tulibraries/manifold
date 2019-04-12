@@ -2,23 +2,20 @@
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show]
+  before_action :init, only: [:index, :past]
 
   def index
-    @all_events = Event.group(:id)
-    @exhibitions = Exhibition.where(promoted_to_events: true)
-    @today = Date.today
-
-    unless params[:id] == "past"
-      @events = @all_events.having("start_time >= ?", @today).order(:start_time)
-      @event_types = return_types(@events)
-      @event_spaces = return_locations(@events)
-      @events = return_events(@events)
-    else
-      @events = @all_events.having("start_time < ?", @today).order(start_time: :desc)
-      @event_types = return_types(@events)
-      @event_spaces = return_locations(@events)
-      @events = return_events(@events)
+    @events = @all_events.having("start_time >= ?", @today).order(:start_time)
+    @events = return_events(@events)
+    respond_to do |format|
+      format.html
+      format.json { render json: EventSerializer.new(@events) }
     end
+  end
+
+  def past
+    @events = @all_events.having("start_time < ?", @today).order(start_time: :desc)
+    @events = return_events(@events)
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(@events) }
@@ -29,8 +26,10 @@ class EventsController < ApplicationController
     if params.has_key?("type")
       @events = @events.having("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
     elsif params.has_key?("location")
-      @events = @events.having("external_space LIKE ?", "%#{params[:location]}%").or(@events.having("external_space LIKE ?", "%#{params[:location]}%")).order(start_time: :desc)
+      @events = @events.having("building_id LIKE ?", "%#{params[:location]}%").or(@events.having("external_building LIKE ?", "%#{params[:location]}%")).order(start_time: :desc)
     end
+    @event_types = return_types(events)
+    @event_spaces = return_locations(events)
     @events_list = @events.page params[:page]
   end
 
@@ -40,8 +39,10 @@ class EventsController < ApplicationController
     @event_types.each do |type|
       types = type.split(",")
       types.each do |t|
-        unless t.nil?
+        unless t.nil? || t.blank?
           @types.push(t)
+        else
+          @types.push("Uncategorized")
         end
       end
     end
@@ -49,19 +50,22 @@ class EventsController < ApplicationController
   end
 
   def return_locations(events)
-    @event_spaces = @events.pluck(:space, :external_space).flatten
-    @spaces = []
-    @event_spaces.each do |space|
-      unless space.nil?
-        spaces = space.split(",")
-        spaces.each do |t|
-          unless t.nil? || t == "space" || t == "external_space" || t == I18n.t("manifold.default.event.space")
-            @spaces.push(t)
-          end
+    locations = []
+    internal_locations = @events.pluck(:building_id)
+    external_locations = @events.pluck(:external_building)
+    all_locations = internal_locations.concat(external_locations)
+
+    events.each do |event|
+      unless event.building_id.nil? && event.external_building.nil?
+        unless event.building_id.nil?
+          locations.push([event.building_id, event.building_name(event)])
+        else
+          locations.push([nil, event.building_name(event)])
         end
       end
     end
-    @event_spaces = @spaces.collect(&:strip).flatten.uniq.sort
+
+    @event_locations = locations.compact.uniq
   end
 
   def show
@@ -72,6 +76,12 @@ class EventsController < ApplicationController
   end
 
   private
+    def init
+      @all_events = Event.group(:id)
+      @exhibitions = Exhibition.where(promoted_to_events: true)
+      @today = Date.today
+    end
+
     def set_event
       @event = Event.find(params[:id])
     end

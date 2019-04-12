@@ -1,14 +1,15 @@
 <div class="row">
   <div class="col breadcrumbs">
     <%= link_to "Home", root_path.to_s %> 
-    Events &amp; Exhibits
+    <%= link_to "Events & Exhibits", events_path %>
+    Past Events
   </div>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Events &amp; Exhibits</h1>
+      <h1>Past Events &amp; Exhibits</h1>
     </div>
   </div>
 
@@ -19,7 +20,7 @@
     <div class="col-6 events">
       <div class="row">
         <div class="col-12 upcoming-header">
-          Upcoming Events
+          Past Events
         </div>
       </div>
       
@@ -42,7 +43,7 @@
 
       <div class="row">
         <div class="col-12">
-          <%= link_to "View past events & exhibits", past_events_path, class: "past-events-button" %>
+          <%= link_to "View current events & exhibits", events_path, class: "past-events-button" %>
         </div>
       </div>
       <div class="row">

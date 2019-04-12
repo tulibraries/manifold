@@ -8,6 +8,7 @@ module InputCleaner
   end
   def sanitize_description
     self.description.gsub!(/<p>\W<\/p>/, "")
+    self.description.each_line { |line| line.chomp }
     self.description = ActionController::Base.helpers.sanitize(self.description).strip
   end
   def burpArray

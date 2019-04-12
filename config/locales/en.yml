@@ -109,6 +109,7 @@ en:
         sync_library_hours: "Sync Hours"
         sync: "Sync"
         revert: "This version"
+        object_version: "Version"
       notification:
         all_blogs_synced: "Blogs: All synched"
         blog_synced: "Blogs: %{id} - %{title} synced"

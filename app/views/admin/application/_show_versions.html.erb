@@ -15,7 +15,7 @@
         <% page.resource.versions.each do |version| %>
           <%= tag.tr do %>
             <%= tag.td version.event %>
-            <%= tag.td Account.find(version.whodunnit).email %>
+            <%= tag.td Account.find(version.whodunnit).email unless version.whodunnit.nil? %>
             <%= tag.td version.created_at %>
           <% end %>
         <% end %>

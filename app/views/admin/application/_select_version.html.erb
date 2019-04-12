@@ -22,7 +22,7 @@
                 <%= button_to(t('manifold.admin.actions.revert'), action: "revert",  params: { version_id: version.id, event_id: params[:id] })  %>
               <% end %>
               <%= tag.td version.event %>
-              <%= tag.td Account.find(version.whodunnit).email %>
+              <%= tag.td Account.find(version.whodunnit).email unless version.whodunnit.nil? %>
               <%= tag.td version.created_at %>
               <%= tag.td changed_fields(version.changeset) %>
             <% end %>

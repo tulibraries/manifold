@@ -31,6 +31,13 @@ module Admin
       # TODO Add authentication logic here.
     end
 
+    def revert
+      object = controller_name.classify.constantize.find(params[:event_id])
+      version = object.versions.find(params[:version_id])
+      version.reify.save!
+      redirect_to action: :show, id: object.id
+    end
+
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
     # def records_per_page

@@ -21,6 +21,14 @@ Rails.application.routes.draw do
     resources :services
     resources :spaces
 
+    resources :alerts, :blogs, :blog_posts, :buildings, :collections,
+      :events, :exhibitions, :groups, :finding_aids , :highlights,
+      :people, :policies, :services, :spaces do
+      member do
+        post :revert
+      end
+    end
+
     resource :events do
       member do
         post :sync

@@ -27,24 +27,24 @@ RSpec.describe PersonSerializer do
       expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(person)
     end
 
-    describe "person with photo" do
-      let (:person) { FactoryBot.create(:person, :with_photo) }
+    describe "person with image" do
+      let (:person) { FactoryBot.create(:person, :with_image) }
 
-      it "has the photo and thumbnail attributes" do
-        expect(data[:attributes].keys).to include(:photo, :thumbnail_photo)
+      it "has the image and thumbnail attributes" do
+        expect(data[:attributes].keys).to include(:image, :thumbnail_image)
       end
 
-      describe "photo attribute" do
+      describe "image attribute" do
         it "returns an valid url" do
-          photo_url = data[:attributes][:photo]
-          expect(photo_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
+          image_url = data[:attributes][:image]
+          expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
         end
       end
 
-      describe "thumbnail_photo attribute" do
+      describe "thumbnail_image attribute" do
         it "returns an valid url" do
-          photo_url = data[:attributes][:thumbnail_photo]
-          expect(photo_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
+          image_url = data[:attributes][:thumbnail_image]
+          expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
         end
       end
     end

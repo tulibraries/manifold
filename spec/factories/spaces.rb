@@ -10,7 +10,7 @@ FactoryBot.define do
     accessibility { "Yes" }
     phone_number { "2155551213" }
     email { "mmuffley@example.com" }
-    image { "https://diefenbunker.files.wordpress.com/2012/05/dr-strangelove-warroom.jpg" }
+    image { Rails.root.join("spec", "fixtures", "charles.jpg") }
     association :building
 
     factory :space_with_parent do

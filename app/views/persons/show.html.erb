@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col breadcrumbs" style="margin-bottom: 35px;">
     <%= link_to "Home", root_path.to_s %> 
-    <%= link_to "People", controller: 'persons', action: :index %> 
+    <%= link_to "People", people_path %> 
     <%= @person.first_name %> <%= @person.last_name %>
   </div>
 </div>
@@ -13,8 +13,8 @@
   <div class="col-sm-12 offset-sm-1 col-lg-6">
     <div class="row" style="display: table;">
       <div class="col-3" style="width: 35%;display: table-cell;vertical-align:middle;">
-        <% if @person.photo.attached?  %>
-          <%= image_tag @person.photo.variant(resize: '300x300', gravity: 'center', extent: '300x300'), style: '' %>
+        <% if @person.image.attached?  %>
+          <%= image_tag @person.show_image, alt: "" %>
         <% else %> 
           <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
         <% end %>

@@ -7,6 +7,7 @@ class Space < ApplicationRecord
   include HasPolicies
   include SetDates
   include Categorizable
+  include Imageable
   has_ancestry
 
   validates :name, presence: true
@@ -17,8 +18,6 @@ class Space < ApplicationRecord
   before_validation :sanitize_description
 
   auto_strip_attributes :email
-
-  has_one_attached :photo, dependent: :destroy
 
   before_validation :normalize_phone_number
 

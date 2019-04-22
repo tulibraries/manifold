@@ -85,7 +85,6 @@ RSpec.describe Space, type: :model do
       hours: ["The Text 1", "The Text 2"],
       accessibility: ["https://example.com/doc1", "https://example.com/doc2"],
       phone_number: ["2155551212", "2155551234"],
-      image: ["https://example.com/image1.jpg", "https://example.com/image2.png"],
       email: ["first@example.com", "second@email.com"],
     }
 
@@ -100,5 +99,6 @@ RSpec.describe Space, type: :model do
   end
 
   it_behaves_like "categorizable"
+  it_behaves_like "imageable"
 
 end

@@ -11,7 +11,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    photo: PhotoField,
+    image: PhotoField,
     title: Field::String,
     blurb: Field::Text,
     link_label: Field::String,
@@ -39,7 +39,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :photo,
+    :image,
     :title,
     :blurb,
     :link_label,
@@ -52,7 +52,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :photo,
+    :image,
     :title,
     :blurb,
     :link_label,

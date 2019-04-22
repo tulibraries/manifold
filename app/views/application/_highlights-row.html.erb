@@ -2,8 +2,8 @@
   <div class="col-12 col-xl-3">
     <div class="card cta<%= (index+1).ordinalize %> ">
 
-      <% if highlight.photo.attached?  %>
-        <%= image_tag highlight.photo.variant(resize: '360x360', gravity: 'center'), class: "d-none d-xl-block card-img-top", alt: "" %>
+      <% if highlight.image.attached?  %>
+        <%= image_tag highlight.image_variant(360,360), class: "d-none d-xl-block card-img-top", alt: "" %>
       <% else %>
         <%= image_tag "T.gif", style: 'width: 300px;' %>
       <% end %>

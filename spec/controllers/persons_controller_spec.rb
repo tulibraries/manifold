@@ -43,7 +43,7 @@ RSpec.describe PersonsController, type: :controller do
   end
 
   describe "GET #show as JSON" do
-    let(:person) { FactoryBot.create(:person, :with_photo) }
+    let(:person) { FactoryBot.create(:person, :with_image) }
 
     it "returns valid json" do
       get :show, format: :json, params: { id: person.to_param }

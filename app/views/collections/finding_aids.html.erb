@@ -11,8 +11,8 @@
     <h2 class="unstyled"><%= @collection.name %></h2>
     <div class="row">
     	<div class="col-4 text-center">
-          <% if @collection.photo.attached? %>
-            <%= image_tag @collection.photo.variant(gravity: 'center', extent: "100%x100%") %>
+          <% if @collection.image.attached? %>
+            <%= image_tag @collection.show_image %>
           <% else %>
             <%= image_tag 'T-borderless.gif' %>
           <% end %>

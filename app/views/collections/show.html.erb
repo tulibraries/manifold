@@ -11,10 +11,10 @@
     <h2 class="unstyled" style=""><%= @collection.name %></h2>
     <div class="row info">
     	<div class="col-4" style="padding-left: 0;">
-          <% if @collection.photo.attached? %>
-            <%= image_tag @collection.photo.variant(gravity: 'center', extent: "100%x100%") %>
+          <% if @collection.image.attached? %>
+            <%= image_tag @collection.show_image, alt: "" %>
           <% else %>
-            <%= image_tag 'T-borderless.gif' %>
+            <%= image_tag 'T-borderless.gif', alt: "" %>
           <% end %>
     	</div>
     	<div class="col-8" style="padding-left:21px;">

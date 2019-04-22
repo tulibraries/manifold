@@ -4,12 +4,12 @@ class Event < ApplicationRecord
   has_paper_trail
   include InputCleaner
   include Categorizable
+  include Imageable
 
   paginates_per 5
   belongs_to :building, optional: true
   belongs_to :space, optional: true
   belongs_to :person, optional: true
-  has_one_attached :image, dependent: :destroy
 
   before_save :sanitize_description
 
@@ -52,16 +52,5 @@ class Event < ApplicationRecord
     else
       "(All day)"
     end
-  end
-
-  def index_image
-    variation =
-      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
-    ActiveStorage::Variant.new(image.blob, variation)
-  end
-  def show_image
-    variation =
-      ActiveStorage::Variation.new(Uploads.resize_to_fill(width: 220, height: 220, blob: image.blob, gravity: "Center"))
-    ActiveStorage::Variant.new(image.blob, variation)
   end
 end

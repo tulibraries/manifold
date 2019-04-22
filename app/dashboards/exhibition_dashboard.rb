@@ -13,7 +13,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     group: Field::BelongsTo,
     space: Field::BelongsTo.with_options(required: true),
     collection: Field::BelongsTo,
-    photo: PhotoField,
+    image: PhotoField,
     id: Field::Number,
     title: Field::String,
     description: Field::Text,
@@ -39,7 +39,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
-    :photo,
+    :image,
     :description,
     :start_date,
     :end_date,
@@ -53,7 +53,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
-    :photo,
+    :image,
     :description,
     :start_date,
     :end_date,

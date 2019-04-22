@@ -10,8 +10,8 @@
 <div class="row building-info">
   <div class="d-none d-xl-block col-xl-6 text-center text-xl-right">
     <div class="building-image">
-      <% if @building.photo.attached? %>
-        <%= image_tag @building.photo.variant(gravity: 'center', extent: "100%x100%") %>
+      <% if @building.image.attached? %>
+        <%= image_tag @building.image_variation(600,450) %>
       <% else %>
         <%= image_tag 'T-borderless.gif' %>
       <% end %>

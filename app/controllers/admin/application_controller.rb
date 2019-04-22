@@ -38,6 +38,12 @@ module Admin
       redirect_to action: :show, id: object.id
     end
 
+    def edit
+      object = controller_name.classify.constantize.find(params[:event_id])
+      version = object.versions.find(params[:version_id])
+      binding.pry
+    end
+
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
     # def records_per_page

@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <% page.resource.versions.each do |version| %>
+        <% page.resource.versions.reverse_each do |version| %>
           <%= tag.tr do %>
             <%= tag.td version.event %>
             <%= tag.td Account.find(version.whodunnit).email unless version.whodunnit.nil? %>

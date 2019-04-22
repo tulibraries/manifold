@@ -50,11 +50,6 @@ as well as a link to its edit page.
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
           ><%= render_field attribute, page: page %></dd>
     <% end %>
-<<<<<<< HEAD
   </dl>
-=======
-    <%= render "show_versions", page: page %>
-  </dl>
-
->>>>>>> Display version history in edit form
+    <%= render "select_version", page: page %>
 </section>

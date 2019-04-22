@@ -16,10 +16,15 @@
           </tr>
         </thead>
         <tbody>
-          <% page.resource.versions.each do |version| %>
+          <% page.resource.versions.reverse_each do |version| %>
             <%= tag.tr do %>
               <%= tag.td do %>
-                <%= button_to(t('manifold.admin.actions.revert'), action: "revert",  params: { version_id: version.id, event_id: params[:id] })  %>
+                <%= link_to(
+                  t("manifold.admin.actions.revert"),
+                  [:edit, namespace, page.resource],
+                  class: "button",
+                  params: { version_id: version.id, event_id: params[:id] }
+                ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
               <% end %>
               <%= tag.td version.event %>
               <%= tag.td Account.find(version.whodunnit).email unless version.whodunnit.nil? %>

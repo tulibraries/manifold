@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :policies
     resources :services
     resources :spaces
+    resources :categories
 
     resource :events do
       member do

@@ -39,9 +39,9 @@ and renders all form fields for a resource's editable attributes.
 
   <div class="form-actions">
     <%= f.submit %>
-    <%= link_to(t("manifold.admin.actions.show_website"),
-                page.resource,
-                class: "button") if page.resource.persisted? %>
+    <% if (page.resource.respond_to?(page.resource.class.name.downcase + "_path") && page.resource.persisted?) %>
+      <%= link_to(t("manifold.admin.actions.show_website"), page.resource, class: "button")  %>
+    <% end %>
   </div>
 
 <% end %>

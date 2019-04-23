@@ -187,7 +187,7 @@ GEM
       concurrent-ruby (~> 1.0)
     hashie (3.6.0)
     honeybadger (4.2.1)
-    httparty (0.16.4)
+    httparty (0.17.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)

@@ -25,7 +25,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     #:categorizations,
-    :icon,
+    :name,
     :id,
   ].freeze
 

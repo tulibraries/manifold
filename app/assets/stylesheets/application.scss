@@ -24,15 +24,13 @@ $grid-breakpoints: (
   xs: 0,
   sm: 600px,
   md: 800px,
-  lg: 1000px,
-  xl: 1280px
+  lg: 1199px
 );
 
 $container-max-widths: (
   sm: 600px,
   md: 800px,
-  lg: 1000px,
-  xl: 1220px
+  lg: 1200px
 );
 
 
@@ -44,19 +42,8 @@ $container-max-widths: (
 		max-width: 100%; 
 	}
 	@media (min-width: 1200px) {
-    max-width: 1500px;
-	}
-}
-
-.container.index {
-	@media (min-width: 576px) {
-		max-width: 100%; 
-	}
-	@media (min-width: 768px) {
-		max-width: 100%; 
-	}
-	@media (min-width: 1200px) {
     max-width: 1200px;
+    min-width: 1200px;
 	}
 }
 
@@ -119,6 +106,8 @@ a:not(.dropdown-item) {
 	margin: 0;
 	background-color: $white;
 	padding-bottom: 42px;
+	position: relative;
+  top: -7px;
 	/*min-height: calc(100vh - 291px)*/
 }
 #skip-link {

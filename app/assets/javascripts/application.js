@@ -15,15 +15,7 @@
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery_ujs
 //= require tinymce-jquery
 //= require turbolinks
 //= require_tree .
-
-function myFunction(x) {
-    x.classList.toggle("change");
-    document.getElementById("main-menu").classList.toggle("d-none");
-  }
-
-function toggle(x) {
-	document.getElementById(x).classList.toggle("d-none")
-}

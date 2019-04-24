@@ -1,61 +1,21 @@
-  <div id="header-navbar" class="navbar navbar-static-top" role="navigation">
-    <div class="col">
-      <div class="navbar-header">
-        <div class="row">
-          <div class="col col-md-1">
-            <%= link_to root_path, class: "header-name", id: "header-logo" do %>
-              <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> University Libraries
-            <% end %>
-          </div>
-          <div class="navbar-right col col-md-11">
-            <ul class="d-none d-xl-block"> 
-              <li>
-                <a href="/">About</a>
-              </li>
-   
-              <li>
-                <a href="/">Research</a>
-              </li>
-              <li>
-                <a href="/">Services</a>
-              </li>
+  <div id="header-navbar" class="container navbar navbar-static-top" role="navigation">
+    <div class="col-md-5 col-lg-4">
+      <%= link_to root_path, class: "header-name", id: "header-logo" do %>
+        <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> University Libraries
+      <% end %>
+    </div>
 
-              <li>
-                <a href="/">Chat</a>
-              </li>
-              <li>
-                <a href="/">My Account</a>
-              </li>
-              <li>
-            </ul>
-            <div class="d-block d-xl-none" id="burger" onclick="myFunction(this)">
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
-            <ul class="d-none" id="main-menu"> 
-              <li>
-                <a href="/">About</a>
-              </li>
-   
-              <li>
-                <a href="/">Research</a>
-              </li>
-              <li>
-                <a href="/">Services</a>
-              </li>
+    <div id="main-search" class="col-md-6 col-lg-5 offset-lg-3 text-right">
+      <form action="https://librarysearch.temple.edu/bento">
+        <input type="text" name="q" id="librarySearch" placeholder="Search everything" autocomplete="off" style="border: solid #1f9584 1px !important" />
+        <input style="position:relative" type="submit" value = "">
 
-              <li>
-                <a href="/">Chat</a>
-              </li>
-              <li>
-                <a href="/">My Account</a>
-              </li>
-              <li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      </form>
+      <ul class="text-left">
+        <li><%= link_to "Books", "#" %></li>
+        <li><%= link_to "Articles", "#" %></li>
+        <li><%= link_to "Databases", "#" %></li>
+      </ul>
     </div>
   </div>
 
@@ -83,11 +43,63 @@
     </div>
   </div> <!-- #header -->
 
-<div class="row" id="seagreen">
-  <div id="searchFields">
-    <form action="https://librarysearch.temple.edu/bento">
-      <span class="fa fa-search"></span>
-      <input type="text" name="q" id="librarySearch" placeholder="Search for library materials" autocomplete="off" style="border: solid #1f9584 1px !important" />
-    </form>
-  </div>
+  <div class="row" id="main-menu">
+    <div class="container nav-container">
+    <ul class="list-unstyled d-none d-lg-block" style="float:left;clear: left;"> 
+      <li class="first">
+        <a href="/">About</a>
+      </li>
+      <li>
+        <a href="/">Visit & Study</a>
+      </li>
+      <li>
+        <a href="/">Research Services</a>
+      </li>
+      <li class="last">
+        <a href="/">Contact Us</a>
+      </li> 
+    </ul> 
+
+ 
+    <ul class="main-nav-right" style="float: right;">
+      <li class="nav-right">
+        <a href="/">Hours</a>
+      </li>
+      <li class="nav-right">
+        <a href="/">Chat</a>
+      </li>
+      <li class="nav-right">
+        <a href="/">My Account</a>
+      </li>
+    </ul>
+
+<div class="row d-block d-lg-none" id="mobile-nav">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    <span class="navbar-brand"> Main Menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="mobile-menu">
+      <div class="navbar-nav float-right pr-3">
+      <ul class="list-unstyled" style="margin-top: 10px;"> 
+        <li style="padding-left: 14px;font-size: 1.5rem;padding-bottom: 7px;">
+          <a style="color: white;" href="/">About</a>
+        </li>
+        <li style="padding-left: 14px;font-size: 1.5rem;padding-bottom: 7px;">
+          <a style="color: white;" href="/">Visit & Study</a>
+        </li>
+        <li style="padding-left: 14px;font-size: 1.5rem;padding-bottom: 7px;">
+          <a style="color: white;" href="/">Research Services</a>
+        </li>
+        <li style="padding-left: 14px;font-size: 1.5rem;padding-bottom: 7px;">
+          <a style="color: white;" href="/">Contact Us</a>
+        </li> 
+      </ul> 
+      </div>
+    </div>
+
+  </nav>
 </div>
+  </div>
+  </div>
+

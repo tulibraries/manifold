@@ -1,9 +1,9 @@
 <% @highlights.each_with_index do |highlight, index| %>
-  <div class="col-12 col-xl-3">
+  <div class="col-12 col-lg-3">
     <div class="card cta<%= (index+1).ordinalize %> ">
 
       <% if highlight.image.attached?  %>
-        <%= image_tag highlight.image_variant(360,360), class: "d-none d-xl-block card-img-top", alt: "" %>
+        <%= image_tag highlight.image_variant(360,360), class: "d-none d-lg-block card-img-top", alt: "" %>
       <% else %>
         <%= image_tag "T.gif", style: 'width: 300px;' %>
       <% end %>

@@ -1,55 +1,118 @@
 @import "partials/_vars.scss";
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 
-#librarySearch {
-	height: 56px;
-	font-size: 1.75rem;
-	font-style: normal;
-	border-radius: 7px;
-	padding-left: 77px;
-	min-width: 500px;
-}
-#librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  font-style: normal;
-  font-family: 'PT Sans';
-}
-#librarySearch::-moz-placeholder { /* Firefox 19+ */
-  font-style: normal;
-  font-family: 'PT Sans';
-}
-#librarySearch:-ms-input-placeholder { /* IE 10+ */
-  font-style: normal;
-  font-family: 'PT Sans';
-}
-#librarySearch:-moz-placeholder { /* Firefox 18- */
-  font-style: normal;
-  font-family: 'PT Sans';
-}
-#searchFields {
+#main-search {
 	position: relative;
-	width: 100%;
-	z-index: 1;
+	text-align: right;
 	form {
-		width: 60%;
-		margin:auto;
-		position:relative;
-		top: 48px;
+		width: 100%;
+		padding-top: 10px;
 		.fa-search { 
-		  position: absolute;
-		  top: 12px;
-		  left: 21px;
-		  font-size: 2rem;
+			height: 42px;
+			border-radius: 7px;
 		  color: $light-grey;
+		  float: left;
+		}
+		input[type="submit"] {
+			margin:0;
+			padding-left: 0;
+			float: left;
+			height: 42px;
+			width: 49px;
+			background-color: $foamgreen;
+			background-image:asset-data-url('search.png');
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 42px 42px;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			@media screen and (min-width: 0px) and (max-width: 767px) {
+				position: relative;
+				top: -.3rem;
+				float: none;
+				border-radius: 0;
+				margin-right: 14px;
+			}
+		}
+	}
+	#librarySearch {
+		height: 42px;
+		font-size: 1.5rem;
+		font-style: normal;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		width: 85%;
+		float: left;
+		padding-right: 0;
+		border-right: 0;
+	}
+	ul {
+		clear: both;
+		font-size: 1rem;
+		padding-left: 0;
+		padding-top: 7px;
+		margin-bottom: 0;
+		li {
+			display: inline-block;
+			padding-left: 4px;
+			padding-right: 4px;
+			color: $black;
+			a {
+				font-family: 'PT Sans', verdana, sans;
+				color: $black;
+				text-decoration: underline;
+			}
+		}
+		li::after {
+			content: " | ";
+		}
+		li:last-child:after {
+			content: "";
+		}
+	}
+	#librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch::-moz-placeholder { /* Firefox 19+ */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch:-ms-input-placeholder { /* IE 10+ */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch:-moz-placeholder { /* Firefox 18- */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+}
+#searchOptions {
+	width: 50%;
+	float: right;
+	
+	#advancedSearchLink {
+		display: inline-block;
+		position:relative;
+		top: 27px;
+		padding-left: 14px;
+		text-decoration: underline;
+		a {
+			color: $black;
+		}
+		@media screen and (max-width: 1057px) {
+			display:block;
 		}
 	}
 }
+
 
 .minipage #searchFields form {
 	top: 64px;
 }
 
 #home {
-	position: relative; top: -47px; 
+	/*position: relative; top: -47px; */
 }
 #ambler {
 	position: relative; top: -126px; 
@@ -157,57 +220,3 @@
 	}
 }
 
-#searchOptions {
-	width: 55%;
-	margin: auto;
-	margin-top: 0;
-	position: relative;
-	ul {
-		margin: 0;
-		width: 75%;
-		min-width: 400px;
-		display: inline-block;
-		padding-top: 7px;
-		height: 45px;
-		font-weight: 100;
-		font-size: 1.25rem;
-		border: solid $white 1px;
-		border-top: 0;
-		border-bottom-left-radius: 7px;
-		border-bottom-right-radius: 7px;
-		text-align: center;
-		color: $white;
-		position:relative;
-		top: 27px;
-		background-color: $foamgreen;
-		li {
-			display: inline-block;
-			padding-left: 4px;
-			padding-right: 4px;
-			color: $white;
-			a {
-				font-family: 'PT Sans', verdana, sans;
-				color: $white;
-			}
-		}
-		li::after {
-			content: " | ";
-		}
-		li:last-child:after {
-			content: "";
-		}
-	}
-	#advancedSearchLink {
-		display: inline-block;
-		position:relative;
-		top: 27px;
-		padding-left: 14px;
-		text-decoration: underline;
-		a {
-			color: $black;
-		}
-		@media screen and (max-width: 1057px) {
-			display:block;
-		}
-	}
-}

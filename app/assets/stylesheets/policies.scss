@@ -36,7 +36,6 @@
 	}
 }
 .policy-show {
-	margin-top: 14px;
   h2 {
   	margin-top: 0;
   	border-left: 0;
@@ -46,7 +45,7 @@
 	.col-3 {
 		height: auto;
 	}
-	.ctaFirst {
+	.ctaFirst, #accordion {
 		border-color: $seagreen;
 		background-color: transparent;
 		text-align: left;

@@ -1,16 +1,22 @@
-<nav>
-	<div class="row">
-	  <div class="col breadcrumbs">
-	    <%= link_to "Home", root_path.to_s %>
-	    <%= link_to "Policies", policies_path %>
-	    <%= @policy.name %>
-	  </div>
-	</div>
-</nav>
+<% content_for :body_class, "policy-show" %>
+
+<div class="row d-block d-lg-none" id="policies-mobile-nav">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#policies-mobile-menu" aria-controls="policies-mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-brand"> Policies Menu</span>
+    	<span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="policies-mobile-menu">
+      <div class="navbar-nav"> 
+	       <%= render "all_policies" %>
+      </div>
+    </div>
+  </nav>
+</div>
 
 <section>
 	<div class="row ctaRow policy-show">
-		<div class="col-3 text-right">
+		<div class="col-3 text-right d-none d-lg-block">
 	    <div class="card ctaFirst">
 	      <div class="card-title">All Policies</div>
 	      <div class="card-body">
@@ -18,7 +24,7 @@
 	      </div>
 	    </div>
 	  </div>
-  <div class="col-6">
+  <div class="col-8 col-lg-6">
 	    <h1 class="unstyled"><%= @policy.name %></h1>
 	    <%= sanitize @policy.description.html_safe %>
 	  </div>

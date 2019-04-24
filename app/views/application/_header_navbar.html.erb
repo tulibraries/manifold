@@ -1,63 +1,27 @@
-  <div id="header-navbar" class="navbar navbar-static-top" role="navigation">
-    <div class="col">
-      <div class="navbar-header">
-        <div class="row">
-          <div class="col col-md-1">
-            <%= link_to root_path, class: "header-name", id: "header-logo" do %>
-              <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> University Libraries
-            <% end %>
-          </div>
-          <div class="navbar-right col col-md-11">
-            <ul class="d-none d-xl-block"> 
-              <li>
-                <a href="/">About</a>
-              </li>
-   
-              <li>
-                <a href="/">Research</a>
-              </li>
-              <li>
-                <a href="/">Services</a>
-              </li>
-
-              <li>
-                <a href="/">Chat</a>
-              </li>
-              <li>
-                <a href="/">My Account</a>
-              </li>
-              <li>
-            </ul>
-            <div class="d-block d-xl-none" id="burger" onclick="myFunction(this)">
-              <div class="bar1"></div>
-              <div class="bar2"></div>
-              <div class="bar3"></div>
-            </div>
-            <ul class="d-none" id="main-menu"> 
-              <li>
-                <a href="/">About</a>
-              </li>
-   
-              <li>
-                <a href="/">Research</a>
-              </li>
-              <li>
-                <a href="/">Services</a>
-              </li>
-
-              <li>
-                <a href="/">Chat</a>
-              </li>
-              <li>
-                <a href="/">My Account</a>
-              </li>
-              <li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+<div id="header-navbar" class="container navbar navbar-static-top" role="navigation">
+  <div class="col-6 col-md-5 col-lg-4 logo-container">
+    <%= link_to root_path, class: "header-name", id: "header-logo" do %>
+      <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> <span>University Libraries</span>
+    <% end %>
   </div>
+
+  <div id="main-search" class="col-6 col-lg-5 offset-lg-3 d-none d-md-block d-lg-block text-right">
+    <form action="https://librarysearch.temple.edu/bento">
+      <input type="text" name="q" id="librarySearch" placeholder="Search everything" autocomplete="off" style="border: solid #1f9584 1px !important" />
+      <input type="submit" value = "">
+    </form>
+    <ul class="text-left">
+      <li><%= link_to "Books", "#" %></li>
+      <li><%= link_to "Articles", "#" %></li>
+      <li><%= link_to "Databases", "#" %></li>
+    </ul>
+  </div>
+  <div id="main-search" class="col-3 d-block d-md-none d-lg-none text-right">
+    <form action="https://librarysearch.temple.edu/bento">
+      <input type="submit" value = "">
+    </form>
+  </div>
+</div>
 
 <div id="wrapper">
 
@@ -83,11 +47,37 @@
     </div>
   </div> <!-- #header -->
 
-<div class="row" id="seagreen">
-  <div id="searchFields">
-    <form action="https://librarysearch.temple.edu/bento">
-      <span class="fa fa-search"></span>
-      <input type="text" name="q" id="librarySearch" placeholder="Search for library materials" autocomplete="off" style="border: solid #1f9584 1px !important" />
-    </form>
+  <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
+    <div class="container nav-container">
+      <ul class="list-unstyled" style=""> 
+        <li class="first">
+          <a href="/">About</a>
+        </li>
+        <li>
+          <a href="/">Visit & Study</a>
+        </li>
+        <li>
+          <a href="/">Research Services</a>
+        </li>
+        <li class="last">
+          <a href="/">Contact Us</a>
+        </li> 
+        <li class="nav-right hours-nav">
+          <a href="/">Hours</a>
+        </li>
+        <li class="nav-right chat-nav">
+          <a href="/">Chat</a>
+        </li>
+        <li class="nav-right account-nav">
+          <a href="/">My Account</a>
+        </li>
+      </ul> 
+    </div>
   </div>
+
+  <div class="row d-block d-sm-block d-md-block d-lg-none" id="mobile-nav">
+    <%= render "mobile-nav" %>
+  </div>
+
 </div>
+

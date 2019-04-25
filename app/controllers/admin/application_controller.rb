@@ -7,7 +7,7 @@
 # If you want to add pagination or other controller-level concerns,
 # you're free to overwrite the RESTful controller actions.
 module Admin
-  class ApplicationController < Administrate::ApplicationController
+  class ApplicationController < Administrate::ApplicationController # ~> NameError: uninitialized constant Admin::Administrate
     before_action :authenticate_account!
     before_action :set_paper_trail_whodunnit
 
@@ -31,17 +31,18 @@ module Admin
       # TODO Add authentication logic here.
     end
 
-    def revert
-      object = controller_name.classify.constantize.find(params[:event_id])
-      version = object.versions.find(params[:version_id])
-      version.reify.save!
-      redirect_to action: :show, id: object.id
-    end
-
     def edit
-      object = controller_name.classify.constantize.find(params[:event_id])
-      version = object.versions.find(params[:version_id])
-      binding.pry
+      if params.has_key?(:version)
+        object = controller_name.classify.constantize.find(params[:id])
+        selected_version = object.versions.find(params[:version])
+        unless selected_version.object.nil?
+          changes = YAML.load(selected_version.object_changes)
+          changes.each { |k, v| requested_resource[k] = v.last }
+        end
+        render :edit, locals: {
+          page: Administrate::Page::Form.new(dashboard, requested_resource),
+        }
+      end 
     end
 
     # Override this value to specify the number of elements to display at a time
@@ -56,3 +57,9 @@ module Admin
       end
   end
 end
+
+# ~> NameError
+# ~> uninitialized constant Admin::Administrate
+# ~>
+# ~> /tmp/seeing_is_believing_temp_dir20190424-28917-w1o0ln/program.rb:10:in `<module:Admin>'
+# ~> /tmp/seeing_is_believing_temp_dir20190424-28917-w1o0ln/program.rb:9:in `<main>'

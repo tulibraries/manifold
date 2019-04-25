@@ -2,7 +2,7 @@
   <hr/>
   <div class="field-unit field-unit--has_many ">
     <div class="field-unit__label">
-      <label for"versions">Versions</label>
+      <label for="versions">Versions</label>
     </div>
     <div class="field-unit__field">
       <table class="table">
@@ -21,9 +21,8 @@
               <%= tag.td do %>
                 <%= link_to(
                   t("manifold.admin.actions.revert"),
-                  [:edit, namespace, page.resource],
-                  class: "button",
-                  params: { version_id: version.id, event_id: params[:id] }
+                  [:edit, namespace, page.resource, version: version.id],
+                  class: "button"
                 ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
               <% end %>
               <%= tag.td version.event %>

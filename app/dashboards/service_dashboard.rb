@@ -29,6 +29,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     related_groups: Field::HasMany.with_options(class_name: "Group"),
     hours: Field::String,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -50,6 +51,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :title,
     :intended_audience,
     :service_category,
+    :categories,
     :created_at,
     :updated_at,
   ].freeze
@@ -69,6 +71,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :related_spaces,
     :related_groups,
     :hours,
+    :categories,
     :add_to_footer
   ].freeze
 

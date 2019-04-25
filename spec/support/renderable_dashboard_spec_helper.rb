@@ -15,7 +15,7 @@ RSpec.shared_examples "renderable_dashboard" do
   let(:index_path) { send("admin_#{model_name.pluralize}_path") }
   let(:show_path) { send("admin_#{model_name}_path", factory_model) }
   let(:new_path) { send("new_admin_#{model_name}_path") }
-  let(:edit_path) { send("edit_admin_#{model_name}_path", factory_model)}
+  let(:edit_path) { send("edit_admin_#{model_name}_path", factory_model) }
 
   before(:each) do
     sign_in account

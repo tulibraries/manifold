@@ -8,27 +8,23 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Revert</th>
-            <th>Modifier</th>
-            <th>Event</th>
-            <th>Date/Time</th>
+            <th class="version-time">Date/Time</th>
             <th>Diffs</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
           <% page.resource.versions.reverse_each do |version| %>
             <%= tag.tr do %>
-              <%= tag.td do %>
+              <%= tag.td(version.created_at.strftime("%b %d, %Y %l:%M%p"), class: "version-time") %>
+              <%= tag.td(changed_fields(version.changeset), class: "version-changes") %>
+              <%= tag.td(class: "version-edit-button") do %>
                 <%= link_to(
                   t("manifold.admin.actions.revert"),
                   [:edit, namespace, page.resource, version: version.id],
                   class: "button"
                 ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
               <% end %>
-              <%= tag.td version.event %>
-              <%= tag.td Account.find(version.whodunnit).email unless version.whodunnit.nil? %>
-              <%= tag.td version.created_at %>
-              <%= tag.td changed_fields(version.changeset) %>
             <% end %>
           <% end %>
         </tbody>

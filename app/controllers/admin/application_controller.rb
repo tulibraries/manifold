@@ -39,10 +39,10 @@ module Admin
           changes = YAML.load(selected_version.object_changes)
           changes.each { |k, v| requested_resource[k] = v.last }
         end
-        render :edit, locals: {
-          page: Administrate::Page::Form.new(dashboard, requested_resource),
-        }
       end 
+      render :edit, locals: {
+        page: Administrate::Page::Form.new(dashboard, requested_resource),
+      }
     end
 
     # Override this value to specify the number of elements to display at a time

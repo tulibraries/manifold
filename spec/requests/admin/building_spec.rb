@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Admin::Building, type: :request do
+RSpec.describe Building, type: :request do
 
   it_behaves_like "renderable_dashboard"
 

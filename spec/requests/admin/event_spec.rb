@@ -2,6 +2,8 @@
 
 require "rails_helper"
 
-RSpec.describe Blog, type: :request do
+RSpec.describe Event, type: :request do
+
   it_behaves_like "renderable_dashboard"
+
 end

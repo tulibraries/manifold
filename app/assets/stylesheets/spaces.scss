@@ -34,7 +34,7 @@
 	 .space-description {
 		h1 {
 			padding-left: 14px;
-			@media screen and (max-width: 1200px) {
+			@media screen and (max-width: 1199px) {
 				padding-left: 0;
 			}
 		}
@@ -49,7 +49,7 @@
 			margin:auto;
 		}
 		padding-right:21px;
-		@media screen and (min-width: 1200px) {
+		@media screen and (min-width: 1199px) {
 			margin-left: 0;
 		}
 	}
@@ -58,7 +58,7 @@
 		max-width: 680px;
 		overflow:hidden;
 		margin: auto;
-		@media screen and (min-width: 1200px) {
+		@media screen and (min-width: 1199px) {
 			margin-right: 0;
 		}
 		img {

@@ -8,7 +8,7 @@ ruby "2.5.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2.3"
 # Use sqlite3 as the database for Active Record
-gem "sqlite3"
+gem "sqlite3", "~> 1.3.13"
 # Use Puma as the app server
 gem "puma", "~> 3.12"
 # Use SCSS for stylesheets
@@ -94,7 +94,7 @@ group :test do
   gem "chromedriver-helper"
   gem "rspec-rails", ">=3.8.0"
   gem "rails-controller-testing"
-  gem "factory_bot_rails"
+  gem "factory_bot_rails", "~> 4.11.1"
   gem "database_cleaner"
   gem "guard-rspec", require: false
   gem "mutant-rspec"

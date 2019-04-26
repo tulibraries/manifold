@@ -130,8 +130,7 @@
 	.navbar {
 		background-color: $seagreen;
 		justify-content: flex-start;
-		width: 100%;
-		margin-left: 14px;
+		width: 102%;
 		.navbar-toggler:hover {
 			background-color: $seagreen;
 		}
@@ -189,9 +188,11 @@
 	.col {
 		padding-left: 0;
 	}
+  
 	.logo-container {
 		padding-left: 0;
 	}
+
 	.header-logo {
 	  max-width: 90px;
 	  max-height: 77px;

@@ -104,7 +104,77 @@
 			display:block;
 		}
 	}
+	#librarySearch {
+		height: 42px;
+		font-size: 1.5rem;
+		font-style: normal;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		width: 85%;
+		float: left;
+		padding-right: 0;
+		border-right: 0;
+	}
+	ul {
+		clear: both;
+		font-size: 1rem;
+		padding-left: 0;
+		padding-top: 7px;
+		margin-bottom: 0;
+		li {
+			display: inline-block;
+			padding-left: 4px;
+			padding-right: 4px;
+			color: $black;
+			a {
+				font-family: 'PT Sans', verdana, sans;
+				color: $black;
+				text-decoration: underline;
+			}
+		}
+		li::after {
+			content: " | ";
+		}
+		li:last-child:after {
+			content: "";
+		}
+	}
+	#librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch::-moz-placeholder { /* Firefox 19+ */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch:-ms-input-placeholder { /* IE 10+ */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch:-moz-placeholder { /* Firefox 18- */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
 }
+#searchOptions {
+	width: 50%;
+	float: right;
+	
+	#advancedSearchLink {
+		display: inline-block;
+		position:relative;
+		top: 27px;
+		padding-left: 14px;
+		text-decoration: underline;
+		a {
+			color: $black;
+		}
+		@media screen and (max-width: 1057px) {
+			display:block;
+		}
+	}
+}
+
 
 
 .minipage #searchFields form {

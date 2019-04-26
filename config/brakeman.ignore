@@ -30,7 +30,7 @@
       "line": 22,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Space.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"SpacesController","method":"show","line":18,"file":"app/controllers/spaces_controller.rb","rendered":{"name":"spaces/show","file":"/home/skng/Projects/lwr/manifold/app/views/spaces/show.html.erb"}}],
+      "render_path": [{"type":"controller","class":"SpacesController","method":"show","line":18,"file":"app/controllers/spaces_controller.rb","rendered":{"name":"spaces/show","file":"/Users/cbn/projects/manifold/app/views/spaces/show.html.erb"}}],
       "location": {
         "type": "template",
         "template": "spaces/show"
@@ -49,7 +49,7 @@
       "line": 54,
       "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
       "code": "link_to(Person.find(params[:id]).personal_site, Person.find(params[:id]).personal_site)",
-      "render_path": [{"type":"controller","class":"PersonsController","method":"show","line":22,"file":"app/controllers/persons_controller.rb","rendered":{"name":"persons/show","file":"/home/skng/Projects/lwr/manifold/app/views/persons/show.html.erb"}}],
+      "render_path": [{"type":"controller","class":"PersonsController","method":"show","line":22,"file":"app/controllers/persons_controller.rb","rendered":{"name":"persons/show","file":"/Users/cbn/projects/manifold/app/views/persons/show.html.erb"}}],
       "location": {
         "type": "template",
         "template": "persons/show"
@@ -88,13 +88,33 @@
       "line": 9,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Alert.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"AlertsController","method":"show","line":10,"file":"app/controllers/alerts_controller.rb","rendered":{"name":"alerts/show","file":"/home/skng/Projects/lwr/manifold/app/views/alerts/show.html.erb"}}],
+      "render_path": [{"type":"controller","class":"AlertsController","method":"show","line":10,"file":"app/controllers/alerts_controller.rb","rendered":{"name":"alerts/show","file":"/Users/cbn/projects/manifold/app/views/alerts/show.html.erb"}}],
       "location": {
         "type": "template",
         "template": "alerts/show"
       },
       "user_input": null,
       "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 25,
+      "fingerprint": "8beee6d73cfda9260b05bbd93b6fd3ce3f52ac546f8decb3927837afc61d503b",
+      "check_name": "Deserialize",
+      "message": "`YAML.load` called with parameter value",
+      "file": "app/controllers/admin/application_controller.rb",
+      "line": 39,
+      "link": "https://brakemanscanner.org/docs/warning_types/unsafe_deserialization",
+      "code": "YAML.load(controller_name.classify.constantize.find(params[:id]).versions.find(params[:version]).object_changes)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::ApplicationController",
+        "method": "edit"
+      },
+      "user_input": "params[:version]",
+      "confidence": "Medium",
       "note": ""
     },
     {
@@ -107,7 +127,7 @@
       "line": 14,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "BlogPost.new(blog_post_params).content",
-      "render_path": [{"type":"controller","class":"BlogPostsController","method":"create","line":34,"file":"app/controllers/blog_posts_controller.rb","rendered":{"name":"blog_posts/show","file":"/home/skng/Projects/lwr/manifold/app/views/blog_posts/show.html.erb"}}],
+      "render_path": [{"type":"controller","class":"BlogPostsController","method":"create","line":34,"file":"app/controllers/blog_posts_controller.rb","rendered":{"name":"blog_posts/show","file":"/Users/cbn/projects/manifold/app/views/blog_posts/show.html.erb"}}],
       "location": {
         "type": "template",
         "template": "blog_posts/show"
@@ -126,7 +146,7 @@
       "line": 23,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Building.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"BuildingsController","method":"show","line":19,"file":"app/controllers/buildings_controller.rb","rendered":{"name":"buildings/show","file":"/home/skng/Projects/lwr/manifold/app/views/buildings/show.html.erb"}}],
+      "render_path": [{"type":"controller","class":"BuildingsController","method":"show","line":19,"file":"app/controllers/buildings_controller.rb","rendered":{"name":"buildings/show","file":"/Users/cbn/projects/manifold/app/views/buildings/show.html.erb"}}],
       "location": {
         "type": "template",
         "template": "buildings/show"
@@ -145,7 +165,7 @@
       "line": 21,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Group.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"GroupsController","method":"show","line":18,"file":"app/controllers/groups_controller.rb","rendered":{"name":"groups/show","file":"/home/skng/Projects/lwr/manifold/app/views/groups/show.html.erb"}}],
+      "render_path": [{"type":"controller","class":"GroupsController","method":"show","line":18,"file":"app/controllers/groups_controller.rb","rendered":{"name":"groups/show","file":"/Users/cbn/projects/manifold/app/views/groups/show.html.erb"}}],
       "location": {
         "type": "template",
         "template": "groups/show"
@@ -155,6 +175,6 @@
       "note": ""
     }
   ],
-  "updated": "2019-04-26 12:33:47 -0400",
+  "updated": "2019-04-26 14:14:50 -0400",
   "brakeman_version": "4.5.0"
 }

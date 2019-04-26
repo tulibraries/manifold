@@ -1,5 +1,10 @@
 <div id="header-navbar" class="container navbar navbar-static-top" role="navigation">
-  <div class="col-6 col-md-5 col-lg-4 logo-container">
+  <div class="d-block d-md-none d-lg-none col-1 navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation" style="background-color: seagreen">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="col-5 col-md-5 col-lg-4 logo-container">
     <%= link_to root_path, class: "header-name", id: "header-logo" do %>
       <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> <span>University Libraries</span>
     <% end %>
@@ -80,4 +85,3 @@
   </div>
 
 </div>
-

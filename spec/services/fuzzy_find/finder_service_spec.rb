@@ -141,5 +141,24 @@ RSpec.describe FuzzyFind::FinderService do
         end
       end
     end
+
+    context "search for a building" do
+      before do
+        FactoryBot.create(:building, name: "McGaw Library")
+        @law = FactoryBot.create(:building, name: "Law Library")
+      end
+
+
+      it "does not return Law Library when Paley is search term" do
+        expect(described_class.call(
+                 needle: "Paley Library",
+                 haystack_model: Building,
+                 attribute: :name,
+                 addl_attribute: { address1: "1210 W. Berks Street" }
+                 )
+        ).not_to eql @law
+      end
+
+    end
   end
 end

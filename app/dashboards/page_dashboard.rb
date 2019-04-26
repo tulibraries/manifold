@@ -19,6 +19,7 @@ class PageDashboard < Administrate::BaseDashboard
       collection: Rails.configuration.page_layouts,
       multiple: false,
       ),
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -36,6 +37,7 @@ class PageDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
+    :categories
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -46,6 +48,7 @@ class PageDashboard < Administrate::BaseDashboard
     :description,
     :document,
     :group,
+    :categories,
     :layout
   ].freeze
 

@@ -18,6 +18,7 @@ class PolicyDashboard < Administrate::BaseDashboard
     ),
     effective_date: Field::DateTime,
     expiration_date: Field::DateTime,
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -42,6 +43,7 @@ class PolicyDashboard < Administrate::BaseDashboard
     :category,
     :effective_date,
     :expiration_date,
+    :categories,
     :created_at,
     :updated_at,
   ].freeze
@@ -55,6 +57,7 @@ class PolicyDashboard < Administrate::BaseDashboard
     :category,
     :effective_date,
     :expiration_date,
+    :categories
   ].freeze
 
   def display_resource(policy)

@@ -116,7 +116,12 @@ class SyncService::Events
     location_hash = {}
 
     location = event.fetch("Location", nil)
-    building = FuzzyFind::Building.find(location.to_s)
+    address = event.fetch("Address", nil)
+
+    building = FuzzyFind::Building.find(
+      location.to_s,
+        addl_attribute: { address1: address.to_s }
+        )
 
     if building
       location_hash["building"] = building

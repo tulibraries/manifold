@@ -128,10 +128,11 @@
 #mobile-nav {
 	position: relative;
 	.navbar {
-		background-color: $seagreen;
+		background-color: $white;
 		justify-content: flex-start;
-		width: 100%;
-		margin-left: 14px;
+		width: 102%;
+		padding: 0;
+		margin: 0;
 		.navbar-toggler:hover {
 			background-color: $seagreen;
 		}
@@ -189,9 +190,24 @@
 	.col {
 		padding-left: 0;
 	}
+  
 	.logo-container {
 		padding-left: 0;
 	}
+
+	.navbar-dark {
+		padding-left: 7px;
+	}
+
+	.navbar-toggler {
+		border-radius: 0;
+	}
+
+	.navbar-toggler-icon {
+		width: 24px;
+		height: 39px;
+	}
+
 	.header-logo {
 	  max-width: 90px;
 	  max-height: 77px;
@@ -201,6 +217,10 @@
 		@media screen and (min-width: 0) and (max-width: 767px) {
 			margin-top: 10px;
 			margin-bottom: 10px;
+			max-width: 49px;
+			max-height: 49px;
+			min-width: 49px;
+			min-height: 49px;
 			}
 		@media screen and (max-width: 450px) {
 			vertical-align: top;
@@ -218,15 +238,17 @@
 			span {
 				position: relative;
 				top: -10px;
+				font-size: 1rem;
 			}
 		}
-		@media screen and (max-width: 450px) {
+		@media screen and (min-width: 0) and (max-width: 450px) {
 			span {
 				display: inline-block;
 				width: 150px!important;
-				margin-top: 17px;
-				line-height: 2rem;
+				margin-top: 10px;
+				line-height: 1.5rem;
 				white-space: normal;
+				font-size: 1.75rem;
 			}
 		}
 	}

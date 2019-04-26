@@ -26,6 +26,7 @@ class PersonDashboard < BaseDashboard
     springshare_id: SpringshareIdField,
     research_identifier: Field::String,
     personal_site: Field::String,
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -58,6 +59,7 @@ class PersonDashboard < BaseDashboard
     :groups,
     :spaces,
     :personal_site,
+    :categories
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -77,6 +79,7 @@ class PersonDashboard < BaseDashboard
     :groups,
     :spaces,
     :personal_site,
+    :categories
   ].freeze
 
   # Overwrite this method to customize how people are displayed

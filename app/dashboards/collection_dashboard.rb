@@ -20,6 +20,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     space: Field::BelongsTo,
     image: PhotoField,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -40,6 +41,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :name,
     :subject,
     :space,
+    :categories
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -50,7 +52,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :image,
     :description,
     :subject,
-    # :contents,
+    :categories,
     :space,
     :add_to_footer,
   ].freeze

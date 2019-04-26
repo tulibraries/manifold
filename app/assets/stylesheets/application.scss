@@ -33,8 +33,6 @@ $container-max-widths: (
 @import "partials/_vars.scss";
 @import "font-awesome";
 
-
-
 .container {
 	max-width: 100%; 
 	@media (min-width: 1200px) {
@@ -64,6 +62,7 @@ html, body {
 	min-height: 100%;
 	position: relative;
 	background-color: $white;
+	overflow: hidden;
 }
 h1 {
 	margin-top:14px;
@@ -80,7 +79,6 @@ h2 {
 h3 {
 	font-size: 125%;
 }
-
 
 .navbar-light .navbar-nav .nav-link {
 	color: $white;

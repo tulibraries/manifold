@@ -1,5 +1,6 @@
-class ImagesController < ApplicationController
+# frozen_string_literal: true
 
+class ImagesController < ApplicationController
   before_action :find_parent
 
   def medium_image
@@ -22,7 +23,7 @@ class ImagesController < ApplicationController
       if @parent.image.attached?
         redirect_to url_for(@parent.send(type))
       else
-        raise ActionController::RoutingError.new('Image Not Found')
+        raise ActionController::RoutingError.new("Image Not Found")
       end
     end
 

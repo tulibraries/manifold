@@ -3,9 +3,9 @@
 Rails.application.routes.draw do
 
   concern :imageable do
-      get "image/thumbnail", to: "images#thumbnail_image"
-      get "image/medium",    to: "images#medium_image"
-      get "image/large",     to: "images#large_image"
+    get "image/thumbnail", to: "images#thumbnail_image"
+    get "image/medium",    to: "images#medium_image"
+    get "image/large",     to: "images#large_image"
   end
 
 
@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   resources :blogs, only: [:index, :show]
   resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
   resources :groups, only: [:index, :show]
-  resources :collections, only: [:index, :show]
+  resources :collections, only: [:index, :show], concerns: [:imageable]
   resources :services, only: [:index, :show], concerns: [:imageable]
   resources :policies, only: [:index, :show]
   resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]

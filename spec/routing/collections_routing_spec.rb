@@ -3,6 +3,9 @@
 require "rails_helper"
 
 RSpec.describe CollectionsController, type: :routing do
+
+  it_behaves_like "routes_for_imageable"
+
   describe "routing" do
     it "routes to #index" do
       expect(get: "/collections").to route_to("collections#index")

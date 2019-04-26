@@ -31,6 +31,7 @@ class GroupDashboard < BaseDashboard
     ),
     #child_groups: Field::HasMany,
     pages: Field::HasMany,
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -59,6 +60,7 @@ class GroupDashboard < BaseDashboard
     :external,
     :documents,
     :policies,
+    :categories
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -76,6 +78,7 @@ class GroupDashboard < BaseDashboard
     :documents,
     :policies,
     :pages,
+    :categories,
     :add_to_footer,
   ].freeze
 

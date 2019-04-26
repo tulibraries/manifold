@@ -37,6 +37,7 @@ class EventDashboard < BaseDashboard
     image: PhotoField,
     alt_text: Field::String,
     ensemble_identifier: Field::String,
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -83,6 +84,7 @@ class EventDashboard < BaseDashboard
     :registration_link,
     :content_hash,
     :ensemble_identifier,
+    :categories,
     :created_at,
     :updated_at,
   ].freeze
@@ -117,6 +119,7 @@ class EventDashboard < BaseDashboard
     :registration_link,
     :content_hash,
     :ensemble_identifier,
+    :categories
   ].freeze
 
   # Overwrite this method to customize how events are displayed

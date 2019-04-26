@@ -6,20 +6,16 @@
   </div>
 
   <div id="main-search" class="col-6 col-lg-5 offset-lg-3 d-none d-md-block d-lg-block text-right">
-    <form action="https://librarysearch.temple.edu/bento">
-      <input type="text" name="q" id="librarySearch" placeholder="Search everything" autocomplete="off" style="border: solid #1f9584 1px !important" />
-      <input type="submit" value = "">
-    </form>
-    <ul class="text-left">
-      <li><%= link_to "Books", "#" %></li>
-      <li><%= link_to "Articles", "#" %></li>
-      <li><%= link_to "Databases", "#" %></li>
-    </ul>
+    <%= render "main-search" %>
   </div>
-  <div id="main-search" class="col-3 d-block d-md-none d-lg-none text-right">
-    <form action="https://librarysearch.temple.edu/bento">
-      <input type="submit" value = "">
-    </form>
+  <div id="mobile-search-button" class="col-3 d-block d-md-none d-lg-none text-right">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
+    <span class="navbar-toggler-icon" onclick="myFunction(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </span>
+  </button>
   </div>
 </div>
 
@@ -75,9 +71,13 @@
     </div>
   </div>
 
+  <div class="row d-block d-sm-block d-md-block d-lg-none text-center" id="mobile-search-container">
+    <%= render "mobile-search" %>
+  </div>
+
+
   <div class="row d-block d-sm-block d-md-block d-lg-none" id="mobile-nav">
     <%= render "mobile-nav" %>
   </div>
 
 </div>
-

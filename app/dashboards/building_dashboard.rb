@@ -23,6 +23,7 @@ class BuildingDashboard < BaseDashboard
     email: Field::Email,
     policies: Field::HasMany,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -52,6 +53,7 @@ class BuildingDashboard < BaseDashboard
     :campus,
     :email,
     :policies,
+    :categories
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -71,6 +73,7 @@ class BuildingDashboard < BaseDashboard
     :hours,
     :email,
     :policies,
+    :categories,
     :add_to_footer,
   ].freeze
 

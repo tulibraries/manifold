@@ -1,9 +1,20 @@
 @import "partials/_vars.scss";
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 
-#main-search {
+#main-search, #mobile-search-container {
 	position: relative;
 	text-align: right;
+	padding-right: 0;
+	padding-left: 0;
+	.main-search-container {
+		width: 100%;
+		ul {
+			margin-left: .65rem;
+		}
+	}
+	form.mobile {
+		padding: 0;
+	}
 	form {
 		width: 100%;
 		padding-top: 10px;
@@ -13,10 +24,29 @@
 		  color: $light-grey;
 		  float: left;
 		}
+		#librarySearch {
+			height: 42px;
+			font-size: 1.5rem;
+			font-style: normal;
+			border: solid $seagreen 1px;
+			border-right: 0;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			width: 87%;
+			display: inline-block;
+			padding-right: 0;
+		}
+		#librarySearch.mobile {
+			width: 70%;
+			float:none;
+			display: inline-block;
+			position: relative;
+			left: 7px;
+		}
 		input[type="submit"] {
 			margin:0;
 			padding-left: 0;
-			float: left;
+			float: right;
 			height: 42px;
 			width: 49px;
 			background-color: $foamgreen;
@@ -26,13 +56,84 @@
 			background-size: 42px 42px;
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
+			border: solid $seagreen 1px;
+			border-left: 0;
 			@media screen and (min-width: 0px) and (max-width: 767px) {
 				position: relative;
 				top: -.3rem;
 				float: none;
 				border-radius: 0;
 				margin-right: 14px;
+				height: 49px;
+				width: 52px;
 			}
+		}
+		input[type="submit"].mobile {
+			height: 42px!important;
+			margin-right: 0;
+			padding-left: 0;
+			position: relative;
+			left: -7px;
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+		}
+	}
+	ul {
+		clear: both;
+		font-size: 1rem;
+		padding-left: 0;
+		padding-top: 7px;
+		margin-bottom: 0;
+		li {
+			display: inline-block;
+			padding-left: 4px;
+			padding-right: 4px;
+			color: $black;
+			a {
+				font-family: 'PT Sans', verdana, sans;
+				color: $black;
+				text-decoration: underline;
+			}
+		}
+		li::after {
+			content: " | ";
+		}
+		li:last-child:after {
+			content: "";
+		}
+	}
+	#librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch::-moz-placeholder { /* Firefox 19+ */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch:-ms-input-placeholder { /* IE 10+ */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+	#librarySearch:-moz-placeholder { /* Firefox 18- */
+	  font-style: normal;
+	  font-family: 'PT Sans';
+	}
+}
+#searchOptions {
+	width: 50%;
+	float: right;
+	
+	#advancedSearchLink {
+		display: inline-block;
+		position:relative;
+		top: 27px;
+		padding-left: 14px;
+		text-decoration: underline;
+		a {
+			color: $black;
+		}
+		@media screen and (max-width: 1057px) {
+			display:block;
 		}
 	}
 	#librarySearch {
@@ -104,6 +205,18 @@
 			display:block;
 		}
 	}
+}
+
+#mobile-search {
+	background-color: $lightest-grey;
+	padding: 14px 0;
+}
+
+#mobile-search.collapse {
+	height: 0;
+}
+#mobile-search.collapse.show {
+	height: auto;
 }
 
 

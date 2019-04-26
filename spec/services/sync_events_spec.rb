@@ -116,6 +116,8 @@ RSpec.describe SyncService::Events, type: :service do
       @building = FactoryBot.create(:building)
       @space = FactoryBot.create(:space, building: @building)
       @person = FactoryBot.create(:person, spaces: [@space])
+      # create law library to ensure that the Paley Library event does not match
+      @law = FactoryBot.create(:building, name: "Law Library")
     end
 
     describe "contact" do
@@ -136,7 +138,10 @@ RSpec.describe SyncService::Events, type: :service do
 
     describe "location/building" do
       it "has a building reference" do
-        allow(::FuzzyFind::Building).to receive(:find).with(kind_of(String)).and_return(@building)
+        allow(::FuzzyFind::Building).to receive(:find)
+          .with(kind_of(String), kind_of(Hash))
+          .and_return(@building)
+
         internal_events.sync
         event = Event.find_by(building_id: @building.id)
         expect(event.building_id).to eq @building.id

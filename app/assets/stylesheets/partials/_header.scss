@@ -33,7 +33,7 @@
 			padding-right: 21px;
 			height: 100%;
 			vertical-align: middle;
-			border-left: solid $dark-grey 1px;
+			border-left: solid $seagreen-dark 2px;
 			a {
 				color: $white;
 				font-size: 1.25rem;
@@ -43,13 +43,13 @@
 			}
 		}
 		li.first {
-			border-left: solid $dark-grey 0;
-			border-right: solid $dark-grey 0;
+			border-left: solid $seagreen-dark 0;
+			border-right: solid $seagreen-dark 0;
 		}
 		li.last {
-			border-right: solid $dark-grey 1px;
+			border-right: solid $seagreen-dark 2px;
 			@media screen and (max-width: 950px) {
-				border-right: solid $dark-grey 0;
+				border-right: solid $seagreen-dark 0;
 			}
 			@media screen and (max-width: 949px) {
 				padding-right: 0;
@@ -61,22 +61,24 @@
 			}
 			background-color: $seagreen-dark;
 			padding-left: 49px;
+			border-color: $seagreen;
+			padding-right: 16px;
 		}
 		li.nav-right.hours-nav {
 		background-image:asset-data-url('hours.png');
-		background-position: left center;
+		background-position: 7px center;
 		background-repeat: no-repeat;
 		background-size: 42px 42px;
 		}
 		li.nav-right.chat-nav {
 		background-image:asset-data-url('chat.png');
-		background-position: center left;
+		background-position: 7px center;
 		background-repeat: no-repeat;
 		background-size: 49px 59px;
 		}
 		li.nav-right.account-nav {
 		background-image:asset-data-url('person.png');
-		background-position: left center;
+		background-position: 7px center;
 		background-repeat: no-repeat;
 		background-size: 42px 42px;
 		}
@@ -87,9 +89,14 @@
 	}
 }
 
+#mobile-search-container {
+	nav.navbar {
+		padding: 0;
+	}
+}
+
 #mobile-menu {
 	background-color: $white;
-
 	.col {
 		display: table;
 		a {
@@ -127,21 +134,44 @@
 
 #mobile-nav {
 	position: relative;
+	width: 100%;
+	margin: 0;
 	.navbar {
 		background-color: $seagreen;
-		justify-content: flex-start;
-		width: 100%;
-		margin-left: 14px;
+		justify-content: flex-end;
+		padding: .25rem 0;
+		.navbar-toggler {
+			border: 0;
+			padding: 0;
+		}
+		.collapse .padding {
+			height: 0;
+		}
+		.show .padding {
+			height: 10px;
+			background-color: $seagreen;
+		}
 		.navbar-toggler:hover {
 			background-color: $seagreen;
 		}
+		.navbar-toggler:focus {
+			outline: none;
+		}
+		.navbar-toggler-icon {
+			margin-right: 10px;
+			background-image: none;
+		}
+		.navbar-brand {
+			padding-left: 7px;
+		}
 		.row {
-			margin-top: 4px;
+			margin-top: 2px;
 			background-color: $seagreen;
 	    height: 45px !important;
 	    max-height: 45px !important;
 	    max-width: 100%;
 	    display: table;
+	    margin-left: 0;
 			.col {
 		    display: table-cell;
 		    vertical-align: middle;
@@ -150,35 +180,37 @@
 				a {
 					width: 100%;
 					color: $white;
-					padding: 14px;
 					font-size: 1.5rem;
 				}
 			}
 		}
 	}
-	.navbar-brand {
-		padding-left:10px;
-		margin-bottom: 7px;
-	}
 }
 
 #policies-mobile-nav {
 	position: relative;
-	width: 100%;
-	margin-left: 0;
-	margin-right: 0;
-	.navbar-toggler:hover {
-		background-color: $seagreen-dark;
-	}
+	margin: 0;
 	.navbar {
 		background-color: $seagreen-dark;
 		justify-content: flex-end;
+		padding: .25rem 0;
 		width: 100%;
-		padding-bottom: 10px;
 	}
-	.navbar-brand {
-		padding-left:10px;
+	.navbar-toggler {
+		border: 0;
+		padding: 0;
 	}
+	.navbar-toggler:hover {
+		background-color: $seagreen-dark;
+	}
+	.navbar-toggler:focus {
+		outline: none;
+	}
+	.navbar-toggler-icon {
+		margin-right: 10px!important;
+		background-image: none;
+	}
+
 }
 
 .minipage #seagreen {
@@ -189,9 +221,11 @@
 	.col {
 		padding-left: 0;
 	}
+  
 	.logo-container {
 		padding-left: 0;
 	}
+
 	.header-logo {
 	  max-width: 90px;
 	  max-height: 77px;
@@ -238,33 +272,110 @@
 	background-color: $tan;
 }
 
-.navbar-right {
-	position: relative;
-	ul {
-		position: absolute;
-		bottom: 0;
-		float: right;
-		width: 100%;
-		margin-right: 28px;
-		margin-bottom: 0;
-		text-align:right;
-		li {
-			a, a:visited, a:hover, a:active {
-				color: $black;
-				font-size: 140%;
-				font-family: 'Droid';
-			}
-			display: inline-block;
-			padding: 7px 24px 0 24px;
-		}
-	}
-}
-
 .form-control:focus {
 	border-color: $red;
 	box-shadow: 0 0 8px rgba(165, 0, 48, 0.6);
 }
 
+#burger {
+	float: right;
+	right: 100%;
+  display: inline-block;
+  cursor: pointer;
+  float: right;
+	margin-top: 1.75rem;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 25px;
+  height: 2px;
+  background-color: $white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+#mobile-search-button {
+	.bar1, .bar2, .bar3 {
+	  width: 2.5rem;
+	  height: 6px;
+	  background-color: $white;
+	  margin: 6px 0;
+	  transition: 0.4s;
+	  opacity: 0;
+	}
+	.navbar-toggler-icon {
+		margin:0;
+		padding-left: 0;
+		float: left;
+		height: 42px;
+		width: 49px;
+		background-color: $foamgreen;
+		background-image:asset-data-url('search.png');
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 42px 42px;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		@media screen and (min-width: 0px) and (max-width: 767px) {
+			position: relative;
+			top: -.3rem;
+			float: none;
+			border-radius: 0;
+			margin-right: 14px;
+			height: 49px;
+			width: 52px;
+		}
+	}
+	.navbar-toggler-icon.change {
+		background-image: none;
+		padding-top: .7rem;
+		padding-left:.35rem;
+	}
+	.navbar-toggler-icon:focus {
+		outline: none;
+	}
+	.navbar-toggler-icon:hover {
+		/*background-color: transparent;*/
+	}
+	.navbar-toggler {
+		background-color: transparent;
+		.change .bar1 {
+			  opacity: 1;
+		  -webkit-transform: rotate(-45deg) translate(-1px, 5px) ;
+		  transform: rotate(-45deg) translate(-1px, 5px) ;
+		}
+		.change .bar2 {
+		  opacity: 0;
+		}
+		.change .bar3 {
+			  opacity: 1;
+		  -webkit-transform: rotate(45deg) translate(-12px, -15px) ;
+		  transform: rotate(45deg) translate(-12px, -15px) ;
+		}
+	}
+	.navbar-toggler:focus {
+		outline: none;
+	}
+
+}
+
+.change .bar1 {
+	  opacity: 1;
+  -webkit-transform: rotate(-45deg) translate(-3px, 6px) ;
+  transform: rotate(-45deg) translate(-3px, 6px) ;
+}
+.change .bar2 {
+  opacity: 0;
+}
+.change .bar3 {
+	  opacity: 1;
+  -webkit-transform: rotate(45deg) translate(-5px, -8px) ;
+  transform: rotate(45deg) translate(-5px, -8px) ;
+}
+
 .navbar-collapse.collapse.show {
   display: block!important;
+}
+.home #main-search {
+	display:none!important;
 }

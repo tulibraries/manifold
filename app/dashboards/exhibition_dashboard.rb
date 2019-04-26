@@ -20,6 +20,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     start_date: Field::DateTime,
     end_date: Field::DateTime,
     promoted_to_events: Field::Boolean,
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -46,6 +47,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :group,
     :space,
     :collection,
+    :categories
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -61,6 +63,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :group,
     :space,
     :collection,
+    :categories
   ].freeze
 
   # Overwrite this method to customize how exhibitions are displayed

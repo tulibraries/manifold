@@ -49,12 +49,9 @@ class CategoryDashboard < Administrate::BaseDashboard
     :custom_url,
   ].freeze
 
-  # Overwrite this method to customize how categories are displayed
-  # across all pages of the admin dashboard.
-  #
-  # def display_resource(category)
-  #   "Category ##{category.id}"
-  # end
+  def display_resource(category)
+    "#{category.name}"
+  end
 
   def tinymce?
     true

@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
 
   concern :imageable do
-    resources :images, only: [:index]
+      get "image/thumbnail", to: "images#thumbnail_image"
+      get "image/medium",    to: "images#medium_image"
+      get "image/large",     to: "images#large_image"
   end
 
 
@@ -52,15 +54,15 @@ Rails.application.routes.draw do
   resources :alerts, only: [:index, :show]
   resources :blog_posts, only: [:index, :show]
   resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
-  resources :spaces, only: [:index, :show]
+  resources :spaces, only: [:index, :show], concerns: [:imageable]
   resources :blogs, only: [:index, :show]
-  resources :buildings, only: [:index, :show], path: "libraries"
+  resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
   resources :groups, only: [:index, :show]
   resources :collections, only: [:index, :show]
-  resources :services, only: [:index, :show]
+  resources :services, only: [:index, :show], concerns: [:imageable]
   resources :policies, only: [:index, :show]
-  resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }
-  resources :exhibitions, only: [:index, :show]
+  resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]
+  resources :exhibitions, only: [:index, :show], concerns: [:imageable]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
   resources :finding_aids, only: [:show]

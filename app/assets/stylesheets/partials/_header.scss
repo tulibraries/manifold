@@ -26,8 +26,8 @@
 		padding-bottom: 0;
 		margin-bottom: 0;
 		li {
-			padding-top: .9rem;
-			padding-bottom: .9rem;
+			padding-top: .5rem;
+			padding-bottom: .5rem;
 			display: inline-block;
 			padding-left: 21px;
 			padding-right: 21px;
@@ -37,6 +37,9 @@
 			a {
 				color: $white;
 				font-size: 1.25rem;
+				@media screen and (max-width: 1023px) {
+					font-size:1.1rem;
+				}
 			}
 		}
 		li.first {
@@ -45,18 +48,39 @@
 		}
 		li.last {
 			border-right: solid $dark-grey 1px;
-			@media screen and (max-width: 1057px) {
+			@media screen and (max-width: 950px) {
 				border-right: solid $dark-grey 0;
 			}
-			@media screen and (max-width: 1011px) {
+			@media screen and (max-width: 949px) {
 				padding-right: 0;
 			}
 		}
 		li.nav-right {
-			float: right;
+			@media screen and (min-width: 940px) {
+				float: right;
+			}
 			background-color: $seagreen-dark;
-			padding-left: 56px;
+			padding-left: 49px;
 		}
+		li.nav-right.hours-nav {
+		background-image:asset-data-url('hours.png');
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: 42px 42px;
+		}
+		li.nav-right.chat-nav {
+		background-image:asset-data-url('chat.png');
+		background-position: center left;
+		background-repeat: no-repeat;
+		background-size: 49px 59px;
+		}
+		li.nav-right.account-nav {
+		background-image:asset-data-url('person.png');
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: 42px 42px;
+		}
+
 	}
 	.main-nav-right {
 		padding-left: 0;
@@ -64,9 +88,41 @@
 }
 
 #mobile-menu {
+	background-color: $white;
+
+	.col {
+		display: table;
+		a {
+			vertical-align: middle;
+			padding-left: 0!important;
+		}
+	}
 	li {
 		display: block!important;
+		padding-left: 14px;
+		font-size: 1.5rem;
+		padding-bottom: 7px;
+		a {
+			color: white;
+		}
+		@media screen and (max-width: 799px) {
+			width: 100%;
+			background-color: $grey;
+			border: 0;
+		}
 	}
+	.hours-icon {
+		width: 40px;
+		height: 40px;
+		}
+	.chat-icon {
+		width: 46px;
+		height: 46px;
+		}
+	.person-icon {
+		width: 40px;
+		height: 40px;
+		}
 }
 
 #mobile-nav {
@@ -74,24 +130,49 @@
 	.navbar {
 		background-color: $seagreen;
 		justify-content: flex-start;
-		width: 32%;
-		padding-left: 35px;
-		padding-bottom: 14px;
+		width: 102%;
+		.navbar-toggler:hover {
+			background-color: $seagreen;
+		}
+		.row {
+			margin-top: 4px;
+			background-color: $seagreen;
+	    height: 45px !important;
+	    max-height: 45px !important;
+	    max-width: 100%;
+	    display: table;
+			.col {
+		    display: table-cell;
+		    vertical-align: middle;
+		    width: 100%;
+		    text-align: center;
+				a {
+					width: 100%;
+					color: $white;
+					padding: 14px;
+					font-size: 1.5rem;
+				}
+			}
+		}
 	}
 	.navbar-brand {
 		padding-left:10px;
+		margin-bottom: 7px;
 	}
 }
+
 #policies-mobile-nav {
 	position: relative;
 	width: 100%;
 	margin-left: 0;
 	margin-right: 0;
+	.navbar-toggler:hover {
+		background-color: $seagreen-dark;
+	}
 	.navbar {
-		background-color: #efefef;
+		background-color: $seagreen-dark;
 		justify-content: flex-end;
 		width: 100%;
-		padding-right: 35px;
 		padding-bottom: 10px;
 	}
 	.navbar-brand {
@@ -107,21 +188,51 @@
 	.col {
 		padding-left: 0;
 	}
+  
+	.logo-container {
+		padding-left: 0;
+	}
+
 	.header-logo {
 	  max-width: 90px;
 	  max-height: 77px;
 	  min-width: 90px;
 	  min-height: 77px;
 	  vertical-align: bottom;
+		@media screen and (min-width: 0) and (max-width: 767px) {
+			margin-top: 10px;
+			margin-bottom: 10px;
+			}
+		@media screen and (max-width: 450px) {
+			vertical-align: top;
+		}
 	}
 	a.header-name, a.header-name:hover, a.header-name:focus {
 		color: #000;
 		font-size: 2rem;
-		font-family: "Crimson Text",serif;
-		vertical-align:bottom;
+		font-family: "Crimson Text", serif;
+		vertical-align: bottom;
 		text-decoration: none;
 		white-space: nowrap;
-		line-height: 1.25;
+		line-height: 1.25rem;
+		@media screen and (min-width: 451px) and (max-width: 767px) {
+			span {
+				position: relative;
+				top: -10px;
+			}
+		}
+		@media screen and (max-width: 450px) {
+			span {
+				display: inline-block;
+				width: 150px!important;
+				margin-top: 17px;
+				line-height: 2rem;
+				white-space: normal;
+			}
+		}
+	}
+	@media screen and (max-width: 799px) {
+		padding: 0;
 	}
 }
 .navbar-default {

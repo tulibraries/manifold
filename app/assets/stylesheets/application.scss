@@ -14,33 +14,27 @@
  *= require_self
  */
 
+$grid-breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 950px
+);
+
+$container-max-widths: (
+  sm: 750px,
+  md: 950px,
+  lg: 1200px
+);
+
 @import "bootstrap";	
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "partials/_vars.scss";
 @import "font-awesome";
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 600px,
-  md: 800px,
-  lg: 1199px
-);
-
-$container-max-widths: (
-  sm: 600px,
-  md: 800px,
-  lg: 1200px
-);
-
-
 .container {
-	@media (min-width: 576px) {
-		max-width: 100%; 
-	}
-	@media (min-width: 768px) {
-		max-width: 100%; 
-	}
+	max-width: 100%; 
 	@media (min-width: 1200px) {
     max-width: 1200px;
     min-width: 1200px;
@@ -58,11 +52,17 @@ $container-max-widths: (
 html, body {
 	background-color: $white;
 	font-family: "PT Sans";
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	position: static;
+	overflow: scroll;
 }
 #wrapper {
 	min-height: 100%;
 	position: relative;
 	background-color: $white;
+	overflow: hidden;
 }
 h1 {
 	margin-top:14px;
@@ -79,7 +79,6 @@ h2 {
 h3 {
 	font-size: 125%;
 }
-
 
 .navbar-light .navbar-nav .nav-link {
 	color: $white;
@@ -106,9 +105,6 @@ a:not(.dropdown-item) {
 	margin: 0;
 	background-color: $white;
 	padding-bottom: 42px;
-	position: relative;
-  top: -7px;
-	/*min-height: calc(100vh - 291px)*/
 }
 #skip-link {
 	left: 50%;
@@ -147,6 +143,7 @@ form {
 	padding: 0;
 }
 .breadcrumbs {
+	display: none;
 	padding-left: 35px;
 	margin-top: 7px;
 	margin-bottom: 21px;

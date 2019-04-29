@@ -3,18 +3,18 @@
 require "spec_helper"
 
 
-def model_name
-  described_class.to_s.underscore.split("_").first.singularize
+def model_name_from_controller
+  described_class.to_s.underscore.gsub(/_controller/, "").singularize
 end
 
 RSpec.shared_examples "routes_for_imageable" do
 
   describe "image routes for #{described_class}", type: :routing do
 
-  let(:factory_model) { FactoryBot.create(model_name.to_sym, :with_image) }
-  let(:thumnbnail_path) { send("#{model_name}_image_thumbnail_path", factory_model) }
-  let(:medium_path) { send("#{model_name}_image_medium_path", factory_model) }
-  let(:large_path) { send("#{model_name}_image_large_path", factory_model) }
+  let(:factory_model) { FactoryBot.create(model_name_from_controller.to_sym, :with_image) }
+  let(:thumnbnail_path) { send("#{model_name_from_controller}_image_thumbnail_path", factory_model) }
+  let(:medium_path) { send("#{model_name_from_controller}_image_medium_path", factory_model) }
+  let(:large_path) { send("#{model_name_from_controller}_image_large_path", factory_model) }
 
   context "object has an attached image" do
     it "has route to a thumnbnail image" do

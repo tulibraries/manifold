@@ -17,15 +17,6 @@ RSpec.describe Admin::EventsController, type: :controller do
     @account = FactoryBot.create(:account)
   end
 
-  describe "GET index" do
-    it "passes all events to the view" do
-      event = create(:event)
-
-      locals = capture_view_locals { get :index }
-      expect(locals[:resources]).to eq([event])
-    end
-  end
-
   describe "GET #edit" do
     let(:building) { FactoryBot.create(:building) }
     let(:space) { FactoryBot.create(:space, building: building) }
@@ -37,7 +28,7 @@ RSpec.describe Admin::EventsController, type: :controller do
       sign_in(@account)
 
       @event = FactoryBot.create(:event, title: original_title, building: building, space: space, person: person)
-      Event.update(id: @event.id, title: updated_title)
+      @event.update!(title: updated_title)
     end
 
     render_views true

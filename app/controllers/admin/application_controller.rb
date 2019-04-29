@@ -35,7 +35,7 @@ module Admin
       if params.has_key?(:version)
         object = controller_name.classify.constantize.find(params[:id])
         selected_version = object.versions.find(params[:version])
-        unless selected_version.object.nil?
+        unless selected_version.object_changes.nil?
           changes = YAML.load(selected_version.object_changes)
           changes.each { |k, v| requested_resource[k] = v.last }
         end

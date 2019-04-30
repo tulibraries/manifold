@@ -26,7 +26,6 @@ RSpec.describe Admin::EventsController, type: :controller do
 
     before do
       sign_in(@account)
-
       @event = FactoryBot.create(:event, title: original_title, building: building, space: space, person: person)
       @event.update!(title: updated_title)
     end
@@ -39,7 +38,7 @@ RSpec.describe Admin::EventsController, type: :controller do
     end
 
     it "renders edit form with original values when selected" do
-      get :edit, params: { id: @event.to_param, version: @event.versions.first.to_param }
+      get :edit, params: { id: @event.to_param, version: @event.versions.last.to_param }
       expect(response.body).to match(original_title)
     end
   end

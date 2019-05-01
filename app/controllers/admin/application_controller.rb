@@ -10,6 +10,7 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_account!
     before_action :set_paper_trail_whodunnit
+    before_action :use_version, only: [:edit]
 
     helper_method :required?
     helper_method :admin_only?
@@ -31,18 +32,11 @@ module Admin
       # TODO Add authentication logic here.
     end
 
-    def edit
-      if params.has_key?(:version)
-        object = controller_name.classify.constantize.find(params[:id])
-        selected_version = object.versions.find(params[:version])
-        unless selected_version.object_changes.nil?
-          changes = YAML.load(selected_version.object_changes)
-          changes.each { |k, v| requested_resource[k] = v.last }
-        end
+    def use_version
+      if params.has_key?(:version) && requested_resource.respond_to?(:versions)
+        selected_version = requested_resource.versions.find_by_id(params[:version])&.reify || requested_resource
+        @requested_resource = selected_version
       end
-      render :edit, locals: {
-        page: Administrate::Page::Form.new(dashboard, requested_resource),
-      }
     end
 
     # Override this value to specify the number of elements to display at a time

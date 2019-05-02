@@ -19,3 +19,7 @@
 //= require tinymce-jquery
 //= require turbolinks
 //= require_tree .
+
+function toggle(x) {
+    x.classList.toggle("change");
+  }

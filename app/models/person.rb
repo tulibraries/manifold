@@ -27,4 +27,8 @@ class Person < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+  def label
+    name
+  end
 end

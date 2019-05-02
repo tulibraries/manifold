@@ -53,4 +53,8 @@ class Event < ApplicationRecord
       "(All day)"
     end
   end
+
+  def label
+    title
+  end
 end

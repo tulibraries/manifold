@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rails_helper"
+require "rails_helper" # ~> LoadError: cannot load such file -- rails_helper
 require "uri"
 
 RSpec.describe PersonSerializer do
@@ -20,7 +20,7 @@ RSpec.describe PersonSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties)
+      expect(data[:attributes].keys).to include(:name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties, :label)
     end
 
     it "has a link to the object" do
@@ -47,6 +47,13 @@ RSpec.describe PersonSerializer do
           expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
         end
       end
+
+      describe "label attribute" do
+        it "returns the name" do
+          label = data[:attributes][:label]
+          expect(label).to match(data[:attributes][:name])
+        end
+      end
     end
   end
 
@@ -58,3 +65,10 @@ RSpec.describe PersonSerializer do
     end
   end
 end
+
+# ~> LoadError
+# ~> cannot load such file -- rails_helper
+# ~>
+# ~> /home/skng/.rbenv/versions/2.5.1/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+# ~> /home/skng/.rbenv/versions/2.5.1/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
+# ~> /tmp/seeing_is_believing_temp_dir20190502-25555-kzfhcu/program.rb:3:in `<main>'

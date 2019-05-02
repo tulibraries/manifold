@@ -21,4 +21,8 @@ class Building < ApplicationRecord
 
   before_validation :normalize_phone_number
   before_validation :sanitize_description
+
+  def label
+    name
+  end
 end

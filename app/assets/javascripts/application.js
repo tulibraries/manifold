@@ -20,6 +20,6 @@
 //= require turbolinks
 //= require_tree .
 
-function myFunction(x) {
+function toggle(x) {
     x.classList.toggle("change");
   }

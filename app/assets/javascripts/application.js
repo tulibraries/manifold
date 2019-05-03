@@ -21,5 +21,10 @@
 //= require_tree .
 
 function toggle(x) {
+  if (x instanceof Object) {
     x.classList.toggle("change");
   }
+  else {
+    document.getElementById(x).classList.toggle("change");
+  }
+}

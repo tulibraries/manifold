@@ -9,7 +9,10 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def label
-    #self.has_attribute?(:name) ? self.name : nil
-    self.attributes.fetch("name") { nil }
+    respond_to?(label_method) ? self[label_method] : "#{self.class.to_s}_#{id}"
+  end
+
+  def label_method
+    :name
   end
 end

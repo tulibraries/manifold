@@ -7,4 +7,9 @@ class ApplicationRecord < ActiveRecord::Base
     @today = Date.today.strftime("%Y-%m-%d 00:00:00")
     @today.to_date.strftime("%^A, %^B %d, %Y ")
   end
+
+  def label
+    #self.has_attribute?(:name) ? self.name : nil
+    self.attributes.fetch("name") { nil }
+  end
 end

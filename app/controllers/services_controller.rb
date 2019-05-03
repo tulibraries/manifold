@@ -5,14 +5,12 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show]
 
   def show
-    @services = Service.all
-    groups = @services.group_by { |service| service.service_category }
-    @grouped_services = Hash[ groups.sort_by { |key, val| key } ]
-    @key_group = @service.service_category
+    # binding.pry
   end
 
   private
     def set_service
       @service = Service.find(params[:id])
+      @categories = @service.categories
     end
 end

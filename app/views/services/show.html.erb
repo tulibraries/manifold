@@ -1,31 +1,45 @@
-<div class="row">
-  <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %>
-    <%= link_to "Services", services_path %>
-    <%= @service.title %>
-  </div>
-</div>
-
-<div class="row ctaRow service-show">
-  <div class="col-3 text-right">
-  <% unless @grouped_services.blank? %>
-    <div class="card ctaFirst">
-      <div class="card-title">All Services</div>
-      <div class="card-body">
-        <%= render "all_services" %>
+<div class="row d-block d-md-block d-lg-none" id="services-mobile-nav">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#services-mobile-menu" aria-controls="services-mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" id="sub-toggler-icon" onclick="toggle(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </span>
+      <span class="navbar-brand" onclick="toggle('sub-toggler-icon')">
+        <% @categories.each do |i| %>
+          <%= i.name %> 
+        <% end %> Menu</span>
+    </button>
+    <div class="collapse navbar-collapse" id="services-mobile-menu">
+      <div class="navbar-nav"> 
+         <%= render "all_services" %>
       </div>
     </div>
-  </div>
-  <div class="col-6">
-    <% else %>
-  <div class="col-8 offset-1">
-    <% end %>
+  </nav>
+</div>
+
+<div class="container">
+  
+<div class="row service-show">
+  <% unless @categories.blank? %>
+    <div class="col-3 d-none d-md-none d-lg-block">
+      <%= render "all_services" %>
+    </div>
+  <% else %>
+    <div class="d-block d-md-block d-lg-none">
+      <%= render "mobile_services" %>
+    </div>
+  <% end %>
+  
+  <% unless @categories.blank? %>
+    <div class="col-9 col-md-6">
+  <% else %>
+    <div class="col-9">
+  <% end %>
+  
     <h2 class="unstyled"><%= @service.title %></h2>
     <%= sanitize @service.description.html_safe %>
-    <% unless @service.access_description.blank? %>
-      <h3>Access Description:</h3>
-      <%= sanitize @service.access_description.html_safe %>
-    <% end %>
     <% unless @service.access_link.blank? %>
       <h3>Access Link:</h3>
       <p><%= link_to @service.title, strip_tags(@service.access_link) %></p>
@@ -35,26 +49,19 @@
       <%= sanitize @service.service_policies.html_safe %>
     <% end %>
   </div>
-  <div class="col-3 text-left">
-    <div class="card ctaLast">
-      <div class="card-title">
-        Hours
+  <div class="col-3 rightside-service">
+    <% unless @service.access_link.blank? %>
+      <div class="access-link">
+        <%= link_to "Access Link", @service.access_link %>
       </div>
-      <div class="card-body text-center">
-        <p><strong><%= @service.todays_date %></strong></p>
-        <% unless @service.hours.blank? %>
-          <p><%= @todays_hours.first.hours %></p>
-          <p><%= link_to "see service hours >", hours_path(@service.hours) %></p>
-        <% else %>
-          <p>This service does not have hours</p>
-          <p><%= link_to "see all hours >", hours_path %></p>
-        <% end %>
+    <% end %>
+    <% unless @service.access_description.blank? %>
+      <div class="entity-help">
+        <%= sanitize @service.access_description.html_safe %>
       </div>
-    </div>
-    <%= render "related_spaces" %>
-    <%= render "related_policies" %>
-    <%= render "related_groups" %>
+    <% end %>
   </div>
 </div>
 
 
+</div>

@@ -109,6 +109,9 @@ en:
         sync_library_hours: "Sync Hours"
         sync: "Sync"
         show_website: "Show in Website"
+        revert: "This version"
+        revert: "Edit"
+        object_version: "Version"
       notification:
         all_blogs_synced: "Blogs: All synched"
         blog_synced: "Blogs: %{id} - %{title} synced"

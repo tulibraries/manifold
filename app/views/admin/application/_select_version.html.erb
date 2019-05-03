@@ -1,0 +1,33 @@
+<% if (page.resource.respond_to?(:versions) and not page.resource.versions.empty?) %>
+  <hr/>
+  <div class="field-unit field-unit--has_many ">
+    <div class="field-unit__label">
+      <label for="versions">Versions</label>
+    </div>
+    <div class="field-unit__field">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="version-time">Date/Time</th>
+            <th>Diffs</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% page.resource.versions.reverse_each do |version| %>
+            <%= tag.tr do %>
+              <%= tag.td(version.created_at.strftime("%b %d, %Y %l:%M%p"), class: "version-time") %>
+              <%= tag.td(changed_fields(version.changeset), class: "version-changes") %>
+              <%= tag.td(class: "version-edit-button") do %>
+                <%= link_to(
+                  t("manifold.admin.actions.revert"),
+                  [:edit, namespace, page.resource, version: version.id],
+                  class: "button"
+                ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+    </div>
+  </div>
+<% end %>

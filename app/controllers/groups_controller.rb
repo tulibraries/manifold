@@ -9,11 +9,19 @@ class GroupsController < ApplicationController
   def index
     @departments = Group.where(group_type: "Department").order(:name)
     @teams = Group.where.not(group_type: "Department").order(:name)
+    respond_to do |format|
+      format.html
+      format.json { render json: BuildingSerializer.new(@groups) }
+    end
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: GroupSerializer.new(@group) }
+    end
   end
 
   private

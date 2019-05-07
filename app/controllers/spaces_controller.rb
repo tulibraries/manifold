@@ -9,12 +9,20 @@ class SpacesController < ApplicationController
   # GET /spaces.json
   def index
     @spaces = Space.all
+    respond_to do |format|
+      format.html
+      format.json { render json: SpaceSerializer.new(@spaces) }
+    end
   end
 
   # GET /spaces/1
   # GET /spaces/1.json
   def show
     @todays_hours = LibraryHour.where(location_id: @space.hours, date: @today)
+    respond_to do |format|
+      format.html
+      format.json { render json: SpaceSerializer.new(@space) }
+    end
   end
 
   private

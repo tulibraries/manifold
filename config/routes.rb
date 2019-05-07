@@ -82,5 +82,6 @@ Rails.application.routes.draw do
   controller :pages do
     get "ambler" => :ambler
     get "hsl" => :hsl
+    get "about" => :about
   end
 end

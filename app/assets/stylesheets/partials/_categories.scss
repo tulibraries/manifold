@@ -1,0 +1,15 @@
+@import "_vars.scss";
+
+.categories {
+	.container {
+		margin-top: 35px;
+	}
+	h2 {
+		a {
+			color: $red;
+		}
+	}
+	.category-icon {
+		opacity: .5;
+	}
+}

@@ -23,6 +23,10 @@ class PagesController < ApplicationController
     @events = Event.where("tags LIKE ?", "Health Sciences Libraries").take(4)
   end
 
+  def about
+    @items = nil
+  end
+
   def show
     render @page.layout.parameterize
   end

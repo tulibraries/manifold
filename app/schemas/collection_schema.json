@@ -1,0 +1,113 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://example.com/root.json",
+	"type": "object",
+	"title": "The Root Schema",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"$id": "#/properties/data",
+			"type": "object",
+			"title": "The Data Schema",
+			"required": [
+				"id",
+				"type",
+				"attributes"
+			],
+			"properties": {
+				"id": {
+					"$id": "#/properties/data/properties/id",
+					"type": "string",
+					"title": "The Id Schema",
+					"default": "0",
+					"examples": [
+						"2"
+					],
+					"pattern": "^([0-9]*)$"
+				},
+				"type": {
+					"$id": "#/properties/data/properties/type",
+					"type": "string",
+					"title": "The Type Schema",
+					"default": "blog",
+					"examples": [
+						"building",
+						"event",
+						"person",
+						"group",
+						"blog",
+            "collection"
+					],
+					"pattern": "^(.*)$"
+				},
+				"attributes": {
+					"$id": "#/properties/data/properties/attributes",
+					"type": "object",
+					"title": "The Attributes Schema",
+					"required": [
+						"name",
+						"description"
+					],
+					"properties": {
+						"name": {
+							"$id": "#/properties/data/properties/attributes/properties/name",
+							"type": "string",
+							"title": "The Name Schema",
+							"default": "",
+							"examples": [
+								"The Library Collection"
+							],
+							"pattern": "^(.*)$"
+						},
+						"description": {
+							"$id": "#/properties/data/properties/attributes/properties/description",
+							"type": "string",
+							"title": "The Description Schema",
+							"default": "",
+							"examples": [
+								"This is the description of the collection"
+							],
+							"pattern": "^(.*)$"
+						},
+						"subject": {
+							"$id": "#/properties/data/properties/attributes/properties/subject",
+							"items": [
+                { "type": "string" }
+              ],
+							"title": "The Subject Schema",
+							"default": "",
+							"examples": [
+								"Music",
+                "Literature"
+							],
+							"pattern": "^(.*)$"
+						},
+						"contents": {
+							"$id": "#/properties/data/properties/attributes/properties/contents",
+							"type": "string",
+							"title": "The Contents Schema",
+							"default": "",
+							"examples": [
+								"This is the contents of the collection"
+							],
+							"pattern": "^(.*)$"
+						},
+						"add_to_footer": {
+							"$id": "#/properties/data/properties/attributes/properties/add_to_footer",
+							"type": "boolean",
+							"title": "The Add to Footer State Schema",
+							"default": true ,
+							"examples": [
+								true,
+                false
+							]
+						}
+					}
+				}
+			}
+		}
+	}
+}

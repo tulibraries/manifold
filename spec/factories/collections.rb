@@ -12,6 +12,7 @@ FactoryBot.define do
     }
     subject { ["MyText"] }
     contents { "MyText" }
+    add_to_footer { false }
 
     association :space
     trait :with_image do

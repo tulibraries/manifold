@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     @teams = Group.where.not(group_type: "Department").order(:name)
     respond_to do |format|
       format.html
-      format.json { render json: BuildingSerializer.new(@groups) }
+      format.json { render json: GroupSerializer.new(@groups) }
     end
   end
 

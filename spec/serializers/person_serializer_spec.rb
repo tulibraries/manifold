@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rails_helper" # ~> LoadError: cannot load such file -- rails_helper
+require "rails_helper"
 require "uri"
 
 RSpec.describe PersonSerializer do
@@ -65,10 +65,3 @@ RSpec.describe PersonSerializer do
     end
   end
 end
-
-# ~> LoadError
-# ~> cannot load such file -- rails_helper
-# ~>
-# ~> /home/skng/.rbenv/versions/2.5.1/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
-# ~> /home/skng/.rbenv/versions/2.5.1/lib/ruby/2.5.0/rubygems/core_ext/kernel_require.rb:59:in `require'
-# ~> /tmp/seeing_is_believing_temp_dir20190502-25555-kzfhcu/program.rb:3:in `<main>'

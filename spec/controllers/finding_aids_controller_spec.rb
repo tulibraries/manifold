@@ -9,7 +9,7 @@ RSpec.describe FindingAidsController, type: :controller do
   describe "GET #index" do
     let(:finding_aid) {FactoryBot.create(:finding_aid)}
 
-    it "returns a success response", skip: "TBA" do
+    it "returns a success response", skip: "TBA: Views don't exist yet" do
       get :index
       expect(response).to be_successful
     end

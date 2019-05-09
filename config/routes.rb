@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
   resources :finding_aids, only: [:index, :show]
-  resources :pages, only: [:show]
+  resources :pages, only: [:index, :show]
   resources :highlights, only: [:index, :show]
 
   get "forms", to: "forms#all"

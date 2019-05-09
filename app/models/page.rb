@@ -10,4 +10,8 @@ class Page < ApplicationRecord
   validates :title, :description, presence: true
 
   belongs_to :group, optional: true
+
+  def label
+    title
+  end
 end

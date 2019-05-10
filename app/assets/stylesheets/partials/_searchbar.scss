@@ -87,6 +87,7 @@
 		padding-left: 0;
 		padding-top: 7px;
 		margin-bottom: 0;
+		margin-left: -35px;
 		li {
 			display: inline-block;
 			padding-left: 4px;
@@ -153,6 +154,7 @@
 		padding-left: 0;
 		padding-top: 7px;
 		margin-bottom: 0;
+		margin-left: -35px;
 		li {
 			display: inline-block;
 			padding-left: 4px;
@@ -286,19 +288,20 @@
 		  font-family: 'PT Sans';
 		}
 		#searchOptions {
-			width: 100%;
-			margin-top: 0;
-			float: none;
 			position: relative;
 			top: 120px;
+			width: 100%;
+			margin-top: 0;
+			margin-left: 0;
+			margin-right: 0!important;
+			float: none;
 			text-align: center;
-			width: 76%;
 			ul {
 				display: inline-block;
 				position: relative;
-				left: -165px;
-				padding: 14px 28px;
+				padding: 14px 14px;
 				padding-top: 7px;
+				margin-left: -35px;
 				height: 49px;
 				font-weight: 100;
 				font-size: 1.35rem;
@@ -309,18 +312,6 @@
 				text-align: center;
 				color: $white;
 				background-color: $foamgreen;
-				@media screen and (min-width: 1140px) and (max-width: 1199px) {
-					left: -18%;
-				}
-				@media screen and (min-width: 1081px) and (max-width: 1139px) {
-					left: -17%;
-				}
-				@media screen and (min-width: 1050px) and (max-width: 1080px) {
-					left: -16%;
-				}
-				@media screen and (min-width: 950px) and (max-width: 1049px) {
-					left: -14%;
-				}
 				li {
 					display: inline-block;
 					padding: 0;
@@ -343,48 +334,54 @@
 				top: 0;
 				padding-left: 21px;
 				font-size: 1.15rem;
-				/*@media screen and (max-width: 1057px) {
-					display:block;
-				}*/
 			}
 		}
-		#dateTime {
-			position: absolute;
-			bottom: 0px;
-			background-color: $white;
-			border-top-left-radius: 7px;
-			border-top-right-radius: 7px;
-			width: 40%;
-			margin: auto;
-			margin-left: 30%;
-			text-align: center;
-			#date {
-				background-color: $purple;
-				width: 85%;
+		.bottom-wrapper {
+			position: absolute; 
+			bottom: 0;
+			margin: 0;
+			width: 100%;
+			@media screen and (min-width: 0) and (max-width: 949px) {
+				position: relative;
+			}
+			#dateTime {
+				background-color: $white;
+				border-top-left-radius: 7px;
+				border-top-right-radius: 7px;
+				width: 40%;
+				max-width: 600px;
 				margin: auto;
-				padding-top: 7px;
-				padding-bottom: 7px;
-				color: white;
-				font-size: 1.3rem;
-			}
-			#time {
-				width: 50%;
-				padding-top: 7px;
-				padding-bottom: 0;
-				font-size: 1.1rem;
-				display: inline-block;
-				font-weight: 600;
-				float: left;
-				padding-left: 7.5%;
-			}
-			#allHours {
-				width: 50%;
-				padding-top: 7px;
-				padding-bottom: 0;
-				font-size: 1.1rem;
-				display: inline-block;
-				a {
-					color: $black;
+				text-align: center;
+				#date {
+					background-color: $purple;
+					width: 85%;
+					margin: auto;
+					padding-top: 7px;
+					padding-bottom: 7px;
+					color: white;
+					font-size: 1.3rem;
+				}
+				#time {
+					width: 50%;
+					padding-top: 7px;
+					padding-bottom: 0;
+					font-size: 1.1rem;
+					display: inline-block;
+					font-weight: 600;
+					float: left;
+					padding-left: 7.5%;
+					background-color: $white;
+				}
+				#allHours {
+					width: 50%;
+					padding-top: 7px;
+					padding-bottom: 0;
+					font-size: 1.1rem;
+					display: inline-block;
+					background-color: $white;
+					a {
+						color: $black;
+					}
 				}
 			}
 		}

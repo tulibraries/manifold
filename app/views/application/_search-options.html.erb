@@ -1,4 +1,4 @@
-<div id="searchOptions" class="container">
+<div id="searchOptions">
   <ul class="search-links">
     <li><%= link_to "Books", "http://librarysearch.temple.edu/books" %></li>
     <li><%= link_to "Articles", "http://librarysearch.temple.edu/articles" %></li>
@@ -6,14 +6,18 @@
   </ul>
 </div>
 
+<div class="bottom-wrapper">
 <div id="dateTime">
   <div id="date">
     <%= @todays_date %>
   </div>
-  <div id="time">
-    Charles Library | 8am - 7pm
+  <div class="row" style="margin: 0">
+    <div id="time">
+      Charles Library | 8am - 7pm
+    </div>
+    <div id="allHours">
+      <%= link_to "See all library hours >", hours_path %>
+    </div>
   </div>
-  <div id="allHours">
-    <%= link_to "See all library hours >", hours_path %>
-  </div>
+</div>
 </div>

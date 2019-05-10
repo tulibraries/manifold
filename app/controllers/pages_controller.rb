@@ -24,10 +24,8 @@ class PagesController < ApplicationController
   end
 
   def about
-    @items = nil
   end
   def visit
-    @items = nil
   end
 
   def research

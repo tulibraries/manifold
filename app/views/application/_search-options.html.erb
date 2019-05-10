@@ -1,9 +1,17 @@
+<div id="searchOptions" class="container">
+  <ul class="search-links">
+    <li><%= link_to "Books", "http://librarysearch.temple.edu/books" %></li>
+    <li><%= link_to "Articles", "http://librarysearch.temple.edu/articles" %></li>
+    <li><%= link_to "Databases", "http://librarysearch.temple.edu/databases" %></li>
+  </ul>
+</div>
+
 <div id="dateTime">
   <div id="date">
-    FRIDAY, AUGUST 17, 2018
+    <%= @todays_date %>
   </div>
   <div id="time">
-    Paley Library | 8am - 7pm
+    Charles Library | 8am - 7pm
   </div>
   <div id="allHours">
     <%= link_to "See all library hours >", hours_path %>

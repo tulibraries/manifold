@@ -4,10 +4,10 @@ require "rails_helper"
 
 RSpec.describe FindingAidsController, type: :controller do
 
-  let(:finding_aid) {FactoryBot.create(:finding_aid)}
+  let(:finding_aid) { FactoryBot.create(:finding_aid) }
 
   describe "GET #index" do
-    let(:finding_aid) {FactoryBot.create(:finding_aid)}
+    let(:finding_aid) { FactoryBot.create(:finding_aid) }
 
     it "returns a success response", skip: "TBA: Views don't exist yet" do
       get :index
@@ -22,7 +22,7 @@ RSpec.describe FindingAidsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      get :show, params: { id: finding_aid.id}
+      get :show, params: { id: finding_aid.id }
       expect(response).to be_successful
     end
 

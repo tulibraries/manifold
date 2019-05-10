@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ServiceSerializer
   include FastJsonapi::ObjectSerializer
   attributes :title, :description, :access_description, :access_link, :service_policies,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :highlight do
     sequence(:title) { |n| "Prime Directive #{n}" }

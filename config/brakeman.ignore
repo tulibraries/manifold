@@ -1,6 +1,25 @@
 {
   "ignored_warnings": [
     {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "208d098f49f63dbf07c3a46354e5c1853e7c933e974b37abafee4bed717d1cd1",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/services/show.html.erb",
+      "line": 23,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Access Link\", Service.find(params[:id]).access_link)",
+      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":21,"file":"app/controllers/services_controller.rb","rendered":{"name":"services/show","file":"/home/skng/Projects/lwr/manifold/app/views/services/show.html.erb"}}],
+      "location": {
+        "type": "template",
+        "template": "services/show"
+      },
+      "user_input": "Service.find(params[:id]).access_link",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
       "warning_type": "Mass Assignment",
       "warning_code": 70,
       "fingerprint": "26de2923c8b3a419d65fd503ec16fa41f1a3f68c7fa9083e6c8af2e1589f8764",
@@ -115,6 +134,37 @@
       },
       "user_input": "params[:version]",
       "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "8beee6d73cfda9260b05bbd93b6fd3ce3f52ac546f8decb3927837afc61d503b",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/services/show.html.erb",
+      "line": 23,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Access Link\", Service.find(params[:id]).access_link)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ServicesController",
+          "method": "show",
+          "line": 9,
+          "file": "app/controllers/services_controller.rb",
+          "rendered": {
+            "name": "services/show",
+            "file": "/Users/cdoyle/projects/fortytude/app/views/services/show.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "services/show"
+      },
+      "user_input": "Service.find(params[:id]).access_link)",
+      "confidence": "Weak",
       "note": ""
     },
     {

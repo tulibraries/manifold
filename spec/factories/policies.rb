@@ -6,6 +6,6 @@ FactoryBot.define do
     description { "Don't Interfere" }
     effective_date { Date.new(2001, 1, 1) }
     expiration_date { Date.new(2001, 1, 2) }
-    category { "Conduct" }
+    category { ["Conduct"] }
   end
 end

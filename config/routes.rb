@@ -83,5 +83,6 @@ Rails.application.routes.draw do
     get "ambler" => :ambler
     get "hsl" => :hsl
     get "about" => :about
+    get "visit-study" => :visit
   end
 end

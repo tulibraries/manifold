@@ -26,6 +26,9 @@ class PagesController < ApplicationController
   def about
     @items = nil
   end
+  def visit
+    @items = nil
+  end
 
   def show
     render @page.layout.parameterize

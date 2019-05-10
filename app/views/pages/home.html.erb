@@ -1,13 +1,14 @@
 <div id="home">
 <div id="searchFields">
-		<div class="row d-none d-lg-block">
-		    <%= render "search-options" %>
-		</div>
-		<div class="row d-block d-lg-none">
-		  <div class="col">
-		    <%= render "responsive-search-options" %>
-		  </div>
-		</div>
+
+	<%= render "page-search" %>
+	
+	<div class="row d-none d-md-none d-lg-block">
+	    <%= render "search-options" %>
+	</div>
+	<div class="row d-block d-md-block d-lg-none">
+	    <%= render "responsive-search-options" %>
+	</div>
 </div>
 
 <div class="container index">

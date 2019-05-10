@@ -36,11 +36,7 @@
 					"examples": [
 						"building",
 						"event",
-						"person",
-						"group",
-						"blog",
-            "collection",
-            "exhibition"
+						"person"
 					],
 					"pattern": "^(.*)$"
 				},
@@ -50,6 +46,7 @@
 					"title": "The Attributes Schema",
 					"required": [
 						"title",
+						"label",
 						"description"
 					],
 					"properties": {
@@ -57,6 +54,16 @@
 							"$id": "#/properties/data/properties/attributes/properties/name",
 							"type": "string",
 							"title": "The Title Schema",
+							"default": "",
+							"examples": [
+								"The Library's Exhibition"
+							],
+							"pattern": "^(.*)$"
+						},
+						"label": {
+							"$id": "#/properties/data/properties/attributes/properties/label",
+							"type": "string",
+							"title": "The Label Schema",
 							"default": "",
 							"examples": [
 								"The Library's Exhibition"

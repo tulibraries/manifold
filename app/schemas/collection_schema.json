@@ -32,14 +32,11 @@
 					"$id": "#/properties/data/properties/type",
 					"type": "string",
 					"title": "The Type Schema",
-					"default": "blog",
+					"default": "collection",
 					"examples": [
 						"building",
 						"event",
-						"person",
-						"group",
-						"blog",
-            "collection"
+						"person"
 					],
 					"pattern": "^(.*)$"
 				},
@@ -49,6 +46,7 @@
 					"title": "The Attributes Schema",
 					"required": [
 						"name",
+						"label",
 						"description"
 					],
 					"properties": {
@@ -62,6 +60,16 @@
 							],
 							"pattern": "^(.*)$"
 						},
+						"label": {
+							"$id": "#/properties/data/properties/attributes/properties/label",
+							"type": "string",
+							"title": "The Label Schema",
+							"default": "",
+							"examples": [
+								"The Library Collection"
+							],
+							"pattern": "^(.*)$"
+						},
 						"description": {
 							"$id": "#/properties/data/properties/attributes/properties/description",
 							"type": "string",
@@ -69,6 +77,7 @@
 							"default": "",
 							"examples": [
 								"This is the description of the collection"
+
 							],
 							"pattern": "^(.*)$"
 						},

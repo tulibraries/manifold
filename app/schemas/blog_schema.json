@@ -36,9 +36,7 @@
 					"examples": [
 						"building",
 						"event",
-						"person",
-						"group",
-						"blog"
+						"person"
 					],
 					"pattern": "^(.*)$"
 				},
@@ -48,6 +46,7 @@
 					"title": "The Attributes Schema",
 					"required": [
 						"title",
+						"label",
 						"base_url",
 						"feed_path",
 						"last_sync_date",
@@ -57,7 +56,17 @@
 						"name": {
 							"$id": "#/properties/data/properties/attributes/properties/name",
 							"type": "string",
-							"title": "The Title Schema",
+							"title": "The Name Schema",
+							"default": "",
+							"examples": [
+								"The Library Blog"
+							],
+							"pattern": "^(.*)$"
+						},
+						"label": {
+							"$id": "#/properties/data/properties/attributes/properties/label",
+							"type": "string",
+							"title": "The Label Schema",
 							"default": "",
 							"examples": [
 								"The Library Blog"

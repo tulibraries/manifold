@@ -32,16 +32,11 @@
 					"$id": "#/properties/data/properties/type",
 					"type": "string",
 					"title": "The Type Schema",
-					"default": "policy",
+					"default": "finding_aid",
 					"examples": [
 						"building",
 						"event",
-						"person",
-						"group",
-						"blog",
-            "collection",
-            "policy",
-            "finding_aid"
+						"person"
 					],
 					"pattern": "^(.*)$"
 				},

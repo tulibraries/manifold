@@ -36,11 +36,7 @@
 					"examples": [
 						"building",
 						"event",
-						"person",
-						"group",
-						"blog",
-            "collection",
-            "space"
+						"person"
 					],
 					"pattern": "^(.*)$"
 				},

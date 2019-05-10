@@ -28,7 +28,7 @@
           "examples": [
             "3"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^([0-9]*)$"
         },
         "type": {
           "$id": "#/properties/data/properties/type",
@@ -48,6 +48,7 @@
           "title": "The Attributes Schema",
           "required": [
             "name",
+            "label", 
             "first_name",
             "last_name",
             "job_title",
@@ -59,6 +60,16 @@
               "$id": "#/properties/data/properties/attributes/properties/name",
               "type": "string",
               "title": "The Name Schema",
+              "default": "",
+              "examples": [
+                "Zaphod Beeblebrox"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "label": {
+              "$id": "#/properties/data/properties/attributes/properties/label",
+              "type": "string",
+              "title": "The Label Schema",
               "default": "",
               "examples": [
                 "Zaphod Beeblebrox"
@@ -98,6 +109,7 @@
             "email_address": {
               "$id": "#/properties/data/properties/attributes/properties/email_address",
               "type": "string",
+              "format": "email",
               "title": "The Email_address Schema",
               "default": "",
               "examples": [

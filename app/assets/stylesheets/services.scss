@@ -192,6 +192,7 @@
 	width: 95%;
 	@media (max-width: 950px) {
 		width: 100%;
+		border-bottom: solid $white 4px;
 	}
 	h2 {
 		color: $seagreen-dark;

@@ -246,10 +246,21 @@
 		margin-left: 10px!important;
 		background-image: none;
 		color: $seagreen-dark;
+		@media screen and (min-width: 0) and (max-width: 949px) {
+			vertical-align: top;
+			padding-top: 4px;
+		}
 	}
 	.navbar-brand {
 		padding-left: 7px;
 		color: $seagreen-dark;
+		@media screen and (min-width: 0) and (max-width: 949px) {
+			white-space: normal;
+			text-align: left;
+			display: inline-block;
+			padding-right: 5%;
+			line-height: 1.5rem;
+		}
 	}
 
 }

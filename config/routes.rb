@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :services
     resources :spaces
     resources :categories
+    resources :external_links
 
     resource :events do
       member do

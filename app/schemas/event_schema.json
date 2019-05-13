@@ -1,7 +1,9 @@
 {
+  "definitions": {},
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
   "type": "object",
-  "title": "Event Schema",
+  "title": "The Root Schema",
   "required": [
     "data"
   ],
@@ -43,13 +45,22 @@
           "$id": "#/properties/data/properties/attributes",
           "type": "object",
           "title": "The Attributes Schema",
-          "required": [
-          ],
+          "required": [],
           "properties": {
             "title": {
               "$id": "#/properties/data/properties/attributes/properties/title",
               "type": "string",
               "title": "The Title Schema",
+              "default": "",
+              "examples": [
+                "2nd Annual Winter Concert"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "label": {
+              "$id": "#/properties/data/properties/attributes/properties/label",
+              "type": "string",
+              "title": "The Label Schema",
               "default": "",
               "examples": [
                 "2nd Annual Winter Concert"

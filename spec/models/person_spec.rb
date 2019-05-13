@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rails_helper" # ~> LoadError: cannot load such file -- rails_helper
+require "rails_helper"
 
 RSpec.describe Person, type: :model do
 

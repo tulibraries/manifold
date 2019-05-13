@@ -7,11 +7,19 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @blogs = Blog.all
+    respond_to do |format|
+      format.html
+      format.json { render json: BlogSerializer.new(@blogs) }
+    end
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: BlogSerializer.new(@blog) }
+    end
   end
 
   # GET /blogs/new

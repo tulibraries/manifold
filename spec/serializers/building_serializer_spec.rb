@@ -20,7 +20,7 @@ RSpec.describe BuildingSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number, :description)
+      expect(data[:attributes].keys).to include(:name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number, :description, :label)
     end
 
     it "has a link to the object" do
@@ -45,6 +45,13 @@ RSpec.describe BuildingSerializer do
         it "returns an valid url" do
           image_url = data[:attributes][:thumbnail_image]
           expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
+        end
+      end
+
+      describe "label attribute" do
+        it "returns the name" do
+          label = data[:attributes][:label]
+          expect(label).to match(data[:attributes][:name])
         end
       end
     end

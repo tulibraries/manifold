@@ -20,7 +20,7 @@ RSpec.describe PersonSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties)
+      expect(data[:attributes].keys).to include(:name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties, :label)
     end
 
     it "has a link to the object" do
@@ -45,6 +45,13 @@ RSpec.describe PersonSerializer do
         it "returns an valid url" do
           image_url = data[:attributes][:thumbnail_image]
           expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
+        end
+      end
+
+      describe "label attribute" do
+        it "returns the name" do
+          label = data[:attributes][:label]
+          expect(label).to match(data[:attributes][:name])
         end
       end
     end

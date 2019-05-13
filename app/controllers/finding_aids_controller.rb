@@ -5,9 +5,17 @@ class FindingAidsController < ApplicationController
 
   def index
     @finding_aids = FindingAid.all
+    respond_to do |format|
+      format.html
+      format.json { render json: FindingAidSerializer.new(@finding_aids) }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: FindingAidSerializer.new(@finding_aid) }
+    end
   end
 
   private

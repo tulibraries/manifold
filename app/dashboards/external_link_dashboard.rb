@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class ExternalLinkDashboard < Administrate::BaseDashboard
+class ExternalLinkDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,7 +10,6 @@ class ExternalLinkDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    versions: Field::HasMany.with_options(class_name: "PaperTrail::Version"),
     id: Field::Number,
     title: Field::String,
     link: Field::String,

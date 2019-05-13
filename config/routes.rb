@@ -82,8 +82,9 @@ Rails.application.routes.draw do
   controller :pages do
     get "ambler" => :ambler
     get "hsl" => :hsl
-    get "about" => :about
-    get "research-services" => :research
-    get "visit-study" => :visit
+    get "about" => :about, as: "pages_about"
+    get "research-services" => :research, as: "pages_research"
+    get "visit-study" => :visit, as: "pages_visit"
+    get "home" => :home, as: "pages_home"
   end
 end

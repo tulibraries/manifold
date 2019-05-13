@@ -47,22 +47,22 @@
     <div class="container nav-container">
       <ul class="list-unstyled" style=""> 
         <li class="first">
-          <%= link_to "About", controller: "pages", action: "about" %>
+          <%= link_to "About", pages_about_path %>
         </li>
         <li>
-          <%= link_to "Visit & Study", controller: "pages", action: "visit" %>
+          <%= link_to "Visit & Study", pages_visit_path %>
         </li>
         <li>
-          <%= link_to "Research Services", controller: "pages", action: "research" %>
+          <%= link_to "Research Services", pages_research_path %>
         </li>
         <li class="last">
-          <%= link_to "Contact Us", controller: "pages", action: "home" %>
+          <%= link_to "Contact Us", pages_home_path %>
         </li> 
         <li class="nav-right hours-nav">
           <%= link_to "Hours", hours_path %>
         </li>
         <li class="nav-right chat-nav">
-          <%= link_to "Chat", controller: "pages", action: "home" %>
+          <%= link_to "Chat", pages_home_path %>
         </li>
         <li class="nav-right account-nav">
           <%= link_to "My Account", "https://librarysearch.temple.edu/users/account" %>

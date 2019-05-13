@@ -138,6 +138,11 @@
 	position: relative;
 	width: 100%;
 	margin: 0;
+	.navbar-nav {
+		.row {
+			width: 100%; /* Firefox fix */
+		}
+	}
 	.navbar {
 		background-color: $seagreen;
 		justify-content: flex-start;
@@ -300,7 +305,7 @@
 		}
 	}
 	@media screen and (max-width: 799px) {
-		padding: 0;
+		padding: 10px 4px 14px 0;
 	}
 }
 .navbar-default {

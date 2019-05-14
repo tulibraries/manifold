@@ -3,6 +3,7 @@
 .service-show {
 	margin-top: 14px;
 }
+
 .leftside-index {
 	background-color: $lightest-grey;
 	width: 95%;
@@ -66,6 +67,10 @@
 		border: solid $seagreen 1px;
 		border-radius: 7px;
 		padding: 14px;
+		overflow-wrap: break-word;
+		ul {
+			padding-left: 0;
+		}
 		@media (max-width: 950px) {
 			width: 95%;
 		}

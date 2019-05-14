@@ -253,6 +253,16 @@
                 "http://test.host/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWlk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d12640749274b208e7e27c788f8dab20ad17cab0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1780aa09167cc24cd4beae09f819f90d80b64c3a/winter_concert_square.jpg"
               ],
               "pattern": "^(.*)$"
+						},
+						"updated_at": {
+							"$id": "#/properties/data/properties/attributes/properties/updated_at",
+							"type": "string",
+							"title": "The time the blog record was updated",
+              "format": "date-time",
+							"default": "",
+							"examples": [
+								"2018-01-01T12:00:00"
+							]
             }
           }
         },

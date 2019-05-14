@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class EventSerializer
-  include FastJsonapi::ObjectSerializer
+  include FastJsonapi::ObjectSerializer # ~> NameError: uninitialized constant EventSerializer::FastJsonapi
 
   def self.helpers
     Rails.application.routes.url_helpers
@@ -11,7 +11,9 @@ class EventSerializer
 
   set_type :event
 
-  attributes :title, :description, :start_time, :end_time, :cancelled, :registration_status, :registration_link, :content_hash, :alt_text, :ensemble_identifier, :tags, :all_day, :image, :label
+  attributes :title, :description, :start_time, :end_time, :cancelled, :registration_status
+  attributes :registration_link, :content_hash, :alt_text, :ensemble_identifier, :tags, :all_day
+  attributes :label, :updated_at
 
   attribute :space do |event|
     if event.space.nil?
@@ -39,7 +41,7 @@ class EventSerializer
     end
   end
 
-  attribute :contact_name do |event|
+  attribute :contact_name do |event| # => 
     if event.person.nil?
       event.external_contact_name
     else

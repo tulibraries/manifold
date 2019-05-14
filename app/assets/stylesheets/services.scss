@@ -1,192 +1,8 @@
 @import "partials/_vars.scss";
 
-
-.servicesRow {
-  margin-top: 42px;
-  margin-bottom: 42px;
-  .cta {
-		border: solid $seagreen 2px;
-		text-align: center;
-  	display: table;
-  }
-	.cta.first {
-		border-top-left-radius: 14px;
-		border-bottom-left-radius: 14px;
-	}
-	.cta.last {
-		border-top-right-radius: 14px;
-		border-bottom-right-radius: 14px;
-	}
-	.cta.both {
-		border-radius: 14px;
-		vertical-align: middle;
-	}
-	.service {
-		height: 99px;
-		margin: auto;
-		border: 0;
-		background-color: transparent;
-		vertical-align: middle;
-	  font-size: 1.15rem;
-	  margin: auto;
-    display: table-cell;
-    vertical-align: middle;
-    a {
-    	color: $black;
-    }
-	}
-}
 .service-show {
 	margin-top: 14px;
-  h2 {
-  	margin-top: 0;
-  	border-left: 0;
-  	padding-left: 0;
-  	padding-top: 0;
-  }
-	.col-3 {
-		height: auto;
-	}
-	.ctaFirst {
-		border-color: $seagreen;
-		background-color: transparent;
-		text-align: left;
-		height: auto;
-		p {
-			font-weight: 600;
-			color:black;
-		}
-		.card {
-			border: 0;
-		}
-		.card-title {
-			padding: 14px;
-			color: $black;
-			border-bottom: solid $seagreen 1px;
-			background-color: $background-grey;
-			text-align: left;
-			line-height: 1.75rem;
-		}
-		.card-header {
-			background-color: transparent;
-			border: 0;
-			border-bottom: solid $seagreen 1px;
-			padding: 0;
-		}
-		a[data-toggle="collapse"] {
-			color: $seagreen;
-			background-color: $white;
-			text-align: left;
-			line-height: 1.75rem;	
-			display:block;
-			padding:7px;
-		}
-		a[data-toggle="collapse"]:after {
-			content: "\f054";
-    	float: right;
-    	padding-right: 7px;
-  	}
-		a[data-toggle="collapse"]:hover {
-			color: $seagreen;
-		}
-		a[aria-expanded="true"] {
-			background-color: $seagreen;
-			color: $white;
-			margin: 0!important;
-			display: block;
-		}
-		a[aria-expanded="true"]:after {
-			content: "\f078";
-    	float: right;
-    	padding-right: 7px;
-  	}
-		a[aria-expanded="true"]:hover {
-			color: $white;
-  	}
-		.card-body {
-			padding: 7px;
-			padding-left: 0;
-			text-align: left;
-			max-height: 100%;
-			li {
-				padding: 0 14px 7px 14px;
-				white-space: normal;
-			}
-		}
-	}
-	.ctaLast {
-		border-color: $seagreen;
-		background-color: transparent;
-		text-align: left;
-		max-height: 210px;
-		height: auto;
-		.card-title {
-			padding: 10px;
-			color: $black;
-			border-bottom: solid $seagreen 1px;
-			background-color: $baby-puke-green;
-			text-align: left;
-			padding-left: 21px;
-			line-height: 1.75rem;
-		}
-		.card-body {
-			padding: 7px;
-			text-align: left;
-			max-height: 100%;
-			ul.unstyled {
-				margin-left: 14px;
-				margin-bottom: 14px;
-				li {
-					padding: 3px;
-				}
-			}
-		}
-	}
 }
-.service-spaces {
-	.cta {
-		a {
-		 font-size: 135%;
-		}
-	}
-}
-.service-policies {
-	.cta {
-		border-color: $foamgreen;
-		a {
-		 font-size: 135%;
-		}
-	}
-}
-.service-groups {
-	.cta {
-		border-color: $purple;
-		a {
-		 font-size: 135%;
-		}
-	}
-}
-
-
-.services-responsive {
-	.service {
-		margin:auto;
-	  margin-top: 42px;
-	  margin-bottom: 42px;
-	  padding: 14px 0 14px 0;
-		background-color: $seagreen;
-		max-width: 90%;
-		width: 90%;
-		height:auto;
-		min-height: 70px;
-		font-size: 175%;
-		a {
-			color: $white;
-		}
-	}
-}
-
-
 .leftside-index {
 	background-color: $lightest-grey;
 	width: 95%;
@@ -206,7 +22,7 @@
 		
 	}
 	li {
-		padding: 10px;
+		padding: 10px 0;
 		line-height: 1rem;
 	}
 	li a {
@@ -222,10 +38,17 @@
 		}
 	}
 }
+
+@media (max-width: 950px) {    /* Firefox fix */
+	.leftside-index:last-child {
+		border-bottom: 0;
+	}
+}
+
 .rightside-service {
 	padding-right: 4px;
 	.access-link {
-		background-color: $seagreen-dark;
+		background-color: $foamgreen;
 		padding: 14px;
 		border-radius: 7px;
 		margin-bottom: 35px;

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PolicySerializer
+class PolicySerializer < ApplicationSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :description, :effective_date, :expiration_date, :category, :label
+  attributes :name, :description, :effective_date, :expiration_date, :category
 end

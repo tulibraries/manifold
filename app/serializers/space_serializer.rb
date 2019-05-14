@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SpaceSerializer
+class SpaceSerializer < ApplicationSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :description, :hours, :accessibility, :phone_number, :email, :label
+  attributes :name, :description, :hours, :accessibility, :phone_number, :email
 end

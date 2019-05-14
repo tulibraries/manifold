@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FindingAidSerializer
+class FindingAidSerializer < ApplicationSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :description, :subject, :content_link, :identifier, :drupal_id, :label
+  attributes :name, :description, :subject, :content_link, :identifier, :drupal_id
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EventSerializer
+class EventSerializer < ApplicationSerializer
   include FastJsonapi::ObjectSerializer # ~> NameError: uninitialized constant EventSerializer::FastJsonapi
 
   def self.helpers
@@ -13,7 +13,6 @@ class EventSerializer
 
   attributes :title, :description, :start_time, :end_time, :cancelled, :registration_status
   attributes :registration_link, :content_hash, :alt_text, :ensemble_identifier, :tags, :all_day
-  attributes :label, :updated_at
 
   attribute :space do |event|
     if event.space.nil?

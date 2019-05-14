@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GroupSerializer
+class GroupSerializer < ApplicationSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :description, :group_type, :external, :add_to_footer, :label
+  attributes :name, :description, :group_type, :external, :add_to_footer
 end

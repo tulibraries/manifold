@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PageSerializer
+class PageSerializer < ApplicationSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :title, :description, :layout, :label
+  attributes :title, :description, :layout
 end

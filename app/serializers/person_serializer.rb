@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PersonSerializer
+class PersonSerializer < ApplicationSerializer
   include FastJsonapi::ObjectSerializer
 
   def self.helpers
@@ -9,7 +9,7 @@ class PersonSerializer
 
   link :self, Proc.new { |person| helpers.url_for(person) }
 
-  attributes :name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties, :label
+  attributes :name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties
   attribute :image, if: Proc.new { |person| person.image.attached? } do |person|
     helpers.rails_blob_url(person.image)
   end

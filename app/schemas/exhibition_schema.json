@@ -1,0 +1,118 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://example.com/root.json",
+	"type": "object",
+	"title": "The Root Schema",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"$id": "#/properties/data",
+			"type": "object",
+			"title": "The Data Schema",
+			"required": [
+				"id",
+				"type",
+				"attributes"
+			],
+			"properties": {
+				"id": {
+					"$id": "#/properties/data/properties/id",
+					"type": "string",
+					"title": "The Id Schema",
+					"default": "0",
+					"examples": [
+						"2"
+					],
+					"pattern": "^([0-9]*)$"
+				},
+				"type": {
+					"$id": "#/properties/data/properties/type",
+					"type": "string",
+					"title": "The Type Schema",
+					"default": "exhibition",
+					"examples": [
+						"building",
+						"event",
+						"person"
+					],
+					"pattern": "^(.*)$"
+				},
+				"attributes": {
+					"$id": "#/properties/data/properties/attributes",
+					"type": "object",
+					"title": "The Attributes Schema",
+					"required": [
+						"title",
+						"label",
+						"description"
+					],
+					"properties": {
+						"name": {
+							"$id": "#/properties/data/properties/attributes/properties/name",
+							"type": "string",
+							"title": "The Title Schema",
+							"default": "",
+							"examples": [
+								"The Library's Exhibition"
+							],
+							"pattern": "^(.*)$"
+						},
+						"label": {
+							"$id": "#/properties/data/properties/attributes/properties/label",
+							"type": "string",
+							"title": "The Label Schema",
+							"default": "",
+							"examples": [
+								"The Library's Exhibition"
+							],
+							"pattern": "^(.*)$"
+						},
+						"description": {
+							"$id": "#/properties/data/properties/attributes/properties/description",
+							"type": "string",
+							"title": "The Description Schema",
+							"default": "",
+							"examples": [
+								"This is the description of the exhibition"
+							],
+							"pattern": "^(.*)$"
+						},
+						"start_date": {
+							"$id": "#/properties/data/properties/attributes/properties/start_date",
+							"type": "string",
+							"title": "The Exhibiton Start Date Schema",
+              "format": "date",
+							"default": "",
+							"examples": [
+								"2018-01-01"
+							]
+						},
+						"end_date": {
+							"$id": "#/properties/data/properties/attributes/properties/end_date",
+							"type": "string",
+							"title": "The Exhibiton End Date Schema",
+              "format": "date",
+							"default": "",
+							"examples": [
+								"2018-01-01"
+							]
+						},
+						"promoted_to_events": {
+							"$id": "#/properties/data/properties/attributes/properties/promoted_to_events",
+							"type": "boolean",
+							"title": "The Promoted to Events State Schema",
+							"default": true ,
+							"examples": [
+								true,
+                false
+							]
+						}
+					}
+				}
+			}
+		}
+	}
+}

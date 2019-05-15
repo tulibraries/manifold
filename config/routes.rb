@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :services
     resources :spaces
     resources :categories
+    resources :external_links
 
     resource :events do
       member do
@@ -65,8 +66,9 @@ Rails.application.routes.draw do
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
-  resources :finding_aids, only: [:show]
-  resources :pages, only: [:show]
+  resources :finding_aids, only: [:index, :show]
+  resources :pages, only: [:index, :show]
+  resources :highlights, only: [:index, :show]
 
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
@@ -80,11 +82,12 @@ Rails.application.routes.draw do
   end
 
   controller :pages do
-    get "ambler" => :ambler
-    get "hsl" => :hsl
-    get "about" => :about
-    get "research-services" => :research
-    get "visit-study" => :visit
-    get "contact-us" => :contact
+    get "ambler" => :ambler, as: "pages_ambler"
+    get "hsl" => :hsl, as: "pages_hsl"
+    get "contact-us" => :contact, as: "pages_contact"
+    get "about" => :about, as: "pages_about"
+    get "research-services" => :research, as: "pages_research"
+    get "visit-study" => :visit, as: "pages_visit"
+    get "home" => :home, as: "pages_home"
   end
 end

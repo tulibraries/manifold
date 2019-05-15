@@ -9,40 +9,33 @@
 		<div class="col-12 col-md-6 col-xl-8">
 			<div class="row">
 				<div class="col-12 col-lg-12 col-xl-6 text-center">
-					<%= link_to (image_tag "newspaper.png", class: "category-icon"), controller: "pages", action: "about" %>
-					<h2><%= link_to "Blogs & News", controller: "pages", action: "about" %></h2>
-					<p>Lorem ipsum magillicus</p>
+					<%= render "pages/contact/three" %>
 				</div>
 				<div class="col-12 col-lg-12 col-xl-6 text-center">
-					<%= link_to (image_tag "pdf.png", class: "category-icon"), controller: "pages", action: "about" %>
-					<h2><%= link_to "Publications, Reports, & Statistics", controller: "pages", action: "about" %></h2>
-					<p>Lorem ipsum magillicus</p>
+					<%= render "pages/contact/four" %>
 				</div>
+			</div>
+			
+			<div class="row d-none d-xl-flex">
+				<div class="col-6 text-center">
+					<%= render "pages/contact/three" %>
+				</div>
+				<div class="col-6 text-center">
+					<%= render "pages/contact/four" %>
+				</div>
+			</div>
 
-				<div class="col-6 text-center">
-					<%= link_to (image_tag "newspaper.png", class: "category-icon"), controller: "pages", action: "about" %>
-					<h2><%= link_to "Blogs & News", controller: "pages", action: "about" %></h2>
-					<p>Lorem ipsum magillicus</p>
-				</div>
-				<div class="col-6 text-center">
-					<%= link_to (image_tag "pdf.png", class: "category-icon"), controller: "pages", action: "about" %>
-					<h2><%= link_to "Publications, Reports, & Statistics", controller: "pages", action: "about" %></h2>
-					<p>Lorem ipsum magillicus</p>
-				</div>
-			</div>
-			<!--  -->
-			<div class="d-block d-xl-none" style="outline: solid red 1px;">
-				<div class="col-12 text-center">
-					<%= link_to (image_tag "newspaper.png", class: "category-icon"), controller: "pages", action: "about" %>
-					<h2><%= link_to "Blogs & News", controller: "pages", action: "about" %></h2>
-					<p>Lorem ipsum magillicus</p>
-				</div>
-				<div class="col-12 text-center">
-					<%= link_to (image_tag "pdf.png", class: "category-icon"), controller: "pages", action: "about" %>
-					<h2><%= link_to "Publications, Reports, & Statistics", controller: "pages", action: "about" %></h2>
-					<p>Lorem ipsum magillicus</p>
-				</div>
-			</div>
+		</div>	<!-- top row -->
+
+		<div class="col-12 col-md-6 d-block d-xl-none text-center">
+			<%= link_to (image_tag "newspaper.png", class: "category-icon"), controller: "pages", action: "about" %>
+			<h2><%= link_to "Blogs & News", controller: "pages", action: "about" %></h2>
+			<p>Lorem ipsum magillicus</p>
+		</div>
+		<div class="col-12 col-md-6 d-block d-xl-none text-center">
+			<%= link_to (image_tag "pdf.png", class: "category-icon"), controller: "pages", action: "about" %>
+			<h2><%= link_to "Publications, Reports, & Statistics", controller: "pages", action: "about" %></h2>
+			<p>Lorem ipsum magillicus</p>
 		</div>
 
 		<div class="col-12 col-md-6 col-lg-6 col-xl-4 text-center">

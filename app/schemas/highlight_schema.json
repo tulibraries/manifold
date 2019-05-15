@@ -1,0 +1,136 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://example.com/root.json",
+	"type": "object",
+	"title": "The Root Schema",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"$id": "#/properties/data",
+			"type": "object",
+			"title": "The Data Schema",
+			"required": [
+				"id",
+				"type",
+				"attributes"
+			],
+			"properties": {
+				"id": {
+					"$id": "#/properties/data/properties/id",
+					"type": "string",
+					"title": "The Id Schema",
+					"default": "0",
+					"examples": [
+						"2"
+					],
+					"pattern": "^([0-9]*)$"
+				},
+				"type": {
+					"$id": "#/properties/data/properties/type",
+					"type": "string",
+					"title": "The Type Schema",
+					"default": "highlight",
+					"examples": [
+						"building",
+						"event",
+						"person"
+					],
+					"pattern": "^(.*)$"
+				},
+				"attributes": {
+					"$id": "#/properties/data/properties/attributes",
+					"type": "object",
+					"title": "The Attributes Schema",
+					"required": [
+						"title",
+						"label"
+					],
+					"properties": {
+						"title": {
+							"$id": "#/properties/data/properties/attributes/properties/title",
+							"type": "string",
+							"title": "The Name Schema",
+							"default": "",
+							"examples": [
+								"Highlights of the Week"
+							],
+							"pattern": "^(.*)$"
+						},
+						"label": {
+							"$id": "#/properties/data/properties/attributes/properties/label",
+							"type": "string",
+							"title": "The Label Schema",
+							"default": "",
+							"examples": [
+								"Highlights of the week"
+							],
+							"pattern": "^(.*)$"
+						},
+						"blurb": {
+							"$id": "#/properties/data/properties/attributes/properties/blurb",
+							"type": "string",
+							"title": "The Blurb Schema",
+							"default": "",
+							"examples": [
+								"This is is what the highlight is all about"
+							],
+							"pattern": "^(.*)$"
+						},
+						"tags": {
+							"$id": "#/properties/data/properties/attributes/properties/tags",
+							"items": [
+                { "type": "string" }
+              ],
+							"title": "Type of highlight",
+							"default": "",
+							"examples": [
+               "Event",
+               "Exhibition",
+               "News"
+							],
+							"pattern": "^(.*)$"
+						},
+						"type_of_highlight": {
+							"$id": "#/properties/data/properties/attributes/properties/type_of_highlight",
+							"type": "string",
+							"title": "The type of highlight Schema",
+							"default": "",
+							"examples": [
+                "DSC Event",
+                "Featured Staff",
+                "Featured Resource",
+                "Featured Location",
+                "HSL Highlight",
+                "Program/Event",
+                "Staff Recommendation"
+							]
+						},
+						"link_label": {
+							"$id": "#/properties/data/properties/attributes/properties/link_label",
+							"type": "string",
+							"title": "The link label Schema",
+							"default": "",
+							"examples": [
+                "The highlight link"
+							],
+							"pattern": "^(.*)$"
+						},
+						"drupal_id": {
+							"$id": "#/properties/data/properties/attributes/properties/drupal_id",
+							"type": "string",
+							"title": "The Drupal ID Schema",
+							"default": "",
+							"examples": [
+                "12345abcde"
+							],
+							"pattern": "^(.*)$"
+						}
+					}
+				}
+			}
+		}
+	}
+}

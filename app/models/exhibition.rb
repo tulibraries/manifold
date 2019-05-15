@@ -11,4 +11,8 @@ class Exhibition < ApplicationRecord
   belongs_to :collection, optional: true
 
   before_save :sanitize_description
+
+  def label
+    title
+  end
 end

@@ -28,4 +28,8 @@ class Service < ApplicationRecord
     # Rails tends to return an empty string in multi-selects array
     intended_audience&.reject! { |a| a.empty? }
   end
+
+  def label
+    title
+  end
 end

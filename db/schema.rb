@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_165735) do
+ActiveRecord::Schema.define(version: 2019_05_13_174221) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -192,6 +192,13 @@ ActiveRecord::Schema.define(version: 2019_04_08_165735) do
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
+  end
+
+  create_table "external_links", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "finding_aid_responsibilities", force: :cascade do |t|

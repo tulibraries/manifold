@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "ostruct"
 
 RSpec.describe Admin::BlogsController, type: :controller do
   # Verify edit page for non-versioned model
@@ -21,8 +22,15 @@ RSpec.describe Admin::BlogsController, type: :controller do
 
   describe "GET #sync" do
     let (:blog) { FactoryBot.create(:blog)}
-    render_views true
+    before do
+      # Stub out the syn service so we don't actually make
+      # http requests for rss. We jut want to test that
+      # we are calling the service integration correctly 
+      allow(SyncService::Blogs).to receive(:new)
+        .and_return(OpenStruct.new(sync_blog_posts: nil))
+    end
     it "renders edit form" do
+
       post :sync, params: { blog_id: blog.id }
       expect(response).to redirect_to admin_blogs_path
     end

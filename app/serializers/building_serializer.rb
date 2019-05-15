@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class BuildingSerializer
-  include FastJsonapi::ObjectSerializer
-
+class BuildingSerializer < ApplicationSerializer
   def self.helpers
     Rails.application.routes.url_helpers
   end
@@ -11,7 +9,7 @@ class BuildingSerializer
 
   set_type :building
 
-  attributes :name, :description, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number, :label
+  attributes :name, :description, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number
 
   attribute :image, if: Proc.new { |building| building.image.attached? } do |building|
     helpers.rails_blob_url(building.image)

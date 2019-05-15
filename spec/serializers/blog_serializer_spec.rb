@@ -21,7 +21,8 @@ RSpec.describe BlogSerializer do
 
     it "has the expected attributes" do
       expect(data[:attributes].keys).to include(:title, :base_url, :feed_path,
-                                                :last_sync_date, :public_status, :label)
+                                                :last_sync_date, :public_status, :label,
+                                                :updated_at)
     end
 
     it "returns the name" do

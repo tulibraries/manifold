@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class EventSerializer
-  include FastJsonapi::ObjectSerializer
-
+class EventSerializer < ApplicationSerializer
   def self.helpers
     Rails.application.routes.url_helpers
   end
@@ -11,7 +9,8 @@ class EventSerializer
 
   set_type :event
 
-  attributes :title, :description, :start_time, :end_time, :cancelled, :registration_status, :registration_link, :content_hash, :alt_text, :ensemble_identifier, :tags, :all_day, :image, :label
+  attributes :title, :description, :start_time, :end_time, :cancelled, :registration_status
+  attributes :registration_link, :content_hash, :alt_text, :ensemble_identifier, :tags, :all_day
 
   attribute :space do |event|
     if event.space.nil?

@@ -21,7 +21,7 @@ RSpec.describe HighlightSerializer do
 
     it "has the expected attributes" do
       expect(data[:attributes].keys).to include(:title, :blurb, :link, :type_of_highlight, :tags,
-                                                :promoted, :link_label, :label)
+                                                :promoted, :link_label, :label, :updated_at)
     end
 
     it "returns the title" do

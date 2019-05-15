@@ -21,11 +21,11 @@ RSpec.describe Admin::BlogsController, type: :controller do
   end
 
   describe "GET #sync" do
-    let (:blog) { FactoryBot.create(:blog)}
+    let (:blog) { FactoryBot.create(:blog) }
     before do
       # Stub out the syn service so we don't actually make
       # http requests for rss. We jut want to test that
-      # we are calling the service integration correctly 
+      # we are calling the service integration correctly
       allow(SyncService::Blogs).to receive(:new)
         .and_return(OpenStruct.new(sync_blog_posts: nil))
     end

@@ -3,7 +3,7 @@
 require "open-uri"
 
 class SyncService::Blogs
-  def self.call(blog: nil )
+  def self.call(blog: nil)
     if blog.nil?
       blogs = Blog.all
     else

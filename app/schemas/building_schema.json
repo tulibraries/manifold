@@ -182,7 +182,7 @@
 						"updated_at": {
 							"$id": "#/properties/data/properties/attributes/properties/updated_at",
 							"type": "string",
-							"title": "The time the blog record was updated",
+							"title": "The time the building record was updated",
               "format": "date-time",
 							"default": "",
 							"examples": [

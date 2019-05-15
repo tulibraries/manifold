@@ -161,6 +161,16 @@
                 "http://test.host/rails/active_storage/representations/zaphod2_1024x768.jpg"
               ],
               "pattern": "^(.*)$"
+						},
+						"updated_at": {
+							"$id": "#/properties/data/properties/attributes/properties/updated_at",
+							"type": "string",
+							"title": "The time the person record was updated",
+              "format": "date-time",
+							"default": "",
+							"examples": [
+								"2018-01-01T12:00:00"
+							]
             }
           }
         },

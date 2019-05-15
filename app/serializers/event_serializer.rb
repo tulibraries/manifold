@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class EventSerializer < ApplicationSerializer # ~> NameError: uninitialized constant ApplicationSerializer
-  include FastJsonapi::ObjectSerializer
-
+class EventSerializer < ApplicationSerializer
   def self.helpers
     Rails.application.routes.url_helpers
   end

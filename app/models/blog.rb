@@ -13,4 +13,8 @@ class Blog < ApplicationRecord
   def feed_path
     attribute(:feed_path) || "/feed"
   end
+
+  def label
+    title
+  end
 end

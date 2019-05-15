@@ -7,5 +7,6 @@ FactoryBot.define do
     subject { ["MyString"] }
     content_link { "MyString" }
     identifier { "MyString" }
+    drupal_id { "MyString" }
   end
 end

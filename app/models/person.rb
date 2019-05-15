@@ -27,4 +27,6 @@ class Person < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+  alias :label :name
 end

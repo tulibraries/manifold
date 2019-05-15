@@ -20,10 +20,11 @@
     <div class="col-12 col-md-3 rightside-service">
       <% unless @service.access_link.blank? %>
         <div class="access-link">
-          <%= link_to "Access Link", @service.access_link %>
+          <h2><%= link_to "Access Link", @service.access_link %></h2>
         </div>
       <% end %>
       <% unless @service.access_description.blank? %>
+      <h2>Get Help</h2>
         <div class="entity-help">
           <%= sanitize @service.access_description.html_safe %>
         </div>

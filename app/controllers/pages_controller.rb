@@ -23,21 +23,37 @@ class PagesController < ApplicationController
     @events = Event.where("tags LIKE ?", "Health Sciences Libraries").take(4)
   end
 
+
   def about
-    @items = nil
   end
+
   def visit
-    @items = nil
   end
 
   def research
+    @pages = Page.all
+    respond_to do |format|
+      format.html
+      format.json { render json: PageSerializer.new(@pages) }
+    end
+  end
+
+  def index
+    @pages = Page.all
+    respond_to do |format|
+      format.html
+      format.json { render json: PageSerializer.new(@pages) }
+    end
   end
 
   def contact
   end
 
   def show
-    render @page.layout.parameterize
+    respond_to do |format|
+      format.html { render @page.layout.parameterize }
+      format.json { render json: PageSerializer.new(@page) }
+    end
   end
 
   private

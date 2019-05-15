@@ -6,6 +6,7 @@ FactoryBot.define do
     description { "MyText" }
     start_date { "2019-01-16" }
     end_date { "2019-01-16" }
+
     trait :with_image do
       after :create do |building|
         file_path = Rails.root.join("spec", "fixtures", "charles.jpg")
@@ -13,5 +14,6 @@ FactoryBot.define do
         building.image.attach(file)
       end
     end
+    promoted_to_events { false }
   end
 end

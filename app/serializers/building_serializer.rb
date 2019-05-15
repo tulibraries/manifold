@@ -11,7 +11,7 @@ class BuildingSerializer
 
   set_type :building
 
-  attributes :name, :description, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number
+  attributes :name, :description, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, :phone_number, :label
 
   attribute :image, if: Proc.new { |building| building.image.attached? } do |building|
     helpers.rails_blob_url(building.image)

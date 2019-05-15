@@ -43,6 +43,13 @@ RSpec.describe EventSerializer do
           expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
         end
       end
+
+      describe "label attribute" do
+        it "returns the title" do
+          label = data[:attributes][:label]
+          expect(label).to match(data[:attributes][:title])
+        end
+      end
     end
   end
 

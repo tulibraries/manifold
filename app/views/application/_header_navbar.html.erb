@@ -10,7 +10,7 @@
   </div>
   <div id="mobile-search-button" class="col-3 d-block d-md-none d-lg-none text-right">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
-    <span class="navbar-toggler-icon" onclick="toggle(this)">
+    <span class="navbar-toggler-icon" id="search-toggler-icon" onclick="toggle('search')">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
@@ -47,25 +47,25 @@
     <div class="container nav-container">
       <ul class="list-unstyled" style=""> 
         <li class="first">
-          <a href="/">About</a>
+          <%= link_to "About", pages_about_path %>
         </li>
         <li>
-          <a href="/">Visit & Study</a>
+          <%= link_to "Visit & Study", pages_visit_path %>
         </li>
         <li>
-          <a href="/">Research Services</a>
+          <%= link_to "Research Services", pages_research_path %>
         </li>
         <li class="last">
-          <a href="/">Contact Us</a>
+          <%= link_to "Contact Us", pages_home_path %>
         </li> 
         <li class="nav-right hours-nav">
-          <a href="/">Hours</a>
+          <%= link_to "Hours", hours_path %>
         </li>
         <li class="nav-right chat-nav">
-          <a href="/">Chat</a>
+          <%= link_to "Chat", pages_home_path %>
         </li>
         <li class="nav-right account-nav">
-          <a href="/">My Account</a>
+          <%= link_to "My Account", "https://librarysearch.temple.edu/users/account" %>
         </li>
       </ul> 
     </div>

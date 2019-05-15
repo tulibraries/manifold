@@ -5,9 +5,17 @@ class ExhibitionsController < ApplicationController
 
   def index
     @exhibitions = Exhibition.all
+    respond_to do |format|
+      format.html
+      format.json { render json: ExhibitionSerializer.new(@exhibitions) }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: ExhibitionSerializer.new(@exhibition) }
+    end
   end
 
   private

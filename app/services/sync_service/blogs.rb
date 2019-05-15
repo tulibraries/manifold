@@ -3,11 +3,11 @@
 require "open-uri"
 
 class SyncService::Blogs
-  def self.call(blog_id: nil)
-    unless blog_id
+  def self.call(blog: nil)
+    unless blog
       blog_ids = Blog.all.map { |b| b.id }
     else
-      blog_ids = [ blog_id.to_i ]
+      blog_ids = [ blog.id ]
     end
     blog_ids.each do |blog_id|
       blog = Blog.find(blog_id)

@@ -85,5 +85,6 @@ Rails.application.routes.draw do
     get "about" => :about
     get "research-services" => :research
     get "visit-study" => :visit
+    get "contact-us" => :contact
   end
 end

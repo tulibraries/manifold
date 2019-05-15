@@ -33,6 +33,9 @@ class PagesController < ApplicationController
   def research
   end
 
+  def contact
+  end
+
   def show
     render @page.layout.parameterize
   end

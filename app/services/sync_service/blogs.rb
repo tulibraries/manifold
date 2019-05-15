@@ -3,15 +3,14 @@
 require "open-uri"
 
 class SyncService::Blogs
-  def self.call(blog_id: nil)
-    unless blog_id
-      blog_ids = Blog.all.map { |b| b.id }
+  def self.call(blog: nil )
+    if blog.nil?
+      blogs = Blog.all
     else
-      blog_ids = [ blog_id.to_i ]
+      blogs = (blog.is_a? Blog) ? [ blog ] : [Blog.find(blog)]
     end
-    blog_ids.each do |blog_id|
-      blog = Blog.find(blog_id)
-      new(blog: blog).sync_blog_posts
+    blogs.each do |this_blog|
+      new(blog: this_blog).sync_blog_posts
     end
   end
 
@@ -19,7 +18,7 @@ class SyncService::Blogs
     # can specify just a file path or feed_path
     @feed_uri =  params[:blog].feed_path
     # if URI, prepend the base url
-    @feed_uri.prepend(params[:blog].base_url) if params[:blog].base_url
+    @feed_uri = "#{params[:blog].base_url}#{@feed_uri}" if params[:blog].base_url
     @blog_id = params[:blog].id
   end
 

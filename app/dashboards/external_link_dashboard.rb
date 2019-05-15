@@ -13,6 +13,7 @@ class ExternalLinkDashboard < BaseDashboard
     id: Field::Number,
     title: Field::String,
     link: Field::String,
+    categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,6 +27,7 @@ class ExternalLinkDashboard < BaseDashboard
     :id,
     :title,
     :link,
+    :categories,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,6 +36,7 @@ class ExternalLinkDashboard < BaseDashboard
     :id,
     :title,
     :link,
+    :categories,
     :created_at,
     :updated_at,
   ].freeze
@@ -44,6 +47,7 @@ class ExternalLinkDashboard < BaseDashboard
   FORM_ATTRIBUTES = [
     :title,
     :link,
+    :categories,
   ].freeze
 
   # Overwrite this method to customize how external links are displayed

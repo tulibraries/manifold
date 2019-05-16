@@ -62,11 +62,5 @@ class EventSerializer < ApplicationSerializer
     end
   end
 
-  attribute :image, if: Proc.new { |event| event.image.attached? } do |event|
-    helpers.rails_blob_url(event.image)
-  end
-
-  attribute :thumbnail_image, if: Proc.new { |event| event.image.attached? } do |event|
-    helpers.rails_representation_url(event.image.variant(resize: "100x100").processed)
-  end
+  include ImageSerializable
 end

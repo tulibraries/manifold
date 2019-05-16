@@ -14,37 +14,40 @@
       <div class="navbar-nav">
         <div class="row">
           <div class="col">
-            <a href="/">About</a>
+            <%= link_to "About", pages_about_path %>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <a href="/">Visit & Study</a>
+            <%= link_to "Visit & Study", pages_visit_path %>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <a href="/">Research Services</a>
+            <%= link_to "Research Services", pages_research_path %>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <a href="/">Contact Us</a>
+            <%= link_to "Contact Us", pages_home_path %>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <%= image_tag "person.png", class: "person-icon" %> <a href="/">My Account</a>
+            <%= image_tag "person.png", class: "person-icon" %> 
+            <%= link_to "My Account", "https://librarysearch.temple.edu/users/account" %>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <%= image_tag "chat.png", class: "chat-icon" %> <a href="/">Chat</a>
+            <%= image_tag "chat.png", class: "chat-icon" %> 
+            <%= link_to "Chat", pages_home_path %>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <%= image_tag "hours.png", class: "hours-icon" %> <a href="/">Hours</a>
+            <%= image_tag "hours.png", class: "hours-icon" %> 
+            <%= link_to "Hours", hours_path %>
           </div>
         </div>
       </div>

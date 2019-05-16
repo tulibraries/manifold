@@ -4,7 +4,7 @@ class Blog < ApplicationRecord
   has_paper_trail
   include Validators
 
-  has_many :blog_posts
+  has_many :blog_posts, dependent: :destroy
 
   validates :title, presence: true
   validates :base_url, presence: true, url: true

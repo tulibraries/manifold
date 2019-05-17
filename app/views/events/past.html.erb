@@ -33,13 +33,15 @@
       </div>
     </div>
     <div class="col-3 exhibits">
-      <div class="row">
-        <div class="col-12 exhibits-header">
-          Current Exhibits
+      <% unless @exhibitions.blank? %>
+        <div class="row">
+          <div class="col-12 exhibits-header">
+            Current Exhibits
+          </div>
         </div>
-      </div>
 
-      <%= render "exhibitions" %>
+        <%= render "exhibitions" %>
+      <% end %>
 
       <div class="row">
         <div class="col-12">

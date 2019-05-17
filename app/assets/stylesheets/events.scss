@@ -1,80 +1,64 @@
 @import "partials/_vars.scss";
 
-/* HOMEPAGE */
-.ctaRow.events {
-	a {
-		color: $white;
+.event-show.container {
+	margin-top: 35px;
+}
+
+.endcap {
+	h2, h3 {
+		border-left: 0;
+		padding: 10px 21px;
+		margin-top: 0;
+		margin-bottom: 14px;
 	}
-	.details {
-		display: inline-block!important;
+	p {
+		font-size: large;
+		padding-left: 21px;
 	}
-	.card {
-		.card-body {
-			height: 180px;
-			max-height: 180px!important;
-			overflow: hidden;
-			p {
-				padding-top: 10px;
-				line-height: 1rem;
-			}
-			span a {
-				color: black;
-				font-weight: 600;
-				font-size: 1.15rem;
-			}
+	padding: 0;
+	width: 90%;
+	overflow: hidden;
+	margin-bottom: 21px;
+	border-top-right-radius: 14px;
+	border-bottom-right-radius: 14px;
+}
+
+.purple {
+	h2 {
+		background-color: $purple-complement!important;
+	}
+	border: solid $purple 2px;
+}
+.green {
+	h2, h3 {
+		background-color: $seagreen-complement!important;
+		margin-bottom: 14px;
+		a {
+			color: $black;
 		}
 	}
-	@media only screen and (max-width: 1199px) {
-		.col-12 {
-			margin-bottom: 14px;
-			display: table;
-		}
-		.card {
-	    max-width: 90%!important;
-	    margin-left: 5%;
-	    display:block;
-	    border-radius: 7px!important;
-	    display: table-row;
-			margin-bottom: 14px;
-			border: solid $purple 2px!important;
-		}
-		.card-body {
-	    border-radius: 7px!important;
-			height: 90px!important;
-			max-height: 90px!important;
-			display: table-cell;
-			vertical-align: middle;
-			p {
-				height: 1px;
-				display: none;
-				padding-top: 0;
-			}
-			span {
-				padding-left: 7%;
-				font-weight:600;
-				font-size: 135%;
-			}
-		}
-		.info {
-			display: table-row;
-			.details {
-				background-color: transparent!important;
-				opacity: 1!important;
-				width: 10%!important;
-				right: 5%!important;
-				padding-top: 30px!important;
-				height: 90px!important;
-				a {
-					color: $purple;
-					font-size: larger;
-				}
-			}
+	h3.event-space {
+		text-align: center;
+		padding: 21px 0;
+	}
+	border: solid $seagreen 2px;
+
+}
+.olive {
+	h2 {
+		background-color: $baby-puke-green!important;
+		margin-bottom: 0;
+		text-align: center;
+		padding-top: 21px;
+		padding-bottom: 21px;
+		border: solid $seagreen 2px;
+		border-top-right-radius: 14px;
+		border-bottom-right-radius: 14px;
+		a {
+			color: $black;
 		}
 	}
 }
-
-
-/* END HOMEPAGE */
 
 .events {
 	h3 {
@@ -166,8 +150,7 @@
 
 .events_facets {
 	background-color: #eee;
-	padding-bottom: 21px;
-	padding-top: 21px;
+	padding: 21px 15px;
 	input {
 		border-radius: 7px;
 		border-color: $footer-grey

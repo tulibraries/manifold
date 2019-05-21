@@ -52,7 +52,6 @@ Rails.application.routes.draw do
   end
 
   root "pages#home"
-  resources :alerts, only: [:index, :show]
   resources :blog_posts, only: [:index, :show]
   resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
   resources :spaces, only: [:index, :show], concerns: [:imageable]

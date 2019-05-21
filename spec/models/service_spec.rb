@@ -8,6 +8,7 @@ RSpec.describe Service, type: :model do
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:person) { FactoryBot.build(:person, spaces: [space]) }
   let(:group) { FactoryBot.create(:group, persons: [person], space: space, chair_dept_heads: [person]) }
+  let(:external_link) { FactoryBot.create(:external_link) }
 
   describe "Required attributes" do
     example "Missing title" do
@@ -72,6 +73,17 @@ RSpec.describe Service, type: :model do
     end
     context "Policy" do
       skip "TBD"
+    end
+    context "External Link" do
+      example "attach external link" do
+        service = FactoryBot.create(:service, external_link: external_link)
+        expect(service.external_link.title).to match(/#{external_link.title}/)
+        expect(service.external_link.link).to match(/#{external_link.link}/)
+      end
+      example "no external" do
+        service = FactoryBot.create(:service, related_groups: [group])
+        expect { service.save! }.to_not raise_error
+      end
     end
   end
 

@@ -15,6 +15,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     description: DescriptionField,
     access_description: DescriptionField,
     access_link: Field::String,
+    external_link: Field::BelongsTo,
     service_policies: DescriptionField,
     related_policies: Field::HasMany.with_options(class_name: "Policy"),
     intended_audience: MultiSelectField.with_options(
@@ -51,6 +52,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :title,
     :intended_audience,
     :service_category,
+    :external_link,
     :categories,
     :created_at,
     :updated_at,
@@ -64,6 +66,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :description,
     :access_description,
     :access_link,
+    :external_link,
     :service_policies,
     :related_policies,
     :intended_audience,
@@ -76,7 +79,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   ].freeze
 
   def display_resource(service)
-    "Service ##{service.title}"
+    "#{service.title}"
   end
 
   def tinymce?

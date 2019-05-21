@@ -15,20 +15,20 @@ Rails.application.routes.draw do
     resources :alerts
     resources :blogs
     resources :buildings
+    resources :categories
     resources :collections
     resources :events
     resources :exhibitions
-    resources :groups
+    resources :external_links
     resources :finding_aids
+    resources :groups
     resources :highlights
-    resources :pages
     resources :library_hours
+    resources :pages
     resources :people
     resources :policies
     resources :services
     resources :spaces
-    resources :categories
-    resources :external_links
 
     resource :events do
       member do

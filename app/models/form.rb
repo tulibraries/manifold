@@ -38,6 +38,14 @@ class Form < MailForm::Base
   attribute :police_report_number
   attribute :other_action_taken
   attribute :supervisor_notified
+  attribute :research_group
+  attribute :project_purpose
+  attribute :dataset
+  attribute :interest_level
+  attribute :years_limit
+  attribute :data_creator
+  attribute :data_discovery
+
 
 
   def get_subject
@@ -46,7 +54,8 @@ class Form < MailForm::Base
       "recall-book" => ["Request Recall of Books Already Checked Out",  "cdoyle@temple.edu"],
       "purchase-request" => ["Purchase Request",  "cdoyle@temple.edu"],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
-      "ir" => ["Incident Report", "cdoyle@temple.edu"] }
+      "ir" => ["Incident Report", "cdoyle@temple.edu"],
+      "data-purchase-grants-application" => ["Data Purchase Application", "cdoyle@temple.edu"] }
 
     @forms.fetch(form_type)
   end

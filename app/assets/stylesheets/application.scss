@@ -18,12 +18,12 @@ $grid-breakpoints: (
   xs: 0,
   sm: 480px,
   md: 768px,
-  lg: 950px
+  lg: 984px
 );
 
 $container-max-widths: (
   sm: 750px,
-  md: 950px,
+  md: 985px,
   lg: 1200px
 );
 
@@ -69,19 +69,19 @@ h1 {
 	margin-top:14px;
 	font-size: 200%;
 	margin-bottom: 21px;
-	font-family: "PT Sans Caption Bold"!important;
+	font-family: "PT Sans Bold"!important;
 }
 h2 {
 	font-size: 175%;
-	font-family: "PT Sans Caption Bold"!important;
+	font-family: "PT Sans Bold"!important;
 }
 h3 {
 	font-size: 125%;
-	font-family: "PT Sans Caption Bold"!important;
+	font-family: "PT Sans Bold"!important;
 }
 h4,h5,h6 {
 	font-size: 100%;
-	font-family: "PT Sans Caption Bold"!important;
+	font-family: "PT Sans Bold"!important;
 }
 
 .navbar-light .navbar-nav .nav-link {

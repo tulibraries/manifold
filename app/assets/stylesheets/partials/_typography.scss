@@ -1,3 +1,5 @@
+/* https://use.typekit.net/mte3hnc.css */
+
 @font-face {
   font-family: 'BebasNeueRegular';
   src: font-url('BebasNeue-webfont.eot');
@@ -40,23 +42,16 @@
 }
 
 @font-face {
-  font-family: 'PT Sans Caption Bold';
-  src: font-url('pt-sans-caption.woff') format('woff');
-}
-
-/*@font-face {
-  font-family: 'PT Sans Regular';
-  font-family: pt-sans, sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: 'PT Sans Bold';
+  src: font-url('pt-sans-bold.woff') format('woff');
+  font-weight: 700;
 }
 
 @font-face {
   font-family: 'PT Sans Caption Bold';
-  font-family: pt-sans-caption, sans-serif;
+  src: font-url('pt-sans-caption.woff') format('woff');
   font-weight: 700;
-  font-style: normal;
-}*/
+}
 
 @font-face {
   font-family: 'FontAwesome';

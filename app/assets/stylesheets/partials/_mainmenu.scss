@@ -1,3 +1,5 @@
+@import "_vars.scss";
+
 .navbar {
 		background-color: #fff;
 	.nav-item {
@@ -14,5 +16,89 @@
 			color: #fff;
 			background-color:#760027;
 		}
+	}
+}
+
+#main-menu {
+	background-color: $seagreen;
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+	height: auto;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	.nav-container {
+		padding-left: 0;
+		padding-right: 0;
+		margin: auto;
+		margin-bottom: 0;
+	}
+	ul {
+		width: auto;
+		padding-bottom: 0;
+		margin-bottom: 0;
+		li {
+			padding-top: .5rem;
+			padding-bottom: .5rem;
+			display: inline-block;
+			padding-left: 21px;
+			padding-right: 21px;
+			height: 100%;
+			vertical-align: middle;
+			border-left: solid $seagreen-dark 2px;
+			a {
+				color: $white;
+				font-size: 1.3rem;
+				font-weight: 600;
+				@media screen and (max-width: 1028px) {
+					font-size:1.25rem;
+				}
+			}
+		}
+		li.first {
+			border-left: solid $seagreen-dark 0;
+			border-right: solid $seagreen-dark 0;
+		}
+		li.last {
+			border-right: solid $seagreen-dark 2px;
+			@media screen and (max-width: 950px) {
+				border-right: solid $seagreen-dark 0;
+			}
+			@media screen and (max-width: 949px) {
+				padding-right: 0;
+			}
+		}
+		li.nav-right {
+			@media screen and (min-width: 940px) {
+				float: right;
+			}
+			background-color: $seagreen-dark;
+			padding-left: 49px;
+			border-color: $seagreen;
+			padding-right: 16px;
+		}
+		li.nav-right.hours-nav {
+		background-image:asset-data-url('hours.png');
+		background-position: 7px center;
+		background-repeat: no-repeat;
+		background-size: 42px 42px;
+		}
+		li.nav-right.chat-nav {
+		background-image:asset-data-url('chat.png');
+		background-position: 7px center;
+		background-repeat: no-repeat;
+		background-size: 49px 59px;
+		}
+		li.nav-right.account-nav {
+		background-image:asset-data-url('person.png');
+		background-position: 7px center;
+		background-repeat: no-repeat;
+		background-size: 42px 42px;
+		}
+
+	}
+	.main-nav-right {
+		padding-left: 0;
 	}
 }

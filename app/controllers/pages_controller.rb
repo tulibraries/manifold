@@ -30,6 +30,9 @@ class PagesController < ApplicationController
   def visit
   end
 
+  def ask_us_email
+  end
+
   def research
     @pages = Page.all
     respond_to do |format|

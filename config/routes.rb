@@ -88,5 +88,6 @@ Rails.application.routes.draw do
     get "research-services" => :research, as: "pages_research"
     get "visit-study" => :visit, as: "pages_visit"
     get "home" => :home, as: "pages_home"
+    get "ask-us-email" => :ask_us_email, as: "pages_ask_us_email"
   end
 end

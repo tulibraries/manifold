@@ -1,27 +1,4 @@
-<% unless @page.categories.blank? %>
-<div class="row d-block d-md-block d-lg-none" id="services-mobile-nav">
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div id="mobile-menu-button" onclick="toggle('secondary')">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#services-mobile-menu" aria-controls="services-mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" id="sub-toggler-icon">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-        </span>
-        <span class="navbar-brand">
-          <% @page.categories.each do |i| %>
-            <%= i.name %> 
-          <% end %> Menu</span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="services-mobile-menu">
-      <div class="navbar-nav"> 
-         <%= render "items" %>
-      </div>
-    </div>
-  </nav>
-</div>
-<% end %>
+<%= render "mobile_menu" %>
 
 <div class="container" style="margin-top: 35px;">
 	<div class="row page">

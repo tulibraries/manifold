@@ -22,8 +22,6 @@ class SyncService::Events
         record = record_hash(e)
         create_or_update_if_needed!(record)
       rescue Exception => err
-
-        binding.pry
         @log.error("  #{err.message}")
       end
     end

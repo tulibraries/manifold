@@ -5,11 +5,11 @@ module ImageSerializable
 
   included do
     attribute :image, if: Proc.new { |the_object| the_object.image.attached? } do |the_object|
-      helpers.rails_blob_url(the_object.image)
+      helpers.send("#{the_object.class.to_s.underscore}_image_large_url", the_object)
     end
 
     attribute :thumbnail_image, if: Proc.new { |the_object| the_object.image.attached? } do |the_object|
-      helpers.rails_representation_url(the_object.index_image)
+      helpers.send("#{the_object.class.to_s.underscore}_image_thumbnail_url", the_object)
     end
   end
 end

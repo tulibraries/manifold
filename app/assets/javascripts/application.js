@@ -29,6 +29,7 @@ function toggle(x) {
   // }
   if (x == "secondary") {
   	document.getElementById("sub-toggler-icon").classList.toggle("change");
+    document.getElementById("mobile-navbar-brand").innerHTML = "See Less"
   }
   else if (x == "search") {
   	document.getElementById("search-toggler-icon").classList.toggle("change");

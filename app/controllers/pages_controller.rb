@@ -30,9 +30,6 @@ class PagesController < ApplicationController
   def visit
   end
 
-  def ask_us_email
-  end
-
   def research
     @pages = Page.all
     respond_to do |format|
@@ -51,7 +48,8 @@ class PagesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html { render @page.layout.parameterize }
+      # format.html { render @page.layout.parameterize }
+      format.html
       format.json { render json: PageSerializer.new(@page) }
     end
   end

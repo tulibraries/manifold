@@ -53,9 +53,9 @@ class ExternalLinkDashboard < BaseDashboard
   # Overwrite this method to customize how external links are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(external_link)
-  #   "ExternalLink ##{external_link.id}"
-  # end
+  def display_resource(external_link)
+    "#{external_link.title}"
+  end
 
   def tinymce?
     true

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_13_174221) do
+ActiveRecord::Schema.define(version: 2019_05_20_202839) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -369,6 +369,8 @@ ActiveRecord::Schema.define(version: 2019_05_13_174221) do
     t.datetime "updated_at", null: false
     t.string "hours"
     t.boolean "add_to_footer"
+    t.integer "external_link_id"
+    t.index ["external_link_id"], name: "index_services_on_external_link_id"
   end
 
   create_table "space_groups", force: :cascade do |t|

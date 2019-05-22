@@ -18,9 +18,9 @@
 
     </div>
     <div class="col-12 col-md-3 rightside-service">
-      <% unless @service.access_link.blank? %>
+      <% unless @service.external_link.blank? %>
         <div class="access-link">
-          <h2><%= link_to "Access Link", @service.access_link %></h2>
+          <h2><%= link_to @service.external_link.title, @service.external_link.link %></h2>
         </div>
       <% end %>
       <% unless @service.access_description.blank? %>

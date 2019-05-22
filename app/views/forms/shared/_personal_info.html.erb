@@ -1,7 +1,7 @@
 <% @collection = Rails.configuration.affiliation %>
 
-<% if ["missing-book","purchase-request"].include? params[:type] %>
-	<% @collection = ["Faculty","Staff","Graduate","Undergraduate","Other..."] %>
+<% if ["missing-book","purchase-request","data-purchase-grants-application"].include? params[:type] %>
+	<% @collection = ["Faculty","Staff","Graduate","Undergraduate","Post Doc","Other..."] %>
 <% elsif ["recall-book"].include? params[:type] %>
 	<% @collection = ["Faculty","Staff"]  %>
 <% end %>

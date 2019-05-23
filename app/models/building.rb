@@ -16,6 +16,7 @@ class Building < ApplicationRecord
 
   has_many :library_hours
   has_many :spaces
+  belongs_to :external_link, optional: true
 
   auto_strip_attributes :email
 

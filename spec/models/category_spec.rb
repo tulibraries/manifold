@@ -105,5 +105,17 @@ RSpec.describe Category, type: :model do
       end
     end
 
+    context "deleting an categorized item" do
+      before do
+        building.categories << category
+      end
+
+      it "is no longer in the category items list" do
+        old_building = building
+        building.destroy
+        expect(category.items).not_to include(old_building)
+      end
+    end
+
   end
 end

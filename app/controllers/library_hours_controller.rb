@@ -1,46 +1,30 @@
 # frozen_string_literal: true
 
 class LibraryHoursController < ApplicationController
-  before_action :get_locations, :set_dates, only: [:index]
+  before_action :buildings, :get_locations, :set_dates, only: [:index, :show]
 
   def index
-    @buildings = [
-      {
-        slug: "charles",
-        spaces: [
-                  "charles",
-                  "service_zone",
-                  "cafe",
-                  "scrc",
-                  "scholars_studio",
-                  "success_center",
-                  "ask_a_librarian",
-                  "asrs",
-                  "guest_computers"
-                ]
-      },
-      {
-        slug: "ginsburg",
-        spaces: ["ginsburg", "innovation"]
-      },
-      {
-        slug: "podiatry",
-        spaces: ["podiatry"]
-      },
-      {
-        slug: "ambler",
-        spaces: ["ambler"]
-      },
-      {
-        slug: "blockson",
-        spaces: ["blockson"]
-      }
-    ]
     @buildings.each do |building|
       building.values.second.map! do |space|
         space = [building.values.first, LibraryHour.where(location_id: space, date: @monday..@sunday + 1)]
       end
     end
+  end
+
+  def show()
+    @location = "blockson"
+    
+    @buildings.each do |b|
+      if b[:slug] == @location
+        b[:spaces].map! do |space|
+          space = [b[:slug], LibraryHour.where(location_id: space, date: @monday..@sunday + 1)]
+        end
+      end
+    end
+  end
+
+  def space_show(space)
+
   end
 
   def set_dates
@@ -81,5 +65,40 @@ class LibraryHoursController < ApplicationController
       end
       building
     end
+  end
+
+  def buildings
+    @buildings = [ 
+      {
+        slug: "ambler",
+        spaces: ["ambler"]
+      },
+      {
+        slug: "blockson",
+        spaces: ["blockson"]
+      },
+      {
+        slug: "charles",
+        spaces: [
+                  "charles",
+                  "service_zone",
+                  "cafe",
+                  "scrc",
+                  "scholars_studio",
+                  "success_center",
+                  "ask_a_librarian",
+                  "asrs",
+                  "guest_computers"
+                ]
+      },
+      {
+        slug: "ginsburg",
+        spaces: ["ginsburg", "innovation"]
+      },
+      {
+        slug: "podiatry",
+        spaces: ["podiatry"]
+      }
+    ]
   end
 end

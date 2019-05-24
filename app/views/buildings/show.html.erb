@@ -1,57 +1,55 @@
-<div class="row">
-  <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %> 
-    <%= link_to "Libraries", controller: 'buildings', action: :index %> 
-    <%= @building.name %>
-  </div>
-</div>
+<%= render "mobile_menu" %>
 
+<div class="container">
+  
+  <div class="row building-show">
+    <% unless @categories.blank? %>
+      <div class="col-3 d-none d-md-none d-lg-block">
+        <%= render "categories" %>
+      </div>
 
-<div class="row building-info">
-  <div class="d-none d-xl-block col-xl-6 text-center text-xl-right">
-    <div class="building-image">
-      <% if @building.image.attached? %>
-        <%= image_tag @building.image_variation(600,450) %>
-      <% else %>
-        <%= image_tag 'T-borderless.gif' %>
+      <div class="col-12 col-lg-6">
+    <% else %>
+      <div class="col-12 col-lg-6 offset-lg-3">
+    <% end %>
+    
+      <h1 class="page-title"><%= @building.label %></h1>
+      <ul class="list-unstyled building-contact">
+        <li><%= @building.address1 %> <%= @building.address2 %></li>
+        <li><%= phone_formatted(@building.phone_number) %></li>
+        <li><%= mail_to @building.email %></li>
+      </ul>
+      <%= sanitize @building.description.html_safe %>
+
+    </div>
+    <div class="col-12 col-lg-3 rightside-building">
+      <% unless @building.external_link.nil? %>
+        <div class="external-link">
+          <h2><%= link_to "Library Website", @building.external_link.link %></h2>
+        </div>          
+      <% end %>
+      <% unless @building.coordinates.blank? || @building.google_id.blank? %>
+        <div class="building-map">
+          <%= render_map(@building.name,@building.coordinates,@building.google_id) %>
+        </div>
+      <% end %>
+      <% unless @building.policies.nil? %>
+        <div class="related-policies">
+        <h2>Policies</h2>
+          <ul>
+            <% @building.policies.each do |policy| %>
+              <li><%= link_to policy.name, policies_path(policy) %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
     </div>
   </div>
-  <div class="col-lg-12 col-xl-6 text-center text-xl-left">
-    <div class="building-description">
-      <h1 class="text-md-center text-xl-left"><%= @building.name %></h1>
-      <div class="text-left text"><%= @building.description.html_safe %></div>
-    </div>
-  </div>
-</div>
 
-<div class="row d-none d-xl-block">
-  <div class="col">
-    <%= render "spaces" %>
+  <div class="col-12 col-lg-9 offset-lg-3">
+    <hr />
+    <h2>Weekly Hours</h2>
+
   </div>
-</div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%= render "buildings/responsive/spaces" %>
-  </div>
-</div>
-<!-- <div class="row d-none d-xl-block">
-  <div class="col">
-    <%# render "collections" %>
-  </div>
-</div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%# render "buildings/responsive/collections" %>
-  </div>
-</div> -->
-<div class="row d-none d-xl-block">
-  <div class="col">
-    <%= render "visit" %>
-  </div>
-</div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%= render "buildings/responsive/visit" %>
-  </div>
+
 </div>

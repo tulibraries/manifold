@@ -42,6 +42,25 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe "A category with an description" do
+    let(:category) { FactoryBot.create(:category, :with_description) }
+
+    it "responds to description" do
+      expect(category).to respond_to(:description)
+    end
+
+    it "matches description" do
+      expect(category.description).to match("It's what the category is about")
+    end
+
+    context "when it doesn't have a description" do
+      it "should raise a validation error" do
+        category.description = nil
+        expect { category.save! }.to_not raise_error
+      end
+    end
+  end
+
   describe "#url" do
 
     let(:category) { FactoryBot.create(:category) }

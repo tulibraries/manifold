@@ -37,10 +37,11 @@ module Tude
                           "Strategic Steering Team",
                           "Working Group"]
 
-    config.page_layouts = ["Statement",
+    config.page_layouts = ["None",
+                            "Email",
+                            # "Form Other"
                             # "Publication",
                             # "Orgchart",
-                            # "Form Other"
                           ]
 
     config.finding_aid_subjects = ["African Americans",

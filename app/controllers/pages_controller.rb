@@ -3,6 +3,7 @@
 class PagesController < ApplicationController
   before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
   before_action :set_page, only: [:show]
+  before_action :navigation_items, only: [:show]
 
   def get_highlights
     @highlights = Highlight.where(promoted: true).take(4)
@@ -48,8 +49,20 @@ class PagesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html { render @page.layout.parameterize }
+      # format.html { render @page.layout.parameterize }
+      format.html
       format.json { render json: PageSerializer.new(@page) }
+    end
+  end
+
+  def navigation_items
+    @nav_items = []
+    @page.categories.each do |cat|
+      cat.items.each do |item|
+        unless item.id == @page.id
+          @nav_items << item
+        end
+      end
     end
   end
 

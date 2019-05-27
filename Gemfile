@@ -22,7 +22,7 @@ gem "administrate"
 gem "bootstrap", "~> 4.3.1"
 gem "popper_js", "~> 1.14.5"
 gem "tinymce-rails", "~> 4.9"
-gem "google-api-client", "~> 0.29"
+gem "google-api-client", "~> 0.30"
 gem "fuzzy_match"
 gem "kaminari"
 # Use jquery as the JavaScript library

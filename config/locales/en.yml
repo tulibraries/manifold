@@ -37,6 +37,8 @@ en:
         address2: "City, State Zip"
       account:
         alertability: "Can Administrate Alerts"
+      category:
+        categories: "Parent Category"
   manifold:
     default:
       event:

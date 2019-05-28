@@ -6,6 +6,7 @@ RSpec.describe Category, type: :model do
 
   let(:category) { FactoryBot.create(:category) }
 
+
   describe "A basic category" do
     context "has a name" do
       it "doesn't error when built" do
@@ -135,6 +136,22 @@ RSpec.describe Category, type: :model do
         expect(category.items).not_to include(old_building)
       end
     end
+  end
 
+  context "#categories" do
+    let(:parent_category) { FactoryBot.create(:category_parent) }
+
+    it "is responded to" do
+      expect(category).to respond_to(:categories)
+    end
+
+    it 'allows a category to be added' do
+      expect{ parent_category.categories << category }.not_to raise_error
+    end
+
+    it 'returns a collection of categories' do
+      parent_category.categories << category
+      expect(parent_category.categories).to include(category)
+    end
   end
 end

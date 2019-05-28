@@ -22,9 +22,6 @@
 	}
 	.closed {
 		color: $red;
-		/*display:inline-block;
-		width: 100%;
-		text-align:center;*/
 	}
 	.date-nav {
 		background-color: $light-grey;
@@ -42,4 +39,42 @@
 	}
 	.date-range {
 		font-size: large;
+	}
+	.hours-header {
+		margin-top: 35px;
+	}
+	.hours-month-name {
+		font-weight: 600;
+		font-size: 150%;
+	}
+
+	.mobile-hours {
+		.today {
+			font-weight: 600;
+			border-left: solid $red 1px;
+			border-right: solid $red 1px;
+			background-color: $white;
+			/*padding: 7px;*/
+		}
+		.hours-dates {
+			border-bottom: 0;
+			margin-bottom: 7px;
+			padding: 2px;
+		}
+		.hours-location {
+			margin-top: 14px;
+			background-color: #eee;
+			padding: 14px 0 14px 0;
+		}
+		.hours-month-name {
+			color: $red;
+			margin-bottom: 14px;
+		}
+		.hours-header {
+			margin-top: 0;
+			margin-bottom: 14px;
+		}
+		.today_button {
+			display: inline-block;
+		}
 	}

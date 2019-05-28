@@ -8,9 +8,9 @@
         <%= render "categories" %>
       </div>
 
-      <div class="col-12 col-lg-6">
-    <% else %>
       <div class="col-12 col-lg-6 offset-lg-3">
+    <% else %>
+      <div class="col-12 col-lg-6">
     <% end %>
     
       <h1 class="page-title"><%= @building.label %></h1>
@@ -22,7 +22,14 @@
       <%= sanitize @building.description.html_safe %>
 
     </div>
-    <div class="col-12 col-lg-3 rightside-building">
+
+    <% unless @categories.blank? %>
+      <div class="col-12 col-lg-3 rightside-building">
+    <% else %>
+      <div class="col-12 col-lg-6 rightside-building">
+    <% end %>
+
+
       <% unless @building.external_link.nil? %>
         <div class="external-link">
           <h2><%= link_to "Library Website", @building.external_link.link %></h2>
@@ -33,7 +40,7 @@
           <%= render_map(@building.name,@building.coordinates,@building.google_id) %>
         </div>
       <% end %>
-      <% unless @building.policies.nil? %>
+      <% unless @building.policies.blank? %>
         <div class="related-policies">
         <h2>Policies</h2>
           <ul>
@@ -46,10 +53,20 @@
     </div>
   </div>
 
-  <div class="col-12 col-lg-9 offset-lg-3">
-    <hr />
-    <h2>Weekly Hours</h2>
+  <% unless @categories.blank? %>
+    <div class="d-none d-md-block col-12 col-lg-9 offset-lg-3">
+  <% else %>
+    <div class="d-none d-md-block col-12">
+  <% end %>
 
+    <hr />
+    <%= render :partial => "/application/show-hours" %>
+  </div>
+
+  <div class="d-block d-md-none col-12">
+    <hr />
+    <%= render :partial => "/application/mobile-hours" %>
   </div>
 
 </div>
+

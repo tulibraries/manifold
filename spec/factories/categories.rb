@@ -19,6 +19,9 @@ FactoryBot.define do
     factory :category_parent do
       name { "Dreaming while Dreaming" }
     end
+    trait :with_description do
+      description { "It's what the category is about" }
+    end
   end
 
 

@@ -1,43 +1,34 @@
-<%# binding.pry %>
 <div class="current-week">
-	<% @buildings.each do |location| %>
-  <% if location[:slug] == @location %>
+	<% @locations.each do |location| %>
 
+  <% if location[:slug] == @location && @location %>
   <div class="row"> <!-- dates header -->
     <div class="col-3"><h2>Weekly Hours</h2></div>
-    <div class="col-9 text-right">
-       <div class="col-md-6 text-center date-range">
+    <div class="col-md-9 text-right">
+      <%= link_to "See More Hours for this location", {controller: :library_hours, action: :index}, class: "today_button"  %>
+    </div>
 
-      <%= link_to "<-", {controller: :library_hours, action: "show", slug: location[:slug], date: @last_week} %> 
 
-      <%= @monday.strftime("%b %d, %Y") unless @monday.nil? %> - <%= @sunday.strftime("%b %d, %Y") unless @sunday.nil? %>
-     
-      <%= link_to "->", {controller: :library_hours, action: "show", slug: location[:slug], date: @next_week} %>
-
-      </div>
-
-      <div class="col-md-6 text-center">
-        <%= link_to "Go to Today", {controller: :library_hours, action: :show, id: location[:slug]}, class: "today_button"  %>
-      </div>
     </div>
   </div>
-  <div class="row" style="margin-top: 35px;">
+  <div class="row hours-header">
       <div class="col-3">
-        <span class="month" style="font-weight: 600;font-size: 175%"><%= @today.strftime("%B %Y") %></span>
+        <span class="month hours-month-name">
+          <%= @today.to_date.strftime("%B %Y") %>
+        </span>
       </div>
 
       <div class="col-9">
         <div class="row">
 
         <% 7.times do |date| %>
-          
-          <% if @monday+date == @today %>
+          <% if @monday.to_date+date == @today.to_date %>
             <div class="col hours-dates today day-of-week text-center">
           <% else %>
             <div class="col hours-dates text-center">
           <% end %>
 
-              <%= (@monday+date).strftime("%a %d") %> 
+              <%= (@monday.to_date+date).strftime("%a %d") %> 
 
             </div>
         <% end %>
@@ -61,7 +52,7 @@
             <div class="row">
             <% hours.second.each_with_index do |time,index| %> <!-- hours -->
 
-              <% if @monday+index == @today %>
+              <% if @monday.to_date+index == @today.to_date %>
                 <div class="col today">
                 <% else %>
                 <div class="col">

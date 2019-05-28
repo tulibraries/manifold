@@ -25,33 +25,8 @@
   </div>
 </div>
 
-<div class="row d-none d-xl-block">
+<div class="row d-none d-lg-block">
   <div class="col">
-    <%= render "spaces" %>
-  </div>
-</div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%= render "buildings/responsive/spaces" %>
-  </div>
-</div>
-<!-- <div class="row d-none d-xl-block">
-  <div class="col">
-    <%# render "collections" %>
-  </div>
-</div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%# render "buildings/responsive/collections" %>
-  </div>
-</div> -->
-<div class="row d-none d-xl-block">
-  <div class="col">
-    <%= render "visit" %>
-  </div>
-</div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%= render "buildings/responsive/visit" %>
+    <%= render :partial => "/application/show_hours" %>
   </div>
 </div>

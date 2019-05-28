@@ -43,6 +43,10 @@ class LibraryHoursController < ApplicationController
     end
   end
 
+  def by_building
+    binding.pry
+  end
+
   def set_dates
     @today = Date.today
     @date = params[:date].nil? ? @today : Date.parse(params[:date])

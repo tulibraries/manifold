@@ -9,6 +9,10 @@ FactoryBot.define do
       custom_url { "http://sand.man" }
     end
 
+    trait :custom_path do
+      custom_url { "/chordettes" }
+    end
+
     trait :with_icon do
       after :create do |category|
         file_path = Rails.root.join("spec", "fixtures", "dream.jpg")
@@ -23,6 +27,5 @@ FactoryBot.define do
       description { "It's what the category is about" }
     end
   end
-
 
 end

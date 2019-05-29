@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   resources :finding_aids, only: [:index, :show]
   resources :pages, only: [:index, :show]
   resources :highlights, only: [:index, :show]
+  resources :categories, only: [:index, :show]
 
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"

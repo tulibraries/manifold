@@ -38,6 +38,8 @@ en:
         hours: "Hours Identifier"
       account:
         alertability: "Can Administrate Alerts"
+      category:
+        categories: "Parent Category"
       service:
         hours: "Hours Identifier"
       space:

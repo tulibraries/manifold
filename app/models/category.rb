@@ -24,7 +24,17 @@ class Category < ApplicationRecord
       end.reduce([], :concat)
   end
 
-  def url
-    custom_url ? custom_url : category_url(self)
+  def url(only_path: false)
+    if custom_url
+      custom_url
+    elsif items.first
+      polymorphic_url(items.first, only_path: only_path)
+    else
+      root_url
+    end
+  end
+
+  def path
+    url(only_path: true)
   end
 end

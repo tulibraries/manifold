@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   resources :finding_aids, only: [:index, :show]
   resources :pages, only: [:index, :show]
   resources :highlights, only: [:index, :show]
+  resources :categories, only: [:show]
 
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
@@ -87,5 +88,17 @@ Rails.application.routes.draw do
     get "research-services" => :research, as: "pages_research"
     get "visit-study" => :visit, as: "pages_visit"
     get "home" => :home, as: "pages_home"
+  end
+end
+
+Rails.application.routes.named_routes.url_helpers_module.module_eval do
+  def category_url(category)
+    category.url
+  end
+end
+
+Rails.application.routes.named_routes.path_helpers_module.module_eval do
+  def category_path(category)
+    category.path
   end
 end

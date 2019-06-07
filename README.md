@@ -126,7 +126,7 @@ brew install postgres
 Next, set up postgres to run as a service
 
 ```bash
-brew services postgres start
+brew services start postgres
 ```
 
 ### Installing on Ubuntu

@@ -1,0 +1,68 @@
+<div class="row person-block">
+  <div class="col-12 text-left">
+    <% if @person.image.attached?  %>
+      <%= image_tag @person.show_image, alt: @person.name %>
+    <% end %>
+    <h1 class="person-name"><%= @person.first_name %> <%= @person.last_name %></h1>
+    <div class="job-title"><%= @person.job_title %></div>
+  </div>
+</div> 
+
+<div class="col-12 right-side subject">
+  <h2>Contact</h2>
+  <div class="contact-list">
+    <ul class="list-unstyled">
+      <li><%= mail_to @person.email_address, @person.email_address %></li>
+      <li><%= phone_formatted(@person.phone_number) %></li>
+
+      <% unless @departments.blank? %>
+        <% @departments.each_with_index do |group, index| %>
+          <li><%= link_to group.name, group %>
+          <% unless index == (@departments.size - 1) %>, </li><% end %>
+        <% end %>
+      <% end %>
+
+      <% unless @person.spaces.empty? %>
+        <li>
+          <%= link_to @building.name, @building %>: <%= link_to @person.spaces.first.name, @person.spaces.first %>
+        </li>
+      <% else %>
+        <li><%= link_to @building.name, @building %></li>
+      <% end %>
+
+      <% unless @person.personal_site.blank? %>
+        <li>
+          <%= link_to "Personal web site", strip_tags(@person.personal_site) %>
+        </li>
+      <% end %>
+
+      <% unless @person.chat_handle.blank? %>
+        <li>
+          <%= @person.chat_handle %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="col-12 right-side">
+
+  <% unless @person.specialties.nil? %>
+    <div>
+      <h2>Subjects</h2>
+    </div>
+    <div class="subject-list text-left">
+      <ul class="list-unstyled">
+        <% @person.specialties.drop(1).each do |specialty| %>
+          <li><%= specialty %></li>
+        <% end %>
+      </ul>
+    </div> 
+  <% end %>
+
+  <% unless @person.springshare_id.blank? %>
+    <h2 style="margin-top: 17px"><%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %></h2>
+  <% end %>
+
+</div>
+

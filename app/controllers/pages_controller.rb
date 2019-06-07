@@ -48,6 +48,7 @@ class PagesController < ApplicationController
   end
 
   def show
+    @categories = @page.categories
     respond_to do |format|
       # format.html { render @page.layout.parameterize }
       format.html

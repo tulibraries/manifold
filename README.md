@@ -6,7 +6,7 @@ manifold manages, orchestrates, and displays data about Temple University Librar
 ## System Requirements
 
 - Ruby 2.5.1
-- Postgres >= 9.5 
+- Postgres >= 9.5
 
 ##  Getting Started
 
@@ -131,23 +131,31 @@ brew services postgres start
 
 ### Installing on Ubuntu
 
-Install with apt
+Install with postgres and development library via apt
 ```bash
-sudo apt-get install postgresql-server
+sudo apt-get install postgresql-server libpq-dev
 ```
 
 `apt-get` should set up postgres as a service.
 
 
 
-### Create a postgres user (OSX and Ubuntu)
+### Create a postgres user
 Finally, we need to create a postgres role with enough privileges to create and destroy databases. We'll use the built in `createuser` command with the `-d` flag that allows the user to create and destroy databases, and the `-W` flag that will cause the command to prompt your for a password, which is just `password`.
+
+#### OSX
 
 ```bash
 $ createuser -dW manifold
 Password: #now enter your password
 ```
 
+#### Ubuntu
+On ubunutu, we need to run commands as the postgres users
+```bash
+$ sudo su -c "createuser -dW manifold" postgres
+Password: #now enter your password
+```
 
 
 ## Test the code

@@ -28,7 +28,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     related_spaces: Field::HasMany.with_options(class_name: "Space"),
     service_group: Field::HasMany,
     related_groups: Field::HasMany.with_options(class_name: "Group"),
-    hours: Field::String,
+    hours: HoursField.with_options(admin_only: true),
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
     created_at: Field::DateTime,

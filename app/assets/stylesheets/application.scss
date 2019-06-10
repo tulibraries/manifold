@@ -156,17 +156,8 @@ form {
 	padding: 0;
 }
 .breadcrumbs {
-	display: none;
-	padding-left: 35px;
-	margin-top: 7px;
-	margin-bottom: 21px;
-	a {
-		display: inline-block;
-		color: $med-grey;
-	}
-	a::after {
-		content: ' > ';
-	}
+	margin-bottom: 17px;
+	color: #A50030
 }
 .vertical-stripes {
   background: repeating-linear-gradient( 

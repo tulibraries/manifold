@@ -35,8 +35,15 @@ en:
       building:
         address1: "Street Address"
         address2: "City, State Zip"
+        hours: "Hours Identifier"
       account:
         alertability: "Can Administrate Alerts"
+      category:
+        categories: "Parent Category"
+      service:
+        hours: "Hours Identifier"
+      space:
+        hours: "Hours Identifier"
   manifold:
     default:
       event:

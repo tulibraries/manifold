@@ -29,7 +29,38 @@ class LibraryHoursController < ApplicationController
   end
 
   def buildings
-    @buildings = Rails.configuration.building_spaces
+    @buildings = [
+      {
+        slug: "ambler",
+        spaces: ["ambler"]
+      },
+      {
+        slug: "blockson",
+        spaces: ["blockson"]
+      },
+      {
+        slug: "charles",
+        spaces: [
+                  "charles",
+                  "service_zone",
+                  "cafe",
+                  "scrc",
+                  "scholars_studio",
+                  "success_center",
+                  "ask_a_librarian",
+                  "asrs",
+                  "guest_computers"
+                ]
+      },
+      {
+        slug: "ginsburg",
+        spaces: ["ginsburg", "innovation"]
+      },
+      {
+        slug: "podiatry",
+        spaces: ["podiatry"]
+      }
+    ]
   end
 
   def build_hours_data_structure(input)

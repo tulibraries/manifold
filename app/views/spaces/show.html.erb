@@ -1,57 +1,29 @@
-<div class="row">
-  <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %> 
-    <%= link_to "Spaces", controller: 'spaces', action: :index %> 
-    <%= @space.name %>
-  </div>
-</div>
+<%= render "mobile-menu-secondary" %>
 
-<div class="row space-info">
-  <div class="d-none d-xl-block col-lg-12 col-xl-6 text-center text-xl-right">
-    <div class="space-image">
-      <% if @space.image.attached? %>
-        <%= image_tag @space.show_image, alt: "" %>
-      <% else %>
-        <%= image_tag 'T-borderless.gif', alt: "" %>
+<div class="container" style="margin-top: 35px;">
+  
+  <div class="row space-show">
+    <% unless @categories.blank? %>
+      <div class="col-3 d-none d-md-none d-lg-block">
+        <%= render "all_spaces" %>
+      </div>
+
+      <div class="col-12 col-md-9 col-lg-6">
+    <% else %>
+      <div class="col-12 col-md-9 col-lg-9">
+    <% end %>
+    
+      <h1 class="unstyled"><%= @space.label %></h1>
+      <%= sanitize @space.description.html_safe %>
+
+    </div>
+    <div class="col-12 col-md-3 rightside-space">
+      <% unless @space.external_link.blank? %>
+        <div class="access-link">
+          <h2><%= link_to @space.external_link.title, @space.external_link.link %></h2>
+        </div>
       <% end %>
     </div>
   </div>
-  <div class="col-lg-12 col-xl-6 text-center text-xl-left">
-    <div class="space-description">
-      <h1 class="text-md-center text-xl-left"><%= @space.name %></h1>
-      <div class="text-left text"><%= @space.description.html_safe %></div>
-    </div>
-  </div>
-</div>
 
-<div class="row d-none d-xl-block">
-  <div class="col">
-    <%= render "services" %>
-  </div>
 </div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%= render "spaces/responsive/services" %>
-  </div>
-</div>
-<div class="row d-none d-xl-block">
-  <div class="col">
-    <%= render "policies" %>
-  </div>
-</div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%= render "spaces/responsive/policies" %>
-  </div>
-</div>
-<div class="row d-none d-xl-block">
-  <div class="col">
-    <%= render "visit" %>
-  </div>
-</div>
-<div class="row d-block d-xl-none">
-  <div class="col">
-    <%= render "spaces/responsive/visit" %>
-  </div>
-</div>
-

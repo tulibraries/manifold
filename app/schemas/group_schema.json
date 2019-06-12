@@ -82,6 +82,16 @@
 								"The Temple University Ambler Library supports undergraduate and graduate courses, including landscape architecture, horticulture, business, education, criminal justice, and community and regional planning"
 							],
 							"pattern": "^(.*)"
+						},
+						"updated_at": {
+							"$id": "#/properties/data/properties/attributes/properties/updated_at",
+							"type": "string",
+							"title": "The time the group record was updated",
+ 							"format": "date-time",
+							"default": "",
+							"examples": [
+								"2018-01-01T12:00:00"
+							]
 						}
 					}
 				}

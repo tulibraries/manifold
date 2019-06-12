@@ -3,6 +3,7 @@
 class PagesController < ApplicationController
   before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
   before_action :set_page, only: [:show]
+  before_action :navigation_items, only: [:show]
 
   def get_highlights
     @highlights = Highlight.where(promoted: true).take(4)
@@ -25,12 +26,38 @@ class PagesController < ApplicationController
 
 
   def about
+    @categories = Category.find_by_name("About the Libraries").items.select { |item| item.class == Category }
   end
 
   def visit
+    @categories = Category.find_by_name("Visit the Libraries").items.select { |item| item.class == Category }
+  end
+
+  def blogs
+    @categories = Category.find_by_name("Blogs & News").items.select { |item| item.class == Category }
+  end
+
+  def publications
+    @categories = Category.find_by_name("Publications, Reports, & Statistics").items.select { |item| item.class == Category }
+  end
+
+  def support
+    @categories = Category.find_by_name("Support the Libraries").items.select { |item| item.class == Category }
+  end
+
+  def grants
+    @categories = Category.find_by_name("Grants, Fellowships, & Competitions").items.select { |item| item.class == Category }
+  end
+
+  def policies
+    @categories = Category.find_by_name("Policies & Guidelines").items.select { |item| item.class == Category }
+  end
+
+  def contact
   end
 
   def research
+    @categories = Category.find_by_name("Research Services").items.select { |item| item.class == Category }
     @pages = Page.all
     respond_to do |format|
       format.html
@@ -46,13 +73,23 @@ class PagesController < ApplicationController
     end
   end
 
-  def contact
+  def show
+    @categories = @page.categories
+    respond_to do |format|
+      # format.html { render @page.layout.parameterize }
+      format.html
+      format.json { render json: PageSerializer.new(@page) }
+    end
   end
 
-  def show
-    respond_to do |format|
-      format.html { render @page.layout.parameterize }
-      format.json { render json: PageSerializer.new(@page) }
+  def navigation_items
+    @nav_items = []
+    @page.categories.each do |cat|
+      cat.items.each do |item|
+        unless item.id == @page.id
+          @nav_items << item
+        end
+      end
     end
   end
 

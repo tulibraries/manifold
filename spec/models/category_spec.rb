@@ -5,6 +5,8 @@ require "rails_helper"
 RSpec.describe Category, type: :model do
 
   let(:category) { FactoryBot.create(:category) }
+  let(:parent_category) { FactoryBot.create(:category_parent) }
+
 
   describe "A basic category" do
     context "has a name" do
@@ -42,19 +44,31 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe "A category with an description" do
+    let(:category) { FactoryBot.create(:category, :with_description) }
+
+    it "responds to description" do
+      expect(category).to respond_to(:description)
+    end
+
+    it "matches description" do
+      expect(category.description).to match("It's what the category is about")
+    end
+
+    context "when it doesn't have a description" do
+      it "should raise a validation error" do
+        category.description = nil
+        expect { category.save! }.to_not raise_error
+      end
+    end
+  end
+
   describe "#url" do
 
     let(:category) { FactoryBot.create(:category) }
 
     it "responds to .url" do
       expect(category).to respond_to(:url)
-    end
-
-    context "no custom_url defined" do
-      it "returns the expected path" do
-        pending("category routes not yet implemented")
-        expect(category.url).to contain("/category")
-      end
     end
 
     context "with custom_url defined" do
@@ -94,7 +108,7 @@ RSpec.describe Category, type: :model do
       end
     end
 
-    context "items of one type in this category" do
+    context "items of multiple types in this category" do
       before do
         building.categories << category
         event.categories << category
@@ -103,7 +117,57 @@ RSpec.describe Category, type: :model do
       it "should include expected items" do
         expect(category.items).to include(building, event)
       end
+
+      context "when class parameter is passed" do
+        it "returns the limtied set of items" do
+          expect(category.items(limit_to: [:event])).to include(event)
+        end
+      end
     end
 
+    context "deleting an categorized item" do
+      before do
+        building.categories << category
+      end
+
+      it "is no longer in the category items list" do
+        old_building = building
+        building.destroy
+        expect(category.items).not_to include(old_building)
+      end
+    end
+    context "child_categories" do
+
+       context "when the category has child categories" do
+         it "returns an array of those categories, but not other" do
+           building.categories << parent_category
+           category.categories << parent_category
+           expect(parent_category.child_categories).to include(category)
+           expect(parent_category.child_categories).not_to include(building)
+         end
+       end
+       context "when it has no child categories" do
+         it "returns an empty array" do
+           building.categories << parent_category
+           expect(parent_category.child_categories).to eql([])
+         end
+       end
+     end
+  end
+
+  context "#categories" do
+
+    it "is responded to" do
+      expect(category).to respond_to(:categories)
+    end
+
+    it "allows a category to be added" do
+      expect { parent_category.categories << category }.not_to raise_error
+    end
+
+    it "returns a collection of categories" do
+      parent_category.categories << category
+      expect(parent_category.categories).to include(category)
+    end
   end
 end

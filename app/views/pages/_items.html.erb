@@ -1,0 +1,30 @@
+<% @page.categories.each do |cat| %>
+  <div class="leftside-index">
+    
+    <% unless @page.categories.size > 1 %>
+      <div class="index-category">
+    <% else %>
+      <div class="d-none d-lg-block index-category">
+    <% end %>
+        <h2><%= cat.name %> menu</h2>
+      </div>
+
+      <div class="index-items">
+        <div>
+          <ul class="list-unstyled">
+            <% cat.items.each do |c| %>
+              <% if c == @page %>
+              <li class="selected">
+              <% else %>
+              <li>
+              <% end %>
+                <%= link_to c.label, url_for(c) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+  </div>
+<% end %>
+    

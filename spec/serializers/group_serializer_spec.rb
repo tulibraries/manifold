@@ -20,7 +20,8 @@ RSpec.describe GroupSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :description, :group_type, :external, :add_to_footer, :label)
+      expect(data[:attributes].keys).to include(:name, :description, :group_type, :external, :add_to_footer,
+                                                :label, :updated_at)
     end
 
     it "returns the name" do

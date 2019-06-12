@@ -22,9 +22,6 @@
 	}
 	.closed {
 		color: $red;
-		/*display:inline-block;
-		width: 100%;
-		text-align:center;*/
 	}
 	.date-nav {
 		background-color: $light-grey;
@@ -42,4 +39,11 @@
 	}
 	.date-range {
 		font-size: large;
+	}
+	.hours-header {
+		margin-top: 35px;
+	}
+	.hours-month-name {
+		font-weight: 600;
+		font-size: 150%;
 	}

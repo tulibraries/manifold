@@ -3,10 +3,8 @@
 module Admin
   class BlogsController < Admin::ApplicationController
     def sync_all
-      Blog.all.each do |b|
-        SyncService::Blogs.call(blog: b)
-      end
-      flash[:notice] = t("fortytude.admin.notification.all_blogs_synced")
+      SyncService::Blogs.call
+      flash[:notice] = t("manifold.admin.notification.all_blogs_synced")
       redirect_to admin_blogs_path
     end
 

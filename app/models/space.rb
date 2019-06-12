@@ -8,6 +8,7 @@ class Space < ApplicationRecord
   include SetDates
   include Categorizable
   include Imageable
+  include HasHours
   has_ancestry
 
   validates :name, presence: true

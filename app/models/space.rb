@@ -8,6 +8,7 @@ class Space < ApplicationRecord
   include SetDates
   include Categorizable
   include Imageable
+  include HasHours
   has_ancestry
 
   validates :name, presence: true
@@ -22,6 +23,7 @@ class Space < ApplicationRecord
   before_validation :normalize_phone_number
 
   belongs_to :building
+  belongs_to :external_link, optional: true
 
   has_many :occupant
   has_many :persons, -> { order "last_name ASC" }, through: :occupant, source: :person

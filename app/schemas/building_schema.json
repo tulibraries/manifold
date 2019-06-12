@@ -178,6 +178,16 @@
 								"http://test.host/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3d4d92bfe42cae216c67817d111ef844220162e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1780aa09167cc24cd4beae09f819f90d80b64c3a/ambler.jpg"
 							],
 							"pattern": "^(.*)$"
+						},
+						"updated_at": {
+							"$id": "#/properties/data/properties/attributes/properties/updated_at",
+							"type": "string",
+							"title": "The time the building record was updated",
+ 							"format": "date-time",
+							"default": "",
+							"examples": [
+								"2018-01-01T12:00:00"
+							]
 						}
 					}
 				},

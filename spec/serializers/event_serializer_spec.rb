@@ -4,7 +4,7 @@ require "rails_helper"
 require "uri"
 
 RSpec.describe EventSerializer do
-  let(:event) { FactoryBot.create(:event) }
+  let(:event) { FactoryBot.create(:event, :with_image) }
   let(:serialized) { described_class.new(event) }
 
   it "doesn't raise an error when instantiated" do
@@ -17,6 +17,16 @@ RSpec.describe EventSerializer do
 
     it "has the expected type" do
       expect(data[:type]).to eql :event
+    end
+
+    it "has the expected attributes" do
+      expect(data[:attributes].keys).to include(:title, :description, :start_time, :end_time, :cancelled,
+                                                :registration_status, :registration_link, :content_hash,
+                                                :alt_text, :ensemble_identifier, :tags, :all_day,
+                                                :space, :address1, :address2, :contact_name,
+                                                :contact_email, :contact_phone, :image, :thumbnail_image,
+                                                :label, :updated_at)
+
     end
 
     it "has a link to the object" do

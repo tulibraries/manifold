@@ -20,7 +20,7 @@ RSpec.describe CollectionSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :description, :label)
+      expect(data[:attributes].keys).to include(:name, :description, :label, :updated_at)
     end
 
     it "returns the name" do

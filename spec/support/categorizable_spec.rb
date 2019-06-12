@@ -55,5 +55,15 @@ RSpec.shared_examples "categorizable" do
     end
   end
 
+  context "when a category is deleted" do
+    it "removes that category for an item's categories" do
+      factory_model.categories << category
+      category.destroy
+      factory_model.reload
+      expect(factory_model.categories).to match_array([])
+    end
+
+  end
+
 
 end

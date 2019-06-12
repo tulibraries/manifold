@@ -20,7 +20,7 @@ RSpec.describe PageSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:title, :description, :layout, :label)
+      expect(data[:attributes].keys).to include(:title, :description, :layout, :label, :updated_at)
     end
 
     it "returns the title" do

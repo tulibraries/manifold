@@ -8,6 +8,7 @@ class Building < ApplicationRecord
   include SetDates
   include Categorizable
   include Imageable
+  include HasHours
   require "uploads"
 
   validates :name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, presence: true
@@ -16,6 +17,7 @@ class Building < ApplicationRecord
 
   has_many :library_hours
   has_many :spaces
+  belongs_to :external_link, optional: true
 
   auto_strip_attributes :email
 

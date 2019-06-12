@@ -1,2 +1,19 @@
 @import "partials/_vars.scss";
 
+.contact-us {
+	p {
+		width: 80%;
+		margin: auto;
+		a {
+			color: $black;
+			text-decoration: underline;
+		}
+	}
+	h2 {
+		color: $red;
+	}
+	.chat-box div {
+		/*padding: 21px;*/
+		min-height: 420px;
+	}
+}

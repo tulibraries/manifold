@@ -1,0 +1,17 @@
+<h2>Course Information</h2>
+<%= f.input :course_title, required: true %>
+<%= f.input :comments, as: :text, label: "Please tell us when and for how long these titles should be on reserve. " %>
+
+<h2>Book Information</h2>
+<div style="padding-left:21px;margin-bottom:21px;">
+	If the library has the title in Ginsburg Holdings then please copy and paste the information.
+	<blockquote><%= link_to "Library Search", "/library-search", target: "_blank" %></blockquote>
+	If this is a new item, please provide detailed book information.
+</div>
+<%= f.input :title, required: true %>
+<%= f.input :author, required: true %>
+<%= f.input :year, required: true %>
+<%= f.input :isbn, required: true, label: "ISBN" %>
+<%= f.input :edition, required: true, label: "Edition/Year" %>
+<%= f.input :publisher, required: true %>
+<%= f.input :number_of_copies, required: true, label: "How many copies would you like on reserve?" %>

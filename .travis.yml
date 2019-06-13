@@ -9,13 +9,14 @@ env:
   - TZ=America/New_York
 jdk:
   - oraclejdk8
+before_install:
+  - gem install bundler -v '2.0.1'
 before_script:
   - RAILS_ENV=test bundle exec rake db:migrate
   - RAILS_ENV=test bundle exec rake db:seed
   - nvm install node
   - npm install -g ajv
   - npm install -g ajv-cli
-  - gem install bundler -v '2.0.1'
 script:
   - bundle exec rubocop
   - bundle exec brakeman

@@ -14,12 +14,9 @@
     <ul class="list-unstyled">
       <li><%= mail_to @person.email_address, @person.email_address %></li>
       <li><%= phone_formatted(@person.phone_number) %></li>
-      <% unless @departments.blank? %>
-        <% @departments.each_with_index do |group, index| %>
-          <li><%= link_to group.name, group %>
-          <% unless index == (@departments.size - 1) %>, </li><% end %>
-        <% end %>
-      <% end %>
+      
+      <%= depts_list(@person).html_safe %>
+
       <% unless @person.spaces.empty? %>
         <li>
           <%= link_to @building.name, @building %>: <%= link_to @person.spaces.first.name, @person.spaces.first %>
@@ -33,14 +30,12 @@
 
 <div class="col-12 right-side">
 
-  <% unless @person.specialties.nil? %>
-    <div>
-      <h2>Subjects</h2>
-    </div>
+  <% unless @person.specialties.nil? || @person.specialties.second.nil? %>
+    <h2>Subjects</h2>
     <div class="subject-list text-left">
       <ul class="list-unstyled">
-        <% @person.specialties.drop(1).each do |specialty| %>
-          <li><%= specialty %></li>
+        <% specialties(@person).each do |s| %>
+          <li><%= s %></li>
         <% end %>
       </ul>
     </div> 

@@ -39,7 +39,7 @@
       <h2><%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %></h2>
     <% end %>
 
-    <% unless @person.specialties.nil? %>
+    <% unless @person.specialties.second.nil? %>
       <div>
         <h2>Subjects</h2>
       </div>

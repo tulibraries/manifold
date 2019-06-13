@@ -30,39 +30,6 @@ module Tude
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.building_spaces = [
-      {
-        slug: "ambler",
-        spaces: ["ambler"]
-      },
-      {
-        slug: "blockson",
-        spaces: ["blockson"]
-      },
-      {
-        slug: "charles",
-        spaces: [
-                  "charles",
-                  "service_zone",
-                  "cafe",
-                  "scrc",
-                  "scholars_studio",
-                  "success_center",
-                  "ask_a_librarian",
-                  "asrs",
-                  "guest_computers"
-                ]
-      },
-      {
-        slug: "ginsburg",
-        spaces: ["ginsburg", "innovation"]
-      },
-      {
-        slug: "podiatry",
-        spaces: ["podiatry"]
-      }
-    ]
-
     config.group_types = ["Assembly",
                           "Committee",
                           "Department",

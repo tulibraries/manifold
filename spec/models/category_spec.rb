@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe Category, type: :model do
 
   let(:category) { FactoryBot.create(:category) }
+  let(:parent_category) { FactoryBot.create(:category_parent) }
 
 
   describe "A basic category" do
@@ -70,13 +71,6 @@ RSpec.describe Category, type: :model do
       expect(category).to respond_to(:url)
     end
 
-    context "no custom_url defined" do
-      it "returns the expected path" do
-        pending("category routes not yet implemented")
-        expect(category.url).to contain("/category")
-      end
-    end
-
     context "with custom_url defined" do
       let(:category) { FactoryBot.create(:category, :custom_url) }
 
@@ -114,7 +108,7 @@ RSpec.describe Category, type: :model do
       end
     end
 
-    context "items of one type in this category" do
+    context "items of multiple types in this category" do
       before do
         building.categories << category
         event.categories << category
@@ -122,6 +116,12 @@ RSpec.describe Category, type: :model do
 
       it "should include expected items" do
         expect(category.items).to include(building, event)
+      end
+
+      context "when class parameter is passed" do
+        it "returns the limtied set of items" do
+          expect(category.items(limit_to: [:event])).to include(event)
+        end
       end
     end
 
@@ -136,10 +136,26 @@ RSpec.describe Category, type: :model do
         expect(category.items).not_to include(old_building)
       end
     end
+    context "child_categories" do
+
+       context "when the category has child categories" do
+         it "returns an array of those categories, but not other" do
+           building.categories << parent_category
+           category.categories << parent_category
+           expect(parent_category.child_categories).to include(category)
+           expect(parent_category.child_categories).not_to include(building)
+         end
+       end
+       context "when it has no child categories" do
+         it "returns an empty array" do
+           building.categories << parent_category
+           expect(parent_category.child_categories).to eql([])
+         end
+       end
+     end
   end
 
   context "#categories" do
-    let(:parent_category) { FactoryBot.create(:category_parent) }
 
     it "is responded to" do
       expect(category).to respond_to(:categories)

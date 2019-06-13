@@ -8,17 +8,17 @@ RSpec.describe SpacesController, type: :controller do
 
   let(:space) { FactoryBot.create(:space) }
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:ok)
-    end
+  # describe "GET #index" do
+  #   it "returns http success" do
+  #     get :index
+  #     expect(response).to have_http_status(:ok)
+  #   end
 
-    it "returns json when requested" do
-      get :index, format: :json
-      expect(response.header["Content-Type"]).to include "json"
-    end
-  end
+  #   it "returns json when requested" do
+  #     get :index, format: :json
+  #     expect(response.header["Content-Type"]).to include "json"
+  #   end
+  # end
 
   describe "GET #show" do
     it "returns http success" do

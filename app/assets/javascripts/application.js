@@ -21,15 +21,8 @@
 //= require_tree .
 
 function toggle(x) {
-  // if (x instanceof Object) {
-  //   x.classList.toggle("change");
-  // }
-  // else {
-  //   document.getElementById(x).classList.toggle("change");
-  // }
   if (x == "secondary") {
   	document.getElementById("sub-toggler-icon").classList.toggle("change");
-    document.getElementById("mobile-navbar-brand").innerHTML = "See Less"
   }
   else if (x == "search") {
   	document.getElementById("search-toggler-icon").classList.toggle("change");
@@ -37,7 +30,6 @@ function toggle(x) {
   else {
     document.getElementById("main-toggler-icon").classList.toggle("change");
   }
-
 }
 
 // TO BE IMPLEMENTED LATER REPLACING THE ONCLICK OF MENU ICONS

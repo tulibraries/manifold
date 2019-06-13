@@ -2,14 +2,14 @@
   <div class="col-12 col-md-9">
     <div class="row">
       <div class="row person-block desktop">
-      <div class="col-3">
-        <% if @person.image.attached?  %>
+      <% if @person.image.attached?  %>
+        <div class="col-3">
           <%= image_tag @person.show_image, alt: @person.name %>
-        <% else %> 
-          <%= image_tag "T.gif", style: 'width: 300px;' %>
-        <% end %>
-      </div>
+        </div>
       <div class="col-9">
+        <% else %>
+      <div class="col-12">
+      <% end %>
         <h1 class="person-name"><%= @person.first_name %> <%= @person.last_name %></h1>
         <div class="job-title"><%= @person.job_title %></div>
         <div><%= mail_to @person.email_address, @person.email_address %></div>

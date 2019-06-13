@@ -23,6 +23,7 @@ class Space < ApplicationRecord
   before_validation :normalize_phone_number
 
   belongs_to :building
+  belongs_to :external_link, optional: true
 
   has_many :occupant
   has_many :persons, -> { order "last_name ASC" }, through: :occupant, source: :person

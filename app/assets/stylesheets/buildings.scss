@@ -1,134 +1,96 @@
 @import "partials/_vars.scss";
 
-.building-info {
+.building-show {
 	margin-top: 35px;
 	margin-bottom: 21px;
-	.building-description {
-		h1 {
-			padding-left: 14px;
-			@media screen and (max-width: 1199px) {
-				padding-left: 0;
-			}
-		}
-		font-size: 115%;
-		padding-top: 7px;
-		margin: auto;
-		background-color: $background-grey;
-		max-width:680px;
-		height: auto;
-		min-height:450px;
-		div.text {
-			padding:21px;
-			margin:auto;
-		}
-		padding-right:21px;
-		@media screen and (max-width: 1199px) {
-			margin-left: 0;
-			max-width:100%!important;
-		}
-	}
-	.building-image {
-		max-height:450px;
-		max-width: 680px;
-		overflow:hidden;
-		margin: auto;
-		@media screen and (min-width: 1199px) {
-			margin-right: 0;
-		}
-		img {
-			min-height:450px;
-		}
-	}
-}
-.phone {
-	font-size: 120%;
-}
-.building {
-	font-size: 120%;
-	font-weight: 400;
-	line-height: 2.5rem;
-}
-.address {
-	line-height: 1.75rem;
-	font-weight: 100;
-}
-.email {
-	font-size: 95%;
-	a {
-		color: $white;
-		text-decoration: underline;
-	}
-}
-.buildingsRow {
-	.card {
-		display:table;
-		margin: auto;
-		margin-top: 35px;
-    text-align: center;
-    border: solid #9a2e8c 2px;
-    border-radius: 14px;
-    background-color: #fff;
-    color: #000;
-    overflow: hidden;
-    padding: 0;
-    width: 250px;
-    height: 189px;
-    .lib-image {
-    	/*min-height:190px;*/
-    }
-    .default-image {
-    	width:190px;
-    	height:190px;
-    }
-	}
-  .card-title {
-  	font-size:125%;
-  }
-}
-.ctaRow.building-info
-  {
-	max-width: 1420px;
-	margin-left: auto;
-	margin-right: auto;
-	.card {
-		margin:auto;
-		max-width: 415px;
-		min-width: 415px;
-		height: 290px;
-		position: relative;
-		line-height: 3.0rem;
-  	display: table;
-		font-size: larger;
-		margin-bottom: 21px;
-		a {
-			color: $white;
-		}
-	}
-	.card-body {
-    display: table-cell;
-    vertical-align: middle;
-	}
-	.card-title {
-		position: absolute;
-		top: 0;
-		margin-top: 0;
-	}
-	.ctaLast {
-		background-color: $purple;
-		max-width: 415px;
-		min-width: 415px;
-		.card-title.complement {
-			background-color: $purple-complement;
-			color: $black;
-		}
-		.card-body {
-			padding:0;
-    	vertical-align: bottom;
-		}
-		img {
-			opacity: 1;
-			object-fit: cover;
+
+	.building-contact {
+		line-height: 2rem;
+		li {
+			padding-left: 35px;
+			background-image: asset-data-url('newspaper.png');
+	    background-position: 0 center;
+	    background-repeat: no-repeat;
+	    background-size: 28px 28px;
 		}
 	}
 
+	.building-map {
+		text-align: center;
+		overflow: hidden;
+		img {
+			opacity: 1;
+			object-fit: cover;
+			height: 200px;
+			width: 269px;
+			max-height: 200px;
+			min-height: 200px;
+			max-width: 269px;
+			min-width: 269px;
+			@media screen and (max-width: 984px) {
+				width: 75%;
+				max-width: 75%;
+				min-width: 75%;
+				height: auto;
+				max-height: 50%;
+				min-height: 50%;
+			}
+			
+		}
+	}
+	
+	.phone {
+		font-size: 120%;
+	}
+	.address {
+		line-height: 1.75rem;
+		font-weight: 100;
+	}
+	.email {
+		font-size: 95%;
+		a {
+			color: $white;
+			text-decoration: underline;
+		}
+	}
+
+	.rightside-building {
+		padding-top: 4rem;
+		@media screen and (max-width: 984px) {
+			padding-top: 0;
+		}
+		.external-link {
+			background-color: $foamgreen;
+			padding: 14px;
+			border-radius: 7px;
+			margin-bottom: 17px;
+			width: 100%;
+			text-align: center;
+			a {
+				color: $white;
+				text-decoration: underline;
+			}
+			h2 {
+				margin-bottom: 3px;
+			}
+		}
+		.related-policies {
+			h2 {
+				margin-top: 1.35rem;
+			}
+			ul {
+				border: solid $seagreen 1px;
+				border-radius: 7px;
+				padding: 14px;
+				padding-left: 28px;
+				overflow-wrap: break-word;
+				li {
+					color: $light-grey;
+					a {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
 }

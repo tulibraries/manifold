@@ -44,12 +44,12 @@
   <div class="row"> <!-- dates header -->
     <div class="col-3"></div>
       <% 7.times do |date| %>
-      <% if @monday+date == @today %>
+      <% if @monday.to_date+date == @today %>
         <div class="col hours-dates today day-of-week text-center">
       <% else %>
         <div class="col hours-dates text-center">
       <% end %>
-          <%= (@monday+date).strftime("%a %d") %> 
+          <%= (@monday.to_date+date).strftime("%a %d") %> 
         </div>
       <% end %>
    </div>
@@ -61,7 +61,7 @@
             <h3 style="padding-right: 28px;"><%= location_name(hours.second.first.location_id) %></h3>
           </div>
             <% hours.second.each_with_index do |time,index| %> <!-- hours -->
-              <% if @monday+index == @today %>
+              <% if @monday.to_date+index == @today %>
                 <div class="col today">
                 <% else %>
                 <div class="col">

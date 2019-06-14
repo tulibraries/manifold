@@ -53,6 +53,9 @@ class PagesController < ApplicationController
     @categories = Category.find_by_name("Policies & Guidelines").items.select { |item| item.class == Category }
   end
 
+  def contact
+  end
+
   def research
     @categories = Category.find_by_name("Research Services").items.select { |item| item.class == Category }
     @pages = Page.all

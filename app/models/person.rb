@@ -17,6 +17,7 @@ class Person < ApplicationRecord
   auto_strip_attributes :email_address
 
   before_validation :normalize_phone_number
+  before_validation :burpSpecialties
 
   has_many :member
   has_many :groups, through: :member, source: :group

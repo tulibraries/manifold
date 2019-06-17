@@ -17,6 +17,8 @@ class Form < MailForm::Base
   attribute :title
   attribute :year
   attribute :call_number
+  attribute :isbn
+  attribute :edition
   attribute :publisher
   attribute :source_of_information
   attribute :reason_for_purchase
@@ -45,6 +47,10 @@ class Form < MailForm::Base
   attribute :years_limit
   attribute :data_creator
   attribute :data_discovery
+  attribute :course_title
+  attribute :reserve_duration
+  attribute :number_of_copies
+
 
 
 
@@ -55,7 +61,8 @@ class Form < MailForm::Base
       "purchase-request" => ["Purchase Request",  "cdoyle@temple.edu"],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
       "ir" => ["Incident Report", "cdoyle@temple.edu"],
-      "data-purchase-grants-application" => ["Data Purchase Application", "cdoyle@temple.edu"] }
+      "data-purchase-grants-application" => ["Data Purchase Application", "cdoyle@temple.edu"],
+      "hsl-book-reserve" => ["Request book(s) for reserve-Ginsburg Health Sciences Library", "cdoyle@temple.edu"] }
 
     @forms.fetch(form_type)
   end

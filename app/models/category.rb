@@ -35,8 +35,10 @@ class Category < ApplicationRecord
   end
 
   def url(only_path: false)
-    if custom_url
+    if !custom_url.blank?
       custom_url
+    elsif items.first.class == ExternalLink
+      items.first.link
     elsif items.first
       polymorphic_url(items.first, only_path: only_path)
     else

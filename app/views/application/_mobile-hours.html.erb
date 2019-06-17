@@ -1,0 +1,78 @@
+<div class="mobile-hours">
+<div class="current-week">
+	<% @locations.each do |location| %>
+
+  <% if location[:slug] == @location && @location %>
+  <div class="row"> <!-- dates header -->
+    <div class="col-12"><h2>Weekly Hours</h2></div>
+
+
+    </div>
+  </div>
+  <div class=" hours-header">
+      <div class="month hours-month-name">
+        <%= @monday.to_date.strftime("%B %d") %> - <%= (@monday.to_date+6).strftime("%B %d %Y") %>
+      </div>
+      <div>
+        <%= link_to "See More Hours for this location", {controller: :library_hours, action: :index}, class: "today_button"  %>
+      </div>
+    </div>
+
+
+
+    <% unless location.values.second.first.second.empty? %>
+
+
+    <% location.values.second.each do |hours| %>
+        <div class="row hours-location"> <!-- location -->
+          <div class="col-12">
+            <h3><%= location_name(hours.second.first.location_id) %></h3>
+          </div>
+          <div class="col-7">
+
+            <% 7.times do |i| %>
+              <% if @monday.to_date+i == @today.to_date %>
+                <div class="hours-dates today day-of-week">
+              <% else %>
+                <div class="hours-dates">
+              <% end %>
+                <%= (@monday.to_date+i).strftime("%A, %B %d") %> 
+              </div>
+            <% end %>
+
+          </div>
+
+          <div class="col-5 text-left">
+
+            <% hours.second.each_with_index do |time,index| %> <!-- hours -->
+            <% if @monday.to_date+index == @today.to_date %>
+                <div class="today day-of-week hours-dates">
+                <% else %>
+                <div class="hours-dates">
+              <% end %>
+              <% if time.hours.downcase == "closed" %>
+                <span class="closed"><%= time.hours %></span>
+              <% else %>
+                <%= time.hours %>
+              <% end %>
+              </div>
+            <% end %> <!-- hours -->
+
+          </div>
+
+        </div>
+      <% end %>
+
+
+    <% else %> <!-- unless -->
+      <div class="row" style="margin-top: 14px;">
+        <div class="col-12 text-center">
+          <h3>No data for current date range</h3>
+        </div>
+      </div> 
+    <% end %>
+
+  <% end %>
+<% end %>
+</div>
+</div>

@@ -82,8 +82,9 @@ Rails.application.routes.draw do
   end
 
   controller :pages do
-    get "ambler" => :ambler
-    get "hsl" => :hsl
+    get "ambler" => :ambler, as: "pages_ambler"
+    get "hsl" => :hsl, as: "pages_hsl"
+    get "contact-us" => :contact, as: "pages_contact"
     get "about" => :about, as: "pages_about"
     get "research-services" => :research, as: "pages_research"
     get "visit-study" => :visit, as: "pages_visit"

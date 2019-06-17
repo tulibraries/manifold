@@ -5,6 +5,14 @@ class SpacesController < ApplicationController
   before_action :set_space, only: [:show]
   before_action :navigation_items, only: [:show]
 
+  def index
+    @spaces = Space.all
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/404.html", status: :not_found }
+      format.json { render json: SpaceSerializer.new(@spaces) }
+    end
+  end
+
   # GET /spaces/1
   # GET /spaces/1.json
   def show

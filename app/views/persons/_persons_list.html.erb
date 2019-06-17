@@ -1,3 +1,4 @@
+   <% unless @persons_list.nil? %>
     <% @persons_list.each do |person| %>
 
       <div class="row person">
@@ -12,7 +13,7 @@
           <ul class="details list-unstyled">
             <li>
               <span style="font-size:larger;font-weight:600;">
-                <%= person.first_name+' '+person.last_name %>
+                <%= person.name %>
               </span>
             </li>
             <li>
@@ -48,3 +49,11 @@
           <%= paginate @persons_list %>
         </div>
       </div>
+
+      <% else %> <!-- unless -->
+      <div class="row" style="margin-top: 14px;">
+        <div class="col-12 text-center">
+          <h3>No people found. Try another search.</h3>
+        </div>
+      </div> 
+    <% end %>

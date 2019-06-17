@@ -19,10 +19,14 @@
         </div>
         <% unless @person.spaces.empty? %>
           <div>
-            <%= link_to @building.name, @building %>: <%= link_to @person.spaces.first.name, @person.spaces.first %>
+            <% @buildings.each do |key,value| %>
+            <%= link_to key.name, key %>: 
+              <% value.each do |space| %>
+                <%= link_to space.name, space %><% unless space == value.last %>,<% end %> 
+              <% end %>
+              <br />
+            <% end %>
           </div>
-        <% else %>
-          <div><%= link_to @building.name, @building %></div>
         <% end %>
       </div>
     </div>
@@ -36,7 +40,7 @@
       </h2>
     <% end %>
 
-    <% unless @person.specialties.nil? || @person.specialties.second.nil? %>
+    <% unless @person.specialties.blank? %>
       <h2>Subjects</h2>
       <div class="subject-list text-left">
         <ul class="list-unstyled">

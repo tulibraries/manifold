@@ -4,8 +4,29 @@
   </a>
 </h2>
 	
-  <ul class="list-unstyled navbar-collapse collapse show" id="subjects">
-		<% @departments.each do |dept| %>
-		<li><%= dept.name %></li>
+			<%# binding.pry %>
+  <ul class="list-unstyled navbar-collapse collapse show" id="departments">
+  	<% unless @departments.nil? %>
+  	<% unless params[:department].nil? %>
+			<% @departments.each do |dept| %>
+				<% if dept.id.to_s == params[:department] %>
+				<li class="active">
+					<%= dept.name %>
+					<span class="clear-filter">
+						<%= link_to "X", people_path(request.query_parameters.except(:department).merge({page: 1})) %>
+					</span>
+				</li>
+				<% end %>
+			<% end %>
+
+		<% else %>
+
+			<% @departments.each do |dept| %>
+				<li>
+					<%= link_to dept.name, people_path(request.query_parameters.merge({department: dept, page: 1})) %>	
+				</li>
+			<% end %>
+		
+		<% end %>
 		<% end %>
 	</ul>

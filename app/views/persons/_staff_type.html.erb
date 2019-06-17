@@ -3,13 +3,17 @@
   	Staff Type 
   </a>
 </h2>
-	
-<div class="navbar-collapse collapse show" id="staff-type">
-  <ul class="list-unstyled">
-		<li>Subject Librarians Only</li>
-		<li>All Staff</li>
-	</ul>
-</div>
 
 
-
+<ul class="list-unstyled navbar-collapse collapse show" id="staff-type">
+<% if params[:specialists] %>
+	<li class="active">
+		Subject Librarians Only
+		<span class="clear-filter">
+			<%= link_to "X", people_path(request.query_parameters.except(:specialists).merge({page: 1})) %>
+		</span>
+	</li>
+<% else %>
+	<li><%= link_to "Subject Librarians Only", people_path(request.query_parameters.merge({specialists: true, page: 1})) %></li>
+<% end %>
+</ul>

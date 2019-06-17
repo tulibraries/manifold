@@ -71,6 +71,9 @@ h1 {
 	margin-bottom: 21px;
 	font-family: "PT Sans Bold"!important;
 }
+h1.page-title {
+	margin-top: 0;
+}
 h2 {
 	font-size: 175%;
 	font-family: "PT Sans Bold"!important;
@@ -82,6 +85,10 @@ h3 {
 h4,h5,h6 {
 	font-size: 100%;
 	font-family: "PT Sans Bold"!important;
+}
+
+strong {
+	font-family: 'PT Sans Bold';
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -239,4 +246,8 @@ img.map {
 		}
 	}
 
+}
+
+blockquote {
+	margin: 21px;
 }

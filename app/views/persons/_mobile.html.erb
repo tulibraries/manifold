@@ -18,11 +18,15 @@
       <%= depts_list(@person).html_safe %>
 
       <% unless @person.spaces.empty? %>
-        <li>
-          <%= link_to @building.name, @building %>: <%= link_to @person.spaces.first.name, @person.spaces.first %>
-        </li>
-      <% else %>
-        <li><%= link_to @building.name, @building %></li>
+        <div>
+          <% @buildings.each do |key,value| %>
+          <%= link_to key.name, key %>: 
+            <% value.each do |space| %>
+              <%= link_to space.name, space %><% unless space == value.last %>,<% end %> 
+            <% end %>
+            <br />
+          <% end %>
+        </div>
       <% end %>
     </ul>
   </div>
@@ -30,7 +34,7 @@
 
 <div class="col-12 right-side">
 
-  <% unless @person.specialties.nil? || @person.specialties.second.nil? %>
+  <% unless @person.specialties.blank? %>
     <h2>Subjects</h2>
     <div class="subject-list text-left">
       <ul class="list-unstyled">

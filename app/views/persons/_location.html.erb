@@ -1,8 +1,11 @@
-<h2>Location</h2>
-<div style="height:21rem;overflow:scroll">
-<ul class="list-unstyled">
-<% @locations.each do |loc| %>
-	<li><%= loc.name %></li>
-<% end %>
-</ul>
-</div>
+<h2>
+  <a style="cursor:pointer" data-toggle="collapse" data-target="#locations" aria-expanded="true" aria-controls="locations"> 
+  	Location
+  </a>
+</h2>
+	
+  <ul class="list-unstyled navbar-collapse collapse show" id="subjects">
+		<% @locations.each do |loc| %>
+		<li><%= loc.name %></li>
+		<% end %>
+	</ul>

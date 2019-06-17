@@ -1,9 +1,11 @@
-<h2>Subject Specialty</h2>
-<div style="height:21rem;overflow:scroll">
-<ul class="list-unstyled">
-	<% @subjects.each do |subject| %>
-	<%# binding.pry %>
-	<li><%= subject %></li>
-	<% end %>
-</ul>
-</div>
+<h2>
+  <a style="cursor:pointer" data-toggle="collapse" data-target="#subjects" aria-expanded="true" aria-controls="subjects"> 
+  	Subject Specialty
+  </a>
+</h2>
+
+  <ul class="list-unstyled navbar-collapse collapse show" id="subjects">
+		<% @subjects.each do |subject| %>
+		<li><%= subject %></li>
+		<% end %>
+	</ul>

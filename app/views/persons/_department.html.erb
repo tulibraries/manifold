@@ -1,8 +1,11 @@
-<h2>Department</h2>
-<div style="height:21rem;overflow:scroll">
-<ul class="list-unstyled">
-<% @departments.each do |dept| %>
-	<li><%= dept.name %></li>
-<% end %>
-</ul>
-</div>
+<h2>
+  <a style="cursor:pointer" data-toggle="collapse" data-target="#departments" aria-expanded="true" aria-controls="departments"> 
+  	Department
+  </a>
+</h2>
+	
+  <ul class="list-unstyled navbar-collapse collapse show" id="subjects">
+		<% @departments.each do |dept| %>
+		<li><%= dept.name %></li>
+		<% end %>
+	</ul>

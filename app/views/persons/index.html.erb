@@ -4,70 +4,24 @@
 
   <div class="row">
     <div class="col-3 leftside-index">
-      <div class="filter_staff_type">
-        <%= render "staff_type" %>
-      </div>
-      <div class="filter_subjects">
-        <%= render "subjects" %>
-      </div>
-      <div class="filter_location">
-        <%= render "location" %>
-      </div>
-      <div class="filter_department">
-        <%= render "department" %>
+      <div class="panel-group" id="accordion">
+        <div class="filter_staff_type">
+          <%= render "staff_type" %>
+        </div>
+        <div class="filter_subjects">
+          <%= render "subjects" %>
+        </div>
+        <div class="filter_location">
+          <%= render "location" %>
+        </div>
+        <div class="filter_department">
+          <%= render "department" %>
+        </div>
       </div>
     </div>
 
     <div class="col-7">
-      <% @persons_list.each do |person| %>
-
-      <div class="row person">
-        <div class="col-4">
-          <% if person.image.attached?  %>
-          <%= image_tag person.show_image, alt: person.name %>
-          <% else %> 
-          <%= image_tag "T.gif", style: 'width: 300px;' %>
-          <% end %>
-        </div>
-        <div class="col-8">
-          <ul class="details list-unstyled">
-            <li>
-              <span style="font-size:larger;font-weight:600;">
-                <%= person.first_name+' '+person.last_name %>
-              </span>
-            </li>
-            <li>
-              <span style="font-weight:600;"><%= person.job_title %></span>
-            </li>
-            <li>
-              <%= person.email_address %>
-            </li>
-            <li>
-              <%= phone_formatted(person.phone_number) %>
-            </li>
-            <li>
-              <%= depts_list(person).html_safe %>
-            </li>
-          </ul>
-          <div class="person-actions" style="margin-bottom: 21px">
-            <span class="button" style="padding:7px 14px; background-color:#1a9682">
-              <%= link_to "View Profile", person, style: "color: white" %>
-            </span>
-            <% unless person.springshare_id.blank? %>
-              <span class="button" style="padding:7px 14px; background-color:#749715">
-                <%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new", style: "color: white" %>
-              </span>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      
-      <% end %>
-      <div class="row text-center paginator" style="border-left: solid white 14px;">
-        <div class="col">
-          <%= paginate @persons_list %>
-        </div>
-      </div>
+      <%= render "persons_list" %>
     </div>
 
     <div class="col-2 right-side">

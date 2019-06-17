@@ -40,6 +40,24 @@
 			padding-left: 14px;
 			}
 		}
+		a[data-toggle="collapse"]:after {
+			content: "\f105";
+      font-family: "FontAwesome";
+      font-size: larger;
+    	float: right;
+    	padding-right: 7px;
+  	}
+		a[aria-expanded="true"]:after {
+			content: "\f107";
+      font-family: "FontAwesome";
+      font-size: larger;
+    	float: right;
+    	padding-right: 7px;
+  	}
+  	.list-unstyled.navbar-collapse.collapse {
+  		height:18rem!important;
+  		overflow:scroll;
+  	}
 	}
 }
 

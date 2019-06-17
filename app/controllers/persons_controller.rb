@@ -3,16 +3,15 @@
 class PersonsController < ApplicationController
   load_and_authorize_resource
   before_action :set_person, only: [:show]
+  before_action :get_persons, only: [:index]
 
   def index
-    if params[:id].nil?
-      @persons = Person.all.order(:last_name, :first_name)
-    else
-      @persons = Person.where("last_name LIKE ?", "#{params[:id]}%").order(:last_name, :first_name)
-    end
 
     @persons_list = @persons.page params[:page]
+
     @specialists = @persons.where.not(specialties: nil)
+    @specialists_list = @specialists.page params[:page]
+
     @subjects = (@persons.where.not(specialties: nil).collect { |p| p.specialties }.flatten.uniq.sort).reject!{|s| s.empty?}
     @departments = (@persons.where.not(groups: nil).collect { |p| p.groups }.flatten.uniq.sort)
     @locations = (@persons.where.not(spaces: nil).collect { |p| p.spaces }.flatten.uniq.sort)
@@ -29,6 +28,14 @@ class PersonsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: PersonSerializer.new(@person) }
+    end
+  end
+
+  def get_persons
+    unless params[:id].nil?
+      @persons = Person.find_by(id: params[:id])
+    else
+      @persons = Person.all.order(:last_name, :first_name)
     end
   end
 

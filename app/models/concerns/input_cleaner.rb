@@ -14,9 +14,4 @@ module InputCleaner
   def burpArray
     self.subject.reject! { |s| s.empty? }
   end
-  def burpSpecialties
-    if self.specialties.is_a? Array
-      self.specialties.reject! { |s| s.empty? }
-    end
-  end
 end

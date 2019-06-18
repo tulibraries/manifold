@@ -31,8 +31,6 @@ class Person < ApplicationRecord
 
   alias :label :name
 
-  private
-
   def burpSpecialties
     if self.specialties.is_a? Array
       self.specialties.reject! { |s| s.empty? }

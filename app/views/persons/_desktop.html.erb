@@ -39,13 +39,13 @@
       <h2><%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %></h2>
     <% end %>
 
-    <% unless @person.specialties.second.nil? %>
+    <% unless @person.specialties.empty? %>
       <div>
         <h2>Subjects</h2>
       </div>
       <div class="subject-list text-left">
         <ul class="list-unstyled">
-          <% @person.specialties.drop(1).each do |specialty| %>
+          <% @person.specialties.each do |specialty| %>
             <li><%= specialty %></li>
           <% end %>
         </ul>

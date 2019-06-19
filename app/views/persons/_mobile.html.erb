@@ -33,13 +33,13 @@
 
 <div class="col-12 right-side">
 
-  <% unless @person.specialties.nil? %>
+  <% unless @person.specialties.empty? %>
     <div>
       <h2>Subjects</h2>
     </div>
     <div class="subject-list text-left">
       <ul class="list-unstyled">
-        <% @person.specialties.drop(1).each do |specialty| %>
+        <% @person.specialties.each do |specialty| %>
           <li><%= specialty %></li>
         <% end %>
       </ul>

@@ -7,6 +7,10 @@ rvm:
 env:
   - TZ=America/New_York
 
+before_install:
+  - gem update --system
+  - gem install bundler
+
 before_script:
   - psql -c "create role manifold with createdb login password 'password';" -U postgres
   - RAILS_ENV=test bundle exec rake db:setup

@@ -3,7 +3,7 @@
     <ul class="list-unstyled">
       <% @nav_items.flatten.uniq.each do |c| %>
         <li>
-          <%= link_to c.label, category_url(c) %>
+          <%= link_to c.label, url_for(c) %>
         </li>
       <% end %>
     </ul>

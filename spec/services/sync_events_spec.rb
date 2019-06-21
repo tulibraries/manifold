@@ -104,7 +104,7 @@ RSpec.describe SyncService::Events, type: :service do
     end
 
     it "it attaches images to records" do
-      expect(Event.find(1).image.attached?).to be true
+      expect(Event.take.image.attached?).to be true
     end
   end
 

@@ -69,6 +69,7 @@ Rails.application.routes.draw do
   resources :pages, only: [:index, :show]
   resources :highlights, only: [:index, :show]
   resources :categories, only: [:show]
+  resources :external_link, only: [:show]
 
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
@@ -95,6 +96,10 @@ end
 Rails.application.routes.named_routes.url_helpers_module.module_eval do
   def category_url(category)
     category.url
+  end
+
+  def external_link_url(external_link)
+    external_link.link
   end
 end
 

@@ -19,10 +19,13 @@ class Category < ApplicationRecord
   # If the limit_to parameter is provided, it limits the response
   # to items of that Class
   # eg @category.items(limit_to: [:events]) would
-  def items(limit_to: [])
+  def items(limit_to: [], exclude: [])
     grouped = categorizations.group_by(&:categorizable_type)
     unless limit_to.empty?
       grouped.select! { |ct, _ | limit_to.include?(ct.downcase.to_sym)  }
+    end
+    unless exclude.empty?
+      grouped.reject! { |ct, _ | exclude.include?(ct.downcase.to_sym)  }
     end
     grouped.map do |type, objs|
       ids = objs.map(&:categorizable_id)
@@ -35,12 +38,10 @@ class Category < ApplicationRecord
   end
 
   def url(only_path: false)
-    if !custom_url.blank?
+    if custom_url.present?
       custom_url
-    elsif items.first.class == ExternalLink
-      items.first.link
-    elsif items.first
-      polymorphic_url(items.first, only_path: only_path)
+    elsif items(exclude: [:external_link]).first
+      polymorphic_url(items(exclude: [:external_link]).first, only_path: only_path)
     else
       root_url
     end

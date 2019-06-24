@@ -11,7 +11,8 @@
     <div class="index-items">
       <div>
         <ul class="list-unstyled">
-          <% cat.items.each do |c| %>
+          <% cat.items.sort_by{|e| e.label}.each do |c| %>
+          <% unless c.class.to_s == "Category" %>
             <% if c == @building %>
             <li class="selected">
             <% else %>
@@ -19,6 +20,7 @@
             <% end %>
               <%= link_to c.label, url_for(c) %>
             </li>
+          <% end %>
           <% end %>
         </ul>
       </div>

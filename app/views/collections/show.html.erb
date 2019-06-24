@@ -1,63 +1,51 @@
-<div class="row">
-  <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %>
-    <%= link_to "Collections", collections_path %>
-    <%= @collection.name %>
-  </div>
-</div>
+<%= render "mobile-menu-secondary" %>
 
-<div class="row collection-show">
-  <div class="col-10 description">
-    <h2 class="unstyled" style=""><%= @collection.name %></h2>
-    <div class="row info">
-    	<div class="col-4" style="padding-left: 0;">
-          <% if @collection.image.attached? %>
-            <%= image_tag @collection.show_image, alt: "" %>
-          <% else %>
-            <%= image_tag 'T-borderless.gif', alt: "" %>
+<div class="container collection-show">
+  
+  <div class="row">
+    <% unless @categories.blank? %>
+      <div class="col-lg-3 d-none d-lg-block">
+        <%= render "category_items" %>
+      </div>
+      <div class="col-12 col-lg-6">
+    <% else %>
+      <div class="col-12">
+    <% end %>
+
+      <h1 class="page-title"><%= @collection.name %></h1>
+      <% if @collection.image.attached? %>
+        <%= image_tag @collection.show_image, alt: @collection.name %>
+      <% end %>
+        <div class="details">
+          <h2>About the Collection</h2>
+          <%= sanitize @collection.description.html_safe %>
+
+          <% unless @collection.subject.blank? %>
+          <h2> Subjects</h2>
+          <ul class="list-unstyled">
+          <%= @collection.subject.map { |subject| "<li>#{subject.to_s}</li>" }.collect do |subject| %>
+            <%= subject.html_safe %>
+          <% end.join %>
+
+          </ul>
           <% end %>
-    	</div>
-    	<div class="col-8" style="padding-left:21px;">
-    		<%= sanitize @collection.description.html_safe %>
-    	</div>
-    </div>
-  </div>
-  <div class="col-2 text-left">
-    <div class="card ctaLast subjects">
-      <div class="card-title">
-        Subject List
-      </div>
-      <div class="card-body text-left">
-        <ul>
-        	<% @collection.subject.each do |subject| %>
-        		<li><%= subject %></li>
-        	<% end %>
-        </ul>
-      </div>
-    </div>
 
-		<div class="card ctaLast spaces">
-      <div class="card-title">
-        Space
-      </div>
-      <div class="card-body text-left">
-        <ul>
-        	<li><%= link_to @collection.space.name, @collection.space %></li>
-        </ul>
-      </div>
-    </div> 
+          <h2>Locations</h2>
+          <%= image_tag "location.png", class: "location" %> 
+          <%= link_to @collection.space.label, spaces_path(@collection.space), class: "location" %>
 
-    <div class="card ctaBoth">
-      <div class="card-title text-center">
-        <%= link_to "Contents", {controller: :collections, action: :finding_aids, id: @collection.id}, style: "vertical-align:middle;" %>
+          <h2>Contact</h2>
+          <%= phone_formatted(@collection.space.phone_number) %>
+          <br />
+          <%= @collection.space.email %>
+        </div>
       </div>
-    </div>
+
+      <div class="col-12 col-lg-3">
+        <div class="access-link">
+          <h2><%= link_to "Explore this Collection", collection_path(@collection) %></h2>
+        </div>
+      </div>
 
   </div>
 </div>
-
-
-<%= render "policies" %>
-
-<%= render "visit" %>
-

@@ -24,7 +24,6 @@ class PagesController < ApplicationController
     @events = Event.where("tags LIKE ?", "Health Sciences Libraries").take(4)
   end
 
-
   def about
     @categories = Category.find_by_name("About the Libraries").items.select { |item| item.class == Category }
   end
@@ -53,13 +52,11 @@ class PagesController < ApplicationController
     @categories = Category.find_by_name("Policies & Guidelines").items.select { |item| item.class == Category }
   end
 
+  def contact
+  end
+
   def research
     @categories = Category.find_by_name("Research Services").items.select { |item| item.class == Category }
-    @pages = Page.all
-    respond_to do |format|
-      format.html
-      format.json { render json: PageSerializer.new(@pages) }
-    end
   end
 
   def index

@@ -4,15 +4,15 @@
 
 	<div class="row">
 		<% @categories.each do |category| %>
-					
+
 			<div class="col-12 col-md-6 col-lg-4 text-center">
 				<% unless category.icon.attachment.nil? %>
-					<%= link_to (image_tag category.icon, class: "category-icon"), category.items.first %> 
+					<%= link_to (image_tag category.icon, class: "category-icon"), category_path(category) %> 
 				<% else %>
-					<%= link_to (image_tag "T-borderless.gif"), category.items.first %>
+					<%= link_to (image_tag "T-borderless.gif"), category_path(category) %>
 				<% end %>
-				<h2><%= link_to category.name, category.items.first %></h2>
-				<p><%= category.description unless category.description.blank? %></p>
+				<h2><%= link_to category.name, category_path(category) %></h2>
+				<p>internal<%= category.description unless category.description.blank? %></p>
 			</div>
 
 		<% end %>

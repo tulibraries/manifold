@@ -94,17 +94,17 @@ Rails.application.routes.draw do
 end
 
 Rails.application.routes.named_routes.url_helpers_module.module_eval do
-  def category_url(category, options={})
+  def category_url(category, options = {})
     category.url
   end
 
-  def external_link_url(external_link, options={})
+  def external_link_url(external_link, options = {})
     external_link.link
   end
 end
 
 Rails.application.routes.named_routes.path_helpers_module.module_eval do
-  def category_path(category, options={})
+  def category_path(category, options = {})
     category.path
   end
 end

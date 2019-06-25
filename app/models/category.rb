@@ -21,12 +21,14 @@ class Category < ApplicationRecord
   # eg @category.items(limit_to: [:events]) would
   def items(limit_to: [], exclude: [])
     grouped = categorizations.group_by(&:categorizable_type)
-    unless limit_to.empty?
-      grouped.select! { |ct, _ | limit_to.include?(ct.downcase.to_sym)  }
+    if limit_to.present?
+      grouped.select! { |ct, _ | limit_to.include?(ct.underscore.to_sym)  }
     end
-    unless exclude.empty?
-      grouped.reject! { |ct, _ | exclude.include?(ct.downcase.to_sym)  }
+
+    if exclude.present?
+      grouped.reject! { |ct, _ | exclude.include?(ct.underscore.to_sym)  }
     end
+
     grouped.map do |type, objs|
       ids = objs.map(&:categorizable_id)
       type.constantize.find(ids)

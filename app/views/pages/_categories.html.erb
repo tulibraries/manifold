@@ -12,7 +12,7 @@
 					<%= link_to (image_tag "T-borderless.gif"), category_path(category) %>
 				<% end %>
 				<h2><%= link_to category.name, category_path(category) %></h2>
-				<p>internal<%= category.description unless category.description.blank? %></p>
+				<p><%= category.description unless category.description.blank? %></p>
 			</div>
 
 		<% end %>

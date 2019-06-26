@@ -1,0 +1,30 @@
+<% @categories.each do |cat| %>
+  <div class="leftside-index">
+
+  <% unless @categories.size > 1 %>
+    <div class="index-category">
+  <% else %>
+    <div class="d-none d-lg-block index-category">
+  <% end %>
+      <h2><%= cat.name %></h2>
+    </div>
+
+    <div class="index-items">
+      <div>
+        <ul class="list-unstyled">
+          <% cat.items.sort_by{|e| e.label}.each do |c| %>
+          <% unless c.class.to_s == "Category" %>
+            <% if c == @collection %>
+            <li class="selected">
+            <% else %>
+            <li>
+            <% end %>
+              <%= link_to c.label, url_for(c) %>
+            </li>
+          <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

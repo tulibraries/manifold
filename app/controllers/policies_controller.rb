@@ -3,6 +3,7 @@
 class PoliciesController < ApplicationController
   load_and_authorize_resource
   before_action :set_policy, only: [:show]
+  before_action :navigation_items, only: [:show]
 
   def index
     @policies = Policy.all
@@ -13,12 +14,21 @@ class PoliciesController < ApplicationController
   end
 
   def show
-    @policies = Policy.all.sort_by { |p| p.name }
-    @groups_list = @policies.map { |p| p.category }.flatten.reject(&:blank?).uniq
-    @key_group = @policy.category
+    @categories = @policy.categories
     respond_to do |format|
       format.html
       format.json { render json: PolicySerializer.new(@policy) }
+    end
+  end
+
+  def navigation_items
+    @nav_items = []
+    @policy.categories.each do |cat|
+      cat.items(exclude: [:category]).sort_by { |e| e.label }.each do |item|
+        unless item.id == @policy.id
+          @nav_items << item
+        end
+      end
     end
   end
 

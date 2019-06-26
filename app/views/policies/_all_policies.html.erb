@@ -1,14 +1,28 @@
-<div class="leftside-index">
-  <div class="index-category d-none d-lg-block">
-    <h2>Policies & Guidelines</h2>
-  </div>
+<% @categories.each do |cat| %>
+  <div class="leftside-index">
 
-  <div class="index-items">
-    <ul class="list-unstyled" style="margin-top:10px;">
-      <% @policies.each do |policy| %>
-          <li><%= link_to policy.label, policy_path(policy) %></li>
-      <% end %>
-    </ul>
-  </div>
+  <% unless @categories.size > 1 %>
+    <div class="index-category">
+  <% else %>
+    <div class="d-none d-lg-block index-category">
+  <% end %>
+      <h2><%= cat.name %></h2>
+    </div>
 
-</div>
+    <div class="index-items">
+      <div>
+        <ul class="list-unstyled">
+          <% cat.items.items(exclude: [:category]).sort_by{|e| e.label}.each do |c| %>
+            <% if c == @space %>
+            <li class="selected">
+            <% else %>
+            <li>
+            <% end %>
+              <%= link_to c.label, url_for(c) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

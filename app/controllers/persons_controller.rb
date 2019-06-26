@@ -18,6 +18,7 @@ class PersonsController < ApplicationController
 
   def show
     @building = Building.find_by("id = ?", @person.spaces.last.building_id)
+    @departments = @person.groups.sort.select { |group| group.group_type == "Department" }
     respond_to do |format|
       format.html
       format.json { render json: PersonSerializer.new(@person) }

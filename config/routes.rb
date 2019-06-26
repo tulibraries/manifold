@@ -15,20 +15,20 @@ Rails.application.routes.draw do
     resources :alerts
     resources :blogs
     resources :buildings
+    resources :categories
     resources :collections
     resources :events
     resources :exhibitions
-    resources :groups
+    resources :external_links
     resources :finding_aids
+    resources :groups
     resources :highlights
-    resources :pages
     resources :library_hours
+    resources :pages
     resources :people
     resources :policies
     resources :services
     resources :spaces
-    resources :categories
-    resources :external_links
 
     resource :events do
       member do
@@ -52,7 +52,6 @@ Rails.application.routes.draw do
   end
 
   root "pages#home"
-  resources :alerts, only: [:index, :show]
   resources :blog_posts, only: [:index, :show]
   resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
   resources :spaces, only: [:index, :show], concerns: [:imageable]
@@ -69,6 +68,8 @@ Rails.application.routes.draw do
   resources :finding_aids, only: [:index, :show]
   resources :pages, only: [:index, :show]
   resources :highlights, only: [:index, :show]
+  resources :categories, only: [:show]
+  resources :external_link, only: [:show]
 
   get "forms", to: "forms#all"
   get "forms/*type", to: "forms#new"
@@ -89,5 +90,21 @@ Rails.application.routes.draw do
     get "research-services" => :research, as: "pages_research"
     get "visit-study" => :visit, as: "pages_visit"
     get "home" => :home, as: "pages_home"
+  end
+end
+
+Rails.application.routes.named_routes.url_helpers_module.module_eval do
+  def category_url(category, options = {})
+    category.url
+  end
+
+  def external_link_url(external_link, options = {})
+    external_link.link
+  end
+end
+
+Rails.application.routes.named_routes.path_helpers_module.module_eval do
+  def category_path(category, options = {})
+    category.path
   end
 end

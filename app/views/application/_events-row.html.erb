@@ -14,7 +14,9 @@
     <% end %>
     <div class="info">
       <div class="d-none d-lg-inline-block when">
-        <%= event.start_time.strftime("%b %d @ %l%p") %>
+        <% unless event.start_time.nil? %>
+          <%= event.start_time.strftime("%b %d @ %l%p") %>
+        <% end %>
       </div>
       <div class="details">
         <%= link_to "Details >", event_path(event) %>

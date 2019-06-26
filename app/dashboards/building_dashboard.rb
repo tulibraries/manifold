@@ -17,12 +17,13 @@ class BuildingDashboard < BaseDashboard
     temple_building_code: Field::String,
     coordinates: Field::String,
     google_id: Field::String,
-    hours: HoursField,
+    hours: HoursField.with_options(admin_only: true),
     phone_number: PhoneField,
     campus: Field::String,
     email: Field::Email,
     policies: Field::HasMany,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
+    external_link: Field::BelongsTo,
     categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -45,10 +46,10 @@ class BuildingDashboard < BaseDashboard
     :image,
     :name,
     :description,
+    :external_link,
     :address1,
     :address2,
     :temple_building_code,
-    :hours,
     :phone_number,
     :campus,
     :email,
@@ -63,6 +64,7 @@ class BuildingDashboard < BaseDashboard
     :name,
     :image,
     :description,
+    :external_link,
     :campus,
     :address1,
     :address2,
@@ -74,7 +76,7 @@ class BuildingDashboard < BaseDashboard
     :email,
     :policies,
     :categories,
-    :add_to_footer,
+    :add_to_footer
   ].freeze
 
   # Overwrite this method to customize how buildings are displayed

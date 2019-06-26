@@ -1,34 +1,28 @@
+<% @categories.each do |cat| %>
+  <div class="leftside-index">
 
-<div class="accordion" id="accordion">
-  <% @groups_list.each_with_index do |group, index| %>
-    <div class="card">
-      <div class="card-header">
-        <% unless @key_group.include? group %>
-          <a style="cursor:pointer" class="collapsed" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse#<%= index %>"> 
-        <% else %>
-          <a style="cursor:pointer" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>"> 
-        <% end %>
-          <%= group %>
-        </a>
-      </div>
-
-      <% @policies.each do |policy| %>
-        <div id="collapse<%= index %>"  
-          <% unless @key_group.include? group %>
-            class="collapse in"
-          <% else %> 
-            class="collapse show in"
-          <% end %>
-          data-parent="#accordion">
-
-          <ul class="unstyled" style="margin-top:10px;">
-            <% if policy.category.include? group %>
-              <li><%= link_to policy.name.to_s, policy_path(policy), class: "collapse show in" %></li>
-            <% end %>
-          </ul>
-
-        </div>
-      <% end %>
-    </div>
+  <% unless @categories.size > 1 %>
+    <div class="index-category">
+  <% else %>
+    <div class="d-none d-lg-block index-category">
   <% end %>
-</div>
+      <h2><%= cat.name %></h2>
+    </div>
+
+    <div class="index-items">
+      <div>
+        <ul class="list-unstyled">
+          <% cat.items.each do |c| %>
+            <% if c == @space %>
+            <li class="selected">
+            <% else %>
+            <li>
+            <% end %>
+              <%= link_to c.label, url_for(c) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

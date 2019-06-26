@@ -1,4 +1,4 @@
-<div class="container events_facets">
+<div class="events_facets">
   <form action="https://librarysearch.temple.edu/bento">
     <span class="fa fa-search"></span>
     <input type="text" name="q" class="events_search" placeholder="Search events" />
@@ -8,10 +8,18 @@
     <h3 class="types_header">Event type</h3>
     <ul class="list-unstyled">
       <% @event_types.each do |type| %>
-        <% unless type == params[:type] %>
-          <li><%= link_to type, events_path(type: type) %></li>
+        <% unless action_name == "past" %>
+          <% unless type == params[:type] %>
+            <li><%= link_to type, events_path(type: type) %></li>
+          <% else %>
+            <li class="active"><%= link_to type, events_path(type: type) %></li>
+          <% end %>
         <% else %>
-          <li class="active"><%= link_to type, events_path(type: type) %></li>
+          <% unless type == params[:type] %>
+            <li><%= link_to type, past_events_path(type: type) %></li>
+          <% else %>
+            <li class="active"><%= link_to type, past_events_path(type: type) %></li>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
@@ -22,8 +30,8 @@
     <h3 class="spaces_header">Location</h3>
     <ul class="list-unstyled">
       <% @event_locations.each do |location| %>
-        <% unless location == params[:location] %>
-          <% unless action_name == "past" %>
+        <% unless action_name == "past" %>
+          <% unless location[1] == params[:location] %>
             <% unless location.first.nil? %>
               <li><%= link_to location.second, events_path(location: location.first) %></li>
             <% else %>
@@ -31,9 +39,23 @@
             <% end %>
           <% else %>
             <% unless location.first.nil? %>
+              <li class="active"><%= link_to location.second, events_path(location: location.first) %></li>
+            <% else %>
+              <li class="active"><%= link_to location.second, events_path(location: location.second) %></li>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% unless location[1] == params[:location] %>
+            <% unless location.first.nil? %>
               <li><%= link_to location.second, past_events_path(location: location.first) %></li>
             <% else %>
               <li><%= link_to location.second, past_events_path(location: location.second) %></li>
+            <% end %>
+          <% else %>
+            <% unless location.first.nil? %>
+              <li class="active"><%= link_to location.second, past_events_path(location: location.first) %></li>
+            <% else %>
+              <li class="active"><%= link_to location.second, past_events_path(location: location.second) %></li>
             <% end %>
           <% end %>
         <% end %>

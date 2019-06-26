@@ -14,6 +14,8 @@ class CategoryDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     custom_url: Field::String,
+    categories: Field::HasMany.with_options(admin_only: true),
+    description: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -27,6 +29,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     #:categorizations,
     :name,
     :id,
+    :description,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -36,6 +39,8 @@ class CategoryDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :custom_url,
+    :description,
+    :categories,
     :created_at,
     :updated_at,
   ].freeze
@@ -47,6 +52,8 @@ class CategoryDashboard < Administrate::BaseDashboard
     :icon,
     :name,
     :custom_url,
+    :categories,
+    :description,
   ].freeze
 
   def display_resource(category)

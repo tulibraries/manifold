@@ -4,6 +4,8 @@
 FactoryBot.define do
   factory :category do
     name { "Dreaming" }
+    custom_url { "" }
+    description { "" }
 
     trait :custom_url do
       custom_url { "http://sand.man" }
@@ -19,7 +21,9 @@ FactoryBot.define do
     factory :category_parent do
       name { "Dreaming while Dreaming" }
     end
+    trait :with_description do
+      description { "It's what the category is about" }
+    end
   end
-
 
 end

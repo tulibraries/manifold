@@ -21,6 +21,8 @@ class Service < ApplicationRecord
   has_many :service_policy
   has_many :related_policies, through: :service_policy, source: :policy
 
+  belongs_to :external_link, optional: true
+
   before_validation :remove_empty_audience
   before_validation :sanitize_description
 

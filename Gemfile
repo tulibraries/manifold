@@ -22,7 +22,7 @@ gem "administrate"
 gem "bootstrap", "~> 4.3.1"
 gem "popper_js", "~> 1.14.5"
 gem "tinymce-rails", "~> 4.9"
-gem "google-api-client", "~> 0.29"
+gem "google-api-client", "~> 0.30"
 gem "fuzzy_match"
 gem "kaminari"
 # Use jquery as the JavaScript library
@@ -33,7 +33,7 @@ gem "coffee-rails", "~> 4.2"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.5"
+gem "jbuilder", "~> 2.9"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -56,7 +56,7 @@ gem "cancancan", "~> 3.0"
 gem "listen", ">= 3.0.5", "< 3.2"
 gem "yaml_db"
 gem "auto_strip_attributes"
-gem "honeybadger", "~> 4.2"
+gem "honeybadger", "~> 4.3"
 gem "simple_form"
 gem "mail_form"
 gem "httparty"

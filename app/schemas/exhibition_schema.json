@@ -109,7 +109,17 @@
 								true,
                 false
 							]
-						}
+						},
+						"updated_at": {
+							"$id": "#/properties/data/properties/attributes/properties/updated_at",
+							"type": "string",
+							"title": "The time the exhibition record was updated",
+ 							"format": "date-time",
+							"default": "",
+							"examples": [
+								"2018-01-01T12:00:00"
+							]
+            }
 					}
 				}
 			}

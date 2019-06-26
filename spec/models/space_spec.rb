@@ -76,6 +76,19 @@ RSpec.describe Space, type: :model do
         expect(space.policies).to include(policy)
       end
     end
+
+    context "External Link" do
+      let(:external_link) { FactoryBot.create(:external_link) }
+      example "attach external link" do
+        space = FactoryBot.create(:space, external_link: external_link)
+        expect(space.external_link.title).to match(/#{external_link.title}/)
+        expect(space.external_link.link).to match(/#{external_link.link}/)
+      end
+      example "no external" do
+        space = FactoryBot.create(:space)
+        expect { space.save! }.to_not raise_error
+      end
+    end
   end
 
   describe "version field changes" do

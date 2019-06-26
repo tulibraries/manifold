@@ -1,85 +1,16 @@
-<div class="row">
-  <div class="col breadcrumbs" style="margin-bottom: 35px;">
-    <%= link_to "Home", root_path.to_s %> 
-    <%= link_to "People", people_path %> 
-    <%= @person.first_name %> <%= @person.last_name %>
-  </div>
-</div>
+<div class="container person">
 
-
-<div class="container">
-<div class="row">
-  <div class="col-xs-1"></div>
-  <div class="col-sm-12 offset-sm-1 col-lg-6">
-    <div class="row" style="display: table;">
-      <div class="col-3" style="width: 35%;display: table-cell;vertical-align:middle;">
-        <% if @person.image.attached?  %>
-          <%= image_tag @person.show_image, alt: "" %>
-        <% else %> 
-          <%= image_tag "T.gif", style: 'margin-top: 28px;width: 300px;' %>
-        <% end %>
-      </div>
-      <div class="col-9" style="width:65%;display: table-cell;vertical-align:middle;">
-        <h1><%= @person.first_name %> <%= @person.last_name %></h1>
-        <strong><%= @person.job_title %></strong><br />
-        <% unless @person.groups.first.nil? %>
-          <%= @person.groups.first.name %>
-        <% end %>
-        <br /><br />
-        <% unless @person.springshare_id.blank? %>
-          <div class="appt_button">
-            <%= link_to "Make an Appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "appointmentbutton solo", target: "_new" %>
-          </div>
-        <% end %>
-      </div>
+  <div class="row">
+    <div class="col breadcrumbs">
+      < <%= link_to "Staff Directory", people_path %> 
     </div>
   </div>
 
-  <div class="col-sm-12 col-lg-4 ctaRow person">
-    <div class="col">
-      <div class="card ctaLast contact">
-        <div class="card-title">
-          Contact
-        </div>
-         <div class="card-body">
-            <%= phone_formatted(@person.phone_number) %><br />
-            <%= @person.email_address %><br />
-            <% unless @person.chat_handle.blank? %>
-              <p>
-                <%= @person.chat_handle %><br />
-              </p>
-            <% end %>
-            <% unless @person.personal_site.blank? %>
-              <p>
-                <%= link_to @person.personal_site, @person.personal_site %><br />
-              </p>
-            <% end %>
-            <% unless @person.spaces.empty? %>
-              <p>
-                <%= link_to @building.name, @building %>: <%= link_to @person.spaces.first.name, @person.spaces.first %>
-              </p>
-            <% end %>
-          </div> <!-- card body -->
-        </div>
+  <div class="d-none d-md-block">
+    <%= render "desktop" %>
+  </div>
 
-        <% unless @person.specialties.nil? %>
-          <div class="card ctaLast subjects">
-            <div class="card-title">
-              Subject Areas
-            </div>
-             <div class="card-body">
-                <ul class="list-unstyled">
-                  <% @person.specialties.drop(1).each do |specialty| %>
-                    <li><%= specialty %></li>
-                  <% end %>
-                </ul>
-              </div> <!-- card body -->
-            </div>
-          <% end %>
-          
-      </div>
-    </div>
-  <div class="col-xs-1"></div>
-</div>
-</div>
+  <div class="d-block d-md-none">
+    <%= render "mobile" %>
+  </div>
 </div>

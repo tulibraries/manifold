@@ -50,6 +50,19 @@ RSpec.describe Building, type: :model do
         expect(building.policies).to include(policy)
       end
     end
+
+    context "External Link" do
+      let(:external_link) { FactoryBot.create(:external_link) }
+      example "attach external link" do
+        building = FactoryBot.create(:building, external_link: external_link)
+        expect(building.external_link.title).to match(/#{external_link.title}/)
+        expect(building.external_link.link).to match(/#{external_link.link}/)
+      end
+      example "no external" do
+        building = FactoryBot.create(:building)
+        expect { building.save! }.to_not raise_error
+      end
+    end
   end
 
   describe "version all fields" do

@@ -7,7 +7,7 @@ module PersonsHelper
   end
 
   def specialties(person)
-    person.specialties.drop(1).each do |specialty|
+    person.specialties.each do |specialty|
       specialty
     end
   end

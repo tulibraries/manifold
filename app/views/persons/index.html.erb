@@ -1,33 +1,20 @@
+<%= render "mobile-menu" %>
+
 <div class="container staff-index">
 
   <h1>Staff Directory</h1>
 
   <div class="row">
-    <div class="col-3 leftside-index">
-      <div class="panel-group" id="accordion">
-        <div class="filter_staff_type">
-          <%= render "staff_type" %>
-        </div>
-        <div class="filter_subjects">
-          <%= render "subjects" %>
-        </div>
-        <div class="filter_location">
-          <%= render "location" %>
-        </div>
-        <div class="filter_department">
-          <%= render "department" %>
-        </div>
-        <div class="filter_reset">
-          <%= render "reset" %>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-7">
+    <div class="col-3 d-none d-md-none d-lg-block leftside-index">
+      <%= render "filters" %>
+    </div>
+    
+    <div class="col-12 col-lg-6">
       <%= render "persons_list" %>
     </div>
 
-    <div class="col-2 right-side">
+    <div class="col-12 col-lg-3 right-side">
       <div class="entity-help"><h3>Main Phone:</h3>215-204-1234</div>
       <div class="access-link"><h3><%= link_to "Frequently Called Numbers", root_path %></h3></div>
     </div>

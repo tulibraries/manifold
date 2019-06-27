@@ -98,13 +98,12 @@ class PersonsController < ApplicationController
     @people = filtered_people.blank? ? persons : filtered_people
     @people_list = Person.where(id: @people.map(&:id)).order(:last_name, :first_name)
     get_filters(@people_list)
-    # binding.pry
     @persons_list = @people_list.page params[:page]
   end
 
   def get_filters(people)
-    @subjects = @people.select { |person| person.specialties.try(:any?) }.collect { |p| p.specialties }.flatten.uniq.sort.reject! { |s| s.empty? }
-    @departments = @people.select { |person| person.groups.try(:any?) }.collect { |p| p.groups }.flatten.uniq.sort.reject! { |g| g.group_type != "Department" }
+    @subjects = @people.select { |person| person.specialties.try(:any?) }.collect { |p| p.specialties }.flatten.uniq.sort.reject { |s| s.empty? }
+    @departments = @people.select { |person| person.groups.try(:any?) }.collect { |p| p.groups }.flatten.uniq.sort.reject { |g| g.group_type != "Department" }
     @locations = @people.select { |person| person.spaces.try(:any?) }.collect { |p| p.spaces }.flatten.uniq.sort
   end
 

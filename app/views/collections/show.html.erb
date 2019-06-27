@@ -26,7 +26,6 @@
           <%= @collection.subject.map { |subject| "<li>#{subject.to_s}</li>" }.collect do |subject| %>
             <%= subject.html_safe %>
           <% end.join %>
-
           </ul>
           <% end %>
 

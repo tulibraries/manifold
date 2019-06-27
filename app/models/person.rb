@@ -32,4 +32,10 @@ class Person < ApplicationRecord
   end
 
   alias :label :name
+
+  def burpSpecialties
+    if self.specialties.is_a? Array
+      self.specialties.reject! { |s| s.empty? }
+    end
+  end
 end

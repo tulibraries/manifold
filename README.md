@@ -144,3 +144,15 @@ RAILS_ENV=test bundle exec mutant -j 1 -r ./config/environment --use rspec <clas
 ```
 
 For more information on mutation testing, see https://github.com/mbj/mutant.
+
+## Clean Up
+
+Clean up existing people database, which may contain blank specialties, by stepping through
+each record and updating the specialties record.
+
+```
+$ bundle exec rails console
+
+> Person.all.each { |p| p.update(specialties: p[:specialties]) unless p.specialties.nil? }
+> exit
+```

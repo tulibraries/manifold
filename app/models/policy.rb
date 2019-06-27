@@ -7,4 +7,8 @@ class Policy < ApplicationRecord
   include Categorizable
   validates :name, :description, :effective_date, presence: true
   serialize :category
+
+  def label
+    name
+  end
 end

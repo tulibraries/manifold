@@ -11,7 +11,7 @@
     <div class="index-items">
       <div>
         <ul class="list-unstyled">
-          <% cat.items.each do |c| %>
+          <% cat.items(exclude: [:category]).sort_by{|e| e.label}.each do |c| %>
             <% if c == @service %>
             <li class="selected">
             <% else %>

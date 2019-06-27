@@ -11,12 +11,8 @@
     <div class="index-items">
       <div>
         <ul class="list-unstyled">
-          <% cat.items.each do |c| %>
-            <% if c == @building %>
-            <li class="selected">
-            <% else %>
-            <li>
-            <% end %>
+          <% cat.items(exclude: [:category]).sort_by{|e| e.label}.each do |c| %>
+            <li <% if c == @building %> class="selected" <%end%>>
               <%= link_to c.label, url_for(c) %>
             </li>
           <% end %>

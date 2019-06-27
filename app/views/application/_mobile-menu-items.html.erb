@@ -1,12 +1,10 @@
 <div class="leftside-index">
   <div class="index-items">
     <ul class="list-unstyled">
-      <% @nav_items.flatten.uniq.sort_by{|e| e.label}.each do |c| %>
-        <% unless c.class.to_s == "Category" %>
+      <% @nav_items.sort_by{|e| e.label}.each do |c| %>
         <li>
           <%= link_to c.label, url_for(c) %>
         </li>
-        <% end %>
       <% end %>
     </ul>
   </div>

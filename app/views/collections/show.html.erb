@@ -23,9 +23,9 @@
           <% unless @collection.subject.blank? %>
           <h2> Subjects</h2>
           <ul class="list-unstyled">
-          <%= @collection.subject.each do |subject| %>
-            <li><%= subject.to_s %></li>
-          <% end %>
+          <%= @collection.subject.map { |subject| "<li>#{subject.to_s}</li>" }.collect do |subject| %>
+            <%= subject.html_safe %>
+          <% end.join %>
           </ul>
           <% end %>
 
@@ -42,7 +42,7 @@
 
       <div class="col-12 col-lg-3">
         <div class="access-link">
-          <h2><%= link_to "Explore this Collection", collections_path(@collection) %></h2>
+          <h2><%= link_to "Explore this Collection", collection_path(@collection) %></h2>
         </div>
       </div>
 

@@ -73,6 +73,9 @@ h1 {
 }
 h1.page-title {
 	margin-top: 0;
+	@media (max-width: 768px) {
+		margin-top: 14px;
+	}
 }
 h2 {
 	font-size: 175%;

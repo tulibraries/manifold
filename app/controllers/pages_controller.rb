@@ -67,6 +67,9 @@ class PagesController < ApplicationController
     end
   end
 
+  def contact
+  end
+
   def show
     @categories = @page.categories
     respond_to do |format|

@@ -6,10 +6,26 @@
 
   <div class="row">
 
-    <div class="col-3 d-none d-md-none d-lg-block leftside-index">
-      <%= render "filters" %>
+    <div class="col-3 leftside-index">
+      <div class="panel-group d-none d-md-none d-lg-block" id="accordion">
+        <div class="filter_staff_type">
+          <%= render "staff_type" %>
+        </div>
+        <div class="filter_subjects">
+          <%= render "subjects" %>
+        </div>
+        <div class="filter_location">
+          <%= render "location" %>
+        </div>
+        <div class="filter_department">
+          <%= render "department" %>
+        </div>
+        <div class="filter_reset">
+          <%= render "reset" %>
+        </div>
+      </div>
     </div>
-    
+
     <div class="col-12 col-lg-6">
       <%= render "persons_list" %>
     </div>

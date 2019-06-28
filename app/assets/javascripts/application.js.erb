@@ -32,6 +32,16 @@ function toggle(x) {
   }
 }
 
+function swap_image(y) {
+	x = document.getElementById("icon_filter").src;
+	if (x .includes("icon_x")) {
+		document.getElementById("icon_filter").src = "<%= asset_path('icon_filter.png') %>";
+  }
+  else if (x.includes("icon_filter")) {
+		document.getElementById("icon_filter").src = "<%= asset_path('icon_x.png') %>" ;
+  }
+}
+
 // TO BE IMPLEMENTED LATER REPLACING THE ONCLICK OF MENU ICONS
 // $('<span>', {
 // 	'class': 'button', // So you can style it

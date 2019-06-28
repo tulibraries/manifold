@@ -1,0 +1,32 @@
+<h2>
+  <a style="cursor:pointer" data-toggle="collapse" data-target="#departments" aria-expanded="true" aria-controls="departments"> 
+  	Department
+  </a>
+</h2>
+	
+			<%# binding.pry %>
+  <ul class="list-unstyled navbar-collapse collapse show" id="departments">
+  	<% unless @departments.nil? %>
+  	<% unless params[:department].nil? %>
+			<% @departments.each do |dept| %>
+				<% if dept.id.to_s == params[:department] %>
+				<li class="active">
+					<%= dept.name %>
+					<span class="clear-filter">
+						<%= link_to "X", people_path(request.query_parameters.except(:department).merge({page: 1})) %>
+					</span>
+				</li>
+				<% end %>
+			<% end %>
+
+		<% else %>
+
+			<% @departments.each do |dept| %>
+				<li>
+					<%= link_to dept.name, people_path(request.query_parameters.merge({department: dept, page: 1})) %>	
+				</li>
+			<% end %>
+		
+		<% end %>
+		<% end %>
+	</ul>

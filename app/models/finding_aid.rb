@@ -4,6 +4,9 @@ class FindingAid < ApplicationRecord
   include InputCleaner
   include Categorizable
 
+  paginates_per 15
+
+
   before_save :weed_nils
 
   has_paper_trail

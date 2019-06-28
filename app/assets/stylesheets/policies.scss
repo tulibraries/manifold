@@ -5,4 +5,14 @@
 	@media screen and (max-width: 768px) {
 		margin-top: 0;
 	}
+	.entity-help {
+		padding-left: 0;
+		border: solid $seagreen 1px;
+		border-radius: 7px;
+		padding: 14px;
+		overflow-wrap: break-word;
+		@media (max-width: 950px) {
+			width: 95%;
+		}
+	}
 }

@@ -16,6 +16,12 @@ class PagesController < ApplicationController
   def ambler
     @events = Event.where("tags LIKE ?", "Ambler Campus Library").take(4)
   end
+  def scrc
+    @events = Event.where("tags LIKE ?", "Special Collections Research Center").take(4)
+  end
+  def blockson
+    @events = Event.where("tags LIKE ?", "blockson").take(4)
+  end
 
   def hsl
     @departments = Group.where(group_type: "Department")

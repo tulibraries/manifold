@@ -36,9 +36,7 @@ before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 ~/.ssh/.gritty_travis
 - chmod 600 ~/.ssh/.conan_the_deployer
-- echo -e "Host $QA_SERVER\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
-- echo -e "Host $STAGE_DB_SERVER\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
-- echo -e "Host $STAGE_WEB_SERVER\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
+- echo -e "Host $BASTION_HOST\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
 - echo -e "HOST gitserv\n\tHostname remote.server.com\n\tIdentityFile ~/.ssh/.gritty_travis\n\tIdentitiesOnly yes\n" >> ~/.ssh/config
 - echo -e "HOST github.com\n\tIdentityFile ~/.ssh/.gritty_travis\n" >> ~/.ssh/config
 - ssh-add ~/.ssh/.gritty_travis

@@ -7,6 +7,8 @@ class Person < ApplicationRecord
   include Categorizable
   include Imageable
 
+  paginates_per 5
+
   validates :first_name, :last_name, :job_title, presence: true
   validates :email_address, presence: true, email: true
   validates :phone_number, phone_number: true
@@ -17,6 +19,7 @@ class Person < ApplicationRecord
   auto_strip_attributes :email_address
 
   before_validation :normalize_phone_number
+  before_validation :burpSpecialties
 
   has_many :member
   has_many :groups, through: :member, source: :group
@@ -29,4 +32,10 @@ class Person < ApplicationRecord
   end
 
   alias :label :name
+
+  def burpSpecialties
+    if self.specialties.is_a? Array
+      self.specialties.reject! { |s| s.empty? }
+    end
+  end
 end

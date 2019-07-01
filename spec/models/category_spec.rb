@@ -2,9 +2,11 @@
 
 require "rails_helper"
 
+
 RSpec.describe Category, type: :model do
 
   let(:category) { FactoryBot.create(:category) }
+  let(:parent_category) { FactoryBot.create(:category_parent) }
 
 
   describe "A basic category" do
@@ -70,13 +72,6 @@ RSpec.describe Category, type: :model do
       expect(category).to respond_to(:url)
     end
 
-    context "no custom_url defined" do
-      it "returns the expected path" do
-        pending("category routes not yet implemented")
-        expect(category.url).to contain("/category")
-      end
-    end
-
     context "with custom_url defined" do
       let(:category) { FactoryBot.create(:category, :custom_url) }
 
@@ -84,7 +79,56 @@ RSpec.describe Category, type: :model do
         expect(category.url).to eq "http://sand.man"
       end
     end
+
+    context "without a custom_url defined" do
+      let(:policy) { FactoryBot.create(:policy) }
+      let(:page) { FactoryBot.create(:page) }
+
+      context "when items are in the ctaegory" do
+        before do
+          page.categories << category
+          policy.categories << category
+        end
+
+        it "returns the url to the first item in #items" do
+          expect(category.url).to eq url_for(category.items.first)
+        end
+
+        context "when an external link is in the category" do
+          let(:external_link) { FactoryBot.create(:external_link) }
+          before do
+            external_link.categories << category
+          end
+
+          it "does not return the external_link as the url" do
+            expect(category.url).to_not eq url_for(external_link)
+          end
+        end
+      end
+
+      context "when no items are in the category" do
+        it "routes to the root url" do
+          expect(category.url).to match(/^http:\/\/test.host\//)
+        end
+      end
+    end
+
+
+
   end
+
+  describe "#path" do
+  let(:category) { FactoryBot.create(:category) }
+
+  it "responds to .url" do
+    expect(category).to respond_to(:path)
+  end
+
+  it "calls url with the only_path parameter" do
+    expect(category).to receive(:url).with(only_path: true)
+    category.path
+  end
+end
   describe "#items" do
     let(:building) { FactoryBot.create(:building) }
     let(:building2) { FactoryBot.create(:building) }
@@ -114,7 +158,7 @@ RSpec.describe Category, type: :model do
       end
     end
 
-    context "items of one type in this category" do
+    context "items of multiple types in this category" do
       before do
         building.categories << category
         event.categories << category
@@ -122,6 +166,26 @@ RSpec.describe Category, type: :model do
 
       it "should include expected items" do
         expect(category.items).to include(building, event)
+      end
+
+      context "when limit_to parameter is passed with a Class name" do
+        it "returns items of that type" do
+          expect(category.items(limit_to: [:event])).to include(event)
+        end
+
+        it "does not return items of other types" do
+          expect(category.items(limit_to: [:event])).to_not include(building)
+        end
+      end
+
+      context "when exclude paramater is passed with a Class name" do
+        it "does not include items of that type" do
+          expect(category.items(exclude: [:event])).to_not include(event)
+        end
+
+        it "does include items of other types" do
+          expect(category.items(exclude: [:event])).to include(building)
+        end
       end
     end
 
@@ -136,10 +200,26 @@ RSpec.describe Category, type: :model do
         expect(category.items).not_to include(old_building)
       end
     end
+    context "child_categories" do
+
+       context "when the category has child categories" do
+         it "returns an array of those categories, but not other" do
+           building.categories << parent_category
+           category.categories << parent_category
+           expect(parent_category.child_categories).to include(category)
+           expect(parent_category.child_categories).not_to include(building)
+         end
+       end
+       context "when it has no child categories" do
+         it "returns an empty array" do
+           building.categories << parent_category
+           expect(parent_category.child_categories).to eql([])
+         end
+       end
+     end
   end
 
   context "#categories" do
-    let(:parent_category) { FactoryBot.create(:category_parent) }
 
     it "is responded to" do
       expect(category).to respond_to(:categories)
@@ -153,5 +233,10 @@ RSpec.describe Category, type: :model do
       parent_category.categories << category
       expect(parent_category.categories).to include(category)
     end
+  end
+
+  #convenience method for soecs that return paths to other models
+  def url_for(instance)
+    Rails.application.routes.url_helpers.url_for(instance)
   end
 end

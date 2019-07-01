@@ -16,19 +16,34 @@ class Category < ApplicationRecord
   # single category, we need a way to return a single list of those objects.
   # Rather than making a SQL call per item, we group them by type (Buildings, Events, etc)
   # and then send a single SQL request per type.
-  def items
-    categorizations.group_by(&:categorizable_type).
-      map do |type, objs|
-        ids = objs.map(&:categorizable_id)
-        type.constantize.find(ids)
-      end.reduce([], :concat)
+  # If the limit_to parameter is provided, it limits the response
+  # to items of that Class
+  # eg @category.items(limit_to: [:events]) would
+  def items(limit_to: [], exclude: [])
+    grouped = categorizations.group_by(&:categorizable_type)
+    if limit_to.present?
+      grouped.select! { |ct, _ | limit_to.include?(ct.underscore.to_sym)  }
+    end
+
+    if exclude.present?
+      grouped.reject! { |ct, _ | exclude.include?(ct.underscore.to_sym)  }
+    end
+
+    grouped.map do |type, objs|
+      ids = objs.map(&:categorizable_id)
+      type.constantize.find(ids)
+    end.reduce([], :concat)
+  end
+
+  def child_categories
+    items(limit_to: [:category])
   end
 
   def url(only_path: false)
-    if custom_url
+    if custom_url.present?
       custom_url
-    elsif items.first
-      polymorphic_url(items.first, only_path: only_path)
+    elsif items(exclude: [:external_link]).first
+      polymorphic_url(items(exclude: [:external_link]).first, only_path: only_path)
     else
       root_url
     end

@@ -1,27 +1,59 @@
 language: ruby
 sudo: false
 services:
-  - postgresql
+- postgresql
 rvm:
-  - 2.5.1
+- 2.5.1
 env:
-  - TZ=America/New_York
-
+- TZ=America/New_York
 before_install:
-  - gem update --system
-  - gem install bundler
-
+- gem update --system
+- gem install bundler
 before_script:
-  - psql -c "create role manifold with createdb login password 'password';" -U postgres
-  - RAILS_ENV=test bundle exec rake db:setup
-  - RAILS_ENV=test bundle exec rake db:seed
-  - nvm install node
-  - npm install -g ajv
-  - npm install -g ajv-cli
+- psql -c "create role manifold with createdb login password 'password';" -U postgres
+- RAILS_ENV=test bundle exec rake db:setup
+- RAILS_ENV=test bundle exec rake db:seed
+- nvm install node
+- npm install -g ajv
+- npm install -g ajv-cli
 script:
-  - bundle exec rubocop
-  - bundle exec brakeman
-  - bundle exec rspec spec
+- bundle exec rubocop
+- bundle exec brakeman
+- bundle exec rspec spec
+after_success:
+- true
+before_deploy:
+- rm -fR $PYENV_ROOT
+- curl https://pyenv.run | bash
+- pyenv install -v 3.7.2
+- pyenv local 3.7.2
+- pip install pipenv
+- pipenv install
+- openssl aes-256-cbc -K $encrypted_9e51133e104b_key -iv $encrypted_9e51133e104b_iv -in .travis/deploy.zip.enc -out .travis/deploy.zip -d
+- unzip .travis/deploy.zip -d .travis
+- mv .travis/.gritty_travis ~/.ssh/.gritty_travis
+- mv .travis/.conan_the_deployer ~/.ssh/.conan_the_deployer
+- eval "$(ssh-agent -s)"
+- chmod 600 ~/.ssh/.gritty_travis
+- chmod 600 ~/.ssh/.conan_the_deployer
+- echo -e "Host $BASTION_HOST\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
+- echo -e "HOST gitserv\n\tHostname remote.server.com\n\tIdentityFile ~/.ssh/.gritty_travis\n\tIdentitiesOnly yes\n" >> ~/.ssh/config
+- echo -e "HOST github.com\n\tIdentityFile ~/.ssh/.gritty_travis\n" >> ~/.ssh/config
+- ssh-add ~/.ssh/.gritty_travis
+- ssh-add ~/.ssh/.conan_the_deployer
+deploy:
+- provider: script
+  script: bash .travis/deploy-qa.sh
+  on:
+    branch: qa
+- provider: script
+  script: bash .travis/deploy-stage.sh
+  on:
+    branch: master
+- provider: script
+  script: bash .travis/deploy-prod.sh
+  on:
+    branch: master
 notifications:
   slack:
     secure: z6UU1WNCrXgtBohGmts6+dY11pQzoQi9bY3WlNVL9ce0M81HNhUE+5SjjSECWxUBLakiazhp5g3K6sTodXESozz918T0oT8RoXF1dbWjD/Q/DT130nszze8UTmRZL+nOaA5bwGNgdGxV+iAHs8RycqshCuikJHTms1ndyn0y2h8jYAO2ImD/cuvcX9gM2Lxq4KIZJGO5ApAi+JqxFdawo43Hnmc/VRyA3aS8izZseZcta+nVoipAL21CVucXlCqVMKkEeflutr4NDhj8WbqdQONArzs7VUVk1TtUP1NXNrhJyZmG9ZhM/3fo3Infq8+vZk8XOGTrqroJUhY8uw6KOQXWw05we/CZuRDsql4mmKKOMUtHg/uUU32U0HRDSHrQs+gY1U89j2TOtdcRzmmbPMhpz70yRf5HnFaMSrzfSsDbkNb/M51NDfv5dikZ44dsXOYDWT6MA1EqWkEOC0pdrygmS4WWRZgW3gpo97ea8GezFWFvw77oAiOH+iYo/rb39y6S5wnHiMACGdubH8O8AULH4qqOAQR4C5ZEcJMDbmI2KfWtq3DGyWASwol4xeOhYq/339GkFGLYUd6yc48Adl8ZrkweaIw+EV10X8HxqzPEG7T1srzLt/IH8fhUV+HTGbpbQyldBzrNa/XnmATEWEfyONXqzlfMzmgCe4tJ/38=

@@ -1,54 +1,31 @@
-<% content_for :body_class, "policy-show" %>
+<%= render "mobile-menu-secondary" %>
 
-<div class="row d-block d-lg-none" id="policies-mobile-nav">
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#policies-mobile-menu" aria-controls="policies-mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" id="sub-toggler-icon" onclick="toggle(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </span>
-      <span class="navbar-brand" onclick="toggle('sub-toggler-icon')">Policies Menu</span>
-    </button>
-    <div class="collapse navbar-collapse" id="policies-mobile-menu">
-      <div class="navbar-nav"> 
-	       <%= render "all_policies" %>
-      </div>
-    </div>
-  </nav>
-</div>
-
-<section>
-	<div class="row ctaRow policy-show">
-		<div class="col-3 text-right d-none d-lg-block">
-	    <div class="card ctaFirst">
-	      <div class="card-title">All Policies</div>
-	      <div class="card-body">
-	        <%= render "all_policies" %>
-	      </div>
-	    </div>
+<div class="container policy-show">
+	
+	<div class="row">
+		<div class="col-lg-3 d-none d-lg-block">
+	    <%= render "all_policies" %>
 	  </div>
-  <div class="col-8 col-lg-6">
-	    <h1 class="unstyled"><%= @policy.name %></h1>
+
+	  <% unless @policy.effective_date.nil? %>
+	  	<div class="col-12 col-lg-6">
+	  <% else %>
+	  	<div class="col-12 col-lg-9">
+	  <% end %>
+
+	    <h1 class="page-title"><%= @policy.name %></h1>
 	    <%= sanitize @policy.description.html_safe %>
 	  </div>
-	  <div class="col-3 text-left">
-	    <div class="card ctaLast effective">
-	      <div class="card-title">
-	        Effective Date
-	      </div>
-	      <div class="card-body text-center">
-	        <p>
-	        	<strong>
-	        	<% unless @policy.effective_date.blank? %>
-	        	<%= @policy.effective_date.strftime("%B %d, %Y") %>
-	        	<% else %>
-	        	unknown
-	        	<% end %>
-	        	</strong>
-	        </p>
-	      </div>
-	    </div>
-	  </div>
+
+	  <% unless @policy.effective_date.nil? %>
+	  	<div class="col-12 col-lg-3">
+	  		<div class="effective_date entity-help">
+	  		<h2>Effective Date</h2>
+	  			<%= @policy.effective_date.strftime("%^B %d, %Y ") %>
+	  		</div>
+	  	</div>
+	  <% end %>
+
 	</div>
-</section>
+
+</div>

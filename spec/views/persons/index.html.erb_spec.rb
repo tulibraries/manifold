@@ -3,17 +3,25 @@
 require "rails_helper"
 
 RSpec.describe "persons/index.html.erb", type: :view do
+
+  let (:space) { FactoryBot.create(:space) }
+  let (:person) { FactoryBot.create(:person) }
+
   it "displays the person template" do
-    @persons = [ ]
-    render partial: "persons/alphamenu"
+
+    @persons_list = Person.where(id: person.id).page 1
+    @person = person
+    @locations = [@person.spaces.first.building]
     render
-    expect(rendered).to match /Library Staff Directory/
+    expect(rendered).to match /Staff Directory/
   end
 
   it "displays the sample person name" do
-    @persons = [ FactoryBot.build(:person) ]
-    render partial: "persons/alphamenu"
+
+    @persons_list = Person.where(id: person.id).page 1
+    @person = person
+    @locations = [@person.spaces.first.building]
     render
-    expect(rendered).to match /#{@persons.first.last_name}/
+    expect(rendered).to match /#{@persons_list.first.last_name}/
   end
 end

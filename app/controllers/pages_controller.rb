@@ -24,19 +24,39 @@ class PagesController < ApplicationController
     @events = Event.where("tags LIKE ?", "Health Sciences Libraries").take(4)
   end
 
-
   def about
+    @categories = Category.find_by_name("About the Libraries").items.select { |item| item.class == Category }
   end
 
   def visit
+    @categories = Category.find_by_name("Visit the Libraries").items.select { |item| item.class == Category }
+  end
+
+  def blogs
+    @categories = Category.find_by_name("Blogs & News").items.select { |item| item.class == Category }
+  end
+
+  def publications
+    @categories = Category.find_by_name("Publications, Reports, & Statistics").items.select { |item| item.class == Category }
+  end
+
+  def support
+    @categories = Category.find_by_name("Support the Libraries").items.select { |item| item.class == Category }
+  end
+
+  def grants
+    @categories = Category.find_by_name("Grants, Fellowships, & Competitions").items.select { |item| item.class == Category }
+  end
+
+  def policies
+    @categories = Category.find_by_name("Policies & Guidelines").items.select { |item| item.class == Category }
+  end
+
+  def contact
   end
 
   def research
-    @pages = Page.all
-    respond_to do |format|
-      format.html
-      format.json { render json: PageSerializer.new(@pages) }
-    end
+    @categories = Category.find_by_name("Research Services").items.select { |item| item.class == Category }
   end
 
   def index
@@ -47,7 +67,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def contact
+  end
+
   def show
+    @categories = @page.categories
     respond_to do |format|
       # format.html { render @page.layout.parameterize }
       format.html

@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_142559) do
+ActiveRecord::Schema.define(version: 2019_06_11_155116) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -400,8 +403,10 @@ ActiveRecord::Schema.define(version: 2019_05_24_142559) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.integer "external_link_id"
     t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
+    t.index ["external_link_id"], name: "index_spaces_on_external_link_id"
   end
 
   create_table "versions", force: :cascade do |t|

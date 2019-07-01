@@ -4,6 +4,7 @@ class BuildingsController < ApplicationController
   load_and_authorize_resource
   before_action :set_building, only: [:show]
   before_action :set_date, only: [:show]
+  before_action :navigation_items, only: [:show]
 
   def index
     @buildings = Building.all
@@ -21,9 +22,21 @@ class BuildingsController < ApplicationController
     end
   end
 
+  def navigation_items
+    @nav_items = []
+    @categories.each do |cat|
+      cat.items(exclude: [:category]).sort_by { |e| e.label }.each do |item|
+        unless item.id == @building.id
+          @nav_items << item
+        end
+      end
+    end
+  end
+
   private
     def set_building
       @building = Building.find(params[:id])
+      @categories = @building.categories
     end
 
     def building_params

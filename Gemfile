@@ -65,6 +65,7 @@ gem "json-ld"
 gem "fast_jsonapi", "~> 1.0"
 gem "paper_trail"
 gem "diffy"
+gem "okcomputer"
 gem "pg"
 
 group :development, :test do

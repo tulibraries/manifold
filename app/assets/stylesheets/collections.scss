@@ -1,104 +1,33 @@
 @import "partials/_vars.scss";
 
 .collection-show {
-	padding-right: 21px;
-	.description {
-		padding: 0 42px;
-		background-color: transparent!important;
-		.info {
-			background-color: #eee;
-			margin: 0;
-			padding-bottom:3rem;
-			padding-left: 3rem;
+	margin-top: 35px;
+	h1.page-title {
+		margin-top: 0;
+	}
+	.details {
+		border-top: green;
+		padding-top: 21px;
+		h2 {
+			margin-top: 35px;
 		}
 	}
-  h2 {
-  	margin: 0;
-  	border-left: 0;
-  	padding-left: 3rem;
-  	padding-top: 1.75rem;
-  	padding-bottom: 1.5rem;
-  	background-color: $lightest-grey;
-  }
-  .card {
-  	height: auto!important;
-		border-top-right-radius: 14px;
-		border-bottom-right-radius: 14px;
-		overflow:hidden;
-  }
-  .ctaBoth {
-  	border-radius: 7px;
-  	border-color: $seagreen;
-  	background-color: $seagreen-complement;
-  	width: 100%;
-  	min-height: 4rem;
-  	height: 4rem;
-  	display: table;
-  	.card-title {
-  		display: table-row;
-  	}
-  	a {
-  		display: table-cell;
-  		vertical-align: middle;
-  		color: $black;
-  		font-size: 150%;
-  	}
-  }
-	.ctaLast {
-		text-align: left;
-		margin-bottom: 14px;
-		height: auto;
-		.card-title {
-			padding: 10px;
-			color: $black;
-			font-size: 150%;
-			background-color: $purple-complement;
-			text-align: left;
-			padding-left: 21px;
-			line-height: 1.75rem;
-		}
-		.card-body {
-			padding: 7px;
-			text-align: left;
-			height: auto;
-			ul {
-				margin-left: 14px;
-			}
-		}
+	img.location {
+		height:35px;
+		width:35px;
+		opacity: .5;
 	}
-	.subjects {
-		border-color: $purple;
-		.card-title {
-			background-color: $purple-complement;
-			border-bottom: solid $purple 1px;
+	.access-link {
+		background-color: $foamgreen;
+		padding: 14px;
+		border-radius: 7px;
+		margin-bottom: 17px;
+		a {
+			color: $white;
+			text-decoration: underline;
 		}
-	}
-	.spaces {
-		border-color: $seagreen;
-		.card-title {
-			border-bottom: solid $purple 1px;
-			border-color: $seagreen;
-			background-color: $baby-puke-green;
-		}
-	}
-}
-
-.responsive {
-	.collections-info {
-		.collection {
-			margin:auto;
-		  margin-top: 42px;
-		  margin-bottom: 42px;
-		  padding: 14px 0 14px 0;
-			background-color: $foamgreen;
-			max-width: 90%;
-			width: 90%;
-			height:auto;
-			min-height: 70px;
-			font-size: 175%;
-			a {
-				color: $white;
-			}
+		h2 {
+			margin-bottom: 3px;
 		}
 	}
 }

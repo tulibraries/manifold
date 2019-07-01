@@ -1,57 +1,96 @@
-<div class="row">
-  <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %> 
-    <%= link_to "Hours", controller: 'library_hours', action: :index %> 
-    <%= @location.first.name %>
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span><%= @location.first.name %> Hours</span></h2>
+<%# binding.pry %>
+<div class="current-week">
+	<% @buildings.each do |location| %>
+  <% if location[:slug] == @location %>
+
+  <div class="row"> <!-- dates header -->
+    <div class="col-3"><h2>Weekly Hours</h2></div>
+    <div class="col-9 text-right">
+       <div class="col-md-6 text-center date-range">
+
+      <%= link_to "<-", {controller: :library_hours, action: "show", slug: location[:slug], date: @last_week} %> 
+
+      <%= @monday.strftime("%b %d, %Y") unless @monday.nil? %> - <%= @sunday.strftime("%b %d, %Y") unless @sunday.nil? %>
+     
+      <%= link_to "->", {controller: :library_hours, action: "show", slug: location[:slug], date: @next_week} %>
+
+      </div>
+
+      <div class="col-md-6 text-center">
+        <%= link_to "Go to Today", {controller: :library_hours, action: :show, id: location[:slug]}, class: "today_button"  %>
+      </div>
     </div>
   </div>
-</div>
-<h2>Current Week</h2>
-<div class="row current-week">
-	<% @seven.each do |hour| %>
-		<div class="col col-sm-2">
-			<% if hour.date.to_date == @today %>
-			<span class="today">Today</span><br/>
-			<% else %>
-				<strong><%= hour.date.strftime("%A") %></strong><br/>
-			<% end %>
-			<%= hour.hours %>
-		</div>
-	<% end %>
-</div>
+  <div class="row" style="margin-top: 35px;">
+      <div class="col-3">
+        <span class="month" style="font-weight: 600;font-size: 175%"><%= @today.strftime("%B %Y") %></span>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Hours</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <div class="col-9">
+        <div class="row">
 
-  <tbody>
-    <% @hours.each do |hour| %>
-      <% unless hour.date.to_date < @today %>
-      <tr>
-        <td>
-          <% if(hour.date.to_date) %>
-            <%= hour.date.strftime("%A, %B %d, %Y") %>
+        <% 7.times do |date| %>
+          
+          <% if @monday+date == @today %>
+            <div class="col hours-dates today day-of-week text-center">
           <% else %>
-            <%= hour.date %>
+            <div class="col hours-dates text-center">
           <% end %>
-        </td>
-        <td><%= hour.hours %></td>
-      </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+              <%= (@monday+date).strftime("%a %d") %> 
 
+            </div>
+        <% end %>
+      </div>
+      </div>
+   </div>
+
+    <% unless location.values.second.first.second.empty? %>
+
+
+    <% location.values.second.each do |hours| %>
+        <div class="row" style="margin-top: 14px;"> <!-- location -->
+
+          <div class="col-3 text-right"> 
+            <h3>
+              <%= location_name(hours.second.first.location_id) %>
+            </h3>
+          </div>
+
+          <div class="col-9">
+            <div class="row">
+            <% hours.second.each_with_index do |time,index| %> <!-- hours -->
+
+              <% if @monday+index == @today %>
+                <div class="col today">
+                <% else %>
+                <div class="col">
+              <% end %>
+
+                <% if time.hours.downcase == "closed" %>
+                  <span class="closed"><%= time.hours %></span>
+                <% else %>
+                  <%= time.hours %>
+                <% end %>
+
+                </div>
+
+            <% end %> <!-- hours -->
+          </div>
+        </div>
+
+        </div>
+      <% end %>
+
+
+    <% else %> <!-- unless -->
+      <div class="row" style="margin-top: 14px;">
+        <div class="col-12 text-center">
+          <h3>No data for current date range</h3>
+        </div>
+      </div> 
+    <% end %>
+
+  <% end %>
+<% end %>
+</div>

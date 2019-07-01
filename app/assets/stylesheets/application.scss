@@ -71,6 +71,12 @@ h1 {
 	margin-bottom: 21px;
 	font-family: "PT Sans Bold"!important;
 }
+h1.page-title {
+	margin-top: 0;
+	@media (max-width: 768px) {
+		margin-top: 14px;
+	}
+}
 h2 {
 	font-size: 175%;
 	font-family: "PT Sans Bold"!important;
@@ -82,6 +88,10 @@ h3 {
 h4,h5,h6 {
 	font-size: 100%;
 	font-family: "PT Sans Bold"!important;
+}
+
+strong {
+	font-family: 'PT Sans Bold';
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -153,17 +163,8 @@ form {
 	padding: 0;
 }
 .breadcrumbs {
-	display: none;
-	padding-left: 35px;
-	margin-top: 7px;
-	margin-bottom: 21px;
-	a {
-		display: inline-block;
-		color: $med-grey;
-	}
-	a::after {
-		content: ' > ';
-	}
+	margin-bottom: 17px;
+	color: #A50030
 }
 .vertical-stripes {
   background: repeating-linear-gradient( 
@@ -248,4 +249,8 @@ img.map {
 		}
 	}
 
+}
+
+blockquote {
+	margin: 21px;
 }

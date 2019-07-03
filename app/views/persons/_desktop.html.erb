@@ -2,14 +2,14 @@
   <div class="col-12 col-md-9">
     <div class="row">
       <div class="row person-block desktop">
-      <div class="col-3">
+      <div class="col-4">
         <% if @person.image.attached?  %>
           <%= image_tag @person.show_image, alt: @person.name %>
         <% else %> 
           <%= image_tag "T.gif", style: 'width: 300px;' %>
         <% end %>
       </div>
-      <div class="col-9">
+      <div class="col-8">
         <h1 class="person-name page-title"><%= @person.first_name %> <%= @person.last_name %></h1>
         <div class="job-title"><%= @person.job_title %></div>
         <div><%= mail_to @person.email_address, @person.email_address %></div>
@@ -27,6 +27,16 @@
               <br />
             <% end %>
           </div>
+        <% end %>
+        <% unless @person.personal_site.blank? %>
+        <div>
+          <%= link_to "Personal web site", strip_tags(@person.personal_site) %>
+        </div>
+        <% end %>
+        <% unless @person.chat_handle.blank? %>
+        <div>
+          <%= @person.chat_handle %>
+        </div>
         <% end %>
       </div>
     </div>

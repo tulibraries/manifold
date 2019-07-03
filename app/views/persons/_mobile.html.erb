@@ -28,6 +28,16 @@
           <% end %>
         </div>
       <% end %>
+      <% unless @person.personal_site.blank? %>
+      <li>
+        <%= link_to "Personal web site", strip_tags(@person.personal_site) %>
+      </li>
+      <% end %>
+      <% unless @person.chat_handle.blank? %>
+      <li>
+        <%= @person.chat_handle %>
+      </li>
+      <% end %>
     </ul>
   </div>
 </div>

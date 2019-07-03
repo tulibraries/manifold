@@ -1,30 +1,47 @@
+<div class="container finding-aid">
 
-<p>
-  <strong>Name:</strong>
-  <%= sanitize @finding_aid.name.html_safe %>
-</p>
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      < <%= link_to "Finding Aids Directory", finding_aids_path, class: "inline" %>
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= sanitize @finding_aid.description.html_safe %>
-</p>
 
-<p>
-  <strong>Subjects:</strong>
-  <ul>
-  <% @finding_aid.subject.each do |subject| %>
-    <li><%= subject %></li>
-  <% end %>
-  </ul>
-</p>
+    <div class="col-12 col-lg-6">
+      <h1 class="page-title">
+        <%= sanitize @finding_aid.name.html_safe %>
+      </h1>
 
-<p>
-  <strong>Content link:</strong>
-  <%= @finding_aid.content_link %>
-</p>
+      <div class="details">
+        <h2>Identifier</h2>
+        <p><%= @finding_aid.identifier %></p>
 
-<p>
-  <strong>Identifier:</strong>
-  <%= @finding_aid.identifier %>
-</p>
+        <h2>Related Subject(s)</h2>
+        <ul class="list-unstyled subjects">
+          <% @finding_aid.subject.each do |subject| %>
+            <li><%= link_to subject, finding_aids_path(subject: subject), class: "inline" %></li>
+          <% end %>
+        </ul>
 
+        <h2>Related Collection(s)</h2>
+        <ul class="list-unstyled collections">
+          <% @finding_aid.collections.each do |collection| %>
+            <li><%= link_to collection.name, collection_path(collection), class: "inline" %></li>
+          <% end %>
+        </ul>
+
+        <h2>Description</h2>
+        <%= sanitize @finding_aid.description.html_safe %>
+      </div>
+
+    </div>
+
+    <div class="col-12 col-lg-3">
+      <% unless @finding_aid.collections.blank? && @finding_aid.identifier.blank? %>
+      <div class="access-link">
+        <h2><%= link_to "Request Materials from Special Collections Research Center", "https://temple.aeon.atlas-sys.com/Logon/?Action=10&Form=30&ItemTitle=#{@finding_aid.name}&ItemPlace=#{@finding_aid.collections.first.name}&CallNumber=#{@finding_aid.identifier}&rft.pages=#{@finding_aid.collections.first.name}" %></h2>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

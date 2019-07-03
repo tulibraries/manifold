@@ -78,14 +78,10 @@ h1.page-title {
 	}
 }
 h2 {
-	font-size: 175%;
+	font-size: 115%;
 	font-family: "PT Sans Bold"!important;
 }
-h3 {
-	font-size: 125%;
-	font-family: "PT Sans Bold"!important;
-}
-h4,h5,h6 {
+h3,h4,h5,h6 {
 	font-size: 100%;
 	font-family: "PT Sans Bold"!important;
 }
@@ -114,6 +110,9 @@ a:not(.dropdown-item) {
 	a:active, a:hover, a:visited {
 		color: #903;
 	}
+}
+a.inline {
+	text-decoration: underline;
 }
 #content {
 	margin: 0;

@@ -1,8 +1,100 @@
-
 @import "partials/_vars.scss";
 
+#icon_filter {
+	@media (max-width: 948px) {
+		position: relative;
+		left: -3px;
+		top: 3px;
+	}
+}
+.leftside-index {
+	padding-left: 0!important;
+	padding-right: 0!important;
+	h2 {
+		@media (max-width: 1042px) {
+			font-size: 150%;
+		}
+	}
+	ul {
+		margin-top: 10px;
+		li {
+			padding: 6px 14px;
+			padding-right: 7px;
+			font-size: 1rem;
+			a {
+				margin: 0 2px;
+				font-size: 1rem;
+			}
+		}
+		li.active {
+			background-color: $white;
+			margin-left: 4px;
+		}
+	}
+	a[data-toggle="collapse"]:after {
+		content: "\f105";
+    font-family: "FontAwesome";
+    font-size: larger;
+  	float: right;
+  	padding-right: 7px;
+	}
+	a[aria-expanded="true"]:after {
+		content: "\f107";
+    font-family: "FontAwesome";
+    font-size: larger;
+  	float: right;
+  	padding-right: 7px;
+	}
+	.list-unstyled.navbar-collapse.collapse {
+		height: auto;
+		max-height:16rem!important;
+		margin-right:4px;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar {
+    -webkit-appearance: none;
+    margin-left: 2px;
+	}
+	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar:vertical {
+	    width: 11px;
+	    border: solid #eee 1px;
+	}
+	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar:horizontal {
+	    height: 11px;
+	}
+	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar-thumb {
+	    border-radius: 8px;
+	    border: 2px solid #ccc; /* should match background, can't be transparent */
+	    background-color: rgba(0, 0, 0, .5);
+	}
+	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar-track {
+	    background-color: #fff;
+	    border-radius: 8px;
+	    border: solid #ccc 1px;
+	    padding: 2px;
+	}
+}
+
+.people-filter-reset {
+	width:50%;
+	background-color: $white;
+	text-align:center;
+	border: solid $seagreen 1px;
+	border-radius:4px;
+	padding: 7px;
+	margin: 21px auto;
+	a {
+		color: $seagreen!important;
+	}
+}
+
 .staff-index {
+
 	.right-side {
+		@media (max-width: 750px) {
+			margin-top: 21px;
+		}
 		.entity-help {
 			padding-left: 0;
 	    border: solid #1a9682 1px;
@@ -24,87 +116,11 @@
 	    }
 		}
 	}
-		.people-filter-reset {
-			width:50%;
-			background-color: $white;
-			text-align:center;
-			border: solid $seagreen 1px;
-			border-radius:4px;
-			padding: 7px;
-			margin: 21px auto;
-			a {
-				color: $seagreen;
-			}
-		}
 	.person {
 		border-bottom: solid #eee 2px;
 		margin-bottom: 21px;
 		margin-left: 7px;
 		padding-bottom: 14px;
-	}
-	.leftside-index{
-		padding-left: 0;
-		padding-right: 0;
-
-		ul {
-			margin-top: 10px;
-			li {
-				padding: 6px 14px;
-				padding-right: 7px;
-				font-size: 1rem;
-				a {
-					margin: 0 2px;
-					font-size: 1rem;
-				}
-			}
-			li.active {
-				background-color: $white;
-				margin-left: 4px;
-			}
-		}
-		a[data-toggle="collapse"]:after {
-			content: "\f105";
-      font-family: "FontAwesome";
-      font-size: larger;
-    	float: right;
-    	padding-right: 7px;
-  	}
-		a[aria-expanded="true"]:after {
-			content: "\f107";
-      font-family: "FontAwesome";
-      font-size: larger;
-    	float: right;
-    	padding-right: 7px;
-  	}
-  	.list-unstyled.navbar-collapse.collapse {
-  		height: auto;
-  		max-height:18rem!important;
-  		margin-right:4px;
-  		overflow-y: auto;
-  		overflow-x: hidden;
-  	}
-  	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar {
-      -webkit-appearance: none;
-      margin-left: 2px;
-		}
-		.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar:vertical {
-		    width: 11px;
-		    border: solid #eee 1px;
-		}
-		.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar:horizontal {
-		    height: 11px;
-		}
-		.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar-thumb {
-		    border-radius: 8px;
-		    border: 2px solid #ccc; /* should match background, can't be transparent */
-		    background-color: rgba(0, 0, 0, .5);
-		}
-		.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar-track {
-		    background-color: #fff;
-		    border-radius: 8px;
-		    border: solid #ccc 1px;
-		    padding: 2px;
-		}
 	}
 }
 
@@ -159,20 +175,25 @@
 			margin-top: 0;
 			margin-bottom: 10px;
 		}
+		img {
+			@media (max-width: 750px) {
+				max-width: 50%;
+			}
+		}
 	}
 	.person-block.desktop {
 		width: 100%;
 		margin: auto 14px;
 		padding-bottom: 42px;
+		img {
+			margin-top: 7px;
+		}
 	}
 }
 .clear-filter {
 	display:inline-block;
 	float: right;
-	/*border: solid black 1px;*/
 	a {
 		color: $black!important;
-		/*font-size: .85rem;*/
 	}
-
 }

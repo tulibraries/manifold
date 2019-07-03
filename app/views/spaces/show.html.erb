@@ -1,29 +1,78 @@
 <%= render "mobile-menu-secondary" %>
 
-<div class="container" style="margin-top: 35px;">
+<div class="container space-show">
   
-  <div class="row space-show">
+  <div class="row">
     <% unless @categories.blank? %>
       <div class="col-3 d-none d-md-none d-lg-block">
-        <%= render "all_spaces" %>
+        <%= render "categories" %>
       </div>
 
-      <div class="col-12 col-md-9 col-lg-6">
+      <div class="col-12 col-lg-6">
     <% else %>
-      <div class="col-12 col-md-9 col-lg-9">
+      <div class="col-12 col-lg-6">
     <% end %>
     
-      <h1 class="unstyled"><%= @space.label %></h1>
-      <%= sanitize @space.description.html_safe %>
+      <h1 class="page-title"><%= @space.label %></h1>
+
+      <div class="details">
+        <ul class="list-unstyled space-contact">
+          <li><%= image_tag "location.png", class: "location" %><%= link_to @space.building.label, building_path(@space.building), class: "location" %></li>
+          <li><%= image_tag "location.png", class: "location" %><%= @space.phone_number ? phone_formatted(@space.phone_number) : phone_formatted(@space.building.phone_number) %></li>
+          <li><%= image_tag "location.png", class: "location" %><%= mail_to @space.building.email unless @space.building.email.nil? %></li>
+        </ul>
+
+        <div class="description">
+          <%= sanitize @space.description.html_safe %>
+
+          <% if @space.image.attached?  %>
+            <div class="space-image">
+              <%= image_tag @space.show_image, alt: @space.name %>
+            </div>
+          <% end %>
+        </div>
+
+        <% unless @space.accessibility.nil? %>
+        <h2>Access</h2>
+        <div>
+          <%= @space.accessibility %>
+        </div>
+        <% end %>
+      </div>
 
     </div>
-    <div class="col-12 col-md-3 rightside-space">
-      <% unless @space.external_link.blank? %>
-        <div class="access-link">
-          <h2><%= link_to @space.external_link.title, @space.external_link.link %></h2>
-        </div>
+
+    <% unless @categories.blank? %>
+      <div class="col-12 col-lg-3 rightside-space">
+    <% else %>
+      <div class="col-12 col-lg-6 rightside-space">
+    <% end %>
+
+
+      <% unless @space.external_link.nil? %>
+        <div>
+          <h2 class="access-link"><%= link_to @space.external_link.title, @space.external_link.link %></h2>
+        </div>          
       <% end %>
+      
     </div>
   </div>
+
+<% unless @space.hours.nil? %>
+  <% unless @categories.blank? %>
+    <div class="d-none d-md-block col-12 col-lg-9 offset-lg-3 hours-widget">
+  <% else %>
+    <div class="d-none d-md-block col-12 hours-widget">
+  <% end %>
+
+    <hr />
+    <%= render :partial => "/application/show-hours" %>
+  </div>
+
+  <div class="d-block d-md-none col-12">
+    <hr />
+    <%= render :partial => "/application/mobile-hours" %>
+  </div>
+<% end %>
 
 </div>

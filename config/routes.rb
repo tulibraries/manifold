@@ -83,6 +83,8 @@ Rails.application.routes.draw do
   end
 
   controller :pages do
+    get "scrc" => :scrc, as: "pages_scrc"
+    get "blockson" => :blockson, as: "pages_blockson"
     get "ambler" => :ambler, as: "pages_ambler"
     get "hsl" => :hsl, as: "pages_hsl"
     get "contact-us" => :contact, as: "pages_contact"

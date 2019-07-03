@@ -1,25 +1,6 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 4,
-      "fingerprint": "208d098f49f63dbf07c3a46354e5c1853e7c933e974b37abafee4bed717d1cd1",
-      "check_name": "LinkToHref",
-      "message": "Potentially unsafe model attribute in `link_to` href",
-      "file": "app/views/services/show.html.erb",
-      "line": 23,
-      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
-      "code": "link_to(\"Access Link\", Service.find(params[:id]).access_link)",
-      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":21,"file":"app/controllers/services_controller.rb","rendered":{"name":"services/show","file":"/home/skng/Projects/lwr/manifold/app/views/services/show.html.erb"}}],
-      "location": {
-        "type": "template",
-        "template": "services/show"
-      },
-      "user_input": "Service.find(params[:id]).access_link",
-      "confidence": "Weak",
-      "note": ""
-    },
-    {
       "warning_type": "Mass Assignment",
       "warning_code": 70,
       "fingerprint": "26de2923c8b3a419d65fd503ec16fa41f1a3f68c7fa9083e6c8af2e1589f8764",
@@ -42,38 +23,41 @@
     {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
-      "fingerprint": "2f5050be2e4f765ee44dbc8f315035da8e7a850b6b052a26c24584bd22d214ac",
+      "fingerprint": "3a7e603bdaa452e160b221bec2eb1e511b5425af135d204dcc72c8d64cafcf13",
       "check_name": "CrossSiteScripting",
       "message": "Unescaped model attribute",
-      "file": "app/views/spaces/show.html.erb",
-      "line": 22,
+      "file": "app/views/persons/_mobile.html.erb",
+      "line": 18,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "Space.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"SpacesController","method":"show","line":18,"file":"app/controllers/spaces_controller.rb","rendered":{"name":"spaces/show","file":"/Users/cbn/projects/manifold/app/views/spaces/show.html.erb"}}],
+      "code": "depts_list(Person.find(params[:id]))",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "PersonsController",
+          "method": "show",
+          "line": 37,
+          "file": "app/controllers/persons_controller.rb",
+          "rendered": {
+            "name": "persons/show",
+            "file": "app/views/persons/show.html.erb"
+          }
+        },
+        {
+          "type": "template",
+          "name": "persons/show",
+          "line": 14,
+          "file": "app/views/persons/show.html.erb",
+          "rendered": {
+            "name": "persons/_mobile",
+            "file": "app/views/persons/_mobile.html.erb"
+          }
+        }
+      ],
       "location": {
         "type": "template",
-        "template": "spaces/show"
+        "template": "persons/_mobile"
       },
-      "user_input": null,
-      "confidence": "High",
-      "note": ""
-    },
-    {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 4,
-      "fingerprint": "763644b1f48229772aa4051d7b05f838fb7c5cd5c365dfb2692b5753d310cb4e",
-      "check_name": "LinkToHref",
-      "message": "Potentially unsafe model attribute in `link_to` href",
-      "file": "app/views/persons/show.html.erb",
-      "line": 54,
-      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
-      "code": "link_to(Person.find(params[:id]).personal_site, Person.find(params[:id]).personal_site)",
-      "render_path": [{"type":"controller","class":"PersonsController","method":"show","line":22,"file":"app/controllers/persons_controller.rb","rendered":{"name":"persons/show","file":"/Users/cbn/projects/manifold/app/views/persons/show.html.erb"}}],
-      "location": {
-        "type": "template",
-        "template": "persons/show"
-      },
-      "user_input": "Person.find(params[:id]).personal_site",
+      "user_input": "Person.find(params[:id])",
       "confidence": "Weak",
       "note": ""
     },
@@ -107,64 +91,25 @@
       "line": 9,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Alert.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"AlertsController","method":"show","line":10,"file":"app/controllers/alerts_controller.rb","rendered":{"name":"alerts/show","file":"/Users/cbn/projects/manifold/app/views/alerts/show.html.erb"}}],
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "AlertsController",
+          "method": "show",
+          "line": 10,
+          "file": "app/controllers/alerts_controller.rb",
+          "rendered": {
+            "name": "alerts/show",
+            "file": "app/views/alerts/show.html.erb"
+          }
+        }
+      ],
       "location": {
         "type": "template",
         "template": "alerts/show"
       },
       "user_input": null,
       "confidence": "High",
-      "note": ""
-    },
-    {
-      "warning_type": "Remote Code Execution",
-      "warning_code": 25,
-      "fingerprint": "8beee6d73cfda9260b05bbd93b6fd3ce3f52ac546f8decb3927837afc61d503b",
-      "check_name": "Deserialize",
-      "message": "`YAML.load` called with parameter value",
-      "file": "app/controllers/admin/application_controller.rb",
-      "line": 39,
-      "link": "https://brakemanscanner.org/docs/warning_types/unsafe_deserialization",
-      "code": "YAML.load(controller_name.classify.constantize.find(params[:id]).versions.find(params[:version]).object_changes)",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "Admin::ApplicationController",
-        "method": "edit"
-      },
-      "user_input": "params[:version]",
-      "confidence": "Medium",
-      "note": ""
-    },
-    {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 4,
-      "fingerprint": "8beee6d73cfda9260b05bbd93b6fd3ce3f52ac546f8decb3927837afc61d503b",
-      "check_name": "LinkToHref",
-      "message": "Potentially unsafe model attribute in `link_to` href",
-      "file": "app/views/services/show.html.erb",
-      "line": 23,
-      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
-      "code": "link_to(\"Access Link\", Service.find(params[:id]).access_link)",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "ServicesController",
-          "method": "show",
-          "line": 9,
-          "file": "app/controllers/services_controller.rb",
-          "rendered": {
-            "name": "services/show",
-            "file": "/Users/cdoyle/projects/fortytude/app/views/services/show.html.erb"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "services/show"
-      },
-      "user_input": "Service.find(params[:id]).access_link)",
-      "confidence": "Weak",
       "note": ""
     },
     {
@@ -177,7 +122,19 @@
       "line": 14,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "BlogPost.new(blog_post_params).content",
-      "render_path": [{"type":"controller","class":"BlogPostsController","method":"create","line":34,"file":"app/controllers/blog_posts_controller.rb","rendered":{"name":"blog_posts/show","file":"/Users/cbn/projects/manifold/app/views/blog_posts/show.html.erb"}}],
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "BlogPostsController",
+          "method": "create",
+          "line": 34,
+          "file": "app/controllers/blog_posts_controller.rb",
+          "rendered": {
+            "name": "blog_posts/show",
+            "file": "app/views/blog_posts/show.html.erb"
+          }
+        }
+      ],
       "location": {
         "type": "template",
         "template": "blog_posts/show"
@@ -189,20 +146,42 @@
     {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
-      "fingerprint": "c7566ea26dd4099cfd507f585975c8c03630ceab28f939df166c074a518b22d4",
+      "fingerprint": "da796b48b2928a93360292a99e8557924df8f475a27efa86892c0aaa969607a5",
       "check_name": "CrossSiteScripting",
       "message": "Unescaped model attribute",
-      "file": "app/views/buildings/show.html.erb",
-      "line": 23,
+      "file": "app/views/persons/_desktop.html.erb",
+      "line": 18,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "Building.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"BuildingsController","method":"show","line":19,"file":"app/controllers/buildings_controller.rb","rendered":{"name":"buildings/show","file":"/Users/cbn/projects/manifold/app/views/buildings/show.html.erb"}}],
+      "code": "depts_list(Person.find(params[:id]))",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "PersonsController",
+          "method": "show",
+          "line": 37,
+          "file": "app/controllers/persons_controller.rb",
+          "rendered": {
+            "name": "persons/show",
+            "file": "app/views/persons/show.html.erb"
+          }
+        },
+        {
+          "type": "template",
+          "name": "persons/show",
+          "line": 10,
+          "file": "app/views/persons/show.html.erb",
+          "rendered": {
+            "name": "persons/_desktop",
+            "file": "app/views/persons/_desktop.html.erb"
+          }
+        }
+      ],
       "location": {
         "type": "template",
-        "template": "buildings/show"
+        "template": "persons/_desktop"
       },
-      "user_input": null,
-      "confidence": "High",
+      "user_input": "Person.find(params[:id])",
+      "confidence": "Weak",
       "note": ""
     },
     {
@@ -215,7 +194,19 @@
       "line": 21,
       "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
       "code": "Group.find(params[:id]).description",
-      "render_path": [{"type":"controller","class":"GroupsController","method":"show","line":18,"file":"app/controllers/groups_controller.rb","rendered":{"name":"groups/show","file":"/Users/cbn/projects/manifold/app/views/groups/show.html.erb"}}],
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "GroupsController",
+          "method": "show",
+          "line": 22,
+          "file": "app/controllers/groups_controller.rb",
+          "rendered": {
+            "name": "groups/show",
+            "file": "app/views/groups/show.html.erb"
+          }
+        }
+      ],
       "location": {
         "type": "template",
         "template": "groups/show"
@@ -223,27 +214,8 @@
       "user_input": null,
       "confidence": "High",
       "note": ""
-    },
-    {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 4,
-      "fingerprint": "8beee6d73cfda9260b05bbd93b6fd3ce3f52ac546f8decb3927837afc61d503b",
-      "check_name": "LinkToHref",
-      "message": "Potentially unsafe model attribute in `link_to` href",
-      "file": "app/views/services/show.html.erb",
-      "line": 23,
-      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
-      "code": "link_to(\"Access Link\", Service.find(params[:id]).access_link)",
-      "render_path": [{"type":"controller","class":"ServicesController","method":"show","line":9,"file":"app/controllers/services_controller.rb","rendered":{"name":"services/show","file":"/Users/cdoyle/projects/fortytude/app/views/services/show.html.erb"}}],
-      "location": {
-        "type": "template",
-        "template": "services/show"
-      },
-      "user_input": "Service.find(params[:id]).access_link)",
-      "confidence": "Weak",
-      "note": ""
     }
   ],
-  "updated": "2019-04-26 14:14:50 -0400",
-  "brakeman_version": "4.5.0"
+  "updated": "2019-06-24 09:55:03 -0400",
+  "brakeman_version": "4.5.1"
 }

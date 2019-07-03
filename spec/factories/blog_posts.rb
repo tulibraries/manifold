@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :blog_post do
     title { "Good writings in the blogosphere" }
-    content { (0...rand(200)).map { (rand(100)).chr }.join }
+    content { (0...rand(200)).map { (rand(32...100)).chr }.join }
     publication_date { "2018-09-06 14:57:01" }
     path { "/yup-its-some-good-content" }
     post_guid { "5" }

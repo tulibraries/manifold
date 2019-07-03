@@ -9,6 +9,7 @@ class Collection < ApplicationRecord
   validates :name, :description, presence: true
 
   belongs_to :space
+  belongs_to :external_link, optional: true
 
   has_many :collection_aids
   has_many :finding_aids, through: :collection_aids

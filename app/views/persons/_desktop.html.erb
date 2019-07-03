@@ -10,24 +10,23 @@
         <% end %>
       </div>
       <div class="col-9">
-        <h1 class="person-name"><%= @person.first_name %> <%= @person.last_name %></h1>
+        <h1 class="person-name page-title"><%= @person.first_name %> <%= @person.last_name %></h1>
         <div class="job-title"><%= @person.job_title %></div>
         <div><%= mail_to @person.email_address, @person.email_address %></div>
         <div><%= phone_formatted(@person.phone_number) %></div>
         <div>
-          <% unless @departments.blank? %>
-            <% @departments.each_with_index do |group, index| %>
-              <%= link_to group.name, group %>
-              <% unless index == (@departments.size - 1) %>, <br /><% end %>
-            <% end %>
-          <% end %>
+          <%= depts_list(@person).html_safe %>
         </div>
         <% unless @person.spaces.empty? %>
           <div>
-            <%= link_to @building.name, @building %>: <%= link_to @person.spaces.first.name, @person.spaces.first %>
+            <% @buildings.each do |key,value| %>
+            <%= link_to key.name, key %>: 
+              <% value.each do |space| %>
+                <%= link_to space.name, space %><% unless space == value.last %>,<% end %> 
+              <% end %>
+              <br />
+            <% end %>
           </div>
-        <% else %>
-          <div><%= link_to @building.name, @building %></div>
         <% end %>
       </div>
     </div>
@@ -36,17 +35,17 @@
 
   <div class="col-12 col-md-3 right-side">
     <% unless @person.springshare_id.blank? %>
-      <h2><%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %></h2>
+      <h2>
+        <%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %>
+      </h2>
     <% end %>
 
-    <% unless @person.specialties.empty? %>
-      <div>
-        <h2>Subjects</h2>
-      </div>
+    <% unless @person.specialties.blank? %>
+      <h2>Subjects</h2>
       <div class="subject-list text-left">
         <ul class="list-unstyled">
-          <% @person.specialties.each do |specialty| %>
-            <li><%= specialty %></li>
+          <% specialties(@person).each do |s| %>
+            <li><%= s %></li>
           <% end %>
         </ul>
       </div> 

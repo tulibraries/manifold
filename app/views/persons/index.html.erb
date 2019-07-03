@@ -1,59 +1,40 @@
-<div class="row">
-  <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %> 
-    People
+<%= render "mobile-menu" %>
+
+<div class="container staff-index">
+
+  <h1>Staff Directory</h1>
+
+  <div class="row">
+
+    <div class="col-3 leftside-index">
+      <div class="panel-group d-none d-md-none d-lg-block" id="accordion">
+        <div class="filter_staff_type">
+          <%= render "staff_type" %>
+        </div>
+        <div class="filter_subjects">
+          <%= render "subjects" %>
+        </div>
+        <div class="filter_location">
+          <%= render "location" %>
+        </div>
+        <div class="filter_department">
+          <%= render "department" %>
+        </div>
+        <div class="filter_reset">
+          <%= render "reset" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <%= render "persons_list" %>
+    </div>
+
+    <div class="col-12 col-lg-3 right-side">
+      <div class="entity-help"><h3>Main Phone:</h3>215-204-1234</div>
+      <div class="access-link"><h3><%= link_to "Frequently Called Numbers", root_path %></h3></div>
+    </div>
+
   </div>
+
 </div>
-
-<div class="row">
-  <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span>Library Staff Directory</span></h2>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-12 text-center">
-    <%= render "alphamenu.html.erb" %>
- </div>
-</div>
-<div class="container staff text-center">
-  <div class="row heading">
-    <div class="col-3">
-      Name
-    </div>
-    <div class="col-3">
-      Phone Number
-    </div>
-    <div class="col-3">
-      Email Address
-    </div>
-    <div class="col-3">
-      Department
-    </div>
-  </div>
-  <% @persons.each do |person| %>
-  <div class="row details">
-    <div class="col-3">
-      <%= link_to (person.first_name+' '+person.last_name), person %>
-    </div>
-    <div class="col-3">
-      <%= phone_formatted(person.phone_number) %>
-    </div>
-    <div class="col-3">
-      <%= person.email_address %>
-    </div>
-    <div class="col-3">
-      <% person.groups.each_with_index do |group, index| %>
-        <% if group.group_type == "Department" %>
-          <%= group.name %><% unless index == (person.groups.size - 1) %>, <br /><% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <% end %>
-</div>
-
-
-

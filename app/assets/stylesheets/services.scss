@@ -16,19 +16,18 @@
 		border-bottom: solid $seagreen-dark 2px;
 		background-color: transparent;
 		padding: 12px 14px;
-		margin-bottom: 0;
 	}
 	ul {
 		
 	}
 	li {
-		padding: 10px 0;
-		line-height: 1.2rem;
+		padding: 7px 0;
+		line-height: 1.25rem;
 	}
 	li a {
 		color: $black;
 		display: inline-block;
-		font-size: 1.165rem;
+		font-size: 1.1rem;
 		margin: 0 14px;
 	}
 	li.selected {

@@ -42,7 +42,7 @@
 
       <div class="col-12 col-lg-3">
         <div class="access-link">
-          <h2><%= link_to "Explore this Collection", { controller: "finding_aids", action: "index", collection: @collection.id } %></h2>
+          <h2><%= link_to "Explore this Collection", collection_path(@collection) %></h2>
         </div>
       </div>
 

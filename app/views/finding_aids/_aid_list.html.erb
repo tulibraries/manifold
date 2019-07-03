@@ -1,0 +1,27 @@
+   <div class="row">
+    <div class="col">
+      <p>Finding aids are online guides to selected archival materials in the 
+        <%= link_to "Special Collections Research Center", pages_scrc_path, class: "inline" %>
+       and the 
+        <%= link_to "Charles L. Blockson Afro-American Collection", pages_blockson_path, class: "inline" %></a>. </p>
+      <p>The SCRC is the principal repository for and steward of the Libraries’ rare books, manuscripts, archives and University records. While we are constantly striving to increase the discoverability of our materials, these guides represent only a portion of our actual collections and holdings. If you don't find what you are looking for, we encourage you to pay us a visit, 
+        <%= link_to "call, or e-mail us", "forms/ask-scrc", class: "inline" %></a>.</p>
+    </div>
+  </div>
+   <% unless @aids_list.nil? %>
+   
+   <div class="row aid">
+    <% @aids_list.each do |aid| %>
+      <div class="col-12" style="font-size:larger;font-weight:600;margin:10px 15px;padding-bottom: 14px;padding-left: 0;border-bottom:solid #ccc 1px" >
+        <%= link_to aid.name.html_safe, finding_aid_path(aid), style: "color: black;" %>
+      </div> 
+    <% end %> 
+    </div>
+      
+    <div class="row text-center paginator" style="border-left: solid white 14px;margin-top: 21px;">
+      <div class="col">
+        <%= paginate @aids_list %>
+      </div>
+    </div>
+    
+  <% end %>

@@ -39,10 +39,10 @@ class SyncService::LibraryHours
           time = "TBD"
         else
           time = hours.last
-          #
         end
-        # binding.pry
-        mid = LibraryHour.find_by(location_id: location[:slug], date: DateTime.parse(hours.first))
+
+        mid = LibraryHour.find_by(location_id: location[:slug], date: Time.zone.parse(hours.first))
+
         if mid
           mid.hours = time
           if mid.hours_changed?

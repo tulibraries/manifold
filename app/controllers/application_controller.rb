@@ -27,17 +27,6 @@ class ApplicationController < ActionController::Base
         b[:spaces].map! do |space|
           space = [b[:slug], LibraryHour.where(location_id: space, date: @monday..@sunday + 1)]
         end
-      else
-        if b[:spaces].include?(@location)
-          @hours_type = "space"
-          b[:spaces].each do |spacename|
-            if spacename == @location
-              b[:spaces].map! do |space|
-                space = [b[spacename.to_sym], LibraryHour.where(location_id: spacename, date: @monday..@sunday + 1)]
-              end
-            end
-          end
-        end
       end
     end
   end

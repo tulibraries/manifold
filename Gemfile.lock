@@ -324,6 +324,7 @@ GEM
     pastel (0.7.3)
       equatable (~> 0.6)
       tty-color (~> 0.5)
+    pg (1.1.4)
     popper_js (1.14.5)
     populate (0.0.2)
       activerecord (>= 3.1.0)
@@ -572,6 +573,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   paper_trail
+  pg
   popper_js (~> 1.14.5)
   populate
   pry-rails

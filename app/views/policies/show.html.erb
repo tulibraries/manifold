@@ -6,11 +6,26 @@
 		<div class="col-lg-3 d-none d-lg-block">
 	    <%= render "all_policies" %>
 	  </div>
-  
-  	<div class="col-12 col-lg-9">
-	    <h1 class="unstyled"><%= @policy.name %></h1>
+
+	  <% unless @policy.effective_date.nil? %>
+	  	<div class="col-12 col-lg-6">
+	  <% else %>
+	  	<div class="col-12 col-lg-9">
+	  <% end %>
+
+	    <h1 class="page-title"><%= @policy.name %></h1>
 	    <%= sanitize @policy.description.html_safe %>
 	  </div>
+
+	  <% unless @policy.effective_date.nil? %>
+	  	<div class="col-12 col-lg-3">
+	  		<div class="effective_date entity-help">
+	  		<h2>Effective Date</h2>
+	  			<%= @policy.effective_date.strftime("%^B %d, %Y ") %>
+	  		</div>
+	  	</div>
+	  <% end %>
+
 	</div>
 
 </div>

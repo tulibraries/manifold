@@ -1,0 +1,31 @@
+<h2>
+  <a style="cursor:pointer" data-toggle="collapse" data-target="#collections" aria-expanded="true" aria-controls="collections"> 
+  	Collecting Area
+  </a>
+</h2>
+	
+  <ul class="list-unstyled navbar-collapse collapse show" id="collections">
+  	<% unless @collections.nil? %>
+  	<% unless params[:collection].nil? %>
+			<% @collections.each do |collection| %>
+				<% if collection.id.to_s == params[:collection] %>
+				<li class="active">
+					<%= collection.name %>
+					<span class="clear-filter">
+						<%= link_to "X", finding_aids_path(request.query_parameters.except(:collection).merge({page: 1})) %>
+					</span>
+				</li>
+				<% end %>
+			<% end %>
+
+		<% else %>
+
+			<% @collections.each do |collection| %>
+				<li>
+					<%= link_to collection.name, finding_aids_path(request.query_parameters.merge({collection: collection.id, page: 1})) %>	
+				</li>
+			<% end %>
+		
+		<% end %>
+		<% end %>
+	</ul>

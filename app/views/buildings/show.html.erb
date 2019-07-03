@@ -53,6 +53,8 @@
     </div>
   </div>
 
+<% unless @building.hours.blank? %>
+
   <% unless @categories.blank? %>
     <div class="d-none d-md-block col-12 col-lg-9 offset-lg-3">
   <% else %>
@@ -60,12 +62,14 @@
   <% end %>
 
     <hr />
-    <%= render :partial => "/application/show-hours" %>
+    <%= render :partial => "/application/building_hours" %>
   </div>
 
   <div class="d-block d-md-none col-12">
     <hr />
-    <%= render :partial => "/application/mobile-hours" %>
+    <%= render :partial => "/application/building_mobile_hours" %>
   </div>
+
+<% end %>
 
 </div>

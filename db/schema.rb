@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_155116) do
+ActiveRecord::Schema.define(version: 2019_06_27_135348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,7 +147,9 @@ ActiveRecord::Schema.define(version: 2019_06_11_155116) do
     t.datetime "updated_at", null: false
     t.boolean "add_to_footer"
     t.integer "space_id"
+    t.integer "external_link_id"
     t.index ["building_id"], name: "index_collections_on_building_id"
+    t.index ["external_link_id"], name: "index_collections_on_external_link_id"
     t.index ["space_id"], name: "index_collections_on_space_id"
   end
 

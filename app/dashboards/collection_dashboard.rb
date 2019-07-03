@@ -21,6 +21,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     image: PhotoField,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
+    external_link: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -41,7 +42,8 @@ class CollectionDashboard < Administrate::BaseDashboard
     :name,
     :subject,
     :space,
-    :categories
+    :categories,
+    :external_link
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -54,6 +56,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :subject,
     :categories,
     :space,
+    :external_link,
     :add_to_footer,
   ].freeze
 

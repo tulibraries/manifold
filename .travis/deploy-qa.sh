@@ -17,4 +17,4 @@ cp .circleci/.vault ~/.vault
 chmod +x ~/.vault
 
 # deploy to qa using ansible-playbook
-pipenv run ansible-playbook -i inventory/new-qa/hosts playbook.yml --vault-password-file=~/.vault --private-key=~/.ssh/.conan_the_deployer
+pipenv run ansible-playbook -i inventory/qa/hosts playbook.yml --vault-password-file=~/.vault --private-key=~/.ssh/.conan_the_deployer

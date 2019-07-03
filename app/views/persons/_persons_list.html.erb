@@ -4,7 +4,7 @@
       <div class="row person">
         <div class="col-4">
           <% if person.image.attached?  %>
-          <%= image_tag person.show_image, alt: person.name %>
+          <%= image_tag person.index_image, alt: person.name %>
           <% else %> 
           <%= image_tag "T.gif", style: 'width: 300px;' %>
           <% end %>
@@ -17,7 +17,7 @@
               </span>
             </li>
             <li>
-              <span style="font-weight:600;"><%= person.job_title %></span>
+              <span style="font-size:larger;font-weight:600;"><%= person.job_title %></span>
             </li>
             <li>
               <%= person.email_address %>

@@ -12,11 +12,7 @@
       <div>
         <ul class="list-unstyled">
           <% cat.items(exclude: [:category]).sort_by{|e| e.label}.each do |c| %>
-            <% if c == @service %>
-            <li class="selected">
-            <% else %>
-            <li>
-            <% end %>
+            <li <% if c == @service %> class="selected" <%end%>>
               <%= link_to c.label, url_for(c) %>
             </li>
           <% end %>

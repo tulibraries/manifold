@@ -6,18 +6,14 @@
     <% else %>
       <div class="d-none d-lg-block index-category">
     <% end %>
-        <h2><%= cat.name %> menu</h2>
+        <h2><%= cat.name %></h2>
       </div>
 
       <div class="index-items">
         <div>
           <ul class="list-unstyled">
-            <% cat.items.each do |c| %>
-              <% if c == @page %>
-              <li class="selected">
-              <% else %>
-              <li>
-              <% end %>
+            <% cat.items(exclude: [:category]).sort_by{|e| e.label}.each do |c| %>
+              <li <% if c == @page %> class="selected" <%end%>>
                 <%= link_to c.label, url_for(c) %>
               </li>
             <% end %>

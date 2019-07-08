@@ -23,7 +23,7 @@ class FindingAidsController < ApplicationController
   end
 
   def return_aids
-    all_aids = FindingAid.group(:id).order(:title)
+    all_aids = FindingAid.group(:id).order(:name)
 
     if params.has_key?("collection")
       collections = collections_list(all_aids)
@@ -37,7 +37,7 @@ class FindingAidsController < ApplicationController
     filtered_aids = arrays.blank? ? all_aids : arrays
 
     get_filters(filtered_aids)
-    aids = FindingAid.where(id: filtered_aids.map(&:id)).order(:title)
+    aids = FindingAid.where(id: filtered_aids.map(&:id)).order(:name)
     @aids_list = aids.page params[:page]
   end
 

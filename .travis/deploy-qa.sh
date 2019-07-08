@@ -4,7 +4,7 @@ set -e
 cd ..
 # clone deployment playbook
 git clone --single-branch --branch qa git@github.com:tulibraries/ansible-playbook-manifold.git
-cd tul_cob_playbook
+cd ansible-playbook-manifold
 # install playbook requirements
 sudo pip install pipenv
 # install playbook requirements

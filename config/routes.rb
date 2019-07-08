@@ -48,6 +48,19 @@ Rails.application.routes.draw do
         post :sync
       end
     end
+
+    resource :people do
+      member do
+        get ":id/detach" => :detach
+      end
+    end
+
+    resource :pages do
+      member do
+        get ":id/detach" => :detach
+      end
+    end
+
     root to: "people#index"
   end
 

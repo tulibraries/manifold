@@ -157,6 +157,29 @@ $ sudo su -c "createuser -dW manifold" postgres
 Password: #now enter your password
 ```
 
+## Running with production data locally
+
+We will occassionally dump out data from the produciton postgres DB that you can import locally to have a reasonably up to date version of data for local development.
+
+Once you have the postgres dump file (self-service location tbd) created with pg_dump, you can import it into your local postgres instance:
+
+```bash
+# First drop the existing db
+bundle exec rails db:drop
+
+# then recreate an empty db
+bundle exec rails db:setup
+
+# finally import the data
+
+# on OSX, it should just work as your user
+pg_restore -c --dbname=manifold_development /path/to/postgres_dump_file
+
+# on Linux, you probably have to run as the postgres user
+sudo su postgres -c "pg_restore -c --dbname=manifold_development /path/to/postgres_dump_file"
+
+
+```
 
 ## Test the code
 

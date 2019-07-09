@@ -1,151 +1,83 @@
-<% content_for :body_class, "minipage" %>
-<h1 class="title">
-	Health Sciences Libraries
-</h1>
-<div id="hsl">
-<div id="searchFields">
-	<div id="searchOptions">
-		<ul>
-			<li>Pubmed</li>
-			<li>Everything</li>
-			<li>Journals</li>
-		</ul>
-		<div id="advancedSearchLink">
-			Advanced Search
-		</div>
-	</div>
-		<div id="dateTime">
-			<div class="displayRow">
-				<div id="date">
-					<%= @todays_date %>
-				</div>
-			</div>
-			<div class="displayRow">
-				<div id="time">
-					<% unless @ginsburg_hours.nil? %> 
-						<%= link_to "Ginsburg Library", hour_path("ginsburg") %> | <%= @ginsburg_hours %><br />
-          <% end %>
-					<% unless @podiatry_hours.nil? %><%= link_to "Podiatry Library", hour_path("podiatry") %> | <%= @podiatry_hours %>
-          <% end %>						
-				</div>
-				<div id="allHours">
-					<%= link_to "See all libraries hours", hours_path %> >
-				</div>
-			</div>
-		</div>
-</div>
+<% content_for :body_class, "minipage hsl" %>
 
-<div class="container index">
-<div class="row ctaRow">
-	<div class="col-12 col-xl-3">
-		<div class="card ctaFirst">
-			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
-		  <div class="card-body">
-		    <span class="card-title">Help with Research</span>
-		  </div>
-		</div>
-	</div>
-	<div class="col-12 col-xl-3">
-		<div class="card ctaMidOne">
-			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
-		  <div class="card-body">
-		    <span class="card-title">Resources &amp; Media</span>
-		  </div>
-		</div>
-	</div>
-	<div class="col-12 col-xl-3">
-		<div class="card ctaMidTwo">
-			<%= image_tag('researchhelp.jpg', class: "d-none d-xl-block card-img-top", alt: "") %>
-		  <div class="card-body">
-		    <span class="card-title">Innovation Space</span>
-		  </div>
-		</div>
-	</div>
-	<div class="col-12 col-xl-3">
-		<div class="card ctaLast">
-			<div class="hsl-list">
-				<ul>
-					<li class="oddrow">
-						<%= link_to "Ginsburg Library", building_path(3) %> >
-					</li>
-					<li>
-						<%= link_to "Podiatry Library", building_path(4) %> >
-					</li>
-					<li class="oddrow">HSL Staff Directory ></li>
-					<li>HSL Services ></li>
-				</ul>
-		  </div>
-		</div>
-	</div>
-</div>
-</div>
+<div class="banner-image"></div>
 
-<% unless @events.blank? %>
-<div class="row">
-	<div class="col">
-		<div class="vertical-stripes">
-			<h1><span>News &amp; Highlights</span></h1>
-		</div>
-	</div>
-</div>
-
-
-<div class="container index">
-<div class="row ctaRow events">
-<%= render "events-row" %>
-</div>
-</div>
-<% end %>
+<div class="container">
 
 <div class="row">
 	<div class="col">
-		<div class="vertical-stripes">
-			<h1><span>Selected Resources</span></h1>
-		</div>
+		<h1 class="page-title text-center">
+			Health Sciences Libraries
+		</h1>
 	</div>
 </div>
 
-<div class="container index">
-  <div class="row hslResourcesRow">
-      <div class="d-none d-xl-block col-xl-1"></div>
-        <div class="col-12 offset-xl-1 col-xl-3 m-2 cta first">
-          <div class="resource">
-            <%= link_to "Dynamed-Plus", "http://libproxy.temple.edu/login?url=http://search.ebscohost.com/login.aspx?authtype=ip,uid&profile=dynamed&custid=s8483746" %>
-          </div>
-        </div>
- 
-        <div class="col-12 offset-xl-1 col-xl-3 m-2 cta">
-          <div class="resource">
-              <%= link_to "Access Pharmacy", "http://libproxy.temple.edu/login?url=http://accesspharmacy.mhmedical.com/" %>
-          </div>
-        </div>
+<div class="row">
+	
+	<div class="col-12 col-lg-4 pr-14">
+		<div class="hsl-locations">
+			<%= link_to "Ginsburg Health Sciences Library", building_path(@ginsburg_location) %>
+			<hr />
+			<%= link_to "Krausz Podiatric Library", building_path(@podiatry_location) %>
+		</div>
 
-        <div class="col-12 offset-xl-1 col-xl-3 m-2 cta last">
-          <div class="resource">
-              <%= link_to "Access Medicine", "http://libproxy.temple.edu/login?url=http://accessmedicine.mhmedical.com/" %>
-          </div>
-        </div>
-      <div class="d-none d-xl-block col-xl-1"></div>
+		<div class="hsl-contact">
+			<%= image_tag "phone-handle-white.png" %>
+			<%= link_to "Contact Us", pages_contact_path %>
+			<hr />
+			<%= image_tag "email-white.png" %>
+			<%= link_to "Mailing List", "#" %>
+		</div>
+	</div>
 
-      <div class="d-none d-xl-block col-xl-1"></div>
-        <div class="col-12 col-xl-3 offset-xl-1 m-2 cta first">
-          <div class="resource">
-            <%= link_to "Access Surgery", "http://libproxy.temple.edu/login?url=http://accesssurgery.mhmedical.com/" %>
-          </div>
-        </div>
- 
-        <div class="col-12 col-xl-3 m-2 cta">
-          <div class="resource">
-              <%= link_to "CINAHL", "http://libproxy.temple.edu/login?url=http://search.ebscohost.com/login.aspx?profile=ehost&defaultdb=cin20" %>
-          </div>
-        </div>
-
-        <div class="col-12 col-xl-3 m-2 cta last">
-          <div class="resource">
-              <%= link_to "OVID", "http://libproxy.temple.edu/login?url=http://ovidsp.ovid.com/autologin" %>
-          </div>
-        </div>
-      <div class="d-none d-xl-block col-xl-1"></div>
-
-    </div>
+	<div class="col-12 col-lg-8">
+		<div class="row">
+			<div class="col-12 col-lg-6">
+				<div class="hsl-links">
+					<h2>Visit & Study</h2>
+					<ul class="list-unstyled">
+						<% @visit_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="hsl-links">
+					<h2>Resources & Media</h2>
+					<ul class="list-unstyled">
+						<% @resource_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="hsl-links">
+					<h2>Research Services</h2>
+					<ul class="list-unstyled">
+						<% @research_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="hsl-links">
+					<h2>Workshops & Events</h2>
+					<ul class="list-unstyled">
+						<% @event_links.each do |link| %>
+							<li><%= link_to link.title, link %></li>
+						<% end %>
+						<li class="text-right" style="background-color: white;padding: 6px;margin-top: 14px;margin-left: 14px"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </div>
+
+</div>
+
+

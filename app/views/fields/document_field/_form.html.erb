@@ -3,9 +3,11 @@
 </div>
 <div class="field-unit__field">
   <% if field.data.attached? %>
-	  <%= f.file_field field.attribute %>
+    <%= f.file_field field.attribute %>
   	<% field.data.attachments.each do |attachment| %>
-	  	<%= link_to attachment.filename, url_for(attachment), disposition: "attachment" %><br />
+      <%= link_to attachment.filename, url_for(attachment), disposition: "attachment" %>&nbsp;-&nbsp;
+      <%= link_to t("manifold.admin.actions.detach"), { action: :detach }, attach_param: attachment.id, data: { confirm: "Are you sure?" }%>
+      <br />
 	  <% end %>
 	<% else %>
 	  <%= f.file_field field.attribute %>    

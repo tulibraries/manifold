@@ -61,6 +61,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resource :groups do
+      member do
+        get ":id/detach" => :detach
+      end
+    end
+
     root to: "people#index"
   end
 

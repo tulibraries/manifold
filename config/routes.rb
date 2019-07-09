@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     resource :groups do
       member do
         get ":id/detach" => :detach
+        post "detach" => :detach
       end
     end
 

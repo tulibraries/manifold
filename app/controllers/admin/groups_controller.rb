@@ -42,11 +42,11 @@ module Admin
     end
 
     def detach
-      binding.pry
       @group = Group.find(params[:id])
-      @group.attachments.purge
+      attachment = @group.documents_attachments.find(params["attach_id_param"])
+      attachment.purge
       flash[:notice] = "attachment purged"
-      redirect_to admin_page_path
+      redirect_to admin_group_path
     end
   end
 end

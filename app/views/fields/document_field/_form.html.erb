@@ -6,10 +6,10 @@
     <%= f.file_field field.attribute %>
   	<% field.data.attachments.each do |attachment| %>
       <%= link_to attachment.filename, url_for(attachment), disposition: "attachment" %>&nbsp;-&nbsp;
-      <%= link_to t("manifold.admin.actions.detach"), { action: :detach }, attach_param: attachment.id, data: { confirm: "Are you sure?" }%>
+      <%= link_to t("manifold.admin.actions.detach"), { action: :detach, attach_id_param: attachment.id }, data: { confirm: "Are you sure?" }%>
       <br />
 	  <% end %>
 	<% else %>
-	  <%= f.file_field field.attribute %>    
+	  <%= f.file_field field.attribute %>
 	<% end %>
 </div>

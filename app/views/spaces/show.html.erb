@@ -32,7 +32,7 @@
           <% end %>
         </div>
 
-        <% unless @space.accessibility.nil? %>
+        <% unless @space.accessibility.blank? %>
         <h2>Access</h2>
         <div>
           <%= @space.accessibility %>
@@ -58,7 +58,8 @@
     </div>
   </div>
 
-<% unless @space.hours.nil? %>
+<% unless @space.hours.blank? %>
+
   <% unless @categories.blank? %>
     <div class="d-none d-md-block col-12 col-lg-9 offset-lg-3 hours-widget">
   <% else %>
@@ -66,13 +67,14 @@
   <% end %>
 
     <hr />
-    <%= render :partial => "/application/show-hours" %>
+    <%= render :partial => "/application/space_hours" %>
   </div>
 
   <div class="d-block d-md-none col-12">
     <hr />
-    <%= render :partial => "/application/mobile-hours" %>
+    <%= render :partial => "/application/space_mobile_hours" %>
   </div>
+  
 <% end %>
 
 </div>

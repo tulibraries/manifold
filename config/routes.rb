@@ -109,4 +109,8 @@ Rails.application.routes.named_routes.path_helpers_module.module_eval do
   def category_path(category, options = {})
     category.path
   end
+
+  def external_link_path(external_link, options = {})
+    external_link.link
+  end
 end

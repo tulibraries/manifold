@@ -14,7 +14,7 @@ module EventFilters
   def locations_list(events)
     to_add = events.select { |event| event.building == params[:location] || event.external_building == params[:location] }
 
-    locations = to_add.map { |event| 
+    locations = to_add.map { |event|
       unless event.building.nil?
         event.building.label
       else

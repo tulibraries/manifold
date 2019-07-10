@@ -1,13 +1,13 @@
 <% @events_list.each do |event| %>
   <div class="row event">
-    <div class="col-3">
+    <div class="col-12 col-m-3">
     <% if event.image.attached? %>
       <%= link_to (image_tag event.index_image), event_path(event) %>
     <% else %>
       <%= image_tag 'T-borderless.gif' %>
     <% end %>
     </div>
-    <div class="col-9">
+    <div class="col-12 col-m-9">
       <h2><%= link_to event.title, event_path(event) %></h2>
       <p><strong>
         <%= event.get_date %> | <%= event.set_times %> 

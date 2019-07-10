@@ -1,43 +1,64 @@
-<div class="events_facets">
+<div class="events_facets pr-14">
   <% unless @event_types.empty? %>
   <div class="event_types">
-    <h2 class="types_header">Event type</h2>
-    <ul class="list-unstyled">
+    <h2>
+      <a style="cursor:pointer" data-toggle="collapse" data-target="#types" aria-expanded="true" aria-controls="types"> 
+        Event Type
+      </a>
+    </h2>
+
+    <ul class="list-unstyled navbar-collapse collapse show" id="types">
       <% @event_types.each do |type| %>
         <% unless action_name == "past" %>
-          <li<% if type == params[:type]  %> class="active"<% end %>>
-            <%= link_to type, events_path(type: type) %>
-          </li>
+          <li<% if type == params[:type] %><% active = true %> class="active"<% end %>>
+            <%= link_to type, events_path(request.query_parameters.merge({type: type, page: 1})) %>
         <% else %>
-          <li<% if type == params[:type]  %> class="active"<% end %>>
-            <%= link_to type, past_events_path(type: type) %>
-          </li>
+          <li<% if type == params[:type] %><% active = true %> class="active"<% end %>>
+            <%= link_to type, past_events_path(request.query_parameters.merge({type: type, page: 1})) %>
         <% end %>
+        <% if active == true %>
+          <span class="clear-filter">
+            <%= link_to "X", events_path(request.query_parameters.except(:type).merge({page: 1})) %>
+          </span>
+        <% end %>
+          </li>
       <% end %>
     </ul>
   </div>
   <% end %>
   <% unless @event_locations.empty? %>
   <div class="event_spaces">
-    <h2 class="spaces_header">Location</h2>
-    <ul class="list-unstyled">
+    <h2>
+      <a style="cursor:pointer" data-toggle="collapse" data-target="#locations" aria-expanded="true" aria-controls="locations"> 
+        Location
+      </a>
+    </h2>
+    <ul class="list-unstyled navbar-collapse collapse show" id="locations">
       <% @event_locations.each do |location| %>
         <% unless action_name == "past" %>
-          <li<% if location == params[:location]  %> class="active"<% end %>>
-            <%= link_to location, events_path(location: location) %>
-          </li>
+          <li<% if location == params[:location] %><% active = true %> class="active"<% end %>>
+            <%= link_to location, events_path(request.query_parameters.merge({location: location, page: 1})) %>
         <% else %>
-          <li<% if location == params[:location]  %> class="active"<% end %>>
-            <%= link_to location, past_events_path(location: location) %>
-          </li>
+          <li<% if location == params[:location] %><% active = true %> class="active"<% end %>>
+            <%= link_to location, past_events_path(request.query_parameters.merge({location: location, page: 1})) %>
         <% end %>
+        <% if active == true %>
+          <span class="clear-filter">
+            <%= link_to "X", events_path(request.query_parameters.except(:location).merge({page: 1})) %>
+          </span>
+        <% end %>
+          </li>
       <% end %>
     </ul>
   </div>
   <% end %>
-  <div class="row">
+  <div class="row filter-reset">
     <div class="col text-center">
-      <%= link_to "[ reset all filters ]", events_path, class: "reset" %>
+      <% unless action_name == "past" %>
+      <%= link_to "Clear All", events_path, class: "reset" %>
+      <% else %>
+      <%= link_to "Clear All", past_events_path, class: "reset" %>
+      <% end %>
     </div>
   </div>
 </div>

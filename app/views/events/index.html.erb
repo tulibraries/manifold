@@ -1,15 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Events &amp; Exhibits</h1>
-    </div>
-  </div>
+<%= render "mobile_menu" %>
+
+<div class="container event-index">
+
+  <h1 class="d-none d-lg-block">Events &amp; Exhibits</h1>
 
   <div class="row">
-    <div class="col-3 filters">
+    <div class="col-3 leftside-index d-none d-md-none d-lg-block">
       <%= render "facets" %>
     </div>
-    <div class="col-6 events">
+
+    <div class="col-12 col-lg-6 events">
       
       <%= render "events" %>
 
@@ -19,26 +19,28 @@
         </div>
       </div>
     </div>
-    <div class="col-3 exhibits">
+
+    <div class="col-12 col-lg-3 exhibits">
       <% unless @exhibitions.blank? %>
-        <div class="row">
           <div class="col-12 exhibits-header">
             Current Exhibits
           </div>
-        </div>
 
         <%= render "exhibitions" %>
       <% end %>
-      <div class="row">
-        <div class="col-12">
+
+        <div class="col-12 px-0">
           <%= link_to "View past events & exhibits", past_events_path, class: "past-events-button" %>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
+
+        <div class="col-12 d-none">
           <%= link_to "View video recordings from past events", events_path, class: "video-button" %>
         </div>
-      </div>
+
+        <div class="col-12 exhibit">
+          All Temple University Libraries events are free and open to all.
+        </div>
+
     </div>
   </div>
 </div>

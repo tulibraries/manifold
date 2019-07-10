@@ -1,17 +1,16 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Past Events &amp; Exhibits</h1>
-    </div>
-  </div>
+<%= render "mobile_menu" %>
+
+<div class="container event-index">
+
+  <h1 class="d-none d-lg-block">Past Events &amp; Exhibits</h1>
 
   <div class="row">
-    <div class="col-3 filters">
+    <div class="col-3 leftside-index d-none d-md-none d-lg-block">
       <%= render "facets" %>
     </div>
     <div class="col-6 events">
       <div class="row">
-        <div class="col-12 upcoming-header">
+        <div class="upcoming-header">
           Past Events
         </div>
       </div>
@@ -24,27 +23,29 @@
         </div>
       </div>
     </div>
-    <div class="col-3 exhibits">
-      <% unless @exhibitions.blank? %>
-        <div class="row">
-          <div class="col-12 exhibits-header">
-            Current Exhibits
-          </div>
-        </div>
 
-        <%= render "exhibitions" %>
+    <div class="col-12 col-lg-3 exhibits">
+      <% unless @exhibitions.blank? %>
+
+      <div class="col-12 exhibits-header">
+        Current Exhibits
+      </div>
+
+      <%= render "exhibitions" %>
       <% end %>
 
-      <div class="row">
-        <div class="col-12">
-          <%= link_to "View current events & exhibits", events_path, class: "past-events-button" %>
-        </div>
+      <div class="col-12 px-0">
+        <%= link_to "View current events & exhibits", events_path, class: "past-events-button" %>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <%= link_to "View video recordings from past events", events_path, class: "video-button" %>
-        </div>
+
+      <div class="col-12 d-none">
+        <%= link_to "View video recordings from past events", events_path, class: "video-button" %>
       </div>
+
+      <div class="col-12 exhibit">
+        All Temple University Libraries events are free and open to all.
+      </div>
+
     </div>
   </div>
 </div>

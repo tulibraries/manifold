@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     elsif params.has_key?("location")
       @events = events.where(building: params[:location]).or(
         events.where(external_building: params[:location])).order(
-        start_time: :desc)
+          start_time: :desc)
     end
     @event_types = types_list(events)
     @event_locations = locations_list(events)

@@ -1,11 +1,26 @@
 @import "partials/_vars.scss";
 
 .event-show.container {
-	margin-top: 35px;
+	margin-top: 21px;
 }
-
+.crumbs {
+	margin-bottom:14px;
+	color: $red;
+	a {
+		text-decoration: underline;
+	}
+}
+.events, .exhibits {
+	@media (max-width: 985px) {
+		margin-top: 35px;
+	}
+}
 .events {
+	@media (max-width: 985px) {
+		margin-top: 35px;
+	}
 	h2 {
+		padding-top: 0;
 		a {
 			color: $black;
 			font-weight: 600;
@@ -14,19 +29,28 @@
 		}
 	}
 	
+	.upcoming-header {
+		background-color:$footer-gray;
+		padding: 10px 21px;
+		color: $white;
+		font-size:150%;
+		width: 100%;
+		margin: 0 15px 35px 15px;
+	}
 	.event {
 		border-bottom: solid $lightest-grey 2px;
 		margin-bottom: 14px;
+		margin-left: 15px;
+		margin-right:15px;
 	}
 }
 .exhibits-header {
-	margin-left: 14px;
 	padding-right: 14px;
 	background-color: $lightest-grey;
 	padding: 10px 21px;
 	color: $seagreen-on-grey;
 	font-size:150%;
-	margin-bottom: 35px;
+	margin-bottom: 14px;
 }
 .paginator {
 	background-color: $lightest-grey;
@@ -51,7 +75,12 @@
 	font-weight: 700;
 	color: $white!important;
 }
-.exhibits {
+.event_location, .event_type {
+	@media (max-width: 767px) {
+		display: block;
+	}
+}
+
 	.exhibit {
 		.exhibit_title {
 			font-size: 125%;
@@ -68,39 +97,52 @@
 		padding: 21px;
 		margin-bottom: 14px;
 	}
-	.location {
+	a.location {
 		font-weight: 600;
-		color: $black;
+		color: $black!important;
 	}
 	.past-events-button, .video-button {
 		background-color: $seagreen;
 		padding: 21px;
-		color: $white;
+		color: $white!important;
 		font-size: 150%;
 		text-align: center;
 		border-radius: 7px;
 		display: inline-block;
 		width: 100%;
-		margin-left: 14px;
 		margin-bottom: 14px;
+		text-decoration: underline;
 	}
 	.video-button {
 		background-color: $foamgreen;
 	}
+.event-location {
+	border: solid #1a9682 1px;
+  border-radius: 7px;
+  background-color: transparent;
+  padding: 21px;
+  margin-bottom: 14px;
 }
-
-.events_facets {
-	background-color: #eee;
-	padding: 21px 15px;
-	input {
+.leftside-index {
+	background-color: transparent!important;
+}
+.register-link {
+		background-color: $foamgreen;
+		padding: 21px;
 		border-radius: 7px;
-		border-color: $footer-grey
-	}
-	a.reset {
-		display: block;
-		margin-top: 14px;
-		color: $black;
-	}
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 14px;
+		a {
+			font-size: 150%;
+			color: $white!important;
+			text-decoration: underline;
+		}
+}
+.events_facets {
+	background-color: $lightest-grey;
+	padding-bottom: 21px;
+
 	.events_search {
 		padding-left: 42px;
 	}
@@ -122,8 +164,6 @@
 				font-size: 1rem;
 				color: $black;
 			}
-		}
-		li.active {
 		}
 	}
 	a[data-toggle="collapse"]:after {
@@ -153,6 +193,24 @@
 			background-color: $white;
 			margin-left: 4px;
 			padding-left: 14px;
+		}
+	}
+	.filter-reset {
+		text-align:center;
+		margin-top: 42px;
+		border-top: solid $seagreen-dark 2px;
+		margin-left: 1px;
+		margin-right: 1px;
+		padding-top: 21px;
+		a {
+			width:65%;
+			border-radius:4px;
+			padding: 7px;
+			background-color: $white;
+			border: solid $seagreen 1px;
+			margin-left: auto;
+			margin-right: auto;
+			color: $seagreen!important;
 		}
 	}
 }

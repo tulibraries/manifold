@@ -17,7 +17,7 @@
 		a {
 			color: white;
 		}
-		@media screen and (max-width: 799px) {
+		@media screen and (max-width: 1040px) {
 			width: 100%;
 			background-color: $grey;
 			border: 0;
@@ -157,7 +157,7 @@
 	}
 	.navbar-brand {
 		color: $seagreen-dark;
-		@media screen and (min-width: 0) and (max-width: 949px) {
+		@media screen and (min-width: 0) and (max-width: 1039px) {
 			white-space: normal;
 			text-align: left;
 			display: inline-block;
@@ -211,7 +211,7 @@
 		background-size: 42px 42px;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
-		@media screen and (min-width: 0px) and (max-width: 767px) {
+		@media screen and (min-width: 0px) and (max-width: 1039px) {
 			position: relative;
 			top: 0;
 			float: none;

@@ -51,7 +51,7 @@
 				color: $white;
 				font-size: 1.3rem;
 				font-weight: 600;
-				@media screen and (max-width: 1028px) {
+				@media screen and (max-width: 1039px) {
 					font-size:1.25rem;
 				}
 			}
@@ -62,15 +62,15 @@
 		}
 		li.last {
 			border-right: solid $seagreen-dark 2px;
-			@media screen and (max-width: 950px) {
+			@media screen and (max-width: 1040px) {
 				border-right: solid $seagreen-dark 0;
 			}
-			@media screen and (max-width: 949px) {
+			@media screen and (max-width: 1039px) {
 				padding-right: 0;
 			}
 		}
 		li.nav-right {
-			@media screen and (min-width: 940px) {
+			@media screen and (min-width: 1040px) {
 				float: right;
 			}
 			background-color: $seagreen-dark;

@@ -26,16 +26,7 @@
 		letter-spacing: .15rem;
 		text-transform: none;
 	}
-	ul {
-		margin-top: 1rem;
-		li {
-			line-height:1.2rem;
-			margin-bottom: 10px;
-			a {
-				font-size: 16px;
-			}
-		}
-	}
+
 }
 #footer-collections {
 	border-right: 0;
@@ -109,38 +100,22 @@
 	}
 	.tu-links {
 		border-top: solid #303030 0;
-		background-color: $footer-dark-gray; 
-		hr {
-			border: solid $light-grey 1px;
-			margin-top: 8px;
-		}
-		.tools {
-			font-size: 125%;
-			letter-spacing: .15rem;
-			h2 {
-				background-color: transparent!important;
-				border-left: 0;
-				font-size: 1.35rem;
-				padding: 0;
-			}
-		}
+		color: $light-grey;
 		padding: 24px 0 56px 0;
 		clear:both;
 		font-size: .9rem;
-		.region-footer {
-
-			margin: auto;
-			width:100%;
-			padding-left:2.5%;
+		h2 {
+			font-family: "PT Sans"!important;
+			font-size: 125%;
+			margin-bottom: 14px;
 		}
 		ul {
-			list-style-type:none;
 			li {
-				line-height: 2;
+				line-height: .85rem;
 				text-decoration: none;
-				padding-right:28px;
-				font-size: 120%;
+				font-size: 90%;
 				color: $light-grey;
+				padding-left: 0;
 				a {
 					color: $light-grey;
 				}
@@ -162,7 +137,8 @@ a.donate {
 	left: 21px;
 }
 .social {
-	background-color: $footer-grey;
+	/*background-color: $footer-grey;*/
+	border-bottom: solid $white 1px;
 	li.social-footer {
 		display: inline-block;
 		position: relative;

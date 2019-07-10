@@ -1,5 +1,5 @@
 <div id="site-footer" class="">
-  <section>
+  <div class="container">
   <div class="row social">
     <div class="col-7">
       <%= link_to "Donate to the Libraries", "#", class: 'donate' %>
@@ -18,88 +18,63 @@
       </ul>
     </div>
   </div>
-</section>
-<section>
-  <div class="row">
-    <div class="col" style="padding:0;">
-      <%= link_to root_path, class: "footer-name", id: "footer-logo" do %>
-        <%= image_tag('temple-logo-t-box.svg', class: "footer-logo") %> University Libraries
-      <% end %>
-      <h1 class="element-invisible">More Resources</h1>
-      <div class="postscript row" style="margin-top: 28px;">      
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-buildings">
-          <h2><%= link_to "Libraries", buildings_path, class: "col-heading" %></h2>
-          <ul class="list-unstyled">
-            <% @footer_buildings.each do |library| %>
-              <li><%= link_to library.name, library %></li>
-            <% end %>
-            </ul>
-            <div class="see-all"><%= link_to "View all Libraries", buildings_path %></div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-services">
-          <h2><%= link_to "Services", services_path, class: "col-heading" %></h2>
-          <ul class="list-unstyled">
-            <% @footer_services.each do |service| %>
-              <li><%= link_to service.title, service %></li>
-            <% end %>
-            </ul>
-            <div class="see-all"><%= link_to "View all Services", services_path %></div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-groups">
-          <h2><%= link_to "Groups", groups_path, class: "col-heading" %></h2>
-          <ul class="list-unstyled">
-            <% @footer_groups.each do |group| %>
-              <li><%= link_to group.name, group %></li>
-            <% end %>
-            </ul>
-            <div class="see-all"><%= link_to "View all Groups", groups_path %></div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-collections">
-          <h2><%= link_to "Collections", collections_path, class: "col-heading" %></h2>
-          <ul class="list-unstyled">
-            <% @footer_collections.each do |collection| %>
-              <li><%= link_to collection.name, collection %></li>
-            <% end %>
-            </ul>
-            <div class="see-all"><%= link_to "View all Collections", collections_path %></div>
-        </div>
-      </div>
 
+      
       <div class="tu-links">    
 
-        <div class="region region-footer footer-col">
-          <h2 style="border-bottom: solid #ccc 1px;">Useful Links</h2>
+          
 
           <div class="row">
-            <div class="col-md-6 col-lg-3 ">
-              <ul class="list-unstyled">
-                <li>EZ-borrow</li>
-                <li>ILLiad</li>
-                <li>RefWorks</li>
-              </ul>
+            <div class="col-6 px-0">
+              <div class="row">
+                <div class="col px-0">
+                  <h2>Quick Links</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 px-0">
+                  <ul class="list-unstyled">
+                    <li>EZ-borrow</li>
+                    <li>Jobs</li>
+                    <li>Privacy Guidelines</li>
+                  </ul>
+                </div>
+                <div class="col-lg-4 px-0">
+                  <ul class="list-unstyled">
+                    <li>ILLiad</li>
+                    <li>Publications</li>
+                    <li>Virtual Reference Services</li>
+                  </ul>
+                </div>
+                <div class="col-lg-4 px-0">
+                  <ul class="list-unstyled">
+                    <li>RefWorks</li>
+                    <li>Community Standards</li>
+                    <li>Diversity Statement</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="col-md-6 col-lg-3 ">
-              <ul class="list-unstyled">
-                <li>Staff&nbsp;directory</li>
-                <li>Contact us</li>
-                <li>Memberships</li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-3 ">
-              <ul class="list-unstyled">
-                <li>Jobs</li>
-                <li>Publications</li>
-                <li>Donate</li>
-              </ul>
-            </div>
-             <div class="col-md-6 col-lg-3 ">
-              <ul class="list-unstyled">
-                <li>Policies</li>
-              </ul>
+
+            <div class="col-lg-6 px-0">
+              <div class="row">
+                <div class="col-4 offset-8 px-0">
+                  <p>
+                  Temple University Libraries<br />
+                  1210 Pollett Walk<br />
+                  Philadelphia, PA 19122<br />
+                  (215) 204-3836
+                  </p>
+                  <p>Frequently Called Numbers</p>
+                  <p>Staff Directory</p>
+                </div>
+              </div>
             </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+
+<!-- float right -->
+
+
+</div>
 </div>

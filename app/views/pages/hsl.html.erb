@@ -22,18 +22,18 @@
 		</div>
 
 		<div class="hsl-contact">
-			<%= image_tag "phone-handle-white.png" %>
+			<%= image_tag "phone-handle-white.png", style: "width: 100px" %>
 			<%= link_to "Contact Us", pages_contact_path %>
 			<hr />
-			<%= image_tag "email-white.png" %>
-			<%= link_to "Mailing List", "#" %>
+			<%= image_tag "email-white.png", style: "width: 100px" %>
+			<%= link_to "Mailing List", "http://eepurl.com/cbRrYP" %>
 		</div>
 	</div>
 
 	<div class="col-12 col-lg-8">
 		<div class="row">
 			<div class="col-12 col-lg-6">
-				<div class="hsl-links">
+				<div class="hsl-links d-none d-lg-block">
 					<h2>Visit & Study</h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
@@ -41,9 +41,12 @@
 						<% end %>
 					</ul>
 				</div>
+				<div class="hsl-links d-block d-lg-none">
+					<%= render "hsl_visit" %>
+				</div>
 			</div>
 			<div class="col-12 col-lg-6">
-				<div class="hsl-links">
+				<div class="hsl-links d-none d-lg-block">
 					<h2>Resources & Media</h2>
 					<ul class="list-unstyled">
 						<% @resource_links.each do |link| %>
@@ -51,9 +54,12 @@
 						<% end %>
 					</ul>
 				</div>
+				<div class="hsl-links d-block d-lg-none">
+					<%= render "hsl_resources" %>
+				</div>
 			</div>
 			<div class="col-12 col-lg-6">
-				<div class="hsl-links">
+				<div class="hsl-links d-none d-lg-block">
 					<h2>Research Services</h2>
 					<ul class="list-unstyled">
 						<% @research_links.each do |link| %>
@@ -61,16 +67,22 @@
 						<% end %>
 					</ul>
 				</div>
+				<div class="hsl-links d-block d-lg-none">
+					<%= render "hsl_research" %>
+				</div>
 			</div>
 			<div class="col-12 col-lg-6">
-				<div class="hsl-links">
+				<div class="hsl-links d-none d-lg-block">
 					<h2>Workshops & Events</h2>
 					<ul class="list-unstyled">
 						<% @event_links.each do |link| %>
 							<li><%= link_to link.title, link %></li>
 						<% end %>
-						<li class="text-right" style="background-color: white;padding: 6px;margin-top: 14px;margin-left: 14px"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
+						<li class="text-right hsl-event"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
 					</ul>
+				</div>
+				<div class="hsl-links d-block d-lg-none">
+					<%= render "hsl_events" %>
 				</div>
 			</div>
 		</div>

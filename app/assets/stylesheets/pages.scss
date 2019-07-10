@@ -48,6 +48,9 @@
 	.hsl-contact {
 		background-color: $seagreen;
 		padding: 0;
+		@media (max-width: 984px) {
+			margin-bottom: 21px;
+		}
 		img {
 			padding-left: 21px;
 		}
@@ -58,19 +61,32 @@
 		hr {
 			background-color: $white;
 			width: 100%;
+			margin: 0;
 		}
 	}
 	.hsl-links {
 		background-color: $lightest-grey;
 		padding:14px;
 		margin-bottom: 28px;
+		@media (max-width: 984px) {
+			margin: 0;
+		}
 		a {
 			color: $black;
 		}
-		h2 {
+		h2, .hsl-links-title {
 			color: $seagreen;
 			padding-bottom: 14px;
 			border-bottom: solid $seagreen 2px;
 		}
+	}
+	li.hsl-event {
+		background-color: white;
+		padding: 6px;
+		margin-top: 14px;
+		margin-left: 14px;
+	}
+	h2.hsl-links-title a {
+		color: $seagreen!important;
 	}
 }

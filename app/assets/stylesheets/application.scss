@@ -114,6 +114,9 @@ a:not(.dropdown-item) {
 a.inline {
 	text-decoration: underline;
 }
+.back-button {
+	color: $red;
+}
 #content {
 	margin: 0;
 	background-color: $white;

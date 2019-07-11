@@ -99,6 +99,24 @@ en:
           police_report_number: "Police Report Number"
           other_action_taken: "Other Action Taken"
           supervisor_notified: "Supervisor Notified"
+      forms:
+        recall_book:
+          title: Request Recall of Books Already Checked Out
+        purchase_request:
+          title: Purchase Request
+        missing_book:
+          title: Missing Book Search Request
+        ir:
+          title: Incident Report
+        hsl_book_reserve:
+          title: Request book(s) for reserve-Ginsburg Health Sciences Library
+        data_purchase_grants_application:
+          title: Library Data Grants
+        ask_scrc:
+          title: "Special Collections Research Center: Ask a Question"
+
+
+
     error:
       user_not_registered: "User not registered."
       access_denied: "Account modification - Access denied"

@@ -1,56 +1,87 @@
 @import "partials/_vars.scss";
-ul {
-			margin-top: 10px;
-			li {
-				padding: 6px 14px;
-				padding-right: 7px;
-				font-size: 1rem;
-				a {
-					margin: 0 2px;
-					font-size: 1rem;
-				}
-			}
-			li.active {
-				background-color: $white;
-				margin-left: 4px;
-				padding-left: 14px;
-			}
+
+.container.finding-aid {
+	margin-top: 21px;
+	ul.collections {
+		line-height: .75rem;
+		padding-bottom: 28px;
+		border-bottom: solid $seagreen-dark 2px;
+		li {
+			padding-left: 0;
+			a {color: $black;}
 		}
-		a[data-toggle="collapse"]:after {
-			content: "\f105";
-	    font-family: "FontAwesome";
-	    font-size: larger;
-	  	float: right;
-	  	padding-right: 7px;
+	}
+	ul.subjects {
+		line-height: .75rem;
+		li {
+			padding-left: 0;
+			a {color: $black;}
 		}
-		a[aria-expanded="true"]:after {
-			content: "\f107";
-	    font-family: "FontAwesome";
-	    font-size: larger;
-	  	float: right;
-	  	padding-right: 7px;
+	}
+	.access-link {
+		background-color: $foamgreen;
+		padding: 14px;
+		border-radius: 7px;
+		margin-bottom: 17px;
+		a {
+			color: $white;
+			text-decoration: underline;
 		}
 		h2 {
+			margin-bottom: 3px;
 		}
-		
-	.filter_reset {
-		margin-top: 21px;
-		padding-top: 14px;
-		border-top: solid $seagreen-dark 2px;
 	}
-	.aids-filter-reset {
+}
 
-		width:50%;
-		background-color: $white;
-		text-align:center;
-		border: solid $seagreen 1px;
-		border-radius:4px;
-		padding: 7px;
-		margin: 21px auto;
+/* Index Page */
+ul {
+	margin-top: 10px;
+	li {
+		padding: 6px 14px;
+		padding-right: 7px;
+		font-size: 1rem;
 		a {
-			color: $seagreen!important;
+			margin: 0 2px;
+			font-size: 1rem;
 		}
 	}
+	li.active {
+		background-color: $white;
+		margin-left: 4px;
+		padding-left: 14px;
+	}
+}
+a[data-toggle="collapse"]:after {
+	content: "\f105";
+  font-family: "FontAwesome";
+  font-size: larger;
+	float: right;
+	padding-right: 7px;
+}
+a[aria-expanded="true"]:after {
+	content: "\f107";
+  font-family: "FontAwesome";
+  font-size: larger;
+	float: right;
+	padding-right: 7px;
+}		
+.filter_reset {
+	margin-top: 21px;
+	padding-top: 14px;
+	border-top: solid $seagreen-dark 2px;
+}
+.aids-filter-reset {
+	width:50%;
+	background-color: $white;
+	text-align:center;
+	border: solid $seagreen 1px;
+	border-radius:4px;
+	padding: 7px;
+	margin: 21px auto;
+	a {
+		color: $seagreen!important;
+	}
+}
 .aid-index {
 	@media (max-width: 984px) {
 		margin-top: 14px;

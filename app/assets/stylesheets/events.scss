@@ -1,93 +1,56 @@
 @import "partials/_vars.scss";
 
 .event-show.container {
-	margin-top: 35px;
+	margin-top: 21px;
 }
-
-.endcap {
-	h2, h3 {
-		border-left: 0;
-		padding: 10px 21px;
-		margin-top: 0;
-		margin-bottom: 14px;
-	}
-	p {
-		font-size: large;
-		padding-left: 21px;
-	}
-	padding: 0;
-	width: 90%;
-	overflow: hidden;
-	margin-bottom: 21px;
-	border-top-right-radius: 14px;
-	border-bottom-right-radius: 14px;
-}
-
-.purple {
-	h2 {
-		background-color: $purple-complement!important;
-	}
-	border: solid $purple 2px;
-}
-.green {
-	h2, h3 {
-		background-color: $seagreen-complement!important;
-		margin-bottom: 14px;
-		a {
-			color: $black;
-		}
-	}
-	h3.event-space {
-		text-align: center;
-		padding: 21px 0;
-	}
-	border: solid $seagreen 2px;
-
-}
-.olive {
-	h2 {
-		background-color: $baby-puke-green!important;
-		margin-bottom: 0;
-		text-align: center;
-		padding-top: 21px;
-		padding-bottom: 21px;
-		border: solid $seagreen 2px;
-		border-top-right-radius: 14px;
-		border-bottom-right-radius: 14px;
-		a {
-			color: $black;
-		}
+.crumbs {
+	margin-bottom:14px;
+	color: $red;
+	a {
+		text-decoration: underline;
 	}
 }
-
+.events, .exhibits {
+	@media (max-width: 985px) {
+		margin-top: 35px;
+	}
+}
 .events {
-	h3 {
+	@media (max-width: 985px) {
+		margin-top: 35px;
+	}
+	h2 {
+		padding-top: 0;
 		a {
 			color: $black;
 			font-weight: 600;
+			font-size: 80%;
 			text-decoration: underline;
 		}
 	}
+	
 	.upcoming-header {
 		background-color:$footer-gray;
 		padding: 10px 21px;
 		color: $white;
 		font-size:150%;
-		margin-bottom: 35px;
+		width: 100%;
+		margin: 0 15px 35px 15px;
 	}
 	.event {
 		border-bottom: solid $lightest-grey 2px;
 		margin-bottom: 14px;
+		margin-left: 15px;
+		margin-right:15px;
 	}
 }
 .exhibits-header {
-	margin-left: 14px;
 	padding-right: 14px;
 	background-color: $lightest-grey;
 	padding: 10px 21px;
 	color: $seagreen-on-grey;
 	font-size:150%;
-	margin-bottom: 35px;
+	margin-bottom: 14px;
 }
 .paginator {
 	background-color: $lightest-grey;
@@ -112,7 +75,12 @@
 	font-weight: 700;
 	color: $white!important;
 }
-.exhibits {
+.event_location, .event_type {
+	@media (max-width: 767px) {
+		display: block;
+	}
+}
+
 	.exhibit {
 		.exhibit_title {
 			font-size: 125%;
@@ -129,39 +97,52 @@
 		padding: 21px;
 		margin-bottom: 14px;
 	}
-	.location {
+	a.location {
 		font-weight: 600;
-		color: $black;
+		color: $black!important;
 	}
 	.past-events-button, .video-button {
 		background-color: $seagreen;
 		padding: 21px;
-		color: $white;
+		color: $white!important;
 		font-size: 150%;
 		text-align: center;
 		border-radius: 7px;
 		display: inline-block;
 		width: 100%;
-		margin-left: 14px;
 		margin-bottom: 14px;
+		text-decoration: underline;
 	}
 	.video-button {
 		background-color: $foamgreen;
 	}
+.event-location {
+	border: solid #1a9682 1px;
+  border-radius: 7px;
+  background-color: transparent;
+  padding: 21px;
+  margin-bottom: 14px;
 }
-
-.events_facets {
-	background-color: #eee;
-	padding: 21px 15px;
-	input {
+.leftside-index {
+	background-color: transparent!important;
+}
+.register-link {
+		background-color: $foamgreen;
+		padding: 21px;
 		border-radius: 7px;
-		border-color: $footer-grey
-	}
-	a.reset {
-		display: block;
-		margin-top: 14px;
-		color: $black;
-	}
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 14px;
+		a {
+			font-size: 150%;
+			color: $white!important;
+			text-decoration: underline;
+		}
+}
+.events_facets {
+	background-color: $lightest-grey;
+	padding-bottom: 21px;
+
 	.events_search {
 		padding-left: 42px;
 	}
@@ -173,14 +154,34 @@
     color: #ccc;
 	}
 	ul {
-		margin-left: 7px;
-		a {
-			color: $black;
+		margin-top: 10px;
+		li {
+			padding: 6px 14px;
+			padding-right: 7px;
+			font-size: 1rem;
+			a {
+				margin: 0 2px;
+				font-size: 1rem;
+				color: $black;
+			}
 		}
 	}
+	a[data-toggle="collapse"]:after {
+		content: "\f105";
+    font-family: "FontAwesome";
+    font-size: larger;
+  	float: right;
+  	padding-right: 7px;
+	}
+	a[aria-expanded="true"]:after {
+		content: "\f107";
+    font-family: "FontAwesome";
+    font-size: larger;
+  	float: right;
+  	padding-right: 7px;
+	}
 	.types_header {
-		margin-top: 28px;
-		color: #5B7335;
+		color: #187768;
 		font-weight: 600;
 	}
 	.spaces_header {
@@ -189,11 +190,27 @@
 	}
 	.event_types, .event_spaces {
 		.active {
-			font-weight: bold;
-			padding: 4px;
-			padding-left: 10px;
-			margin-left: -10px;
-			background-color: $seagreen-complement;
+			background-color: $white;
+			margin-left: 4px;
+			padding-left: 14px;
+		}
+	}
+	.filter-reset {
+		text-align:center;
+		margin-top: 42px;
+		border-top: solid $seagreen-dark 2px;
+		margin-left: 1px;
+		margin-right: 1px;
+		padding-top: 21px;
+		a {
+			width:65%;
+			border-radius:4px;
+			padding: 7px;
+			background-color: $white;
+			border: solid $seagreen 1px;
+			margin-left: auto;
+			margin-right: auto;
+			color: $seagreen!important;
 		}
 	}
 }

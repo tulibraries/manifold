@@ -1,77 +1,89 @@
-<div id="site-footer" class="">
+<div id="site-footer">
   <div class="container">
   <div class="row social">
-    <div class="col-7">
-      <%= link_to "Donate to the Libraries", "#", class: 'donate' %>
+    <div class="col-12 col-lg-7 px-0">
+      <% unless @donate_link.nil? %>
+        <%= link_to image_tag("give_button"), page_path(@donate_link), class: "donate", alt: "Support the Libraries" %>
+      <% end %>
     </div>
-    <div class="col-5 text-right">
+    <div class="col-12 col-lg-5 text-left text-lg-right px-0">
+      <% unless @socila_liks.nil? %>
       <ul>
         <li class="social-footer instagram">
-          <%= link_to image_tag('instagram-logo_white.svg'), 'http://instagram.com/tulibraries' %>
+          <%= link_to image_tag('instagram-logo_white.svg'), @social_links %>
         </li>
         <li class="social-footer facebook">
-          <%= link_to image_tag('facebook-logo_white.svg'), 'https://www.facebook.com/pages/Temple-University-Libraries/6340283058' %>
+          <%= link_to image_tag('facebook-logo_white.svg'), @social_links %>
         </li>
         <li class="social-footer twitter">
-          <%= link_to image_tag('twitter-logo_white.svg'), 'http://twitter.com/TempleLibraries' %>
+          <%= link_to image_tag('twitter-logo_white.svg'), @social_links %>
         </li>
       </ul>
+      <% end %>
     </div>
   </div>
 
-      
-      <div class="tu-links">    
-
-          
-
+  <div class="tu-links">
+      <div class="row">
+        <div class="col-12 col-lg-6 px-0">
           <div class="row">
-            <div class="col-6 px-0">
-              <div class="row">
-                <div class="col px-0">
-                  <h2>Quick Links</h2>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-4 px-0">
-                  <ul class="list-unstyled">
-                    <li>EZ-borrow</li>
-                    <li>Jobs</li>
-                    <li>Privacy Guidelines</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 px-0">
-                  <ul class="list-unstyled">
-                    <li>ILLiad</li>
-                    <li>Publications</li>
-                    <li>Virtual Reference Services</li>
-                  </ul>
-                </div>
-                <div class="col-lg-4 px-0">
-                  <ul class="list-unstyled">
-                    <li>RefWorks</li>
-                    <li>Community Standards</li>
-                    <li>Diversity Statement</li>
-                  </ul>
-                </div>
-              </div>
+            <div class="col px-0">
+              <h2>Quick Links</h2>
             </div>
-
-            <div class="col-lg-6 px-0">
-              <div class="row">
-                <div class="col-4 offset-8 px-0">
-                  <p>
-                  Temple University Libraries<br />
-                  1210 Pollett Walk<br />
-                  Philadelphia, PA 19122<br />
-                  (215) 204-3836
-                  </p>
-                  <p>Frequently Called Numbers</p>
-                  <p>Staff Directory</p>
-                </div>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-4 px-0">
+              <ul class="list-unstyled">
+                <% unless @ezborrow_link.nil? %>
+                <li><%= link_to "EZ-borrow", @ezborrow_link.link %></li>
+                <% end %>
+                <% unless @jobs_link.nil? %>
+                <li><%= link_to "Jobs", page_path(@jobs_link) %></li>
+                <% end %>
+                <li><%= link_to "Privacy Guidelines", "#" %></li>
+              </ul>
             </div>
+            <div class="col-12 col-lg-4 px-0">
+              <ul class="list-unstyled">
+                <% unless @illiad_link.nil? %>
+                <li><%= link_to "ILLiad", @illiad_link.link %></li>
+                <% end %>
+                <% unless @publications_link.nil? %>
+                <li><%= link_to "Publications", page_path(@publications_link) %></li>
+                <% end %>
+                <li><%= link_to "Diversity Statement", "#" %></li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-4 px-0">
+              <ul class="list-unstyled">
+                <% unless @refworks_link.nil? %>
+                <li><%= link_to "RefWorks", @refworks_link.link %></li>
+                <% end %>
+                <li><%= link_to "Community Standards", "#" %></li>
+                <li><%= link_to "Virtual Reference Services", "#" %></li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
+
+        <div class="col-12 col-lg-6 px-0">
+          <div class="row">
+            <div class="col-12 col-lg-4 offset-lg-8 px-0 address">
+              <p>
+              Temple University Libraries<br />
+              1210 Pollett Walk<br />
+              Philadelphia, PA 19122<br />
+              (215) 204-3836
+              </p>
+              <% unless @numbers_link.nil? %>
+              <p><%= link_to "Frequently Called Numbers", page_path(@numbers_link) %></p>
+              <% end %>
+              <p><%= link_to "Staff Directory", people_path %></p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
 
 <!-- float right -->
 

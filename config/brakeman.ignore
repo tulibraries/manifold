@@ -113,6 +113,26 @@
       "note": ""
     },
     {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "8d2501ea41801dd441c1ea7b3044ace44aa18f470e19149d4775314d85c2a7e0",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called with parameter value",
+      "file": "app/controllers/concerns/admin/detachable.rb",
+      "line": 8,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "params[:controller].split(\"/\").last.classify.constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::Detachable",
+        "method": "detach"
+      },
+      "user_input": "params[:controller].split(\"/\").last.classify",
+      "confidence": "High",
+      "note": ""
+    },
+    {
       "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
       "fingerprint": "c2fab1996253d0446b6f777d8e7fb7a07a770b2b8e89a921d2c67a4c21a9fddf",
@@ -216,6 +236,6 @@
       "note": ""
     }
   ],
-  "updated": "2019-06-24 09:55:03 -0400",
+  "updated": "2019-07-12 16:51:08 -0400",
   "brakeman_version": "4.5.1"
 }

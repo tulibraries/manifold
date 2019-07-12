@@ -3,48 +3,85 @@
 
 	<%= render "page-search" %>
 	
-	<div class="row d-none d-md-none d-lg-block">
-	    <%= render "search-options" %>
-	</div>
-	<div class="row d-block d-md-block d-lg-none">
-	    <%= render "responsive-search-options" %>
-	</div>
 </div>
 
-<div class="container index">
+	<div class="col-12 d-block d-lg-none px-0" id="todays-hours-in-page">
+		<%= render "todays_date" %>
+	</div>
+<div class="container under">
 	<div class="row ctaRow">
-		<%= render "home-row" %>
+		<div class="col-12 col-lg-3 pr-3">
+	    <div class="cta-white">
+	      <%= link_to image_tag("research_help"), service_path(@research_help) %> 
+	      <%= link_to "Research Help", service_path(@research_help), class: "strong" %>
+	    </div>
+	  </div>
+	  <div class="col-12 col-lg-3 pr-3">
+	    <div class="cta-white">
+	      <%= link_to image_tag("printer"), service_path(@print_my_paper) %> 
+	      <%= link_to "Print My Paper", service_path(@print_my_paper), class: "strong" %>
+	    </div>
+	  </div>
+	  <div class="col-12 col-lg-3 pr-3">
+	    <div class="cta-white">
+	      <%= link_to image_tag("study_room"), space_path(@book_study_room) %> 
+	      <%= link_to "Book a Study Room", space_path(@book_study_room), class: "strong" %>
+	    </div>
+	  </div>
+	  <div class="col-12 col-lg-3">
+	    <div class="cta-white">
+	      <%= link_to image_tag("explore_charles" ), category_path(@explore_charles) %>  
+	      <%= link_to "Explore Charles", category_path(@explore_charles), class: "strong" %>
+	    </div>
+	  </div>
 	</div>
 </div>
 
-<% unless @highlights.blank? %>
-<div class="row">
-	<div class="col">
-		<div class="vertical-stripes">
-			<h1><span>News &amp; Highlights</span></h1>
+<div id="hollywood-squares">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-lg-3 catalog-search h-auto">
+				<div class="h-30 square">
+					<%= image_tag "book_white", class: "icon" %>
+					<%= link_to "Books & Media", "http://librarysearch.temple.edu/books" %>
+				</div>
+				<div div class="h-30 square">
+					<%= image_tag "magazine_white", class: "icon" %>
+					<%= link_to "Articles", "http://librarysearch.temple.edu/articles" %>
+				</div>
+				<div class="h-30 square bb-0">
+					<%= image_tag "database_white", class: "icon" %>
+					<%= link_to "Databases", "http://librarysearch.temple.edu/databases" %>
+				</div>
+				<div class="caption">
+					<%= link_to "Search the catalog >", "http://librarysearch.temple.edu", class: "price" %>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6 px-0 px-lg-5 news-events">
+				<div class="events">
+					<%= link_to (image_tag "event_space"), events_path, class: "d-none d-lg-block" %>
+					<div class="caption" id="eventscaption"><%= link_to "Events & Exhibits", events_path, class: "lynde" %></div>
+				</div>
+				<div class="news">
+					<%= link_to (image_tag "graduate_scholars"), "#", class: "d-none d-lg-block" %>
+					<div class="caption" id="newscaption"><%= link_to "Library News", "#", class: "lynde" %></div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-3 locations-links px-0">
+				<div class="h-18"><%= link_to "Health Sciences Library", pages_hsl_path %></div>
+				<div class="h-18"><%= link_to "Duckworth Scholars' Studio", pages_hsl_path %></div>
+				<div class="h-18 two-lines"><%= link_to "Charles L. Blockson Afro-American Collection", pages_blockson_path %></div>
+				<div class="h-18 two-lines"><%= link_to "Special Collections Research Center", pages_scrc_path %></div>
+				<div class="h-18 bb-0"><%= link_to "Law Library", "https://www.law.temple.edu/library/about-the-law-library/" %></div>
+				<div class="caption">
+					<%= link_to "See all libraries and locations >", "http://librarysearch.temple.edu", class: "gobel" %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
-<div class="container index">
-	<div class="row ctaRow news">
-		<%= render "highlights-row" %>
-	</div>
-</div>
-<% end %>
 
-<% unless @events.nil? %>
-<div class="row">
-	<div class="col">
-		<div class="vertical-stripes">
-			<h1><span>Events</span></h1>
-		</div>
-	</div>
 </div>
 
-<div class="container index">
-	<div class="row ctaRow events">
-		<%= render "events-row" %>
-	</div>
 </div>
-<% end %>

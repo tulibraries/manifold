@@ -10,7 +10,11 @@ class PagesController < ApplicationController
   end
 
   def home
-    @events = Event.order(:start_time).take(4)
+    @research_help = Service.find_by_title("Talk to a librarian or subject matter expert")
+    @print_my_paper = Service.find_by_title("Print, photocopy and scan")
+    @book_study_room = Space.find_by_name("Charles Library small group study rooms")
+    @explore_charles = Category.find_by_name("Introducing Charles Library")
+    @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
   end
 
   def ambler
@@ -100,7 +104,7 @@ class PagesController < ApplicationController
 
   private
     def set_date
-      @today = Date.today.strftime("%Y-%m-%d 00:00:00")
+      @today = Date.today.strftime("%Y-%m-%d 04:00:00")
     end
     def todays_date
       @todays_date = @today.to_date.strftime("%^A, %^B %d, %Y ")

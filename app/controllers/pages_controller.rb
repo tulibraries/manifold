@@ -17,7 +17,10 @@ class PagesController < ApplicationController
     @events = Event.where("tags LIKE ?", "Ambler Campus Library").take(4)
   end
   def scrc
-    @events = Event.where("tags LIKE ?", "Special Collections Research Center").take(4)
+    @scrc_location = Space.find_by(name: "SCRC Reading Room")
+    @visit_links = Category.find_by("upper(name) = ?", "VISIT & STUDY AT THE SPECIAL COLLECTIONS RESEARCH CENTER").items.sort_by { |e| e.label }
+    @collection_links = Collection.all.sort_by { |e| e.label }
+    @page = Page.find_by_title("SCRC homepage")
   end
   def blockson
     @events = Event.where("tags LIKE ?", "blockson").take(4)

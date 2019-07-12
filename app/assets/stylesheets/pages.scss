@@ -23,6 +23,10 @@
 	.page-title {
 		font-size: 400%;
 		margin-bottom: 42px;
+		@media (max-width: 768px) {
+			font-size: 210%!important;
+			outline: solid red 1px;
+		}
 	}
 	.banner-image {
 		background:asset-data-url('hsl-banner.jpg') 0 25% no-repeat;
@@ -48,7 +52,7 @@
 	.hsl-contact {
 		background-color: $seagreen;
 		padding: 0;
-		@media (max-width: 984px) {
+		@media (max-width: 1039px) {
 			margin-bottom: 21px;
 		}
 		img {
@@ -68,7 +72,7 @@
 		background-color: $lightest-grey;
 		padding:14px;
 		margin-bottom: 28px;
-		@media (max-width: 984px) {
+		@media (max-width: 1039px) {
 			margin: 0;
 		}
 		a {
@@ -87,6 +91,88 @@
 		margin-left: 14px;
 	}
 	h2.hsl-links-title a {
+		color: $seagreen!important;
+	}
+}
+
+.minipage.scrc {
+	.page-title {
+		font-size: 400%;
+		margin-bottom: 42px;
+	}
+	.banner-image {
+		background:asset-data-url('scrc-banner') 0 70% no-repeat;
+		background-size: cover;
+		height: 240px;
+		margin-bottom: 21px;
+	}
+	.scrc-locations {
+		background-color: $foamgreen;
+		padding: 21px 0;
+		margin-bottom: 21px;
+		a {
+			padding-left: 21px;
+			padding-right: 21px;
+			color: $white;
+			font-size: 135%;
+		}
+		hr {
+			background-color: $white;
+			width: 100%;
+		}
+	}
+	.scrc-contact {
+		background-color: $seagreen;
+		padding: 0;
+		@media (max-width: 1039px) {
+			margin-bottom: 21px;
+		}
+		img {
+			padding-left: 21px;
+		}
+		a {
+			color: $white;
+			font-size: 135%;
+		}
+		hr {
+			background-color: $white;
+			width: 100%;
+			margin: 0;
+		}
+	}
+	#scrc-description-container {
+		@media (max-width: 1039px) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+		#scrc-description {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+	.scrc-links {
+		background-color: $lightest-grey;
+		padding:14px;
+		margin-bottom: 28px;
+		@media (max-width: 1039px) {
+			margin: 0;
+		}
+		a {
+			color: $black;
+		}
+		h2, h2.scrc-collections-title a {
+			color: $seagreen;
+			padding-bottom: 14px;
+			border-bottom: solid $seagreen 2px;
+		}
+	}
+	li.scrc-event {
+		background-color: white;
+		padding: 6px;
+		margin-top: 14px;
+		margin-left: 14px;
+	}
+	h2.scrc-links-title a {
 		color: $seagreen!important;
 	}
 }

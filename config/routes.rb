@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+  mount Rswag::Api::Engine => '/api-docs'
   concern :imageable do
     get "image/thumbnail", to: "images#thumbnail_image"
     get "image/medium",    to: "images#medium_image"

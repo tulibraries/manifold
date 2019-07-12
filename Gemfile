@@ -67,6 +67,10 @@ gem "paper_trail"
 gem "diffy"
 gem "okcomputer"
 gem "pg"
+# Gemfile
+gem 'rswag-api'
+gem 'rswag-ui'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -102,6 +106,7 @@ group :test do
   gem "mutant-rspec"
   gem "rspec-activemodel-mocks"
   gem "simplecov", require: false
+  gem 'rswag-specs'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

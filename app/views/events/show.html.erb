@@ -6,28 +6,39 @@
 
 <div class="event-show container">
   <div class="row">
-    <div class="col-3 text-center">
+    <div class="col crumbs">
+      < <%= link_to "All Events & Exhibits", events_path %>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-12 col-lg-3 text-center">
       <% if @event.image.attached? %>
           <%= image_tag @event.image.variant(gravity: 'center', extent: "100%x100%") %>
         <% else %>
           <%= image_tag 'T-borderless.gif' %>
         <% end %>
     </div>
-    <div class="col-6 event-info">
-      <h1><%= @event.title %></h1>
+
+    <div class="col-12 col-lg-6 event-info">
+      <h1 class="page-title"><%= @event.title %></h1>
+      <p style="font-size: larger;font-weight: 900;"><%= @event.get_date %> | <%= @event.set_times %></p>
       <%= sanitize @event.description.html_safe %>
     </div>
-    <div class="col-3 event-data">
-      <div class="row">
-        <div class="endcap purple">
-          <h2>Details</h2>
-            <p><%= @event.get_date %></p>
-            <p><%= @event.set_times %></p>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="endcap green">
+    <div class="col-12 col-lg-3 event-data pl-lg-5">
+      
+      <% unless @event.registration_link.blank? %>
+        
+          <div class="col register-link">
+            <%= link_to "Register", strip_tags(@event.registration_link) %>
+          </div>
+        
+      <% end %>
+
+    
+        <div class="col event-location">
           <% unless @event.building.nil? %>
             <h3 class="event-space"><%= link_to @event.building.name, building_path(@event.building) %></h3>
             <p>
@@ -47,18 +58,8 @@
           </p>
           <% end %>
         </div>
-      </div>
+      
 
-      <% unless @event.registration_link.blank? %>
-        <div class="row">
-          <div class="endcap olive">
-            <h2><%= link_to "Register", strip_tags(@event.registration_link) %></h2>
-          </div>
-        </div>
-      <% end %>
     </div>
   </div>
-    <% if @event.can_visit %>
-      <%= render "visit" %>
-    <% end %>
   </div>

@@ -70,9 +70,9 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how finding aids are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(finding_aid)
-  #   "FindingAid ##{finding_aid.id}"
-  # end
+  def display_resource(finding_aid)
+    "Finding Aid: #{finding_aid.name}"
+  end
 
   def tinymce?
     true

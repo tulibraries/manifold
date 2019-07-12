@@ -68,8 +68,8 @@ gem "diffy"
 gem "okcomputer"
 gem "pg"
 # Gemfile
-gem 'rswag-api'
-gem 'rswag-ui'
+gem "rswag-api"
+gem "rswag-ui"
 
 
 group :development, :test do
@@ -78,7 +78,6 @@ group :development, :test do
   gem "pry-rails"
   gem "rubocop", require: false
   gem "json-schema"
-  gem 'rswag-specs'
 end
 
 group :development do

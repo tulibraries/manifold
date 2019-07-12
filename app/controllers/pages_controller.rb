@@ -24,12 +24,12 @@ class PagesController < ApplicationController
   end
 
   def hsl
-    @ginsburg_location = Building.find_by(name: "Simmy and Harry Ginsburg Health Sciences Library")
-    @podiatry_location = Building.find_by(name: "Charles E. Krausz Library of Podiatric Medicine")
+    @ginsburg_location = Building.where("name LIKE ?", "%Health Sciences Library").first
+    @podiatry_location = Building.where("name LIKE ?", "%Podiatric%").first
     @visit_links = Category.find_by("upper(name) = ?", "VISIT & STUDY AT THE HEALTH SCIENCES LIBRARIES").items.sort_by { |e| e.label }
     @resource_links = Category.find_by("upper(name) = ?", "HSL RESOURCES AND MEDIA").items.sort_by { |e| e.label }
     @research_links = Category.find_by("upper(name) = ?", "RESEARCH AT THE HEALTH SCIENCES LIBRARIES").items.sort_by { |e| e.label }
-    @event_links = Event.where("tags LIKE ?", "%Health Science Libraries%").take(5)
+    @event_links = Event.where("tags LIKE ?", "%Health Science%").take(5)
   end
 
   def about

@@ -49,6 +49,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resource :buildings do
+      member do
+        get ":id/detach" => :detach
+      end
+    end
+
     resource :people do
       member do
         get ":id/detach" => :detach

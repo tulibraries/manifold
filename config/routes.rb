@@ -49,19 +49,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :buildings do
-      member do
-        get ":id/detach" => :detach
-      end
-    end
-
-    resource :people do
-      member do
-        get ":id/detach" => :detach
-      end
-    end
-
-    resource :pages do
+    resource :buildings, :collections, :events, :exhibitions, :groups, :highlights, :pages, :people, :spaces do
       member do
         get ":id/detach" => :detach
       end
@@ -69,7 +57,6 @@ Rails.application.routes.draw do
 
     resource :groups do
       member do
-        get ":id/detach" => :detach
         post "detach" => :detach
       end
     end

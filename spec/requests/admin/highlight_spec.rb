@@ -2,8 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe Collection, type: :request do
-
-  it_behaves_like "renderable_dashboard"
+RSpec.describe Highlight, type: :request do
   it_behaves_like "detachable"
 end

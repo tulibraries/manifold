@@ -3,11 +3,11 @@
   <div class="row social">
     <div class="col-12 col-lg-7 px-0">
       <% unless @donate_link.nil? %>
-        <%= link_to image_tag("give_button"), page_path(@donate_link), class: "donate", alt: "Support the Libraries" %>
+        <%= link_to image_tag("give_button.png"), page_path(@donate_link), class: "donate", alt: "Support the Libraries" %>
       <% end %>
     </div>
     <div class="col-12 col-lg-5 text-left text-lg-right px-0">
-      <% unless @socila_liks.nil? %>
+      <% unless @social_liks.nil? %>
       <ul>
         <li class="social-footer instagram">
           <%= link_to image_tag('instagram-logo_white.svg'), @social_links %>

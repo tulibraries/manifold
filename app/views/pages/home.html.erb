@@ -12,26 +12,34 @@
 	<div class="row ctaRow">
 		<div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
+	    	<% unless @research_help.nil? %>
 	      <%= link_to image_tag("research_help.png"), service_path(@research_help) %> 
 	      <%= link_to "Research Help", service_path(@research_help), class: "strong" %>
+	      <% end %>
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
+	    	<% unless @service_path.nil? %>
 	      <%= link_to image_tag("printer.png"), service_path(@print_my_paper) %> 
 	      <%= link_to "Print My Paper", service_path(@print_my_paper), class: "strong" %>
+	      <% end %>
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
+	    	<% unless @book_study_room.nil? %>
 	      <%= link_to image_tag("study_room.png"), space_path(@book_study_room) %> 
 	      <%= link_to "Book a Study Room", space_path(@book_study_room), class: "strong" %>
+	      <% end %>
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3">
 	    <div class="cta-white">
+	    	<% unless @explore_charles.nil? %>
 	      <%= link_to image_tag("explore_charles.png"), category_path(@explore_charles) %>  
 	      <%= link_to "Explore Charles", category_path(@explore_charles), class: "strong" %>
+	      <% end %>
 	    </div>
 	  </div>
 	</div>

@@ -15,11 +15,17 @@
 <div class="row">
 	
 	<div class="col-12 col-lg-4 pr-14">
+		<% unless @ginsburg_location.nil? && @podiatry_location.nil? %>
 		<div class="hsl-locations">
+			<% unless @ginsburg_location.nil? %>
 			<%= link_to "Ginsburg Health Sciences Library", building_path(@ginsburg_location) %>
 			<hr />
+			<% end %>
+			<% unless @podiatry_location.nil? %>
 			<%= link_to "Krausz Podiatric Library", building_path(@podiatry_location) %>
+			<% end %>
 		</div>
+		<% end %>
 
 		<div class="hsl-contact">
 			<%= image_tag "phone-handle-white.png", style: "width: 100px" %>

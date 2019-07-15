@@ -246,7 +246,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
     mimemagic (0.3.3)
-    mini_magick (4.9.3)
+    mini_magick (4.9.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
@@ -328,7 +328,8 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (3.1.1)
-    puma (3.12.1)
+    puma (4.0.1)
+      nio4r (~> 2.0)
     rack (2.0.7)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -554,7 +555,7 @@ DEPENDENCIES
   popper_js (~> 1.14.5)
   populate
   pry-rails
-  puma (~> 3.12)
+  puma (~> 4.0)
   rails (~> 5.2.3)
   rails-controller-testing
   rails-erd

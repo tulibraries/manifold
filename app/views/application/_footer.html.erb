@@ -1,105 +1,92 @@
-<div id="site-footer" class="">
-  <section>
+<div id="site-footer">
+  <div class="container">
   <div class="row social">
-    <div class="col-7">
-      <%= link_to "Donate to the Libraries", "#", class: 'donate' %>
+    <div class="col-12 col-lg-7 px-0">
+      <% unless @donate_link.nil? %>
+        <%= link_to image_tag("give_button.png"), page_path(@donate_link), class: "donate", alt: "Support the Libraries" %>
+      <% end %>
     </div>
-    <div class="col-5 text-right">
+    <div class="col-12 col-lg-5 text-left text-lg-right px-0">
+      <% unless @social_liks.nil? %>
       <ul>
         <li class="social-footer instagram">
-          <%= link_to image_tag('instagram-logo_white.svg'), 'http://instagram.com/tulibraries' %>
+          <%= link_to image_tag('instagram-logo_white.svg'), @social_links %>
         </li>
         <li class="social-footer facebook">
-          <%= link_to image_tag('facebook-logo_white.svg'), 'https://www.facebook.com/pages/Temple-University-Libraries/6340283058' %>
+          <%= link_to image_tag('facebook-logo_white.svg'), @social_links %>
         </li>
         <li class="social-footer twitter">
-          <%= link_to image_tag('twitter-logo_white.svg'), 'http://twitter.com/TempleLibraries' %>
+          <%= link_to image_tag('twitter-logo_white.svg'), @social_links %>
         </li>
       </ul>
-    </div>
-  </div>
-</section>
-<section>
-  <div class="row">
-    <div class="col" style="padding:0;">
-      <%= link_to root_path, class: "footer-name", id: "footer-logo" do %>
-        <%= image_tag('temple-logo-t-box.svg', class: "footer-logo") %> University Libraries
       <% end %>
-      <h1 class="element-invisible">More Resources</h1>
-      <div class="postscript row" style="margin-top: 28px;">      
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-buildings">
-          <h2><%= link_to "Libraries", buildings_path, class: "col-heading" %></h2>
-          <ul class="list-unstyled">
-            <% @footer_buildings.each do |library| %>
-              <li><%= link_to library.name, library %></li>
-            <% end %>
-            </ul>
-            <div class="see-all"><%= link_to "View all Libraries", buildings_path %></div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-services">
-          <h2><%= link_to "Services", services_path, class: "col-heading" %></h2>
-          <ul class="list-unstyled">
-            <% @footer_services.each do |service| %>
-              <li><%= link_to service.title, service %></li>
-            <% end %>
-            </ul>
-            <div class="see-all"><%= link_to "View all Services", services_path %></div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-groups">
-          <h2><%= link_to "Groups", groups_path, class: "col-heading" %></h2>
-          <ul class="list-unstyled">
-            <% @footer_groups.each do |group| %>
-              <li><%= link_to group.name, group %></li>
-            <% end %>
-            </ul>
-            <div class="see-all"><%= link_to "View all Groups", groups_path %></div>
-        </div>
-        <div class="col-md-6 col-lg-3 footer-col" id="footer-collections">
-          <h2><%= link_to "Collections", collections_path, class: "col-heading" %></h2>
-          <ul class="list-unstyled">
-            <% @footer_collections.each do |collection| %>
-              <li><%= link_to collection.name, collection %></li>
-            <% end %>
-            </ul>
-            <div class="see-all"><%= link_to "View all Collections", collections_path %></div>
-        </div>
-      </div>
-
-      <div class="tu-links">    
-
-        <div class="region region-footer footer-col">
-          <h2 style="border-bottom: solid #ccc 1px;">Useful Links</h2>
-
-          <div class="row">
-            <div class="col-md-6 col-lg-3 ">
-              <ul class="list-unstyled">
-                <li>EZ-borrow</li>
-                <li>ILLiad</li>
-                <li>RefWorks</li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-3 ">
-              <ul class="list-unstyled">
-                <li>Staff&nbsp;directory</li>
-                <li>Contact us</li>
-                <li>Memberships</li>
-              </ul>
-            </div>
-            <div class="col-md-6 col-lg-3 ">
-              <ul class="list-unstyled">
-                <li>Jobs</li>
-                <li>Publications</li>
-                <li>Donate</li>
-              </ul>
-            </div>
-             <div class="col-md-6 col-lg-3 ">
-              <ul class="list-unstyled">
-                <li>Policies</li>
-              </ul>
-            </div>
-        </div>
-      </div>
     </div>
   </div>
-</section>
+
+  <div class="tu-links">
+      <div class="row">
+        <div class="col-12 col-lg-6 px-0">
+          <div class="row">
+            <div class="col px-0">
+              <h2>Quick Links</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-4 px-0">
+              <ul class="list-unstyled">
+                <% unless @ezborrow_link.nil? %>
+                <li><%= link_to "EZ-borrow", @ezborrow_link.link %></li>
+                <% end %>
+                <% unless @jobs_link.nil? %>
+                <li><%= link_to "Jobs", page_path(@jobs_link) %></li>
+                <% end %>
+                <li><%= link_to "Privacy Guidelines", "#" %></li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-4 px-0">
+              <ul class="list-unstyled">
+                <% unless @illiad_link.nil? %>
+                <li><%= link_to "ILLiad", @illiad_link.link %></li>
+                <% end %>
+                <% unless @publications_link.nil? %>
+                <li><%= link_to "Publications", page_path(@publications_link) %></li>
+                <% end %>
+                <li><%= link_to "Diversity Statement", "#" %></li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-4 px-0">
+              <ul class="list-unstyled">
+                <% unless @refworks_link.nil? %>
+                <li><%= link_to "RefWorks", @refworks_link.link %></li>
+                <% end %>
+                <li><%= link_to "Community Standards", "#" %></li>
+                <li><%= link_to "Virtual Reference Services", "#" %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6 px-0">
+          <div class="row">
+            <div class="col-12 col-lg-4 offset-lg-8 px-0 address">
+              <p>
+              Temple University Libraries<br />
+              1210 Pollett Walk<br />
+              Philadelphia, PA 19122<br />
+              (215) 204-3836
+              </p>
+              <% unless @numbers_link.nil? %>
+              <p><%= link_to "Frequently Called Numbers", page_path(@numbers_link) %></p>
+              <% end %>
+              <p><%= link_to "Staff Directory", people_path %></p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+<!-- float right -->
+
+
+</div>
 </div>

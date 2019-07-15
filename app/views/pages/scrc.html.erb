@@ -33,7 +33,9 @@
 	<div class="col-12 col-lg-8" id="scrc-description-container">
 		<div class="row" id="scrc-description">
 			<div class="col-12">
-				<%= @page.description.html_safe %>
+				<div class="col-12">
+				<%= sanitize(@page.description.html_safe) %>
+			</div>
 			</div>
 		</div>
 		<div class="row">
@@ -46,7 +48,7 @@
 						<% end %>
 					</ul>
 				</div>
-				<div class="scrc-links d-block d-lg-none">
+				<div class="scrc-links visit d-block d-lg-none">
 					<%= render "scrc_visit" %>
 				</div>
 			</div>
@@ -59,7 +61,7 @@
 						<% end %>
 					</ul>
 				</div>
-				<div class="scrc-links d-block d-lg-none">
+				<div class="scrc-links collections d-block d-lg-none">
 					<%= render "scrc_collections" %>
 				</div>
 			</div>

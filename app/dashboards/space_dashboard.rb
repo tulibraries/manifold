@@ -15,6 +15,7 @@ class SpaceDashboard < BaseDashboard
     groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
+    slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     hours: HoursField.with_options(admin_only: true),
     accessibility: Field::Text,
@@ -61,6 +62,7 @@ class SpaceDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :image,
     :description,
     :external_link,

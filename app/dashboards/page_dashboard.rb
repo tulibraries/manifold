@@ -10,6 +10,7 @@ class PageDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    slug: Field::String.with_options(admin_only: true),
     document: FileField,
     group: Field::BelongsTo,
     id: Field::Number,
@@ -45,6 +46,7 @@ class PageDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
+    :slug,
     :description,
     :document,
     :group,

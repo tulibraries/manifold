@@ -13,6 +13,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     icon: PhotoField.with_options(admin_only: true),
     id: Field::Number,
     name: Field::String,
+    slug: Field::String.with_options(admin_only: true),
     custom_url: Field::String,
     categories: Field::HasMany.with_options(admin_only: true),
     description: Field::String,
@@ -51,6 +52,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :icon,
     :name,
+    :slug,
     :custom_url,
     :categories,
     :description,

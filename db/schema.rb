@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_27_135348) do
+ActiveRecord::Schema.define(version: 2019_07_15_191512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_135348) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.string "slug"
   end
 
   create_table "categorizations", force: :cascade do |t|
@@ -147,7 +148,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_135348) do
     t.datetime "updated_at", null: false
     t.boolean "add_to_footer"
     t.integer "space_id"
-    t.integer "external_link_id"
+    t.bigint "external_link_id"
     t.index ["building_id"], name: "index_collections_on_building_id"
     t.index ["external_link_id"], name: "index_collections_on_external_link_id"
     t.index ["space_id"], name: "index_collections_on_space_id"
@@ -181,6 +182,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_135348) do
     t.text "tags"
     t.boolean "all_day", default: false
     t.string "event_type"
+    t.string "slug"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -207,6 +209,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_135348) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
   end
 
   create_table "finding_aid_responsibilities", force: :cascade do |t|
@@ -300,6 +303,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_135348) do
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
     t.index ["group_id"], name: "index_pages_on_group_id"
   end
 
@@ -378,6 +382,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_135348) do
     t.string "hours"
     t.boolean "add_to_footer"
     t.integer "external_link_id"
+    t.string "slug"
     t.index ["external_link_id"], name: "index_services_on_external_link_id"
   end
 
@@ -402,7 +407,8 @@ ActiveRecord::Schema.define(version: 2019_06_27_135348) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
-    t.integer "external_link_id"
+    t.bigint "external_link_id"
+    t.string "slug"
     t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
     t.index ["external_link_id"], name: "index_spaces_on_external_link_id"
@@ -419,4 +425,6 @@ ActiveRecord::Schema.define(version: 2019_06_27_135348) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "collections", "external_links"
+  add_foreign_key "spaces", "external_links"
 end

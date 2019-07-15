@@ -38,8 +38,8 @@ class PagesController < ApplicationController
     unless visit_links.nil?
       @visit_links = visit_links.first.items.sort_by { |e| e.label }
     end
-    research_links = Category.where("upper(name) LIKE ?", "%RESEARCH%SCHOLARS%STUDIO%")
-    unless visit_links.nil?
+    research_links = Category.where("upper(name) LIKE ?", "RESEARCH%SCHOLARS%STUDIO")
+    unless research_links.nil?
       @research_links = research_links.first.items.sort_by { |e| e.label }
     end
     @event_links = Event.where("tags LIKE ?", "%Digital Scholarship%").take(5)

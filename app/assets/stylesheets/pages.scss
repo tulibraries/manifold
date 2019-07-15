@@ -626,7 +626,7 @@
 		}
 	}
 	.banner-image {
-		background:asset-data-url('hsl-banner.jpg') 0 25% no-repeat;
+		background:asset-data-url('dsc-banner.jpg') 0 66% no-repeat;
 		background-size: cover;
 		height: 240px;
 		margin-bottom: 21px;
@@ -652,7 +652,7 @@
 			width: 100%;
 		}
 	}
-	.dsc-left {
+	#dsc-left {
 		@media (max-width: 1039px) {
 			padding-left: 0;
 			padding-right: 0;

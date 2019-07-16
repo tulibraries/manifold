@@ -6,7 +6,7 @@
   </div>
 
 <% unless action_name == "home" %>
-  <div id="header-search" class="col-6 col-lg-5 offset-lg-3 d-none d-md-block d-lg-block text-right">
+  <div id="header-search" class="col-md-6 col-lg-5 offset-lg-3 d-none d-md-block d-lg-block text-right">
     <%= render "header-search" %>
   </div>
 <% else %>
@@ -14,6 +14,7 @@
     <%= render "todays_date" %><br />
   </div>
 <% end %>
+
   <div id="mobile-search-button" class="col-3 d-block d-md-none d-lg-none text-right">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
     <span class="navbar-toggler-icon" id="search-toggler-icon" onclick="toggle('search')">

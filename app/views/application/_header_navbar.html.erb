@@ -1,5 +1,5 @@
 <div id="header-navbar" class="container navbar navbar-static-top" role="navigation">
-  <div class="col-6 col-md-5 col-lg-4 logo-container">
+  <div class="col-4 col-md-5 col-lg-4 logo-container">
     <%= link_to root_path, class: "header-name", id: "header-logo" do %>
       <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> <span>University Libraries</span>
     <% end %>
@@ -10,11 +10,11 @@
     <%= render "header-search" %>
   </div>
 <% else %>
-  <div id="todays-date" class="col-6 col-lg-3 offset-lg-5 d-none d-md-block d-lg-block text-left">
+  <div id="todays-date" class="col-5 col-offset-3 col-lg-3 offset-lg-5 text-left">
     <%= render "todays_date" %><br />
   </div>
 <% end %>
-  <div id="mobile-search-button" class="col-3 d-block d-md-none d-lg-none text-right">
+  <div id="mobile-search-button" class="col-3 <% unless action_name = "home" %>d-block d-md-none d-lg-none<% else %>d-none<% end %> text-right">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
     <span class="navbar-toggler-icon" id="search-toggler-icon" onclick="toggle('search')">
       <div class="bar1"></div>

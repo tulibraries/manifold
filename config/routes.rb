@@ -55,7 +55,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :groups do
+    resource :buildings, :collections, :events, :exhibitions, :groups, :highlights, :pages, :people, :spaces do
       member do
         post "detach" => :detach
       end

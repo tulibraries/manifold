@@ -15,6 +15,9 @@
 	.form_affiliation, .form_material_type {
 		display: inline-block!important;
 	}
+	.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:focus-within , .btn-primary:visited  {
+		background-color: $seagreen!important;
+	}
 }
 
 abbr[title="required"] {

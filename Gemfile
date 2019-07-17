@@ -67,6 +67,10 @@ gem "paper_trail"
 gem "diffy"
 gem "okcomputer"
 gem "pg"
+# Gemfile
+gem "rswag-api"
+gem "rswag-ui"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

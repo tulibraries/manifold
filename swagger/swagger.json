@@ -1,0 +1,1226 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "paths": {
+    "/blogs": {
+      "get": {
+        "summary": "Retrieves a blog",
+        "tags": ["Blogs", "Batch"],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of blogs",
+            "schema": {
+            	"type": "object",
+            	"required": [
+            		"data"
+            	],
+            	"properties": {
+            		"data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "title": "The Id Schema",
+                        "default": "0",
+                        "example":"2",
+                        "pattern": "^([0-9]*)$"
+                      },
+                      "type": {
+                        "type": "string",
+                        "title": "The Type Schema",
+                        "default": "blog",
+                        "example": [
+                          "building",
+                          "event",
+                          "person"
+                        ],
+                        "pattern": "^(.*)$"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "title": "The Attributes Schema",
+                        "required": [
+                          "title",
+                          "label",
+                          "base_url",
+                          "feed_path",
+                          "last_sync_date",
+                          "public_status"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "The Name Schema",
+                            "default": "",
+                            "example": [
+                              "The Library Blog"
+                            ],
+                            "pattern": "^(.*)$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": [
+                              "The Library Blog"
+                            ],
+                            "pattern": "^(.*)$"
+                          },
+                          "base_url": {
+                            "type": "string",
+                            "title": "The Base URL Schema",
+                            "format": "uri",
+                            "default": "",
+                            "example": [
+                              "https://blog.example.com"
+                            ]
+                          },
+                          "feed_path": {
+                            "type": "string",
+                            "title": "The Feed Path Schema",
+                            "format": "uri-reference",
+                            "default": "",
+                            "example": [
+                              "/blog/feed_path"
+                            ]
+                          },
+                          "last_sync_date": {
+                            "type": "string",
+                            "title": "The Last Sync Date Schema",
+                            "format": "date-time",
+                            "default": "",
+                            "example": [
+                              "2018-01-01T12:00:00"
+                            ]
+                          },
+                          "public_status": {
+                            "type": "boolean",
+                            "title": "The Public Status Schema",
+                            "default": true ,
+                            "example": [
+                              true,
+                              false
+                            ]
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the blog record was updated",
+                             "format": "date-time",
+                            "default": "",
+                            "example": [
+                              "2018-01-01T12:00:00"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+            		}
+            	}
+            }
+          }
+        }
+      }
+    },
+    "/libraries": {
+      "get": {
+        "summary": "Retrieves a list of libraries (also known as buildings)",
+        "tags": ["Buildings", "Libraries", "Batch"],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of libraries",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "Ambler Campus Library"
+                          },
+                          "label": {
+                            "type": "string",
+                            "example": "Ambler Campus Library"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "The Temple University Ambler Library supports undergraduate and graduate courses, including landscape architecture, horticulture, business, education, criminal justice, and community and regional planning"
+                          },
+                          "address1": {
+                            "type": "string",
+                            "example": "580 Meetinghouse Road"
+                          },
+                          "address2": {
+                            "type": "string",
+                            "example": "Ambler, PA 19002"
+                          },
+                          "temple_building_code": {
+                            "type": "string",
+                            "example": "AMLBRY"
+                          },
+                          "coordinates": {
+                            "type": "string",
+                            "example": "40.1660437,-75.19060619999999"
+                          },
+                          "google_id": {
+                            "type": "string",
+                            "example": "ChIJ9TjmnCylxokRrNe6sQAlPjc"
+                          },
+                          "campus": {
+                            "type": "string",
+                            "example": "Ambler"
+                          },
+                          "phone_number": {
+                            "type": "string",
+                            "example": "2674688648"
+                          },
+                          "photo": {
+                            "type": "string",
+                            "example": "http://test.host/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3d4d92bfe42cae216c67817d111ef844220162e/ambler.jpg"
+                          },
+                          "thumbnail_image": {
+                            "type": "string",
+                            "example": "http://test.host/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3d4d92bfe42cae216c67817d111ef844220162e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--1780aa09167cc24cd4beae09f819f90d80b64c3a/ambler.jpg"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collections": {
+      "get": {
+        "summary": "Retrieves list of all Collections",
+        "tags": ["Collections", "Batch"],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of collections",
+            "schema": {
+            	"type": "object",
+            	"title": "The Root Schema",
+            	"required": [
+            		"data"
+            	],
+            	"properties": {
+            		"data": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "id",
+                      "type",
+                      "attributes"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "title": "The Id Schema",
+                        "default": "0",
+                        "example": "2"
+                      },
+                      "type": {
+                        "type": "string",
+                        "title": "The Type Schema",
+                        "default": "collection",
+                        "example": "building",
+                        "pattern": "^(.*)$"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "title": "The Attributes Schema",
+                        "required": [
+                          "name",
+                          "label",
+                          "description"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "The Name Schema",
+                            "default": "",
+                            "example": "The Library Collection",
+                            "pattern": "^(.*)$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": "The Library Collection",
+                            "pattern": "^(.*)$"
+                          },
+                          "description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "This is the description of the collection",
+                            "pattern": "^(.*)$"
+                          },
+                          "subject": {
+                            "type": "array",
+                            "items": { 
+                              "type": "string" 
+                            },
+                            "example": ["Music"]
+                          },
+                          "contents": {
+                            "type": "string",
+                            "title": "The Contents Schema",
+                            "default": "",
+                            "example": "This is the contents of the collection",
+                            "pattern": "^(.*)$"
+                          },
+                          "add_to_footer": {
+                            "type": "boolean",
+                            "title": "The Add to Footer State Schema",
+                            "default": true,
+                            "example": true
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the collection record was updated",
+                            "format": "date-time",
+                            "default": "",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+            		}
+            	}
+            }
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "summary": "Retrieves a list of events",
+        "tags": ["Event", "Batch"],
+        "operationId": "getEvents",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of events",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "example": "2nd Annual Winter Concert"
+                          },
+                          "label": {
+                            "type": "string",
+                            "example": "2nd Annual Winter Concert"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "<p>The Lewis Katz School of Medicine's student a cappella singing group, TachyChordia, will be performing a selection of holiday favorites and will lead us in a sing-a-long. Hot cocoa, marshmallows, cookies, candy canes, and chocolate will be served for those who stay for the performance!</p>"
+                          },
+                          "start_time": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2018-12-05T12:15:00.000Z"
+                          },
+                          "end_time": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2018-12-05T12:15:00.000Z"
+                          },
+                          "cancelled": {
+                            "type": "string",
+                            "example": false
+                          },
+                          "registration_status": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "registration_link": {
+                            "type": "string",
+                            "example": "#"
+                          },
+                          "alt_text": {
+                            "type": "string",
+                            "example": "2nd Annual Winter Concert at Ginsburg library"
+                          },
+                          "ensemble_identifier": {
+                            "type": "string",
+                            "example": "0NnOvtHCoUKvUxJj6BVajg"
+                          },
+                          "tags": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "all_day": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "image": {
+                            "type": "string",
+                            "example": "https://test.host/event/1/image/large"
+                          },
+                          "space": {
+                            "type": "string",
+                            "example": "Ginsburg Room 243"
+                          },
+                          "address1": {
+                            "type": "string",
+                            "example": "Medical Education and Research Building, 3500 N. Broad Street"
+                          },
+                          "address2": {
+                            "type": "string",
+                            "example": "Philadelphia, PA 19140"
+                          },
+                          "contact_name": {
+                            "type": "boolean",
+                            "example": "Stephanie Roth"
+                          },
+                          "contact_email": {
+                            "type": "string",
+                            "example": "stephanie.roth@temple.edu"
+                          },
+                          "contact_phone": {
+                            "type": "string",
+                            "example": "2157079469"
+                          },
+                          "thumbnail_image": {
+                            "type": "string",
+                            "example": "https://test.host/event/1/image/thumb"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2018-01-01T12:00:00",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exhibitions": {
+      "get": {
+        "summary": "Retrieves a list of exhibitions",
+        "tags": ["Exhibition", "Batch"],
+        "operationId": "getExhibitions",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of exhibitions",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "default": "",
+                            "example": "The Library's Exhibition"
+                            
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": "The Library's Exhibition"
+                            
+                          },
+                          "description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "This is the description of the exhibition"
+                          },
+                          "start_date": {
+                            "type": "string",
+                            "title": "The Exhibiton Start Date Schema",
+                            "format": "date",
+                            "default": "",
+                            "example": "2018-01-01"
+                          },
+                          "end_date": {
+                            "type": "string",
+                            "title": "The Exhibiton End Date Schema",
+                            "format": "date",
+                            "default": "",
+                            "example": "2018-01-01"
+                          },
+                          "promoted_to_events": {
+                            "type": "boolean",
+                            "title": "The Promoted to Events State Schema",
+                            "default": true ,
+                            "example": false
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the exhibition record was updated",
+                             "format": "date-time",
+                            "default": "",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/finding_aids": {
+      "get": {
+        "summary": "Retrieves a list of Finding Aids",
+        "tags": ["Finding Aid", "Batch"],
+        "operationId": "getFindingAids",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of Finding Aids",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "The Name Schema",
+                            "default": "",
+                            "example": "Zzphod Beeblebrox Collection",
+                            "pattern": "^(.*)$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": "Zzphod Beeblebrox Collection",
+                            "pattern": "^(.*)$"
+                          },
+                          "description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "This is the description of the finding aid",
+                            "pattern": "^(.*)$"
+                          },
+                          "subject": {
+                            "type": "array",
+                            "items": { 
+                              "type": "string" 
+                            },
+                            "example": ["Music"]
+                          },
+                          "content_link": {
+                            "type": "string",
+                            "format": "uri-reference",
+                            "title": "The content link Schema",
+                            "default": "",
+                            "example": "https://example.com/scrc/zaphodcollection" 
+                          },
+                          "identifier": {
+                            "type": "string",
+                            "title": "The identifier Schema",
+                            "default": "",
+                            "example": "SCRC 42",
+                            "pattern": "^(.*)$"
+                          },
+                          "drupal_id": {
+                            "type": "string",
+                            "title": "The Drupal ID Schema",
+                            "default": "",
+                            "example": "12345abcde",
+                            "pattern": "^(.*)$"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the finding aid record was updated",
+                             "format": "date-time",
+                            "default": "",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups": {
+      "get": {
+        "summary": "Retrieves a list of groups",
+        "tags": ["Group", "Batch"],
+        "operationId": "getGroups",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of groups",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "The Name Schema",
+                            "default": "",
+                            "example": "Council of Committees Group",
+                            "pattern": "^(.*)$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": "Council of Committees Group",
+                            "pattern": "^(.*)$"
+                          },
+                          "description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "The Temple University Ambler Library supports undergraduate and graduate courses, including landscape architecture, horticulture, business, education, criminal justice, and community and regional planning",
+                            "pattern": "^(.*)"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the group record was updated",
+                             "format": "date-time",
+                            "default": "",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pages": {
+      "get": {
+        "summary": "Retrieves a list of pages",
+        "tags": ["Page", "Batch"],
+        "operationId": "getPages",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of pages",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "title": "The Name Schema",
+                            "default": "",
+                            "example": "Highlights of the Week",
+                            "pattern": "^(.*)$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": "Highlights of the week",
+                            "pattern": "^(.*)$"
+                          },
+                          "description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "This is a description of what the page is all about",
+                            "pattern": "^(.*)$"
+                          },
+                          "layout": {
+                            "type": "string",
+                            "title": "The type of layout Schema",
+                            "default": "",
+                            "example": "Statement",
+                            "pattern": "^(.*)$"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the page record was updated",
+                             "format": "date-time",
+                            "default": "",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/people": {
+      "get": {
+        "summary": "Retrieves a list of people",
+        "tags": [
+          "People"
+        ],
+        "operationId": "getPeople",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of people",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "properties":{
+                          "name": {
+                            "type": "string",
+                            "example": "The Library Collection"
+                          },
+                          "label": {
+                            "type": "string",
+                            "example": "The Library Collection"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "This is the description of the collection"
+                          },
+                          "subject": {
+                            "type": "string",
+                            "example": "Music"
+                          },
+                          "contents": {
+                            "type": "string",
+                            "example": "This is the contents of the collection"
+                          },
+                          "add_to_footer": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        },
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/policies": {
+      "get": {
+        "summary": "Retrieves a list of policies",
+        "tags": [
+          "Policies"
+        ],
+        "operationId": "getPolicies",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of policies",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "The Name Schema",
+                            "default": "",
+                            "example": "The Lobby",
+                            "pattern": "^(.*)$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": "Food & Drink",
+                            "pattern": "^(.*)$"
+                          },
+                          "description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "This is the description of the policy",
+                            "pattern": "^(.*)$"
+                          },
+                          "effective_date": {
+                            "type": "string",
+                            "format": "date",
+                            "title": "The Effective Date Schema",
+                            "default": "",
+                            "example": "2020-01-01"
+                          },
+                          "category": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                              "default": "",
+                              "example": ["Confidentiality & Privacy"],
+                              "pattern": "^(.*)$"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the policy record was updated",
+                             "format": "date-time",
+                            "default": "",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services": {
+      "get": {
+        "summary": "Retrieves a list of services",
+        "tags": ["Service", "Batch"],
+        "operationId": "getServices",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of services",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "title": "The Title Schema",
+                            "default": "",
+                            "example": "Document Delivery",
+                            "pattern": "^(.*)$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": "Document Delivery",
+                            "pattern": "^(.*)$"
+                          },
+                          "description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "This is the description of the service",
+                            "pattern": "^(.*)$"
+                          },
+                          "access_link": {
+                            "type": "string",
+                            "format": "uri-reference",
+                            "title": "The Access Link Schema",
+                            "default": "",
+                            "example": "https://example.com/theservice"
+                          },
+                          "intended_audience": {
+                            "type": "array",
+                            "items": { 
+                              "type": "string"
+                            },
+                            "title": "The Intended Audience Schema",
+                            "default": "",
+                            "example": ["Visiting scholars"]
+                          },
+                          "category": {
+                            "type": "string",
+                            "title": "The Service Category Schema",
+                            "default": "",
+                            "example": "Publishing Services",
+                            "pattern": "^(.*)$"
+                          },
+                          "hours": {
+                            "type": "string",
+                            "title": "The Hours Schema",
+                            "default": "",
+                            "example": "",
+                            "pattern": "^(.*)$"
+                          },
+                          "add_to_footer": {
+                            "type": "boolean",
+                            "title": "The Add to Footer Schema",
+                            "default": "",
+                            "example": true
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the service record was updated",
+                             "format": "date-time",
+                            "default": "",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/spaces": {
+      "get": {
+        "summary": "Retrieves a list of spaces",
+        "tags": ["Space", "Batch"],
+        "operationId": "getSpaces",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of spaces",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "The Name Schema",
+                            "default": "",
+                            "example": "The Lobby",
+                            "pattern": "^(.*)$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "title": "The Label Schema",
+                            "default": "",
+                            "example": "The Lobby",
+                            "pattern": "^(.*)$"
+                          },
+                          "description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "This is the description of the space",
+                            "pattern": "^(.*)$"
+                          },
+                          "accessibility": {
+                            "type": "string",
+                            "title": "The Accesibility Schema",
+                            "default": "",
+                            "example": "This space has accesibility information"
+                          },
+                          "phone_number": {
+                            "type": "string",
+                            "title": "The Telephone Number Schema",
+                            "default": "",
+                            "example": "2155551212"
+                          },
+                          "email": {
+                            "type": "string",
+                            "format": "email",
+                            "title": "The Email Schema",
+                            "example": "zaphod@example.com"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "title": "The time the space record was updated",
+                             "format": "date-time",
+                            "default": "",
+                            "example": "2018-01-01T12:00:00"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

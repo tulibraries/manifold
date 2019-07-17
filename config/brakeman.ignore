@@ -62,6 +62,37 @@
       "note": ""
     },
     {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "602e72340904f11e6395ddf2b08aab5c44c452fc61dcbb03657036d7b9d10d31",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/blogs/index.html.erb",
+      "line": 14,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(image_tag((Unresolved Model).new.custom_image(600, 264), :alt => \"\"), (Unresolved Model).new.link)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "BlogsController",
+          "method": "index",
+          "line": 13,
+          "file": "app/controllers/blogs_controller.rb",
+          "rendered": {
+            "name": "blogs/index",
+            "file": "app/views/blogs/index.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "blogs/index"
+      },
+      "user_input": "(Unresolved Model).new.link",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
       "warning_type": "Mass Assignment",
       "warning_code": 70,
       "fingerprint": "7a8e4552d89bb53cf073729b06e4f1f6489e74f3657f7bc5f521e847f1e28b88",
@@ -110,6 +141,68 @@
       },
       "user_input": null,
       "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "9b9107ea408fd3c514c0d1a2256b052d680c4cc270f2958d44befa354e0544f2",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/blogs/index.html.erb",
+      "line": 22,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Read more >\", (Unresolved Model).new.link, :class => \"read-more\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "BlogsController",
+          "method": "index",
+          "line": 13,
+          "file": "app/controllers/blogs_controller.rb",
+          "rendered": {
+            "name": "blogs/index",
+            "file": "app/views/blogs/index.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "blogs/index"
+      },
+      "user_input": "(Unresolved Model).new.link",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "a467c709a0e6f1ab748f0108b948f1fd1083fecaf23073f589ce2e195ae55aa6",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/blogs/index.html.erb",
+      "line": 17,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to((Unresolved Model).new.label.truncate(52), (Unresolved Model).new.link)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "BlogsController",
+          "method": "index",
+          "line": 13,
+          "file": "app/controllers/blogs_controller.rb",
+          "rendered": {
+            "name": "blogs/index",
+            "file": "app/views/blogs/index.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "blogs/index"
+      },
+      "user_input": "(Unresolved Model).new.link",
+      "confidence": "Weak",
       "note": ""
     },
     {
@@ -216,6 +309,6 @@
       "note": ""
     }
   ],
-  "updated": "2019-06-24 09:55:03 -0400",
+  "updated": "2019-07-17 13:38:59 -0400",
   "brakeman_version": "4.5.1"
 }

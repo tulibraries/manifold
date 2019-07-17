@@ -1,0 +1,110 @@
+@import "partials/_vars.scss";
+
+.container.blogs {
+	margin-top: 21px;
+
+  @media (max-width: 1040px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+	
+	.page-title {
+		margin-bottom: 14px;
+	}
+
+	.highlights {
+		@media (max-width: 1040px) {
+	    padding-left: 15px;
+	    padding-right: 15px;
+	  }
+	}
+	.highlight {
+		margin-top: 21px;
+	}
+
+	.highlight-description {
+		line-height: 1rem;
+	}
+
+	.highlight-caption {
+		background-color: $black;
+		color: $white;
+		padding: 7px 14px;
+		min-height: 100px;
+		max-height:100px;
+		height: 100px;
+		max-width: 600px;
+		@media (max-width: 1040px) {
+			height: auto;
+			max-height: 100%;
+		}
+		h2 {
+			a {
+				color: $white;
+			}
+		}
+		.unnecessary-link {
+			position: absolute;
+			bottom: 3px;
+			right: 63px;
+			@media (max-width: 1040px) {
+				position: relative;
+				right: 0;
+				margin-top: 10px;
+				margin-bottom: 5px;
+			}
+			
+			.read-more {
+				text-decoration: underline;
+				float: right;
+				/*position: absolute;
+				bottom: 7px;
+				right: 63px;*/
+				color: $white;
+				@media (max-width: 1040px) {
+					float: none;
+				}
+			}
+		}
+	}
+
+	#blog-section {
+		margin-top: 42px;
+		margin-left: -3px;
+		margin-right: 0;
+		background-color: $lightest-grey;
+		padding: 0;
+		.section-title {
+			border-bottom: solid $seagreen 1px;
+			margin-bottom: 14px;
+			h2 {
+				color: $black;
+				font-size: 135%;
+				padding: 14px;
+				margin-bottom: 0;
+				padding-bottom: 14px;
+			}
+		}
+		ul {
+	    -webkit-column-gap: 20px;
+	    -moz-column-gap: 20px;
+	    column-gap: 20px;
+	    -webkit-column-count: 2;
+	    -moz-column-count: 2;
+	    column-count: 2;
+	    @media (max-width: 1040px) {
+		    -webkit-column-count: 1;
+		    -moz-column-count: 1;
+		    column-count: 1;
+	    }
+	    li {
+	    	a {
+	    		color: $black;
+	    		text-decoration: underline;
+	    		font-size: 115%;
+	    	}
+	    }
+
+		}
+	}
+}

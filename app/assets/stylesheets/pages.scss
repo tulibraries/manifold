@@ -32,10 +32,64 @@
 #todays-date {
 	border-left: solid $foamgreen 1px;
 }
-#todays-hours-in-page {
+#search-in-page {
 	background-color: $lightest-grey;
 	padding: 14px;
 	text-align: center;
+	form {
+			width: 100%;
+			margin:auto;
+			position:relative;
+			top: 3px;
+			input[type="submit"] {
+				margin:0;
+				padding-left: 0;
+				height: 56px;
+				width: 61px;
+				background-color: $foamgreen;
+				background-image:asset-data-url('search.png');
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 42px 42px;
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				border: solid $seagreen 1px;
+				border-left: 0;
+				position: relative;
+				top: -7px;
+				left: -7px;
+			}
+		}
+		#librarySearch {
+			height: 56px;
+			font-size: 1.75rem;
+			font-style: normal;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			border-right: 0;
+			padding-left: 14px;
+			display: inline-block;
+			width: 76%;
+			color: $med-grey;
+			border: solid $seagreen 1px;
+		}
+		#librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		  font-style: normal;
+		  font-family: 'PT Sans';
+		}
+		#librarySearch::-moz-placeholder { /* Firefox 19+ */
+		  font-style: normal;
+		  font-family: 'PT Sans';
+		}
+		#librarySearch:-ms-input-placeholder { /* IE 10+ */
+		  font-style: normal;
+		  font-family: 'PT Sans';
+		}
+		#librarySearch:-moz-placeholder { /* Firefox 18- */
+		  font-style: normal;
+		  font-family: 'PT Sans';
+		}
+		
 }
 #home {
 	.page-search-container {
@@ -50,7 +104,7 @@
 	}
 	.row.ctaRow {
 		margin-top: -77px;
-		padding-bottom: 77px;
+		padding-bottom: 35px;
 		@media screen and (max-width: 1040px) {
 			margin-top: 7px;
 			padding: 0;

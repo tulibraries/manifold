@@ -12,6 +12,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     title: Field::String,
+    slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     access_description: DescriptionField,
     access_link: Field::String,
@@ -63,6 +64,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
+    :slug,
     :description,
     :access_description,
     :access_link,

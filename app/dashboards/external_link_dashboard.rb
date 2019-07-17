@@ -11,6 +11,7 @@ class ExternalLinkDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    slug: Field::String.with_options(admin_only: true),
     title: Field::String,
     link: Field::String,
     categories: Field::HasMany,
@@ -46,6 +47,7 @@ class ExternalLinkDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
+    :slug,
     :link,
     :categories,
   ].freeze

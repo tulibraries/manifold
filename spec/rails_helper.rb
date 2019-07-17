@@ -7,11 +7,16 @@ require File.expand_path("../../config/environment", __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
+require "capybara/rails"
+
 require "database_cleaner"
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+include Warden::Test::Helpers
+
 require "simplecov"
 SimpleCov.start
+
 
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -32,6 +37,8 @@ SimpleCov.start
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
+
+require "webmock/rspec"
 
 
 RSpec.configure do |config|
@@ -77,4 +84,16 @@ RSpec.configure do |config|
   # Allow log in in request specs
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::ControllerHelpers, type: :controller
+
+
+  config.before(:each) do
+    stub_request(:get, /.*events\.temple\.edu\/.*\.jpg.*/)
+      .to_return(
+        status: 200,
+        body: File.open("#{fixture_path}/charles.jpg"), headers: {}
+      )
+
+    stub_request(:get, "https://sites.temple.edu/devopsing/feed").
+    to_return(status: 200, body: File.open("#{fixture_path}/blog_posts.rss") , headers: {})
+  end
 end

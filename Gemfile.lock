@@ -85,7 +85,7 @@ GEM
     builder (3.2.3)
     byebug (11.0.1)
     cancancan (3.0.1)
-    capybara (3.25.0)
+    capybara (3.26.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -111,6 +111,8 @@ GEM
       adamantium (~> 0.2.0)
       equalizer (~> 0.0.9)
     concurrent-ruby (1.1.5)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.4)
     database_cleaner (1.7.0)
     datetime_picker_rails (0.0.7)
@@ -186,6 +188,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
+    hashdiff (1.0.0)
     hashie (3.6.0)
     honeybadger (4.3.1)
     httparty (0.17.0)
@@ -410,6 +413,11 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    rswag-api (2.0.5)
+      railties (>= 3.1, < 6.0)
+    rswag-ui (2.0.5)
+      actionpack (>= 3.1, < 6.0)
+      railties (>= 3.1, < 6.0)
     rubocop (0.68.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -421,6 +429,7 @@ GEM
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
+    safe_yaml (1.0.5)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -501,6 +510,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webmock (3.6.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -561,6 +574,8 @@ DEPENDENCIES
   rails-erd
   rspec-activemodel-mocks
   rspec-rails (>= 3.8.0)
+  rswag-api
+  rswag-ui
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
@@ -574,6 +589,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  webmock
   yaml_db
 
 RUBY VERSION

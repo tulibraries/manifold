@@ -119,6 +119,7 @@ en:
         revert: "This version"
         revert: "Edit"
         object_version: "Version"
+        detach: "Detach"
       notification:
         all_blogs_synced: "Blogs: All synched"
         blog_synced: "Blogs: %{id} - %{title} synced"

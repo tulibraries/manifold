@@ -3,6 +3,7 @@
 module Admin
   class EventsController < Admin::ApplicationController
     include Admin::SortByAttribute
+    include Admin::Detachable
     # Override the default sort of id
     def sort_by
       :start_time

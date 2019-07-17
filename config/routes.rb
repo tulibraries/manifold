@@ -2,6 +2,9 @@
 
 Rails.application.routes.draw do
 
+  mount Rswag::Api::Engine => "/"
+  mount Rswag::Ui::Engine  => "api-docs"
+
   concern :imageable do
     get "image/thumbnail", to: "images#thumbnail_image"
     get "image/medium",    to: "images#medium_image"
@@ -48,6 +51,19 @@ Rails.application.routes.draw do
         post :sync
       end
     end
+
+    resource :buildings, :collections, :events, :exhibitions, :groups, :highlights, :pages, :people, :spaces do
+      member do
+        get ":id/detach" => :detach
+      end
+    end
+
+    resource :buildings, :collections, :events, :exhibitions, :groups, :highlights, :pages, :people, :spaces do
+      member do
+        post "detach" => :detach
+      end
+    end
+
     root to: "people#index"
   end
 

@@ -92,5 +92,8 @@ RSpec.configure do |config|
         status: 200,
         body: File.open("#{fixture_path}/charles.jpg"), headers: {}
       )
+
+    stub_request(:get, "https://sites.temple.edu/devopsing/feed").
+    to_return(status: 200, body: File.open("#{fixture_path}/blog_posts.rss") , headers: {})
   end
 end

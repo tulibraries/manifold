@@ -93,18 +93,26 @@ RSpec.describe SyncService::Events, type: :service do
   end
 
   context "write event to event table" do
-    before(:all) do
+    before(:each) do
       #sync_events = described_class.call(events_url: file_fixture("events.xml").to_path)
       @sync_events.sync
     end
 
+    let (:students_event) {
+      Event.find_by(title: "Students, Labor Activism, and Publishing: From Radical America to Jacobin")
+    }
+
+    let(:data_event) {
+      Event.find_by(title: "Data Transparency: Policies and Best Practices")
+    }
+
     it "syncs events to the table" do
-      expect(Event.find_by(title: "Data Transparency: Policies and Best Practices")).to be
-      expect(Event.find_by(title: "Students, Labor Activism, and Publishing: From Radical America to Jacobin")).to be
+      expect(data_event).to be
+      expect(students_event).to be
     end
 
     it "it attaches images to records" do
-      expect(Event.take.image.attached?).to be true
+      expect(students_event.image.attached?).to be true
     end
   end
 

@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 class EventSerializer < ApplicationSerializer
-  def self.helpers
-    Rails.application.routes.url_helpers
-  end
-
-  link :self, Proc.new { |event| helpers.url_for(event) }
+  include ImageSerializable
+  include LinkSerializable
 
   set_type :event
 
@@ -61,6 +58,4 @@ class EventSerializer < ApplicationSerializer
       event.person.phone_number
     end
   end
-
-  include ImageSerializable
 end

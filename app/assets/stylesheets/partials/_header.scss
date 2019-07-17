@@ -26,6 +26,9 @@
   
 	.logo-container {
 		padding-left: 0;
+		@media (max-width: 640px) {
+			text-align: center;
+		}
 	}
 	.header-logo {
 	  max-width: 90px;
@@ -44,7 +47,7 @@
 	a.header-name, a.header-name:hover, a.header-name:focus {
 		color: #000;
 		font-size: 2rem;
-		font-family: "Crimson Text", serif;
+		font-family: "Faustina", serif;
 		vertical-align: bottom;
 		text-decoration: none;
 		white-space: nowrap;
@@ -53,13 +56,15 @@
 			span {
 				position: relative;
 				top: -10px;
+				padding-left: 14px;
 			}
 		}
-		@media screen and (max-width: 450px) {
+		@media screen and (max-width: 750px) {
 			span {
-				display: inline-block;
-				width: 150px!important;
+				display: block;
+				/*width: 150px!important;*/
 				margin-top: 17px;
+				padding-left: 14px;
 				line-height: 2rem;
 				white-space: normal;
 			}

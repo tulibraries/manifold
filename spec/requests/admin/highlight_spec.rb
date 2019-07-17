@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe Person, type: :request do
+RSpec.describe Highlight, type: :request do
   it_behaves_like "detachable"
 end

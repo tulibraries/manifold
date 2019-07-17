@@ -106,6 +106,7 @@ group :test do
   gem "mutant-rspec"
   gem "rspec-activemodel-mocks"
   gem "simplecov", require: false
+  gem "webmock"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

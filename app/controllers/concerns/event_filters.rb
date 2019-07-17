@@ -23,7 +23,6 @@ module EventFilters
         end
       end }
 
-    locations.reject! { |s| s.nil? }
-    locations.uniq.sort
+    locations.reject! { |s| s.nil? }.compact.uniq.sort
   end
 end

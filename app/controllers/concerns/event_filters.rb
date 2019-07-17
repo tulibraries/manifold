@@ -18,9 +18,12 @@ module EventFilters
       unless event.building.nil?
         event.building.label
       else
-        event.external_building
+        unless event.external_building.nil?
+          event.external_building
+        end
       end }
 
+    locations.reject! { |s| s.nil? }
     locations.uniq.sort
   end
 end

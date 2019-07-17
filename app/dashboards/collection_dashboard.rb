@@ -40,6 +40,7 @@ class CollectionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :image,
     :subject,
     :space,
     :categories,

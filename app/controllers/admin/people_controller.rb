@@ -2,5 +2,6 @@
 
 module Admin
   class PeopleController < Admin::ApplicationController
+    include Admin::Detachable
   end
 end

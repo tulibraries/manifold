@@ -19,6 +19,10 @@ module Imageable
     image.variant(image_variation(300, 300)).processed
   end
 
+  def custom_image(width, height)
+    image.variant(image_variation(width, height)).processed
+  end
+
   def image_variation(width, height)
     ActiveStorage::Variation.new(Uploads.resize_to_fill(width: width, height: height, blob: image.blob, gravity: "Center"))
   end

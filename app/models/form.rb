@@ -60,7 +60,7 @@ class Form < MailForm::Base
       "recall-book" => ["Request Recall of Books Already Checked Out",  "cdoyle@temple.edu"],
       "purchase-request" => ["Purchase Request",  "cdoyle@temple.edu"],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
-      "ir" => ["Incident Report", "cdoyle@temple.edu"],
+      "ir" => ["Incident Report", ["cdoyle@temple.edu", "richieh@temple.edu", "bells@temple.edu"]],
       "data-purchase-grants-application" => ["Data Purchase Application", "cdoyle@temple.edu"],
       "hsl-book-reserve" => ["Request book(s) for reserve-Ginsburg Health Sciences Library", "cdoyle@temple.edu"] }
 

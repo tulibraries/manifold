@@ -26,8 +26,12 @@
 			}
 		}
 		li.active {
-			background-color: $white;
+			background-color: $seagreen;
+			color: $white;
 			margin-left: 4px;
+			a {
+				color: $white;
+			}
 		}
 	}
 	a[data-toggle="collapse"]:after {
@@ -193,6 +197,6 @@
 	display:inline-block;
 	float: right;
 	a {
-		color: $black!important;
+		color: $white!important;
 	}
 }

@@ -1,17 +1,9 @@
 # frozen_string_literal: true
 
-require "spec_helper"
+require "rails_helper"
+
 
 RSpec.describe "AWS credentials initializer" do
-
-  before(:all) do
-    ENV['S3_ACCESS_KEY_ID'] = "access_key_id"
-    ENV['S3_SECRET_ACCESS_KEY'] = "secret_access_key"
-    ENV['S3_REGION'] = "region"
-    ENV['S3_BUCKET'] = "bucket"
-    require "rails_helper"
-
-  end
 
   context "when ENV vars are set" do
 

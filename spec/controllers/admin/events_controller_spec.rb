@@ -13,7 +13,7 @@ RSpec.describe Admin::EventsController, type: :controller do
   # EventsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  before do
+  before(:all) do
     @account = FactoryBot.create(:account)
   end
 

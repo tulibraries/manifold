@@ -101,7 +101,6 @@ group :test do
   gem "rspec-rails", ">=3.8.0"
   gem "rails-controller-testing"
   gem "factory_bot_rails", "~> 4.11.1"
-  gem "database_cleaner"
   gem "guard-rspec", require: false
   gem "mutant-rspec"
   gem "rspec-activemodel-mocks"

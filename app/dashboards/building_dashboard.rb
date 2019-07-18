@@ -11,6 +11,7 @@ class BuildingDashboard < BaseDashboard
     id: Field::Number,
     image: PhotoField.with_options(admin_only: true),
     name: Field::String,
+    slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     address1: Field::String,
     address2: Field::String,
@@ -62,6 +63,7 @@ class BuildingDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :image,
     :description,
     :external_link,

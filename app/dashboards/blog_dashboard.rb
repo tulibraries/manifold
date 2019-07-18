@@ -13,6 +13,7 @@ class BlogDashboard < Administrate::BaseDashboard
     blog_posts: Field::HasMany,
     id: Field::Number,
     title: Field::String,
+    slug: Field::String.with_options(admin_only: true),
     base_url: Field::String,
     feed_path: Field::String,
     last_sync_date: Field::DateTime,
@@ -52,6 +53,7 @@ class BlogDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
+    :slug,
     :base_url,
     :feed_path,
     :last_sync_date,

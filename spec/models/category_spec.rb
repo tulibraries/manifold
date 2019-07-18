@@ -33,15 +33,15 @@ RSpec.describe Category, type: :model do
     end
   end
 
-  describe "A category with an icon" do
-    let(:category) { FactoryBot.create(:category, :with_icon) }
+  describe "A category with an image" do
+    let(:category) { FactoryBot.create(:category, :with_image) }
 
-    it "responds to icon" do
-      expect(category).to respond_to(:icon)
+    it "responds to image" do
+      expect(category).to respond_to(:image)
     end
 
     it "responds with blob" do
-      expect(category.icon).to be_a_kind_of(ActiveStorage::Attached::One)
+      expect(category.image).to be_a_kind_of(ActiveStorage::Attached::One)
     end
   end
 

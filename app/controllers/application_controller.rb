@@ -15,14 +15,14 @@ class ApplicationController < ActionController::Base
   end
 
   def set_footer
-    @ezborrow_link = ExternalLink.find_by_title("EZBorrow")
-    @illiad_link = ExternalLink.find_by_title("Log into ILLiad")
-    @refworks_link = ExternalLink.find_by_title("RefWorks at Temple")
-    @jobs_link = Page.find_by_title("Employment Opportunities")
-    @publications_link = Page.where("title LIKE ?", "Temple University Library System Summary%").first
-    @numbers_link = Page.find_by_title("Frequently called numbers")
-    @social_links = Page.find_by_title("Connect with us on social media")
-    @donate_link = Page.where("title LIKE ?", "Donate books % gifts-in-kind").first
+    @ezborrow_link = ExternalLink.find_by_slug("ezborrow")
+    @illiad_link = ExternalLink.find_by_slug("illiad")
+    @refworks_link = ExternalLink.find_by_slug("refworks")
+    @jobs_link = Page.find_by_slug("jobs")
+    @publications_link = Page.find_by_slug("system-summary")
+    @numbers_link = Page.find_by_slug("numbers")
+    @social_links = Page.find_by_slug("social-media")
+    @donate_link = Page.find_by_slug("donations")
   end
 
   def show_hours

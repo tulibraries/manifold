@@ -11,11 +11,11 @@ FactoryBot.define do
       custom_url { "http://sand.man" }
     end
 
-    trait :with_icon do
+    trait :with_image do
       after :create do |category|
         file_path = Rails.root.join("spec", "fixtures", "dream.jpg")
         file = fixture_file_upload(file_path, "image/jpeg")
-        category.icon.attach(file)
+        category.image.attach(file)
       end
     end
     factory :category_parent do

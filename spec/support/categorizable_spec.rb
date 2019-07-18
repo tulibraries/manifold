@@ -5,7 +5,7 @@ require "spec_helper"
 RSpec.shared_examples "categorizable" do
   let(:model) { described_class } # the class that includes the concern
   let(:category) { FactoryBot.create(:category) }
-  let(:category2) { FactoryBot.create(:category, :with_icon) }
+  let(:category2) { FactoryBot.create(:category, :with_image) }
   let(:factory_model) { FactoryBot.create(model.to_s.underscore.to_sym) }
   let(:single_category) {
     factory_model.categories << category

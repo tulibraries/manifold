@@ -30,6 +30,25 @@ class PagesController < ApplicationController
     @events = Event.where("tags LIKE ?", "blockson").take(4)
   end
 
+  def tudsc
+    @makerspace_location = Space.where("name LIKE ?", "Makerspace").first
+    @vr_location = Space.where("name LIKE ?", "%Immersive%").first
+    @innovation_location = Space.where("name LIKE ?", "%Innovation%").first
+    visit_links = Category.where("upper(name) LIKE ?", "VISIT%SCHOLARS% STUDIO%")
+    unless visit_links.nil?
+      @visit_links = visit_links.first.items.sort_by { |e| e.label }
+    end
+    research_links = Category.where("upper(name) LIKE ?", "RESEARCH%SCHOLARS%STUDIO")
+    unless research_links.nil?
+      @research_links = research_links.first.items.sort_by { |e| e.label }
+    end
+    @event_links = Event.where("tags LIKE ?", "%Digital Scholarship%").take(5)
+    @blog = Blog.where("title = ?", "Digital Scholarship Center").first
+    @blog_posts = @blog.blog_posts.take(5)
+    @info = Space.where("name LIKE ?", "%Scholars Studio").first
+    @page = Page.find_by_title("DSC homepage")
+  end
+
   def hsl
     @ginsburg_location = Building.where("name LIKE ?", "%Health Sciences Library").first
     @podiatry_location = Building.where("name LIKE ?", "%Podiatric%").first

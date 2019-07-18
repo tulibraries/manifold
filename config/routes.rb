@@ -108,6 +108,7 @@ Rails.application.routes.draw do
     get "research-services" => :research, as: "pages_research"
     get "visit-study" => :visit, as: "pages_visit"
     get "home" => :home, as: "pages_home"
+    get "lcdss" => :tudsc, as: "pages_dsc"
   end
 end
 

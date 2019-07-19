@@ -122,9 +122,6 @@
   padding: 21px;
   margin-bottom: 14px;
 }
-.leftside-index {
-	background-color: transparent!important;
-}
 .register-link {
 		background-color: $foamgreen;
 		padding: 21px;
@@ -139,7 +136,6 @@
 		}
 }
 .events_facets {
-	background-color: $lightest-grey;
 	padding-bottom: 21px;
 
 	.events_search {
@@ -189,9 +185,13 @@
 	}
 	.event_types, .event_spaces {
 		.active {
-			background-color: $white;
+			background-color: $seagreen;
+			color: $white;
 			margin-left: 4px;
 			padding-left: 14px;
+			a {
+				color: $white;
+			}
 		}
 	}
 	.filter-reset {

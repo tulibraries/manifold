@@ -227,6 +227,68 @@
     },
     {
       "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "9b9107ea408fd3c514c0d1a2256b052d680c4cc270f2958d44befa354e0544f2",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/blogs/index.html.erb",
+      "line": 22,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Read more >\", (Unresolved Model).new.link, :class => \"read-more\")",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "BlogsController",
+          "method": "index",
+          "line": 13,
+          "file": "app/controllers/blogs_controller.rb",
+          "rendered": {
+            "name": "blogs/index",
+            "file": "app/views/blogs/index.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "blogs/index"
+      },
+      "user_input": "(Unresolved Model).new.link",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "a467c709a0e6f1ab748f0108b948f1fd1083fecaf23073f589ce2e195ae55aa6",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/blogs/index.html.erb",
+      "line": 17,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to((Unresolved Model).new.label.truncate(52), (Unresolved Model).new.link)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "BlogsController",
+          "method": "index",
+          "line": 13,
+          "file": "app/controllers/blogs_controller.rb",
+          "rendered": {
+            "name": "blogs/index",
+            "file": "app/views/blogs/index.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "blogs/index"
+      },
+      "user_input": "(Unresolved Model).new.link",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
       "warning_code": 2,
       "fingerprint": "c2fab1996253d0446b6f777d8e7fb7a07a770b2b8e89a921d2c67a4c21a9fddf",
       "check_name": "CrossSiteScripting",

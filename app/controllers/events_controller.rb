@@ -25,17 +25,38 @@ class EventsController < ApplicationController
   end
 
   def return_events(events)
+    @events = []
     if params.has_key?("type")
-      @events = events.having("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
-    elsif params.has_key?("location")
-      @events = events.where(building: params[:location]).or(
+      @type_events = events.having("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
+    end
+    if params.has_key?("location")
+      @loc_events = events.where(building: params[:location]).or(
         events.where(external_building: params[:location])).order(
           start_time: :desc)
     end
-    @event_types = types_list(events)
+
+    unless @type_events.nil? && @loc_events.nil?
+      unless @type_events.nil?
+        @events += @type_events
+      end
+      unless @loc_events.nil?
+        @events += @loc_events
+      end
+    end
+
+    @event_types = all_types(events)
+    unless @events.empty?
+      @event_types = types_list(@events)
+    end
+
     @event_locations = locations_list(events)
-    unless @events.nil?
-      @events_list = @events.page params[:page]
+    unless @events.empty?
+      @event_locations = locations_list(@events)
+    end
+
+    unless @events.blank?
+      events_list = Event.where(id: @events.map(&:id)).order(:start_time)
+      @events_list = events_list.page params[:page]
     else
       @events_list = events.page params[:page]
     end

@@ -48,3 +48,9 @@ Rails.application.configure do
 end
 
 Rails.application.routes.default_url_options[:host] = "test.host"
+
+## So we can test aws credential initializers
+ENV["S3_ACCESS_KEY_ID"] = "access_key_id"
+ENV["S3_SECRET_ACCESS_KEY"] = "secret_access_key"
+ENV["S3_REGION"] = "region"
+ENV["S3_BUCKET"] = "bucket"

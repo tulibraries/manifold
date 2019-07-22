@@ -47,7 +47,7 @@
 	padding-right: 14px;
 	background-color: $lightest-grey;
 	padding: 10px 21px;
-	color: $seagreen-on-grey;
+	color: $seagreen ;
 	font-size:150%;
 	margin-bottom: 14px;
 }
@@ -68,7 +68,7 @@
 	background-color: $seagreen!important;
 	text-align: center;
 	padding: 4px 7px;
-	border: solid $seagreen-complement 1px;
+	border: solid $seagreen 1px;
 	border-radius: 7px;
 	font-size: 90%;
 	font-weight: 700;
@@ -116,7 +116,7 @@
 		background-color: $foamgreen;
 	}
 .event-location {
-	border: solid #1a9682 1px;
+	border: solid $seagreen 1px;
   border-radius: 7px;
   background-color: transparent;
   padding: 21px;

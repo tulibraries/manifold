@@ -8,8 +8,8 @@
 		<% unless category.categories.include?(category) %>
 
 			<div class="col-12 col-md-6 col-lg-4 text-center">
-				<% unless category.icon.attachment.nil? %>
-					<%= link_to (image_tag category.icon, class: "category-icon"), category_path(category) %> 
+				<% unless category.image.attachment.nil? %>
+					<%= link_to (image_tag category.image, class: "category-icon"), category_path(category) %> 
 				<% else %>
 					<%= link_to (image_tag "T-borderless.gif"), category_path(category) %>
 				<% end %>

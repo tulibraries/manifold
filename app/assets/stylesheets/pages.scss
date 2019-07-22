@@ -485,7 +485,8 @@
 		padding: 21px 0;
 		margin-bottom: 21px;
 		a {
-			padding-left: 21px;
+			display: inline-block;
+			margin-left: 21px;
 			padding-right: 21px;
 			color: $white;
 			font-size: 135%;

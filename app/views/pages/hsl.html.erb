@@ -18,11 +18,11 @@
 		<% unless @ginsburg_location.nil? && @podiatry_location.nil? %>
 		<div class="hsl-locations">
 			<% unless @ginsburg_location.nil? %>
-			<%= link_to "Ginsburg Health Sciences Library", building_path(@ginsburg_location) %>
+			<%= link_to @ginsburg_location.label, building_path(@ginsburg_location) %>
 			<hr />
 			<% end %>
 			<% unless @podiatry_location.nil? %>
-			<%= link_to "Krausz Podiatric Library", building_path(@podiatry_location) %>
+			<%= link_to @podiatry_location.label, building_path(@podiatry_location) %>
 			<% end %>
 		</div>
 		<% end %>

@@ -10,7 +10,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    icon: PhotoField.with_options(admin_only: true),
+    image: PhotoField.with_options(admin_only: true),
     id: Field::Number,
     name: Field::String,
     slug: Field::String.with_options(admin_only: true),
@@ -36,7 +36,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :icon,
+    :image,
     :id,
     :name,
     :custom_url,
@@ -50,7 +50,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :icon,
+    :image,
     :name,
     :slug,
     :custom_url,

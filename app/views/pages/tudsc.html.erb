@@ -96,9 +96,9 @@
 					<h2>Research Blog</h2>
 					<ul class="list-unstyled">
 						<% @blog_posts.each do |link| %>
-							<li><%= link_to link.title, link %></li>
+							<li><%= link_to link.title, link.post_guid %></li>
 						<% end %>
-						<li class="text-right dsc-event"><%= link_to "View all", blog_path(@blog), style: "text-decoration:underline" %> ></li>
+						<li class="text-right dsc-event"><%= link_to "View all", strip_tags(@blog.base_url), style: "text-decoration:underline" %> ></li>
 					</ul>
 				</div>
 				<div class="dsc-links d-block d-lg-none">

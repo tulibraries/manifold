@@ -14,8 +14,10 @@
       </div>
       <div class="r-body d-none" id="contact-body">
         <div class="address">
+          <% unless @group.space.nil? %>
           <%= link_to @group.space.building.name, building_path(@group.space.building) %>
             <br />
+          <% end %>
             <%= @group.space.name %>
         </div>
         <span class="phone"><%= phone_formatted(@group.chair_dept_heads.first.phone_number) %></span><br />
@@ -41,12 +43,14 @@
 
   <div class="row visit-info">
     <div class="col-12 text-center">
+      <% unless @group.space.nil? %>
       <div class="r-title" onClick="javascript:toggle('map-body')">
         Map
       </div>
       <div class="r-body d-none" id="map-body">
         <%= render_map(@group.space.building.name,@group.space.building.coordinates,@group.space.building.google_id) %>
       </div>
+      <% end %>
     </div>
   </div>
 

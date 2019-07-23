@@ -3,8 +3,8 @@ set -e
 
 cd ..
 # clone deployment playbook
-git clone --single-branch --branch qa git@github.com:tulibraries/ansible-playbook-manifold.git
-cd ansible-playbook-manifold
+git clone --single-branch --branch master git@github.com:tulibraries/ansible-playbook-manifold.git manifold-stage
+cd manifold-stage
 # install playbook requirements
 sudo pip install pipenv
 # install playbook requirements

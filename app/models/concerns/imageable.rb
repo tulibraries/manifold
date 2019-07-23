@@ -8,26 +8,24 @@ module Imageable
   end
 
   def index_image
-    image.variant(image_variation(220, 220)).processed
+    custom_image(220, 220)
   end
 
   def thumb_image
-    image.variant(image_variation(120, 120)).processed
+    custom_image(120, 120)
   end
 
   def show_image
-    fit_width = 300
-    fit_height = 300
-    if ((image.blob.metadata[:width] != fit_width) ||
-        (image.blob.metadata[:height] != fit_height))
-      image.variant(image_variation(fit_width, fit_height)).processed
-    else
-      image
-    end
+    custom_image(300, 300)
   end
 
   def custom_image(width, height)
-    image.variant(image_variation(width, height)).processed
+    if ((image.blob.metadata[:width] != width) ||
+        (image.blob.metadata[:height] != height))
+      image.variant(image_variation(width, height)).processed
+    else
+      image
+    end
   end
 
   def image_variation(width, height)

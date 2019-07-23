@@ -16,7 +16,14 @@ module Imageable
   end
 
   def show_image
-    image.variant(image_variation(300, 300)).processed
+    fit_width = 300
+    fit_height = 300
+    if ((image.blob.metadata[:width] != fit_width) ||
+        (image.blob.metadata[:height] != fit_height))
+      image.variant(image_variation(fit_width, fit_height)).processed
+    else
+      image
+    end
   end
 
   def custom_image(width, height)

@@ -28,11 +28,17 @@ Note - The form name is denoted `<form_name>`
   mkdir -p app/views/forms/<form_name>
   ```
 
-- Create a title partial template file `app/views/forms/<form_name>/_title.html.erb`
-and add the title text to the file.
+- Add an entry in `/config/locales/en.yml` under the `forms` key, using the form_name as
+a key, with a title key containing the human readable name of the form, as in the example below.
 
   ```
-  Book Request Form
+  ...
+  forms:
+    recall_book:
+      title: Request Recall of Books Already Checked Out
+    purchase_request:
+      title: Purchase Request
+  ...
   ```
 
 - Create an intro partial template file `app/views/forms/<form_name>/_intro.html.erb`

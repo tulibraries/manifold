@@ -306,8 +306,8 @@
                           },
                           "subject": {
                             "type": "array",
-                            "items": { 
-                              "type": "string" 
+                            "items": {
+                              "type": "string"
                             },
                             "example": ["Music"]
                           },
@@ -478,6 +478,64 @@
         }
       }
     },
+    "/forms": {
+      "get": {
+        "summary": "Retrieves a list of Forms",
+        "tags": ["Form", "Batch"],
+        "operationId": "getForms",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "list of forms",
+            "schema": {
+              "type": "object",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "type"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "attributes": {
+                        "type": "object",
+                        "required": [
+                          "label"
+                        ],
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "example": "Form for all the things"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2018-01-01T12:00:00",
+                            "format": "date-time"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/exhibitions": {
       "get": {
         "summary": "Retrieves a list of exhibitions",
@@ -520,14 +578,14 @@
                             "type": "string",
                             "default": "",
                             "example": "The Library's Exhibition"
-                            
+
                           },
                           "label": {
                             "type": "string",
                             "title": "The Label Schema",
                             "default": "",
                             "example": "The Library's Exhibition"
-                            
+
                           },
                           "description": {
                             "type": "string",
@@ -634,8 +692,8 @@
                           },
                           "subject": {
                             "type": "array",
-                            "items": { 
-                              "type": "string" 
+                            "items": {
+                              "type": "string"
                             },
                             "example": ["Music"]
                           },
@@ -644,7 +702,7 @@
                             "format": "uri-reference",
                             "title": "The content link Schema",
                             "default": "",
-                            "example": "https://example.com/scrc/zaphodcollection" 
+                            "example": "https://example.com/scrc/zaphodcollection"
                           },
                           "identifier": {
                             "type": "string",
@@ -1082,7 +1140,7 @@
                           },
                           "intended_audience": {
                             "type": "array",
-                            "items": { 
+                            "items": {
                               "type": "string"
                             },
                             "title": "The Intended Audience Schema",

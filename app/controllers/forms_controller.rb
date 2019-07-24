@@ -11,8 +11,29 @@ class FormsController < ApplicationController
     render template: "forms/index"
   end
 
+
   def all
-    render template: "forms/index"
+    respond_to do |format|
+      format.html { render template: "forms/index" }
+      format.json do
+        @forms = form_objects_for_json
+        render json: FormSerializer.new(@forms)
+      end
+    end
+  end
+
+  def form_objects_for_json
+    forms = Dir.glob("#{Rails.root.join('app/views/forms/*/')}")
+      .map { |template_path| template_path.split("/").last }
+      .reject { |template_name| template_name == "shared" }
+      .map do |form|
+        OpenStruct.new(
+          id: form,
+          label: t("manifold.default.forms.#{form.underscore}.title"),
+          link: "#{request.base_url}/forms/#{form}",
+          updated_at: DateTime.new(0)
+        )
+      end
   end
 
   def create

@@ -26,8 +26,12 @@
 			}
 		}
 		li.active {
-			background-color: $white;
+			background-color: $seagreen;
+			color: $white;
 			margin-left: 4px;
+			a {
+				color: $white;
+			}
 		}
 	}
 	a[data-toggle="collapse"]:after {
@@ -96,14 +100,14 @@
 		}
 		.entity-help {
 			padding-left: 0;
-	    border: solid #1a9682 1px;
+	    border: solid $seagreen 1px;
 	    border-radius: 7px;
 	    padding: 14px;
 	    overflow-wrap: break-word;
 	    line-height: .75;
 		}
 		.access-link {
-			background-color: #749715;
+			background-color: $foamgreen;
 	    padding: 14px;
 	    border-radius: 7px;
 	    margin-top: 17px;
@@ -120,6 +124,19 @@
 		margin-bottom: 21px;
 		margin-left: 7px;
 		padding-bottom: 14px;
+		.person-actions {
+			.view-profile {
+				background-color: $seagreen;
+				padding:7px 14px;
+				color: $white;
+				border-radius: 7px;
+			}
+			.springshare-id {
+				background-color: $foamgreen;
+				padding:7px 14px;
+				border-radius: 7px;
+			}
+		}
 	}
 }
 
@@ -137,7 +154,7 @@
 		padding: 21px 0;
 	}
 }
-.container.person {
+.container.person {  /* Person show page */
 	margin-top: 35px;
 	.subject-list, .contact-list {
 		border: solid $seagreen 1px;
@@ -193,6 +210,6 @@
 	display:inline-block;
 	float: right;
 	a {
-		color: $black!important;
+		color: $white!important;
 	}
 }

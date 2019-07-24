@@ -2,6 +2,9 @@
 
 Rails.application.routes.draw do
 
+  mount Rswag::Api::Engine => "/"
+  mount Rswag::Ui::Engine  => "api-docs"
+
   concern :imageable do
     get "image/thumbnail", to: "images#thumbnail_image"
     get "image/medium",    to: "images#medium_image"
@@ -49,13 +52,13 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :buildings, :collections, :events, :exhibitions, :groups, :highlights, :pages, :people, :spaces do
+    resource :buildings, :categories, :collections, :events, :exhibitions, :groups, :highlights, :pages, :people, :spaces do
       member do
         get ":id/detach" => :detach
       end
     end
 
-    resource :buildings, :collections, :events, :exhibitions, :groups, :highlights, :pages, :people, :spaces do
+    resource :buildings, :categories, :collections, :events, :exhibitions, :groups, :highlights, :pages, :people, :spaces do
       member do
         post "detach" => :detach
       end
@@ -95,6 +98,10 @@ Rails.application.routes.draw do
     get "events/past" => :past, as: "past_events"
   end
 
+  controller :blogs do
+    get "news" => :index, as: "news"
+  end
+
   controller :pages do
     get "scrc" => :scrc, as: "pages_scrc"
     get "blockson" => :blockson, as: "pages_blockson"
@@ -105,6 +112,8 @@ Rails.application.routes.draw do
     get "research-services" => :research, as: "pages_research"
     get "visit-study" => :visit, as: "pages_visit"
     get "home" => :home, as: "pages_home"
+    get "lcdss" => :tudsc, as: "pages_lcdss"
+    # get "explore-charles" => :charles, as: "pages_charles"
   end
 end
 

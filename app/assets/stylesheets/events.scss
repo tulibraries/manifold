@@ -47,7 +47,7 @@
 	padding-right: 14px;
 	background-color: $lightest-grey;
 	padding: 10px 21px;
-	color: $seagreen-on-grey;
+	color: $seagreen ;
 	font-size:150%;
 	margin-bottom: 14px;
 }
@@ -68,7 +68,7 @@
 	background-color: $seagreen!important;
 	text-align: center;
 	padding: 4px 7px;
-	border: solid $seagreen-complement 1px;
+	border: solid $seagreen 1px;
 	border-radius: 7px;
 	font-size: 90%;
 	font-weight: 700;
@@ -116,14 +116,11 @@
 		background-color: $foamgreen;
 	}
 .event-location {
-	border: solid #1a9682 1px;
+	border: solid $seagreen 1px;
   border-radius: 7px;
   background-color: transparent;
   padding: 21px;
   margin-bottom: 14px;
-}
-.leftside-index {
-	background-color: transparent!important;
 }
 .register-link {
 		background-color: $foamgreen;
@@ -139,7 +136,6 @@
 		}
 }
 .events_facets {
-	background-color: $lightest-grey;
 	padding-bottom: 21px;
 
 	.events_search {
@@ -189,9 +185,13 @@
 	}
 	.event_types, .event_spaces {
 		.active {
-			background-color: $white;
+			background-color: $seagreen;
+			color: $white;
 			margin-left: 4px;
 			padding-left: 14px;
+			a {
+				color: $white;
+			}
 		}
 	}
 	.filter-reset {

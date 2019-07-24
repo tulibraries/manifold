@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show]
 
   # GET /blogs
   # GET /blogs.json
   def index
     @blogs = Blog.all
+    @highlights = Highlight.where(promoted: true).take(4)
+
     respond_to do |format|
       format.html
       format.json { render json: BlogSerializer.new(@blogs) }

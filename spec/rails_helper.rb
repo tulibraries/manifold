@@ -9,13 +9,13 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 require "capybara/rails"
 
-require "database_cleaner"
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 include Warden::Test::Helpers
 
 require "simplecov"
 SimpleCov.start
+
 
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -37,6 +37,8 @@ SimpleCov.start
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+require "webmock/rspec"
+
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -45,7 +47,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -67,18 +69,19 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
-
   # Allow log in in request specs
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::ControllerHelpers, type: :controller
+
+
+  config.before(:each) do
+    stub_request(:get, /.*events\.temple\.edu\/.*\.jpg.*/)
+      .to_return(
+        status: 200,
+        body: File.open("#{fixture_path}/charles.jpg"), headers: {}
+      )
+
+    stub_request(:get, "https://sites.temple.edu/devopsing/feed").
+    to_return(status: 200, body: File.open("#{fixture_path}/blog_posts.rss") , headers: {})
+  end
 end

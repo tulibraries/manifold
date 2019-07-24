@@ -47,6 +47,7 @@ gem "font-awesome-rails"
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false
 gem "devise"
 gem "omniauth"
@@ -67,6 +68,10 @@ gem "paper_trail"
 gem "diffy"
 gem "okcomputer"
 gem "pg"
+# Gemfile
+gem "rswag-api"
+gem "rswag-ui"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -97,11 +102,11 @@ group :test do
   gem "rspec-rails", ">=3.8.0"
   gem "rails-controller-testing"
   gem "factory_bot_rails", "~> 4.11.1"
-  gem "database_cleaner"
   gem "guard-rspec", require: false
   gem "mutant-rspec"
   gem "rspec-activemodel-mocks"
   gem "simplecov", require: false
+  gem "webmock"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -154,6 +154,26 @@
 							]
 						}
 					}
+				},
+				"links": {
+					"$id": "#/properties/data/properties/links",
+					"type": "object",
+					"title": "The Links Schema",
+					"required": [
+						"self"
+					],
+					"properties": {
+						"self": {
+							"$id": "#/properties/data/properties/links/properties/self",
+							"type": "string",
+							"title": "The Self Schema",
+							"default": "",
+							"examples": [
+								"http://test.host/services/2"
+							],
+							"pattern": "^(.*)$"
+						}
+					}
 				}
 			}
 		}

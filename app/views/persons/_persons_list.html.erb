@@ -30,13 +30,13 @@
             </li>
           </ul>
           <div class="person-actions" style="margin-bottom: 21px">
-            <span class="button" style="padding:7px 14px; background-color:#1a9682">
-              <%= link_to "View Profile", person, style: "color: white" %>
-            </span>
+            
+              <%= link_to "View Profile", person, class: "view-profile" %>
+            
             <% unless person.springshare_id.blank? %>
-              <span class="button" style="padding:7px 14px; background-color:#749715">
-                <%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new", style: "color: white" %>
-              </span>
+              
+                <%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-id", target: "_new", style: "color: white" %>
+              
             <% end %>
           </div>
         </div>

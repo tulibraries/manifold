@@ -31,8 +31,10 @@
     </div>
 
     <div class="col-12 col-lg-3 right-side">
-      <div class="entity-help"><h3>Main Phone:</h3>215-204-1234</div>
-      <div class="access-link"><h3><%= link_to "Frequently Called Numbers", root_path %></h3></div>
+      <div class="entity-help"><h3>Main Phone:</h3>215-204-0744</div>
+      <% unless @fcn_link.nil? %>
+        <div class="access-link"><h3><%= link_to "Frequently Called Numbers", @fcn_link %></h3></div>
+      <% end %>
     </div>
 
   </div>

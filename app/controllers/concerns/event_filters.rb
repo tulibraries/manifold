@@ -7,7 +7,7 @@ module EventFilters
     to_add = events.select { |event| event.get_types.try(:any?) }.collect { |type| type.event_type.split(",") }
 
     types = to_add.map { |type| if type.include?(params[:type])
-                                  type.each do |t| 
+                                  type.each do |t|
                                     t.strip!
                                   end
                                 end }
@@ -17,9 +17,9 @@ module EventFilters
 
   def all_types(events)
     to_add = events.select { |event| event.get_types.try(:any?) }.collect { |type| type.event_type.split(",") }
-    
-    types = to_add.map { |type| type.each do |t| 
-                                t.strip!
+
+    types = to_add.map { |type| type.each do |t|
+                                  t.strip!
                                 end }
 
     types.compact.flatten.uniq.sort

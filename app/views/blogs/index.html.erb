@@ -1,30 +1,45 @@
-<div class="row">
-  <div class="col breadcrumbs">
-    <%= link_to "Home", root_path.to_s %>
-    Blogs
-  </div>
-</div>
+<div class="container blogs">
 
 <div class="row">
   <div class="col">
-    <div class="vertical-stripes-sm">
-      <h2><span>Blogs</span></h2>
-    </div>
+    <h1 class="page-title">Recent Highlights</h1>
   </div>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= link_to blog.title, blog %></td>
-      </tr>
+<div class="row highlights">
+  <% unless @highlights.nil? %>
+  <% @highlights.each do |highlight| %>
+  <div class="col-12 col-lg-6 highlight">
+    <% if highlight.image.attached?  %>
+    <%= link_to (image_tag highlight.custom_image(600, 264), alt: ""), highlight.link %>
     <% end %>
-  </tbody>
-</table>
+    <div class="highlight-caption">
+      <h2><%= link_to highlight.label.truncate(52), highlight.link %></h2>
+      <div class="highlight-description">
+        <%= sanitize(highlight.blurb.truncate(120).html_safe) %>
+      </div>
+      <div class="unnecessary-link">
+        <%= link_to "Read more >", highlight.link, class: "read-more" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+
+<div class="row" id="blog-section">
+  <div class="col-12 section-title">
+    <h2>Library Blogs</h2>
+  </div>
+  <div class="col-12">
+    <ul class="list-unstyled two-columns">
+    <% @blogs.each do |blog| %>
+      <li>
+        <strong><%= link_to blog.title, blog %></strong>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+</div>

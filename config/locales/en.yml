@@ -114,6 +114,8 @@ en:
           title: Library Data Grants
         ask_scrc:
           title: "Special Collections Research Center: Ask a Question"
+        proxy_account:
+          title: "Proxy Account"
 
 
 

@@ -12,14 +12,21 @@
         <% unless action_name == "past" %>
           <li<% if type == params[:type] %><% active = true %> class="active"<% end %>>
             <%= link_to type, events_path(request.query_parameters.merge({type: type, page: 1})) %>
+            <% if active == true %>
+              <span class="clear-filter">
+                <%= link_to "X", events_path(request.query_parameters.except(:type).merge({page: 1})) %>
+              </span>
+            <% end %>
+          <% active = false %>
         <% else %>
           <li<% if type == params[:type] %><% active = true %> class="active"<% end %>>
             <%= link_to type, past_events_path(request.query_parameters.merge({type: type, page: 1})) %>
-        <% end %>
-        <% if active == true %>
-          <span class="clear-filter">
-            <%= link_to "X", events_path(request.query_parameters.except(:type).merge({page: 1})) %>
-          </span>
+            <% if active == true %>
+              <span class="clear-filter">
+                <%= link_to "X", past_events_path(request.query_parameters.except(:type).merge({page: 1})) %>
+              </span>
+            <% end %>
+          <% active = false %>
         <% end %>
           </li>
       <% end %>
@@ -38,14 +45,21 @@
         <% unless action_name == "past" %>
           <li<% if location == params[:location] %><% active = true %> class="active"<% end %>>
             <%= link_to location, events_path(request.query_parameters.merge({location: location, page: 1})) %>
+            <% if active == true %>
+            <span class="clear-filter">
+              <%= link_to "X", events_path(request.query_parameters.except(:location).merge({page: 1})) %>
+            </span>
+            <% end %>
+          <% active = false %>
         <% else %>
           <li<% if location == params[:location] %><% active = true %> class="active"<% end %>>
             <%= link_to location, past_events_path(request.query_parameters.merge({location: location, page: 1})) %>
-        <% end %>
-        <% if active == true %>
-          <span class="clear-filter">
-            <%= link_to "X", events_path(request.query_parameters.except(:location).merge({page: 1})) %>
-          </span>
+            <% if active == true %>
+            <span class="clear-filter">
+              <%= link_to "X", past_events_path(request.query_parameters.except(:location).merge({page: 1})) %>
+            </span>
+          <% end %>
+          <% active = false %>
         <% end %>
           </li>
       <% end %>

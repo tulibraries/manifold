@@ -1,0 +1,9 @@
+<%= f.input :faculty_admin_name, label: "Faculty/Administrator Name", required: true %>
+<%= f.input :faculty_admin_email, label: "Faculty/Administrator Email", as: :email, required: true %>
+<%= f.input :faculty_admin_tuid, label: "Faculty/Administrator TUid number", required: true %>
+
+
+<%= f.input :proxy_name, label: "Proxy Name", required: true %>
+<%= f.input :proxy_tuid, label: "Proxy TUid number", required: true %>
+
+<%= f.input :proxy_account_expiration, as: :date, start_year: Date.today.year, end_year: Date.today.year+3, order: [:month, :day, :year], label: "Proxy Account Expiration Date", required: :true %>

@@ -11,8 +11,6 @@ services:
 env:
   - TZ=America/New_York
 
-jdk:
-  - oraclejdk8
 
 before_install:
   - gem update --system

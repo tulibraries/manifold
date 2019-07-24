@@ -716,15 +716,21 @@
 	.dsc-contact {
 		background-color: $seagreen;
 		padding: 0;
+		color: $white;
+		font-size: 135%;
 		@media (max-width: 1039px) {
 			margin-bottom: 21px;
+		}
+		.mailer {
+			display: inline-block;
+			height: 79px; 
+			padding-top: 21px;
 		}
 		img {
 			padding-left: 21px;
 		}
 		a {
 			color: $white;
-			font-size: 135%;
 		}
 		hr {
 			background-color: $white;

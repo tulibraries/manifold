@@ -35,7 +35,7 @@
     <ul class="list-unstyled two-columns">
     <% @blogs.each do |blog| %>
       <li>
-        <strong><%= link_to blog.title, blog %></strong>
+        <strong><%= link_to blog.title, strip_tags(blog.base_url) %></strong>
       </li>
     <% end %>
     </ul>

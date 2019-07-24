@@ -48,6 +48,7 @@ $sizes: map-merge(
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "partials/*";
+@import "partials/_vars.scss";
 @import "font-awesome";
 
 

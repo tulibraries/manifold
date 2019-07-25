@@ -71,3 +71,40 @@ and add the introductory text.
   ```
   attribute :cancellation_date
   ```
+
+## Form Persistence
+
+All form submissions are persisted to the database in the `form_submissions` table. As these forms can contain sensitive data, they are encrypted before they are stored in the DB, requiring the same key to decrypt. The key is picked up from `$LOCKBOX_MASTER_KEY` environment variable.
+
+
+## Testing Forms
+
+All Forms should be tested with the `email form` shared example.
+
+The `email form` shared example requires you to define two variables via `let`
+* `form_type` - the url path / template path of the form, like `missing-book`
+* `form_params` - a hash of params that represent data sent to the form when someone submits it. The `name` and `email` params are included by default; this just needs to include params specific to this form.
+
+
+`/spec/request/forms/recall_book_spec.rb`
+```
+# frozen_string_literal: true
+
+require "rails_helper"
+
+RSpec.describe "Recall Book Form", type: :request do
+
+  let(:form_type) { "recall-book" }
+  let(:form_params) {
+    {
+      phone: "1234567890", tu_id: "test_id", department: "test dept",
+      affiliation: "Staff", author: "test author", title: "test title",
+      call_number: "test call number", substitute_edition: "false",
+      pickup_location: "Ambler"
+    }
+  }
+
+  it_behaves_like "email form"
+
+end
+```

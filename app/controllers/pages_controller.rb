@@ -21,17 +21,19 @@ class PagesController < ApplicationController
     @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
   end
 
-  def ambler
-    @events = Event.where("tags LIKE ?", "Ambler Campus Library").take(4)
-  end
   def scrc
     @scrc_location = Space.find_by_slug("scrc-room")
     @visit_links = Category.find_by_slug("scrc-study").items.sort_by { |e| e.label }
     @collection_links = Collection.all.sort_by { |e| e.label }
     @page = Page.find_by_slug("scrc-intro")
   end
+
   def blockson
+    @page = Page.find_by_slug("blockson-intro")
+    @visit_links = Category.find_by_slug("blockson-study").items.sort_by { |e| e.label }
+    @research_links = Category.find_by_slug("blockson-research").items.sort_by { |e| e.label }
     @events = Event.where("tags LIKE ?", "blockson").take(4)
+    @building = Building.find_by_slug("blockson")
   end
 
   def tudsc

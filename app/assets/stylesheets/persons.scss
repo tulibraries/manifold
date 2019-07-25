@@ -124,6 +124,9 @@
 		margin-bottom: 21px;
 		margin-left: 7px;
 		padding-bottom: 14px;
+		img {
+			max-width: 100%;
+		}
 		.person-actions {
 			.view-profile {
 				background-color: $seagreen;

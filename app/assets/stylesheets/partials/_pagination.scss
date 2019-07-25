@@ -2,9 +2,13 @@
 
 .pagination {
 	display: block!important;
-	margin-bottom: 21px;
+	margin-bottom: 14px;
+  margin-top: 14px;
   a {
     color: $black!important;
+  }
+  .page {
+    margin: 0.75em;
   }
   .page.current {
     color: $seagreen;

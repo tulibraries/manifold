@@ -71,6 +71,7 @@ gem "pg"
 # Gemfile
 gem "rswag-api"
 gem "rswag-ui"
+gem "lockbox"
 
 
 group :development, :test do

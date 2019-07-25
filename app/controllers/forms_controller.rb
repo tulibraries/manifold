@@ -42,9 +42,18 @@ class FormsController < ApplicationController
 
     if @form.deliver
       flash.now[:notice] = "Thank you for your message. We will contact you soon!"
+      persist_form!
     else
       flash.now[:error] = "Cannot send message."
       render :new
     end
+  end
+
+  def persist_form!
+    type = params[:form].delete(:form_type)
+    FormSubmission.create(
+      form_type: type,
+      form_attributes: params["form"]
+    )
   end
 end

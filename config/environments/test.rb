@@ -54,3 +54,4 @@ ENV["S3_ACCESS_KEY_ID"] = "access_key_id"
 ENV["S3_SECRET_ACCESS_KEY"] = "secret_access_key"
 ENV["S3_REGION"] = "region"
 ENV["S3_BUCKET"] = "bucket"
+ENV["LOCKBOX_MASTER_KEY"] = Lockbox.generate_key

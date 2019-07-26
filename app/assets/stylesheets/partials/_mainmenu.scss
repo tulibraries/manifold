@@ -1,5 +1,7 @@
 @import "_vars.scss";
 
+
+
 .navbar {
 		background-color: #fff;
 	.nav-item {
@@ -69,9 +71,9 @@
 		}
 		li.nav-right.chat-nav {
 		background-image:asset-data-url('chat.png');
-		background-position: 7px center;
+		background-position: 00 center;
 		background-repeat: no-repeat;
-		background-size: 49px 59px;
+		background-size: 52px 59px;
 		}
 		li.nav-right.account-nav {
 		background-image:asset-data-url('person.png');

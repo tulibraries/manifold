@@ -1,12 +1,12 @@
 <div id="header-navbar" class="container navbar navbar-static-top" role="navigation">
-  <div class="col-4 col-md-5 col-lg-4 logo-container">
+  <div class="col-4 logo-container">
     <%= link_to root_path, class: "header-name", id: "header-logo" do %>
       <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> <span>University Libraries</span>
     <% end %>
   </div>
 
 <% unless action_name == "home" %>
-  <div id="header-search" class="col-md-6 col-lg-5 offset-lg-3 d-none d-md-block d-lg-block text-right">
+  <div id="header-search" class="col-5 offset-3 d-none d-md-block d-lg-block text-right">
     <%= render "header-search" %>
   </div>
 <% else %>
@@ -33,7 +33,7 @@
       <% unless @alert.blank? %>
       <div class="container">
         <div class="row">   
-          <div class="col-md-12">
+          <div class="col-12">
             <marquee>
               <% @alert.each do |alert| %>
                 <% unless alert.link.blank? %>

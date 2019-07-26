@@ -29,5 +29,8 @@
 		h2 {
 			margin-bottom: 3px;
 		}
+		@media (max-width: 1039px) {
+			margin-top: 35px;
+		}
 	}
 }

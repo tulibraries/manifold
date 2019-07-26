@@ -21,12 +21,6 @@
 	form {
 		width: 100%;
 		padding-top: 10px;
-		.fa-search { 
-			height: 42px;
-			border-radius: 7px;
-		  color: $light-grey;
-		  float: left;
-		}
 		#librarySearch {
 			height: 42px;
 			font-size: 1.5rem;
@@ -38,6 +32,12 @@
 			width: 87%;
 			display: inline-block;
 			padding-right: 0;
+			padding-left: 7px;
+			position: relative;
+			top: 7px;
+			@media (max-width: 1039px) {
+				/*width: 50%;*/
+			}
 		}
 		#librarySearch.mobile {
 			width: 70%;
@@ -52,23 +52,21 @@
 			float: right;
 			height: 42px;
 			width: 49px;
+			position: relative;
+			top: 7px;
 			background-color: $foamgreen;
 			background-image:asset-data-url('search.png');
 			background-position: center center;
 			background-repeat: no-repeat;
 			background-size: 42px 42px;
+			border-radius: 4px;
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 			border: solid $foamgreen 1px;
 			border-left: 0;
-			@media screen and (min-width: 0px) and (max-width: 768px) {
-				position: relative;
-				top: -.3rem;
-				float: none;
+			@media screen and (min-width: 0px) and (max-width: 949px) {
 				border-radius: 0;
 				margin-right: 14px;
-				height: 49px;
-				width: 52px;
 			}
 		}
 		input[type="submit"].mobile {
@@ -77,6 +75,8 @@
 			padding-left: 0;
 			position: relative;
 			left: -7px;
+			top: 20px;
+			float: none;
 			border-top-right-radius: 4px;
 			border-bottom-right-radius: 4px;
 		}

@@ -1,6 +1,6 @@
 <% content_for :body_class, "minipage scrc" %>
 
-<div class="banner-image"></div>
+<div class="banner-image scrc"></div>
 
 <div class="container">
 
@@ -14,14 +14,14 @@
 
 <div class="row">
 	
-	<div class="col-12 col-lg-4 pr-14" id="scrc-left">
+	<div class="col-12 col-lg-4 pr-14 left-links">
 		<% unless @scrc_location.nil? %>
-		<div class="scrc-locations">
+		<div class="locations">
 			<%= link_to "SCRC Reading Room", space_path(@scrc_location) %>
 		</div>
 		<% end %>
 
-		<div class="scrc-contact">
+		<div class="contact">
 			<%= image_tag "phone-handle-white.png", style: "width: 100px" %>
 			<%= link_to "Contact Us", pages_contact_path %>
 			<hr />
@@ -30,17 +30,17 @@
 		</div>
 	</div>
 
-	<div class="col-12 col-lg-8" id="scrc-description-container">
-		<div class="row" id="scrc-description">
+	<div class="col-12 col-lg-8 description-container">
+		<div class="row description">
 			<div class="col-12">
 				<div class="col-12">
 				<%= sanitize(@page.description.html_safe) %>
 			</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row links-container">
 			<div class="col-12 col-lg-6">
-				<div class="scrc-links d-none d-lg-block">
+				<div class="links d-none d-lg-block">
 					<h2>Visit & Study</h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
@@ -48,12 +48,12 @@
 						<% end %>
 					</ul>
 				</div>
-				<div class="scrc-links visit d-block d-lg-none">
-					<%= render "scrc_visit" %>
+				<div class="links d-block d-lg-none">
+					<%= render "pages/mini-partials/visit" %>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
-				<div class="scrc-links d-none d-lg-block">
+				<div class="links d-none d-lg-block">
 					<h2>Collecting Emphases</h2>
 					<ul class="list-unstyled">
 						<% @collection_links.each do |link| %>
@@ -61,8 +61,8 @@
 						<% end %>
 					</ul>
 				</div>
-				<div class="scrc-links collections d-block d-lg-none">
-					<%= render "scrc_collections" %>
+				<div class="links d-block d-lg-none">
+					<%= render "pages/mini-partials/collections" %>
 				</div>
 			</div>
 		</div>

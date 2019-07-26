@@ -1,6 +1,6 @@
 <% content_for :body_class, "minipage dsc" %>
 
-<div class="banner-image"></div>
+<div class="banner-image dsc"></div>
 
 <div class="container">
 
@@ -14,9 +14,9 @@
 
 <div class="row">
 	
-	<div class="col-12 col-lg-4 pr-14" id="dsc-left">
+	<div class="col-12 col-lg-4 pr-14 left-links">
 		<% unless @makerspace_location.nil? && @podiatry_location.nil? && @innovation_location.nil? %>
-		<div class="dsc-locations">
+		<div class="locations">
 			<% unless @makerspace_location.nil? %>
 			<%= link_to "Makerspace", space_path(@makerspace_location) %>
 			<% end %>
@@ -31,7 +31,7 @@
 		</div>
 		<% end %>
 
-		<div class="dsc-contact">
+		<div class="contact">
 			<%= image_tag "phone-handle-white.png", style: "width: 100px" %>
 			215-204-0752
 			<hr />
@@ -41,17 +41,17 @@
 
 	</div>
 
-	<div class="col-12 col-lg-8" id="dsc-description-container">
+	<div class="col-12 col-lg-8 description-container">
 		<% unless @page.description.nil? %>
 		<div class="row">
-			<div class="col-12" id="dsc-description">
+			<div class="col-12 description">
 				<%= sanitize(@page.description.html_safe) %>
 			</div>
 		</div>
 		<% end %>
-		<div class="row" id="dsc-links-container">
+		<div class="row links-container">
 			<div class="col-12 col-lg-6">
-				<div class="dsc-links d-none d-lg-block">
+				<div class="links d-none d-lg-block">
 					<h2>Visit & Study</h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
@@ -59,12 +59,12 @@
 						<% end %>
 					</ul>
 				</div>
-				<div class="dsc-links d-block d-lg-none">
-					<%= render "dsc_visit" %>
+				<div class="links d-block d-lg-none">
+					<%= render "pages/mini-partials/visit" %>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
-				<div class="dsc-links d-none d-lg-block">
+				<div class="links d-none d-lg-block">
 					<h2>Research Services</h2>
 					<ul class="list-unstyled">
 						<% @research_links.each do |link| %>
@@ -72,12 +72,12 @@
 						<% end %>
 					</ul>
 				</div>
-				<div class="dsc-links d-block d-lg-none">
-					<%= render "dsc_research" %>
+				<div class="links d-block d-lg-none">
+					<%= render "pages/mini-partials/research" %>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
-				<div class="dsc-links d-none d-lg-block">
+				<div class="links d-none d-lg-block">
 					<h2>Workshops & Events</h2>
 					<ul class="list-unstyled">
 						<% unless @events_links.nil? %>
@@ -88,22 +88,22 @@
 							<li class="text-right dsc-event"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
 					</ul>
 				</div>
-				<div class="dsc-links d-block d-lg-none">
-					<%= render "dsc_events" %>
+				<div class="links d-block d-lg-none">
+					<%= render "pages/mini-partials/events" %>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
-				<div class="dsc-links d-none d-lg-block">
+				<div class="links d-none d-lg-block">
 					<h2>Research Blog</h2>
 					<ul class="list-unstyled">
 						<% @blog_posts.each do |link| %>
 							<li><%= link_to link.title, link.post_guid %></li>
 						<% end %>
-						<li class="text-right dsc-event"><%= link_to "View all", strip_tags(@blog.base_url), style: "text-decoration:underline" %> ></li>
+						<li class="text-right all-events"><%= link_to "View all", strip_tags(@blog.base_url), style: "text-decoration:underline" %> ></li>
 					</ul>
 				</div>
-				<div class="dsc-links d-block d-lg-none">
-					<%= render "dsc_blog" %>
+				<div class="links d-block d-lg-none">
+					<%= render "pages/mini-partials/blog" %>
 				</div>
 			</div>
 		</div>

@@ -23,6 +23,9 @@ class ApplicationController < ActionController::Base
     @numbers_link = Page.find_by_slug("numbers")
     @social_links = Page.find_by_slug("social-media")
     @donate_link = Page.find_by_slug("donations")
+    @diversity_link = Page.find_by_slug("diversity")
+    @standards_link = Policy.find_by_slug("standards")
+    @privacy_link = Service.find_by_slug("privacy")
   end
 
   def show_hours

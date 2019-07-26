@@ -1,5 +1,7 @@
 @import "_vars.scss";
 
+
+
 .navbar {
 		background-color: #fff;
 	.nav-item {
@@ -24,6 +26,7 @@
 	width: 100%;
 	margin-left: 0;
 	margin-right: 0;
+	margin-top: 14px;
 	height: auto;
 	display: inline-block;
 	position: relative;
@@ -86,9 +89,9 @@
 		}
 		li.nav-right.chat-nav {
 		background-image:asset-data-url('chat.png');
-		background-position: 7px center;
+		background-position: 00 center;
 		background-repeat: no-repeat;
-		background-size: 49px 59px;
+		background-size: 52px 59px;
 		}
 		li.nav-right.account-nav {
 		background-image:asset-data-url('person.png');
@@ -96,7 +99,12 @@
 		background-repeat: no-repeat;
 		background-size: 42px 42px;
 		}
-
+		#libchat_fe2bd0cb1f04720f51641c4f01b8e22e button {
+			background-color: transparent;
+			font-size: 1.3rem;
+			padding: 0;
+			border: 0;
+		}
 	}
 	.main-nav-right {
 		padding-left: 0;

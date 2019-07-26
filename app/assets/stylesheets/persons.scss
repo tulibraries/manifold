@@ -18,19 +18,17 @@
 		margin-top: 10px;
 		li {
 			padding: 6px 14px;
-			padding-right: 7px;
 			font-size: 1rem;
 			a {
-				margin: 0 2px;
 				font-size: 1rem;
 			}
 		}
 		li.active {
-			background-color: $seagreen;
-			color: $white;
-			margin-left: 4px;
+			font-family: 'PT Sans Bold';
+			color: $seagreen;
+			margin-right: 5px;
 			a {
-				color: $white;
+				color: $seagreen;
 			}
 		}
 	}
@@ -213,6 +211,6 @@
 	display:inline-block;
 	float: right;
 	a {
-		color: $white!important;
+		color: $seagreen;
 	}
 }

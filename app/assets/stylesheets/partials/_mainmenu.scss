@@ -24,9 +24,7 @@
 #main-menu {
 	background-color: $seagreen;
 	width: 100%;
-	margin-left: 0;
-	margin-right: 0;
-	margin-top: 14px;
+	margin: 14px 0 0 0;
 	height: auto;
 	display: inline-block;
 	position: relative;
@@ -42,14 +40,12 @@
 		padding-bottom: 0;
 		margin-bottom: 0;
 		li {
-			padding-top: .5rem;
-			padding-bottom: .5rem;
+			padding: .5rem 21px;
 			display: inline-block;
-			padding-left: 21px;
-			padding-right: 21px;
 			height: 100%;
 			vertical-align: middle;
-			border-left: solid $seagreen-dark 2px;
+			border-left: solid $seagreen 1px;
+			border-right: solid $seagreen 1px;
 			a {
 				color: $white;
 				font-size: 1.3rem;
@@ -59,26 +55,12 @@
 				}
 			}
 		}
-		li.first {
-			border-left: solid $seagreen-dark 0;
-			border-right: solid $seagreen-dark 0;
-		}
-		li.last {
-			border-right: solid $seagreen-dark 2px;
-			@media screen and (max-width: 1040px) {
-				border-right: solid $seagreen-dark 0;
-			}
-			@media screen and (max-width: 1039px) {
-				padding-right: 0;
-			}
-		}
 		li.nav-right {
 			@media screen and (min-width: 1040px) {
 				float: right;
 			}
 			background-color: $seagreen-dark;
 			padding-left: 49px;
-			border-color: $seagreen;
 			padding-right: 16px;
 		}
 		li.nav-right.hours-nav {
@@ -98,6 +80,12 @@
 		background-position: 7px center;
 		background-repeat: no-repeat;
 		background-size: 42px 42px;
+		}
+		li.active {
+			background-color: $black;
+			border: inset $white 1px;
+			border-top: 0;
+			border-bottom: 0;
 		}
 		#libchat_fe2bd0cb1f04720f51641c4f01b8e22e button {
 			background-color: transparent;

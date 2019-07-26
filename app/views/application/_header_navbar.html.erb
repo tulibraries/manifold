@@ -52,20 +52,20 @@
 
   <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
     <div class="container nav-container">
-      <ul class="list-unstyled" style=""> 
-        <li class="first">
+      <ul class="list-unstyled "> 
+        <li class="<% if action_name == 'about' %>active<% end %>">
           <%= link_to "About", pages_about_path %>
         </li>
-        <li>
+        <li class="<% if action_name == 'visit' %>active<% end %>">
           <%= link_to "Visit & Study", pages_visit_path %>
         </li>
-        <li>
+        <li class="<% if action_name == 'research' %>active<% end %>">
           <%= link_to "Research Services", pages_research_path %>
         </li>
-        <li class="last">
+        <li class="<% if action_name == 'contact' %>active<% end %>">
           <%= link_to "Contact Us", pages_contact_path %>
         </li> 
-        <li class="nav-right hours-nav">
+        <li class="nav-right hours-nav<% if controller_name == 'library_hours' %> active<% end %>">
           <%= link_to "Hours", hours_path %>
         </li>
         <li class="nav-right chat-nav" id="chat-nav">

@@ -205,7 +205,7 @@ GEM
       concurrent-ruby (~> 1.0)
     hashdiff (1.0.0)
     hashie (3.6.0)
-    honeybadger (4.3.1)
+    honeybadger (4.4.0)
     httparty (0.17.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -566,7 +566,7 @@ DEPENDENCIES
   fuzzy_match
   google-api-client (~> 0.30)
   guard-rspec
-  honeybadger (~> 4.3)
+  honeybadger (~> 4.4)
   httparty
   jbuilder (~> 2.9)
   jquery-rails

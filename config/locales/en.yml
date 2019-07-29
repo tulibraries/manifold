@@ -99,6 +99,12 @@ en:
           police_report_number: "Police Report Number"
           other_action_taken: "Other Action Taken"
           supervisor_notified: "Supervisor Notified"
+          faculty_admin_name: "Faculty/Administrator Name"
+          faculty_admin_email: "Faculty/Administrator Email"
+          faculty_admin_tuid: "Faculty/Administrator TUid number"
+          proxy_name: "Proxy Name"
+          proxy_tuid: "Proxy TUid number"
+          proxy_account_expiration: "Proxy Account Expiration Date "
       forms:
         recall_book:
           title: Request Recall of Books Already Checked Out

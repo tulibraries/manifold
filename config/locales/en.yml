@@ -99,6 +99,16 @@ en:
           police_report_number: "Police Report Number"
           other_action_taken: "Other Action Taken"
           supervisor_notified: "Supervisor Notified"
+          course_title: "Course Title"
+          class_time: "Time Class Meets"
+          class_days: "Day(s) Class Meets"
+          number_of_students: "Number of Students"
+          requested_date: "Requested Date"
+          course_level: "Course Level"
+          campus: "Location"
+          other: "specified other"
+
+
       forms:
         recall_book:
           title: Request Recall of Books Already Checked Out
@@ -116,6 +126,8 @@ en:
           title: "Special Collections Research Center: Ask a Question"
         proxy_account:
           title: "Proxy Account"
+        library_instruction:
+          title: "Request a Library Instruction Session"
 
 
 

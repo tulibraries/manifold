@@ -14,7 +14,7 @@ action_taken = ["Library Administration Notified","Facilities Notified (1-1385)"
 	<legend>Incident Details</legend>
 	<%= f.input :type_of_incident, as: :radio_buttons, label: "Type of Incident", collection: incident_types, wrapper_html: { class: "form_affiliation" }, required: :true %>
 	<%= f.input :other_incident, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
-	<%= f.input :date_of_incident, label: "Time/Date of Incident", as: :datetime, start_year: Date.today.year-1, end_year: Date.today.year, ampm: true, minute_step: 5, order: [:month, :day, :year], required: :true %>
+	<%= f.input :date_of_incident, label: "Time/Date of Incident", html5: true, as: :datetime, start_year: Date.today.year-1, end_year: Date.today.year, ampm: true, minute_step: 5, order: [:month, :day, :year], required: :true %>
 	<%= f.input :location_where_incident_occurred, label: "Location Where Incident Occurred", required: :true %>
 	<%= f.input :incident_description, label: "Incident Description", as: :text, required: :true, input_html: { cols: 60, rows: 5 }, hint: "What happened?  Provide names, who did what to whom, what was stolen, etc. Be as detailed as possible. Describe a suspect if appropriate." %>
 

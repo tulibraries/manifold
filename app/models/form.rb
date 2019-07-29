@@ -56,6 +56,14 @@ class Form < MailForm::Base
   attribute :proxy_name
   attribute :proxy_tuid
   attribute :proxy_account_expiration
+  attribute :class_time
+  attribute :class_days
+  attribute :number_of_students
+  attribute :requested_date
+  attribute :course_level
+  attribute :campus
+  attribute :other
+
 
 
 
@@ -69,7 +77,8 @@ class Form < MailForm::Base
       "ir" => ["Incident Report", ["cdoyle@temple.edu", "richieh@temple.edu", "bells@temple.edu"]],
       "data-purchase-grants-application" => ["Data Purchase Application", "cdoyle@temple.edu"],
       "hsl-book-reserve" => ["Request book(s) for reserve-Ginsburg Health Sciences Library", "cdoyle@temple.edu"],
-      "proxy-account" => ["Proxy Account", "cdoyle@temple.edu"] }
+      "proxy-account" => ["Proxy Account", "cdoyle@temple.edu"],
+      "library-instruction" => ["Request a Library Instruction Session", "cdoyle@temple.edu"] }
 
     @forms.fetch(form_type)
   end

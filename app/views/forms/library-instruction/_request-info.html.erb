@@ -1,0 +1,9 @@
+<%= f.input :course_title, label: "Course Title", required: true %>
+<%= f.input :class_time, label: "Time Class Meets", required: true %>
+<%= f.input :class_days, label: "Day(s) Class Meets", required: true %>
+<%= f.input :number_of_students, label: "Student Count" %>
+<%= f.input :requested_date, as: :date, html5: true, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], label: "Requested Date", required: true %>
+<%= f.input :campus, as: :select, collection: ["Charles Library","Health Sciences Library","Ambler Library"], label: "Location", required: true %>
+<%= f.input :course_level, as: :select, collection: ["Undergraduate","Graduate","Combined","Other..."], label: "Course Level", required: true %>
+<%= f.input :other, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
+<%= f.input :comments, as: :text, label: "Scope of Request", hint: "The goal of all library user education is to develop competency in locating, accessing, and using information. What would you like your students to be able to do or understand by the end of this library session? Describe the assignment to which this instruction is relevant", required: true %>

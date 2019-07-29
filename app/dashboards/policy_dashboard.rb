@@ -12,6 +12,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     category: MultiSelectField.with_options(
       collection: Rails.configuration.policy_categories
@@ -53,6 +54,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :description,
     :category,
     :effective_date,

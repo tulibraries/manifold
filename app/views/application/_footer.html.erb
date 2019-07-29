@@ -40,7 +40,9 @@
                 <% unless @jobs_link.nil? %>
                 <li><%= link_to "Jobs", page_path(@jobs_link) %></li>
                 <% end %>
-                <li><%= link_to "Privacy Guidelines", "#" %></li>
+                <% unless @standards_link.nil? %>
+                <li><%= link_to "Community Standards", @standards_link %></li>
+                <% end %>
               </ul>
             </div>
             <div class="col-12 col-lg-4 px-0">
@@ -51,7 +53,9 @@
                 <% unless @publications_link.nil? %>
                 <li><%= link_to "Publications", page_path(@publications_link) %></li>
                 <% end %>
-                <li><%= link_to "Diversity Statement", "#" %></li>
+                <% unless @diversity_link.nil? %>
+                <li><%= link_to "Diversity Statement", @diversity_link %></li>
+                <% end %>
               </ul>
             </div>
             <div class="col-12 col-lg-4 px-0">
@@ -59,8 +63,9 @@
                 <% unless @refworks_link.nil? %>
                 <li><%= link_to "RefWorks", @refworks_link.link %></li>
                 <% end %>
-                <li><%= link_to "Community Standards", "#" %></li>
-                <li><%= link_to "Virtual Reference Services", "#" %></li>
+                <% unless @privacy_link.nil? %>
+                <li><%= link_to "Virtual Reference Privacy Guidelines", @privacy_link %></li>
+                <% end %>
               </ul>
             </div>
           </div>

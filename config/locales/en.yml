@@ -108,6 +108,10 @@ en:
           preferred_time: "Preferred Time"
           course_title: "Course Title"
           course_number: "Course Code and Number"
+          faculty_admin_name: "Faculty/Administrator Name"
+          faculty_admin_email: "Faculty/Administrator Email"
+          faculty_admin_tuid: "Faculty/Administrator TUid number"
+
       forms:
         recall_book:
           title: Request Recall of Books Already Checked Out

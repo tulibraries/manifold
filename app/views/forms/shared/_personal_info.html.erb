@@ -15,11 +15,10 @@
 	<%= f.input :department, required: true %>
 <% end %>
 
-<% unless params[:type] == "scrc-instruction"%>
+<% unless params[:type] == "scrc-instruction" || params[:type] == "library-instruction"%>
 	<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: @collection, required: true %>
+<% end %>
 
-	<% if ["missing-book","purchase-request"].include? params[:type]  %>
-		<%= f.input :affiliation_other, label: false, placeholder: "specify other", wrapper_html: { class: "specify-other" } %>
-	<% end %>
-
+<% if ["missing-book","purchase-request"].include? params[:type]  %>
+	<%= f.input :affiliation_other, label: false, placeholder: "specify other", wrapper_html: { class: "specify-other" } %>
 <% end %>

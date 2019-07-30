@@ -99,14 +99,20 @@ en:
           police_report_number: "Police Report Number"
           other_action_taken: "Other Action Taken"
           supervisor_notified: "Supervisor Notified"
+          course_title: "Course Title"
+          class_time: "Time Class Meets"
+          class_days: "Day(s) Class Meets"
+          number_of_students: "Number of Students"
+          requested_date: "Requested Date"
+          course_level: "Course Level"
+          campus: "Location"
+          other: "specified other"
           proxy_name: "Proxy Name"
           proxy_tuid: "Proxy TUid number"
           proxy_account_expiration: "Proxy Account Expiration Date"
-          number_of_students: "Number of Students"
           minors: "Non-Temple affiliates, check box if there are minors in your class"
           preferred_date: "Preferred Date"
           preferred_time: "Preferred Time"
-          course_title: "Course Title"
           course_number: "Course Code and Number"
           faculty_admin_name: "Faculty/Administrator Name"
           faculty_admin_email: "Faculty/Administrator Email"
@@ -127,10 +133,10 @@ en:
           title: "Special Collections Research Center: Ask a Question"
         proxy_account:
           title: "Proxy Account"
+        library_instruction:
+          title: "Request a Library Instruction Session"
         scrc_instruction:
           title: "SCRC Instruction Session/Visit Request"
-
-
 
     error:
       user_not_registered: "User not registered."

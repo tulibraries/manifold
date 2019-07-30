@@ -107,12 +107,17 @@ en:
           course_level: "Course Level"
           campus: "Location"
           other: "specified other"
+          proxy_name: "Proxy Name"
+          proxy_tuid: "Proxy TUid number"
+          proxy_account_expiration: "Proxy Account Expiration Date"
+          minors: "Non-Temple affiliates, check box if there are minors in your class"
+          preferred_date: "Preferred Date"
+          preferred_time: "Preferred Time"
+          course_number: "Course Code and Number"
           faculty_admin_name: "Faculty/Administrator Name"
           faculty_admin_email: "Faculty/Administrator Email"
           faculty_admin_tuid: "Faculty/Administrator TUid number"
-          proxy_name: "Proxy Name"
-          proxy_tuid: "Proxy TUid number"
-          proxy_account_expiration: "Proxy Account Expiration Date "
+
       forms:
         recall_book:
           title: Request Recall of Books Already Checked Out
@@ -132,6 +137,8 @@ en:
           title: "Proxy Account"
         library_instruction:
           title: "Request a Library Instruction Session"
+        scrc_instruction:
+          title: "SCRC Instruction Session/Visit Request"
 
     error:
       user_not_registered: "User not registered."

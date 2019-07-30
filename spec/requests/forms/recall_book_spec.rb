@@ -10,10 +10,7 @@ RSpec.describe "Recall Book Form", type: :request do
       phone: "1234567890", tu_id: "test_id", department: "test dept",
       affiliation: "Staff", author: "test author", title: "test title",
       call_number: "test call number", substitute_edition: "false",
-      pickup_location: "Ambler"
-      # Cencellation date doesn't appear in the email
-      #"cancellation_date(1i)" => "2019",
-      #"cancellation_date(2i)" => "25", "cancellation_date(3i)" => "1"
+      pickup_location: "Ambler", cancellation_date: "12/01/2019"
     }
   }
 

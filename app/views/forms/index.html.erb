@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <%= simple_form_for @form, html: {class: "form-vertical" } do |f| %>
+      <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
 
       <% unless @type == "ir" || @type == "proxy-account" %>

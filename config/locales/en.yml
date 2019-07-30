@@ -99,12 +99,25 @@ en:
           police_report_number: "Police Report Number"
           other_action_taken: "Other Action Taken"
           supervisor_notified: "Supervisor Notified"
+          course_title: "Course Title"
+          class_time: "Time Class Meets"
+          class_days: "Day(s) Class Meets"
+          number_of_students: "Number of Students"
+          requested_date: "Requested Date"
+          course_level: "Course Level"
+          campus: "Location"
+          other: "specified other"
+          proxy_name: "Proxy Name"
+          proxy_tuid: "Proxy TUid number"
+          proxy_account_expiration: "Proxy Account Expiration Date"
+          minors: "Non-Temple affiliates, check box if there are minors in your class"
+          preferred_date: "Preferred Date"
+          preferred_time: "Preferred Time"
+          course_number: "Course Code and Number"
           faculty_admin_name: "Faculty/Administrator Name"
           faculty_admin_email: "Faculty/Administrator Email"
           faculty_admin_tuid: "Faculty/Administrator TUid number"
-          proxy_name: "Proxy Name"
-          proxy_tuid: "Proxy TUid number"
-          proxy_account_expiration: "Proxy Account Expiration Date "
+
       forms:
         recall_book:
           title: Request Recall of Books Already Checked Out
@@ -114,16 +127,16 @@ en:
           title: Missing Book Search Request
         ir:
           title: Incident Report
-        hsl_book_reserve:
-          title: Request book(s) for reserve-Ginsburg Health Sciences Library
         data_purchase_grants_application:
           title: Library Data Grants
         ask_scrc:
           title: "Special Collections Research Center: Ask a Question"
         proxy_account:
           title: "Proxy Account"
-
-
+        library_instruction:
+          title: "Request a Library Instruction Session"
+        scrc_instruction:
+          title: "SCRC Instruction Session/Visit Request"
 
     error:
       user_not_registered: "User not registered."

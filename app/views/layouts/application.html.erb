@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Temple University Libraries</title>
     <%= csrf_meta_tags %>
@@ -23,7 +23,7 @@
   <%= render "header_navbar.html.erb" %>
 
   <div id="content">
-    <a href="#" name="skiplink_ada" id="skiplink_ada"></a>
+    <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a>
     <%= yield %>
 
   </div>

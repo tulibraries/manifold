@@ -58,6 +58,11 @@ a.donate {
 }
 .social {
 	border-bottom: solid $white 1px;
+	.social-link {
+		a:hover {
+			text-decoration: none;
+		}
+	}
 	ul {
 		padding-left: 0;
 		@media(max-width: 1040px) {

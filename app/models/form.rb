@@ -24,9 +24,11 @@ class Form < MailForm::Base
   attribute :reason_for_purchase
   attribute :pickup_location
   attribute :cancellation_date
+  attribute :date_of_incident
+  attribute :preferred_date
+  attribute :preferred_time
   attribute :type_of_incident
   attribute :other_incident
-  attribute :date_of_incident
   attribute :location_where_incident_occurred
   attribute :primary_relevant_person
   attribute :primary_email
@@ -48,6 +50,7 @@ class Form < MailForm::Base
   attribute :data_creator
   attribute :data_discovery
   attribute :course_title
+  attribute :course_number
   attribute :reserve_duration
   attribute :number_of_copies
   attribute :faculty_admin_name
@@ -56,6 +59,10 @@ class Form < MailForm::Base
   attribute :proxy_name
   attribute :proxy_tuid
   attribute :proxy_account_expiration
+  attribute :number_of_students
+  attribute :minors
+
+  attribute :file, attachment: true
 
 
 
@@ -68,6 +75,7 @@ class Form < MailForm::Base
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
       "ir" => ["Incident Report", ["cdoyle@temple.edu", "richieh@temple.edu", "bells@temple.edu"]],
       "data-purchase-grants-application" => ["Data Purchase Application", ["cdoyle@temple.edu", "librarydatagrants@temple.edu"]],
+      "scrc-instruction" => ["SCRC Instruction Session/Visit Request", "cdoyle@temple.edu"],
       "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]] }
 
     @forms.fetch(form_type)

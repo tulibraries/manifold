@@ -3,20 +3,20 @@
   <div class="row social">
     <div class="col-12 col-lg-7 px-0">
       <% unless @donate_link.nil? %>
-        <%= link_to image_tag("give_button.png"), page_path(@donate_link), class: "donate", alt: "Support the Libraries" %>
+        <%= link_to image_tag("give_button.png", alt: "Support the Libraries"), page_path(@donate_link), class: "donate" %>
       <% end %>
     </div>
     <div class="col-12 col-lg-5 text-left text-lg-right px-0">
       <% unless @social_links.nil? %>
       <ul>
         <li class="social-footer instagram">
-          <%= link_to image_tag('instagram-logo_white.svg'), @social_links %>
+          <%= link_to image_tag('instagram-logo_white.svg', class: "decorative"), @social_links %>
         </li>
         <li class="social-footer facebook">
-          <%= link_to image_tag('facebook-logo_white.svg'), @social_links %>
+          <%= link_to image_tag('facebook-logo_white.svg', class: "decorative"), @social_links %>
         </li>
         <li class="social-footer twitter">
-          <%= link_to image_tag('twitter-logo_white.svg'), @social_links %>
+          <%= link_to image_tag('twitter-logo_white.svg', class: "decorative"), @social_links %>
         </li>
       </ul>
       <% end %>

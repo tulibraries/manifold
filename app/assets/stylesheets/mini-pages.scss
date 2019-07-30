@@ -68,11 +68,44 @@
 		a {
 			color: $white;
 		}
-		.boxtroll {
-			display: inline-block;
-			height: 79px;
-			padding-top: 24px;
-			padding-left: 100px;
+		p {
+			margin-right: 7px;
+			padding: 10px 0;
+			margin-left: 107px;
+			a {
+				overflow:hidden;
+				height: 79px;
+			}
+		}
+		div.two-lines {
+			height: 79px!important;
+			@media (max-width: 1039px) {
+				padding-top: 21px;
+			}
+			@media (max-width: 450px) {
+				padding-top: 7px;
+			}
+			a {
+				@media (min-width: 1040px) {
+					position: relative;
+					top: 7px;
+					left: 7px;
+				}
+			}
+			img {
+				float: left!important;
+				position: relative;
+				top: -7px;
+				@media (min-width: 450px) {
+					position: relative;
+					top: -21px;
+				}
+				@media (min-width: 1040px) {
+					padding-top: 0;
+					padding-bottom: 0;
+					top: 0;
+				}
+			}
 		}
 		.boxtroll.two-lines {
 			padding-top: 14px;

@@ -418,3 +418,17 @@
 		}
 	}
 }
+
+.hsl {
+	#libchat_d608b96235d521d5947815fa1dfe16b8 button.libchat_online {
+		background-color: transparent;
+		padding: 0;
+		border: 0;
+		@media (max-width: 1039px) {
+			background-color: transparent;
+			font-size: 1.3rem;
+			padding: 0;
+			border: 0;
+		}
+	}
+}

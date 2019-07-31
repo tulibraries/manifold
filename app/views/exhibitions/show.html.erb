@@ -11,9 +11,9 @@
   <div class="col-lg-12 col-xl-6 text-center text-xl-right">
     <div class="building-image">
       <% if @exhibition.image.attached? %>
-        <%= image_tag @exhibition.show_image %>
+        <%= image_tag @exhibition.show_image, class: "decorative" %>
       <% else %>
-        <%= image_tag 'T-borderless.gif' %>
+        <%= image_tag 'T-borderless.gif', class: "decorative" %>
       <% end %>
     </div>
   </div>

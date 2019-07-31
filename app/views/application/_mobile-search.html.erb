@@ -4,8 +4,9 @@
     <!-- <div class="padding"></div> -->
     <div class="navbar-nav">
       <form action="https://librarysearch.temple.edu/bento" class="mobile">
+        <label for="q" class="visuallyhidden">Search Everything</label>
         <input type="text" name="q" id="librarySearch" class="mobile" placeholder="Search everything" autocomplete="off" />
-        <input type="submit" class="mobile" value = "">
+        <input type="submit" class="mobile" value = "" aria-label="submit search query">
       </form>
       <ul class="text-center">
         <li><%= link_to "Books", "http://librarysearch.temple.edu/books" %></li>

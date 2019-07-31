@@ -28,15 +28,16 @@
 		<% end %>
 
 		<div class="contact">
-			<%= image_tag "phone-handle-white.png", style: "width: 100px" %>
+			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative" %>
 			215-707-2665
 			<hr />
-			<%= image_tag "email-white.png", style: "width: 100px;" %>
+			<%= image_tag "email-white.png", style: "width: 100px", class: "decorative" %>
 			<%= link_to "Mailing List", "http://eepurl.com/cbRrYP" %>
 			<hr />
 			<div class="two-lines">
-			<%= image_tag "chat.png", style: "width: 100px;" %>
-			<%= link_to "Chat with a Health Sciences Librarian", "https://answers.library.temple.edu/widget_standalone.php?la_widget_id=9924" %>
+				<script type="text/javascript" src="https://v2.libanswers.com/load_chat.php?hash=d608b96235d521d5947815fa1dfe16b8"></script>
+				<%= image_tag "chat.png", style: "width: 100px;" %>
+				<div id="libchat_d608b96235d521d5947815fa1dfe16b8"></div>
 		  </div>
 		</div>
 	</div>

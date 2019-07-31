@@ -42,6 +42,13 @@ function swap_image(y) {
   }
 }
 
+$(document).ready(function() {  
+  $('.decorative').each(function() {
+    $(this).attr('alt', "");
+  })
+});
+
+
 // TO BE IMPLEMENTED LATER REPLACING THE ONCLICK OF MENU ICONS
 // $('<span>', {
 // 	'class': 'button', // So you can style it

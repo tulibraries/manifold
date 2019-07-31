@@ -1,7 +1,7 @@
 <% if @page.document.attached? %>
   <h2>File</h2>
     <% if @page.document.previewable? %>
-      <%= link_to (image_tag @page.document.preview(resize: "200x200>", extent: "150x150")), url_for(@page.document), disposition: "attachment" %>
+      <%= link_to (image_tag @page.document.preview(resize: "200x200>", extent: "150x150"), class: "decorative"), url_for(@page.document), disposition: "attachment" %>
     <% end %>
       <p>
         <%= link_to @page.document.filename.base, url_for(@page.document), disposition: "attachment" %>

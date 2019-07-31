@@ -24,11 +24,13 @@
 			}
 		}
 		li.active {
-			font-family: 'PT Sans Bold';
+			font-family: 'Faustina';
 			color: $seagreen;
 			margin-right: 5px;
+			font-weight: 900;
 			a {
 				color: $seagreen;
+				font-weight: 900;
 			}
 		}
 	}

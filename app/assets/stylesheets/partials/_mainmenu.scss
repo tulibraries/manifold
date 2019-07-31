@@ -1,11 +1,14 @@
 @import "_vars.scss";
 
-
-
 .navbar {
-		background-color: #fff;
-	.nav-item {
-		/*margin-right:14px;*/
+	background-color: #fff;
+	.navbar-light .navbar-nav .nav-link {
+		color: $white;
+		font-size:1.10rem;
+		font-family: "Roboto Condensed"!important;
+		a {
+			font-family: "Roboto Condensed"!important;
+		}
 	}
 	.nav-link, .nav-link:focus, .nav-link:hover {
 		color: #fff!important;
@@ -29,6 +32,7 @@
 	display: inline-block;
 	position: relative;
 	z-index: 1;
+	font-family: "Roboto Condensed";
 	.nav-container {
 		padding-left: 0;
 		padding-right: 0;

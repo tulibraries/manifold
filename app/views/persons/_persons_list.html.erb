@@ -4,9 +4,9 @@
       <div class="row person">
         <div class="col-4">
           <% if person.image.attached?  %>
-          <%= image_tag person.index_image, alt: person.name %>
+          <%= image_tag person.index_image, class: "decorative" %>
           <% else %> 
-          <%= image_tag "T.gif", style: 'width: 300px;' %>
+          <%= image_tag "T.gif", style: 'width: 300px;', class: "decorative" %>
           <% end %>
         </div>
         <div class="col-8">

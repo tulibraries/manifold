@@ -3,21 +3,23 @@
   <div class="row social">
     <div class="col-12 col-lg-7 px-0">
       <% unless @donate_link.nil? %>
-        <%= link_to image_tag("give_button.png", alt: "Support the Libraries"), page_path(@donate_link), class: "donate" %>
+        <%= link_to image_tag("give_button.png", alt: "Support the Libraries"), @donate_link, class: "donate", title: "Giving and Gifts in Kind page" %>
       <% end %>
     </div>
-    <div class="col-12 col-lg-5 text-left text-lg-right px-0">
+    <div class="col-12 col-lg-5 text-left text-lg-right px-0 social-link">
       <% unless @social_links.nil? %>
       <ul>
+        <%= link_to blogs_path do %>
         <li class="social-footer instagram">
-          <%= link_to image_tag('instagram-logo_white.svg', class: "decorative"), @social_links %>
+          <%= image_tag('instagram-logo_white.svg', alt: "instagram logo") %>
         </li>
         <li class="social-footer facebook">
-          <%= link_to image_tag('facebook-logo_white.svg', class: "decorative"), @social_links %>
+          <%= image_tag('facebook-logo_white.svg', alt: "facebook logo") %>
         </li>
         <li class="social-footer twitter">
-          <%= link_to image_tag('twitter-logo_white.svg', class: "decorative"), @social_links %>
+          <%= image_tag('twitter-logo_white.svg', alt: "twitter logo") %>    
         </li>
+        <% end %>
       </ul>
       <% end %>
     </div>

@@ -419,16 +419,35 @@
 	}
 }
 
-.hsl {
-	#libchat_d608b96235d521d5947815fa1dfe16b8 button.libchat_online {
-		background-color: transparent;
-		padding: 0;
-		border: 0;
-		@media (max-width: 1039px) {
-			background-color: transparent;
-			font-size: 1.3rem;
-			padding: 0;
-			border: 0;
+.container.charles {
+	margin-top: 21px;
+	.slideshow {
+		margin-top: 21px;
+	}
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon {
+	  height: 80px;
+	  width: 80px;
+	  outline: $black;
+	  background-size: 100%, 100%;
+	  border-radius: 50%;
+	  border: 0 solid $black;
+	  background-image: none;
+	}
+	.carousel-control-next-icon:after {
+	  content: '>';
+	  font-size: 65px;
+	  color: $black;
+	}
+	.carousel-control-prev-icon:after {
+	  content: '<';
+	  font-size: 65px;
+	  color: $black;
+	}
+	.carousel-indicators {
+		bottom: -42px;
+		li {
+		background-color: $black;
 		}
 	}
 }

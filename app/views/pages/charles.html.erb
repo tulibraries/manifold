@@ -1,0 +1,26 @@
+<%= render "mobile-menu-secondary" %>
+
+<div class="container charles">
+
+<% if params[:slideshow] == "floorplans" %>
+	<%= render "pages/marketing/floorplans" %>
+<% elsif params[:slideshow] == "renderings" %>
+	<%= render "pages/marketing/renderings" %>
+<% else %>
+	<div class="row">
+		<div class="col">
+			<h1><%= @page.title %></h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col d-none d-lg-block col-lg-3">
+			<%= render "items" %>
+		</div>
+		<div class="col col-lg-9">
+			<%= sanitize @page.description.html_safe %>
+		</div>
+	</div>
+<% end %>
+
+</div>

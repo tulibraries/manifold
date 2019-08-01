@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col">
+    <%= link_to "< Back to Explore Charles Library", pages_charles_path %>
+  </div>
+</div>
+<div class="row slideshow">
+  <div class="col">
+    <span class="sr-only">The following is an image slideshow of artistic renderings of the Charles Library.</span>
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+      <% @renderings.each_with_index do |rendering, index| %>
+        <li data-target="#carouselIndicators" data-slide-to="<%= index %>"
+          <% if index == 1 %> class="active"<% end %>>              
+        </li>
+      <% end %>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+      <% @renderings.each_with_index do |rendering, index| %>  
+        <div class="carousel-item text-center<% if index == 1 %> active<% end %>">
+            <%= image_tag("renderings/"+rendering, class: 'img-fluid') %>
+          </div>
+        <% end %>
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev" aria-controls="carousel" aria-label="next">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next" aria-controls="carousel" aria-label="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

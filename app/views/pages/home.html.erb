@@ -22,7 +22,7 @@
 	  <div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
 	    	<% unless @print_my_paper.nil? %>
-		    <%= link_to @research_help, class: "strong" do %>
+		    <%= link_to @print_my_paper, class: "strong" do %>
 		      <%= image_tag('printer.png', class: "decorative") %> <span>Print My Paper</span>
 		    <% end %>
 	      <% end %>
@@ -31,7 +31,7 @@
 	  <div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
 	    	<% unless @book_study_room.nil? %>
-		    <%= link_to @research_help, class: "strong" do %>
+		    <%= link_to @book_study_room, class: "strong" do %>
 		      <%= image_tag('study_room.png', class: "decorative") %> <span>Book a Study Room</span>
 		    <% end %>
 	      <% end %>
@@ -40,7 +40,7 @@
 	  <div class="col-12 col-lg-3">
 	    <div class="cta-white">
 	    	<% unless @explore_charles.nil? %>
-		    <%= link_to pages_charles_path, class: "strong" do %>
+		    <%= link_to @explore_charles, class: "strong" do %>
 		      <%= image_tag('explore_charles.png', class: "decorative") %> <span>Explore Charles Library</span>
 		    <% end %>
 	      <% end %>

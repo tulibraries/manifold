@@ -1,7 +1,8 @@
 <div class="header-search-container">
 	<form action="https://librarysearch.temple.edu/bento">
+		<label for="librarySearch" class="visuallyhidden">Search Everything</label>
 	  <input type="text" name="q" id="librarySearch" placeholder="Search everything" autocomplete="off" />
-	  <input type="submit" value = "">
+	  <input type="submit" value = "" aria-label="submit search query">
 	</form>
 	<ul class="text-left">
 	  <li><%= link_to "Books", "http://librarysearch.temple.edu/books" %></li>

@@ -3,21 +3,23 @@
   <div class="row social">
     <div class="col-12 col-lg-7 px-0">
       <% unless @donate_link.nil? %>
-        <%= link_to image_tag("give_button.png"), page_path(@donate_link), class: "donate", alt: "Support the Libraries" %>
+        <%= link_to image_tag("give_button.png", alt: "Support the Libraries"), @donate_link, class: "donate", title: "Giving and Gifts in Kind page" %>
       <% end %>
     </div>
-    <div class="col-12 col-lg-5 text-left text-lg-right px-0">
+    <div class="col-12 col-lg-5 text-left text-lg-right px-0 social-link">
       <% unless @social_links.nil? %>
       <ul>
+        <%= link_to blogs_path do %>
         <li class="social-footer instagram">
-          <%= link_to image_tag('instagram-logo_white.svg'), @social_links %>
+          <%= image_tag('instagram-logo_white.svg', alt: "instagram logo") %>
         </li>
         <li class="social-footer facebook">
-          <%= link_to image_tag('facebook-logo_white.svg'), @social_links %>
+          <%= image_tag('facebook-logo_white.svg', alt: "facebook logo") %>
         </li>
         <li class="social-footer twitter">
-          <%= link_to image_tag('twitter-logo_white.svg'), @social_links %>
+          <%= image_tag('twitter-logo_white.svg', alt: "twitter logo") %>    
         </li>
+        <% end %>
       </ul>
       <% end %>
     </div>
@@ -40,7 +42,9 @@
                 <% unless @jobs_link.nil? %>
                 <li><%= link_to "Jobs", page_path(@jobs_link) %></li>
                 <% end %>
-                <li><%= link_to "Privacy Guidelines", "#" %></li>
+                <% unless @standards_link.nil? %>
+                <li><%= link_to "Community Standards", @standards_link %></li>
+                <% end %>
               </ul>
             </div>
             <div class="col-12 col-lg-4 px-0">
@@ -51,7 +55,9 @@
                 <% unless @publications_link.nil? %>
                 <li><%= link_to "Publications", page_path(@publications_link) %></li>
                 <% end %>
-                <li><%= link_to "Diversity Statement", "#" %></li>
+                <% unless @diversity_link.nil? %>
+                <li><%= link_to "Diversity Statement", @diversity_link %></li>
+                <% end %>
               </ul>
             </div>
             <div class="col-12 col-lg-4 px-0">
@@ -59,8 +65,9 @@
                 <% unless @refworks_link.nil? %>
                 <li><%= link_to "RefWorks", @refworks_link.link %></li>
                 <% end %>
-                <li><%= link_to "Community Standards", "#" %></li>
-                <li><%= link_to "Virtual Reference Services", "#" %></li>
+                <% unless @privacy_link.nil? %>
+                <li><%= link_to "Virtual Reference Privacy Guidelines", @privacy_link %></li>
+                <% end %>
               </ul>
             </div>
           </div>

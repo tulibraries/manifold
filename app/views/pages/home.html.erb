@@ -13,32 +13,36 @@
 		<div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
 	    	<% unless @research_help.nil? %>
-	      <%= link_to image_tag("research_help.png"), service_path(@research_help) %> 
-	      <%= link_to "Research Help", service_path(@research_help), class: "strong" %>
+		    <%= link_to @research_help, class: "strong" do %>
+		      <%= image_tag('research_help.png', class: "decorative") %> <span>Research Help</span>
+		    <% end %>
 	      <% end %>
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
 	    	<% unless @print_my_paper.nil? %>
-	      <%= link_to image_tag("printer.png"), service_path(@print_my_paper) %> 
-	      <%= link_to "Print My Paper", service_path(@print_my_paper), class: "strong" %>
+		    <%= link_to @print_my_paper, class: "strong" do %>
+		      <%= image_tag('printer.png', class: "decorative") %> <span>Print My Paper</span>
+		    <% end %>
 	      <% end %>
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
 	    	<% unless @book_study_room.nil? %>
-	      <%= link_to image_tag("study_room.png"), space_path(@book_study_room) %> 
-	      <%= link_to "Book a Study Room", space_path(@book_study_room), class: "strong" %>
+		    <%= link_to @book_study_room, class: "strong" do %>
+		      <%= image_tag('study_room.png', class: "decorative") %> <span>Book a Study Room</span>
+		    <% end %>
 	      <% end %>
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3">
 	    <div class="cta-white">
 	    	<% unless @explore_charles.nil? %>
-	      <%= link_to image_tag("explore_charles.png"), @explore_charles %>  
-	      <%= link_to "Explore Charles", @explore_charles, class: "strong" %>
+		    <%= link_to @explore_charles, class: "strong" do %>
+		      <%= image_tag('explore_charles.png', class: "decorative") %> <span>Explore Charles Library</span>
+		    <% end %>
 	      <% end %>
 	    </div>
 	  </div>
@@ -50,16 +54,19 @@
 		<div class="row">
 			<div class="col-12 col-lg-3 catalog-search h-auto">
 				<div class="h-30 square">
-					<%= image_tag "book_white.png", class: "icon" %>
-					<%= link_to "Books & Media", "http://librarysearch.temple.edu/catalog" %>
+			    <%= link_to "http://librarysearch.temple.edu/catalog" do %>
+			      <%= image_tag('book_white.png', class: "icon decorative") %> <span>Books & Media</span>
+			    <% end %>
 				</div>
 				<div div class="h-30 square">
-					<%= image_tag "magazine_white.png", class: "icon" %>
-					<%= link_to "Articles", "http://librarysearch.temple.edu/articles" %>
+			    <%= link_to "http://librarysearch.temple.edu/articles" do %>
+			      <%= image_tag('magazine_white.png', class: "icon decorative") %> <span>Articles</span>
+			    <% end %>
 				</div>
 				<div class="h-30 square bb-0">
-					<%= image_tag "database_white.png", class: "icon" %>
-					<%= link_to "Databases", "http://librarysearch.temple.edu/databases" %>
+			    <%= link_to "http://librarysearch.temple.edu/databases" do %>
+			      <%= image_tag('database_white.png', class: "icon decorative") %> <span>Databases</span>
+			    <% end %>
 				</div>
 				<div class="caption">
 					<%= link_to "Search our collections >", "http://librarysearch.temple.edu", class: "price" %>
@@ -67,17 +74,25 @@
 			</div>
 			<div class="col-12 col-lg-6 px-0 px-lg-5 news-events">
 				<div class="events">
-					<%= link_to (image_tag "event_space.jpg"), events_path, class: "d-none d-lg-block" %>
-					<div class="caption" id="eventscaption"><%= link_to "Events & Exhibits", events_path, class: "lynde" %></div>
+			    <%= link_to events_path do %>
+			      <%= image_tag('event_space.jpg', class: "d-none d-lg-block decorative") %> 
+			      <div class="caption" id="eventscaption">
+							<span class="lynde">Events & Exhibits</span>
+						</div>
+			    <% end %>
 				</div>
 				<div class="news">
-					<%= link_to (image_tag "graduate_scholars.jpg"), blogs_path, class: "d-none d-lg-block" %>
-					<div class="caption" id="newscaption"><%= link_to "Library News", blogs_path, class: "lynde" %></div>
+					<%= link_to blogs_path do %>
+			      <%= image_tag('graduate_scholars.jpg', class: "d-none d-lg-block decorative") %> 
+			      <div class="caption" id="newscaption">
+							<span class="lynde">Library News</span>
+						</div>
+			    <% end %>
 				</div>
 			</div>
 			<div class="col-12 col-lg-3 locations-links px-0">
 				<div class="h-18"><%= link_to "Health Sciences Libraries", pages_hsl_path %></div>
-				<div class="h-18"><%= link_to "Duckworth Scholars' Studio", pages_lcdss_path %></div>
+				<div class="h-18"><%= link_to "Duckworth Scholars Studio", pages_lcdss_path %></div>
 				<div class="h-18 two-lines"><%= link_to "Charles L. Blockson Afro-American Collection", pages_blockson_path %></div>
 				<div class="h-18 two-lines"><%= link_to "Special Collections Research Center", pages_scrc_path %></div>
 				<div class="h-18 bb-0"><%= link_to "Law Library", "https://www.law.temple.edu/library/about-the-law-library/" %></div>

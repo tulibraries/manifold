@@ -113,7 +113,7 @@ Rails.application.routes.draw do
     get "visit-study" => :visit, as: "pages_visit"
     get "home" => :home, as: "pages_home"
     get "lcdss" => :tudsc, as: "pages_lcdss"
-    # get "explore-charles" => :charles, as: "pages_charles"
+    get "explore-charles" => :charles, as: "pages_charles"
   end
 end
 

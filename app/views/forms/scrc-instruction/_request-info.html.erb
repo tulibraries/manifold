@@ -1,0 +1,8 @@
+<%= f.input :course_title, label: "Course Title", required: true %>
+<%= f.input :course_number, label: "Course Code and Number", required: true %>
+<%= f.input :preferred_date, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], html5: true, label: "Preferred Date", required: :true %>
+<%= f.input :preferred_time, as: :time, html5: true, label: "Preferred Time", required: :true %>
+<%= f.input :number_of_students, label: "Number of Students", required: :true  %>
+<%= f.input :minors, as: :radio_buttons, required: :true, label: "Non-Temple affiliates, check box if there are minors in your class" %>
+<%= f.input :file, as: :file, label: "Please attach a copy of your syllabus, if available." %>
+<%= f.input :comments, as: :text, label: "Goals for This Session/What Do You Want Us to Cover?" %>

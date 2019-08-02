@@ -56,6 +56,9 @@
 		.row {
 			width: 100%; /* Firefox fix */
 		}
+		a {
+			font-family: "Roboto Condensed"!important;
+		}
 	}
 	.navbar {
 		background-color: $seagreen;
@@ -85,7 +88,7 @@
 		}
 		.navbar-brand {
 			display: inline-block;
-			font-family: "PT Sans Bold";
+			font-family: "Roboto Condensed";
 		}
 		.row {
 			margin-top: 2px;

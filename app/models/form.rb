@@ -77,8 +77,8 @@ class Form < MailForm::Base
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
       "ir" => ["Incident Report", ["cdoyle@temple.edu", "richieh@temple.edu", "bells@temple.edu"]],
       "data-purchase-grants-application" => ["Data Purchase Application", ["cdoyle@temple.edu", "librarydatagrants@temple.edu"]],
-      "library-instruction" => ["Request a Library Instruction Session", ["cdoyle@temple.edu","cshanley@temple.edu"]],
-      "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["cdoyle@temple.edu","scrc@temple.edu"]],
+      "library-instruction" => ["Request a Library Instruction Session", ["cdoyle@temple.edu", "cshanley@temple.edu"]],
+      "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["cdoyle@temple.edu", "scrc@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]] }
 
     @forms.fetch(form_type)

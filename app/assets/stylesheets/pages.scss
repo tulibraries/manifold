@@ -340,6 +340,14 @@
 					top: -6px;
 				}
 			}
+			@-moz-document url-prefix() {
+			  input[type="submit"]{
+			    top: -5px;
+				  @media (max-width: 1039px) {
+				    top: -5px!important;
+				  }
+			  }
+			}
 		}
 		#librarySearch {
 			height: 56px;

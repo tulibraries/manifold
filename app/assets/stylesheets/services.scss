@@ -27,13 +27,11 @@
 		color: $black;
 		display: inline-block;
 		font-size: 1.1rem;
-		margin: 0 14px;
 	}
 	li.selected {
-		background-color: $seagreen;
 		a {
-			color: white;
-			font-weight: 600;
+			color: $seagreen;
+			font-family: "Faustina";
 		}
 	}
 }

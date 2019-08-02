@@ -60,7 +60,7 @@ en:
         contact_phone: "No Contact Phone Number"
         registration_status: "No Registration Required"
         space: "No Space Given"
-        building: "Samuel L. Paley Library"
+        building: "Charles Library"
       attributes:
         form:
           name: "Name"
@@ -85,34 +85,47 @@ en:
           pickup_location: "Pickup Location"
           cancellation_date: "Cancellation Date"
           type_of_incident: "Type of Incident"
-          other_incident: "Incident Type"
+          date_of_incident: "Date of Incident"
+          other_incident: "Other Incident Type"
           location_where_incident_occurred: "Location Where Incident Occurred"
+          incident_description: "Incident Description"
           primary_relevant_person: "Primary Relevant Person"
           primary_email: "Primary Email"
           primary_affiliation: "Primary Affiliation"
           secondary_relevant_person: "Secondary Relevant Person"
           secondary_email: "Secondary Email"
           secondary_affiliation: "Secondary Affiliation"
-          incident_description: "Incident Description"
           victim_complainant_statement: "Victim/Complainant Statement"
           action_taken: "Action Taken"
-          police_report_number: "Police Report Number"
           other_action_taken: "Other Action Taken"
+          police_report_number: "Police Report Number"
           supervisor_notified: "Supervisor Notified"
           course_title: "Course Title"
           class_time: "Time Class Meets"
           class_days: "Day(s) Class Meets"
           number_of_students: "Number of Students"
           requested_date: "Requested Date"
-          course_level: "Course Level"
           campus: "Location"
+          course_level: "Course Level"
           other: "specified other"
+          proxy_name: "Proxy Name"
+          proxy_tuid: "Proxy TUid number"
+          proxy_account_expiration: "Proxy Account Expiration Date"
+          minors: "Minors in the class"
+          preferred_date: "Preferred Date"
+          preferred_time: "Preferred Time"
+          course_number: "Course Code and Number"
           faculty_admin_name: "Faculty/Administrator Name"
           faculty_admin_email: "Faculty/Administrator Email"
           faculty_admin_tuid: "Faculty/Administrator TUid number"
-          proxy_name: "Proxy Name"
-          proxy_tuid: "Proxy TUid number"
-          proxy_account_expiration: "Proxy Account Expiration Date "
+          research_group: "Research Group Members"
+          project_purpose: "Project Description"
+          dataset: "Dataset Description"
+          interest_level: "Interest to Others"
+          years_limit: "Limited to (years)"
+          data_creator: "Data Creator"
+          data_discovery: "How Data Discovered"
+
       forms:
         recall_book:
           title: Request Recall of Books Already Checked Out
@@ -122,8 +135,6 @@ en:
           title: Missing Book Search Request
         ir:
           title: Incident Report
-        hsl_book_reserve:
-          title: Request book(s) for reserve-Ginsburg Health Sciences Library
         data_purchase_grants_application:
           title: Library Data Grants
         ask_scrc:
@@ -132,6 +143,8 @@ en:
           title: "Proxy Account"
         library_instruction:
           title: "Request a Library Instruction Session"
+        scrc_instruction:
+          title: "SCRC Instruction Session/Visit Request"
 
     error:
       user_not_registered: "User not registered."

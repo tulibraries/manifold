@@ -53,23 +53,23 @@
   <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
     <div class="container nav-container">
       <ul class="list-unstyled "> 
-        <li class=" <% if action_name == 'about' %>active<% end %>">
+        <li class="<% if action_name == 'about' %>active<% end %>">
           <%= link_to "About", pages_about_path %>
         </li>
-        <li class=" <% if action_name == 'visit' %>active<% end %>">
+        <li class="<% if action_name == 'visit' %>active<% end %>">
           <%= link_to "Visit & Study", pages_visit_path %>
         </li>
-        <li class=" <% if action_name == 'research' %>active<% end %>">
+        <li class="<% if action_name == 'research' %>active<% end %>">
           <%= link_to "Research Services", pages_research_path %>
         </li>
-        <li class=" <% if action_name == 'contact' %>active<% end %>">
+        <li class="<% if action_name == 'contact' %>active<% end %>">
           <%= link_to "Contact Us", pages_contact_path %>
         </li> 
-        <li class="nav-right hours-nav <% if controller_name == 'library_hours' %>active<% end %>">
+        <li class="nav-right hours-nav<% if controller_name == 'library_hours' %> active<% end %>">
           <%= link_to "Hours", hours_path %>
         </li>
         <li class="nav-right chat-nav" id="chat-nav">
-          <div id="libchat_fe2bd0cb1f04720f51641c4f01b8e22e"></div>
+          <%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flocalhost%3A3000%2Fhsl&referer_title=Temple%20University%20Libraries" %>
         </li>
         <li class="nav-right account-nav">
           <%= link_to "My Account", "https://librarysearch.temple.edu/users/account" %>

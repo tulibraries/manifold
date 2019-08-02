@@ -17,16 +17,21 @@
 	<div class="col-12 col-lg-4 pr-14 left-links">
 		<% unless @scrc_location.nil? %>
 		<div class="locations">
-			<%= link_to "SCRC Reading Room", space_path(@scrc_location) %>
+			<%= link_to "SCRC Reading Room", @reading_room %>
+			<hr />
+			<%= link_to "Browse Finding Aids", finding_aids_path %>
 		</div>
 		<% end %>
 
 		<div class="contact">
 			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative" %>
-			<%= link_to "Contact Us", pages_contact_path %>
+			<%= link_to "Contact Us", "forms/ask-scrc" %>
 			<hr />
 			<%= image_tag "search.png", style: "width: 100px", class: "decorative" %>
 			<%= link_to "SCRC Catalog Search", "https://librarysearch.temple.edu/catalog?f[library_facet][]=Special+Collections+Research+Center" %>
+			<hr />
+			<%= image_tag "information_white.png", style: "width: 100px", class: "decorative" %>
+			<%= link_to "Hours & Info", @scrc_location %>
 		</div>
 	</div>
 

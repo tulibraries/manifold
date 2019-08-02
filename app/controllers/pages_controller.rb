@@ -33,6 +33,7 @@ class PagesController < ApplicationController
 
   def scrc
     @scrc_location = Space.find_by_slug("scrc-room")
+    @reading_room = Space.find_by_slug("scrc-reading-room")
     @visit_links = Category.find_by_slug("scrc-study").items.sort_by { |e| e.label }
     @collection_links = Category.find_by_slug("scrc-collections").items.sort_by { |e| e.label }
     @page = Page.find_by_slug("scrc-intro")

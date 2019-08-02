@@ -95,6 +95,9 @@
 		
 }
 #home {
+	a {
+		font-family: "Roboto Condensed";
+	}
 	.page-search-container {
 		.fa.fa-search {
 			display: inline-block;
@@ -134,7 +137,7 @@
 				text-align: center;
 				border: solid $footer-grey 2px;
 				border-radius: 7px;
-	  		box-shadow: 10px 7px 10px 0 rgba(0, 0, 0, 0.3), 10px 14px 21px 0 rgba(0, 0, 0, 0.28);
+	  		/*box-shadow: 10px 7px 10px 0 rgba(0, 0, 0, 0.3), 10px 14px 21px 0 rgba(0, 0, 0, 0.28);*/
 		  	img {
 					width: 101px;
 					opacity: .65;
@@ -331,11 +334,19 @@
 				border: solid $foamgreen 1px;
 				border-left: 0;
 				position: relative;
-				top: 18px;
+				top: 17px;
 				left: -7px;
 				@media screen and (min-width: 0) and (max-width: 1039px) {
 					top: -6px;
 				}
+			}
+			@-moz-document url-prefix() {
+			  input[type="submit"]{
+			    top: -5px;
+				  @media (max-width: 1039px) {
+				    top: -5px!important;
+				  }
+			  }
 			}
 		}
 		#librarySearch {

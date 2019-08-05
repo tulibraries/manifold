@@ -1,5 +1,5 @@
 <div class="page-search-container text-center container">
-	<form action="https://librarysearch.temple.edu/bento">
+	<form action=<%= "#{Rails.configuration.librarysearch_base_url}/bento" %>>
 		<label for="librarySearch" class="visuallyhidden">Search Everything</label>
 	  <input type="text" class="text-left" name="q" id="librarySearch" placeholder="Search everything" autocomplete="off" />
 	  <input type="submit" value = "" aria-label="submit search query">

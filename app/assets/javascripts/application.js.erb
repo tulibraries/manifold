@@ -45,7 +45,17 @@ function swap_image(y) {
 $(document).ready(function() {  
   $('.decorative').each(function() {
     $(this).attr('alt', "");
-  })
+  });
+
+  $('#slide-image').hover(function() {
+    $('#slide-next').css("opacity", .5);
+    $('#slide-previous').css("opacity", .5);
+  },
+  function() {
+    $('#slide-next').css("opacity", 0);
+    $('#slide-previous').css("opacity", 0);
+  });
+
 });
 
 

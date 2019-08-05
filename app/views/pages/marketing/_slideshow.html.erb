@@ -1,29 +1,25 @@
-<div class="row">
-  <div class="col">
-    <%= link_to "< Back to Explore Charles Library", pages_charles_path %>
-  </div>
-</div>
+
 <div class="row slideshow">
   <div class="col">
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-      <% @floorplans.each_with_index do |floorplan, index| %>
+      <% @images.each_with_index do |image, index| %>
         <li data-target="#carouselIndicators" data-slide-to="<%= index %>"
           <% if index == 1 %> class="active"<% end %>>              
         </li>
       <% end %>
       </ol>
-      <div class="carousel-inner" role="listbox">
-      <% @floorplans.each_with_index do |floorplan, index| %>  
+      <div class="carousel-inner" role="listbox" id="slide-image">
+      <% @images.each_with_index do |image, index| %>  
         <div class="carousel-item text-center<% if index == 1 %> active<% end %>">
-            <%= image_tag("floorplans/"+floorplan, class: 'img-fluid') %>
+            <%= image_tag("charles/"+image, class: 'img-fluid') %>
           </div>
         <% end %>
-        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev" id="slide-previous">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next" id="slide-next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
@@ -31,4 +27,3 @@
       </div>
     </div>
   </div>
-</div>

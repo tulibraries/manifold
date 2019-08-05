@@ -18,6 +18,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     ),
     content_link: Field::String,
     identifier: Field::String,
+    path: Field::String.with_options(admin_only: true),
     collections: Field::HasMany.with_options(
       class_name: "Collection"
     ),
@@ -47,6 +48,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :subject,
     :content_link,
     :identifier,
+    :path,
     :collections,
     :person,
     :categories,
@@ -59,6 +61,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :identifier,
+    :path,
     :description,
     :subject,
     :content_link,

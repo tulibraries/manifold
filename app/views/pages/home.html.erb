@@ -2,7 +2,7 @@
 <div id="searchFields">
 
 	<%= render "page-search" %>
-	
+
 </div>
 
 	<div class="col-12 d-block d-lg-none px-0" id="search-in-page">
@@ -39,10 +39,8 @@
 	  </div>
 	  <div class="col-12 col-lg-3">
 	    <div class="cta-white">
-	    	<% unless @explore_charles.nil? %>
-		    <%= link_to @explore_charles, class: "strong" do %>
+		    <%= link_to pages_charles_path, class: "strong" do %>
 		      <%= image_tag('explore_charles.png', class: "decorative") %> <span>Explore Charles Library</span>
-		    <% end %>
 	      <% end %>
 	    </div>
 	  </div>
@@ -75,7 +73,7 @@
 			<div class="col-12 col-lg-6 px-0 px-lg-5 news-events">
 				<div class="events">
 			    <%= link_to events_path do %>
-			      <%= image_tag('event_space.jpg', class: "d-none d-lg-block decorative") %> 
+			      <%= image_tag('event_space.jpg', class: "d-none d-lg-block decorative") %>
 			      <div class="caption" id="eventscaption">
 							<span class="lynde">Events & Exhibits</span>
 						</div>
@@ -83,7 +81,7 @@
 				</div>
 				<div class="news">
 					<%= link_to blogs_path do %>
-			      <%= image_tag('graduate_scholars.jpg', class: "d-none d-lg-block decorative") %> 
+			      <%= image_tag('graduate_scholars.jpg', class: "d-none d-lg-block decorative") %>
 			      <div class="caption" id="newscaption">
 							<span class="lynde">Library News</span>
 						</div>

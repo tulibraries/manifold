@@ -3,13 +3,12 @@
 class Category < ApplicationRecord
   include Rails.application.routes.url_helpers
   #TODO: should we validate that icon is svg?
+  include Imageable
 
   has_many :categorizations, dependent: :destroy
 
   has_many :nested_categorizations, as: :categorizable, dependent: :destroy, class_name: "Categorization"
   has_many :categories, through: :nested_categorizations
-
-  has_one_attached :image
 
   validates :name, presence: true
 

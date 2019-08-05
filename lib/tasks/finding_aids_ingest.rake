@@ -44,7 +44,8 @@ namespace :db do
     c.identifier = record["Collection ID"]
     c.subject = record["Subjects"].split(", ").collect { |s| s }
     c.collection_ids = record["Collecting Area"].split("| ").collect { |c| collection_id(c) }
-    c.description = Loofah.fragment(record["Body"]).scrub!(:whitewash)
+    c.description = Loofah.fragment(record["Body"]).scrub!(:prune)
+    c.path = record["Path"].split("/").last
 
     if c.save
       if new_collection == true

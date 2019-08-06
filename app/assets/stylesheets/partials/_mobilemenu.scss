@@ -136,11 +136,12 @@
 	}
 	.navbar-toggler-icon {
 		margin-left: 10px!important;
-		margin-top: -3px;
 		background-image: none;
 		color: $seagreen-dark;		
 		@media screen and (min-width: 0) and (max-width: 1039px) {
-			float: left;
+			float: left;    
+			display: inline-block;
+    	margin-right: 4px;
 		}
 	}
 	#icon_filter {
@@ -151,10 +152,11 @@
 		@media screen and (min-width: 0) and (max-width: 1039px) {
 			white-space: normal;
 			text-align: left;
-			line-height: 1.5rem;    
-			padding-left: 4px;
-	    top: 1px;
+			line-height: 1.5rem;
+	    top: 3px;
 	    position: relative;
+	    display: inline;
+	    font-family: "Roboto Condensed";
 		}
 	}
 }

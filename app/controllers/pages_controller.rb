@@ -11,22 +11,18 @@ class PagesController < ApplicationController
 
   def charles
     @page = Page.find_by_slug("charles")
-    @floorplans = ["floorplan1.jpg", "floorplan2.jpg", "floorplan3.jpg", "floorplan4.jpg"]
-    @renderings = ["24_7.jpg", "atrium.jpg", "charles.jpg", "class.jpg", "classroom.jpg",
-                    "digital-scholars.jpg", "entry-plaza.jpg", "event-space.jpg",
-                    "exhibition.jpg", "frozen-garden.jpg", "grove.jpg", "liacouras.jpg",
-                    "north-reading-room.jpg", "oculus.jpg", "one-stop.jpg", "quiet-reading-room.jpg",
-                    "reading-room.jpg", "scrc.jpg", "stacks.jpg", "writing-center.jpg" ]
+    @images = ["24_7.jpg", "atrium.jpg", "charles.jpg", "class.jpg", "classroom.jpg",
+                "digital-scholars.jpg", "entry-plaza.jpg", "event-space.jpg",
+                "exhibition.jpg", "frozen-garden.jpg", "grove.jpg", "liacouras.jpg",
+                "north-reading-room.jpg", "oculus.jpg", "one-stop.jpg", "quiet-reading-room.jpg",
+                "reading-room.jpg", "scrc.jpg", "stacks.jpg", "writing-center.jpg",
+                "floorplan1.jpg", "floorplan2.jpg", "floorplan3.jpg", "floorplan4.jpg" ]
   end
 
   def home
     @research_help = Service.find_by_slug("sme")
     @print_my_paper = Service.find_by_slug("printing")
     @book_study_room = Space.find_by_slug("study-rooms-small")
-    @explore_charles = Page.find_by_slug("charles")
-    if @explore_charles.nil?
-      @explore_charles = Service.find_by_slug("charles-in-charge")
-    end
     @locations = Building.find_by_slug("ambler")
     @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
   end

@@ -39,6 +39,7 @@
 			padding-right: 21px;
 			color: $white;
 			font-size: 135%;
+			font-family: "Roboto Condensed";
 			@media (max-width: 1039px) {
 				font-size: 130%;
 			}
@@ -59,6 +60,7 @@
 		padding: 0;
 		font-size: 135%;
 		color: $white;
+		font-family: "Roboto Condensed";
 		@media (max-width: 1039px) {
 			margin-bottom: 21px;
 		}
@@ -79,6 +81,7 @@
 		}
 		div.two-lines {
 			height: 79px!important;
+			font-family: "Roboto Condensed";
 			@media (max-width: 1039px) {
 				padding-top: 21px;
 			}
@@ -112,6 +115,7 @@
 			padding-right: 14px;
 			height: auto;
 			padding-bottom: 14px;
+			font-family: "Roboto Condensed";
 		}
 		hr {
 			background-color: $white;

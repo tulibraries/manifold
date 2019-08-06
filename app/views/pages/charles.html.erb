@@ -2,11 +2,6 @@
 
 <div class="container charles">
 
-<% if params[:slideshow] == "floorplans" %>
-	<%= render "pages/marketing/floorplans" %>
-<% elsif params[:slideshow] == "renderings" %>
-	<%= render "pages/marketing/renderings" %>
-<% else %>
 	<div class="row">
 		<div class="col">
 			<h1><%= @page.title %></h1>
@@ -18,9 +13,11 @@
 			<%= render "items" %>
 		</div>
 		<div class="col col-lg-9">
-			<%= sanitize @page.description.html_safe %>
+			<%= render "pages/marketing/slideshow" %>
+			<div class="charles-content">
+				<%= sanitize @page.description.html_safe %>
+			</div>
 		</div>
 	</div>
-<% end %>
 
 </div>

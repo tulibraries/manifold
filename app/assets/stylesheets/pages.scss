@@ -171,7 +171,6 @@
 			color: $white;
 			background-color: $black;
 			height:42px;
-			padding-top: 2px;
 			font-size: larger;
 			text-align: center;
 			a.lynde {
@@ -435,6 +434,19 @@
 	.slideshow {
 		margin-top: 21px;
 	}
+	.charles-content {
+		margin-top: 35px;
+	}
+	.carousel-control-prev,
+	.carousel-control-next {
+	  background-color: $white;
+	  width: 10%;
+	  opacity: 0;
+	}
+	.carousel-control-prev:hover,
+	.carousel-control-next:hover {
+	  opacity: .5;
+	}
 	.carousel-control-prev-icon,
 	.carousel-control-next-icon {
 	  height: 80px;
@@ -442,18 +454,20 @@
 	  outline: $black;
 	  background-size: 100%, 100%;
 	  border-radius: 50%;
-	  border: 0 solid $black;
+	  border: 1 solid $black;
 	  background-image: none;
 	}
 	.carousel-control-next-icon:after {
 	  content: '>';
 	  font-size: 65px;
 	  color: $black;
+	  opacity: .5;
 	}
 	.carousel-control-prev-icon:after {
 	  content: '<';
 	  font-size: 65px;
 	  color: $black;
+	  opacity: .5;
 	}
 	.carousel-indicators {
 		bottom: -42px;

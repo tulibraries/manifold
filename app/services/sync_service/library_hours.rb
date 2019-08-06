@@ -18,7 +18,6 @@ class SyncService::LibraryHours
                   { coordinates: "Sheet2!D2:D", slug: "cafe" },
                   { coordinates: "Sheet2!E2:E", slug: "scrc" },
                   { coordinates: "Sheet2!F2:F", slug: "scholars_studio" },
-                  { coordinates: "Sheet2!G2:G", slug: "success_center" },
                   { coordinates: "Sheet2!H2:H", slug: "ask_a_librarian" },
                   { coordinates: "Sheet2!I2:I", slug: "asrs" },
                   { coordinates: "Sheet2!J2:J", slug: "guest_computers" },

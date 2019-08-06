@@ -46,7 +46,6 @@ class LibraryHoursController < ApplicationController
                   "cafe",
                   "scrc",
                   "scholars_studio",
-                  "success_center",
                   "ask_a_librarian",
                   "asrs",
                   "guest_computers"

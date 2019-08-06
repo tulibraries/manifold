@@ -35,6 +35,7 @@
 		font-size:150%;
 		width: 100%;
 		margin: 0 15px 35px 15px;
+		font-family: "Roboto Condensed";
 	}
 	.event {
 		border-bottom: solid $lightest-grey 2px;
@@ -122,6 +123,7 @@
 		width: 100%;
 		margin-bottom: 14px;
 		text-decoration: underline;
+		text-align: left;
 	}
 	.video-button {
 		background-color: $foamgreen;

@@ -1,8 +1,8 @@
 <% @exhibitions.each do |exhibit| %>
   <div class="col-12 exhibit">
     <%= link_to exhibit.title, exhibit, class: "exhibit_title" %><br />
-    <%= exhibit.start_date.strftime("%^B %Y").titleize %> -  
-    <%= exhibit.end_date.strftime("%^B %Y").titleize %>
+    <span class="faustina"><%= exhibit.start_date.strftime("%^B %Y").titleize %> -  
+    <%= exhibit.end_date.strftime("%^B %Y").titleize %></span>
     <% unless exhibit.space.nil? %>
     <br />
     <%= link_to exhibit.space.name, space_path(exhibit.space), class: "location" %>

@@ -154,8 +154,11 @@
 			@media (max-width: 1039px) {
 				margin: 0;
 			}
-			a {
-				color: $black;
+			li {
+				margin-bottom: 7px;
+				a {
+					color: $black;
+				}
 			}
 			h2 {
 				color: $seagreen;

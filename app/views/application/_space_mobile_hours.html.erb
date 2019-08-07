@@ -34,7 +34,7 @@
 
     <div class="col-5 text-left">
 
-      <% @space.get_hours.each_with_index do |time,index| %> <!-- hours -->
+      <% @space.get_hours.sort_by(&:date).each_with_index do |time,index| %> <!-- hours -->
       <% if @monday.to_date+index == @today.to_date %>
           <div class="today day-of-week hours-dates">
           <% else %>

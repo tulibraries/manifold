@@ -122,7 +122,8 @@ Rails.application.routes.draw do
   end
 
   controller :redirects do
-    get "*path" => :show
+    get "*path" => :show,
+      constraints: lambda { |req| req.path.exclude? "rails/active_storage" }
   end
 
 end

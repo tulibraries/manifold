@@ -30,7 +30,19 @@
 	}
 }
 #todays-date {
-	border-left: solid $foamgreen 1px;
+	padding-left: 9%;
+	.inner-date {
+		border-left: solid $foamgreen 1px;
+		padding-left: 14px;
+	}
+	@media (max-width: 649px) {
+		margin-top: 14px;
+		padding-left: 14px;
+		.inner-date {
+			border-left: 0;
+			padding-left: 0;
+		}
+	}
 }
 #search-in-page {
 	background-color: $lightest-grey;

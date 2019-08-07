@@ -6,6 +6,8 @@ class Redirect < ApplicationRecord
 
   belongs_to :redirectable, polymorphic: true, optional: true
 
+  validates_uniqueness_of :legacy_path
+
   def path
     redirectable ? redirectable : manifold_path
   end

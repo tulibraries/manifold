@@ -1,5 +1,4 @@
 @import "_vars.scss";
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 
 #header-search, #mobile-search-container {
 	position: relative;
@@ -35,9 +34,6 @@
 			padding-left: 7px;
 			position: relative;
 			top: 7px;
-			@media (max-width: 1039px) {
-				/*width: 50%;*/
-			}
 		}
 		#librarySearch.mobile {
 			width: 70%;
@@ -85,7 +81,6 @@
 		clear: both;
 		font-size: 1rem;
 		padding-left: 0;
-		padding-top: 14px;
 		margin-bottom: 0;
 		margin-left: -35px;
 		li {
@@ -108,19 +103,19 @@
 	}
 	#librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	  font-style: normal;
-	  font-family: 'Faustina';
+	  font-family: 'Roboto Condensed';
 	}
 	#librarySearch::-moz-placeholder { /* Firefox 19+ */
 	  font-style: normal;
-	  font-family: 'Faustina';
+	  font-family: 'Roboto Condensed';
 	}
 	#librarySearch:-ms-input-placeholder { /* IE 10+ */
 	  font-style: normal;
-	  font-family: 'Faustina';
+	  font-family: 'Roboto Condensed';
 	}
 	#librarySearch:-moz-placeholder { /* Firefox 18- */
 	  font-style: normal;
-	  font-family: 'Faustina';
+	  font-family: 'Roboto Condensed';
 	}
 }
 

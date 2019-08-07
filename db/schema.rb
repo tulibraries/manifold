@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_190109) do
+ActiveRecord::Schema.define(version: 2019_08_06_225436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -351,6 +351,15 @@ ActiveRecord::Schema.define(version: 2019_07_29_190109) do
     t.datetime "updated_at", null: false
     t.index ["policy_id"], name: "index_policy_applications_on_policy_id"
     t.index ["policyable_type", "policyable_id", "policy_id"], name: "index_uniqueness_policy_application", unique: true
+  end
+
+  create_table "redirects", force: :cascade do |t|
+    t.string "legacy_path"
+    t.string "manifold_path"
+    t.string "redirectable_type"
+    t.bigint "redirectable_id"
+    t.index ["legacy_path"], name: "index_redirects_on_legacy_path"
+    t.index ["redirectable_type", "redirectable_id"], name: "index_redirects_on_redirectable_type_and_redirectable_id"
   end
 
   create_table "service_groups", force: :cascade do |t|

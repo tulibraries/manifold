@@ -44,6 +44,10 @@ en:
         hours: "Hours Identifier"
       space:
         hours: "Hours Identifier"
+      redirect:
+        legacy_path: "Path from Drupal"
+        manifold_path: "Path/URL to Link to"
+        redirectable: "Entity to Link To"
   manifold:
     default:
       event:

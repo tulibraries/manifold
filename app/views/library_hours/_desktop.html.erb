@@ -28,7 +28,7 @@
           <div class="col-3 px-0"> 
             <h3><%= location_link(space[1].first.location_id) %></h3>
           </div>
-          <% space[1].each_with_index do |time,index| %> 
+          <% space[1].sort_by(&:date).each_with_index do |time,index| %> 
             <% if @monday.to_date+index == @today %>
               <div class="col today">
               <% else %>
@@ -36,7 +36,7 @@
             <% end %>
             <% if time.hours.downcase == "closed" %>
               <span class="closed"><%= time.hours %></span>
-              <% else %>
+            <% else %>
               <%= time.hours %>
             <% end %>
             </div>

@@ -44,7 +44,7 @@
       <div class="col-9">
         <div class="row">
 
-        <% @building.get_hours.each_with_index do |time,index| %> <!-- hours -->
+        <% @building.get_hours.sort_by(&:date).each_with_index do |time,index| %> <!-- hours -->
 
           <% if @building.monday.to_date+index == @today.to_date %>
             <div class="col today">

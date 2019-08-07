@@ -3,10 +3,11 @@
 class RedirectsController < ApplicationController
   def show
     if params[:path]
-      redirect = Redirect.find_by_legacy_path(params[:path])
+      path_with_slash = "/#{params[:path]}"
+      redirect = Redirect.find_by_legacy_path(path_with_slash)
       if redirect
         message =
-        "#{request.env['HTTP_HOST']}/#{params[:path]} has moved. \
+        "#{request.env['HTTP_HOST']}#{path_with_slash} has moved. \
         Please update bookmarks and links"
         redirect_to(redirect.path,
                     status: 301,

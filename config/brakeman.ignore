@@ -62,6 +62,26 @@
       "note": ""
     },
     {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "75cc43dcda5755d4734e743e6fdfa9647192d58b93962aba7703e2a8f04e47ad",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/redirects_controller.rb",
+      "line": 11,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Redirect.find_by_legacy_path(\"/#{params[:path]}\").path, :status => 301, :notice => (\"#{request.env[\"HTTP_HOST\"]}#{\"/#{params[:path]}\"} has moved.         Please update bookmarks and links\"))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RedirectsController",
+        "method": "show"
+      },
+      "user_input": "Redirect.find_by_legacy_path(\"/#{params[:path]}\").path",
+      "confidence": "High",
+      "note": "External URLS are a valid redirect here"
+    },
+    {
       "warning_type": "Mass Assignment",
       "warning_code": 70,
       "fingerprint": "7a8e4552d89bb53cf073729b06e4f1f6489e74f3657f7bc5f521e847f1e28b88",
@@ -111,26 +131,6 @@
       "user_input": null,
       "confidence": "High",
       "note": ""
-    },
-    {
-      "warning_type": "Redirect",
-      "warning_code": 18,
-      "fingerprint": "82a17475735c24ddeb83fa1ab4501478ebeede7f7a2313d960571d3ae3b7ad3f",
-      "check_name": "Redirect",
-      "message": "Possible unprotected redirect",
-      "file": "app/controllers/redirects_controller.rb",
-      "line": 10,
-      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
-      "code": "redirect_to(Redirect.find_by_legacy_path(params[:path]).path, :status => 301, :notice => (\"#{request.env[\"HTTP_HOST\"]}/#{params[:path]} has moved.         Please update bookmarks and links\"))",
-      "render_path": null,
-      "location": {
-        "type": "method",
-        "class": "RedirectsController",
-        "method": "show"
-      },
-      "user_input": "Redirect.find_by_legacy_path(params[:path]).path",
-      "confidence": "High",
-      "note": "Handled in the model before_save hooks"
     },
     {
       "warning_type": "Remote Code Execution",
@@ -256,6 +256,6 @@
       "note": ""
     }
   ],
-  "updated": "2019-08-07 12:18:17 -0400",
+  "updated": "2019-08-07 14:30:00 -0400",
   "brakeman_version": "4.6.1"
 }

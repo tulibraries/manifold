@@ -35,6 +35,7 @@
 		font-size:150%;
 		width: 100%;
 		margin: 0 15px 35px 15px;
+		font-family: "Roboto Condensed";
 	}
 	.event {
 		border-bottom: solid $lightest-grey 2px;
@@ -43,13 +44,41 @@
 		margin-right:15px;
 	}
 }
-.exhibits-header {
-	padding-right: 14px;
-	background-color: $lightest-grey;
-	padding: 10px 21px;
-	color: $seagreen ;
-	font-size:150%;
-	margin-bottom: 14px;
+.exhibits {
+	font-family: "Roboto Condensed";
+	.exhibits-header {
+		padding-right: 14px;
+		background-color: $lightest-grey;
+		padding: 10px 21px;
+		color: $seagreen ;
+		font-size:150%;
+		margin-bottom: 14px;
+	}
+	.exhibit {
+		font-family: "Roboto Condensed";
+		.exhibit_title {
+			font-size: 125%;
+			font-weight: 600;
+			color: $black;
+			text-decoration: underline;
+		}
+		.faustina {
+			font-family: "faustina";
+		}
+		border: solid $seagreen 1px;
+		border-radius: 7px;
+		background-color: transparent;
+		padding: 21px;
+		margin-bottom: 14px;
+		a {
+			font-family: "Roboto Condensed";
+		}
+		a.location {
+			font-weight: 600;
+			color: $black!important;
+			font-family: "Faustina";
+		}
+	}
 }
 .paginator {
 	background-color: $lightest-grey;
@@ -79,23 +108,6 @@
 		display: block;
 	}
 }
-
-	.exhibit {
-		.exhibit_title {
-			font-size: 125%;
-			font-weight: 600;
-			color: $black;
-			text-decoration: underline;
-		}
-		.exhibit_title:hover {
-			color: $red;
-		}
-		border: solid $seagreen 1px;
-		border-radius: 7px;
-		background-color: transparent;
-		padding: 21px;
-		margin-bottom: 14px;
-	}
 	a.location {
 		font-weight: 600;
 		color: $black!important;
@@ -111,6 +123,7 @@
 		width: 100%;
 		margin-bottom: 14px;
 		text-decoration: underline;
+		text-align: left;
 	}
 	.video-button {
 		background-color: $foamgreen;

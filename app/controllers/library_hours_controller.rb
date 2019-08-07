@@ -43,13 +43,13 @@ class LibraryHoursController < ApplicationController
         spaces: [
                   "charles",
                   "service_zone",
-                  "cafe",
                   "scrc",
                   "scholars_studio",
-                  "success_center",
                   "ask_a_librarian",
+                  "24-7",
                   "asrs",
-                  "guest_computers"
+                  "guest_computers",
+                  "cafe"
                 ]
       },
       {

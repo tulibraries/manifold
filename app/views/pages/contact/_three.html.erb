@@ -1,3 +1,8 @@
-<%= link_to (image_tag "email.png", class: "category-icon decorative"), controller: "pages", action: "show", id: 13 %>
-			<h2><%= link_to "Email", controller: "pages", action: "show", id: 13 %></h2>
-			<p>Email us your question at <%= mail_to "asktulibrary@temple.edu" %></p>
+<%= link_to @form_link do %>
+	<h2>
+		<%= image_tag "email.png", class: "category-icon decorative" %>
+		<br />Email
+	</h2>
+<% end %>
+
+<p>Email us your question at <%= mail_to "asktulibrary@temple.edu" %></p>

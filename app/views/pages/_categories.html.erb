@@ -8,12 +8,16 @@
 		<% unless category.categories.include?(category) %>
 
 			<div class="col-12 col-md-6 col-lg-4 text-center">
+				<h2>
+		    <%= link_to category do %>
 				<% unless category.image.attachment.nil? %>
-					<%= link_to (image_tag category.image, class: "category-icon decorative"), category_path(category) %> 
+					<%= image_tag category.image, class: "category-icon decorative" %> 
 				<% else %>
-					<%= link_to (image_tag "T-borderless.gif", class: "decorative"), category_path(category) %>
+					<%= image_tag "T-borderless.gif", class: "decorative" %>
 				<% end %>
-				<h2><%= link_to category.name, category_path(category) %></h2>
+					<br /><%= category.name %>
+				<% end %>
+				</h2>
 				<p><%= category.description unless category.description.blank? %></p>
 			</div>
 

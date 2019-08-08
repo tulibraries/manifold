@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :pages
     resources :people
     resources :policies
+    resources :redirects
     resources :services
     resources :spaces
 
@@ -119,6 +120,12 @@ Rails.application.routes.draw do
     get "lcdss" => :tudsc, as: "pages_lcdss"
     get "explore-charles" => :charles, as: "pages_charles"
   end
+
+  controller :redirects do
+    get "*path" => :show,
+      constraints: lambda { |req| req.path.exclude? "rails/active_storage" }
+  end
+
 end
 
 Rails.application.routes.named_routes.url_helpers_module.module_eval do

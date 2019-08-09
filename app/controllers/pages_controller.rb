@@ -125,6 +125,8 @@ class PagesController < ApplicationController
 
   def contact
     @fcn_link = Page.find_by_slug("numbers")
+    @libanswers = ExternalLink.find_by_slug("libanswers")
+    @suggestions = Blog.find_by_slug("suggestions").base_url
   end
 
   def show

@@ -1,74 +1,65 @@
 sudo: false
-
 language: ruby
-
 rvm:
-  - 2.5.1
-
+- 2.5.1
 services:
-  - postgresql
-
+- postgresql
 env:
-  - TZ=America/New_York
-
-
+- TZ=America/New_York
 before_install:
-  - gem update --system
-  - gem install bundler
-
+- gem update --system
+- gem install bundler
 before_script:
-  - psql -c "create role manifold with createdb login password 'password';" -U postgres
-  - RAILS_ENV=test bundle exec rake db:setup
-  - RAILS_ENV=test bundle exec rake db:seed
-  - nvm install node
-  - npm install -g ajv
-  - npm install -g ajv-cli
-
+- psql -c "create role manifold with createdb login password 'password';" -U postgres
+- RAILS_ENV=test bundle exec rake db:setup
+- RAILS_ENV=test bundle exec rake db:seed
+- nvm install node
+- npm install -g ajv
+- npm install -g ajv-cli
 script:
-  - bundle exec rubocop
-  - bundle exec brakeman
-  - bundle exec rspec spec
-
+- bundle exec rubocop
+- bundle exec brakeman
+- bundle exec rspec spec
 after_success:
-  - true
-
+- true
 before_deploy:
-  - rm -fR $PYENV_ROOT
-  - curl https://pyenv.run | bash
-  - pyenv install -v 3.6.6
-  - pyenv local 3.6.6
-  - pip install pipenv
-  - pipenv install
-  - openssl aes-256-cbc -K $encrypted_9e51133e104b_key -iv $encrypted_9e51133e104b_iv -in .travis/deploy.zip.enc -out .travis/deploy.zip -d
-  - unzip .travis/deploy.zip -d .travis
-  - mv .travis/.gritty_travis ~/.ssh/.gritty_travis
-  - mv .travis/.conan_the_deployer ~/.ssh/.conan_the_deployer
-  - eval "$(ssh-agent -s)"
-  - chmod 600 ~/.ssh/.gritty_travis
-  - chmod 600 ~/.ssh/.conan_the_deployer
-  - echo -e "Host $BASTION_HOST\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
-  - echo -e "HOST gitserv\n\tHostname remote.server.com\n\tIdentityFile ~/.ssh/.gritty_travis\n\tIdentitiesOnly yes\n" >> ~/.ssh/config
-  - echo -e "HOST github.com\n\tIdentityFile ~/.ssh/.gritty_travis\n" >> ~/.ssh/config
-  - ssh-add ~/.ssh/.gritty_travis
-  - ssh-add ~/.ssh/.conan_the_deployer
-
+- rm -fR $PYENV_ROOT
+- curl https://pyenv.run | bash
+- pyenv install -v 3.6.6
+- pyenv local 3.6.6
+- pip install pipenv
+- pipenv install
+- openssl aes-256-cbc -K $encrypted_9e51133e104b_key -iv $encrypted_9e51133e104b_iv
+  -in .travis/deploy.zip.enc -out .travis/deploy.zip -d
+- unzip .travis/deploy.zip -d .travis
+- mv .travis/.gritty_travis ~/.ssh/.gritty_travis
+- mv .travis/.conan_the_deployer ~/.ssh/.conan_the_deployer
+- eval "$(ssh-agent -s)"
+- chmod 600 ~/.ssh/.gritty_travis
+- chmod 600 ~/.ssh/.conan_the_deployer
+- echo -e "Host $BASTION_HOST\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n"
+  >> ~/.ssh/config
+- echo -e "HOST gitserv\n\tHostname remote.server.com\n\tIdentityFile ~/.ssh/.gritty_travis\n\tIdentitiesOnly
+  yes\n" >> ~/.ssh/config
+- echo -e "HOST github.com\n\tIdentityFile ~/.ssh/.gritty_travis\n" >> ~/.ssh/config
+- ssh-add ~/.ssh/.gritty_travis
+- ssh-add ~/.ssh/.conan_the_deployer
 deploy:
-  - provider: script
-    script: bash .travis/deploy-qa.sh
-    on:
-      branch: qa
-  - provider: script
-    script: bash .travis/deploy-stage.sh
-    on:
-      branch: master
-  - provider: script
-    script: bash .travis/deploy-prod.sh
-    on:
-      branch: master
-
+- provider: script
+  script: bash .travis/deploy-qa.sh
+  on:
+    branch: qa
+- provider: script
+  script: bash .travis/deploy-stage.sh
+  on:
+    branch: master
+- provider: script
+  script: bash .travis/deploy-prod.sh
+  on:
+    branch: master
 notifications:
   slack:
     secure: z6UU1WNCrXgtBohGmts6+dY11pQzoQi9bY3WlNVL9ce0M81HNhUE+5SjjSECWxUBLakiazhp5g3K6sTodXESozz918T0oT8RoXF1dbWjD/Q/DT130nszze8UTmRZL+nOaA5bwGNgdGxV+iAHs8RycqshCuikJHTms1ndyn0y2h8jYAO2ImD/cuvcX9gM2Lxq4KIZJGO5ApAi+JqxFdawo43Hnmc/VRyA3aS8izZseZcta+nVoipAL21CVucXlCqVMKkEeflutr4NDhj8WbqdQONArzs7VUVk1TtUP1NXNrhJyZmG9ZhM/3fo3Infq8+vZk8XOGTrqroJUhY8uw6KOQXWw05we/CZuRDsql4mmKKOMUtHg/uUU32U0HRDSHrQs+gY1U89j2TOtdcRzmmbPMhpz70yRf5HnFaMSrzfSsDbkNb/M51NDfv5dikZ44dsXOYDWT6MA1EqWkEOC0pdrygmS4WWRZgW3gpo97ea8GezFWFvw77oAiOH+iYo/rb39y6S5wnHiMACGdubH8O8AULH4qqOAQR4C5ZEcJMDbmI2KfWtq3DGyWASwol4xeOhYq/339GkFGLYUd6yc48Adl8ZrkweaIw+EV10X8HxqzPEG7T1srzLt/IH8fhUV+HTGbpbQyldBzrNa/XnmATEWEfyONXqzlfMzmgCe4tJ/38=
-    on_pull_requests: false
-    on_success: change
-    on_failure: always
+    rooms:
+      secure: aC2N4qBzncpJ7yd2OHw1JaPAozqIAz8FfVc0RZw+Zy/vrhIIYdBM3yRqDobeMcB9E+eX3kBBd84HqMdGGr5LhFZHzi/YAyC8s6ygZetrNZ/buJYJdmrH0KD9FLsW4Ks9P/a8c3isIE9aggLe8E9J/VTnpnrm3gEUSoAPGXHBylmSDDyW/7KhzLT+EW/1jQ5DxgHbNVAZLPt1uynpmO0semJtpxylRbudg14/Yau55OqcYBRg06P0uaZsp4/LXLXuHVgGwLMVDM70S5pT4AeLzvXUOIMPu3niqJdxfeCy/2P0ZAGlbUQyoyd0+eU3fozeI1H8O4xNrIpHW6CUQ9wamco4XK1fvLVj+EOt2EAwweFKo82wBJfXTzrypnc74QWQ6VPLuvM3hqhDHYCPrAKM5Etw7PFHKG1Stq6wQM63CJW5mAZfsON+7y+ldZW9HYh1XmIoX8N76d/MQNCQAm4dxNwJriHWr8Ash5pzyZ1qb/h/45IcoAxV6vyyworUhgDstW93aNN3ZKUk0Zs6bGrmETKHDz1TAcHSl7AMWbTUx59hXSRwa6S5Kw1sjoUrAHlqkgzRFC0W1JHZ644gZd2d22GcXybCN2xkKlzpByRR15y54Wy3bxb/mKeDZFOAlOsPrVZZdHWqq8yrMkWqYdMkpuyxjMRHe8ZgQ7vOHlw7L1Y=
+      secure: R7uL4sGWhLu8tn89ysVYbP4r4NiUEEqlbZ+KgOZRjvbynFzg6vcz8MJpRVK3DnJeokmUBz6fyzK7/DLMEuBrl/DgY0jIiAF1La1qXXQ8edkO+1Aem3fYwuE7grJO10yRwJcIq0zZNgzRVWwmLgN+2tAwNeWHfVuq6iLCA1espW5kxxoZ4HRezhq+OMDBkxAhrscCZRrQ3JY6SFp2sAQZleFrKqpGT+EWAlw9KHg4e8OEZ5+hDFCTZdelV1x3W0bg1yrEzV/p2I1MhFelPGyNVAPa1tM7fvUeXvffDOTJH/tAXj29a72Wl2FfUL7iqYLymXa6sCf6HYpbsX/te37nip9SxtZx4Hbbqos0WabrjK+yB2Y9Vb2smi4sqaenXgmVkN3YTAVm7FtS67yDSRg60xLDn8CuMXPqYQuy+v17rs8LJVHL5JGr7RGl2vC0l6l7U9Pye8em+4uqTQGLLDKecnxhupnJxcg6bLoPoP9AVTNTKCVFEEEJWcQgQB4wM3b+TwrQt84/81WHhSQLa+Q81kktU4FE2H80pLZywel+uUE4B6WRrW2AKY2igRUcMylDn9149rJLHLb0IITT/SfESzV50coaisWvivmr4McHrfWEvDm5v2N0Kk1qKiXFHWGOZ1QQIKcO88siC7odIFplsfRr8bUezm1DLcfp8g9e4A4=

@@ -71,6 +71,14 @@
 				top: 10px;
 				left: -7px;
 			}
+				@-moz-document url-prefix() {
+				  input[type="submit"]{
+				    top: -5px;
+					  @media (max-width: 1039px) {
+					    top: 0;
+					  }
+				  }
+				}
 		}
 		#librarySearch {
 			height: 56px;
@@ -86,7 +94,12 @@
 			color: $med-grey;
 			border: solid $foamgreen 1px;
 			position: relative;
-			top: -7px;
+			top: -6px;
+			@-moz-document url-prefix() {
+			  @media (max-width: 1039px) {
+			    top: 5px;
+			  }
+			}
 		}
 		#librarySearch::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 		  font-style: normal;
@@ -345,7 +358,7 @@
 				border: solid $foamgreen 1px;
 				border-left: 0;
 				position: relative;
-				top: 17px;
+				top: 16px;
 				left: -7px;
 				@media screen and (min-width: 0) and (max-width: 1039px) {
 					top: -6px;

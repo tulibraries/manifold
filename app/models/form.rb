@@ -67,6 +67,8 @@ class Form < MailForm::Base
   attribute :campus
   attribute :other
   attribute :minors
+  attribute :group
+  attribute :easel
   attribute :file, attachment: true
 
   def get_subject
@@ -79,7 +81,8 @@ class Form < MailForm::Base
       "data-purchase-grants-application" => ["Data Purchase Application", ["cdoyle@temple.edu", "librarydatagrants@temple.edu"]],
       "library-instruction" => ["Request a Library Instruction Session", ["cdoyle@temple.edu", "cshanley@temple.edu"]],
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["cdoyle@temple.edu", "msly@temple.edu", "tuf12871@temple.edu"]],
-      "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]]
+      "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]],
+      "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu"]]
     }
 
     @forms.fetch(form_type)

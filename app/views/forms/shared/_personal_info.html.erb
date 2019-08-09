@@ -10,12 +10,16 @@
 <%= f.input :email, as: :email, required: true %>
 <%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
 
-<% unless params[:type] == "ask-scrc" || params[:type] == "scrc-instruction"%>
+<% unless ["ask-scrc","scrc-instruction","table-request"].include? params[:type ] %>
 	<%= f.input :tu_id, label: "Temple ID Number", required: true %>
 	<%= f.input :department, required: true %>
 <% end %>
 
-<% unless params[:type] == "scrc-instruction" || params[:type] == "library-instruction"%>
+<% if params[:type] == "table-request" %>
+	<%= f.input :group, label: "Group/Organization", required: true %>
+<% end %>
+
+<% unless ["library-instruction","scrc-instruction","table-request"].include? params[:type ] %>
 	<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: @collection, required: true %>
 <% end %>
 

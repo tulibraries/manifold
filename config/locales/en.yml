@@ -129,6 +129,8 @@ en:
           years_limit: "Limited to (years)"
           data_creator: "Data Creator"
           data_discovery: "How Data Discovered"
+          group: "Group/Organization"
+          easel: "Easel needed?"
 
       forms:
         recall_book:
@@ -149,6 +151,8 @@ en:
           title: "Request a Library Instruction Session"
         scrc_instruction:
           title: "SCRC Instruction Session/Visit Request"
+        table_request:
+          title: "Library Staff and Registered Student Organization Table Request"
 
     error:
       user_not_registered: "User not registered."

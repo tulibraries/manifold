@@ -139,6 +139,13 @@
 				padding:7px 14px;
 				border-radius: 7px;
 			}
+			@media (max-width: 1039px) {
+				a {
+					display: block;
+					margin-bottom: 4px;
+					width: 180px;
+				}
+			}
 		}
 	}
 }

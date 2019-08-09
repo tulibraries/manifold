@@ -5,14 +5,42 @@
 	margin-bottom: 21px;
 
 	.building-contact {
-		line-height: 2rem;
 		li {
 			padding-left: 35px;
-			background-image: asset-data-url('newspaper.png');
+	    background: rgba(255,255,255,0.6);
 	    background-position: 0 center;
 	    background-repeat: no-repeat;
-	    background-size: 28px 28px;
+	    background-size: 42px 42px;
+			line-height: 1.1rem;
+			height: 42px;
+			span {
+				vertical-align: middle;
+				padding-top: 6px;
+				display: inline-block;
+			}
 		}
+		li.lib_location {
+	    background: rgba(255,255,255,0.6);
+	    /*background-position: 0 0;*/
+	    background-repeat: no-repeat;
+	    background-size: 32px 32px;
+			background-image: asset-data-url('small_location.png');
+		}
+		li.lib_phone {
+	    background: rgba(255,255,255,0.6);
+	    /*background-position: 0 0;*/
+	    background-repeat: no-repeat;
+	    background-size: 32px 32px;
+			background-image: asset-data-url('small_phone.png');
+		}
+		li.lib_email {
+	    background: rgba(255,255,255,0.6);
+	    /*background-position: 0 0;*/
+	    background-repeat: no-repeat;
+	    background-size: 32px 32px;
+			background-image: asset-data-url('small_email.png');
+		}
+
 	}
 
 	.building-map {

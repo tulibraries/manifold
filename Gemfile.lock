@@ -305,7 +305,7 @@ GEM
       mutant (~> 0.8.24)
       rspec-core (>= 3.4.0, < 4.0.0)
     nenv (0.3.0)
-    nio4r (2.3.1)
+    nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
@@ -349,7 +349,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (3.1.1)
-    puma (4.0.1)
+    puma (4.1.0)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-test (1.1.0)
@@ -588,7 +588,7 @@ DEPENDENCIES
   popper_js (~> 1.14.5)
   populate
   pry-rails
-  puma (~> 4.0)
+  puma (~> 4.1)
   rails (~> 5.2.3)
   rails-controller-testing
   rails-erd

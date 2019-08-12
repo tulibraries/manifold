@@ -82,7 +82,7 @@ class Form < MailForm::Base
       "library-instruction" => ["Request a Library Instruction Session", ["cdoyle@temple.edu", "cshanley@temple.edu"]],
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["cdoyle@temple.edu", "msly@temple.edu", "tuf12871@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]],
-      "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu"]]
+      "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]]
     }
 
     @forms.fetch(form_type)

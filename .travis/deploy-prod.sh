@@ -3,7 +3,7 @@ set -e
 
 cd ..
 # clone deployment playbook
-git clone --single-branch --branch master git@github.com:tulibraries/ansible-playbook-manifold.git manifold-prod
+git clone --single-branch --branch $TRAVIS_TAG git@github.com:tulibraries/ansible-playbook-manifold.git manifold-prod
 cd manifold-prod
 # install playbook requirements
 sudo pip install pipenv

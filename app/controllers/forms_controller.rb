@@ -7,8 +7,12 @@ class FormsController < ApplicationController
   # end
   def new
     @form = Form.new
-    @type = params[:type]
-    render template: "forms/index"
+    if existing_forms.include? params[:type]
+      @type = params[:type]
+      render template: "forms/index"
+    else
+      render file: "errors/not_found", status: 404
+    end
   end
 
 
@@ -22,11 +26,14 @@ class FormsController < ApplicationController
     end
   end
 
-  def form_objects_for_json
-    forms = Dir.glob("#{Rails.root.join('app/views/forms/*/')}")
+  def existing_forms
+    Dir.glob("#{Rails.root.join('app/views/forms/*/')}")
       .map { |template_path| template_path.split("/").last }
       .reject { |template_name| template_name == "shared" }
-      .map do |form|
+  end
+
+  def form_objects_for_json
+    existing_forms.map do |form|
         OpenStruct.new(
           id: form,
           label: t("manifold.default.forms.#{form.underscore}.title"),

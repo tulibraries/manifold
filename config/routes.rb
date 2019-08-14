@@ -121,6 +121,9 @@ Rails.application.routes.draw do
     get "explore-charles" => :charles, as: "pages_charles"
   end
 
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+
   controller :redirects do
     get "*path" => :show,
       constraints: lambda { |req| req.path.exclude? "rails/active_storage" }

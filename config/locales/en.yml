@@ -163,6 +163,10 @@ en:
       invalid_group_type: "is not a valid group type"
       invalid_url: "is not a valid url"
       invalid_document_type: "is not a valid file type"
+      internal_server_error_header: "There was a problem with this page."
+      internal_server_error_html: "Please check the address for typos or <a href=\"/contact-us\">contact</a> us for further assistance."
+      not_found_header: "The page you were looking for cannot be found."
+      not_found_text_html: "Please check the address for typos or <a href=\"/contact-us\">contact</a> us for further assistance."
     signout: "Log Out"
     admin:
       actions:

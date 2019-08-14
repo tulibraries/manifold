@@ -13,6 +13,7 @@ module Tude
     # Initialize configuration defaults for originally generated Rails version.
     config.time_zone = "Eastern Time (US & Canada)"
     config.load_defaults 5.2
+    config.exceptions_app = self.routes
     config.tinymce.install
     config.action_view.sanitized_allowed_tags = ["div", "p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ul", "ol", "li", "dl", "dt", "dd", "address", "hr", "pre", "blockquote", "center",

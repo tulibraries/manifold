@@ -49,6 +49,7 @@ gem "font-awesome-rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false
+gem "browser"
 gem "devise"
 gem "omniauth"
 gem "omniauth-google-oauth2"

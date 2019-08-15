@@ -1,3 +1,10 @@
-<%= link_to (image_tag "profile.png", class: "category-icon decorative"), people_path %>
-			<h2><%= link_to "Staff Directory", people_path %></h2>
-			<p><%= link_to "Find your subject librarian", people_path(specialists: true) %>, make an appointment, or contact another library staff member.</p>
+<%= link_to people_path do  %>
+	<h2>
+		<%= image_tag "profile.png", class: "category-icon decorative" %>
+		<br />Staff Directory 
+	</h2>
+<% end %>
+
+<p>
+	<%= link_to "Find your subject librarian", people_path(specialists: true) %>, make an appointment, or contact another library staff member.
+</p>

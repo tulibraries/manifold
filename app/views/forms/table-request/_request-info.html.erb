@@ -1,0 +1,4 @@
+<%= f.input :comments, as: :text, label: "Reason for table and description of distributed materials", required: :true %>
+<%= f.input :preferred_date, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], html5: true, label: "Date", required: :true %>
+<%= f.input :preferred_time, as: :time, html5: true, label: "Time", required: :true %>
+<%= f.input :easel, as: :radio_buttons, required: :true, label: "Do you need an easel?" %>

@@ -1,17 +1,19 @@
 <div id="header-navbar" class="container navbar navbar-static-top" role="navigation">
-  <div class="col-4 logo-container">
+  <div class="col-8 col-sm-7 col-lg-7 logo-container text-left">
     <%= link_to root_path, class: "header-name", id: "header-logo" do %>
       <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> <span>University Libraries</span>
     <% end %>
   </div>
 
 <% unless action_name == "home" %>
-  <div id="header-search" class="col-5 offset-3 d-none d-md-block d-lg-block text-right">
+  <div id="header-search" class="col-12 col-sm-5 col-lg-5 d-none d-md-block d-lg-block text-right">
     <%= render "header-search" %>
   </div>
 <% else %>
-  <div id="todays-date" class="col-5 col-offset-3 col-lg-3 offset-lg-5 text-left">
-    <%= render "todays_date" %><br />
+  <div id="todays-date" class="col-12 col-sm-5 col-lg-4 text-left">
+    <div class="inner-date">
+      <%= render "todays_date" %>
+    </div>
   </div>
 <% end %>
 

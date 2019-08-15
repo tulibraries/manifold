@@ -10,7 +10,8 @@ class PagesController < ApplicationController
   end
 
   def charles
-    @page = Page.find_by_slug("charles")
+    @page = ExternalLink.find_by_slug("explore-charles")
+    @content = Page.find_by_slug("charles")
     @images = ["24_7.jpg", "atrium.jpg", "charles.jpg", "class.jpg", "classroom.jpg",
                 "digital-scholars.jpg", "entry-plaza.jpg", "event-space.jpg",
                 "exhibition.jpg", "frozen-garden.jpg", "grove.jpg", "liacouras.jpg",
@@ -125,6 +126,8 @@ class PagesController < ApplicationController
 
   def contact
     @fcn_link = Page.find_by_slug("numbers")
+    @libanswers = ExternalLink.find_by_slug("libanswers")
+    @suggestions = Blog.find_by_slug("suggestions").base_url
   end
 
   def show

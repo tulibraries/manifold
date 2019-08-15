@@ -37,11 +37,11 @@
 	  min-width: 90px;
 	  min-height: 77px;
 	  vertical-align: bottom;
-		@media screen and (min-width: 0) and (max-width: 1039px) {
+		@media screen and (min-width: 450) and (max-width: 1039px) {
 			margin-top: 10px;
 			margin-bottom: 10px;
-			}
-		@media screen and (max-width: 450px) {
+		}
+		@media screen and (max-width: 449px) {
 			vertical-align: top;
 		}
 	}
@@ -53,21 +53,14 @@
 		text-decoration: none;
 		white-space: nowrap;
 		line-height: 2.75rem;
-		@media screen and (min-width: 451px) and (max-width: 1039px) {
+		@media screen and (max-width: 459px) {
 			span {
-				position: relative;
-				top: -10px;
-				padding-left: 14px;
-			}
-		}
-		@media screen and (max-width: 750px) {
-			span {
-				display: block;
-				/*width: 150px!important;*/
-				margin-top: 17px;
-				padding-left: 14px;
-				line-height: 2rem;
+				display: inline-block;
+				width: 200px!important;
+				line-height: 2.4rem;
+				padding-right: 10px;
 				white-space: normal;
+				font-size: 2.2rem;
 			}
 		}
 	}

@@ -3,7 +3,7 @@
   <div class="row"> <!-- begin dates header -->
     <div class="col-4"><h2>Weekly Hours</h2></div>
       <div class="col-lg-8 text-right">
-        <%= link_to "See More Hours for this location", hours_path, class: "today_button"  %>
+        <%= link_to "See more hours for this location", hours_path, class: "today_button"  %>
       </div>
   </div>
 
@@ -44,7 +44,7 @@
       <div class="col-9">
         <div class="row">
 
-        <% @space.get_hours.each_with_index do |time,index| %> <!-- hours -->
+        <% @space.get_hours.sort_by(&:date).each_with_index do |time,index| %> <!-- hours -->
 
           <% if @monday.to_date+index == @today.to_date %>
             <div class="col today">

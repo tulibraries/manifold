@@ -9,9 +9,10 @@ RSpec.describe SpacesController, type: :controller do
   let(:space) { FactoryBot.create(:space) }
 
   describe "GET #index" do
-    it "returns http success" do
+
+    it "returns a 404 when html is requested" do
       get :index
-      expect(response).to have_http_status(:not_found)
+      expect(response).to have_http_status(404)
     end
 
     it "returns json when requested" do

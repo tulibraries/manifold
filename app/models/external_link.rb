@@ -5,10 +5,24 @@ class ExternalLink < ApplicationRecord
   include Validators
   include Categorizable
 
-  validates :title, presence: true
-  validates :link, presence: true, url: true
+  before_save :link_cleanup!
+
+  validates :title, :link, presence: true
 
   def label
     title
+  end
+
+  def link_cleanup!
+    if self.link.present?
+      # if it is not a full url
+      unless self.link =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]
+        # and it doesn't already start with /
+        unless self.link.starts_with?("/")
+          # prepend /
+          self.link = self.link.prepend("/")
+        end
+      end
+    end
   end
 end

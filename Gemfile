@@ -10,7 +10,7 @@ gem "rails", "~> 5.2.3"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.3.13"
 # Use Puma as the app server
-gem "puma", "~> 4.0"
+gem "puma", "~> 4.1"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
@@ -49,6 +49,7 @@ gem "font-awesome-rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false
+gem "browser"
 gem "devise"
 gem "omniauth"
 gem "omniauth-google-oauth2"
@@ -72,6 +73,7 @@ gem "pg"
 gem "rswag-api"
 gem "rswag-ui"
 gem "lockbox"
+gem "google-analytics-rails", "1.1.1"
 
 
 group :development, :test do

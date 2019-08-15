@@ -5,8 +5,9 @@ FactoryBot.define do
     title { "MyString" }
     link { "https://example.org" }
 
-    factory :external_link_bad_url do
-      link { "not://a:url" }
+    factory :external_link_internal_path do
+      title { "Internal Path" }
+      link { "/path/to/thing" }
     end
   end
 end

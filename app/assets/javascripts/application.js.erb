@@ -35,10 +35,10 @@ function toggle(x) {
 function swap_image(y) {
 	x = document.getElementById("icon_filter").src;
 	if (x .includes("icon_x")) {
-		document.getElementById("icon_filter").src = "<%= asset_path('icon_filter.png') %>";
+		document.getElementById("icon_filter").src = "<%= asset_path('icon_filter_red.png') %>";
   }
   else if (x.includes("icon_filter")) {
-		document.getElementById("icon_filter").src = "<%= asset_path('icon_x.png') %>" ;
+		document.getElementById("icon_filter").src = "<%= asset_path('icon_x_red.png') %>" ;
   }
 }
 

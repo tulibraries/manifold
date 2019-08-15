@@ -37,14 +37,12 @@
 	a[data-toggle="collapse"]:after {
 		content: "\f105";
     font-family: "FontAwesome";
-    font-size: larger;
   	float: right;
   	padding-right: 7px;
 	}
 	a[aria-expanded="true"]:after {
 		content: "\f107";
     font-family: "FontAwesome";
-    font-size: larger;
   	float: right;
   	padding-right: 7px;
 	}
@@ -138,6 +136,13 @@
 				background-color: $foamgreen;
 				padding:7px 14px;
 				border-radius: 7px;
+			}
+			@media (max-width: 1039px) {
+				a {
+					display: block;
+					margin-bottom: 4px;
+					width: 180px;
+				}
 			}
 		}
 	}

@@ -10,7 +10,7 @@
       <%= @monday.to_date.strftime("%B %d") %> - <%= (@monday.to_date+6).strftime("%B %d %Y") %>
     </div>
     <div>
-      <%= link_to "See More Hours for this location", hours_path, class: "today_button"  %>
+      <%= link_to "See more hours for this location", hours_path, class: "today_button"  %>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
 
     <div class="col-5 text-left">
 
-      <% @space.get_hours.each_with_index do |time,index| %> <!-- hours -->
+      <% @space.get_hours.sort_by(&:date).each_with_index do |time,index| %> <!-- hours -->
       <% if @monday.to_date+index == @today.to_date %>
           <div class="today day-of-week hours-dates">
           <% else %>

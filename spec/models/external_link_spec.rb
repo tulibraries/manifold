@@ -14,11 +14,6 @@ RSpec.describe ExternalLink, type: :model do
         end
       end
     end
-    context "checks for a well formed url" do
-      it "raises and error when an invalid url is submitted" do
-        expect { FactoryBot.create(:external_link_bad_url) }.to raise_error(/#{I18n.t('manifold.error.invalid_url')}/)
-      end
-    end
   end
 
   describe "version all fields" do
@@ -33,6 +28,30 @@ RSpec.describe ExternalLink, type: :model do
         external_link.update(k => v.last)
         external_link.save!
         expect(external_link.versions.last.changeset[k]).to match_array(v)
+      end
+    end
+  end
+
+  describe "#link_cleanup!" do
+    context "the value to be saved starts with a '/'" do
+      it "doesn't add an extra '/' before saving" do
+        el = ExternalLink.create!(title: "Explore Charles", link: "/explore-charles")
+        expect(el.link).to eq "/explore-charles"
+      end
+    end
+
+    context "the value to be saved does not start with a '/'" do
+      it "adds a starting '/' before saving" do
+        el = ExternalLink.create!(title: "Explore Charles", link: "explore-charles")
+        expect(el.link).to eq "/explore-charles"
+      end
+    end
+
+    context "the value is a URL" do
+      it "returns the original url" do
+        url = "https://librarysearch.temple.edu/srcr"
+        el = ExternalLink.create!(title: "Explore Charles", link: url)
+        expect(el.link).to eq url
       end
     end
   end

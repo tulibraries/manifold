@@ -52,22 +52,22 @@
 		<div class="row">
 			<div class="col-12 col-lg-3 catalog-search h-auto">
 				<div class="h-30 square">
-			    <%= link_to "http://librarysearch.temple.edu/catalog" do %>
+			    <%= link_to "#{librarysearch_url}/catalog" do %>
 			      <%= image_tag('book_white.png', class: "icon decorative") %> <span>Books & Media</span>
 			    <% end %>
 				</div>
 				<div div class="h-30 square">
-			    <%= link_to "http://librarysearch.temple.edu/articles" do %>
+			    <%= link_to "#{librarysearch_url}/articles" do %>
 			      <%= image_tag('magazine_white.png', class: "icon decorative") %> <span>Articles</span>
 			    <% end %>
 				</div>
 				<div class="h-30 square bb-0">
-			    <%= link_to "http://librarysearch.temple.edu/databases" do %>
+			    <%= link_to "#{librarysearch_url}/databases" do %>
 			      <%= image_tag('database_white.png', class: "icon decorative") %> <span>Databases</span>
 			    <% end %>
 				</div>
 				<div class="caption">
-					<%= link_to "Search our collections >", "http://librarysearch.temple.edu", class: "price" %>
+					<%= link_to "Search our collections >", librarysearch_url, class: "price" %>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6 px-0 px-lg-5 news-events">

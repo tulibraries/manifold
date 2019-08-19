@@ -9,4 +9,8 @@ module ApplicationHelper
   def menu_category_list(categories)
     categories.collect(&:label).join(" and ")
   end
+
+  def librarysearch_url
+    Rails.configuration.librarysearch_base_url
+  end
 end

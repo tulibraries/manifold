@@ -36,4 +36,12 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "librarysearch_url" do
+    context "when envvar LIBRARYSEARCH_DOMAIN is not set" do
+      it "returns the default production url" do
+        expect(librarysearch_url).to eql "https://librarysearch.temple.edu"
+      end
+    end
+  end
 end

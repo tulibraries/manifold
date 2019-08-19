@@ -33,7 +33,7 @@ module Tude
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.librarysearch_base_url = "https://librarysearch.qa.tul-infra.page"
+    config.librarysearch_base_url = "https://#{ENV.fetch('LIBRARYSEARCH_DOMAIN', 'librarysearch.temple.edu')}"
     config.group_types = ["Assembly",
                           "Committee",
                           "Department",

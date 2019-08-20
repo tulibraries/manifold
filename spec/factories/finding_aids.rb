@@ -8,5 +8,6 @@ FactoryBot.define do
     content_link { "MyString" }
     identifier { "MyString" }
     drupal_id { "MyString" }
+    path { "a-finding-aid" }
   end
 end

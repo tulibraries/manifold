@@ -2,7 +2,8 @@
 
 <div class="container event-index">
 
-  <h1 class="d-none d-lg-block">Past Events &amp; Exhibits</h1>
+  <h1 class="d-none d-lg-block"><%= t("manifold.events.page_title") %></h1>
+  <p class="d-lg-block"><%= t("manifold.events.explanation").html_safe %></p>
 
   <div class="row">
     <div class="col-3 leftside-index d-none d-md-none d-lg-block">
@@ -11,7 +12,7 @@
     <div class="col-12 col-lg-6 events">
       <div class="row">
         <div class="upcoming-header">
-          Past Events
+          <%= t("manifold.events.past_events_label") %>
         </div>
       </div>
       
@@ -28,22 +29,22 @@
       <% unless @exhibitions.blank? %>
 
       <div class="col-12 exhibits-header">
-        Current Exhibits
+        <%= t("manifold.events.current_exhibits_label") %>
       </div>
 
       <%= render "exhibitions" %>
       <% end %>
 
       <div class="col-12 px-0">
-        <%= link_to "View current events & exhibits", events_path, class: "past-events-button" %>
+        <%= link_to t("manifold.event.view_current_events"), events_path, class: "past-events-button" %>
       </div>
 
       <div class="col-12 d-none">
-        <%= link_to "View video recordings from past events", events_path, class: "video-button" %>
+        <%= link_to t("manifold.event.view_past_events_videos"), events_path, class: "video-button" %>
       </div>
 
       <div class="col-12 exhibit">
-        All Temple University Libraries events are free and open to all.
+        <%= t("manifold.events.general_admission") %>
       </div>
 
     </div>

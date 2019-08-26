@@ -40,7 +40,7 @@ class PagesController < ApplicationController
     @page = Page.find_by_slug("blockson-intro")
     @visit_links = Category.find_by_slug("blockson-study").items.sort_by { |e| e.label }
     @research_links = Category.find_by_slug("blockson-research").items.sort_by { |e| e.label }
-    @events = Event.where("tags LIKE ?", "blockson").take(4)
+    @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.now]).order(:start_time).take(4)
     @building = Building.find_by_slug("blockson")
   end
 

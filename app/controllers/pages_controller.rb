@@ -40,7 +40,7 @@ class PagesController < ApplicationController
     @page = Page.find_by_slug("blockson-intro")
     @visit_links = Category.find_by_slug("blockson-study").items.sort_by { |e| e.label }
     @research_links = Category.find_by_slug("blockson-research").items.sort_by { |e| e.label }
-    @events = Event.where("tags LIKE ?", "blockson").take(4)
+    @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.now]).order(:start_time).take(4)
     @building = Building.find_by_slug("blockson")
   end
 
@@ -56,7 +56,7 @@ class PagesController < ApplicationController
     unless research_links.nil?
       @research_links = research_links.items.sort_by { |e| e.label }
     end
-    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.now]).take(5)
+    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.now]).order(:start_time).take(5)
     @blog = Blog.find_by_slug("lcdss-blog")
     @blog_posts = @blog.blog_posts.take(5)
     @info = Space.find_by_slug("lcdss")
@@ -69,7 +69,7 @@ class PagesController < ApplicationController
     @visit_links = Category.find_by_slug("hsl-study").items.sort_by { |e| e.label }
     @resource_links = Category.find_by_slug("hsl-resources").items.sort_by { |e| e.label }
     @research_links = Category.find_by_slug("hsl-research").items.sort_by { |e| e.label }
-    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.now]).take(5)
+    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.now]).order(:start_time).take(5)
   end
 
   def about

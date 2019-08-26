@@ -83,10 +83,6 @@ Rails.application.routes.draw do
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :forms, only: [:new, :create]
   resources :finding_aids, only: [:index, :show]
-  controller :finding_aids do
-    get "scrc/:path" => :show
-  end
-
   resources :pages, only: [:index, :show]
   resources :highlights, only: [:index, :show]
   resources :categories, only: [:show]
@@ -105,6 +101,10 @@ Rails.application.routes.draw do
 
   controller :blogs do
     get "news" => :index, as: "news"
+  end
+
+  controller :scrc do
+    get "scrc/*path" => :show
   end
 
   controller :pages do

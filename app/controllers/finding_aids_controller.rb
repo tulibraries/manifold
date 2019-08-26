@@ -48,11 +48,6 @@ class FindingAidsController < ApplicationController
 
   private
     def set_finding_aid
-      if params[:id]
-        @finding_aid = FindingAid.find(params[:id])
-      elsif params[:path]
-        @finding_aid = FindingAid.find_by_path(params[:path])
-        redirect_to finding_aid_path(@finding_aid), status: 301
-      end
+      @finding_aid = FindingAid.find(params[:id])
     end
 end

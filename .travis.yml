@@ -58,8 +58,8 @@ deploy:
   script: bash .travis/deploy-prod.sh
   on:
     tags: true
-    all_branches: true
-    condition: "TRAVIS_TAG =~ ^v[0-9]*"
+    branch:
+      - /^v(\d+)\.(\d+)(\.\d+)?$/
 notifications:
   slack:
     secure: m4+n2xKbvGvmEUrAEqV0VjQ6MuGPpfsc1UnQ6pKhdKCW4pN4bvCKEUS339INaUQAeRAQONXShEs1TuTSu1ouJAerIqcF60Q6+Mf8d2sE/0xqLeRJ/W7GX2wK2RO/nDXHxMKQ0GN3WDmOdn8/lXE5M5LugFg4ZN7kGqAKeTE4kmUFIXC9s/OyDHOFRRJRn59HTaFep3mWhLdSJ1iX3jCIn5vkuCdoHSYcIcKupf8RSqVcaa+QngpUzXJxRGRm2BXVtEDx0qCm4M3WdBgbPF37Z6gv9IaGHWJo8zLJnpoU5Bz1rfME1EyhOYHKSP/4nE9YGwHbD6Q7NpGA6Ju6IC4GIweB3W8nb0z64jga2iK7QIob9lFCmb4Yf+rbGiI8suYRm+hNksv5t6L2P4QeXqo7FbQG9BapNAYHpTkUt8ItaDthEOOGT8HY4TYH1JE3buOUzh1i1f2l21zw9bzROe0IzGg0H6UQkI97M4bP9Dt4zteNjsDjISh1N/bKL1WJegjDfhvJxGZCjK773Bkn5c8ZsOwekx1j99XsUWGjVJGWYhMcqanv2dgYhuZoe/Ftzf4e3b0nvMwKmDBtHISQwS4B1rkTVE/emUAqbhxscPtWTgONzPIlA+NVT4ghmDGVcAbokVVjmAq3isOt0t+zVSBn7+D+YLQvfp5x+6/quiP/JjA=

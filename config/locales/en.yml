@@ -131,6 +131,14 @@ en:
           data_discovery: "How Data Discovered"
           group: "Group/Organization"
           easel: "Easel needed?"
+          requestor: "Requestor"
+          location_of_filming: "Location of Filming"
+          date_of_filming: "Date of Filming"
+          time_of_filming: "Time of Filming"
+          duration_of_filming: "Duration of Filming"
+          description: "Description of Project"
+          temple_course_project: "Temple Course Project"
+          number_in_crew: "Number in Crew"
 
       forms:
         recall_book:
@@ -153,6 +161,8 @@ en:
           title: "SCRC Instruction Session/Visit Request"
         table_request:
           title: "Library Staff and Registered Student Organization Table Request"
+        filming_request:
+          title: "Guidelines for Requesting Permission to Use the Libraries for Filming"
 
     error:
       user_not_registered: "User not registered."

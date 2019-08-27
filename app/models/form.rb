@@ -70,6 +70,13 @@ class Form < MailForm::Base
   attribute :group
   attribute :easel
   attribute :file, attachment: true
+  attribute :bachelor_degree
+  attribute :institution_of_degree
+  attribute :overall_gpa
+  attribute :degrees_earned
+  attribute :degree_program
+  attribute :faculty_advisor
+  attribute :degree_year
 
   def get_subject
     @forms = {
@@ -82,7 +89,9 @@ class Form < MailForm::Base
       "library-instruction" => ["Request a Library Instruction Session", ["cdoyle@temple.edu", "cshanley@temple.edu"]],
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["cdoyle@temple.edu", "msly@temple.edu", "tuf12871@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]],
-      "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]]
+      "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]],
+      "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
+      "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]]
     }
 
     @forms.fetch(form_type)

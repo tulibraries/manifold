@@ -10,7 +10,7 @@
 <%= f.input :email, as: :email, required: true %>
 <%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
 
-<% unless ["ask-scrc","scrc-instruction","table-request"].include? params[:type ] %>
+<% unless ["ask-scrc","scrc-instruction","table-request","cac-external"].include? params[:type ] %>
 	<%= f.input :tu_id, label: "Temple ID Number", required: true %>
 	<%= f.input :department, required: true %>
 <% end %>
@@ -19,7 +19,7 @@
 	<%= f.input :group, label: "Group/Organization", required: true %>
 <% end %>
 
-<% unless ["library-instruction","scrc-instruction","table-request"].include? params[:type ] %>
+<% unless ["library-instruction","scrc-instruction","table-request","cac-internal","cac-external"].include? params[:type ] %>
 	<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: @collection, required: true %>
 <% end %>
 

@@ -77,6 +77,7 @@ class Form < MailForm::Base
   attribute :degree_program
   attribute :faculty_advisor
   attribute :degree_year
+  attribute :personal_statement
 
   def get_subject
     @forms = {

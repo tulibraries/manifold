@@ -139,6 +139,13 @@ en:
           description: "Description of Project"
           temple_course_project: "Temple Course Project"
           number_in_crew: "Number in Crew"
+          bachelor_degree: "Bachelors degree earned?"
+          institution_of_degree: "Institution Where Degree Earned"
+          overall_gpa: "Overall GPA"
+          degrees_earned: "All Degrees Earned"
+          degree_program: "Degree Program"
+          faculty_advisor: "Faculty Advisor"
+          degree_year: "Current Year in Degree"
 
       forms:
         recall_book:
@@ -163,6 +170,10 @@ en:
           title: "Library Staff and Registered Student Organization Table Request"
         filming_request:
           title: "Guidelines for Requesting Permission to Use the Libraries for Filming"
+        cac_internal:
+          title: "Cultural Analytics Certificate Internal Application"
+        cac_external:
+          title: "Cultural Analytics Certificate External Application"
 
     error:
       user_not_registered: "User not registered."

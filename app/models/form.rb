@@ -78,6 +78,13 @@ class Form < MailForm::Base
   attribute :description
   attribute :temple_course_project
   attribute :number_in_crew
+  attribute :bachelor_degree
+  attribute :institution_of_degree
+  attribute :overall_gpa
+  attribute :degrees_earned
+  attribute :degree_program
+  attribute :faculty_advisor
+  attribute :degree_year
 
   def get_subject
     @forms = {
@@ -92,6 +99,8 @@ class Form < MailForm::Base
       "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]],
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]],
       "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["cdoyle@temple.edu", "bells@temple.edu", "adiamond@temple.edu"]]
+      "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
+      "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]]
     }
 
     @forms.fetch(form_type)

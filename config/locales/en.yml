@@ -138,6 +138,7 @@ en:
           degree_program: "Degree Program"
           faculty_advisor: "Faculty Advisor"
           degree_year: "Current Year in Degree"
+          personal_statement: "Personal Statement"
 
       forms:
         recall_book:

@@ -98,7 +98,7 @@ class Form < MailForm::Base
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["cdoyle@temple.edu", "msly@temple.edu", "tuf12871@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]],
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]],
-      "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["cdoyle@temple.edu", "bells@temple.edu", "adiamond@temple.edu"]]
+      "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["cdoyle@temple.edu", "bells@temple.edu", "adiamond@temple.edu"]],
       "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
       "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]]
     }

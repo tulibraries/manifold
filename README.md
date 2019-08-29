@@ -244,6 +244,6 @@ The process for pushing a new release to production are as follows:
 - Merge the `qa`->`master` pr to trigger a Travis deploy to stage.
 - Monitor the Travis deployment triggered by that merge; if successful those changes will be live on stage.
 - Run a smoke test on stage (no need for a full re-qa process) to ensure the site is running as expected.
-- Create a release that starts with "v" and has dotted version numbering (i.e. `v0.0.4` oe `v1.0`). Be sure to include a description of changes included in the release;  
+- Create a release that starts with "v" and has dotted version numbering (i.e. `v0.0.4` oe `v1.0`). Make sure to select master as the target branch (BE CAREFUL, IT DEFAULTS TO QA!!). Be sure to include a description of changes included in the release;  
 - Monitor the Travis job  trigged by the release deploying it to production.
 - Move JIRA tasks in "Ready for Prod Deploy" to "Done". Update non-LT stakeholders as necessary.

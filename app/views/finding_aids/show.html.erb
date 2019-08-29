@@ -12,7 +12,7 @@
       </h1>
 
       <div class="details">
-        <h2>Identifier</h2>
+        <h2>Collection ID</h2>
         <p><%= @finding_aid.identifier %></p>
 
         <h2>Related Subject(s)</h2>
@@ -22,7 +22,7 @@
           <% end %>
         </ul>
 
-        <h2>Related Collection(s)</h2>
+        <h2>Collecting Area(s)</h2>
         <ul class="list-unstyled collections">
           <% @finding_aid.collections.each do |collection| %>
             <li><%= link_to collection.name, collection_path(collection), class: "inline" %></li>

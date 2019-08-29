@@ -11,6 +11,6 @@ RSpec.describe "finding_aids/show", type: :view do
     render
     expect(rendered).to match(/Description/)
     expect(rendered).to match(/Subject/)
-    expect(rendered).to match(/Identifier/)
+    expect(rendered).to match(/Collection ID/)
   end
 end

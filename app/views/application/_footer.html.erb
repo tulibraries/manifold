@@ -37,7 +37,7 @@
             <div class="col-12 col-lg-4 px-0">
               <ul class="list-unstyled">
                 <% unless @ezborrow_link.nil? %>
-                <li><%= link_to "EZ-borrow", @ezborrow_link.link %></li>
+                <li><%= link_to "E-Zborrow", @ezborrow_link.link %></li>
                 <% end %>
                 <% unless @jobs_link.nil? %>
                 <li><%= link_to "Jobs", page_path(@jobs_link) %></li>
@@ -47,7 +47,7 @@
                 <% end %>
               </ul>
             </div>
-            <div class="col-12 col-lg-4 px-0">
+            <div class="col-12 col-lg-3 px-0">
               <ul class="list-unstyled">
                 <% unless @illiad_link.nil? %>
                 <li><%= link_to "ILLiad", @illiad_link.link %></li>
@@ -60,7 +60,7 @@
                 <% end %>
               </ul>
             </div>
-            <div class="col-12 col-lg-4 px-0">
+            <div class="col-12 col-lg-5 px-0">
               <ul class="list-unstyled">
                 <% unless @refworks_link.nil? %>
                 <li><%= link_to "RefWorks", @refworks_link.link %></li>
@@ -68,6 +68,7 @@
                 <% unless @privacy_link.nil? %>
                 <li><%= link_to "Virtual Reference Privacy Guidelines", @privacy_link %></li>
                 <% end %>
+                <li><%= link_to "Temple University homepage", "http://temple.edu" %></li>
               </ul>
             </div>
           </div>
@@ -86,6 +87,7 @@
               <p><%= link_to "Frequently Called Numbers", page_path(@numbers_link) %></p>
               <% end %>
               <p><%= link_to "Staff Directory", people_path %></p>
+              <p><%= link_to "Library Organizational Charts", "https://tulibdev.atlassian.net/wiki/spaces/LPC/pages/1041203284/Library+Org+Chats" %></p>
               <p><%= link_to "Staff Forms", "https://tulibdev.atlassian.net/wiki/spaces/LSF/overview", target: "_blank" %></p>
             </div>
           </div>

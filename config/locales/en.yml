@@ -131,6 +131,14 @@ en:
           data_discovery: "How Data Discovered"
           group: "Group/Organization"
           easel: "Easel needed?"
+          bachelor_degree: "Bachelors degree earned?"
+          institution_of_degree: "Institution Where Degree Earned"
+          overall_gpa: "Overall GPA"
+          degrees_earned: "All Degrees Earned"
+          degree_program: "Degree Program"
+          faculty_advisor: "Faculty Advisor"
+          degree_year: "Current Year in Degree"
+          personal_statement: "Personal Statement"
 
       forms:
         recall_book:
@@ -153,6 +161,10 @@ en:
           title: "SCRC Instruction Session/Visit Request"
         table_request:
           title: "Library Staff and Registered Student Organization Table Request"
+        cac_internal:
+          title: "Cultural Analytics Certificate Internal Application"
+        cac_external:
+          title: "Cultural Analytics Certificate External Application"
 
     error:
       user_not_registered: "User not registered."

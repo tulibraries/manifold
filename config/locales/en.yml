@@ -204,6 +204,8 @@ en:
       notification:
         all_blogs_synced: "Blogs: All synched"
         blog_synced: "Blogs: %{id} - %{title} synced"
+    footer:
+      patron_forms_label: "Patron Forms"
     events:
       page_title: "Events & Exhibits"
       explanation: >

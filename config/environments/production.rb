@@ -109,4 +109,6 @@ Rails.application.configure do
 
 
   GA.tracker = "UA-2152985-1"
+
+  config.skylight.probes -= ["middleware"]
 end

@@ -1,0 +1,156 @@
+<div class="container" id="videos-index" style="margin-top: 35px;">
+
+<div class="row">
+	<div class="col">
+			<h1 class="page-title">Past Program and Event Videos</h1>
+	<div class="row">
+		<div class="col-10 offset-lg-1" style="height:620px;">
+				<div id="featuredTitle" class="text-center"><p><%= @featured_video_title %></p></div>
+		    <iframe id="ensembleEmbeddedContent_<%= @featured_video_id %>" src="https://ensemble.temple.edu/app/plugin/embed.aspx?ID=<%= @featured_video_id %>&amp;contentID=<%= @featured_video_id %>&amp;autoplay=false&amp;hideControls=false&amp;showCaptions=true&amp;width=584&amp;embed=true&amp;startTime=0&amp;displayCaptionSearch=false&amp;isResponsive=true&amp;isNewPluginEmbed=true&amp;displayDownloadIcon=false&amp;displaySharing=false&amp;displayMetaData=false&amp;displayAnnotations=true&amp;displayDateProduced=&amp;displayEmbedCode=false&amp;displayStatistics=false&amp;displayAttachments=true&amp;displayLinks=false&amp;displayCredits=false&amp;displayViewersReport=false&amp;displayTitle=false&amp;audioPreviewImage=true&amp;useIFrame=true" frameborder="0" style="width: 100%; height: 100%;" scrolling="no" allowfullscreen=""></iframe>
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="row">
+	<div class="col text-center">
+		<div id="videosearchbar">
+    <form action="/watchpastprograms/search" method="GET">
+        <label style="display:none;" for="videosearchterm">Search all Past Program videos:</label>
+        <input type="text" id="videosearchterm" name="q" size="64" maxlength="128" value="">
+        <input type="submit" id="videosearchbutton" value="Search">
+    </form>
+		</div>
+	</div>
+</div>
+
+	<div class="row odd">
+		<div class="col">
+			<h2>Beyond the Page</h2>
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/0">See All Beyond the Page Videos</a>
+			</span>
+			<div class="row">
+				<% @beyond_page.take(8).each do |video| %>
+				<div class="col-12 col-md-6 col-lg-3 text-center" style="margin: 10px 0;max-width:300px;min-width:300px;">
+					<%= link_to pages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row even">
+		<div class="col">
+			<h2>Beyond the Notes</h2>
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/1">See All Beyond the Notes Videos</a>
+			</span>
+			<div class="row">
+				<% @beyond_notes.take(4).each do |video| %>
+				<div class="col-12 col-md-6 col-lg-3 text-center" style="margin: 10px 0;max-width:300px;min-width:300px;">
+					<%= link_to pages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row odd">
+		<div class="col">
+			<h2>Charles L. Blockson Afro-American Collection</h2>
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/2">See All Blockson Collection Videos</a>
+			</span>
+			<div class="row">
+				<% @blockson.take(4).each do |video| %>
+				<div class="col-12 col-md-6 col-lg-3 text-center" style="margin: 10px 0;max-width:300px;min-width:300px;">
+					<%= link_to pages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row even">
+		<div class="col">
+			<h2>Livingstone Undergraduate Research Awards</h2>
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/3">See All Research Awards Videos</a>
+			</span>
+			<div class="row">
+				<% @awards.take(4).each do |video| %>
+				<div class="col-12 col-md-6 col-lg-3 text-center" style="margin: 10px 0;max-width:300px;min-width:300px;">
+					<%= link_to pages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row odd">
+		<div class="col">
+			<h2>Loretta C. Duckworth Scholars Studio</h2>
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/4">See All Scholars Studio Videos</a>
+			</span>
+			<div class="row">
+				<% @lcdss.take(4).each do |video| %>
+				<div class="col-12 col-md-6 col-lg-3 text-center" style="margin: 10px 0;max-width:300px;min-width:300px;">
+					<%= link_to pages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+
+  <% unless @scrc.empty? %>
+	<div class="row even">
+		<div class="col">
+			<h2>Special Collections Research Center</h2>
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/5">See All Special Collections Videos</a>
+			</span>
+			<div class="row">
+				<% @scrc.take(4).each do |video| %>
+				<div class="col-12 col-md-6 col-lg-3 text-center" style="margin: 10px 0;max-width:300px;min-width:300px;">
+					<%= link_to pages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+
+	</div>
+
+<style>
+	.ev-navbar.mb-0.navbar-custom {
+		display: none;
+	}
+</style>

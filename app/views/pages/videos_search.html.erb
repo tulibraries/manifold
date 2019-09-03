@@ -1,0 +1,29 @@
+<div class="container">
+
+	<div class="row" style="margin-top: 14px">
+		<div class="col">
+			<%= link_to "< Watch Past Programs & Events", pages_videos_all_path %> 
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 21px;">
+		<div class="col">
+			<h1 class="page-title">Past Program and Event Videos</h1>
+			<hr >
+			<h2><%= @categoryTitle %></h2>
+			<div class="row">
+			<% @videos[:Data].each do |video| %>
+			<div class="col-6 col-md-4 col-lg-3 text-center">
+				<%= link_to pages_videos_show_path(id: video[:ID]) do %>
+				<%# binding.pry %>
+				<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), class: "decorative" %>
+				<br>
+				<%= video[:Title] %>
+		    <% end %>
+			</div>
+			<% end %>
+		</div>
+		</div>
+	</div>
+
+</div>

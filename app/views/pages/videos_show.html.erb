@@ -1,0 +1,31 @@
+<div class="container">
+
+	<div class="row" style="margin-top: 14px">
+		<div class="col">
+			<%= link_to "< Watch Past Programs & Events", pages_videos_all_path %> 
+		</div>
+	</div>
+
+	<div class="row" style="margin-top: 21px;">
+		<div class="col">
+			<h1 class="page-title">Past Program and Event Videos</h1>
+				<div id="featuredTitle"><p><span><%= @featured_video_title %></span></p></div>
+		    <div id="ensembleEmbeddedContent_<%= @featured_video_id %>" class="ensembleEmbeddedContent" style="height: 680px;overflow:hidden;">
+	        <script type="text/javascript" style="position: relative;" src="https://ensemble.temple.edu/app/plugin/plugin.aspx?embed=true&contentID=<%= @featured_video_id %>&isResponsive=false&isNewPluginEmbed=true&useIFrame=false&displayTitle=false&startTime=0&autoPlay=false&hideControls=true&showCaptions=false&displaySharing=true&displayAnnotations=false&displayAttachments=false&displayLinks=false&displayEmbedCode=true&displayDownloadIcon=false&displayMetaData=false&displayDateProduced=false&audioPreviewImage=false&displayCaptionSearch=false"></script>
+		    </div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<hr >
+			<%= sanitize @featured_video_description.html_safe %>
+		</div>
+	</div>
+</div>
+
+<style>
+	.ev-navbar.mb-0.navbar-custom {
+		display: none;
+	}
+</style>

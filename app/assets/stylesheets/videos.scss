@@ -1,0 +1,48 @@
+@import "partials/_vars.scss";
+
+#videos-index {
+	h2 {
+		margin-top: 4px;
+		font-size: 1.75rem;
+		display: inline-block;
+	}
+	.morevideos {
+		float: right;
+		padding-right: 10px;
+		display:inline-block;
+		font-weight: 900;
+		font-family: 'Roboto Condensed';
+		font-size: large;
+	}
+	.even {
+		background-color: rgba(0,0,0,0.08);
+		border-top: solid #ccc 2px;
+		border-bottom: solid #ccc 2px;
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+	.odd {
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+	#videosearchbutton {
+		color: white;
+    font-size: 115%;
+    background-color: #951936;
+    border: double #f1efe7 4px;
+    border-radius: 4px;
+    padding: 6px 14px;
+    cursor: hand;
+    cursor: pointer;
+    display: inline-block;
+	}
+	#videosearchterm {
+		height: 45px;
+		border: inset #ccc 2px;
+		border-radius: 4px;
+	}
+	#videosearchbar {
+		padding-bottom: 21px;
+		border-bottom: solid #ccc 1px;
+	}
+}

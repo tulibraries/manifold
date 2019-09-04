@@ -6,11 +6,19 @@
 	<% @collection = ["Faculty","Staff"]  %>
 <% end %>
 
-<%= f.input :name, required: true %>
-<%= f.input :email, as: :email, required: true %>
-<%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
+<% unless params[:type] == "filming-request" %>
+	<%= f.input :name, required: true %>
+<% else %>
+	<%= f.input :requestor, required: true %>
+<% end %>
 
-<% unless ["ask-scrc","scrc-instruction","table-request","cac-external"].include? params[:type ] %>
+<%= f.input :email, as: :email, required: true %>
+
+<% unless params[:type] == "filming-request" %>
+	<%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
+<% end %>
+
+<% unless ["ask-scrc","scrc-instruction","table-request","filming-request","cac-external"].include? params[:type ] %>
 	<%= f.input :tu_id, label: "Temple ID Number", required: true %>
 	<%= f.input :department, required: true %>
 <% end %>
@@ -20,7 +28,12 @@
 <% end %>
 
 <% unless ["library-instruction","scrc-instruction","table-request","cac-internal","cac-external"].include? params[:type ] %>
-	<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: @collection, required: true %>
+	<% unless params[:type] == "filming-request" %>
+		<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: @collection, required: true %>
+	<% else %>
+		<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: ["Student", "Faculty",
+"Staff", "Alumni", "Not affiliated with Temple"], required: true %>
+	<% end %>
 <% end %>
 
 <% if ["missing-book","purchase-request"].include? params[:type]  %>

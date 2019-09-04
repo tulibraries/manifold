@@ -1,0 +1,13 @@
+<%= f.input :location_of_filming, as: :text, label: "Location of Filming", required: :true %>
+
+<%= f.input :date_of_filming, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], html5: true, label: "Date of Filming", required: :true %>
+
+<%= f.input :time_of_filming, as: :time, html5: true, label: "Time of Filming", required: :true %>
+
+<%= f.input :duration_of_filming, required: :true, label: "Duration of Filming", hint: "(How much time is required.)" %>
+
+<%= f.input :description, as: :text, label: "Description of Project", required: :true %>
+
+<%= f.input :temple_course_project, as: :radio_buttons, required: :true, label: "Is this for a Temple Course Project?" %>
+
+<%= f.input :number_in_crew, as: :integer, requred: :true, label: "Approximate Number in Crew" %>

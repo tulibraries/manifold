@@ -74,6 +74,7 @@ gem "rswag-api"
 gem "rswag-ui"
 gem "lockbox"
 gem "google-analytics-rails", "1.1.1"
+gem "skylight"
 
 
 group :development, :test do

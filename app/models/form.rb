@@ -70,6 +70,14 @@ class Form < MailForm::Base
   attribute :group
   attribute :easel
   attribute :file, attachment: true
+  attribute :requestor
+  attribute :location_of_filming
+  attribute :date_of_filming
+  attribute :time_of_filming
+  attribute :duration_of_filming
+  attribute :description
+  attribute :temple_course_project
+  attribute :number_in_crew
   attribute :bachelor_degree
   attribute :institution_of_degree
   attribute :overall_gpa
@@ -91,6 +99,7 @@ class Form < MailForm::Base
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["cdoyle@temple.edu", "msly@temple.edu", "tuf12871@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]],
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]],
+      "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["cdoyle@temple.edu", "bells@temple.edu", "adiamond@temple.edu"]],
       "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
       "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]]
     }

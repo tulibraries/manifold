@@ -88,7 +88,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show]
   resources :external_link, only: [:show]
 
-  get "forms", to: "forms#all"
+  get "forms", to: "forms#all", as: "forms_index"
   get "forms/*type", to: "forms#new"
 
   controller :collections do

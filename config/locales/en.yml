@@ -131,6 +131,14 @@ en:
           data_discovery: "How Data Discovered"
           group: "Group/Organization"
           easel: "Easel needed?"
+          requestor: "Requestor"
+          location_of_filming: "Location of Filming"
+          date_of_filming: "Date of Filming"
+          time_of_filming: "Time of Filming"
+          duration_of_filming: "Duration of Filming"
+          description: "Description of Project"
+          temple_course_project: "Temple Course Project"
+          number_in_crew: "Number in Crew"
           bachelor_degree: "Bachelors degree earned?"
           institution_of_degree: "Institution Where Degree Earned"
           overall_gpa: "Overall GPA"
@@ -161,6 +169,8 @@ en:
           title: "SCRC Instruction Session/Visit Request"
         table_request:
           title: "Library Staff and Registered Student Organization Table Request"
+        filming_request:
+          title: "Guidelines for Requesting Permission to Use the Libraries for Filming"
         cac_internal:
           title: "Cultural Analytics Certificate Internal Application"
         cac_external:
@@ -194,6 +204,8 @@ en:
       notification:
         all_blogs_synced: "Blogs: All synched"
         blog_synced: "Blogs: %{id} - %{title} synced"
+    footer:
+      patron_forms_label: "Patron Forms"
     events:
       page_title: "Events & Exhibits"
       explanation: >

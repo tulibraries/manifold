@@ -91,7 +91,7 @@ class Form < MailForm::Base
     @forms = {
       "missing-book" => ["Missing Book Search Request", ["cdoyle@temple.edu", "delcottos@temple.edu"]],
       "recall-book" => ["Request Recall of Books Already Checked Out", ["cdoyle@temple.edu", "jhill@temple.edu"]],
-      "purchase-request" => ["Purchase Request",  ["cdoyle@temple.edu", "jbrian@temple.edu"]],
+      "purchase-request" => ["Purchase Request",  ["cdoyle@temple.edu", "jbrian@temple.edu", "tub82123@temple.edu "]],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
       "ir" => ["Incident Report", ["cdoyle@temple.edu", "richieh@temple.edu", "bells@temple.edu"]],
       "data-purchase-grants-application" => ["Data Purchase Application", ["cdoyle@temple.edu", "librarydatagrants@temple.edu"]],

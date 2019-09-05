@@ -50,10 +50,14 @@
 
 a.donate {
 	vertical-align: middle;
-	padding: 7px 0;
+	padding: 7px;
 	position: relative;
 	top: 14px;
 	left: 0;
+	background-color: $white;
+	color: $red!important;
+	font-family: "Roboto Condensed";
+	border-radius: 7px;
 }
 .social {
 	border-bottom: solid $white 1px;

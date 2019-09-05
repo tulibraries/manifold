@@ -51,6 +51,7 @@ en:
   manifold:
     default:
       event:
+        sullivan_hall: "Sullivan Hall - Blockson Collection"
         title: "No Title"
         description: "No Description"
         external_building: "No Building Given"

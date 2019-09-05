@@ -34,4 +34,7 @@ module EventHelper
     event_rdf = JSON.parse event_hash.to_json
     raw(event_rdf.to_json)
   end
+  def get_bldg_name(bldg_name)
+    t("manifold.default.event.#{bldg_name.parameterize.underscore}", default: bldg_name)
+  end
 end

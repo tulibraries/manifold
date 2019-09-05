@@ -1,5 +1,6 @@
 <% @buildings.each do |location| %>
 
+<% unless location[:slug] == "charles" %>
   <div class="row building-row">
     <div class="col px-0">
       <h2 style="color: #A50030">
@@ -7,6 +8,19 @@
       </h2>
     </div>
   </div>
+<% else %>
+  <div class="row building-row">
+    <div class="col-3 px-0">
+      <h2 style="color: #A50030">
+        <%= location_name(location[:slug]) %>
+      </h2>
+    </div>
+    <div class="col-9">
+      <%= t("manifold.hours.charles_note").html_safe %>
+    </div>
+  </div>
+<% end %>
+
 
   <div class="row"> <!-- dates header -->
     <div class="col-3"></div>

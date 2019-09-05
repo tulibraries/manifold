@@ -77,7 +77,8 @@ class Form < MailForm::Base
   attribute :duration_of_filming
   attribute :description
   attribute :temple_course_project
-  attribute :number_in_crew
+  attribute :additional_crew_name
+  attribute :additional_email
   attribute :bachelor_degree
   attribute :institution_of_degree
   attribute :overall_gpa

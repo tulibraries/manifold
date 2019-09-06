@@ -87,6 +87,24 @@ class Form < MailForm::Base
   attribute :faculty_advisor
   attribute :degree_year
   attribute :personal_statement
+  attribute :organizing_name
+  attribute :organizing_phone
+  attribute :organizing_email
+  attribute :financial_name
+  attribute :financial_phone
+  attribute :financial_email
+  attribute :foapal
+  attribute :event_space
+  attribute :event_title
+  attribute :attendees
+  attribute :date_of_event
+  attribute :event_start
+  attribute :event_end
+  attribute :setup_style
+  attribute :av_support
+
+
+
 
   def get_subject
     @forms = {
@@ -102,7 +120,8 @@ class Form < MailForm::Base
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]],
       "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["cdoyle@temple.edu", "bells@temple.edu", "adiamond@temple.edu"]],
       "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
-      "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]]
+      "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
+      "event-space-request" => ["Charles Library Event Space Request", ["cdoyle@temple.edu", "jpyle@temple.edu"]]
     }
 
     @forms.fetch(form_type)

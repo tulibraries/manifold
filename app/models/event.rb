@@ -45,9 +45,9 @@ class Event < ApplicationRecord
   def set_times
     unless all_day
       unless end_time.nil? || end_time == start_time
-        start_time.strftime("%l:00 %P") + " - " + end_time.strftime("%l:00 %P")
+        start_time.strftime("%l:%M %P") + " - " + end_time.strftime("%l:%M %P")
       else
-        start_time.strftime("%l:00 %P")
+        start_time.strftime("%l:%M %P")
       end
     else
       "(All day)"

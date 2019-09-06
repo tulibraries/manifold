@@ -119,6 +119,10 @@ Rails.application.routes.draw do
     get "home" => :home, as: "pages_home"
     get "lcdss" => :tudsc, as: "pages_lcdss"
     get "explore-charles" => :charles, as: "pages_charles"
+    get "watchpastprograms" => :videos_all, as: "pages_videos_all"
+    get "watchpastprograms/list/:collection" => :videos_list, as: "pages_videos_collection"
+    get "watchpastprograms/search" => :videos_search, as: "pages_videos_search"
+    get "watchpastprograms/show" => :videos_show, as: "pages_videos_show"
   end
 
   match "/404", to: "errors#not_found", via: :all

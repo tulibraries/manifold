@@ -227,15 +227,6 @@ en:
       patron_forms_label: "Patron Forms"
     events:
       page_title: "Events & Exhibits"
-      explanation: >
-        Temple University Libraries offer a variety of events and workshops
-        throughout the semester under our <strong>Beyond the Page</strong>
-        series. This series invites scholars, writers, artists, and experts
-        in a variety of fields to address topics pertinent to scholarship
-        at Temple and of importance to the university and the surrounding
-        community. Our workshops and programs take place in all of our
-        Libraries and campuses, including our Health Sciences Libraries and
-        Charles L. Blockson Afro-American Collection.
       current_exhibits_label: "Current Exhibits"
       past_events_label: "Past Events"
       view_current_events: "View current events & exhibits."

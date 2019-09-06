@@ -2,15 +2,32 @@
 
 <div class="container event-index">
 
-  <h1 class="d-none d-lg-block"><%= t("manifold.events.page_title") %></h1>
-  <p class="d-lg-block"><%= t("manifold.events.explanation").html_safe %></p>
+  <div class="row">
+    <div class="col">
+      <h1 class="d-none d-lg-block"><%= t("manifold.events.page_title") %></h1>
+      <% unless @intro.nil? %>
+        <div class="intro px-4"><%= sanitize @intro.description.html_safe %></div>
+      <% end %>
+    </div>
+  </div>
 
   <div class="row">
-    <div class="col-3 leftside-index d-none d-md-none d-lg-block">
+    <div class="col-3 leftside-index" id="events-leftside">
+      <div class="d-none d-md-none d-lg-block">
       <%= render "facets" %>
+      </div>
+
+      <div class="signup"  id="events-signup">
+        <%= link_to @mailing_list do %>
+        <h2>
+          <%= image_tag "email.png", class: "category-icon decorative"  %>
+          <br />Signup for our mailing list
+        </h2>
+        <% end %>
+      </div>
     </div>
 
-    <div class="col-12 col-lg-6 events">
+    <div class="col-12 col-lg-6 events" id="events">
       
       <%= render "events" %>
 
@@ -23,25 +40,24 @@
 
     <div class="col-12 col-lg-3 exhibits">
       <% unless @exhibitions.blank? %>
-          <div class="col-12 exhibits-header">
-            <%= t("manifold.events.current_exhibits_label") %>
-          </div>
+        <div class="exhibits-header">
+          <%= t("manifold.events.current_exhibits_label") %>
+        </div>
 
         <%= render "exhibitions" %>
       <% end %>
 
-        <div class="col-12 px-0">
-          <%= link_to t("manifold.events.view_past_events"), past_events_path, class: "past-events-button" %>
-        </div>
+      <div>
+        <%= link_to t("manifold.events.view_past_events"), past_events_path, class: "past-events-button" %>
+      </div>
 
-        <div class="col-12 px-0">
-          <%= link_to t("manifold.events.view_past_events_videos"), pages_videos_all_path, class: "video-button" %>
-        </div>
+      <div>
+        <%= link_to t("manifold.events.view_past_events_videos"), events_path, class: "video-button" %>
+      </div>
 
-        <div class="col-12 exhibit">
-
-          <%= t("manifold.events.general_admission") %>
-        </div>
+      <div class="exhibit">
+        <%= t("manifold.events.general_admission") %>
+      </div>
 
     </div>
   </div>

@@ -66,6 +66,7 @@
     </ul>
   </div>
   <% end %>
+  <% unless @event_locations.empty? && @event_types.empty? %>
   <div class="row filter-reset">
     <div class="col text-center">
       <% unless action_name == "past" %>
@@ -75,4 +76,5 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 </div>

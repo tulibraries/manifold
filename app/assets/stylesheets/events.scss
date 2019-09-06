@@ -3,6 +3,32 @@
 .event-show.container {
 	margin-top: 21px;
 }
+.event-index {
+	.intro {
+		margin-bottom: 28px;
+		font-size: 105%;
+		@media (min-width: 0) and (max-width: 1040px) {
+			margin-top: 21px;
+		}
+	}
+	.signup {
+		margin-top: 21px;
+		border: solid #ccc 2px;
+		border-radius:7px;
+		padding:0 14px 14px 14px;
+		text-align:center;
+		font-size:125%;
+		margin: auto;
+		margin-top: 35px;
+		h2 {
+			border: 0;
+		}
+		img {
+			opacity: 0.5;
+			width: 100px;
+		}
+	}
+}
 .crumbs {
 	margin-bottom:14px;
 	color: $red;
@@ -10,15 +36,12 @@
 		text-decoration: underline;
 	}
 }
-.events, .exhibits {
+.exhibits {
 	@media (max-width: 1039px) {
 		margin-top: 35px;
 	}
 }
 .events {
-	@media (max-width: 985px) {
-		margin-top: 35px;
-	}
 	h2 {
 		padding-top: 0;
 		a {

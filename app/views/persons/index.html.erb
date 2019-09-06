@@ -27,6 +27,9 @@
     </div>
 
     <div class="col-12 col-lg-6">
+      <% unless params[:specialties].nil? || params[:location].nil? || params[:department].nil? %>
+        <%= render "filter_tags" %>
+      <% end %>
       <%= render "persons_list" %>
     </div>
 

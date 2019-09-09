@@ -3,7 +3,7 @@
   <div class="row social">
     <div class="col-12 col-lg-7 px-0">
       <% unless @donate_link.nil? %>
-        <%= link_to image_tag("give_button.png", alt: "Support the Libraries"), @donate_link, class: "donate", title: "Giving and Gifts in Kind page" %>
+        <%= link_to "Support the Libraries", @donate_link, class: "donate" %>
       <% end %>
     </div>
     <div class="col-12 col-lg-5 text-left text-lg-right px-0 social-link">

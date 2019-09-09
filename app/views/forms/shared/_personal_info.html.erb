@@ -1,5 +1,5 @@
 <% @collection = Rails.configuration.affiliation %>
-
+<% unless params[:type] == "event-space-request" %>
 <% if ["missing-book","purchase-request","data-purchase-grants-application"].include? params[:type] %>
 	<% @collection = ["Faculty","Staff","Graduate","Undergraduate","Post Doc","Other..."] %>
 <% elsif ["recall-book"].include? params[:type] %>
@@ -38,4 +38,5 @@
 
 <% if ["missing-book","purchase-request"].include? params[:type]  %>
 	<%= f.input :affiliation_other, label: false, placeholder: "specify other", wrapper_html: { class: "specify-other" } %>
+<% end %>
 <% end %>

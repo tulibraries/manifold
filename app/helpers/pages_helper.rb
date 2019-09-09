@@ -34,11 +34,11 @@ module PagesHelper
     end
   end
 
-  def title_trim(title) 
+  def title_trim(title)
     title.truncate(105)
   end
 
-  def trim_value(value) 
+  def trim_value(value)
     value.strip
   end
 end

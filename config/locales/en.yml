@@ -51,6 +51,7 @@ en:
   manifold:
     default:
       event:
+        sullivan_hall: "Sullivan Hall - Blockson Collection"
         title: "No Title"
         description: "No Description"
         external_building: "No Building Given"
@@ -138,7 +139,8 @@ en:
           duration_of_filming: "Duration of Filming"
           description: "Description of Project"
           temple_course_project: "Temple Course Project"
-          number_in_crew: "Number in Crew"
+          additional_crew_name: "Addtional Crew Member"
+          additional_email: "Crew member's email"
           bachelor_degree: "Bachelors degree earned?"
           institution_of_degree: "Institution Where Degree Earned"
           overall_gpa: "Overall GPA"
@@ -147,6 +149,21 @@ en:
           faculty_advisor: "Faculty Advisor"
           degree_year: "Current Year in Degree"
           personal_statement: "Personal Statement"
+          organizing_name: "Organizing Name"
+          organizing_phone: "Organizing Phone"
+          organizing_email: "Organizing Email"
+          financial_name: "Financial Name"
+          financial_phone: "Financial Phone"
+          financial_email: "Financial Email"
+          foapal: "FOAPAL"
+          event_space: "Event Space"
+          event_title: "Event Title"
+          attendees: "Estimated Attendees"
+          date_of_event: "Date of Event"
+          event_start: "Event Start Time"
+          event_end: "Event End Time"
+          setup_style: "Setup-Up Style"
+          av_support: "A/V Support Needed"
 
       forms:
         recall_book:
@@ -175,6 +192,8 @@ en:
           title: "Cultural Analytics Certificate Internal Application"
         cac_external:
           title: "Cultural Analytics Certificate External Application"
+        event_space_request:
+          title: "Charles Library Event Space Request"
 
     error:
       user_not_registered: "User not registered."
@@ -208,15 +227,6 @@ en:
       patron_forms_label: "Patron Forms"
     events:
       page_title: "Events & Exhibits"
-      explanation: >
-        Temple University Libraries offer a variety of events and workshops
-        throughout the semester under our <strong>Beyond the Page</strong>
-        series. This series invites scholars, writers, artists, and experts
-        in a variety of fields to address topics pertinent to scholarship
-        at Temple and of importance to the university and the surrounding
-        community. Our workshops and programs take place in all of our
-        Libraries and campuses, including our Health Sciences Libraries and
-        Charles L. Blockson Afro-American Collection.
       current_exhibits_label: "Current Exhibits"
       past_events_label: "Past Events"
       view_current_events: "View current events & exhibits."

@@ -77,7 +77,8 @@ class Form < MailForm::Base
   attribute :duration_of_filming
   attribute :description
   attribute :temple_course_project
-  attribute :number_in_crew
+  attribute :additional_crew_name
+  attribute :additional_email
   attribute :bachelor_degree
   attribute :institution_of_degree
   attribute :overall_gpa
@@ -86,12 +87,30 @@ class Form < MailForm::Base
   attribute :faculty_advisor
   attribute :degree_year
   attribute :personal_statement
+  attribute :organizing_name
+  attribute :organizing_phone
+  attribute :organizing_email
+  attribute :financial_name
+  attribute :financial_phone
+  attribute :financial_email
+  attribute :foapal
+  attribute :event_space
+  attribute :event_title
+  attribute :attendees
+  attribute :date_of_event
+  attribute :event_start
+  attribute :event_end
+  attribute :setup_style
+  attribute :av_support
+
+
+
 
   def get_subject
     @forms = {
       "missing-book" => ["Missing Book Search Request", ["cdoyle@temple.edu", "delcottos@temple.edu"]],
       "recall-book" => ["Request Recall of Books Already Checked Out", ["cdoyle@temple.edu", "jhill@temple.edu"]],
-      "purchase-request" => ["Purchase Request",  ["cdoyle@temple.edu", "jbrian@temple.edu"]],
+      "purchase-request" => ["Purchase Request",  ["cdoyle@temple.edu", "jbrian@temple.edu", "tub82123@temple.edu "]],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
       "ir" => ["Incident Report", ["cdoyle@temple.edu", "richieh@temple.edu", "bells@temple.edu"]],
       "data-purchase-grants-application" => ["Data Purchase Application", ["cdoyle@temple.edu", "librarydatagrants@temple.edu"]],
@@ -101,7 +120,8 @@ class Form < MailForm::Base
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]],
       "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["cdoyle@temple.edu", "bells@temple.edu", "adiamond@temple.edu"]],
       "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
-      "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]]
+      "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
+      "event-space-request" => ["Charles Library Event Space Request", ["cdoyle@temple.edu", "jpyle@temple.edu"]]
     }
 
     @forms.fetch(form_type)

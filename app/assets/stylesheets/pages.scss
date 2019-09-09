@@ -213,12 +213,12 @@
 			padding: 0;
 			.square  {
 				height: 100%;
-				padding-top: 4%;
+				padding-top: 10%;
 				padding-left: 21px;
 				border-bottom: solid $white 1px;
 				@media screen and (max-width: 1039px) {
 					padding-top: 0;
-					height: 24%!important;
+					height: 28%!important;
 					padding-left: 5%;
 				}
 			}

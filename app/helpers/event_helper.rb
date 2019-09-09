@@ -3,19 +3,18 @@
 require "json/ld"
 
 module EventHelper
-
   def filter_tags_events
     tags = []
-    unless params[:type].nil? 
-      types = params[:type].split(',')
+    unless params[:type].nil?
+      types = params[:type].split(",")
       types.each do |type|
-        tags << "#{type}&nbsp;<a href=\"#{events_path(request.query_parameters.except(:type).merge({page: 1}))}\">X</a>"
+        tags << "#{type}&nbsp;<a href=\"#{events_path(request.query_parameters.except(:type).merge(page: 1))}\">X</a>"
       end
-    end 
-    unless params[:location].nil? 
-      locations = params[:location].split(',')
+    end
+    unless params[:location].nil?
+      locations = params[:location].split(",")
       locations.each do |location|
-        tags << "#{location}&nbsp;<a href=\"#{events_path(request.query_parameters.except(","+location).merge({page: 1}))}\">X</a>"
+        tags << "#{location}&nbsp;<a href=\"#{events_path(request.query_parameters.except("," + location).merge(page: 1))}\">X</a>"
       end
     end
     tags
@@ -51,5 +50,8 @@ module EventHelper
 
     event_rdf = JSON.parse event_hash.to_json
     raw(event_rdf.to_json)
+  end
+  def get_bldg_name(bldg_name)
+    t("manifold.default.event.#{bldg_name.parameterize.underscore}", default: bldg_name)
   end
 end

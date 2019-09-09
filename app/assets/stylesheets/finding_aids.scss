@@ -83,16 +83,16 @@
 		padding-top: 14px;
 		border-top: solid $seagreen-dark 2px;
 	}
-	.aids-filter-reset {
-		width:50%;
-		background-color: $white;
-		text-align:center;
-		border: solid $seagreen 1px;
-		border-radius:4px;
-		padding: 7px;
-		margin: 21px auto;
-		a {
-			color: $seagreen!important;
-		}
+}
+.aids-filter-reset {
+	width:50%;
+	background-color: $white;
+	text-align:center;
+	border: solid $seagreen 1px;
+	border-radius:4px;
+	padding: 7px;
+	margin: 21px auto;
+	a {
+		color: $seagreen!important;
 	}
 }

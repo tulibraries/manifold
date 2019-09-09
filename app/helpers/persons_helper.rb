@@ -13,39 +13,39 @@ module PersonsHelper
   end
 
   def get_loc_name(id)
-  	the_name = ""
-  	@locations.each do |loc|
-  		if loc.id == id.to_i
-  			the_name = loc.name
-  		end
-  	end
-  	the_name
+    the_name = ""
+    @locations.each do |loc|
+      if loc.id == id.to_i
+        the_name = loc.name
+      end
+    end
+    the_name
   end
 
   def get_dept_name(id)
-  	the_name = ""
-  	@departments.each do |dept|
-  		if dept.id == id.to_i
-  			the_name = dept.label
-  		end
-  	end
-  	the_name
+    the_name = ""
+    @departments.each do |dept|
+      if dept.id == id.to_i
+        the_name = dept.label
+      end
+    end
+    the_name
   end
 
   def filter_tags
-  	tags = []
-  	unless params[:specialists].nil? 
-  		tags << "Subject Librarians Only&nbsp;<a href=\"#{people_path}\">X</a>"
-  	end
-  	unless params[:specialty].nil? 
-  		tags << "#{params[:specialty]}&nbsp;<a href=\"#{people_path(request.query_parameters.except(:specialty).merge({page: 1}))}\">X</a>"
-  	end 
-  	unless params[:location].nil? 
-  		tags << "#{get_loc_name(params[:location])}&nbsp;<a href=\"#{people_path(request.query_parameters.except(:location).merge({page: 1}))}\">X</a>"
-  	end
-  	unless params[:department].nil? 
-  		tags << "#{get_dept_name(params[:department])}&nbsp;<a href=\"#{people_path(request.query_parameters.except(:department).merge({page: 1}))}\">X</a>"
-  	end
-  	tags
+    tags = []
+    unless params[:specialists].nil?
+      tags << "Subject Librarians Only&nbsp;<a href=\"#{people_path}\">X</a>"
+    end
+    unless params[:specialty].nil?
+      tags << "#{params[:specialty]}&nbsp;<a href=\"#{people_path(request.query_parameters.except(:specialty).merge(page: 1))}\">X</a>"
+    end
+    unless params[:location].nil?
+      tags << "#{get_loc_name(params[:location])}&nbsp;<a href=\"#{people_path(request.query_parameters.except(:location).merge(page: 1))}\">X</a>"
+    end
+    unless params[:department].nil?
+      tags << "#{get_dept_name(params[:department])}&nbsp;<a href=\"#{people_path(request.query_parameters.except(:department).merge(page: 1))}\">X</a>"
+    end
+    tags
   end
 end

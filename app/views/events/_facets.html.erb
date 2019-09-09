@@ -1,4 +1,4 @@
-<div class="events_facets pr-14">
+<div class="events_facets pr-14" id="events_facets">
   <% unless @event_types.empty? %>
   <div class="event_types">
     <h2>
@@ -44,7 +44,7 @@
       <% @event_locations.each do |location| %>
         <% unless action_name == "past" %>
           <li<% if location == params[:location] %><% active = true %> class="active"<% end %>>
-            <%= link_to location, events_path(request.query_parameters.merge({location: location, page: 1})) %>
+            <%= link_to get_bldg_name(location), events_path(request.query_parameters.merge({location: location, page: 1})) %>
             <% if active == true %>
             <span class="clear-filter">
               <%= link_to "X", events_path(request.query_parameters.except(:location).merge({page: 1})) %>
@@ -53,7 +53,7 @@
           <% active = false %>
         <% else %>
           <li<% if location == params[:location] %><% active = true %> class="active"<% end %>>
-            <%= link_to location, past_events_path(request.query_parameters.merge({location: location, page: 1})) %>
+            <%= link_to get_bldg_name(location), past_events_path(request.query_parameters.merge({location: location, page: 1})) %>
             <% if active == true %>
             <span class="clear-filter">
               <%= link_to "X", past_events_path(request.query_parameters.except(:location).merge({page: 1})) %>
@@ -66,6 +66,7 @@
     </ul>
   </div>
   <% end %>
+  <% unless @event_locations.empty? && @event_types.empty? %>
   <div class="row filter-reset">
     <div class="col text-center">
       <% unless action_name == "past" %>
@@ -75,4 +76,5 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 </div>

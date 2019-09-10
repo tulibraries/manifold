@@ -114,6 +114,7 @@ class PagesController < ApplicationController
     @book_study_room = Space.find_by_slug("study-rooms-small")
     @locations = Building.find_by_slug("ambler")
     @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
+    @libguides = ExternalLink.find_by_slug("libguides")
   end
 
   def scrc

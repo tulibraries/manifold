@@ -11,7 +11,7 @@
 			margin-top: 21px;
 		}
 	}
-	.signup {
+	.signup-desktop, .signup-mobile {
 		margin-top: 21px;
 		border: solid #ccc 2px;
 		border-radius:7px;
@@ -26,6 +26,26 @@
 		img {
 			opacity: 0.5;
 			width: 100px;
+		}
+	}
+	@media (min-width: 1039px) {
+		.signup-desktop {
+			display:block;
+		}
+		.signup-mobile {
+			display: none;
+		}
+	}
+	@media (max-width: 1039px) {
+		.signup-desktop {
+			display:none;
+		}
+		.signup-mobile {
+			display: block;
+			width: 320px;
+			margin: auto;
+			margin-bottom: 14px;
+			margin-top: 0;
 		}
 	}
 }
@@ -109,22 +129,28 @@
 .event_type {
 	background-color: $foamgreen!important;
 	text-align: center;
-	padding: 4px 7px;
+	padding: 2px 7px 4px 7px;
 	border: solid $foamgreen-complement 1px;
 	border-radius: 7px;
 	font-size: 90%;
 	font-weight: 700;
 	color: $white!important;
+	white-space: nowrap;
+	margin-top: 4px;
+	display: inline-block;
 }
 .event_location {
 	background-color: $seagreen!important;
 	text-align: center;
-	padding: 4px 7px;
+	padding: 2px 7px 4px 7px;
 	border: solid $seagreen 1px;
 	border-radius: 7px;
 	font-size: 90%;
 	font-weight: 700;
 	color: $white!important;
+	white-space: nowrap;
+	margin-top: 4px;
+	display: inline-block;
 }
 .event_location, .event_type {
 	@media (max-width: 767px) {

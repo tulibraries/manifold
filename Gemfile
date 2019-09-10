@@ -51,6 +51,7 @@ gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false
 gem "browser"
 gem "devise"
+gem "dotenv-rails"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "ancestry"

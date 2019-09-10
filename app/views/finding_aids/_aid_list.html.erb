@@ -8,6 +8,17 @@
         <%= link_to "e-mail us", "forms/ask-scrc", class: "inline" %></a>.</p>
     </div>
   </div>
+  <div class="d-block d-lg-none filters">
+    <% unless filter_tags_aids.empty? %>
+      <% filter_tags_aids.each do |tag| %>
+        <span class="filter-tag"><%= tag.html_safe %></span>
+      <% end %>
+      <% unless filter_tags_aids.size < 2 %>
+        <%= link_to "Reset Filters", finding_aids_path, class: "reset-filters" %>
+      <% end %>
+    <% end %>
+  </div>
+
    <% unless @aids_list.nil? %>
    
    <div class="row aid">

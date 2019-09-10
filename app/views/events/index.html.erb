@@ -17,7 +17,7 @@
       <%= render "facets" %>
       </div>
 
-      <div class="signup"  id="events-signup">
+      <div class="signup-desktop"  id="events-signup">
         <%= link_to @mailing_list do %>
         <h2>
           <%= image_tag "email.png", class: "category-icon decorative"  %>
@@ -28,6 +28,16 @@
     </div>
 
     <div class="col-12 col-lg-6 events" id="events">
+      <div class="d-block d-lg-none filters">
+        <% unless filter_tags_events.empty? %>
+          <% filter_tags_events.each do |tag| %>
+            <span class="filter-tag"><%= tag.html_safe %></span>
+          <% end %>
+          <% unless filter_tags_events.size < 2 %>
+            <%= link_to "Reset Filters", events_path, class: "reset-filters" %>
+          <% end %>
+        <% end %>
+      </div>
       
       <%= render "events" %>
 
@@ -39,6 +49,15 @@
     </div>
 
     <div class="col-12 col-lg-3 exhibits">
+      <div class="signup-mobile"  id="events-signup">
+        <%= link_to @mailing_list do %>
+        <h2>
+          <%= image_tag "email.png", class: "category-icon decorative"  %>
+          <br />Sign Up for our mailing list
+        </h2>
+        <% end %>
+      </div>
+      
       <% unless @exhibitions.blank? %>
         <div class="exhibits-header">
           <%= t("manifold.events.current_exhibits_label") %>

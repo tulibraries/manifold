@@ -3,6 +3,23 @@
 require "json/ld"
 
 module EventHelper
+  def filter_tags_events
+    tags = []
+    unless params[:type].nil?
+      types = params[:type].split(",")
+      types.each do |type|
+        tags << "#{type}&nbsp;<a href=\"#{events_path(request.query_parameters.except(:type).merge(page: 1))}\">X</a>"
+      end
+    end
+    unless params[:location].nil?
+      locations = params[:location].split(",")
+      locations.each do |location|
+        tags << "#{location}&nbsp;<a href=\"#{events_path(request.query_parameters.except("," + location).merge(page: 1))}\">X</a>"
+      end
+    end
+    tags
+  end
+
   def json_ld(event)
     event_hash = {}
     event_hash["@context"] = "http://schema.org"

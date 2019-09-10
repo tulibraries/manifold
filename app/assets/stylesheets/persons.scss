@@ -103,6 +103,9 @@
 	    padding: 14px;
 	    overflow-wrap: break-word;
 	    line-height: .75;
+	    @media (max-width: 1023px) {
+	    	margin-top: 14px;
+	    }
 		}
 		.access-link {
 			background-color: $foamgreen;

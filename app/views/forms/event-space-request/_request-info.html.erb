@@ -28,7 +28,7 @@
 
 <fieldset>
   <legend>Room Set-Up</legend>
-  <%= f.input :setup_style, as: :select, collection: ["Banquet","Classroom","Lecture","Reception","Other"], label: "Date of Event", required: :true %>
+  <%= f.input :setup_style, as: :select, collection: ["Banquet","Classroom","Lecture","Reception","Other"], label: "Setup Style", required: :true %>
   <%= f.input :other, label: false, placeholder: "Specify Other", wrapper_html: { class: "specify-other" } %>
   <%= f.input :av_support, as: :boolean, label: "A/V Support Needed", required: :true %>
   <%= f.input :comments, as: :text, label: "Additional Information" %>

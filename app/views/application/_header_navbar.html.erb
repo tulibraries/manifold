@@ -41,7 +41,7 @@
                 <% unless alert.link.blank? %>
                   <%= link_to alert.scroll_text+", click here to see full details...", alert.link %>
                 <% else %>
-                  <%= link_to alert.scroll_text+", click here to see full details...", alerts_path, id: alert.id %>
+                  <%= alert.scroll_text %>
                 <% end %>
               <% end %>
             </marquee>

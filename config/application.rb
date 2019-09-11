@@ -34,6 +34,7 @@ module Tude
     # the framework and any gems in your application.
 
     config.librarysearch_base_url = "https://#{ENV.fetch('LIBRARYSEARCH_DOMAIN', 'librarysearch.temple.edu')}"
+    config.librarysearch_finding_aids_url = "#{config.librarysearch_base_url}/web_content?f%5Bweb_content_type_facet%5D%5B%5D=Finding+Aids"
     config.group_types = ["Assembly",
                           "Committee",
                           "Department",

@@ -44,6 +44,11 @@
         <div class="access-link">
           <h2><%= link_to "Explore this Collection", finding_aids_path(collection: @collection) %></h2>
         </div>
+        <% unless @collection.external_link.nil? %>
+        <div>
+          <h2><%= link_to @collection.external_link.title, @collection.external_link.link, class: "collections-external-link" %></h2>
+        </div>
+        <% end %>
       </div>
 
   </div>

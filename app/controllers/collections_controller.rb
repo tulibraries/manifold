@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CollectionsController < ApplicationController
+  include FindingAidsFinder
   load_and_authorize_resource
   before_action :set_collection, only: [:show]
   before_action :navigation_items, only: [:show]
@@ -35,5 +36,6 @@ class CollectionsController < ApplicationController
     def set_collection
       @collection = Collection.find(params[:id])
       @categories = @collection.categories
+      @aids = has_finding_aids(params[:id])
     end
 end

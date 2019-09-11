@@ -34,6 +34,7 @@ module Tude
     # the framework and any gems in your application.
 
     config.librarysearch_base_url = "https://#{ENV.fetch('LIBRARYSEARCH_DOMAIN', 'librarysearch.temple.edu')}"
+    config.main_phone = "(215) 204-8212"
     config.group_types = ["Assembly",
                           "Committee",
                           "Department",

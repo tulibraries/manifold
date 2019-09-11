@@ -82,7 +82,7 @@
               Temple University Libraries<br />
               1900 N. 13th Street<br />
               Philadelphia, PA 19122<br />
-              (215) 204-8231
+              <%= Rails.configuration.main_phone %>
               </p>
               <% unless @numbers_link.nil? %>
               <p><%= link_to "Frequently Called Numbers", page_path(@numbers_link) %></p>

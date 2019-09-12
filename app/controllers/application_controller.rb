@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     @diversity_link = Page.find_by_slug("diversity")
     @standards_link = Policy.find_by_slug("standards")
     @privacy_link = Service.find_by_slug("privacy")
+    @tu_homepage_link = ExternalLink.find_by_slug("tu-homepage")
+    @org_charts = ExternalLink.find_by_slug("org-charts")
+    @staff_forms = ExternalLink.find_by_slug("staff-forms")
+    @chat_link = ExternalLink.find_by_slug("chat-link")
   end
 
   def show_hours

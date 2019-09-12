@@ -6,7 +6,7 @@
   </div>
 
 <% unless action_name == "home" %>
-  <div id="header-search" class="col-12 col-sm-5 col-lg-5 d-none d-md-block d-lg-block text-right">
+  <div id="header-search" class="col-12 col-sm-5 col-lg-5 d-none d-lg-block text-right">
     <%= render "header-search" %>
   </div>
 <% else %>
@@ -17,7 +17,7 @@
   </div>
 <% end %>
 
-  <div id="mobile-search-button" class="col-3 <% unless action_name == "home" %>d-block d-md-none d-lg-none<% else %>d-none<% end %> text-right">
+  <div id="mobile-search-button" class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
     <span class="navbar-toggler-icon" id="search-toggler-icon" onclick="toggle('search')">
       <div class="bar1"></div>
@@ -54,27 +54,27 @@
 
   <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
     <div class="container nav-container">
-      <ul class="list-unstyled ">
+      <ul class="list-unstyled">
         <li class="<% if action_name == 'about' %>active<% end %>">
-          <%= link_to "About", pages_about_path %>
+          <%= link_to t("manifold.header.about"), pages_about_path %>
         </li>
         <li class="<% if action_name == 'visit' %>active<% end %>">
-          <%= link_to "Visit & Study", pages_visit_path %>
+          <%= link_to t("manifold.header.visit"), pages_visit_path %>
         </li>
         <li class="<% if action_name == 'research' %>active<% end %>">
-          <%= link_to "Research Services", pages_research_path %>
+          <%= link_to t("manifold.header.research"), pages_research_path %>
         </li>
         <li class="<% if action_name == 'contact' %>active<% end %>">
-          <%= link_to "Contact Us", pages_contact_path %>
+          <%= link_to t("manifold.header.contact"), pages_contact_path %>
         </li>
         <li class="nav-right hours-nav<% if controller_name == 'library_hours' %> active<% end %>">
-          <%= link_to "Hours", hours_path %>
+          <%= link_to t("manifold.header.hours"), hours_path %>
         </li>
         <li class="nav-right chat-nav" id="chat-nav">
-          <%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flocalhost%3A3000%2Fhsl&referer_title=Temple%20University%20Libraries" %>
+          <%= link_to t("manifold.header.chat"), @chat_link %>
         </li>
         <li class="nav-right account-nav">
-          <%= link_to "My Account", "#{librarysearch_url}/users/account" %>
+          <%= link_to t("manifold.header.my_account"), "#{librarysearch_url("users/account")}" %>
         </li>
       </ul>
     </div>

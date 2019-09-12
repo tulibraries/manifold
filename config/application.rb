@@ -34,6 +34,12 @@ module Tude
     # the framework and any gems in your application.
 
     config.librarysearch_base_url = "https://#{ENV.fetch('LIBRARYSEARCH_DOMAIN', 'librarysearch.temple.edu')}"
+
+    config.search_books = "#{config.librarysearch_base_url}/books"
+    config.search_articles = "#{config.librarysearch_base_url}/articles"
+    config.search_databases = "#{config.librarysearch_base_url}/databases"
+    config.search_everything = "#{config.librarysearch_base_url}/everything"
+
     config.group_types = ["Assembly",
                           "Committee",
                           "Department",

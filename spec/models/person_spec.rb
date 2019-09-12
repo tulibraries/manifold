@@ -80,6 +80,7 @@ RSpec.describe Person, type: :model do
       research_identifier: ["The Text 1", "The Text 2"],
       personal_site: ["The Text 1", "The Text 2"],
       springshare_id: ["The Text 1", "The Text 2"],
+      libguides_account: ["The Text 1", "The Text 2"],
       specialties: ["The Text 1", "The Text 2"]
     }
 

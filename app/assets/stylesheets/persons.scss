@@ -171,20 +171,24 @@
 		border: solid $seagreen 1px;
 		border-radius: 7px;
 		padding: 14px;
+		margin-bottom: 14px;
+		ul {
+			margin-bottom: 0;
+		}
 	}
-	.springshare-appointment {
+	.springshare-appointment, .libguides-link {
 		display: inline-block;
 		background-color: $foamgreen;
 		padding: 14px;
 		border-radius: 7px;
-		margin-bottom: 17px;
+		margin-top: 7px;
 		color: $white!important;
 		text-decoration: underline;
 		font-size: 92%;
-		@media (max-width: 750px) {
-			width: 100%;
-			text-align: center;
-		}
+		width: 100%;
+	}
+	.libguides-link {
+		background-color: $red;
 	}
 	.right-side {
 		@media (max-width: 750px) {
@@ -196,6 +200,9 @@
 		padding: 21px;
 		.person-name {
 			margin-bottom: 14px;
+			@media (max-width: 750px) {
+				margin-bottom: 0;
+			}
 		}
 		.job-title {
 			font-size: 150%;
@@ -203,8 +210,13 @@
 			margin-bottom: 10px;
 		}
 		img {
-			@media (max-width: 750px) {
-				max-width: 50%;
+			@media (min-width: 0) and (max-width: 450px) {
+				width: 90%;
+				margin: auto;
+			}
+			@media (min-width: 451) and (max-width: 750px) {
+				width: 340px;
+				margin: auto;
 			}
 		}
 	}

@@ -11,6 +11,7 @@ FactoryBot.define do
     research_identifier { "PREZBEEB" }
     personal_site { "http://prez.example.com" }
     springshare_id { "0123-4567-8901" }
+    libguides_account { "0123-4567-8901" }
     spaces { [FactoryBot.create(:space)] }
     sequence(:specialties) { |n| [ "Subject #{n}" ] }
     trait :with_image do

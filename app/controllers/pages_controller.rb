@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  include HasCategories
   before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
   before_action :set_page, only: [:show, :charles]
   before_action :navigation_items, only: [:show, :charles]
@@ -204,6 +205,11 @@ class PagesController < ApplicationController
       end
     end
   end
+
+  def list_item(category)
+    cat_link(category, @page)
+  end
+  helper_method :list_item
 
   def index
     @pages = Page.all

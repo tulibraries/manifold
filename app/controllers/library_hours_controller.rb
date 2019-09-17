@@ -46,7 +46,6 @@ class LibraryHoursController < ApplicationController
                   "scrc",
                   "scholars_studio",
                   "ask_a_librarian",
-                  "24-7",
                   "asrs",
                   "guest_computers",
                   "cafe"

@@ -1,0 +1,36 @@
+@import "_vars.scss";
+
+.staff-index, .aid-index, .event-index {
+
+	.filters {
+		margin-bottom: 10px;
+		a.reset-filters {
+			display: inline-block;
+			margin-left: 14px;
+			background-color: $white;
+			border: double $red 14px;
+			border-radius: 6px;
+			border-width: 1px;
+			padding: 5px 7px 4px 7px;
+			/*font-size: 110%;*/
+			font-weight: 600;
+			font-family: "Roboto Condensed";
+			color: $red;
+		}
+	}
+	.filter-tag {
+		white-space: nowrap;
+		display: inline-block;
+		margin-right: 4px;
+		background-color: rgba(165, 0, 48, 0.15);
+		border-radius: 4px;
+		padding: 4px 7px;
+		margin-bottom: 4px;
+		color: $black;
+			font-family: "Roboto Condensed";
+		a {
+			padding-left: 4px;
+			font-family: "Roboto Condensed";
+		}
+	}
+}

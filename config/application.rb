@@ -34,6 +34,7 @@ module Tude
     # the framework and any gems in your application.
 
     config.librarysearch_base_url = "https://#{ENV.fetch('LIBRARYSEARCH_DOMAIN', 'librarysearch.temple.edu')}"
+    config.librarysearch_finding_aids_url = "#{config.librarysearch_base_url}/web_content?f%5Bweb_content_type_facet%5D%5B%5D=Finding+Aids"
     config.group_types = ["Assembly",
                           "Committee",
                           "Department",
@@ -207,5 +208,7 @@ module Tude
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
     config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://events.temple.edu/feed/xml/events?department=2566")
+    config.ensemble_api_user = ENV["ENSEMBLE_API_USER"]
+    config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]
   end
 end

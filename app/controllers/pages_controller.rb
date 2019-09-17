@@ -4,9 +4,97 @@ class PagesController < ApplicationController
   before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
   before_action :set_page, only: [:show, :charles]
   before_action :navigation_items, only: [:show, :charles]
+  before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
+
+  include HTTParty
 
   def get_highlights
     @highlights = Highlight.where(promoted: true).take(4)
+  end
+
+  def video_init
+    @pageSize = 9
+    @prevPage = 0
+    @nextPage = 2
+    page = params[:page]
+    if page.nil?
+      @page = "1"
+    else
+      @prevPage = (@page - 1).to_s
+      @nextPage = (@page + 1).to_s
+    end
+    @libraryID = "fd034a20-5fb2-4c61-8269-df7e357e78e1"
+    @user = ENV["ENSEMBLE_API_USER"]
+    @key = ENV["ENSEMBLE_API_KEY"]
+    @basepath = "https://svc.#{@user}:#{@key}@ensemble.temple.edu/api"
+    @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=" + @page + "&PageSize=1000"
+    @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center"]
+    @category = @categories[params[:collection].to_i]
+    @all = []
+    @beyond_page = []
+    @beyond_notes = []
+    @blockson = []
+    @awards = []
+    @lcdss = []
+    @scrc = []
+  end
+
+  def videos_all
+    @displayMode = "all"
+    api_query = @basepath + "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
+    @videos = ensemble_api(api_query)
+    @featured_video_id = @videos[:Data].first[:ID]
+    @featured_video_title = @videos[:Data].first[:Title]
+    @videos[:Data].each do |video|
+      tags = video[:Keywords].split(",").each do |tag|
+        case tag
+        when "Beyond the Page"
+          @beyond_page << video
+        when "Beyond the Notes"
+          @beyond_notes << video
+        when "Charles L. Blockson Collection"
+          @blockson << video
+        when "Livingstone Undergraduate Research Awards"
+          @awards << video
+        when "Loretta C. Duckworth Scholars Studio"
+          @lcdss << video
+        when "Special Collections Research Center"
+          @scrc << video
+        end
+      end
+    end
+  end
+
+  def videos_show
+    @displayMode = "show"
+    api_query = @basepath + "/content/" + params[:id]
+    @videos = ensemble_api(api_query)
+    @featured_video_id = @videos[:ID]
+    @featured_video_title = @videos[:Title]
+    @featured_video_description = @videos[:Description]
+  end
+
+  def videos_list
+    @category = params[:collection]
+    unless @category.nil? || @category.blank? || @category == "0"
+      @categoryTitle = @categories[params[:collection].to_i]
+      api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
+    else
+      @categoryTitle = "All Past Programs"
+      api_query = @basepath + @medialibrary
+    end
+    @videos = ensemble_api(api_query)
+  end
+
+  def videos_search
+    api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
+    @videos = ensemble_api(api_query)
+    @categoryTitle = 'you searched for: "' + params[:q] + '"'
+  end
+
+  def ensemble_api(api_query)
+    videos = HTTParty.get(api_query)
+    JSON.parse(videos&.body, symbolize_names: true)
   end
 
   def charles
@@ -26,6 +114,7 @@ class PagesController < ApplicationController
     @book_study_room = Space.find_by_slug("study-rooms-small")
     @locations = Building.find_by_slug("ambler")
     @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
+    @libguides = ExternalLink.find_by_slug("libguides")
   end
 
   def scrc

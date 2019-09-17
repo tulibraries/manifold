@@ -12,9 +12,9 @@
       <p><strong>
         <%= event.get_date %> | <%= event.set_times %> 
         <% unless event.building.nil? %>
-          | <%= event.building.name %>
+          | <%= get_bldg_name(event.building.name) %>
         <% else %>
-          | <%= event.external_building %>
+          | <%= get_bldg_name(event.external_building) %>
         <% end %>
       </strong></p>
       <p><%= sanitize strip_tags(event.description.html_safe.truncate(250)) %></p>
@@ -30,10 +30,10 @@
         <% end %>
 
         <% unless event.building.nil? %>
-          <%= link_to event.building.name, event.building, class: "event_location" %>
+          <%= link_to get_bldg_name(event.building.name), event.building, class: "event_location" %>
         <% else %>
           <% unless event.external_building.nil? %>
-            <span class="event_location"><%= event.external_building %></span> 
+            <span class="event_location"><%= get_bldg_name(event.external_building) %></span> 
           <% end %>
         <% end %>
       </p>

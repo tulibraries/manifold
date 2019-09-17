@@ -1,0 +1,35 @@
+<fieldset>
+  <legend>Contact Information</legend>
+  <span style="font-size:large;font-weight:900;">Requestor/Event Leader/Coordinator</span>
+  <%= f.input :name, label: "Name", required: :true %>
+  <%= f.input :email, label: "E-Mail", required: :true %>
+  <%= f.input :phone, label: "Telephone", required: :true %>
+  <%= f.input :department, label: "Department", required: :true %>
+  <span style="font-size:large;font-weight:900;">Sponsoring Budget Unit Head</span>
+  <%= f.input :name, label: "Name", required: :true %>
+  <%= f.input :email, label: "E-Mail", required: :true %>
+  <%= f.input :phone, label: "Telephone", required: :true %>
+  <%= f.input :foapal, label: "FOAPAL", required: :true %>
+</fieldset>
+
+<fieldset>
+  <legend>Event Information</legend>
+  <%= f.input :event_space, as: :select, collection: ["24/7 Lobby and Cafe *","2nd Floor Multipurpose Room","3rd Floor Reading Room *","4th Floor Multipurpose Room","4th Floor Reading Room","Atrium *","Event Space","Graduate and Faculty Studio *"], label: "Event Space", required: :true, hint: "* Special use, non-peak times only" %>
+  <%= f.input :event_title, as: :text, label: "Event Title", required: :true %>
+  <%= f.input :attendees, as: :integer, label: "Estimated Number of Attendees", required: :true %>
+</fieldset>
+
+<fieldset>
+  <legend>Event Dates/Times</legend>
+  <%= f.input :date_of_event, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], html5: true, label: "Date of Event", required: :true %>
+  <%= f.input :event_start, as: :time, html5: true, label: "Start Time", required: :true %>
+  <%= f.input :event_end, as: :time, html5: true, label: "End Time", required: :true %>
+</fieldset>
+
+<fieldset>
+  <legend>Room Set-Up</legend>
+  <%= f.input :setup_style, as: :select, collection: ["Banquet","Classroom","Lecture","Reception","Other"], label: "Setup Style", required: :true %>
+  <%= f.input :other, label: false, placeholder: "Specify Other", wrapper_html: { class: "specify-other" } %>
+  <%= f.input :av_support, as: :boolean, label: "A/V Support Needed", required: :true %>
+  <%= f.input :comments, as: :text, label: "Additional Information" %>
+</fieldset>

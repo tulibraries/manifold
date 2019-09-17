@@ -52,4 +52,17 @@ RSpec.describe EventHelper, type: :helper do
       end
     end
   end
+
+  describe "Get Building Name" do
+    context "receives string with translation" do
+      it "renders the translation" do
+        expect(helper.get_bldg_name("Sullivan Hall")).to include("Sullivan Hall - Blockson Collection")
+      end
+    end
+    context "receives string without translation" do
+      it "renders the default" do
+        expect(helper.get_bldg_name("Kahn Hall")).to eq("Kahn Hall")
+      end
+    end
+  end
 end

@@ -83,16 +83,29 @@
 		padding-top: 14px;
 		border-top: solid $seagreen-dark 2px;
 	}
-	.aids-filter-reset {
-		width:50%;
-		background-color: $white;
-		text-align:center;
-		border: solid $seagreen 1px;
-		border-radius:4px;
-		padding: 7px;
-		margin: 21px auto;
-		a {
-			color: $seagreen!important;
-		}
+}
+.aids-filter-reset {
+	width:50%;
+	background-color: $white;
+	text-align:center;
+	border: solid $seagreen 1px;
+	border-radius:4px;
+	padding: 7px;
+	margin: 21px auto;
+	a {
+		color: $seagreen!important;
 	}
+}
+
+.catalog-link {
+  background-color: $seagreen;
+  padding: 21px;
+  color: #fff !important;
+  text-align: center;
+  border-radius: 7px;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 14px;
+  text-decoration: underline;
+  text-align: left;
 }

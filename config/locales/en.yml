@@ -194,6 +194,8 @@ en:
           title: "Cultural Analytics Certificate External Application"
         event_space_request:
           title: "Charles Library Event Space Request"
+        graduate_locker_request:
+          title: "Charles Library Graduate Studio Locker Request"
 
     error:
       user_not_registered: "User not registered."

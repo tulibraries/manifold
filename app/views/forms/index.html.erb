@@ -36,6 +36,7 @@
         </div>
       <% end %>
 
+      <% unless ["graduate-locker-request"].include? params[:type] %>
         <div class="row">
           <div class="col">
             <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;">
@@ -43,6 +44,7 @@
               <%= render "forms/#{@type}/request-info", f: f %>
           </div>
         </div>
+      <% end %>
 
         <div class="row" style="margin-top: 28px;">
           <div class="col">

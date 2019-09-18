@@ -47,6 +47,7 @@ class FindingAidsController < ApplicationController
     @collections = aids.select { |aid| aid.collections.try(:any?) }.collect { |c| c.collections }.flatten.uniq.sort
   end
 
+
   private
     def set_finding_aid
       @finding_aid = FindingAid.find(params[:id])

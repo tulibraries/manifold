@@ -2,6 +2,8 @@
 
 class CollectionsController < ApplicationController
   include FindingAidsFinder
+  include HasCategories
+
   load_and_authorize_resource
   before_action :set_collection, only: [:show]
   before_action :navigation_items, only: [:show]
@@ -31,6 +33,11 @@ class CollectionsController < ApplicationController
       end
     end
   end
+
+  def list_item(category)
+    cat_link(category, @collection)
+  end
+  helper_method :list_item
 
   private
     def set_collection

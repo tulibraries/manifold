@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SpacesController < ApplicationController
+  include HasCategories
   load_and_authorize_resource
   before_action :set_space, only: [:show]
   before_action :navigation_items, only: [:show]
@@ -33,6 +34,11 @@ class SpacesController < ApplicationController
       end
     end
   end
+
+  def list_item(category)
+    cat_link(category, @space)
+  end
+  helper_method :list_item
 
   private
     # Use callbacks to share common setup or constraints between actions.

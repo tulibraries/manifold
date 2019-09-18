@@ -194,6 +194,8 @@ en:
           title: "Cultural Analytics Certificate External Application"
         event_space_request:
           title: "Charles Library Event Space Request"
+        graduate_locker_request:
+          title: "Charles Library Graduate Studio Locker Request"
 
     error:
       user_not_registered: "User not registered."
@@ -223,8 +225,40 @@ en:
       notification:
         all_blogs_synced: "Blogs: All synched"
         blog_synced: "Blogs: %{id} - %{title} synced"
+
+    header:
+      about: "About"
+      visit: "Visit & Study"
+      research: "Research Services"
+      contact: "Contact Us"
+      hours: "Hours"
+      chat: "Chat"
+      my_account: "My Account"
+      all_hours: "See all library hours"
+      todays_hours: "Hours Today"
+      search:
+        articles: "Articles"
+        books: "Books"
+        databases: "Databases"
+        everything: "Search Everything"
+
     footer:
       patron_forms_label: "Patron Forms"
+      donate_link: "Support the Libraries"
+      ezborrow_link: "E-ZBorrow"
+      employment_opportunities: "Jobs"
+      standards_link: "Community Standards"
+      illiad_link: "ILLiad"
+      diversity_link: "Diversity Statement"
+      refworks_link: "Refworks"
+      privacy_link: "Virtual Reference Privacy Guidelines"
+      tu_homepage_link: "Temple University homepage"
+      charles_address: "Temple University Libraries<br />1900 N. 13th Street<br />Philadelphia, PA 19122<br />(215) 204-8231"
+      numbers_link: "Frequently Called Numbers"
+      staff_directory: "Staff Directory"
+      org_charts: "Library Organizational Charts"
+      staff_forms: "Staff Forms"
+    
     hours:
       charles_note: >
         <p><em>While we list opening and closing times for Charles Library below, 

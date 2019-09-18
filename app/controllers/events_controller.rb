@@ -20,6 +20,7 @@ class EventsController < ApplicationController
   def past
     events = @all_events.having("start_time < ?", @today).order(start_time: :desc)
     @events = return_events(events)
+    @intro = Page.find_by_slug("events-intro")
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(@events) }
@@ -57,7 +58,11 @@ class EventsController < ApplicationController
     end
 
     unless @events.blank?
-      events_list = Event.where(id: @events.map(&:id)).order(:start_time)
+      unless action_name == "past"
+        events_list = Event.where(id: @events.map(&:id)).order(:start_time)
+      else
+        events_list = Event.where(id: @events.map(&:id)).order(start_time: :desc)
+      end
       @events_list = events_list.page params[:page]
     else
       @events_list = events.page params[:page]

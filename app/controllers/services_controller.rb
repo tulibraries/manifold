@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ServicesController < ApplicationController
+  include HasCategories
   load_and_authorize_resource
   before_action :set_service, only: [:show]
   before_action :navigation_items, only: [:show]
@@ -34,6 +35,11 @@ class ServicesController < ApplicationController
       end
     end
   end
+
+  def list_item(category)
+    cat_link(category, @service)
+  end
+  helper_method :list_item
 
   private
     def set_service

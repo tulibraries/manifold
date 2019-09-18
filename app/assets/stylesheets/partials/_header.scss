@@ -1,5 +1,9 @@
 @import "_vars.scss";
 
+.flash.timedout {
+	display:none;
+}
+
 #header {	
 	background-color: cornsilk;
 	.container {

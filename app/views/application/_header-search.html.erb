@@ -1,12 +1,12 @@
 <div class="header-search-container">
-	<form action=<%= "#{librarysearch_url}/everything" %>>
-		<label for="librarySearch" class="visuallyhidden">Search Everything</label>
+	<form action=<%= "#{librarysearch_url("everything")}" %>>
+		<label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
 	  <input type="text" name="q" id="librarySearch" placeholder="Search everything" autocomplete="off" />
 	  <input type="submit" value = "" aria-label="submit search query">
 	</form>
 	<ul class="text-left">
-	  <li><%= link_to "Books", "#{librarysearch_url}/books" %></li>
-	  <li><%= link_to "Articles", "#{librarysearch_url}/articles" %></li>
-	  <li><%= link_to "Databases", "#{librarysearch_url}/databases" %></li>
+	  <li><%= link_to t("manifold.header.search.books"), "#{librarysearch_url("books")}" %></li>
+    <li><%= link_to t("manifold.header.search.articles"), "#{librarysearch_url("articles")}" %></li>
+    <li><%= link_to t("manifold.header.search.databases"), "#{librarysearch_url("databases")}" %></li>
 	</ul>
 </div>

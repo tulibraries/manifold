@@ -3,7 +3,7 @@
   <div class="row social">
     <div class="col-12 col-lg-7 px-0">
       <% unless @donate_link.nil? %>
-        <%= link_to "Support the Libraries", @donate_link, class: "donate" %>
+        <%= link_to t("manifold.footer.donate_link"), @donate_link, class: "donate" %>
       <% end %>
     </div>
     <div class="col-12 col-lg-5 text-left text-lg-right px-0 social-link">
@@ -37,13 +37,13 @@
             <div class="col-12 col-lg-4 px-0">
               <ul class="list-unstyled">
                 <% unless @ezborrow_link.nil? %>
-                <li><%= link_to "E-Zborrow", @ezborrow_link.link %></li>
+                <li><%= link_to t("manifold.footer.ezborrow_link"), @ezborrow_link.link %></li>
                 <% end %>
                 <% unless @jobs_link.nil? %>
-                <li><%= link_to "Jobs", page_path(@jobs_link) %></li>
+                <li><%= link_to t("manifold.footer.employment_opportunities"), @jobs_link %></li>
                 <% end %>
                 <% unless @standards_link.nil? %>
-                <li><%= link_to "Community Standards", @standards_link %></li>
+                <li><%= link_to t("manifold.footer.standards_link"), @standards_link %></li>
                 <% end %>
                 <li><%= link_to t("manifold.footer.patron_forms_label"), forms_index_path %></li>
               </ul>
@@ -51,25 +51,25 @@
             <div class="col-12 col-lg-3 px-0">
               <ul class="list-unstyled">
                 <% unless @illiad_link.nil? %>
-                <li><%= link_to "ILLiad", @illiad_link.link %></li>
+                <li><%= link_to t("manifold.footer.illiad_link"), @illiad_link.link %></li>
                 <% end %>
                 <% unless @publications_link.nil? %>
-                <li><%= link_to "Publications", page_path(@publications_link) %></li>
+                <li><%= link_to t("manifold.footer.publications_link"), @publications_link %></li>
                 <% end %>
                 <% unless @diversity_link.nil? %>
-                <li><%= link_to "Diversity Statement", @diversity_link %></li>
+                <li><%= link_to t("manifold.footer.diversity_link"), @diversity_link %></li>
                 <% end %>
               </ul>
             </div>
             <div class="col-12 col-lg-5 px-0">
               <ul class="list-unstyled">
                 <% unless @refworks_link.nil? %>
-                <li><%= link_to "RefWorks", @refworks_link.link %></li>
+                <li><%= link_to t("manifold.footer.refworks_link"), @refworks_link.link %></li>
                 <% end %>
                 <% unless @privacy_link.nil? %>
-                <li><%= link_to "Virtual Reference Privacy Guidelines", @privacy_link %></li>
+                <li><%= link_to t("manifold.footer.privacy_link"), @privacy_link %></li>
                 <% end %>
-                <li><%= link_to "Temple University homepage", "http://temple.edu" %></li>
+                <li><%= link_to t("manifold.footer.tu_homepage_link"), @tu_homepage_link %></li>
               </ul>
             </div>
           </div>
@@ -78,18 +78,13 @@
         <div class="col-12 col-lg-6 px-0">
           <div class="row">
             <div class="col-12 col-lg-4 offset-lg-8 px-0 address">
-              <p>
-              Temple University Libraries<br />
-              1900 N. 13th Street<br />
-              Philadelphia, PA 19122<br />
-              <%= Rails.configuration.main_phone %>
-              </p>
+              <p><%= t("manifold.footer.charles_address").html_safe %></p>
               <% unless @numbers_link.nil? %>
-              <p><%= link_to "Frequently Called Numbers", page_path(@numbers_link) %></p>
+              <p><%= link_to t("manifold.footer.numbers_link"), @numbers_link %></p>
               <% end %>
-              <p><%= link_to "Staff Directory", people_path %></p>
-              <p><%= link_to "Library Organizational Charts", "https://tulibdev.atlassian.net/wiki/spaces/LPC/pages/1041203284/Library+Org+Chats" %></p>
-              <p><%= link_to "Staff Forms", "https://tulibdev.atlassian.net/wiki/spaces/LSF/overview", target: "_blank" %></p>
+              <p><%= link_to t("manifold.footer.staff_directory"), people_path %></p>
+              <p><%= link_to t("manifold.footer.org_charts"), @org_charts %></p>
+              <p><%= link_to t("manifold.footer.staff_forms"), @staff_forms, target: "_blank" %></p>
             </div>
           </div>
         </div>

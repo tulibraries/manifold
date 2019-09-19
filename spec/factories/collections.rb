@@ -14,6 +14,8 @@ FactoryBot.define do
     contents { "MyText" }
     add_to_footer { false }
 
+    categories { [] }
+
     association :space
     trait :with_image do
       after :create do |building|

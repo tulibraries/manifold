@@ -3,8 +3,8 @@
 class CollectionsController < ApplicationController
   include FindingAidsFinder
   include HasCategories
+  include RedirectLogic
 
-  load_and_authorize_resource
   before_action :set_collection, only: [:show]
   before_action :navigation_items, only: [:show]
 
@@ -41,7 +41,8 @@ class CollectionsController < ApplicationController
 
   private
     def set_collection
-      @collection = Collection.find(params[:id])
+      @collection = Collection.find_by(id: params[:id])
+      return redirect_or_404 unless @collection
       @categories = @collection.categories
       @aids = has_finding_aids(params[:id])
     end

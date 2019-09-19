@@ -17,6 +17,8 @@
 	}
 	.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:focus-within , .btn-primary:visited  {
 		background-color: $seagreen!important;
+		border-color: $seagreen!important;
+		padding-top: 3px;
 	}
 }
 .visuallyhidden {

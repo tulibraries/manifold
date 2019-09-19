@@ -164,6 +164,8 @@ en:
           event_end: "Event End Time"
           setup_style: "Setup-Up Style"
           av_support: "A/V Support Needed"
+          partner_name: "Partner's Name:"
+          partner_email: "Partner's Email"
 
       forms:
         recall_book:
@@ -196,6 +198,8 @@ en:
           title: "Charles Library Event Space Request"
         graduate_locker_request:
           title: "Charles Library Graduate Studio Locker Request"
+        partners_borrowing:
+          title: "Partners Borrowing Privileges Application/Renewal"
 
     error:
       user_not_registered: "User not registered."

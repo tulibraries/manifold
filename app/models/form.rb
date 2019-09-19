@@ -102,8 +102,8 @@ class Form < MailForm::Base
   attribute :event_end
   attribute :setup_style
   attribute :av_support
-
-
+  attribute :partner_name
+  attribute :partner_email
 
 
   def get_subject
@@ -122,7 +122,8 @@ class Form < MailForm::Base
       "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
       "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
       "event-space-request" => ["Charles Library Event Space Request", ["cdoyle@temple.edu", "jpyle@temple.edu"]],
-      "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["cdoyle@temple.edu", "mmoll@temple.edu"]]
+      "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["cdoyle@temple.edu", "mmoll@temple.edu"]],
+      "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["cdoyle@temple.edu", "notices@temple.edu"]]
     }
 
     @forms.fetch(form_type)

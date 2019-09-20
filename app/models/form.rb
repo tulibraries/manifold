@@ -121,7 +121,7 @@ class Form < MailForm::Base
       "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["cdoyle@temple.edu", "bells@temple.edu", "adiamond@temple.edu"]],
       "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
       "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
-      "event-space-request" => ["Charles Library Event Space Request", ["cdoyle@temple.edu", "jpyle@temple.edu"]],
+      "event-space-request" => ["Charles Library Event Space Request", ["cdoyle@temple.edu", "charlesrooms@temple.edu"]],
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["cdoyle@temple.edu", "mmoll@temple.edu"]],
       "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["cdoyle@temple.edu", "notices@temple.edu"]]
     }

@@ -31,11 +31,13 @@ class Person < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  alias :label :name
-
   def burpSpecialties
     if self.specialties.is_a? Array
       self.specialties.reject! { |s| s.empty? }
     end
+  end
+
+  def label
+    :name
   end
 end

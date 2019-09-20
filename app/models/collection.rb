@@ -18,5 +18,7 @@ class Collection < ApplicationRecord
 
   before_validation :burpArray
 
-  # :subject.reject!{|s| s.empty?}
+  def label
+    name
+  end
 end

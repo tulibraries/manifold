@@ -51,5 +51,6 @@ class FindingAidsController < ApplicationController
   private
     def set_finding_aid
       @finding_aid = FindingAid.find(params[:id])
+      @title = @finding_aid.label
     end
 end

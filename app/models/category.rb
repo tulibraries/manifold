@@ -52,4 +52,8 @@ class Category < ApplicationRecord
   def path
     url(only_path: true)
   end
+
+  def label
+    name
+  end
 end

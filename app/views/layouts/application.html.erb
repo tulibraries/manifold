@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Temple University Libraries</title>
+    <title><%= @title || "Temple University Libraries" %></title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= yield :head %>
@@ -27,7 +27,6 @@
   <div id="content" style="min-height: 640px">
     <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a>
     <%= yield %>
-
   </div>
 
   <%= render "footer.html.erb" %>

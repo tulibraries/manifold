@@ -48,4 +48,8 @@ class Group < ApplicationRecord
       space.todays_hours
     end
   end
+
+  def label
+    name
+  end
 end

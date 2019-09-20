@@ -15,4 +15,8 @@ class BlogPost < ApplicationRecord
   def url
     blog.base_url + path
   end
+  
+  def label
+    title
+  end
 end

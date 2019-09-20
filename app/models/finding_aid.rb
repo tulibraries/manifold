@@ -20,6 +20,10 @@ class FindingAid < ApplicationRecord
 
   has_many :finding_aid_responsibilities
   has_many :person, through: :finding_aid_responsibilities
+  
+  def label
+    title
+  end
 
   private
     # TODO: find and eliminate the cause of nil values on form submission

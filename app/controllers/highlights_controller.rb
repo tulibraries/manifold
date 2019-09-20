@@ -21,5 +21,6 @@ class HighlightsController < ApplicationController
   private
     def set_highlight
       @highlight = Highlight.find(params[:id])
+      @title = @highlight.label
     end
 end

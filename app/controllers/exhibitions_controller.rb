@@ -21,5 +21,6 @@ class ExhibitionsController < ApplicationController
   private
     def set_exhibition
       @exhibition = Exhibition.find(params[:id])
+      @title = @exhibition.label
     end
 end

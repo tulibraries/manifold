@@ -8,6 +8,7 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.all
+    @title = "Library Services"
     respond_to do |format|
       format.html
       format.json { render json: ServiceSerializer.new(@services) }
@@ -44,6 +45,7 @@ class ServicesController < ApplicationController
   private
     def set_service
       @service = Service.find(params[:id])
+      @title = @service.label
       @categories = @service.categories
     end
 end

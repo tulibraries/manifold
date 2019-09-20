@@ -8,6 +8,7 @@ class PersonsController < ApplicationController
 
   def index
     @persons = Person.all
+    @title = "Staff Directory"
     @fcn_link = Page.find_by_title("Frequently called numbers")
     respond_to do |format|
       format.html
@@ -112,5 +113,6 @@ class PersonsController < ApplicationController
   private
     def set_person
       @person = Person.find(params[:id])
+      @title = @person.label
     end
 end

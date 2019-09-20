@@ -21,6 +21,7 @@ class EventsController < ApplicationController
     events = @all_events.having("start_time < ?", @today).order(start_time: :desc)
     @events = return_events(events)
     @intro = Page.find_by_slug("events-intro")
+    @title = "Past Events & Exhibitions"
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(@events) }
@@ -80,10 +81,12 @@ class EventsController < ApplicationController
     def init
       @all_events = Event.group(:id)
       @exhibitions = Exhibition.where(promoted_to_events: true)
+      @title = "Events & Exhibitions"
       @today = Date.today
     end
 
     def set_event
       @event = Event.find(params[:id])
+      @title = @event.label
     end
 end

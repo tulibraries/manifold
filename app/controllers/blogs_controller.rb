@@ -77,6 +77,7 @@ class BlogsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
       @blog = Blog.find(params[:id])
+      @title = @blog.title
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -42,6 +42,7 @@ class CollectionsController < ApplicationController
   private
     def set_collection
       @collection = Collection.find(params[:id])
+      @title = @collection.label
       @categories = @collection.categories
       @aids = has_finding_aids(params[:id])
     end

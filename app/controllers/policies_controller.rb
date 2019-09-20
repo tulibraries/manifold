@@ -8,6 +8,7 @@ class PoliciesController < ApplicationController
 
   def index
     @policies = Policy.all
+    @title = "Library Policies and Guidelines"
     respond_to do |format|
       format.html
       format.json { render json: PolicySerializer.new(@policies) }
@@ -41,5 +42,6 @@ class PoliciesController < ApplicationController
   private
     def set_policy
       @policy = Policy.find(params[:id])
+      @title = @policy.label
     end
 end

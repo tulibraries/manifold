@@ -42,6 +42,7 @@ class BuildingsController < ApplicationController
   private
     def set_building
       @building = Building.find(params[:id])
+      @title = @building.label
       @categories = @building.categories
     end
 

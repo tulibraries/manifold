@@ -41,6 +41,7 @@ class PagesController < ApplicationController
   end
 
   def videos_all
+    @title = "Past Program and Event Videos"
     @displayMode = "all"
     api_query = @basepath + "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
     @videos = ensemble_api(api_query)
@@ -73,10 +74,12 @@ class PagesController < ApplicationController
     @featured_video_id = @videos[:ID]
     @featured_video_title = @videos[:Title]
     @featured_video_description = @videos[:Description]
+    @title = @videos[:Title]
   end
 
   def videos_list
     @category = params[:collection]
+    @title = @categories[@category.to_i] + " Videos"
     unless @category.nil? || @category.blank? || @category == "0"
       @categoryTitle = @categories[params[:collection].to_i]
       api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
@@ -91,6 +94,7 @@ class PagesController < ApplicationController
     api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
     @videos = ensemble_api(api_query)
     @categoryTitle = 'you searched for: "' + params[:q] + '"'
+    @title = "Search Program Videos"
   end
 
   def ensemble_api(api_query)
@@ -100,6 +104,7 @@ class PagesController < ApplicationController
 
   def charles
     @page = ExternalLink.find_by_slug("explore-charles")
+    @title = "About Charles Library"
     @content = Page.find_by_slug("charles")
     @images = ["24_7.jpg", "atrium.jpg", "charles.jpg", "class.jpg", "classroom.jpg",
                 "digital-scholars.jpg", "entry-plaza.jpg", "event-space.jpg",
@@ -124,6 +129,7 @@ class PagesController < ApplicationController
     @visit_links = Category.find_by_slug("scrc-study").items.sort_by { |e| e.label }
     @collection_links = Category.find_by_slug("scrc-collections").items.sort_by { |e| e.label }
     @page = Page.find_by_slug("scrc-intro")
+    @title = "Special Collections Research Center"
   end
 
   def blockson
@@ -132,6 +138,7 @@ class PagesController < ApplicationController
     @research_links = Category.find_by_slug("blockson-research").items.sort_by { |e| e.label }
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.now]).order(:start_time).take(4)
     @building = Building.find_by_slug("blockson")
+    @title = "Charles L. Blockson Afro-American Collection"
   end
 
   def tudsc
@@ -151,6 +158,7 @@ class PagesController < ApplicationController
     @blog_posts = @blog.blog_posts.take(5)
     @info = Space.find_by_slug("lcdss")
     @page = Page.find_by_slug("lcdss-intro")
+    @title = "Loretta C. Duckworth Scholars Studio"
   end
 
   def hsl
@@ -160,38 +168,47 @@ class PagesController < ApplicationController
     @resource_links = Category.find_by_slug("hsl-resources").items.sort_by { |e| e.label }
     @research_links = Category.find_by_slug("hsl-research").items.sort_by { |e| e.label }
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.now]).order(:start_time).take(5)
+    @title = "Health Sciences Libraries"
   end
 
   def about
     @categories = Category.find_by_slug("about-page").items.select { |item| item.class == Category }
+    @title = "About the Libraries"
   end
 
   def visit
     @categories = Category.find_by_slug("visit").items.select { |item| item.class == Category }
+    @title = "Visit & Study at the Libraries"
   end
 
   def blogs
     @categories = Category.find_by_slug("news").items.select { |item| item.class == Category }
+    @title = "Library Blogs"
   end
 
   def publications
     @categories = Category.find_by_slug("publications").items.select { |item| item.class == Category }
+    @title = "Publications, Reports & Statistics"
   end
 
   def support
     @categories = Category.find_by_slug("giving").items.select { |item| item.class == Category }
+    @title = "Support the Libraries"
   end
 
   def grants
     @categories = Category.find_by_slug("grants").items.select { |item| item.class == Category }
+    @title = "Grants, Fellowships & Competitions"
   end
 
   def policies
     @categories = Category.find_by_slug("policies").items.select { |item| item.class == Category }
+    @title = "Policies & Guidelines"
   end
 
   def research
     @categories = Category.find_by_slug("research-services").items.select { |item| item.class == Category }
+    @title = "Research Services"
   end
 
   def navigation_items
@@ -223,6 +240,7 @@ class PagesController < ApplicationController
     @fcn_link = Page.find_by_slug("numbers")
     @libanswers = ExternalLink.find_by_slug("libanswers")
     @suggestions = ExternalLink.find_by_slug("suggestions")
+    @title = "Contact Us"
   end
 
   def show
@@ -259,5 +277,6 @@ class PagesController < ApplicationController
         @page = Page.find_by_slug(action_name)
       end
       @categories = @page.categories
+      @title = @page.label
     end
 end

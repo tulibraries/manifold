@@ -147,4 +147,8 @@ class Form < MailForm::Base
       from: %("#{name || default_from_name }" <#{email || default_from_email }>)
     }
   end
+  
+  def label
+    get_subject[0]
+  end
 end

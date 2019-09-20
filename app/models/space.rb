@@ -44,4 +44,8 @@ class Space < ApplicationRecord
     end
     arr
   end
+
+  def label
+    name
+  end
 end

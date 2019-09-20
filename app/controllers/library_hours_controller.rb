@@ -8,6 +8,7 @@ class LibraryHoursController < ApplicationController
   end
 
   def index
+    @title = "Library Hours by Location"
     @buildings.each do |building|
       building[:spaces].map! do |space|
         space = [building[:slug], LibraryHour.where(location_id: space, date: @monday..@sunday + 1)]

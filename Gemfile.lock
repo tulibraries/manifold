@@ -354,7 +354,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.1)
-    puma (4.1.1)
+    puma (4.2.0)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-test (1.1.0)
@@ -590,7 +590,7 @@ DEPENDENCIES
   popper_js (~> 1.14.5)
   populate
   pry-rails
-  puma (~> 4.1)
+  puma (~> 4.2)
   rails (~> 5.2.3)
   rails-controller-testing
   rails-erd

@@ -6,9 +6,13 @@ RSpec.feature "People", type: :feature do
   # [TODO] remove this spec after all person-specialties fields are cleaned up
 
   describe "Show Page Specialties" do
-    before(:all) do
+    before(:each) do
       @person = FactoryBot.create(:person)
       visit "/people/#{@person.id}"
+    end
+
+    after(:each) do
+      Person.delete_all
     end
 
     scenario "User views staff specialties on desktop" do
@@ -26,35 +30,40 @@ RSpec.feature "People", type: :feature do
 
   describe "Index Page" do
     # Capybara.ignore_hidden_elements = false
-    before(:all) do
+    before(:each) do
       space = FactoryBot.create(:space, name: "Location1")
       @person1 = FactoryBot.create(:person)
       @person2 = FactoryBot.create(:person, specialties: ["Specialty1"], first_name: "Test1", spaces: [space])
-      # Application.eager_load!
-      # visit people_path
+      #Application.eager_load!
+      visit people_path
+    end
+
+    after(:each) do
+      Person.delete_all
+      Space.delete_all
     end
 
     scenario "Test for All Staff" do
-      # expect(page.all(:xpath, "//*[@class='row person']", visible: false).count).to eq(3)
+      expect(page.all(:xpath, "//*[@class='row person']", visible: false).count).to eq(2)
       # This should return 3 rows of this class because a print page.html show three, errors finding 0
     end
 
     scenario "Test for Subjects" do
-      # expect(page).to have_xpath("//*[@id='subjects']")
-      # within(:css, "ul#subjects", match: :first) do
-      #   click_on "Specialty1"
-      # end
-      # expect(page.all(:xpath, "//*[@class='row person']").count).to eq(1)
+      expect(page).to have_xpath("//*[@id='subjects']")
+      within(:css, "ul#subjects", match: :first) do
+        click_on "Specialty1"
+      end
+      expect(page.all(:xpath, "//*[@class='row person']").count).to eq(1)
     end
 
     scenario "Test for location" do
-      # expect(page).to have_xpath("//*[@id='locations']")
-      # within(:css, "ul#locations", match: :first) do
-      #   click_on "Location1"
-      # end
-      # expect(page.all(:xpath, "//*[@class='row person']").count).to eq(1)
+      expect(page).to have_xpath("//*[@id='locations']")
+      within(:css, "ul#locations", match: :first) do
+        click_on "Location1"
+      end
+      expect(page.all(:xpath, "//*[@class='row person']").count).to eq(1)
     end
 
-    # Capybara.ignore_hidden_elements = true
+    Capybara.ignore_hidden_elements = true
   end
 end

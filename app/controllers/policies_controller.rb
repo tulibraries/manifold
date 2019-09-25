@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PoliciesController < ApplicationController
+  include HasCategories
   load_and_authorize_resource
   before_action :set_policy, only: [:show]
   before_action :navigation_items, only: [:show]
@@ -31,6 +32,11 @@ class PoliciesController < ApplicationController
       end
     end
   end
+
+  def list_item(category)
+    cat_link(category, @policy)
+  end
+  helper_method :list_item
 
   private
     def set_policy

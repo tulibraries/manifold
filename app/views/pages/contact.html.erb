@@ -1,7 +1,7 @@
 <% content_for :body_class, "categories" %>
+<div class="container contact-us" style="margin-top: 21px;">
 
-<div class="container contact-us" style="margin-top: 35px;">
-
+<h1 class="d-block d-lg-none">Contact Us</h1>
 	<div class="row text-center">
 		<div class="col-12 col-md-6 col-lg-4 text-center chat-box">
 			<div id="libchat_62e4dcbf0881db4f1514b077fbfd45b7"></div>
@@ -55,7 +55,7 @@
 		</div>
 
 		<div class="col-12 col-md-6 col-lg-4">
-			<%= link_to strip_tags(@suggestions) do %>
+			<%= link_to @suggestions do %>
 			<h2>
 				<%= image_tag "feedback.png", class: "category-icon decorative"  %>
 				<br />Give Us Your Feedback

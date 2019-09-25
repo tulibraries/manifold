@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BuildingsController < ApplicationController
+  include HasCategories
   load_and_authorize_resource
   before_action :set_building, only: [:show]
   before_action :set_date, only: [:show]
@@ -32,6 +33,11 @@ class BuildingsController < ApplicationController
       end
     end
   end
+
+  def list_item(category)
+    cat_link(category, @building)
+  end
+  helper_method :list_item
 
   private
     def set_building

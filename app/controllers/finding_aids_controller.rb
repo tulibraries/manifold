@@ -8,6 +8,7 @@ class FindingAidsController < ApplicationController
 
   def index
     @finding_aids = FindingAid.all
+    @catalog_search = "#{Rails.configuration.librarysearch_finding_aids_url}"
 
     respond_to do |format|
       format.html
@@ -45,6 +46,7 @@ class FindingAidsController < ApplicationController
     @subjects = aids.select { |aid| aid.subject.try(:any?) }.collect { |s| s.subject }.flatten.uniq.sort
     @collections = aids.select { |aid| aid.collections.try(:any?) }.collect { |c| c.collections }.flatten.uniq.sort
   end
+
 
   private
     def set_finding_aid

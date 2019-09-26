@@ -4,7 +4,7 @@ module FindingAidsFinder
   extend ActiveSupport::Concern
 
   def has_finding_aids(collection)
-    number_of_aids(collection) != 0
+    number_of_aids(collection) == 0
   end
 
   def number_of_aids(id)

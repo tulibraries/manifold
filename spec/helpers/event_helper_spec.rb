@@ -64,5 +64,10 @@ RSpec.describe EventHelper, type: :helper do
         expect(helper.get_bldg_name("Kahn Hall")).to eq("Kahn Hall")
       end
     end
+    context "receives nil" do
+      it "skips the render which would throw an error" do
+        expect(helper.get_bldg_name(nil)).to be nil
+      end
+    end
   end
 end

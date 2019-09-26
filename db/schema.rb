@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_225436) do
+ActiveRecord::Schema.define(version: 2019_09_26_180617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 2019_08_06_225436) do
     t.boolean "add_to_footer"
     t.integer "space_id"
     t.bigint "external_link_id"
+    t.string "slug"
     t.index ["building_id"], name: "index_collections_on_building_id"
     t.index ["external_link_id"], name: "index_collections_on_external_link_id"
     t.index ["space_id"], name: "index_collections_on_space_id"
@@ -330,6 +331,7 @@ ActiveRecord::Schema.define(version: 2019_08_06_225436) do
     t.string "personal_site"
     t.string "springshare_id"
     t.string "specialties"
+    t.string "libguides_account"
   end
 
   create_table "policies", force: :cascade do |t|

@@ -164,8 +164,8 @@ en:
           event_end: "Event End Time"
           setup_style: "Setup-Up Style"
           av_support: "A/V Support Needed"
-          partners_name: "Partner's Name:"
-          partners_email: "Partner's Email"
+          partner_name: "Partner's Name"
+          partner_email: "Partner's Email"
 
       forms:
         recall_book:

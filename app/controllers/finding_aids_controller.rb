@@ -9,6 +9,7 @@ class FindingAidsController < ApplicationController
   def index
     @finding_aids = FindingAid.all
     @catalog_search = "#{Rails.configuration.librarysearch_finding_aids_url}"
+    @title = "Finding Aids"
 
     respond_to do |format|
       format.html

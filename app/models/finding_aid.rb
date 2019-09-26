@@ -20,9 +20,9 @@ class FindingAid < ApplicationRecord
 
   has_many :finding_aid_responsibilities
   has_many :person, through: :finding_aid_responsibilities
-  
+
   def label
-    title
+    name
   end
 
   private

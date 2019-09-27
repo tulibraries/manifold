@@ -28,7 +28,7 @@ module PersonFilters
   end
 
   def specialties_list(persons)
-    to_add = persons.select { |person| person.specialties.try(:any?) { |subject| subject.include?(params[:specialty]) }  }
+    to_add = persons.select { |person| person.specialties.try(:any?) { |subject| subject == params[:specialty] }  }
 
     special_people = []
 

@@ -43,5 +43,16 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(librarysearch_url).to eql "https://librarysearch.temple.edu"
       end
     end
+    context "arguments are sent" do
+      it "returns the search url with args appended" do
+        expect(librarysearch_url("test")).to eql "https://librarysearch.temple.edu/test"
+      end
+    end
+    context "arguments are not sent" do
+      it "returns the search url with no args appended" do
+        expect(librarysearch_url).to eql "https://librarysearch.temple.edu"
+      end
+    end
   end
+
 end

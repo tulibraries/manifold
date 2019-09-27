@@ -22,6 +22,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
     external_link: Field::BelongsTo,
+    slug: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -44,6 +45,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :subject,
     :space,
     :categories,
+    :slug,
     :external_link
   ].freeze
 
@@ -52,6 +54,7 @@ class CollectionDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :image,
     :description,
     :subject,

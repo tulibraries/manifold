@@ -102,26 +102,28 @@ class Form < MailForm::Base
   attribute :event_end
   attribute :setup_style
   attribute :av_support
-
-
+  attribute :partner_name
+  attribute :partner_email
 
 
   def get_subject
     @forms = {
-      "missing-book" => ["Missing Book Search Request", ["cdoyle@temple.edu", "delcottos@temple.edu"]],
-      "recall-book" => ["Request Recall of Books Already Checked Out", ["cdoyle@temple.edu", "jhill@temple.edu"]],
-      "purchase-request" => ["Purchase Request",  ["cdoyle@temple.edu", "jbrian@temple.edu", "tub82123@temple.edu "]],
+      "missing-book" => ["Missing Book Search Request", ["delcottos@temple.edu"]],
+      "recall-book" => ["Request Recall of Books Already Checked Out", ["jhill@temple.edu"]],
+      "purchase-request" => ["Purchase Request",  ["jbrian@temple.edu", "tub82123@temple.edu "]],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
-      "ir" => ["Incident Report", ["cdoyle@temple.edu", "richieh@temple.edu", "bells@temple.edu"]],
-      "data-purchase-grants-application" => ["Data Purchase Application", ["cdoyle@temple.edu", "librarydatagrants@temple.edu"]],
-      "library-instruction" => ["Request a Library Instruction Session", ["cdoyle@temple.edu", "cshanley@temple.edu"]],
-      "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["cdoyle@temple.edu", "msly@temple.edu", "tuf12871@temple.edu"]],
-      "proxy-account" => ["Proxy Account", ["cdoyle@temple.edu", "jhill@temple.edu", "klehman@temple.edu"]],
-      "table-request" => ["Library Staff and Registered Student Organization Table Request", ["cdoyle@temple.edu", "jpyle@temple.edu", "tue81531@temple.edu"]],
-      "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["cdoyle@temple.edu", "bells@temple.edu", "adiamond@temple.edu"]],
-      "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
-      "cac-external" => ["Cultural Analytics Certificate External Application", ["cdoyle@temple.edu", "cacert@temple.edu"]],
-      "event-space-request" => ["Charles Library Event Space Request", ["cdoyle@temple.edu", "jpyle@temple.edu"]]
+      "ir" => ["Incident Report", ["richieh@temple.edu", "bells@temple.edu"]],
+      "data-purchase-grants-application" => ["Data Purchase Application", ["librarydatagrants@temple.edu"]],
+      "library-instruction" => ["Request a Library Instruction Session", ["cshanley@temple.edu"]],
+      "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["msly@temple.edu", "tuf12871@temple.edu"]],
+      "proxy-account" => ["Proxy Account", ["jhill@temple.edu", "klehman@temple.edu"]],
+      "table-request" => ["Library Staff and Registered Student Organization Table Request", ["john.pyle@temple.edu"]],
+      "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu"]],
+      "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cacert@temple.edu"]],
+      "cac-external" => ["Cultural Analytics Certificate External Application", ["cacert@temple.edu"]],
+      "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
+      "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
+      "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["notices@temple.edu"]]
     }
 
     @forms.fetch(form_type)

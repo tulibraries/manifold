@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  include HasCategories
   before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
   before_action :set_page, only: [:show, :charles]
   before_action :navigation_items, only: [:show, :charles]
@@ -13,21 +14,11 @@ class PagesController < ApplicationController
   end
 
   def video_init
-    @pageSize = 9
-    @prevPage = 0
-    @nextPage = 2
-    page = params[:page]
-    if page.nil?
-      @page = "1"
-    else
-      @prevPage = (@page - 1).to_s
-      @nextPage = (@page + 1).to_s
-    end
     @libraryID = "fd034a20-5fb2-4c61-8269-df7e357e78e1"
     @user = ENV["ENSEMBLE_API_USER"]
     @key = ENV["ENSEMBLE_API_KEY"]
     @basepath = "https://svc.#{@user}:#{@key}@ensemble.temple.edu/api"
-    @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=" + @page + "&PageSize=1000"
+    @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
     @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center"]
     @category = @categories[params[:collection].to_i]
     @all = []
@@ -205,6 +196,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def list_item(category)
+    cat_link(category, @page)
+  end
+  helper_method :list_item
+
   def index
     @pages = Page.all
     respond_to do |format|
@@ -216,7 +212,7 @@ class PagesController < ApplicationController
   def contact
     @fcn_link = Page.find_by_slug("numbers")
     @libanswers = ExternalLink.find_by_slug("libanswers")
-    @suggestions = Blog.find_by_slug("suggestions").base_url
+    @suggestions = ExternalLink.find_by_slug("suggestions")
   end
 
   def show

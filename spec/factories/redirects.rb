@@ -16,4 +16,8 @@ FactoryBot.define do
     redirectable { FactoryBot.create(:page) }
   end
 
+  factory :collection_redirect, class: Redirect do
+    legacy_path { "/collections/blockson" }
+    manifold_path { "/blockson" }
+  end
 end

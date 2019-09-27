@@ -10,7 +10,11 @@ module ApplicationHelper
     categories.collect(&:label).join(" and ")
   end
 
-  def librarysearch_url
-    Rails.configuration.librarysearch_base_url
+  def librarysearch_url(type = nil)
+    if type.nil?
+      Rails.configuration.librarysearch_base_url
+    else
+      Rails.configuration.librarysearch_base_url + "/" + type
+    end
   end
 end

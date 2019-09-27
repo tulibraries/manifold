@@ -7,7 +7,7 @@ class Person < ApplicationRecord
   include Categorizable
   include Imageable
 
-  paginates_per 5
+  paginates_per 20
 
   validates :first_name, :last_name, :job_title, presence: true
   validates :email_address, presence: true, email: true

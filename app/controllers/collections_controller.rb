@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class CollectionsController < ApplicationController
-  load_and_authorize_resource
+  include FindingAidsFinder
+  include HasCategories
+  include RedirectLogic
+
   before_action :set_collection, only: [:show]
   before_action :navigation_items, only: [:show]
 
@@ -31,9 +34,16 @@ class CollectionsController < ApplicationController
     end
   end
 
+  def list_item(category)
+    cat_link(category, @collection)
+  end
+  helper_method :list_item
+
   private
     def set_collection
-      @collection = Collection.find(params[:id])
+      @collection = Collection.find_by(id: params[:id])
+      return redirect_or_404 unless @collection
       @categories = @collection.categories
+      @aids = has_finding_aids(params[:id])
     end
 end

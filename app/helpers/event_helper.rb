@@ -52,6 +52,8 @@ module EventHelper
     raw(event_rdf.to_json)
   end
   def get_bldg_name(bldg_name)
-    t("manifold.default.event.#{bldg_name.parameterize.underscore}", default: bldg_name)
+    unless bldg_name.nil?
+      t("manifold.default.event.#{bldg_name.parameterize.underscore}", default: bldg_name)
+    end
   end
 end

@@ -3,6 +3,10 @@
 class LibraryHoursController < ApplicationController
   before_action :buildings, :set_dates, only: [:index, :show]
 
+  def show
+    redirect_to action: "index"
+  end
+
   def index
     @buildings.each do |building|
       building[:spaces].map! do |space|

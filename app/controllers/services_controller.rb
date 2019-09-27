@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ServicesController < ApplicationController
-  load_and_authorize_resource
+  include HasCategories
+  include RedirectLogic
+
   before_action :set_service, only: [:show]
   before_action :navigation_items, only: [:show]
 
@@ -35,9 +37,15 @@ class ServicesController < ApplicationController
     end
   end
 
+  def list_item(category)
+    cat_link(category, @service)
+  end
+  helper_method :list_item
+
   private
     def set_service
-      @service = Service.find(params[:id])
+      @service = Service.find_by(id: params[:id])
+      return redirect_or_404 unless @service
       @categories = @service.categories
     end
 end

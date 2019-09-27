@@ -86,4 +86,47 @@ RSpec.feature "FindingAids", type: :feature do
       expect(page).to_not have_content(@other_finding_aid.name)
     end
   end
+
+  context "Collecting and Subject Area" do
+    Capybara.ignore_hidden_elements = false
+    before(:all) do
+      @collection_1 = FactoryBot.create(:collection, name: "Collection 1")
+      @collection_2 = FactoryBot.create(:collection, name: "Collection 2")
+      @collection_3 = FactoryBot.create(:collection, name: "Collection 3")
+      @finding_aid_1 = FactoryBot.create(:finding_aid, name: "Finding Aid 1", subject: ["subject_1"],
+                                         collections: [@collection_1])
+      @finding_aid_2 = FactoryBot.create(:finding_aid, name: "Finding Aid 2", subject: ["subject_1"],
+                                         collections: [@collection_2])
+      @finding_aid_3 = FactoryBot.create(:finding_aid, name: "Finding Aid 3", subject: ["subject_2"],
+                                         collections: [@collection_3])
+    end
+
+    after(:all) do
+      Collection.delete_all
+      FindingAid.delete_all
+    end
+
+    scenario "Filter by Collection, then by Subject" do
+      visit("/finding_aids")
+      expect(page).to have_content(@finding_aid_1.name)
+      expect(page).to have_content(@finding_aid_2.name)
+      expect(page).to have_content(@finding_aid_3.name)
+      within(".aid-index") do
+        within(".filter_subjects") do
+          click_on @finding_aid_1.subject.first
+        end
+      end
+      expect(page).to have_content(@finding_aid_1.name)
+      expect(page).to have_content(@finding_aid_2.name)
+      expect(page).to_not have_content(@finding_aid_3.name)
+      within(".aid-index") do
+        within(".filter_collections") do
+          click_on @collection_1.name
+        end
+      end
+      expect(page).to have_content(@finding_aid_1.name)
+      expect(page).to_not have_content(@finding_aid_2.name)
+      expect(page).to_not have_content(@finding_aid_3.name)
+    end
+  end
 end

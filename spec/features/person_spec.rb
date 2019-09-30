@@ -17,13 +17,13 @@ RSpec.feature "People", type: :feature do
 
     scenario "User views staff specialties on desktop" do
       Capybara.current_session.driver.browser.manage.window.resize_to(1280, 1024) if Capybara.current_session.driver.browser.respond_to? "manage"
-      expect(page.all("div.subject-list/ul.list-unstyled/li", exact_text: "first subject")).to be
+      expect(page.all("div.subject-list/ul.list-unstyled/li", exact_text: "Subject 1")).to be
       expect(page.all("div.subject-list/ul.list-unstyled/li", exact_text: "").count).to eq(0)
     end
 
     scenario "User views staff specialties on mobile" do
       Capybara.current_session.driver.browser.manage.window.resize_to(720, 640) if Capybara.current_session.driver.browser.respond_to? "manage"
-      expect(page.all("div.subject-list/ul.list-unstyled/li", exact_text: "first subject")).to be
+      expect(page.all("div.subject-list/ul.list-unstyled/li", exact_text: "Subject 1")).to be
       expect(page.all("div.subject-list/ul.list-unstyled/li", exact_text: "").count).to eq(0)
     end
   end
@@ -67,96 +67,64 @@ RSpec.feature "People", type: :feature do
     Capybara.ignore_hidden_elements = true
   end
 
-  describe "Test for specialists only" do
-    Capybara.ignore_hidden_elements = false
-
-    before(:each) do
-      space = FactoryBot.create(:space, name: "Location1")
-      @person1 = FactoryBot.create(:person, specialties: [])
-      @person2 = FactoryBot.create(:person, specialties: ["Specialty1"], first_name: "Test1", spaces: [space])
-      #Application.eager_load!
-      visit people_path
+  describe "filter by" do
+    before(:all) do
+      @person1 = FactoryBot.create(:person)
+      @person2 = FactoryBot.create(:person)
     end
 
-    after(:each) do
-      Person.delete_all
-      Space.delete_all
-    end
-
-    scenario "click on the specialist only filter button" do
-      within(".staff-index") do
-        within(".filter_staff_type") do
-          click_on("Limit to Subject Librarians Only")
-          expect(page.all(:xpath, "//*[@class='row person']").count).to eq(1)
-        end
-      end
-    end
-
-    scenario "click on the specialist with particular specialty" do
-      within(".staff-index") do
-        within("#subjects") do
-          click_on("Specialty1")
-          expect(page.all(:xpath, "//*[@class='row person']").count).to eq(1)
-        end
-      end
-    end
-
-  end
-
-  describe "Test for locations only" do
-    Capybara.ignore_hidden_elements = false
-
-    before(:each) do
-      space = FactoryBot.create(:space, name: "Location1")
-      @person1 = FactoryBot.create(:person, specialties: [])
-      @person2 = FactoryBot.create(:person, specialties: ["Specialty1"], first_name: "Test1", spaces: [space])
-      #Application.eager_load!
-      visit people_path
-    end
-
-    after(:each) do
-      Person.delete_all
-      Space.delete_all
-    end
-
-    scenario "click on the location filter button" do
-      within(".staff-index") do
-        within("#locations") do
-          click_on("Location1")
-          expect(page.all(:xpath, "//*[@class='row person']").count).to eq(1)
-        end
-      end
-    end
-
-  end
-
-  describe "Test for Departments only" do
-    pending("HTML has one valid selector, but test says there are two")
-    Capybara.ignore_hidden_elements = false
-
-    before(:each) do
-      space = FactoryBot.create(:space, name: "Location1")
-      group = FactoryBot.create(:group, name: "Group1")
-      @person1 = FactoryBot.create(:person, specialties: [], groups: [])
-      @person2 = FactoryBot.create(:person, specialties: ["Specialty1"], first_name: "Test1", spaces: [space], groups: [group])
-      #Application.eager_load!
-      visit people_path
-    end
-
-    after(:each) do
+    after(:all) do
       Person.delete_all
       Space.delete_all
       Group.delete_all
     end
 
-    scenario "click on the department filter button" do
-      within(".staff-index") do
-        within("#departments") do
-          click_on("Group1")
-          expect(page.all(:xpath, "//*[@class='row person']").count).to eq(1)
+    describe "Location" do
+      scenario "Filter person by location" do
+        visit("/people")
+        within(".staff-index") do
+          expect(page).to have_content(@person1.email_address)
+          expect(page).to have_content(@person2.email_address)
+          within("#locations") do
+            click_on(@person1.spaces.first.name)
+          end
+          expect(page).to have_content(@person1.email_address)
+          expect(page).to_not have_content(@person2.email_address)
         end
       end
     end
 
+    describe "Department" do
+      scenario "Filter person by department" do
+        @person1.groups = [ FactoryBot.create(:group, group_type: "Department") ]
+        @person2.groups = [ FactoryBot.create(:group, group_type: "Department") ]
+        visit("/people")
+        within(".staff-index") do
+          expect(page).to have_content(@person1.email_address)
+          expect(page).to have_content(@person2.email_address)
+          within("#departments") do
+            click_on(@person1.groups.first.name)
+          end
+          expect(page).to have_content(@person1.email_address)
+          expect(page).to_not have_content(@person2.email_address)
+        end
+      end
+    end
+
+    describe "Specialty" do
+      scenario "Filter person by specialty" do
+        visit("/people")
+        within(".staff-index") do
+          expect(page).to have_content(@person1.email_address)
+          expect(page).to have_content(@person2.email_address)
+          within(".filter_subjects") do
+            click_on(@person1.specialties.first)
+          end
+          expect(page).to have_content(@person1.email_address)
+          expect(page).to_not have_content(@person2.email_address)
+        end
+      end
+    end
   end
+
 end

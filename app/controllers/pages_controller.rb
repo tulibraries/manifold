@@ -186,7 +186,6 @@ class PagesController < ApplicationController
 
   def navigation_items
     @nav_items = []
-    binding.pry
     @page.categories.each do |cat|
       cat.items(exclude: [:category]).sort_by { |e| e.label }.each do |item|
         unless item.id == @page.id

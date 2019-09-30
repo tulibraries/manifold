@@ -6,6 +6,8 @@ RSpec.feature "People", type: :feature do
 
   describe "index page with pagination" do
     before(:all) do
+      Person.delete_all
+      Space.delete_all
       21.times do |i|
         FactoryBot.create(:person)
       end

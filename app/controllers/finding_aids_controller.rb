@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class FindingAidsController < ApplicationController
-  include FindingAidFilters
   include SetInstance
   include RedirectLogic
 
@@ -9,7 +8,6 @@ class FindingAidsController < ApplicationController
   before_action :return_aids, only: [:index]
 
   def index
-    @finding_aids = FindingAid.all
     @catalog_search = "#{Rails.configuration.librarysearch_finding_aids_url}"
 
     respond_to do |format|
@@ -26,27 +24,39 @@ class FindingAidsController < ApplicationController
   end
 
   def return_aids
-    all_aids = FindingAid.group(:id).order(:name)
+    @finding_aids = FindingAid
+      .includes(:collections)
+      .with_subject(subjects)
+      .in_collection(collection)
+      .order(:name)
 
-    if params.has_key?("collection")
-      collections = collections_list(all_aids)
-    end
-    if params.has_key?("subject")
-      subjects = subjects_list(all_aids)
-    end
-
-    arrays = [Array(collections), Array(subjects)].reject(&:empty?).reduce(:&) || []
-
-    filtered_aids = arrays.presence || all_aids
-
-    get_filters(filtered_aids)
-    aids = FindingAid.where(id: filtered_aids.map(&:id)).order(:name)
-    @aids_list = aids.page params[:page]
+    @subjects = get_subject_filter_values(@finding_aids)
+    @collections = get_collection_filter_values(@finding_aids)
+    @aids_list = @finding_aids.page params[:page]
   end
 
-  def get_filters(aids)
-    @subjects = aids.select { |aid| aid.subject.try(:any?) }.collect { |s| s.subject }.flatten.uniq.sort
-    @collections = aids.select { |aid| aid.collections.try(:any?) }.collect { |c| c.collections }.flatten.uniq.sort
+  def get_subject_filter_values(finding_aids)
+    finding_aids
+      .map(&:subject)
+      .flatten
+      .sort
+      .uniq
+  end
+
+  def get_collection_filter_values(finding_aids)
+    finding_aids
+      .map(&:collections)
+      .flatten
+      .sort
+      .uniq
+  end
+
+  def subjects
+    params.fetch("subject", "").split(",")
+  end
+
+  def collection
+    params["collection"]
   end
 
 

@@ -12,7 +12,7 @@ FactoryBot.define do
     personal_site { "http://prez.example.com" }
     springshare_id { "0123-4567-8901" }
     spaces { [FactoryBot.create(:space)] }
-    sequence(:specialties) { |n| [ "Subject #{n}" ] } 
+    sequence(:specialties) { |n| [ "Subject #{n}" ] }
     trait :with_image do
       after :create do |person|
         file_path = Rails.root.join("spec", "support", "assets", "hal.png")

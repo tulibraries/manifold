@@ -138,7 +138,7 @@ class PagesController < ApplicationController
     end
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.now]).order(:start_time).take(5)
     @blog = Blog.find_by_slug("lcdss-blog")
-    @blog_posts = @blog.blog_posts.take(5)
+    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
     @info = Space.find_by_slug("lcdss")
     @page = Page.find_by_slug("lcdss-intro")
   end

@@ -1,37 +1,77 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require "ostruct"
+require "net/http"
+require "webmock/rspec"
 
 RSpec.describe SyncService::LibraryHours, type: :service do
+
   before(:all) do
-    @headings = ["CHARLES LIBRARY", "SERVICE ZONE", "CAFE", "SCRC", "SCHOLARS STUDIO", "SUCCESS CENTER", "ASK A LIBRARIAN", "ASRS", "GUEST COMPUTERS", "BLOCKSON COLLECTION", "AMBLER LIBRARY", "GINSBURG  PODIATRY", "INNOVATION", "24-7"]
-    @response = described_class.new
-    @response.headings = @headings
+    @body = file_fixture("library_hours.json").read
+    @body_size = file_fixture("library_hours.json").size
+
+    WebMock.stub_request(:get, "www.example.com").
+      to_return(body: @body, status: "200",
+               headers: { "Content-Length" => @body_size })
+
+    uri = URI("http://www.example.com/")
+    req = Net::HTTP::Get.new(uri)
+    @resp = Net::HTTP.start(uri.host, uri.port) { |http|
+      http.request(req)
+    }
+
+    @json = JSON.parse(@resp.body)
   end
 
   context "Google API responds" do
-    it "connects to Google and retrieves data" do
-      expect(@response).not_to be nil
+    it "response has Google data" do
+      expect(@resp.body).to match(@body)
     end
+
     it "Response has expected column headings" do
-      expect(@response).not_to be nil
+      @json["values"].first.each do |heading|
+        expect(heading).not_to be nil
+      end
     end
+
     it "Response has fields with data" do
-      expect(@response).not_to be nil
+      @json["values"].second.each do |hours|
+        expect(hours).not_to be nil
+      end
+      @json["values"].third.each do |hours|
+        expect(hours).not_to be nil
+      end
     end
   end
 
+end
+
+RSpec.describe SyncService::LibraryHours, type: :service do
+
+  before(:all) do
+    @body = file_fixture("library_hours.json").read
+    @body_size = file_fixture("library_hours.json").size
+
+    WebMock.stub_request(:get, "www.example.com")
+
+    uri = URI("http://www.example.com/")
+    req = Net::HTTP::Get.new(uri)
+    @resp = Net::HTTP.start(uri.host, uri.port) { |http|
+      http.request(req)
+    }
+  end
+
   context "Google API fails to respond or times out" do
-    before(:all) do
-      @blog_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_posts.rss", id: @blog.id)
-      @sync_blogs = described_class.new(blog: @blog_feed)
-      @sync_blogs.sync_blog_posts
+    it "response does not have google data" do
+      expect(@resp.body).not_to match(@body)
     end
-    it "Saves to blog_post table" do
-      expect(BlogPost.find_by(title: "First Post")).to be
-      expect(BlogPost.find_by(title: "Second Post")).to be
-      expect(BlogPost.find_by(title: "Third Post")).to be
+
+    it "Response has expected column headings" do
+      expect(@resp.body).to eq("")
+    end
+
+    it "Response has fields with data" do
+      expect(@resp.body).to eq("")
     end
   end
 end

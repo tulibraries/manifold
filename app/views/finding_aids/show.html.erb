@@ -36,7 +36,7 @@
     </div>
 
     <div class="col-12 col-lg-3">
-      <% unless @finding_aid.collections.blank? && @finding_aid.identifier.blank? %>
+      <% unless @finding_aid.collections.blank? || @finding_aid.identifier.blank? %>
       <% unless @aeon %>
       <div class="access-link">
         <h2><%= link_to "Request Materials from Special Collections Research Center", "https://temple.aeon.atlas-sys.com/Logon/?Action=10&Form=30&ItemTitle=#{@finding_aid.name}&ItemPlace=#{@finding_aid.collections.first.name}&CallNumber=#{@finding_aid.identifier}&rft.pages=#{@finding_aid.collections.first.name}" %></h2>

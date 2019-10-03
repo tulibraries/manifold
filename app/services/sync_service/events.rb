@@ -42,7 +42,7 @@ class SyncService::Events
       "event_type" => event.fetch("Type", nil),
       "cancelled" => event.fetch("Canceled", 0),
       "registration_status" => event.fetch("RegistrationStatus", nil),
-      "registration_link" => event.fetch("RegistrationLink", nil),
+      "registration_link" => event.fetch("ExternalRegistrationURL", nil),
       "start_time" => start_time(event),
       "end_time" => end_time(event),
       "all_day" => all_day(event),

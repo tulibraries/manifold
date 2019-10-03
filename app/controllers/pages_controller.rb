@@ -117,12 +117,10 @@ class PagesController < ApplicationController
   def charles
     @page = ExternalLink.find_by_slug("explore-charles")
     @content = Page.find_by_slug("charles")
-    @images = ["24_7.jpg", "atrium.jpg", "charles.jpg", "class.jpg", "classroom.jpg",
-                "digital-scholars.jpg", "entry-plaza.jpg", "event-space.jpg",
-                "exhibition.jpg", "frozen-garden.jpg", "grove.jpg", "liacouras.jpg",
-                "north-reading-room.jpg", "oculus.jpg", "one-stop.jpg", "quiet-reading-room.jpg",
-                "reading-room.jpg", "scrc.jpg", "stacks.jpg", "writing-center.jpg",
-                "floorplan1.jpg", "floorplan2.jpg", "floorplan3.jpg", "floorplan4.jpg" ]
+    @images = []
+    22.times do |i|
+      @images << (i.to_s + ".jpg")
+    end
   end
 
   def home

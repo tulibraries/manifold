@@ -1,0 +1,10 @@
+<div class="row backlink">
+	<div class="col-10">
+		<%= link_to "< WPVI News Footage Collection", wpvi_all_path %> 
+	</div>
+	<div class="col-2 text-right">
+		<% unless action_name == "index" || action_name == "logout" %>
+			<%= link_to "[ logout ]", wpvi_logout_path %> 
+		<% end %>
+	</div>
+</div>

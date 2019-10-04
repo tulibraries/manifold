@@ -1,48 +1,18 @@
-<div class="container" id="videos-index" style="margin-top: 14px">
+<div class="container d-none d-lg-block" id="videos-index" style="margin-top: 14px">
 
-	<div class="row backlink">
-		<div class="col">
-			<%= link_to "< WPVI News Footage Collection", pages_videos_all_path %> 
-		</div>
-	</div>
+	<%= render "backlink" %>
 
-	<div class="row" style="margin-top: 21px;">
-		<div class="col">
-			<h1 class="page-title">WPVI News Footage Collection</h1>
+	<%= render "frontispiece" %>
 
-			<div class="row">
-				<div class="col">
-					<div id="videoSearchBar">
-						<div id="wpvi-text" style="text-align: left;">
-							<blockquote>
-							<p style="font-size: 150%;margin-left: 28px"><strong>Note</strong>:</p>
-							<ol class="indented">
-								<li>This video collection is only accessible in the Special Collections Research Center's reading room, in the Paley Library.</li>
-								<li>For more information about this collection please see the <a href="/scrc/wpvi-news-footage-and-logs" class="inline">finding aid</a> (Series 2, Accession B)</li>
-								<li>When searching the collection, do not use truncation/wildcard symbol (*) or quotation marks (""), and please be patient. Due to the large number of files, searching and loading will be gradual.</li>
-							</ol>
-						</blockquote>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col text-center">
-			    <form action="/wpvi/search" method="GET">
-		        <label class="sr-only" for="videosearchterm">Search all WPVI videos:</label>
-		        <input type="text" id="videosearchterm" name="q" size="30" maxlength="128" value="<%= @searchterm %>">
-		        <input type="submit" id="videosearchbutton" value="Search">
-			    </form>
-				</div>
-				</div>
-			<hr />
+		<div class="row">
+			<div class="col">
+				<div style="font-size: large;margin-bottom:10px"><%= @videos[:Pager][:TotalRecords] %> result(s):</div>
 			</div>
 		</div>
 	
 			<div class="row">
 			<% @videos[:Data].each do |video| %>
 			<div class="col-6 col-md-4 col-lg-3 text-center" style="margin-top: 14px">
-				<h2><%= @videos[:Pager][:TotalRecords] %> results:</h2>
 				<%= link_to wpvi_show_path(id: video[:ID]) do %>
 				<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;", class: "decorative" %>
 				<br>
@@ -50,11 +20,6 @@
 		    <% end %>
 			</div>
 			<% end %>
-		</div>
-		<div class="row">
-			<div class="col text-center">
-				<%# paginate @videos %>
-			</div>
 		</div>
 		</div>
 	</div>

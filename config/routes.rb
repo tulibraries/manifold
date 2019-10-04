@@ -109,8 +109,9 @@ Rails.application.routes.draw do
 
   controller :wpvi do
     get "wpvi" => :index, as: "wpvi_all"
-    get "wpvi/show/*path" => :show, as: "wpvi_show"
+    get "wpvi/show/:id" => :show, as: "wpvi_show"
     get "wpvi/search" => :search
+    get "wpvi/logout" => :logout, as: "wpvi_logout"
   end
 
   controller :pages do

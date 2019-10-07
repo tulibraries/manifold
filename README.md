@@ -247,3 +247,18 @@ The process for pushing a new release to production are as follows:
 - Create a release that starts with "v" and has dotted version numbering (i.e. `v0.0.4` oe `v1.0`). Make sure to select master as the target branch (BE CAREFUL, IT DEFAULTS TO QA!!). Be sure to include a description of changes included in the release;  
 - Monitor the Travis job  trigged by the release deploying it to production.
 - Move JIRA tasks in "Ready for Prod Deploy" to "Done". Update non-LT stakeholders as necessary.
+
+## Generating a Site Map
+
+Sitemap generation is configured in `config/sitemap.rb` it contains logic to create links to the default set of show pages. Special page one-off pages would be added to this file similar to:
+
+```ruby
+  add '/about'
+  add '/visit-us'
+```
+
+To generate a sitemap, execute the following command:
+
+```bash
+bundle exec rails sitemap:create
+```

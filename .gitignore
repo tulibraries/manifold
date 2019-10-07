@@ -28,6 +28,7 @@
 /yarn-error.log
 
 /public/assets
+/public/sitemap.xml.gz
 .byebug_history
 tags
 .tags*

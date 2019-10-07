@@ -42,6 +42,7 @@
     </h2>
     <ul class="list-unstyled navbar-collapse collapse show" id="locations">
       <% @event_locations.each do |location| %>
+      <% unless location.empty? %>
         <% unless action_name == "past" %>
           <li<% if location == params[:location] %><% active = true %> class="active"<% end %>>
             <%= link_to get_bldg_name(location), events_path(request.query_parameters.merge({location: location, page: 1})) %>
@@ -62,6 +63,7 @@
           <% active = false %>
         <% end %>
           </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

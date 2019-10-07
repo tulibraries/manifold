@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_130309) do
     t.boolean "add_to_footer"
     t.integer "space_id"
     t.bigint "external_link_id"
+    t.string "slug"
     t.index ["building_id"], name: "index_collections_on_building_id"
     t.index ["external_link_id"], name: "index_collections_on_external_link_id"
     t.index ["space_id"], name: "index_collections_on_space_id"

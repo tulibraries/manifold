@@ -14,7 +14,9 @@
         <% unless event.building.nil? %>
           | <%= get_bldg_name(event.building.name) %>
         <% else %>
-          | <%= get_bldg_name(event.external_building) %>
+          <% unless event.external_building.nil? %>
+          | <%= event.external_building %>
+          <% end %>
         <% end %>
       </strong></p>
       <p><%= sanitize strip_tags(event.description.html_safe.truncate(250)) %></p>
@@ -33,7 +35,7 @@
           <%= link_to get_bldg_name(event.building.name), event.building, class: "event_location" %>
         <% else %>
           <% unless event.external_building.nil? %>
-            <span class="event_location"><%= get_bldg_name(event.external_building) %></span> 
+            <span class="event_location"><%= event.external_building %></span> 
           <% end %>
         <% end %>
       </p>

@@ -14,21 +14,11 @@ class PagesController < ApplicationController
   end
 
   def video_init
-    @pageSize = 9
-    @prevPage = 0
-    @nextPage = 2
-    page = params[:page]
-    if page.nil?
-      @page = "1"
-    else
-      @prevPage = (@page - 1).to_s
-      @nextPage = (@page + 1).to_s
-    end
     @libraryID = "fd034a20-5fb2-4c61-8269-df7e357e78e1"
     @user = ENV["ENSEMBLE_API_USER"]
     @key = ENV["ENSEMBLE_API_KEY"]
     @basepath = "https://svc.#{@user}:#{@key}@ensemble.temple.edu/api"
-    @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=" + @page + "&PageSize=1000"
+    @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
     @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center"]
     @category = @categories[params[:collection].to_i]
     @all = []
@@ -43,36 +33,51 @@ class PagesController < ApplicationController
   def videos_all
     @displayMode = "all"
     api_query = @basepath + "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
-    @videos = ensemble_api(api_query)
-    @featured_video_id = @videos[:Data].first[:ID]
-    @featured_video_title = @videos[:Data].first[:Title]
-    @videos[:Data].each do |video|
-      tags = video[:Keywords].split(",").each do |tag|
-        case tag
-        when "Beyond the Page"
-          @beyond_page << video
-        when "Beyond the Notes"
-          @beyond_notes << video
-        when "Charles L. Blockson Collection"
-          @blockson << video
-        when "Livingstone Undergraduate Research Awards"
-          @awards << video
-        when "Loretta C. Duckworth Scholars Studio"
-          @lcdss << video
-        when "Special Collections Research Center"
-          @scrc << video
+    ensemble_api(api_query)
+    unless @videos.nil?
+      @featured_video_id = @videos[:Data].first[:ID]
+      @featured_video_title = @videos[:Data].first[:Title]
+      @videos[:Data].each do |video|
+        unless video[:ThumbnailUrl].include?("Width=240")
+          video[:ThumbnailUrl] = video[:ThumbnailUrl][0..-4] + "240"
+        end
+        @all << video
+        tags = video[:Keywords].split(",").each do |tag|
+          case tag
+          when "Beyond the Page"
+            @beyond_page << video
+          when "Beyond the Notes"
+            @beyond_notes << video
+          when "Charles L. Blockson Collection"
+            @blockson << video
+          when "Livingstone Undergraduate Research Awards"
+            @awards << video
+          when "Loretta C. Duckworth Scholars Studio"
+            @lcdss << video
+          when "Special Collections Research Center"
+            @scrc << video
+          end
         end
       end
+    else
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video information.")
     end
   end
 
   def videos_show
     @displayMode = "show"
-    api_query = @basepath + "/content/" + params[:id]
-    @videos = ensemble_api(api_query)
-    @featured_video_id = @videos[:ID]
-    @featured_video_title = @videos[:Title]
-    @featured_video_description = @videos[:Description]
+    api_query = @basepath + "/content/" + URI::encode(params[:id])
+    ensemble_api(api_query)
+    unless @videos.nil?
+      @featured_video_id = @videos[:ID]
+      @featured_video_title = @videos[:Title]
+      @featured_video_description = CGI.unescapeHTML(@videos[:Description]) unless @videos[:Description].nil?
+    else
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video.")
+    end
+    if @featured_video_id.nil?
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video.")
+    end
   end
 
   def videos_list
@@ -84,29 +89,38 @@ class PagesController < ApplicationController
       @categoryTitle = "All Past Programs"
       api_query = @basepath + @medialibrary
     end
-    @videos = ensemble_api(api_query)
+    ensemble_api(api_query)
+    if @videos.nil?
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video list.")
+    end
   end
 
   def videos_search
     api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
-    @videos = ensemble_api(api_query)
-    @categoryTitle = 'you searched for: "' + params[:q] + '"'
+    ensemble_api(api_query)
+    unless @videos.nil?
+      @categoryTitle = 'you searched for: "' + params[:q] + '"'
+    else
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve videos.")
+    end
   end
 
   def ensemble_api(api_query)
     videos = HTTParty.get(api_query)
-    JSON.parse(videos&.body, symbolize_names: true)
+    begin
+      @videos = JSON.parse(videos&.body, symbolize_names: true)
+    rescue => e
+      e.message
+    end
   end
 
   def charles
     @page = ExternalLink.find_by_slug("explore-charles")
     @content = Page.find_by_slug("charles")
-    @images = ["24_7.jpg", "atrium.jpg", "charles.jpg", "class.jpg", "classroom.jpg",
-                "digital-scholars.jpg", "entry-plaza.jpg", "event-space.jpg",
-                "exhibition.jpg", "frozen-garden.jpg", "grove.jpg", "liacouras.jpg",
-                "north-reading-room.jpg", "oculus.jpg", "one-stop.jpg", "quiet-reading-room.jpg",
-                "reading-room.jpg", "scrc.jpg", "stacks.jpg", "writing-center.jpg",
-                "floorplan1.jpg", "floorplan2.jpg", "floorplan3.jpg", "floorplan4.jpg" ]
+    @images = []
+    22.times do |i|
+      @images << (i.to_s + ".jpg")
+    end
   end
 
   def home
@@ -148,7 +162,7 @@ class PagesController < ApplicationController
     end
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.now]).order(:start_time).take(5)
     @blog = Blog.find_by_slug("lcdss-blog")
-    @blog_posts = @blog.blog_posts.take(5)
+    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
     @info = Space.find_by_slug("lcdss")
     @page = Page.find_by_slug("lcdss-intro")
   end
@@ -196,7 +210,6 @@ class PagesController < ApplicationController
 
   def navigation_items
     @nav_items = []
-    binding.pry
     @page.categories.each do |cat|
       cat.items(exclude: [:category]).sort_by { |e| e.label }.each do |item|
         unless item.id == @page.id

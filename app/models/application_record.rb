@@ -8,6 +8,14 @@ class ApplicationRecord < ActiveRecord::Base
     @today.to_date.strftime("%^A, %^B %d, %Y ")
   end
 
+  def category_weight
+    @weight
+  end
+
+  def category_weight=(weight)
+    @weight = weight
+  end
+
   def label
     respond_to?(label_method) ? self[label_method] : "#{self.class.to_s}_#{id}"
   end

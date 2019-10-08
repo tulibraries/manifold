@@ -123,7 +123,8 @@ class Form < MailForm::Base
       "cac-external" => ["Cultural Analytics Certificate External Application", ["cacert@temple.edu"]],
       "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
-      "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["notices@temple.edu"]]
+      "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["notices@temple.edu"]],
+      "storage-request" => ["Storage Request", ["jhill@temple.edu", "musial@temple.edu"]]
     }
 
     @forms.fetch(form_type)

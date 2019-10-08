@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_153513) do
     t.integer "categorizable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "weight"
     t.index ["category_id", "categorizable_id", "categorizable_type"], name: "polymorphic_categorizations", unique: true
     t.index ["category_id"], name: "index_categorizations_on_category_id"
   end
@@ -332,7 +333,6 @@ ActiveRecord::Schema.define(version: 2019_10_09_153513) do
     t.string "personal_site"
     t.string "springshare_id"
     t.string "specialties"
-    t.string "libguides_account"
   end
 
   create_table "policies", force: :cascade do |t|

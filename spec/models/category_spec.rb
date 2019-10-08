@@ -201,6 +201,37 @@ end
       end
     end
 
+    context "when items in a category are weighted" do
+      before do
+        building.categories << category
+        building.categorizations.first.update_attribute("weight", 3)
+        building2.categories << category
+        building2.categorizations.first.update_attribute("weight", 1)
+        event.categories << category
+        event.categorizations.first.update_attribute("weight", 2)
+      end
+
+      it "returns items in the expected order" do
+        expect(category.items).to eql [building2, event, building]
+      end
+    end
+
+    context "when some items in a category are weighted and some are not" do
+      before do
+        building.categories << category
+        building.categorizations.first.update_attribute("weight", 2)
+
+        building2.categories << category
+
+        event.categories << category
+        event.categorizations.first.update_attribute("weight", 1)
+      end
+
+      it "weighted items sort first, in expected order, followed by unweighted items" do
+        expect(category.items).to eql [event, building, building2]
+      end
+    end
+
     context "deleting an categorized item" do
       before do
         building.categories << category
@@ -212,23 +243,6 @@ end
         expect(category.items).not_to include(old_building)
       end
     end
-    context "child_categories" do
-
-       context "when the category has child categories" do
-         it "returns an array of those categories, but not other" do
-           building.categories << parent_category
-           category.categories << parent_category
-           expect(parent_category.child_categories).to include(category)
-           expect(parent_category.child_categories).not_to include(building)
-         end
-       end
-       context "when it has no child categories" do
-         it "returns an empty array" do
-           building.categories << parent_category
-           expect(parent_category.child_categories).to eql([])
-         end
-       end
-     end
   end
 
   context "#categories" do

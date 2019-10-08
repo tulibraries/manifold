@@ -21,6 +21,7 @@ class Category < ApplicationRecord
   # eg @category.items(limit_to: [:events]) would
   def items(limit_to: [], exclude: [])
     grouped = categorizations.group_by(&:categorizable_type)
+
     if limit_to.present?
       grouped.select! { |ct, _ | limit_to.include?(ct.underscore.to_sym)  }
     end
@@ -31,13 +32,13 @@ class Category < ApplicationRecord
 
     grouped.map do |type, objs|
       ids = objs.map(&:categorizable_id)
+      weights = objs.map(&:weight)
       type.constantize.find(ids)
+        .each_with_index { |obj, index| obj.category_weight = weights[index]  }
     end.reduce([], :concat)
+      .sort_by { |categorized| categorized&.category_weight || 10 }
   end
 
-  def child_categories
-    items(limit_to: [:category])
-  end
 
   def url(only_path: false)
     if custom_url.present?
@@ -52,4 +53,13 @@ class Category < ApplicationRecord
   def path
     url(only_path: true)
   end
+
+  private
+    def categorizations_ordered_ids(categorizations)
+      categorizations.map { |categorization| global_categorizable_id(categorization) }
+    end
+
+    def global_categorizable_id(categorization)
+      "#{categorization.categorizable_type}_#{categorization.categorizable_id}"
+    end
 end

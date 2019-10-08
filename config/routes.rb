@@ -107,6 +107,13 @@ Rails.application.routes.draw do
     get "scrc/*path" => :show
   end
 
+  controller :wpvi do
+    get "wpvi" => :index, as: "wpvi_all"
+    get "wpvi/show/:id" => :show, as: "wpvi_show"
+    get "wpvi/search" => :search
+    get "wpvi/logout" => :logout, as: "wpvi_logout"
+  end
+
   controller :pages do
     get "scrc" => :scrc, as: "pages_scrc"
     get "blockson" => :blockson, as: "pages_blockson"

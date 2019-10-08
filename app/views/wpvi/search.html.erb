@@ -1,0 +1,27 @@
+<div class="container d-none d-lg-block" id="videos-index" style="margin-top: 14px">
+
+	<%= render "backlink" %>
+
+	<%= render "frontispiece" %>
+
+		<div class="row">
+			<div class="col">
+				<div style="font-size: large;margin-bottom:10px"><%= @videos[:Pager][:TotalRecords] %> result(s):</div>
+			</div>
+		</div>
+	
+			<div class="row">
+			<% @videos[:Data].each do |video| %>
+			<div class="col-6 col-md-4 col-lg-3 text-center" style="margin-top: 14px">
+				<%= link_to wpvi_show_path(id: video[:ID]) do %>
+				<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;", class: "decorative" %>
+				<br>
+				<%= video[:Title].truncate(64) %>
+		    <% end %>
+			</div>
+			<% end %>
+		</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,16 @@
+<div class="container d-none d-lg-block" id="videos-index" style="margin-top: 14px">
+
+	<%= render "backlink" %>
+
+	<%= render "frontispiece" %>
+
+		<div id="featuredVideo" class="text-center" style="margin-top: 21px">
+		  <div id="ensembleEmbeddedContent_<%= @videos[:ID] %>" class="ensembleEmbeddedContent">
+		    <iframe id="ensembleEmbeddedContent_<%= @videos[:ID] %>" src="https://ensemble.temple.edu/hapi/v1/contents/<%= @videos[:ID] %>/plugin?embedAsThumbnail=false&displayTitle=false&startTime=0&autoPlay=false&hideControls=true&showCaptions=false&width=960&height=540&displaySharing=false&displayAnnotations=false&displayAttachments=false&displayLinks=false&displayEmbedCode=false&displayDownloadIcon=false&displayMetaData=false&displayCredits=false&displayCaptionSearch=false&audioPreviewImage=false&displayViewersReport=false&displayAxdxs=false" title="<%= @videos[:Title] %>" frameborder="0" height="540" width="960" allowfullscreen></iframe>
+		  </div>
+
+		</div>
+
+		 <div class="text-center"><p><%= @videos[:Title] %></p></div>
+
+	</div>

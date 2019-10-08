@@ -14,16 +14,16 @@
 
 <%= f.input :email, as: :email, required: true %>
 
-<% unless ["filming-request","partners-borrowing"].include? params[:type] %>
+<% unless ["filming-request","partners-borrowing","storage-request"].include? params[:type] %>
 	<%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
 <% end %>
 
 <% unless ["ask-scrc","scrc-instruction","table-request","filming-request","cac-external"].include? params[:type ] %>
 	<%= f.input :tu_id, label: "Temple ID Number", required: true %>
-	<% unless ["graduate-locker-request","partners-borrowing"].include? params[:type] %>
+	<% unless ["graduate-locker-request","partners-borrowing","storage-request"].include? params[:type] %>
 		<%= f.input :department, required: true %>
 		<% else %>
-			<% unless ["partners-borrowing"].include? params[:type] %>
+			<% unless ["partners-borrowing","storage-request"].include? params[:type] %>
 				<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: ["Graduate", "Faculty"], required: true %>
 			<% end %>
 	<% end %>
@@ -33,7 +33,7 @@
 	<%= f.input :group, label: "Group/Organization", required: true %>
 <% end %>
 
-<% unless ["library-instruction","scrc-instruction","table-request","cac-internal","cac-external","graduate-locker-request","partners-borrowing"].include? params[:type ] %>
+<% unless ["library-instruction","scrc-instruction","table-request","cac-internal","cac-external","graduate-locker-request","partners-borrowing","storage-request"].include? params[:type ] %>
 	<% unless params[:type] == "filming-request" %>
 		<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: @collection, required: true %>
 	<% else %>

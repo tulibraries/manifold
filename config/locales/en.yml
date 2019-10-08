@@ -200,6 +200,8 @@ en:
           title: "Charles Library Graduate Studio Locker Request"
         partners_borrowing:
           title: "Partners Borrowing Privileges Application/Renewal"
+        storage_request:
+          title: "Storage Request"
 
     error:
       user_not_registered: "User not registered."

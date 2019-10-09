@@ -5,7 +5,7 @@ module HasCategories
 
   def cat_link(cat, dog)
     links = []
-    cat.items(exclude: [:category]).sort_by { |e| e.label }.each do |c|
+    cat.items(exclude: [:category]).each do |c|
       unless c == dog
         link = "<li>"
       else

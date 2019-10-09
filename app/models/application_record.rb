@@ -9,7 +9,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def category_weight
-    @weight
+    @weight || 10
   end
 
   def category_weight=(weight)

@@ -333,6 +333,7 @@ ActiveRecord::Schema.define(version: 2019_10_09_153513) do
     t.string "personal_site"
     t.string "springshare_id"
     t.string "specialties"
+    t.string "libguides_account"
   end
 
   create_table "policies", force: :cascade do |t|

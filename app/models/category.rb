@@ -6,6 +6,7 @@ class Category < ApplicationRecord
   include Imageable
 
   has_many :categorizations, dependent: :destroy
+  accepts_nested_attributes_for :categorizations
 
   has_many :nested_categorizations, as: :categorizable, dependent: :destroy, class_name: "Categorization"
   has_many :categories, through: :nested_categorizations
@@ -36,7 +37,7 @@ class Category < ApplicationRecord
       type.constantize.find(ids)
         .each_with_index { |obj, index| obj.category_weight = weights[index]  }
     end.reduce([], :concat)
-      .sort_by { |categorized| categorized&.category_weight || 10 }
+      .sort_by { |categorized| categorized&.category_weight }
   end
 
 
@@ -53,13 +54,4 @@ class Category < ApplicationRecord
   def path
     url(only_path: true)
   end
-
-  private
-    def categorizations_ordered_ids(categorizations)
-      categorizations.map { |categorization| global_categorizable_id(categorization) }
-    end
-
-    def global_categorizable_id(categorization)
-      "#{categorization.categorizable_type}_#{categorization.categorizable_id}"
-    end
 end

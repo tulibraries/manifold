@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
     @org_charts = ExternalLink.find_by_slug("org-charts")
     @staff_forms = ExternalLink.find_by_slug("staff-forms")
     @chat_link = ExternalLink.find_by_slug("chat-link")
+    @db_az_link = ExternalLink.find_by_slug("db-az")
   end
 
   def show_hours

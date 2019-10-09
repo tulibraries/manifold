@@ -22,7 +22,7 @@
     </div>
 
     <div class="col-12 col-lg-6 event-info">
-      <h1 class="page-title"><%= @event.title %></h1>
+      <h1 class="page-title"><%= title @event.title %></h1>
       <p style="font-size: larger;font-weight: 900;"><%= @event.get_date %> | <%= @event.set_times %></p>
       <%= sanitize @event.description.html_safe %>
     </div>

@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <div class="col-8">
-        <h1 class="person-name page-title"><%= @person.first_name %> <%= @person.last_name %></h1>
+        <h1 class="person-name page-title"><%= title "#{@person.first_name} #{@person.last_name}" %></h1>
         <div class="job-title"><%= @person.job_title %></div>
         <div><%= mail_to @person.email_address, @person.email_address %></div>
         <div><%= phone_formatted(@person.phone_number) %></div>

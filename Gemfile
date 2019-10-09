@@ -32,6 +32,7 @@ gem "kaminari"
 gem "listen", ">= 3.0.5", "< 3.3"
 gem "lockbox"
 gem "mail_form"
+gem "meta-tags"
 gem "mini_magick", "~> 4.9"
 gem "okcomputer"
 gem "omniauth"
@@ -45,6 +46,7 @@ gem "rswag-api"
 gem "rswag-ui"
 gem "sass-rails", "~> 6.0"
 gem "simple_form"
+gem "sitemap_generator"
 gem "skylight"
 gem "sqlite3", "~> 1.3.13"
 gem "tinymce-rails", "~> 4.9"
@@ -52,8 +54,6 @@ gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
 gem "yaml_db"
-gem "sitemap_generator"
-
 
 
 group :development, :test do

@@ -88,4 +88,3 @@ group :test do
   gem "webmock"
   gem "launchy"
 end
-

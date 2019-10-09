@@ -47,4 +47,11 @@ module Validators
       end
     end
   end
+
+  class CollectionOrSubjectValidator < ActiveModel::Validator
+    def validate(record)
+      record.subject.reject! { |s| s.empty? }
+      record.errors[:base] << "Values for either Collections or Subjects need to be selected." if record.collections.blank? && record.subject.blank?
+    end
+  end
 end

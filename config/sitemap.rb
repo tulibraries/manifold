@@ -27,34 +27,30 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), lastmod: article.updated_at
   #   end
 
+  #snowflakes
   add "/about"
   add "/visit-study"
   add "/explore-charles"
+  add "/research-services"
+  add "/blockson"
+  add "/contact"
+  add "/hsl"
+  add "/scrc"
+  add "/lcdss"
+  add "/"
 
-  # Models with Index Pages
+  #indices
+  add forms_path
+  add library_hours_path
+  add people_path
+  add events_path
 
-  BlogPost.find_each do |blog_post|
-    add blog_post_path(blog_post), lastmod: blog_post.updated_at
-  end
-  Blog.find_each do |blog|
-    add blog_path(blog), lastmod: blog.updated_at
-  end
-  Building.find_each do |building|
-    add building_path(building), lastmod: building.updated_at
-  end
-  Event.find_each do |event|
-    add event_path(event), lastmod: event.updated_at
-  end
-  Group.find_each do |group|
-    add group_path(group), lastmod: group.updated_at
-  end
-  Person.find_each do |person|
-    add person_path(person), lastmod: person.updated_at
-  end
-
-  # Models with Show Pages
+  #show pages
   Collection.find_each do |collection|
     add collection_path(collection), lastmod: collection.updated_at
+  end
+  FindingAid.find_each do |finding_aid|
+    add finding_aid_path(finding_aid), lastmod: finding_aid.updated_at
   end
   Exhibition.find_each do |exhibition|
     add exhibition_path(exhibition), lastmod: exhibition.updated_at
@@ -67,5 +63,14 @@ SitemapGenerator::Sitemap.create do
   end
   Space.find_each do |space|
     add space_path(space), lastmod: space.updated_at
+  end
+  Person.find_each do |person|
+    add person_path(person), lastmod: person.updated_at
+  end
+  Event.find_each do |event|
+    add event_path(event), lastmod: event.updated_at
+  end
+  Building.find_each do |building|
+    add building_path(building), lastmod: building.updated_at
   end
 end

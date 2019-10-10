@@ -38,10 +38,10 @@ SitemapGenerator::Sitemap.create do
   add "/scrc"
   add "/lcdss"
   add "/"
+  add "/hours"
 
   #indices
   add forms_path
-  add library_hours_path
   add people_path
   add events_path
 

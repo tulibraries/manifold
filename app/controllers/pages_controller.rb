@@ -84,12 +84,14 @@ class PagesController < ApplicationController
     @category = params[:collection]
     unless @category.nil? || @category.blank? || @category == "0"
       @categoryTitle = @categories[params[:collection].to_i]
-      api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
+      unless @categoryTitle.nil?
+        api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
+      end
     else
       @categoryTitle = "All Past Programs"
       api_query = @basepath + @medialibrary
     end
-    ensemble_api(api_query)
+    ensemble_api(api_query) unless api_query.nil?
     if @videos.nil?
       return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video list.")
     end

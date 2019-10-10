@@ -64,6 +64,25 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe "A category with a long description" do
+    let(:category) { FactoryBot.create(:category, :with_long_description) }
+
+    it "responds to long description" do
+      expect(category).to respond_to(:long_description)
+    end
+
+    it "matches long description" do
+      expect(category.long_description).to match("It's more about what the category is about")
+    end
+
+    context "when it doesn't have a long description" do
+      it "should raise a validation error" do
+        category.long_description = nil
+        expect { category.save! }.to_not raise_error
+      end
+    end
+  end
+
   describe "A category with a Get Help box" do
     let(:category) { FactoryBot.create(:category, :with_get_help) }
 

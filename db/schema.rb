@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_153513) do
+ActiveRecord::Schema.define(version: 2019_10_10_145130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,9 +117,10 @@ ActiveRecord::Schema.define(version: 2019_10_09_153513) do
     t.string "custom_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
+    t.string "description"
     t.string "slug"
     t.text "get_help"
+    t.text "long_description"
   end
 
   create_table "categorizations", force: :cascade do |t|

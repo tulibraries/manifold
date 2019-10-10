@@ -210,7 +210,7 @@ GEM
       concurrent-ruby (~> 1.0)
     hashdiff (1.0.0)
     hashie (3.6.0)
-    honeybadger (4.5.1)
+    honeybadger (4.5.2)
     httparty (0.17.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)

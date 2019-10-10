@@ -132,6 +132,7 @@ class PagesController < ApplicationController
     @locations = Building.find_by_slug("ambler")
     @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
     @libguides = ExternalLink.find_by_slug("libguides")
+    @explore_charles = Page.find_by_slug("explore-charles")
   end
 
   def scrc

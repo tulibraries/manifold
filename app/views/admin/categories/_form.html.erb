@@ -61,7 +61,7 @@ and renders all form fields for a resource's editable attributes.
             <%= categorizations_form.label categorizations_form.object.categorizable.label %>
           </span>
           <span style="display:inline-block;width:8%">
-            <%= categorizations_form.number_field(:weight, in: (1..10).reverse_each ) %>
+            <%= categorizations_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
           </span>
         </div>
         <% end -%>

@@ -64,6 +64,18 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe "A category with a Get Help box" do
+    let(:category) { FactoryBot.create(:category, :with_get_help) }
+
+    it "responds to help text" do
+      expect(category).to respond_to(:get_help)
+    end
+
+    it "matches help text" do
+      expect(category.get_help).to match("It's what help is for")
+    end
+  end
+
   describe "#url" do
 
     let(:category) { FactoryBot.create(:category) }

@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore Postgresql db dumps
+*.sqlc
+
 # Ignore real data
 /db/data.yml
 

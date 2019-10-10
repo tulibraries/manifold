@@ -25,7 +25,7 @@ class PoliciesController < ApplicationController
   def navigation_items
     @nav_items = []
     @policy.categories.each do |cat|
-      cat.items(exclude: [:category]).sort_by { |e| e.label }.each do |item|
+      cat.items(exclude: [:category]).each do |item|
         unless item.id == @policy.id
           @nav_items << item
         end

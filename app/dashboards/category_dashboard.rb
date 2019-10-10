@@ -28,7 +28,6 @@ class CategoryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    #:categorizations,
     :name,
     :id,
     :description,
@@ -68,5 +67,9 @@ class CategoryDashboard < Administrate::BaseDashboard
 
   def tinymce?
     true
+  end
+
+  def permitted_attributes
+    super + [categorizations_attributes: [:weight, :id]]
   end
 end

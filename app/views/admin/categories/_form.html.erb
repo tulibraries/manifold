@@ -1,0 +1,79 @@
+<%#
+# Form Partial
+This partial is rendered on a resource's `new` and `edit` pages,
+and renders all form fields for a resource's editable attributes.
+## Local variables:
+- `page`:
+  An instance of [Administrate::Page::Form][1]
+  Contains helper methods to display a form,
+  and knows which attributes should be displayed in the resource's form.
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
+%>
+
+<%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
+  <% if page.resource.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= t(
+          "administrate.form.errors",
+          pluralized_errors: pluralize(page.resource.errors.count, t("administrate.form.error")),
+          resource_name: display_resource_name(page.resource_name)
+        ) %>
+      </h2>
+
+      <ul>
+        <% page.resource.errors.full_messages.each do |message| %>
+          <li class="flash-error"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% page.attributes.each do |attribute| -%>
+    <% if user_editable_field?(current_account, attribute) %>
+      <div class="field-unit field-unit--<%= attribute.html_class %> <%= required?(attribute) %>" >
+        <%= render_field attribute, f: f %>
+      </div>
+    <% end -%>
+  <% end -%>
+
+  <hr />
+  <div style="width:100%;">
+    <p>On the list of entities below, please assign a weight to
+      each entity. The weight will determine the order from lowest
+      to highest. For example, the item with a weight of one will
+      appear first in the list, a weight of one will appear next,
+      and so on.
+    </p>
+  </div>
+  <div class="field-unit field-unit--categorizations" style="align-items:baseline;" >
+
+    <div class="field-unit__label">
+      <label>Entity Weights</label>
+    </div>
+      <div class="field-unit__field" style="width:75%;">
+        <%= f.fields_for :categorizations, page.resource.categorizations.sort_by(&:weight) do |categorizations_form| %>
+        <div style="padding: 1.1em;border-bottom: 1px solid;">
+          <span style="width:20%;display:inline-block;">
+            <strong><%= categorizations_form.object.categorizable_type %></strong>
+          </span>
+          <span style="width:40%;display:inline-block">
+            <%= categorizations_form.label categorizations_form.object.categorizable.label %>
+          </span>
+          <span style="display:inline-block;width:8%">
+            <%= categorizations_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
+          </span>
+        </div>
+        <% end -%>
+      </div>
+	</div>
+
+  <div class="form-actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<% if @dashboard&.tinymce? %>
+  <%= tinymce_assets %>
+  <%= tinymce %>
+<% end %>

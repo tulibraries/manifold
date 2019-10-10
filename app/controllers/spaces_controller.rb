@@ -27,7 +27,7 @@ class SpacesController < ApplicationController
   def navigation_items
     @nav_items = []
     @space.categories.each do |cat|
-      cat.items(exclude: [:category]).sort_by { |e| e.label }.each do |item|
+      cat.items(exclude: [:category]).each do |item|
         unless item.id == @space.id
           @nav_items << item
         end

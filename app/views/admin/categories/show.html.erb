@@ -54,6 +54,7 @@ as well as a link to its edit page.
           <tr>
             <th>Label</th>
             <th>Class</th>
+            <th>Weight</th>
             <th>Link</th>
           </tr>
         </thead>
@@ -62,6 +63,7 @@ as well as a link to its edit page.
             <%= tag.tr do %>
               <%= tag.td(item.label, class: "item-label") %>
               <%= tag.td(item.class, class: "item-class") %>
+              <%= tag.td(item.category_weight, class: "item-category-weight") %>
               <%= tag.td(link_to("Show", ["admin", item], class: "button")) %>
             <% end %>
           <% end %>

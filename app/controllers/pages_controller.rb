@@ -33,70 +33,96 @@ class PagesController < ApplicationController
   def videos_all
     @displayMode = "all"
     api_query = @basepath + "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
-    @videos = ensemble_api(api_query)
-    @featured_video_id = @videos[:Data].first[:ID]
-    @featured_video_title = @videos[:Data].first[:Title]
-    @videos[:Data].each do |video|
-      tags = video[:Keywords].split(",").each do |tag|
-        case tag
-        when "Beyond the Page"
-          @beyond_page << video
-        when "Beyond the Notes"
-          @beyond_notes << video
-        when "Charles L. Blockson Collection"
-          @blockson << video
-        when "Livingstone Undergraduate Research Awards"
-          @awards << video
-        when "Loretta C. Duckworth Scholars Studio"
-          @lcdss << video
-        when "Special Collections Research Center"
-          @scrc << video
+    ensemble_api(api_query)
+    unless @videos.nil?
+      @featured_video_id = @videos[:Data].first[:ID]
+      @featured_video_title = @videos[:Data].first[:Title]
+      @videos[:Data].each do |video|
+        unless video[:ThumbnailUrl].include?("Width=240")
+          video[:ThumbnailUrl] = video[:ThumbnailUrl][0..-4] + "240"
+        end
+        @all << video
+        tags = video[:Keywords].split(",").each do |tag|
+          case tag
+          when "Beyond the Page"
+            @beyond_page << video
+          when "Beyond the Notes"
+            @beyond_notes << video
+          when "Charles L. Blockson Collection"
+            @blockson << video
+          when "Livingstone Undergraduate Research Awards"
+            @awards << video
+          when "Loretta C. Duckworth Scholars Studio"
+            @lcdss << video
+          when "Special Collections Research Center"
+            @scrc << video
+          end
         end
       end
+    else
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video information.")
     end
   end
 
   def videos_show
     @displayMode = "show"
-    api_query = @basepath + "/content/" + params[:id]
-    @videos = ensemble_api(api_query)
-    @featured_video_id = @videos[:ID]
-    @featured_video_title = @videos[:Title]
-    @featured_video_description = @videos[:Description]
+    api_query = @basepath + "/content/" + URI::encode(params[:id])
+    ensemble_api(api_query)
+    unless @videos.nil?
+      @featured_video_id = @videos[:ID]
+      @featured_video_title = @videos[:Title]
+      @featured_video_description = CGI.unescapeHTML(@videos[:Description]) unless @videos[:Description].nil?
+    else
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video.")
+    end
+    if @featured_video_id.nil?
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video.")
+    end
   end
 
   def videos_list
     @category = params[:collection]
     unless @category.nil? || @category.blank? || @category == "0"
       @categoryTitle = @categories[params[:collection].to_i]
-      api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
+      unless @categoryTitle.nil?
+        api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
+      end
     else
       @categoryTitle = "All Past Programs"
       api_query = @basepath + @medialibrary
     end
-    @videos = ensemble_api(api_query)
+    ensemble_api(api_query) unless api_query.nil?
+    if @videos.nil?
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve video list.")
+    end
   end
 
   def videos_search
     api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
-    @videos = ensemble_api(api_query)
-    @categoryTitle = 'you searched for: "' + params[:q] + '"'
+    ensemble_api(api_query)
+    unless @videos.nil?
+      @categoryTitle = 'you searched for: "' + params[:q] + '"'
+    else
+      return redirect_to(pages_videos_all_path, alert: "Unable to retrieve videos.")
+    end
   end
 
   def ensemble_api(api_query)
     videos = HTTParty.get(api_query)
-    JSON.parse(videos&.body, symbolize_names: true)
+    begin
+      @videos = JSON.parse(videos&.body, symbolize_names: true)
+    rescue => e
+      e.message
+    end
   end
 
   def charles
     @page = ExternalLink.find_by_slug("explore-charles")
     @content = Page.find_by_slug("charles")
-    @images = ["24_7.jpg", "atrium.jpg", "charles.jpg", "class.jpg", "classroom.jpg",
-                "digital-scholars.jpg", "entry-plaza.jpg", "event-space.jpg",
-                "exhibition.jpg", "frozen-garden.jpg", "grove.jpg", "liacouras.jpg",
-                "north-reading-room.jpg", "oculus.jpg", "one-stop.jpg", "quiet-reading-room.jpg",
-                "reading-room.jpg", "scrc.jpg", "stacks.jpg", "writing-center.jpg",
-                "floorplan1.jpg", "floorplan2.jpg", "floorplan3.jpg", "floorplan4.jpg" ]
+    @images = []
+    22.times do |i|
+      @images << (i.to_s + ".jpg")
+    end
   end
 
   def home
@@ -138,7 +164,7 @@ class PagesController < ApplicationController
     end
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.now]).order(:start_time).take(5)
     @blog = Blog.find_by_slug("lcdss-blog")
-    @blog_posts = @blog.blog_posts.take(5)
+    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
     @info = Space.find_by_slug("lcdss")
     @page = Page.find_by_slug("lcdss-intro")
   end

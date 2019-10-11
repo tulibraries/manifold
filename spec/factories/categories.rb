@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-
 FactoryBot.define do
   factory :category do
     name { "Dreaming" }
     custom_url { "" }
     description { "" }
+    get_help { "" }
 
     trait :custom_url do
       custom_url { "http://sand.man" }
@@ -23,6 +23,9 @@ FactoryBot.define do
     end
     trait :with_description do
       description { "It's what the category is about" }
+    end
+    trait :with_get_help do
+      get_help { "It's what help is for" }
     end
   end
 

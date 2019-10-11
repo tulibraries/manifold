@@ -7,6 +7,6 @@
 	<ul class="text-left">
 	  <li><%= link_to t("manifold.header.search.books"), "#{librarysearch_url("books")}" %></li>
     <li><%= link_to t("manifold.header.search.articles"), "#{librarysearch_url("articles")}" %></li>
-    <li><%= link_to t("manifold.header.search.databases"), "#{librarysearch_url("databases")}" %></li>
+    <li><%= link_to t("manifold.header.search.databases"), @db_az_link %></li>
 	</ul>
 </div>

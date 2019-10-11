@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore Postgresql db dumps
+*.sqlc
+
 # Ignore real data
 /db/data.yml
 
@@ -28,6 +31,7 @@
 /yarn-error.log
 
 /public/assets
+/public/sitemap.xml.gz
 .byebug_history
 tags
 .tags*

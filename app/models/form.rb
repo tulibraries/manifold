@@ -118,12 +118,13 @@ class Form < MailForm::Base
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["msly@temple.edu", "tuf12871@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["jhill@temple.edu", "klehman@temple.edu"]],
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["john.pyle@temple.edu"]],
-      "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu"]],
+      "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu", "richieh@temple.edu"]],
       "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cacert@temple.edu"]],
       "cac-external" => ["Cultural Analytics Certificate External Application", ["cacert@temple.edu"]],
       "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
-      "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["notices@temple.edu"]]
+      "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["notices@temple.edu"]],
+      "storage-request" => ["Storage Request", ["jhill@temple.edu", "musial@temple.edu"]]
     }
 
     @forms.fetch(form_type)

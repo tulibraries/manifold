@@ -14,7 +14,7 @@
 
 <fieldset>
   <legend>Event Information</legend>
-  <%= f.input :event_space, as: :select, collection: ["24/7 Lobby and Cafe *","2nd Floor Multipurpose Room","3rd Floor Reading Room *","4th Floor Multipurpose Room","4th Floor Reading Room *","Atrium *","Event Space","Graduate and Faculty Studio *"], label: "Event Space", required: :true, hint: "* Special use, non-peak times only" %>
+  <%= f.input :event_space, as: :select, collection: ["24/7 Lobby and Cafe *","2nd Floor Multipurpose Room","3rd Floor Reading Room *","4th Floor Multipurpose Room","4th Floor Reading Room *","Atrium *","Event Space","Graduate and Faculty Studio *","any available/not sure"], label: "Event Space", required: :true, hint: "* Special use, non-peak times only" %>
   <%= f.input :event_title, as: :text, label: "Event Title", required: :true %>
   <%= f.input :attendees, as: :integer, label: "Estimated Number of Attendees", required: :true %>
 </fieldset>

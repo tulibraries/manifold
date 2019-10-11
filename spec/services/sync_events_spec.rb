@@ -116,7 +116,7 @@ RSpec.describe SyncService::Events, type: :service do
     end
   end
 
-  context "fuzzy logic", :focus do
+  context "fuzzy logic" do
     let(:internal_events) { described_class.new(events_url: file_fixture("fuzzy_events_internal.xml").to_path) }
     let(:external_events) { described_class.new(events_url: file_fixture("fuzzy_events_external.xml").to_path) }
 
@@ -157,7 +157,9 @@ RSpec.describe SyncService::Events, type: :service do
         expect(event.external_building).to eq nil
       end
       it "doesn't have a building reference" do
-        allow(::FuzzyFind::Building).to receive(:find).with(kind_of(String)).and_return(nil)
+        allow(::FuzzyFind::Building).to receive(:find)
+          .with(kind_of(String), kind_of(Hash))
+          .and_return(nil)
         external_events.sync
         event = Event.find_by(building_id: @building.id)
         expect(event).to_not be
@@ -192,22 +194,25 @@ RSpec.describe SyncService::Events, type: :service do
       second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
       expect(first_time).to eql second_time
     end
-  end
-
-  context "trying to ingest the same record twice" do
-    let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
-
-    it "does not update the record" do
-      sync_event.sync
-      first_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
-      sync_event.sync
-      second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
-      expect(first_time).to eql second_time
-    end
 
     it "does not throw an error trying to attach image twice" do
       sync_event.sync
       expect { sync_event.sync }.not_to raise_error
+    end
+
+
+  end
+
+  context "when sync is forced" do
+    let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
+    let(:force_sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path, force: true) }
+
+    it "does not update the record" do
+      sync_event.sync
+      first_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
+      force_sync_event.sync
+      second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
+      expect(second_time).to be > first_time
     end
 
 

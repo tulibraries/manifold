@@ -24,7 +24,7 @@ class BuildingDashboard < BaseDashboard
     email: Field::Email,
     policies: Field::HasMany,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
-    external_link: Field::BelongsTo,
+    external_link: Field::BelongsTo.with_options(order: "title"),
     categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

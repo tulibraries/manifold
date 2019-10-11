@@ -3,6 +3,7 @@
 class FindingAid < ApplicationRecord
   include InputCleaner
   include Categorizable
+  include Validators
 
   paginates_per 15
 
@@ -12,6 +13,7 @@ class FindingAid < ApplicationRecord
   has_paper_trail
 
   before_validation :sanitize_description
+  validates :collection_id, collection_or_subject: true
 
   serialize :subject
 

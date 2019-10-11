@@ -25,5 +25,26 @@ RSpec.describe FindingAid, type: :model do
     end
   end
 
+  describe "tests for collections and subjects" do
+    it "*has values in both fields*" do
+      finding_aid = FactoryBot.create(:finding_aid, collections: [FactoryBot.create(:collection)])
+      expect { finding_aid.save! }.not_to raise_error
+    end
+    it "has subject but no collection_id" do
+      finding_aid = FactoryBot.create(:finding_aid)
+      expect { finding_aid.save! }.not_to raise_error
+    end
+    it "has collection_id but no subject" do
+      finding_aid = FactoryBot.build(:finding_aid, collections: [FactoryBot.create(:collection)], subject: [""])
+      expect { finding_aid.save! }.not_to raise_error(/Values for either Collections or Subjects need to be selected./)
+    end
+    it "has neither subject nor collection_id" do
+      finding_aid = FactoryBot.build(:finding_aid, subject: [""])
+      expect { finding_aid.save! }.to raise_error(/Values for either Collections or Subjects need to be selected./)
+    end
+  end
+
+
+
   it_behaves_like "categorizable"
 end

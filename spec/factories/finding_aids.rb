@@ -4,10 +4,11 @@ FactoryBot.define do
   factory :finding_aid do
     name { "MyString" }
     description { "MyText" }
-    subject { ["MyString"] }
+    subject { ["history"] }
     content_link { "MyString" }
     identifier { "MyString" }
     drupal_id { "MyString" }
     path { "a-finding-aid" }
+    collections { [] }
   end
 end

@@ -12,7 +12,7 @@
   </div>
   <div class="col-12 col-lg-6">
     <div class="exhibition-description">
-      <h1 class="page-title"><%= @exhibition.title %></h1>
+      <h1 class="page-title"><%= title @exhibition.title %></h1>
       
       <% unless @exhibition.end_date.nil? %>
         <div class="dates">

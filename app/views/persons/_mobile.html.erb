@@ -3,7 +3,7 @@
     <% if @person.image.attached?  %>
       <%= image_tag @person.show_image, class: "decorative" %>
     <% end %>
-    <h1 class="person-name"><%= @person.first_name %> <%= @person.last_name %></h1>
+    <h1 class="person-name"><%= title "#{@person.first_name} #{@person.last_name}" %></h1>
     <div class="job-title"><%= @person.job_title %></div>
   </div>
 </div> 

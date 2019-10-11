@@ -13,7 +13,7 @@
       <div class="col-12 col-lg-6">
     <% end %>
     
-      <h1 class="page-title"><%= @building.label %></h1>
+      <h1 class="page-title"><%= title @building.label %></h1>
       <ul class="list-unstyled building-contact">
         <li class="lib_location"><span><%= @building.address1 %> <%= @building.address2 %></span></li>
         <li class="lib_phone"><span><%= phone_formatted(@building.phone_number) %></span></li>

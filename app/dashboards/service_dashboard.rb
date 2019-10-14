@@ -16,7 +16,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     description: DescriptionField,
     access_description: DescriptionField,
     access_link: Field::String,
-    external_link: Field::BelongsTo,
+    external_link: Field::BelongsTo.with_options(order: "title"),
     service_policies: DescriptionField,
     related_policies: Field::HasMany.with_options(class_name: "Policy"),
     intended_audience: MultiSelectField.with_options(

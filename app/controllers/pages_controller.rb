@@ -2,12 +2,12 @@
 
 class PagesController < ApplicationController
   include HasCategories
+  include HTTParty
   before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
   before_action :set_page, only: [:show, :charles]
   before_action :navigation_items, only: [:show, :charles]
   before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
 
-  include HTTParty
 
   def get_highlights
     @highlights = Highlight.where(promoted: true).take(4)
@@ -132,6 +132,7 @@ class PagesController < ApplicationController
     @locations = Building.find_by_slug("ambler")
     @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
     @libguides = ExternalLink.find_by_slug("libguides")
+    @explore_charles = Page.find_by_slug("explore-charles")
   end
 
   def scrc

@@ -13,7 +13,7 @@
 	  	<div class="col-12 col-lg-9">
 	  <% end %>
 
-	    <h1 class="page-title"><%= @policy.name %></h1>
+	    <h1 class="page-title"><%= title @policy.name %></h1>
 	    <%= sanitize @policy.description.html_safe %>
 	  </div>
 

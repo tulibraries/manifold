@@ -3,6 +3,12 @@
 module Admin
   class AlertsController < Admin::ApplicationController
     load_and_authorize_resource
+    include Admin::SortByAttribute
+
+    # Override the default sort of id
+    def sort_by
+      :scroll_text
+    end
 
     # Devise has current_user hard_coded so if we us anything other than
     # user, we have no access to the devise object. So, we need to override

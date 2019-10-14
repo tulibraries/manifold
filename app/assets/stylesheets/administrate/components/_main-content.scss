@@ -12,6 +12,9 @@
 .main-content__header,
 .main-content__body {
   padding: 1rem 2rem;
+  hr {
+    clear: both;
+  }
 }
 
 .main-content__body--flush {

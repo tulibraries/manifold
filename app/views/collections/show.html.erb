@@ -41,7 +41,7 @@
       </div>
 
       <div class="col-12 col-lg-3">
-        <% unless @aids %>
+        <% if @collection.finding_aids.exists? %>
         <div class="access-link">
           <h2><%= link_to "Explore this Collection", finding_aids_path(collection: @collection) %></h2>
         </div>

@@ -17,6 +17,4 @@ class Collection < ApplicationRecord
   serialize :subject
 
   before_validation :burpArray
-
-  # :subject.reject!{|s| s.empty?}
 end

@@ -55,8 +55,14 @@
     </div> 
   <% end %>
 
+  <% unless @person.libguides_account.blank? %>
+    <h2>
+      <%= link_to "Subject guides by this librarian", "https://guides.temple.edu/prf.php?account_id=#{@person.libguides_account}", class: "libguides-link", target: "_new" %>
+    </h2>
+  <% end %>
+
   <% unless @person.springshare_id.blank? %>
-    <h2 style="margin-top: 17px"><%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %></h2>
+    <h2><%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %></h2>
   <% end %>
 
 </div>

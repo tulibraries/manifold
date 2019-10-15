@@ -3,11 +3,12 @@
 module Admin
   class AlertsController < Admin::ApplicationController
     load_and_authorize_resource
-    include Admin::SortByAttribute
 
-    # Override the default sort of id
-    def sort_by
-      :scroll_text
+    def order
+      @order ||= Administrate::Order.new(
+        params.fetch(resource_name, {}).fetch(:order, "published"),
+        params.fetch(resource_name, {}).fetch(:direction, "desc"),
+      )
     end
 
     # Devise has current_user hard_coded so if we us anything other than

@@ -9,6 +9,5 @@ FactoryBot.define do
     identifier { "MyString" }
     drupal_id { "MyString" }
     path { "a-finding-aid" }
-    collections { [] }
   end
 end

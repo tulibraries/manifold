@@ -17,11 +17,13 @@ FactoryBot.define do
     categories { [] }
 
     association :space
+    finding_aids { [] }
+
     trait :with_image do
-      after :create do |building|
+      after :create do |collection|
         file_path = Rails.root.join("spec", "fixtures", "charles.jpg")
         file = fixture_file_upload(file_path, "image/png")
-        building.image.attach(file)
+        collection.image.attach(file)
       end
     end
   end

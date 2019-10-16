@@ -4,11 +4,18 @@ require "rails_helper"
 
 RSpec.describe "Collections", type: :request do
   let(:collection) { FactoryBot.create(:collection) }
+  let(:findind_aid) { FactoryBot.create(:finding_aid, collection: :collection) }
 
   describe "a request for /collection/integer when collection exists" do
     it "renders the collection" do
       get collection_path(collection.id)
       expect(response.status).to eq(200)
+    end
+    it "displays the Explore link when has finding aids" do
+      expect { get collection_path(collection.id).to have_link("Explore this Collection") }
+    end
+    it "does not display the Explore link when has no finding aids" do
+      expect { get collection_path(collection.id).not_to have_link("Explore this Collection") }
     end
   end
 
@@ -19,7 +26,6 @@ RSpec.describe "Collections", type: :request do
     end
   end
 
-
   describe "a redirect with a legacy path starting with /collection" do
     let(:redirect) { FactoryBot.create(:collection_redirect) }
     it "redirects to the expected redirect path" do
@@ -28,7 +34,7 @@ RSpec.describe "Collections", type: :request do
     end
   end
 
-  describe "a redirect with a legacy path with additonal /" do
+  describe "a redirect with a legacy path with additional /" do
     let(:legacy_path) { "/collections/blockson/other" }
     let(:redirect) {
       FactoryBot.create(:collection_redirect, legacy_path: legacy_path)

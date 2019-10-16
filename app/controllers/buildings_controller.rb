@@ -10,7 +10,7 @@ class BuildingsController < ApplicationController
   def index
     @buildings = Building.all
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html
       format.json { render json: BuildingSerializer.new(@buildings) }
     end
   end

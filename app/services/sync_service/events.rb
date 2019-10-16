@@ -4,6 +4,8 @@ require "open-uri"
 require "logger"
 
 class SyncService::Events
+  class MissingGuidException < StandardError; end
+
   def self.call(events_url: nil, force: false)
     new(events_url: events_url, force: force).sync
   end
@@ -41,17 +43,18 @@ class SyncService::Events
 
   def record_hash(event)
     {
-      "title" => event.fetch("Title", nil),
-      "description" => event.fetch("Description", nil),
-      "tags" => event.fetch("Tags", nil),
-      "path" => event.fetch("Path", nil),
-      "event_type" => event.fetch("Type", nil),
-      "cancelled" => event.fetch("Canceled", 0),
+      "guid"                => event.fetch("GUID") { raise MissingGuidException.new("No GUID found for event #{event}") },
+      "title"               => event.fetch("Title", nil),
+      "description"         => event.fetch("Description", nil),
+      "tags"                => event.fetch("Tags", nil),
+      "path"                => event.fetch("Path", nil),
+      "event_type"          => event.fetch("Type", nil),
+      "cancelled"           => event.fetch("Canceled", 0),
       "registration_status" => event.fetch("RegistrationStatus", nil),
-      "registration_link" => event.fetch("ExternalRegistrationURL", nil),
-      "start_time" => start_time(event),
-      "end_time" => end_time(event),
-      "all_day" => all_day(event),
+      "registration_link"   => event.fetch("ExternalRegistrationURL", nil),
+      "start_time"          => start_time(event),
+      "end_time"            => end_time(event),
+      "all_day"             => all_day(event),
       "content_hash" => xml_hash(event)
     }
       .merge(contact(event))
@@ -62,15 +65,10 @@ class SyncService::Events
   def create_or_update_if_needed!(record_hash)
     # If a record already exists with this content hash, then no update needed
     if should_create_or_update(record_hash)
-      # Fuzzy find record based on title and start time, and otherwise create a new one
-      fuzzy_event = FuzzyFind::Event.find(
-        record_hash["title"],
-        addl_attribute: { start_time: record_hash["start_time"] }
-        )
-      if fuzzy_event
-        event = fuzzy_event
+      event = Event.find_by(content_hash: record_hash["content_hash"]) || Event.find_by(guid: record_hash["guid"])
+      if event
         stdout_and_log(
-          %Q(Incoming event with title #{record_hash["title"]} matched to existing event (id = #{fuzzy_event.id} ) with title #{fuzzy_event.title})
+          %Q(Incoming event with title #{record_hash["title"]} matched to existing event (id = #{event.id} ) with title #{event.title}), level: :debug
         )
       else
         event = Event.new
@@ -201,6 +199,6 @@ class SyncService::Events
 
   def stdout_and_log(message, level: :info)
     @log.send(level, message)
-    @stdout.send(level, message) #unless Rails.env.test?
+    @stdout.send(level, message)
   end
 end

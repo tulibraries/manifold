@@ -22,6 +22,10 @@ RSpec.describe SyncService::Events, type: :service do
     describe "maps events xml to db schema" do
       subject { @sync_events.record_hash(@events.first) }
 
+      it "maps GUID to guid field" do
+        expect(subject["guid"]).to match(@events.first["GUID"])
+      end
+
       it "maps Title to title field" do
         expect(subject["title"]).to match(@events.first["Title"])
       end
@@ -207,7 +211,7 @@ RSpec.describe SyncService::Events, type: :service do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
     let(:force_sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path, force: true) }
 
-    it "does not update the record" do
+    it "updates the record" do
       sync_event.sync
       first_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
       force_sync_event.sync
@@ -218,7 +222,7 @@ RSpec.describe SyncService::Events, type: :service do
 
   end
 
-  context "all day event", :skip do
+  context "all day event" do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
     subject { @sync_events.record_hash(@events.last) }
 

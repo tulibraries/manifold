@@ -16,7 +16,7 @@
 					<br /><%= category.name %>
 				<% end %>
 				</h2>
-				<p><%= category.description unless category.description.blank? %></p>
+				<p><%= sanitize category.description.html_safe unless category.description.blank? %></p>
 			</div>
 
 			<% end %>

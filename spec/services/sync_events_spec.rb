@@ -22,6 +22,10 @@ RSpec.describe SyncService::Events, type: :service do
     describe "maps events xml to db schema" do
       subject { @sync_events.record_hash(@events.first) }
 
+      it "maps GUID to guid field" do
+        expect(subject["guid"]).to match(@events.first["GUID"])
+      end
+
       it "maps Title to title field" do
         expect(subject["title"]).to match(@events.first["Title"])
       end
@@ -116,7 +120,7 @@ RSpec.describe SyncService::Events, type: :service do
     end
   end
 
-  context "fuzzy logic", :focus do
+  context "fuzzy logic" do
     let(:internal_events) { described_class.new(events_url: file_fixture("fuzzy_events_internal.xml").to_path) }
     let(:external_events) { described_class.new(events_url: file_fixture("fuzzy_events_external.xml").to_path) }
 
@@ -157,7 +161,9 @@ RSpec.describe SyncService::Events, type: :service do
         expect(event.external_building).to eq nil
       end
       it "doesn't have a building reference" do
-        allow(::FuzzyFind::Building).to receive(:find).with(kind_of(String)).and_return(nil)
+        allow(::FuzzyFind::Building).to receive(:find)
+          .with(kind_of(String), kind_of(Hash))
+          .and_return(nil)
         external_events.sync
         event = Event.find_by(building_id: @building.id)
         expect(event).to_not be
@@ -192,18 +198,6 @@ RSpec.describe SyncService::Events, type: :service do
       second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
       expect(first_time).to eql second_time
     end
-  end
-
-  context "trying to ingest the same record twice" do
-    let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
-
-    it "does not update the record" do
-      sync_event.sync
-      first_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
-      sync_event.sync
-      second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
-      expect(first_time).to eql second_time
-    end
 
     it "does not throw an error trying to attach image twice" do
       sync_event.sync
@@ -213,7 +207,22 @@ RSpec.describe SyncService::Events, type: :service do
 
   end
 
-  context "all day event", :skip do
+  context "when sync is forced" do
+    let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
+    let(:force_sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path, force: true) }
+
+    it "updates the record" do
+      sync_event.sync
+      first_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
+      force_sync_event.sync
+      second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
+      expect(second_time).to be > first_time
+    end
+
+
+  end
+
+  context "all day event" do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
     subject { @sync_events.record_hash(@events.last) }
 

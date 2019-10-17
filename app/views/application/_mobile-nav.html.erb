@@ -33,19 +33,19 @@
         </div>
         <div class="row">
           <div class="col">
-            <%= image_tag "person.png", class: "person-icon decorative" %>
+            <%= image_tag "person.png", class: "person-icon decorative", alt: "" %>
             <%= link_to t("manifold.header.my_account"), "#{librarysearch_url("users/account")}" %>
           </div>
         </div>
         <div class="row">
           <div class="col" id="chat-nav-mobile">
-            <%= image_tag "chat.png", class: "chat-icon decorative" %>
+            <%= image_tag "chat.png", class: "chat-icon decorative", alt: "" %>
             <%= link_to t("manifold.header.chat"), @chat_link %>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <%= image_tag "hours.png", class: "hours-icon decorative" %>
+            <%= image_tag "hours.png", class: "hours-icon decorative", alt: "" %>
             <%= link_to t("manifold.header.hours"), hours_path %>
           </div>
         </div>

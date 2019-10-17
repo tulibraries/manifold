@@ -11,7 +11,7 @@
   <% @highlights.each do |highlight| %>
   <div class="col-12 col-lg-6 highlight">
     <% if highlight.image.attached?  %>
-    <%= link_to (image_tag highlight.custom_image(600, 264), class: "decorative"), strip_tags(highlight.link) %>
+    <%= link_to (image_tag highlight.custom_image(600, 264), class: "decorative", alt: ""), strip_tags(highlight.link) %>
     <% end %>
     <div class="highlight-caption">
       <h2><%= link_to highlight.label.truncate(52), strip_tags(highlight.link) %></h2>

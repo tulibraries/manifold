@@ -8,8 +8,11 @@
 	background-color: cornsilk;
 	.container {
 		padding: 14px 10px;
-		height: 49px;
+		height: auto;
 		vertical-align: middle;
+		a {
+			text-decoration: underline;
+		}
 	}
 }
 

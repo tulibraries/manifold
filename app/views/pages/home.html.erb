@@ -38,11 +38,13 @@
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3">
-	    <div class="cta-white">
-		    <%= link_to @explore_charles, class: "strong" do %>
-		      <%= image_tag('explore_charles.png', class: "decorative", alt: "") %> <span>Explore Charles Library</span>
-	      <% end %>
-	    </div>
+			<% unless @explore_charles.nil? %>
+		    <div class="cta-white">
+			    <%= link_to @explore_charles, class: "strong" do %>
+			      <%= image_tag('explore_charles.png', class: "decorative", alt: "") %> <span>Explore Charles Library</span>
+		      <% end %>
+		    </div>
+	     <% end %>
 	  </div>
 	</div>
 </div>
@@ -62,13 +64,17 @@
 			    <% end %>
 				</div>
 				<div class="h-22 square">
-			    <%= link_to @db_az_link do %>
-			      <%= image_tag('database_white.png', class: "icon decorative", alt: "") %> <span>Databases</span>
+					<% unless @db_az_link.nil? %>
+				    <%= link_to @db_az_link do %>
+				      <%= image_tag('database_white.png', class: "icon decorative", alt: "") %> <span>Databases</span>
+				    <% end %>
 			    <% end %>
 				</div>
 				<div class="h-22 square bb-0">
-			    <%= link_to @libguides do %>
-			      <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> <span>Research Guides</span>
+					<% unless @libguides.nil? %>
+				    <%= link_to @libguides do %>
+				      <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> <span>Research Guides</span>
+				    <% end %>
 			    <% end %>
 				</div>
 				<div class="caption">
@@ -102,7 +108,7 @@
 				<div class="h-18 two-lines"><%= link_to "Special Collections Research Center", pages_scrc_path %></div>
 				<div class="h-18 bb-0"><%= link_to "Law Library", "https://www.law.temple.edu/library/about-the-law-library/" %></div>
 				<div class="caption">
-					<%= link_to "See all libraries and locations >", @locations, class: "gobel" %>
+					<%= link_to("See all libraries and locations >", @locations, class: "gobel") unless @locations.nil? %>
 				</div>
 			</div>
 		</div>

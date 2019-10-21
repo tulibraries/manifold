@@ -251,6 +251,17 @@ end
       end
     end
 
+    context "when no items are weighted" do
+      before do
+        building.categories << category
+        building2.categories << category
+        event.categories << category
+      end
+      it "sorts them alphabetically by label" do
+        expect(category.items).to eql [building, building2, event]
+      end
+    end
+
     context "deleting an categorized item" do
       before do
         building.categories << category

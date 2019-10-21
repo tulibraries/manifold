@@ -37,7 +37,7 @@ class Category < ApplicationRecord
       type.constantize.find(ids)
         .each_with_index { |obj, index| obj.category_weight = weights[index]  }
     end.reduce([], :concat)
-      .sort_by { |categorized| categorized&.category_weight }
+      .sort_by { |categorized| [categorized&.category_weight, categorized&.label] }
   end
 
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :admingroup do
+  factory :admin_group do
     name { "MyString" }
     members { [] }
   end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
-class AdmingroupDashboard < Administrate::BaseDashboard
+class AdminGroupDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -21,20 +23,20 @@ class AdmingroupDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  members
   id
   name
+  members
   created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  members
   id
   name
   created_at
   updated_at
+  members
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -57,11 +59,11 @@ class AdmingroupDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how admingroups are displayed
+  # Overwrite this method to customize how admin_groups are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(admingroup)
-    "Admin Group ##{admingroup.id}"
+  def display_resource(admin_group)
+    "Admin Group ##{admin_group.id}"
   end
 
   def tinymce?

@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2019_10_21_155040) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.boolean "alertability"
-    t.bigint "admingroup_id"
-    t.index ["admingroup_id"], name: "index_accounts_on_admingroup_id"
+    t.bigint "admin_group_id"
+    t.index ["admin_group_id"], name: "index_accounts_on_admin_group_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_155040) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "admingroups", force: :cascade do |t|
+  create_table "admin_groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -459,7 +459,7 @@ ActiveRecord::Schema.define(version: 2019_10_21_155040) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  add_foreign_key "accounts", "admingroups"
+  add_foreign_key "accounts", "admin_groups"
   add_foreign_key "collections", "external_links"
   add_foreign_key "spaces", "external_links"
 end

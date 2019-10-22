@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   resources :blogs, only: [:index, :show]
   resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
   resources :groups, only: [:index, :show]
+  resources :categories, only: [:show], concerns: [:imageable]
   resources :collections, only: [:index, :show], concerns: [:imageable]
   resources :services, only: [:index, :show], concerns: [:imageable]
   resources :policies, only: [:index, :show]

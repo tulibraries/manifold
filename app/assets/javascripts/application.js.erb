@@ -20,28 +20,6 @@
 //= require turbolinks
 //= require_tree .
 
-function toggle(x) {
-  if (x == "secondary") {
-  	document.getElementById("sub-toggler-icon").classList.toggle("change");
-  }
-  else if (x == "search") {
-  	document.getElementById("search-toggler-icon").classList.toggle("change");
-  }
-  else {
-    document.getElementById("main-toggler-icon").classList.toggle("change");
-  }
-}
-
-function swap_image(y) {
-	x = document.getElementById("icon_filter").src;
-	if (x .includes("icon_x")) {
-		document.getElementById("icon_filter").src = "<%= asset_path('icon_filter_red.png') %>";
-  }
-  else if (x.includes("icon_filter")) {
-		document.getElementById("icon_filter").src = "<%= asset_path('icon_x_red.png') %>" ;
-  }
-}
-
 $(document).ready(function() {  
   $('.decorative').each(function() {
     $(this).attr('alt', "");
@@ -56,23 +34,26 @@ $(document).ready(function() {
     $('#slide-previous').css("opacity", 0);
   });
 
+  $('.icon-toggler').on("click", function() { 
+    if (this.id == "mobile-menu-button") {
+      document.getElementById("sub-toggler-icon").classList.toggle("change");
+    }
+    else if (this.id == "menu-button") {
+      document.getElementById("navbar-toggler-icon").classList.toggle("change");
+    }
+    else if (this.id == "mobile-search-button") {
+      document.getElementById("search-toggler-icon").classList.toggle("change");
+    }
+  });
+
+  $('#mobile-menu-image-button').on("click", function() {  
+    x = document.getElementById("icon_filter").src;
+    if (x.includes("icon_x")) {
+      document.getElementById("icon_filter").src = "<%= asset_path('icon_filter_red.png') %>";
+    }
+    else if (x.includes("icon_filter")) {
+      document.getElementById("icon_filter").src = "<%= asset_path('icon_x_red.png') %>" ;
+    }
+  });
+
 });
-
-
-// TO BE IMPLEMENTED LATER REPLACING THE ONCLICK OF MENU ICONS
-// $('<span>', {
-// 	'class': 'button', // So you can style it
-// 	role: 'button', // Tell assistive technology it's a button
-// 	tabindex: '0', // Make it keyboard focusable
-// 	click: function() { // Make something happen when it is clicked
-// 		alert('You clicked me!');
-// 	},
-// 	keydown: function(e) { // Trigger the click event from the keyboard
-// 		var code = e.which;
-// 		// 13 = Return, 32 = Space
-// 		if ((code === 13) || (code === 32)) {
-// 			$(this).click();
-// 		}
-// 	},
-// 	html: 'Click me!'
-// }).appendTo($('#button-container'));

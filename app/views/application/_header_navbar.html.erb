@@ -17,9 +17,9 @@
   </div>
 <% end %>
 
-  <div id="mobile-search-button" class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
-    <span class="navbar-toggler-icon" id="search-toggler-icon" onclick="toggle('search')">
+  <div class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right">
+    <button id="mobile-search-button" class="navbar-toggler icon-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
+    <span class="navbar-toggler-icon" id="search-toggler-icon">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>

@@ -8,9 +8,9 @@
     <div class="card ctaLast">
   <% end %>
     <% if event.image.attached? %>
-      <%= image_tag event.image.variant(gravity: 'center', extent: "100%x90%"), class: "d-none d-lg-block decorative" %>
+      <%= image_tag event.image.variant(gravity: 'center', extent: "100%x90%"), class: "d-none d-lg-block decorative", alt: "" %>
     <% else %>
-      <%= link_to image_tag('T-borderless.gif', class: "d-none d-lg-block decorative"), event_path(event) %>
+      <%= link_to image_tag('T-borderless.gif', class: "d-none d-lg-block decorative", alt: ""), event_path(event) %>
     <% end %>
     <div class="info">
       <div class="d-none d-lg-inline-block when">

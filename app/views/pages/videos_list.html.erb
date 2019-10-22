@@ -15,7 +15,7 @@
 			<% @videos[:Data].each do |video| %>
 			<div class="col-6 col-md-4 col-lg-3 text-center" style="margin-top: 14px">
 				<%= link_to pages_videos_show_path(id: video[:ID]) do %>
-				<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;", class: "decorative" %>
+				<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;", class: "decorative", alt: "" %>
 				<br>
 				<%= video[:Title].truncate(64) %>
 		    <% end %>

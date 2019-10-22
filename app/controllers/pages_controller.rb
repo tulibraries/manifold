@@ -8,6 +8,9 @@ class PagesController < ApplicationController
   before_action :navigation_items, only: [:show, :charles]
   before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
 
+  def wpvi
+  end
+
 
   def get_highlights
     @highlights = Highlight.where(promoted: true).take(4)

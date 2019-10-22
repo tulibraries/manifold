@@ -4,27 +4,34 @@ require "open-uri"
 require "logger"
 
 class SyncService::Events
-  def self.call(events_url: nil)
-    new(events_url: events_url).sync
+  class MissingGuidException < StandardError; end
+
+  def self.call(events_url: nil, force: false)
+    new(events_url: events_url, force: force).sync
   end
 
   def initialize(params = {})
     @log = Logger.new("log/sync-event.log")
+    @stdout = Logger.new(STDOUT)
     @eventsUrl = params.fetch(:events_url) || Rails.configuration.events_feed_url
+    @force = params.fetch(:force, false)
     @eventsDoc = Nokogiri::XML(open(@eventsUrl))
-    @log.info("Syncing events from #{@eventsUrl}")
+    stdout_and_log("Syncing events from #{@eventsUrl}")
   end
 
   def sync
+    @updated = @skipped = @errored = 0
     read_events.each do |e|
       begin
         @log.info(%Q(Syncing Event #{e["Title"]} on #{e["EventStartDate"]}))
         record = record_hash(e)
         create_or_update_if_needed!(record)
       rescue Exception => err
-        @log.error("  #{err.message}")
+        stdout_and_log(%Q(Syncing Event #{e["Title"]} errored -  #{err.message} \n #{err.backtrace}))
+        @errored += 1
       end
     end
+    stdout_and_log("Syncing completed with #{@updated} updated, #{@skipped} skipped, and #{@errored} errored records.")
   end
 
   def read_events
@@ -36,16 +43,18 @@ class SyncService::Events
 
   def record_hash(event)
     {
-      "title" => event.fetch("Title", nil),
-      "description" => event.fetch("Description", nil),
-      "tags" => event.fetch("Tags", nil),
-      "event_type" => event.fetch("Type", nil),
-      "cancelled" => event.fetch("Canceled", 0),
+      "guid"                => event.fetch("GUID") { raise MissingGuidException.new("No GUID found for event #{event}") },
+      "title"               => event.fetch("Title", nil),
+      "description"         => event.fetch("Description", nil),
+      "tags"                => event.fetch("Tags", nil),
+      "path"                => event.fetch("Path", nil),
+      "event_type"          => event.fetch("Type", nil),
+      "cancelled"           => event.fetch("Canceled", 0),
       "registration_status" => event.fetch("RegistrationStatus", nil),
-      "registration_link" => event.fetch("ExternalRegistrationURL", nil),
-      "start_time" => start_time(event),
-      "end_time" => end_time(event),
-      "all_day" => all_day(event),
+      "registration_link"   => event.fetch("ExternalRegistrationURL", nil),
+      "start_time"          => start_time(event),
+      "end_time"            => end_time(event),
+      "all_day"             => all_day(event),
       "content_hash" => xml_hash(event)
     }
       .merge(contact(event))
@@ -55,13 +64,16 @@ class SyncService::Events
 
   def create_or_update_if_needed!(record_hash)
     # If a record already exists with this content hash, then no update needed
-    unless Event.exists?(content_hash: record_hash["content_hash"])
-      # Fuzzy find record based on title and start time, and otherwise create a new one
-      event = FuzzyFind::Event.find(
-        record_hash["title"],
-        addl_attribute: { start_time: record_hash["start_time"] }
-        ) || Event.new
-      event.assign_attributes(record_hash.except("person", "building", "image"))
+    if should_create_or_update(record_hash)
+      event = Event.find_by(content_hash: record_hash["content_hash"]) || Event.find_by(guid: record_hash["guid"])
+      if event
+        stdout_and_log(
+          %Q(Incoming event with title #{record_hash["title"]} matched to existing event (id = #{event.id} ) with title #{event.title}), level: :debug
+        )
+      else
+        event = Event.new
+      end
+      event.assign_attributes(record_hash.except("person", "building", "image", "path"))
       event.person = record_hash["person"]
       event.building = record_hash["building"]
       event.tags = record_hash["tags"]
@@ -72,7 +84,16 @@ class SyncService::Events
           filename: record_hash[:image][:filename]
         )
       end
-      event.save!
+      if event.save!
+        stdout_and_log(%Q(Successfully saved record for #{record_hash["title"]}))
+        @updated += 1
+      else
+        stdout_and_log(%Q(Record not saved for #{record_hash["title"]}))
+        @updated += 1
+      end
+    else
+      stdout_and_log(%Q(Found match for content hash for #{record_hash["title"]}; skipped syncing.))
+      @skipped += 1
     end
   end
 
@@ -162,5 +183,22 @@ class SyncService::Events
     else
       {}
     end
+  end
+
+  def already_exists?(record_hash)
+    Event.exists?(content_hash: record_hash["content_hash"])
+  end
+
+  def does_not_exist?(record_hash)
+    !already_exists?(record_hash)
+  end
+
+  def should_create_or_update(record_hash)
+    (does_not_exist?(record_hash) || @force)
+  end
+
+  def stdout_and_log(message, level: :info)
+    @log.send(level, message)
+    @stdout.send(level, message)
   end
 end

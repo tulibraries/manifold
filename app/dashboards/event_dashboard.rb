@@ -38,6 +38,7 @@ class EventDashboard < BaseDashboard
     alt_text: Field::String,
     ensemble_identifier: Field::String,
     categories: Field::HasMany,
+    guid: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -84,6 +85,7 @@ class EventDashboard < BaseDashboard
     :registration_link,
     :content_hash,
     :ensemble_identifier,
+    :guid,
     :categories,
     :created_at,
     :updated_at,
@@ -119,6 +121,7 @@ class EventDashboard < BaseDashboard
     :registration_link,
     :content_hash,
     :ensemble_identifier,
+    :guid,
     :categories
   ].freeze
 

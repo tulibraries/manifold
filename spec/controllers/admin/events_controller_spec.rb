@@ -42,4 +42,19 @@ RSpec.describe Admin::EventsController, type: :controller do
       expect(response.body).to match(original_title)
     end
   end
+
+  describe "GET #sync" do
+    let (:event) { FactoryBot.create(:event) }
+    before do
+      sign_in(@account)
+      # Stub out the sync service so we don't actually make
+      # http requests for XML. We jut want to test that
+      # we are calling the service integration correctly
+      allow(::SyncService::Events).to receive(:call)
+    end
+    it "renders edit form" do
+      post :sync
+      expect(::SyncService::Events).to have_received(:call).with(force: true)
+    end
+  end
 end

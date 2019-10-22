@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   devise_for :accounts, controllers: { omniauth_callbacks: "accounts/omniauth_callbacks" }
   namespace :admin do
     resources :accounts
+    resources :admin_groups
     resources :alerts
     resources :blogs
     resources :buildings
@@ -119,6 +120,7 @@ Rails.application.routes.draw do
     get "home" => :home, as: "pages_home"
     get "lcdss" => :tudsc, as: "pages_lcdss"
     get "explore-charles" => :charles, as: "pages_charles"
+    get "wpvi" => :wpvi
     get "watchpastprograms" => :videos_all, as: "pages_videos_all"
     get "watchpastprograms/list/:collection" => :videos_list, as: "pages_videos_collection"
     get "watchpastprograms/search" => :videos_search, as: "pages_videos_search"

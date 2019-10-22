@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CollectionsController < ApplicationController
-  include FindingAidsFinder
   include HasCategories
   include RedirectLogic
 
@@ -44,6 +43,5 @@ class CollectionsController < ApplicationController
       @collection = Collection.find_by(id: params[:id])
       return redirect_or_404 unless @collection
       @categories = @collection.categories
-      @aids = has_finding_aids(params[:id])
     end
 end

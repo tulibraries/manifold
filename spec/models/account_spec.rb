@@ -65,4 +65,12 @@ RSpec.describe Account, type: :model do
       expect(a).to be_nil
     end
   end
+
+  describe "name field" do
+    let(:account) { FactoryBot.build(:account) }
+    example "exists" do
+      account.save!
+      expect(account.name).to match /#{Account.last["name"]}/
+    end
+  end
 end

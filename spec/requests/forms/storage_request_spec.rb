@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "Storage Request Form", type: :request do
+RSpec.describe "Recall item from Charles Library temporary storage", type: :request do
 
   let(:form_type) { "storage-request" }
   let(:form_params) {

@@ -438,7 +438,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.3)
-    rswag-api (2.1.0)
+    rswag-api (2.1.1)
       railties (>= 3.1, < 6.1)
     rswag-ui (2.1.0)
       actionpack (>= 3.1, < 6.1)

@@ -21,6 +21,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     image: PhotoField,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
+    accounts: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
     slug: Field::String,
     created_at: Field::DateTime,
@@ -45,6 +46,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :subject,
     :space,
     :categories,
+    :accounts,
     :slug,
     :external_link
   ].freeze
@@ -61,6 +63,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :categories,
     :space,
     :external_link,
+    :accounts,
     :add_to_footer,
   ].freeze
 

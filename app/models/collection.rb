@@ -2,8 +2,9 @@
 
 class Collection < ApplicationRecord
   has_paper_trail
-  include InputCleaner
+  include Accountable
   include Categorizable
+  include InputCleaner
   include Imageable
 
   validates :name, :description, presence: true

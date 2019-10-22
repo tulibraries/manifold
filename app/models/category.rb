@@ -2,6 +2,7 @@
 
 class Category < ApplicationRecord
   include Rails.application.routes.url_helpers
+  include Accountable
   #TODO: should we validate that icon is svg?
   include Imageable
 

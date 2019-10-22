@@ -21,6 +21,7 @@ class PageDashboard < Administrate::BaseDashboard
       multiple: false,
       ),
     categories: Field::HasMany,
+    accounts: Field::HasMany.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -38,7 +39,8 @@ class PageDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
-    :categories
+    :categories,
+    :accounts
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -51,6 +53,7 @@ class PageDashboard < Administrate::BaseDashboard
     :document,
     :group,
     :categories,
+    :accounts,
     :layout
   ].freeze
 

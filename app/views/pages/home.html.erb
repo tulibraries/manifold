@@ -14,7 +14,7 @@
 	    <div class="cta-white">
 	    	<% unless @research_help.nil? %>
 		    <%= link_to @research_help, class: "strong" do %>
-		      <%= image_tag('research_help.png', class: "decorative") %> <span>Research Help</span>
+		      <%= image_tag('research_help.png', class: "decorative", alt: "") %> <span>Research Help</span>
 		    <% end %>
 	      <% end %>
 	    </div>
@@ -23,7 +23,7 @@
 	    <div class="cta-white">
 	    	<% unless @print_my_paper.nil? %>
 		    <%= link_to @print_my_paper, class: "strong" do %>
-		      <%= image_tag('printer.png', class: "decorative") %> <span>Print My Paper</span>
+		      <%= image_tag('printer.png', class: "decorative", alt: "") %> <span>Print My Paper</span>
 		    <% end %>
 	      <% end %>
 	    </div>
@@ -32,7 +32,7 @@
 	    <div class="cta-white">
 	    	<% unless @book_study_room.nil? %>
 		    <%= link_to @book_study_room, class: "strong" do %>
-		      <%= image_tag('study_room.png', class: "decorative") %> <span>Book a Study Room</span>
+		      <%= image_tag('study_room.png', class: "decorative", alt: "") %> <span>Book a Study Room</span>
 		    <% end %>
 	      <% end %>
 	    </div>
@@ -40,7 +40,7 @@
 	  <div class="col-12 col-lg-3">
 	    <div class="cta-white">
 		    <%= link_to @explore_charles, class: "strong" do %>
-		      <%= image_tag('explore_charles.png', class: "decorative") %> <span>Explore Charles Library</span>
+		      <%= image_tag('explore_charles.png', class: "decorative", alt: "") %> <span>Explore Charles Library</span>
 	      <% end %>
 	    </div>
 	  </div>
@@ -53,22 +53,22 @@
 			<div class="col-12 col-lg-3 catalog-search h-auto">
 				<div class="h-22 square">
 			    <%= link_to "#{librarysearch_url}/catalog" do %>
-			      <%= image_tag('book_white.png', class: "icon decorative") %> <span>Books & Media</span>
+			      <%= image_tag('book_white.png', class: "icon decorative", alt: "") %> <span>Books & Media</span>
 			    <% end %>
 				</div>
 				<div div class="h-22 square">
 			    <%= link_to "#{librarysearch_url}/articles" do %>
-			      <%= image_tag('magazine_white.png', class: "icon decorative") %> <span>Articles</span>
+			      <%= image_tag('magazine_white.png', class: "icon decorative", alt: "") %> <span>Articles</span>
 			    <% end %>
 				</div>
 				<div class="h-22 square">
 			    <%= link_to @db_az_link do %>
-			      <%= image_tag('database_white.png', class: "icon decorative") %> <span>Databases</span>
+			      <%= image_tag('database_white.png', class: "icon decorative", alt: "") %> <span>Databases</span>
 			    <% end %>
 				</div>
 				<div class="h-22 square bb-0">
 			    <%= link_to @libguides do %>
-			      <%= image_tag('guides_white.png', class: "icon decorative") %> <span>Research Guides</span>
+			      <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> <span>Research Guides</span>
 			    <% end %>
 				</div>
 				<div class="caption">
@@ -78,8 +78,8 @@
 			<div class="col-12 col-lg-6 px-0 px-lg-5 news-events">
 				<div class="events">
 			    <%= link_to events_path do %>
-			      <%= image_tag('event_space.jpg', class: "d-none d-lg-block decorative") %>
-			      <%= image_tag('art.png', class: "d-inline d-lg-none decorative") %>
+			      <%= image_tag('event_space.jpg', class: "d-none d-lg-block decorative", alt: "") %>
+			      <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
 			      <div class="caption" id="eventscaption">
 							<span class="lynde">Events & Exhibits</span>
 						</div>
@@ -87,8 +87,8 @@
 				</div>
 				<div class="news">
 					<%= link_to news_path do %>
-			      <%= image_tag('graduate_scholars.jpg', class: "d-none d-lg-block decorative") %>
-			      <%= image_tag('newspaper.png', class: "d-inline d-lg-none decorative") %>
+			      <%= image_tag('graduate_scholars.jpg', class: "d-none d-lg-block decorative", alt: "") %>
+			      <%= image_tag('newspaper.png', class: "d-inline d-lg-none decorative", alt: "") %>
 			      <div class="caption" id="newscaption">
 							<span class="lynde">Library News</span>
 						</div>

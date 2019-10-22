@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :admin_group do
-    name { "MyString" }
+    name { "Admin Group Name" }
     members { [] }
   end
 end

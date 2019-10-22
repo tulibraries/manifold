@@ -11,6 +11,10 @@ class AccountDashboard < BaseDashboard
     id: Field::Number,
     name: Field::String,
     email: Field::String,
+    admin_group: Field::BelongsTo.with_options(
+      class_name: "AdminGroup",
+      foreign_key: "admin_group_id",
+    ),
     admin: Field::Boolean,
     alertability: Field::Boolean,
     encrypted_password: Field::String,
@@ -44,6 +48,7 @@ class AccountDashboard < BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :email,
+    :admin_group,
     :admin,
     :alertability,
     :encrypted_password,
@@ -66,6 +71,7 @@ class AccountDashboard < BaseDashboard
     :name,
     :email,
     #:encrypted_password,
+    :admin_group,
     :admin,
     :alertability,
     #:reset_password_token,

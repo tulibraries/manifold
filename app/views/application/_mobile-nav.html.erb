@@ -40,7 +40,7 @@
         <div class="row">
           <div class="col" id="chat-nav-mobile">
             <%= image_tag "chat.png", class: "chat-icon decorative", alt: "" %>
-            <%= link_to t("manifold.header.chat"), @chat_link %>
+            <%= link_to t("manifold.header.chat"), @chat_link unless @chat_link.nil? %>
           </div>
         </div>
         <div class="row">

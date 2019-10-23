@@ -57,4 +57,36 @@ class Event < ApplicationRecord
   def label
     title
   end
+
+  def to_ld
+    event_hash = {}
+    event_hash["@context"] = "http://schema.org"
+    event_hash["@type"] = "Event"
+    event_hash["eventStatus"] = "http://schema.org/EventCancelled" if cancelled
+    event_hash["name"] = title
+    event_hash["description"] = ActionController::Base.helpers.strip_tags(description)
+    unless event_hash["all_day"]
+      event_hash["startTime"] = start_time unless start_time.nil?
+      event_hash["endTime"] = end_time unless end_time.nil?
+    end
+
+    if building
+      event_hash["location"] ||= {}
+      event_hash["location"]["@type"] = "Place"
+      event_hash["location"]["name"] = building.name
+    elsif attributes.has_key?("external_building")
+      event_hash["location"] = {}
+      event_hash["location"]["@type"] = "Place"
+      event_hash["location"]["name"] = external_building
+      event_hash["location"]["address"] = {}
+      event_hash["location"]["address"]["@type"] = "PostalAddress"
+      event_hash["location"]["address"]["streetAddress"] = external_address
+      event_hash["location"]["address"]["addressLocality"] = external_city
+      event_hash["location"]["address"]["addressRegion"] = external_state
+      event_hash["location"]["address"]["postalCode"] = external_zip
+
+      event_hash
+    end
+  end
+
 end

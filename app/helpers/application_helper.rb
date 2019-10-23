@@ -17,4 +17,11 @@ module ApplicationHelper
       Rails.configuration.librarysearch_base_url + "/" + type
     end
   end
+
+  def json_ld(entity)
+    entity_hash = entity.to_ld
+
+    entity_rdf = JSON.parse entity_hash.to_json
+    raw(entity_rdf.to_json)
+  end
 end

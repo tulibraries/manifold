@@ -23,4 +23,36 @@ class Building < ApplicationRecord
 
   before_validation :normalize_phone_number
   before_validation :sanitize_description
+
+  def street_address
+    address1
+  end
+
+  def locality
+    address2.match(/^(?<city>\w*)\, (?<state>\w{2})\W+(?<zip>\d*)$/)
+  end
+
+  def to_ld
+    building_hash = {}
+    building_hash["@type"] = "Building"
+    building_hash["name"] = name
+    building_hash["description"] = ActionController::Base.helpers.strip_tags(description)
+
+    building_hash["location"] = {}
+    building_hash["location"]["@type"] = "Place"
+    building_hash["location"]["address"] = {}
+    building_hash["location"]["address"]["@type"] = "PostalAddress"
+    building_hash["location"]["address"]["streetAddress"] = address1
+    building_hash["location"]["address"]["addressLocality"] = locality[:city]
+    building_hash["location"]["address"]["addressRegion"] = locality[:state]
+    building_hash["location"]["address"]["postalCode"] = locality[:zip]
+
+    building_hash["telephone"] = phone_number
+    building_hash["email"] = email
+    building_hash["image"] = Rails.application.routes.url_helpers.rails_representation_url(show_image) if image.attached?
+    building_hash["containedInPlace"] = campus
+    building_hash["geo"] = coordinates
+    building_hash["googleId"] = google_id
+    building_hash
+  end
 end

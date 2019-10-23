@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_22_173423) do
+ActiveRecord::Schema.define(version: 2019_10_22_194027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_173423) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.boolean "alertability"
-    t.string "name"
     t.bigint "admin_group_id"
+    t.string "name"
     t.index ["admin_group_id"], name: "index_accounts_on_admin_group_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_10_22_173423) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "json_attributes"
+    t.index ["json_attributes"], name: "index_admin_groups_on_json_attributes", using: :gin
   end
 
   create_table "alerts", force: :cascade do |t|

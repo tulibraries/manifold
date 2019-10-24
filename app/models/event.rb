@@ -85,8 +85,7 @@ class Event < ApplicationRecord
       event_hash["location"]["address"]["addressRegion"] = external_state
       event_hash["location"]["address"]["postalCode"] = external_zip
 
-      event_hash
     end
+    event_hash
   end
-
 end

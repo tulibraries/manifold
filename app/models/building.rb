@@ -25,6 +25,8 @@ class Building < ApplicationRecord
   before_validation :sanitize_description
 
   def to_ld
+    locality = address2.match(/^(?<city>\w*)\, (?<state>\w{2})\W+(?<zip>\d*)$/)
+
     building_hash = {}
     building_hash["@type"] = "Building"
     building_hash["name"] = name
@@ -35,9 +37,9 @@ class Building < ApplicationRecord
     building_hash["location"]["address"] = {}
     building_hash["location"]["address"]["@type"] = "PostalAddress"
     building_hash["location"]["address"]["streetAddress"] = address1
-    building_hash["location"]["address"]["addressLocality"] = address2[0..-10]
-    building_hash["location"]["address"]["addressRegion"] = address2[-9..-7]
-    building_hash["location"]["address"]["postalCode"] = address2[-5..-1]
+    building_hash["location"]["address"]["addressLocality"] = locality[:city]
+    building_hash["location"]["address"]["addressRegion"] = locality[:state]
+    building_hash["location"]["address"]["postalCode"] = locality[:zip]
 
     building_hash
   end

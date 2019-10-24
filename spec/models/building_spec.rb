@@ -91,6 +91,38 @@ RSpec.describe Building, type: :model do
     end
   end
 
+  describe "Makes Linked Data hash" do
+    let(:city) { "Philadelphia" }
+    let(:state) { "PA" }
+    let(:zip_code) { "19122" }
+    let(:building) { FactoryBot.create(:building, address2: "#{city}, #{state}, #{zip_code}") }
+
+    describe "Linked data hash" do
+      subject { building.to_ld }
+
+      it { is_expected.to include("name" => building[:name]) }
+      it { is_expected.to include("description" => building[:description]) }
+      it { is_expected.to include("location") }
+
+      describe "location" do
+        subject { building.to_ld["location"] }
+
+        it { is_expected.to include("@type" => "Place") }
+        it { is_expected.to include("address") }
+
+        describe "address" do
+          subject { building.to_ld["location"]["address"] }
+
+          it { is_expected.to include("@type" => "PostalAddress") }
+          it { is_expected.to include("streetAddress" => building.address1) }
+          it { is_expected.to include("addressLocality" => city) }
+          it { is_expected.to include("addressRegion" => state) }
+          it { is_expected.to include("postalCode" => zip_code) }
+        end
+      end
+    end
+  end
+
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
 end

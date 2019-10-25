@@ -16,7 +16,8 @@ class CategoryDashboard < Administrate::BaseDashboard
     slug: Field::String.with_options(admin_only: true),
     custom_url: Field::String,
     categories: Field::HasMany.with_options(admin_only: true),
-    description: DescriptionField,
+    description: Field::String,
+    long_description: DescriptionField,
     get_help: DescriptionField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -28,7 +29,6 @@ class CategoryDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    #:categorizations,
     :name,
     :id,
     :description,
@@ -41,9 +41,9 @@ class CategoryDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :long_description,
     :get_help,
     :custom_url,
-    :description,
     :categories,
     :created_at,
     :updated_at,
@@ -59,6 +59,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     :custom_url,
     :categories,
     :description,
+    :long_description,
     :get_help
   ].freeze
 
@@ -68,5 +69,9 @@ class CategoryDashboard < Administrate::BaseDashboard
 
   def tinymce?
     true
+  end
+
+  def permitted_attributes
+    super + [categorizations_attributes: [:weight, :id]]
   end
 end

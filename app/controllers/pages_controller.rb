@@ -2,12 +2,15 @@
 
 class PagesController < ApplicationController
   include HasCategories
+  include HTTParty
   before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
   before_action :set_page, only: [:show, :charles]
   before_action :navigation_items, only: [:show, :charles]
   before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
 
-  include HTTParty
+  def wpvi
+  end
+
 
   def get_highlights
     @highlights = Highlight.where(promoted: true).take(4)
@@ -132,20 +135,21 @@ class PagesController < ApplicationController
     @locations = Building.find_by_slug("ambler")
     @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
     @libguides = ExternalLink.find_by_slug("libguides")
+    @explore_charles = Page.find_by_slug("explore-charles")
   end
 
   def scrc
     @scrc_location = Space.find_by_slug("scrc-room")
     @reading_room = Space.find_by_slug("scrc-reading-room")
-    @visit_links = Category.find_by_slug("scrc-study").items.sort_by { |e| e.label }
-    @collection_links = Category.find_by_slug("scrc-collections").items.sort_by { |e| e.label }
+    @visit_links = Category.find_by_slug("scrc-study").items
+    @collection_links = Category.find_by_slug("scrc-collections").items
     @page = Page.find_by_slug("scrc-intro")
   end
 
   def blockson
     @page = Page.find_by_slug("blockson-intro")
-    @visit_links = Category.find_by_slug("blockson-study").items.sort_by { |e| e.label }
-    @research_links = Category.find_by_slug("blockson-research").items.sort_by { |e| e.label }
+    @visit_links = Category.find_by_slug("blockson-study").items
+    @research_links = Category.find_by_slug("blockson-research").items
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.now]).order(:start_time).take(4)
     @building = Building.find_by_slug("blockson")
   end
@@ -156,11 +160,11 @@ class PagesController < ApplicationController
     @innovation_location = Space.find_by_slug("innovation-sandbox")
     visit_links = Category.find_by_slug("lcdss-study")
     unless visit_links.nil?
-      @visit_links = visit_links.items.sort_by { |e| e.label }
+      @visit_links = visit_links.items
     end
     research_links = Category.find_by_slug("lcdss-research")
     unless research_links.nil?
-      @research_links = research_links.items.sort_by { |e| e.label }
+      @research_links = research_links.items
     end
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.now]).order(:start_time).take(5)
     @blog = Blog.find_by_slug("lcdss-blog")
@@ -172,9 +176,9 @@ class PagesController < ApplicationController
   def hsl
     @ginsburg_location = Building.find_by_slug("ginsburg")
     @podiatry_location = Building.find_by_slug("podiatry")
-    @visit_links = Category.find_by_slug("hsl-study").items.sort_by { |e| e.label }
-    @resource_links = Category.find_by_slug("hsl-resources").items.sort_by { |e| e.label }
-    @research_links = Category.find_by_slug("hsl-research").items.sort_by { |e| e.label }
+    @visit_links = Category.find_by_slug("hsl-study").items
+    @resource_links = Category.find_by_slug("hsl-resources").items
+    @research_links = Category.find_by_slug("hsl-research").items
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.now]).order(:start_time).take(5)
   end
 
@@ -213,7 +217,7 @@ class PagesController < ApplicationController
   def navigation_items
     @nav_items = []
     @page.categories.each do |cat|
-      cat.items(exclude: [:category]).sort_by { |e| e.label }.each do |item|
+      cat.items(exclude: [:category]).each do |item|
         unless item.id == @page.id
           @nav_items << item
         end

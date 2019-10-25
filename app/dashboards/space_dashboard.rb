@@ -23,7 +23,7 @@ class SpaceDashboard < BaseDashboard
     phone_number: PhoneField,
     email: Field::Email,
     policies: Field::HasMany,
-    external_link: Field::BelongsTo,
+    external_link: Field::BelongsTo.with_options(order: "title"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     ancestry: Field::String,

@@ -9,14 +9,14 @@
 				<h2>
 		    <%= link_to category do %>
 				<% unless category.image.attachment.nil? %>
-					<%= image_tag category.image, class: "category-icon decorative" %> 
+					<%= image_tag category.image, class: "category-icon decorative", alt: "" %> 
 				<% else %>
-					<%= image_tag "T-borderless.gif", class: "decorative" %>
+					<%= image_tag "T-borderless.gif", class: "decorative", alt: "" %>
 				<% end %>
 					<br /><%= category.name %>
 				<% end %>
 				</h2>
-				<p><%= category.description unless category.description.blank? %></p>
+				<p><%= sanitize category.description.html_safe unless category.description.blank? %></p>
 			</div>
 
 			<% end %>

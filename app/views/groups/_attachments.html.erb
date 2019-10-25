@@ -8,7 +8,7 @@
       <% @group.documents.each do |document| %>
       <div class="col-12 col-lg-3 text-center">
       <% if document.previewable? %>
-        <%= image_tag document.preview(resize: "200x200>", extent: "150x150"), class: "decorative" %>
+        <%= image_tag document.preview(resize: "200x200>", extent: "150x150"), class: "decorative", alt: "" %>
       <% end %>
         <p>
           <%= link_to document.filename.base, url_for(document), disposition: "attachment" %>

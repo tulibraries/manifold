@@ -9,7 +9,12 @@ class AccountDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    name: Field::String,
     email: Field::String,
+    admin_group: Field::BelongsTo.with_options(
+      class_name: "AdminGroup",
+      foreign_key: "admin_group_id",
+    ),
     admin: Field::Boolean,
     alertability: Field::Boolean,
     encrypted_password: Field::String,
@@ -32,6 +37,7 @@ class AccountDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :name,
     :email,
     :admin,
     :alertability,
@@ -40,8 +46,9 @@ class AccountDashboard < BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
+    :name,
     :email,
+    :admin_group,
     :admin,
     :alertability,
     :encrypted_password,
@@ -61,8 +68,10 @@ class AccountDashboard < BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :name,
     :email,
     #:encrypted_password,
+    :admin_group,
     :admin,
     :alertability,
     #:reset_password_token,
@@ -78,7 +87,7 @@ class AccountDashboard < BaseDashboard
   # Overwrite this method to customize how accounts are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(account)
-  #   "Account ##{account.id}"
-  # end
+  def display_resource(account)
+    "#{account.name}"
+  end
 end

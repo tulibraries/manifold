@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col">
 		<h1 class="page-title text-center">
-			Special Collections Research Center
+			<%= title "Special Collections Research Center" %>
 		</h1>
 	</div>
 </div>
@@ -26,13 +26,13 @@
 		<% end %>
 
 		<div class="contact">
-			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative" %>
+			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
 			<%= link_to "Contact Us", "forms/ask-scrc" %>
 			<hr />
-			<%= image_tag "search.png", style: "width: 100px", class: "decorative" %>
+			<%= image_tag "search.png", style: "width: 100px", class: "decorative", alt: "" %>
 			<%= link_to "SCRC Catalog Search", "#{librarysearch_url}/catalog?f[library_facet][]=Special+Collections+Research+Center" %>
 			<hr />
-			<%= image_tag "information_white.png", style: "width: 100px", class: "decorative" %>
+			<%= image_tag "information_white.png", style: "width: 100px", class: "decorative", alt: "" %>
 			<%= link_to "Hours & Info", @scrc_location %>
 		</div>
 	</div>

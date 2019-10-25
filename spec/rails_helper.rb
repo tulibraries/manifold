@@ -75,11 +75,15 @@ RSpec.configure do |config|
 
 
   config.before(:each) do
-    stub_request(:get, /.*events\.temple\.edu\/.*\.jpg.*/)
+    stub_request(:get, /.*events\.temple\.edu\/.*\.jpg.*/im)
       .to_return(
         status: 200,
         body: File.open("#{fixture_path}/charles.jpg"), headers: {}
       )
+
+    stub_request(:get, "https://example.com/noimage.jpg").
+      to_return(status: 403, body: "Nope", headers: {})
+
 
     stub_request(:get, "https://sites.temple.edu/devopsing/feed").
     to_return(status: 200, body: File.open("#{fixture_path}/blog_posts.rss") , headers: {})

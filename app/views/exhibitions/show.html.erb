@@ -4,15 +4,15 @@
   <div class="d-none d-lg-block col-lg-3">
     <div class="exhibit-image">
       <% if @exhibition.image.attached? %>
-        <%= image_tag @exhibition.show_image, class: "decorative" %>
+        <%= image_tag @exhibition.show_image, class: "decorative", alt: "" %>
       <% else %>
-        <%= image_tag 'T-borderless.gif', class: "decorative" %>
+        <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
       <% end %>
     </div>
   </div>
   <div class="col-12 col-lg-6">
     <div class="exhibition-description">
-      <h1 class="page-title"><%= @exhibition.title %></h1>
+      <h1 class="page-title"><%= title @exhibition.title %></h1>
       
       <% unless @exhibition.end_date.nil? %>
         <div class="dates">

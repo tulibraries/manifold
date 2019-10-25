@@ -9,7 +9,7 @@
 <div class="row">
   <div class="col">
     <div>
-      <h2><span><%= @blog_post.title %></span></h2>
+      <h1><%= title @blog_post.title %></h1>
       <h2><span><%= @blog_post.blog.title %></span></h2>
       <%= @blog_post.content.html_safe %>
       <h3><span>Path</span></h3>

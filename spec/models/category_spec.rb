@@ -64,6 +64,25 @@ RSpec.describe Category, type: :model do
     end
   end
 
+  describe "A category with a long description" do
+    let(:category) { FactoryBot.create(:category, :with_long_description) }
+
+    it "responds to long description" do
+      expect(category).to respond_to(:long_description)
+    end
+
+    it "matches long description" do
+      expect(category.long_description).to match("It's more about what the category is about")
+    end
+
+    context "when it doesn't have a long description" do
+      it "should raise a validation error" do
+        category.long_description = nil
+        expect { category.save! }.to_not raise_error
+      end
+    end
+  end
+
   describe "A category with a Get Help box" do
     let(:category) { FactoryBot.create(:category, :with_get_help) }
 
@@ -201,6 +220,48 @@ end
       end
     end
 
+    context "when items in a category are weighted" do
+      before do
+        building.categories << category
+        building.categorizations.first.update_attribute("weight", 3)
+        building2.categories << category
+        building2.categorizations.first.update_attribute("weight", 1)
+        event.categories << category
+        event.categorizations.first.update_attribute("weight", 2)
+      end
+
+      it "returns items in the expected order" do
+        expect(category.items).to eql [building2, event, building]
+      end
+    end
+
+    context "when some items in a category are weighted and some are not" do
+      before do
+        building.categories << category
+        building.categorizations.first.update_attribute("weight", 2)
+
+        building2.categories << category
+
+        event.categories << category
+        event.categorizations.first.update_attribute("weight", 1)
+      end
+
+      it "weighted items sort first, in expected order, followed by unweighted items" do
+        expect(category.items).to eql [event, building, building2]
+      end
+    end
+
+    context "when no items are weighted" do
+      before do
+        building.categories << category
+        building2.categories << category
+        event.categories << category
+      end
+      it "sorts them alphabetically by label" do
+        expect(category.items).to eql [building, building2, event]
+      end
+    end
+
     context "deleting an categorized item" do
       before do
         building.categories << category
@@ -212,23 +273,6 @@ end
         expect(category.items).not_to include(old_building)
       end
     end
-    context "child_categories" do
-
-       context "when the category has child categories" do
-         it "returns an array of those categories, but not other" do
-           building.categories << parent_category
-           category.categories << parent_category
-           expect(parent_category.child_categories).to include(category)
-           expect(parent_category.child_categories).not_to include(building)
-         end
-       end
-       context "when it has no child categories" do
-         it "returns an empty array" do
-           building.categories << parent_category
-           expect(parent_category.child_categories).to eql([])
-         end
-       end
-     end
   end
 
   context "#categories" do

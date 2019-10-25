@@ -1,7 +1,7 @@
 <% content_for :body_class, "categories" %>
 <div class="container contact-us" style="margin-top: 21px;">
 
-<h1 class="d-block d-lg-none">Contact Us</h1>
+<h1 class="d-block d-lg-none"><%= title "Contact Us" %></h1>
 	<div class="row text-center">
 		<div class="col-12 col-md-6 col-lg-4 text-center chat-box">
 			<div id="libchat_62e4dcbf0881db4f1514b077fbfd45b7"></div>
@@ -39,7 +39,7 @@
 		<div class="col-12 col-md-6 col-lg-4">
 			<%= link_to @libanswers do %>
 			<h2>
-				<%= image_tag "search-dark.png", class: "category-icon decorative"  %>
+				<%= image_tag "search-dark.png", class: "category-icon decorative", alt: ""  %>
 				<br />Search FAQs
 			</h2>
 			<% end %>
@@ -48,7 +48,7 @@
 		<div class="col-12 col-md-6 col-lg-4">
 			<%= link_to "/forms/ask-scrc" do %>
 			<h2>
-				<%= image_tag "collection.png", class: "category-icon decorative"  %>
+				<%= image_tag "collection.png", class: "category-icon decorative", alt: ""  %>
 				<br />Special Collections
 			</h2>
 			<% end %>
@@ -57,7 +57,7 @@
 		<div class="col-12 col-md-6 col-lg-4">
 			<%= link_to @suggestions do %>
 			<h2>
-				<%= image_tag "feedback.png", class: "category-icon decorative"  %>
+				<%= image_tag "feedback.png", class: "category-icon decorative", alt: ""  %>
 				<br />Give Us Your Feedback
 			</h2>
 			<% end %>

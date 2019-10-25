@@ -29,7 +29,7 @@
     <ContactName>Gretchen Sneff</ContactName>
     <ContactEmail>gsneff@temple.edu</ContactEmail>
     <ContactPhone>215-204-4724</ContactPhone>
-    <Image>&lt;img typeof="foaf:Image" src="https://exampe.com/noimage.jpg" alt="data" /&gt;</Image>
+    <Image>&lt;img typeof="foaf:Image" src="https://example.com/noimage.jpg" alt="data" /&gt;</Image>
     <Files></Files>
     <GAFFunding>0</GAFFunding>
     <Private>0</Private>

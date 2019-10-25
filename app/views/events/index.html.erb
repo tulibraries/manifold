@@ -4,7 +4,7 @@
 
   <div class="row">
     <div class="col">
-      <h1 class="d-none d-lg-block"><%= t("manifold.events.page_title") %></h1>
+      <h1 class="d-none d-lg-block"><%= title t("manifold.events.page_title") %></h1>
       <% unless @intro.nil? %>
         <div class="intro px-4"><%= sanitize @intro.description.html_safe %></div>
       <% end %>
@@ -20,8 +20,8 @@
       <div class="signup-desktop"  id="events-signup">
         <%= link_to @mailing_list do %>
         <h2>
-          <%= image_tag "email.png", class: "category-icon decorative"  %>
-          <br />Sign Up for our mailing list
+          <%= image_tag "email.png", class: "category-icon decorative", alt: ""  %>
+          <br />Sign up for our mailing list
         </h2>
         <% end %>
       </div>
@@ -52,7 +52,7 @@
       <div class="signup-mobile"  id="events-signup">
         <%= link_to @mailing_list do %>
         <h2>
-          <%= image_tag "email.png", class: "category-icon decorative"  %>
+          <%= image_tag "email.png", class: "category-icon decorative", alt: ""  %>
           <br />Sign Up for our mailing list
         </h2>
         <% end %>

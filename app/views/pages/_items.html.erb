@@ -1,6 +1,6 @@
 <% @page.categories.each do |cat| %>
   <div class="leftside-index">
-    
+
     <% unless @page.categories.size > 1 %>
       <div class="index-category">
     <% else %>
@@ -12,7 +12,7 @@
       <div class="index-items">
         <div>
           <ul class="list-unstyled">
-          <% cat.items(exclude: [:category]).sort_by{|e| e.label}.each do |c| %>
+          <% cat.items(exclude: [:category]).each do |c| %>
             <li <% if c == @page %> class="selected" <%end%>>
               <%= link_to c.label, url_for(c) %>
             </li>

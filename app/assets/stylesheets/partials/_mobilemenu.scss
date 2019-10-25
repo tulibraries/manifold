@@ -1,5 +1,20 @@
  @import "_vars.scss";
 
+
+.change .bar1 {
+	  opacity: 1;
+  -webkit-transform: rotate(-45deg) translate(-3px, 6px) ;
+  transform: rotate(-45deg) translate(-3px, 6px) ;
+}
+.change .bar2 {
+  opacity: 0;
+}
+.change .bar3 {
+	  opacity: 1;
+  -webkit-transform: rotate(45deg) translate(-5px, -8px) ;
+  transform: rotate(45deg) translate(-5px, -8px) ;
+}
+
 #mobile-menu {
 	background-color: $white;
 	.col {
@@ -184,14 +199,7 @@
 }
 
 #mobile-search-button {
-	.bar1, .bar2, .bar3 {
-	  width: 2.5rem;
-	  height: 6px;
-	  background-color: $white;
-	  margin: 6px 0;
-	  transition: 0.4s;
-	  opacity: 0;
-	}
+	outline: none!important;
 	.navbar-toggler-icon {
 		margin:0;
 		padding-left: 0;
@@ -215,48 +223,34 @@
 			width: 52px;
 		}
 	}
+	.bar1, .bar2, .bar3 {
+	  width: 2.5rem;
+	  height: 6px;
+	  background-color: $white;
+	  margin: 6px 0;
+	  transition: 0.4s;
+	  opacity: 0;
+	}
+	.change .bar1 {
+		opacity: 1;
+	  -webkit-transform: rotate(-45deg) translate(-1px, 5px) ;
+	  transform: rotate(-45deg) translate(-1px, 5px) ;
+	}
+	.change .bar2 {
+	  opacity: 0;
+	}
+	.change .bar3 {
+		opacity: 1;
+	  -webkit-transform: rotate(45deg) translate(-12px, -15px) ;
+	  transform: rotate(45deg) translate(-12px, -15px) ;
+	}
 	.navbar-toggler-icon.change {
 		background-image: none;
 		padding-top: .7rem;
 		padding-left:.275rem;
 	}
-	.navbar-toggler-icon:focus {
-		outline: none;
-	}
-	.navbar-toggler-icon:hover {
-		/*background-color: transparent;*/
-	}
 	.navbar-toggler {
 		background-color: transparent;
-		.change .bar1 {
-			  opacity: 1;
-		  -webkit-transform: rotate(-45deg) translate(-1px, 5px) ;
-		  transform: rotate(-45deg) translate(-1px, 5px) ;
-		}
-		.change .bar2 {
-		  opacity: 0;
-		}
-		.change .bar3 {
-			  opacity: 1;
-		  -webkit-transform: rotate(45deg) translate(-12px, -15px) ;
-		  transform: rotate(45deg) translate(-12px, -15px) ;
-		}
-	}
-	.navbar-toggler:focus {
-		outline: none;
 	}
 }
 
-.change .bar1 {
-	  opacity: 1;
-  -webkit-transform: rotate(-45deg) translate(-3px, 6px) ;
-  transform: rotate(-45deg) translate(-3px, 6px) ;
-}
-.change .bar2 {
-  opacity: 0;
-}
-.change .bar3 {
-	  opacity: 1;
-  -webkit-transform: rotate(45deg) translate(-5px, -8px) ;
-  transform: rotate(45deg) translate(-5px, -8px) ;
-}

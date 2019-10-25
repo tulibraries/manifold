@@ -6,6 +6,7 @@ class Category < ApplicationRecord
   include Imageable
 
   has_many :categorizations, dependent: :destroy
+  accepts_nested_attributes_for :categorizations
 
   has_many :nested_categorizations, as: :categorizable, dependent: :destroy, class_name: "Categorization"
   has_many :categories, through: :nested_categorizations
@@ -21,6 +22,7 @@ class Category < ApplicationRecord
   # eg @category.items(limit_to: [:events]) would
   def items(limit_to: [], exclude: [])
     grouped = categorizations.group_by(&:categorizable_type)
+
     if limit_to.present?
       grouped.select! { |ct, _ | limit_to.include?(ct.underscore.to_sym)  }
     end
@@ -31,13 +33,13 @@ class Category < ApplicationRecord
 
     grouped.map do |type, objs|
       ids = objs.map(&:categorizable_id)
+      weights = objs.map(&:weight)
       type.constantize.find(ids)
+        .each_with_index { |obj, index| obj.category_weight = weights[index]  }
     end.reduce([], :concat)
+      .sort_by { |categorized| [categorized&.category_weight, categorized&.label] }
   end
 
-  def child_categories
-    items(limit_to: [:category])
-  end
 
   def url(only_path: false)
     if custom_url.present?

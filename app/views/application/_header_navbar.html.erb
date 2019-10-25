@@ -1,7 +1,7 @@
 <div id="header-navbar" class="container navbar navbar-static-top" role="navigation">
   <div class="col-8 col-sm-7 col-lg-7 logo-container text-left">
     <%= link_to root_path, class: "header-name", id: "header-logo" do %>
-      <%= image_tag('temple-logo-t-box.svg', class: "header-logo") %> <span>University Libraries</span>
+      <%= image_tag('temple-logo-t-box.svg', class: "header-logo", alt: "") %> <span>University Libraries</span>
     <% end %>
   </div>
 
@@ -17,9 +17,9 @@
   </div>
 <% end %>
 
-  <div id="mobile-search-button" class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
-    <span class="navbar-toggler-icon" id="search-toggler-icon" onclick="toggle('search')">
+  <div class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right">
+    <button id="mobile-search-button" class="navbar-toggler icon-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
+    <span class="navbar-toggler-icon" id="search-toggler-icon">
       <div class="bar1"></div>
       <div class="bar2"></div>
       <div class="bar3"></div>
@@ -30,23 +30,17 @@
 
 <div id="wrapper">
 
-  <div id="header" class="row">
+  <div id="header" class="row" style="border-top: solid #bbb 1px;border-bottom: solid #bbb 1px">
     <div class="col">
       <% unless @alert.blank? %>
       <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <marquee>
-              <% @alert.each do |alert| %>
-                <% unless alert.link.blank? %>
-                  <%= link_to alert.scroll_text+", click here to see full details...", alert.link %>
-                <% else %>
-                  <%= alert.scroll_text %>
-                <% end %>
-              <% end %>
-            </marquee>
-          </div>
-        </div>
+        <% @alert.each do |alert| %>
+          <% unless alert.link.blank? %>
+            <%= alert.scroll_text %> <%= link_to "Click here to see full details.", alert.link %>
+          <% else %>
+            <%= alert.scroll_text %>
+          <% end %>
+        <% end %>
       </div>
       <% end %>
     </div>
@@ -71,7 +65,7 @@
           <%= link_to t("manifold.header.hours"), hours_path %>
         </li>
         <li class="nav-right chat-nav" id="chat-nav">
-          <%= link_to t("manifold.header.chat"), @chat_link %>
+          <%= link_to t("manifold.header.chat"), @chat_link unless @chat_link.nil? %>
         </li>
         <li class="nav-right account-nav">
           <%= link_to t("manifold.header.my_account"), "#{librarysearch_url("users/account")}" %>

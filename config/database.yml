@@ -2,7 +2,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV.fetch("MANIFOLD_DB_HOST") { "localhost" } %>
+  host: <%= ENV.fetch("MANIFOLD_DB_HOST") { "127.0.0.1" } %>
   pool: 5
   username: <%= ENV.fetch("MANIFOLD_DB_USER") { "manifold" } %>
   password: <%= ENV.fetch("MANIFOLD_DB_PASSWORD") { "password" }%>

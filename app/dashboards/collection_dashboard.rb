@@ -21,7 +21,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     image: PhotoField,
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
-    external_link: Field::BelongsTo,
+    external_link: Field::BelongsTo.with_options(order: "title"),
     slug: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

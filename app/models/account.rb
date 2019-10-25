@@ -11,6 +11,8 @@ class Account < ApplicationRecord
 
   validates :email, presence: true, email: true
 
+  belongs_to :admin_group, optional: true
+
   def self.from_omniauth(access_token)
     data = access_token.info
     account = Account.where(email: data["email"]).first

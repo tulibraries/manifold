@@ -41,6 +41,12 @@ class Building < ApplicationRecord
     building_hash["location"]["address"]["addressRegion"] = locality[:state]
     building_hash["location"]["address"]["postalCode"] = locality[:zip]
 
+    building_hash["telephone"] = phone_number
+    building_hash["email"] = email
+    building_hash["image"] = Rails.application.routes.url_helpers.rails_representation_url(show_image)
+    building_hash["containedInPlace"] = campus
+    building_hash["geo"] = coordinates
+    building_hash["googleId"] = google_id
     building_hash
   end
 end

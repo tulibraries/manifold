@@ -95,7 +95,7 @@ RSpec.describe Building, type: :model do
     let(:city) { "Philadelphia" }
     let(:state) { "PA" }
     let(:zip_code) { "19122" }
-    let(:building) { FactoryBot.create(:building, address2: "#{city}, #{state}, #{zip_code}") }
+    let(:building) { FactoryBot.create(:building, :with_image, address2: "#{city}, #{state}, #{zip_code}") }
 
     describe "Linked data hash" do
       subject { building.to_ld }
@@ -120,7 +120,16 @@ RSpec.describe Building, type: :model do
           it { is_expected.to include("postalCode" => zip_code) }
         end
       end
+
+      it { is_expected.to include("telephone" => building[:phone_number]) }
+      it { is_expected.to include("email" => building[:email]) }
+      it { is_expected.to include("image" => Rails.application.routes.url_helpers.rails_representation_url(building.show_image)) }
+      xit { is_expected.to include("hours" => building[:hours]) }
+      it { is_expected.to include("containedInPlace" => building[:campus]) }
+      it { is_expected.to include("geo" => building[:coordinates]) }
+      it { is_expected.to include("googleId" => building[:google_id]) }
     end
+
   end
 
   it_behaves_like "categorizable"

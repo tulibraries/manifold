@@ -60,6 +60,47 @@ RSpec.describe Collection, type: :model do
     end
   end
 
+  describe "Makes Linked Data hash" do
+    let(:city) { "Philadelphia" }
+    let(:state) { "PA" }
+    let(:zip_code) { "19122" }
+    let(:building) { FactoryBot.create(:building, address2: "#{city}, #{state}, #{zip_code}") }
+    let(:space) { FactoryBot.create(:space, building: building) }
+    let(:collection) { FactoryBot.create(:collection, :with_image, space: space) }
+
+    describe "Linked data hash" do
+      subject { collection.to_ld }
+
+      it { is_expected.to include("name" => collection[:name]) }
+      it { is_expected.to include("description" => collection[:description]) }
+      it { is_expected.to include("location") }
+
+      describe "location" do
+        subject { collection.to_ld["location"] }
+
+        it { is_expected.to include("@type" => "Place") }
+        it { is_expected.to include("address") }
+
+        describe "address" do
+          subject { collection.to_ld["location"]["address"] }
+
+          it { is_expected.to include("@type" => "PostalAddress") }
+          it { is_expected.to include("streetAddress" => building.address1) }
+          it { is_expected.to include("addressLocality" => city) }
+          it { is_expected.to include("addressRegion" => state) }
+          it { is_expected.to include("postalCode" => zip_code) }
+        end
+      end
+
+      it { is_expected.to include("telephone" => building[:phone_number]) }
+      it { is_expected.to include("email" => building[:email]) }
+      it { is_expected.to include("image" => Rails.application.routes.url_helpers.rails_representation_url(collection.show_image)) }
+      it { is_expected.to include("containedInPlace" => building[:campus]) }
+      it { is_expected.to include("geo" => building[:coordinates]) }
+      it { is_expected.to include("googleId" => building[:google_id]) }
+    end
+
+  end
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
 end

@@ -24,9 +24,15 @@ class Building < ApplicationRecord
   before_validation :normalize_phone_number
   before_validation :sanitize_description
 
-  def to_ld
-    locality = address2.match(/^(?<city>\w*)\, (?<state>\w{2})\W+(?<zip>\d*)$/)
+  def street_address
+    address1
+  end
 
+  def locality
+    address2.match(/^(?<city>\w*)\, (?<state>\w{2})\W+(?<zip>\d*)$/)
+  end
+
+  def to_ld
     building_hash = {}
     building_hash["@type"] = "Building"
     building_hash["name"] = name
@@ -43,7 +49,7 @@ class Building < ApplicationRecord
 
     building_hash["telephone"] = phone_number
     building_hash["email"] = email
-    building_hash["image"] = Rails.application.routes.url_helpers.rails_representation_url(show_image)
+    building_hash["image"] = Rails.application.routes.url_helpers.rails_representation_url(show_image) if image.attached?
     building_hash["containedInPlace"] = campus
     building_hash["geo"] = coordinates
     building_hash["googleId"] = google_id

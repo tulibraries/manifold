@@ -32,6 +32,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     hours: HoursField.with_options(admin_only: true),
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
+    accounts: Field::HasMany.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -55,6 +56,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :service_category,
     :external_link,
     :categories,
+    :accounts,
     :created_at,
     :updated_at,
   ].freeze
@@ -77,6 +79,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :related_groups,
     :hours,
     :categories,
+    :accounts,
     :add_to_footer
   ].freeze
 

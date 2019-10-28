@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Page < ApplicationRecord
-  include Validators
+  include Accountable
   include Categorizable
   include SetDates
+  include Validators
 
   has_one_attached :document, dependent: :destroy
   # validates :document, content_type: ["application/pdf"]

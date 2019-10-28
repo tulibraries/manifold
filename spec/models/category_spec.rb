@@ -5,6 +5,9 @@ require "rails_helper"
 
 RSpec.describe Category, type: :model do
 
+
+  it_behaves_like "accountable"
+
   let(:category) { FactoryBot.create(:category) }
   let(:parent_category) { FactoryBot.create(:category_parent) }
 

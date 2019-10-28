@@ -60,6 +60,8 @@ RSpec.describe Collection, type: :model do
     end
   end
 
+
+  it_behaves_like "accountable"
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
 end

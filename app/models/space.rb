@@ -2,13 +2,15 @@
 
 class Space < ApplicationRecord
   has_paper_trail
-  include Validators
-  include InputCleaner
-  include HasPolicies
-  include SetDates
+
+  include Accountable
   include Categorizable
-  include Imageable
   include HasHours
+  include HasPolicies
+  include Imageable
+  include InputCleaner
+  include SetDates
+  include Validators
   has_ancestry
 
   validates :name, presence: true

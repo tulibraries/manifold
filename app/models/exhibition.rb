@@ -5,6 +5,9 @@ class Exhibition < ApplicationRecord
   include InputCleaner
   include Categorizable
   include Imageable
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  validates_uniqueness_of :slug
 
   belongs_to :group, optional: true
   belongs_to :space, optional: true

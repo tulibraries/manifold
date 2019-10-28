@@ -5,6 +5,9 @@ class Page < ApplicationRecord
   include Categorizable
   include SetDates
   include Validators
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  validates_uniqueness_of :slug
 
   has_one_attached :document, dependent: :destroy
   # validates :document, content_type: ["application/pdf"]

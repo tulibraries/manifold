@@ -44,7 +44,7 @@ class ServicesController < ApplicationController
 
   private
     def set_service
-      @service = Service.find_by(id: params[:id])
+      @service = Service.friendly.find(params[:id])
       return redirect_or_404 unless @service
       @categories = @service.categories
     end

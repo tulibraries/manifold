@@ -4,6 +4,9 @@ class FindingAid < ApplicationRecord
   include InputCleaner
   include Categorizable
   include Validators
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  validates_uniqueness_of :slug
 
   paginates_per 15
 

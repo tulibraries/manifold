@@ -12,6 +12,9 @@ class Space < ApplicationRecord
   include SetDates
   include Validators
   has_ancestry
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  validates_uniqueness_of :slug
 
   validates :name, presence: true
   validates :description, presence: true

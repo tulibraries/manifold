@@ -12,6 +12,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     image: PhotoField,
+    slug: Field::String.with_options(admin_only: true),
     title: Field::String,
     blurb: Field::Text,
     link_label: Field::String,
@@ -32,6 +33,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :slug,
     :title,
     :promoted,
   ].freeze
@@ -54,6 +56,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :image,
     :title,
+    :slug,
     :blurb,
     :link_label,
     :link,

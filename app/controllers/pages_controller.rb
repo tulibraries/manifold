@@ -272,11 +272,11 @@ class PagesController < ApplicationController
       @todays_date = @today.to_date.strftime("%^A, %^B %d, %Y ")
     end
     def set_page
-      unless params[:id].nil?
-        @page = Page.find(params[:id])
-      else
-        @page = Page.find_by_slug(action_name)
-      end
+      # unless params[:id].nil?
+      @page = Page.friendly.find(params[:id])
+      # else
+      # @page = Page.find_by_slug(action_name)
+      # end
       @categories = @page.categories
     end
 end

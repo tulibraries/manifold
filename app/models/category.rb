@@ -5,6 +5,9 @@ class Category < ApplicationRecord
   include Accountable
   #TODO: should we validate that icon is svg?
   include Imageable
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  validates_uniqueness_of :slug
 
   has_many :categorizations, dependent: :destroy
   accepts_nested_attributes_for :categorizations

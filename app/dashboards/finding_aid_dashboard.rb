@@ -13,6 +13,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
+    slug: Field::String.with_options(admin_only: true),
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
     ),
@@ -36,6 +37,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :slug,
     :name,
     # :collections,
     # :person,
@@ -60,6 +62,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :identifier,
     :path,
     :description,

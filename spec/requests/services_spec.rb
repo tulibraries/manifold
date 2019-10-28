@@ -5,23 +5,22 @@ require "rails_helper"
 RSpec.describe "Services", type: :request do
   let(:service) { FactoryBot.create(:service) }
 
-  describe "a request for /service/integer when service exists" do
+  describe "a request for /service/id when service exists" do
     it "renders the service" do
       get service_path(service.id)
       expect(response.status).to eq(200)
     end
   end
 
-  describe "a request for /service/integer when service does not exist" do
+  describe "a request for /service/id when service does not exist" do
     it "renders the service" do
       expect { get service_path(service.id + 1) }
-        .to raise_error(ActionController::RoutingError)
+        .to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
-
   describe "a redirect with a legacy path starting with /service" do
-    let(:legacy_path) { "/services/printing" }
+    let(:legacy_path) { "/services/239" }
     let(:redirect) {
       FactoryBot.create(:redirect, legacy_path: legacy_path)
     }

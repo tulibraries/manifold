@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :service do
+    slug { "printing" }
     sequence(:title) { |n| "Service #{n}" }
     description {
     <<~EOD.strip.gsub(/\n/, " ")

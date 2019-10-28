@@ -2,7 +2,6 @@
 
 class PersonsController < ApplicationController
   include PersonFilters
-  load_and_authorize_resource
   before_action :set_person, only: [:show]
   before_action :get_persons, only: [:index]
 
@@ -111,6 +110,6 @@ class PersonsController < ApplicationController
 
   private
     def set_person
-      @person = Person.find(params[:id])
+      @person = Person.friendly.find(params[:id])
     end
 end

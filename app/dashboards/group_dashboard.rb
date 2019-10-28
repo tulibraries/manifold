@@ -10,6 +10,7 @@ class GroupDashboard < BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     chair_dept_heads: Field::HasMany.with_options(
       class_name: "Person"
@@ -42,6 +43,7 @@ class GroupDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :slug,
     :name,
     :member,
   ].freeze
@@ -68,6 +70,7 @@ class GroupDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :description,
     :group_type,
     :parent_group,

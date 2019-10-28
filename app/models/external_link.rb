@@ -4,6 +4,9 @@ class ExternalLink < ApplicationRecord
   has_paper_trail
   include Validators
   include Categorizable
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  validates_uniqueness_of :slug
 
   before_save :link_cleanup!
 

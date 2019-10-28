@@ -5,6 +5,9 @@ class Event < ApplicationRecord
   include InputCleaner
   include Categorizable
   include Imageable
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  validates_uniqueness_of :slug
 
   paginates_per 5
   belongs_to :building, optional: true

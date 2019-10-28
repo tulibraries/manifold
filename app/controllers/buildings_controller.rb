@@ -2,7 +2,6 @@
 
 class BuildingsController < ApplicationController
   include HasCategories
-  load_and_authorize_resource
   before_action :set_building, only: [:show]
   before_action :set_date, only: [:show]
   before_action :navigation_items, only: [:show]
@@ -41,7 +40,7 @@ class BuildingsController < ApplicationController
 
   private
     def set_building
-      @building = Building.find(params[:id])
+      @building = Building.friendly.find(params[:id])
       @categories = @building.categories
     end
 

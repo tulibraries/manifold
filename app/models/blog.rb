@@ -3,6 +3,8 @@
 class Blog < ApplicationRecord
   has_paper_trail
   include Validators
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   has_many :blog_posts, dependent: :destroy
 

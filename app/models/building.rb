@@ -10,6 +10,8 @@ class Building < ApplicationRecord
   include Imageable
   include HasHours
   require "uploads"
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   validates :name, :address1, :address2, :temple_building_code, :coordinates, :google_id, :campus, presence: true
   validates :phone_number, presence: true, phone_number: true

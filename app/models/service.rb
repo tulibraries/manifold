@@ -8,6 +8,9 @@ class Service < ApplicationRecord
   include InputCleaner
   include HasPolicies
   include SetDates
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  validates_uniqueness_of :slug
 
   validates :title, :description, :intended_audience, :service_category, presence: true
   validates :related_groups, presence: true

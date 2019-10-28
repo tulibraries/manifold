@@ -7,6 +7,9 @@ class Policy < ApplicationRecord
   include Categorizable
   include InputCleaner
   include Validators
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  validates_uniqueness_of :slug
 
   validates :name, :description, :effective_date, presence: true
   serialize :category

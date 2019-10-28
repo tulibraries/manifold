@@ -9,6 +9,7 @@ class SpaceDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     building: Field::BelongsTo,
+    slug: Field::String.with_options(admin_only: true),
     occupant: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
@@ -37,6 +38,7 @@ class SpaceDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :slug,
     :name,
     :building,
     :phone_number,

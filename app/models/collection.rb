@@ -6,6 +6,9 @@ class Collection < ApplicationRecord
   include Categorizable
   include InputCleaner
   include Imageable
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  validates_uniqueness_of :slug
 
   validates :name, :description, presence: true
 

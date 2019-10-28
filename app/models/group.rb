@@ -7,6 +7,9 @@ class Group < ApplicationRecord
   include HasPolicies
   include SetDates
   include Categorizable
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  validates_uniqueness_of :slug
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true

@@ -13,6 +13,7 @@ class EventDashboard < BaseDashboard
     building: Field::BelongsTo,
     space: Field::BelongsTo,
     person: Field::BelongsTo,
+    slug: Field::String.with_options(admin_only: true),
     id: Field::Number,
     title: Field::String,
     description: DescriptionField,
@@ -49,6 +50,7 @@ class EventDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :slug,
     :title,
     :event_type,
     :start_time,
@@ -98,6 +100,7 @@ class EventDashboard < BaseDashboard
     :title,
     :image,
     :alt_text,
+    :slug,
     :description,
     :event_type,
     :tags,

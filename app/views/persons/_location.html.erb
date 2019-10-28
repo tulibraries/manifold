@@ -8,7 +8,7 @@
 		<% unless params[:location].nil? %>
 			
 			<% @locations.each do |loc| %>
-				<% if loc.id.to_s == params[:location] %>
+				<% if loc.slug == params[:location] %>
 				<li class="active">
 					<%= loc.name %>	
 					<span class="clear-filter">
@@ -22,7 +22,7 @@
 
 			<% @locations.each do |loc| %>
 				<li>
-					<%= link_to loc.name, people_path(request.query_parameters.merge({location: loc, page: 1})) %>	
+					<%= link_to loc.name, people_path(request.query_parameters.merge({location: loc[:slug], page: 1})) %>	
 				</li>
 			<% end %>
 		

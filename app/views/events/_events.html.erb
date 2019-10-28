@@ -2,13 +2,13 @@
   <div class="row event">
     <div class="col-12 col-lg-3">
     <% if event.image.attached? %>
-      <%= link_to (image_tag event.index_image, class: "decorative", alt: ""), event_path(event) %>
+      <%= link_to (image_tag event.index_image, class: "decorative", alt: ""), event_path(event.id) %>
     <% else %>
       <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
     <% end %>
     </div>
     <div class="col-12 col-lg-9">
-      <h2><%= link_to event.title, event_path(event) %></h2>
+      <h2><%= link_to event.title, event_path(event.id) %></h2>
       <p><strong>
         <%= event.get_date %> | <%= event.set_times %> 
         <% unless event.building.nil? %>

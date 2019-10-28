@@ -201,7 +201,7 @@ en:
         partners_borrowing:
           title: "Partners Borrowing Privileges Application/Renewal"
         storage_request:
-          title: "Storage Request"
+          title: "Recall item from Charles Library temporary storage"
 
     error:
       user_not_registered: "User not registered."

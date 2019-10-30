@@ -21,16 +21,7 @@ workflows:
                 - master
   prod_deploy:
     jobs:
-      - request-prod-deploy:
-          type: approval
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
       - prod_deploy:
-          requires:
-            - request-prod-deploy
           filters:
             branches:
               ignore: /.*/
@@ -40,17 +31,32 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.5.1-node
+        environment:
+          TZ: "America/New_York"
+          BUNDLER_VERSION: "2.0.1"
 
+      - image: circleci/postgres:11-alpine
+        environment:
+          TZ: "America/New_York"
     steps:
       - checkout
       - run:
-          command: bash .circleci/test.sh
-      - run:
           command: |
-            bundle exec rubocop
-            RELEVANCE=y bundle exec rake ci
-            yarn test
+            sudo gem update --system
+            sudo gem uninstall -x bundler
+            sudo gem install bundler --version "$BUNDLER_VERSION"
+            sudo apt-get update
+            sudo apt-get install postgresql-client
+            sudo psql -c "create role manifold with createdb login password 'password';" -U postgres -h localhost
+            sudo bundle install
+            RAILS_ENV=test sudo bundle exec rake db:setup
+            RAILS_ENV=test sudo bundle exec rake db:seed
+            sudo npm install -g ajv
+            sudo npm install -g ajv-cli
+            sudo bundle exec rubocop
+            sudo bundle exec brakeman --no-pager
+            sudo bundle exec rspec spec
   qa_deploy:
     docker:
       - image: circleci/python:3.6.6
@@ -60,8 +66,8 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
+            - "08:05:8e:1f:ff:2e:4d:59:60:3e:a2:d5:e3:e2:b8:68"
             - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
-            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
       - run:
           command: bash .circleci/deploy-qa.sh
 
@@ -74,8 +80,8 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
+            - "08:05:8e:1f:ff:2e:4d:59:60:3e:a2:d5:e3:e2:b8:68"
             - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
-            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
       - run:
           command: bash .circleci/deploy-stage.sh
 
@@ -88,7 +94,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
+            - "08:05:8e:1f:ff:2e:4d:59:60:3e:a2:d5:e3:e2:b8:68"
             - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
-            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
       - run:
           command: bash .circleci/deploy-prod.sh

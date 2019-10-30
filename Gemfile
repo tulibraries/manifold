@@ -7,6 +7,7 @@ ruby "2.5.1"
 
 gem "administrate"
 gem "ancestry"
+gem "attr_json"
 gem "auto_strip_attributes"
 gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false

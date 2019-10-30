@@ -9,10 +9,14 @@ class AdminGroupDashboard < Administrate::BaseDashboard
   # Each different type represents an Administrate::Field object,
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
+
   ATTRIBUTE_TYPES = {
     members: Field::HasMany.with_options(class_name: "Account"),
     id: Field::Number,
     name: Field::String,
+    managed_entities: MultiSelectField.with_options(
+      collection: AdminGroup.manageable_entity_types
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,7 +30,6 @@ class AdminGroupDashboard < Administrate::BaseDashboard
   id
   name
   members
-  created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,9 +37,10 @@ class AdminGroupDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   id
   name
+  members
+  managed_entities
   created_at
   updated_at
-  members
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -45,6 +49,7 @@ class AdminGroupDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   members
   name
+  managed_entities
   ].freeze
 
   # COLLECTION_FILTERS

@@ -11,8 +11,8 @@
           :to_s,
           selected: field.data.presence,
         ),
-        { include_blank: true }, 
-        { multiple: true, size: field.selectable_options.count+1 }
+        { include_blank: true, include_hidden: false }, 
+        { multiple: true, size: field.selectable_options.count+1}
       )  %>
 
   <div class="text-center">(Hold CTRL to select multiple options)</div>

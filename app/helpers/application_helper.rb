@@ -17,4 +17,8 @@ module ApplicationHelper
       Rails.configuration.librarysearch_base_url + "/" + type
     end
   end
+
+  def json_ld(entity)
+    raw(entity.map_to_schema_dot_org.to_json)
+  end
 end

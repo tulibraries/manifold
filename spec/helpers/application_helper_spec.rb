@@ -55,4 +55,13 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  context "json_ld" do
+    let(:entity) { OpenStruct.new(map_to_schema_dot_org: { one: 2 }) }
+    let(:ld) { json_ld(entity) }
+
+    it "returns parseable json" do
+      expect(JSON.parse(ld)).to eql("one" => 2)
+    end
+  end
+
 end

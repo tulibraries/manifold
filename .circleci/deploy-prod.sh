@@ -3,8 +3,8 @@ set -e
 
 cd ..
 # clone deployment playbook
-git clone --single-branch --branch master git@github.com:tulibraries/ansible-playbook-manifold.git manifold-stage
-cd manifold-stage
+git clone --single-branch --branch master git@github.com:tulibraries/ansible-playbook-manifold.git manifold-prod
+cd manifold-prod
 # install playbook requirements
 sudo pip install pipenv
 # install playbook requirements
@@ -17,5 +17,5 @@ cp .circleci/.vault ~/.vault
 chmod +x ~/.vault
 
 # deploy to qa using ansible-playbook
-echo "Running: pipenv run ansible-playbook -i inventory/stage/hosts playbook.yml --vault-password-file=~/.vault --private-key=~/.ssh/.conan_the_deployer"
-pipenv run ansible-playbook -i inventory/stage/hosts playbook.yml --vault-password-file=~/.vault --private-key=~/.ssh/.conan_the_deployer
+echo "Running: pipenv run ansible-playbook -i inventory/prod playbook.yml --vault-password-file=~/.vault --extra-vars 'rails_app_git_branch=$CIRCLE_TAG'"
+pipenv run ansible-playbook -i inventory/prod playbook.yml --vault-password-file=~/.vault --extra-vars "rails_app_git_branch=$CIRCLE_TAG"

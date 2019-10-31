@@ -1,0 +1,100 @@
+version: 2
+
+workflows:
+  version: 2
+  run_tests:
+    jobs:
+      - run_tests
+  qa_deploy:
+   jobs:
+     - qa_deploy:
+         filters:
+           branches:
+             only:
+               - qa
+  stage_deploy:
+    jobs:
+      - stage_deploy:
+          filters:
+            branches:
+              only:
+                - master
+  prod_deploy:
+    jobs:
+      - prod_deploy:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
+
+jobs:
+  run_tests:
+    docker:
+      - image: circleci/ruby:2.5.1-node
+        environment:
+          TZ: "America/New_York"
+          BUNDLER_VERSION: "2.0.1"
+
+      - image: circleci/postgres:11-alpine
+        environment:
+          TZ: "America/New_York"
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo gem update --system
+            sudo gem uninstall -x bundler
+            sudo gem install bundler --version "$BUNDLER_VERSION"
+            sudo apt-get update
+            sudo apt-get install postgresql-client
+            sudo psql -c "create role manifold with createdb login password 'password';" -U postgres -h localhost
+            sudo bundle install
+            RAILS_ENV=test sudo bundle exec rake db:setup
+            RAILS_ENV=test sudo bundle exec rake db:seed
+            sudo npm install -g ajv
+            sudo npm install -g ajv-cli
+            sudo bundle exec rubocop
+            sudo bundle exec brakeman --no-pager
+            sudo bundle exec rspec spec
+  qa_deploy:
+    docker:
+      - image: circleci/python:3.6.6
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "08:05:8e:1f:ff:2e:4d:59:60:3e:a2:d5:e3:e2:b8:68"
+            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
+      - run:
+          command: bash .circleci/deploy-qa.sh
+
+  stage_deploy:
+    docker:
+      - image: circleci/python:3.6.6
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "08:05:8e:1f:ff:2e:4d:59:60:3e:a2:d5:e3:e2:b8:68"
+            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
+      - run:
+          command: bash .circleci/deploy-stage.sh
+
+  prod_deploy:
+    docker:
+      - image: circleci/python:3.6.6
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "08:05:8e:1f:ff:2e:4d:59:60:3e:a2:d5:e3:e2:b8:68"
+            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
+      - run:
+          command: bash .circleci/deploy-prod.sh

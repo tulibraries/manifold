@@ -1,2 +1,3 @@
-<%= f.input :title, label: "Title", required: :true %>
-<%= f.input :pickup_location, label: "Pickup Location", required: :true %>
+<%= f.input :title, label: "Title", input_html: { value: params[:title] }, required: :true %>
+<%= f.input :pickup_location, as: :select, collection: ["Ambler","Charles","Podiatry","Harrisburg","HSL"], 
+																											 label: "Pickup Location", required: :true %>

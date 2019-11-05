@@ -10,7 +10,6 @@ RSpec.describe Building, type: :model do
       "description",
       "address1",
       "address2",
-      "temple_building_code",
       "coordinates",
       "google_id",
     ]
@@ -70,15 +69,12 @@ RSpec.describe Building, type: :model do
       name: ["The Text 1", "The Text 2"],
       description: ["The Text 1", "The Text 2"],
       address1: ["The Text 1", "The Text 2"],
-      temple_building_code: ["The Text 1", "The Text 2"],
       coordinates: ["The Text 1", "The Text 2"],
       hours: ["The Text 1", "The Text 2"],
       phone_number: ["2155551212", "2155551234"],
-      campus: ["The Text 1", "The Text 2"],
       email: ["The Text 1", "The Text 2"],
       google_id: ["The Text 1", "The Text 2"],
       address2: ["The Text 1", "The Text 2"],
-      add_to_footer: [false, true]
     }
 
     fields.each do |k, v|
@@ -95,8 +91,7 @@ RSpec.describe Building, type: :model do
     let(:city) { "Philadelphia" }
     let(:state) { "PA" }
     let(:zip_code) { "19122" }
-    let(:building) { FactoryBot.create(:building, :with_image, address2: "#{city}, #{state}, #{zip_code}") }
-    let(:building_no_image) { FactoryBot.create(:building) }
+    let(:building) { FactoryBot.create(:building, address2: "#{city}, #{state}, #{zip_code}") }
 
     describe "Linked data hash" do
       subject { building.map_to_schema_dot_org }
@@ -124,20 +119,13 @@ RSpec.describe Building, type: :model do
 
       it { is_expected.to include("telephone" => building[:phone_number]) }
       it { is_expected.to include("email" => building[:email]) }
-      it { is_expected.to include("image" => building.index_image_url) }
       xit { is_expected.to include("hours" => building[:hours]) }
       it { is_expected.to include("geo" => building[:coordinates]) }
       it { is_expected.to include("googleId" => building[:google_id]) }
 
-      context "building without an image" do
-        it "does not include an image tag" do
-          expect(building_no_image.map_to_schema_dot_org.keys).not_to include("image")
-        end
-      end
     end
   end
 
   it_behaves_like "categorizable"
-  it_behaves_like "imageable"
   it_behaves_like "SchemaDotOrgable"
 end

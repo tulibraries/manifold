@@ -1,8 +1,15 @@
 <div class="field-unit__label">
-  <%= f.label field.permitted_attribute %>
+	<% unless field.resource.class.to_s == "Building" %>
+  	<%= f.label field.permitted_attribute %>
+  <% else %>
+    <%= f.label field.attribute == :external_link ? "Library website (external link)" : field.permitted_attribute %>
+  <% end %>
 </div>
 <div class="field-unit__field">
   <%= f.select(field.permitted_attribute, field.html_attributes) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
+  <% end %>
+  <% if field.attribute == :external_link %>
+   <p class="text-muted">Link will appear in a button with the title of "Library Website"</p>
   <% end %>
 </div>

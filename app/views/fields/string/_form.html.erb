@@ -1,6 +1,12 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
+  <% if field.attribute == :slug %>
+  	<p style="height:3rem"></p>
+  <% end %>
 </div>
 <div class="field-unit__field">
   <%= f.text_field field.attribute, field.html_attributes %>
+  <% if field.attribute == :slug %>
+	<p>Slugs are used to set the browser path and in the code to link resources together. Edit with extreme caution. Read more in [<a href="https://tulibdev.atlassian.net/wiki/spaces/LWR/pages/1047166982/Slugs">Confluence</a>]</p>
+	<% end %>
 </div>

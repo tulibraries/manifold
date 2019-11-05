@@ -68,7 +68,7 @@ class AdminGroupDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(admin_group)
-    "Admin Group ##{admin_group.id}"
+    "#{admin_group.name}"
   end
 
   def tinymce?

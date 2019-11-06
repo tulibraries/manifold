@@ -4,9 +4,9 @@
 </div>
 <div class="field-unit__field field-unit--has-many">
   <%= f.select(field.attribute_key, nil, {}, {multiple: true}.merge(field.html_attributes)) do %>
-	  <%= options_for_select(field.associated_resource_options, field.selected_options) %>
-	  <% end %>
-	  <% if field.attribute == :categories %>
-	   <p class="text-muted">Categories determine the left hand menu that appears on the page and also the navigation category to which this page belongs</p>
+    <%= options_for_select(field.associated_resource_options, field.selected_options) %>
+  <% end %>
+  <% if field.attribute == :categories %>
+    <p class="text-muted">Categories determine the left hand menu that appears on the page and also the navigation category to which this page belongs</p>
   <% end %>
 </div>

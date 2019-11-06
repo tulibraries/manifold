@@ -1,5 +1,8 @@
 <div class="field-unit__label">
-  <%= f.label field.attribute %>
+  <%= f.label "Image Upload" %>
+  <% if field.resource.class.to_s == "Collection" %>
+  	<p style="height: 1.5rem"></p>
+  <% end %>
 </div>
 <div class="field-unit__field">
 	<% if field.data.attached? %>
@@ -7,6 +10,9 @@
     <%= f.file_field field.attribute %>
     <%= link_to t("manifold.admin.actions.detach"), { action: :detach }, data: { confirm: "Are you sure?" } %>
   <% else %>
-	  <%= f.file_field field.attribute %>    
+	  <%= f.file_field field.attribute %>
+    <% if field.resource.class.to_s == "Collection" %>
+    	<p class="text-muted">Requirements: 1200 x 400 -- .jpg, .png, .gif files only</p>
+    <% end %>
 	<% end %>
 </div>

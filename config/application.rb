@@ -213,6 +213,10 @@ module Tude
 
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
+    config.hours_spreadsheet_id = "1nZkmNzNwMsVlTa4sg3V1M1KOAvXcoyexLkeqTzqV_gs"
+    config.hours_worksheet = "Sheet2"
+    config.hours_spreadsheet_header_cells = "Sheet2!A1:O1"
+    config.hours_spreadsheet_date_cells = "Sheet2!A2:A"
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
     config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://events.temple.edu/feed/xml/events?department=2566")
     config.ensemble_api_user = ENV["ENSEMBLE_API_USER"]

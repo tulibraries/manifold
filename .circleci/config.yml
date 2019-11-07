@@ -38,11 +38,13 @@ jobs:
       - image: circleci/postgres:11-alpine
         environment:
           TZ: "America/New_York"
+          BUNDLER_VERSION: "2.0.1"
     steps:
       - checkout
       - run:
           command: |
             sudo gem update --system
+            sudo gem install -f bundler --version "$BUNDLER_VERSION"
             sudo apt-get update
             sudo apt-get install postgresql-client
             sudo psql -c "create role manifold with createdb login password 'password';" -U postgres -h localhost

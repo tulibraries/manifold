@@ -3,7 +3,7 @@
 class PagesController < ApplicationController
   include HasCategories
   include HTTParty
-  before_action :set_date, :todays_date, :get_highlights, only: [:home, :hsl, :ambler]
+  before_action :get_highlights, only: [:home]
   before_action :set_page, only: [:show, :charles]
   before_action :navigation_items, only: [:show, :charles]
   before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
@@ -133,7 +133,7 @@ class PagesController < ApplicationController
     @print_my_paper = Service.find_by_slug("printing")
     @book_study_room = Space.find_by_slug("study-rooms-small")
     @locations = Building.find_by_slug("ambler")
-    @todays_hours = LibraryHour.find_by(location_id: "charles", date: @today)
+    @todays_hours = LibraryHour.todays_hours_at("charles")
     @libguides = ExternalLink.find_by_slug("libguides")
     @explore_charles = Page.find_by_slug("explore-charles")
   end
@@ -265,12 +265,6 @@ class PagesController < ApplicationController
   end
 
   private
-    def set_date
-      @today = Date.today.strftime("%Y-%m-%d 04:00:00")
-    end
-    def todays_date
-      @todays_date = @today.to_date.strftime("%^A, %^B %d, %Y ")
-    end
     def set_page
       unless params[:id].nil?
         @page = Page.find(params[:id])

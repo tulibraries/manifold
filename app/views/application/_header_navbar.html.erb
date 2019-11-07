@@ -30,9 +30,9 @@
 
 <div id="wrapper">
 
-  <% unless @alert.blank? %>
   <div id="header" class="row" style="border-top: solid #bbb 1px;border-bottom: solid #bbb 1px">
     <div class="col">
+      <% unless @alert.blank? %>
       <div class="container">
         <% @alert.each do |alert| %>
           <% unless alert.link.blank? %>
@@ -42,9 +42,9 @@
           <% end %>
         <% end %>
       </div>
+      <% end %>
     </div>
   </div> <!-- #header -->
- <% end %>
 
   <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
     <div class="container nav-container">

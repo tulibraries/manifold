@@ -42,13 +42,14 @@
 	</div>
 
 	<div class="col-12 col-lg-8 description-container">
+		<% unless @page.description.nil? %>
 		<div class="row">
 			<div class="col-12 description">
-				<%= sanitize(@page.description.html_safe) unless @page.nil? || @page.description.nil? %>
+				<%= sanitize(@page.description.html_safe) %>
 			</div>
 		</div>
+		<% end %>
 		<div class="row links-container">
-			<% unless @visit_links.nil? %>
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
 					<h2>Visit & Study</h2>
@@ -62,8 +63,6 @@
 					<%= render "pages/mini-partials/visit" %>
 				</div>
 			</div>
-			<% end %>
-			<% unless @research_links.nil? %>
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
 					<h2>Research Services</h2>
@@ -77,8 +76,6 @@
 					<%= render "pages/mini-partials/research" %>
 				</div>
 			</div>
-			<% end %>
-			<% unless @event_links.nil? %>
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
 					<h2>Workshops & Events</h2>
@@ -88,15 +85,13 @@
 							<li><%= link_to link.label, link %></li>
 						<% end %>
 						<% end %>
-							<li class="text-right all-events"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
+							<li class="text-right dsc-event"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
 					</ul>
 				</div>
 				<div class="links d-block d-lg-none">
 					<%= render "pages/mini-partials/events" %>
 				</div>
 			</div>
-			<% end %>
-			<% unless @blog_posts.nil? %>
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
 					<h2>Research Blog</h2>
@@ -111,7 +106,6 @@
 					<%= render "pages/mini-partials/blog" %>
 				</div>
 			</div>
-			<% end %>
 		</div>
 	</div>
 	

@@ -21,11 +21,9 @@
 		</div>
 
 		<div class="contact">
-			<% unless @building.nil? %>
-			<%= image_tag "information_white.png", style: "width: 100px", class: "decorative", alt: "" %>
+			<%= image_tag "information_white.png", style: "width: 100px" %>
 			<%= link_to "Hours & Info", @building %>
 			<hr />
-			<% end %>
 			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
 			215-204-6632
 		</div>
@@ -33,7 +31,7 @@
 	</div>
 
 	<div class="col-12 col-lg-8 description-container">
-		<% unless @page.nil? || @page.description.nil? %>
+		<% unless @page.description.nil? %>
 		<div class="row">
 			<div class="col-12 description">
 				<%= sanitize(@page.description.html_safe) %>
@@ -41,7 +39,6 @@
 		</div>
 		<% end %>
 		<div class="row links-container">
-			<% unless @visit_links.nil? %>
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
 					<h2>Visit & Study</h2>
@@ -55,8 +52,6 @@
 					<%= render "pages/mini-partials/visit" %>
 				</div>
 			</div>
-			<% end %>
-			<% unless @research_links.nil? %>
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
 					<h2>Research Services</h2>
@@ -70,14 +65,14 @@
 					<%= render "pages/mini-partials/research" %>
 				</div>
 			</div>
-			<% end %>
-			<% unless @events.blank? %>
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
 					<h2>Workshops & Events</h2>
 					<ul class="list-unstyled">
-						<% @events.each do |link| %>
+						<% unless @events_links.nil? %>
+						<% @events_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>
+						<% end %>
 						<% end %>
 							<li class="text-right all-events"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
 					</ul>
@@ -86,7 +81,6 @@
 					<%= render "pages/mini-partials/events" %>
 				</div>
 			</div>
-			<% end %>
 
 		</div>
 	</div>

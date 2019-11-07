@@ -56,10 +56,8 @@ strong, .strong {
 	width: 100%;
 	text-align: center;
 	margin-bottom: 21px;
-	color: green;
-	.error {
-		color: $red;
-	}
+	outline: solid $red 1px;
+	color: $red;
 }
 a:not(.dropdown-item) {
 		color: #903;

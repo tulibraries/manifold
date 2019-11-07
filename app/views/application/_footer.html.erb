@@ -45,6 +45,7 @@
                 <li><%= link_to t("manifold.footer.illiad_link"), @illiad_link.link unless @illiad_link.nil? %></li>
                 <li><%= link_to t("manifold.footer.publications_link"), @publications_link unless @publications_link.nil? %></li>
                 <li><%= link_to t("manifold.footer.diversity_link"), @diversity_link unless @diversity_link.nil? %></li>
+                <li><%= link_to t("manifold.footer.primo_articles"), Rails.configuration.primo_articles_url %></li>
               </ul>
             </div>
             <div class="col-12 col-lg-5 px-0">

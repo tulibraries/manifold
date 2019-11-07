@@ -9,21 +9,17 @@ class BuildingDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    image: PhotoField.with_options(admin_only: true),
     name: Field::String,
     slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     address1: Field::String,
     address2: Field::String,
-    temple_building_code: Field::String,
-    coordinates: Field::String,
-    google_id: Field::String,
+    coordinates: Field::String.with_options(admin_only: true),
+    google_id: Field::String.with_options(admin_only: true),
     hours: HoursField.with_options(admin_only: true),
     phone_number: PhoneField,
-    campus: Field::String,
     email: Field::Email,
     policies: Field::HasMany,
-    add_to_footer: Field::Boolean.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
     categories: Field::HasMany,
     created_at: Field::DateTime,
@@ -45,15 +41,12 @@ class BuildingDashboard < BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :image,
     :name,
     :description,
     :external_link,
     :address1,
     :address2,
-    :temple_building_code,
     :phone_number,
-    :campus,
     :email,
     :policies,
     :categories
@@ -65,21 +58,17 @@ class BuildingDashboard < BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :slug,
-    :image,
     :description,
     :external_link,
-    :campus,
     :address1,
     :address2,
     :phone_number,
-    :temple_building_code,
     :coordinates,
     :google_id,
     :hours,
     :email,
     :policies,
     :categories,
-    :add_to_footer
   ].freeze
 
   # Overwrite this method to customize how buildings are displayed

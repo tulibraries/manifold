@@ -121,10 +121,15 @@ class PagesController < ApplicationController
 
   def charles
     @page = ExternalLink.find_by_slug("explore-charles")
+    page_exists?
     @content = Page.find_by_slug("charles")
-    @images = []
-    22.times do |i|
-      @images << (i.to_s + ".jpg")
+    unless @content.nil?
+      @images = []
+      22.times do |i|
+        @images << (i.to_s + ".jpg")
+      end
+    else
+      page_exists?(false)
     end
   end
 
@@ -139,79 +144,111 @@ class PagesController < ApplicationController
   end
 
   def scrc
+    @page = Page.find_by_slug("scrc-intro")
     @scrc_location = Space.find_by_slug("scrc-room")
     @reading_room = Space.find_by_slug("scrc-reading-room")
-    @visit_links = Category.find_by_slug("scrc-study").items
-    @collection_links = Category.find_by_slug("scrc-collections").items
-    @page = Page.find_by_slug("scrc-intro")
+    @visit_links = Category.find_by_slug("scrc-study").items unless Category.find_by_slug("scrc-study").nil?
+    @collection_links = Category.find_by_slug("scrc-collections").items unless Category.find_by_slug("scrc-collections").nil?
   end
 
   def blockson
     @page = Page.find_by_slug("blockson-intro")
-    @visit_links = Category.find_by_slug("blockson-study").items
-    @research_links = Category.find_by_slug("blockson-research").items
+    @visit_links = Category.find_by_slug("blockson-study").items unless Category.find_by_slug("blockson-study").nil?
+    @research_links = Category.find_by_slug("blockson-research").items unless Category.find_by_slug("blockson-research").nil?
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.now]).order(:start_time).take(4)
     @building = Building.find_by_slug("blockson")
   end
 
   def tudsc
+    @page = Page.find_by_slug("lcdss-intro")
     @makerspace_location = Space.find_by_slug("makerspace")
     @vr_location = Space.find_by_slug("immersive-lab")
     @innovation_location = Space.find_by_slug("innovation-sandbox")
-    visit_links = Category.find_by_slug("lcdss-study")
-    unless visit_links.nil?
-      @visit_links = visit_links.items
-    end
-    research_links = Category.find_by_slug("lcdss-research")
-    unless research_links.nil?
-      @research_links = research_links.items
-    end
+    @visit_links = Category.find_by_slug("lcdss-study").items unless Category.find_by_slug("lcdss-study").nil?
+    @research_links = Category.find_by_slug("lcdss-research").items unless Category.find_by_slug("lcdss-research").nil?
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.now]).order(:start_time).take(5)
     @blog = Blog.find_by_slug("lcdss-blog")
-    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
+    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5) unless @blog.nil?
     @info = Space.find_by_slug("lcdss")
-    @page = Page.find_by_slug("lcdss-intro")
   end
 
   def hsl
     @ginsburg_location = Building.find_by_slug("ginsburg")
     @podiatry_location = Building.find_by_slug("podiatry")
-    @visit_links = Category.find_by_slug("hsl-study").items
-    @resource_links = Category.find_by_slug("hsl-resources").items
-    @research_links = Category.find_by_slug("hsl-research").items
+    @visit_links = Category.find_by_slug("hsl-study").items unless Category.find_by_slug("hsl-study").nil?
+    @resource_links = Category.find_by_slug("hsl-resources").items unless Category.find_by_slug("hsl-resources").nil?
+    @research_links = Category.find_by_slug("hsl-research").items unless Category.find_by_slug("hsl-research").nil?
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.now]).order(:start_time).take(5)
   end
 
   def about
-    @categories = Category.find_by_slug("about-page").items.select { |item| item.class == Category }
+    unless Category.find_by_slug("about-page").nil?
+      @categories = Category.find_by_slug("about-page").items.select { |item| item.class == Category }
+    else
+      page_exists?
+    end
   end
 
   def visit
-    @categories = Category.find_by_slug("visit").items.select { |item| item.class == Category }
+    unless Category.find_by_slug("visit").nil?
+      @categories = Category.find_by_slug("visit").items.select { |item| item.class == Category }
+    else
+      page_exists?
+    end
   end
 
   def blogs
-    @categories = Category.find_by_slug("news").items.select { |item| item.class == Category }
+    unless Category.find_by_slug("news").nil?
+      @categories = Category.find_by_slug("news").items.select { |item| item.class == Category }
+    else
+      page_exists?
+    end
   end
 
   def publications
-    @categories = Category.find_by_slug("publications").items.select { |item| item.class == Category }
+    unless Category.find_by_slug("publications").nil?
+      @categories = Category.find_by_slug("publications").items.select { |item| item.class == Category }
+    else
+      page_exists?
+    end
   end
 
   def support
-    @categories = Category.find_by_slug("giving").items.select { |item| item.class == Category }
+    unless Category.find_by_slug("giving").nil?
+      @categories = Category.find_by_slug("giving").items.select { |item| item.class == Category }
+    else
+      page_exists?
+    end
   end
 
   def grants
-    @categories = Category.find_by_slug("grants").items.select { |item| item.class == Category }
+    unless Category.find_by_slug("grants").nil?
+      @categories = Category.find_by_slug("grants").items.select { |item| item.class == Category }
+    else
+      page_exists?
+    end
   end
 
   def policies
-    @categories = Category.find_by_slug("policies").items.select { |item| item.class == Category }
+    unless Category.find_by_slug("policies").nil?
+      @categories = Category.find_by_slug("policies").items.select { |item| item.class == Category }
+    else
+      page_exists?
+    end
   end
 
   def research
-    @categories = Category.find_by_slug("research-services").items.select { |item| item.class == Category }
+    unless Category.find_by_slug("research-services").nil?
+      @categories = Category.find_by_slug("research-services").items.select { |item| item.class == Category }
+    else
+      page_exists?
+    end
+  end
+
+  def contact
+    @fcn_link = Page.find_by_slug("numbers")
+    @libanswers = ExternalLink.find_by_slug("libanswers")
+    @suggestions = ExternalLink.find_by_slug("suggestions")
   end
 
   def navigation_items
@@ -238,29 +275,12 @@ class PagesController < ApplicationController
     end
   end
 
-  def contact
-    @fcn_link = Page.find_by_slug("numbers")
-    @libanswers = ExternalLink.find_by_slug("libanswers")
-    @suggestions = ExternalLink.find_by_slug("suggestions")
-  end
-
   def show
     @categories = @page.categories
     respond_to do |format|
       # format.html { render @page.layout.parameterize }
       format.html
       format.json { render json: PageSerializer.new(@page) }
-    end
-  end
-
-  def navigation_items
-    @nav_items = []
-    @page.categories.each do |cat|
-      cat.items.each do |item|
-        unless item.id == @page.id
-          @nav_items << item
-        end
-      end
     end
   end
 
@@ -277,6 +297,13 @@ class PagesController < ApplicationController
       else
         @page = Page.find_by_slug(action_name)
       end
-      @categories = @page.categories
+      page_exists?
+      @categories = @page.categories unless @page.nil?
+    end
+    def page_exists?(options: true)
+      if @page.nil? || options == false
+        flash[:error] = "Page could not be loaded"
+        redirect_to root_path
+      end
     end
 end

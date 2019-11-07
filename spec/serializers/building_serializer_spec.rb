@@ -20,34 +20,16 @@ RSpec.describe BuildingSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :address1, :address2, :temple_building_code, :coordinates,
-                                                :google_id, :campus, :phone_number, :description, :label, :updated_at)
+      expect(data[:attributes].keys).to include(:name, :address1, :address2, :coordinates, :google_id,
+                                                :phone_number, :description, :label, :updated_at)
     end
 
     it "has a link to the object" do
       expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(building)
     end
 
-    describe "building with image" do
-      let (:building) { FactoryBot.create(:building, :with_image) }
-
-      it "has the image and thumbnail attributes" do
-        expect(data[:attributes].keys).to include(:image, :thumbnail_image)
-      end
-
-      describe "image attribute" do
-        it "returns an valid url" do
-          image_url = data[:attributes][:image]
-          expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
-        end
-      end
-
-      describe "thumbnail_image attribute" do
-        it "returns an valid url" do
-          image_url = data[:attributes][:thumbnail_image]
-          expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
-        end
-      end
+    describe "generates label from name" do
+      let (:building) { FactoryBot.create(:building) }
 
       describe "label attribute" do
         it "returns the name" do

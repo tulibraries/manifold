@@ -31,7 +31,7 @@ class FindingAid < ApplicationRecord
   def additional_schema_dot_org_attributes
     {
       about: subject.map(&:inspect).join(", "),
-      isPartOf: collection.name,
+      isPartOf: collections.map(&:inspect).join(", "),
       identifier: identifier
     }
   end

@@ -30,7 +30,7 @@ as well as a link to its edit page.
       class: "button",
     ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
   </div>
-  <% if Rails.application.routes.url_helpers.method_defined?(page.resource.class.name.downcase + "_path") %>
+  <% if Rails.application.routes.url_helpers.method_defined?(page.resource.class.name.underscore + "_path") %>
   <div>
     <%= link_to(t("manifold.admin.actions.show_website"), page.resource, class: "button green")  %>
   </div>

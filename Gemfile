@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.5.1"
+ruby "2.6.5"
 
 gem "timecop"
 gem "administrate"
@@ -42,7 +42,7 @@ gem "omniauth-google-oauth2"
 gem "paper_trail"
 gem "pg"
 gem "popper_js", "~> 1.14.5"
-gem "puma", "~> 4.2"
+gem "puma", "~> 4.3"
 gem "rails", "~> 5.2.3"
 gem "rswag-api"
 gem "rswag-ui"

@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.5"
 
+gem "timecop"
 gem "administrate"
 gem "ancestry"
 gem "attr_json"

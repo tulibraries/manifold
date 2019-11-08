@@ -35,6 +35,7 @@ class BuildingDashboard < BaseDashboard
     :id,
     :name,
     :updated_at,
+    :categories,
     :slug,
   ].freeze
 

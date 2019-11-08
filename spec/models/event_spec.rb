@@ -127,6 +127,49 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "mapping to schema.org" do
+    let(:event) { FactoryBot.create(:event) }
+
+    it "has the expected type" do
+      expect(event.map_to_schema_dot_org["@type"]).to eq "Event"
+    end
+    describe "Location" do
+      example "campus building" do
+        building = FactoryBot.create(:building)
+        event = FactoryBot.create(:event, building: building)
+        input = event.map_to_schema_dot_org
+        expect(input["location"]["@type"]).to eq "Place"
+        expect(input["location"]["name"]).to eq building.name
+      end
+
+      example "Location is external building" do
+        event = FactoryBot.create(:event)
+        input = event.map_to_schema_dot_org
+        expect(input["location"]["@type"]).to eq "Place"
+        expect(input["location"]["name"]).to eq event[:external_building]
+        expect(input["location"]["address"]["@type"]).to eq "PostalAddress"
+        expect(input["location"]["address"]["streetAddress"]).to eq event[:external_address]
+      end
+    end
+
+    describe "timed event" do
+      example "start and end time" do
+        event = FactoryBot.create(:event)
+        input = event.map_to_schema_dot_org
+        expect(input["startDate"]).to eq(event[:start_time])
+        expect(input["endDate"]).to eq(event[:end_time])
+        expect(input["all_day"]).to_not be
+      end
+      example "All day event" do
+        event = FactoryBot.create(:event, start_time: nil, end_time: nil, all_day: true)
+        input = event.map_to_schema_dot_org
+        expect(input["endTime"]).to be nil
+        expect(input["startTime"]).to be nil
+      end
+    end
+  end
+
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
+  it_behaves_like "SchemaDotOrgable"
 end

@@ -3,6 +3,7 @@
 		<label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
 	  <input type="text" name="q" id="librarySearch" placeholder="Search everything" autocomplete="off" />
 	  <input type="submit" value = "" aria-label="submit search query">
+	  <input type="hidden" name="search_field" id="search_field" value="all">
 	</form>
 	<ul class="text-left">
 	  <li><%= link_to t("manifold.header.search.books"), "#{librarysearch_url("books")}" %></li>

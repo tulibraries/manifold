@@ -110,5 +110,6 @@ RSpec.describe Service, type: :model do
     end
   end
 
+  it_behaves_like "accountable"
   it_behaves_like "categorizable"
 end

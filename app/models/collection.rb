@@ -2,9 +2,11 @@
 
 class Collection < ApplicationRecord
   has_paper_trail
-  include InputCleaner
+  include Accountable
   include Categorizable
+  include InputCleaner
   include Imageable
+  include SchemaDotOrgable
 
   validates :name, :description, presence: true
 
@@ -17,4 +19,23 @@ class Collection < ApplicationRecord
   serialize :subject
 
   before_validation :burpArray
+
+  def schema_dot_org_type
+    "ArchiveComponent"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      about: subject.map(&:inspect).join(", "),
+      itemLocation: {
+        "@type" => "Place",
+        name: space.building.name,
+        address: {
+          "@type" => "PostalAddress",
+          streetAddress: space.building.address1,
+          addressLocality: space.building.address2
+        }
+      }
+    }
+  end
 end

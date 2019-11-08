@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "partials/_vars.scss";
+
 .container.exhibit-show {
 	margin-top: 35px;
 	h1.page-title {

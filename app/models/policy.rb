@@ -7,13 +7,26 @@ class Policy < ApplicationRecord
   include Categorizable
   include InputCleaner
   include Validators
+  include SchemaDotOrgable
   extend FriendlyId
   friendly_id :name, use: :slugged
-  validates_uniqueness_of :slug
-  include SchemaDotOrgable
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   validates :name, :description, :effective_date, presence: true
   serialize :category
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :category],
+      [:name, :category, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   def label
     name

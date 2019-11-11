@@ -4,11 +4,12 @@ class Event < ApplicationRecord
   has_paper_trail
   include Categorizable
   include Imageable
-  extend FriendlyId
-  friendly_id :title, use: :slugged
-  validates_uniqueness_of :slug
   include InputCleaner
   include SchemaDotOrgable
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   paginates_per 5
   belongs_to :building, optional: true
@@ -18,6 +19,17 @@ class Event < ApplicationRecord
   before_save :sanitize_description
 
   serialize :tags
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 
   def get_tags
     self.tags.split(",").collect(&:strip)
@@ -38,16 +50,8 @@ class Event < ApplicationRecord
     building ? building.address2 : "#{external_city}, #{external_state} #{external_zip}"
   end
 
-  def can_visit
-    unless building.nil?
-      true
-    else
-      false
-    end
-  end
-
   def get_date
-    start_time.strftime("%^A, %^B %d, %Y ").titleize
+    start_time.strftime("%^A, %^B %d, %Y ").titleize unless start_time.nil?
   end
 
   def set_times

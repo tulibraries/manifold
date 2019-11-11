@@ -9,7 +9,8 @@ class Group < ApplicationRecord
   include Categorizable
   extend FriendlyId
   friendly_id :name, use: :slugged
-  validates_uniqueness_of :slug
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true
@@ -34,6 +35,17 @@ class Group < ApplicationRecord
 
   has_many :service_group
   has_many :related_services, through: :service_group, source: :service
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   def get_chair
     members = Array.new

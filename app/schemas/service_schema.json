@@ -133,16 +133,6 @@
 							],
 							"pattern": "^(.*)$"
             },
-						"add_to_footer": {
-							"$id": "#/properties/data/properties/attributes/properties/add_to_footer",
-							"type": "boolean",
-							"title": "The Add to Footer Schema",
-							"default": "",
-							"examples": [
-                true,
-                false
-							]
-						},
 						"updated_at": {
 							"$id": "#/properties/data/properties/attributes/properties/updated_at",
 							"type": "string",

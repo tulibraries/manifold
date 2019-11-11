@@ -31,17 +31,6 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "can visit" do
-    example "event is visitable" do
-      event = FactoryBot.create(:event, building: building, space: space, person: person)
-      expect(event.can_visit).to be
-    end
-    example "event is not visitable" do
-      event = FactoryBot.create(:event, building: nil, space: nil, person: person)
-      expect(event.can_visit).to_not be
-    end
-  end
-
   describe "get date" do
     example "event date renders as month day, year" do
       event = FactoryBot.create(:event, building: nil, space: nil, person: person)

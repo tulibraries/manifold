@@ -25,7 +25,6 @@ class GroupDashboard < BaseDashboard
       collection: Rails.configuration.group_types
       ),
     policies: Field::HasMany,
-    add_to_footer: Field::Boolean.with_options(admin_only: true),
     parent_group: Field::BelongsTo.with_options(
       class_name: "Group",
       foreign_key: "parent_group_id",
@@ -43,7 +42,6 @@ class GroupDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :slug,
     :name,
     :member,
   ].freeze
@@ -81,8 +79,7 @@ class GroupDashboard < BaseDashboard
     :documents,
     :policies,
     :pages,
-    :categories,
-    :add_to_footer,
+    :categories
   ].freeze
 
   # Overwrite this method to customize how groups are displayed

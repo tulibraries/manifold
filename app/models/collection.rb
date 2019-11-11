@@ -6,10 +6,11 @@ class Collection < ApplicationRecord
   include Categorizable
   include InputCleaner
   include Imageable
+  include SchemaDotOrgable
   extend FriendlyId
   friendly_id :name, use: :slugged
-  validates_uniqueness_of :slug
-  include SchemaDotOrgable
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   validates :name, :description, presence: true
 
@@ -22,6 +23,17 @@ class Collection < ApplicationRecord
   serialize :subject
 
   before_validation :burpArray
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   def schema_dot_org_type
     "ArchiveComponent"

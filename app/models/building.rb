@@ -5,14 +5,16 @@ class Building < ApplicationRecord
 
   include Categorizable
   include HasHours
-  require "uploads"
-  extend FriendlyId
-  friendly_id :name, use: :slugged
   include HasPolicies
   include InputCleaner
   include SetDates
   include SchemaDotOrgable
   include Validators
+  require "uploads"
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   before_validation :normalize_phone_number
   before_validation :sanitize_description
@@ -26,6 +28,17 @@ class Building < ApplicationRecord
   has_paper_trail
 
   auto_strip_attributes :email
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   def street_address
     address1

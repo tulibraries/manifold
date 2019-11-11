@@ -30,7 +30,6 @@ class ServiceDashboard < Administrate::BaseDashboard
     service_group: Field::HasMany,
     related_groups: Field::HasMany.with_options(class_name: "Group"),
     hours: HoursField.with_options(admin_only: true),
-    add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     created_at: Field::DateTime,
@@ -43,7 +42,6 @@ class ServiceDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :slug,
     :title,
     :service_category,
   ].freeze
@@ -80,8 +78,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :related_groups,
     :hours,
     :categories,
-    :accounts,
-    :add_to_footer
+    :accounts
   ].freeze
 
   def display_resource(service)

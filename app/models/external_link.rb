@@ -6,11 +6,23 @@ class ExternalLink < ApplicationRecord
   include Categorizable
   extend FriendlyId
   friendly_id :title, use: :slugged
-  validates_uniqueness_of :slug
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   before_save :link_cleanup!
 
   validates :title, :link, presence: true
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 
   def label
     title

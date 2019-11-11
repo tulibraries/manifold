@@ -12,10 +12,10 @@ class Space < ApplicationRecord
   include SetDates
   include Validators
   include SchemaDotOrgable
-  has_ancestry
   extend FriendlyId
   friendly_id :name, use: :slugged
-  validates_uniqueness_of :slug
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   validates :name, presence: true
   validates :description, presence: true
@@ -31,6 +31,8 @@ class Space < ApplicationRecord
   belongs_to :building
   belongs_to :external_link, optional: true
 
+  has_ancestry
+
   has_many :occupant
   has_many :persons, -> { order "last_name ASC" }, through: :occupant, source: :person
 
@@ -39,6 +41,17 @@ class Space < ApplicationRecord
 
   has_many :service_space
   has_many :related_services, through: :service_space, source: :service
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :building]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   def schema_dot_org_type
     "Place"

@@ -12,7 +12,7 @@ FactoryBot.define do
     }
     subject { ["MyText"] }
     contents { "MyText" }
-    add_to_footer { false }
+    slug { "blockson" }
 
     categories { [] }
 

@@ -12,9 +12,9 @@ RSpec.shared_examples "routes_for_imageable" do
   describe "image routes for #{described_class}", type: :routing do
 
   let(:factory_model) { FactoryBot.create(model_name_from_controller.to_sym, :with_image) }
-  let(:thumnbnail_path) { send("#{model_name_from_controller}_image_thumbnail_path", factory_model) }
-  let(:medium_path) { send("#{model_name_from_controller}_image_medium_path", factory_model) }
-  let(:large_path) { send("#{model_name_from_controller}_image_large_path", factory_model) }
+  let(:thumnbnail_path) { send("#{model_name_from_controller}_image_thumbnail_path", factory_model.id) }
+  let(:medium_path) { send("#{model_name_from_controller}_image_medium_path", factory_model.id) }
+  let(:large_path) { send("#{model_name_from_controller}_image_large_path", factory_model.id) }
 
   context "object has an attached image" do
     it "has route to a thumnbnail image" do

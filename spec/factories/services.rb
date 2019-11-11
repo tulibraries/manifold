@@ -2,7 +2,6 @@
 
 FactoryBot.define do
   factory :service do
-    slug { "printing" }
     sequence(:title) { |n| "Service #{n}" }
     description {
     <<~EOD.strip.gsub(/\n/, " ")
@@ -17,6 +16,6 @@ FactoryBot.define do
     intended_audience { ["General"] }
     service_category { "Hospitality" }
     related_groups { [FactoryBot.create(:group)] }
-    add_to_footer { false }
+    slug { "printing" }
   end
 end

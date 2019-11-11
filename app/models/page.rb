@@ -6,15 +6,27 @@ class Page < ApplicationRecord
   include SetDates
   include Validators
   extend FriendlyId
-  friendly_id :title, use: :slugged
-  validates_uniqueness_of :slug
   include SchemaDotOrgable
+  friendly_id :title, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   has_one_attached :document, dependent: :destroy
   # validates :document, content_type: ["application/pdf"]
   validates :title, :description, presence: true
 
   belongs_to :group, optional: true
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 
   def label
     title

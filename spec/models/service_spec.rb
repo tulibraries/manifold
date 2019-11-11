@@ -96,8 +96,7 @@ RSpec.describe Service, type: :model do
       service_policies: ["The Text 1", "The Text 2"],
       #intended_audience: ["The Text 1", "The Text 2"],
       service_category: ["The Text 1", "The Text 2"],
-      hours: ["The Text 1", "The Text 2"],
-      add_to_footer: [false, true]
+      hours: ["The Text 1", "The Text 2"]
     }
 
     fields.each do |k, v|

@@ -8,7 +8,8 @@ class Person < ApplicationRecord
   include Imageable
   extend FriendlyId
   friendly_id :name, use: :slugged
-  validates_uniqueness_of :slug
+  friendly_id :slug_candidates, use: :slugged
+  validates_presence_of :slug
 
   paginates_per 20
 
@@ -29,6 +30,14 @@ class Person < ApplicationRecord
 
   has_many :occupant
   has_many :spaces, through: :occupant, source: :space
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :job_title],
+      [:name, :job_title, :id]
+    ]
+  end
 
   def name
     "#{first_name} #{last_name}"

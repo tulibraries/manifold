@@ -11,6 +11,7 @@ class Service < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
   validates_uniqueness_of :slug
+  include SchemaDotOrgable
 
   validates :title, :description, :intended_audience, :service_category, presence: true
   validates :related_groups, presence: true
@@ -38,5 +39,16 @@ class Service < ApplicationRecord
 
   def label
     title
+  end
+
+  def schema_dot_org_type
+    "WebPage"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      name: title,
+      description: description
+    }
   end
 end

@@ -7,6 +7,7 @@ class FindingAid < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
   validates_uniqueness_of :slug
+  include SchemaDotOrgable
 
   paginates_per 15
 
@@ -25,6 +26,18 @@ class FindingAid < ApplicationRecord
 
   has_many :finding_aid_responsibilities
   has_many :person, through: :finding_aid_responsibilities
+
+  def schema_dot_org_type
+    "ArchiveComponent"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      about: subject.map(&:inspect).join(", "),
+      isPartOf: collections.map(&:inspect).join(", "),
+      identifier: identifier
+    }
+  end
 
   private
     # TODO: find and eliminate the cause of nil values on form submission

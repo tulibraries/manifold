@@ -3,7 +3,6 @@
 class BuildingsController < ApplicationController
   include HasCategories
   before_action :set_building, only: [:show]
-  before_action :set_date, only: [:show]
   before_action :navigation_items, only: [:show]
 
   def index
@@ -15,7 +14,6 @@ class BuildingsController < ApplicationController
   end
 
   def show
-    @todays_hours = LibraryHour.where(location_id: @building.hours, date: @today)
     respond_to do |format|
       format.html
       format.json { render json: BuildingSerializer.new(@building) }
@@ -46,9 +44,5 @@ class BuildingsController < ApplicationController
 
     def building_params
       params.require(:building).permit()
-    end
-
-    def set_date
-      @today = Date.today.strftime("%Y-%m-%d 00:00:00")
     end
 end

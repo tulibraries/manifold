@@ -8,6 +8,7 @@ class Exhibition < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
   validates_uniqueness_of :slug
+  include SchemaDotOrgable
 
   belongs_to :group, optional: true
   belongs_to :space, optional: true
@@ -17,5 +18,25 @@ class Exhibition < ApplicationRecord
 
   def label
     title
+  end
+
+  def schema_dot_org_type
+    "ExhibitionEvent"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      startDate: start_time,
+      endDate: end_time,
+      location: {
+        "@type" => "Place",
+        name: space.label,
+        address: {
+          "@type" => "PostalAddress",
+          streetAddress: space.building.address1,
+          addressLocality: space.building.address2
+        }
+      }
+    }
   end
 end

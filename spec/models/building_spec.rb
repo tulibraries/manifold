@@ -10,7 +10,6 @@ RSpec.describe Building, type: :model do
       "description",
       "address1",
       "address2",
-      "temple_building_code",
       "coordinates",
       "google_id",
     ]
@@ -70,15 +69,12 @@ RSpec.describe Building, type: :model do
       name: ["The Text 1", "The Text 2"],
       description: ["The Text 1", "The Text 2"],
       address1: ["The Text 1", "The Text 2"],
-      temple_building_code: ["The Text 1", "The Text 2"],
       coordinates: ["The Text 1", "The Text 2"],
       hours: ["The Text 1", "The Text 2"],
       phone_number: ["2155551212", "2155551234"],
-      campus: ["The Text 1", "The Text 2"],
       email: ["The Text 1", "The Text 2"],
       google_id: ["The Text 1", "The Text 2"],
       address2: ["The Text 1", "The Text 2"],
-      add_to_footer: [false, true]
     }
 
     fields.each do |k, v|
@@ -91,6 +87,45 @@ RSpec.describe Building, type: :model do
     end
   end
 
+  describe "Makes Linked Data hash" do
+    let(:city) { "Philadelphia" }
+    let(:state) { "PA" }
+    let(:zip_code) { "19122" }
+    let(:building) { FactoryBot.create(:building, address2: "#{city}, #{state}, #{zip_code}") }
+
+    describe "Linked data hash" do
+      subject { building.map_to_schema_dot_org }
+
+      it { is_expected.to include("name" => building[:name]) }
+      it { is_expected.to include("description" => building[:description]) }
+      it { is_expected.to include("location") }
+
+      describe "location" do
+        subject { building.map_to_schema_dot_org["location"] }
+
+        it { is_expected.to include("@type" => "https://schema.org/Place") }
+        it { is_expected.to include("address") }
+
+        describe "address" do
+          subject { building.map_to_schema_dot_org["location"]["address"] }
+
+          it { is_expected.to include("@type" => "https://schema.org/PostalAddress") }
+          it { is_expected.to include("streetAddress" => building.address1) }
+          it { is_expected.to include("addressLocality" => a_string_including(city)) }
+          it { is_expected.to include("addressLocality" => a_string_including(state)) }
+          it { is_expected.to include("addressLocality" => a_string_including(zip_code)) }
+        end
+      end
+
+      it { is_expected.to include("telephone" => building[:phone_number]) }
+      it { is_expected.to include("email" => building[:email]) }
+      xit { is_expected.to include("hours" => building[:hours]) }
+      it { is_expected.to include("geo" => building[:coordinates]) }
+      it { is_expected.to include("googleId" => building[:google_id]) }
+
+    end
+  end
+
   it_behaves_like "categorizable"
-  it_behaves_like "imageable"
+  it_behaves_like "SchemaDotOrgable"
 end

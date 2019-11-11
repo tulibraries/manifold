@@ -17,10 +17,8 @@ class CollectionDashboard < Administrate::BaseDashboard
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
     ),
-    # contents: DescriptionField,
     space: Field::BelongsTo,
     image: PhotoField,
-    add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
@@ -43,12 +41,12 @@ class CollectionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :slug,
     :image,
     :subject,
     :space,
     :categories,
     :accounts,
-    :slug,
     :external_link
   ].freeze
 
@@ -65,7 +63,6 @@ class CollectionDashboard < Administrate::BaseDashboard
     :space,
     :external_link,
     :accounts,
-    :add_to_footer,
   ].freeze
 
   # Overwrite this method to customize how collections are displayed

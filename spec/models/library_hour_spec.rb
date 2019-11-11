@@ -20,4 +20,13 @@ RSpec.describe LibraryHour, type: :model do
       expect { hour.save! }.to raise_error(/Hours can't be blank/)
     end
   end
+
+  describe "Todays Hours" do
+    before do
+      @today = FactoryBot.create(:library_hour, date: Time.now.strftime("%Y-%m-%d").in_time_zone)
+    end
+    example "Todays Hours method returns hours data" do
+      expect(LibraryHour.todays_hours_at(@today.location_id)).to_not be nil
+    end
+  end
 end

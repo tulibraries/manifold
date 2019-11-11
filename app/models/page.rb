@@ -8,6 +8,7 @@ class Page < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
   validates_uniqueness_of :slug
+  include SchemaDotOrgable
 
   has_one_attached :document, dependent: :destroy
   # validates :document, content_type: ["application/pdf"]
@@ -17,5 +18,16 @@ class Page < ApplicationRecord
 
   def label
     title
+  end
+
+  def schema_dot_org_type
+    "WebPage"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      name: title,
+      description: description
+    }
   end
 end

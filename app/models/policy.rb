@@ -10,11 +10,23 @@ class Policy < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
   validates_uniqueness_of :slug
+  include SchemaDotOrgable
 
   validates :name, :description, :effective_date, presence: true
   serialize :category
 
   def label
     name
+  end
+
+  def schema_dot_org_type
+    "WebPage"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      name: name,
+      description: description
+    }
   end
 end

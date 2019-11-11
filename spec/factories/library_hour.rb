@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :library_hour, class: "LibraryHour" do
-    location { "MyString" }
-    date { "2018-09-06 14:57:01" }
+    location { "" }
+    date { Time.now }
     hours { "MyString" }
-    location_id { "1" }
+    location_id { "charles" }
   end
 end

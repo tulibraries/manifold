@@ -3,10 +3,12 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.5.1"
+ruby "2.6.5"
 
+gem "timecop"
 gem "administrate"
 gem "ancestry"
+gem "attr_json"
 gem "auto_strip_attributes"
 gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false
@@ -22,7 +24,7 @@ gem "feedjira"
 gem "font-awesome-rails"
 gem "fuzzy_match"
 gem "google-analytics-rails", "1.1.1"
-gem "google-api-client", "~> 0.33"
+gem "google-api-client", "~> 0.34"
 gem "honeybadger", "~> 4.5"
 gem "httparty"
 gem "jbuilder", "~> 2.9"
@@ -40,7 +42,7 @@ gem "omniauth-google-oauth2"
 gem "paper_trail"
 gem "pg"
 gem "popper_js", "~> 1.14.5"
-gem "puma", "~> 4.2"
+gem "puma", "~> 4.3"
 gem "rails", "~> 5.2.3"
 gem "rswag-api"
 gem "rswag-ui"

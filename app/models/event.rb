@@ -2,12 +2,13 @@
 
 class Event < ApplicationRecord
   has_paper_trail
-  include InputCleaner
   include Categorizable
   include Imageable
   extend FriendlyId
   friendly_id :title, use: :slugged
   validates_uniqueness_of :slug
+  include InputCleaner
+  include SchemaDotOrgable
 
   paginates_per 5
   belongs_to :building, optional: true
@@ -25,12 +26,16 @@ class Event < ApplicationRecord
     self.event_type.split(",").collect(&:strip)
   end
 
-  def building_name(event)
-    if event.building
-      event.building.name
-    else
-      event.external_building
-    end
+  def building_name
+    building ? building.name : external_building
+  end
+
+  def building_address1
+    building ? building.address1 : external_address
+  end
+
+  def building_address2
+    building ? building.address2 : "#{external_city}, #{external_state} #{external_zip}"
   end
 
   def can_visit
@@ -59,5 +64,26 @@ class Event < ApplicationRecord
 
   def label
     title
+  end
+
+  def schema_dot_org_type
+    "Event"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      eventStatus: ("http://schema.org/EventCancelled" if cancelled),
+      startDate: start_time,
+      endDate: end_time,
+      location: {
+        "@type" => "Place",
+        name: building_name,
+        address: {
+          "@type" => "PostalAddress",
+          streetAddress: building_address1,
+          addressLocality: building_address2
+        }
+      }
+    }
   end
 end

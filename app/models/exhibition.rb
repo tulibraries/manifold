@@ -23,8 +23,8 @@ class Exhibition < ApplicationRecord
 
   def additional_schema_dot_org_attributes
     {
-      startDate: start_time,
-      endDate: end_time,
+      startDate: start_date,
+      endDate: end_date,
       location: {
         "@type" => "Place",
         name: space.label,

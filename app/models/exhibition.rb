@@ -12,6 +12,7 @@ class Exhibition < ApplicationRecord
   belongs_to :collection, optional: true
 
   has_draft :title, :description
+  attr_accessor :apply_draft_fields
 
   before_save :sanitize_description
 

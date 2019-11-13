@@ -29,6 +29,7 @@ and renders all form fields for a resource's editable attributes.
     </div>
   <% end %>
 
+  <% has_draft = false %>
   <% page.attributes.each do |attribute| -%>
     <% if user_editable_field?(current_account, attribute) %>
       <div class="field-unit field-unit--<%= attribute.html_class %> <%= required?(attribute) %>" >
@@ -36,9 +37,14 @@ and renders all form fields for a resource's editable attributes.
       </div>
       <% draft_field_name = ["draft", attribute.name].join("_") %>
       <% if attribute.resource.respond_to?(draft_field_name) %>
+        <% has_draft = true %>
         <div class="field-unit field-unit--<%= attribute.html_class %>" >
-          <%= f.label "#{draft_field_name.titleize}" %>
-          <%= f.text_area draft_field_name.to_sym %>
+          <div class="field-unit__label">
+            <%= f.label "#{draft_field_name.titleize}" %>
+          </div>
+          <div class="field-unit__field">
+            <%= f.text_area draft_field_name.to_sym %>
+          </div>
         </div>
       <% end -%>
 
@@ -46,6 +52,9 @@ and renders all form fields for a resource's editable attributes.
   <% end -%>
   <div class="form-actions">
     <%= f.submit %>
+    <% if has_draft %>
+      <%= f.check_box :apply_draft_fields%>Apply draft
+    <% end %>
   </div>
 <% end %>
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from action_draft (originally 20190724102032)
 
 class CreateActionDraftContents < ActiveRecord::Migration[5.2]

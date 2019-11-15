@@ -35,17 +35,10 @@ and renders all form fields for a resource's editable attributes.
       <div class="field-unit field-unit--<%= attribute.html_class %> <%= required?(attribute) %>" >
         <%= render_field attribute, f: f %>
       </div>
-      <% draft_field_name = ["draft", attribute.name].join("_") %>
+      <% draft_field_name = "draft_" + attribute.name %>
       <% if attribute.resource.respond_to?(draft_field_name) %>
+        <%= render_draft_field attribute, f: f %>
         <% has_draft = true %>
-        <div class="field-unit field-unit--<%= attribute.html_class %>" >
-          <div class="field-unit__label">
-            <%= f.label "#{draft_field_name.titleize}" %>
-          </div>
-          <div class="field-unit__field">
-            <%= f.text_area draft_field_name.to_sym %>
-          </div>
-        </div>
       <% end -%>
 
     <% end -%>

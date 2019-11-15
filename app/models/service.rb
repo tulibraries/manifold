@@ -5,6 +5,7 @@ class Service < ApplicationRecord
 
   include Accountable
   include Categorizable
+  include Draftable
   include InputCleaner
   include HasPolicies
   include SetDates
@@ -15,6 +16,8 @@ class Service < ApplicationRecord
   serialize :intended_audience
 
   belongs_to :external_link, optional: true
+
+  has_draft :description, :access_description
 
   before_validation :remove_empty_audience
   before_validation :sanitize_description

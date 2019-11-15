@@ -5,6 +5,7 @@ class Service < ApplicationRecord
 
   include Accountable
   include Categorizable
+  include Draftable
   include InputCleaner
   include HasPolicies
   include SetDates
@@ -25,6 +26,8 @@ class Service < ApplicationRecord
   has_many :related_policies, through: :service_policy, source: :policy
 
   belongs_to :external_link, optional: true
+
+  has_draft :description, :access_description
 
   before_validation :remove_empty_audience
   before_validation :sanitize_description

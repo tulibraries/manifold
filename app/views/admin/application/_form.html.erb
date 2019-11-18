@@ -46,7 +46,8 @@ and renders all form fields for a resource's editable attributes.
   <div class="form-actions">
     <%= f.submit %>
     <% if has_draft %>
-      <%= f.check_box :apply_draft_fields%>Apply draft
+      <%= f.check_box :apply_draft_fields%>
+      <%= f.label :apply_draft_fields, "Apply Draft"%>
     <% end %>
   </div>
 <% end %>

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "ServiceDrafts", type: :feature do
   context "Visit Service Administrate Page" do
-    before(:all) do
+    before(:each) do
       @account = FactoryBot.create(:account, admin: true)
       @service = FactoryBot.create(:service)
-      login_as(@account, :scope => :account)
+      login_as(@account, scope: :account)
     end
     let(:new_description) { "Don't Panic!" }
 
@@ -33,6 +33,32 @@ RSpec.feature "ServiceDrafts", type: :feature do
       visit("/admin/services/#{@service.id}/edit")
       within("textarea#service_description") do
         expect(page).to_not have_text @service.description
+        expect(page).to have_text new_description
+      end
+    end
+
+    scenario "Change the Service Access Description" do
+      visit("/admin/services/#{@service.id}/edit")
+      within("textarea#service_access_description") do
+        expect(page).to have_text @service.access_description
+      end
+      within("textarea#service_draft_access_description") do
+        expect(page).to have_text @service.draft_access_description
+      end
+      find("textarea#service_draft_access_description").set(new_description)
+      click_button ("Update Service")
+      visit("/admin/services/#{@service.id}/edit")
+      within("textarea#service_access_description") do
+        expect(page).to have_text @service.access_description
+      end
+      within("textarea#service_draft_access_description") do
+        expect(page).to have_text new_description
+      end
+      check("Apply Draft")
+      click_button("Update Service")
+      visit("/admin/services/#{@service.id}/edit")
+      within("textarea#service_access_description") do
+        expect(page).to_not have_text @service.access_description
         expect(page).to have_text new_description
       end
     end

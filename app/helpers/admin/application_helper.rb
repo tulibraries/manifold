@@ -16,4 +16,8 @@ module Admin::ApplicationHelper
     locals.merge!(field: field)
     render locals: locals, partial: "#{field.to_partial_path}_draft"
   end
+
+  def draft_name(field)
+    "draft_" + field.attribute.to_s
+  end
 end

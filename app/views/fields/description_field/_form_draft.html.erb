@@ -1,4 +1,3 @@
-<% draft_field_name = "draft_" + field.attribute.to_s %>
 <div class="field-unit__field field-draft">
-  <%= f.text_area draft_field_name.to_sym, class: "tinymce", rows: 10, cols: 120 %>
+  <%= f.text_area draft_name(field), class: "tinymce", rows: 10, cols: 120 %>
 </div>

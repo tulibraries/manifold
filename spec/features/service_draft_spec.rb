@@ -20,7 +20,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
         expect(page).to have_text @service.draft_description
       end
       find("textarea#service_draft_description").set(new_description)
-      click_button ("Update Service")
+      click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
       within("textarea#service_description") do
         expect(page).to have_text @service.description
@@ -46,7 +46,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
         expect(page).to have_text @service.draft_access_description
       end
       find("textarea#service_draft_access_description").set(new_description)
-      click_button ("Update Service")
+      click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
       within("textarea#service_access_description") do
         expect(page).to have_text @service.access_description
@@ -61,6 +61,17 @@ RSpec.feature "ServiceDrafts", type: :feature do
         expect(page).to_not have_text @service.access_description
         expect(page).to have_text new_description
       end
+    end
+
+    scenario "Change the Service Title" do
+      visit("/admin/services/#{@service.id}/edit")
+      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{@service.title}\"]")
+
+      find("input#service_draft_title").set(new_description)
+      check("Apply Draft")
+      click_button("Update Service")
+      visit("/admin/services/#{@service.id}/edit")
+      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{new_description}\"]")
     end
   end
 end

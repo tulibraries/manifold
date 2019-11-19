@@ -34,13 +34,12 @@ and renders all form fields for a resource's editable attributes.
     <% if user_editable_field?(current_account, attribute) %>
       <div class="field-unit field-unit--<%= attribute.html_class %> <%= required?(attribute) %>" >
         <%= render_field attribute, f: f %>
+        <% draft_field_name = "draft_" + attribute.name %>
+        <% if attribute.resource.respond_to?(draft_field_name) %>
+          <%= render_draft_field attribute, f: f %>
+          <% has_draft = true %>
+        <% end -%>
       </div>
-      <% draft_field_name = "draft_" + attribute.name %>
-      <% if attribute.resource.respond_to?(draft_field_name) %>
-        <%= render_draft_field attribute, f: f %>
-        <% has_draft = true %>
-      <% end -%>
-
     <% end -%>
   <% end -%>
   <div class="form-actions">

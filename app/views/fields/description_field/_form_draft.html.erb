@@ -1,3 +1,11 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+
 <div class="field-unit__field field-draft">
   <%= f.text_area draft_name(field), class: "tinymce", rows: 10, cols: 120 %>
+</div>
+
+<div contenteditable="false" class="field-published" id="<%= field.attribute.to_s %>">
+  <%= field.data.sanitize.html_safe %>
 </div>

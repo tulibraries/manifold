@@ -13,7 +13,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
 
     scenario "Change the Service Description" do
       visit("/admin/services/#{@service.id}/edit")
-      within("textarea#service_description") do
+      within("div#service_description") do
         expect(page).to have_text @service.description
       end
       within("textarea#service_draft_description") do
@@ -22,7 +22,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
       find("textarea#service_draft_description").set(new_description)
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      within("textarea#service_description") do
+      within("div#service_description") do
         expect(page).to have_text @service.description
       end
       within("textarea#service_draft_description") do
@@ -31,7 +31,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
       check("Apply Draft")
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      within("textarea#service_description") do
+      within("div#service_description") do
         expect(page).to_not have_text @service.description
         expect(page).to have_text new_description
       end
@@ -39,7 +39,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
 
     scenario "Change the Service Access Description" do
       visit("/admin/services/#{@service.id}/edit")
-      within("textarea#service_access_description") do
+      within("div#service_access_description") do
         expect(page).to have_text @service.access_description
       end
       within("textarea#service_draft_access_description") do
@@ -48,7 +48,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
       find("textarea#service_draft_access_description").set(new_description)
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      within("textarea#service_access_description") do
+      within("div#service_access_description") do
         expect(page).to have_text @service.access_description
       end
       within("textarea#service_draft_access_description") do
@@ -57,7 +57,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
       check("Apply Draft")
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      within("textarea#service_access_description") do
+      within("div#service_access_description") do
         expect(page).to_not have_text @service.access_description
         expect(page).to have_text new_description
       end

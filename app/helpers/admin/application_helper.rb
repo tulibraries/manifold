@@ -12,6 +12,11 @@ module Admin::ApplicationHelper
     changed_map.join("<br/>").html_safe
   end
 
+  def render_show_field(field, locals = {})
+    locals.merge!(field: field)
+    render locals: locals, partial: field.to_partial_path
+  end
+
   def render_draft_field(field, locals = {})
     locals.merge!(field: field)
     render locals: locals, partial: "#{field.to_partial_path}_draft"

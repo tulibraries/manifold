@@ -17,20 +17,17 @@
 		width:35px;
 		opacity: .5;
 	}
-	.access-link {
-		background-color: $foamgreen;
-		padding: 14px;
+	.entity-help {
+		padding-left: 0;
+		border: solid $seagreen 1px;
 		border-radius: 7px;
-		margin-bottom: 17px;
-		a {
-			color: $white;
-			text-decoration: underline;
+		padding: 14px;
+		overflow-wrap: break-word;
+		ul {
+			padding-left: 0;
 		}
-		h2 {
-			margin-bottom: 3px;
-		}
-		@media (max-width: 1039px) {
-			margin-top: 35px;
+		@media (max-width: 950px) {
+			width: 95%;
 		}
 	}
 	.collections-external-link {

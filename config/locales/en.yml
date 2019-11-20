@@ -32,22 +32,31 @@
 en:
   helpers:
     label:
+      account:
+        alertability: "Can Administrate Alerts"
       building:
         address1: "Street Address"
         address2: "City, State Zip"
         hours: "Hours Identifier"
-      account:
-        alertability: "Can Administrate Alerts"
       category:
         categories: "Parent Category"
-      service:
-        hours: "Hours Identifier"
-      space:
-        hours: "Hours Identifier"
+        accounts: "Individual Owners"
+      collection:
+        accounts: "Individual Owners"
+      page:
+        accounts: "Individual Owners"
+      policy:
+        accounts: "Individual Owners"
       redirect:
         legacy_path: "Path from Drupal"
         manifold_path: "Path/URL to Link to"
         redirectable: "Entity to Link To"
+      service:
+        hours: "Hours Identifier"
+        account: "Individual Owners"
+      space:
+        accounts: "Individual Owners"
+        hours: "Hours Identifier"
   manifold:
     default:
       event:
@@ -201,7 +210,7 @@ en:
         partners_borrowing:
           title: "Partners Borrowing Privileges Application/Renewal"
         storage_request:
-          title: "Storage Request"
+          title: "Recall item from Charles Library temporary storage"
 
     error:
       user_not_registered: "User not registered."
@@ -264,6 +273,7 @@ en:
       staff_directory: "Staff Directory"
       org_charts: "Library Organizational Charts"
       staff_forms: "Staff Forms"
+      primo_articles: "Find by citation"
     
     hours:
       charles_note: >

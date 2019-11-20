@@ -28,6 +28,7 @@ class SpaceDashboard < BaseDashboard
     updated_at: Field::DateTime,
     ancestry: Field::String,
     categories: Field::HasMany,
+    accounts: Field::HasMany.with_options(admin_only: true),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -54,7 +55,8 @@ class SpaceDashboard < BaseDashboard
     :phone_number,
     :email,
     :policies,
-    :categories
+    :categories,
+    :accounts
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -73,7 +75,8 @@ class SpaceDashboard < BaseDashboard
     :accessibility,
     :phone_number,
     :policies,
-    :categories
+    :categories,
+    :accounts
   ].freeze
 
   # Overwrite this method to customize how spaces are displayed

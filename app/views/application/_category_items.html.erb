@@ -1,22 +1,22 @@
-  <div class="leftside-index">
-    <% unless @nav_items.size > 1 %>
-      <div class="index-category">
-    <% else %>
-      <div class="d-none d-lg-block index-category">
-    <% end %>
-        <h2><%= link_to @category.name, @category %></h2>
-      </div>
+<div class="leftside-index">
+  <% unless @nav_items.size > 1 %>
+    <div class="index-category">
+  <% else %>
+    <div class="d-none d-lg-block index-category">
+  <% end %>
+      <h2><%= link_to @category.name, @category %></h2>
+    </div>
 
-    <div class="index-items">
-      <div>
-        <ul class="list-unstyled">
-        <% @nav_items.each do |item| %>
-        <% unless item == @category %>
-          <li><%= link_to item.label, item %></li>
-          <% end %>
+  <div class="index-items">
+    <div>
+      <ul class="list-unstyled">
+      <% @nav_items.each do |item| %>
+      <% unless item == @category %>
+        <li><%= link_to item.label, item %></li>
         <% end %>
-        </ul>
-      </div>
+      <% end %>
+      </ul>
     </div>
   </div>
-    
+</div>
+  

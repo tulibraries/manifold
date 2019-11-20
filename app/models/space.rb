@@ -2,13 +2,16 @@
 
 class Space < ApplicationRecord
   has_paper_trail
-  include Validators
-  include InputCleaner
-  include HasPolicies
-  include SetDates
+
+  include Accountable
   include Categorizable
-  include Imageable
   include HasHours
+  include HasPolicies
+  include Imageable
+  include InputCleaner
+  include SetDates
+  include Validators
+  include SchemaDotOrgable
   has_ancestry
 
   validates :name, presence: true
@@ -33,6 +36,25 @@ class Space < ApplicationRecord
 
   has_many :service_space
   has_many :related_services, through: :service_space, source: :service
+
+  def schema_dot_org_type
+    "Place"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      telephone: phone_number,
+      containedInPlace: {
+        "@type" => "containedInPlace",
+        name: building.name,
+        address: {
+          "@type" => "PostalAddress",
+          streetAddress: building.address1,
+          addressLocality: building.address2
+        }
+      }
+    }
+  end
 
   def self.arrange_as_array(options = {}, hash = nil)
     hash ||= arrange(options)

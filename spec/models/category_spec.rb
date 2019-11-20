@@ -5,6 +5,9 @@ require "rails_helper"
 
 RSpec.describe Category, type: :model do
 
+
+  it_behaves_like "accountable"
+
   let(:category) { FactoryBot.create(:category) }
   let(:parent_category) { FactoryBot.create(:category_parent) }
 
@@ -99,15 +102,11 @@ RSpec.describe Category, type: :model do
 
     let(:category) { FactoryBot.create(:category) }
 
-    it "responds to .url" do
-      expect(category).to respond_to(:url)
-    end
-
     context "with custom_url defined" do
       let(:category) { FactoryBot.create(:category, :custom_url) }
 
       it "returns the expected path" do
-        expect(category.url).to eq "http://sand.man"
+        expect(category.custom_url).to eq "http://sand.man"
       end
     end
 
@@ -115,14 +114,10 @@ RSpec.describe Category, type: :model do
       let(:policy) { FactoryBot.create(:policy) }
       let(:page) { FactoryBot.create(:page) }
 
-      context "when items are in the ctaegory" do
+      context "when items are in the category" do
         before do
           page.categories << category
           policy.categories << category
-        end
-
-        it "returns the url to the first item in #items" do
-          expect(category.url).to eq url_for(category.items.first)
         end
 
         context "when an external link is in the category" do
@@ -132,34 +127,14 @@ RSpec.describe Category, type: :model do
           end
 
           it "does not return the external_link as the url" do
-            expect(category.url).to_not eq url_for(external_link)
+            expect(url_for(category)).to_not eq url_for(external_link)
           end
-        end
-      end
-
-      context "when no items are in the category" do
-        it "routes to the root url" do
-          expect(category.url).to match(/^http:\/\/test.host\//)
         end
       end
     end
 
-
-
   end
 
-  describe "#path" do
-  let(:category) { FactoryBot.create(:category) }
-
-  it "responds to .url" do
-    expect(category).to respond_to(:path)
-  end
-
-  it "calls url with the only_path parameter" do
-    expect(category).to receive(:url).with(only_path: true)
-    category.path
-  end
-end
   describe "#items" do
     let(:building) { FactoryBot.create(:building) }
     let(:building2) { FactoryBot.create(:building) }
@@ -291,7 +266,7 @@ end
     end
   end
 
-  #convenience method for soecs that return paths to other models
+  #convenience method for specs that return paths to other models
   def url_for(instance)
     Rails.application.routes.url_helpers.url_for(instance)
   end

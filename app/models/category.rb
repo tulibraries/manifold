@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Category < ApplicationRecord
-  include Rails.application.routes.url_helpers
-  #TODO: should we validate that icon is svg?
+  include Accountable
   include Imageable
 
   has_many :categorizations, dependent: :destroy
@@ -10,6 +9,8 @@ class Category < ApplicationRecord
 
   has_many :nested_categorizations, as: :categorizable, dependent: :destroy, class_name: "Categorization"
   has_many :categories, through: :nested_categorizations
+
+  belongs_to :external_link, optional: true
 
   validates :name, presence: true
 
@@ -40,18 +41,7 @@ class Category < ApplicationRecord
       .sort_by { |categorized| [categorized&.category_weight, categorized&.label] }
   end
 
-
-  def url(only_path: false)
-    if custom_url.present?
-      custom_url
-    elsif items(exclude: [:external_link]).first
-      polymorphic_url(items(exclude: [:external_link]).first, only_path: only_path)
-    else
-      root_url
-    end
-  end
-
-  def path
-    url(only_path: true)
+  def link
+    custom_url.present? ? custom_url : self
   end
 end

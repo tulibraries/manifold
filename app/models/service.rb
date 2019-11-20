@@ -2,10 +2,13 @@
 
 class Service < ApplicationRecord
   has_paper_trail
+
+  include Accountable
+  include Categorizable
   include InputCleaner
   include HasPolicies
   include SetDates
-  include Categorizable
+  include SchemaDotOrgable
 
   validates :title, :description, :intended_audience, :service_category, presence: true
   validates :related_groups, presence: true
@@ -33,5 +36,16 @@ class Service < ApplicationRecord
 
   def label
     title
+  end
+
+  def schema_dot_org_type
+    "WebPage"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      name: title,
+      description: description
+    }
   end
 end

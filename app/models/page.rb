@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class Page < ApplicationRecord
-  include Validators
+  include Accountable
   include Categorizable
   include SetDates
+  include Validators
+  include SchemaDotOrgable
 
   has_one_attached :document, dependent: :destroy
   # validates :document, content_type: ["application/pdf"]
@@ -13,5 +15,16 @@ class Page < ApplicationRecord
 
   def label
     title
+  end
+
+  def schema_dot_org_type
+    "WebPage"
+  end
+
+  def additional_schema_dot_org_attributes
+    {
+      name: title,
+      description: description
+    }
   end
 end

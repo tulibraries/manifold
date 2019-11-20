@@ -65,4 +65,28 @@ RSpec.describe Account, type: :model do
       expect(a).to be_nil
     end
   end
+
+  describe "name field" do
+    let(:account) { FactoryBot.build(:account) }
+    example "exists" do
+      account.save!
+      expect(account.name).to match /#{Account.last["name"]}/
+    end
+  end
+
+  context "admin group field" do
+    before(:all) do
+      @admin_group = FactoryBot.create(:admin_group)
+    end
+
+    after(:all) do
+      Account.delete_all
+      AdminGroup.delete_all
+    end
+
+    example "Create admin group with admin account" do
+      account = FactoryBot.create(:account, admin_group: @admin_group)
+      expect(account.admin_group.name).to match /^#{@admin_group.name}$/
+    end
+  end
 end

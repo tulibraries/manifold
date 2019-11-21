@@ -13,7 +13,7 @@ class Space < ApplicationRecord
   include Validators
   include SchemaDotOrgable
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
   validates_presence_of :slug
 

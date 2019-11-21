@@ -110,6 +110,6 @@ class PersonsController < ApplicationController
 
   private
     def set_person
-      @person = Person.friendly.find(params[:id])
+      @person = Person.find(params[:id])
     end
 end

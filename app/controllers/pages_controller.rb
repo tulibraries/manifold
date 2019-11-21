@@ -267,7 +267,7 @@ class PagesController < ApplicationController
   private
     def set_page
       unless params[:id].nil?
-        @page = Page.friendly.find(params[:id])
+        @page = Page.find(params[:id])
       else
         @page = Page.find_by_slug(action_name)
       end

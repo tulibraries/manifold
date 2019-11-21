@@ -16,7 +16,6 @@ class SpaceDashboard < BaseDashboard
     groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     hours: HoursField.with_options(admin_only: true),
     accessibility: Field::Text,

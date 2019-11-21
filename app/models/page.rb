@@ -7,7 +7,7 @@ class Page < ApplicationRecord
   include Validators
   extend FriendlyId
   include SchemaDotOrgable
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
   validates_presence_of :slug
 

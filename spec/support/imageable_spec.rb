@@ -26,32 +26,32 @@ RSpec.shared_examples "imageable" do
       before { image }
 
       it "has a thumbnail path" do
-        expect(factory_model.thumb_image_path).to include("#{factory_model.id}/image/thumbnail")
+        expect(factory_model.thumb_image_path).to include("#{factory_model.to_param}/image/thumbnail")
         expect(factory_model.thumb_image_path).to start_with("/")
       end
 
       it "has a thumbnail url" do
-        expect(factory_model.thumb_image_url).to include("#{factory_model.id}/image/thumbnail")
+        expect(factory_model.thumb_image_url).to include("#{factory_model.to_param}/image/thumbnail")
         expect(factory_model.thumb_image_url).to start_with("http")
       end
 
       it "has a index path" do
-        expect(factory_model.index_image_path).to include("#{factory_model.id}/image/medium")
+        expect(factory_model.index_image_path).to include("#{factory_model.to_param}/image/medium")
         expect(factory_model.index_image_path).to start_with("/")
       end
 
       it "has a index url" do
-        expect(factory_model.index_image_path).to include("#{factory_model.id}/image/medium")
+        expect(factory_model.index_image_path).to include("#{factory_model.to_param}/image/medium")
         expect(factory_model.index_image_url).to start_with("http")
       end
 
       it "has a show path" do
-        expect(factory_model.show_image_path).to include("#{factory_model.id}/image/large")
+        expect(factory_model.show_image_path).to include("#{factory_model.to_param}/image/large")
         expect(factory_model.show_image_path).to start_with("/")
       end
 
       it "has a show url" do
-        expect(factory_model.show_image_path).to include("#{factory_model.id}/image/large")
+        expect(factory_model.show_image_path).to include("#{factory_model.to_param}/image/large")
         expect(factory_model.show_image_url).to include("http://")
       end
     end

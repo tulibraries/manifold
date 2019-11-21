@@ -5,7 +5,7 @@ class Category < ApplicationRecord
   include Accountable
   include Imageable
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
   validates_presence_of :slug
 

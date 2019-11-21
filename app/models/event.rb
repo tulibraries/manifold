@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   include InputCleaner
   include SchemaDotOrgable
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
   validates_presence_of :slug
 
@@ -19,6 +19,10 @@ class Event < ApplicationRecord
   before_save :sanitize_description
 
   serialize :tags
+
+  def to_param  # overridden for tests
+    id
+  end
 
   def slug_candidates
     [

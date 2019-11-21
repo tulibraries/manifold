@@ -20,6 +20,6 @@ class ExhibitionsController < ApplicationController
 
   private
     def set_exhibition
-      @exhibition = Exhibition.friendly.find(params[:id])
+      @exhibition = Exhibition.find(params[:id])
     end
 end

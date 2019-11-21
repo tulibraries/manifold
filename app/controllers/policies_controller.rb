@@ -39,6 +39,6 @@ class PoliciesController < ApplicationController
 
   private
     def set_policy
-      @policy = Policy.friendly.find(params[:id])
+      @policy = Policy.find(params[:id])
     end
 end

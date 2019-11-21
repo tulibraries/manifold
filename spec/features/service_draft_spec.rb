@@ -13,54 +13,34 @@ RSpec.feature "ServiceDrafts", type: :feature do
 
     scenario "Change the Service Description" do
       visit("/admin/services/#{@service.id}/edit")
-      within("div#service_description") do
-        expect(page).to have_text @service.description
-      end
-      within("textarea#service_draft_description") do
-        expect(page).to have_text @service.draft_description
-      end
+      expect(page).to have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{@service.description}\")]")
+      expect(page).to have_xpath("//textarea[@id=\"service_draft_description\"]/text()[contains(., \"#{@service.draft_description}\")]")
       find("textarea#service_draft_description").set(new_description)
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      within("div#service_description") do
-        expect(page).to have_text @service.description
-      end
-      within("textarea#service_draft_description") do
-        expect(page).to have_text new_description
-      end
+      expect(page).to have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{@service.description}\")]")
+      expect(page).to have_xpath("//textarea[@id=\"service_draft_description\"]/text()[contains(., \"#{new_description}\")]")
       check("Apply Draft")
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      within("div#service_description") do
-        expect(page).to_not have_text @service.description
-        expect(page).to have_text new_description
-      end
+      expect(page).to_not have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{@service.description}\")]")
+      expect(page).to have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{new_description}\")]")
     end
 
     scenario "Change the Service Access Description" do
       visit("/admin/services/#{@service.id}/edit")
-      within("div#service_access_description") do
-        expect(page).to have_text @service.access_description
-      end
-      within("textarea#service_draft_access_description") do
-        expect(page).to have_text @service.draft_access_description
-      end
+      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description}\")]")
+      expect(page).to have_xpath("//textarea[@id=\"service_draft_access_description\"]/text()[contains(., \"#{@service.draft_access_description}\")]")
       find("textarea#service_draft_access_description").set(new_description)
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      within("div#service_access_description") do
-        expect(page).to have_text @service.access_description
-      end
-      within("textarea#service_draft_access_description") do
-        expect(page).to have_text new_description
-      end
+      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description}\")]")
+      expect(page).to have_xpath("//textarea[@id=\"service_draft_access_description\"]/text()[contains(., \"#{new_description}\")]")
       check("Apply Draft")
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      within("div#service_access_description") do
-        expect(page).to_not have_text @service.access_description
-        expect(page).to have_text new_description
-      end
+      expect(page).to_not have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description}\")]")
+      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{new_description}\")]")
     end
 
     scenario "Change the Service Title" do

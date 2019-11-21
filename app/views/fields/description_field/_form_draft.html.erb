@@ -6,6 +6,7 @@
   <%= f.text_area draft_name(field), class: "tinymce", rows: 10, cols: 120 %>
 </div>
 
-<div contenteditable="false" class="field-published" id="<%= field.attribute.to_s %>">
-  <%= field.data.sanitize.html_safe %>
-</div>
+<%= tag.div field.data.nil? ? "" : field.data.sanitize.html_safe, contenteditable: "false",
+  class: "field-unit__field field-published",
+  id: fieldname_in_draft(@requested_resource, field)
+%>

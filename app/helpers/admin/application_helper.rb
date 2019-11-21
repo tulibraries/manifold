@@ -17,6 +17,10 @@ module Admin::ApplicationHelper
     render locals: locals, partial: field.to_partial_path
   end
 
+  def fieldname_in_draft(resource, field)
+    resource.class.to_s.downcase + "_" + field.attribute.to_s
+  end
+
   def render_draft_field(field, locals = {})
     locals.merge!(field: field)
     render locals: locals, partial: "#{field.to_partial_path}_draft"

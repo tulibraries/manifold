@@ -7,7 +7,7 @@
 </div>
 
 <div contenteditable="false"
-     class="field-unit__field field-published",
+     class="field-unit__field field-published field-description"
      id="<%= fieldname_in_draft(@requested_resource, field) %>">
-  <%= field.data.nil? ? "" : field.data.sanitize.html_safe %>
+  <%= field.data.sanitize.html_safe unless field.data.nil?%>
 </div>

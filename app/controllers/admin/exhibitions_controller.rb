@@ -7,7 +7,7 @@ module Admin
 
     private
       def resource_params
-        params.require(:exhibition).permit(:draft_title, :draft_description, :apply_draft_fields)
+        params.require(:exhibition).permit(:draft_title, :draft_description, :publish)
       end
   end
 end

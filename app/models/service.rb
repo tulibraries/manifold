@@ -17,7 +17,7 @@ class Service < ApplicationRecord
 
   belongs_to :external_link, optional: true
 
-  has_draft :description, :access_description
+  has_draft :title, :description, :access_description
 
   before_validation :remove_empty_audience
   before_validation :sanitize_description

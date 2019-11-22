@@ -279,6 +279,7 @@ en:
         revert: "Edit"
         object_version: "Version"
         detach: "Detach"
+        publish: "Publish"
       notification:
         all_blogs_synced: "Blogs: All synched"
         blog_synced: "Blogs: %{id} - %{title} synced"

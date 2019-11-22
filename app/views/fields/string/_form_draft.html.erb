@@ -6,7 +6,7 @@
   <%= f.text_field draft_name(field) %>
 </div>
 
-<div class="field-unit__field field-published",
+<div class="field-unit__field field-published field-string"
      id="<%= fieldname_in_draft(@requested_resource, field) %>">
-  <%= field.data.nil? ? "" : field.data.sanitize.html_safe %>
+  <%= field.data.sanitize.html_safe unless field.data.nil?%>
 </div>

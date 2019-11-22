@@ -49,5 +49,21 @@ RSpec.feature "ServiceDrafts", type: :feature do
       visit("/admin/services/#{@service.id}/edit")
       expect(page).to have_xpath("//div[@id=\"service_title\"]/text()[contains(., \"#{new_description}\")]")
     end
+
+    scenario "Change the Slug" do
+      find("input#service_draft_slug").set(new_description)
+      check("Apply Draft")
+      click_button("Update Service")
+      visit("/admin/services/#{@service.id}/edit")
+      expect(page).to have_xpath("//div[@id=\"service_slug\"]/text()[contains(., \"#{new_description}\")]")
+    end
+
+    scenario "Change the Access Link" do
+      find("input#service_draft_access_link").set(new_description)
+      check("Apply Draft")
+      click_button("Update Service")
+      visit("/admin/services/#{@service.id}/edit")
+      expect(page).to have_xpath("//div[@id=\"service_access_link\"]/text()[contains(., \"#{new_description}\")]")
+    end
   end
 end

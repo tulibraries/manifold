@@ -175,6 +175,7 @@ en:
           av_support: "A/V Support Needed"
           partner_name: "Partner's Name"
           partner_email: "Partner's Email"
+          faculty_advisor_email: "Faculty Advisor Email"
 
       forms:
         recall_book:

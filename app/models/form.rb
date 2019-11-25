@@ -104,6 +104,7 @@ class Form < MailForm::Base
   attribute :av_support
   attribute :partner_name
   attribute :partner_email
+  attribute :faculty_advisor_email
 
 
   def get_subject

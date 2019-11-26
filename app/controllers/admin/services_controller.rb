@@ -6,8 +6,7 @@ module Admin
 
     private
       def resource_params
-        params.require(:service).permit(:draft_title, :draft_slug, :draft_description, :draft_access_description,
-                                        :draft_access_link, :publish)
+        params.require(:service).permit(:draft_description, :draft_access_description, :publish)
       end
   end
 end

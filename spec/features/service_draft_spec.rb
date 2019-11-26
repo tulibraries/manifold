@@ -43,27 +43,20 @@ RSpec.feature "ServiceDrafts", type: :feature do
     end
 
     scenario "Change the Service Title" do
-      find("input#service_draft_title").set(new_description)
-      check("Publish")
+      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{@service.title}\"]")
+      find("input#service_title").set(new_description)
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_title\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{new_description}\"]")
     end
 
-    scenario "Change the Slug" do
-      find("input#service_draft_slug").set(new_description)
+    scenario "Change the Service Title and click publish" do
+      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{@service.title}\"]")
+      find("input#service_title").set(new_description)
       check("Publish")
       click_button("Update Service")
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_slug\"]/text()[contains(., \"#{new_description}\")]")
-    end
-
-    scenario "Change the Access Link" do
-      find("input#service_draft_access_link").set(new_description)
-      check("Publish")
-      click_button("Update Service")
-      visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_access_link\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{new_description}\"]")
     end
   end
 end

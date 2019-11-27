@@ -7,9 +7,13 @@ module InputCleaner
     phone_number.gsub!(/\D/, "")
   end
   def sanitize_description
-    self.description.gsub!(/<p>\W<\/p>/, "")
-    self.description.each_line { |line| line.chomp }
-    self.description = ActionController::Base.helpers.sanitize(self.description).strip
+    if self.description.nil?
+      self.description = "" 
+    else
+      self.description.gsub!(/<p>\W<\/p>/, "")
+      self.description.each_line { |line| line.chomp }
+      self.description = ActionController::Base.helpers.sanitize(self.description).strip
+    end
   end
   def burpArray
     self.subject.reject! { |s| s.empty? } unless subject.nil?

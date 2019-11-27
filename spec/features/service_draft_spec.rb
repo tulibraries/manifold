@@ -3,6 +3,16 @@
 require "rails_helper"
 
 RSpec.feature "ServiceDrafts", type: :feature do
+  context "New Service Administrate Page" do
+    scenario "Create new item " do
+      account = FactoryBot.create(:account, admin: true)
+      login_as(account, scope: :account)
+      visit("/admin/services/new")
+      expect(page).to_not have_xpath("//textarea[@id=\"service_draft_description\"]")
+      expect(page).to_not have_xpath("//textarea[@id=\"service_draft_access_description\"]")
+    end
+  end
+
   context "Visit Service Administrate Page" do
     before(:each) do
       @account = FactoryBot.create(:account, admin: true)
@@ -10,6 +20,12 @@ RSpec.feature "ServiceDrafts", type: :feature do
       login_as(@account, scope: :account)
       visit("/admin/services/#{@service.id}/edit")
     end
+
+    after(:each) do
+      @account.destroy
+      @service.destroy
+    end
+
     let(:new_description) { "Don't Panic!" }
 
     scenario "Change the Service Description" do

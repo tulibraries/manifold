@@ -13,6 +13,9 @@
       <% @images.each_with_index do |image, index| %>  
         <div class="carousel-item text-center<% if index == 1 %> active<% end %>">
             <%= image_tag("charles/"+image, class: 'img-fluid') %>
+            <p style="height: 28px;background-color: black;color: white;font-family: 'Roboto Condensed';padding-top: 2px">
+              <%= @captions[index] %>
+            </p>
           </div>
         <% end %>
         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev" id="slide-previous">

@@ -123,7 +123,7 @@ class PagesController < ApplicationController
     @page = ExternalLink.find_by_slug("explore-charles")
     @content = Page.find_by_slug("charles")
     @images = []
-    22.times do |i|
+    26.times do |i|
       @images << (i.to_s + ".jpg")
     end
   end

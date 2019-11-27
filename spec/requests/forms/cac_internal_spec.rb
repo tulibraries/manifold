@@ -9,7 +9,7 @@ RSpec.describe "Cultural Analytics Certificate Internal Application", type: :req
     {
       name: "Ringo", email: "tu@temple.edu", phone: "2152041234", tu_id: "Temple ID Number",
       department: "LTD", degree_program: "M.A.", other: "Temple", faculty_advisor: "Generic Advisor",
-      degree_year: "First", personal_statement: "Personal Statement"
+      faculty_advisor_email: "fhm@temple.edu", degree_year: "First", personal_statement: "Personal Statement"
     }
   }
 

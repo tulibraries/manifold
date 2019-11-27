@@ -125,7 +125,7 @@ class Form < MailForm::Base
       "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
       "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["notices@temple.edu"]],
-      "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu"]]
+      "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu", "tuf16063@temple.edu"]]
     }
 
     @forms.fetch(form_type)

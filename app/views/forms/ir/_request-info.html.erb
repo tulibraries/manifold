@@ -4,13 +4,6 @@ action_taken = ["Library Administration Notified","Facilities Notified (1-1385)"
 %>
 
 <fieldset class="form-section">
-	<legend>Staff Member Submitting Form</legend>
-	<%= f.input :name, label: "Name", required: :true %>
-	<%= f.input :email, label: "Email", required: :true %>
-	<%= f.input :department, label: "Department", required: :true %>
-</fieldset>
-
-<fieldset class="form-section">
 	<legend>Incident Details</legend>
 	<%= f.input :type_of_incident, as: :radio_buttons, label: "Type of Incident", collection: incident_types, wrapper_html: { class: "form_affiliation" }, required: :true %>
 	<%= f.input :other_incident, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>

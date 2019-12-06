@@ -7,6 +7,7 @@ class FormsController < ApplicationController
   # end
   def new
     @form = Form.new
+    @collection = Rails.configuration.affiliation
     if existing_forms.include? params[:type]
       @type = params[:type]
       render template: "forms/index"
@@ -46,6 +47,7 @@ class FormsController < ApplicationController
   def create
     @form = Form.new(params[:form])
     @form.request = request
+    @collection = Rails.configuration.affiliation
 
     if @form.deliver
       flash.now[:notice] = "Thank you for your message. We will contact you soon!"

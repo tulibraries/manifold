@@ -5,7 +5,6 @@ class PagesController < ApplicationController
   include HTTParty
   before_action :get_highlights, only: [:home]
   before_action :set_page, only: [:show, :charles]
-  before_action :navigation_items, only: [:show, :charles]
   before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
 
   def wpvi
@@ -212,17 +211,6 @@ class PagesController < ApplicationController
 
   def research
     @categories = Category.find_by_slug("research-services").items.select { |item| item.class == Category }
-  end
-
-  def navigation_items
-    @nav_items = []
-    @page.categories.each do |cat|
-      cat.items(exclude: [:category]).each do |item|
-        unless item.id == @page.id
-          @nav_items << item
-        end
-      end
-    end
   end
 
   def list_item(category)

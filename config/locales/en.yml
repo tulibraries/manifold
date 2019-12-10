@@ -43,8 +43,6 @@ en:
         accounts: "Individual Owners"
       collection:
         accounts: "Individual Owners"
-      page:
-        accounts: "Individual Owners"
       policy:
         accounts: "Individual Owners"
       redirect:
@@ -57,6 +55,8 @@ en:
       space:
         accounts: "Individual Owners"
         hours: "Hours Identifier"
+      webpage:
+        accounts: "Individual Owners"
   manifold:
     default:
       event:

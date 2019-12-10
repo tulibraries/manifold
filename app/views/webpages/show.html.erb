@@ -1,0 +1,24 @@
+<%= render "mobile-menu-secondary" %>
+
+<div class="container" style="margin-top: 35px;">
+	<div class="row page">
+		<% unless @webpage.categories.blank? %>
+			<div class="d-none d-lg-block col-3">
+				<%= render "categories_list" %>
+			</div>
+	  	<div class="col-12 col-lg-9">
+		<% else %>
+			<div class="col-12">
+		<% end %>
+		    <h1><%= title @webpage.title %></h1>
+		    <div class="text-left page-description">
+		    	<%= render @webpage.layout.parameterize %>
+		    </div>
+		    <%= render "attachments" %>
+		  </div>
+	  </div>
+	</div>
+
+<script type="application/ld+json">
+  <%= json_ld(@webpage) %>
+</script> 

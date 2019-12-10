@@ -15,7 +15,7 @@ module Admin
         )
       else
         render :new, locals: {
-          page: Administrate::Page::Form.new(dashboard, group),
+          webpage: Administrate::Webpage::Form.new(dashboard, group),
         }
       end
     end
@@ -36,7 +36,7 @@ module Admin
         )
       else
         render :edit, locals: {
-          page: Administrate::Page::Form.new(dashboard, group),
+          webpage: Administrate::Webpage::Form.new(dashboard, group),
         }
       end
     end

@@ -29,27 +29,42 @@ class EventsController < ApplicationController
 
   def return_events(events)
     @events = []
-    if params.has_key?("type")
-      @type_events = events.having("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
-    end
-    if params.has_key?("location")
-      @loc_events = events.where(building: params[:location]).or(
-        events.where(external_building: params[:location])).order(
-          start_time: :desc)
-    end
-
-    unless @type_events.nil? && @loc_events.nil?
-      unless @type_events.nil?
-        @events += @type_events
-      end
-      unless @loc_events.nil?
-        @events += @loc_events
+    unless params["type"].blank?
+      unless params["location"].blank?
+        @types = events.where(event_type: params[:type]).order(:start_time)
+        @internals = events.where(building: params[:location]).order(:start_time)
+        @externals = events.where(external_building: params[:location]).order(:start_time)
+        @externals += @internals
+        if @externals.nil?
+          @events = @types
+        else
+          @events = @types.to_a & @externals.to_a
+        end
+      else
+        @events = events.where(event_type: params[:type]).order(:start_time)
       end
     end
 
-    @event_types = all_types(events)
+    unless params["location"].blank?
+      unless params["type"].blank?
+        @types = events.where("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
+        @internals = events.where(building: params[:location]).order(:start_time)
+        @externals = events.where(external_building: params[:location]).order(:start_time)
+        @externals += @internals
+        if @externals.nil?
+          @events = @types
+        else
+          @events = @types.to_a & @externals.to_a
+        end
+      else
+        @events = events.where(building: params[:location]).or(events.where(external_building: params[:location])).order(:start_time)
+      end
+    end
+
     unless @events.empty?
       @event_types = types_list(@events)
+    else
+      @event_types = all_types(events)
     end
 
     @event_locations = locations_list(events)

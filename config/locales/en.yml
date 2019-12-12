@@ -61,6 +61,7 @@ en:
     default:
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
+        charles_library: "Charles Library"
         title: "No Title"
         description: "No Description"
         external_building: "No Building Given"

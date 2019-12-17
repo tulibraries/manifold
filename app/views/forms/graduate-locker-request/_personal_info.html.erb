@@ -1,0 +1,5 @@
+<%= f.input :name, required: true %>
+<%= f.input :email, as: :email, required: true %>
+<%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
+<%= f.input :tu_id, label: "Temple ID Number", required: true %>
+<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: ["Graduate", "Faculty"], required: true %>

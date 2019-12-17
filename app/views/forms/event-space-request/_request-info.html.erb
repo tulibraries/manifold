@@ -1,18 +1,4 @@
 <fieldset>
-  <legend>Contact Information</legend>
-  <span style="font-size:large;font-weight:900;">Requestor/Event Leader/Coordinator/Student Group</span>
-  <%= f.input :name, label: "Name", required: :true %>
-  <%= f.input :email, label: "E-Mail", required: :true %>
-  <%= f.input :phone, label: "Telephone", required: :true %>
-  <%= f.input :department, label: "Department", required: :true %>
-  <span style="font-size:large;font-weight:900;">Sponsoring Budget Unit Head</span>
-  <%= f.input :name, label: "Name", required: :true %>
-  <%= f.input :email, label: "E-Mail", required: :true %>
-  <%= f.input :phone, label: "Telephone", required: :true %>
-  <%= f.input :foapal, label: "FOAPAL", required: :true, hint: "in case of damages or additional cleaning costs" %>
-</fieldset>
-
-<fieldset>
   <legend>Event Information</legend>
   <%= f.input :event_space, as: :select, collection: ["24/7 Lobby and Cafe *","2nd Floor Multipurpose Room","3rd Floor Reading Room *","4th Floor Multipurpose Room","4th Floor Reading Room *","Atrium *","Event Space","Graduate and Faculty Studio *","any available/not sure"], label: "Event Space", required: :true, hint: "* Special use, non-peak times only" %>
   <%= f.input :event_title, as: :text, label: "Event Title", required: :true %>

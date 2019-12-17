@@ -21,10 +21,10 @@ class Person < ApplicationRecord
   before_validation :normalize_phone_number
   before_validation :burpSpecialties
 
-  has_many :member
+  has_many :member, dependent: :destroy
   has_many :groups, through: :member, source: :group
 
-  has_many :occupant
+  has_many :occupant, dependent: :destroy
   has_many :spaces, through: :occupant, source: :space
 
   def name

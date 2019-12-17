@@ -5,7 +5,6 @@ class ServicesController < ApplicationController
   include RedirectLogic
 
   before_action :set_service, only: [:show]
-  before_action :navigation_items, only: [:show]
 
   def index
     @services = Service.all
@@ -23,17 +22,6 @@ class ServicesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: ServiceSerializer.new(@service) }
-    end
-  end
-
-  def navigation_items
-    @nav_items = []
-    @categories.each do |cat|
-      cat.items(exclude: [:category]).each do |item|
-        unless item.id == @service.id
-          @nav_items << item
-        end
-      end
     end
   end
 

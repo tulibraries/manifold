@@ -15,13 +15,13 @@ class Service < ApplicationRecord
 
   serialize :intended_audience
 
-  has_many :service_space
+  has_many :service_space, dependent: :destroy
   has_many :related_spaces, through: :service_space, source: :space
 
-  has_many :service_group
+  has_many :service_group, dependent: :destroy
   has_many :related_groups, through: :service_group, source: :group
 
-  has_many :service_policy
+  has_many :service_policy, dependent: :destroy
   has_many :related_policies, through: :service_policy, source: :policy
 
   belongs_to :external_link, optional: true

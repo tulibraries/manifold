@@ -12,7 +12,7 @@ gem "attr_json"
 gem "auto_strip_attributes"
 gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap", "~> 4.3.1"
+gem "bootstrap", "~> 4.4.1"
 gem "browser"
 gem "cancancan", "~> 3.0"
 gem "coffee-rails", "~> 4.2"

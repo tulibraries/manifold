@@ -28,13 +28,13 @@ class Space < ApplicationRecord
   belongs_to :building
   belongs_to :external_link, optional: true
 
-  has_many :occupant
+  has_many :occupant, dependent: :destroy
   has_many :persons, -> { order "last_name ASC" }, through: :occupant, source: :person
 
-  has_many :space_group
+  has_many :space_group, dependent: :destroy
   has_many :groups, through: :space_group, source: :group
 
-  has_many :service_space
+  has_many :service_space, dependent: :destroy
   has_many :related_services, through: :service_space, source: :service
 
   def schema_dot_org_type

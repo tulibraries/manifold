@@ -13,7 +13,7 @@ class Collection < ApplicationRecord
   belongs_to :space
   belongs_to :external_link, optional: true
 
-  has_many :collection_aids
+  has_many :collection_aids, dependent: :destroy
   has_many :finding_aids, through: :collection_aids
 
   serialize :subject

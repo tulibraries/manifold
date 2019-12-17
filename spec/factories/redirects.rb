@@ -13,7 +13,7 @@ FactoryBot.define do
 
   factory :entity_redirect, class: Redirect do
     legacy_path { "/scrc/research/harmful-language" }
-    redirectable { FactoryBot.create(:page) }
+    redirectable { FactoryBot.create(:webpage) }
   end
 
   factory :collection_redirect, class: Redirect do

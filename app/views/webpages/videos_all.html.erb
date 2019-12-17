@@ -1,0 +1,204 @@
+<div class="container" id="videos-index" style="margin-top: 35px;">
+
+<div class="row">
+	<div class="col">
+		<h1 class="page-title"><%= title "Past Program and Event Videos" %></h1>
+		<div class="row video-container">
+			<div class="col-lg-10 offset-lg-1">
+  	    <div id="ensembleEmbeddedContent_<%= @featured_video_id %>"><script type="text/javascript" src="https://ensemble.temple.edu/hapi/v1/contents/<%= @featured_video_id %>/plugin/javascript?embedId=ensembleEmbeddedContent_<%= @featured_video_id %>&embedAsThumbnail=false&displayTitle=false&startTime=0&autoPlay=false&hideControls=true&showCaptions=false&displaySharing=false&displayAnnotations=false&displayAttachments=false&displayLinks=false&displayEmbedCode=false&displayDownloadIcon=false&displayMetaData=false&displayCredits=false&audioPreviewImage=false&displayCaptionSearch=false&displayViewersReport=false&displayAxdxs=false"></script>
+				</div>
+			</div>
+		</div>
+</div>
+</div>
+
+<div class="row">
+	<div class="col-lg-10 offset-lg-1 text-center">
+		<div id="featuredTitle" class="text-center"><%= @featured_video_title %></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col text-center">
+		<div id="videosearchbar">
+    <form action="/watchpastprograms/search" method="GET">
+        <label class="sr-only" for="videosearchterm">Search all Past Program videos:</label>
+        <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
+        <input type="submit" id="videosearchbutton" value="Search">
+    </form>
+		</div>
+	</div>
+</div>
+
+	<div class="row odd">
+		<div class="col-sm-8">
+			<h2>Beyond the Page</h2>
+		</div>
+		<div class="col-sm-4">
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/0">See All Past Program Videos</a>
+			</span>
+		</div>
+		<div class="col-12">
+			<div class="row">
+				<% @all.take(8).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row even">
+		<div class="col-sm-8">
+			<h2>Beyond the Page</h2>
+		</div>
+		<div class="col-sm-4">
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/1">See All Beyond the Page Videos</a>
+			</span>
+		</div>
+		<div class="col-12">
+			<div class="row">
+				<% @beyond_page.take(4).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row odd">
+		<div class="col-sm-8">
+			<h2>Beyond the Notes</h2>
+		</div>
+		<div class="col-sm-4">
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/2">See All Beyond the Notes Videos</a>
+			</span>
+		</div>
+		<div class="col-12">
+			<div class="row">
+				<% @beyond_notes.take(4).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row even">
+		<div class="col-sm-8">
+			<h2>Charles L. Blockson Afro-American Collection</h2>
+		</div>
+		<div class="col-sm-4">
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/3">See All Blockson Collection Videos</a>
+			</span>
+		</div>
+		<div class="col-12">
+			<div class="row">
+				<% @blockson.take(4).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row odd">
+		<div class="col-sm-8">
+			<h2>Livingstone Undergraduate Research Awards</h2>
+		</div>
+		<div class="col-sm-4">
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/4">See All Research Award Videos</a>
+			</span>
+		</div>
+		<div class="col-12">
+			<div class="row">
+				<% @awards.take(4).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row even">
+		<div class="col-sm-8">
+			<h2>Loretta C. Duckworth Scholars Studio</h2>
+		</div>
+		<div class="col-sm-4">
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/5">See All Scholars Studio Videos</a>
+			</span>
+		</div>
+		<div class="col-12">
+			<div class="row">
+				<% @lcdss.take(4).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+
+  <% unless @scrc.empty? %>
+	<div class="row odd">
+		<div class="col-sm-8">
+			<h2>Special Collections Research Center</h2>
+		</div>
+		<div class="col-sm-4">
+			<span class="morevideos">
+				<a href="/watchpastprograms/list/6">See All Special Collections Videos</a>
+			</span>
+		</div>
+		<div class="col-12">
+			<div class="row">
+				<% @scrc.take(4).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
+						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
+						<br>
+						<%= video[:Title].truncate(64) %>
+					<% end %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+
+	</div>

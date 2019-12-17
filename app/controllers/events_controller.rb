@@ -10,7 +10,7 @@ class EventsController < ApplicationController
     events = @all_events.having("start_time >= ?", @today).order(:start_time)
     @events = return_events(events)
     @mailing_list = ExternalLink.find_by_slug("events-mailing-list")
-    @intro = Page.find_by_slug("events-intro")
+    @intro = Webpage.find_by_slug("events-intro")
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(@events) }
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   def past
     events = @all_events.having("start_time < ?", @today).order(start_time: :desc)
     @events = return_events(events)
-    @intro = Page.find_by_slug("events-intro")
+    @intro = Webpage.find_by_slug("events-intro")
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(@events) }

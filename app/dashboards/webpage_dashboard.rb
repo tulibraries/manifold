@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class RedirectDashboard < BaseDashboard
+class WebpageDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,16 +10,18 @@ class RedirectDashboard < BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    slug: Field::String.with_options(admin_only: true),
+    document: FileField,
+    group: Field::BelongsTo,
     id: Field::Number,
-    legacy_path: Field::String,
-    manifold_path: Field::String,
-    redirectable: Field::Polymorphic.with_options(
-      classes: [
-        ::Building, ::Collection, ::Webpage,
-        ::Policy, ::Service, ::Space
-      ],
-      admin_only: true
-    ),
+    title: Field::String,
+    description: DescriptionField,
+    layout: Field::Select.with_options(
+      collection: Rails.configuration.page_layouts,
+      multiple: false,
+      ),
+    categories: Field::HasMany,
+    accounts: Field::HasMany.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -30,30 +32,49 @@ class RedirectDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    #:categorizations,
-    :legacy_path
+    :title,
+    :slug
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :legacy_path,
-    :manifold_path,
-    :redirectable,
-    :created_at,
-    :updated_at,
+    :title,
+    :categories,
+    :accounts
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :legacy_path,
-    :manifold_path,
-    :redirectable,
+    :title,
+    :slug,
+    :description,
+    :document,
+    :group,
+    :categories,
+    :accounts,
+    :layout
   ].freeze
 
-  def display_resource(resource)
-    "#{resource.legacy_path}"
+  # Overwrite this method to customize how pages are displayed
+  # across all pages of the admin dashboard.
+  #
+  # def display_resource(page)
+  #   "Page ##{page.id}"
+  # end
+
+  # permitted for has_many_attached
+  # def permitted_attributes
+  #   super + [documents: []]
+  # end
+
+  def display_resource(webpage)
+    "#{webpage.title}"
+  end
+
+  def tinymce?
+    true
   end
 end

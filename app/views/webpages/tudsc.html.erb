@@ -1,0 +1,116 @@
+<% content_for :body_class, "minipage dsc" %>
+
+<div class="banner-image dsc"></div>
+
+<div class="container">
+
+<div class="row">
+	<div class="col">
+		<h1 class="page-title text-center">
+			<%= title "Loretta C. Duckworth Scholars Studio" %>
+		</h1>
+	</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-12 col-lg-4 pr-14 left-links">
+		<% unless @makerspace_location.nil? && @podiatry_location.nil? && @innovation_location.nil? %>
+		<div class="locations">
+			<% unless @makerspace_location.nil? %>
+			<%= link_to "Makerspace", space_path(@makerspace_location) %>
+			<% end %>
+			<% unless @vr_location.nil? %>
+			<hr />
+			<%= link_to "Immersive Visualization Studio", space_path(@vr_location) %>
+			<% end %>
+			<% unless @innovation_location.nil? %>
+			<hr />
+			<%= link_to "Innovation Tech Sandbox", space_path(@innovation_location) %>
+			<% end %>
+		</div>
+		<% end %>
+
+		<div class="contact">
+			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+			215-204-0752
+			<hr />
+			<%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+			<span class="mailer"><%= link_to "Newsletter Signup", "https://mailchi.mp/69c8cfeb1679/dssnewsletter", target: "_blank" %></span>
+		</div>
+
+	</div>
+
+	<div class="col-12 col-lg-8 description-container">
+		<% unless @webpage.description.nil? %>
+		<div class="row">
+			<div class="col-12 description">
+				<%= sanitize(@webpage.description.html_safe) %>
+			</div>
+		</div>
+		<% end %>
+		<div class="row links-container">
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2>Visit & Study</h2>
+					<ul class="list-unstyled">
+						<% @visit_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/visit" %>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2>Research Services</h2>
+					<ul class="list-unstyled">
+						<% @research_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/research" %>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2>Workshops & Events</h2>
+					<ul class="list-unstyled">
+						<% unless @event_links.nil? %>
+						<% @event_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+						<% end %>
+							<li class="text-right dsc-event"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/events" %>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2>Research Blog</h2>
+					<ul class="list-unstyled">
+						<% @blog_posts.each do |link| %>
+							<li><%= link_to link.title, link.post_guid %></li>
+						<% end %>
+						<li class="text-right all-events"><%= link_to "View all", strip_tags(@blog.base_url), style: "text-decoration:underline" %> ></li>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/blog" %>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+</div>
+
+

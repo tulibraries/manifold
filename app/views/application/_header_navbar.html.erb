@@ -50,16 +50,16 @@
     <div class="container nav-container">
       <ul class="list-unstyled">
         <li class="<% if action_name == 'about' %>active<% end %>">
-          <%= link_to t("manifold.header.about"), pages_about_path %>
+          <%= link_to t("manifold.header.about"), webpages_about_path %>
         </li>
         <li class="<% if action_name == 'visit' %>active<% end %>">
-          <%= link_to t("manifold.header.visit"), pages_visit_path %>
+          <%= link_to t("manifold.header.visit"), webpages_visit_path %>
         </li>
         <li class="<% if action_name == 'research' %>active<% end %>">
-          <%= link_to t("manifold.header.research"), pages_research_path %>
+          <%= link_to t("manifold.header.research"), webpages_research_path %>
         </li>
         <li class="<% if action_name == 'contact' %>active<% end %>">
-          <%= link_to t("manifold.header.contact"), pages_contact_path %>
+          <%= link_to t("manifold.header.contact"), webpages_contact_path %>
         </li>
         <li class="nav-right hours-nav<% if controller_name == 'library_hours' %> active<% end %>">
           <%= link_to t("manifold.header.hours"), hours_path %>

@@ -116,7 +116,7 @@ RSpec.describe Category, type: :model do
 
     context "without a custom_url defined" do
       let(:policy) { FactoryBot.create(:policy) }
-      let(:page) { FactoryBot.create(:page) }
+      let(:page) { FactoryBot.create(:webpage) }
 
       context "when items are in the ctaegory" do
         before do

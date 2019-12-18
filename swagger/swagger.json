@@ -816,7 +816,7 @@
     "/pages": {
       "get": {
         "summary": "Retrieves a list of pages",
-        "tags": ["Page", "Batch"],
+        "tags": ["Webpage", "Batch"],
         "operationId": "getPages",
         "produces": [
           "application/json"

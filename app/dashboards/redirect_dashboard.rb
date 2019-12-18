@@ -15,7 +15,7 @@ class RedirectDashboard < BaseDashboard
     manifold_path: Field::String,
     redirectable: Field::Polymorphic.with_options(
       classes: [
-        ::Building, ::Collection, ::Page,
+        ::Building, ::Collection, ::Webpage,
         ::Policy, ::Service, ::Space
       ],
       admin_only: true

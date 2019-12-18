@@ -12,7 +12,7 @@
 
       <div class="row">
         <div class="col">
-            <h1><%= title t("manifold.default.forms.#{@type.underscore}.title") %></h1>
+          <h1><%= title t("manifold.default.forms.#{@type.underscore}.title") %></h1>
         </div>
       </div>
 
@@ -25,18 +25,15 @@
       <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
 
-      <% unless @type == "ir" || @type == "proxy-account" || @type == "event-space-request"  %>
-        <div class="row">
-          <div class="col">
-            <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
-              <legend style="width: auto;padding: 0 21px;">Your Information</legend>
-            <%= render "forms/shared/personal_info", f: f %>
-            </fieldset>
-          </div>
+      <div class="row">
+        <div class="col">
+          <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
+            <legend style="width: auto;padding: 0 21px;">Your Information</legend>
+            <%= render "forms/#{@type}/personal_info", f: f %>
+          </fieldset>
         </div>
-      <% end %>
-
-      <% unless ["graduate-locker-request"].include? params[:type] %>
+      </div>
+      <% if File.exists?(Rails.root.join("app", "views", params[:controller], "#{@type}", "_request-info.html.erb")) %>
         <div class="row">
           <div class="col">
             <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;">
@@ -46,15 +43,15 @@
         </div>
       <% end %>
 
-        <div class="row" style="margin-top: 28px;">
-          <div class="col">
-            <%= f.button :submit, 'Send Request', class: "btn btn-primary" %>
-          </div>
+      <div class="row" style="margin-top: 28px;">
+        <div class="col">
+          <%= f.button :submit, 'Send Request', class: "btn btn-primary" %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
-  <% else %>
-    <%= render "all" %>
-  <% end %>
+</div>
+<% else %>
+  <%= render "all" %>
+<% end %>
 </div>

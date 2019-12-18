@@ -43,8 +43,6 @@ en:
         accounts: "Individual Owners"
       collection:
         accounts: "Individual Owners"
-      page:
-        accounts: "Individual Owners"
       policy:
         accounts: "Individual Owners"
       redirect:
@@ -57,10 +55,13 @@ en:
       space:
         accounts: "Individual Owners"
         hours: "Hours Identifier"
+      webpage:
+        accounts: "Individual Owners"
   manifold:
     default:
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
+        charles_library: "Charles Library"
         title: "No Title"
         description: "No Description"
         external_building: "No Building Given"

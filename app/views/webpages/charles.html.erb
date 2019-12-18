@@ -1,0 +1,23 @@
+<%= render "mobile-menu-secondary" %>
+
+<div class="container charles">
+
+	<div class="row">
+		<div class="col">
+			<h1><%= title @content.title %></h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col d-none d-lg-block col-lg-3">
+			<%= render "items" %>
+		</div>
+		<div class="col col-lg-9">
+			<%= render "webpages/marketing/slideshow" %>
+			<div class="charles-content">
+				<%= sanitize @content.description.html_safe %>
+			</div>
+		</div>
+	</div>
+
+</div>

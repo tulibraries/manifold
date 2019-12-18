@@ -19,8 +19,7 @@ class Building < ApplicationRecord
   validates :description, presence: true
 
   belongs_to :external_link, optional: true
-  has_many :library_hours
-  has_many :spaces
+  has_many :spaces, dependent: :destroy
   has_paper_trail
 
   auto_strip_attributes :email

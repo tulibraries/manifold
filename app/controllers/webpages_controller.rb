@@ -119,7 +119,7 @@ class WebpagesController < ApplicationController
   end
 
   def charles
-    @page = ExternalLink.find_by_slug("explore-charles")
+    @webpage = ExternalLink.find_by_slug("explore-charles")
     @content = Webpage.find_by_slug("charles")
     @images = []
     26.times do |i|
@@ -169,11 +169,11 @@ class WebpagesController < ApplicationController
     @reading_room = Space.find_by_slug("scrc-reading-room")
     @visit_links = Category.find_by_slug("scrc-study").items
     @collection_links = Category.find_by_slug("scrc-collections").items
-    @page = Webpage.find_by_slug("scrc-intro")
+    @webpage = Webpage.find_by_slug("scrc-intro")
   end
 
   def blockson
-    @page = Webpage.find_by_slug("blockson-intro")
+    @webpage = Webpage.find_by_slug("blockson-intro")
     @visit_links = Category.find_by_slug("blockson-study").items
     @research_links = Category.find_by_slug("blockson-research").items
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.now]).order(:start_time).take(4)
@@ -196,7 +196,7 @@ class WebpagesController < ApplicationController
     @blog = Blog.find_by_slug("lcdss-blog")
     @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
     @info = Space.find_by_slug("lcdss")
-    @page = Webpage.find_by_slug("lcdss-intro")
+    @webpage = Webpage.find_by_slug("lcdss-intro")
   end
 
   def hsl
@@ -249,7 +249,7 @@ class WebpagesController < ApplicationController
     @webpages = Webpage.all
     respond_to do |format|
       format.html
-      format.json { render json: WebpageSerializer.new(@pages) }
+      format.json { render json: WebpageSerializer.new(@webpages) }
     end
   end
 

@@ -813,7 +813,7 @@
         }
       }
     },
-    "/pages": {
+    "/webpages": {
       "get": {
         "summary": "Retrieves a list of pages",
         "tags": ["Webpage", "Batch"],

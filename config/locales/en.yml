@@ -43,6 +43,8 @@ en:
         accounts: "Individual Owners"
       collection:
         accounts: "Individual Owners"
+      exhibition:
+        title: "Name"
       policy:
         accounts: "Individual Owners"
       redirect:

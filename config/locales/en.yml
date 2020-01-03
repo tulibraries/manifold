@@ -177,6 +177,7 @@ en:
           partner_name: "Partner's Name"
           partner_email: "Partner's Email"
           faculty_advisor_email: "Faculty Advisor Email"
+          policy_check: "Agree to Policies"
 
       forms:
         recall_book:

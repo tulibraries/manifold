@@ -43,6 +43,8 @@ en:
         accounts: "Individual Owners"
       collection:
         accounts: "Individual Owners"
+      exhibition:
+        promoted_to_events: "Published"
       policy:
         accounts: "Individual Owners"
       redirect:

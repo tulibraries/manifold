@@ -2,7 +2,9 @@
 
 class AddFieldsToCategories < ActiveRecord::Migration[5.2]
   def change
-    change_column :categories, :description, :text
-    add_column :categories, :get_help, :text
+    change_table :categories, bulk: true do |t|
+      t.column :description, :text
+      t.column :get_help, :text
+    end
   end
 end

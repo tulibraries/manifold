@@ -2,8 +2,20 @@
 
 class RemoveTimeAndDateFieldsFromHighlights < ActiveRecord::Migration[5.2]
   def change
-    remove_column :highlights, :date, :date
-    remove_column :highlights, :time, :time
-    add_column :highlights, :link_label, :string
+    reversible do |dir|
+      change_table :highlights, bulk: true do |t|
+        dir.up do
+          t.remove :date
+          t.remove :time
+          t.string :link_label
+        end
+
+        dir.down do
+          t.date :date
+          t.time :time
+          t.remove :link_label
+        end
+      end
+    end
   end
 end

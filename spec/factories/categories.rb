@@ -14,7 +14,7 @@ FactoryBot.define do
 
     trait :with_image do
       after :create do |category|
-        file_path = Rails.root.join("spec", "fixtures", "dream.jpg")
+        file_path = Rails.root.join("spec/fixtures/dream.jpg")
         file = fixture_file_upload(file_path, "image/jpeg")
         category.image.attach(file)
       end

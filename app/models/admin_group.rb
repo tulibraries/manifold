@@ -8,7 +8,7 @@ class AdminGroup < ApplicationRecord
   validate :valid_managed_entity_types
   validate :manged_entities_uniqueness
 
-  has_many :members, class_name: "Account"
+  has_many :members, class_name: "Account", dependent: :destroy
 
 
   private

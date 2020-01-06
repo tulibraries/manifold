@@ -2,8 +2,11 @@
 
 class UpdateFindingAidModel < ActiveRecord::Migration[5.2]
   def change
-    change_column :finding_aids, :subject, :text
-    add_column :finding_aids, :drupal_id, :string
+    change_table :finding_aids, bulk: true do |t|
+      t.column :finding_aids, :text
+      t.column :subject, :text
+      t.string :drupal_id
+    end
 
     create_table :collection_aids do |t|
       t.belongs_to :collection, index: true

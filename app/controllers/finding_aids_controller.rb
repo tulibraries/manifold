@@ -35,7 +35,7 @@ class FindingAidsController < ApplicationController
 
     arrays = [Array(collections), Array(subjects)].reject(&:empty?).reduce(:&) || []
 
-    filtered_aids = arrays.blank? ? all_aids : arrays
+    filtered_aids = arrays.presence || all_aids
 
     get_filters(filtered_aids)
     aids = FindingAid.where(id: filtered_aids.map(&:id)).order(:name)
@@ -52,7 +52,7 @@ class FindingAidsController < ApplicationController
     def set_finding_aid
       @finding_aid = FindingAid.find(params[:id])
       @title = @finding_aid.label
-      blockson = Collection.find_by_slug("blockson_collection")
+      blockson = Collection.find_by(slug: "blockson_collection")
       @aeon = @finding_aid.collections.include?(blockson)
     end
 end

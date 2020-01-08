@@ -5,13 +5,13 @@
       <ol class="carousel-indicators">
       <% @images.each_with_index do |image, index| %>
         <li data-target="#carouselIndicators" data-slide-to="<%= index %>"
-          <% if index == 1 %> class="active"<% end %>>              
+          <% if index == 0 %> class="active"<% end %>>              
         </li>
       <% end %>
       </ol>
       <div class="carousel-inner" role="listbox" id="slide-image">
       <% @images.each_with_index do |image, index| %>  
-        <div class="carousel-item text-center<% if index == 1 %> active<% end %>">
+        <div class="carousel-item text-center<% if index == 0 %> active<% end %>">
             <%= image_tag("charles/"+image, class: 'img-fluid') %>
             <p style="height: 28px;background-color: black;color: white;font-family: 'Roboto Condensed';padding-top: 2px">
               <%= @captions[index] %>

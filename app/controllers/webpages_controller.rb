@@ -131,7 +131,7 @@ class WebpagesController < ApplicationController
     @captions << "Exterior, photo by Michael Grimm"
     @captions << "Atrium, photo by Michael Grimm"
     @captions << "Library entrance on 13th Street, photo by Michael Grimm"
-    @captions << "iew from oculus into third floor viewing area, photo by Michael Grimm"
+    @captions << "View from oculus into third floor viewing area, photo by Michael Grimm"
     @captions << "Third floor oculus viewing area in the Duckworth Scholars Studio, photo by Michael Grimm"
     @captions << "Exterior, photo by Michael Grimm"
     @captions << "Library entrance, corner of Polett and Liacouras Walks, photo by Michael Grimm"
@@ -148,10 +148,10 @@ class WebpagesController < ApplicationController
     @captions << "Third floor reading room, photo by Michael Grimm"
     @captions << "Albert M. Greenfield Special Collections Research Center Reading Room, photo by Michael Grimm"
     @captions << "Student Success Center, photo by Michael Grimm"
-    @captions << ""
-    @captions << ""
-    @captions << ""
-    @captions << ""
+    @captions << "1st floor floorplan"
+    @captions << "2nd floor floorplan"
+    @captions << "3rd floor floorplan"
+    @captions << "4th floor floorplan"
   end
 
   def home

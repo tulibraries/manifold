@@ -9,7 +9,7 @@ RSpec.describe ExternalLink, type: :model do
       required_fields = ["title", "link"]
       required_fields.each do |field|
         it "raises an error when #{field} is not present" do
-          external_link.update_attribute(field, "")
+          external_link.update(field => "")
           expect { external_link.save! }.to raise_error(/#{field.humanize(capitalize: true)} can't be blank/)
         end
       end

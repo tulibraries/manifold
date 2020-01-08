@@ -13,23 +13,12 @@ module PersonsHelper
   end
 
   def get_loc_name(id)
-    the_name = ""
-    @locations.each do |loc|
-      if loc.id == id.to_i
-        the_name = loc.name
-      end
-    end
-    the_name
+    # binding.pry
+    Space.find_by(id: id).name
   end
 
   def get_dept_name(id)
-    the_name = ""
-    @departments.each do |dept|
-      if dept.id == id.to_i
-        the_name = dept.label
-      end
-    end
-    the_name
+    Group.find_by(id: id).name
   end
 
   def filter_tags

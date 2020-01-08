@@ -24,7 +24,7 @@ module Admin
       group = Group.find(params[:id])
       group_params = params[:group]
       group_params.permit!
-      unless group_params[:space].blank?
+      if group_params[:space].present?
         group_params[:space] = Space.find(group_params[:space])
       else
         group_params[:space] = nil

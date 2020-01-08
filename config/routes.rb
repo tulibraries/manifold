@@ -157,4 +157,3 @@ Rails.application.routes.named_routes.path_helpers_module.module_eval do
     external_link.link
   end
 end
-

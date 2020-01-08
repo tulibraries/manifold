@@ -254,8 +254,28 @@
       "user_input": null,
       "confidence": "High",
       "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "fb2b0d5e51abb3169698ddd03d9e6646b522682e91b78bc8e190a43f56689486",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/concerns/redirect_logic.rb",
+      "line": 11,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Redirect.find_by(:legacy_path => legacy_path).path, :status => :moved_permanently, :notice => (\"#{request.env[\"HTTP_HOST\"]}#{legacy_path} has moved.       Please update bookmarks and links\"))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RedirectLogic",
+        "method": "redirect_or_404"
+      },
+      "user_input": "Redirect.find_by(:legacy_path => legacy_path).path",
+      "confidence": "High",
+      "note": ""
     }
   ],
-  "updated": "2019-08-22 16:19:41 -0400",
-  "brakeman_version": "4.6.1"
+  "updated": "2020-01-07 09:57:26 -0500",
+  "brakeman_version": "4.7.2"
 }

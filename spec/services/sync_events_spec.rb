@@ -35,11 +35,11 @@ RSpec.describe SyncService::Events, type: :service do
       end
 
       it "maps EventStartDate and EventStartTime to start_time field" do
-        expect(Time.parse(subject["start_time"])).to eq(Time.parse(@events.first["EventStartDate"] + " " + @events.first["EventStartTime"]))
+        expect(Time.zone.parse(subject["start_time"])).to eq(Time.zone.parse(@events.first["EventStartDate"] + " " + @events.first["EventStartTime"]))
       end
 
       it "maps EventEndDate and EventEndTime to start_time field" do
-        expect(Time.parse(subject["end_time"])).to eq(Time.parse(@events.first["EventEndDate"] + " " + @events.first["EventEndTime"]))
+        expect(Time.zone.parse(subject["end_time"])).to eq(Time.zone.parse(@events.first["EventEndDate"] + " " + @events.first["EventEndTime"]))
       end
 
       it "maps AllDay to all_day field" do

@@ -179,6 +179,8 @@ en:
           partner_name: "Partner's Name"
           partner_email: "Partner's Email"
           faculty_advisor_email: "Faculty Advisor Email"
+          referrer: "Referred by"
+          school_visit: "School Information" 
 
       forms:
         recall_book:
@@ -215,6 +217,8 @@ en:
           title: "Partners Borrowing Privileges Application/Renewal"
         storage_request:
           title: "Recall item from Charles Library temporary storage"
+        group_visit:
+          title: "Group Visit Request"
 
     error:
       user_not_registered: "User not registered."

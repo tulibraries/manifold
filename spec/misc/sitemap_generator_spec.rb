@@ -14,6 +14,6 @@ RSpec.describe "Running the sitemap generator rake task with our config" do
   end
   it "creates a file in /public" do
     create_sitemap
-    expect(Pathname.new("#{Rails.root}/public/sitemap.xml.gz")).to exist
+    expect(Pathname.new(Rails.root.join("public/sitemap.xml.gz"))).to exist
   end
 end

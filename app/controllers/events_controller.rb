@@ -9,8 +9,8 @@ class EventsController < ApplicationController
   def index
     events = @all_events.having("start_time >= ?", @today).order(:start_time)
     @events = return_events(events)
-    @mailing_list = ExternalLink.find_by_slug("events-mailing-list")
-    @intro = Webpage.find_by_slug("events-intro")
+    @mailing_list = ExternalLink.find_by(slug: "events-mailing-list")
+    @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(@events) }
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   def past
     events = @all_events.having("start_time < ?", @today).order(start_time: :desc)
     @events = return_events(events)
-    @intro = Webpage.find_by_slug("events-intro")
+    @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(@events) }
@@ -29,8 +29,8 @@ class EventsController < ApplicationController
 
   def return_events(events)
     @events = []
-    unless params["type"].blank?
-      unless params["location"].blank?
+    if params["type"].present?
+      if params["location"].present?
         @types = events.where(event_type: params[:type]).order(:start_time)
         @internals = events.where(building: params[:location]).order(:start_time)
         @externals = events.where(external_building: params[:location]).order(:start_time)
@@ -45,8 +45,8 @@ class EventsController < ApplicationController
       end
     end
 
-    unless params["location"].blank?
-      unless params["type"].blank?
+    if params["location"].present?
+      if params["type"].present?
         @types = events.where("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
         @internals = events.where(building: params[:location]).order(:start_time)
         @externals = events.where(external_building: params[:location]).order(:start_time)
@@ -72,7 +72,7 @@ class EventsController < ApplicationController
       @event_locations = locations_list(@events)
     end
 
-    unless @events.blank?
+    if @events.present?
       unless action_name == "past"
         events_list = Event.where(id: @events.map(&:id)).order(:start_time)
       else
@@ -95,7 +95,7 @@ class EventsController < ApplicationController
     def init
       @all_events = Event.group(:id)
       @exhibitions = Exhibition.where(promoted_to_events: true)
-      @today = Date.today
+      @today = Time.zone.today
     end
 
     def set_event

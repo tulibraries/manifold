@@ -10,7 +10,7 @@ FactoryBot.define do
     space { FactoryBot.create(:space) }
     trait :with_document do
       after :create do |groups|
-        file_path = Rails.root.join("spec", "support", "assets", "hal.png")
+        file_path = Rails.root.join("spec/support/assets/hal.png")
         file = fixture_file_upload(file_path, "image/png")
         groups.documents.attach(file)
       end

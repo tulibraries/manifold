@@ -27,9 +27,9 @@ class EventSerializer < ApplicationSerializer
   attribute :address2 do |event|
     if event.building.nil?
       address2 = String.new
-      address2 += event.external_city unless event.external_city.blank?
-      address2 += ", " + event.external_city unless event.external_state.blank?
-      address2 += "  " + event.external_zip unless event.external_zip.blank?
+      address2 += event.external_city if event.external_city.present?
+      address2 += ", " + event.external_city if event.external_state.present?
+      address2 += "  " + event.external_zip if event.external_zip.present?
     else
       event.building.address2
     end

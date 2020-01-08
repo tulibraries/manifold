@@ -24,7 +24,6 @@ module WebpagesHelper
 
   def navigation_items(page)
     nav_items = []
-    @nav_items = []
     page.categories.each do |cat|
       cat.items.each do |item|
         unless item.id == page.id

@@ -30,9 +30,12 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
     :title,
-    :collection,
     :space,
+    :start_date,
+    :end_date,
+    :promoted_to_events,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

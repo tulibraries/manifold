@@ -11,7 +11,7 @@ RSpec.describe Blog, type: :model do
       required_fields = ["title", "base_url"]
       required_fields.each do |field|
         it "raises an error when #{field} is not present" do
-          blog.update_attribute(field, "")
+          blog.update(field => "")
           expect { blog.save! }.to raise_error(/#{field.humanize(capitalize: true)} can't be blank/)
         end
       end

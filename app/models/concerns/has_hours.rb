@@ -16,10 +16,10 @@ module HasHours
   end
 
   def monday(date_param = nil)
-    date_param ? date_param.beginning_of_week : Date.today.beginning_of_week
+    date_param ? date_param.beginning_of_week : Time.zone.today.beginning_of_week
   end
 
   def sunday(date_param = nil)
-    date_param ? date_param.end_of_week + 1 : Date.today.end_of_week + 1
+    date_param ? date_param.end_of_week + 1 : Time.zone.today.end_of_week + 1
   end
 end

@@ -9,7 +9,7 @@ RSpec.shared_examples "detachable" do
     let(:factory_model) { FactoryBot.create(model.to_s.underscore.to_sym) }
 
     before(:each) {
-      file_path = Rails.root.join("spec", "fixtures", "charles.jpg")
+      file_path = Rails.root.join("spec/fixtures/charles.jpg")
       file = fixture_file_upload(file_path, "image/jpg")
       factory_model.image.attach(file)
     }

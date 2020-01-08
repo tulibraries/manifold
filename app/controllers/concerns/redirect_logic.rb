@@ -4,13 +4,13 @@ module RedirectLogic
   extend ActiveSupport::Concern
 
   def redirect_or_404
-    redirect = Redirect.find_by_legacy_path(legacy_path)
+    redirect = Redirect.find_by(legacy_path: legacy_path)
     if redirect
       message =
       "#{request.env['HTTP_HOST']}#{legacy_path} has moved. \
       Please update bookmarks and links"
       redirect_to(redirect.path,
-                  status: 301,
+                  status: :moved_permanently,
                   notice: message
                   )
     else

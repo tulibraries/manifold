@@ -8,7 +8,7 @@ class SpacesController < ApplicationController
   def index
     @spaces = Space.all
     respond_to do |format|
-      format.html { render file: "errors/not_found", status: 404 }
+      format.html { render file: "errors/not_found", status: :not_found }
       format.json { render json: SpaceSerializer.new(@spaces) }
     end
   end

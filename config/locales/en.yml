@@ -288,6 +288,7 @@ en:
         <p><em>While we list opening and closing times for Charles Library below, 
         the 24/7 space is always available to those affiliated with Temple University. 
         Use your OwlCard to swipe in at the Liacouras and Polett Walks entrance.</em></p>
+
     events:
       page_title: "Events & Exhibits"
       current_exhibits_label: "Current Exhibits"
@@ -296,3 +297,6 @@ en:
       view_past_events: "View past events & exhibits"
       view_past_events_videos: "View video recordings from past events"
       general_admission: "Most Temple University Libraries events are free and open to all."
+
+    redirects:
+      moved_permanently: "has moved. Please update bookmarks and links."

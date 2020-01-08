@@ -20,6 +20,7 @@ class RedirectDashboard < BaseDashboard
       ],
       admin_only: true
     ),
+    no_message: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -30,7 +31,6 @@ class RedirectDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    #:categorizations,
     :legacy_path
   ].freeze
 
@@ -51,6 +51,7 @@ class RedirectDashboard < BaseDashboard
     :legacy_path,
     :manifold_path,
     :redirectable,
+    :no_message,
   ].freeze
 
   def display_resource(resource)

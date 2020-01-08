@@ -38,4 +38,22 @@ RSpec.describe RedirectsController, type: :request do
         to raise_error(ActionController::RoutingError)
     end
   end
+
+  describe "GET redirect with no message specified" do
+    let(:redirect) { FactoryBot.create(:static_redirect, no_message: true) }
+    it "redirects with no message displayed" do
+      get redirect.legacy_path
+      expect(response).to redirect_to(redirect.path)
+      expect(flash[:notice]).to_not be_present
+    end
+  end
+
+  describe "GET redirect with message specified" do
+    let(:redirect) { FactoryBot.create(:static_redirect) }
+    it "redirects with message displayed" do
+      get redirect.legacy_path
+      expect(response).to redirect_to(redirect.path)
+      expect(flash[:notice]).to be_present
+    end
+  end
 end

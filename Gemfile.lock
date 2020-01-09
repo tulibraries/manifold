@@ -344,7 +344,7 @@ GEM
     parallel (1.19.1)
     parser (2.6.5.0)
       ast (~> 2.4.0)
-    pg (1.2.1)
+    pg (1.2.2)
     popper_js (1.14.5)
     populate (0.0.2)
       activerecord (>= 3.1.0)

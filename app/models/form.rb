@@ -105,6 +105,7 @@ class Form < MailForm::Base
   attribute :partner_name
   attribute :partner_email
   attribute :faculty_advisor_email
+  attribute :policy_check
 
   attribute :referrer
   attribute :school_visit

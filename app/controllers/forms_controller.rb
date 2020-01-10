@@ -12,7 +12,7 @@ class FormsController < ApplicationController
       @type = params[:type]
       render template: "forms/index"
     else
-      render file: "errors/not_found", status: 404
+      render file: "errors/not_found", status: :not_found
     end
   end
 
@@ -28,7 +28,7 @@ class FormsController < ApplicationController
   end
 
   def existing_forms
-    Dir.glob("#{Rails.root.join('app/views/forms/*/')}")
+    Dir.glob(Rails.root.join("app/views/forms/*/"))
       .map { |template_path| template_path.split("/").last }
       .reject { |template_name| template_name == "shared" }
   end

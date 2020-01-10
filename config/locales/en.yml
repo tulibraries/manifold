@@ -43,6 +43,9 @@ en:
         accounts: "Individual Owners"
       collection:
         accounts: "Individual Owners"
+      exhibition:
+        title: "Name"
+        promoted_to_events: "Published"
       policy:
         accounts: "Individual Owners"
       redirect:
@@ -177,6 +180,9 @@ en:
           partner_name: "Partner's Name"
           partner_email: "Partner's Email"
           faculty_advisor_email: "Faculty Advisor Email"
+          policy_check: "Agree to Policies"
+          referrer: "Referred by"
+          school_visit: "School Information" 
 
       forms:
         recall_book:
@@ -213,6 +219,8 @@ en:
           title: "Partners Borrowing Privileges Application/Renewal"
         storage_request:
           title: "Recall item from Charles Library temporary storage"
+        group_visit:
+          title: "Group Visit Request"
 
     error:
       user_not_registered: "User not registered."
@@ -282,6 +290,7 @@ en:
         <p><em>While we list opening and closing times for Charles Library below, 
         the 24/7 space is always available to those affiliated with Temple University. 
         Use your OwlCard to swipe in at the Liacouras and Polett Walks entrance.</em></p>
+
     events:
       page_title: "Events & Exhibits"
       current_exhibits_label: "Current Exhibits"
@@ -290,3 +299,6 @@ en:
       view_past_events: "View past events & exhibits"
       view_past_events_videos: "View video recordings from past events"
       general_admission: "Most Temple University Libraries events are free and open to all."
+
+    redirects:
+      moved_permanently: "has moved. Please update bookmarks and links."

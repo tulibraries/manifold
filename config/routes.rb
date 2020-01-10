@@ -125,6 +125,7 @@ Rails.application.routes.draw do
     get "watchpastprograms/list/:collection" => :videos_list, as: "webpages_videos_collection"
     get "watchpastprograms/search" => :videos_search, as: "webpages_videos_search"
     get "watchpastprograms/show" => :videos_show, as: "webpages_videos_show"
+    get "/pages/:id" => :show
   end
 
   match "/404", to: "errors#not_found", via: :all

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_182110) do
+ActiveRecord::Schema.define(version: 2020_01_08_175223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -374,6 +374,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_182110) do
     t.string "manifold_path"
     t.string "redirectable_type"
     t.bigint "redirectable_id"
+    t.boolean "no_message"
     t.index ["legacy_path"], name: "index_redirects_on_legacy_path"
     t.index ["redirectable_type", "redirectable_id"], name: "index_redirects_on_redirectable_type_and_redirectable_id"
   end

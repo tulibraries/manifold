@@ -119,8 +119,8 @@ class WebpagesController < ApplicationController
   end
 
   def charles
-    @webpage = ExternalLink.find_by_slug("explore-charles")
-    @content = Webpage.find_by_slug("charles")
+    @webpage = ExternalLink.find_by(slug: "explore-charles")
+    @content = Webpage.find_by(slug: "charles")
     @images = []
     26.times do |i|
       @images << (i.to_s + ".jpg")
@@ -131,7 +131,7 @@ class WebpagesController < ApplicationController
     @captions << "Exterior, photo by Michael Grimm"
     @captions << "Atrium, photo by Michael Grimm"
     @captions << "Library entrance on 13th Street, photo by Michael Grimm"
-    @captions << "iew from oculus into third floor viewing area, photo by Michael Grimm"
+    @captions << "View from oculus into third floor viewing area, photo by Michael Grimm"
     @captions << "Third floor oculus viewing area in the Duckworth Scholars Studio, photo by Michael Grimm"
     @captions << "Exterior, photo by Michael Grimm"
     @captions << "Library entrance, corner of Polett and Liacouras Walks, photo by Michael Grimm"
@@ -148,96 +148,96 @@ class WebpagesController < ApplicationController
     @captions << "Third floor reading room, photo by Michael Grimm"
     @captions << "Albert M. Greenfield Special Collections Research Center Reading Room, photo by Michael Grimm"
     @captions << "Student Success Center, photo by Michael Grimm"
-    @captions << ""
-    @captions << ""
-    @captions << ""
-    @captions << ""
+    @captions << "1st floor floorplan"
+    @captions << "2nd floor floorplan"
+    @captions << "3rd floor floorplan"
+    @captions << "4th floor floorplan"
   end
 
   def home
-    @research_help = Service.find_by_slug("sme")
-    @print_my_paper = Service.find_by_slug("printing")
-    @book_study_room = Space.find_by_slug("study-rooms-small")
-    @locations = Building.find_by_slug("ambler")
+    @research_help = Service.find_by(slug: "sme")
+    @print_my_paper = Service.find_by(slug: "printing")
+    @book_study_room = Space.find_by(slug: "study-rooms-small")
+    @locations = Building.find_by(slug: "ambler")
     @todays_hours = LibraryHour.todays_hours_at("charles")
-    @libguides = ExternalLink.find_by_slug("libguides")
-    @explore_charles = Webpage.find_by_slug("explore-charles")
+    @libguides = ExternalLink.find_by(slug: "libguides")
+    @explore_charles = Webpage.find_by(slug: "explore-charles")
   end
 
   def scrc
-    @scrc_location = Space.find_by_slug("scrc-room")
-    @reading_room = Space.find_by_slug("scrc-reading-room")
-    @visit_links = Category.find_by_slug("scrc-study").items
-    @collection_links = Category.find_by_slug("scrc-collections").items
-    @webpage = Webpage.find_by_slug("scrc-intro")
+    @scrc_location = Space.find_by(slug: "scrc-room")
+    @reading_room = Space.find_by(slug: "scrc-reading-room")
+    @visit_links = Category.find_by(slug: "scrc-study").items
+    @collection_links = Category.find_by(slug: "scrc-collections").items
+    @webpage = Webpage.find_by(slug: "scrc-intro")
   end
 
   def blockson
-    @webpage = Webpage.find_by_slug("blockson-intro")
-    @visit_links = Category.find_by_slug("blockson-study").items
-    @research_links = Category.find_by_slug("blockson-research").items
-    @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.now]).order(:start_time).take(4)
-    @building = Building.find_by_slug("blockson")
+    @webpage = Webpage.find_by(slug: "blockson-intro")
+    @visit_links = Category.find_by(slug: "blockson-study").items
+    @research_links = Category.find_by(slug: "blockson-research").items
+    @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
+    @building = Building.find_by(slug: "blockson")
   end
 
   def tudsc
-    @makerspace_location = Space.find_by_slug("makerspace")
-    @vr_location = Space.find_by_slug("immersive-lab")
-    @innovation_location = Space.find_by_slug("innovation-sandbox")
-    visit_links = Category.find_by_slug("lcdss-study")
+    @makerspace_location = Space.find_by(slug: "makerspace")
+    @vr_location = Space.find_by(slug: "immersive-lab")
+    @innovation_location = Space.find_by(slug: "innovation-sandbox")
+    visit_links = Category.find_by(slug: "lcdss-study")
     unless visit_links.nil?
       @visit_links = visit_links.items
     end
-    research_links = Category.find_by_slug("lcdss-research")
+    research_links = Category.find_by(slug: "lcdss-research")
     unless research_links.nil?
       @research_links = research_links.items
     end
-    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.now]).order(:start_time).take(5)
-    @blog = Blog.find_by_slug("lcdss-blog")
+    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.zone.now]).order(:start_time).take(5)
+    @blog = Blog.find_by(slug: "lcdss-blog")
     @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
-    @info = Space.find_by_slug("lcdss")
-    @webpage = Webpage.find_by_slug("lcdss-intro")
+    @info = Space.find_by(slug: "lcdss")
+    @webpage = Webpage.find_by(slug: "lcdss-intro")
   end
 
   def hsl
-    @ginsburg_location = Building.find_by_slug("ginsburg")
-    @podiatry_location = Building.find_by_slug("podiatry")
-    @visit_links = Category.find_by_slug("hsl-study").items
-    @resource_links = Category.find_by_slug("hsl-resources").items
-    @research_links = Category.find_by_slug("hsl-research").items
-    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.now]).order(:start_time).take(5)
+    @ginsburg_location = Building.find_by(slug: "ginsburg")
+    @podiatry_location = Building.find_by(slug: "podiatry")
+    @visit_links = Category.find_by(slug: "hsl-study").items
+    @resource_links = Category.find_by(slug: "hsl-resources").items
+    @research_links = Category.find_by(slug: "hsl-research").items
+    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.zone.now]).order(:start_time).take(5)
   end
 
   def about
-    @categories = Category.find_by_slug("about-page").items.select { |item| item.class == Category }
+    @categories = Category.find_by(slug: "about-page").items.select { |item| item.class == Category }
   end
 
   def visit
-    @categories = Category.find_by_slug("visit").items.select { |item| item.class == Category }
+    @categories = Category.find_by(slug: "visit").items.select { |item| item.class == Category }
   end
 
   def blogs
-    @categories = Category.find_by_slug("news").items.select { |item| item.class == Category }
+    @categories = Category.find_by(slug: "news").items.select { |item| item.class == Category }
   end
 
   def publications
-    @categories = Category.find_by_slug("publications").items.select { |item| item.class == Category }
+    @categories = Category.find_by(slug: "publications").items.select { |item| item.class == Category }
   end
 
   def support
-    @categories = Category.find_by_slug("giving").items.select { |item| item.class == Category }
+    @categories = Category.find_by(slug: "giving").items.select { |item| item.class == Category }
   end
 
   def grants
-    @categories = Category.find_by_slug("grants").items.select { |item| item.class == Category }
+    @categories = Category.find_by(slug: "grants").items.select { |item| item.class == Category }
   end
 
   def policies
-    @categories = Category.find_by_slug("policies").items.select { |item| item.class == Category }
+    @categories = Category.find_by(slug: "policies").items.select { |item| item.class == Category }
   end
 
   def research
-    @categories = Category.find_by_slug("research-services").items.select { |item| item.class == Category }
+    @categories = Category.find_by(slug: "research-services").items.select { |item| item.class == Category }
   end
 
   def list_item(category)
@@ -254,9 +254,9 @@ class WebpagesController < ApplicationController
   end
 
   def contact
-    @fcn_link = Webpage.find_by_slug("numbers")
-    @libanswers = ExternalLink.find_by_slug("libanswers")
-    @suggestions = ExternalLink.find_by_slug("suggestions")
+    @fcn_link = Webpage.find_by(slug: "numbers")
+    @libanswers = ExternalLink.find_by(slug: "libanswers")
+    @suggestions = ExternalLink.find_by(slug: "suggestions")
   end
 
   def show
@@ -273,7 +273,7 @@ class WebpagesController < ApplicationController
       unless params[:id].nil?
         @webpage = Webpage.find(params[:id])
       else
-        @webpage = Webpage.find_by_slug(action_name)
+        @webpage = Webpage.find_by(slug: action_name)
       end
       @categories = @webpage.categories
     end

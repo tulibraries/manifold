@@ -12,7 +12,7 @@ gem "attr_json"
 gem "auto_strip_attributes"
 gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap", "~> 4.3.1"
+gem "bootstrap", "~> 4.4.1"
 gem "browser"
 gem "cancancan", "~> 3.0"
 gem "coffee-rails", "~> 4.2"
@@ -24,7 +24,7 @@ gem "feedjira"
 gem "font-awesome-rails"
 gem "fuzzy_match"
 gem "google-analytics-rails", "1.1.1"
-gem "google-api-client", "~> 0.34"
+gem "google-api-client", "~> 0.36"
 gem "honeybadger", "~> 4.5"
 gem "httparty"
 gem "jbuilder", "~> 2.9"
@@ -43,7 +43,7 @@ gem "paper_trail"
 gem "pg"
 gem "popper_js", "~> 1.14.5"
 gem "puma", "~> 4.3"
-gem "rails", "~> 5.2.3"
+gem "rails", "~> 5.2.4"
 gem "rswag-api"
 gem "rswag-ui"
 gem "sass-rails", "~> 6.0"
@@ -65,6 +65,7 @@ group :development, :test do
   gem "json-schema"
   gem "pry-rails"
   gem "rubocop", require: false
+  gem "rubocop-rails", require: false
 end
 
 group :development do

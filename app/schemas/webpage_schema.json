@@ -1,0 +1,131 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://example.com/root.json",
+	"type": "object",
+	"title": "The Root Schema",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"$id": "#/properties/data",
+			"type": "object",
+			"title": "The Data Schema",
+			"required": [
+				"id",
+				"type",
+				"attributes"
+			],
+			"properties": {
+				"id": {
+					"$id": "#/properties/data/properties/id",
+					"type": "string",
+					"title": "The Id Schema",
+					"default": "0",
+					"examples": [
+						"2"
+					],
+					"pattern": "^([0-9]*)$"
+				},
+				"type": {
+					"$id": "#/properties/data/properties/type",
+					"type": "string",
+					"title": "The Type Schema",
+					"default": "webpage",
+					"examples": [
+						"building",
+						"event",
+						"person"
+					],
+					"pattern": "^(.*)$"
+				},
+				"attributes": {
+					"$id": "#/properties/data/properties/attributes",
+					"type": "object",
+					"title": "The Attributes Schema",
+					"required": [
+						"title",
+						"label",
+						"description"
+					],
+					"properties": {
+						"title": {
+							"$id": "#/properties/data/properties/attributes/properties/title",
+							"type": "string",
+							"title": "The Name Schema",
+							"default": "",
+							"examples": [
+								"Highlights of the Week"
+							],
+							"pattern": "^(.*)$"
+						},
+						"label": {
+							"$id": "#/properties/data/properties/attributes/properties/label",
+							"type": "string",
+							"title": "The Label Schema",
+							"default": "",
+							"examples": [
+								"Highlights of the week"
+							],
+							"pattern": "^(.*)$"
+						},
+						"description": {
+							"$id": "#/properties/data/properties/attributes/properties/description",
+							"type": "string",
+							"title": "The Description Schema",
+							"default": "",
+							"examples": [
+								"This is a description of what the webpage is all about"
+							],
+							"pattern": "^(.*)$"
+						},
+						"layout": {
+							"$id": "#/properties/data/properties/attributes/properties/layout",
+							"type": "string",
+							"title": "The type of layout Schema",
+							"default": "",
+							"examples": [
+                "Statement",
+                "Publication",
+                "Orgchart",
+                "Form Other"
+							],
+							"pattern": "^(.*)$"
+						},
+						"updated_at": {
+							"$id": "#/properties/data/properties/attributes/properties/updated_at",
+							"type": "string",
+							"title": "The time the webpage record was updated",
+ 							"format": "date-time",
+							"default": "",
+							"examples": [
+								"2018-01-01T12:00:00"
+							]
+						}
+					}
+				},
+				"links": {
+					"$id": "#/properties/data/properties/links",
+					"type": "object",
+					"title": "The Links Schema",
+					"required": [
+						"self"
+					],
+					"properties": {
+						"self": {
+							"$id": "#/properties/data/properties/links/properties/self",
+							"type": "string",
+							"title": "The Self Schema",
+							"default": "",
+							"examples": [
+								"http://test.host/webpages/2"
+							],
+							"pattern": "^(.*)$"
+						}
+					}
+				}
+			}
+		}
+	}
+}

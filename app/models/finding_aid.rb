@@ -8,7 +8,7 @@ class FindingAid < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates_presence_of :slug
+  validates :slug, presence: true
 
   paginates_per 15
 
@@ -21,10 +21,10 @@ class FindingAid < ApplicationRecord
 
   serialize :subject
 
-  has_many :collection_aids
+  has_many :collection_aids, dependent: :destroy
   has_many :collections, through: :collection_aids
 
-  has_many :finding_aid_responsibilities
+  has_many :finding_aid_responsibilities, dependent: :destroy
   has_many :person, through: :finding_aid_responsibilities
 
 

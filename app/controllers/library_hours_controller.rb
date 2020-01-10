@@ -16,8 +16,14 @@ class LibraryHoursController < ApplicationController
   end
 
   def set_dates
-    @today = Date.today
-    @date = params[:date].nil? ? @today : Date.parse(params[:date])
+    @today = Time.zone.today
+    begin
+      @date = params[:date].nil? ? @today : Date.parse(params[:date])
+    rescue ArgumentError
+      @date = @today
+    end
+
+
 
     unless params[:date].nil?
       @monday = @date.beginning_of_week

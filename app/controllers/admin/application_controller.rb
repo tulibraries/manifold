@@ -16,6 +16,10 @@ module Admin
     helper_method :admin_only?
     helper_method :user_editable_field?
 
+    def edit
+      super
+    end
+
     def required?(attribute)
       "required" if attribute.required?
     end
@@ -34,7 +38,7 @@ module Admin
 
     def use_version
       if params.has_key?(:version) && requested_resource.respond_to?(:versions)
-        selected_version = requested_resource.versions.find_by_id(params[:version])&.reify || requested_resource
+        selected_version = requested_resource.versions.find_by(id: params[:version])&.reify || requested_resource
         @requested_resource = selected_version
       end
     end

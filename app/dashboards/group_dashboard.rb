@@ -30,7 +30,7 @@ class GroupDashboard < BaseDashboard
       foreign_key: "parent_group_id",
     ),
     #child_groups: Field::HasMany,
-    pages: Field::HasMany,
+    webpages: Field::HasMany,
     categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -78,8 +78,8 @@ class GroupDashboard < BaseDashboard
     :space,
     :documents,
     :policies,
-    :pages,
     :categories
+    :webpages,
   ].freeze
 
   # Overwrite this method to customize how groups are displayed

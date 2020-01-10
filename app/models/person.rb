@@ -9,7 +9,7 @@ class Person < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates_presence_of :slug
+  validates :slug, presence: true
 
   paginates_per 20
 
@@ -25,10 +25,10 @@ class Person < ApplicationRecord
   before_validation :normalize_phone_number
   before_validation :burpSpecialties
 
-  has_many :member
+  has_many :member, dependent: :destroy
   has_many :groups, through: :member, source: :group
 
-  has_many :occupant
+  has_many :occupant, dependent: :destroy
   has_many :spaces, through: :occupant, source: :space
 
   def slug_candidates

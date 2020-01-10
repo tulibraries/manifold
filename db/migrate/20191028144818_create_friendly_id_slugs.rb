@@ -21,7 +21,7 @@ class CreateFriendlyIdSlugs < MIGRATION_CLASS
     add_index :friendly_id_slugs, [:slug, :sluggable_type, :scope], length: { slug: 70, sluggable_type: 50, scope: 70 }, unique: true
 
     @log = Logger.new("log/slug-fest.log")
-    entities = [Blog, Building, Category, Collection, Event, Exhibition, ExternalLink, FindingAid, Group, Highlight, Page, Person, Policy, Service, Space]
+    entities = [Blog, Building, Category, Collection, Event, Exhibition, ExternalLink, FindingAid, Group, Highlight, Webpage, Person, Policy, Service, Space]
 
     entities.each do |e|
       e.all.each do |a|

@@ -15,7 +15,7 @@ class Space < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates_presence_of :slug
+  validates :slug, presence: true
 
   validates :name, presence: true
   validates :description, presence: true
@@ -33,13 +33,13 @@ class Space < ApplicationRecord
 
   has_ancestry
 
-  has_many :occupant
+  has_many :occupant, dependent: :destroy
   has_many :persons, -> { order "last_name ASC" }, through: :occupant, source: :person
 
-  has_many :space_group
+  has_many :space_group, dependent: :destroy
   has_many :groups, through: :space_group, source: :group
 
-  has_many :service_space
+  has_many :service_space, dependent: :destroy
   has_many :related_services, through: :service_space, source: :service
 
   def slug_candidates

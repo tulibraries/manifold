@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_144818) do
+ActiveRecord::Schema.define(version: 2020_01_08_175223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -347,17 +347,6 @@ ActiveRecord::Schema.define(version: 2019_10_28_144818) do
     t.index ["space_id"], name: "index_occupants_on_space_id"
   end
 
-  create_table "pages", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "layout"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["group_id"], name: "index_pages_on_group_id"
-  end
-
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -401,6 +390,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_144818) do
     t.string "manifold_path"
     t.string "redirectable_type"
     t.bigint "redirectable_id"
+    t.boolean "no_message"
     t.index ["legacy_path"], name: "index_redirects_on_legacy_path"
     t.index ["redirectable_type", "redirectable_id"], name: "index_redirects_on_redirectable_type_and_redirectable_id"
   end
@@ -486,6 +476,17 @@ ActiveRecord::Schema.define(version: 2019_10_28_144818) do
     t.datetime "created_at"
     t.text "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
+  create_table "webpages", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "layout"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["group_id"], name: "index_webpages_on_group_id"
   end
 
   add_foreign_key "accounts", "admin_groups"

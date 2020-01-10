@@ -7,7 +7,7 @@ class UpdateSlugFieldsForFriendlyId < ActiveRecord::Migration[5.2]
     change_column :collections, :slug, :string, unique: true
     change_column :events, :slug, :string, unique: true
     change_column :external_links, :slug, :string, unique: true
-    change_column :pages, :slug, :string, unique: true
+    change_column :webpages, :slug, :string, unique: true
     change_column :policies, :slug, :string, unique: true
     change_column :services, :slug, :string, unique: true
     change_column :spaces, :slug, :string, unique: true

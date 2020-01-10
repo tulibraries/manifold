@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates_presence_of :slug
+  validates :slug, presence: true
 
   paginates_per 5
   belongs_to :building, optional: true

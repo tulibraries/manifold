@@ -1,5 +1,5 @@
 <div class="events_facets pr-14" id="events_facets">
-  <% unless @event_types.empty? %>
+
   <div class="event_types">
     <h2>
       <a style="cursor:pointer" data-toggle="collapse" data-target="#types" aria-expanded="true" aria-controls="types"> 
@@ -32,8 +32,7 @@
       <% end %>
     </ul>
   </div>
-  <% end %>
-  <% unless @event_locations.empty? %>
+
   <div class="event_spaces">
     <h2>
       <a style="cursor:pointer" data-toggle="collapse" data-target="#locations" aria-expanded="true" aria-controls="locations"> 
@@ -67,8 +66,8 @@
       <% end %>
     </ul>
   </div>
-  <% end %>
-  <% unless @event_locations.empty? && @event_types.empty? %>
+
+
   <div class="row filter-reset">
     <div class="col text-center">
       <% unless action_name == "past" %>
@@ -78,5 +77,5 @@
       <% end %>
     </div>
   </div>
-  <% end %>
+
 </div>

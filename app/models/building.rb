@@ -14,7 +14,7 @@ class Building < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates_presence_of :slug
+  validates :slug, presence: true
 
   before_validation :normalize_phone_number
   before_validation :sanitize_description
@@ -23,8 +23,7 @@ class Building < ApplicationRecord
   validates :description, presence: true
 
   belongs_to :external_link, optional: true
-  has_many :library_hours
-  has_many :spaces
+  has_many :spaces, dependent: :destroy
   has_paper_trail
 
   auto_strip_attributes :email

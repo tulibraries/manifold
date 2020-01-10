@@ -31,6 +31,7 @@
           <% end %>
         <% end %>
 
+          <%# binding.pry %>
         <% unless event.building.nil? %>
           <%= link_to get_bldg_name(event.building.name), event.building, class: "event_location" %>
         <% else %>

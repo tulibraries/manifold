@@ -3,12 +3,11 @@
 class SpacesController < ApplicationController
   include HasCategories
   before_action :set_space, only: [:show]
-  before_action :navigation_items, only: [:show]
 
   def index
     @spaces = Space.all
     respond_to do |format|
-      format.html { render file: "errors/not_found", status: 404 }
+      format.html { render file: "errors/not_found", status: :not_found }
       format.json { render json: SpaceSerializer.new(@spaces) }
     end
   end
@@ -20,17 +19,6 @@ class SpacesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: SpaceSerializer.new(@space) }
-    end
-  end
-
-  def navigation_items
-    @nav_items = []
-    @space.categories.each do |cat|
-      cat.items(exclude: [:category]).each do |item|
-        unless item.id == @space.id
-          @nav_items << item
-        end
-      end
     end
   end
 

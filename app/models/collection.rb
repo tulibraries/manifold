@@ -10,14 +10,14 @@ class Collection < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates_presence_of :slug
+  validates :slug, presence: true
 
   validates :name, :description, presence: true
 
   belongs_to :space
   belongs_to :external_link, optional: true
 
-  has_many :collection_aids
+  has_many :collection_aids, dependent: :destroy
   has_many :finding_aids, through: :collection_aids
 
   serialize :subject

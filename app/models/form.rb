@@ -104,6 +104,11 @@ class Form < MailForm::Base
   attribute :av_support
   attribute :partner_name
   attribute :partner_email
+  attribute :faculty_advisor_email
+  attribute :policy_check
+
+  attribute :referrer
+  attribute :school_visit
 
 
   def get_subject
@@ -124,7 +129,8 @@ class Form < MailForm::Base
       "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
       "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["notices@temple.edu"]],
-      "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu"]]
+      "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu", "tuf16063@temple.edu", "j.martin@temple.edu"]],
+      "group-visit" => ["Group Visit Request", ["chalrestours@temple.edu"]]
     }
 
     @forms.fetch(form_type)

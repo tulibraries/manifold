@@ -16,6 +16,6 @@ class Account < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token.info
-    account = Account.where(email: data["email"]).first
+    account = Account.find_by(email: data["email"])
   end
 end

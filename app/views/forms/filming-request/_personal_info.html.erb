@@ -1,0 +1,3 @@
+<%= f.input :requestor, required: true %>
+<%= f.input :email, as: :email, required: true %>
+<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: ["Student", "Faculty", "Staff", "Alumni", "Not affiliated with Temple"], required: true %>

@@ -1,0 +1,10 @@
+<%= link_to people_path do  %>
+	<h2>
+		<%= image_tag "profile.png", class: "category-icon decorative", alt: "" %>
+		<br />Staff Directory 
+	</h2>
+<% end %>
+
+<p>
+	<%= link_to "Find your subject librarian", people_path(specialists: true) %>, <br>or <%= link_to "make an appointment", "https://charlesstudy.temple.edu/appointments" %>, <br>or contact another library staff member.
+</p>

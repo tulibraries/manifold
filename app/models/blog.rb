@@ -6,7 +6,7 @@ class Blog < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates_presence_of :slug
+  validates :slug, presence: true
 
   has_many :blog_posts, dependent: :destroy
 

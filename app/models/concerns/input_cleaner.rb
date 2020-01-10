@@ -8,7 +8,7 @@ module InputCleaner
   end
   def sanitize_description
     if self.description.nil?
-      self.description = "" 
+      self.description = ""
     else
       self.description.gsub!(/<p>\W<\/p>/, "")
       self.description.each_line { |line| line.chomp }

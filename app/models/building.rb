@@ -4,6 +4,7 @@ class Building < ApplicationRecord
   require "uploads"
 
   include Categorizable
+  include Draftable
   include HasHours
   include HasPolicies
   include InputCleaner
@@ -21,6 +22,8 @@ class Building < ApplicationRecord
   belongs_to :external_link, optional: true
   has_many :spaces, dependent: :destroy
   has_paper_trail
+
+  has_draft :description
 
   auto_strip_attributes :email
 

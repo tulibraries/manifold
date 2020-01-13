@@ -29,10 +29,17 @@ and renders all form fields for a resource's editable attributes.
     </div>
   <% end %>
 
+  <% has_draft = false %>
   <% page.attributes.each do |attribute| -%>
     <% if user_editable_field?(current_account, attribute) %>
       <div class="field-unit field-unit--<%= attribute.html_class %> <%= required?(attribute) %>" >
-        <%= render_field attribute, f: f %>
+        <% draft_field_name = "draft_" + attribute.name %>
+        <% unless attribute.resource.respond_to?(draft_field_name) && action_name == "edit" %>
+          <%= render_field attribute, f: f %>
+        <% else %>
+          <%= render_draft_field attribute, f: f %>
+          <% has_draft = true %>
+        <% end -%>
       </div>
     <% end -%>
   <% end -%>
@@ -68,6 +75,16 @@ and renders all form fields for a resource's editable attributes.
       </div>
 	</div>
 
+  <% if has_draft && action_name == "edit" %>
+    <div class="field-unit field-unit--apply-draft %>" >
+      <div class="field-unit__label">
+        <%= f.label :publish, t("manifold.admin.actions.publish")%>
+      </div>
+      <div class="field-unit__field">
+        <%= f.check_box :publish%>
+      </div>
+    </div>
+  <% end -%>
   <div class="form-actions">
     <%= f.submit %>
   </div>

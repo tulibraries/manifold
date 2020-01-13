@@ -36,7 +36,7 @@ RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
       visit("/admin/buildings/#{@building.id}/edit")
       expect(page).to have_xpath("//div[@id=\"building_description\"]/text()[contains(., \"#{@building.description}\")]")
       expect(page).to have_xpath("//textarea[@id=\"building_draft_description\"]/text()[contains(., \"#{new_description}\")]")
-      check("Publish")
+      check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Building")
       visit("/admin/buildings/#{@building.id}/edit")
       expect(page).to_not have_xpath("//div[@id=\"building_description\"]/text()[contains(., \"#{@building.description}\")]")

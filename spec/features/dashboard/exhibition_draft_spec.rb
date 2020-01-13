@@ -36,7 +36,7 @@ RSpec.feature "Dashboard::ExhibitionDrafts", type: :feature do
       visit("/admin/exhibitions/#{@exhibition.id}/edit")
       expect(page).to have_xpath("//div[@id=\"exhibition_description\"]/text()[contains(., \"#{@exhibition.description}\")]")
       expect(page).to have_xpath("//textarea[@id=\"exhibition_draft_description\"]/text()[contains(., \"#{new_description}\")]")
-      check("Publish")
+      check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Exhibition")
       visit("/admin/exhibitions/#{@exhibition.id}/edit")
       expect(page).to_not have_xpath("//div[@id=\"exhibition_description\"]/text()[contains(., \"#{@exhibition.description}\")]")

@@ -55,6 +55,9 @@ en:
       service:
         hours: "Hours Identifier"
         account: "Individual Owners"
+        updated_at: "Last Edited Date"
+        accounts: "Owner (1st listing only)"
+        categories: "Categories (1st listing only)"
       space:
         accounts: "Individual Owners"
         hours: "Hours Identifier"

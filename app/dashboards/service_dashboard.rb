@@ -69,18 +69,12 @@ class ServiceDashboard < Administrate::BaseDashboard
     :slug,
     :description,
     :access_description,
-    :access_link,
     :external_link,
-    :service_policies,
     :related_policies,
     :intended_audience,
-    :service_category,
-    :related_spaces,
-    :related_groups,
     :hours,
     :categories,
     :accounts,
-    :add_to_footer
   ].freeze
 
   def display_resource(service)

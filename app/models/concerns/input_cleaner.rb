@@ -12,7 +12,7 @@ module InputCleaner
     self.description = ActionController::Base.helpers.sanitize(self.description).strip
   end
   def burpArray
-    self.subject.reject! { |s| s.empty? }
+    self.subject.reject! { |s| s.empty? } unless subject.nil?
   end
   def burpSpecialties
     if self.specialties.is_a? Array

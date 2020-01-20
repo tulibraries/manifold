@@ -3,6 +3,7 @@
 class FindingAid < ApplicationRecord
   include InputCleaner
   include Categorizable
+  include Draftable
   include Validators
   include SchemaDotOrgable
 
@@ -23,6 +24,8 @@ class FindingAid < ApplicationRecord
 
   has_many :finding_aid_responsibilities, dependent: :destroy
   has_many :person, through: :finding_aid_responsibilities
+
+  has_draft :description
 
   def schema_dot_org_type
     "ArchiveComponent"

@@ -57,22 +57,5 @@ RSpec.feature "ServiceDrafts", type: :feature do
       expect(page).to_not have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description}\")]")
       expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{new_description}\")]")
     end
-
-    scenario "Change the Service Title" do
-      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{@service.title}\"]")
-      find("input#service_title").set(new_description)
-      click_button("Update Service")
-      visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{new_description}\"]")
-    end
-
-    scenario "Change the Service Title and click publish" do
-      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{@service.title}\"]")
-      find("input#service_title").set(new_description)
-      check(I18n.t("manifold.admin.actions.publish"))
-      click_button("Update Service")
-      visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//input[@id=\"service_title\" and @value=\"#{new_description}\"]")
-    end
   end
 end

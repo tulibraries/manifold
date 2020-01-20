@@ -2,7 +2,6 @@
 
 module Admin
   class PoliciesController < Admin::ApplicationController
-    include Admin::Detachable
     include Admin::Draftable
 
     private

@@ -7,8 +7,9 @@ class PersonsController < ApplicationController
   before_action :get_persons, only: [:index]
 
   def index
-    @persons = Person.all
+    @persons = get_persons
     @fcn_link = Webpage.find_by(title: "Frequently called numbers")
+
     respond_to do |format|
       format.html
       format.json { render json: PersonSerializer.new(@persons.to_a) }

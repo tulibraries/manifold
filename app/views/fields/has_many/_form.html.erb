@@ -8,7 +8,7 @@
       <%= f.label "Owner", for: "#{f.object_name}_#{field.attribute_key}" %>
     <% end %>
   <% end %>
-  <% if field.attribute == :categories || field.attribute == :accounts %><p style="height:3rem"></p><% end %>
+  <% if field.attribute == :categories %><p style="height:3rem"></p><% end %>
 </div>
 <div class="field-unit__field field-unit--has-many">
   <%= f.select(field.attribute_key, nil, {}, {multiple: true}.merge(field.html_attributes)) do %>

@@ -43,8 +43,11 @@ class ServiceDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
     :title,
-    :service_category,
+    :categories,
+    :accounts,
+    :updated_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -69,18 +72,12 @@ class ServiceDashboard < Administrate::BaseDashboard
     :slug,
     :description,
     :access_description,
-    :access_link,
     :external_link,
-    :service_policies,
     :related_policies,
     :intended_audience,
-    :service_category,
-    :related_spaces,
-    :related_groups,
     :hours,
     :categories,
     :accounts,
-    :add_to_footer
   ].freeze
 
   def display_resource(service)

@@ -1,9 +1,5 @@
 <div class="field-unit__label">
-  <% if field.attribute.to_s == "access_description" %>
-  	<%= f.label "Get Help Box" %>
-  <% else %>
-  	<%= f.label field.attribute %>
-  <% end %>
+  <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
   <%= f.text_area field.attribute, class: "tinymce", rows: 10, cols: 120 %>

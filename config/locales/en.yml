@@ -55,6 +55,9 @@ en:
       service:
         hours: "Hours Identifier"
         account: "Individual Owners"
+        updated_at: "Last Edited Date"
+        accounts: "Owner (1st listing only)"
+        categories: "Categories (1st listing only)"
       space:
         accounts: "Individual Owners"
         hours: "Hours Identifier"
@@ -183,6 +186,30 @@ en:
           policy_check: "Agree to Policies"
           referrer: "Referred by"
           school_visit: "School Information" 
+          protocol_title: "Protocol Title"
+          review_update: "Updating Review?"
+          rationale: "Review Rationale"
+          explicit_statement: "Explicit Statement of Questions"
+          information_sources: "Information Sources Description"
+          included_keywords: "Relevant Keywords"
+          excluded_keywords: "Irrelevant Keywords"
+          data_plan: "Data Management Plan"
+          independent_reviewers: "Independent Reveiwers?"
+          outcomes: "Outcomes"
+          quantitative_analysis: "Include Quantitative Analysis"
+          quantitative_analysis_other: "Quantitative Analysis other"
+          bio_statistician: "Bio-Statistician?"
+          bio_statistician_other: "Bio-Statistician other"
+          summary_description: "Summary Description"
+          evidence_assessment: "Evidence Assessment Description"
+          citations: "Citations"
+          librarian_contact: "Librarian Contact?"
+          librarian_contact_other: "Librarian Contact other"
+          authorship_permission: "Librarian Authorship?"
+          authorship_permission_other: "Librarian Authorship other"
+          other_reviews: "Competing/Conflicting Reviews"
+          other_reviews_other: "Reviews other"
+          publication_journal: "Journal for Publication"
 
       forms:
         recall_book:
@@ -221,6 +248,8 @@ en:
           title: "Recall item from Charles Library temporary storage"
         group_visit:
           title: "Group Visit Request"
+        review_protocol:
+          title: "Temple Review Protocol"
 
     error:
       user_not_registered: "User not registered."

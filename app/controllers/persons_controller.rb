@@ -12,7 +12,7 @@ class PersonsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: PersonSerializer.new(@persons.to_a) }
+      format.json { render json: PersonSerializer.new(Person.all.to_a) }
     end
   end
 

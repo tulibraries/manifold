@@ -16,14 +16,11 @@ class ServiceDashboard < Administrate::BaseDashboard
     description: DescriptionField,
     access_description: DescriptionField,
     external_link: Field::BelongsTo.with_options(order: "title"),
-    service_policies: DescriptionField,
-    related_policies: Field::HasMany.with_options(class_name: "Policy"),
     intended_audience: MultiSelectField.with_options(
       collection: Rails.configuration.audience_types
     ),
-    service_space: Field::HasMany,
-    related_spaces: Field::HasMany.with_options(class_name: "Space"),
     hours: HoursField.with_options(admin_only: true),
+    categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -37,6 +34,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :title,
+    :categories,
     :accounts,
     :updated_at
   ].freeze
@@ -48,6 +46,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :title,
     :intended_audience,
     :external_link,
+    :categories,
     :accounts,
     :created_at,
     :updated_at,
@@ -62,9 +61,9 @@ class ServiceDashboard < Administrate::BaseDashboard
     :description,
     :access_description,
     :external_link,
-    :related_policies,
     :intended_audience,
     :hours,
+    :categories,
     :accounts,
   ].freeze
 

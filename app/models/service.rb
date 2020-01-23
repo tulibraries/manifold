@@ -4,6 +4,7 @@ class Service < ApplicationRecord
   has_paper_trail
 
   include Accountable
+  include Categorizable
   include InputCleaner
   include HasPolicies
   include SetDates
@@ -12,12 +13,6 @@ class Service < ApplicationRecord
   validates :title, :description, :intended_audience, presence: true
 
   serialize :intended_audience
-
-  has_many :service_space, dependent: :destroy
-  has_many :related_spaces, through: :service_space, source: :space
-
-  has_many :service_policy, dependent: :destroy
-  has_many :related_policies, through: :service_policy, source: :policy
 
   belongs_to :external_link, optional: true
 

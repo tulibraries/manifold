@@ -4,9 +4,6 @@ require "rails_helper"
 
 RSpec.describe Service, type: :model do
 
-  let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
-  let(:person) { FactoryBot.build(:person, spaces: [space]) }
   let(:external_link) { FactoryBot.create(:external_link) }
 
   describe "Required attributes" do
@@ -27,31 +24,20 @@ RSpec.describe Service, type: :model do
   end
 
   describe "multiple intended audiences" do
-      example "select more than one" do
-      service = FactoryBot.create(:service,
-
-        intended_audience: [
-          Rails.configuration.audience_types.first,
-          Rails.configuration.audience_types.last])
-      expect(service.intended_audience).to include(Rails.configuration.audience_types.first)
-      expect(service.intended_audience).to include(Rails.configuration.audience_types.last)
-    end
+    example "select more than one" do
+    service = FactoryBot.create(:service,
+      intended_audience: [
+        Rails.configuration.audience_types.first,
+        Rails.configuration.audience_types.last])
+    expect(service.intended_audience).to include(Rails.configuration.audience_types.first)
+    expect(service.intended_audience).to include(Rails.configuration.audience_types.last)
+  end
     example "audience doesn't exist" do
       skip "behavior is TBD"
     end
   end
 
   describe "associated class" do
-    context "Space" do
-      example "attach space" do
-        service = FactoryBot.create(:service, related_spaces: [space])
-        expect(service.related_spaces.last.name).to match(/#{space.name}/)
-      end
-      example "no space" do
-        service = FactoryBot.create(:service)
-        expect { service.save! }.to_not raise_error
-      end
-    end
     context "Policy" do
       skip "TBD"
     end
@@ -70,20 +56,18 @@ RSpec.describe Service, type: :model do
 
   describe "version all fields" do
     fields = {
-      title: ["The Text 1", "The Text 2"],
-      description: ["The Text 1", "The Text 2"],
-      access_description: ["The Text 1", "The Text 2"],
-      service_policies: ["The Text 1", "The Text 2"],
-      #intended_audience: ["The Text 1", "The Text 2"],
-      hours: ["The Text 1", "The Text 2"]
+      title: ["Service Static", "The Text 2"],
+      description: ["The best drink in existence is the Pan Galactic Gargle Blaster.", "The Text 2"],
+      access_description: ["Fully accessible", "The Text 2"],
+      intended_audience: [["General"], ["The Text 2"]],
+      hours: ["hours", "The Text 2"]
     }
 
     fields.each do |k, v|
       example "#{k} changes" do
-        service = FactoryBot.create(:service)
+        service = FactoryBot.create(:service_static)
         service.update(k => v.last)
         service.save!
-        binding.pry
         expect(service.versions.last.changeset[k]).to match_array(v)
       end
     end

@@ -3,6 +3,6 @@
 class ServiceSerializer < ApplicationSerializer
   include LinkSerializable
 
-  attributes :title, :description, :access_description, :access_link, :service_policies,
+  attributes :title, :description, :access_description, :service_policies,
     :intended_audience
 end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class RemoveFieldsFromServices < ActiveRecord::Migration[5.2]
   def change
-  	reversible do |dir|
+    reversible do |dir|
       change_table :services, bulk: true do |t|
         dir.up do
           t.remove :service_category

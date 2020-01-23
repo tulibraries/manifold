@@ -3,5 +3,5 @@
 class CollectionSerializer < ApplicationSerializer
   include LinkSerializable
 
-  attributes :name, :description, :subject, :contents, :add_to_footer
+  attributes :name, :description, :subject, :contents
 end

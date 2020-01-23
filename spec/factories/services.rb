@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :service do
-    sequence(:title) { |n| "Service #{n}" }
+    sequence(:title) { |n| "The Service #{n}" }
     description {
     <<~EOD.strip.gsub(/\n/, " ")
       The best drink in existence is the Pan Galactic Gargle Blaster, the effect
@@ -11,11 +11,8 @@ FactoryBot.define do
     EOD
   }
     access_description { "Fully accessible" }
-    access_link { |n| "http://www.example.com/#{n}" }
     service_policies { "Plenary" }
     intended_audience { ["General"] }
-    service_category { "Hospitality" }
-    related_groups { [FactoryBot.create(:group)] }
-    add_to_footer { false }
+    hours { "hours" }
   end
 end

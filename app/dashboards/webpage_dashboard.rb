@@ -22,6 +22,7 @@ class WebpageDashboard < Administrate::BaseDashboard
       ),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
+    file_upload: Field::BelongsTo.with_options(order: "name"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -55,7 +56,8 @@ class WebpageDashboard < Administrate::BaseDashboard
     :group,
     :categories,
     :accounts,
-    :layout
+    :layout,
+    :file_upload
   ].freeze
 
   # Overwrite this method to customize how pages are displayed

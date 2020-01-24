@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class PolicyDashboard < Administrate::BaseDashboard
+class FileUploadDashboard < BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -12,18 +12,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
-    description: DescriptionField,
-    category: MultiSelectField.with_options(
-      collection: Rails.configuration.policy_categories
-    ),
-    effective_date: Field::DateTime,
-    expiration_date: Field::DateTime,
-    categories: Field::HasMany,
-    accounts: Field::HasMany.with_options(admin_only: true),
-    file_upload: Field::BelongsTo.with_options(order: "name"),
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    file: FileField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -33,8 +22,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :name,
-    :effective_date,
+    :name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -42,14 +30,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
-    :description,
-    :category,
-    :effective_date,
-    :expiration_date,
-    :categories,
-    :accounts,
-    :created_at,
-    :updated_at,
+    :file
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -57,21 +38,13 @@ class PolicyDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :slug,
-    :description,
-    :category,
-    :effective_date,
-    :expiration_date,
-    :categories,
-    :accounts,
-    :file_upload
+    :file
   ].freeze
 
-  def display_resource(policy)
-    "##{policy.id} #{policy.name}"
-  end
-
-  def tinymce?
-    true
+  # Overwrite this method to customize how external links are displayed
+  # across all pages of the admin dashboard.
+  #
+  def display_resource(file_upload)
+    "#{file_upload.name}"
   end
 end

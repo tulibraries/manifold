@@ -24,6 +24,7 @@ class SpaceDashboard < BaseDashboard
     email: Field::Email,
     policies: Field::HasMany,
     external_link: Field::BelongsTo.with_options(order: "title"),
+    file_upload: Field::BelongsTo.with_options(order: "name"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     ancestry: Field::String,
@@ -72,7 +73,8 @@ class SpaceDashboard < BaseDashboard
     :phone_number,
     :policies,
     :categories,
-    :accounts
+    :accounts,
+    :file_upload
   ].freeze
 
   # Overwrite this method to customize how spaces are displayed

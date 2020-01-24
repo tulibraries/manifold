@@ -12,6 +12,7 @@ class Webpage < ApplicationRecord
   validates :title, :description, presence: true
 
   belongs_to :group, optional: true
+  belongs_to :file_uploads, optional: true
 
   def label
     title

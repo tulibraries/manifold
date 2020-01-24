@@ -29,6 +29,8 @@ class Service < ApplicationRecord
   before_validation :remove_empty_audience
   before_validation :sanitize_description
 
+  belongs_to :file_upload, optional: true
+
   def remove_empty_audience
     # Rails tends to return an empty string in multi-selects array
     intended_audience&.reject! { |a| a.empty? }

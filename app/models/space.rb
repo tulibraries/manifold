@@ -37,6 +37,8 @@ class Space < ApplicationRecord
   has_many :service_space, dependent: :destroy
   has_many :related_services, through: :service_space, source: :service
 
+  belongs_to :file_upload, optional: true
+
   def schema_dot_org_type
     "Place"
   end

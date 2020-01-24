@@ -29,6 +29,7 @@ class GroupDashboard < BaseDashboard
       class_name: "Group",
       foreign_key: "parent_group_id",
     ),
+    file_upload: Field::BelongsTo.with_options(order: "name"),
     #child_groups: Field::HasMany,
     webpages: Field::HasMany,
     categories: Field::HasMany,
@@ -80,6 +81,7 @@ class GroupDashboard < BaseDashboard
     :webpages,
     :categories,
     :add_to_footer,
+    :file_upload
   ].freeze
 
   # Overwrite this method to customize how groups are displayed

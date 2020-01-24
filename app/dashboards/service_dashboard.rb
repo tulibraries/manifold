@@ -33,6 +33,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
+    file_upload: Field::BelongsTo.with_options(order: "name"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -58,6 +59,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :intended_audience,
     :service_category,
     :external_link,
+    :file_upload,
     :categories,
     :accounts,
     :created_at,
@@ -78,6 +80,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :hours,
     :categories,
     :accounts,
+    :file_upload
   ].freeze
 
   def display_resource(service)

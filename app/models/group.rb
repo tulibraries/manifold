@@ -32,6 +32,8 @@ class Group < ApplicationRecord
   has_many :service_group, dependent: :destroy
   has_many :related_services, through: :service_group, source: :service
 
+  belongs_to :file_upload, optional: true
+
   def get_chair
     members = Array.new
     chair = persons.select { |p| chair_dept_heads.include?(p) }

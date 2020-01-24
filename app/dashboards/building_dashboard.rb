@@ -69,7 +69,7 @@ class BuildingDashboard < BaseDashboard
     :hours,
     :email,
     :policies,
-    :categories,
+    :categories
   ].freeze
 
   # Overwrite this method to customize how buildings are displayed

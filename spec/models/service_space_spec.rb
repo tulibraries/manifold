@@ -26,8 +26,7 @@ RSpec.describe ServiceSpace, type: :model do
     let(:space1) { FactoryBot.create(:space, building: building) }
     let(:space2) { FactoryBot.create(:space, building: building) }
     let(:person) { FactoryBot.build(:person, spaces: [space1]) }
-    let(:group) { FactoryBot.create(:group, persons: [person], space: space1, chair_dept_heads: [person]) }
-    let(:service) { FactoryBot.create(:service, related_spaces: [space1], related_groups: [group]) }
+    let(:service) { FactoryBot.create(:service, related_spaces: [space1]) }
 
     example "Assign service to space in service creation" do
       expect(space1.related_services).to include service

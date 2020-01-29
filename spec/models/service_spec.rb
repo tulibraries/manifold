@@ -7,7 +7,6 @@ RSpec.describe Service, type: :model do
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
   let(:person) { FactoryBot.build(:person, spaces: [space]) }
-  let(:group) { FactoryBot.create(:group, persons: [person], space: space, chair_dept_heads: [person]) }
   let(:external_link) { FactoryBot.create(:external_link) }
 
   describe "Required attributes" do
@@ -25,23 +24,17 @@ RSpec.describe Service, type: :model do
       service = FactoryBot.build(:service, intended_audience: [""])
       expect { service.save! }.to raise_error(/Intended audience can't be blank/)
     end
-
-    example "Missing service category" do
-      service = FactoryBot.build(:service, service_category: "")
-      expect { service.save! }.to raise_error(/Service category can't be blank/)
-    end
   end
 
   describe "multiple intended audiences" do
     example "select more than one" do
-      service = FactoryBot.create(:service,
-        related_groups: [group],
-        intended_audience: [
-          Rails.configuration.audience_types.first,
-          Rails.configuration.audience_types.last])
-      expect(service.intended_audience).to include(Rails.configuration.audience_types.first)
-      expect(service.intended_audience).to include(Rails.configuration.audience_types.last)
-    end
+    service = FactoryBot.create(:service,
+      intended_audience: [
+        Rails.configuration.audience_types.first,
+        Rails.configuration.audience_types.last])
+    expect(service.intended_audience).to include(Rails.configuration.audience_types.first)
+    expect(service.intended_audience).to include(Rails.configuration.audience_types.last)
+  end
     example "audience doesn't exist" do
       skip "behavior is TBD"
     end
@@ -50,25 +43,12 @@ RSpec.describe Service, type: :model do
   describe "associated class" do
     context "Space" do
       example "attach space" do
-        service = FactoryBot.create(:service, related_spaces: [space], related_groups: [group])
+        service = FactoryBot.create(:service, related_spaces: [space])
         expect(service.related_spaces.last.name).to match(/#{space.name}/)
       end
       example "no space" do
-        service = FactoryBot.create(:service, related_groups: [group])
+        service = FactoryBot.create(:service)
         expect { service.save! }.to_not raise_error
-      end
-    end
-    context "Group" do
-      let(:person) { FactoryBot.build(:person, spaces: [space]) }
-      let(:group) { FactoryBot.create(:group, persons: [person], space: space, chair_dept_heads: [person]) }
-      example "attach group" do
-        service = FactoryBot.create(:service, related_groups: [group])
-        expect(service.related_groups.last.name).to match(/#{group.name}/)
-      end
-      example "not present" do
-        service = FactoryBot.build(:service)
-        service.related_groups.clear
-        expect { service.save! }.to raise_error(/Related groups #{I18n.t('errors.messages.blank')}/)
       end
     end
     context "Policy" do
@@ -81,7 +61,7 @@ RSpec.describe Service, type: :model do
         expect(service.external_link.link).to match(/#{external_link.link}/)
       end
       example "no external" do
-        service = FactoryBot.create(:service, related_groups: [group])
+        service = FactoryBot.create(:service)
         expect { service.save! }.to_not raise_error
       end
     end
@@ -89,20 +69,17 @@ RSpec.describe Service, type: :model do
 
   describe "version all fields" do
     fields = {
-      title: ["The Text 1", "The Text 2"],
-      description: ["The Text 1", "The Text 2"],
-      access_description: ["The Text 1", "The Text 2"],
-      access_link: ["The Text 1", "The Text 2"],
-      service_policies: ["The Text 1", "The Text 2"],
-      #intended_audience: ["The Text 1", "The Text 2"],
-      service_category: ["The Text 1", "The Text 2"],
-      hours: ["The Text 1", "The Text 2"],
-      add_to_footer: [false, true]
+      title: ["Service Static", "The Text 2"],
+      description: ["The best drink in existence is the Pan Galactic Gargle Blaster.", "The Text 2"],
+      access_description: ["Fully accessible", "The Text 2"],
+      service_policies: ["Plenary", "The Text 2"],
+      intended_audience: [["General"], ["The Text 2"]],
+      hours: ["hours", "The Text 2"]
     }
 
     fields.each do |k, v|
       example "#{k} changes" do
-        service = FactoryBot.create(:service, related_groups: [group], k => v.first)
+        service = FactoryBot.create(:service_static)
         service.update(k => v.last)
         service.save!
         expect(service.versions.last.changeset[k]).to match_array(v)
@@ -111,5 +88,4 @@ RSpec.describe Service, type: :model do
   end
 
   it_behaves_like "accountable"
-  it_behaves_like "categorizable"
 end

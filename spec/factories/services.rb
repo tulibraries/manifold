@@ -5,20 +5,17 @@ FactoryBot.define do
     sequence(:title) { |n| "Service #{n}" }
     description {
     <<~EOD.strip.gsub(/\n/, " ")
-      The best drink in existence is the Pan Galactic Gargle Blaster.
+      The best drink in existence is the Pan Galactic Gargle Blaster, the effect
+      of which is like having your brains smashed out by a slice of lemon wrapped
+      round a large gold brick.
     EOD
   }
     access_description { "Fully accessible" }
+    access_link { |n| "http://www.example.com/#{n}" }
     service_policies { "Plenary" }
     intended_audience { ["General"] }
-    hours { "hours" }
-  end
-  factory :service_static, class: Service do
-    title { "Service Static" }
-    description { "The best drink in existence is the Pan Galactic Gargle Blaster." }
-    access_description { "Fully accessible" }
-    service_policies { "Plenary" }
-    intended_audience { ["General"] }
-    hours { "hours" }
+    service_category { "Hospitality" }
+    related_groups { [FactoryBot.create(:group)] }
+    add_to_footer { false }
   end
 end

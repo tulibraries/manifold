@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_165759) do
+ActiveRecord::Schema.define(version: 2020_01_08_175223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,7 +227,6 @@ ActiveRecord::Schema.define(version: 2020_01_23_165759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "promoted_to_events"
-    t.string "slug"
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
@@ -261,7 +260,6 @@ ActiveRecord::Schema.define(version: 2020_01_23_165759) do
     t.datetime "updated_at", null: false
     t.string "drupal_id"
     t.string "path"
-    t.string "slug"
     t.index ["collection_id"], name: "index_finding_aids_on_collection_id"
   end
 
@@ -270,17 +268,6 @@ ActiveRecord::Schema.define(version: 2020_01_23_165759) do
     t.string "form_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string "slug", null: false
-    t.integer "sluggable_id", null: false
-    t.string "sluggable_type", limit: 50
-    t.string "scope"
-    t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "group_contacts", force: :cascade do |t|
@@ -303,7 +290,6 @@ ActiveRecord::Schema.define(version: 2020_01_23_165759) do
     t.boolean "external"
     t.boolean "add_to_footer"
     t.integer "parent_group_id"
-    t.string "slug"
     t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
   end
 
@@ -317,7 +303,6 @@ ActiveRecord::Schema.define(version: 2020_01_23_165759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link_label"
-    t.string "slug"
   end
 
   create_table "library_hours", force: :cascade do |t|
@@ -361,7 +346,6 @@ ActiveRecord::Schema.define(version: 2020_01_23_165759) do
     t.string "springshare_id"
     t.string "specialties"
     t.string "libguides_account"
-    t.string "slug"
   end
 
   create_table "policies", force: :cascade do |t|
@@ -426,11 +410,14 @@ ActiveRecord::Schema.define(version: 2020_01_23_165759) do
     t.string "title"
     t.text "description"
     t.text "access_description"
+    t.string "access_link"
     t.text "service_policies"
     t.text "intended_audience"
+    t.string "service_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "hours"
+    t.boolean "add_to_footer"
     t.integer "external_link_id"
     t.string "slug"
     t.index ["external_link_id"], name: "index_services_on_external_link_id"

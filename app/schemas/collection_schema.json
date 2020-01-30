@@ -104,16 +104,6 @@
 							],
 							"pattern": "^(.*)$"
 						},
-						"add_to_footer": {
-							"$id": "#/properties/data/properties/attributes/properties/add_to_footer",
-							"type": "boolean",
-							"title": "The Add to Footer State Schema",
-							"default": true ,
-							"examples": [
-								true,
-                false
-							]
-						},
 						"updated_at": {
 							"$id": "#/properties/data/properties/attributes/properties/updated_at",
 							"type": "string",

@@ -3,11 +3,20 @@
 <div class="container">
   
   <div class="row service-show">
-    <div class="col-12 col-md-9 col-lg-9">
-    <h1 class="unstyled"><%= title @service.title %></h1>
-    <%= sanitize @service.description.html_safe %>
-    </div>
+    <% unless @categories.blank? %>
+      <div class="col-3 d-none d-md-none d-lg-block">
+        <%= render "categories_list" %>
+      </div>
 
+      <div class="col-12 col-md-9 col-lg-6">
+    <% else %>
+      <div class="col-12 col-md-9 col-lg-9">
+    <% end %>
+    
+      <h1 class="unstyled"><%= title @service.title %></h1>
+      <%= sanitize @service.description.html_safe %>
+
+    </div>
     <div class="col-12 col-md-3 rightside-service">
       <% unless @service.external_link.blank? %>
         <div class="access-link">

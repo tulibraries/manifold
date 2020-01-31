@@ -8,11 +8,7 @@ RSpec.describe ServicesController, type: :controller do
 
   let(:valid_session) { {} }
 
-  let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
-  let(:chair_person) { FactoryBot.create(:person, spaces: [space]) }
-  let(:group) { FactoryBot.create(:group, space: space, chair_dept_heads: [chair_person]) }
-  let(:service) { FactoryBot.create(:service, related_spaces: [space], related_groups: [group]) }
+  let(:service) { FactoryBot.create(:service) }
 
   describe "GET #index" do
     it "returns json when requested" do

@@ -217,5 +217,8 @@ module Tude
     config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://events.temple.edu/feed/xml/events?department=2566")
     config.ensemble_api_user = ENV["ENSEMBLE_API_USER"]
     config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]
+
+    config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "true"
+
   end
 end

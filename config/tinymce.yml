@@ -7,3 +7,4 @@ plugins:
   - lists
   - advlist
   - code
+  - hr

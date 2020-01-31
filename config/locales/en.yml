@@ -178,7 +178,7 @@ en:
           date_of_event: "Date of Event"
           event_start: "Event Start Time"
           event_end: "Event End Time"
-          setup_style: "Setup-Up Style"
+          setup_style: "Setup Style"
           av_support: "A/V Support Needed"
           partner_name: "Partner's Name"
           partner_email: "Partner's Email"

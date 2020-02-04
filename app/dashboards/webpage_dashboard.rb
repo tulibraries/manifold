@@ -22,7 +22,10 @@ class WebpageDashboard < Administrate::BaseDashboard
       ),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
-    file_upload: Field::BelongsTo.with_options(order: "name"),
+    file_uploads: Field::HasMany.with_options(
+      order: "name",
+      class_name: "FileUpload"
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -42,7 +45,8 @@ class WebpageDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :title,
     :categories,
-    :accounts
+    :accounts,
+    :file_uploads
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -52,12 +56,11 @@ class WebpageDashboard < Administrate::BaseDashboard
     :title,
     :slug,
     :description,
-    :document,
     :group,
     :categories,
     :accounts,
     :layout,
-    :file_upload
+    :file_uploads
   ].freeze
 
   # Overwrite this method to customize how pages are displayed

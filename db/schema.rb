@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_195615) do
+ActiveRecord::Schema.define(version: 2020_02_12_223347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -240,12 +240,13 @@ ActiveRecord::Schema.define(version: 2020_01_24_195615) do
     t.string "slug"
   end
 
-  create_table "file_upload_models", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "file_uploads", force: :cascade do |t|
     t.string "name"
+    t.string "attachable_type"
+    t.bigint "attachable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_file_uploads_on_attachable_type_and_attachable_id"
   end
 
   create_table "finding_aid_responsibilities", force: :cascade do |t|
@@ -298,8 +299,6 @@ ActiveRecord::Schema.define(version: 2020_01_24_195615) do
     t.boolean "external"
     t.boolean "add_to_footer"
     t.integer "parent_group_id"
-    t.bigint "file_upload_id"
-    t.index ["file_upload_id"], name: "index_groups_on_file_upload_id"
     t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
   end
 
@@ -342,17 +341,6 @@ ActiveRecord::Schema.define(version: 2020_01_24_195615) do
     t.index ["space_id"], name: "index_occupants_on_space_id"
   end
 
-  create_table "pages", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "layout"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["group_id"], name: "index_pages_on_group_id"
-  end
-
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -378,8 +366,6 @@ ActiveRecord::Schema.define(version: 2020_01_24_195615) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.string "slug"
-    t.bigint "file_upload_id"
-    t.index ["file_upload_id"], name: "index_policies_on_file_upload_id"
   end
 
   create_table "policy_applications", force: :cascade do |t|
@@ -402,50 +388,18 @@ ActiveRecord::Schema.define(version: 2020_01_24_195615) do
     t.index ["redirectable_type", "redirectable_id"], name: "index_redirects_on_redirectable_type_and_redirectable_id"
   end
 
-  create_table "service_groups", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_service_groups_on_group_id"
-    t.index ["service_id"], name: "index_service_groups_on_service_id"
-  end
-
-  create_table "service_policies", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "policy_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["policy_id"], name: "index_service_policies_on_policy_id"
-    t.index ["service_id"], name: "index_service_policies_on_service_id"
-  end
-
-  create_table "service_spaces", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "space_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["service_id"], name: "index_service_spaces_on_service_id"
-    t.index ["space_id"], name: "index_service_spaces_on_space_id"
-  end
-
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.text "access_description"
-    t.string "access_link"
     t.text "service_policies"
     t.text "intended_audience"
-    t.string "service_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "hours"
-    t.boolean "add_to_footer"
     t.integer "external_link_id"
     t.string "slug"
-    t.bigint "file_upload_id"
     t.index ["external_link_id"], name: "index_services_on_external_link_id"
-    t.index ["file_upload_id"], name: "index_services_on_file_upload_id"
   end
 
   create_table "space_groups", force: :cascade do |t|
@@ -471,11 +425,9 @@ ActiveRecord::Schema.define(version: 2020_01_24_195615) do
     t.string "ancestry"
     t.bigint "external_link_id"
     t.string "slug"
-    t.bigint "file_upload_id"
     t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
     t.index ["external_link_id"], name: "index_spaces_on_external_link_id"
-    t.index ["file_upload_id"], name: "index_spaces_on_file_upload_id"
   end
 
   create_table "versions", force: :cascade do |t|
@@ -497,17 +449,10 @@ ActiveRecord::Schema.define(version: 2020_01_24_195615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.bigint "file_upload_id"
-    t.index ["file_upload_id"], name: "index_webpages_on_file_upload_id"
     t.index ["group_id"], name: "index_webpages_on_group_id"
   end
 
   add_foreign_key "accounts", "admin_groups"
   add_foreign_key "collections", "external_links"
-  add_foreign_key "groups", "file_uploads"
-  add_foreign_key "policies", "file_uploads"
-  add_foreign_key "services", "file_uploads"
   add_foreign_key "spaces", "external_links"
-  add_foreign_key "spaces", "file_uploads"
-  add_foreign_key "webpages", "file_uploads"
 end

@@ -19,12 +19,11 @@ class SpaceDashboard < BaseDashboard
     description: DescriptionField,
     hours: HoursField.with_options(admin_only: true),
     accessibility: Field::Text,
-    image: PhotoField.with_options(admin_only: true),
+    image: PhotoField,
     phone_number: PhoneField,
     email: Field::Email,
     policies: Field::HasMany,
     external_link: Field::BelongsTo.with_options(order: "title"),
-    file_upload: Field::BelongsTo.with_options(order: "name"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     ancestry: Field::String,
@@ -73,8 +72,7 @@ class SpaceDashboard < BaseDashboard
     :phone_number,
     :policies,
     :categories,
-    :accounts,
-    :file_upload
+    :accounts
   ].freeze
 
   # Overwrite this method to customize how spaces are displayed

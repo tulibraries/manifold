@@ -12,8 +12,6 @@ class Policy < ApplicationRecord
   validates :name, :description, :effective_date, presence: true
   serialize :category
 
-  belongs_to :file_upload, optional: true
-
   def label
     name
   end

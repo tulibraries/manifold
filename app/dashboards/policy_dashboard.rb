@@ -21,7 +21,6 @@ class PolicyDashboard < Administrate::BaseDashboard
     expiration_date: Field::DateTime,
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
-    file_upload: Field::BelongsTo.with_options(order: "name"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -63,8 +62,7 @@ class PolicyDashboard < Administrate::BaseDashboard
     :effective_date,
     :expiration_date,
     :categories,
-    :accounts,
-    :file_upload
+    :accounts
   ].freeze
 
   def display_resource(policy)

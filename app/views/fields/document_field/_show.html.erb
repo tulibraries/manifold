@@ -1,5 +1,0 @@
-<% if field.data.attached? %>
-	<% field.data.attachments.each do |attachment| %>
-		<%= link_to attachment.filename, url_for(attachment), disposition: "attachment" %><br />
-	<% end %>
-<% end %>

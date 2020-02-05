@@ -124,8 +124,7 @@ RSpec.describe Group, type: :model do
     fields = {
       name: ["The Text 1", "The Text 2"],
       description: ["The Text 1", "The Text 2"],
-      external: [false, true],
-      add_to_footer: [false, true],
+      external: [false, true]
     }
 
     fields.each do |k, v|

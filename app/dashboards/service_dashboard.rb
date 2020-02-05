@@ -15,22 +15,11 @@ class ServiceDashboard < Administrate::BaseDashboard
     slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     access_description: DescriptionField,
-    access_link: Field::String,
     external_link: Field::BelongsTo.with_options(order: "title"),
-    service_policies: DescriptionField,
-    related_policies: Field::HasMany.with_options(class_name: "Policy"),
     intended_audience: MultiSelectField.with_options(
       collection: Rails.configuration.audience_types
     ),
-    service_category: Field::Select.with_options(
-      collection: Rails.configuration.service_types
-    ),
-    service_space: Field::HasMany,
-    related_spaces: Field::HasMany.with_options(class_name: "Space"),
-    service_group: Field::HasMany,
-    related_groups: Field::HasMany.with_options(class_name: "Group"),
     hours: HoursField.with_options(admin_only: true),
-    add_to_footer: Field::Boolean.with_options(admin_only: true),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     created_at: Field::DateTime,
@@ -56,7 +45,6 @@ class ServiceDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :intended_audience,
-    :service_category,
     :external_link,
     :categories,
     :accounts,
@@ -73,7 +61,6 @@ class ServiceDashboard < Administrate::BaseDashboard
     :description,
     :access_description,
     :external_link,
-    :related_policies,
     :intended_audience,
     :hours,
     :categories,

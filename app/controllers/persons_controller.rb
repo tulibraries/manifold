@@ -8,12 +8,11 @@ class PersonsController < ApplicationController
 
   def index
     @persons = get_persons
-    json_people = Person.all
     @fcn_link = Webpage.find_by(title: "Frequently called numbers")
 
     respond_to do |format|
       format.html
-      format.json { render json: PersonSerializer.new(json_people.to_a) }
+      format.json { render json: PersonSerializer.new(Person.all.to_a) }
     end
   end
 

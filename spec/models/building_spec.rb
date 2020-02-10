@@ -98,23 +98,16 @@ RSpec.describe Building, type: :model do
 
       it { is_expected.to include("name" => building[:name]) }
       it { is_expected.to include("description" => building[:description]) }
-      it { is_expected.to include("location") }
+      it { is_expected.to include("address") }
 
-      describe "location" do
-        subject { building.map_to_schema_dot_org["location"] }
+      describe "address" do
+        subject { building.map_to_schema_dot_org["address"] }
 
-        it { is_expected.to include("@type" => "https://schema.org/Place") }
-        it { is_expected.to include("address") }
-
-        describe "address" do
-          subject { building.map_to_schema_dot_org["location"]["address"] }
-
-          it { is_expected.to include("@type" => "https://schema.org/PostalAddress") }
-          it { is_expected.to include("streetAddress" => building.address1) }
-          it { is_expected.to include("addressLocality" => a_string_including(city)) }
-          it { is_expected.to include("addressLocality" => a_string_including(state)) }
-          it { is_expected.to include("addressLocality" => a_string_including(zip_code)) }
-        end
+        it { is_expected.to include("@type" => "https://schema.org/PostalAddress") }
+        it { is_expected.to include("streetAddress" => building.address1) }
+        it { is_expected.to include("addressLocality" => a_string_including(city)) }
+        it { is_expected.to include("addressLocality" => a_string_including(state)) }
+        it { is_expected.to include("addressLocality" => a_string_including(zip_code)) }
       end
 
       it { is_expected.to include("telephone" => building[:phone_number]) }

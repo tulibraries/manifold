@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
     @staff_forms = ExternalLink.find_by(slug: "staff-forms")
     @chat_link = ExternalLink.find_by(slug: "chat-link")
     @db_az_link = ExternalLink.find_by(slug: "db-az")
+    @journal_finder = Rails.configuration.primo_articles_url
   end
 
   def show_hours

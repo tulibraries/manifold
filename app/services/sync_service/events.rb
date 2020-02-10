@@ -53,6 +53,7 @@ class SyncService::Events
       "registration_status" => event.fetch("RegistrationStatus", nil),
       "registration_link"   => event.fetch("ExternalRegistrationURL", nil),
       "start_time"          => start_time(event),
+      "timestamp_start"     => event.fetch("TimestampStart", nil),
       "end_time"            => end_time(event),
       "all_day"             => all_day(event),
       "content_hash" => xml_hash(event)
@@ -65,7 +66,7 @@ class SyncService::Events
   def create_or_update_if_needed!(record_hash)
     # If a record already exists with this content hash, then no update needed
     if should_create_or_update(record_hash)
-      event = Event.find_by(content_hash: record_hash["content_hash"]) || Event.find_by(guid: record_hash["guid"])
+      event = Event.find_by(content_hash: record_hash["content_hash"]) || Event.find_by(guid: record_hash["guid"], timestamp_start: record_hash["timestamp_start"])
       if event
         stdout_and_log(
           %Q(Incoming event with title #{record_hash["title"]} matched to existing event (id = #{event.id} ) with title #{event.title}), level: :debug

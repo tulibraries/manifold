@@ -21,7 +21,7 @@ RSpec.describe PolicySerializer do
 
     it "has the expected attributes" do
       expect(data[:attributes].keys).to include(:name, :description, :effective_date,
-                                                :expiration_date, :category, :label, :updated_at)
+                                                :expiration_date, :label, :updated_at)
     end
 
     it "returns the name" do

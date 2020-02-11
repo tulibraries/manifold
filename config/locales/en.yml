@@ -46,6 +46,8 @@ en:
       exhibition:
         title: "Name"
         promoted_to_events: "Published"
+      highlight:
+        created_at: "Published at"
       policy:
         accounts: "Individual Owners"
       redirect:

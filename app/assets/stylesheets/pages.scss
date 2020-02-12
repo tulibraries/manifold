@@ -189,12 +189,14 @@
 			font-size: 145%;
 		}
 		img.icon {
-			width: 84px;
+			width: 68px;
+      position:relative;
+      top: -3px;
 		}
 		.caption {
 			color: $white;
 			background-color: $black;
-			height:42px;
+			height:45px;
 			font-size: larger;
 			text-align: center;
 			a.lynde {
@@ -203,7 +205,7 @@
 			a.price, a.gobel {
 				font-size: smaller;
 				text-decoration: underline;
-				padding-top: 6px;
+				padding-top: 11px;
 				float: right;
 				padding-right: 21px;
 			}
@@ -213,18 +215,17 @@
 			padding: 0;
 			.square  {
 				height: 100%;
-				padding-top: 4%;
+				padding-top: 3%;
 				padding-left: 21px;
 				border-bottom: solid $white 1px;
 				@media screen and (max-width: 1039px) {
 					padding-top: 0;
-					height: 24%!important;
 					padding-left: 5%;
 				}
 			}
 			.caption {
 				position: relative;
-				top: 4px;
+        top: 2px;
 			}
 		}
 		.bb-0 {
@@ -306,7 +307,6 @@
 			}
 			.caption {
 				position: relative;
-				top: 3px;
 			}
 		}
 	}

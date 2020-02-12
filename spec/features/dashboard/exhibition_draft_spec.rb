@@ -3,8 +3,20 @@
 require "rails_helper"
 
 RSpec.feature "Dashboard::ExhibitionDrafts", type: :feature do
+  before(:all) do
+    Rails.configuration.draftable = true
+    @account = FactoryBot.create(:account, admin: true)
+    @exhibition = FactoryBot.create(:exhibition)
+  end
+
+  after(:all) do
+    @account.destroy
+    @exhibition.destroy
+  end
+
   context "New Exhibition Administrate Page" do
     scenario "Create new item " do
+      Rails.configuration.draftable = true
       account = FactoryBot.create(:account, admin: true)
       login_as(account, scope: :account)
       visit("/admin/exhibitions/new")
@@ -13,8 +25,18 @@ RSpec.feature "Dashboard::ExhibitionDrafts", type: :feature do
     end
   end
 
+  context "Don't show draftable if draftable feature flag clear" do
+    scenario "Enable draftable" do
+      Rails.configuration.draftable = false
+      login_as(@account, scope: :account)
+      visit("/admin/exhibitions/#{@exhibition.id}/edit")
+      expect(page).to_not have_xpath("//textarea[@id=\"exhibition_draft_description\"]")
+    end
+  end
+
   context "Visit Exhibition Administrate Page" do
     before(:each) do
+      Rails.configuration.draftable = true
       @account = FactoryBot.create(:account, admin: true)
       @exhibition = FactoryBot.create(:exhibition)
       login_as(@account, scope: :account)

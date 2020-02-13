@@ -14,19 +14,9 @@ class Service < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
   validates :slug, presence: true
 
-  validates :title, :description, :intended_audience, :service_category, presence: true
-  validates :related_groups, presence: true
+  validates :title, :description, :intended_audience, presence: true
 
   serialize :intended_audience
-
-  has_many :service_space, dependent: :destroy
-  has_many :related_spaces, through: :service_space, source: :space
-
-  has_many :service_group, dependent: :destroy
-  has_many :related_groups, through: :service_group, source: :group
-
-  has_many :service_policy, dependent: :destroy
-  has_many :related_policies, through: :service_policy, source: :policy
 
   belongs_to :external_link, optional: true
 

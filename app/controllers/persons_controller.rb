@@ -6,11 +6,12 @@ class PersonsController < ApplicationController
   before_action :get_persons, only: [:index]
 
   def index
-    @persons = Person.all
+    @persons = get_persons
     @fcn_link = Webpage.find_by(title: "Frequently called numbers")
+
     respond_to do |format|
       format.html
-      format.json { render json: PersonSerializer.new(@persons.to_a) }
+      format.json { render json: PersonSerializer.new(Person.all.to_a) }
     end
   end
 
@@ -110,7 +111,7 @@ class PersonsController < ApplicationController
 
   private
     def set_person
-      @person = Person.find(params[:id])
+      @person = Person.friendly.find(params[:id])
       @department = @person.groups.collect.reject { |g| g.group_type != "Department" }.uniq.sort
       @location = @person.spaces.collect.uniq.sort
     end

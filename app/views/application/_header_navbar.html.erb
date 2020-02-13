@@ -1,3 +1,11 @@
+
+  <div id="toolbar" class="d-none d-lg-block">
+    <div class="container text-right">
+        <%= link_to "TUportal", "https://tuportal.temple.edu" %> 
+        <%= link_to "Support the Libraries", @donate_link %>
+    </div>
+  </div>
+  
 <div id="header-navbar" class="container navbar navbar-static-top d-print-block" role="navigation">
   <div class="col-8 col-sm-7 col-lg-7 logo-container text-left ">
     <%= link_to root_path, class: "header-name", id: "header-logo" do %>
@@ -73,7 +81,6 @@
       </ul>
     </div>
   </div>
-
   <div class="row d-block d-sm-block d-md-block d-lg-none text-center" id="mobile-search-container">
     <%= render "mobile-search" %>
   </div>

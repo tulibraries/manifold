@@ -110,6 +110,31 @@ class Form < MailForm::Base
   attribute :referrer
   attribute :school_visit
 
+  attribute :protocol_title
+  attribute :review_update
+  attribute :rationale
+  attribute :explicit_statement
+  attribute :information_sources
+  attribute :included_keywords
+  attribute :excluded_keywords
+  attribute :data_plan
+  attribute :independent_reviewers
+  attribute :outcomes
+  attribute :quantitative_analysis
+  attribute :quantitative_analysis_other
+  attribute :bio_statistician
+  attribute :bio_statistician_other
+  attribute :summary_description
+  attribute :evidence_assessment
+  attribute :citations
+  attribute :librarian_contact
+  attribute :librarian_contact_other
+  attribute :authorship_permission
+  attribute :authorship_permission_other
+  attribute :other_reviews
+  attribute :other_reviews_other
+  attribute :publication_journal
+
 
   def get_subject
     @forms = {
@@ -130,7 +155,8 @@ class Form < MailForm::Base
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
       "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["notices@temple.edu"]],
       "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu", "tuf16063@temple.edu", "j.martin@temple.edu"]],
-      "group-visit" => ["Group Visit Request", ["chalrestours@temple.edu"]]
+      "group-visit" => ["Group Visit Request", ["charlestours@temple.edu"]],
+      "review-protocol" => ["Temple Review Protocol", ["burstein@temple.edu", "stephanie.roth@temple.edu"]]
     }
 
     @forms.fetch(form_type)
@@ -151,6 +177,7 @@ class Form < MailForm::Base
     {
       subject: get_subject[0],
       to: get_subject[1],
+      cc: email,
       from: %("#{name || default_from_name }" <#{email || default_from_email }>)
     }
   end

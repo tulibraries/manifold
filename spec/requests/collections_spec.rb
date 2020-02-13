@@ -27,7 +27,7 @@ RSpec.describe "Collections", type: :request do
   end
 
   describe "a redirect with a legacy path starting with /collection" do
-    let(:redirect) { FactoryBot.create(:collection_redirect) }
+    let(:redirect) { FactoryBot.create(:redirect) }
     it "redirects to the expected redirect path" do
       get url_for(redirect.legacy_path)
       expect(response).to redirect_to(redirect.path)

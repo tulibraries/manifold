@@ -16,9 +16,6 @@ class ServicesController < ApplicationController
 
   def show
     @services = Service.all
-    groups = @services.group_by { |service| service.service_category }
-    @grouped_services = Hash[ groups.sort_by { |key, val| key } ]
-    @key_group = @service.service_category
     respond_to do |format|
       format.html
       format.json { render json: ServiceSerializer.new(@service) }
@@ -32,7 +29,8 @@ class ServicesController < ApplicationController
 
   private
     def set_service
-      @service = Service.find(params[:id])
+      # binding.pry
+      @service = Service.friendly.find(params[:id])
       return redirect_or_404 unless @service
       @categories = @service.categories
     end

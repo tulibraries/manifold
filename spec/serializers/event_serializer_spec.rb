@@ -29,7 +29,7 @@ RSpec.describe EventSerializer do
     end
 
     it "has a link to the object" do
-      expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(event)
+      expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(event.friendly_id)
     end
 
     describe "event with image" do

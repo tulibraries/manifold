@@ -78,8 +78,8 @@ class GroupDashboard < BaseDashboard
     :space,
     :documents,
     :policies,
-    :categories
-    :webpages,
+    :categories,
+    :webpages
   ].freeze
 
   # Overwrite this method to customize how groups are displayed

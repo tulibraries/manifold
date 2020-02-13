@@ -32,17 +32,17 @@ RSpec.describe EventsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      get :show, params: { id: event.to_param }
+      get :show, params: { id: event.id }
       expect(response).to render_template("show")
     end
 
     it "returns html by default" do
-      get :show, params: { id: event.to_param }
+      get :show, params: { id: event.id }
       expect(response.header["Content-Type"]).to include "html"
     end
 
     it "returns json when requested" do
-      get :show, format: :json, params: { id: event }
+      get :show, format: :json, params: { id: event.id }
       expect(response.header["Content-Type"]).to include "json"
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe EventsController, type: :controller do
     let(:event) { FactoryBot.create(:event, :with_image) }
 
     it "returns valid json" do
-      get :show, format: :json, params: { id: event }
+      get :show, format: :json, params: { id: event.id }
       Tempfile.open(["serialized_event-", ".json"]) do |serialized|
         serialized.write(response.body)
         serialized.close

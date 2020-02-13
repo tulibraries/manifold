@@ -200,6 +200,7 @@ class WebpagesController < ApplicationController
   end
 
   def hsl
+    @hsl_giving = Policy.find_by(slug: "hsl-giving")
     @ginsburg_location = Building.find_by(slug: "ginsburg")
     @podiatry_location = Building.find_by(slug: "podiatry")
     @visit_links = Category.find_by(slug: "hsl-study").items
@@ -271,7 +272,7 @@ class WebpagesController < ApplicationController
   private
     def set_webpage
       unless params[:id].nil?
-        @webpage = Webpage.find(params[:id])
+        @webpage = Webpage.friendly.find(params[:id])
       else
         @webpage = Webpage.find_by(slug: action_name)
       end

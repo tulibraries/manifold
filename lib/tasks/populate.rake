@@ -133,10 +133,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           description:        Faker::Lorem.paragraph,
           access_description: Faker::Lorem.paragraph,
           service_policies:   Faker::Lorem.paragraph,
-          intended_audience:  Rails.configuration.audience_types.sample(rand(1..Rails.configuration.audience_types.count)),
-          service_category:   Rails.configuration.service_types.sample,
-          related_groups:     Group.all.sample(rand(1..Group.count)),
-          related_spaces:     Space.all.sample(rand(Space.count)))
+          intended_audience:  Rails.configuration.audience_types.sample(rand(1..Rails.configuration.audience_types.count)))
       end
     end
   end

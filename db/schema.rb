@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_175223) do
+ActiveRecord::Schema.define(version: 2020_02_10_181254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,9 @@ ActiveRecord::Schema.define(version: 2020_01_08_175223) do
     t.boolean "add_to_footer"
     t.integer "external_link_id"
     t.string "slug"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
     t.index ["external_link_id"], name: "index_buildings_on_external_link_id"
   end
 
@@ -211,6 +214,7 @@ ActiveRecord::Schema.define(version: 2020_01_08_175223) do
     t.string "event_type"
     t.string "slug"
     t.string "guid"
+    t.string "timestamp_start"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -395,45 +399,15 @@ ActiveRecord::Schema.define(version: 2020_01_08_175223) do
     t.index ["redirectable_type", "redirectable_id"], name: "index_redirects_on_redirectable_type_and_redirectable_id"
   end
 
-  create_table "service_groups", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_service_groups_on_group_id"
-    t.index ["service_id"], name: "index_service_groups_on_service_id"
-  end
-
-  create_table "service_policies", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "policy_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["policy_id"], name: "index_service_policies_on_policy_id"
-    t.index ["service_id"], name: "index_service_policies_on_service_id"
-  end
-
-  create_table "service_spaces", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "space_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["service_id"], name: "index_service_spaces_on_service_id"
-    t.index ["space_id"], name: "index_service_spaces_on_space_id"
-  end
-
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.text "access_description"
-    t.string "access_link"
     t.text "service_policies"
     t.text "intended_audience"
-    t.string "service_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "hours"
-    t.boolean "add_to_footer"
     t.integer "external_link_id"
     t.string "slug"
     t.index ["external_link_id"], name: "index_services_on_external_link_id"

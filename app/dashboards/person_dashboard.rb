@@ -19,7 +19,7 @@ class PersonDashboard < BaseDashboard
     phone_number: PhoneField,
     email_address: Field::Email,
     chat_handle: Field::String,
-    image: PhotoField.with_options(admin_only: true),
+    image: PhotoField,
     job_title: Field::String,
     specialties: MultiSelectField.with_options(
       collection: Rails.configuration.specialties,

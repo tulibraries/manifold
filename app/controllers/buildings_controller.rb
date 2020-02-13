@@ -26,7 +26,7 @@ class BuildingsController < ApplicationController
 
   private
     def set_building
-      @building = Building.find(params[:id])
+      @building = Building.friendly.find(params[:id])
       @categories = @building.categories
     end
 

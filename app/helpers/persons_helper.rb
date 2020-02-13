@@ -13,12 +13,17 @@ module PersonsHelper
   end
 
   def get_loc_name(id)
-    # binding.pry
-    Space.find_by(id: id).name
+    location = Space.find_by(id: id)
+    unless location.nil?
+      location.name
+    end
   end
 
   def get_dept_name(id)
-    Group.find_by(id: id).name
+    department = Group.find_by(id: id)
+    unless department.nil?
+      department.name
+    end
   end
 
   def filter_tags

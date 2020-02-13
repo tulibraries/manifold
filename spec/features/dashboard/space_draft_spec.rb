@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.feature "Dashboard::SpaceDrafts", type: :feature do
   before(:all) do
-    Rails.configuration.draftable = true
     @account = FactoryBot.create(:account, admin: true)
     @space = FactoryBot.create(:space)
   end

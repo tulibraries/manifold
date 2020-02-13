@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
   before(:all) do
-    Rails.configuration.draftable = true
     @account = FactoryBot.create(:account, admin: true)
     @building = FactoryBot.create(:building)
   end
@@ -41,7 +40,6 @@ RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
       expect(page).to_not have_xpath("//textarea[@id=\"building_draft_description\"]")
     end
   end
-
 
   context "Visit Building Administrate Page" do
     let(:new_description) { "Don't Panic!" }

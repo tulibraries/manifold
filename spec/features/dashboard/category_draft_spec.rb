@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
   before(:all) do
-    Rails.configuration.draftable = true
     @account = FactoryBot.create(:account, admin: true)
     @category = FactoryBot.create(:category)
   end
@@ -33,10 +32,11 @@ RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
     end
   end
 
-  context "Don't show draftable if draftable feature flag clear", skip: "Fails when run in test suite" do
+  context "Don't show draftable if draftable feature flag clear" do
     scenario "disable draftable" do
       Rails.configuration.draftable = false
       login_as(@account, scope: :account)
+      Rails.configuration.draftable = false
       visit("/admin/categories/#{@category.id}/edit")
       expect(page).to_not have_xpath("//textarea[@id=\"category_draft_long_description\"]")
     end

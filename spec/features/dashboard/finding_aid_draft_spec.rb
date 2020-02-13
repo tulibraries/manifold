@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.feature "Dashboard::FindingAidDrafts", type: :feature do
   before(:all) do
-    Rails.configuration.draftable = true
     @account = FactoryBot.create(:account, admin: true)
     @finding_aid = FactoryBot.create(:finding_aid)
   end

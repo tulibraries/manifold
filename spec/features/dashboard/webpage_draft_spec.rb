@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.feature "Dashboard::WebPageDrafts", type: :feature do
   before(:all) do
-    Rails.configuration.draftable = true
     @account = FactoryBot.create(:account, admin: true)
     @webpage = FactoryBot.create(:webpage)
   end

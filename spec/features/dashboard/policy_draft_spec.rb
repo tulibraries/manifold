@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.feature "Dashboard::PolicyDrafts", type: :feature do
   before(:all) do
-    Rails.configuration.draftable = true
     @account = FactoryBot.create(:account, admin: true)
     @policy = FactoryBot.create(:policy)
   end
@@ -17,9 +16,19 @@ RSpec.feature "Dashboard::PolicyDrafts", type: :feature do
   context "New Policy Administrate Page" do
     scenario "Create new item " do
       Rails.configuration.draftable = true
+      login_as(@account, scope: :account)
       visit("/admin/policies/new")
       expect(page).to_not have_xpath("//textarea[@id=\"policy_draft_description\"]")
       expect(page).to_not have_xpath("//textarea[@id=\"policy_draft_access_description\"]")
+    end
+  end
+
+  context "Show draftable if draftable feature flag clear" do
+    scenario "disable draftable" do
+      Rails.configuration.draftable = true
+      login_as(@account, scope: :account)
+      visit("/admin/policies/#{@policy.id}/edit")
+      expect(page).to have_xpath("//textarea[@id=\"policy_draft_description\"]")
     end
   end
 

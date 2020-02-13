@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.feature "ServiceDrafts", type: :feature do
   before(:all) do
-    Rails.configuration.draftable = true
     @account = FactoryBot.create(:account, admin: true)
     @service = FactoryBot.create(:service)
   end
@@ -65,9 +64,10 @@ RSpec.feature "ServiceDrafts", type: :feature do
       expect(page).to have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{new_description}\")]")
     end
 
-    scenario "Change the Service Access Description", skip: "Fails when run in test suite" do
+    scenario "Change the Service Access Description" do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
+      visit("/admin/services/#{@service.id}/edit")
       expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description}\")]")
       expect(page).to have_xpath("//textarea[@id=\"service_draft_access_description\"]/text()[contains(., \"#{@service.draft_access_description}\")]")
       find("textarea#service_draft_access_description").set(new_description)

@@ -34,9 +34,6 @@ class Space < ApplicationRecord
   has_many :space_group, dependent: :destroy
   has_many :groups, through: :space_group, source: :group
 
-  has_many :service_space, dependent: :destroy
-  has_many :related_services, through: :service_space, source: :service
-
   def schema_dot_org_type
     "Place"
   end

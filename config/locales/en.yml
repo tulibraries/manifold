@@ -50,6 +50,7 @@ en:
         created_at: "Published at"
       policy:
         accounts: "Individual Owners"
+        categories: "Categories (1st listing only)"
       redirect:
         legacy_path: "Path from Drupal"
         manifold_path: "Path/URL to Link to"

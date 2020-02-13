@@ -1,4 +1,4 @@
-<% unless field.resource.class.to_s == "Service" %>
+<% unless field.resource.class.to_s == "Service" || field.resource.class.to_s == "Policy" %>
 	<ul style="list-style-type: none;padding-left: 0px">
 	<% field.data.each do |category| %>
 		<li><%= category.label %></li>

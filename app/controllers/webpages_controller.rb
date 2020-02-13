@@ -200,6 +200,7 @@ class WebpagesController < ApplicationController
   end
 
   def hsl
+    @hsl_giving = Policy.find_by(slug: "hsl-giving")
     @ginsburg_location = Building.find_by(slug: "ginsburg")
     @podiatry_location = Building.find_by(slug: "podiatry")
     @visit_links = Category.find_by(slug: "hsl-study").items

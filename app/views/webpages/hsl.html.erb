@@ -43,6 +43,13 @@
 			<%= image_tag "chat.png", style: "width: 100px;" %>
 			<%= link_to "Chat with a Health Sciences Librarian", "https://v2.libanswers.com/chati.php?hash=d608b96235d521d5947815fa1dfe16b8&referer=http%3A%2F%2Flocalhost%3A3000%2Fhsl&referer_title=Temple%20University%20Libraries" %>
 			</div>
+      <%# binding.pry %>
+      <% unless @hsl_giving.nil? %>
+      <hr />
+      <div style="height:79px;" class="text-center">
+        <%= link_to "Suport the Health Science Libraries", @hsl_giving, { class: "align-middle", style: "display:block;padding-top:21px" } %>
+      </div>
+      <% end %>
 		</div>
 	</div>
 

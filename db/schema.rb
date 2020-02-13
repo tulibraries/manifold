@@ -224,7 +224,6 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.string "event_type"
     t.string "slug"
     t.string "guid"
-    t.string "timestamp_start"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"

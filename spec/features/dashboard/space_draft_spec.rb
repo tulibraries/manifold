@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::SpaceDrafts", type: :feature, skip: "Failing outside spec on @space.destroy" do
+RSpec.feature "Dashboard::SpaceDrafts", type: :feature do
   before(:all) do
     Rails.configuration.draftable = true
     @account = FactoryBot.create(:account, admin: true)

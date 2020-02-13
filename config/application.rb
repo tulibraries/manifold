@@ -219,6 +219,5 @@ module Tude
     config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]
 
     config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "true"
-
   end
 end

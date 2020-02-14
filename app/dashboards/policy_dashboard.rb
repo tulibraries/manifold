@@ -14,9 +14,6 @@ class PolicyDashboard < Administrate::BaseDashboard
     name: Field::String,
     slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
-    category: MultiSelectField.with_options(
-      collection: Rails.configuration.policy_categories
-    ),
     effective_date: Field::DateTime,
     expiration_date: Field::DateTime,
     categories: Field::HasMany,
@@ -33,6 +30,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :name,
+    :categories,
     :effective_date,
   ].freeze
 
@@ -42,7 +40,6 @@ class PolicyDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
-    :category,
     :effective_date,
     :expiration_date,
     :categories,
@@ -58,7 +55,6 @@ class PolicyDashboard < Administrate::BaseDashboard
     :name,
     :slug,
     :description,
-    :category,
     :effective_date,
     :expiration_date,
     :categories,

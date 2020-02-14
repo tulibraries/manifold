@@ -53,30 +53,37 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-lg-3 catalog-search h-auto">
-				<div class="h-22 square">
+				<div class="h-18 square">
 			    <%= link_to "#{librarysearch_url}/catalog" do %>
 			      <%= image_tag('book_white.png', class: "icon decorative", alt: "") %> <span>Books & Media</span>
 			    <% end %>
 				</div>
-				<div div class="h-22 square">
+				<div class="h-18 square">
 			    <%= link_to "#{librarysearch_url}/articles" do %>
 			      <%= image_tag('magazine_white.png', class: "icon decorative", alt: "") %> <span>Articles</span>
 			    <% end %>
 				</div>
-				<div class="h-22 square">
+				<div class="h-18 square">
 					<% unless @db_az_link.nil? %>
 				    <%= link_to @db_az_link do %>
 				      <%= image_tag('database_white.png', class: "icon decorative", alt: "") %> <span>Databases</span>
 				    <% end %>
 			    <% end %>
 				</div>
-				<div class="h-22 square bb-0">
-					<% unless @libguides.nil? %>
-				    <%= link_to @libguides do %>
-				      <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> <span>Research Guides</span>
-				    <% end %>
-			    <% end %>
-				</div>
+        <div class="h-18 square">
+          <% unless @libguides.nil? %>
+            <%= link_to @libguides do %>
+              <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> <span>Research Guides</span>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="h-18 square bb-0">
+          <% unless @journal_finder.nil? %>
+            <%= link_to @journal_finder do %>
+              <%= image_tag('journal_finder.png', class: "icon decorative", alt: "") %> <span>Journal Finder</span>
+            <% end %>
+          <% end %>
+        </div>
 				<div class="caption">
 					<%= link_to "Search our collections >", librarysearch_url, class: "price" %>
 				</div>
@@ -84,7 +91,7 @@
 			<div class="col-12 col-lg-6 px-0 px-lg-5 news-events">
 				<div class="events">
 			    <%= link_to events_path do %>
-			      <%= image_tag('event_space.jpg', class: "d-none d-lg-block decorative", alt: "") %>
+			      <%= image_tag('events-banner.jpg', class: "d-none d-lg-block decorative", alt: "") %>
 			      <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
 			      <div class="caption" id="eventscaption">
 							<span class="lynde">Events & Exhibits</span>
@@ -93,7 +100,7 @@
 				</div>
 				<div class="news">
 					<%= link_to news_path do %>
-			      <%= image_tag('graduate_scholars.jpg', class: "d-none d-lg-block decorative", alt: "") %>
+			      <%= image_tag('library-news-banner.jpg', class: "d-none d-lg-block decorative", alt: "") %>
 			      <%= image_tag('newspaper.png', class: "d-inline d-lg-none decorative", alt: "") %>
 			      <div class="caption" id="newscaption">
 							<span class="lynde">Library News</span>

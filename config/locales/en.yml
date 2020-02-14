@@ -46,8 +46,11 @@ en:
       exhibition:
         title: "Name"
         promoted_to_events: "Published"
+      highlight:
+        created_at: "Published at"
       policy:
         accounts: "Individual Owners"
+        categories: "Categories (1st listing only)"
       redirect:
         legacy_path: "Path from Drupal"
         manifold_path: "Path/URL to Link to"
@@ -178,7 +181,7 @@ en:
           date_of_event: "Date of Event"
           event_start: "Event Start Time"
           event_end: "Event End Time"
-          setup_style: "Setup-Up Style"
+          setup_style: "Setup Style"
           av_support: "A/V Support Needed"
           partner_name: "Partner's Name"
           partner_email: "Partner's Email"

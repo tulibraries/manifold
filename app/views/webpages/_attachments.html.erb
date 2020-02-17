@@ -1,9 +1,8 @@
-<% if @webpage.document.attached? %>
-  <h2>File</h2>
-    <% if @webpage.document.previewable? %>
-      <%= link_to (image_tag @webpage.document.preview(resize: "200x200>", extent: "150x150"), class: "decorative", alt: ""), url_for(@webpage.document), disposition: "attachment" %>
-    <% end %>
-      <p>
-        <%= link_to @webpage.document.filename.base, url_for(@webpage.document), disposition: "attachment" %>
-      </p>
+<% if @webpage.file_uploads.present? %>
+  <h2>File(s)</h2>
+      <ul class="list-unstyled">
+      <% @webpage.file_uploads.each do |fu| %>
+        <li><%= image_tag "pdf.png", class: "decorative", alt: "", style: "width:42px" %> <%= link_to fu.name, url_for(fu.file), disposition: "attachment" %></li>
+      <% end %>
+      </ul>
 <% end %>

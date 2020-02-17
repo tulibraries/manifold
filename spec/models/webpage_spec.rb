@@ -27,6 +27,15 @@ RSpec.describe Webpage, type: :model do
     end
   end
 
+  describe "has one or more file uploads" do
+    context "has one file upload" do
+      example "valid" do
+        webpage = FactoryBot.create(:webpage, file_uploads: [FactoryBot.create(:file_upload)])
+        expect { webpage.save! }.to_not raise_error
+      end
+    end
+  end
+
   # Versioning needs to be added to the model before we can test for it
 
   # describe "version all fields" do
@@ -44,8 +53,6 @@ RSpec.describe Webpage, type: :model do
   #     end
   #   end
   # end
-
-
 
   it_behaves_like "accountable"
   it_behaves_like "categorizable"

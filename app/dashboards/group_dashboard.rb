@@ -18,7 +18,6 @@ class GroupDashboard < BaseDashboard
     persons: Field::HasMany,
     space_group: Field::BelongsTo,
     space: SpaceField,
-    documents: DocumentField,
     external: Field::Boolean,
     group_type: Field::Select.with_options(
       collection: Rails.configuration.group_types
@@ -29,7 +28,10 @@ class GroupDashboard < BaseDashboard
       class_name: "Group",
       foreign_key: "parent_group_id",
     ),
-    #child_groups: Field::HasMany,
+    file_uploads: Field::HasMany.with_options(
+      order: "name",
+      class_name: "FileUpload"
+    ),
     webpages: Field::HasMany,
     categories: Field::HasMany,
     created_at: Field::DateTime,
@@ -53,14 +55,13 @@ class GroupDashboard < BaseDashboard
     :description,
     :group_type,
     :parent_group,
-    #:child_groups,
     :chair_dept_heads,
     :persons,
     :space,
     :external,
-    :documents,
     :policies,
-    :categories
+    :categories,
+    :file_uploads
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -75,11 +76,11 @@ class GroupDashboard < BaseDashboard
     :chair_dept_heads,
     :persons,
     :space,
-    :documents,
     :policies,
     :webpages,
     :categories,
     :add_to_footer,
+    :file_uploads
   ].freeze
 
   # Overwrite this method to customize how groups are displayed
@@ -94,7 +95,8 @@ class GroupDashboard < BaseDashboard
 
   # permitted for has_many_attached
   def permitted_attributes
-    super + [documents: []]
+    # super + [documents: []]
+    super
   end
 
   def tinymce?

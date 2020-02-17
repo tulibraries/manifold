@@ -64,7 +64,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :intended_audience,
     :hours,
     :categories,
-    :accounts,
+    :accounts
   ].freeze
 
   def display_resource(service)

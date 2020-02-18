@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :exhibitions
     resources :external_links
     resources :finding_aids
+    resources :file_uploads
     resources :groups
     resources :highlights
     resources :library_hours
@@ -54,13 +55,13 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :buildings, :categories, :collections, :events, :exhibitions, :groups, :highlights, :webpages, :people, :spaces do
+    resource :buildings, :categories, :collections, :events, :exhibitions, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
       member do
         get ":id/detach" => :detach
       end
     end
 
-    resource :buildings, :categories, :collections, :events, :exhibitions, :groups, :highlights, :webpages, :people, :spaces do
+    resource :buildings, :categories, :collections, :events, :exhibitions, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
       member do
         post "detach" => :detach
       end
@@ -71,23 +72,24 @@ Rails.application.routes.draw do
 
   root "webpages#home"
   resources :blog_posts, only: [:index, :show]
-  resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
-  resources :spaces, only: [:index, :show], concerns: [:imageable]
-  resources :blogs, only: [:index, :show]
   resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
-  resources :groups, only: [:index, :show]
+  resources :blogs, only: [:index, :show]
+  resources :categories, only: [:show]
   resources :collections, only: [:index, :show], concerns: [:imageable]
-  resources :services, only: [:index, :show], concerns: [:imageable]
-  resources :policies, only: [:index, :show]
   resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
-  resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
-  resources :forms, only: [:new, :create]
-  resources :finding_aids, only: [:index, :show]
-  resources :webpages, only: [:index, :show]
-  resources :highlights, only: [:index, :show]
-  resources :categories, only: [:show]
   resources :external_link, only: [:show]
+  resources :forms, only: [:new, :create]
+  resources :file_uploads, only: [:new, :create]
+  resources :finding_aids, only: [:index, :show]
+  resources :groups, only: [:index, :show]
+  resources :highlights, only: [:index, :show]
+  resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
+  resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
+  resources :policies, only: [:index, :show]
+  resources :services, only: [:index, :show], concerns: [:imageable]
+  resources :spaces, only: [:index, :show], concerns: [:imageable]
+  resources :webpages, only: [:index, :show]
 
   get "forms", to: "forms#all", as: "forms_index"
   get "forms/*type", to: "forms#new"

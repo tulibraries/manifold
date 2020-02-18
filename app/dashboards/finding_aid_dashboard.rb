@@ -63,9 +63,9 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :identifier,
     :path,
     :description,
+    :collections,
     :subject,
     :content_link,
-    :collections,
     :person,
     :categories
   ].freeze

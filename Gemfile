@@ -27,7 +27,7 @@ gem "google-analytics-rails", "1.1.1"
 gem "google-api-client", "~> 0.36"
 gem "honeybadger", "~> 4.5"
 gem "httparty"
-gem "jbuilder", "~> 2.9"
+gem "jbuilder", "~> 2.10"
 gem "jquery-rails"
 gem "json-ld"
 gem "kaminari"
@@ -56,7 +56,6 @@ gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
 gem "yaml_db"
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

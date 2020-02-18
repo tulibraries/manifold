@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_30_190500) do
+ActiveRecord::Schema.define(version: 2020_02_12_223347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,9 @@ ActiveRecord::Schema.define(version: 2020_01_30_190500) do
     t.boolean "add_to_footer"
     t.integer "external_link_id"
     t.string "slug"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
     t.index ["external_link_id"], name: "index_buildings_on_external_link_id"
   end
 
@@ -211,6 +214,7 @@ ActiveRecord::Schema.define(version: 2020_01_30_190500) do
     t.string "event_type"
     t.string "slug"
     t.string "guid"
+    t.string "timestamp_start"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -238,6 +242,15 @@ ActiveRecord::Schema.define(version: 2020_01_30_190500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+  end
+
+  create_table "file_uploads", force: :cascade do |t|
+    t.string "name"
+    t.string "attachable_type"
+    t.bigint "attachable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_file_uploads_on_attachable_type_and_attachable_id"
   end
 
   create_table "finding_aid_responsibilities", force: :cascade do |t|

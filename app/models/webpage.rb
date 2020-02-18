@@ -7,11 +7,9 @@ class Webpage < ApplicationRecord
   include Validators
   include SchemaDotOrgable
 
-  has_one_attached :document, dependent: :destroy
-  # validates :document, content_type: ["application/pdf"]
   validates :title, :description, presence: true
-
   belongs_to :group, optional: true
+  has_many :file_uploads, as: :attachable, dependent: :destroy
 
   def label
     title

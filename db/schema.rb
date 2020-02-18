@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
+  create_table "action_draft_contents", force: :cascade do |t|
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.string "name"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_drafts_uniqueness", unique: true
+  end
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -214,7 +224,6 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.string "event_type"
     t.string "slug"
     t.string "guid"
-    t.string "timestamp_start"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"

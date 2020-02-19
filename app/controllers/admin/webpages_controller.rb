@@ -10,10 +10,5 @@ module Admin
       flash[:notice] = "Document purged"
       redirect_to admin_webpage_path
     end
-
-    private
-      def resource_params
-        params.require(:webpage).permit(:draft_description, :publish)
-      end
   end
 end

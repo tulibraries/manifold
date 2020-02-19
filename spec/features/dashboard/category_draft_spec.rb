@@ -63,4 +63,17 @@ RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
       expect(page).to have_xpath("//div[@id=\"category_long_description\"]/text()[contains(., \"#{new_long_description}\")]")
     end
   end
+
+  context "Create New Category - Make sure drafts didn't break anything" do
+    let(:category) { FactoryBot.build(:category) }
+    scenario "Create new item " do
+      Rails.configuration.draftable = true
+      login_as(@account, scope: :account)
+      visit("/admin/categories/new")
+      fill_in("Name", with: category.name)
+      fill_in("Long description", with: category.long_description)
+      click_button("Create Category")
+      expect(page).to have_content(category.name)
+    end
+  end
 end

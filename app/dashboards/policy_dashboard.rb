@@ -68,4 +68,8 @@ class PolicyDashboard < Administrate::BaseDashboard
   def tinymce?
     true
   end
+
+  def permitted_attributes
+    super + [:draft_title, :draft_description, :publish]
+  end
 end

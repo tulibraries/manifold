@@ -23,15 +23,6 @@ RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
     end
   end
 
-  context "Show draftable if draftable feature flag set" do
-    scenario "Enable draftable" do
-      Rails.configuration.draftable = true
-      login_as(@account, scope: :account)
-      visit("/admin/buildings/#{@building.id}/edit")
-      expect(page).to have_xpath("//textarea[@id=\"building_draft_description\"]")
-    end
-  end
-
   context "Don't show draftable if draftable feature flag clear" do
     scenario "disable draftable" do
       Rails.configuration.draftable = false
@@ -65,6 +56,7 @@ RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
 
   context "Create New Building - Make sure drafts didn't break anything" do
     let(:building) { FactoryBot.build(:building) }
+
     scenario "Create new item " do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)

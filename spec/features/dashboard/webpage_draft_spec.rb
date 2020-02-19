@@ -9,8 +9,8 @@ RSpec.feature "Dashboard::WebPageDrafts", type: :feature do
   end
 
   after(:all) do
-    @account.destroy
-    @webpage.destroy
+    Account.destroy_all
+    Webpage.destroy_all
   end
 
   context "New Webpage Administrate Page" do
@@ -23,15 +23,6 @@ RSpec.feature "Dashboard::WebPageDrafts", type: :feature do
     end
   end
 
-  context "Show draftable if draftable feature flag set" do
-    scenario "Enable draftable" do
-      Rails.configuration.draftable = true
-      login_as(@account, scope: :account)
-      visit("/admin/webpages/#{@webpage.id}/edit")
-      expect(page).to have_xpath("//textarea[@id=\"webpage_draft_description\"]")
-    end
-  end
-
   context "Don't show draftable if draftable feature flag clear" do
     scenario "disable draftable" do
       Rails.configuration.draftable = false
@@ -40,7 +31,6 @@ RSpec.feature "Dashboard::WebPageDrafts", type: :feature do
       expect(page).to_not have_xpath("//textarea[@id=\"webpage_draft_description\"]")
     end
   end
-
 
   context "Visit Webpage Administrate Page" do
     let(:new_description) { "Don't Panic!" }

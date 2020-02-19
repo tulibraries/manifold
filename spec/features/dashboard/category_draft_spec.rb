@@ -9,8 +9,8 @@ RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
   end
 
   after(:all) do
-    @account.destroy
-    @category.destroy
+    Account.destroy_all
+    Category.destroy_all
   end
 
   context "New Category Administrate Page" do
@@ -20,15 +20,6 @@ RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
       visit("/admin/categories/new")
       expect(page).to_not have_xpath("//textarea[@id=\"category_draft_long_description\"]")
       expect(page).to_not have_xpath("//textarea[@id=\"category_draft_access_description\"]")
-    end
-  end
-
-  context "Show draftable if draftable feature flag set" do
-    scenario "Enable draftable" do
-      Rails.configuration.draftable = true
-      login_as(@account, scope: :account)
-      visit("/admin/categories/#{@category.id}/edit")
-      expect(page).to have_xpath("//textarea[@id=\"category_draft_long_description\"]")
     end
   end
 
@@ -66,6 +57,7 @@ RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
 
   context "Create New Category - Make sure drafts didn't break anything" do
     let(:category) { FactoryBot.build(:category) }
+
     scenario "Create new item " do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)

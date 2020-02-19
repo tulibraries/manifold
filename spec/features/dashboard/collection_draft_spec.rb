@@ -9,8 +9,8 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
   end
 
   after(:all) do
-    @account.destroy
-    @collection.destroy
+    Account.destroy_all
+    Collection.destroy_all
   end
 
   context "New Collection Administrate Page" do
@@ -19,15 +19,6 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
       login_as(@account, scope: :account)
       visit("/admin/collections/new")
       expect(page).to_not have_xpath("//textarea[@id=\"collection_draft_description\"]")
-    end
-  end
-
-  context "Show draftable if draftable feature flag clear" do
-    scenario "Enable draftable" do
-      Rails.configuration.draftable = true
-      login_as(@account, scope: :account)
-      visit("/admin/collections/#{@collection.id}/edit")
-      expect(page).to have_xpath("//textarea[@id=\"collection_draft_description\"]")
     end
   end
 

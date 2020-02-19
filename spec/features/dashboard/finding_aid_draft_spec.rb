@@ -9,8 +9,8 @@ RSpec.feature "Dashboard::FindingAidDrafts", type: :feature do
   end
 
   after(:all) do
-    @account.destroy
-    @finding_aid.destroy
+    Account.destroy_all
+    FindingAid.destroy_all
   end
 
   context "New Finding_Aid Administrate Page" do
@@ -19,15 +19,6 @@ RSpec.feature "Dashboard::FindingAidDrafts", type: :feature do
       visit("/admin/finding_aids/new")
       expect(page).to_not have_xpath("//textarea[@id=\"finding_aid_draft_description\"]")
       expect(page).to_not have_xpath("//textarea[@id=\"finding_aid_draft_access_description\"]")
-    end
-  end
-
-  context "Show draftable if draftable feature flag set" do
-    scenario "Enable draftable" do
-      Rails.configuration.draftable = true
-      login_as(@account, scope: :account)
-      visit("/admin/finding_aids/#{@finding_aid.id}/edit")
-      expect(page).to have_xpath("//textarea[@id=\"finding_aid_draft_description\"]")
     end
   end
 

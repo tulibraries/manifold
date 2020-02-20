@@ -9,8 +9,8 @@ RSpec.feature "Dashboard::SpaceDrafts", type: :feature do
   end
 
   after(:all) do
-    @account.destroy
-    @space.destroy
+    Account.destroy_all
+    Space.destroy_all
   end
 
   context "New Space Administrate Page" do
@@ -20,15 +20,6 @@ RSpec.feature "Dashboard::SpaceDrafts", type: :feature do
       visit("/admin/spaces/new")
       expect(page).to_not have_xpath("//textarea[@id=\"space_draft_description\"]")
       expect(page).to_not have_xpath("//textarea[@id=\"space_draft_access_description\"]")
-    end
-  end
-
-  context "Show draftable if draftable feature flag set" do
-    scenario "Enable draftable" do
-      Rails.configuration.draftable = true
-      login_as(@account, scope: :account)
-      visit("/admin/spaces/#{@space.id}/edit")
-      expect(page).to have_xpath("//textarea[@id=\"space_draft_description\"]")
     end
   end
 

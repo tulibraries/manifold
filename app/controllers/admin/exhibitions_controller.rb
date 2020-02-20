@@ -4,10 +4,5 @@ module Admin
   class ExhibitionsController < Admin::ApplicationController
     include Admin::Detachable
     include Admin::Draftable
-
-    private
-      def resource_params
-        params.require(:exhibition).permit(:draft_title, :draft_description, :publish)
-      end
   end
 end

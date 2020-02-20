@@ -3,10 +3,5 @@
 module Admin
   class ServicesController < Admin::ApplicationController
     include Admin::Draftable
-
-    private
-      def resource_params
-        params.require(:service).permit(:draft_description, :draft_access_description, :publish)
-      end
   end
 end

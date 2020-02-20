@@ -9,8 +9,8 @@ RSpec.feature "Dashboard::PolicyDrafts", type: :feature do
   end
 
   after(:all) do
-    @account.destroy
-    @policy.destroy
+    Account.destroy_all
+    Policy.destroy_all
   end
 
   context "New Policy Administrate Page" do
@@ -20,15 +20,6 @@ RSpec.feature "Dashboard::PolicyDrafts", type: :feature do
       visit("/admin/policies/new")
       expect(page).to_not have_xpath("//textarea[@id=\"policy_draft_description\"]")
       expect(page).to_not have_xpath("//textarea[@id=\"policy_draft_access_description\"]")
-    end
-  end
-
-  context "Show draftable if draftable feature flag clear" do
-    scenario "disable draftable" do
-      Rails.configuration.draftable = true
-      login_as(@account, scope: :account)
-      visit("/admin/policies/#{@policy.id}/edit")
-      expect(page).to have_xpath("//textarea[@id=\"policy_draft_description\"]")
     end
   end
 

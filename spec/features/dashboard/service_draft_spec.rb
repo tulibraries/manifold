@@ -9,8 +9,8 @@ RSpec.feature "ServiceDrafts", type: :feature do
   end
 
   after(:all) do
-    @account.destroy
-    @service.destroy
+    Account.destroy_all
+    Service.destroy_all
   end
 
   context "New Service Administrate Page" do
@@ -20,16 +20,6 @@ RSpec.feature "ServiceDrafts", type: :feature do
       visit("/admin/services/new")
       expect(page).to_not have_xpath("//textarea[@id=\"service_draft_description\"]")
       expect(page).to_not have_xpath("//textarea[@id=\"service_draft_access_description\"]")
-    end
-  end
-
-  context "Show draftable if draftable feature flag set" do
-    scenario "Enable draftable" do
-      Rails.configuration.draftable = true
-      login_as(@account, scope: :account)
-      visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//textarea[@id=\"service_draft_description\"]")
-      expect(page).to have_xpath("//textarea[@id=\"service_draft_access_description\"]")
     end
   end
 

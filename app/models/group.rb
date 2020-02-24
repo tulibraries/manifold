@@ -13,24 +13,25 @@ class Group < ApplicationRecord
 
   before_validation :sanitize_description
 
-  has_many_attached :documents, dependent: :destroy
+  has_many :webpages, dependent: :destroy
 
-  has_many :pages
+  has_many :file_uploads, as: :attachable, dependent: :destroy
 
   belongs_to :parent_group, optional: true, class_name: "Group"
-  has_many :child_groups, class_name: "Group", foreign_key: "parent_group_id"
+  has_many :child_groups, class_name: "Group", foreign_key: "parent_group_id", dependent: :destroy, inverse_of: false
 
-  has_many :member
-  has_many :persons, -> { order "last_name ASC" }, through: :member, source: :person
+  has_many :member, dependent: :destroy
+  has_many :persons, -> { order "last_name ASC" }, through: :member, source: :person, inverse_of: false
 
-  has_one :space_group
+  has_one :space_group, dependent: :destroy
   has_one :space, through: :space_group, source: :space
 
-  has_many :group_contact
+  has_many :group_contact, dependent: :destroy
   has_many :chair_dept_heads, through: :group_contact, source: :person
 
-  has_many :service_group
+  has_many :service_group, dependent: :destroy
   has_many :related_services, through: :service_group, source: :service
+
 
   def get_chair
     members = Array.new

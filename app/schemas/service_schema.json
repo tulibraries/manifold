@@ -36,8 +36,7 @@
 					"examples": [
 						"building",
 						"event",
-						"person",
-            "service"
+						"person"
 					],
 					"pattern": "^(.*)$"
 				},
@@ -49,8 +48,7 @@
 						"title",
 						"label",
 						"description",
-            "intended_audience",
-            "service_category"
+            "intended_audience"
 					],
 					"properties": {
 						"title": {
@@ -85,17 +83,6 @@
 							],
 							"pattern": "^(.*)$"
 						},
-						"access_link": {
-							"$id": "#/properties/data/properties/attributes/properties/access_links",
-							"type": "string",
-              "format": "uri-reference",
-							"title": "The Access Link Schema",
-							"default": "",
-							"examples": [
-								"https://example.com/theservice",
-								"/theservice"
-							]
-						},
 						"intended_audience": {
 							"$id": "#/properties/data/properties/attributes/properties/intended_audience",
 							"type": "array",
@@ -113,16 +100,6 @@
 							],
 							"pattern": "^(.*)$"
 						},
-						"category": {
-							"$id": "#/properties/data/properties/attributes/properties/service_category",
-							"type": "string",
-							"title": "The Service Category Schema",
-							"default": "",
-							"examples": [
-                "Publishing Services"
-							],
-							"pattern": "^(.*)$"
-            },
 						"hours": {
 							"$id": "#/properties/data/properties/attributes/properties/hours",
 							"type": "string",
@@ -133,16 +110,6 @@
 							],
 							"pattern": "^(.*)$"
             },
-						"add_to_footer": {
-							"$id": "#/properties/data/properties/attributes/properties/add_to_footer",
-							"type": "boolean",
-							"title": "The Add to Footer Schema",
-							"default": "",
-							"examples": [
-                true,
-                false
-							]
-						},
 						"updated_at": {
 							"$id": "#/properties/data/properties/attributes/properties/updated_at",
 							"type": "string",

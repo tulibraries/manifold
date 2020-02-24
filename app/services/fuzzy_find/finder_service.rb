@@ -44,9 +44,7 @@ module FuzzyFind::FinderService
       @addl_attribute = format_addl_attribute(addl_attribute)
     end
 
-    def find(needle)
-      matcher.find(needle)
-    end
+    delegate :find, to: :matcher
 
     private
       attr_reader :model, :attribute, :addl_attribute

@@ -51,7 +51,6 @@ RSpec.describe Policy, type: :model do
       description: ["The Text 1", "The Text 2"],
       effective_date: [Date.parse("2018/9/24"), Date.parse("2018/10/24")],
       expiration_date: [Date.parse("2018/9/24"), Date.parse("2018/10/24")],
-      category: ["The Text 1", "The Text 2"]
     }
 
     fields.each do |k, v|

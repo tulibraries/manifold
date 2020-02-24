@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_171613) do
+ActiveRecord::Schema.define(version: 2020_02_12_223347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2019_11_20_171613) do
     t.index ["admin_group_id"], name: "index_accounts_on_admin_group_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "action_draft_contents", force: :cascade do |t|
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.string "name"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_drafts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -130,6 +140,9 @@ ActiveRecord::Schema.define(version: 2019_11_20_171613) do
     t.boolean "add_to_footer"
     t.integer "external_link_id"
     t.string "slug"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
     t.index ["external_link_id"], name: "index_buildings_on_external_link_id"
   end
 
@@ -242,6 +255,15 @@ ActiveRecord::Schema.define(version: 2019_11_20_171613) do
     t.string "slug"
   end
 
+  create_table "file_uploads", force: :cascade do |t|
+    t.string "name"
+    t.string "attachable_type"
+    t.bigint "attachable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_file_uploads_on_attachable_type_and_attachable_id"
+  end
+
   create_table "finding_aid_responsibilities", force: :cascade do |t|
     t.integer "finding_aid_id"
     t.integer "person_id"
@@ -334,17 +356,6 @@ ActiveRecord::Schema.define(version: 2019_11_20_171613) do
     t.index ["space_id"], name: "index_occupants_on_space_id"
   end
 
-  create_table "pages", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "layout"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["group_id"], name: "index_pages_on_group_id"
-  end
-
   create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -387,49 +398,20 @@ ActiveRecord::Schema.define(version: 2019_11_20_171613) do
     t.string "manifold_path"
     t.string "redirectable_type"
     t.bigint "redirectable_id"
+    t.boolean "no_message"
     t.index ["legacy_path"], name: "index_redirects_on_legacy_path"
     t.index ["redirectable_type", "redirectable_id"], name: "index_redirects_on_redirectable_type_and_redirectable_id"
-  end
-
-  create_table "service_groups", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_service_groups_on_group_id"
-    t.index ["service_id"], name: "index_service_groups_on_service_id"
-  end
-
-  create_table "service_policies", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "policy_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["policy_id"], name: "index_service_policies_on_policy_id"
-    t.index ["service_id"], name: "index_service_policies_on_service_id"
-  end
-
-  create_table "service_spaces", force: :cascade do |t|
-    t.integer "service_id"
-    t.integer "space_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["service_id"], name: "index_service_spaces_on_service_id"
-    t.index ["space_id"], name: "index_service_spaces_on_space_id"
   end
 
   create_table "services", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.text "access_description"
-    t.string "access_link"
     t.text "service_policies"
     t.text "intended_audience"
-    t.string "service_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "hours"
-    t.boolean "add_to_footer"
     t.integer "external_link_id"
     t.string "slug"
     t.index ["external_link_id"], name: "index_services_on_external_link_id"
@@ -472,6 +454,17 @@ ActiveRecord::Schema.define(version: 2019_11_20_171613) do
     t.datetime "created_at"
     t.text "object_changes"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
+  create_table "webpages", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "layout"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["group_id"], name: "index_webpages_on_group_id"
   end
 
   add_foreign_key "accounts", "admin_groups"

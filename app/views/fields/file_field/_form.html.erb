@@ -1,13 +1,21 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
+  <% if field.resource.class.to_s == "FileUpload" %>
+  	<p style="height: 1.5rem"></p>
+  <% end %>
 </div>
 <div class="field-unit__field">
+	<% unless field.data.nil? %>
   <% if field.data.attached? %>
 	  <%= f.file_field field.attribute %>
     <%= link_to field.data.attachment.filename, url_for(field.data.attachment), disposition: "attachment" %>
     &nbsp;-&nbsp; 
     <%= link_to t("manifold.admin.actions.detach"), { action: :detach }, data: { confirm: "Are you sure?" } %>
 	<% else %>
-	  <%= f.file_field field.attribute %>    
+	  <%= f.file_field field.attribute %> 
+    <% if field.resource.class.to_s == "FileUpload" %>
+      <p class="text-muted">* PDF files only</p>
+    <% end %>
+	<% end %>
 	<% end %>
 </div>

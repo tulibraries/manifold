@@ -54,6 +54,7 @@ RSpec.describe FuzzyFind::FinderService do
 
     context "search for a person" do
       before do
+        Person.destroy_all
         building = FactoryBot.create(:building)
         @space = FactoryBot.create(:space, building: building)
         FactoryBot.create(:person, spaces: [@space])
@@ -65,6 +66,12 @@ RSpec.describe FuzzyFind::FinderService do
           email_address: "new.person@temple.edu",
           groups: [@group], spaces: [@space],
           job_title: "FooBarbarian")
+      end
+
+      after(:all) do
+        Person.destroy_all
+        Building.destroy_all
+        Space.destroy_all
       end
 
       context "with a similar name" do
@@ -146,6 +153,10 @@ RSpec.describe FuzzyFind::FinderService do
       before do
         FactoryBot.create(:building, name: "McGaw Library")
         @law = FactoryBot.create(:building, name: "Law Library")
+      end
+
+      after do
+        Building.destroy_all
       end
 
 

@@ -2,6 +2,7 @@
 
 class Category < ApplicationRecord
   include Accountable
+  include Draftable
   include Imageable
 
   has_many :categorizations, dependent: :destroy
@@ -11,6 +12,7 @@ class Category < ApplicationRecord
   has_many :categories, through: :nested_categorizations
 
   belongs_to :external_link, optional: true
+  has_draft :long_description
 
   validates :name, presence: true
 
@@ -42,6 +44,6 @@ class Category < ApplicationRecord
   end
 
   def link
-    custom_url.present? ? custom_url : self
+    custom_url.presence || self
   end
 end

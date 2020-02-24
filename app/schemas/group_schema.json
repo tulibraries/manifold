@@ -49,8 +49,7 @@
 						"label",
 						"description",
 						"group_type",
-						"external",
-						"add_to_footer"
+						"external"
 					],
 					"properties": {
 						"name": {

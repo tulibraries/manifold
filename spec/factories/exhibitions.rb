@@ -9,7 +9,7 @@ FactoryBot.define do
 
     trait :with_image do
       after :create do |building|
-        file_path = Rails.root.join("spec", "fixtures", "charles.jpg")
+        file_path = Rails.root.join("spec/fixtures/charles.jpg")
         file = fixture_file_upload(file_path, "image/png")
         building.image.attach(file)
       end

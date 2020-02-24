@@ -5,23 +5,15 @@ module EventFilters
 
   def types_list(events)
     to_add = events.select { |event| event.get_types.try(:any?) }.collect { |type| type.event_type.split(",") }
-
-    types = to_add.map { |type| if type.include?(params[:type])
-                                  type.each do |t|
-                                    t.strip!
-                                  end
-                                end }
-
-    types.compact.flatten.uniq.sort
+    types = []
+    to_add.map { |type| type.each do |t| types << t.strip end }
+    types.flatten.compact.uniq.sort
   end
 
   def all_types(events)
     to_add = events.select { |event| event.get_types.try(:any?) }.collect { |type| type.event_type.split(",") }
-
-    types = to_add.map { |type| type.each do |t|
-                                  t.strip!
-                                end }
-
+    types = []
+    to_add.map { |type| type.each do |t| types << t.strip end }
     types.compact.flatten.uniq.sort
   end
 
@@ -35,8 +27,8 @@ module EventFilters
         unless event.external_building.nil?
           event.external_building
         end
-      end }
-
+      end
+    }
     locations.compact.uniq.sort
   end
 end

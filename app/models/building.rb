@@ -4,6 +4,7 @@ class Building < ApplicationRecord
   require "uploads"
 
   include Categorizable
+  include Draftable
   include HasHours
   include HasPolicies
   include InputCleaner
@@ -19,9 +20,10 @@ class Building < ApplicationRecord
   validates :description, presence: true
 
   belongs_to :external_link, optional: true
-  has_many :library_hours
-  has_many :spaces
+  has_many :spaces, dependent: :destroy
   has_paper_trail
+
+  has_draft :description
 
   auto_strip_attributes :email
 
@@ -35,13 +37,14 @@ class Building < ApplicationRecord
 
   def additional_schema_dot_org_attributes
     {
-      location: {
-        "@type" => "https://schema.org/Place",
-        address: {
-          "@type" => "https://schema.org/PostalAddress",
-          streetAddress: address1,
-          addressLocality: address2
-        }
+      address: {
+        "@type" => "https://schema.org/PostalAddress",
+        streetAddress: address1,
+        addressLocality: address2,
+        # streetAddress: address,
+        # addressLocality: city,
+        # addressRegion: state,
+        # postalCode: zipcode
       },
       telephone: phone_number,
       email: email,

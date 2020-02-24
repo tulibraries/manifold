@@ -102,3 +102,16 @@
 		padding-left: 0;
 	}
 }
+
+#toolbar {
+	height: 35px;
+	background-color: $grey;
+	color: $white;
+	padding-top: 6px;
+	font-size: 1rem;
+	font-family: 'Roboto Condensed';
+	a {
+		padding-left: 21px;
+		color: $white;
+	}
+}

@@ -1,0 +1,10 @@
+<%= f.input :name, required: true %>
+<%= f.input :email, as: :email, required: true %>
+<%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
+<%= f.input :tu_id, label: "Temple ID Number", required: true %>
+<%= f.input :department, required: true %>
+<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: ["Faculty","Staff","Graduate","Undergraduate","Post Doc","Other..."], required: true %>
+<% if ["missing-book","purchase-request"].include? params[:type]  %>
+	<%= f.input :affiliation_other, label: false, placeholder: "specify other", wrapper_html: { class: "specify-other" } %>
+<% end %>
+	

@@ -91,24 +91,6 @@
 								"2020-01-01"
 							]
 						},
-						"category": {
-							"$id": "#/properties/data/properties/attributes/properties/category",
-              "items": {
-                "$id": "#/properties/data/properties/attributes/properties/specialties/items",
-                "type": "string",
-                "title": "The Items Schema",
-                "default": "",
-                "examples": [
-                  "Access Guidelines",
-                  "Borrowers",
-                  "Collection Development & Management Guidelines",
-                  "Conduct",
-                  "Miscellaneous",
-                  "Confidentiality & Privacy"
-                ],
-                "pattern": "^(.*)$"
-              }
-						},
 						"updated_at": {
 							"$id": "#/properties/data/properties/attributes/properties/updated_at",
 							"type": "string",

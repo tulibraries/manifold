@@ -5,7 +5,7 @@ FactoryBot.define do
     name { "Dreaming" }
     custom_url { "" }
     description { "" }
-    long_description { "" }
+    long_description { "Extended explanation" }
     get_help { "" }
 
     trait :custom_url do

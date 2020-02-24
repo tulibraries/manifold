@@ -29,6 +29,15 @@ RSpec.describe Group, type: :model do
     end
   end
 
+  describe "has one or more file uploads" do
+    context "has one file upload" do
+      example "valid" do
+        group = FactoryBot.create(:group, file_uploads: [FactoryBot.create(:file_upload)])
+        expect { group.save! }.to_not raise_error
+      end
+    end
+  end
+
   describe "has one chair_dept_heads" do
     context "Attach a chair_dept_heads" do
       example "valid" do

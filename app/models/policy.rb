@@ -5,6 +5,7 @@ class Policy < ApplicationRecord
 
   include Accountable
   include Categorizable
+  include Draftable
   include InputCleaner
   include Validators
   include SchemaDotOrgable
@@ -12,6 +13,8 @@ class Policy < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
   validates :slug, presence: true
+
+  has_draft :description
 
   validates :name, :description, :effective_date, presence: true
   serialize :category

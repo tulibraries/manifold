@@ -17,9 +17,9 @@ class Group < ApplicationRecord
 
   before_validation :sanitize_description
 
-  has_many_attached :documents, dependent: :destroy
-
   has_many :webpages, dependent: :destroy
+
+  has_many :file_uploads, as: :attachable, dependent: :destroy
 
   belongs_to :parent_group, optional: true, class_name: "Group"
   has_many :child_groups, class_name: "Group", foreign_key: "parent_group_id", dependent: :destroy, inverse_of: false

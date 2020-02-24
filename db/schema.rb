@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_10_181254) do
+ActiveRecord::Schema.define(version: 2020_02_12_223347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2020_02_10_181254) do
     t.index ["admin_group_id"], name: "index_accounts_on_admin_group_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "action_draft_contents", force: :cascade do |t|
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.string "name"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_drafts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -145,6 +155,8 @@ ActiveRecord::Schema.define(version: 2020_02_10_181254) do
     t.string "slug"
     t.text "get_help"
     t.text "long_description"
+    t.bigint "external_link_id"
+    t.index ["external_link_id"], name: "index_categories_on_external_link_id"
   end
 
   create_table "categorizations", force: :cascade do |t|
@@ -243,6 +255,15 @@ ActiveRecord::Schema.define(version: 2020_02_10_181254) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+  end
+
+  create_table "file_uploads", force: :cascade do |t|
+    t.string "name"
+    t.string "attachable_type"
+    t.bigint "attachable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_file_uploads_on_attachable_type_and_attachable_id"
   end
 
   create_table "finding_aid_responsibilities", force: :cascade do |t|
@@ -464,6 +485,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_181254) do
   end
 
   add_foreign_key "accounts", "admin_groups"
+  add_foreign_key "categories", "external_links"
   add_foreign_key "collections", "external_links"
   add_foreign_key "spaces", "external_links"
 end

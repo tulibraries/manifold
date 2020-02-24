@@ -5,6 +5,7 @@ class Space < ApplicationRecord
 
   include Accountable
   include Categorizable
+  include Draftable
   include HasHours
   include HasPolicies
   include Imageable
@@ -49,6 +50,8 @@ class Space < ApplicationRecord
   def should_generate_new_friendly_id?
     name_changed? || super
   end
+
+  has_draft :description
 
   def schema_dot_org_type
     "Place"

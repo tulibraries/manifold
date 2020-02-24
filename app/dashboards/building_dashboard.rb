@@ -77,7 +77,7 @@ class BuildingDashboard < BaseDashboard
     :hours,
     :email,
     :policies,
-    :categories,
+    :categories
   ].freeze
 
   # Overwrite this method to customize how buildings are displayed
@@ -89,5 +89,9 @@ class BuildingDashboard < BaseDashboard
 
   def tinymce?
     true
+  end
+
+  def permitted_attributes
+    super + [:draft_description, :publish]
   end
 end

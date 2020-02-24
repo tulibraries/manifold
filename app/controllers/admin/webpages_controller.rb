@@ -2,6 +2,8 @@
 
 module Admin
   class WebpagesController < Admin::ApplicationController
+    include Admin::Draftable
+
     def detach
       @webpage = Webpage.find(params[:id])
       @webpage.document.purge

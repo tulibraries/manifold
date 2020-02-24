@@ -24,7 +24,7 @@ gem "feedjira"
 gem "font-awesome-rails"
 gem "fuzzy_match"
 gem "google-analytics-rails", "1.1.1"
-gem "google-api-client", "~> 0.36"
+gem "google-api-client", "~> 0.37"
 gem "honeybadger", "~> 4.5"
 gem "httparty"
 gem "jbuilder", "~> 2.10"
@@ -57,7 +57,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
 gem "yaml_db"
 gem "friendly_id", "~> 5.2.4"
-
+gem "action-draft"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

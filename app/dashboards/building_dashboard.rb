@@ -90,4 +90,8 @@ class BuildingDashboard < BaseDashboard
   def tinymce?
     true
   end
+
+  def permitted_attributes
+    super + [:draft_description, :publish]
+  end
 end

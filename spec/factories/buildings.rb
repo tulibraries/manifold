@@ -4,7 +4,7 @@ include ActionDispatch::TestProcess
 
 FactoryBot.define do
   factory :building do
-    sequence(:name) { |n| "Charles Samuel Addams Library #{n}" }
+    sequence(:name) { |n| "Charles Samuel Addams Library %03d" % n }
     description { "Main Campus Main Library" }
     address1 { "1250 Polett Walk" }
     address2 { "Philadelphia, PA 19122" }

@@ -3,6 +3,7 @@
 class Category < ApplicationRecord
   include Rails.application.routes.url_helpers
   include Accountable
+  include Draftable
   include Imageable
 
   has_many :categorizations, dependent: :destroy
@@ -10,6 +11,8 @@ class Category < ApplicationRecord
 
   has_many :nested_categorizations, as: :categorizable, dependent: :destroy, class_name: "Categorization"
   has_many :categories, through: :nested_categorizations
+
+  has_draft :long_description
 
   validates :name, presence: true
 

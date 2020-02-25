@@ -1,0 +1,35 @@
+<%= render "mobile-menu-secondary" %>
+
+<div class="container category-show">
+  
+  <div class="row">
+    <% unless @nav_items.blank? %>
+      <div class="col-lg-3 d-none d-lg-block">
+        <%= render "category_items" %>
+      </div>
+      <div class="col-12 col-lg-6">
+    <% else %>
+      <div class="col-12">
+    <% end %>
+        <h1 class="page-title"><%= title @category.label %></h1>
+        <div class="details">
+          <%= sanitize @category.long_description.html_safe unless @category.long_description.nil? %>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-3">
+        <% unless @category.external_link.nil? %>
+        <h2>
+          <%= link_to @category.external_link.title, @category.external_link.link, class: "collections-external-link" %>
+        </h2>
+        <% end %>
+        <% unless @category.get_help.blank? %>
+          <h2>Get Help</h2>
+        <div class="entity-help">
+          <p><%= sanitize @category.get_help.html_safe %></p>
+        </div>
+        <% end %>
+      </div>
+
+  </div>
+</div>

@@ -73,8 +73,8 @@ Rails.application.routes.draw do
   root "webpages#home"
   resources :blog_posts, only: [:index, :show]
   resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
+  resources :categories, only: [:show], concerns: [:imageable]
   resources :blogs, only: [:index, :show]
-  resources :categories, only: [:show]
   resources :collections, only: [:index, :show], concerns: [:imageable]
   resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
@@ -141,20 +141,12 @@ Rails.application.routes.draw do
 end
 
 Rails.application.routes.named_routes.url_helpers_module.module_eval do
-  def category_url(category, options = {})
-    category.url
-  end
-
   def external_link_url(external_link, options = {})
     external_link.link
   end
 end
 
 Rails.application.routes.named_routes.path_helpers_module.module_eval do
-  def category_path(category, options = {})
-    category.path
-  end
-
   def external_link_path(external_link, options = {})
     external_link.link
   end

@@ -16,6 +16,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     slug: Field::String.with_options(admin_only: true),
     custom_url: Field::String,
     categories: Field::HasMany.with_options(admin_only: true),
+    external_link: Field::BelongsTo.with_options(order: "title"),
     description: Field::String,
     long_description: DescriptionField,
     get_help: DescriptionField,
@@ -46,6 +47,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     :get_help,
     :custom_url,
     :categories,
+    :external_link,
     :accounts,
     :created_at,
     :updated_at,
@@ -63,6 +65,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     :description,
     :long_description,
     :get_help,
+    :external_link,
     :accounts
   ].freeze
 

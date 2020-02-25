@@ -155,6 +155,8 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.string "slug"
     t.text "get_help"
     t.text "long_description"
+    t.bigint "external_link_id"
+    t.index ["external_link_id"], name: "index_categories_on_external_link_id"
   end
 
   create_table "categorizations", force: :cascade do |t|
@@ -466,6 +468,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
   end
 
   add_foreign_key "accounts", "admin_groups"
+  add_foreign_key "categories", "external_links"
   add_foreign_key "collections", "external_links"
   add_foreign_key "spaces", "external_links"
 end

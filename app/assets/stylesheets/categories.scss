@@ -1,0 +1,45 @@
+@import "partials/_vars.scss";
+
+.category-show {
+	margin-top: 35px;
+	h1.page-title {
+		margin-top: 0;
+	}
+	.details {
+		border-top: green;
+		padding-top: 21px;
+		h2 {
+			margin-top: 35px;
+		}
+	}
+	img.location {
+		height:35px;
+		width:35px;
+		opacity: .5;
+	}
+	.entity-help {
+		padding-left: 0;
+		border: solid $seagreen 1px;
+		border-radius: 7px;
+		padding: 14px;
+		overflow-wrap: break-word;
+		ul {
+			padding-left: 0;
+		}
+		@media (max-width: 950px) {
+			width: 95%;
+		}
+	}
+	.collections-external-link {
+		background-color: #A50030;
+    padding: 21px;
+    color: #fff !important;
+    text-align: center;
+    border-radius: 7px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 14px;
+    text-decoration: underline;
+    text-align: left;
+  }
+}

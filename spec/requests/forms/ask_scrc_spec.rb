@@ -7,7 +7,7 @@ RSpec.describe "Ask SCRC Form", type: :request do
   let(:form_type) { "ask-scrc" }
   let(:form_params) {
     {
-      phone: "1234567890", affiliation: "Staff", comments: "test comment"
+      name: "Joe", email: "test@temple.edu", phone: "1234567890", affiliation: "Staff", comments: "test comment"
     }
   }
 

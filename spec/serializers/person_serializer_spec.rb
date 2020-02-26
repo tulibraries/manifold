@@ -61,7 +61,7 @@ RSpec.describe PersonSerializer do
   describe "serialized_json" do
     it "validates against the schema" do
       pending "Need to find a better schema json ruby processor. Current one doesn't support json schema v0.7"
-      schema = open(Rails.root.join("app", "schemas", "person_schema.json")).read
+      schema = open(Rails.root.join("app/schemas/person_schema.json")).read
       expect(JSON::Validator.validate(schema, serialized.serialized_json)).to be true
     end
   end

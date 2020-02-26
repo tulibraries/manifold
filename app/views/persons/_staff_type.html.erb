@@ -1,19 +1,21 @@
 <h2>
   <a style="cursor:pointer" data-toggle="collapse" data-target="#staff-type" aria-expanded="true" aria-controls="staff-type"> 
-  	Staff Type 
+    Staff Type 
   </a>
 </h2>
 
 
 <ul class="list-unstyled navbar-collapse collapse show" id="staff-type">
 <% if params[:specialists] %>
-	<li class="active">
-		Limited to Subject Librarians Only
-		<span class="clear-filter">
-			<%= link_to "X", people_path(request.query_parameters.except(:specialists).merge({page: 1})) %>
-		</span>
-	</li>
+  <li class="active">
+    Limited to Subject Librarians Only
+    <span class="clear-filter">
+      <%= link_to "X", people_path(request.query_parameters.except(:specialists).merge({page: 1})) %>
+    </span>
+  </li>
 <% else %>
-	<li><%= link_to "Limit to Subject Librarians Only", people_path(request.query_parameters.merge({specialists: true, page: 1})) %></li>
+  <li>
+    <%= link_to "Limit to Subject Librarians Only", people_path(request.query_parameters.merge({specialists: true, page: 1})) %>
+  </li>
 <% end %>
 </ul>

@@ -1,6 +1,6 @@
 <div class="field-unit__label">
   <%= f.label "Image Upload" %>
-  <% if field.resource.class.to_s == "Collection" %>
+  <% if field.resource.class.to_s == "Collection" || field.resource.class.to_s == "Exhibition" || field.resource.class.to_s == "Space" %>
   	<p style="height: 1.5rem"></p>
   <% end %>
 </div>
@@ -12,7 +12,13 @@
   <% else %>
 	  <%= f.file_field field.attribute %>
     <% if field.resource.class.to_s == "Collection" %>
-    	<p class="text-muted">Requirements: 600 x 300 px -- .jpg, .png, .gif files only</p>
+      <p class="text-muted">Requirements: 600 x 300 px -- .jpg, .png, .gif files only</p>
+    <% end %>
+    <% if field.resource.class.to_s == "Exhibition" %>
+      <p class="text-muted">Requirements: 300 x 300 px -- .jpg, .png, .gif files only</p>
+    <% end %>
+    <% if field.resource.class.to_s == "Space" %>
+      <p class="text-muted">Requirements: 600 x 300 px -- .jpg, .png, .gif files only</p>
     <% end %>
 	<% end %>
 </div>

@@ -112,7 +112,7 @@ RSpec.describe Category, type: :model do
 
     context "without a custom_url defined" do
       let(:policy) { FactoryBot.create(:policy) }
-      let(:page) { FactoryBot.create(:page) }
+      let(:page) { FactoryBot.create(:webpage) }
 
       context "when items are in the category" do
         before do
@@ -198,11 +198,11 @@ RSpec.describe Category, type: :model do
     context "when items in a category are weighted" do
       before do
         building.categories << category
-        building.categorizations.first.update_attribute("weight", 3)
+        building.categorizations.first.update("weight" => 3)
         building2.categories << category
-        building2.categorizations.first.update_attribute("weight", 1)
+        building2.categorizations.first.update("weight" => 1)
         event.categories << category
-        event.categorizations.first.update_attribute("weight", 2)
+        event.categorizations.first.update("weight" => 2)
       end
 
       it "returns items in the expected order" do
@@ -213,12 +213,12 @@ RSpec.describe Category, type: :model do
     context "when some items in a category are weighted and some are not" do
       before do
         building.categories << category
-        building.categorizations.first.update_attribute("weight", 2)
+        building.categorizations.first.update("weight" => 2)
 
         building2.categories << category
 
         event.categories << category
-        event.categorizations.first.update_attribute("weight", 1)
+        event.categorizations.first.update("weight" => 1)
       end
 
       it "weighted items sort first, in expected order, followed by unweighted items" do

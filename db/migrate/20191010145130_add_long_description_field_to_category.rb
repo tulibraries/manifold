@@ -2,7 +2,9 @@
 
 class AddLongDescriptionFieldToCategory < ActiveRecord::Migration[5.2]
   def change
-    add_column :categories, :long_description, :text
-    change_column :categories, :description, :string
+    change_table :categories, bulk: true do |t|
+      t.column :long_description, :text
+      t.column :description, :string
+    end
   end
 end

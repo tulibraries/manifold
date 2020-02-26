@@ -1,5 +1,6 @@
 <%= f.input :degree_program, as: :select, collection: ["Ph.D.","M.A.","Other..."], label: "Degree Program", required: true %>
 <%= f.input :other, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
 <%= f.input :faculty_advisor, required: true %>
+<%= f.input :faculty_advisor_email, required: true %>
 <%= f.input :degree_year, as: :select, collection: ["First","Second","Third"], label: "Which year of your degree program are you currently in?", required: true %>
 <%= f.input :personal_statement, as: :text, label: "Please write a personal statement of no more than 250 words indicating your research objectives and how the tools of Cultural Analytics can contribute to their realization.", required: true %>

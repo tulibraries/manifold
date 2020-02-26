@@ -15,22 +15,23 @@ class ApplicationController < ActionController::Base
   end
 
   def set_footer
-    @ezborrow_link = ExternalLink.find_by_slug("ezborrow")
-    @illiad_link = ExternalLink.find_by_slug("illiad")
-    @refworks_link = ExternalLink.find_by_slug("refworks")
-    @jobs_link = Page.find_by_slug("jobs")
-    @publications_link = Page.find_by_slug("system-summary")
-    @numbers_link = Page.find_by_slug("numbers")
-    @social_links = Page.find_by_slug("social-media")
-    @donate_link = Policy.find_by_slug("donations")
-    @diversity_link = Page.find_by_slug("diversity")
-    @standards_link = Policy.find_by_slug("standards")
-    @privacy_link = Service.find_by_slug("privacy")
-    @tu_homepage_link = ExternalLink.find_by_slug("tu-homepage")
-    @org_charts = ExternalLink.find_by_slug("org-charts")
-    @staff_forms = ExternalLink.find_by_slug("staff-forms")
-    @chat_link = ExternalLink.find_by_slug("chat-link")
-    @db_az_link = ExternalLink.find_by_slug("db-az")
+    @ezborrow_link = ExternalLink.find_by(slug: "ezborrow")
+    @illiad_link = ExternalLink.find_by(slug: "illiad")
+    @refworks_link = ExternalLink.find_by(slug: "refworks")
+    @jobs_link = Webpage.find_by(slug: "jobs")
+    @publications_link = Webpage.find_by(slug: "system-summary")
+    @numbers_link = Webpage.find_by(slug: "numbers")
+    @social_links = Webpage.find_by(slug: "social-media")
+    @donate_link = Policy.find_by(slug: "donations")
+    @diversity_link = Webpage.find_by(slug: "diversity")
+    @standards_link = Policy.find_by(slug: "standards")
+    @privacy_link = Service.find_by(slug: "privacy")
+    @tu_homepage_link = ExternalLink.find_by(slug: "tu-homepage")
+    @org_charts = ExternalLink.find_by(slug: "org-charts")
+    @staff_forms = ExternalLink.find_by(slug: "staff-forms")
+    @chat_link = ExternalLink.find_by(slug: "chat-link")
+    @db_az_link = ExternalLink.find_by(slug: "db-az")
+    @journal_finder = Rails.configuration.primo_articles_url
   end
 
   def show_hours
@@ -44,7 +45,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_dates
-    @today = Date.today
+    @today = Time.zone.today
     @date = params[:date].nil? ? @today : Date.parse(params[:date])
 
     unless params[:date].nil?

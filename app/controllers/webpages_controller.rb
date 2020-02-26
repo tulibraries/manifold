@@ -176,7 +176,9 @@ class WebpagesController < ApplicationController
 
   def blockson
     @webpage = Webpage.find_by(slug: "blockson-intro")
+    @visit = Category.find_by(slug: "blockson-study")
     @visit_links = Category.find_by(slug: "blockson-study").items
+    @research = Category.find_by(slug: "blockson-research")
     @research_links = Category.find_by(slug: "blockson-research").items
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
     @building = Building.find_by(slug: "blockson")
@@ -205,8 +207,11 @@ class WebpagesController < ApplicationController
     @hsl_giving = Policy.find_by(slug: "hsl-giving")
     @ginsburg_location = Building.find_by(slug: "ginsburg")
     @podiatry_location = Building.find_by(slug: "podiatry")
+    @visit = Category.find_by(slug: "hsl-study")
     @visit_links = Category.find_by(slug: "hsl-study").items
+    @resources = Category.find_by(slug: "hsl-resources")
     @resource_links = Category.find_by(slug: "hsl-resources").items
+    @research = Category.find_by(slug: "hsl-research")
     @research_links = Category.find_by(slug: "hsl-research").items
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.zone.now]).order(:start_time).take(5)
   end

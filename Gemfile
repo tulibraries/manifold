@@ -12,7 +12,7 @@ gem "attr_json"
 gem "auto_strip_attributes"
 gem "aws-sdk-s3", require: false
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap", "~> 4.3.1"
+gem "bootstrap", "~> 4.4.1"
 gem "browser"
 gem "cancancan", "~> 3.0"
 gem "coffee-rails", "~> 4.2"
@@ -24,10 +24,10 @@ gem "feedjira"
 gem "font-awesome-rails"
 gem "fuzzy_match"
 gem "google-analytics-rails", "1.1.1"
-gem "google-api-client", "~> 0.34"
+gem "google-api-client", "~> 0.37"
 gem "honeybadger", "~> 4.5"
 gem "httparty"
-gem "jbuilder", "~> 2.9"
+gem "jbuilder", "~> 2.10"
 gem "jquery-rails"
 gem "json-ld"
 gem "kaminari"
@@ -41,9 +41,9 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "paper_trail"
 gem "pg"
-gem "popper_js", "~> 1.14.5"
+gem "popper_js", "~> 1.16.0"
 gem "puma", "~> 4.3"
-gem "rails", "~> 5.2.3"
+gem "rails", "~> 5.2.4"
 gem "rswag-api"
 gem "rswag-ui"
 gem "sass-rails", "~> 6.0"
@@ -56,7 +56,7 @@ gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
 gem "yaml_db"
-
+gem "action-draft"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -64,6 +64,7 @@ group :development, :test do
   gem "json-schema"
   gem "pry-rails"
   gem "rubocop", require: false
+  gem "rubocop-rails", require: false
 end
 
 group :development do

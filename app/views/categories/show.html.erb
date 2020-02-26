@@ -20,7 +20,7 @@
       <div class="col-12 col-lg-3">
         <% unless @category.external_link.nil? %>
         <h2>
-          <%= link_to @category.external_link.title, @category.external_link.link, class: "collections-external-link" %>
+          <%= link_to @category.external_link.title, @category.external_link.link, class: "categories-external-link" %>
         </h2>
         <% end %>
         <% unless @category.get_help.blank? %>

@@ -5,11 +5,14 @@ class Exhibition < ApplicationRecord
   include InputCleaner
   include Categorizable
   include Imageable
+  include Draftable
   include SchemaDotOrgable
 
   belongs_to :group, optional: true
   belongs_to :space, optional: true
   belongs_to :collection, optional: true
+
+  has_draft :title, :description
 
   before_save :sanitize_description
 

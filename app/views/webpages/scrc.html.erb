@@ -1,0 +1,80 @@
+<% content_for :body_class, "minipage scrc" %>
+
+<div class="banner-image scrc"></div>
+
+<div class="container">
+
+<div class="row">
+	<div class="col">
+		<h1 class="page-title text-center">
+			<%= title "Special Collections Research Center" %>
+		</h1>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-12 col-lg-4 pr-14 left-links">
+		<% unless @scrc_location.nil? %>
+		<div class="locations">
+			<%= link_to "SCRC Reading Room", @reading_room %>
+			<hr />
+			<%= link_to "Browse Finding Aids", finding_aids_path %>
+			<hr />
+			<%= link_to "Digitized Materials", "https://digital.library.temple.edu/" %>
+		</div>
+		<% end %>
+
+		<div class="contact">
+			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+			<%= link_to "Contact Us", "forms/ask-scrc" %>
+			<hr />
+			<%= image_tag "search.png", style: "width: 100px", class: "decorative", alt: "" %>
+			<%= link_to "SCRC Catalog Search", "#{librarysearch_url}/catalog?f[library_facet][]=Special+Collections+Research+Center" %>
+			<hr />
+			<%= image_tag "information_white.png", style: "width: 100px", class: "decorative", alt: "" %>
+			<%= link_to "Hours & Info", @scrc_location %>
+		</div>
+	</div>
+
+	<div class="col-12 col-lg-8 description-container">
+		<div class="row description">
+			<div class="col-12">
+				<div class="col-12">
+				<%= sanitize(@webpage.description.html_safe) %>
+			</div>
+			</div>
+		</div>
+		<div class="row links-container">
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2><%= link_to "Visit & Study", @visit %></h2>
+					<ul class="list-unstyled">
+						<% @visit_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/visit" %>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2><%= link_to "Collecting Emphases", @collections %></h2>
+					<ul class="list-unstyled">
+						<% @collection_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/collections" %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</div>

@@ -7,11 +7,12 @@ class PersonsController < ApplicationController
   before_action :get_persons, only: [:index]
 
   def index
-    @persons = Person.all
-    @fcn_link = Page.find_by_title("Frequently called numbers")
+    @persons = get_persons
+    @fcn_link = Webpage.find_by(title: "Frequently called numbers")
+
     respond_to do |format|
       format.html
-      format.json { render json: PersonSerializer.new(@persons.to_a) }
+      format.json { render json: PersonSerializer.new(Person.all.to_a) }
     end
   end
 
@@ -44,7 +45,7 @@ class PersonsController < ApplicationController
     all_persons = Person.group(:id).order(:last_name, :first_name)
 
     if params.has_key?("specialists")
-      subjectivists = all_persons.select { |person| !person.specialties.nil? && !person.specialties.reject(&:empty?).blank? }
+      subjectivists = all_persons.select { |person| !person.specialties.nil? && person.specialties.reject(&:empty?).present? }
     end
     if params.has_key?("specialty")
       specialists = specialties_list(all_persons)
@@ -58,7 +59,7 @@ class PersonsController < ApplicationController
 
     arrays = [Array(subjectivists), Array(specialists), Array(locationists), Array(departmentalists)].reject(&:empty?).reduce(:&) || []
 
-    unless arrays.blank?
+    if arrays.present?
       all_persons = arrays
     end
 
@@ -96,7 +97,7 @@ class PersonsController < ApplicationController
 
     filtered_people = [Array(location_people), Array(department_people), Array(special_people)].reject(&:empty?).reduce(:&) || []
 
-    @people = filtered_people.blank? ? persons : filtered_people
+    @people = filtered_people.presence || persons
     @people_list = Person.where(id: @people.map(&:id)).order(:last_name, :first_name)
     get_filters(@people_list)
     @persons_list = @people_list.page params[:page]
@@ -112,5 +113,7 @@ class PersonsController < ApplicationController
   private
     def set_person
       @person = Person.find(params[:id])
+      @department = @person.groups.collect.reject { |g| g.group_type != "Department" }.uniq.sort
+      @location = @person.spaces.collect.uniq.sort
     end
 end

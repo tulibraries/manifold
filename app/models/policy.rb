@@ -5,9 +5,12 @@ class Policy < ApplicationRecord
 
   include Accountable
   include Categorizable
+  include Draftable
   include InputCleaner
   include Validators
   include SchemaDotOrgable
+
+  has_draft :description
 
   validates :name, :description, :effective_date, presence: true
   serialize :category

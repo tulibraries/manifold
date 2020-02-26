@@ -1,0 +1,118 @@
+<% content_for :body_class, "minipage hsl" %>
+
+<div class="banner-image hsl"></div>
+
+<div class="container">
+
+<div class="row">
+	<div class="col">
+		<h1 class="page-title text-center">
+			<%= title "Health Sciences Libraries" %>
+		</h1>
+	</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-12 col-lg-4 pr-14 left-links">
+		<% unless @ginsburg_location.nil? && @podiatry_location.nil? %>
+		<div class="locations">
+			<% unless @ginsburg_location.nil? %>
+			<%= link_to @ginsburg_location.label, building_path(@ginsburg_location) %>
+			<hr />
+			<% end %>
+			<% unless @podiatry_location.nil? %>
+			<%= link_to @podiatry_location.label, building_path(@podiatry_location) %>
+			<% end %>
+		</div>
+		<% end %>
+
+		<div class="contact">
+			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+			215-707-2665
+			<hr />
+			<%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+			<%= link_to "Mailing List", "http://eepurl.com/cbRrYP" %>
+			<hr />
+      <% unless @journal_finder.nil? %>
+        <%= image_tag('journal_finder.png', class: "decorative", style: "width: 100px", alt: "") %> 
+        <%= link_to "Journal Finder", @journal_finder %>
+      <% end %>
+      <hr />
+			<div class="two-lines">
+			<%= image_tag "chat.png", style: "width: 100px;" %>
+			<%= link_to "Chat with a Health Sciences Librarian", "https://v2.libanswers.com/chati.php?hash=d608b96235d521d5947815fa1dfe16b8&referer=http%3A%2F%2Flocalhost%3A3000%2Fhsl&referer_title=Temple%20University%20Libraries" %>
+			</div>
+      <% unless @hsl_giving.nil? %>
+      <hr />
+      <div style="height:79px;" class="two-lines">
+        <%= image_tag "gift_white.png", style: "width: 100px;" %>
+        <%= link_to "Support the Health Sciences Libraries", @hsl_giving %>
+      </div>
+      <% end %>
+		</div>
+	</div>
+
+	<div class="col-12 col-lg-8">
+		<div class="row links-container">
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2><%= link_to "Visit & Study", @visit %></h2>
+					<ul class="list-unstyled">
+						<% @visit_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/visit" %>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2><%= link_to "Resources & Media", @resources %></h2>
+					<ul class="list-unstyled">
+						<% @resource_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/resources" %>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2><%= link_to "Research Services", @research %></h2>
+					<ul class="list-unstyled">
+						<% @research_links.each do |link| %>
+							<li><%= link_to link.label, link %></li>
+						<% end %>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/research" %>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<div class="links d-none d-lg-block">
+					<h2><%= link_to "Workshops & Events", controller: :events, action: :index %></h2>
+					<ul class="list-unstyled">
+						<% @event_links.each do |link| %>
+							<li><%= link_to link.title, link %></li>
+						<% end %>
+						<li class="text-right all-events"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
+					</ul>
+				</div>
+				<div class="links d-block d-lg-none">
+					<%= render "webpages/mini-partials/events" %>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+</div>
+
+

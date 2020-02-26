@@ -13,23 +13,17 @@ module PersonsHelper
   end
 
   def get_loc_name(id)
-    the_name = ""
-    @locations.each do |loc|
-      if loc.id == id.to_i
-        the_name = loc.name
-      end
+    location = Space.find_by(id: id)
+    unless location.nil?
+      location.name
     end
-    the_name
   end
 
   def get_dept_name(id)
-    the_name = ""
-    @departments.each do |dept|
-      if dept.id == id.to_i
-        the_name = dept.label
-      end
+    department = Group.find_by(id: id)
+    unless department.nil?
+      department.name
     end
-    the_name
   end
 
   def filter_tags

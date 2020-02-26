@@ -1,8 +1,20 @@
 <div class="field-unit__label">
+	<% unless field.attribute == :categories || field.attribute == :accounts %>
+  <% if field.attribute == :collections %><p style="height:2.5rem"></p><% end %>
   <%= f.label field.attribute, for: "#{f.object_name}_#{field.attribute_key}" %>
+  <% else %>
+    <% if field.attribute == :categories %>
+      <%= f.label "Categories", for: "#{f.object_name}_#{field.attribute_key}" %>
+    <% else %>
+      <%= f.label "Owner", for: "#{f.object_name}_#{field.attribute_key}" %>
+    <% end %>
+  <% end %>
   <% if field.attribute == :categories %><p style="height:3rem"></p><% end %>
 </div>
 <div class="field-unit__field field-unit--has-many">
+  <% if field.resource.class.to_s == "FindingAid" && field.attribute == :collections %>
+    <p style="color: #951936">Please select at least one <strong>Collection</strong> or <strong>Subject</strong> from the below lists in order for the link to Aeon to appear on this finding aid.</p>
+  <% end %>
   <%= f.select(field.attribute_key, nil, {}, {multiple: true}.merge(field.html_attributes)) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_options) %>
   <% end %>

@@ -250,3 +250,18 @@ To generate a sitemap, execute the following command:
 ```bash
 bundle exec rails sitemap:create
 ```
+
+## Draftable Fields
+
+Admin users may draft changes to description fields. This feature is not enabled by default. To enable, set the `MANIFOLD_DRAFTABLE` environment variable to `"true"`. This can
+be done from the shell
+
+```bash
+export MANIFOLD_DRAFTABLE=true
+```
+
+or command line for developement:
+
+```bash
+bundle exec rails server MANIFOLD_DRAFTABLE=true
+```

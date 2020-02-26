@@ -14,6 +14,9 @@ class BuildingDashboard < BaseDashboard
     description: DescriptionField,
     address1: Field::String,
     address2: Field::String,
+    city: Field::String,
+    state: Field::String,
+    zipcode: Field::String,
     coordinates: Field::String.with_options(admin_only: true),
     google_id: Field::String.with_options(admin_only: true),
     hours: HoursField.with_options(admin_only: true),
@@ -46,7 +49,9 @@ class BuildingDashboard < BaseDashboard
     :description,
     :external_link,
     :address1,
-    :address2,
+    :city,
+    :state,
+    :zipcode,
     :phone_number,
     :email,
     :policies,
@@ -63,13 +68,16 @@ class BuildingDashboard < BaseDashboard
     :external_link,
     :address1,
     :address2,
+    :city,
+    :state,
+    :zipcode,
     :phone_number,
     :coordinates,
     :google_id,
     :hours,
     :email,
     :policies,
-    :categories,
+    :categories
   ].freeze
 
   # Overwrite this method to customize how buildings are displayed
@@ -81,5 +89,9 @@ class BuildingDashboard < BaseDashboard
 
   def tinymce?
     true
+  end
+
+  def permitted_attributes
+    super + [:draft_description, :publish]
   end
 end

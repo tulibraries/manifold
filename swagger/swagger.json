@@ -318,12 +318,6 @@
                             "example": "This is the contents of the collection",
                             "pattern": "^(.*)$"
                           },
-                          "add_to_footer": {
-                            "type": "boolean",
-                            "title": "The Add to Footer State Schema",
-                            "default": true,
-                            "example": true
-                          },
                           "updated_at": {
                             "type": "string",
                             "title": "The time the collection record was updated",
@@ -813,10 +807,10 @@
         }
       }
     },
-    "/pages": {
+    "/webpages": {
       "get": {
         "summary": "Retrieves a list of pages",
-        "tags": ["Page", "Batch"],
+        "tags": ["Webpage", "Batch"],
         "operationId": "getPages",
         "produces": [
           "application/json"
@@ -1131,13 +1125,6 @@
                             "example": "This is the description of the service",
                             "pattern": "^(.*)$"
                           },
-                          "access_link": {
-                            "type": "string",
-                            "format": "uri-reference",
-                            "title": "The Access Link Schema",
-                            "default": "",
-                            "example": "https://example.com/theservice"
-                          },
                           "intended_audience": {
                             "type": "array",
                             "items": {
@@ -1160,12 +1147,6 @@
                             "default": "",
                             "example": "",
                             "pattern": "^(.*)$"
-                          },
-                          "add_to_footer": {
-                            "type": "boolean",
-                            "title": "The Add to Footer Schema",
-                            "default": "",
-                            "example": true
                           },
                           "updated_at": {
                             "type": "string",

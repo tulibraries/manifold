@@ -20,7 +20,7 @@ RSpec.describe GroupSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :description, :group_type, :external, :add_to_footer,
+      expect(data[:attributes].keys).to include(:name, :description, :group_type, :external,
                                                 :label, :updated_at)
     end
 
@@ -33,7 +33,7 @@ RSpec.describe GroupSerializer do
   describe "serialized_json" do
     it "validates against the schema" do
       pending "Need to find a better schema json ruby processor. Current one doesn't support json schema v0.7"
-      schema = open(Rails.root.join("app", "schemas", "group_schema.json")).read
+      schema = open(Rails.root.join("app/schemas/group_schema.json")).read
       expect(JSON::Validator.validate(schema, serialized.serialized_json)).to be true
     end
   end

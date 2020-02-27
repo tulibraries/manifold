@@ -2,6 +2,9 @@
 
 module Admin
   class AdminGroupsController < Admin::ApplicationController
+    def find_resource(param)
+      scoped_resource.find(param)
+    end
     # Overwrite any of the RESTful controller actions to implement custom behavior
     # For example, you may want to send an email after a foo is updated.
     #

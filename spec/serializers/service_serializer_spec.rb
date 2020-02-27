@@ -21,7 +21,7 @@ RSpec.describe ServiceSerializer do
 
     it "has the expected attributes" do
       expect(data[:attributes].keys).to include(:title, :description, :access_description,
-                                                :intended_audience, :label, :updated_at)
+                                                :intended_audience)
     end
 
     it "returns the title" do

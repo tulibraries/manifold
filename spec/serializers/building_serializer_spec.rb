@@ -25,7 +25,7 @@ RSpec.describe BuildingSerializer do
     end
 
     it "has a link to the object" do
-      expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(building)
+      expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(building.friendly_id)
     end
 
     describe "generates label from name" do

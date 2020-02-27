@@ -25,7 +25,7 @@ RSpec.describe PersonSerializer do
     end
 
     it "has a link to the object" do
-      expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(person)
+      expect(data[:links][:self]).to eql Rails.application.routes.url_helpers.url_for(person.friendly_id)
     end
 
     describe "person with image" do

@@ -63,13 +63,13 @@ class ApplicationController < ActionController::Base
 
   def set_location
     if params[:controller] == "buildings"
-      location = Building.where(id: params[:id])
+      location = Building.where(slug: params[:id])
       @location = location.first.hours unless location.first.nil?
     elsif params[:controller] == "spaces"
-      location = Space.where(id: params[:id])
+      location = Space.where(slug: params[:id])
       @location = location.first.hours unless location.first.nil?
     elsif params[:controller] == "services"
-      location = Service.where(id: params[:id])
+      location = Service.where(slug: params[:id])
       @location = location.first.hours unless location.first.nil?
     end
   end

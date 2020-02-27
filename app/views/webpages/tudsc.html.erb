@@ -82,7 +82,7 @@
 					<ul class="list-unstyled">
 						<% unless @event_links.nil? %>
 						<% @event_links.each do |link| %>
-							<li><%= link_to link.label, link %></li>
+							<li><%= link_to link.label, event_path(link.id) %></li>
 						<% end %>
 						<% end %>
 							<li class="text-right dsc-event"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>

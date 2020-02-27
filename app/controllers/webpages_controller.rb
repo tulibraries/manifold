@@ -272,7 +272,7 @@ class WebpagesController < ApplicationController
   private
     def set_webpage
       unless params[:id].nil?
-        @webpage = Webpage.find(params[:id])
+        @webpage = Webpage.friendly.find(params[:id])
       else
         @webpage = Webpage.find_by(slug: action_name)
       end

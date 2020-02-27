@@ -4,7 +4,7 @@ module PersonFilters
   extend ActiveSupport::Concern
 
   def locations_list(persons)
-    to_add = persons.select { |person| person.spaces.any? { |space| space.id.to_s == params[:location] }  }
+    to_add = persons.select { |person| person.spaces.any? { |space| space.slug == params[:location] }  }
 
     location_people = []
 
@@ -16,7 +16,7 @@ module PersonFilters
   end
 
   def departments_list(persons)
-    to_add = persons.select { |person| person.groups.any? { |group| group.id.to_s == params[:department] && group.group_type == "Department" }  }
+    to_add = persons.select { |person| person.groups.any? { |group| group.slug == params[:department] && group.group_type == "Department" }  }
 
     dept_people = []
 

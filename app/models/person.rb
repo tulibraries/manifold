@@ -6,6 +6,10 @@ class Person < ApplicationRecord
   include InputCleaner
   include Categorizable
   include Imageable
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: :slugged
+  validates :slug, presence: true
 
   paginates_per 20
 
@@ -26,6 +30,14 @@ class Person < ApplicationRecord
 
   has_many :occupant, dependent: :destroy
   has_many :spaces, through: :occupant, source: :space
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :job_title],
+      [:name, :job_title, :id]
+    ]
+  end
 
   def name
     "#{first_name} #{last_name}"

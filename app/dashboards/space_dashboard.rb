@@ -9,13 +9,13 @@ class SpaceDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     building: Field::BelongsTo,
+    slug: Field::String.with_options(admin_only: true),
     occupant: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
     groups: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     hours: HoursField.with_options(admin_only: true),
     accessibility: Field::Text,

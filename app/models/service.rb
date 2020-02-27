@@ -10,6 +10,10 @@ class Service < ApplicationRecord
   include HasPolicies
   include SetDates
   include SchemaDotOrgable
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: :slugged
+  validates :slug, presence: true
 
   validates :title, :description, :intended_audience, presence: true
 
@@ -21,6 +25,17 @@ class Service < ApplicationRecord
 
   before_validation :remove_empty_audience
   before_validation :sanitize_description
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 
   def remove_empty_audience
     # Rails tends to return an empty string in multi-selects array

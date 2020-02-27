@@ -22,12 +22,12 @@ RSpec.describe "Collections", type: :request do
   describe "a request for /collection/integer when collection does not exist" do
     it "renders the collection" do
       expect { get collection_path(collection.id + 1) }
-        .to raise_error(ActionController::RoutingError)
+        .to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
   describe "a redirect with a legacy path starting with /collection" do
-    let(:redirect) { FactoryBot.create(:collection_redirect) }
+    let(:redirect) { FactoryBot.create(:redirect) }
     it "redirects to the expected redirect path" do
       get url_for(redirect.legacy_path)
       expect(response).to redirect_to(redirect.path)

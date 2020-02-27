@@ -2,8 +2,6 @@
 
 module Admin
   class AlertsController < Admin::ApplicationController
-    load_and_authorize_resource
-
     def order
       @order ||= Administrate::Order.new(
         params.fetch(resource_name, {}).fetch(:order, "published"),
@@ -17,6 +15,9 @@ module Admin
     # in ApplicationController and in Admin::ApplicationController
     def current_user
       current_account
+    end
+    def find_resource(param)
+      scoped_resource.find(param)
     end
 
     # To customize the behavior of this controller,

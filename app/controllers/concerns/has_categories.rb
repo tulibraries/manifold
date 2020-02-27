@@ -16,4 +16,12 @@ module HasCategories
     end
     links
   end
+
+  protected
+
+    def url_for(options = {})
+      obj = options[:slug]
+      options[:slug] = obj
+      super(options)
+    end
 end

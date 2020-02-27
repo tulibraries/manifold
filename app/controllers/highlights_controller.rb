@@ -20,6 +20,6 @@ class HighlightsController < ApplicationController
 
   private
     def set_highlight
-      @highlight = Highlight.find(params[:id])
+      @highlight = Highlight.friendly.find(params[:id])
     end
 end

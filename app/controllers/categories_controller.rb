@@ -18,6 +18,6 @@ class CategoriesController < ApplicationController
 
   private
     def set_category
-      @category = Category.find_by(id: params[:id])
+      @category = Category.friendly.find(params[:id])
     end
 end

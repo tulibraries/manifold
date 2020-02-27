@@ -11,7 +11,11 @@ class Building < ApplicationRecord
   include SetDates
   include SchemaDotOrgable
   include Validators
-
+  require "uploads"
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: :slugged
+  validates :slug, presence: true
 
   before_validation :normalize_phone_number
   before_validation :sanitize_description
@@ -26,6 +30,17 @@ class Building < ApplicationRecord
   has_draft :description
 
   auto_strip_attributes :email
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   def street_address
     address1

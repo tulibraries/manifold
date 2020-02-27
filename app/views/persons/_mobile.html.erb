@@ -15,7 +15,7 @@
       <li><%= mail_to @person.email_address, @person.email_address %></li>
       <li><%= phone_formatted(@person.phone_number) %></li>
       
-      <%= depts_list(@person).html_safe %>
+      <%= sanitize depts_list(@person).html_safe %>
 
       <% unless @person.spaces.empty? %>
         <div>

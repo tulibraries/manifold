@@ -6,7 +6,11 @@ class Webpage < ApplicationRecord
   include Draftable
   include SetDates
   include Validators
+  extend FriendlyId
   include SchemaDotOrgable
+  friendly_id :title, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: :slugged
+  validates :slug, presence: true
 
   has_one_attached :document, dependent: :destroy
 
@@ -16,6 +20,17 @@ class Webpage < ApplicationRecord
   validates :title, :description, presence: true
   belongs_to :group, optional: true
   has_many :file_uploads, as: :attachable, dependent: :destroy
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 
   def label
     title

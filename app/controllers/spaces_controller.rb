@@ -2,7 +2,6 @@
 
 class SpacesController < ApplicationController
   include HasCategories
-  load_and_authorize_resource
   before_action :set_space, only: [:show]
 
   def index
@@ -31,7 +30,7 @@ class SpacesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_space
-      @space = Space.find(params[:id])
+      @space = Space.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

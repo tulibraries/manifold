@@ -4,10 +4,25 @@ class ExternalLink < ApplicationRecord
   has_paper_trail
   include Validators
   include Categorizable
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: :slugged
+  validates :slug, presence: true
 
   before_save :link_cleanup!
 
   validates :title, :link, presence: true
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 
   def label
     title

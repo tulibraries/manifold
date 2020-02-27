@@ -57,10 +57,10 @@ module Imageable
   end
 
   def entity_image_path(type)
-    Rails.application.routes.url_helpers.send("#{self.class.to_s.underscore}_image_#{type}_path", id)
+    Rails.application.routes.url_helpers.send("#{self.class.to_s.underscore}_image_#{type}_path", to_param)
   end
 
   def entity_image_url(type)
-    Rails.application.routes.url_helpers.send("#{self.class.to_s.underscore}_image_#{type}_url", id)
+    Rails.application.routes.url_helpers.send("#{self.class.to_s.underscore}_image_#{type}_url", to_param)
   end
 end

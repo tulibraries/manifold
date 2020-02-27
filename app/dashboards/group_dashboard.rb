@@ -10,6 +10,7 @@ class GroupDashboard < BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    slug: Field::String.with_options(admin_only: true),
     description: DescriptionField,
     chair_dept_heads: Field::HasMany.with_options(
       class_name: "Person"
@@ -23,7 +24,6 @@ class GroupDashboard < BaseDashboard
       collection: Rails.configuration.group_types
       ),
     policies: Field::HasMany,
-    add_to_footer: Field::Boolean.with_options(admin_only: true),
     parent_group: Field::BelongsTo.with_options(
       class_name: "Group",
       foreign_key: "parent_group_id",
@@ -69,6 +69,7 @@ class GroupDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :description,
     :group_type,
     :parent_group,
@@ -77,9 +78,8 @@ class GroupDashboard < BaseDashboard
     :persons,
     :space,
     :policies,
-    :webpages,
     :categories,
-    :add_to_footer,
+    :webpages,
     :file_uploads
   ].freeze
 

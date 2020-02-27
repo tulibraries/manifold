@@ -10,6 +10,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    slug: Field::String.with_options(admin_only: true),
     space: Field::BelongsTo.with_options(required: true),
     collection: Field::BelongsTo,
     image: PhotoField,
@@ -55,8 +56,9 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :title,
     :image,
+    :title,
+    :slug,
     :description,
     :start_date,
     :end_date,

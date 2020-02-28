@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
       format.html
-      format.json { render json: EventSerializer.new(@events) }
+      format.json { render json: EventSerializer.new(@all_events) }
     end
   end
 
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
       format.html
-      format.json { render json: EventSerializer.new(@events) }
+      format.json { render json: EventSerializer.new(@all_events) }
     end
   end
 
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     @events = []
     if params["type"].present?
       if params["location"].present?
-        @types = events.where(event_type: params[:type]).order(:start_time)
+        @types = events.where("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
         @internals = events.where(building: params[:location]).order(:start_time)
         @externals = events.where(external_building: params[:location]).order(:start_time)
         @externals += @internals
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
           @events = @types.to_a & @externals.to_a
         end
       else
-        @events = events.where(event_type: params[:type]).order(:start_time)
+        @events = events.where("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
       end
     end
 

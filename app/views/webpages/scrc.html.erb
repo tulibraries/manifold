@@ -48,7 +48,7 @@
 		<div class="row links-container">
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
-					<h2>Visit & Study</h2>
+					<h2><%= link_to "Visit & Study", @visit %></h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>
@@ -61,7 +61,7 @@
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links d-none d-lg-block">
-					<h2>Collecting Emphases</h2>
+					<h2><%= link_to "Collecting Emphases", @collections %></h2>
 					<ul class="list-unstyled">
 						<% @collection_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>

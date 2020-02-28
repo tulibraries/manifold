@@ -167,14 +167,18 @@ class WebpagesController < ApplicationController
   def scrc
     @scrc_location = Space.find_by(slug: "scrc-room")
     @reading_room = Space.find_by(slug: "scrc-reading-room")
+    @visit = Category.find_by(slug: "scrc-study")
     @visit_links = Category.find_by(slug: "scrc-study").items
+    @collections = Category.find_by(slug: "scrc-collections")
     @collection_links = Category.find_by(slug: "scrc-collections").items
     @webpage = Webpage.find_by(slug: "scrc-intro")
   end
 
   def blockson
     @webpage = Webpage.find_by(slug: "blockson-intro")
+    @visit = Category.find_by(slug: "blockson-study")
     @visit_links = Category.find_by(slug: "blockson-study").items
+    @research = Category.find_by(slug: "blockson-research")
     @research_links = Category.find_by(slug: "blockson-research").items
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
     @building = Building.find_by(slug: "blockson")
@@ -184,13 +188,13 @@ class WebpagesController < ApplicationController
     @makerspace_location = Space.find_by(slug: "makerspace")
     @vr_location = Space.find_by(slug: "immersive-lab")
     @innovation_location = Space.find_by(slug: "innovation-sandbox")
-    visit_links = Category.find_by(slug: "lcdss-study")
-    unless visit_links.nil?
-      @visit_links = visit_links.items
+    @visit = Category.find_by(slug: "lcdss-study")
+    unless @visit.nil?
+      @visit_links = @visit.items
     end
-    research_links = Category.find_by(slug: "lcdss-research")
-    unless research_links.nil?
-      @research_links = research_links.items
+    @research = Category.find_by(slug: "lcdss-research")
+    unless @research.nil?
+      @research_links = @research.items
     end
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.zone.now]).order(:start_time).take(5)
     @blog = Blog.find_by(slug: "lcdss-blog")
@@ -203,8 +207,11 @@ class WebpagesController < ApplicationController
     @hsl_giving = Policy.find_by(slug: "hsl-giving")
     @ginsburg_location = Building.find_by(slug: "ginsburg")
     @podiatry_location = Building.find_by(slug: "podiatry")
+    @visit = Category.find_by(slug: "hsl-study")
     @visit_links = Category.find_by(slug: "hsl-study").items
+    @resources = Category.find_by(slug: "hsl-resources")
     @resource_links = Category.find_by(slug: "hsl-resources").items
+    @research = Category.find_by(slug: "hsl-research")
     @research_links = Category.find_by(slug: "hsl-research").items
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.zone.now]).order(:start_time).take(5)
   end

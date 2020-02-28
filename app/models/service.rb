@@ -13,7 +13,6 @@ class Service < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   validates :title, :description, :intended_audience, presence: true
 

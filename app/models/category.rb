@@ -7,7 +7,6 @@ class Category < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   has_many :categorizations, dependent: :destroy
   accepts_nested_attributes_for :categorizations

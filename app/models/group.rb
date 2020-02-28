@@ -10,7 +10,6 @@ class Group < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true

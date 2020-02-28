@@ -15,7 +15,6 @@ class Building < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   before_validation :normalize_phone_number
   before_validation :sanitize_description

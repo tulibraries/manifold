@@ -10,7 +10,6 @@ class Exhibition < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   belongs_to :group, optional: true
   belongs_to :space, optional: true

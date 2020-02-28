@@ -9,7 +9,6 @@ class Person < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   paginates_per 20
 

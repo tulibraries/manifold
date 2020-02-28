@@ -12,7 +12,6 @@ class Policy < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   has_draft :description
 

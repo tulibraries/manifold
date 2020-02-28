@@ -16,7 +16,6 @@ class Space < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   validates :name, presence: true
   validates :description, presence: true

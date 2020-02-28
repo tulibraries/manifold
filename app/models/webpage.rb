@@ -10,7 +10,6 @@ class Webpage < ApplicationRecord
   include SchemaDotOrgable
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   has_one_attached :document, dependent: :destroy
 

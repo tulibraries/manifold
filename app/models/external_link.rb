@@ -7,7 +7,6 @@ class ExternalLink < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
-  validates :slug, presence: true
 
   before_save :link_cleanup!
 

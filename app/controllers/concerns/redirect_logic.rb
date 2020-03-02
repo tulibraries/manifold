@@ -20,6 +20,7 @@ module RedirectLogic
   end
 
   def legacy_path
+    binding.pry
     request.fullpath
   end
 end

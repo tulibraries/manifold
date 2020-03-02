@@ -8,10 +8,10 @@ FactoryBot.define do
     end_date { "2019-01-16" }
 
     trait :with_image do
-      after :create do |building|
+      after :create do |exhibition|
         file_path = Rails.root.join("spec/fixtures/charles.jpg")
         file = fixture_file_upload(file_path, "image/png")
-        building.image.attach(file)
+        exhibition.image.attach(file)
       end
     end
     promoted_to_events { false }

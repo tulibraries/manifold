@@ -4,13 +4,13 @@ require "rails_helper"
 
 RSpec.describe "collections/show.html.erb", type: :view do
   before(:all) do
-    @colletion = FactoryBot.create(:colletion, :with_image)
+    @collection = FactoryBot.create(:collection, :with_image)
   end
 
-  it "displays the sample colletion image" do
+  it "displays the sample collection image" do
     view.lookup_context.prefixes << 'application'
     render
-    expect(rendered).to match /#{@colletion.image}/
+    expect(rendered).to match /#{@collection.image.attachment.blob.filename.to_s}/
   end
 
 end

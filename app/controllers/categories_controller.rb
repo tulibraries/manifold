@@ -51,10 +51,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def explore_charles?
-    @category.slug == "explore-charles"
-  end
-
   private
     def set_category
       @category = Category.friendly.find(params[:id])

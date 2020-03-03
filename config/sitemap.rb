@@ -68,7 +68,7 @@ SitemapGenerator::Sitemap.create do
     add person_path(person), lastmod: person.updated_at
   end
   Event.find_each do |event|
-    add event_path(event), lastmod: event.updated_at
+    add event_path(event.to_param), lastmod: event.updated_at
   end
   Building.find_each do |building|
     add building_path(building), lastmod: building.updated_at

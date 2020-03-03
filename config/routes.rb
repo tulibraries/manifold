@@ -121,7 +121,6 @@ Rails.application.routes.draw do
     get "visit-study" => :visit, as: "webpages_visit"
     get "home" => :home, as: "webpages_home"
     get "lcdss" => :tudsc, as: "webpages_lcdss"
-    get "explore-charles" => :charles, as: "webpages_charles"
     get "wpvi" => :wpvi
     get "watchpastprograms" => :videos_all, as: "webpages_videos_all"
     get "watchpastprograms/list/:collection" => :videos_list, as: "webpages_videos_collection"

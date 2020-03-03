@@ -3,7 +3,7 @@
 class CategoriesController < ApplicationController
   include HasCategories
   include RedirectLogic
-  before_action :set_category, only: [:show, :explore_charles]
+  before_action :set_category, only: [:show]
 
   def show
     respond_to do |format|
@@ -49,10 +49,6 @@ class CategoriesController < ApplicationController
       @captions << "3rd floor floorplan"
       @captions << "4th floor floorplan"
     end
-  end
-
-  def explore_charles
-    @category.slug == "explore-charles"
   end
 
   private

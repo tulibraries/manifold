@@ -7,6 +7,9 @@ class Exhibition < ApplicationRecord
   include Imageable
   include Draftable
   include SchemaDotOrgable
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: :slugged
 
   belongs_to :group, optional: true
   belongs_to :space, optional: true
@@ -15,6 +18,17 @@ class Exhibition < ApplicationRecord
   has_draft :title, :description
 
   before_save :sanitize_description
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :start_date]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 
   def label
     title

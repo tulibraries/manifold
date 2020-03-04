@@ -13,6 +13,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
+    slug: Field::String.with_options(admin_only: true),
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
     ),
@@ -21,7 +22,6 @@ class CollectionDashboard < Administrate::BaseDashboard
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
-    slug: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

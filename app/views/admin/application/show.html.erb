@@ -32,7 +32,11 @@ as well as a link to its edit page.
   </div>
   <% if Rails.application.routes.url_helpers.method_defined?(page.resource.class.name.underscore + "_path") %>
   <div>
-    <%= link_to(t("manifold.admin.actions.show_website"), page.resource, class: "button green")  %>
+    <% unless page.resource.class.name == "ExternalLink" %>
+    <%= link_to(t("manifold.admin.actions.show_website"), url_for(page.resource.class)+"/"+page.resource.id.to_s, class: "button green")  %>
+    <% else %>
+    <%= link_to(t("manifold.admin.actions.show_website"), page.resource.link, class: "button green")  %>
+<% end %>
   </div>
   <% end %>
 </header>
@@ -46,7 +50,7 @@ as well as a link to its edit page.
         default: attribute.name.titleize,
       ) %>
       </dt>
-
+<!-- person_id triggering slug lookup for person but fails -->
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
           <%= render_field attribute, page: page %></dd>
     <% end %>

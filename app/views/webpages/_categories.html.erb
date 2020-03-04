@@ -7,14 +7,14 @@
 
 			<div class="col-12 col-md-6 col-lg-4 text-center">
 				<h2>
-		    <%= link_to category do %>
-				<% unless category.image.attachment.nil? %>
-					<%= image_tag category.image, class: "category-icon decorative", alt: "" %> 
-				<% else %>
-					<%= image_tag "T-borderless.gif", class: "decorative", alt: "" %>
-				<% end %>
-					<br /><%= category.name %>
-				<% end %>
+			    <%= link_to category.link do %>
+					<% unless category.image.attachment.nil? %>
+						<%= image_tag category.image, class: "category-icon decorative", alt: "" %> 
+					<% else %>
+						<%= image_tag "T-borderless.gif", class: "decorative", alt: "" %>
+					<% end %>
+						<br /><%= category.name %>
+					<% end %>
 				</h2>
 				<p><%= sanitize category.description.html_safe unless category.description.blank? %></p>
 			</div>

@@ -2,11 +2,15 @@
 
 class Group < ApplicationRecord
   has_paper_trail
+  include Attachable
   include Validators
   include InputCleaner
   include HasPolicies
   include SetDates
   include Categorizable
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: :slugged
 
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true
@@ -14,8 +18,6 @@ class Group < ApplicationRecord
   before_validation :sanitize_description
 
   has_many :webpages, dependent: :destroy
-
-  has_many :file_uploads, as: :attachable, dependent: :destroy
 
   belongs_to :parent_group, optional: true, class_name: "Group"
   has_many :child_groups, class_name: "Group", foreign_key: "parent_group_id", dependent: :destroy, inverse_of: false
@@ -32,6 +34,16 @@ class Group < ApplicationRecord
   has_many :service_group, dependent: :destroy
   has_many :related_services, through: :service_group, source: :service
 
+  def slug_candidates
+    [
+      :name,
+      [:name, :id]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   def get_chair
     members = Array.new

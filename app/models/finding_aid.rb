@@ -6,9 +6,11 @@ class FindingAid < ApplicationRecord
   include Draftable
   include Validators
   include SchemaDotOrgable
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :slug_candidates, use: :slugged
 
   paginates_per 15
-
 
   before_save :weed_nils
 
@@ -24,6 +26,17 @@ class FindingAid < ApplicationRecord
 
   has_many :finding_aid_responsibilities, dependent: :destroy
   has_many :person, through: :finding_aid_responsibilities
+
+  def slug_candidates
+    [
+      :name,
+      [:name, :identifier]
+    ]
+  end
+
+  def should_generate_new_friendly_id?
+    name_changed? || super
+  end
 
   has_draft :description
 

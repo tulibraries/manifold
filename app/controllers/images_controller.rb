@@ -17,9 +17,9 @@ class ImagesController < ApplicationController
 
   private
     def redirect_to_image(type)
-      # type shoudl be one of
+      # type should be one of
       # :index_image, :thumb_image, :show_image
-      # the image methods defined in imageabel model concern
+      # the image methods defined in imageable model concern
       if @parent.image.attached?
         redirect_to url_for(@parent.send(type))
       else

@@ -1,13 +1,13 @@
 <h2 class="links-title">
   <a style="cursor:pointer" data-toggle="collapse" data-target="#events" aria-expanded="true" aria-controls="events"> 
-  	Workshops & Events
+  	<%= link_to "Workshops & Events", controller: :events, action: :index %>
   </a>
 </h2>
 
 <ul class="list-unstyled navbar-collapse collapse show" id="events">
 <% unless @event_links.nil? %>
 	<% @event_links.each do |link| %>
-	<li><%= link_to link.label, link %></li>
+	<li><%= link_to link.label, event_path(link.id) %></li>
 	<% end %>
 <% end %>
 	<li class="text-right all-events"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>

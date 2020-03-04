@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_223347) do
+ActiveRecord::Schema.define(version: 2020_03_04_180436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,8 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.string "slug"
     t.text "get_help"
     t.text "long_description"
+    t.bigint "external_link_id"
+    t.index ["external_link_id"], name: "index_categories_on_external_link_id"
   end
 
   create_table "categorizations", force: :cascade do |t|
@@ -240,6 +242,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "promoted_to_events"
+    t.string "slug"
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
@@ -256,10 +259,18 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
   create_table "file_uploads", force: :cascade do |t|
     t.string "name"
     t.string "attachable_type"
-    t.bigint "attachable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["attachable_type", "attachable_id"], name: "index_file_uploads_on_attachable_type_and_attachable_id"
+  end
+
+  create_table "fileabilities", force: :cascade do |t|
+    t.string "attachable_type"
+    t.bigint "attachable_id"
+    t.bigint "file_upload_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["file_upload_id", "attachable_id", "attachable_type"], name: "polymorphic_fileability", unique: true
+    t.index ["file_upload_id"], name: "index_fileabilities_on_file_upload_id"
   end
 
   create_table "finding_aid_responsibilities", force: :cascade do |t|
@@ -282,6 +293,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.datetime "updated_at", null: false
     t.string "drupal_id"
     t.string "path"
+    t.string "slug"
     t.index ["collection_id"], name: "index_finding_aids_on_collection_id"
   end
 
@@ -290,6 +302,17 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.string "form_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "group_contacts", force: :cascade do |t|
@@ -312,6 +335,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.boolean "external"
     t.boolean "add_to_footer"
     t.integer "parent_group_id"
+    t.string "slug"
     t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
   end
 
@@ -325,6 +349,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link_label"
+    t.string "slug"
   end
 
   create_table "library_hours", force: :cascade do |t|
@@ -368,6 +393,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
     t.string "springshare_id"
     t.string "specialties"
     t.string "libguides_account"
+    t.string "slug"
   end
 
   create_table "policies", force: :cascade do |t|
@@ -466,6 +492,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_223347) do
   end
 
   add_foreign_key "accounts", "admin_groups"
+  add_foreign_key "categories", "external_links"
   add_foreign_key "collections", "external_links"
   add_foreign_key "spaces", "external_links"
 end

@@ -13,6 +13,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
+    slug: Field::String.with_options(admin_only: true),
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
     ),
@@ -60,6 +61,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :identifier,
     :path,
     :description,

@@ -46,7 +46,7 @@ RSpec.describe Collection, type: :model do
       description: ["The Text 1", "The Text 2"],
       # Subject not testable in rspec in this context
       #subject: ["The Text 1", "The Text 2"],
-      contents: ["The Text 1", "The Text 2"],
+      contents: ["The Text 1", "The Text 2"]
     }
 
     fields.each do |k, v|

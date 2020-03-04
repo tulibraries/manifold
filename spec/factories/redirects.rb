@@ -17,7 +17,7 @@ FactoryBot.define do
   end
 
   factory :collection_redirect, class: Redirect do
-    legacy_path { "/collections/blockson" }
-    manifold_path { "/blockson" }
+    legacy_path { "/collections/blockson_collection" }
+    manifold_path { "/blockson_collection" }
   end
 end

@@ -2,7 +2,6 @@
 
 class PoliciesController < ApplicationController
   include HasCategories
-  load_and_authorize_resource
   before_action :set_policy, only: [:show]
 
   def index
@@ -28,6 +27,6 @@ class PoliciesController < ApplicationController
 
   private
     def set_policy
-      @policy = Policy.find(params[:id])
+      @policy = Policy.friendly.find(params[:id])
     end
 end

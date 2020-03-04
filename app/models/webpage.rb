@@ -2,6 +2,7 @@
 
 class Webpage < ApplicationRecord
   include Accountable
+  include Attachable
   include Categorizable
   include Draftable
   include SetDates
@@ -11,14 +12,10 @@ class Webpage < ApplicationRecord
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  has_one_attached :document, dependent: :destroy
-
   has_draft :description
 
-  # validates :document, content_type: ["application/pdf"]
   validates :title, :description, presence: true
   belongs_to :group, optional: true
-  has_many :file_uploads, as: :attachable, dependent: :destroy
 
   def slug_candidates
     [

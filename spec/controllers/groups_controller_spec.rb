@@ -8,7 +8,7 @@ RSpec.describe GroupsController, type: :controller do
   let(:group) { FactoryBot.create(:group) }
 
   describe "GET #index" do
-    it "returns json when requested" do
+    xit "returns json when requested" do
       get :index, format: :json
       expect(response.header["Content-Type"]).to include "json"
     end
@@ -17,7 +17,7 @@ RSpec.describe GroupsController, type: :controller do
   describe "GET #show as JSON" do
     let(:group) { FactoryBot.create(:group) }
 
-    it "returns valid json" do
+    xit "returns valid json" do
       get :show, format: :json, params: { id: group.id }
       Tempfile.open(["serialized_group", ".json"]) do |serialized|
         serialized.write(response.body)

@@ -4,7 +4,8 @@
   <div class="d-none d-lg-block col-lg-3">
     <div class="exhibit-image">
       <% if @exhibition.image.attached? %>
-        <%= image_tag @exhibition.show_image, class: "decorative", alt: "" %>
+      <% binding.pry %>
+        <%= image_tag @exhibition.custom_image(600,300), class: "decorative", alt: "" %>
       <% else %>
         <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
       <% end %>

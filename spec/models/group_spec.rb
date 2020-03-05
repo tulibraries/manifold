@@ -146,5 +146,6 @@ RSpec.describe Group, type: :model do
     end
   end
 
+  it_behaves_like "attachable"
   it_behaves_like "categorizable"
 end

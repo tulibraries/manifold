@@ -2,6 +2,7 @@
 
 module Imageable
   extend ActiveSupport::Concern
+  require File.join(Rails.root, 'lib/uploads.rb')
 
   included do
     has_one_attached :image, dependent: :destroy

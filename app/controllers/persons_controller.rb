@@ -16,22 +16,7 @@ class PersonsController < ApplicationController
   end
 
   def show
-    @buildings = {}
-
-    locations = @person.spaces.map do |space|
-      [space.building => [space]]
-    end
-
-    locations.flatten.each do |location|
-      location.each_key do |building|
-        if @buildings.key?(building)
-          @buildings.transform_values { |space| space << location.first.second.first }
-        else
-          @buildings[building] = location.first.second
-        end
-      end
-    end
-
+    @buildings = @person.spaces.map {|space| space.building}.uniq
     @departments = @person.groups.sort.select { |group| group.group_type == "Department" }
 
     respond_to do |format|

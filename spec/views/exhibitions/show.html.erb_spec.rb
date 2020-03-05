@@ -7,7 +7,8 @@ RSpec.describe "exhibitions/show", type: :view do
     @exhibition = assign(:exhibition, Exhibition.create!(
                                         title: "Salvador Dali",
                                         description: "Spontaneous",
-                                        start_date: Date.new
+                                        start_date: Date.new,
+                                        end_date: Date.new
     ))
   end
 

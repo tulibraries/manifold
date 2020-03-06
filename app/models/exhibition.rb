@@ -19,6 +19,8 @@ class Exhibition < ApplicationRecord
 
   before_save :sanitize_description
 
+  validates :start_date, :end_date, presence: true
+
   def slug_candidates
     [
       :title,

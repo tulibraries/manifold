@@ -1,5 +1,11 @@
 @import "partials/_vars.scss";
 
+a.category-home {
+  padding:7px;
+  border-top: solid #555 1px;
+  border-bottom: solid #555 1px;
+}
+
 .category-show {
 	margin-top: 35px;
 	h1.page-title {

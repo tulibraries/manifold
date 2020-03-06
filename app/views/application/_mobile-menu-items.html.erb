@@ -2,10 +2,11 @@
   <div class="index-items">
     <ul class="list-unstyled">
     	<% @categories.each do |category| %>
+	    	<li><%= link_to "#{category.name} Home", category, class: "category-home" %> </li>
         <% list_item(category).each do |link| %>
           <%= link.html_safe %>
         <% end %>
-      <% end %>
+	    <% end %>
     </ul>
   </div>
 </div>

@@ -231,14 +231,19 @@
 		.bb-0 {
 			border-bottom: solid $white 0!important;
 		}
-		.h-18.bb-0 {
-			@media (max-width: 1040px) {
-				height: 21%!important;
-			}
-			@media (max-width: 640px) {
-				height: 17%!important;
-			}
-		}
+    .h-18.bb-0 {
+      @media (max-width: 1040px) {
+        height: 21%!important;
+      }
+      @media (max-width: 640px) {
+        height: 17%!important;
+      }
+    }
+    .h-18.bb-0.left {
+      @media (max-width: 1040px) {
+        height: 17%!important;
+      }
+    }
 		.news-events {
 			.caption {
 				@media screen and (max-width: 1039px) {

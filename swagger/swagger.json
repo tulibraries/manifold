@@ -730,83 +730,83 @@
         }
       }
     },
-    "/groups": {
-      "get": {
-        "summary": "Retrieves a list of groups",
-        "tags": ["Group", "Batch"],
-        "operationId": "getGroups",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "list of groups",
-            "schema": {
-              "type": "object",
-              "required": [
-                "data"
-              ],
-              "properties": {
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id",
-                      "type"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "type": {
-                        "type": "string"
-                      },
-                      "attributes": {
-                        "type": "object",
-                        "required": [
-                          "label"
-                        ],
-                        "properties": {
-                          "name": {
-                            "type": "string",
-                            "title": "The Name Schema",
-                            "default": "",
-                            "example": "Council of Committees Group",
-                            "pattern": "^(.*)$"
-                          },
-                          "label": {
-                            "type": "string",
-                            "title": "The Label Schema",
-                            "default": "",
-                            "example": "Council of Committees Group",
-                            "pattern": "^(.*)$"
-                          },
-                          "description": {
-                            "type": "string",
-                            "title": "The Description Schema",
-                            "default": "",
-                            "example": "The Temple University Ambler Library supports undergraduate and graduate courses, including landscape architecture, horticulture, business, education, criminal justice, and community and regional planning",
-                            "pattern": "^(.*)"
-                          },
-                          "updated_at": {
-                            "type": "string",
-                            "title": "The time the group record was updated",
-                             "format": "date-time",
-                            "default": "",
-                            "example": "2018-01-01T12:00:00"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
+    // "/groups": {
+    //   "get": {
+    //     "summary": "Retrieves a list of groups",
+    //     "tags": ["Group", "Batch"],
+    //     "operationId": "getGroups",
+    //     "produces": [
+    //       "application/json"
+    //     ],
+    //     "responses": {
+    //       "200": {
+    //         "description": "list of groups",
+    //         "schema": {
+    //           "type": "object",
+    //           "required": [
+    //             "data"
+    //           ],
+    //           "properties": {
+    //             "data": {
+    //               "type": "array",
+    //               "items": {
+    //                 "type": "object",
+    //                 "required": [
+    //                   "id",
+    //                   "type"
+    //                 ],
+    //                 "properties": {
+    //                   "id": {
+    //                     "type": "string"
+    //                   },
+    //                   "type": {
+    //                     "type": "string"
+    //                   },
+    //                   "attributes": {
+    //                     "type": "object",
+    //                     "required": [
+    //                       "label"
+    //                     ],
+    //                     "properties": {
+    //                       "name": {
+    //                         "type": "string",
+    //                         "title": "The Name Schema",
+    //                         "default": "",
+    //                         "example": "Council of Committees Group",
+    //                         "pattern": "^(.*)$"
+    //                       },
+    //                       "label": {
+    //                         "type": "string",
+    //                         "title": "The Label Schema",
+    //                         "default": "",
+    //                         "example": "Council of Committees Group",
+    //                         "pattern": "^(.*)$"
+    //                       },
+    //                       "description": {
+    //                         "type": "string",
+    //                         "title": "The Description Schema",
+    //                         "default": "",
+    //                         "example": "The Temple University Ambler Library supports undergraduate and graduate courses, including landscape architecture, horticulture, business, education, criminal justice, and community and regional planning",
+    //                         "pattern": "^(.*)"
+    //                       },
+    //                       "updated_at": {
+    //                         "type": "string",
+    //                         "title": "The time the group record was updated",
+    //                          "format": "date-time",
+    //                         "default": "",
+    //                         "example": "2018-01-01T12:00:00"
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // },
     "/webpages": {
       "get": {
         "summary": "Retrieves a list of pages",

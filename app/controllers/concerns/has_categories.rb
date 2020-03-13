@@ -11,7 +11,7 @@ module HasCategories
       else
         link = '<li class="selected">'
       end
-      link += '<a href="' + url_for(c) + '">' + c.label + "</a></li>"
+      link += '<a href="' + get_link(c) + '">' + c.label + "</a></li>"
       links << link
     end
     links
@@ -19,9 +19,9 @@ module HasCategories
 
   protected
 
-    def url_for(options = {})
+    def get_link(options = {})
       obj = options[:slug]
       options[:slug] = obj
-      super(options)
+      url_for(options)
     end
 end

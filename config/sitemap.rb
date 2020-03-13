@@ -1,7 +1,16 @@
 # frozen_string_literal: true
 
+require "aws-sdk-s3"
+
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = ActionDispatch::Http::URL.url_for(Rails.application.routes.default_url_options)
+
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
+  Rails.configuration.aws[:bucket],
+  aws_access_key_id: Rails.configuration.aws[:access_key_id],
+  aws_secret_access_key: Rails.configuration.aws[:secret_access_key],
+  aws_region: Rails.configuration.aws[:region]
+)
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.

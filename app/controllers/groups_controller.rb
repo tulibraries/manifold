@@ -10,7 +10,6 @@ class GroupsController < ApplicationController
     @teams = Group.where.not(group_type: "Department").order(:name)
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.json { render json: GroupSerializer.new(@groups) }
     end
   end
 
@@ -19,7 +18,6 @@ class GroupsController < ApplicationController
   def show
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.json { render json: GroupSerializer.new(@group) }
     end
   end
 

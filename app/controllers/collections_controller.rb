@@ -28,7 +28,11 @@ class CollectionsController < ApplicationController
 
   private
     def set_collection
-      @collection = Collection.friendly.find(params[:id])
+      if Collection.find_by(slug: params[:id])
+        @collection = Collection.friendly.find(params[:id])
+      else
+        @collection = Collection.find_by(id: params[:id])
+      end
       return redirect_or_404 unless @collection
       @categories = @collection.categories
     end

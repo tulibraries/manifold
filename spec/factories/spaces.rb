@@ -17,5 +17,12 @@ FactoryBot.define do
         space.ancestry = "#{create(:space).id}"
       end
     end
+    trait :with_image do
+      after :create do |space|
+        file_path = Rails.root.join("spec/fixtures/charles.jpg")
+        file = fixture_file_upload(file_path, "image/png")
+        space.image.attach(file)
+      end
+    end
   end
 end

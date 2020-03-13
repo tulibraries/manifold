@@ -15,10 +15,10 @@ RSpec.describe "persons/show", type: :view do
     expect(rendered).to match /#{@person.image.attachment.blob.filename.to_s}/
   end
 
-  xit "displays the default image when no custom image supplied" do
+  it "displays the default image when no custom image supplied" do
     @person =  FactoryBot.create(:person, spaces: [space])
     @buildings = [building]
     render
-    expect(rendered).to match /#{"assets/T-borderless"}/
+    expect(rendered).to match /#{"assets/T-"}/
   end
 end

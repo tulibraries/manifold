@@ -19,6 +19,10 @@ class ScrcController < ApplicationController
 
   def finding_aid_legacy_path
     # Finding aid entities path do not have the starting "/scrc/"
-    legacy_path.gsub(/^\/scrc\//, "")
+    unless legacy_path.include? "collections"
+      legacy_path.gsub(/^\/scrc\//, "")
+    else
+      legacy_path.gsub(/^\/collections\/scrc\//, "")
+    end
   end
 end

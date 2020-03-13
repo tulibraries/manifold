@@ -108,6 +108,7 @@ Rails.application.routes.draw do
 
   controller :scrc do
     get "scrc/*path" => :show
+    get "collections/scrc/*path" => :show
   end
 
   controller :webpages do

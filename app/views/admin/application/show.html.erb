@@ -35,8 +35,8 @@ as well as a link to its edit page.
     <% unless page.resource.class.name == "ExternalLink" %>
     <%= link_to(t("manifold.admin.actions.show_website"), url_for(page.resource.class)+"/"+page.resource.id.to_s, class: "button green")  %>
     <% else %>
-    <%= link_to(t("manifold.admin.actions.show_website"), url_for(page.resource.class.name.underscore)+"/"+page.resource.id.to_s, class: "button green")  %>
-    <% end %>
+    <%= link_to(t("manifold.admin.actions.show_website"), page.resource.link, class: "button green")  %>
+<% end %>
   </div>
   <% end %>
 </header>

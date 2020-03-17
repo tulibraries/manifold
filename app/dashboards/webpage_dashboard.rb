@@ -11,7 +11,6 @@ class WebpageDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     slug: Field::String.with_options(admin_only: true),
-    document: FileField,
     group: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,

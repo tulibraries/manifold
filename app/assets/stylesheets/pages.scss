@@ -231,14 +231,19 @@
 		.bb-0 {
 			border-bottom: solid $white 0!important;
 		}
-		.h-18.bb-0 {
-			@media (max-width: 1040px) {
-				height: 21%!important;
-			}
-			@media (max-width: 640px) {
-				height: 17%!important;
-			}
-		}
+    .h-18.bb-0 {
+      @media (max-width: 1040px) {
+        height: 21%!important;
+      }
+      @media (max-width: 640px) {
+        height: 17%!important;
+      }
+    }
+    .h-18.bb-0.left {
+      @media (max-width: 1040px) {
+        height: 17%!important;
+      }
+    }
 		.news-events {
 			.caption {
 				@media screen and (max-width: 1039px) {
@@ -438,54 +443,6 @@
 				padding-left: 21px;
 				font-size: 1.15rem;
 			}
-		}
-	}
-}
-
-.container.charles {
-	margin-top: 21px;
-	.slideshow {
-		margin-top: 21px;
-	}
-	.charles-content {
-		margin-top: 35px;
-	}
-	.carousel-control-prev,
-	.carousel-control-next {
-	  background-color: $white;
-	  width: 10%;
-	  opacity: 0;
-	}
-	.carousel-control-prev:hover,
-	.carousel-control-next:hover {
-	  opacity: .5;
-	}
-	.carousel-control-prev-icon,
-	.carousel-control-next-icon {
-	  height: 80px;
-	  width: 80px;
-	  outline: $black;
-	  background-size: 100%, 100%;
-	  border-radius: 50%;
-	  border: 1 solid $black;
-	  background-image: none;
-	}
-	.carousel-control-next-icon:after {
-	  content: '>';
-	  font-size: 65px;
-	  color: $black;
-	  opacity: .5;
-	}
-	.carousel-control-prev-icon:after {
-	  content: '<';
-	  font-size: 65px;
-	  color: $black;
-	  opacity: .5;
-	}
-	.carousel-indicators {
-		bottom: -42px;
-		li {
-		background-color: $black;
 		}
 	}
 }

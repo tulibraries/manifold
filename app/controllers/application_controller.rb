@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     @publications_link = Webpage.find_by(slug: "system-summary")
     @numbers_link = Webpage.find_by(slug: "numbers")
     @social_links = Webpage.find_by(slug: "social-media")
-    @donate_link = Policy.find_by(slug: "donations")
+    @donate_link = Category.find_by(slug: "support-the-libraries")
     @diversity_link = Webpage.find_by(slug: "diversity")
     @standards_link = Policy.find_by(slug: "standards")
     @privacy_link = Service.find_by(slug: "privacy")

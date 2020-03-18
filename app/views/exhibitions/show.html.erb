@@ -4,7 +4,7 @@
   <div class="d-none d-lg-block col-lg-3">
     <div class="exhibit-image">
       <% if @exhibition.image.attached? %>
-        <%= image_tag @exhibition.show_image, class: "decorative", alt: "" %>
+        <%= image_tag @exhibition.custom_image(600,300), class: "decorative", alt: "" %>
       <% else %>
         <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
       <% end %>
@@ -13,14 +13,14 @@
   <div class="col-12 col-lg-6">
     <div class="exhibition-description">
       <h1 class="page-title"><%= title @exhibition.title %></h1>
-      
+
       <% unless @exhibition.end_date.nil? %>
         <div class="dates">
-            <%= @exhibition.start_date.strftime("%A, %B %d, %Y") %> - <%= @exhibition.end_date.strftime("%A, %B %d, %Y") %>
+          <%= @exhibition.start_date.strftime("%A, %B %d, %Y") %> - <%= @exhibition.end_date.strftime("%A, %B %d, %Y") %>
         </div>
       <% else %>
         <div class="dates">
-            <%= @exhibition.start_date.strftime("%A, %B %d, %Y") %>
+          <%= @exhibition.start_date.strftime("%A, %B %d, %Y") %>
         </div>
       <% end %>
 
@@ -43,7 +43,7 @@
       <%= @exhibition.space.building.address2 %>
     </div>
     <% end %>
-      
+
   </div>
 </div>
 

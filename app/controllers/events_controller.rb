@@ -100,5 +100,6 @@ class EventsController < ApplicationController
 
     def set_event
       @event = Event.friendly.find(params[:id])
+      @event_url = @event.event_url
     end
 end

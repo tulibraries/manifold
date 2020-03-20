@@ -5,10 +5,10 @@
 }
 .event-index {
 	.intro {
-		margin-bottom: 28px;
+		margin-bottom: 21px;
 		font-size: 105%;
 		@media (min-width: 0) and (max-width: 1040px) {
-			margin-top: 21px;
+			margin-top: 28px;
 		}
 	}
 	.signup-desktop, .signup-mobile {
@@ -70,7 +70,7 @@
 			text-decoration: underline;
 		}
 	}
-	
+
 	.upcoming-header {
 		background-color:$footer-gray;
 		padding: 10px 21px;

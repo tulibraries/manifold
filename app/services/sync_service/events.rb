@@ -52,6 +52,7 @@ class SyncService::Events
       "cancelled"           => event.fetch("Canceled", 0),
       "registration_status" => event.fetch("RegistrationStatus", nil),
       "registration_link"   => event.fetch("ExternalRegistrationURL", nil),
+      "event_url"           => event.fetch("OnlineEventHostUrl", nil),
       "start_time"          => start_time(event),
       "end_time"            => end_time(event),
       "all_day"             => all_day(event),
@@ -78,6 +79,8 @@ class SyncService::Events
       event.building = record_hash["building"]
       event.tags = record_hash["tags"]
       event.event_type = record_hash["event_type"]
+      event.event_url = record_hash["event_url"]
+      event.event_type += ", Online" unless event.event_url.nil?
       unless (record_hash[:image].nil? || event.image.attached?)
         event.image.attach(
           io: record_hash[:image][:io],

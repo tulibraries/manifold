@@ -73,7 +73,7 @@ GEM
     ast (2.4.0)
     attr_json (1.0.0)
       activerecord (>= 5.0.0, < 6.1)
-    auto_strip_attributes (2.5.0)
+    auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
     autoprefixer-rails (9.7.4)
       execjs

@@ -20,6 +20,11 @@ class ExhibitionsController < ApplicationController
 
   private
     def set_exhibition
-      @exhibition = Exhibition.friendly.find(params[:id])
+      if Exhibition.find_by(slug: params[:id])
+        @exhibition = Exhibition.friendly.find(params[:id])
+      else
+        @exhibition = Exhibition.find_by(id: params[:id])
+      end
+      return redirect_or_404 unless @exhibition
     end
 end

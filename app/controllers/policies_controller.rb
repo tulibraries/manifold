@@ -27,6 +27,11 @@ class PoliciesController < ApplicationController
 
   private
     def set_policy
-      @policy = Policy.friendly.find(params[:id])
+      if Policy.find_by(slug: params[:id])
+        @policy = Policy.friendly.find(params[:id])
+      else
+        @policy = Policy.find_by(id: params[:id])
+      end
+      return redirect_or_404 unless @policy
     end
 end

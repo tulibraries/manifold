@@ -24,7 +24,12 @@ class GroupsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
-      @group = Group.friendly.find(params[:id])
+      if Group.find_by(slug: params[:id])
+        @group = Group.friendly.find(params[:id])
+      else
+        @group = Group.find_by(id: params[:id])
+      end
+      return redirect_or_404 unless @group
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

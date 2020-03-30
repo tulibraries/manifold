@@ -26,7 +26,12 @@ class BuildingsController < ApplicationController
 
   private
     def set_building
-      @building = Building.friendly.find(params[:id])
+      if Buidling.find_by(slug: params[:id])
+        @building = Buidling.friendly.find(params[:id])
+      else
+        @building = Buidling.find_by(id: params[:id])
+      end
+      return redirect_or_404 unless @building
       @categories = @building.categories
     end
 

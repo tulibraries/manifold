@@ -50,7 +50,12 @@ class FindingAidsController < ApplicationController
 
   private
     def set_finding_aid
-      @finding_aid = FindingAid.friendly.find(params[:id])
+      if FindingAid.find_by(slug: params[:id])
+        @finding_aid = FindingAid.friendly.find(params[:id])
+      else
+        @finding_aid = FindingAid.find_by(id: params[:id])
+      end
+      return redirect_or_404 unless @finding_aid
       @title = @finding_aid.label
       blockson = Collection.find_by(slug: "blockson_collection")
       @aeon = @finding_aid.collections.include?(blockson)

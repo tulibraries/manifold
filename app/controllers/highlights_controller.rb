@@ -20,6 +20,11 @@ class HighlightsController < ApplicationController
 
   private
     def set_highlight
-      @highlight = Highlight.friendly.find(params[:id])
+      if Highlight.find_by(slug: params[:id])
+        @highlight = Highlight.friendly.find(params[:id])
+      else
+        @highlight = Highlight.find_by(id: params[:id])
+      end
+      return redirect_or_404 unless @highlight
     end
 end

@@ -99,7 +99,12 @@ class EventsController < ApplicationController
     end
 
     def set_event
-      @event = Event.friendly.find(params[:id])
+      if Event.find_by(slug: params[:id])
+        @event = Event.friendly.find(params[:id])
+      else
+        @event = Event.find_by(id: params[:id])
+      end
+      return redirect_or_404 unless @event
       @event_url = @event.event_url
     end
 end

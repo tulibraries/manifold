@@ -53,6 +53,11 @@ class CategoriesController < ApplicationController
 
   private
     def set_category
-      @category = Category.friendly.find(params[:id])
+      if Category.find_by(slug: params[:id])
+        @category = Category.friendly.find(params[:id])
+      else
+        @category = Category.find_by(id: params[:id])
+      end
+      return redirect_or_404 unless @category
     end
 end

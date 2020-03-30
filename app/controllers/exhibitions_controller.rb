@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ExhibitionsController < ApplicationController
+  include SetInstance
+  include RedirectLogic
   before_action :set_exhibition, only: [:show]
 
   def index
@@ -20,6 +22,7 @@ class ExhibitionsController < ApplicationController
 
   private
     def set_exhibition
-      @exhibition = Exhibition.friendly.find(params[:id])
+      @exhibition = find_instance
+      return redirect_or_404 unless @exhibition
     end
 end

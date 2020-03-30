@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GroupsController < ApplicationController
+  include SetInstance
+  include RedirectLogic
   before_action :set_group, only: [:show]
 
   # GET /groups
@@ -24,7 +26,8 @@ class GroupsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
-      @group = Group.friendly.find(params[:id])
+      @group = find_instance
+      return redirect_or_404 unless @group
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

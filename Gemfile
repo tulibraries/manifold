@@ -64,8 +64,10 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "json-schema"
   gem "pry-rails"
+  gem "pry-byebug"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
+  gem "vcr"
 end
 
 group :development do

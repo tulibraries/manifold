@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_154745) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.boolean "alertability"
-    t.bigint "admin_group_id"
     t.string "name"
+    t.bigint "admin_group_id"
     t.index ["admin_group_id"], name: "index_accounts_on_admin_group_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true

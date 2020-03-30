@@ -1,0 +1,60 @@
+{
+  "range": "Sheet2!A1:AA1052",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "DATE",
+      "CHARLES LIBRARY",
+      "SERVICE ZONE",
+      "CAFE",
+      "SCRC",
+      "SCHOLARS STUDIO",
+      "SUCCESS CENTER",
+      "ASK A LIBRARIAN",
+      "ASRS",
+      "GUEST COMPUTERS",
+      "BLOCKSON COLLECTION",
+      "AMBLER LIBRARY",
+      "GINSBURG",
+      "PODIATRY",
+      "INNOVATION",
+      "24-7"
+    ],
+    [
+      "Monday, June 10, 2019",
+      "8:00 am - 09:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm"
+    ],
+    [
+      "Tuesday, June 11, 2019",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm",
+      "8:00 am - 10:00 pm"
+    ]
+  ]
+}

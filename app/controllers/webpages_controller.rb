@@ -68,17 +68,21 @@ class WebpagesController < ApplicationController
 
   def videos_show
     @displayMode = "show"
-    api_query = @basepath + "/content/" + URI::encode(params[:id])
-    ensemble_api(api_query)
-    unless @videos.nil?
-      @featured_video_id = @videos[:ID]
-      @featured_video_title = @videos[:Title]
-      @featured_video_description = CGI.unescapeHTML(@videos[:Description]) unless @videos[:Description].nil?
+    unless params[:id].nil?
+      api_query = @basepath + "/content/" + URI::encode(params[:id])
+      ensemble_api(api_query)
+      unless @videos.nil?
+        @featured_video_id = @videos[:ID]
+        @featured_video_title = @videos[:Title]
+        @featured_video_description = CGI.unescapeHTML(@videos[:Description]) unless @videos[:Description].nil?
+      else
+        return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
+      end
+      if @featured_video_id.nil?
+        return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
+      end
     else
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
-    end
-    if @featured_video_id.nil?
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
+      return redirect_to(webpages_videos_all_path, alert: "You must choose a video to stream.")
     end
   end
 

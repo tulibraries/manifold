@@ -45,6 +45,11 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Hours Sync Test Sheet - So we can retrive test hours into the vcr_cassette
+  config.hours_worksheet = "TESTING"
+  config.hours_spreadsheet_header_cells = "TESTING!A1:O1"
+  config.hours_spreadsheet_date_cells = "TESTING!A2:A"
 end
 
 Rails.application.routes.default_url_options[:host] = "test.host"

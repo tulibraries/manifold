@@ -5,27 +5,28 @@ require "google/apis/sheets_v4"
 class SyncService::LibraryHours
   def self.call
     service = Google::Apis::SheetsV4::SheetsService.new
-    service.key = ENV["GOOGLE_SHEETS_API_KEY"]
-    spreadsheet_id = "1nZkmNzNwMsVlTa4sg3V1M1KOAvXcoyexLkeqTzqV_gs"
-    headers = "Sheet2!A1:O1"
-    date_coordinates = "Sheet2!A2:A"
+    service.key = Rails.configuration.google_sheets_api_key
+    spreadsheet_id = Rails.configuration.hours_spreadsheet_id
+    worksheet = Rails.configuration.hours_worksheet
+    headers = Rails.configuration.hours_spreadsheet_header_cells
+    date_coordinates = Rails.configuration.hours_spreadsheet_date_cells
     date_response = service.get_spreadsheet_values(spreadsheet_id, date_coordinates)
     dates = date_response.values.flatten
 
     locations = [
-                  { coordinates: "Sheet2!B2:B", slug: "charles" },
-                  { coordinates: "Sheet2!C2:C", slug: "service_zone" },
-                  { coordinates: "Sheet2!D2:D", slug: "cafe" },
-                  { coordinates: "Sheet2!E2:E", slug: "scrc" },
-                  { coordinates: "Sheet2!F2:F", slug: "scholars_studio" },
-                  { coordinates: "Sheet2!H2:H", slug: "ask_a_librarian" },
-                  { coordinates: "Sheet2!I2:I", slug: "asrs" },
-                  { coordinates: "Sheet2!J2:J", slug: "guest_computers" },
-                  { coordinates: "Sheet2!K2:K", slug: "blockson" },
-                  { coordinates: "Sheet2!L2:L", slug: "ambler" },
-                  { coordinates: "Sheet2!M2:M", slug: "ginsburg" },
-                  { coordinates: "Sheet2!N2:N", slug: "podiatry" },
-                  { coordinates: "Sheet2!O2:O", slug: "innovation" }
+                  { coordinates: "#{worksheet}!B2:B", slug: "charles" },
+                  { coordinates: "#{worksheet}!C2:C", slug: "service_zone" },
+                  { coordinates: "#{worksheet}!D2:D", slug: "cafe" },
+                  { coordinates: "#{worksheet}!E2:E", slug: "scrc" },
+                  { coordinates: "#{worksheet}!F2:F", slug: "scholars_studio" },
+                  { coordinates: "#{worksheet}!H2:H", slug: "ask_a_librarian" },
+                  { coordinates: "#{worksheet}!I2:I", slug: "asrs" },
+                  { coordinates: "#{worksheet}!J2:J", slug: "guest_computers" },
+                  { coordinates: "#{worksheet}!K2:K", slug: "blockson" },
+                  { coordinates: "#{worksheet}!L2:L", slug: "ambler" },
+                  { coordinates: "#{worksheet}!M2:M", slug: "ginsburg" },
+                  { coordinates: "#{worksheet}!N2:N", slug: "podiatry" },
+                  { coordinates: "#{worksheet}!O2:O", slug: "innovation" }
                 ]
 
     locations.each do |location|

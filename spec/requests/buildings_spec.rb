@@ -26,4 +26,13 @@ RSpec.describe "Buildings", type: :request do
       expect(response.body).to_not include(building2.name)
     end
   end
+
+  describe "a redirect with a legacy path starting with /libraries" do
+    let(:redirect) { FactoryBot.create(:redirect) }
+    it "redirects to the expected redirect path" do
+      get url_for(redirect.legacy_path)
+      expect(response).to redirect_to(redirect.path)
+    end
+  end
+
 end

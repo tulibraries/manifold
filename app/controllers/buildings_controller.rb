@@ -2,6 +2,8 @@
 
 class BuildingsController < ApplicationController
   include HasCategories
+  include SetInstance
+  include RedirectLogic
   before_action :set_building, only: [:show]
 
   def index
@@ -26,7 +28,8 @@ class BuildingsController < ApplicationController
 
   private
     def set_building
-      @building = Building.friendly.find(params[:id])
+      @building = find_instance
+      return redirect_or_404 unless @building
       @categories = @building.categories
     end
 

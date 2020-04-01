@@ -2,6 +2,7 @@
 
 class ServicesController < ApplicationController
   include HasCategories
+  include SetInstance
   include RedirectLogic
 
   before_action :set_service, only: [:show]
@@ -29,8 +30,7 @@ class ServicesController < ApplicationController
 
   private
     def set_service
-      # binding.pry
-      @service = Service.friendly.find(params[:id])
+      @service = find_instance
       return redirect_or_404 unless @service
       @categories = @service.categories
     end

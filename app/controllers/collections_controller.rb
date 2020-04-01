@@ -2,6 +2,7 @@
 
 class CollectionsController < ApplicationController
   include HasCategories
+  include SetInstance
   include RedirectLogic
 
   before_action :set_collection, only: [:show]
@@ -28,11 +29,7 @@ class CollectionsController < ApplicationController
 
   private
     def set_collection
-      if Collection.find_by(slug: params[:id])
-        @collection = Collection.friendly.find(params[:id])
-      else
-        @collection = Collection.find_by(id: params[:id])
-      end
+      @collection = find_instance
       return redirect_or_404 unless @collection
       @categories = @collection.categories
     end

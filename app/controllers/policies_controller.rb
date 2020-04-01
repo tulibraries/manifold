@@ -2,6 +2,8 @@
 
 class PoliciesController < ApplicationController
   include HasCategories
+  include SetInstance
+  include RedirectLogic
   before_action :set_policy, only: [:show]
 
   def index
@@ -27,6 +29,7 @@ class PoliciesController < ApplicationController
 
   private
     def set_policy
-      @policy = Policy.friendly.find(params[:id])
+      @policy = find_instance
+      return redirect_or_404 unless @policy
     end
 end

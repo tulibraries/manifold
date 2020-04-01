@@ -2,6 +2,7 @@
 
 class CategoriesController < ApplicationController
   include HasCategories
+  include SetInstance
   include RedirectLogic
   before_action :set_category, only: [:show]
 
@@ -53,6 +54,7 @@ class CategoriesController < ApplicationController
 
   private
     def set_category
-      @category = Category.friendly.find(params[:id])
+      @category = find_instance
+      return redirect_or_404 unless @category
     end
 end

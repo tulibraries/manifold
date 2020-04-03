@@ -188,7 +188,7 @@ en:
           faculty_advisor_email: "Faculty Advisor Email"
           policy_check: "Agree to Policies"
           referrer: "Referred by"
-          school_visit: "School Information" 
+          school_visit: "School Information"
           protocol_title: "Protocol Title"
           review_update: "Updating Review?"
           rationale: "Review Rationale"
@@ -317,12 +317,10 @@ en:
       org_charts: "Library Organizational Charts"
       staff_forms: "Staff Forms"
       primo_articles: "Find by citation"
-    
+
     hours:
       charles_note: >
-        <p><em>While we list opening and closing times for Charles Library below, 
-        the 24/7 space is always available to those affiliated with Temple University. 
-        Use your OwlCard to swipe in at the Liacouras and Polett Walks entrance.</em></p>
+        <p><em>The 24/7 space is closed until further notice.</em></p>
 
     events:
       page_title: "Events & Exhibits"

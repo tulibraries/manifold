@@ -52,6 +52,13 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def index
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { render json: CategorySerializer.new(Category.all) }
+    end
+  end
+
   private
     def set_category
       @category = find_instance

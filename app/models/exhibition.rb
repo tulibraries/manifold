@@ -29,7 +29,7 @@ class Exhibition < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    title_changed? || super
+    title_changed? || start_date_changed? || slug.blank?
   end
 
   def label

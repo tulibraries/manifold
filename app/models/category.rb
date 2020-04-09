@@ -27,7 +27,7 @@ class Category < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    name_changed? || super
+    name_changed? || slug.blank?
   end
 
   # Because many types of Models can be categorized into a

@@ -127,9 +127,12 @@ class WebpagesController < ApplicationController
     @print_my_paper = Service.find_by(slug: "printing")
     @book_study_room = Space.find_by(slug: "study-rooms-small")
     @locations = Building.find_by(slug: "ambler")
-    @todays_hours = LibraryHour.todays_hours_at("charles")
+    @todays_hours = LibraryHour.todays_hours_at("ask_a_librarian")
     @libguides = ExternalLink.find_by(slug: "libguides")
     @explore_charles = Category.find_by(slug: "explore-charles")
+    @remote_student_support = Webpage.find_by(slug: "remote-student-support")
+    @remote_faculty_support = Webpage.find_by(slug: "remote-faculty-support")
+    @explore_online_collections = Webpage.find_by(slug: "explore-online-collections")
   end
 
   def scrc

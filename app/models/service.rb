@@ -33,7 +33,7 @@ class Service < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    title_changed? || super
+    title_changed? || slug.blank?
   end
 
   def remove_empty_audience

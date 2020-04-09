@@ -4,8 +4,13 @@
 	display:none;
 }
 
-#header {	
-	background-color: cornsilk;
+#header {
+	background-color: #CBF6FD;
+	color: #000;
+	border-top: solid #bbb 1px;
+	border-bottom: solid #bbb 1px;
+	font-size: 1.15rem;
+	font-family: "Roboto Condensed";
 	.container {
 		padding: 14px 10px;
 		height: auto;
@@ -27,7 +32,7 @@
 	.col {
 		padding-left: 0;
 	}
-  
+
 	.logo-container {
 		padding-left: 0;
 		@media (max-width: 640px) {

@@ -7,7 +7,6 @@
     min-width: 1200px;
 	}
 }
-
 html, body {
 	background-color: $white;
 	font-family: "Faustina";
@@ -54,12 +53,13 @@ strong, .strong {
 }
 
 .flash {
-	background-color: cornsilk;
+	background-color: #CBF6FD;
 	padding:10px;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 21px;
-	color: green;
+	color: black;
+	font-family: "Roboto Condensed";
 	.error {
 		color: $red;
 	}

@@ -131,7 +131,7 @@ class WebpagesController < ApplicationController
     @libguides = ExternalLink.find_by(slug: "libguides")
     @explore_charles = Category.find_by(slug: "explore-charles")
     @remote_student_support = Webpage.find_by(slug: "remote-student-support")
-    @remote_faculty_support = Webpage.find_by(slug: "remote-faculty-support")
+    @remote_faculty_support = Webpage.find_by(slug: "resources-for-temple-faculty")
     @explore_online_collections = Webpage.find_by(slug: "explore-online-collections")
   end
 

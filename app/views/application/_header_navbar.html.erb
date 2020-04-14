@@ -42,7 +42,8 @@
     <div class="col">
       <% unless @alert.blank? %>
       <div class="container">
-        <%= image_tag "information.png", class: "decorative", alt: "" , style: "height: 42px" %>
+        <%= image_tag "information.png", class: "decorative", alt: "" , style: "display:inline-block;height: 42px;float:left;margin-right:10px" %>
+        <div>
         <% @alert.each do |alert| %>
           <% unless alert.link.blank? %>
             <%= alert.scroll_text %> <%= link_to "Click here to see full details.", alert.link %>
@@ -50,6 +51,7 @@
             <%= alert.scroll_text %>
           <% end %>
         <% end %>
+        </div>
       </div>
       <% end %>
     </div>

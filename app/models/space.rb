@@ -47,7 +47,7 @@ class Space < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    name_changed? || super
+    name_changed? || slug.blank?
   end
 
   has_draft :description

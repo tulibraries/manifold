@@ -7,7 +7,6 @@
     min-width: 1200px;
 	}
 }
-
 html, body {
 	background-color: $white;
 	font-family: "Faustina";
@@ -54,16 +53,18 @@ strong, .strong {
 }
 
 .flash {
-	background-color: cornsilk;
+	background-color: #F9E7BD;
 	padding:10px;
 	width: 100%;
 	text-align: center;
-	margin-bottom: 21px;
-	color: green;
+	margin-bottom: 0;
+	color: black;
+	font-family: "Roboto Condensed";
 	.error {
 		color: $red;
 	}
 }
+
 a:not(.dropdown-item) {
 		color: #903;
 	a:active, a:hover, a:visited {

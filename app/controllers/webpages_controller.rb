@@ -130,7 +130,7 @@ class WebpagesController < ApplicationController
     @todays_hours = LibraryHour.todays_hours_at("ask_a_librarian")
     @libguides = ExternalLink.find_by(slug: "libguides")
     @explore_charles = Category.find_by(slug: "explore-charles")
-    @remote_student_support = Webpage.find_by(slug: "remote-learner-support")
+    @remote_student_support = Webpage.find_by(slug: "remote-student-support")
     @remote_faculty_support = Webpage.find_by(slug: "resources-for-temple-faculty")
     @explore_online_collections = Webpage.find_by(slug: "explore-online-collections")
   end

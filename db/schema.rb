@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_155112) do
+ActiveRecord::Schema.define(version: 2020_03_25_154745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_03_16_155112) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.boolean "alertability"
-    t.bigint "admin_group_id"
     t.string "name"
+    t.bigint "admin_group_id"
     t.index ["admin_group_id"], name: "index_accounts_on_admin_group_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
@@ -226,6 +226,8 @@ ActiveRecord::Schema.define(version: 2020_03_16_155112) do
     t.string "event_type"
     t.string "slug"
     t.string "guid"
+    t.string "timestamp_start"
+    t.string "event_url"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -425,7 +427,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_155112) do
     t.boolean "no_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["legacy_path"], name: "index_redirects_on_legacy_path"
+    t.index ["legacy_path"], name: "index_redirects_on_legacy_path", unique: true
     t.index ["redirectable_type", "redirectable_id"], name: "index_redirects_on_redirectable_type_and_redirectable_id"
   end
 

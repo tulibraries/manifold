@@ -1,11 +1,11 @@
 
   <div id="toolbar" class="d-none d-md-block">
     <div class="container text-right">
-        <%= link_to "TUportal", "https://tuportal.temple.edu" %> 
+        <%= link_to "TUportal", "https://tuportal.temple.edu" %>
         <%= link_to "Support the Libraries", @donate_link %>
     </div>
   </div>
-  
+
 <div id="header-navbar" class="container navbar navbar-static-top d-print-block" role="navigation">
   <div class="col-8 col-sm-7 col-lg-7 logo-container text-left ">
     <%= link_to root_path, class: "header-name", id: "header-logo" do %>
@@ -38,10 +38,12 @@
 
 <div id="wrapper">
 
-  <div id="header" class="row" style="border-top: solid #bbb 1px;border-bottom: solid #bbb 1px">
+  <div id="header" class="row">
     <div class="col">
       <% unless @alert.blank? %>
       <div class="container">
+        <%= image_tag "information.png", class: "decorative", alt: "" , style: "display:inline-block;height: 42px;float:left;margin-right:10px" %>
+        <div>
         <% @alert.each do |alert| %>
           <% unless alert.link.blank? %>
             <%= alert.scroll_text %> <%= link_to "Click here to see full details.", alert.link %>
@@ -49,6 +51,7 @@
             <%= alert.scroll_text %>
           <% end %>
         <% end %>
+        </div>
       </div>
       <% end %>
     </div>

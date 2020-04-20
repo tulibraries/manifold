@@ -68,17 +68,21 @@ class WebpagesController < ApplicationController
 
   def videos_show
     @displayMode = "show"
-    api_query = @basepath + "/content/" + URI::encode(params[:id])
-    ensemble_api(api_query)
-    unless @videos.nil?
-      @featured_video_id = @videos[:ID]
-      @featured_video_title = @videos[:Title]
-      @featured_video_description = CGI.unescapeHTML(@videos[:Description]) unless @videos[:Description].nil?
+    unless params[:id].nil?
+      api_query = @basepath + "/content/" + URI::encode(params[:id])
+      ensemble_api(api_query)
+      unless @videos.nil?
+        @featured_video_id = @videos[:ID]
+        @featured_video_title = @videos[:Title]
+        @featured_video_description = CGI.unescapeHTML(@videos[:Description]) unless @videos[:Description].nil?
+      else
+        return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
+      end
+      if @featured_video_id.nil?
+        return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
+      end
     else
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
-    end
-    if @featured_video_id.nil?
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
+      return redirect_to(webpages_videos_all_path, alert: "You must choose a video to stream.")
     end
   end
 
@@ -123,9 +127,12 @@ class WebpagesController < ApplicationController
     @print_my_paper = Service.find_by(slug: "printing")
     @book_study_room = Space.find_by(slug: "study-rooms-small")
     @locations = Building.find_by(slug: "ambler")
-    @todays_hours = LibraryHour.todays_hours_at("charles")
+    @todays_hours = LibraryHour.todays_hours_at("ask_a_librarian")
     @libguides = ExternalLink.find_by(slug: "libguides")
     @explore_charles = Category.find_by(slug: "explore-charles")
+    @remote_student_support = Webpage.find_by(slug: "remote-learner-support")
+    @remote_faculty_support = Webpage.find_by(slug: "resources-for-temple-faculty")
+    @explore_online_collections = Webpage.find_by(slug: "explore-online-collections")
   end
 
   def scrc

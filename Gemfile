@@ -24,7 +24,7 @@ gem "feedjira"
 gem "font-awesome-rails"
 gem "fuzzy_match"
 gem "google-analytics-rails", "1.1.1"
-gem "google-api-client", "~> 0.37"
+gem "google-api-client", "~> 0.38"
 gem "honeybadger", "~> 4.6"
 gem "httparty"
 gem "jbuilder", "~> 2.10"
@@ -64,8 +64,10 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "json-schema"
   gem "pry-rails"
+  gem "pry-byebug"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
+  gem "vcr"
 end
 
 group :development do

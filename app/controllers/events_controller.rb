@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class EventsController < ApplicationController
+  include SetInstance
+  include RedirectLogic
   before_action :set_event, only: [:show]
   before_action :init, only: [:index, :past]
   include EventFilters
@@ -99,6 +101,8 @@ class EventsController < ApplicationController
     end
 
     def set_event
-      @event = Event.friendly.find(params[:id])
+      @event = find_instance
+      return redirect_or_404 unless @event
+      @event_url = @event.event_url
     end
 end

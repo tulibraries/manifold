@@ -4,10 +4,11 @@
     <%= display_meta_tags site: "Temple University Libraries" %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <%= yield :head %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://v2.libanswers.com/load_chat.php?hash=fe2bd0cb1f04720f51641c4f01b8e22e"></script>
     <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0088/8647.js" async="async"></script>
     <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
@@ -21,16 +22,19 @@
        <div class="flash <%= key %>"><%= value %></div>
     <% end %>
 
-
   <%= render "header_navbar.html.erb" %>
 
   <div id="content" style="min-height: 640px">
     <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a>
+
     <%= yield %>
 
+    <div id="libchat_2742b65792dac9042fc276582aee7db3"></div>
   </div>
 
   <%= render "footer.html.erb" %>
+
+  <script type="text/javascript" src="https://v2.libanswers.com/load_chat.php?hash=2742b65792dac9042fc276582aee7db3"></script>
 
   </body>
 </html>

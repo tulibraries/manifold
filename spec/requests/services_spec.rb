@@ -15,7 +15,7 @@ RSpec.describe "Services", type: :request do
   describe "a request for /services/id when service does not exist" do
     it "renders the service" do
       expect { get service_path(service.id + 1) }
-        .to raise_error(ActiveRecord::RecordNotFound)
+        .to raise_error(ActionController::RoutingError)
     end
   end
 

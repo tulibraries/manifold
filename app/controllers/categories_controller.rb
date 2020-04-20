@@ -2,6 +2,7 @@
 
 class CategoriesController < ApplicationController
   include HasCategories
+  include SetInstance
   include RedirectLogic
   before_action :set_category, only: [:show]
 
@@ -51,8 +52,16 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def index
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { render json: CategorySerializer.new(Category.all) }
+    end
+  end
+
   private
     def set_category
-      @category = Category.friendly.find(params[:id])
+      @category = find_instance
+      return redirect_or_404 unless @category
     end
 end

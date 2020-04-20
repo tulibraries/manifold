@@ -20,4 +20,49 @@ FactoryBot.define do
     legacy_path { "/collections/blockson_collection" }
     manifold_path { "/blockson_collection" }
   end
+
+  factory :category_redirect, class: Redirect do
+    legacy_path { "/categories/9" }
+    manifold_path { "/blockson_collection" }
+  end
+
+  factory :event_redirect, class: Redirect do
+    legacy_path { "/events/9" }
+    manifold_path { "/blockson_collection" }
+  end
+
+  factory :exhibition_redirect, class: Redirect do
+    legacy_path { "/exhibitions/9" }
+    manifold_path { "/blockson_collection" }
+  end
+
+  factory :finding_aid_redirect, class: Redirect do
+    legacy_path { "/finding_aids/9" }
+    manifold_path { "/blockson_collection" }
+  end
+
+  factory :group_redirect, class: Redirect do
+    legacy_path { "/groups/9" }
+    manifold_path { "/blockson_collection" }
+  end
+
+  factory :highlight_redirect, class: Redirect do
+    legacy_path { "/highlights/9" }
+    manifold_path { "/blockson_collection" }
+  end
+
+  factory :policy_redirect, class: Redirect do
+    legacy_path { "/policiess/9" }
+    manifold_path { "/blockson_collection" }
+  end
+
+  factory :service_redirect, class: Redirect do
+    legacy_path { "/services/9" }
+    manifold_path { "/blockson_collection" }
+  end
+
+  factory :space_redirect, class: Redirect do
+    legacy_path { "/spaces/9" }
+    manifold_path { "/blockson_collection" }
+  end
 end

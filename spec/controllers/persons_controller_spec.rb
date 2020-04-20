@@ -40,6 +40,7 @@ RSpec.describe PersonsController, type: :controller do
       get :show, params: { id: person.id }, format: :json
       expect(response.header["Content-Type"]).to include "json"
     end
+
   end
 
   describe "GET #show as JSON" do

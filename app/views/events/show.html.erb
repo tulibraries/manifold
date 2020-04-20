@@ -28,18 +28,18 @@
     </div>
 
     <div class="col-12 col-lg-3 event-data pl-lg-5">
-      
+
       <% unless @event.registration_link.blank? %>
-        
-          <div class="col register-link">
-            <%= link_to "Register", strip_tags(@event.registration_link) %>
-          </div>
-        
+
+        <div class="col register-link">
+          <%= link_to "Register", strip_tags(@event.registration_link) %>
+        </div>
+
       <% end %>
 
-    
+
+      <% unless @event.building.nil? %>
         <div class="col event-location">
-          <% unless @event.building.nil? %>
             <h3 class="event-space"><%= link_to @event.building.name, building_path(@event.building) %></h3>
             <p>
               <% unless @event.space.nil? %>
@@ -56,9 +56,9 @@
               <%= @event.external_city %>, <%= @event.external_state %> <%= @event.external_zip %>
             <% end %>
           </p>
-          <% end %>
         </div>
-      
+      <% end %>
+
 
     </div>
   </div>

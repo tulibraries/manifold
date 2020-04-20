@@ -9,6 +9,7 @@ RSpec.describe "persons/show", type: :view do
 
   before(:each) do
     @buildings = [building]
+    @person =  FactoryBot.create(:person, libguides_account: "", springshare_id: "", spaces: [space])
   end
 
   it "displays the sample person image" do
@@ -18,8 +19,30 @@ RSpec.describe "persons/show", type: :view do
   end
 
   it "displays the default image when no custom image supplied" do
-    @person =  FactoryBot.create(:person, spaces: [space])
     render
     expect(rendered).to match /#{"assets/T-"}/
   end
+
+  it "returns a formatted springshare link if springshare_id field populated" do
+    @person = FactoryBot.create(:person, spaces: [space])
+    render
+    expect(rendered).to match(@person.springshare_id)
+  end
+
+  it "does not return a formatted springshare link if springshare_id field populated" do
+    render
+    expect(rendered).to match(@person.springshare_id)
+  end
+
+  it "returns a formatted springshare link if springshare_id field populated" do
+    @person = FactoryBot.create(:person, spaces: [space])
+    render
+    expect(rendered).to match(@person.libguides_account)
+  end
+
+  it "does not return a formatted springshare link if springshare_id field populated" do
+    render
+    expect(rendered).to match(@person.libguides_account)
+  end
+
 end

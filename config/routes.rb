@@ -73,7 +73,7 @@ Rails.application.routes.draw do
   root "webpages#home"
   resources :blog_posts, only: [:index, :show]
   resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
-  resources :categories, only: [:show], concerns: [:imageable]
+  resources :categories, only: [:index, :show], concerns: [:imageable]
   resources :blogs, only: [:index, :show]
   resources :collections, only: [:index, :show], concerns: [:imageable]
   resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]

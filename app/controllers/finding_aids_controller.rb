@@ -28,10 +28,10 @@ class FindingAidsController < ApplicationController
   def return_aids
     all_aids = FindingAid.group(:id).order(:name)
 
-    if params.has_key?("collection")
+    if params[:collection].present?
       collections = collections_list(all_aids)
     end
-    if params.has_key?("subject")
+    if params[:subject].present?
       subjects = subjects_list(all_aids)
     end
 

@@ -6,18 +6,24 @@ class FindingAid < ApplicationRecord
   include Draftable
   include Validators
   include SchemaDotOrgable
+
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
   paginates_per 15
-
-  before_save :weed_nils
-
   has_paper_trail
 
+  before_save :weed_nils
   before_validation :sanitize_description
   validates :collection_id, collection_or_subject: true
+
+  scope :with_subject, ->(subjects) {
+    where(subject_query(subjects), *(subjects.map { |s| "%#{s}%" })) if subjects.present?
+  }
+  scope :in_collection, ->(collection_id) {
+    includes(:collections).where(collections: { "id" => collection_id }) if collection_id.present?
+  }
 
   serialize :subject
 
@@ -56,5 +62,9 @@ class FindingAid < ApplicationRecord
     # TODO: find and eliminate the cause of nil values on form submission
     def weed_nils
       subject.reject! { |s| s == "" }
+    end
+
+    def self.subject_query(subjects)
+      subjects.size.times.map { |s| "finding_aids.subject LIKE ?" }.join(" AND ")
     end
 end

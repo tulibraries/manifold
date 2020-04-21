@@ -9,5 +9,9 @@ FactoryBot.define do
     identifier { "MyString" }
     drupal_id { "MyString" }
     path { "a-finding-aid" }
+
+    factory :multi_subject_finding_aid do
+      subject { ["MyString", "Another One"] }
+    end
   end
 end

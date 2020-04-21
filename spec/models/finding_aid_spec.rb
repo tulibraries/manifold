@@ -45,6 +45,58 @@ RSpec.describe FindingAid, type: :model do
   end
 
 
+  describe "Scope" do
+    describe ":with_subject" do
+      before do
+        @f1 = FactoryBot.create(:finding_aid, subject: ["sub1"])
+        @f2 = FactoryBot.create(:finding_aid, subject: ["sub1", "sub2"])
+      end
+
+      it "returns all finding aids when subejcts is empty" do
+        expect(FindingAid.with_subject([])).to include(@f1, @f2)
+      end
+
+      it "returns all finding aids with one subject" do
+        expect(FindingAid.with_subject(["sub1"])).to include(@f1, @f2)
+      end
+
+      it "returns only the finding aid with sub2" do
+        expect(FindingAid.with_subject(["sub2"])).to include(@f2)
+        expect(FindingAid.with_subject(["sub2"])).not_to include(@f1)
+      end
+
+      it "returns no finding aids with a unused subject" do
+        expect(FindingAid.with_subject(["sub3"])).to eq []
+      end
+
+    end
+
+    describe ":in_collection" do
+      before do
+        @coll1 = FactoryBot.create(:collection, name: "coll1")
+        @coll2 = FactoryBot.create(:collection, name: "coll2")
+        @f1 = FactoryBot.create(:finding_aid, collections: [@coll1])
+        @f2 = FactoryBot.create(:finding_aid, collections: [@coll1, @coll2])
+      end
+
+      it "returns all finding aids when collection is empty" do
+        expect(FindingAid.in_collection([])).to include(@f1, @f2)
+      end
+
+      it "returns all finding aids with common collection" do
+        expect(FindingAid.in_collection([@coll1.id])).to include(@f1, @f2)
+      end
+
+      it "returns only the expected finding aid for sub2" do
+        expect(FindingAid.in_collection([@coll2.id])).to include(@f2)
+        expect(FindingAid.in_collection([@coll2.id])).not_to include(@f1)
+      end
+
+      it "returns no finding aids with an unknown collection" do
+        expect(FindingAid.in_collection([0])).to eq []
+      end
+    end
+  end
 
   it_behaves_like "categorizable"
 end

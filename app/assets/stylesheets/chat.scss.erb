@@ -1,17 +1,34 @@
-.lcs_slide_out-r {top: 30%!important;}
+@import "partials/_vars.scss";
 
-#lcs_slide_out_button-15064 {
-  text-align:left;
-  width: 98px;
+.lcs_slide_out {
+  position: fixed;
+  right: 0;
+  z-index: 1000;
+  transform: rotate(90deg)!important;
+  @media (max-device-width: 767px) {
+    display: none!important;
+  }
+}
+.lcs_slide_out a, .lcs_slide_out a:hover {
+  display:block;
+  text-align: left;
+  padding: 2px 0 0 12px;
+  position: absolute;
   background-image: url(<%= asset_path "chat.png" %>);
   background-position: right center;
   background-repeat: no-repeat;
   background-size: 42px 49px;
-  font-size: 125%;
-}
-
-@media (max-device-width: 767px) {
-  #lcs_slide_out-15064 {
-    display: none!important;
-  }
+  font-size: 1.55rem;
+  font-family: "Faustina";
+  width: 110px;
+  height: 50px;
+  color: $white!important;
+  background-color: rgb(47, 40, 126);
+  box-shadow: rgb(204, 204, 204) 0px 0px 5px;
+  border: solid $white 4px;
+  border-width: 0 4px 4px!important;
+  border-radius: 0 0 4px 4px!important;
+  border-color: $white!important;
+  cursor: hand;
+  text-decoration: none;
 }

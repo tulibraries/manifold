@@ -19,12 +19,13 @@
         </div>
         <% unless @person.spaces.empty? %>
           <div>
-            <% @buildings.each do |key,value| %>
-            <%= link_to key.name, key %>: 
-              <% value.each do |space| %>
-                <%= link_to space.name, space %><% unless space == value.last %>,<% end %> 
+            <% @buildings.each do |building| %>
+              <%= link_to building.name, building %>: 
+              <ul>
+              <% @person.spaces.select { |space| space.building == building }.each do |space| %>
+                <li><%= link_to space.name, space %></li>
               <% end %>
-              <br />
+              </ul>
             <% end %>
           </div>
         <% end %>

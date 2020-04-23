@@ -176,6 +176,7 @@ class WebpagesController < ApplicationController
 
   def hsl
     @hsl_giving = Policy.find_by(slug: "hsl-giving")
+    @remote_learning = Webpage.find_by(slug: "health-sciences-libraries")
     @ginsburg_location = Building.find_by(slug: "ginsburg")
     @podiatry_location = Building.find_by(slug: "podiatry")
     @visit = Category.find_by(slug: "hsl-study")

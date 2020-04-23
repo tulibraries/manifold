@@ -13,10 +13,14 @@
 </div>
 
 <div class="row">
-	
+
 	<div class="col-12 col-lg-4 pr-14 left-links">
 		<% unless @ginsburg_location.nil? && @podiatry_location.nil? %>
 		<div class="locations">
+			<% unless @remote_learning.nil? %>
+			<%= link_to "Remote Learning Support", @remote_learning %>
+			<hr />
+			<% end %>
 			<% unless @ginsburg_location.nil? %>
 			<%= link_to @ginsburg_location.label, building_path(@ginsburg_location) %>
 			<hr />
@@ -40,7 +44,7 @@
 			</div>
 			<hr />
       <% unless @journal_finder.nil? %>
-        <%= image_tag('journal_finder.png', class: "decorative", style: "width: 100px", alt: "") %> 
+        <%= image_tag('journal_finder.png', class: "decorative", style: "width: 100px", alt: "") %>
         <%= link_to "Journal Finder", @journal_finder %>
       <% end %>
       <% unless @hsl_giving.nil? %>
@@ -110,9 +114,7 @@
 			</div>
 		</div>
 	</div>
-	
-</div>
 
 </div>
 
-
+</div>

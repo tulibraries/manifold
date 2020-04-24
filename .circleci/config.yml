@@ -53,9 +53,9 @@ jobs:
             RAILS_ENV=test sudo bundle exec rake db:seed
             sudo npm install -g ajv
             sudo npm install -g ajv-cli
-            sudo bundle exec rubocop
-            sudo bundle exec brakeman --no-pager
-            sudo bundle exec rspec spec
+            RAILS_ENV=test sudo bundle exec rubocop
+            RAILS_ENV=test sudo bundle exec brakeman --no-pager
+            RAILS_ENV=test sudo bundle exec rspec spec
   qa_deploy:
     docker:
       - image: circleci/python:3.6.6

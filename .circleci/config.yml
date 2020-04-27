@@ -38,24 +38,54 @@ jobs:
       - image: circleci/postgres:11-alpine
         environment:
           TZ: "America/New_York"
-          BUNDLER_VERSION: "2.0.1"
+    resource_class: small
     steps:
       - checkout
       - run:
+          name: make sure we have the latest bundler
           command: |
             sudo gem update --system
-            sudo gem install -f bundler --version "$BUNDLER_VERSION"
+            gem install -f bundler:2.1.4
+
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}
+            - gem-cache-v1
+
+      - run:
+          name: bundle install w/ dependent libs
+          command: |
             sudo apt-get update
             sudo apt-get install postgresql-client
+            bundle install --path vendor/bundle
+      
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          name: Set up db for run
+          command: |
             sudo psql -c "create role manifold with createdb login password 'password';" -U postgres -h localhost
-            sudo bundle install
-            RAILS_ENV=test sudo bundle exec rake db:setup
-            RAILS_ENV=test sudo bundle exec rake db:seed
+            RAILS_ENV=test bundle exec rake db:setup
+          
+      - run:
+          name: Install node packages required for tests
+          command: | 
             sudo npm install -g ajv
             sudo npm install -g ajv-cli
-            RAILS_ENV=test sudo bundle exec rubocop
-            RAILS_ENV=test sudo bundle exec brakeman --no-pager
-            RAILS_ENV=test sudo bundle exec rspec spec
+      - run:
+          name: Ruby Lint
+          command: bundle exec rubocop
+      - run:
+          name: Brakeman
+          command: bundle exec brakeman --no-pager
+      - run:
+          name: Ruby tests
+          command: bundle exec rspec
+
   qa_deploy:
     docker:
       - image: circleci/python:3.6.6

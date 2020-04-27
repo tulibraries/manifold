@@ -30,9 +30,10 @@ $sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $sizes: map-merge(
   (
+    12: 12%,
     16: 16%,
     18: 18%,
-    20: 20%,
+    20: 15%,
     22: 22.5%,
     23: 23%,
     25: 25%,
@@ -52,4 +53,3 @@ $sizes: map-merge(
 @import "*";
 @import "partials/_vars.scss";
 @import "font-awesome";
-

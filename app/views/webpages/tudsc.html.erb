@@ -13,7 +13,7 @@
 </div>
 
 <div class="row">
-	
+
 	<div class="col-12 col-lg-4 pr-14 left-links">
 		<% unless @makerspace_location.nil? && @podiatry_location.nil? && @innovation_location.nil? %>
 		<div class="locations">
@@ -37,6 +37,9 @@
 			<hr />
 			<%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
 			<span class="mailer"><%= link_to "Newsletter Signup", "https://mailchi.mp/69c8cfeb1679/dssnewsletter", target: "_blank" %></span>
+			<hr />
+			<%= image_tag "chat.png", style: "width: 100px", class: "decorative", alt: "" %>
+			<span class="mailer"><%= link_to "LCDSS Staff Directory", people_path(department: "duckworth-scholars-studio-staff") %></span>
 		</div>
 
 	</div>
@@ -104,7 +107,7 @@
 						<% @blog_posts.each do |link| %>
 							<li><%= link_to link.title, link.post_guid %></li>
 						<% end %>
-						
+
 						<li class="text-right all-events"><%= link_to "View all", strip_tags(@blog.base_url), style: "text-decoration:underline" %> ></li>
 					</ul>
 				</div>
@@ -114,9 +117,7 @@
 			</div>
 		</div>
 	</div>
-	
-</div>
 
 </div>
 
-
+</div>

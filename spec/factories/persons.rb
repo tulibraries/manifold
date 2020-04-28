@@ -11,12 +11,12 @@ FactoryBot.define do
     research_identifier { "PREZBEEB" }
     personal_site { "http://prez.example.com" }
     springshare_id { "0123-4567-8901" }
-    libguides_account { "0123-4567-8901" }
+    libguides_account { "1098-7654-3210" }
     spaces { [FactoryBot.create(:space)] }
     sequence(:specialties) { |n| [ "Subject #{n}" ] }
     trait :with_image do
       after :create do |person|
-        file_path = Rails.root.join("spec/support/assets/hal.png")
+        file_path = Rails.root.join("spec/fixtures/charles.jpg")
         file = fixture_file_upload(file_path, "image/png")
         person.image.attach(file)
       end

@@ -77,7 +77,7 @@
             <% end %>
           <% end %>
         </div>
-        <div class="h-18 square bb-0 left">
+        <div class="h-18 square bb-0">
           <% unless @journal_finder.nil? %>
             <%= link_to @journal_finder do %>
               <%= image_tag('journal_finder.png', class: "icon decorative", alt: "") %> <span>Journal Finder</span>
@@ -91,7 +91,7 @@
 			<div class="col-12 col-lg-6 px-0 px-lg-5 news-events">
 				<div class="events">
 			    <%= link_to events_path do %>
-			      <%= image_tag('events-banner.jpg', class: "d-none d-lg-block decorative", alt: "") %>
+			      <%= image_tag('homepage-events.jpg', class: "d-none d-lg-block decorative", alt: "") %>
 			      <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
 			      <div class="caption" id="eventscaption">
 							<span class="lynde">Events & Exhibits</span>
@@ -109,11 +109,12 @@
 				</div>
 			</div>
 			<div class="col-12 col-lg-3 locations-links px-0">
-				<div class="h-18"><%= link_to "Health Sciences Libraries", webpages_hsl_path %></div>
-				<div class="h-18 two-lines"><%= link_to "Loretta C. Duckworth Scholars Studio", webpages_lcdss_path %></div>
-				<div class="h-18 two-lines"><%= link_to "Charles L. Blockson Afro-American Collection", webpages_blockson_path %></div>
-				<div class="h-18 two-lines"><%= link_to "Special Collections Research Center", webpages_scrc_path %></div>
-				<div class="h-18 bb-0"><%= link_to "Law Library", "https://www.law.temple.edu/library/about-the-law-library/" %></div>
+				<div class="h-20"><%= link_to "Charles Library", @explore_charles %></div>
+				<div class="h-20"><%= link_to "Health Sciences Libraries", webpages_hsl_path %></div>
+				<div class="h-20 two-lines"><%= link_to "Loretta C. Duckworth Scholars Studio", webpages_lcdss_path, class: "not-wrapped" %></div>
+				<div class="h-20 two-lines"><%= link_to "Charles L. Blockson Afro-American Collection", webpages_blockson_path %></div>
+				<div class="h-20 two-lines"><%= link_to "Special Collections Research Center", webpages_scrc_path, class: "not-wrapped" %></div>
+				<div class="h-20 bb-0"><%= link_to "Law Library", "https://www.law.temple.edu/library/about-the-law-library/" %></div>
 				<div class="caption">
 					<%= link_to("See all libraries and locations >", @locations, class: "gobel") unless @locations.nil? %>
 				</div>

@@ -5,33 +5,13 @@ class ApplicationController < ActionController::Base
   # user, we have no access to the devise object. So, we need to override
   # current_user to return the current account. This is needed both
   # in ApplicationController and in Admin::ApplicationController
-  before_action :get_alert, :set_footer
+  before_action :get_alert
   before_action :set_paper_trail_whodunnit
   before_action :locations, :set_dates, :set_location
   before_action :show_hours
 
   def get_alert
     @alert = Alert.where(published: true)
-  end
-
-  def set_footer
-    @ezborrow_link = ExternalLink.find_by(slug: "ezborrow")
-    @illiad_link = ExternalLink.find_by(slug: "illiad")
-    @refworks_link = ExternalLink.find_by(slug: "refworks")
-    @jobs_link = Webpage.find_by(slug: "jobs")
-    @publications_link = Webpage.find_by(slug: "system-summary")
-    @numbers_link = Webpage.find_by(slug: "numbers")
-    @social_links = Webpage.find_by(slug: "social-media")
-    @donate_link = Category.find_by(slug: "support-the-libraries")
-    @diversity_link = Webpage.find_by(slug: "diversity")
-    @standards_link = Policy.find_by(slug: "standards")
-    @privacy_link = Service.find_by(slug: "privacy")
-    @tu_homepage_link = ExternalLink.find_by(slug: "tu-homepage")
-    @org_charts = ExternalLink.find_by(slug: "org-charts")
-    @staff_forms = ExternalLink.find_by(slug: "staff-forms")
-    @chat_link = ExternalLink.find_by(slug: "chat-link")
-    @db_az_link = ExternalLink.find_by(slug: "db-az")
-    @journal_finder = Rails.configuration.primo_articles_url
   end
 
   def show_hours

@@ -43,10 +43,8 @@
 			<%= link_to "Chat with a Health Sciences Librarian", "https://v2.libanswers.com/chati.php?hash=d608b96235d521d5947815fa1dfe16b8&referer=http%3A%2F%2Flocalhost%3A3000%2Fhsl&referer_title=Temple%20University%20Libraries" %>
 			</div>
 			<hr />
-      <% unless @journal_finder.nil? %>
         <%= image_tag('journal_finder.png', class: "decorative", style: "width: 100px", alt: "") %>
-        <%= link_to "Journal Finder", @journal_finder %>
-      <% end %>
+        <%= link_to "Journal Finder", "/journal-finder" %>
       <% unless @hsl_giving.nil? %>
       <hr />
       <div style="height:79px;" class="two-lines">

@@ -2,7 +2,7 @@
   <div id="toolbar" class="d-none d-md-block">
     <div class="container text-right">
         <%= link_to "TUportal", "https://tuportal.temple.edu" %>
-        <%= link_to "Support the Libraries", @donate_link %>
+        <%= link_to "Support the Libraries", "/support-the-libraries" %>
     </div>
   </div>
 
@@ -76,7 +76,7 @@
           <%= link_to t("manifold.header.hours"), hours_path %>
         </li>
         <li class="nav-right chat-nav" id="chat-nav">
-          <%= link_to t("manifold.header.chat"), @chat_link, target: "_blank" unless @chat_link.nil? %>
+          <%= link_to t("manifold.header.chat"), "/chat", target: "_blank" %>
         </li>
         <li class="nav-right account-nav">
           <%= link_to t("manifold.header.my_account"), "#{librarysearch_url("users/account")}" %>

@@ -10,42 +10,34 @@
 	</div>
 <div class="container under">
 	<div class="row ctaRow">
-		<% unless @research_help.nil? %>
-			<div class="col-12 col-lg-3 pr-3">
-		    <div class="cta-white">
-			    <%= link_to @research_help, class: "strong" do %>
-			      <%= image_tag('research_help.png', class: "decorative", alt: "") %> <span>Research Help</span>
-			    <% end %>
-		    </div>
-		  </div>
-		<% end %>
-		<% unless @remote_student_support.nil? %>
-			<div class="col-12 col-lg-3 pr-3">
-		    <div class="cta-white">
-			    <%= link_to @remote_student_support, class: "strong" do %>
-			      <%= image_tag('remote-student-support.png', class: "decorative", alt: "") %> <span>Remote Student Support</span>
-			    <% end %>
-		    </div>
-		  </div>
-		<% end %>
-		<% unless @remote_faculty_support.nil? %>
-		  <div class="col-12 col-lg-3 pr-3">
-		    <div class="cta-white">
-			    <%= link_to @remote_faculty_support, class: "strong" do %>
-			      <%= image_tag('remote-faculty-support.png', class: "decorative", alt: "") %> <span>Remote Faculty Support</span>
-			    <% end %>
-		    </div>
-		  </div>
-		<% end %>
-		<% unless @explore_online_collections.nil? %>
-		  <div class="col-12 col-lg-3">
-		    <div class="cta-white">
-			    <%= link_to @explore_online_collections, class: "strong" do %>
-			      <%= image_tag('ebook_black.png', class: "decorative", alt: "") %> <span>Explore Online Collections</span>
-			    <% end %>
-		    </div>
-		  </div>
-		<% end %>
+		<div class="col-12 col-lg-3 pr-3">
+	    <div class="cta-white">
+		    <%= link_to "/research-help", class: "strong" do %>
+		      <%= image_tag('research_help.png', class: "decorative", alt: "") %> <span>Research Help</span>
+		    <% end %>
+	    </div>
+	  </div>
+		<div class="col-12 col-lg-3 pr-3">
+	    <div class="cta-white">
+		    <%= link_to "/remote-student-support", class: "strong" do %>
+		      <%= image_tag('remote-student-support.png', class: "decorative", alt: "") %> <span>Remote Student Support</span>
+		    <% end %>
+	    </div>
+	  </div>
+	  <div class="col-12 col-lg-3 pr-3">
+	    <div class="cta-white">
+		    <%= link_to "remote-faculty-support", class: "strong" do %>
+		      <%= image_tag('remote-faculty-support.png', class: "decorative", alt: "") %> <span>Remote Faculty Support</span>
+		    <% end %>
+	    </div>
+	  </div>
+	  <div class="col-12 col-lg-3">
+	    <div class="cta-white">
+		    <%= link_to "/explore-online-collections", class: "strong" do %>
+		      <%= image_tag('ebook_black.png', class: "decorative", alt: "") %> <span>Explore Online Collections</span>
+		    <% end %>
+	    </div>
+	  </div>
 	</div>
 </div>
 
@@ -64,24 +56,18 @@
 			    <% end %>
 				</div>
 				<div class="h-18 square">
-					<% unless @db_az_link.nil? %>
-				    <%= link_to @db_az_link do %>
-				      <%= image_tag('database_white.png', class: "icon decorative", alt: "") %> <span>Databases</span>
-				    <% end %>
+			    <%= link_to "/databases" do %>
+			      <%= image_tag('database_white.png', class: "icon decorative", alt: "") %> <span>Databases</span>
 			    <% end %>
 				</div>
         <div class="h-18 square">
-          <% unless @libguides.nil? %>
-            <%= link_to @libguides do %>
-              <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> <span>Research Guides</span>
-            <% end %>
+          <%= link_to "/research-guides" do %>
+            <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> <span>Research Guides</span>
           <% end %>
         </div>
         <div class="h-18 square bb-0">
-          <% unless @journal_finder.nil? %>
-            <%= link_to @journal_finder do %>
-              <%= image_tag('journal_finder.png', class: "icon decorative", alt: "") %> <span>Journal Finder</span>
-            <% end %>
+          <%= link_to "/journal-finder" do %>
+            <%= image_tag('journal_finder.png', class: "icon decorative", alt: "") %> <span>Journal Finder</span>
           <% end %>
         </div>
 				<div class="caption">

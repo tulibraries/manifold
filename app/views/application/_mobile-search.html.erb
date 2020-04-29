@@ -11,7 +11,7 @@
       <ul class="text-center">
         <li><%= link_to t("manifold.header.search.books"), "#{librarysearch_url("books")}" %></li>
         <li><%= link_to t("manifold.header.search.articles"), "#{librarysearch_url("articles")}" %></li>
-        <li><%= link_to t("manifold.header.search.databases"), @db_az_link unless @db_az_link.nil? %></li>
+        <li><%= link_to t("manifold.header.search.databases"), "/databases" %></li>
       </ul>
     </div>
   </div>

@@ -30,6 +30,8 @@ class Person < ApplicationRecord
   has_many :occupant, dependent: :destroy
   has_many :spaces, through: :occupant, source: :space
 
+  has_many :departments, -> { is_department }, class_name: "Group"
+
   def slug_candidates
     [
       :name,
@@ -41,6 +43,17 @@ class Person < ApplicationRecord
   def should_generate_new_friendly_id?
     first_name_changed? || last_name_changed? || job_title_changed? || slug.blank?
   end
+
+  scope :with_specialty, ->(specialties) {
+    includes(:specialties) if specialties.present?
+  }
+  scope :in_department, ->(group_id) {
+    includes(:departments)
+  }
+  scope :at_location, ->(space_id) {
+    includes(:spaces).where(spaces: { "member_id" => space_id }) if space_id.present?
+  }
+
 
   def name
     "#{first_name} #{last_name}"

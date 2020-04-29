@@ -6,8 +6,7 @@ class PersonsController < ApplicationController
   before_action :get_persons, only: [:index]
 
   def index
-    @persons = get_persons
-    @fcn_link = Webpage.find_by(title: "Frequently called numbers")
+    @persons = Person.all
 
     respond_to do |format|
       format.html
@@ -23,6 +22,32 @@ class PersonsController < ApplicationController
       format.html
       format.json { render json: PersonSerializer.new(@person) }
     end
+  end
+
+  def get_specialty_filter_values(people)
+    people
+      .map(&:specialties)
+      .reject(&:nil?)
+      .flatten
+      .sort
+      .uniq
+  end
+
+  def get_department_filter_values(people)
+    people
+      .map(&:groups)
+      .select { |group| group.any? { |group| group.group_type == "Department" } }
+      .flatten
+      .sort
+      .uniq
+  end
+
+  def get_location_filter_values(people)
+    people
+      .map(&:spaces)
+      .flatten
+      .sort
+      .uniq
   end
 
   def get_persons
@@ -47,50 +72,29 @@ class PersonsController < ApplicationController
       all_persons = arrays
     end
 
-    return_people(all_persons, all_persons)
+    @filtered_persons = Person.all
+    .order(:last_name, :first_name)
+      # .in_department(department)
+      # .at_location(location)
+      # .with_specialty(specialties)
+
+    @persons_list = @filtered_persons.page params[:page]
+    return_filters(@filtered_persons)
   end
 
-
-  def return_people(all, persons)
-    people = []
-    if params.has_key?("specialists")
-      people = persons
-    end
-
-    if params.has_key?("specialty")
-      if people.blank?
-        special_people = specialties_list(persons).select { |p| p.id }
-      else
-        special_people = specialties_list(people).select { |p| p.id }
-      end
-    end
-    if params.has_key?("department")
-      if people.blank?
-        department_people = departments_list(persons).select { |p| p.id }
-      else
-        department_people = departments_list(people).select { |p| p.id }
-      end
-    end
-    if params.has_key?("location")
-      if people.blank?
-        location_people = locations_list(persons).select { |p| p.id }
-      else
-        location_people = locations_list(people).select { |p| p.id }
-      end
-    end
-
-    filtered_people = [Array(location_people), Array(department_people), Array(special_people)].reject(&:empty?).reduce(:&) || []
-
-    @people = filtered_people.presence || persons
-    @people_list = Person.where(id: @people.map(&:id)).order(:last_name, :first_name)
-    get_filters(@people_list)
-    @persons_list = @people_list.page params[:page]
+  def return_filters(filtered_persons)
+    @subjects = get_specialty_filter_values(filtered_persons)
+    @departments = get_department_filter_values(filtered_persons)
+    @locations = get_location_filter_values(filtered_persons)
+    # binding.pry
   end
 
-  def get_filters(people)
-    @subjects = @people.select { |person| person.specialties.try(:any?) }.collect { |p| p.specialties }.flatten.uniq.sort.reject { |s| s.empty? }
-    @departments = @people.select { |person| person.groups.try(:any?) }.collect { |p| p.groups }.flatten.uniq.sort.reject { |g| g.group_type != "Department" }
-    @locations = @people.select { |person| person.spaces.try(:any?) }.collect { |p| p.spaces }.flatten.uniq.sort
+  def department
+    params[:department]
+  end
+
+  def location
+    params[:location]
   end
 
 

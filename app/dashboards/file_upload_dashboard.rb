@@ -11,6 +11,7 @@ class FileUploadDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    slug: Field::String,
     name: Field::String,
     file: FileField
   }.freeze
@@ -29,6 +30,7 @@ class FileUploadDashboard < BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :slug,
     :name,
     :file
   ].freeze
@@ -38,6 +40,7 @@ class FileUploadDashboard < BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :file
   ].freeze
 

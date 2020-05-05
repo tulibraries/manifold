@@ -12,7 +12,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     description: DescriptionField,
     effective_date: Field::DateTime,
     expiration_date: Field::DateTime,
@@ -62,7 +62,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   ].freeze
 
   def display_resource(policy)
-    "##{policy.id} #{policy.name}"
+    "#{policy.name}"
   end
 
   def tinymce?

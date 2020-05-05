@@ -13,7 +13,7 @@ class BlogDashboard < Administrate::BaseDashboard
     blog_posts: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     base_url: Field::String,
     feed_path: Field::String,
     last_sync_date: Field::DateTime,

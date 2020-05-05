@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @category = FactoryBot.create(:category)
+    @models = ["category"]
   end
 
   after(:all) do

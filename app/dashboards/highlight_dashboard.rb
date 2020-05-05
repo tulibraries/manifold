@@ -12,7 +12,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     image: PhotoField,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     title: Field::String,
     blurb: Field::Text,
     link_label: Field::String,

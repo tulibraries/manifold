@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @building = FactoryBot.create(:building)
+    @models = ["building"]
   end
 
   after(:all) do

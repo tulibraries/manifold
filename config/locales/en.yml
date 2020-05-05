@@ -253,6 +253,7 @@ en:
           title: "Group Visit Request"
         review_protocol:
           title: "Temple Review Protocol"
+        hidden_title_text: "To change the title of this resource, please <a href=mailto:\"tul-web-support@temple.edu\">contact an administrator</a>."
 
     error:
       user_not_registered: "User not registered."

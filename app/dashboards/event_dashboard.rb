@@ -13,7 +13,7 @@ class EventDashboard < BaseDashboard
     building: Field::BelongsTo,
     space: Field::BelongsTo,
     person: Field::BelongsTo,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     id: Field::Number,
     title: Field::String,
     description: DescriptionField,
@@ -133,7 +133,7 @@ class EventDashboard < BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(event)
-    "Event ##{event.id}"
+    "#{event.title}"
   end
 
   def tinymce?

@@ -8,8 +8,6 @@ class FindingAidsController < ApplicationController
   before_action :return_aids, only: [:index]
 
   def index
-    @catalog_search = "#{Rails.configuration.librarysearch_finding_aids_url}"
-
     respond_to do |format|
       format.html
       format.json { render json: FindingAidSerializer.new(@finding_aids) }

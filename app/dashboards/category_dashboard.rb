@@ -13,7 +13,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     image: PhotoField.with_options(admin_only: true),
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     custom_url: Field::String,
     categories: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),

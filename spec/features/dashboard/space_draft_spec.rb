@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::SpaceDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @space = FactoryBot.create(:space)
+    @models = ["space"]
   end
 
   after(:all) do

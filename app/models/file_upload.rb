@@ -10,8 +10,4 @@ class FileUpload < ApplicationRecord
 
   validates :name, presence: true
   validates :file, content_type: ["application/pdf"]
-
-  def should_generate_new_friendly_id?
-    name_changed? || slug.blank?
-  end
 end

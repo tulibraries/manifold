@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @collection = FactoryBot.create(:collection)
+    @models = ["collection"]
   end
 
   after(:all) do

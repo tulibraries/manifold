@@ -10,7 +10,7 @@ class WebpageDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     group: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,

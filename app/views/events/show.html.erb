@@ -15,7 +15,7 @@
 
     <div class="col-12 col-lg-3 text-center">
       <% if @event.image.attached? %>
-          <%= image_tag @event.custom_image(600,300), class: "decorative", alt: "" %>
+          <%= image_tag @event.custom_image(600,600), class: "decorative", alt: "" %>
         <% else %>
           <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
         <% end %>

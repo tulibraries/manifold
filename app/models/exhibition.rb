@@ -15,7 +15,7 @@ class Exhibition < ApplicationRecord
   belongs_to :space, optional: true
   belongs_to :collection, optional: true
 
-  has_draft :title, :description
+  has_draft :description
 
   before_save :sanitize_description
 

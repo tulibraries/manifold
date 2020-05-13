@@ -68,10 +68,10 @@ class PersonDashboard < BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :slug,
-    :image,
     :first_name,
     :last_name,
+    :slug,
+    :image,
     :phone_number,
     :email_address,
     :chat_handle,

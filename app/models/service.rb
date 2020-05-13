@@ -32,10 +32,6 @@ class Service < ApplicationRecord
     ]
   end
 
-  def should_generate_new_friendly_id?
-    title_changed? || slug.blank?
-  end
-
   def remove_empty_audience
     # Rails tends to return an empty string in multi-selects array
     intended_audience&.reject! { |a| a.empty? }

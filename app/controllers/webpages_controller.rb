@@ -200,9 +200,6 @@ class WebpagesController < ApplicationController
   end
 
   def contact
-    @fcn_link = Webpage.find_by(slug: "numbers")
-    @libanswers = ExternalLink.find_by(slug: "libanswers")
-    @suggestions = ExternalLink.find_by(slug: "suggestions")
   end
 
   def show

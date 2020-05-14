@@ -3,6 +3,7 @@
 class FindingAidsController < ApplicationController
   include SetInstance
   include RedirectLogic
+  include SerializableRespondTo
 
   before_action :set_finding_aid, only: [:show]
   before_action :return_aids, only: [:index]
@@ -11,13 +12,6 @@ class FindingAidsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: FindingAidSerializer.new(@finding_aids) }
-    end
-  end
-
-  def show
-    respond_to do |format|
-      format.html
-      format.json { render json: FindingAidSerializer.new(@finding_aid) }
     end
   end
 

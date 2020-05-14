@@ -3,6 +3,7 @@
 class WebpagesController < ApplicationController
   include HasCategories
   include HTTParty
+  include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
   before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
@@ -190,14 +191,6 @@ class WebpagesController < ApplicationController
     cat_link(category, @webpage)
   end
   helper_method :list_item
-
-  def index
-    @webpages = Webpage.all
-    respond_to do |format|
-      format.html
-      format.json { render json: WebpageSerializer.new(@webpages) }
-    end
-  end
 
   def contact
   end

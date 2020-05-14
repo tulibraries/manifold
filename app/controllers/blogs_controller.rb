@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
+  include SerializableRespondTo
   before_action :set_blog, only: [:show]
 
   # GET /blogs
@@ -12,15 +13,6 @@ class BlogsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: BlogSerializer.new(@blogs) }
-    end
-  end
-
-  # GET /blogs/1
-  # GET /blogs/1.json
-  def show
-    respond_to do |format|
-      format.html
-      format.json { render json: BlogSerializer.new(@blog) }
     end
   end
 

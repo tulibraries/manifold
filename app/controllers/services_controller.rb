@@ -4,24 +4,9 @@ class ServicesController < ApplicationController
   include HasCategories
   include SetInstance
   include RedirectLogic
+  include SerializableRespondTo
 
   before_action :set_service, only: [:show]
-
-  def index
-    @services = Service.all
-    respond_to do |format|
-      format.html
-      format.json { render json: ServiceSerializer.new(@services) }
-    end
-  end
-
-  def show
-    @services = Service.all
-    respond_to do |format|
-      format.html
-      format.json { render json: ServiceSerializer.new(@service) }
-    end
-  end
 
   def list_item(category)
     cat_link(category, @service)

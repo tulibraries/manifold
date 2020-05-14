@@ -4,23 +4,9 @@ class CollectionsController < ApplicationController
   include HasCategories
   include SetInstance
   include RedirectLogic
+  include SerializableRespondTo
 
   before_action :set_collection, only: [:show]
-
-  def index
-    @collections = Collection.all
-    respond_to do |format|
-      format.html
-      format.json { render json: CollectionSerializer.new(@collections) }
-    end
-  end
-
-  def show
-    respond_to do |format|
-      format.html
-      format.json { render json: CollectionSerializer.new(@collection) }
-    end
-  end
 
   def list_item(category)
     cat_link(category, @collection)

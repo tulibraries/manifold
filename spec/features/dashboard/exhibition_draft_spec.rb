@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::ExhibitionDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @exhibition = FactoryBot.create(:exhibition)
+    @models = ["exhibition"]
   end
 
   after(:all) do

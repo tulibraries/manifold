@@ -13,7 +13,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
     ),

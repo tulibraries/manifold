@@ -19,10 +19,6 @@ class ExternalLink < ApplicationRecord
     ]
   end
 
-  def should_generate_new_friendly_id?
-    title_changed? || slug.blank?
-  end
-
   def label
     title
   end

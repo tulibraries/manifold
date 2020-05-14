@@ -2,12 +2,11 @@
   <div class="container">
   <div class="row social">
     <div class="col-12 col-lg-7 px-0">
-      <%= link_to(t("manifold.footer.donate_link"), @donate_link, class: "donate") unless @donate_link.nil? %>
+      <%= link_to(t("manifold.footer.donate_link"), "/support-the-libraries", class: "donate") %>
     </div>
     <div class="col-12 col-lg-5 text-left text-lg-right px-0 social-link">
-      <% unless @social_links.nil? %>
       <ul>
-        <%= link_to @social_links do %>
+        <%= link_to "/social-media" do %>
         <li class="social-footer instagram">
           <%= image_tag('instagram-logo_white.svg', alt: "instagram logo") %>
         </li>
@@ -15,44 +14,42 @@
           <%= image_tag('facebook-logo_white.svg', alt: "facebook logo") %>
         </li>
         <li class="social-footer twitter">
-          <%= image_tag('twitter-logo_white.svg', alt: "twitter logo") %>    
+          <%= image_tag('twitter-logo_white.svg', alt: "twitter logo") %>
         </li>
         <% end %>
       </ul>
-      <% end %>
     </div>
   </div>
 
   <div class="tu-links">
       <div class="row">
-        <div class="col-12 col-lg-6 px-0">
+        <div class="col-12 col-lg-7 px-0">
           <div class="row">
             <div class="col px-0">
               <h2>Quick Links</h2>
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-lg-4 px-0">
-              <ul class="list-unstyled">
-                <li><%= link_to t("manifold.footer.ezborrow_link"), @ezborrow_link.link unless @ezborrow_link.nil? %></li>
-                <li><%= link_to t("manifold.footer.employment_opportunities"), @jobs_link unless @jobs_link.nil? %></li>
-                <li><%= link_to t("manifold.footer.standards_link"), @standards_link unless @standards_link.nil? %></li>
-                <li><%= link_to t("manifold.footer.patron_forms_label"), forms_index_path %></li>
-              </ul>
-            </div>
             <div class="col-12 col-lg-3 px-0">
               <ul class="list-unstyled">
-                <li><%= link_to t("manifold.footer.illiad_link"), @illiad_link.link unless @illiad_link.nil? %></li>
-                <li><%= link_to t("manifold.footer.publications_link"), @publications_link unless @publications_link.nil? %></li>
-                <li><%= link_to t("manifold.footer.diversity_link"), @diversity_link unless @diversity_link.nil? %></li>
-                <li><%= link_to t("manifold.footer.primo_articles"), Rails.configuration.primo_articles_url %></li>
+                <li><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
+                <li><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
+                <li><%= link_to t("manifold.footer.refworks_link"), "/refworks" %></li>
+                <li><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
               </ul>
             </div>
             <div class="col-12 col-lg-5 px-0">
               <ul class="list-unstyled">
-                <li><%= link_to t("manifold.footer.refworks_link"), @refworks_link.link unless @refworks_link.nil? %></li>
-                <li><%= link_to t("manifold.footer.privacy_link"), @privacy_link unless @privacy_link.nil? %></li>
-                <li><%= link_to t("manifold.footer.tu_homepage_link"), @tu_homepage_link unless @tu_homepage_link.nil? %></li>
+                <li><%= link_to t("manifold.footer.patron_forms_label"), forms_index_path %></li>
+                <li><%= link_to t("manifold.footer.standards_link"), "/standards" %></li>
+                <li><%= link_to t("manifold.footer.diversity_link"), "/diversity" %></li>
+                <li><%= link_to t("manifold.footer.privacy_link"), "/privacy" %></li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-4 px-0">
+              <ul class="list-unstyled">
+                <li><%= link_to t("manifold.footer.employment_opportunities"), "/jobs" %></li>
+                <li><%= link_to t("manifold.footer.tu_homepage_link"), "/tu-home" %></li>
               </ul>
             </div>
           </div>
@@ -63,14 +60,14 @@
           </div>
         </div>
 
-        <div class="col-12 col-lg-6 px-0">
+        <div class="col-12 col-lg-5 px-0">
           <div class="row">
-            <div class="col-12 col-lg-4 offset-lg-8 px-0 address">
+            <div class="col-12 col-lg-8 offset-lg-6 px-0 address">
               <p><%= t("manifold.footer.charles_address").html_safe %></p>
-              <p><%= link_to t("manifold.footer.numbers_link"), @numbers_link unless @numbers_link.nil? %></p>
+              <p><%= link_to t("manifold.footer.numbers_link"), "/numbers" %></p>
               <p><%= link_to t("manifold.footer.staff_directory"), people_path %></p>
-              <p><%= link_to t("manifold.footer.org_charts"), @org_charts unless @org_charts.nil? %></p>
-              <p><%= link_to(t("manifold.footer.staff_forms"), @staff_forms, target: "_blank") unless @staff_forms.nil? %></p>
+              <p><%= link_to t("manifold.footer.org_charts"), "/org-charts" %></p>
+              <p><%= link_to(t("manifold.footer.staff_forms"), "/staff-forms", target: "_blank") %></p>
             </div>
           </div>
         </div>

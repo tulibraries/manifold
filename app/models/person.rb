@@ -38,10 +38,6 @@ class Person < ApplicationRecord
     ]
   end
 
-  def should_generate_new_friendly_id?
-    first_name_changed? || last_name_changed? || job_title_changed? || slug.blank?
-  end
-
   def name
     "#{first_name} #{last_name}"
   end

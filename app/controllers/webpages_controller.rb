@@ -123,68 +123,34 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    @research_help = Service.find_by(slug: "sme")
-    @print_my_paper = Service.find_by(slug: "printing")
-    @book_study_room = Space.find_by(slug: "study-rooms-small")
-    @locations = Building.find_by(slug: "ambler")
-    @todays_hours = LibraryHour.todays_hours_at("ask_a_librarian")
-    @libguides = ExternalLink.find_by(slug: "libguides")
-    @explore_charles = Category.find_by(slug: "explore-charles")
-    @remote_student_support = Webpage.find_by(slug: "remote-learner-support")
-    @remote_faculty_support = Webpage.find_by(slug: "resources-for-temple-faculty")
-    @explore_online_collections = Webpage.find_by(slug: "explore-online-collections")
   end
 
   def scrc
-    @scrc_location = Space.find_by(slug: "scrc-room")
-    @reading_room = Space.find_by(slug: "scrc-reading-room")
-    @visit = Category.find_by(slug: "scrc-study")
     @visit_links = Category.find_by(slug: "scrc-study").items
-    @collections = Category.find_by(slug: "scrc-collections")
     @collection_links = Category.find_by(slug: "scrc-collections").items
     @webpage = Webpage.find_by(slug: "scrc-intro")
   end
 
   def blockson
     @webpage = Webpage.find_by(slug: "blockson-intro")
-    @visit = Category.find_by(slug: "blockson-study")
     @visit_links = Category.find_by(slug: "blockson-study").items
-    @research = Category.find_by(slug: "blockson-research")
     @research_links = Category.find_by(slug: "blockson-research").items
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
-    @building = Building.find_by(slug: "blockson")
   end
 
   def tudsc
-    @makerspace_location = Space.find_by(slug: "makerspace")
-    @vr_location = Space.find_by(slug: "immersive-lab")
-    @innovation_location = Space.find_by(slug: "innovation-sandbox")
-    @visit = Category.find_by(slug: "lcdss-study")
-    unless @visit.nil?
-      @visit_links = @visit.items
-    end
-    @research = Category.find_by(slug: "lcdss-research")
-    unless @research.nil?
-      @research_links = @research.items
-    end
+    @webpage = Webpage.find_by(slug: "lcdss-intro")
+    @visit_links =  Category.find_by(slug: "lcdss-study").items unless Category.find_by(slug: "lcdss-study").nil?
+    @research_links = Category.find_by(slug: "lcdss-research").items unless Category.find_by(slug: "lcdss-research").nil?
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.zone.now]).order(:start_time).take(5)
     @blog = Blog.find_by(slug: "lcdss-blog")
     @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
-    @info = Space.find_by(slug: "lcdss")
-    @webpage = Webpage.find_by(slug: "lcdss-intro")
   end
 
   def hsl
-    @hsl_giving = Policy.find_by(slug: "hsl-giving")
-    @remote_learning = Webpage.find_by(slug: "health-sciences-libraries")
-    @ginsburg_location = Building.find_by(slug: "ginsburg")
-    @podiatry_location = Building.find_by(slug: "podiatry")
-    @visit = Category.find_by(slug: "hsl-study")
-    @visit_links = Category.find_by(slug: "hsl-study").items
-    @resources = Category.find_by(slug: "hsl-resources")
     @resource_links = Category.find_by(slug: "hsl-resources").items
-    @research = Category.find_by(slug: "hsl-research")
     @research_links = Category.find_by(slug: "hsl-research").items
+    @visit_links = Category.find_by(slug: "hsl-study").items
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.zone.now]).order(:start_time).take(5)
   end
 
@@ -234,9 +200,6 @@ class WebpagesController < ApplicationController
   end
 
   def contact
-    @fcn_link = Webpage.find_by(slug: "numbers")
-    @libanswers = ExternalLink.find_by(slug: "libanswers")
-    @suggestions = ExternalLink.find_by(slug: "suggestions")
   end
 
   def show

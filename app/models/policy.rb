@@ -26,10 +26,6 @@ class Policy < ApplicationRecord
     ]
   end
 
-  def should_generate_new_friendly_id?
-    name_changed? || category_changed? || slug.blank?
-  end
-
   def label
     name
   end

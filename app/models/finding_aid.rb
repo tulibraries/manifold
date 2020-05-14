@@ -40,10 +40,6 @@ class FindingAid < ApplicationRecord
     ]
   end
 
-  def should_generate_new_friendly_id?
-    name_changed? || slug.blank?
-  end
-
   has_draft :description
 
   def schema_dot_org_type

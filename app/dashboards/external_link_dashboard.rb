@@ -11,7 +11,7 @@ class ExternalLinkDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     title: Field::String,
     link: Field::String,
     categories: Field::HasMany,

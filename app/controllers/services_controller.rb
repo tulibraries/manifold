@@ -8,6 +8,14 @@ class ServicesController < ApplicationController
 
   before_action :set_service, only: [:show]
 
+  def index
+    serializable_index
+  end
+
+  def show
+    serializable_show
+  end
+
   def list_item(category)
     cat_link(category, @service)
   end

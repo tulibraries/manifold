@@ -7,12 +7,13 @@ class PoliciesController < ApplicationController
   include SerializableRespondTo
   before_action :set_policy, only: [:show]
 
+  def index
+    serializable_index
+  end
+
   def show
     @categories = @policy.categories
-    respond_to do |format|
-      format.html
-      format.json { render json: PolicySerializer.new(@policy) }
-    end
+    serializable_show
   end
 
   def list_item(category)

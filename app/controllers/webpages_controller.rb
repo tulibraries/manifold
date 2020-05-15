@@ -192,16 +192,16 @@ class WebpagesController < ApplicationController
   end
   helper_method :list_item
 
+  def index
+    serializable_index
+  end
+
   def contact
   end
 
   def show
     @categories = @webpage.categories
-    respond_to do |format|
-      # format.html { render @webpage.layout.parameterize }
-      format.html
-      format.json { render json: WebpageSerializer.new(@webpage) }
-    end
+    serializable_show
   end
 
   private

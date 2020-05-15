@@ -7,6 +7,14 @@ class BuildingsController < ApplicationController
   include SerializableRespondTo
   before_action :set_building, only: [:show]
 
+  def index
+    serializable_index
+  end
+
+  def show
+    serializable_show
+  end
+
   def list_item(category)
     cat_link(category, @building)
   end

@@ -3,7 +3,7 @@
 module SerializableRespondTo
   extend ActiveSupport::Concern
 
-  def index
+  def serializable_index
     @resources = klass.all
     respond_to do |format|
       format.html { redirect_to root_path }
@@ -11,7 +11,7 @@ module SerializableRespondTo
     end
   end
 
-  def show
+  def serializable_show
     respond_to do |format|
       format.html
       format.json { render json: klass_serializer.new(resource) }
@@ -20,15 +20,15 @@ module SerializableRespondTo
 
   private
 
-  def klass
-    controller_name.singularize.camelize.constantize
-  end
+    def klass
+      controller_name.singularize.camelize.constantize
+    end
 
-  def klass_serializer
-    (controller_name.singularize.camelize+ "Serializer").constantize
-  end
+    def klass_serializer
+      (controller_name.singularize.camelize + "Serializer").constantize
+    end
 
-  def resource
-    instance_variable_get("@#{controller_name.singularize}")
-  end
+    def resource
+      instance_variable_get("@#{controller_name.singularize}")
+    end
 end

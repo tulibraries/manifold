@@ -16,6 +16,12 @@ class BlogsController < ApplicationController
     end
   end
 
+  # GET /blogs/1
+  # GET /blogs/1.json
+  def show
+    serializable_show
+  end
+
   # GET /blogs/new
   def new
     @blog = Blog.new

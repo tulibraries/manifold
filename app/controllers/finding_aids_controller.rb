@@ -15,6 +15,10 @@ class FindingAidsController < ApplicationController
     end
   end
 
+  def show
+    serializable_show
+  end
+
   def return_aids
     @finding_aids = FindingAid
       .includes(:collections)

@@ -8,6 +8,14 @@ class CollectionsController < ApplicationController
 
   before_action :set_collection, only: [:show]
 
+  def index
+    serializable_index
+  end
+
+  def show
+    serializable_show
+  end
+
   def list_item(category)
     cat_link(category, @collection)
   end

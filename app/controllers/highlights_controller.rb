@@ -6,6 +6,14 @@ class HighlightsController < ApplicationController
   include SerializableRespondTo
   before_action :set_highlight, only: [:show]
 
+  def index
+    serializable_index
+  end
+
+  def show
+    serializable_show
+  end
+
   private
     def set_highlight
       @highlight = find_instance

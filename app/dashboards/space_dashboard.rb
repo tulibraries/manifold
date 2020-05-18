@@ -46,6 +46,7 @@ class SpaceDashboard < BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :id,
     :image,
     :description,
     :external_link,

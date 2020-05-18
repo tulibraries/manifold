@@ -30,6 +30,14 @@ RSpec.feature "Dashboard::Building", type: :feature do
     end
   end
 
+  context "Building SHOW Administrate Page" do
+    scenario "Display existing item show page" do
+      login_as(@admin, scope: :account)
+      visit("/admin/buildings/#{@building.id}")
+      expect(page).to have_text("library.temple.edu/libraries/#{@building.id}")
+    end
+  end
+
   context "Don't show draftable if draftable feature flag clear" do
     scenario "admin edit" do
       login_as(@admin, scope: :account)

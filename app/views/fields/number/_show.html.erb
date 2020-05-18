@@ -1,5 +1,0 @@
-<% unless field.attribute.to_s == "id" %>
-  <%= field.to_s %>
-<% else %>
-  <%= "http://library.temple.edu/#{field.resource.class.to_s.downcase.pluralize}/#{field.to_s}" %>
-<% end %>

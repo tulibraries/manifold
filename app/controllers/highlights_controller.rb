@@ -3,8 +3,8 @@
 class HighlightsController < ApplicationController
   include SetInstance
   include RedirectLogic
-  include SerializableRespondTo
   before_action :set_highlight, only: [:show]
+  include SerializableRespondTo
 
   def index
     serializable_index

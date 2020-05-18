@@ -4,9 +4,10 @@ class CollectionsController < ApplicationController
   include HasCategories
   include SetInstance
   include RedirectLogic
-  include SerializableRespondTo
 
   before_action :set_collection, only: [:show]
+
+  include SerializableRespondTo
 
   def index
     serializable_index

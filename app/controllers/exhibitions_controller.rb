@@ -3,8 +3,8 @@
 class ExhibitionsController < ApplicationController
   include SetInstance
   include RedirectLogic
-  include SerializableRespondTo
   before_action :set_exhibition, only: [:show]
+  include SerializableRespondTo
 
   def index
     serializable_index

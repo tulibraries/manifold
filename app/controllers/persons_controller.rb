@@ -4,6 +4,7 @@ class PersonsController < ApplicationController
   include PersonFilters
   before_action :set_person, only: [:show]
   before_action :get_persons, only: [:index]
+  include SerializableRespondTo
 
   def index
     @persons = get_persons
@@ -19,10 +20,7 @@ class PersonsController < ApplicationController
     @buildings = @person.spaces.map { |space| space.building }.uniq
     @departments = @person.groups.sort.select { |group| group.group_type == "Department" }
 
-    respond_to do |format|
-      format.html
-      format.json { render json: PersonSerializer.new(@person) }
-    end
+    serializable_show
   end
 
   def get_persons

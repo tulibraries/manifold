@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
-  include SerializableRespondTo
   before_action :set_blog, only: [:show]
+  include SerializableRespondTo
 
   # GET /blogs
   # GET /blogs.json

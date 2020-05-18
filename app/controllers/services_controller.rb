@@ -4,9 +4,10 @@ class ServicesController < ApplicationController
   include HasCategories
   include SetInstance
   include RedirectLogic
-  include SerializableRespondTo
 
   before_action :set_service, only: [:show]
+
+  include SerializableRespondTo
 
   def index
     serializable_index

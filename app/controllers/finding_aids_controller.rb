@@ -3,10 +3,10 @@
 class FindingAidsController < ApplicationController
   include SetInstance
   include RedirectLogic
-  include SerializableRespondTo
 
   before_action :set_finding_aid, only: [:show]
   before_action :return_aids, only: [:index]
+  include SerializableRespondTo
 
   def index
     respond_to do |format|

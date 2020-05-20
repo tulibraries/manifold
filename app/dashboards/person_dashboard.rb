@@ -51,6 +51,7 @@ class PersonDashboard < BaseDashboard
     :first_name,
     :last_name,
     :image,
+    :id,
     :phone_number,
     :email_address,
     :chat_handle,

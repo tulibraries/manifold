@@ -7,20 +7,14 @@ class ServicesController < ApplicationController
 
   before_action :set_service, only: [:show]
 
+  include SerializableRespondTo
+
   def index
-    @services = Service.all
-    respond_to do |format|
-      format.html
-      format.json { render json: ServiceSerializer.new(@services) }
-    end
+    serializable_index
   end
 
   def show
-    @services = Service.all
-    respond_to do |format|
-      format.html
-      format.json { render json: ServiceSerializer.new(@service) }
-    end
+    serializable_show
   end
 
   def list_item(category)

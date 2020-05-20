@@ -2,6 +2,7 @@
 
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show]
+  include SerializableRespondTo
 
   # GET /blogs
   # GET /blogs.json
@@ -18,10 +19,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: BlogSerializer.new(@blog) }
-    end
+    serializable_show
   end
 
   # GET /blogs/new

@@ -5,20 +5,14 @@ class BuildingsController < ApplicationController
   include SetInstance
   include RedirectLogic
   before_action :set_building, only: [:show]
+  include SerializableRespondTo
 
   def index
-    @buildings = Building.all
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.json { render json: BuildingSerializer.new(@buildings) }
-    end
+    serializable_index
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: BuildingSerializer.new(@building) }
-    end
+    serializable_show
   end
 
   def list_item(category)

@@ -45,8 +45,8 @@ class BuildingDashboard < BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :name,
+    :id,
     :description,
     :external_link,
     :address1,

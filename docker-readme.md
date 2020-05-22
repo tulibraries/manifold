@@ -3,11 +3,12 @@
 Build the Docker Image
 
 ```
-  docker-compose build  --build-arg GOOGLE_OAUTH_CLIENT_ID=$GOOGLE_OAUTH_CLIENT_ID --build-arg GOOGLE_OAUTH_SECRET=$GOOGLE_OAUTH_SECRET
-  docker-compose run --rm web rake db:migrate
+  docker-compose build
+  sudo chown -R $USER:$USER tmp/db
+  docker-compose up -d
 ```
 
-To run the container
+And restart the container (detached)
 
 ```
   docker-compose up -d

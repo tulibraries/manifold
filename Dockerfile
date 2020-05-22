@@ -1,4 +1,4 @@
-FROM ruby:2.5.1
+FROM ruby:2.6.5
 LABEL Steven Ng <steven.ng@temple.edu>
 ARG GOOGLE_OAUTH_CLIENT_ID
 ARG GOOGLE_OAUTH_SECRET
@@ -8,12 +8,22 @@ RUN \
       echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
       apt-get update -qq && \
       apt-get install -y --force-yes --no-install-recommends \
-      nodejs build-essential libpq-dev
+      nodejs build-essential libpq-dev postgresql-client
 ENV GOOGLE_OAUTH_CLIENT_ID=$GOOGLE_OAUTH_CLIENT_ID
 ENV GOOGLE_OAUTH_SECRET=$GOOGLE_OAUTH_SECRET
 RUN mkdir /manifold
 WORKDIR /manifold
-ADD Gemfile .
-ADD Gemfile.lock .
+COPY Gemfile Gemfile.lock ./
+RUN gem install bundler:2.1.4
 RUN bundle install
 COPY . .
+
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]
+

@@ -23,33 +23,32 @@
 
   <div class="tu-links">
       <div class="row">
-        <div class="col-12 col-lg-6 px-0">
+        <div class="col-12 col-lg-7 px-0">
           <div class="row">
             <div class="col px-0">
               <h2>Quick Links</h2>
             </div>
           </div>
           <div class="row">
-            <div class="col-12 col-lg-4 px-0">
-              <ul class="list-unstyled">
-                <li><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
-                <li><%= link_to t("manifold.footer.employment_opportunities"), "/jobs" %></li>
-                <li><%= link_to t("manifold.footer.standards_link"), "/standards" %></li>
-                <li><%= link_to t("manifold.footer.patron_forms_label"), forms_index_path %></li>
-              </ul>
-            </div>
             <div class="col-12 col-lg-3 px-0">
               <ul class="list-unstyled">
+                <li><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
                 <li><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
-                <li><%= link_to t("manifold.footer.publications_link"), "/publications" %></li>
-                <li><%= link_to t("manifold.footer.diversity_link"), "/diversity" %></li>
+                <li><%= link_to t("manifold.footer.refworks_link"), "/refworks" %></li>
                 <li><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
               </ul>
             </div>
             <div class="col-12 col-lg-5 px-0">
               <ul class="list-unstyled">
-                <li><%= link_to t("manifold.footer.refworks_link"), "/refworks" %></li>
+                <li><%= link_to t("manifold.footer.patron_forms_label"), forms_index_path %></li>
+                <li><%= link_to t("manifold.footer.standards_link"), "/standards" %></li>
+                <li><%= link_to t("manifold.footer.diversity_link"), "/diversity" %></li>
                 <li><%= link_to t("manifold.footer.privacy_link"), "/privacy" %></li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-4 px-0">
+              <ul class="list-unstyled">
+                <li><%= link_to t("manifold.footer.employment_opportunities"), "/jobs" %></li>
                 <li><%= link_to t("manifold.footer.tu_homepage_link"), "/tu-home" %></li>
               </ul>
             </div>
@@ -61,9 +60,9 @@
           </div>
         </div>
 
-        <div class="col-12 col-lg-6 px-0">
+        <div class="col-12 col-lg-5 px-0">
           <div class="row">
-            <div class="col-12 col-lg-4 offset-lg-8 px-0 address">
+            <div class="col-12 col-lg-8 offset-lg-6 px-0 address">
               <p><%= t("manifold.footer.charles_address").html_safe %></p>
               <p><%= link_to t("manifold.footer.numbers_link"), "/numbers" %></p>
               <p><%= link_to t("manifold.footer.staff_directory"), people_path %></p>

@@ -6,10 +6,9 @@ class FindingAidsController < ApplicationController
 
   before_action :set_finding_aid, only: [:show]
   before_action :return_aids, only: [:index]
+  include SerializableRespondTo
 
   def index
-    @catalog_search = "#{Rails.configuration.librarysearch_finding_aids_url}"
-
     respond_to do |format|
       format.html
       format.json { render json: FindingAidSerializer.new(@finding_aids) }
@@ -17,10 +16,7 @@ class FindingAidsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: FindingAidSerializer.new(@finding_aid) }
-    end
+    serializable_show
   end
 
   def return_aids

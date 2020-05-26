@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::WebPageDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @webpage = FactoryBot.create(:webpage)
+    @models = ["webpage"]
   end
 
   after(:all) do

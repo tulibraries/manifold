@@ -10,7 +10,7 @@ class GroupDashboard < BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     description: DescriptionField,
     chair_dept_heads: Field::HasMany.with_options(
       class_name: "Person"
@@ -52,6 +52,7 @@ class GroupDashboard < BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :id,
     :description,
     :group_type,
     :parent_group,

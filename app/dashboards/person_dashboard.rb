@@ -9,7 +9,7 @@ class PersonDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     member: Field::HasMany,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     groups: Field::HasMany,
     occupant: Field::HasMany,
     spaces: Field::HasMany,
@@ -50,6 +50,7 @@ class PersonDashboard < BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :first_name,
     :last_name,
+    :id,
     :image,
     :phone_number,
     :email_address,
@@ -68,10 +69,10 @@ class PersonDashboard < BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :slug,
-    :image,
     :first_name,
     :last_name,
+    :slug,
+    :image,
     :phone_number,
     :email_address,
     :chat_handle,

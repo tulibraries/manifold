@@ -6,6 +6,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @service = FactoryBot.create(:service)
+    @models = ["service"]
   end
 
   after(:all) do

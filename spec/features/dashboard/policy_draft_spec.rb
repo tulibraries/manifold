@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::PolicyDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @policy = FactoryBot.create(:policy)
+    @models = ["policy"]
   end
 
   after(:all) do

@@ -3,7 +3,7 @@
     Subject Specialty
   </a>
 </h2>
-<%# binding.pry %>
+
   <ul class="list-unstyled navbar-collapse collapse <%= @subjects.blank? ? '' : 'show' %>" id="subjects">
     <% unless @subjects.nil? %>
     <% unless params[:specialty].blank? || @subjects.exclude?(params[:specialty]) %>

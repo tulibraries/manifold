@@ -13,7 +13,7 @@ class EventDashboard < BaseDashboard
     building: Field::BelongsTo,
     space: Field::BelongsTo,
     person: Field::BelongsTo,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     id: Field::Number,
     title: Field::String,
     description: DescriptionField,
@@ -60,8 +60,8 @@ class EventDashboard < BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :title,
+    :id,
     :description,
     :event_type,
     :tags,
@@ -133,7 +133,7 @@ class EventDashboard < BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(event)
-    "Event ##{event.id}"
+    "#{event.title}"
   end
 
   def tinymce?

@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::FindingAidDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @finding_aid = FactoryBot.create(:finding_aid)
+    @models = ["finding_aid"]
   end
 
   after(:all) do

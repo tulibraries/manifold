@@ -12,7 +12,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     description: DescriptionField,
     effective_date: Field::DateTime,
     expiration_date: Field::DateTime,
@@ -37,8 +37,8 @@ class PolicyDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :name,
+    :id,
     :description,
     :effective_date,
     :expiration_date,
@@ -62,7 +62,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   ].freeze
 
   def display_resource(policy)
-    "##{policy.id} #{policy.name}"
+    "#{policy.name}"
   end
 
   def tinymce?

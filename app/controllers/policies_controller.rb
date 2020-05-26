@@ -5,21 +5,15 @@ class PoliciesController < ApplicationController
   include SetInstance
   include RedirectLogic
   before_action :set_policy, only: [:show]
+  include SerializableRespondTo
 
   def index
-    @policies = Policy.all
-    respond_to do |format|
-      format.html
-      format.json { render json: PolicySerializer.new(@policies) }
-    end
+    serializable_index
   end
 
   def show
     @categories = @policy.categories
-    respond_to do |format|
-      format.html
-      format.json { render json: PolicySerializer.new(@policy) }
-    end
+    serializable_show
   end
 
   def list_item(category)

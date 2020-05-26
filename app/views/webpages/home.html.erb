@@ -26,7 +26,7 @@
 	  </div>
 	  <div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
-		    <%= link_to "remote-faculty-support", class: "strong" do %>
+		    <%= link_to "/remote-faculty-support", class: "strong" do %>
 		      <%= image_tag('remote-faculty-support.png', class: "decorative", alt: "") %> <span>Remote Faculty Support</span>
 		    <% end %>
 	    </div>
@@ -95,14 +95,14 @@
 				</div>
 			</div>
 			<div class="col-12 col-lg-3 locations-links px-0">
-				<div class="h-20"><%= link_to "Charles Library", @explore_charles %></div>
+				<div class="h-20"><%= link_to "Charles Library", "/explore-charles" %></div>
 				<div class="h-20"><%= link_to "Health Sciences Libraries", webpages_hsl_path %></div>
 				<div class="h-20 two-lines"><%= link_to "Loretta C. Duckworth Scholars Studio", webpages_lcdss_path, class: "not-wrapped" %></div>
 				<div class="h-20 two-lines"><%= link_to "Charles L. Blockson Afro-American Collection", webpages_blockson_path %></div>
 				<div class="h-20 two-lines"><%= link_to "Special Collections Research Center", webpages_scrc_path, class: "not-wrapped" %></div>
-				<div class="h-20 bb-0"><%= link_to "Law Library", "https://www.law.temple.edu/library/about-the-law-library/" %></div>
+				<div class="h-20 bb-0"><%= link_to "Law Library", "/law-library" %></div>
 				<div class="caption">
-					<%= link_to("See all libraries and locations >", @locations, class: "gobel") unless @locations.nil? %>
+					<%= link_to("See all libraries and locations >", "/all-locations", class: "gobel") %>
 				</div>
 			</div>
 		</div>

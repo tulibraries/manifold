@@ -13,7 +13,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     image: PhotoField.with_options(admin_only: true),
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     custom_url: Field::String,
     categories: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
@@ -39,9 +39,9 @@ class CategoryDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :image,
-    :id,
     :name,
+    :id,
+    :image,
     :description,
     :long_description,
     :get_help,
@@ -57,9 +57,9 @@ class CategoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :image,
     :name,
     :slug,
+    :image,
     :custom_url,
     :categories,
     :description,

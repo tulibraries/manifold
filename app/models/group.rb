@@ -43,10 +43,6 @@ class Group < ApplicationRecord
     ]
   end
 
-  def should_generate_new_friendly_id?
-    name_changed? || slug.blank?
-  end
-
   def get_chair
     members = Array.new
     chair = persons.select { |p| chair_dept_heads.include?(p) }

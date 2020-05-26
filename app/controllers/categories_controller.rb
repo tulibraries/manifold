@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   include SetInstance
   include RedirectLogic
   before_action :set_category, only: [:show]
+  include SerializableRespondTo
 
   def show
     respond_to do |format|
@@ -53,10 +54,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.json { render json: CategorySerializer.new(Category.all) }
-    end
+    serializable_index
   end
 
   private

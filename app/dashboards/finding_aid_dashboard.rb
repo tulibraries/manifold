@@ -13,7 +13,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
     ),
@@ -46,6 +46,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :id,
     :subject,
     :content_link,
     :identifier,
@@ -76,7 +77,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(finding_aid)
-    "Finding Aid: #{finding_aid.name}"
+    "#{finding_aid.name}"
   end
 
   def tinymce?

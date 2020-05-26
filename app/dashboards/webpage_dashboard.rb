@@ -10,7 +10,7 @@ class WebpageDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     group: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
@@ -43,6 +43,7 @@ class WebpageDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
+    :id,
     :categories,
     :accounts,
     :file_uploads

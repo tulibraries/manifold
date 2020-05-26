@@ -10,7 +10,7 @@ class BuildingDashboard < BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     description: DescriptionField,
     address1: Field::String,
     address2: Field::String,
@@ -46,6 +46,7 @@ class BuildingDashboard < BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :id,
     :description,
     :external_link,
     :address1,

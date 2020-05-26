@@ -253,6 +253,7 @@ en:
           title: "Group Visit Request"
         review_protocol:
           title: "Temple Review Protocol"
+        hidden_title_text: "To change the title of this resource, please <a href=mailto:\"tul-web-support@temple.edu\">contact an administrator</a>."
 
     error:
       user_not_registered: "User not registered."
@@ -304,7 +305,7 @@ en:
       patron_forms_label: "Patron Forms"
       donate_link: "Support the Libraries"
       ezborrow_link: "E-ZBorrow"
-      employment_opportunities: "Jobs"
+      employment_opportunities: "Employment Opportunities"
       standards_link: "Community Standards"
       illiad_link: "ILLiad"
       diversity_link: "Diversity Statement"

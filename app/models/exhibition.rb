@@ -15,7 +15,7 @@ class Exhibition < ApplicationRecord
   belongs_to :space, optional: true
   belongs_to :collection, optional: true
 
-  has_draft :title, :description
+  has_draft :description
 
   before_save :sanitize_description
 
@@ -26,10 +26,6 @@ class Exhibition < ApplicationRecord
       :title,
       [:title, :start_date]
     ]
-  end
-
-  def should_generate_new_friendly_id?
-    title_changed? || start_date_changed? || slug.blank?
   end
 
   def label

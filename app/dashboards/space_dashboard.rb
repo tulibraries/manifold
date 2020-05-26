@@ -9,7 +9,7 @@ class SpaceDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     building: Field::BelongsTo,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     occupant: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::HasMany,
@@ -46,6 +46,7 @@ class SpaceDashboard < BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :id,
     :image,
     :description,
     :external_link,

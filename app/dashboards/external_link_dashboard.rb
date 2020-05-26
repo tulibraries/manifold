@@ -11,7 +11,7 @@ class ExternalLinkDashboard < BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     title: Field::String,
     link: Field::String,
     categories: Field::HasMany,
@@ -34,7 +34,6 @@ class ExternalLinkDashboard < BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :title,
     :link,
     :categories,

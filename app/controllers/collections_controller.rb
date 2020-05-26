@@ -7,19 +7,14 @@ class CollectionsController < ApplicationController
 
   before_action :set_collection, only: [:show]
 
+  include SerializableRespondTo
+
   def index
-    @collections = Collection.all
-    respond_to do |format|
-      format.html
-      format.json { render json: CollectionSerializer.new(@collections) }
-    end
+    serializable_index
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: CollectionSerializer.new(@collection) }
-    end
+    serializable_show
   end
 
   def list_item(category)

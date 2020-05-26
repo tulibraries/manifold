@@ -12,7 +12,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     title: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     description: DescriptionField,
     access_description: DescriptionField,
     external_link: Field::BelongsTo.with_options(order: "title"),
@@ -42,8 +42,8 @@ class ServiceDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :title,
+    :id,
     :intended_audience,
     :external_link,
     :categories,

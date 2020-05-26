@@ -8,9 +8,9 @@
     <% unless @departments.nil? %>
 
     <% unless params[:department].blank? || @departments.exclude?(Group.find(params[:department])) %>
-    
+
       <% @departments.each do |dept| %>
-        <% if dept.id.to_s == params[:department] %>
+        <% if dept.slug == params[:department] %>
         <li class="active">
           <%= dept.name %>
           <span class="clear-filter">

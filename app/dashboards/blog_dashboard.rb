@@ -13,7 +13,7 @@ class BlogDashboard < Administrate::BaseDashboard
     blog_posts: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String,
     base_url: Field::String,
     feed_path: Field::String,
     last_sync_date: Field::DateTime,
@@ -38,8 +38,8 @@ class BlogDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :title,
+    :id,
     :base_url,
     :feed_path,
     :last_sync_date,

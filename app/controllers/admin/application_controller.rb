@@ -11,10 +11,13 @@ module Admin
     before_action :authenticate_account!
     before_action :set_paper_trail_whodunnit
     before_action :use_version, only: [:edit]
+    before_action :non_editable_titles, only: [:edit]
 
     helper_method :required?
     helper_method :admin_only?
     helper_method :user_editable_field?
+    helper_method :current_user, :signed_in?, :is_admin?
+
 
     def edit
       super
@@ -28,12 +31,24 @@ module Admin
       attribute.admin_only?
     end
 
+    def non_editable_titles
+      @models = ["building", "blog", "category", "collection", "event", "exhibition", "external_link", "finding_aid", "group", "highlight", "policy", "service", "space", "webpage"]
+    end
+
     def user_editable_field?(account, attribute)
       !admin_only?(attribute) || account.admin
     end
 
-    def authenticate_admin
-      # TODO Add authentication logic here.
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+
+    def signed_in?
+      !!current_user
+    end
+
+    def is_admin?
+      signed_in? ? current_user.admin : false
     end
 
     def use_version

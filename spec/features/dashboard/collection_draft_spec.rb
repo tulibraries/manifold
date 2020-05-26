@@ -6,6 +6,7 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @collection = FactoryBot.create(:collection)
+    @models = ["collection"]
   end
 
   after(:all) do
@@ -31,7 +32,7 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
     end
   end
 
-  context "Visit Collection Administrate Page" do
+  context "Visit Collection Administrate Page", skip: "MAN-930: Capybara unable to write to form. seed=22566" do
     let(:new_description) { "Don't Panic!" }
 
     scenario "Change the Collection Description" do

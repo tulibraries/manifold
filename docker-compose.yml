@@ -3,16 +3,16 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_HOST=db
-      - POSTGRES_USER=manifold
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=manifold_development
+      POSTGRES_HOST: db
+      POSTGRES_USER: manifold
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: manifold_development
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:
     build: .
     environment:
-      - MANIFOLD_DB_HOST=db
+      MANIFOLD_DB_HOST: db
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "3000:3000"

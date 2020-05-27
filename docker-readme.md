@@ -10,6 +10,8 @@ tags:
 
 # Manifold on Docker
 
+Dockerfiles are configured for development.
+
 Build the Docker Image
 
     docker-compose build
@@ -42,30 +44,11 @@ Visit http://localhost:3000
 
 To populate the database with a dumpfile
 
-Start an interactive session on the Docker container
+    docker-compose exec web bin/restore_db.sh [path/top/database_dump_file]
 
+## Visit Site
 
-    docker-compose exec web bash
-
-or
-
-    docker exec -it manifold_web_1 bash
-
-Within the docker container, recreate the database:
-
-    DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:reset
-
-Restore the database from a dumpfile
-
-    pg_restore -c --host=db --username=manifold --dbname=manifold_development /manifold/manifold-2020-04-09T18+0000.sqlc
-
-Run the latest migration
-
-    RAILS_ENV=development rails db:migrate
-
-And exit the container session
-
-    exit
+http://localhost:3000
 
 ## Test Specs
 

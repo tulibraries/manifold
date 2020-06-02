@@ -31,7 +31,7 @@
 
           <h2>Locations</h2>
           <%= image_tag "location.png", class: "location decorative", alt: "" %> 
-          <%= link_to @collection.space.label, spaces_path(@collection.space), class: "location" %>
+          <%= link_to @collection.space.label, space_path(@collection.space), class: "location" %>
 
           <h2>Contact</h2>
           <%= phone_formatted(@collection.space.phone_number) %>

@@ -45,14 +45,15 @@ class Person < ApplicationRecord
   scope :is_specialist, ->(specialists) {
     where.not(specialties: []) if specialists.present? && specialists == "true"
   }
+
   scope :with_specialty, ->(specialty) {
-     where("specialties LIKE ?", "%#{ specialty }%") if specialty.present?
-     # includes(:specialties).where(specialties: {"specialties" => specialty }) if specialty.present?
-     # where(first.specialties.try(:any?) { |subject| subject == specialty } )
-   }
+    where("specialties LIKE ?", "%#{specialty}%") if specialty.present?
+  }
+
   scope :in_department, ->(groups) {
     includes(:groups).where(groups: { "slug" => groups }).where(groups: { "group_type" => "Department" }) if groups.present?
   }
+
   scope :at_location, ->(space_id) {
     includes(:spaces).where(spaces: { "slug" => space_id }) if space_id.present?
   }

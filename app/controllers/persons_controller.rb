@@ -13,8 +13,10 @@ class PersonsController < ApplicationController
   end
 
   def show
-    @buildings = @person.spaces.map { |space| space.building }.uniq
-    @departments = @person.groups.select { |group| group.group_type == "Department" }.sort
+    @buildings = @person.spaces.map { |space| space.building }
+                .uniq
+    @departments = @person.groups.select { |group| group.group_type == "Department" }
+                  .sort
 
     serializable_show
   end
@@ -52,7 +54,7 @@ class PersonsController < ApplicationController
                         .in_department(params[:department])
                         .order(:last_name, :first_name)
 
-    @persons_list = @filtered_persons.page params[:page]
+    @persons_list = @filtered_persons.page(params[:page])
     return_filters(@filtered_persons)
   end
 
@@ -62,18 +64,8 @@ class PersonsController < ApplicationController
     @locations = get_location_filter_values(filtered_persons)
   end
 
-  def department
-    params[:department]
-  end
-
-  def location
-    params[:location]
-  end
-
   private
     def set_person
       @person = Person.friendly.find(params[:id])
-      @department = @person.groups.collect { |g| g.group_type == "Department" }.uniq.sort
-      @location = @person.spaces.collect.uniq.sort
     end
 end

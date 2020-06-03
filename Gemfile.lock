@@ -212,7 +212,7 @@ GEM
       concurrent-ruby (~> 1.0)
     hashdiff (1.0.1)
     hashie (4.1.0)
-    honeybadger (4.6.0)
+    honeybadger (4.7.0)
     htmlentities (4.3.4)
     httparty (0.18.0)
       mime-types (~> 3.0)
@@ -591,7 +591,7 @@ DEPENDENCIES
   google-analytics-rails (= 1.1.1)
   google-api-client (~> 0.40)
   guard-rspec
-  honeybadger (~> 4.6)
+  honeybadger (~> 4.7)
   httparty
   jbuilder (~> 2.10)
   jquery-rails

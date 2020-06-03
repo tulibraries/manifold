@@ -68,6 +68,7 @@ en:
         accounts: "Individual Owners"
   manifold:
     default:
+      filters_reset: "Reset All Filters"
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
         charles_library: "Charles Library"
@@ -213,8 +214,33 @@ en:
           other_reviews: "Competing/Conflicting Reviews"
           other_reviews_other: "Reviews other"
           publication_journal: "Journal for Publication"
-
       forms:
+        fields:
+          boolean: 
+            yes_no: 
+              yes: "Yes"
+              no: "No"
+            true_false:
+              true: "True"
+              false: "False"
+          name: Name
+          email: Email
+          department: Department
+          temple_affiliation_label: "Temple Affiliation"
+          phone_number: "Phone Number"
+          tu_id: "Temple ID Number"
+          temple_affiliation_array: 
+            one: "Temple Graduate Student"
+            two: "Temple Undergraduate"
+            three: "Temple Faculty"
+            four: "Temple Alumna/us"
+            five: "Temple Staff"
+            six: "Non-Temple Undergraduate"
+            seven: "Non-Temple Graduate Student"
+            eight: "Non-Temple Faculty"
+            nine: "General Public"
+          other_placeholder: specify other...
+            
         recall_book:
           title: Request Recall of Books Already Checked Out
         purchase_request:
@@ -223,10 +249,72 @@ en:
           title: Missing Book Search Request
         ir:
           title: Incident Report
+          intro_html: >-
+                      <ul>
+                        <li><strong style="font-size: larger;">EMERGENCY</strong> - call 
+                        <strong style="font-size: larger;">1-1234</strong> <span style="padding-left:14px;">
+                        [Temple Campus Police: 215-204-1234]</span></li>
+                        <li>If this incident involves injury to Library staff or student assistant, a Worker’s 
+                        Compensation form needs to be filled out also.</li>
+                      </ul>
+          incident_types:
+            one: Vandalism
+            two: Accident/Medical
+            three: Theft
+            four: Harassment/Fight/Abusive Language
+            five: Building Issue
+            six: Other
+          action_taken_options:
+            one: Library Administration Notified
+            two: Facilities Notified (1-1385)
+            three: Completed Staff Injury Report
+            four: Referred to Legal or Risk Management
+            five: Called Campus Police
+          incident_details: Incident Details
+          type_of_incident: Type of Incident
+          other: specify other...
+          date_of_incident: Time/Date of Incident
+          location: Location Where Incident Occurred
+          incident_description: Incident Description
+          incident_description_hint: >-
+                                      What happened?  Provide names, who did what to whom, what was stolen, etc. 
+                                      Be as detailed as possible. Describe a suspect if appropriate.
+          persons_involved: Persons Involved, if needed
+          primary_relevant_person: Primary Relevant Person
+          relevant_email: Provide Email
+          affiliation: Affiliation
+          secondary_relevant_person: Secondary Relevant Person
+          victim_statement: Victim/Complainant Statement
+          action_taken_label: Action Taken
+          action_taken_hint: Select all that apply. Hold [Ctrl] or [command] and click more than one if needed. Provide police report # if available.
+          other_action_taken: Other Action Taken
+          police_report_number: Police Report Number
+          supervisor_notified: Supervisor Notified
         data_purchase_grants_application:
           title: Library Data Grants
+          department: "Departmental Affiliation"
+          research_group: "Please list the names and email addresses of others in research or pedagogical group. (If not applicable, state this.)"
+          project_purpose: "Describe your research project or pedagogical purpose"
+          project_purpose_hint: "Max 500 words"
+          dataset: "Describe dataset. Explain why it is important to your research. Please provide a URL to a page describing the data, if available"
+          dataset_hint: "Max 500 words"
+          interest_level: "Beyond your own work, explain how this dataset might be of interest to other researchers or instructors at Temple University."
+          years_limit: "Please tell us if the data you need is limited to certain years? If so, what years?"
+          data_creator: "Who is the creator/distributor/provider/licensor of the requested data?"
+          data_discovery: "How did you find out about this data?"
+          comments: "Is there anything else you would like to add?"
+          disclaimer_html: >-
+                            <p>I have read and understand the terms and conditions of the Library Data Grants program. 
+                            I understand that awardees will be notified by December 15 and get access to the data during 
+                            the spring term. I also understand that if awarded, I will attend a brown bag lunch to discuss 
+                            how I used the data in my research or pedagogical work. For published research in which the data 
+                            is used, I will include this statement, \"The author wishes to acknowledge the Temple University 
+                            Libraries\’ funding for data used in this research.\"</p>
         ask_scrc:
           title: "Special Collections Research Center: Ask a Question"
+          intro: "If you are planning a research visit in the near future, please telephone us at 215-204-8257 to ask any questions you may have and to ensure the availability of the materials you wish to consult."
+          comments_label: "What is your Question?"
+          comments_hint: "Be sure to include names, locations, and dates that particularly pertinent to your research. Please list manuscript collections or print materials in which you are or may be interested."
         proxy_account:
           title: "Proxy Account"
         library_instruction:
@@ -236,24 +324,177 @@ en:
         table_request:
           title: "Library Staff and Registered Student Organization Table Request"
         filming_request:
-          title: "Guidelines for Requesting Permission to Use the Libraries for Filming"
+          title: Guidelines for Requesting Permission to Use the Libraries for Filming
+          location_of_filming: Location of Filming
+          date_of_filming: Date of Filming
+          time_of_filming: Time of Filming
+          duration_of_filming_label: Duration of Filming
+          duration_of_filming_hint: (How much time is required.)
+          description: Description of Project
+          temple_course_project: Is this for a Temple Course Project?
+          additional_crew_name: Name of one additional crew member
+          additional_email: Crew member email
         cac_internal:
           title: "Cultural Analytics Certificate Internal Application"
+          intro_html: >-
+                      <p>This form should be used by applicants currently enrolled in a Temple University graduate degree program.</p>
+                      <p><strong>Program Requirements</strong>:</p>
+                      <p>Students must complete nine credits of course work and a variable (0-1) credit Cultural Analytics Practicum to 
+                      complete the Certificate. The introductory course surveys the range of methods. Students then select two electives 
+                      in the focal area needed for their own research interests. Finally, students complete a final project of their own 
+                      design in the Practicum, a semester-long workshop offered by the Scholars Studio of Temple University Libraries. The 
+                      final project will be part of the dissertation or thesis and will be overseen by their academic adviser.</p>
+                      <p>Students may apply for admission to the program at any time. Applications received prior to the end of the add/drop 
+                      period may be considered for current semester. Otherwise application is for the upcoming semester. Once you complete the 
+                      form below you will be contacted by the CAC Program Director. If you have any questions about the certificate program, 
+                      please contact Adrienne Shaw at <a href="mailto:adrienne.shaw@temple.edu">adrienne.shaw@temple.edu</a>.</p>
+          degree_program_label: "Degree Program"
+          degree_program_options:
+            phd: "Ph.D."
+            ma: "M.A."
+            other: "Other..."
+          faculty_advisor: Faculty Advisor
+          faculty_advisor_email: Faculty Advisor Email
+          degree_year_label: Which year of your degree program are you currently in?
+          degree_year_options:
+            one: First
+            two: Second
+            three: Third
+          personal_statement: >-
+                              Please write a personal statement of no more than 250 words indicating your research objectives and how the tools of 
+                              Cultural Analytics can contribute to their realization.
         cac_external:
           title: "Cultural Analytics Certificate External Application"
+          intro_html: >-
+                      <p>This form should be used by applicants not currently enrolled in a Temple University graduate degree program.</p>
+                      <p><strong>Program Requirements</strong>:</p>
+                      <p>Students must take nine credits of course work and a one-credit Cultural Analytics Practicum to complete the 
+                      Certificate. The introductory course surveys the range of methods. Students then select two electives in the 
+                      focal area needed for their own research interests. Finally, students complete a project of their own design 
+                      in the Practicum, a semester-long workshop offered by the Scholars Studio of Temple University Libraries. Students 
+                      in the Practicum must also sign up for a one-credit independent study with a faculty member who can serve as an 
+                      academic advisor on their project.</p>
+                      <p>In addition to completing and submitting this form, students must have earned a B.A./B.S. or equivalent. Please 
+                      arrange for official transcripts for all coursework since high school to be sent to our program administrator: Marianne 
+                      Moll at <a href="mailto:marianne.moll@temple.edu">marianne.moll@temple.edu</a>.</p>
+                      <p>Applications must be received by August 1 to be eligible for admission beginning in the Fall semester. Once you 
+                      complete the form below and all supporting materials have been received you will be contacted by the CAC Program Director. 
+                      If you have any questions about the certificate program, please contact Adrienne Shaw at 
+                      <a href="mailto:adrienne.shaw@temple.edu">adrienne.shaw@temple.edu</a>.</p>
+          bachelor_degree: "Have you earned a B.A./B.S. degree?"
+          institution_of_dehgree: "Name of the Institution where your degree was earned"
+          overall_gpa: "Overall B.A. GPA (4.0 scale)"
+          degrees_earned: "Graduate degree(s) earned. Please list degree(s) and name of institution(s) where earned."
+          personal_statement: "Please write a personal statement of no more than 250 words indicating your research objectives and how the tools of Cultural Analytics can contribute to their realization."
         event_space_request:
           title: "Charles Library Event Space Request"
+          date_legend: "Event Dates/Times"
+          date: "Date of Event"
+          start_time: "Start Time"
+          end_time: "End Time"
+          info_legend: "Event Information"
+          space_label: "Event Space"
+          space_collection: 
+            one: "24/7 Lobby and Cafe *"
+            two: "2nd Floor Multipurpose Room"
+            three: "3rd Floor Reading Room *"
+            four: "4th Floor Multipurpose Room"
+            five: "4th Floor Reading Room *"
+            six: "Atrium *"
+            seven: "Event Space"
+            eight: "Graduate and Faculty Studio *"
+            nine: "any available/not sure"
+          space_hint: "* Special use, non-peak times only"
+          event_title: "Event Title"
+          attendees: "Estimated Number of Attendees"
+          setup_legend: "Room Set-Up"
+          setup_style_label: "Setup Style"
+          setup_style_collection: 
+            one: "Banquet - 72” round tables (6-8 chairs each)"
+            two: "Classroom - Rows of tables and chairs"
+            three: "Lecture - Rows of chairs, 8-11 per row"
+            four: "Reception - 36” round high top tables"
+            five: "Other"
+          other: "Additional Setup Requirements"
+          av_support: "Specific A/V Support Needed, if any"
+          comments: "Additional Information"
+          your_info_legend: "Your Information"
+          span: "Requestor/Event Leader/Coordinator/Student Group"
+          span_2: "Sponsoring Budget Unit Head"
+          foapal: "FOAPAL"
+          foapal_hint: "in case of damages or additional cleaning costs"
+          policy_check_html: >-
+                            I agree to <a href=\"https://library.temple.edu/policies/17\" class=\"inline\">
+                            Temple University Libraries\’ policies and guidelines</a>
+
         graduate_locker_request:
           title: "Charles Library Graduate Studio Locker Request"
+          intro_html: >-
+                      <p>Lockers are available on a first-come/first-served basis for graduate students and faculty 
+                      in the Charles Library. Due to high demand and the limited number of lockers (32), we cannot 
+                      guarantee that a locker will be available to each patron who makes a request. We will email you 
+                      to let you know if a locker is available once we receive your request.</p>
+                      <p><a href="/spaces/29">4th floor Graduate/Faculty Study</a></p>
+          temple_affiliation_options:
+            graduate: Graduate
+            faculty: Faculty
         partners_borrowing:
           title: "Partners Borrowing Privileges Application/Renewal"
         storage_request:
           title: "Recall item from Charles Library temporary storage"
         group_visit:
           title: "Group Visit Request"
+          description: Describe reason for this request
+          requested_date: Requested date and time window (e.g., morning, afternoon)
+          attendees: Number of people in group
+          minors: Are there minors in this group?
+          school_visit: If this is a school visit, please provide name of school, grade level, and age range of students
+          referrer: Referred to us by (if applicable)
+          comments: Provide any additional information about this request
         review_protocol:
           title: "Temple Review Protocol"
         hidden_title_text: "To change the title of this resource, please <a href=mailto:\"tul-web-support@temple.edu\">contact an administrator</a>."
+
+      categories:
+        under_construction: "Page under construction, please check back soon or use the menu on the left to navigate the pages in this section."
+      fields:
+        confirm: "Are you sure?"
+        belongs_to: "Link will appear in a button with the title of \"Library Website\""
+        boolean: "When checked, will display on Events page"
+        email: "If left blank, email address from related building will be displayed."
+        file_field:
+          pdf: "* PDF files only"
+        has_many:
+          finding_aid: "Please select at least one <strong>Collection</strong> or <strong>Subject</strong> from the below lists in order for the link to Aeon to appear on this finding aid."
+          categories: "Categories determine the left hand menu that appears on the page and also the navigation category to which this page belongs."
+        hours: "Hours identifier must match label in the hours spreadsheet"
+        phone: "If left blank, phone number from related building will be displayed."
+        photo_field:
+          square: "Requirements: 300 x 300 px -- .jpg, .png, .gif files only"
+          rectangle: "Requirements: 600 x 300 px -- .jpg, .png, .gif files only"
+        springshare_id:
+          label: "Springshare ID"
+          appointment_link: 
+            label: "Schedule an Appointment"
+            link: "https://api3.libcal.com/appointments-widget.php?u=%{id}&iid=1621&t=Make%20an%20Appointment"
+        string:
+          slugs: "Slugs are used to set the browser path and in the code to link resources together. Edit with extreme caution. Read more in [<a href=\"https://tulibdev.atlassian.net/wiki/spaces/LWR/pages/1047166982/Slugs\">Confluence</a>]</p>"
+          renaming: "When renaming, completely remove the slug field below. A new slug will be generated reflecting the new name/title. If you do not want the slug (browser path) to change, do not touch the existing slug."
+      finding_aids:
+        intro_html: >-
+                      <p>Finding aids are online guides to selected archival materials in the 
+                      <a href="/scrc" class="inline">Special Collections Research Center</a> and the 
+                      <a href="/blockson" class="inline">Charles L. Blockson Afro-American Collection</a>.</p> 
+                      <p>The SCRC is the principal repository for and steward of the Libraries’ rare books, manuscripts, 
+                      archives and University records. While we are constantly striving to increase the discoverability 
+                      of our materials, these guides represent only a portion of our actual collections and holdings. 
+                      If you don't find what you are looking for, we encourage you to pay us a visit, call us at 
+                      215-204-8257, or <a href="forms/ask-scrc" class="inline">e-mail us</a>.</p>
+        collection_heading: "Collecting Area"
+        filter_heading: "Finding Aids"
+        subjects_heading: "Subjects"
+        aeon_link_label: "Request Materials from Special Collections Research Center"
+        aeon_link_link: "https://temple.aeon.atlas-sys.com/Logon/?Action=10&Form=30&ItemTitle=%{name}&ItemPlace=%{collections_name}&CallNumber=%{identifier}&rft.pages=%{collections_name}"
 
     error:
       user_not_registered: "User not registered."

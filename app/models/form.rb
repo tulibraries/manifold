@@ -106,10 +106,8 @@ class Form < MailForm::Base
   attribute :partner_email
   attribute :faculty_advisor_email
   attribute :policy_check
-
   attribute :referrer
   attribute :school_visit
-
   attribute :protocol_title
   attribute :review_update
   attribute :rationale

@@ -53,5 +53,7 @@ module Tude
     config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]
 
     config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "true"
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
   end
 end

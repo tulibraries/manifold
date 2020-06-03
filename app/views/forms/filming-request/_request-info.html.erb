@@ -1,14 +1,17 @@
-<%= f.input :location_of_filming, as: :text, label: "Location of Filming", required: :true %>
-
-<%= f.input :date_of_filming, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], html5: true, label: "Date of Filming", required: :true %>
-
-<%= f.input :time_of_filming, as: :time, html5: true, label: "Time of Filming", required: :true %>
-
-<%= f.input :duration_of_filming, required: :true, label: "Duration of Filming", hint: "(How much time is required.)" %>
-
-<%= f.input :description, as: :text, label: "Description of Project", required: :true %>
-
-<%= f.input :temple_course_project, as: :radio_buttons, required: :true, label: "Is this for a Temple Course Project?" %>
-
-<%= f.input :additional_crew_name, as: :email, required: :true, label: "Name of one additional crew member" %>
-<%= f.input :additional_email, as: :email, required: true, label: "Crew member email" %>
+<%= f.input :location_of_filming, as: :text, label: t("manifold.default.forms.filming_request.location_of_filming"), required: :true %>
+<%= f.input :date_of_filming, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, 
+            order: [:month, :day, :year], html5: true, 
+            label: t("manifold.default.forms.filming_request.date_of_filming), 
+            required: :true %>
+<%= f.input :time_of_filming, as: :time, html5: true, label: t("manifold.default.forms.time_of_filming"), required: :true %>
+<%= f.input :duration_of_filming, 
+            label:t("manifold.default.forms.duration_of_filming_label"), 
+            hint: t("manifold.default.forms.duration_of_filming_hint"), 
+            required: :true %>
+<%= f.input :description, as: :text, label: t("manifold.default.forms.filming_request.description"), required: :true %>
+<%= f.input :temple_course_project, as: :radio_buttons, required: :true, 
+            label: t("manifold.default.forms.filming_request.temple_course_project") %>
+<%= f.input :additional_crew_name, as: :email, required: :true, 
+            label: t("manifold.default.forms.filming_request.additional_crew_name") %>
+<%= f.input :additional_email, as: :email, required: true, 
+            label: t("manifold.default.forms.filming_request.additional_email") %>

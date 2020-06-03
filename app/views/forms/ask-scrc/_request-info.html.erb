@@ -1,1 +1,4 @@
-<%= f.input :comments, as: :text, label: "What is your Question?", hint: "Be sure to include names, locations, and dates that particularly pertinent to your research. Please list manuscript collections or print materials in which you are or may be interested.", required: true %>
+<%= f.input :comments, as: :text, 
+            label: t("manifold.default.forms.ask_scrc.comments_label"), 
+            hint: t("manifold.default.forms.ask_scrc.comments_hint"), 
+            required: true %>

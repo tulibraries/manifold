@@ -21,7 +21,7 @@
           <% unless @category.long_description.nil? %>
             <%= sanitize @category.long_description.html_safe %>
           <% else %>
-            <p style="font-size: 150%;">Page under construction, please check back soon or use the menu on the left to navigate the pages in this section.</p>
+            <p style="font-size: 150%;"><%= t("manifold.default.categories.under_construction") %></p>
           <% end %>
         </div>
       </div>

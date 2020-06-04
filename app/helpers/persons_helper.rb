@@ -1,17 +1,6 @@
 # frozen_string_literal: true
 
 module PersonsHelper
-  def depts_list(person)
-    depts = person.groups.select { |group| group.group_type == "Department" }
-    depts.collect(&:label).join(",<br />")
-  end
-
-  def specialties(person)
-    person.specialties.each do |specialty|
-      specialty
-    end
-  end
-
   def get_loc_name(id)
     location = Space.find_by(id: id)
     unless location.nil?
@@ -24,6 +13,11 @@ module PersonsHelper
     unless department.nil?
       department.name
     end
+  end
+
+  def depts_list(person)
+    depts = person.groups.select { |group| group.group_type == "Department" }
+    depts.collect(&:label).join(",<br />")
   end
 
   def filter_tags

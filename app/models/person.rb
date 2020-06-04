@@ -38,6 +38,26 @@ class Person < ApplicationRecord
     ]
   end
 
+  def should_generate_new_friendly_id?
+    first_name_changed? || last_name_changed? || job_title_changed? || slug.blank?
+  end
+
+  scope :is_specialist, ->(specialists) {
+    where.not(specialties: []) if specialists.present? && specialists == "true"
+  }
+
+  scope :with_specialty, ->(specialty) {
+    where("specialties LIKE ?", "%#{specialty}%") if specialty.present?
+  }
+
+  scope :in_department, ->(groups) {
+    includes(:groups).where(groups: { "slug" => groups }).where(groups: { "group_type" => "Department" }) if groups.present?
+  }
+
+  scope :at_location, ->(space_id) {
+    includes(:spaces).where(spaces: { "slug" => space_id }) if space_id.present?
+  }
+
   def name
     "#{first_name} #{last_name}"
   end

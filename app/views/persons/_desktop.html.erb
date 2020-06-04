@@ -5,7 +5,7 @@
       <div class="col-4">
         <% if @person.image.attached?  %>
           <%= image_tag @person.show_image, class: "decorative", alt: "" %>
-        <% else %> 
+        <% else %>
           <%= image_tag "T.gif", style: 'width: 300px;', class: "decorative", alt: "" %>
         <% end %>
       </div>
@@ -20,7 +20,7 @@
         <% unless @person.spaces.empty? %>
           <div>
             <% @buildings.each do |building| %>
-              <%= link_to building.name, building %>: 
+              <%= link_to building.name, building %>:
               <ul>
               <% @person.spaces.select { |space| space.building == building }.each do |space| %>
                 <li><%= link_to space.name, space %></li>
@@ -49,11 +49,11 @@
       <h2>Subjects</h2>
       <div class="subject-list text-left">
         <ul class="list-unstyled">
-          <% specialties(@person).each do |s| %>
+          <% @person.specialties.each do |s| %>
             <li><%= s %></li>
           <% end %>
         </ul>
-      </div> 
+      </div>
     <% end %>
 
     <% unless @person.libguides_account.blank? %>
@@ -61,7 +61,7 @@
         <%= link_to "Subject guides by this librarian", "https://guides.temple.edu/prf.php?account_id=#{@person.libguides_account}", class: "libguides-link", target: "_new" %>
       </h2>
     <% end %>
-    
+
     <% unless @person.springshare_id.blank? %>
       <h2>
         <%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %>

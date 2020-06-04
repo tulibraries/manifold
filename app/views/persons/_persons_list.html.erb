@@ -1,3 +1,4 @@
+
    <% unless @persons_list.nil? %>
     <% @persons_list.each do |person| %>
 
@@ -5,7 +6,7 @@
         <div class="col-4">
           <% if person.image.attached?  %>
           <%= image_tag person.index_image, class: "decorative", alt: "" %>
-          <% else %> 
+          <% else %>
           <%= image_tag "T.gif", style: 'width: 300px;', class: "decorative", alt: "" %>
           <% end %>
         </div>
@@ -30,20 +31,20 @@
             </li>
           </ul>
           <div class="person-actions" style="margin-bottom: 21px">
-            
+
               <%= link_to "View Profile", person, class: "view-profile" %>
-            
+
             <% unless person.springshare_id.blank? %>
-              
+
                 <%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-id", target: "_new", style: "color: white" %>
-              
+
             <% end %>
           </div>
         </div>
       </div>
-      
+
       <% end %>
-      
+
       <div class="row text-center paginator" style="border-left: solid white 14px;">
         <div class="col">
           <%= paginate @persons_list %>
@@ -55,5 +56,5 @@
         <div class="col-12 text-center">
           <h3>No people found. Try another search.</h3>
         </div>
-      </div> 
+      </div>
     <% end %>

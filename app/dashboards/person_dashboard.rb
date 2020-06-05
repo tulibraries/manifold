@@ -50,6 +50,7 @@ class PersonDashboard < BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :first_name,
     :last_name,
+    :id,
     :image,
     :phone_number,
     :email_address,

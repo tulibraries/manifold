@@ -4,20 +4,14 @@ class HighlightsController < ApplicationController
   include SetInstance
   include RedirectLogic
   before_action :set_highlight, only: [:show]
+  include SerializableRespondTo
 
   def index
-    @highlights = Highlight.all
-    respond_to do |format|
-      format.html
-      format.json { render json: HighlightSerializer.new(@highlights) }
-    end
+    serializable_index
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.json { render json: HighlightSerializer.new(@highlight) }
-    end
+    serializable_show
   end
 
   private

@@ -5,6 +5,7 @@ class SpacesController < ApplicationController
   include SetInstance
   include RedirectLogic
   before_action :set_space, only: [:show]
+  include SerializableRespondTo
 
   def index
     @spaces = Space.all
@@ -18,10 +19,7 @@ class SpacesController < ApplicationController
   # GET /spaces/1.json
   def show
     @categories = @space.categories
-    respond_to do |format|
-      format.html
-      format.json { render json: SpaceSerializer.new(@space) }
-    end
+    serializable_show
   end
 
   def list_item(category)

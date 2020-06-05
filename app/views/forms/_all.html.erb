@@ -4,21 +4,20 @@
 
       <div class="row">
         <div class="col" style="padding-left: 0">
-          <h1><%= title "Request Forms" %></h1>
+          <h1><%= title t("manifold.forms.index.title") %></h1>
         </div>
       </div>
     </div>
 
   <div class="row">
     <div class="col text-center" style="font-size: larger;margin-bottom: 21px">
-      <p align="center">Use of these forms is intended for and restricted to members of the Temple University Community</p>
-      <p><a href="/contact-us">Library Suggestions/Feedback</a></p>
+      <%= t("manifold.forms.index.intro_html") %>
     </div>
   </div>
 
   <div class="row">
     <div class="col">
-      <h2>Temple-owned materials</h2>
+      <h2><%= t("manifold.forms.index.temple_materials") %></h2>
       <ul class="list-unstyled">
         <li>
           <a href="/forms/missing-book">Missing Book Search Request</a>
@@ -27,7 +26,7 @@
           <a href="/forms/recall-book">Request Recall of Books Already Checked Out (Faculty/Library Staff only)</a>
         </li>
       </ul>
-      <h2>Instructional Services</h2>
+      <h2><%= t("manifold.forms.index.instructional_materials") %></h2>
       <ul class="list-unstyled">
         <li>
           <a href="/forms/library-instruction">Request a Library Instruction Session</a>
@@ -36,7 +35,7 @@
           <a href="/forms/scrc-instruction">SCRC Instruction Session/Visit Request Form</a>
         </li>
       </ul>
-      <h2>Library Privileges</h2>
+      <h2><%= t("manifold.forms.index.library_privileges") %></h2>
       <ul class="list-unstyled">
         <li>
           <a href="/forms/proxy-account">Proxy Account</a>
@@ -45,47 +44,45 @@
           <a href="/forms/graduate-locker-request">Charles Library Graduate Studio Locker Request</a>
         </li>
         <li>
-          <a href="/forms/partners-borrowing">Partners Borrowing Privileges Application/Renewal
-</a>
+          <a href="/forms/partners-borrowing">Partners Borrowing Privileges Application/Renewal</a>
         </li>
         </ul>
-      <h2>Collection Development</h2>
+      <h2><%= t("manifold.forms.index.collection_development") %></h2>
         <ul class="list-unstyled">
           <li>
             <a href="/forms/purchase-request">Request a Purchase for the Library Collections</a>
           </li>
         </ul>
-      <h2>Administrative Services</h2>
-        <ul class="list-unstyled">
-          <li>
-            <a href="/forms/table-request">Library Staff and Registered Student Organization Table Request</a>
-          </li>
-          <li>
-            <a href="/forms/event-space-request">Charles Library Event Space Request</a>
-          </li>
-          <li>
-            <a href="/forms/group-visit">Group Visit Request</a>
-          </li>
-          <li>
-            <a href="/forms/filming-request">Guidelines for Requesting Permission to Use the Libraries for Filming</a>
-          </li>
-        </ul>
-
-      <h2>Requesting books and journal articles owned by Temple</h2>
-        <ul class="list-unstyled">
-          <li>
-            You can request books and journal articles from other Temple campuses and Remote Storage. To do so, <a class="inline" href="#{librarysearch_url}/users/account">log in to the Library Search</a>, locate the item's record in the Library Search, and click on the <strong>Request</strong> button. 
-          </li>
-        </ul>
-        <h2>Temple doesn't have it?</h2>
-        <ul class="list-unstyled">
-          <li>
-            The best place to request books that Temple doesn't own is through <a class="inline" href="https://ezb.relaisd2d.com/?LS=TEMPLE">E-ZBorrow</a>.
-          </li>
-          <li>
-            For books not available through E-ZBorrow, <em>as well as journal articles</em>, use <a class="inline" href="https://temple.illiad.oclc.org/illiad/charles/logon.html">ILLiad</a>, our new service for requesting hard to find materials.
-          </li>
-        </ul>
-    </div>
+        <h2><%= t("manifold.forms.index.administrative_services") %></h2>
+          <ul class="list-unstyled">
+            <li>
+              <a href="/forms/table-request">Library Staff and Registered Student Organization Table Request</a>
+            </li>
+            <li>
+              <a href="/forms/event-space-request">Charles Library Event Space Request</a>
+            </li>
+            <li>
+              <a href="/forms/group-visit">Group Visit Request</a>
+            </li>
+            <li>
+              <a href="/forms/filming-request">Guidelines for Requesting Permission to Use the Libraries for Filming</a>
+            </li>
+          </ul>
+        <h2><%= t("manifold.forms.index.requests") %></h2>
+          <ul class="list-unstyled">
+            <li>
+              <%= t("manifold.forms.index.requests_html") %> 
+            </li>
+          </ul>
+        <h2><%= t("manifold.forms.index.not_held") %></h2>
+          <ul class="list-unstyled">
+            <li>
+              <%= t("manifold.forms.index.not_held_one_html") %>
+            </li>
+            <li>
+              <%= t("manifold.forms.index.not_held_two_html") %>
+            </li>
+          </ul>
+      </div>
   </div>
 </div>

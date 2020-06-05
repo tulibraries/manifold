@@ -1,13 +1,9 @@
 <% content_for :body_class, "event-show" %>
 
-<script type="application/ld+json">
-  <%= json_ld(@event) %>
-</script>
-
 <div class="event-show container">
   <div class="row">
     <div class="col crumbs">
-      < <%= link_to "All Events & Exhibits", events_path %>
+      < <%= link_to t("manifold.events.breadcrumb"), events_path %>
     </div>
   </div>
 
@@ -32,7 +28,7 @@
       <% unless @event.registration_link.blank? %>
 
         <div class="col register-link">
-          <%= link_to "Register", strip_tags(@event.registration_link) %>
+          <%= link_to t("manifold.events.show.register"), strip_tags(@event.registration_link) %>
         </div>
 
       <% end %>
@@ -63,3 +59,7 @@
     </div>
   </div>
   </div>
+
+<script type="application/ld+json">
+<%= json_ld(@event) %>
+</script>

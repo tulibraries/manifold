@@ -5,7 +5,7 @@
   <h1><%= title "Staff Directory" %></h1>
   <div class="row">
     <div class="col ml-5 mb-4">
-      <p>Welcome to the Library Staff Directory. To search for a specific individual by name, please use the Search Everything box in the upper right corner of your screen. Alternatively, filter out search results by Subject Specialty, Location and Department.</p>
+      <%= t("manifold.people.intro_html") %>
     </div>
   </div>
 
@@ -14,19 +14,19 @@
     <div class="col-3 leftside-index">
       <div class="panel-group d-none d-md-none d-lg-block" id="accordion">
         <div class="filter_staff_type">
-          <%= render "staff_type" %>
+          <%= render "persons/filters/staff_type" %>
         </div>
         <div class="filter_subjects">
-          <%= render "subjects" %>
+          <%= render "persons/filters/subjects" %>
         </div>
         <div class="filter_location">
-          <%= render "location" %>
+          <%= render "persons/filters/location" %>
         </div>
         <div class="filter_department">
-          <%= render "department" %>
+          <%= render "persons/filters/department" %>
         </div>
         <div class="filter_reset">
-          <%= render "reset" %>
+          <%= render "persons/filters/reset" %>
         </div>
       </div>
     </div>
@@ -46,9 +46,9 @@
     </div>
 
     <div class="col-12 col-lg-3 right-side">
-      <div class="entity-help"><h3>Charles Library Main Phone:</h3>215-204-8212</div>
+      <div class="entity-help"><%= t("manifold.people.entity_help_html") %></div>
       <% unless @fcn_link.nil? %>
-        <div class="access-link"><h3><%= link_to "Frequently Called Numbers", @fcn_link %></h3></div>
+        <div class="access-link"><h3><%= link_to t("manifold.people.fcn_link"), @fcn_link %></h3></div>
       <% end %>
     </div>
 

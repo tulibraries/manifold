@@ -23,26 +23,26 @@ RSpec.describe "persons/show", type: :view do
     expect(rendered).to match /#{"assets/T-"}/
   end
 
-  it "returns a formatted springshare link if springshare_id field populated" do
+  it "returns a Make an Appointment link if springshare_id field populated" do
     @person = FactoryBot.create(:person, spaces: [space])
     render
     expect(rendered).to match(@person.springshare_id)
   end
 
-  it "does not return a formatted springshare link if springshare_id field populated" do
+  it "does NOT return a Make an Appointment link if springshare_id field NOT populated" do
     render
-    expect(rendered).to match(@person.springshare_id)
+    expect(rendered).not_to match /#{"springshare-account"}/
   end
 
-  it "returns a formatted springshare link if springshare_id field populated" do
+  it "returns a libguides link if libguides_account field populated" do
     @person = FactoryBot.create(:person, spaces: [space])
     render
     expect(rendered).to match(@person.libguides_account)
   end
 
-  it "does not return a formatted springshare link if springshare_id field populated" do
+  it "does NOT return a libguides link if libguides_account field NOT populated" do
     render
-    expect(rendered).to match(@person.libguides_account)
+    expect(rendered).not_to match /#{"libguides-link"}/
   end
 
 end

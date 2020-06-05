@@ -3,7 +3,7 @@
   <div class="event_types">
     <h2>
       <a style="cursor:pointer" data-toggle="collapse" data-target="#types" aria-expanded="true" aria-controls="types"> 
-        Event Type
+        <%= t("manifold.events.facets.event_type") %>
       </a>
     </h2>
 
@@ -36,7 +36,7 @@
   <div class="event_spaces">
     <h2>
       <a style="cursor:pointer" data-toggle="collapse" data-target="#locations" aria-expanded="true" aria-controls="locations"> 
-        Location
+        <%= t("manifold.events.facets.location") %>
       </a>
     </h2>
     <ul class="list-unstyled navbar-collapse collapse show" id="locations">
@@ -71,9 +71,9 @@
   <div class="row filter-reset">
     <div class="col text-center">
       <% unless action_name == "past" %>
-      <%= link_to "Clear All", events_path, class: "reset" %>
+      <%= link_to t("manifold.events.facets.clear_all"), events_path, class: "reset" %>
       <% else %>
-      <%= link_to "Clear All", past_events_path, class: "reset" %>
+      <%= link_to t("manifold.events.facets.clear_all"), past_events_path, class: "reset" %>
       <% end %>
     </div>
   </div>

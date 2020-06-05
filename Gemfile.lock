@@ -71,7 +71,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    attr_json (1.0.0)
+    attr_json (1.1.0)
       activerecord (>= 5.0.0, < 6.1)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
@@ -212,7 +212,7 @@ GEM
       concurrent-ruby (~> 1.0)
     hashdiff (1.0.1)
     hashie (4.1.0)
-    honeybadger (4.6.0)
+    honeybadger (4.7.0)
     htmlentities (4.3.4)
     httparty (0.18.0)
       mime-types (~> 3.0)
@@ -497,7 +497,7 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.1)
-    sitemap_generator (6.1.1)
+    sitemap_generator (6.1.2)
       builder (~> 3.0)
     skylight (4.3.0)
       skylight-core (= 4.3.0)
@@ -591,7 +591,7 @@ DEPENDENCIES
   google-analytics-rails (= 1.1.1)
   google-api-client (~> 0.40)
   guard-rspec
-  honeybadger (~> 4.6)
+  honeybadger (~> 4.7)
   httparty
   jbuilder (~> 2.10)
   jquery-rails

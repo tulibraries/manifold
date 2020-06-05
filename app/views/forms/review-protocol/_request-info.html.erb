@@ -1,24 +1,96 @@
-<%= f.input :protocol_title, as: :text, label: "Protocol Title", hint: "(Please identify the type of review in the title, e.g. systematic review)", required: true %>
-<%= f.input :review_update, label: "Is this an update of a previously published systematic review?", as: :radio_buttons, collection: ["yes","no"], hint: "If yes, list the PMID or DOI under Other.", required: true %>
-<%= f.input :rationale, as: :text, label: "Describe the rationale for the review in the context of what is already known.", required: true %>
-<%= f.input :explicit_statement, as: :text, label: "Provide an explicit statement of the question(s) the review will address with reference to participants, interventions, comparators (if applicable), and outcomes (PICO) or similar format.", required: true %>
-<%= f.input :information_sources, as: :text, label: "Describe all intended information sources with planned dates of coverage.", hint: "e.g., electronic databases, contact with study authors, trial registers, or other grey literature sources.", required: true %>
-<%= f.input :included_keywords, as: :text, label: "Present keywords that are relevant to your study.", required: true %>
-<%= f.input :excluded_keywords, as: :text, label: "Present keywords that you would like excluded from the study.", required: true %>
-<%= f.input :data_plan, as: :text, label: "What is your plan to manage and extract data for this review? What tools will you use to assist?", required: true %>
-<%= f.input :independent_reviewers, label: "Will you be using two independent reviewers for study selection and screening?", as: :radio_buttons, collection: ["yes","no"], hint: "If yes, list the PMID or DOI under Other.", required: true %>
-<%= f.input :outcomes, as: :text, label: "List and define all outcomes for which data will be sought, including prioritization of main and additional outcomes, with rationale.", hint: "Include whether this will be done at the outcome or study level, or both; state how this information will be used in data synthesis.", required: true %>
-<%= f.input :quantitative_analysis, label: "Will you be including a quantitative analysis (meta-analysis)?", as: :radio_buttons, collection: ["yes","no","maybe","other..."] %>
-	<%= f.input :quantitative_analysis_other, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
-<%= f.input :bio_statistician, label: "Are you working with a bio-statistician to combine data and create a summary measure of data?", as: :radio_buttons, collection: ["maybe","other..."] %>
-	<%= f.input :bio_statistician_other, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
-<%= f.input :summary_description, as: :text, label: "If quantitative synthesis is not appropriate, describe the type of summary planned." %>
-<%= f.input :evidence_assessment, as: :text, label: "Describe how the strength of the body of evidence will be assessed.", hint: "e.g., GRADE", required: true %>
-<%= f.input :citations, as: :text, label: "Please include 3-5 citations that meet eligibility criteria and can be used to test the recall and precision of the search strategy. ", required: true %>
-<%= f.input :librarian_contact, label: "Are you interested in being contacted by a librarian to learn how you may choose to publish this protocol a priori to help minimize bias for your review?", as: :radio_buttons, collection: ["yes","no","maybe","other..."], required: true %>
-	<%= f.input :librarian_contact_other, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
-<%= f.input :authorship_permission, label: "Do you grant authorship permission for the librarian working on your search and writing the search methodology statement?", as: :radio_buttons, collection: ["yes","no","maybe","other..."], required: true %>
-	<%= f.input :authorship_permission_other, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
-<%= f.input :other_reviews, label: "Are there any competing or conflicting reviews?", as: :radio_buttons, collection: ["yes","no","maybe","other..."], hint: "Please do a search to verify.", required: true %>
-	<%= f.input :other_reviews_other, label: false, placeholder: "specify other...", wrapper_html: { class: "specify-other" } %>
-<%= f.input :publication_journal, as: :text, label: "What journal do you plan to submit the completed review to for publication?", hint: "If known."%>
+<%= f.input :protocol_title, as: :text, 
+				label: t("manifold.forms.review_protocol.protocol_title"), 
+				hint: t("manifold.forms.review_protocol.protocol_title_hint"), 
+				required: true %>
+<%= f.input :review_update, as: :radio_buttons, 
+				label: t("manifold.forms.review_protocol.review_update"), 
+				collection: t("manifold.forms.fields.boolean.yes_no").map{ |k,v| v },  
+				hint: t("manifold.forms.review_protocol.review_update_hint"), 
+				required: true %>
+<%= f.input :rationale, as: :text, 
+				label: t("manifold.forms.review_protocol.rationale"), 
+				required: true %>
+<%= f.input :explicit_statement, as: :text, 
+				label: t("manifold.forms.review_protocol.explicit_statement"), 
+				required: true %>
+<%= f.input :information_sources, as: :text, 
+				label: t("manifold.forms.review_protocol.information_sources"), 
+				hint: t("manifold.forms.review_protocol.information_sources_hint"), 
+				required: true %>
+<%= f.input :included_keywords, as: :text, 
+				label: t("manifold.forms.review_protocol.included_keywords"),
+				required: true %>
+<%= f.input :excluded_keywords, as: :text, 
+				label: t("manifold.forms.review_protocol.excluded_keywords"),
+				required: true %>
+<%= f.input :data_plan, as: :text, 
+				label: t("manifold.forms.review_protocol.data_plan"), 
+				required: true %>
+<%= f.input :independent_reviewers, as: :radio_buttons, 
+				label: t("manifold.forms.review_protocol.independent_reviewers"), 
+				collection: t("manifold.forms.fields.boolean.yes_no"), 
+				hint: t("manifold.forms.review_protocol.independent_reviewers_hint"),  
+				required: true %>
+<%= f.input :outcomes, as: :text, 
+				label: t("manifold.forms.review_protocol.outcomes"), 
+				hint: t("manifold.forms.review_protocol.outcomes_hint"), 
+				required: true %>
+<%= f.input :quantitative_analysis, as: :radio_buttons, 
+				label: t("manifold.forms.review_protocol.quantitative_analysis"), 
+				collection: t("manifold.forms.fields.boolean.yes_no")
+							.merge(t("manifold.forms.fields.boolean.undecided"))
+							.map{ |k,v| v }  %>
+<%= f.input :quantitative_analysis_other, label: false, 
+				placeholder: t("manifold.forms.fields.other_placeholder"),
+				wrapper_html: { class: "specify-other" } %>
+<%= f.input :bio_statistician, as: :radio_buttons, 
+				label: t("manifold.forms.review_protocol.bio_statistician"),
+				collection: t("manifold.forms.fields.boolean.yes_no")
+							.merge(t("manifold.forms.fields.boolean.undecided"))
+							.map{ |k,v| v } %>
+<%= f.input :bio_statistician_other, 
+				label: false, 
+				placeholder: t("manifold.forms.fields.other_placeholder"),
+				wrapper_html: { class: "specify-other" } %>
+<%= f.input :summary_description, as: :text, 
+				label: t("manifold.forms.review_protocol.sumary_description") %>
+<%= f.input :evidence_assessment, as: :text, 
+				label: t("manifold.forms.review_protocol.evidence_assessment"), 
+				hint: t("manifold.forms.review_protocol.evidence_assessment_hint"), 
+				required: true %>
+<%= f.input :citations, as: :text, 
+				label: t("manifold.forms.review_protocol.citations"), 
+				required: true %>
+<%= f.input :librarian_contact, as: :radio_buttons, 
+				label: t("manifold.forms.review_protocol.librarian_contact"), 
+				collection: t("manifold.forms.fields.boolean.yes_no")
+							.merge(t("manifold.forms.fields.boolean.undecided"))
+							.map{ |k,v| v }, 
+				required: true %>
+<%= f.input :librarian_contact_other, 
+				label: false, 
+				placeholder: t("manifold.forms.fields.other_placeholder"),
+				wrapper_html: { class: "specify-other" } %>
+<%= f.input :authorship_permission, as: :radio_buttons, 
+				label: t("manifold.forms.review_protocol.authorship_permission"), 
+				collection: t("manifold.forms.fields.boolean.yes_no")
+							.merge(t("manifold.forms.fields.boolean.undecided"))
+							.map{ |k,v| v },
+				required: true %>
+<%= f.input :authorship_permission_other, label: false, 
+				placeholder: t("manifold.forms.fields.other_placeholder"),
+				wrapper_html: { class: "specify-other" } %>
+<%= f.input :other_reviews, as: :radio_buttons, 
+				label: t("manifold.forms.review_protocol.other_reviews"),
+				collection: t("manifold.forms.fields.boolean.yes_no")
+							.merge(t("manifold.forms.fields.boolean.undecided"))
+							.map{ |k,v| v },
+				hint: t("manifold.forms.fields.other_reviews_hint"),
+				required: true %>
+<%= f.input :other_reviews_other, 
+				label: false, 
+				placeholder: t("manifold.forms.fields.other_placeholder"),
+				wrapper_html: { class: "specify-other" } %>
+<%= f.input :publication_journal, as: :text, 
+				label: t("manifold.forms.review_protocol.publication_journal"), 
+				hint: t("manifold.forms.review_protocol.publication_journal_hint") %>

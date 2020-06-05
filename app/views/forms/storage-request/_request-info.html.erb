@@ -1,4 +1,10 @@
-<%= f.input :title, label: "Title", input_html: { value: params[:title] }, required: :true %>
-<%= f.input :call_number, label: "Call Number", input_html: { value: params[:call_number] }, required: :true, hint: "Please copy and paste from Library Search record if possible" %>
-<%= f.input :pickup_location, as: :select, collection: ["Ambler","Charles","Podiatry","Harrisburg","HSL"], 
-																											 label: "Pickup Location", required: :true %>
+<%= f.input :title, input_html: { value: params[:title] }, required: :true, 
+				label: t("manifold.forms.fields.title") %>
+<%= f.input :call_number, input_html: { value: params[:call_number] }, 
+				label: t("manifold.forms.fields.call_number"), 
+				hint: t("manifold.forms.fields.call_number"), 
+				required: :true %>
+<%= f.input :pickup_location, as: :select, 
+				collection: t("manifold.forms.fields.pickup_location_options").map{ |k,v| v }, 
+				label: t("manifold.forms.fields.pickup_location_label"), 
+				required: :true %>

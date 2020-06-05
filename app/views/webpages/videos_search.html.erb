@@ -2,13 +2,13 @@
 
 	<div class="row backlink">
 		<div class="col">
-			<%= link_to "< Watch Past Programs & Events", webpages_videos_all_path %> 
+			<%= link_to t("manifold.webpages.videos.breadcrumb"), webpages_videos_all_path %> 
 		</div>
 	</div>
 
 	<div class="row" style="margin-top: 21px;">
 		<div class="col">
-			<h1 class="page-title"><%= title "Past Program and Event Videos" %></h1>
+			<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
 			<hr >
 			<h2><%= sanitize @categoryTitle %></h2>
 			<div class="row">

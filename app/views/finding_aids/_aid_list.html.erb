@@ -1,6 +1,6 @@
    <div class="row">
     <div class="col">
-     <%= t("manifold.default.finding_aids.intro_html") %>
+     <%= t("manifold.finding_aids.intro_html") %>
     </div>
   </div>
   <div class="d-block d-lg-none filters">
@@ -9,7 +9,7 @@
         <span class="filter-tag"><%= tag.html_safe %></span>
       <% end %>
       <% unless filter_tags_aids(@collections).size < 2 %>
-        <%= link_to "Reset Filters", finding_aids_path, class: "reset-filters" %>
+        <%= link_to t("manifold.default.filters_reset"), finding_aids_path, class: "reset-filters" %>
       <% end %>
     <% end %>
   </div>

@@ -21,7 +21,7 @@
           <% unless @category.long_description.nil? %>
             <%= sanitize @category.long_description.html_safe %>
           <% else %>
-            <p style="font-size: 150%;"><%= t("manifold.default.categories.under_construction") %></p>
+            <p style="font-size: 150%;"><%= t("manifold.categories.under_construction") %></p>
           <% end %>
         </div>
       </div>

@@ -1,10 +1,14 @@
 <%= link_to people_path do  %>
 	<h2>
 		<%= image_tag "profile.png", class: "category-icon decorative", alt: "" %>
-		<br />Staff Directory 
+		<br /><%= t("manifold.webpages.contact.staff_directory") %>
 	</h2>
 <% end %>
 
 <p>
-	<%= link_to "Find your subject librarian", people_path(specialists: true) %>, <br>or <%= link_to "make an appointment", "https://charlesstudy.temple.edu/appointments" %>, <br>or contact another library staff member.
+	<%= link_to t("manifold.webpages.contact.specialist_link"), people_path(specialists: true) %>, <br>
+	or 
+	<%= link_to t("manifold.webpages.contact.appointment_link"), "https://charlesstudy.temple.edu/appointments" %>, 
+	<br>
+	<%= t("manifold.webpages.contact.contact_other") %>
 </p>

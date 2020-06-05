@@ -20,7 +20,7 @@
 	  <% unless @policy.effective_date.nil? %>
 	  	<div class="col-12 col-lg-3">
 	  		<div class="effective_date entity-help">
-	  		<h2>Effective Date</h2>
+	  		<h2><%= t("manifold.policies.show.effective_date") %></h2>
 	  			<%= @policy.effective_date.strftime("%^B %d, %Y ") %>
 	  		</div>
 	  	</div>

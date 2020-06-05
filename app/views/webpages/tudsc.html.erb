@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col">
 		<h1 class="page-title text-center">
-			<%= title "Loretta C. Duckworth Scholars Studio" %>
+			<%= title t("manifold.webpages.tudsc.page_title") %>
 		</h1>
 	</div>
 </div>
@@ -16,11 +16,11 @@
 
 	<div class="col-12 col-lg-4 pr-14 left-links">
 		<div class="locations">
-			<%= link_to "Makerspace", "/lcdss/makerspace" %>
+			<%= link_to t("manifold.webpages.tudsc.locations.makerspace"), "/lcdss/makerspace" %>
 			<hr />
-			<%= link_to "VR/Visualization Studio", "/lcdss/vr-studio" %>
+			<%= link_to t("manifold.webpages.tudsc.locations.vr_studio"), "/lcdss/vr-studio" %>
 			<hr />
-			<%= link_to "Innovation Lab", "/lcdss/innovation-lab" %>
+			<%= link_to t("manifold.webpages.tudsc.locations.innovation"), "/lcdss/innovation-lab" %>
 		</div>
 
 		<div class="contact">
@@ -28,10 +28,10 @@
 			215-204-0752
 			<hr />
 			<%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<span class="mailer"><%= link_to "Newsletter Signup", "/lcdss/newsletter", target: "_blank" %></span>
+			<span class="mailer"><%= link_to t("manifold.webpages.tudsc.contact.newsletter"), "/lcdss/newsletter", target: "_blank" %></span>
 			<hr />
 			<%= image_tag "chat.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<span class="mailer"><%= link_to "LCDSS Staff Directory", people_path(department: "duckworth-scholars-studio-staff") %></span>
+			<span class="mailer"><%= link_to t("manifold.webpages.tudsc.contact.staff"), people_path(department: "duckworth-scholars-studio-staff") %></span>
 		</div>
 
 	</div>
@@ -47,7 +47,7 @@
 		<div class="row links-container">
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Visit & Study", "/lcdss/info" %></h2>
+					<h2><%= link_to t("manifold.webpages.tudsc.links.visit"), "/lcdss/info" %></h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>
@@ -57,7 +57,7 @@
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Research Services", "/lcdss/research" %></h2>
+					<h2><%= link_to t("manifold.webpages.tudsc.links.research"), "/lcdss/research" %></h2>
 					<ul class="list-unstyled">
 						<% @research_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>
@@ -67,23 +67,23 @@
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Workshops & Events", controller: :events, action: :index %></h2>
+					<h2><%= link_to t("manifold.webpages.tudsc.links.events"), controller: :events, action: :index %></h2>
 					<ul class="list-unstyled">
 						<% @event_links.each do |link|  %>
 							<li><%= link_to link.label, link %></li>
 						<% end unless @event_links.nil? %>
-						<li class="text-right dsc-event"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
+						<li class="text-right dsc-event"><%= link_to t("manifold.webpages.tudsc.links.view_all"), events_path, style: "text-decoration:underline" %> ></li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Research Blog", @blog.base_url %></h2>
+					<h2><%= link_to t("manifold.webpages.tudsc.locations.blog"), @blog.base_url %></h2>
 					<ul class="list-unstyled">
 						<% @blog_posts.each do |link| %>
 							<li><%= link_to link.title, link.post_guid %></li>
 						<% end unless @blog_posts.nil? %>
-						<li class="text-right all-events"><%= link_to "View all", strip_tags(@blog.base_url), style: "text-decoration:underline" %> ></li>
+						<li class="text-right all-events"><%= link_to t("manifold.webpages.tudsc.links.view_all"), strip_tags(@blog.base_url), style: "text-decoration:underline" %> ></li>
 					</ul>
 				</div>
 			</div>

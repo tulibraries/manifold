@@ -23,16 +23,6 @@ RSpec.describe BlogsController, type: :controller do
   describe "GET #show" do
     let(:blog) { FactoryBot.create(:blog) }
 
-    it "returns http success" do
-      get :show, params: { id: blog.id }
-      expect(response).to have_http_status(:ok)
-    end
-
-    it "returns html by default success" do
-      get :show, params: { id: blog.id }
-      expect(response.header["Content-Type"]).to include "html"
-    end
-
     it "returns html by default success" do
       get :show, params: { id: blog.id }, format: :json
       expect(response.header["Content-Type"]).to include "json"

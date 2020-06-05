@@ -1,6 +1,6 @@
 <h2>
-	<%= image_tag "email.png", class: "category-icon decorative", alt: "" %>
-	<br />Email
+  <%= image_tag "email.png", class: "category-icon decorative", alt: "" %>
+	<br /><%= t("manifold.webpages.contact.email_label") %>
 </h2>
 
-<p>Email us your question at <%= mail_to "asktulibrary@temple.edu" %></p>
+<p><%= t("manifold.webpages.contact.email_text") %> <%= mail_to "asktulibrary@temple.edu" %></p>

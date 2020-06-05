@@ -21,7 +21,7 @@
         <%= link_to @mailing_list do %>
         <h2>
           <%= image_tag "email.png", class: "category-icon decorative", alt: ""  %>
-          <br />Sign up for our mailing list
+          <br /><%= t("manifold.events.index.mailing_list") %>
         </h2>
         <% end %>
       </div>
@@ -34,7 +34,7 @@
             <span class="filter-tag"><%= tag.html_safe %></span>
           <% end %>
           <% unless filter_tags_events.size < 2 %>
-            <%= link_to "Reset Filters", events_path, class: "reset-filters" %>
+            <%= link_to t("manifold.default.reset_filters"), events_path, class: "reset-filters" %>
           <% end %>
         <% end %>
       </div>
@@ -53,7 +53,7 @@
         <%= link_to @mailing_list do %>
         <h2>
           <%= image_tag "email.png", class: "category-icon decorative", alt: ""  %>
-          <br />Sign Up for our mailing list
+          <br /><%= t("manifold.events.index.mailing_list") %>
         </h2>
         <% end %>
       </div>

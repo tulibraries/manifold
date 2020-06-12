@@ -17,11 +17,11 @@
         <%= image_tag @collection.custom_image(600,300), class: "decorative", alt: "" %>
       <% end %>
         <div class="details">
-          <h2>About the Collection</h2>
+          <h2><%= t("manifold.collections.show.about") %></h2>
           <%= sanitize @collection.description.html_safe %>
 
           <% unless @collection.subject.blank? %>
-          <h2> Subjects</h2>
+          <h2></h2>
           <ul class="list-unstyled">
           <%= @collection.subject.map { |subject| "<li>#{subject.to_s}</li>" }.collect do |subject| %>
             <%= subject.html_safe %>
@@ -29,11 +29,11 @@
           </ul>
           <% end %>
 
-          <h2>Locations</h2>
+          <h2><%= t("manifold.collections.show.subjects") %></h2>
           <%= image_tag "location.png", class: "location decorative", alt: "" %> 
           <%= link_to @collection.space.label, space_path(@collection.space), class: "location" %>
 
-          <h2>Contact</h2>
+          <h2><%= t("manifold.collections.show.locations") %></h2>
           <%= phone_formatted(@collection.space.phone_number) %>
           <br />
           <%= @collection.space.email %>
@@ -43,7 +43,7 @@
       <div class="col-12 col-lg-3">
         <% if @collection.finding_aids.exists? %>
         <div class="access-link">
-          <h2><%= link_to "Explore this Collection", finding_aids_path(collection: @collection.id) %></h2>
+          <h2><%= link_to t("manifold.collections.show.about") %>, finding_aids_path(collection: @collection.id) %></h2>
         </div>
         <% end %>
         <% unless @collection.external_link.nil? %>

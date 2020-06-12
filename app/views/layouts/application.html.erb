@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= display_meta_tags site: "Temple University Libraries" %>
+    <%= display_meta_tags site: t("manifold.default.site_title") %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,8 +14,8 @@
   </head>
   <body class="<%= yield (:body_class) %>">
   <div id="skip-link">
-    <%= link_to "Skip to main content", "#skiplink_ada", :class => "element-invisible", :tabindex => "1" %>
-    <%= link_to "Skip to site search", "#", :class => "element-invisible", :onclick => "document.getElementById('search-block').focus();", :tabindex => "2" %>
+    <%= link_to t("manifold.default.content_skip"), "#skiplink_ada", :class => "element-invisible", :tabindex => "1" %>
+    <%= link_to t("manifold.default.search_skip"), "#", :class => "element-invisible", :onclick => "document.getElementById('search-block').focus();", :tabindex => "2" %>
   </div>
 
     <% flash.each do |key, value| %>
@@ -27,7 +27,7 @@
   <div id="content" style="min-height: 640px">
     <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a>
     <div class="lcs_slide_out">
-      <%= link_to "Chat", "/sidebar", target: "_blank" %>
+      <%= link_to t("manifold.default.chat"), "/sidebar", target: "_blank" %>
     </div>
 
 

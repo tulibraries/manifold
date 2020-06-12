@@ -17,7 +17,7 @@
     </div>
   </div>
     <div class="col-12">
-      <%= t("manifold.hours.charles_note").html_safe %>
+      <%= t("manifold.hours.charles_note_html").html_safe %>
     </div>
 <% end %>
 
@@ -55,7 +55,7 @@
   <% else %> 
     <div class="row hours-row">
       <div class="col-12 text-center">
-        <h3>No data for current date range</h3>
+        <h3><%= t("manifold.default.hours.no_data") %></h3>
       </div>
     </div> 
   <% end %>

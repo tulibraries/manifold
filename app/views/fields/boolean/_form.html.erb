@@ -8,6 +8,6 @@
 <div class="field-unit__field">
   <%= f.check_box field.attribute %>
 	<% if field.attribute == :promoted_to_events %>
-	  <p class="text-muted" style="margin-bottom: 0">When checked, will display on Events page</p>
+	  <p class="text-muted" style="margin-bottom: 0"><%= t("manifold.default.fields.boolean") %></p>
   <% end %>
 </div>

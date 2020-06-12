@@ -1,8 +1,11 @@
 <% if @webpage.file_uploads.present? %>
-  <h2>File(s)</h2>
+  <h2><%= t("manifold.webpages.attachments.files") %></h2>
       <ul class="list-unstyled">
       <% @webpage.file_uploads.each do |fu| %>
-        <li><%= image_tag "pdf.png", class: "decorative", alt: "", style: "width:42px" %> <%= link_to fu.name, url_for(fu.file), disposition: "attachment" %></li>
+        <li>
+          <%= image_tag "pdf.png", class: "decorative", alt: "", style: "width:42px" %> 
+          <%= link_to fu.name, url_for(fu.file), disposition: "attachment" %>
+        </li>
       <% end %>
       </ul>
 <% end %>

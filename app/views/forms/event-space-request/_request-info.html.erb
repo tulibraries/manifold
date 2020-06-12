@@ -1,43 +1,48 @@
 <fieldset>
-  <legend>Event Dates/Times</legend>
-  <%= f.input :date_of_event, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], html5: true, label: "Date of Event", required: :true %>
-  <%= f.input :event_start, as: :time, html5: true, label: "Start Time", required: :true %>
-  <%= f.input :event_end, as: :time, html5: true, label: "End Time", required: :true %>
+  <legend><%= t("manifold.forms.event_space_request.date_legend") %></legend>
+  <%= f.input :date_of_event, as: :date, start_year: Date.today.year, end_year: Date.today.year+1, 
+              order: [:month, :day, :year], html5: true, 
+              label: t("manifold.forms.event_space_request.date"), 
+              required: :true %>
+  <%= f.input :event_start, as: :time, html5: true, label: t("manifold.forms.event_space_request.start_time"), required: :true %>
+  <%= f.input :event_end, as: :time, html5: true, label: t("manifold.forms.event_space_request.end_time"), required: :true %>
 </fieldset>
 
 <fieldset>
-  <legend>Event Information</legend>
-  <%= f.input :event_space, as: :select, collection: ["24/7 Lobby and Cafe *","2nd Floor Multipurpose Room","3rd Floor Reading Room *","4th Floor Multipurpose Room","4th Floor Reading Room *","Atrium *","Event Space","Graduate and Faculty Studio *","any available/not sure"], label: "Event Space", required: :true, hint: "* Special use, non-peak times only" %>
-  <%= f.input :event_title, as: :text, label: "Event Title", required: :true %>
-  <%= f.input :attendees, as: :integer, label: "Estimated Number of Attendees", required: :true %>
+  <legend><%= t("manifold.forms.event_space_request.info_legend") %></legend>
+  <%= f.input :event_space, as: :select, collection: t("manifold.forms.event_space_request.space_collection").map{ |k,v| v }, 
+              label: t("manifold.forms.event_space_request.space_label"), required: :true, 
+              hint:  t("manifold.forms.event_space_request.space_hint") %>
+  <%= f.input :event_title, as: :text, label: t("manifold.forms.event_space_request.event_title"), required: :true %>
+  <%= f.input :attendees, as: :integer, label: t("manifold.forms.event_space_request.attendees"), required: :true %>
 </fieldset>
 
+<fieldset>
+  <legend><%= t("manifold.forms.event_space_request.setup_legend") %></legend>
+  <%= f.input :setup_style, as: :select, 
+              label: t("manifold.forms.event_space_request.setup_style_label"),
+              collection: t("manifold.forms.event_space_request.setup_style_collection").map{ |k,v| v }, 
+              required: :true %>
+  <%= f.input :other, as: :text, label: t("manifold.forms.event_space_request.other") %>
+  <%= f.input :av_support, as: :text, label: t("manifold.forms.event_space_request.av_support") %>
+  <%= f.input :comments, as: :text, label: t("manifold.forms.event_space_request.comments"), 
+              style: "display: inline-block;width: 14px" %>
 
 <fieldset>
-  <legend>Room Set-Up</legend>
-  <%= f.input :setup_style, as: :select, collection: ["Banquet - 72” round tables (6-8 chairs each)",
-                                                      "Classroom - Rows of tables and chairs",
-                                                      "Lecture - Rows of chairs, 8-11 per row",
-                                                      "Reception - 36” round high top tables",
-                                                      "Other"], label: "Setup Style", required: :true %>
-
-  <%= f.input :other, as: :text, label: "Additional Setup Requirements" %>
-  <%= f.input :av_support, as: :text, label: "Specific A/V Support Needed, if any" %>
-  <%= f.input :comments, as: :text, label: "Additional Information", style: "display: inline-block;width: 14px" %>
-
-<fieldset>
-  <legend>Your Information</legend>
-<span style="font-size:large;font-weight:900;">Requestor/Event Leader/Coordinator/Student Group</span>
-<%= f.input :name, label: "Name", required: :true %>
-<%= f.input :email, label: "E-Mail", required: :true %>
-<%= f.input :phone, label: "Telephone", required: :true %>
-<%= f.input :department, label: "Department", required: :true %>
-<span style="font-size:large;font-weight:900;">Sponsoring Budget Unit Head</span>
-<%= f.input :financial_name, label: "Name", required: :true %>
-<%= f.input :financial_email, label: "E-Mail", required: :true %>
-<%= f.input :financial_phone, label: "Telephone", required: :true %>
-<%= f.input :foapal, label: "FOAPAL", required: :true, hint: "in case of damages or additional cleaning costs" %>
+  <legend><%= t("manifold.forms.event_space_request.your_info_legend") %></legend>
+  <span style="font-size:large;font-weight:900;"><%= t("manifold.forms.event_space_request.span") %></span>
+  <%= f.input :name, label: t("manifold.forms.fields.name"), required: :true %>
+  <%= f.input :email, label: t("manifold.forms.fields.email"), required: :true %>
+  <%= f.input :phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
+  <%= f.input :department, label: t("manifold.forms.fields.department"), required: :true %>
+  <span style="font-size:large;font-weight:900;"></span>
+  <%= f.input :financial_name, label: t("manifold.forms.fields.name"), required: :true %>
+  <%= f.input :financial_email, label: t("manifold.forms.fields.email"), required: :true %>
+  <%= f.input :financial_phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
+  <%= f.input :foapal, label: t("manifold.forms.fields.foapal"), required: :true, 
+              hint: t("manifold.forms.fields.foapal_hint") %>
 </fieldset>
 
-  <%= f.input :policy_check, as: :boolean, required: true, label: 'I agree to Temple University Libraries’ policies and guidelines' %><%= link_to "Temple University Libraries’ policies and guidelines", "https://library.temple.edu/policies/17", class: "inline" %>
+  <%= f.input :policy_check, as: :boolean, required: true, class: "inline", 
+              label: t("manifold.forms.event_space_request.policy_check_html") %>
 </fieldset>

@@ -2,7 +2,7 @@
 
 <div class="container aid-index">
 
-  <h1 class="d-none d-lg-block"><%= title "Finding Aids" %></h1>
+  <h1 class="d-none d-lg-block"><%= title t("manifold.finding_aids.index.page_title") %></h1>
 
   <div class="row">
     <div class="col-3 leftside-index d-none d-md-none d-lg-block">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="col-12 col-lg-3" style="padding-left: 28px;">
-      <h2><%= link_to "Search All Finding Aids", "/finding_aids/search", class: "catalog-link" %></h2>
+      <h2><%= link_to t("manifold.finding_aids.index.search_link"), "/finding_aids/search", class: "catalog-link" %></h2>
     </div>
   </div>
 

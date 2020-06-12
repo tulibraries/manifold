@@ -1,10 +1,11 @@
-<%= f.input :name, required: true %>
-<%= f.input :email, as: :email, required: true %>
-<%= f.input :phone, as: :tel, label: "Phone Number", required: true %>
-<%= f.input :tu_id, label: "Temple ID Number", required: true %>
-<%= f.input :department, required: true %>
-<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: ["Faculty","Staff","Graduate","Undergraduate","Post Doc","Other..."], required: true %>
-<% if ["missing-book","purchase-request"].include? params[:type]  %>
-	<%= f.input :affiliation_other, label: false, placeholder: "specify other", wrapper_html: { class: "specify-other" } %>
-<% end %>
-	
+<%= f.input :name, label: t("manifold.forms.fields.name"), required: true %>
+<%= f.input :email, as: :email, label: t("manifold.forms.fields.email"), required: true %>
+<%= f.input :phone, as: :tel, label: "Phone Number", label: t("manifold.forms.fields.phone_number"), required: true %>
+<%= f.input :tu_id, label: "Temple ID Number", label: t("manifold.forms.fields.tu_id"), required: true %>
+<%= f.input :department, label: t("manifold.forms.fields.department"), required: true %>
+<%= f.input :affiliation, as: :radio_buttons, 
+							label: t("manifold.forms.fields.temple_affiliation_label"), 
+							collection: t("manifold.forms.fields.temple_affiliation_array")
+										.merge(t("manifold.forms.fields.non_temple_affiliation_array"))
+										.map{ |k,v| v }, 
+							required: true %>

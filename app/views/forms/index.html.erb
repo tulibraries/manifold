@@ -12,7 +12,7 @@
 
       <div class="row">
         <div class="col">
-          <h1><%= title t("manifold.default.forms.#{@type.underscore}.title") %></h1>
+            <h1><%= title t("manifold.forms.#{@type.underscore}.title") %></h1>
         </div>
       </div>
 
@@ -26,34 +26,35 @@
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
 
       <% unless @type == "event-space-request" %>
-      <div class="row">
-        <div class="col">
-          <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
-            <legend style="width: auto;padding: 0 21px;">Your Information</legend>
+        <div class="row">
+          <div class="col">
+            <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
+              <legend style="width: auto;padding: 0 21px;"><%= t("manifold.forms.shared.your_info") %></legend>
             <%= render "forms/#{@type}/personal_info", f: f %>
-          </fieldset>
+            </fieldset>
+          </div>
         </div>
-      </div>
       <% end %>
-      <% if File.exists?(Rails.root.join("app", "views", params[:controller], "#{@type}", "_request-info.html.erb")) %>
+
+      <% unless ["graduate-locker-request"].include? params[:type] %>
         <div class="row">
           <div class="col">
             <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;">
-              <legend style="width: auto;padding: 0 21px;">Request Information -- Please do not abbreviate</legend>
+              <legend style="width: auto;padding: 0 21px;"><%= t("manifold.forms.shared.request_info") %></legend>
               <%= render "forms/#{@type}/request-info", f: f %>
           </div>
         </div>
       <% end %>
 
-      <div class="row" style="margin-top: 28px;">
-        <div class="col">
-          <%= f.button :submit, 'Send Request', class: "btn btn-primary" %>
+        <div class="row" style="margin-top: 28px;">
+          <div class="col">
+            <%= f.button :submit, t("manifold.forms.shared.submit"), class: "btn btn-primary" %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-<% else %>
-  <%= render "all" %>
-<% end %>
+  <% else %>
+    <%= render "all" %>
+  <% end %>
 </div>

@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-12 col-lg-3 back-button">
-      < <%= link_to "Finding Aids Directory", finding_aids_path, class: "inline" %>
+      < <%= link_to t("manifold.finding_aids.show.breadcrumb"), finding_aids_path, class: "inline" %>
     </div>
 
 
@@ -12,24 +12,24 @@
       </h1>
 
       <div class="details">
-        <h2>Collection ID</h2>
+        <h2><%= t("manifold.finding_aids.show.headings.collection_id") %></h2>
         <p><%= @finding_aid.identifier %></p>
 
-        <h2>Related Subject(s)</h2>
+        <h2><%= t("manifold.finding_aids.show.headings.related_subjects") %></h2>
         <ul class="list-unstyled subjects">
           <% @finding_aid.subject.each do |subject| %>
             <li><%= link_to subject, finding_aids_path(subject: subject), class: "inline" %></li>
           <% end %>
         </ul>
 
-        <h2>Collecting Area(s)</h2>
+        <h2><%= t("manifold.finding_aids.show.headings.collecting_areas") %></h2>
         <ul class="list-unstyled collections">
           <% @finding_aid.collections.each do |collection| %>
             <li><%= link_to collection.name, collection_path(collection), class: "inline" %></li>
           <% end %>
         </ul>
 
-        <h2>Description</h2>
+        <h2><%= t("manifold.finding_aids.show.headings.description") %></h2>
         <%= sanitize @finding_aid.description.html_safe %>
       </div>
 
@@ -39,7 +39,11 @@
       <% unless @finding_aid.collections.blank? || @finding_aid.identifier.blank? %>
       <% unless @aeon %>
       <div class="access-link">
-        <h2><%= link_to "Request Materials from Special Collections Research Center", "https://temple.aeon.atlas-sys.com/Logon/?Action=10&Form=30&ItemTitle=#{@finding_aid.name}&ItemPlace=#{@finding_aid.collections.first.name}&CallNumber=#{@finding_aid.identifier}&rft.pages=#{@finding_aid.collections.first.name}" %></h2>
+        <h2><%= link_to t("manifold.default.finding_aids.aeon_link_label"), 
+                        t("manifold.default.finding_aids.aeon_link_link", 
+                          name: @finding_aid.name,
+                          collections_name: @finding_aid.collections.first.name,
+                          identifier: @finding_aid.identifier) %></h2>
       </div>
       <% end %>
       <% end %>

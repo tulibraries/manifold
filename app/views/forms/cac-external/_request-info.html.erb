@@ -1,6 +1,8 @@
-<%= f.input :bachelor_degree, as: :select, collection: ["Yes","No"], label: "Have you earned a B.A./B.S. degree?", required: true %>
-<%= f.input :institution_of_degree, label: "Name of the Institution where your degree was earned", required: true %>
-<%= f.input :overall_gpa, as: :decimal, label: "Overall B.A. GPA (4.0 scale)", required: true %>
-
-<%= f.input :degrees_earned, as: :text, label: "Graduate degree(s) earned. Please list degree(s) and name of institution(s) where earned.", required: true %>
-<%= f.input :personal_statement, as: :text, label: "Please write a personal statement of no more than 250 words indicating your research objectives and how the tools of Cultural Analytics can contribute to their realization.", required: true %>
+<%= f.input :bachelor_degree, as: :select, 
+               collection: t("manifold.forms.fields.boolean.yes_no").map{ |k,v| v },
+               label: t("manifold.forms.cac_external.bachelor_degree"), 
+               required: true %>
+<%= f.input :institution_of_degree, label: t("manifold.forms.cac_external.institution_of_degree"), required: true %>
+<%= f.input :overall_gpa, as: :decimal, label: t("manifold.forms.cac_external.overall_gpa"), required: true %>
+<%= f.input :degrees_earned, as: :text, label: t("manifold.forms.cac_external.degrees_earned"), required: true %>
+<%= f.input :personal_statement, as: :text, label: t("manifold.forms.cac_external.personal_statement"), required: true %>

@@ -1,5 +1,7 @@
 <%= render_as_phone_link_on_mobile(number: "215-204-8212", link_content: phone_icon) %>
-<h2>Call</h2>
+<h2><%= t("manifold.webpages.contact.call") %></h2>
 <p>
 <%= render_as_phone_link_on_mobile(number: "215-204-8212") %>
-<br />Other <%= link_to "Frequently Called Numbers", "/numbers" %></p>
+<br />
+<%= t("manifold.webpages.contact.other") %> 
+<%= link_to t("manifold.webpages.contact.fcn_link"), "/numbers" %></p>

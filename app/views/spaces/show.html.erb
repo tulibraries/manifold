@@ -38,7 +38,7 @@
         </div>
 
         <% unless @space.accessibility.blank? %>
-        <h2>Access</h2>
+        <h2><%= t("manifold.spaces.show.access") %></h2>
         <div>
           <%= @space.accessibility %>
         </div>

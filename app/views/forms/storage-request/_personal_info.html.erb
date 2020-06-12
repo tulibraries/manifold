@@ -1,3 +1,3 @@
-<%= f.input :name, required: true %>
-<%= f.input :email, as: :email, required: true %>
-<%= f.input :tu_id, label: "Temple ID Number", required: true %>
+<%= f.input :name, label: t("manifold.forms.fields.name"), required: true %>
+<%= f.input :email, as: :email, label: t("manifold.forms.fields.email"), required: true %>
+<%= f.input :tu_id, label: t("manifold.forms.fields.tu_id"), required: true %>

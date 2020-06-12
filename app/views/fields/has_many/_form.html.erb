@@ -13,12 +13,12 @@
 </div>
 <div class="field-unit__field field-unit--has-many">
   <% if field.resource.class.to_s == "FindingAid" && field.attribute == :collections %>
-    <p style="color: #951936">Please select at least one <strong>Collection</strong> or <strong>Subject</strong> from the below lists in order for the link to Aeon to appear on this finding aid.</p>
+    <p style="color: #951936"><%= t("manifold.default.fields.has_many.finding_aid").html_safe %></p>
   <% end %>
   <%= f.select(field.attribute_key, nil, {}, {multiple: true}.merge(field.html_attributes)) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_options) %>
   <% end %>
   <% if field.attribute == :categories %>
-    <p class="text-muted">Categories determine the left hand menu that appears on the page and also the navigation category to which this page belongs</p>
+    <p class="text-muted"><%= t("manifold.default.fields.has_many.categories") %></p>
   <% end %>
 </div>

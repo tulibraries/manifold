@@ -7,7 +7,7 @@
 <div class="row">
 	<div class="col">
 		<h1 class="page-title text-center">
-			<%= title "Health Sciences Libraries" %>
+			<%= title t("manifold.webpages.hsl.page_title") %>
 		</h1>
 	</div>
 </div>
@@ -16,11 +16,11 @@
 
 	<div class="col-12 col-lg-4 pr-14 left-links">
 		<div class="locations">
-			<%= link_to "Remote Learning Support", "/hsl/remote-learning-support" %>
+			<%= link_to t("manifold.webpages.hsl.locations.remote_learning"), "/hsl/remote-learning-support" %>
 			<hr />
-			<%= link_to "Ginsburg Health Sciences Library", "/hsl/ginsburg" %>
+			<%= link_to t("manifold.webpages.hsl.locations.ginsburg"), "/hsl/ginsburg" %>
 			<hr />
-			<%= link_to "Krausz Library of Podiatric Medicine", "/hsl/podiatry" %>
+			<%= link_to t("manifold.webpages.hsl.locations.krausz"), "/hsl/podiatry" %>
 		</div>
 
 		<div class="contact">
@@ -28,19 +28,19 @@
 			215-707-2665
 			<hr />
 			<%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<%= link_to "Mailing List", "/hsl/mailing-list", target: "_blank" %>
+			<%= link_to t("manifold.webpages.hsl.contact.mailer"), "/hsl/mailing-list", target: "_blank" %>
       <hr />
 			<div class="two-lines">
 			<%= image_tag "chat.png", style: "width: 100px;" %>
-			<%= link_to "Chat with a Health Sciences Librarian", "/hsl/chat", target: "_blank" %>
+			<%= link_to t("manifold.webpages.hsl.contact.chat"), "/hsl/chat", target: "_blank" %>
 			</div>
 			<hr />
         <%= image_tag('journal_finder.png', class: "decorative", style: "width: 100px", alt: "") %>
-        <%= link_to "Journal Finder", "/journal-finder" %>
+        <%= link_to t("manifold.webpages.hsl.links.journal_finder"), "/journal-finder" %>
       <hr />
       <div style="height:79px;" class="two-lines">
         <%= image_tag "gift_white.png", style: "width: 100px;" %>
-        <%= link_to "Support the Health Sciences Libraries", "/hsl/giving" %>
+        <%= link_to t("manifold.webpages.hsl.links.support"), "/hsl/giving" %>
       </div>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 		<div class="row links-container">
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Visit & Study", "/hsl/info" %></h2>
+					<h2><%= link_to t("manifold.webpages.hsl.links.visit"), "/hsl/info" %></h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>
@@ -59,7 +59,7 @@
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Resources & Media", "/hsl/resources" %></h2>
+					<h2><%= link_to t("manifold.webpages.hsl.links.resources"), "/hsl/resources" %></h2>
 					<ul class="list-unstyled">
 						<% @resource_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>
@@ -69,7 +69,7 @@
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Research Services", "/hsl/research" %></h2>
+					<h2><%= link_to t("manifold.webpages.hsl.links.research"), "/hsl/research" %></h2>
 					<ul class="list-unstyled">
 						<% @research_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>
@@ -79,12 +79,12 @@
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Workshops & Events", events_path %></h2>
+					<h2><%= link_to t("manifold.webpages.hsl.links.events"), events_path %></h2>
 					<ul class="list-unstyled">
 						<% @event_links.each do |link| %>
 							<li><%= link_to link.title, event_path(link.id) %></li>
 						<% end %>
-						<li class="text-right all-events"><%= link_to "View all", events_path, style: "text-decoration:underline" %> ></li>
+						<li class="text-right all-events"><%= link_to t("manifold.webpages.hsl.links.all_events"), events_path, style: "text-decoration:underline" %> ></li>
 					</ul>
 				</div>
 			</div>

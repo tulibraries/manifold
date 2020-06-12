@@ -1,3 +1,6 @@
-<%= f.input :requestor, required: true %>
-<%= f.input :email, as: :email, required: true %>
-<%= f.input :affiliation, as: :radio_buttons, label: "Temple Affiliation", collection: ["Student", "Faculty", "Staff", "Alumni", "Not affiliated with Temple"], required: true %>
+<%= f.input :requestor, label: t("manifold.forms.fields.requestor"), required: true %>
+<%= f.input :email, as: :email, label: t("manifold.forms.fields.email"), required: true %>
+<%= f.input :affiliation, as: :radio_buttons,  
+            label: t("manifold.forms.fields.temple_affiliation_label"), 
+            collection: t("manifold.forms.fields.temple_affiliation_array").map{ |k,v| v }, 
+            required: true %>

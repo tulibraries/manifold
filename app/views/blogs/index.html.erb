@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col">
-    <h1 class="page-title"><%= title "Recent Highlights" %></h1>
+    <h1 class="page-title"><%= title t("manifold.blogs.page_title") %></h1>
   </div>
 </div>
 
@@ -19,7 +19,7 @@
         <%= strip_tags(highlight.blurb.truncate(120).html_safe) %>
       </div>
       <div class="unnecessary-link">
-        <%= link_to "Read more >", strip_tags(highlight.link), class: "read-more" %>
+        <%= link_to t("manifold.blogs.read_more"), strip_tags(highlight.link), class: "read-more" %>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
 
 <div class="row" id="blog-section">
   <div class="col-12 section-title">
-    <h2>Library Blogs</h2>
+    <h2><%= t("manifold.blogs.read_more") %></h2>
   </div>
   <div class="col-12">
     <ul class="list-unstyled two-columns">

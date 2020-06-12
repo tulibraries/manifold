@@ -24,7 +24,7 @@
         </div>
       <% end %>
       <% unless @service.access_description.blank? %>
-      <h2>Get Help</h2>
+      <h2><%= t("manifold.get_help") %></h2>
         <div class="entity-help">
           <%= sanitize @service.access_description.html_safe %>
         </div>

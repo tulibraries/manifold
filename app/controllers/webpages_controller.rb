@@ -124,6 +124,7 @@ class WebpagesController < ApplicationController
   end
 
   def home
+    @todays_hours = LibraryHour.todays_hours_at("ask_a_librarian")
   end
 
   def scrc

@@ -71,7 +71,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    attr_json (1.1.0)
+    attr_json (1.2.0)
       activerecord (>= 5.0.0, < 6.1)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)

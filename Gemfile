@@ -83,7 +83,7 @@ end
 group :test do
   gem "capybara", ">= 2.15", "< 4.0"
   gem "chromedriver-helper"
-  gem "factory_bot_rails", "~> 4.11.1"
+  gem "factory_bot_rails", "~> 6.0.0"
   gem "guard-rspec", require: false
   gem "mutant-rspec"
   gem "rails-controller-testing"

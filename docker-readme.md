@@ -1,53 +1,63 @@
-# Dockerfy
+---
+title: Manifold on Docker
+author: Steven Ng
+date: 2020-05-26
+tags:
+  - Manifold
+  - PostgreSQL
+  - Docker
+---
+
+# Manifold on Docker
+
+Dockerfiles are configured for development.
 
 Build the Docker Image
 
-```
-  docker-compose build  --build-arg GOOGLE_OAUTH_CLIENT_ID=$GOOGLE_OAUTH_CLIENT_ID --build-arg GOOGLE_OAUTH_SECRET=$GOOGLE_OAUTH_SECRET
-  docker-compose run --rm web rake db:migrate
-```
+    docker-compose build
+    sudo chown -R $USER:$USER tmp/db
+    docker-compose up -d
 
-To run the container
 
-```
-  docker-compose up -d
-```
+Run the Docker image
+
+And restart the container (detached)
+
+    docker-compose up -d
+
 
 To stop the container
 
-```
-  docker-compose down
-```
+    docker-compose down
+
 
 If the container does not start up because it Docker thinks that the server is already running,
 delete the server PID file
 
-```
-  rm tmp/pids/server.pid
-```
+
+    rm tmp/pids/server.pid
+
 
 Visit http://localhost:3000
 
-To populate the database:
+## Populate the database
 
-```
-  docker-compose run --rm web rake db:populate
-```
+To populate the database with a dumpfile
 
-To seed the database:
+    docker-compose exec web bin/restore_db.sh [path/top/database_dump_file]
 
-```
-  docker-compose run --rm web rake db:seed
-```
+## Visit Site
+
+http://localhost:3000
+
+## Test Specs
 
 To run specs:
 
-```
-  docker-compose run --rm web rspec spec
-```
+    docker-compose run --rm web rspec spec
+
+## Interactive Container SHell
 
 To access the container's shell
 
-```
-  docker-compose exec web bash
-```
+    docker-compose exec web bash

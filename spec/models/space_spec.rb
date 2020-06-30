@@ -4,6 +4,8 @@ require "rails_helper"
 
 RSpec.describe Space, type: :model do
 
+  let (:building) { FactoryBot.create(:building) }
+
   context "Required Fields" do
     required_fields = [
       "name",
@@ -23,7 +25,7 @@ RSpec.describe Space, type: :model do
     ]
     required_references.each do |f|
       example "missing #{f}" do
-        space = FactoryBot.build(:space)
+        space = FactoryBot.build(:space, building: building)
         space[f] = nil
         expect { space.save! }.to raise_error(/#{f.humanize(capitalize: true)} must exist/)
       end
@@ -36,7 +38,7 @@ RSpec.describe Space, type: :model do
     ]
     optional_references.each do |f|
       example "missing #{f}" do
-        space = FactoryBot.build(:space)
+        space = FactoryBot.build(:space, building: building)
         space[f] = nil
         expect { space.save! }.to_not raise_error
       end
@@ -45,7 +47,7 @@ RSpec.describe Space, type: :model do
 
   describe "field validators" do
 
-    let (:space) { FactoryBot.build(:space) }
+    let (:space) { FactoryBot.build(:space, building: building) }
 
     context "Building reference" do
       example "valid building" do
@@ -63,7 +65,7 @@ RSpec.describe Space, type: :model do
         expect { space.save! }.to_not raise_error
       end
       example "valid space ID" do
-        space = FactoryBot.build(:space_with_parent)
+        space = FactoryBot.build(:space_with_parent, building: building)
         expect { space.save! }.to_not raise_error
       end
     end

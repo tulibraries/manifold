@@ -1,7 +1,3 @@
-<script type="application/ld+json">
-  <%= json_ld(@building) %>
-</script>
-
 <%= render "mobile-menu-secondary" %>
 
 <div class="container">
@@ -36,7 +32,7 @@
 
       <% unless @building.external_link.nil? %>
         <div class="external-link">
-          <h2><%= link_to "Library Website", @building.external_link.link %></h2>
+          <h2><%= link_to t("manifiold.buildings.show.website_link_label"), @building.external_link.link %></h2>
         </div>          
       <% end %>
       <% unless @building.coordinates.blank? || @building.google_id.blank? %>
@@ -46,7 +42,7 @@
       <% end %>
       <% unless @building.policies.blank? %>
         <div class="related-policies">
-        <h2>Policies</h2>
+        <h2><%= t("manifold.buildings.show.related_policies") %></h2>
           <ul>
             <% @building.policies.each do |policy| %>
               <li><%= link_to policy.name, policies_path(policy) %></li>
@@ -77,3 +73,7 @@
 <% end %>
 
 </div>
+
+<script type="application/ld+json">
+  <%= json_ld(@building) %>
+</script>

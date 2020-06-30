@@ -7,6 +7,6 @@
 <div class="field-unit__field">
   <%= f.telephone_field field.attribute, placeholder: 'xxx-xxx-xxxx', value: number_to_phone(field.data) %>
 	<% if field.resource.class.to_s == "Space" %>
-	 <p>If left blank, phone number from related building will be displayed.</p>
+	 <p><%= t("manifold.default.fields.phone") %></p>
 	<% end %>
 </div>

@@ -31,7 +31,7 @@
         <% end %>
       <% unless @person.personal_site.blank? %>
       <li>
-        <%= link_to "Personal web site", strip_tags(@person.personal_site) %>
+        <%= link_to t("manifold.people.show.personal_site"), strip_tags(@person.personal_site) %>
       </li>
       <% end %>
       <% unless @person.chat_handle.blank? %>
@@ -46,7 +46,7 @@
 <div class="col-12 right-side">
 
   <% unless @person.specialties.blank? %>
-    <h2>Subjects</h2>
+    <h2>t("manifold.people.show.subjects")</h2>
     <div class="subject-list text-left">
       <ul class="list-unstyled">
         <% @person.specialties.each do |s| %>
@@ -58,12 +58,12 @@
 
   <% unless @person.libguides_account.blank? %>
     <h2>
-      <%= link_to "Subject guides by this librarian", "https://guides.temple.edu/prf.php?account_id=#{@person.libguides_account}", class: "libguides-link", target: "_new" %>
+      <%= link_to t("manifold.people.show.guides_link"), "https://guides.temple.edu/prf.php?account_id=#{@person.libguides_account}", class: "libguides-link", target: "_new" %>
     </h2>
   <% end %>
 
   <% unless @person.springshare_id.blank? %>
-    <h2><%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %></h2>
+    <h2><%= link_to t("manifold.people.show.appointment_link"), "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-appointment", target: "_new" %></h2>
   <% end %>
 
 </div>

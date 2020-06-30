@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="col">
-		<h1 class="page-title"><%= title "Past Program and Event Videos" %></h1>
+		<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
 		<div class="row video-container">
 			<div class="col-lg-10 offset-lg-1">
   	    <div id="ensembleEmbeddedContent_<%= @featured_video_id %>"><script type="text/javascript" src="https://ensemble.temple.edu/hapi/v1/contents/<%= @featured_video_id %>/plugin/javascript?embedId=ensembleEmbeddedContent_<%= @featured_video_id %>&embedAsThumbnail=false&displayTitle=false&startTime=0&autoPlay=false&hideControls=true&showCaptions=false&displaySharing=false&displayAnnotations=false&displayAttachments=false&displayLinks=false&displayEmbedCode=false&displayDownloadIcon=false&displayMetaData=false&displayCredits=false&audioPreviewImage=false&displayCaptionSearch=false&displayViewersReport=false&displayAxdxs=false"></script>
@@ -22,7 +22,7 @@
 	<div class="col text-center">
 		<div id="videosearchbar">
     <form action="/watchpastprograms/search" method="GET">
-        <label class="sr-only" for="videosearchterm">Search all Past Program videos:</label>
+        <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
         <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
         <input type="submit" id="videosearchbutton" value="Search">
     </form>
@@ -32,11 +32,11 @@
 
 	<div class="row odd">
 		<div class="col-sm-8">
-			<h2>Beyond the Page</h2>
+			<h2><%= t("manifold.webpages.videos.all.beyond") %></h2>
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-				<a href="/watchpastprograms/list/0">See All Past Program Videos</a>
+				<a href="/watchpastprograms/list/0"><%= title t("manifold.webpages.videos.all.see_all") %></a>
 			</span>
 		</div>
 		<div class="col-12">
@@ -56,11 +56,11 @@
 
 	<div class="row even">
 		<div class="col-sm-8">
-			<h2>Beyond the Page</h2>
+			<h2><%= title t("manifold.webpages.videos.all.beyond") %></h2>
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-				<a href="/watchpastprograms/list/1">See All Beyond the Page Videos</a>
+				<a href="/watchpastprograms/list/1"><%= title t("manifold.webpages.videos.all.beyond_all") %></a>
 			</span>
 		</div>
 		<div class="col-12">
@@ -80,11 +80,11 @@
 
 	<div class="row odd">
 		<div class="col-sm-8">
-			<h2>Beyond the Notes</h2>
+			<h2><%= title t("manifold.webpages.videos.all.notes") %></h2>
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-				<a href="/watchpastprograms/list/2">See All Beyond the Notes Videos</a>
+				<a href="/watchpastprograms/list/2"><%= title t("manifold.webpages.videos.all.notes_all") %></a>
 			</span>
 		</div>
 		<div class="col-12">
@@ -104,11 +104,11 @@
 
 	<div class="row even">
 		<div class="col-sm-8">
-			<h2>Charles L. Blockson Afro-American Collection</h2>
+			<h2><%= title t("manifold.webpages.videos.all.blockson") %></h2>
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-				<a href="/watchpastprograms/list/3">See All Blockson Collection Videos</a>
+				<a href="/watchpastprograms/list/3"><%= title t("manifold.webpages.videos.all.blockson_all") %></a>
 			</span>
 		</div>
 		<div class="col-12">
@@ -128,11 +128,11 @@
 
 	<div class="row odd">
 		<div class="col-sm-8">
-			<h2>Livingstone Undergraduate Research Awards</h2>
+			<h2><%= title t("manifold.webpages.videos.all.awards") %></h2>
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-				<a href="/watchpastprograms/list/4">See All Research Award Videos</a>
+				<a href="/watchpastprograms/list/4"><%= title t("manifold.webpages.videos.all.awards_all") %></a>
 			</span>
 		</div>
 		<div class="col-12">
@@ -152,11 +152,11 @@
 
 	<div class="row even">
 		<div class="col-sm-8">
-			<h2>Loretta C. Duckworth Scholars Studio</h2>
+			<h2><%= title t("manifold.webpages.videos.all.lcdss") %></h2>
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-				<a href="/watchpastprograms/list/5">See All Scholars Studio Videos</a>
+				<a href="/watchpastprograms/list/5"><%= title t("manifold.webpages.videos.all.lcdss_all") %></a>
 			</span>
 		</div>
 		<div class="col-12">
@@ -178,11 +178,11 @@
   <% unless @scrc.empty? %>
 	<div class="row odd">
 		<div class="col-sm-8">
-			<h2>Special Collections Research Center</h2>
+			<h2><%= title t("manifold.webpages.videos.all.scrc") %></h2>
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-				<a href="/watchpastprograms/list/6">See All Special Collections Videos</a>
+				<a href="/watchpastprograms/list/6"><%= title t("manifold.webpages.videos.all.scrc_all") %></a>
 			</span>
 		</div>
 		<div class="col-12">

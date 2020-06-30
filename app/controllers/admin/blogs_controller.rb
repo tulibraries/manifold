@@ -12,7 +12,7 @@ module Admin
       blog = Blog.find(params[:blog_id])
       SyncService::Blogs.call(blog: blog)
       flash[:notice] = t(
-        "fortytude.admin.notification.blog_synced",
+        "manifold.admin.notification.blog_synced",
         title: blog.title,
         id: blog.id
       )

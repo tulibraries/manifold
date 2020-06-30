@@ -36,7 +36,7 @@
 
             <% unless person.springshare_id.blank? %>
 
-                <%= link_to "Make an appointment", "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-id", target: "_new", style: "color: white" %>
+                <%= link_to t("manifold.people.show.appointment_link"), "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-id", target: "_new", style: "color: white" %>
 
             <% end %>
           </div>
@@ -54,7 +54,7 @@
       <% else %> <!-- unless -->
       <div class="row" style="margin-top: 14px;">
         <div class="col-12 text-center">
-          <h3>No people found. Try another search.</h3>
+          <h3><%= t("manifold.people.no_results") %></h3>
         </div>
       </div>
     <% end %>

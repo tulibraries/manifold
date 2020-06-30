@@ -1,9 +1,17 @@
-<div style="font-style:italic;margin-bottom: 2rem;">Recalled books are given a two week window to be returned after being recalled.</div>
-<%= f.input :author, label: "Author", required: true %>
-<%= f.input :title, label: "Title", required: true %>
-<%= f.input :call_number, label: "Call Number", required: true %>
-<%= f.input :substitute_edition, as: :radio_buttons, label: "Subsititute another edition of same book if necessary?", required: :true %>
-<%= f.input :pickup_location, as: :radio_buttons, collection: ["Charles","Ambler","Harrisburg"], required: :true %>
-<%= f.input :cancellation_date, as: :date, html5: true, start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], required: :true %>
-
-<%= f.input :comments, as: :text, label: "Comments (optional)" %>
+<%= t("manifold.forms.recall_book.request_disclaimer_html") %>
+<%= f.input :author, label: t("manifold.forms.fields.author"), required: true %>
+<%= f.input :title, label: t("manifold.forms.fields.author"), required: true %>
+<%= f.input :call_number, label: t("manifold.forms.fields.call_number"), required: true %>
+<%= f.input :substitute_edition, as: :radio_buttons, 
+                        label: t("manifold.forms.fields.subsitute_edition"), 
+                        collection: t("manifold.forms.fields.boolean.yes_no").map{ |k,v| v }, 
+                        required: :true %>
+<%= f.input :pickup_location, as: :radio_buttons, 
+                            label: t("manifold.forms.fields.pickup_location"), 
+                            collection: t("manifold.forms.fields.location").map{ |k,v| v }, 
+                            required: :true %>
+<%= f.input :cancellation_date, as: :date, html5: true, 
+                        start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], 
+                        label: t("manifold.forms.fields.cancellation_date"), 
+                        required: true %>
+<%= f.input :comments, as: :text, label: t("manifolds.forms.fields.comments") %>

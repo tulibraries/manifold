@@ -16,22 +16,22 @@
 
 	<div class="col-12 col-lg-4 pr-14 left-links">
 		<div class="locations">
-			<%= link_to "SCRC Reading Room", '/scrc-reading-room' %>
+			<%= link_to t("manifold.webpages.scrc.locations.reading_room"), '/scrc-reading-room' %>
 			<hr />
-			<%= link_to "Browse Finding Aids", finding_aids_path %>
+			<%= link_to t("manifold.webpages.scrc.locations.finding_aids"), finding_aids_path %>
 			<hr />
-			<%= link_to "Digitized Materials", "/digital-library" %>
+			<%= link_to t("manifold.webpages.scrc.locations.materials"), "/digital-library" %>
 		</div>
 
 		<div class="contact">
 			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<%= link_to "Contact Us", "forms/ask-scrc" %>
+			<%= link_to t("manifold.webpages.scrc.contact.contact"), "forms/ask-scrc" %>
 			<hr />
 			<%= image_tag "search.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<%= link_to "SCRC Catalog Search", "/scrc/search" %>
+			<%= link_to t("manifold.webpages.scrc.contact.search"), "/scrc/search" %>
 			<hr />
 			<%= image_tag "information_white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<%= link_to "Hours & Info", "/scrc/info" %>
+			<%= link_to t("manifold.webpages.scrc.contact.hours"), "/scrc/info" %>
 		</div>
 	</div>
 
@@ -46,7 +46,7 @@
 		<div class="row links-container">
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Visit & Study", "/scrc/study" %></h2>
+					<h2><%= link_to t("manifold.webpages.scrc.links.visit"), "/scrc/study" %></h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>
@@ -56,7 +56,7 @@
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to "Collecting Emphases", "/scrc-collections" %></h2>
+					<h2><%= link_to t("manifold.webpages.scrc.links.emphases"), "/scrc-collections" %></h2>
 					<ul class="list-unstyled">
 						<% @collection_links.each do |link| %>
 							<li><%= link_to link.label, link %></li>

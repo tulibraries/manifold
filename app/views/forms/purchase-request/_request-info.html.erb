@@ -1,11 +1,16 @@
-<% material_type = ["Book","Newspaper","Journal/Magazine","Video","Other..."] %>
-
-<%= f.input :material_type, as: :radio_buttons, label: "Type of Material", collection: material_type, required: true, wrapper_html: { class: "form_affiliation" } %> 
-<%= f.input :material_type_other, label: false, placeholder: "specify other", wrapper_html: { class: "specify-other" } %>
-<%= f.input :author, label: "Author", required: true %>
-<%= f.input :title, label: "Title", required: true %>
-<%= f.input :year, required: true %>
-<%= f.input :publisher, required: true %>
-<%= f.input :source_of_information, as: :text, label: "Source of Information", hint: "(Indicate catalog, research database, bibliography or other source)" %>
-<%= f.input :reason_for_purchase, as: :text, label: "Reason for Purchase" %>
+<%= f.input :material_type, as: :radio_buttons, 
+                        label: t("manifold.forms.purchase_request.material_type"), 
+                        collection: t("manifold.forms.purchase_request.material_type_options").map{ |k,v| v }, 
+                        required: true, 
+                        wrapper_html: { class: "form_affiliation" } %> 
+<%= f.input :material_type_other, label: false, placeholder: t("manifold.forms.fields.other_placeholder"), 
+                                  wrapper_html: { class: "specify-other" } %>
+<%= f.input :author, label: t("manifold.forms.fields.author"), required: true %>
+<%= f.input :title, label: t("manifold.forms.fields.title"), required: true %>
+<%= f.input :year, label: t("manifold.forms.fields.year"), required: true %>
+<%= f.input :publisher, label: t("manifold.forms.fields.publisher"), required: true %>
+<%= f.input :source_of_information, as: :text, 
+                                    label: t("manifold.forms.purchase_request.source_of_information"), 
+                                    hint:  t("manifold.forms.purchase_request.source_of_information_hint") %>
+<%= f.input :reason_for_purchase, as: :text, label: t("manifold.forms.purchase_request.reason_for_purchase") %>
 <%= f.input :comments, as: :text, label: "Comments (optional)" %>

@@ -12,7 +12,7 @@
 
       <div class="row">
         <div class="col">
-            <h1><%= title t("manifold.default.forms.#{@type.underscore}.title") %></h1>
+            <h1><%= title t("manifold.forms.#{@type.underscore}.title") %></h1>
         </div>
       </div>
 
@@ -29,7 +29,7 @@
         <div class="row">
           <div class="col">
             <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
-              <legend style="width: auto;padding: 0 21px;">Your Information</legend>
+              <legend style="width: auto;padding: 0 21px;"><%= t("manifold.forms.shared.your_info") %></legend>
             <%= render "forms/shared/personal_info", f: f %>
             </fieldset>
           </div>
@@ -40,7 +40,7 @@
         <div class="row">
           <div class="col">
             <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;">
-              <legend style="width: auto;padding: 0 21px;">Request Information -- Please do not abbreviate</legend>
+              <legend style="width: auto;padding: 0 21px;"><%= t("manifold.forms.shared.request_info") %></legend>
               <%= render "forms/#{@type}/request-info", f: f %>
           </div>
         </div>
@@ -48,7 +48,7 @@
 
         <div class="row" style="margin-top: 28px;">
           <div class="col">
-            <%= f.button :submit, 'Send Request', class: "btn btn-primary" %>
+            <%= f.button :submit, t("manifold.forms.shared.submit"), class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>

@@ -1,7 +1,11 @@
-<%= f.input :description, as: :text, label: "Describe reason for this request", required: true %>
-<%= f.input :requested_date, as: :text, label: "Requested date and time window (e.g., morning, afternoon)", required: true %>
-<%= f.input :attendees, as: :integer, label: "Number of people in group", required: true %>
-<%= f.input :minors, as: :radio_buttons, label: "Are there minors in this group?", required: true %>
-<%= f.input :school_visit, as: :text, label: "If this is a school visit, please provide name of school, grade level, and age range of students", required: true %>
-<%= f.input :referrer, label: "Referred to us by (if applicable)" %>
-<%= f.input :comments, as: :text, label: "Provide any additional information about this request" %>
+<%= f.input :description, as: :text, label: t("manifold.forms.group_visit.description"), required: true %>
+<%= f.input :requested_date, as: :text, label: t("manifold.forms.group_visit.requested_date"), 
+            required: true %>
+<%= f.input :attendees, as: :integer, label: t("manifold.forms.group_visit.attendees"), 
+            required: true %>
+<%= f.input :minors, as: :radio_buttons, label: t("manifold.forms.group_visit.minors"), 
+            required: true %>
+<%= f.input :school_visit, as: :text, label: t("manifold.forms.group_visit.school_visit"), 
+            required: true %>
+<%= f.input :referrer, label: t("manifold.forms.group_visit.referrer") %>
+<%= f.input :comments, as: :text, label: t("manifold.forms.group_visit.comments") %>

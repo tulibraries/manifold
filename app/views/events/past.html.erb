@@ -2,7 +2,7 @@
 
 <div class="container event-index">
 
-  <h1 class="d-none d-lg-block"><%= title t("manifold.events.page_title") %></h1>
+  <h1 class="d-none d-lg-block"><%= title t("manifold.events.index.page_title") %></h1>
   <% unless @intro.nil? %>
     <div class="intro px-4"><%= sanitize @intro.description.html_safe %></div>
   <% end %>
@@ -14,7 +14,7 @@
     <div class="col-12 col-lg-6 events">
       <div class="row">
         <div class="upcoming-header">
-          <%= t("manifold.events.past_events_label") %>
+          <%= t("manifold.events.index.past_events_label") %>
         </div>
       </div>
       
@@ -31,22 +31,22 @@
       <% unless @exhibitions.blank? %>
 
       <div class="col-12 exhibits-header">
-        <%= t("manifold.events.current_exhibits_label") %>
+        <%= t("manifold.events.index.current_exhibits_label") %>
       </div>
 
       <%= render "exhibitions" %>
       <% end %>
 
       <div class="col-12 px-0">
-        <%= link_to t("manifold.event.view_current_events"), events_path, class: "past-events-button" %>
+        <%= link_to t("manifold.events.index.view_current_events"), events_path, class: "past-events-button" %>
       </div>
 
       <div class="col-12 d-none">
-        <%= link_to t("manifold.event.view_past_events_videos"), events_path, class: "video-button" %>
+        <%= link_to t("manifold.events.index.view_past_events_videos"), events_path, class: "video-button" %>
       </div>
 
       <div class="col-12 exhibit">
-        <%= t("manifold.events.general_admission") %>
+        <%= t("manifold.events.index.general_admission") %>
       </div>
 
     </div>

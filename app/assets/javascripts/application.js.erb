@@ -55,34 +55,4 @@ $(document).ready(function() {
       document.getElementById("icon_filter").src = "<%= asset_path('icon_x_red.png') %>" ;
     }
   });
-
-  el = document.querySelector('div.index-items li a[href="https://digital.library.temple.edu/"]');
-  if (el) el.setAttribute("id","digcol");
-  // if(el) console.log(el.getAttribute("id"))
-
-  var tracks = [
-    {id: "Digital Collections Link", category: "navigation"}
-  ];
-
-  function handleEventClicks(track) {
-    // if (typeof ga != "undefined") {
-    //   ga('send', 'event', {
-    //     eventCategory: track.category,
-    //     eventAction: 'click',
-    //     eventLabel: track.id,
-    //     forceSSL: true,
-    //     anonymizeIp: true
-    //   });
-    // }
-  }
-
-  tracks.forEach(function(track) {
-    el.addEventListener("blur", function(track){
-      console.log(el.getAttribute("id"));
-      // handleEventClicks(track);
-    });
-  });
-
-
-
 });

@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 
-    setTimeout(function(){
+  setTimeout(function(){
     
     $('form#main-search').on('keypress', function (evt) {
       if (evt.keyCode == 13) {
@@ -19,20 +19,20 @@ $(document).ready(function(){
     dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');
     if(dc) dc.setAttribute("id","digcol")
 
-    const tracks = [
+    tracks = [
       {id: "digcol", category: "Outbound Links"},
       {id: "main-search", category: "Search"},
       {id: "header-search", category: "Search"}
     ];
 
-    const handleEventClicks = (label, category) => {
+    handleEventClicks = (label, category) => {
       if (typeof ga != "undefined") {
         ga("send", "event", {
-	  eventCategory: category,
-	  eventAction: "click",
-	  eventLabel: label,
-	  forceSSL: true,
-	  anonymizeIp: true
+          eventCategory: category,
+          eventAction: "click",
+          eventLabel: label,
+          forceSSL: true,
+          anonymizeIp: true
         });
       };
     };
@@ -46,5 +46,6 @@ $(document).ready(function(){
         };
       }
     });
+	  
   },2000);
 });

@@ -43,7 +43,7 @@
       <div class="col-12 col-lg-3">
         <% if @collection.finding_aids.exists? %>
         <div class="access-link">
-          <h2><%= link_to t("manifold.collections.show.about") %>, finding_aids_path(collection: @collection.id) %></h2>
+          <h2><%= link_to t("manifold.collections.show.about"), finding_aids_path(collection: @collection.id) %></h2>
         </div>
         <% end %>
         <% unless @collection.external_link.nil? %>

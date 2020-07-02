@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 
-	setTimeout(function(){
+  setTimeout(function(){
     
     $('form#main-search').on('keypress', function (evt) {
       if (evt.keyCode == 13) {

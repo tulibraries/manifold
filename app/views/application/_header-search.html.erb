@@ -1,5 +1,5 @@
 <div class="header-search-container">
-	<form action=<%= "#{librarysearch_url("everything")}" %>>
+	<form action=<%= "#{librarysearch_url("everything")}" %> id="header-search">
 		<label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
 	  <input type="text" name="q" id="librarySearch" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
 	  <input type="submit" value = "" aria-label="submit search query">

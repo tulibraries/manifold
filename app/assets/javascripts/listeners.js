@@ -1,30 +1,51 @@
+// This file configures the Google Analytics Tracking service.
+
 $(document).ready(function(){
 
-  el = document.querySelector('a[href="https://digital.library.temple.edu/"]');
-  if(el) el.setAttribute("id","digcol")
+  setTimeout(function(){
+    
+    $('form#main-search').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        handleEventClicks("main-search", "Search");
+      }
+    });
 
-	var tracks = [
-		{id: "Digital Collections", category: "Outbound Links"}
-	];
+    $('form#header-search').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        handleEventClicks("header-search", "Search");
+      }
+    });
 
-  function handleEventClicks(track) {
-    if (typeof ga != "undefined") {
-      ga('send', 'event', {
-        eventCategory: track.category,
-        eventAction: 'click',
-        eventLabel: track.id,
-        forceSSL: true,
-        anonymizeIp: true
-      });
-    }
-  }
+    dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');
+    if(dc) dc.setAttribute("id","digcol")
 
-  tracks.forEach(function(track) {
-    if (el == document.getElementById('digcol')) {
-      el.addEventListener("click", function(){
-        handleEventClicks(track);
-      });
-    }
-  });
+    tracks = [
+      {id: "digcol", category: "Outbound Links"},
+      {id: "main-search", category: "Search"},
+      {id: "header-search", category: "Search"}
+    ];
 
+    handleEventClicks = (label, category) => {
+      if (typeof ga != "undefined") {
+        ga("send", "event", {
+          eventCategory: category,
+          eventAction: "click",
+          eventLabel: label,
+          forceSSL: true,
+          anonymizeIp: true
+        });
+      };
+    };
+
+    tracks.forEach((track) => {
+      if(track.id) {
+        if (el = document.getElementById(track.id)) {
+          el.addEventListener("click", () => {
+            handleEventClicks(track.id, track.category)
+          });
+        };
+      }
+    });
+	  
+  },2000);
 });

@@ -341,7 +341,6 @@ en:
         explore: Explore this Collection
 
     events:
-      breadcrumb: All Events & Exhibits
       facets:
         event_type: Event Type
         location: Location
@@ -349,15 +348,16 @@ en:
       mobile_menu:
         heading: Events & Exhibits
       index:
-        mailing_list: Sign up for our mailing list
-      show: 
         page_title: "Events & Exhibits"
         current_exhibits_label: "Current Exhibits"
         past_events_label: "Past Events"
+        mailing_list: Sign up for our mailing list
         view_current_events: "View current events & exhibits."
         view_past_events: "View past events & exhibits"
         view_past_events_videos: "View video recordings from past events"
         general_admission: "Most Temple University Libraries events are free and open to all."
+      show:
+        breadcrumb: All Events & Exhibits
         register: Register
 
     exhibitions:

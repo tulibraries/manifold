@@ -25,7 +25,7 @@ $(document).ready(function(){
       {id: "header-search", category: "Search"}
     ];
 
-    handleEventClicks = (label, category) => {
+    function handleEventClicks(label, category) {
       if (typeof ga != "undefined") {
         ga("send", "event", {
           eventCategory: category,
@@ -47,5 +47,5 @@ $(document).ready(function(){
       }
     });
 	  
-  },2000);
+  }, 2000);
 });

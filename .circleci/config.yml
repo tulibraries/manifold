@@ -18,7 +18,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
   prod_deploy:
     jobs:
       - prod_deploy:

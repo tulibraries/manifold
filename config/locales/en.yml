@@ -461,7 +461,7 @@ en:
         call_number: Call Number
         publisher: Publisher
         comments: Comments (optional)
-          
+
       recall_book:
         title: Request Recall of Books Already Checked Out
         intro_html: >-
@@ -706,6 +706,7 @@ en:
                       "Please write a personal statement of no more than 250 words indicating your research objectives and 
                       how the tools of Cultural Analytics can contribute to their realization."
       event_space_request:
+        intro_html: Our Event Spaces are unavailable during the Fall 2020 semester as they are being used as classrooms.
         title: "Charles Library Event Space Request"
         date_legend: "Event Dates/Times"
         date: "Date of Event"

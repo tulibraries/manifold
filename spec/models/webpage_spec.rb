@@ -3,6 +3,9 @@
 require "rails_helper"
 
 RSpec.describe Webpage, type: :model do
+
+  let(:external_link) { FactoryBot.create(:external_link) }
+
   describe "Required attributes" do
     let(:page) { FactoryBot.create(:webpage) }
 
@@ -37,6 +40,20 @@ RSpec.describe Webpage, type: :model do
     context "has more than one file upload" do
       example "valid" do
         webpage = FactoryBot.create(:webpage, file_uploads: [FactoryBot.create(:file_upload), FactoryBot.create(:file_upload)])
+        expect { webpage.save! }.to_not raise_error
+      end
+    end
+  end
+
+  describe "Associated Class" do
+    context "External Link" do
+      example "attach external link" do
+        webpage = FactoryBot.create(:webpage, external_link: external_link)
+        expect(webpage.external_link.title).to match(/#{external_link.title}/)
+        expect(webpage.external_link.link).to match(/#{external_link.link}/)
+      end
+      example "no external" do
+        webpage = FactoryBot.create(:webpage)
         expect { webpage.save! }.to_not raise_error
       end
     end

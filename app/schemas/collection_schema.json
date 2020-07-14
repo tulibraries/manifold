@@ -83,15 +83,10 @@
 						},
 						"subject": {
 							"$id": "#/properties/data/properties/attributes/properties/subject",
-							"items": [
-                { "type": "string" }
-              ],
+							"items": [ { "type": "string" } ],
 							"title": "The Subject Schema",
 							"default": "",
-							"examples": [
-								"Music",
-                "Literature"
-							],
+							"examples": [ "Music", "Literature" ],
 							"pattern": "^(.*)$"
 						},
 						"contents": {

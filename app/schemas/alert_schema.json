@@ -1,0 +1,118 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://example.com/root.json",
+	"type": "object",
+	"title": "The Root Schema",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"$id": "#/properties/data",
+			"type": "object",
+			"title": "The Data Schema",
+			"required": [
+				"id",
+				"type",
+				"attributes"
+			],
+			"properties": {
+				"id": {
+					"$id": "#/properties/data/properties/id",
+					"type": "string",
+					"title": "The Id Schema",
+					"default": "0",
+					"examples": [
+						"2"
+					],
+					"pattern": "^([0-9]*)$"
+				},
+				"type": {
+					"$id": "#/properties/data/properties/type",
+					"type": "string",
+					"title": "The Type Schema",
+					"default": "alert",
+					"examples": [
+						"building",
+						"event",
+						"person"
+					],
+					"pattern": "^(.*)$"
+				},
+				"attributes": {
+					"$id": "#/properties/data/properties/attributes",
+					"type": "object",
+					"title": "The Attributes Schema",
+					"required": [
+						"scroll_text",
+                        "link",
+                        "published",
+						"description"
+					],
+					"properties": {
+						"scroll_text": {
+							"$id": "#/properties/data/properties/attributes/properties/scroll_text",
+							"type": "string",
+							"title": "The Label Schema",
+							"default": "",
+							"examples": [
+								"The Library Collection"
+							],
+							"pattern": "^(.*)$"
+						},
+						"link": {
+							"$id": "#/properties/data/properties/attributes/properties/link",
+							"type": "string",
+							"title": "The Label Schema",
+							"default": "",
+							"examples": [
+								"The Library Collection"
+							],
+							"pattern": "^(.*)$"
+                        },
+						"published": {
+							"$id": "#/properties/data/properties/attributes/properties/published",
+							"type": "boolean",
+							"title": "The Label Schema",
+							"default": true,
+							"examples": [
+								true
+							]
+						},
+						"description": {
+							"$id": "#/properties/data/properties/attributes/properties/description",
+							"type": "string",
+							"title": "The Description Schema",
+							"default": "",
+							"examples": [
+								"This is the description of the collection"
+							],
+							"pattern": "^(.*)$"
+						}
+					}
+				},
+				"links": {
+					"$id": "#/properties/data/properties/links",
+					"type": "object",
+					"title": "The Links Schema",
+					"required": [
+						"self"
+					],
+					"properties": {
+						"self": {
+							"$id": "#/properties/data/properties/links/properties/self",
+							"type": "string",
+							"title": "The Self Schema",
+							"default": "",
+							"examples": [
+								"http://test.host/alert/2"
+							],
+							"pattern": "^(.*)$"
+						}
+					}
+				}
+			}
+		}
+	}
+}

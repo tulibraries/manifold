@@ -21,6 +21,7 @@ class WebpageDashboard < Administrate::BaseDashboard
       ),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
+    external_link: Field::BelongsTo.with_options(order: "title"),
     file_uploads: Field::HasMany.with_options(
       order: "name",
       class_name: "FileUpload"
@@ -60,6 +61,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     :categories,
     :accounts,
     :layout,
+    :external_link,
     :file_uploads
   ].freeze
 

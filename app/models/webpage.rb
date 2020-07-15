@@ -16,6 +16,7 @@ class Webpage < ApplicationRecord
 
   validates :title, :description, presence: true
   belongs_to :group, optional: true
+  belongs_to :external_link, optional: true
 
   def slug_candidates
     [

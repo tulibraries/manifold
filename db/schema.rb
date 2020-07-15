@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_194118) do
+ActiveRecord::Schema.define(version: 2020_07_13_151326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -492,6 +492,8 @@ ActiveRecord::Schema.define(version: 2020_04_29_194118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.bigint "external_link_id"
+    t.index ["external_link_id"], name: "index_webpages_on_external_link_id"
     t.index ["group_id"], name: "index_webpages_on_group_id"
   end
 
@@ -499,4 +501,5 @@ ActiveRecord::Schema.define(version: 2020_04_29_194118) do
   add_foreign_key "categories", "external_links"
   add_foreign_key "collections", "external_links"
   add_foreign_key "spaces", "external_links"
+  add_foreign_key "webpages", "external_links"
 end

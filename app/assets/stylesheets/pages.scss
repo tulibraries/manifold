@@ -473,3 +473,20 @@
 		}
 	}
 }
+
+.access-link {
+	background-color: $foamgreen;
+	padding: 14px;
+	border-radius: 7px;
+	margin-bottom: 17px;
+	a {
+		color: $white;
+		text-decoration: underline;
+	}
+	h2 {
+		margin-bottom: 3px;
+	}
+	@media (max-width: 950px) {
+		width: 95%;
+	}
+}

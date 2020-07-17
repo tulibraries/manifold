@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   end
 
   root "webpages#home"
+  resources :alerts, only: [:index]
   resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
   resources :categories, only: [:index, :show], concerns: [:imageable]
   resources :blogs, only: [:index, :show]

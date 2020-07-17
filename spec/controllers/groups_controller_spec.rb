@@ -14,18 +14,4 @@ RSpec.describe GroupsController, type: :controller do
     end
   end
 
-  describe "GET #show as JSON" do
-    let(:group) { FactoryBot.create(:group) }
-
-    xit "returns valid json" do
-      get :show, format: :json, params: { id: group.id }
-      Tempfile.open(["serialized_group", ".json"]) do |serialized|
-        serialized.write(response.body)
-        serialized.close
-        args = %W[validate -s app/schemas/group_schema.json -d #{serialized.path}]
-        expect(system("ajv", *args)).to be
-      end
-    end
-  end
-
 end

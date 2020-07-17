@@ -18,6 +18,9 @@ class EventDashboard < BaseDashboard
     title: Field::String,
     description: DescriptionField,
     tags: Field::String,
+    local_tags: MultiSelectField.with_options(
+      collection: Rails.configuration.event_local_tags
+    ),
     event_type: Field::String,
     start_time: Field::DateTime.with_options(format: "%D - %I:%M %p"),
     end_time: Field::DateTime.with_options(format: "%D - %I:%M %p"),
@@ -65,6 +68,7 @@ class EventDashboard < BaseDashboard
     :description,
     :event_type,
     :tags,
+    :local_tags,
     :start_time,
     :end_time,
     :all_day,
@@ -104,6 +108,7 @@ class EventDashboard < BaseDashboard
     :description,
     :event_type,
     :tags,
+    :local_tags,
     :start_time,
     :end_time,
     :all_day,

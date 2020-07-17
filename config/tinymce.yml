@@ -1,10 +1,11 @@
 toolbar:
-  - styleselect | bold italic | undo redo | bullist numlist | image link | code
+  - styleselect | bold italic | undo redo | bullist numlist | image link | anchor | code
 plugins:
   - image
   - link
   - table
   - lists
   - advlist
+  - anchor
   - code
   - hr

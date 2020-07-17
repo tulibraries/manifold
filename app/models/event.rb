@@ -18,6 +18,7 @@ class Event < ApplicationRecord
   before_save :sanitize_description
 
   serialize :tags
+  serialize :local_tags
 
   def to_param  # overridden for tests
     id
@@ -32,6 +33,9 @@ class Event < ApplicationRecord
 
   def get_tags
     self.tags.split(",").collect(&:strip)
+  end
+  def get_local_tags
+    self.local_tags.split(",").collect(&:strip)
   end
   def get_types
     self.event_type.split(",").collect(&:strip)

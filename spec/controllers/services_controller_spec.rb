@@ -29,16 +29,6 @@ RSpec.describe ServicesController, type: :controller do
     end
   end
 
-  describe "GET #show as JSON" do
-    let(:service) { FactoryBot.create(:service) }
-    it "returns valid json" do
-      get :show, format: :json, params: { id: service.id }
-      Tempfile.open(["serialized_service_", ".json"]) do |serialized|
-        serialized.write(response.body)
-        serialized.close
-        args = %W[validate -s app/schemas/service_schema.json -d #{serialized.path}]
-        expect(system("ajv", *args)).to be
-      end
-    end
-  end
+  it_behaves_like "serializable"
+
 end

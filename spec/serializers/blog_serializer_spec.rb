@@ -4,7 +4,7 @@ require "rails_helper"
 require "uri"
 
 RSpec.describe BlogSerializer do
-  let(:blog) { FactoryBot.create(:blog_with_sync_date) }
+  let(:blog) { FactoryBot.create(:blog) }
   let(:serialized) { described_class.new(blog) }
 
   it "doesn't raise an error when instantiated" do
@@ -31,14 +31,6 @@ RSpec.describe BlogSerializer do
     end
   end
 
-  describe "serialized_json" do
-    it "returns valid json" do
-      Tempfile.open(["serialized_blog", ".json"]) do |tempfile|
-        tempfile.write(serialized.to_json)
-        tempfile.close
-        args = %W[validate -s app/schemas/blog_schema.json -d #{tempfile.path}]
-        expect(system("ajv", *args)).to be
-      end
-    end
-  end
+  it_behaves_like "serializer"
+
 end

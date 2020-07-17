@@ -3,9 +3,9 @@
 require "rails_helper"
 require "uri"
 
-RSpec.describe CategorySerializer do
-  let(:category) { FactoryBot.create(:category) }
-  let(:serialized) { described_class.new(category) }
+RSpec.describe AlertSerializer do
+  let(:alert) { FactoryBot.create(:alert) }
+  let(:serialized) { described_class.new(alert) }
 
   it "doesn't raise an error when instantiated" do
     expect { serialized }.not_to raise_error
@@ -16,16 +16,16 @@ RSpec.describe CategorySerializer do
     let(:data) { sh[:data] }
 
     it "has the expected type" do
-      expect(data[:type]).to eql :category
+      expect(data[:type]).to eql :alert
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :long_description, :updated_at)
+      expect(data[:attributes].keys).to include(:scroll_text, :description, :link, :published)
     end
 
-    it "returns the name" do
-      label = data[:attributes][:label]
-      expect(label).to match(data[:attributes][:name])
+    it "returns the scroll_text" do
+      scroll_text = data[:attributes][:scroll_text]
+      expect(scroll_text).to match(data[:attributes][:scroll_text])
     end
   end
 

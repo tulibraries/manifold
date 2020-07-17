@@ -4,7 +4,8 @@ module SerializableRespondTo
   extend ActiveSupport::Concern
 
   def serializable_index
-    @resources = klass.all
+    @resources = klass.all unless klass == Alert
+    @resources = klass.all.where(published: true) if klass == Alert
     respond_to do |format|
       format.html { redirect_to root_path }
       format.json { render json: klass_serializer.new(@resources) }

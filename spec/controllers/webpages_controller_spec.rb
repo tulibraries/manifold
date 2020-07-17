@@ -32,17 +32,6 @@ RSpec.describe WebpagesController, type: :controller do
     end
   end
 
-  describe "GET #show as JSON" do
-    let(:webpage) { FactoryBot.create(:webpage) }
+  it_behaves_like "serializable"
 
-    it "returns valid json" do
-      get :show, format: :json, params: { id: webpage.id }
-      Tempfile.open(["serialized_webpage-", ".json"]) do |serialized|
-        serialized.write(response.body)
-        serialized.close
-        args = %W[validate -s app/schemas/webpage_schema.json -d #{serialized.path}]
-        expect(system("ajv", *args)).to be
-      end
-    end
-  end
 end

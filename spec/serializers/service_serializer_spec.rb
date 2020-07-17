@@ -30,14 +30,6 @@ RSpec.describe ServiceSerializer do
     end
   end
 
-  describe "serialized_json" do
-    it "returns valid json" do
-      Tempfile.open(["serialized_service-", ".json"]) do |tempfile|
-        tempfile.write(serialized.to_json)
-        tempfile.close
-        args = %W[validate -s app/schemas/service_schema.json -d #{tempfile.path}]
-        expect(system("ajv", *args)).to be
-      end
-    end
-  end
+  it_behaves_like "serializer"
+
 end

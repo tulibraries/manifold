@@ -43,17 +43,6 @@ RSpec.describe PersonsController, type: :controller do
 
   end
 
-  describe "GET #show as JSON" do
-    let(:person) { FactoryBot.create(:person, :with_image) }
+  it_behaves_like "serializable"
 
-    it "returns valid json" do
-      get :show, format: :json, params: { id: person.to_param }
-      Tempfile.open(["serialized_person", ".json"]) do |serialized|
-        serialized.write(response.body)
-        serialized.close
-        args = %W[validate -s app/schemas/person_schema.json -d #{serialized.path}]
-        expect(system("ajv", *args)).to be
-      end
-    end
-  end
 end

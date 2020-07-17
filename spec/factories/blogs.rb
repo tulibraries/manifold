@@ -4,10 +4,7 @@ FactoryBot.define do
   factory :blog do
     title { "Devopsing" }
     base_url { "https://sites.temple.edu/devopsing" }
-
-    factory :blog_with_sync_date do
-      last_sync_date { "2018-09-24 11:32:13" }
-    end
+    last_sync_date { "2018-09-24 11:32:13" }
 
     factory :blog_with_public_status do
       public_status { true }

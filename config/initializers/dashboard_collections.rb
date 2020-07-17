@@ -170,5 +170,18 @@ module Tude
                             "Non-Temple Graduate Student",
                             "Non-Temple Faculty",
                             "General Public"]
+
+
+    config.event_local_tags = [
+                            "Interruption",
+                            "Blockson",
+                            "Health Sciences",
+                            "Digital Scholarship",
+                            "Workshop",
+                            "Chat in the Stacks",
+                            "Midday Arts",
+                            "Beyond the Notes",
+                            "Book Club",
+                            "Performance/Reading"]
   end
 end

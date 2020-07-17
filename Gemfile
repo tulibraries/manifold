@@ -24,7 +24,7 @@ gem "feedjira"
 gem "font-awesome-rails"
 gem "fuzzy_match"
 gem "google-analytics-rails", "1.1.1"
-gem "google-api-client", "~> 0.41"
+gem "google-api-client", "~> 0.42"
 gem "honeybadger", "~> 4.7"
 gem "httparty"
 gem "jbuilder", "~> 2.10"
@@ -83,7 +83,7 @@ end
 group :test do
   gem "capybara", ">= 2.15", "< 4.0"
   gem "chromedriver-helper"
-  gem "factory_bot_rails", "~> 6.0.0"
+  gem "factory_bot_rails", "~> 6.1.0"
   gem "guard-rspec", require: false
   gem "mutant-rspec"
   gem "rails-controller-testing"

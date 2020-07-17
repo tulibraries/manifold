@@ -32,7 +32,7 @@
 					"$id": "#/properties/data/properties/type",
 					"type": "string",
 					"title": "The Type Schema",
-					"default": "collection",
+					"default": "alert",
 					"examples": [
 						"building",
 						"event",
@@ -45,23 +45,14 @@
 					"type": "object",
 					"title": "The Attributes Schema",
 					"required": [
-						"name",
-						"label",
+						"scroll_text",
+                        "link",
+                        "published",
 						"description"
 					],
 					"properties": {
-						"name": {
-							"$id": "#/properties/data/properties/attributes/properties/name",
-							"type": "string",
-							"title": "The Name Schema",
-							"default": "",
-							"examples": [
-								"The Library Collection"
-							],
-							"pattern": "^(.*)$"
-						},
-						"label": {
-							"$id": "#/properties/data/properties/attributes/properties/label",
+						"scroll_text": {
+							"$id": "#/properties/data/properties/attributes/properties/scroll_text",
 							"type": "string",
 							"title": "The Label Schema",
 							"default": "",
@@ -70,6 +61,25 @@
 							],
 							"pattern": "^(.*)$"
 						},
+						"link": {
+							"$id": "#/properties/data/properties/attributes/properties/link",
+							"type": "string",
+							"title": "The Label Schema",
+							"default": "",
+							"examples": [
+								"The Library Collection"
+							],
+							"pattern": "^(.*)$"
+                        },
+						"published": {
+							"$id": "#/properties/data/properties/attributes/properties/published",
+							"type": "boolean",
+							"title": "The Label Schema",
+							"default": true,
+							"examples": [
+								true
+							]
+						},
 						"description": {
 							"$id": "#/properties/data/properties/attributes/properties/description",
 							"type": "string",
@@ -77,37 +87,8 @@
 							"default": "",
 							"examples": [
 								"This is the description of the collection"
-
 							],
 							"pattern": "^(.*)$"
-						},
-						"subject": {
-							"$id": "#/properties/data/properties/attributes/properties/subject",
-							"items": [ { "type": "string" } ],
-							"title": "The Subject Schema",
-							"default": "",
-							"examples": [ "Music", "Literature" ],
-							"pattern": "^(.*)$"
-						},
-						"contents": {
-							"$id": "#/properties/data/properties/attributes/properties/contents",
-							"type": "string",
-							"title": "The Contents Schema",
-							"default": "",
-							"examples": [
-								"This is the contents of the collection"
-							],
-							"pattern": "^(.*)$"
-						},
-						"updated_at": {
-							"$id": "#/properties/data/properties/attributes/properties/updated_at",
-							"type": "string",
-							"title": "The time the collection record was updated",
-							"format": "date-time",
-							"default": "",
-							"examples": [
-								"2018-01-01T12:00:00"
-							]
 						}
 					}
 				},
@@ -125,7 +106,7 @@
 							"title": "The Self Schema",
 							"default": "",
 							"examples": [
-								"http://test.host/collection/2"
+								"http://test.host/alert/2"
 							],
 							"pattern": "^(.*)$"
 						}

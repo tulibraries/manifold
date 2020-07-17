@@ -18,6 +18,7 @@ class Event < ApplicationRecord
   before_save :sanitize_description
 
   serialize :tags
+  serialize :private_tags
 
   def to_param  # overridden for tests
     id

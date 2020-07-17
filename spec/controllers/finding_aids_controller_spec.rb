@@ -32,17 +32,6 @@ RSpec.describe FindingAidsController, type: :controller do
     end
   end
 
-  describe "GET #show as JSON" do
-    let(:finding_aid) { FactoryBot.create(:finding_aid) }
+  it_behaves_like "serializable"
 
-    it "returns valid json" do
-      get :show, format: :json, params: { id: finding_aid.id }
-      Tempfile.open(["serialized_finding_aid_", ".json"]) do |serialized|
-        serialized.write(response.body)
-        serialized.close
-        args = %W[validate -s app/schemas/finding_aid_schema.json -d #{serialized.path}]
-        expect(system("ajv", *args)).to be
-      end
-    end
-  end
 end

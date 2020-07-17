@@ -22,6 +22,8 @@
         </div>
       </div>
 
+      <% unless @type == "event-space-request" %>      
+
       <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
 
@@ -51,6 +53,7 @@
             <%= f.button :submit, t("manifold.forms.shared.submit"), class: "btn btn-primary" %>
           </div>
         </div>
+      <% end %>
       <% end %>
     </div>
   </div>

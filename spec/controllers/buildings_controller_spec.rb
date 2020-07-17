@@ -33,17 +33,6 @@ RSpec.describe BuildingsController, type: :controller do
   end
 
 
-  describe "GET #show as JSON" do
-    let(:building) { FactoryBot.create(:building) }
+  it_behaves_like "serializable"
 
-    it "returns valid json" do
-      get :show, format: :json, params: { id: building.id }
-      Tempfile.open(["serialized_building", ".json"]) do |serialized|
-        serialized.write(response.body)
-        serialized.close
-        args = %W[validate -s app/schemas/building_schema.json -d #{serialized.path}]
-        expect(system("ajv", *args)).to be
-      end
-    end
-  end
 end

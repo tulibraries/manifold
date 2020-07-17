@@ -3,19 +3,42 @@
 <div class="container" style="margin-top: 35px;">
 	<div class="row page">
 		<% unless @webpage.categories.blank? %>
-			<div class="d-none d-lg-block col-3">
+			<div class="d-none d-md-block col-3">
 				<%= render "categories_list" %>
 			</div>
-	  	<div class="col-12 col-lg-9">
+
+	  <% if @webpage.external_link.nil? %>
+			<div class="col-12 col-lg-9">
 		<% else %>
-			<div class="col-12">
+	  	<div class="col-12 col-md-6">
 		<% end %>
+
+		<% else %>
+    
+      <% if @webpage.external_link.nil? %>
+        <div class="col-12">
+      <% else %>
+        <div class="col-12 col-md-9">
+      <% end %>
+			
+		<% end %>
+
 		    <h1><%= title @webpage.title %></h1>
 		    <div class="text-left page-description">
 		    	<%= render @webpage.layout.parameterize %>
 		    </div>
 		    <%= render "attachments" %>
 		  </div>
+
+      <% if @webpage.external_link %>
+        <div class="col-12 col-md-3">
+        <% unless @webpage.external_link.blank? %>
+        <div class="access-link">
+          <h2><%= link_to @webpage.external_link.title, @webpage.external_link.link %></h2>
+        </div>
+        <% end %>
+      <% end %>
+
 	  </div>
 	</div>
 

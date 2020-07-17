@@ -160,9 +160,15 @@
               "type": "string",
               "title": "The Tags Schema",
               "default": "",
-              "examples": [
-                ""
-              ],
+              "examples": [ "" ],
+              "pattern": "^(.*)$"
+            },
+            "local_tags": {
+              "$id": "#/properties/data/properties/attributes/properties/local_tags",
+              "items": [ { "type": "string" } ],
+              "title": "The Tags Schema",
+              "default": "",
+              "examples": [ "" ],
               "pattern": "^(.*)$"
             },
             "all_day": {

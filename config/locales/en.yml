@@ -294,7 +294,7 @@ en:
       my_account: "My Account"
       all_hours: "See all library hours"
       todays_hours: "Hours Today"
-      todays_hours_text: Chat, Email, Text | %{hours}
+      todays_hours_text: Charles Library | %{hours}
       search:
         articles: "Articles"
         books: "Books"

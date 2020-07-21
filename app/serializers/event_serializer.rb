@@ -7,8 +7,7 @@ class EventSerializer < ApplicationSerializer
   set_type :event
 
   attributes :title, :description, :start_time, :end_time, :cancelled, :registration_status,
-             :registration_link, :content_hash, :alt_text, :ensemble_identifier, :tags,
-             :local_tags, :all_day
+             :registration_link, :content_hash, :alt_text, :ensemble_identifier, :tags, :all_day
 
   attribute :space do |event|
     if event.space.nil?

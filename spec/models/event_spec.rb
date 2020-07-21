@@ -86,8 +86,6 @@ RSpec.describe Event, type: :model do
       alt_text: ["The Text 1", "The Text 2"],
       ensemble_identifier: ["The Text 1", "The Text 2"],
       tags: ["tag1, tag2", "tag3, tag4"],
-      # local_tags not testable in rspec in this context
-      # local_tags: ["tag1, tag2", "tag3, tag4"],
       all_day: [false, true]
     }
 

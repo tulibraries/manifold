@@ -20,7 +20,7 @@ module Tude
         "a", "span", "bdo", "br", "em", "strong", "dfn", "code", "samp", "cite", "basefont",
         "font", "object", "param", "img", "table", "caption", "colgroup", "col", "thead", "tfoot", "tbody",
         "tr", "th", "td", "embed"]
-    config.action_view.sanitized_allowed_attributes = ["style", "href", "title", "target", "rel", "name",
+    config.action_view.sanitized_allowed_attributes = ["id", "style", "href", "title", "target", "rel", "name",
         "class", "title", "src", "height", "alt", "width", "colspan", "rowspan", "headers", "scope", "span"]
 
     config.generators do |g|

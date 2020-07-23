@@ -237,6 +237,11 @@ en:
           other_reviews: "Competing/Conflicting Reviews"
           other_reviews_other: "Reviews other"
           publication_journal: "Journal for Publication"
+          course_code: "Course Code"
+          first_choice_date: "First Choice Date"
+          second_choice_date: "Second Choice Date"
+          instruction_mode: "Mode of Instruction"
+          
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
         charles_library: "Charles Library"
@@ -595,14 +600,21 @@ en:
       library_instruction:
         title: "Request a Library Instruction Session"
         intro_html: >-
-                    <p>Please fill out this form to request a library instruction session for your class. By selecting 
-                    <strong>Submit Request</strong> at the end of the form, the information is sent directly to a librarian at the 
-                    selected campus library.</p>
+                    <p>During the Fall 2020 semester, library instruction will take place online. 
+                    Please use this form to schedule a synchronous Zoom session, or to indicate that 
+                    you’d like a librarian to contact you about asynchronous instruction.</p>
         course_title: Course Title
+        course_code: Course Code (e.g,. SOC 0832)
+        first_choice_date: First Choice Date
+        second_choice_date: Second Choice Date
+        instruction_mode: Mode of Instruction
+        instruction_mode_options:
+          one: Synchronous via Zoom
+          two: Asynchronous
+          three: I'm not sure
         class_time: Time Class Meets
         class_days: Day(s) Class Meets
-        number_of_students: Student Count
-        requested_date: Requested Date
+        number_of_students: Number of Students
         course_level:
           one: Undergraduate
           two: Graduate

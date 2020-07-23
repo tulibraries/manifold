@@ -105,12 +105,16 @@ class WebpagesController < ApplicationController
   end
 
   def videos_search
-    api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
-    ensemble_api(api_query)
-    unless @videos.nil?
-      @categoryTitle = 'you searched for: "' + params[:q] + '"'
+    unless params[:q].nil?
+      api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
+      ensemble_api(api_query)
+      unless @videos.nil?
+        @categoryTitle = 'you searched for: "' + params[:q] + '"'
+      else
+        redirect_to(webpages_videos_all_path, alert: "No videos match your search.")
+      end
     else
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve videos.")
+      return redirect_to(webpages_videos_all_path, alert: "No videos match your search.")
     end
   end
 

@@ -527,7 +527,7 @@ en:
           four: Harassment/Fight/Abusive Language
           five: Building Issue
           six: Other
-        action_taken_options:
+        options:
           one: Library Administration Notified
           two: Facilities Notified (1-1385)
           three: Completed Staff Injury Report

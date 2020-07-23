@@ -2,7 +2,7 @@
 	<legend><%= t("(manifold.forms.ir.incident_details") %></legend>
 	<%= f.input :type_of_incident, as: :radio_buttons, 
 				label: t("manifold.forms.ir.type_of_incident"), 
-				collection: i("manifold.forms.ir.type_of_incident").map{ |k,v| v }, 
+				collection: t("manifold.forms.ir.incident_types").map{ |k,v| v }, 
 				wrapper_html: { class: "form_affiliation" }, 
 				required: :true %>
 	<%= f.input :other_incident, label: false, placeholder: t("manifold.forms.ir.other"), 
@@ -19,17 +19,19 @@
 
 	<fieldset class="form-section">
 		<legend><%= t("manifold.forms.ir.persons_involved") %></legend>
-		<%= f.input :primary_relevant_person, label: ("manifold.forms.ir.primary_relevant_person") %>
+		<%= f.input :primary_relevant_person, label: t("manifold.forms.ir.primary_relevant_person") %>
 		<%= f.input :primary_email, label: t("manifold.forms.ir.relevant_email") %>
 		<%= f.input :primary_affiliation, as: :select, 
 					label: t("manifold.forms.ir.affiliation"), 
-					collection: t("manifold.forms.fields.temple_affiliation") %>
+          collection: t("manifold.forms.fields.temple_affiliation_array")
+                .merge(t("manifold.forms.fields.non_temple_affiliation_array")).map{ |k,v| v }  %>
 		<hr />
 		<%= f.input :secondary_relevant_person, label: t("manifold.forms.ir.secondary_relevant_person") %>
 		<%= f.input :secondary_email, label:  t("manifold.forms.ir.relevant_email") %>
 		<%= f.input :secondary_affiliation, as: :select, 
 					label: t("manifold.forms.ir.affiliation"), 
-					collection: t("manifold.forms.fields.temple_affiliation") %> %>
+          collection: t("manifold.forms.fields.temple_affiliation_array")
+                .merge(t("manifold.forms.fields.non_temple_affiliation_array")).map{ |k,v| v }  %>
 	</fieldset>
 </fieldset>
 

@@ -5,7 +5,7 @@
 <%= f.input :department, label: t("manifold.forms.fields.department"), required: true %>
 <%= f.input :affiliation, as: :radio_buttons, 
                         label: t("manifold.forms.fields.temple_affiliation_label"), 
-                        collection: t("manifold.forms.missing_book.affiliation_options"), 
+                        collection: t("manifold.forms.missing_book.affiliation_options").map{ |k,v| v }, 
                         required: true %>
 <%= f.input :affiliation_other, label: false, placeholder: t("manifold.forms.fields.other_placeholder"), 
                                 wrapper_html: { class: "specify-other" } %>

@@ -32,7 +32,7 @@
 
       <% unless @building.external_link.nil? %>
         <div class="external-link">
-          <h2><%= link_to t("manifiold.buildings.show.website_link_label"), @building.external_link.link %></h2>
+          <h2><%= link_to @building.external_link.title, @building.external_link.link %></h2>
         </div>          
       <% end %>
       <% unless @building.coordinates.blank? || @building.google_id.blank? %>

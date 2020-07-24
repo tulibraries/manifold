@@ -48,7 +48,8 @@ class FindingAidsController < ApplicationController
   end
 
   def subjects
-    params.fetch("subject", "").split(",")
+    subjects = params.fetch("subject", "")
+    subjects.nil? ? nil : subjects.split(",")
   end
 
   def collection

@@ -44,7 +44,7 @@ Visit http://localhost:3000
 
 To populate the database with a dumpfile
 
-    docker-compose exec web bin/restore_db.sh [path/top/database_dump_file]
+    docker-compose exec web bin/restoredb.sh [path/top/database_dump_file]
 
 ## Visit Site
 

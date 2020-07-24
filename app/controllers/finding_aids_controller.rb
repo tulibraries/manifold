@@ -48,7 +48,7 @@ class FindingAidsController < ApplicationController
   end
 
   def subjects
-    params.fetch("subject", "").split(",")
+    params.fetch("subject", "").split(",") if params[:subject].present?
   end
 
   def collection

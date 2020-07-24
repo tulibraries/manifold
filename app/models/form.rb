@@ -50,6 +50,7 @@ class Form < MailForm::Base
   attribute :data_creator
   attribute :data_discovery
   attribute :course_title
+  attribute :course_code
   attribute :course_number
   attribute :reserve_duration
   attribute :number_of_copies
@@ -132,6 +133,9 @@ class Form < MailForm::Base
   attribute :other_reviews
   attribute :other_reviews_other
   attribute :publication_journal
+  attribute :first_choice_date
+  attribute :second_choice_date
+  attribute :instruction_mode
 
 
   def get_subject

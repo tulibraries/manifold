@@ -1,22 +1,21 @@
 <%= f.input :course_title, label: t("manifold.forms.library_instruction.course_title"), required: true %>
+<%= f.input :course_code, label: t("manifold.forms.library_instruction.course_code"), required: true %>
+
 <%= f.input :class_time, label: t("manifold.forms.library_instruction.class_time"), required: true %>
 <%= f.input :class_days, label: t("manifold.forms.library_instruction.class_days"), required: true %>
 <%= f.input :number_of_students, label: t("manifold.forms.library_instruction.number_of_students") %>
-<%= f.input :requested_date, as: :date, html5: true, 
+<%= f.input :first_choice_date, as: :date, html5: true, 
             start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], 
-            label: t("manifold.forms.library_instruction.requested_date"), 
+            label: t("manifold.forms.library_instruction.first_choice_date"), 
             required: true %>
-<%= f.input :campus, as: :select, 
-                    collection: t("manifold.forms.fields.location").map{ |k,v| v }, 
-                    label:  t("manifold.forms.library_instruction.location"), 
-                    required: true %>
-<%= f.input :course_level, as: :select, 
-                            collection: ["Undergraduate","Graduate","Combined","Other..."], 
-                            label: "Course Level", 
-                            required: true %>
-<%= f.input :other, label: false, 
-                    placeholder: t("manifold.forms.fields.other_placeholder"), 
-                    wrapper_html: { class: "specify-other" } %>
+<%= f.input :second_choice_date, as: :date, html5: true, 
+            start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], 
+            label: t("manifold.forms.library_instruction.second_choice_date"), 
+            required: true %>
+<%= f.input :instruction_mode, as: :radio_buttons,  
+            label: t("manifold.forms.library_instruction.instruction_mode"), 
+            collection: t("manifold.forms.library_instruction.instruction_mode_options").map{ |k,v| v }, 
+            required: true %>
 <%= f.input :comments, as: :text, 
                         label: t("manifold.forms.library_instruction.comments"),  
                         hint: t("manifold.forms.library_instruction.comments_hint"), 

@@ -1,15 +1,15 @@
-<%= f.input :course_title, label: t("manifold.forms.scrc-instruction.course_title"), required: true %>
-<%= f.input :course_number, label: t("manifold.forms.scrc-instruction.course_number"), required: true %>
+<%= f.input :course_title, label: t("manifold.forms.scrc_instruction.course_title"), required: true %>
+<%= f.input :course_number, label: t("manifold.forms.scrc_instruction.course_number"), required: true %>
 <%= f.input :preferred_date, as: :date, 
                     start_year: Date.today.year, end_year: Date.today.year+1, order: [:month, :day, :year], 
-                    label: t("manifold.forms.scrc-instruction.prefered_date"), 
+                    label: t("manifold.forms.scrc_instruction.prefered_date"), 
                     required: :true, 
                     html5: true %>
 <%= f.input :preferred_time, as: :time, 
-                    label: t("manifold.forms.scrc-instruction.preferred_time"), 
+                    label: t("manifold.forms.scrc_instruction.preferred_time"), 
                     required: :true, 
                     html5: true %>
-<%= f.input :number_of_students, label: t("manifold.forms.scrc-instruction.number_of_students"), required: :true  %>
-<%= f.input :minors, as: :radio_buttons, required: :true, label: t("manifold.forms.scrc-instruction.minors") %>
-<%= f.input :file, as: :file, label: t("manifold.forms.scrc-instruction.file")  %>
-<%= f.input :comments, as: :text, label: t("manifold.forms.scrc-instruction.comments")  %>
+<%= f.input :number_of_students, label: t("manifold.forms.scrc_instruction.number_of_students"), required: :true  %>
+<%= f.input :minors, as: :radio_buttons, required: :true, label: t("manifold.forms.scrc_instruction.minors") %>
+<%= f.input :file, as: :file, label: t("manifold.forms.scrc_instruction.file")  %>
+<%= f.input :comments, as: :text, label: t("manifold.forms.scrc_instruction.comments")  %>

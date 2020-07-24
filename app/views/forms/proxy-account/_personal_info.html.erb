@@ -4,6 +4,6 @@
 <%= f.input :tu_id, label: "Temple ID Number", label: t("manifold.forms.fields.tu_id"), required: true %>
 <%= f.input :department, label: t("manifold.forms.fields.department"), required: true %>
 <%= f.input :affiliation, as: :radio_buttons, 
-                            label: t("manifold.forms.fields.temple_affiliation_label"), 
-                            collection: t("manifold.forms.fields.temple_affiliation_array"), 
-                            required: true %>
+                          label: t("manifold.forms.fields.temple_affiliation_label"), 
+                          collection: t("manifold.forms.fields.temple_affiliation_array").map{ |k,v| v }, 
+                          required: true %>

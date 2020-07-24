@@ -129,3 +129,13 @@
 			display: inline-block;
 		}
 	}
+
+	.hours-note:before { 
+    content: "*";
+    color: $red;
+    font-size: 1.25rem;
+  }
+
+  .hours-note-desktop {
+    border-bottom: solid #ccc 1px;
+  }

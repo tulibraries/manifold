@@ -1,6 +1,5 @@
 <% @buildings.each do |location| %>
 
-<% unless location[:slug] == "charles" %>
   <div class="row building-row">
     <div class="col-12">
       <h2 style="color: #A50030">
@@ -8,47 +7,46 @@
       </h2>
     </div>
   </div>
-<% else %>
-  <div class="row building-row">
-    <div class="col-12">
-      <h2 style="color: #A50030">
-        <%= location_name(location[:slug]) %>
-      </h2>
-    </div>
-  </div>
-    <div class="col-12">
-      <%# t("manifold.hours.charles_note_html").html_safe %>
-    </div>
-<% end %>
-
-
 
   <% unless location[:spaces].first.second.empty? %> <!-- hours for at least one space -->
   <% location[:spaces].each_with_index do |space, spaceIndex| %>
 
       <div class="row hours-row <% unless spaceIndex == (location[:spaces].size - 1) %> bordered<% end %>">
         <div class="col-12"> 
-          <h3><%= location_link(space[1].first.location_id) %></h3>
+          <h3>
+            <%= location_link(space[1].first.location_id) %>
+            <% if space[1].first.location_id == "scrc" || space[1].first.location_id == "blockson" %>
+              <span class="hours-note"></span>
+            <% end %>
+          </h3>
         </div>
 
-        <% space[1].sort_by(&:date).each_with_index do |time,index| %> 
-          
-          <div class="col-12 
-          	<% if @monday.to_date+index == @today %> today<% end %>">
+          <% space[1].sort_by(&:date).each_with_index do |time,index| %> 
+            
+            <div class="col-12<%= " today" if @monday.to_date+index == @today %>">
 
-          <div class="row hours-fix">
-            <div class="col-4">
-            <%= (@monday.to_date+index).strftime("%a %d") %> 
-          	</div>
-            <div class="col-8">
-            <% if time.hours.downcase == "closed" %>
-              <span class="closed"><%= time.hours %></span>
-             <% else %>
-              <%= time.hours %>
-            <% end %>
-          	</div>
-      		</div>
-          </div>
+            <div class="row hours-fix">
+              <div class="col-4">
+              <%= (@monday.to_date+index).strftime("%a %d") %> 
+              </div>
+              <div class="col-8">
+              <% if time.hours.downcase == "closed" %>
+                <span class="closed"><%= time.hours %></span>
+              <% else %>
+                <%= time.hours %>
+              <% end %>
+              </div>
+            </div>
+            </div>
+          <% end %>
+          <% if space[1].first.location_id == "scrc" || space[1].first.location_id == "blockson"%>
+            <div class="col-1 py-4 pr-0 text-center">
+             <span class="hours-note"></span>
+            </div>
+            <div class="col-11 py-4 pl-0">
+              <%= t("manifold.hours.scrc_note_html").html_safe if space[1].first.location_id == "scrc" %>
+              <%= t("manifold.hours.blockson_note_html").html_safe if space[1].first.location_id == "blockson" %>
+            </div>
         <% end %>
       </div> 
     <% end %>

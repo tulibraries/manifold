@@ -105,12 +105,16 @@ class WebpagesController < ApplicationController
   end
 
   def videos_search
-    api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
-    ensemble_api(api_query)
-    unless @videos.nil?
-      @categoryTitle = 'you searched for: "' + params[:q] + '"'
+    if params[:q].blank?
+      return redirect_to(webpages_videos_all_path)
     else
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve videos.")
+      api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
+      ensemble_api(api_query)
+      if @videos.first[1].nil?
+        @categoryTitle = 'you searched for: "' + params[:q] + '"'
+      else
+        @categoryTitle = 'your search for: "' + params[:q] + '" returned 0 results'
+      end
     end
   end
 
@@ -124,7 +128,7 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    @todays_hours = LibraryHour.todays_hours_at("ask_a_librarian")
+    @todays_hours = LibraryHour.todays_hours_at("charles")
   end
 
   def scrc

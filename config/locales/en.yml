@@ -847,7 +847,7 @@ en:
         publication_journal: What journal do you plan to submit the completed review to for publication?
         publication_journal_hint: If known.
 
-      hidden_title_text: "To change the title of this resource, please <a href=mailto:\"tul-web-support@temple.edu\">contact an administrator</a>."
+      hidden_title_text: To change the title of this resource, please <a href=mailto:"tul-web-support@temple.edu">contact an administrator</a>.
 
     hours:
       charles_note_html: >-

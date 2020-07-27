@@ -10,6 +10,13 @@ class ExternalLink < ApplicationRecord
 
   before_save :link_cleanup!
 
+  # has_many :collection, dependent: :restrict_with_error
+  has_many :webpage, dependent: :restrict_with_error
+  has_many :category, dependent: :restrict_with_error
+  has_many :space, dependent: :restrict_with_error
+  has_many :service, dependent: :restrict_with_error
+  has_many :building, dependent: :restrict_with_error
+
   validates :title, :link, presence: true
 
   def slug_candidates

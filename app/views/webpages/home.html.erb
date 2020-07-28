@@ -20,25 +20,25 @@
 	  </div>
 		<div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
-		    <%= link_to "/remote-student-support", class: "strong" do %>
-		      <%= image_tag('remote-student-support.png', class: "decorative", alt: "") %> 
-			  <span><%= t("manifold.webpages.home.links.help.remote_student") %></span>
+		    <%= link_to "https://charlesstudy.temple.edu", class: "strong" do %>
+		      <%= image_tag('study_room.png', class: "decorative", alt: "") %> 
+			  <span><%= t("manifold.webpages.home.links.help.reserve_study_space") %></span>
 		    <% end %>
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3 pr-3">
 	    <div class="cta-white">
-		    <%= link_to "/remote-faculty-support", class: "strong" do %>
-		      <%= image_tag('remote-faculty-support.png', class: "decorative", alt: "") %> 
-			  <span><%= t("manifold.webpages.home.links.help.remote_faculty") %></span>
+		    <%= link_to category_path(47), class: "strong" do %>
+		      <%= image_tag('explore_charles.png', class: "decorative", alt: "") %> 
+			  <span><%= t("manifold.webpages.home.links.help.in_person") %></span>
 		    <% end %>
 	    </div>
 	  </div>
 	  <div class="col-12 col-lg-3">
 	    <div class="cta-white">
-		    <%= link_to "/explore-online-collections", class: "strong" do %>
-		      <%= image_tag('ebook_black.png', class: "decorative", alt: "") %> 
-			  <span><%= t("manifold.webpages.home.links.help.explore") %></span>
+		    <%= link_to webpage_path(61), class: "strong" do %>
+		      <%= image_tag('remote-student-support.png', class: "decorative", alt: "") %> 
+			  <span><%= t("manifold.webpages.home.links.help.remote_support") %></span>
 		    <% end %>
 	    </div>
 	  </div>

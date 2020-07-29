@@ -926,9 +926,9 @@ en:
         links:
           help:
             research: Research Help
-            remote_student: Remote Student Support
-            remote_faculty: Remote Faculty Support
-            explore: Explore Online Collections
+            reserve_study_space: Reserve a Study Space
+            in_person: Visit Us in Person
+            remote_support: Remote Support Services
           main:
             books: Books & Media
             articles: Articles

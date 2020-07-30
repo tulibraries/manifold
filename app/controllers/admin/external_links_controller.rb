@@ -23,7 +23,7 @@ module Admin
     def destroy
       begin
         super
-      rescue => exception
+      rescue StandardError => error
         link_id = ExternalLink.find_by(slug: params[:id])
         webpages = Webpage.where(external_link_id: link_id)
         collections = Collection.where(external_link_id: link_id)
@@ -56,13 +56,6 @@ module Admin
         end
         redirect_to :admin_external_links, notice: notice
 
-      end
-    end
-
-    def detach(models = [])
-      models.each do |model|
-        model.external_link_id = nil
-        model.save
       end
     end
   end

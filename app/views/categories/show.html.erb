@@ -17,6 +17,7 @@
     <% end %>
         <h1 class="page-title"><%= title @category.label %></h1>
         <div class="details">
+          <%= link_to image_tag(@category.show_image, class: "decorative mb-3", alt: ""), asset_path(@image) unless @image.nil? %>
           <%= render "categories/marketing/slideshow" if explore_charles(@category) %>
           <% unless @category.long_description.nil? %>
             <%= sanitize @category.long_description.html_safe %>

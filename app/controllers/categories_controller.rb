@@ -17,6 +17,10 @@ class CategoriesController < ApplicationController
       }
     end
 
+    if @category.slug == "coronavirus"
+      @image = "floor_plans_FALL_2020_onepage.jpg"
+    end
+
     if @category.slug == "explore-charles"
 
       @images = []
@@ -24,6 +28,10 @@ class CategoriesController < ApplicationController
         @images << (i.to_s + ".jpg")
       end
       @captions = []
+      @captions << "1st floor floorplan"
+      @captions << "2nd floor floorplan"
+      @captions << "3rd floor floorplan"
+      @captions << "4th floor floorplan"
       @captions << "Fourth floor open browsing stacks, photo by Michael Grimm"
       @captions << "24/7 study space, photo by Michael Grimm"
       @captions << "Exterior, photo by Michael Grimm"
@@ -46,10 +54,6 @@ class CategoriesController < ApplicationController
       @captions << "Third floor reading room, photo by Michael Grimm"
       @captions << "Albert M. Greenfield Special Collections Research Center Reading Room, photo by Michael Grimm"
       @captions << "Student Success Center, photo by Michael Grimm"
-      @captions << "1st floor floorplan"
-      @captions << "2nd floor floorplan"
-      @captions << "3rd floor floorplan"
-      @captions << "4th floor floorplan"
     end
   end
 

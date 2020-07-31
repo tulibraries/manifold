@@ -12,6 +12,15 @@
     <% else %>
       <div class="col-12 col-md-9 col-lg-9">
     <% end %>
+
+      <% unless @service.covid_alert.nil? %>
+      <div class="row covid-alert">
+        <div class="col-12 col-lg-10 offset-lg-1">
+        <strong><%= t("manifold.default.covid_alert") %></strong> 
+        <%= sanitize @service.covid_alert.html_safe %>
+        </div>
+      </div>
+      <% end %>
     
       <h1 class="unstyled"><%= title @service.title %></h1>
       <%= sanitize @service.description.html_safe %>

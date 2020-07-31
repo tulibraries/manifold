@@ -26,6 +26,7 @@ class WebpageDashboard < Administrate::BaseDashboard
       order: "name",
       class_name: "FileUpload"
     ),
+    covid_alert: Field::String.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -43,6 +44,7 @@ class WebpageDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :covid_alert,
     :title,
     :id,
     :categories,
@@ -62,7 +64,8 @@ class WebpageDashboard < Administrate::BaseDashboard
     :accounts,
     :layout,
     :external_link,
-    :file_uploads
+    :file_uploads,
+    :covid_alert
   ].freeze
 
   # Overwrite this method to customize how pages are displayed

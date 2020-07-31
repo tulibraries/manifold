@@ -25,6 +25,9 @@ module Admin
         super
       rescue StandardError => error
         link_id = ExternalLink.find_by(slug: params[:id])
+        if link_id.nil?
+          link_id = ExternalLink.find_by(id: params[:id])
+        end
         webpages = Webpage.where(external_link_id: link_id)
         collections = Collection.where(external_link_id: link_id)
         services = Service.where(external_link_id: link_id)

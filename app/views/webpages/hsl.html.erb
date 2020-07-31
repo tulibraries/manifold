@@ -24,22 +24,25 @@
 		</div>
 
 		<div class="contact">
-			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			215-707-2665
-			<hr />
-			<%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<%= link_to t("manifold.webpages.hsl.contact.mailer"), "/hsl/mailing-list", target: "_blank" %>
+			<div class="two-lines">
+				<%= image_tag "chat.png", style: "width: 100px;", class: "decorative", alt: "" %>
+				<%= link_to t("manifold.webpages.hsl.contact.chat"), "/hsl/chat", target: "_blank" %>
+			</div>
       <hr />
 			<div class="two-lines">
-			<%= image_tag "chat.png", style: "width: 100px;" %>
-			<%= link_to t("manifold.webpages.hsl.contact.chat"), "/hsl/chat", target: "_blank" %>
+				<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+        <%= link_to t("manifold.webpages.hsl.contact.appointment"), 
+        "https://library.temple.edu/people?department=health-sciences-library-staff&page=1&specialists=true" %>
 			</div>
 			<hr />
+        <%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+        <%= link_to t("manifold.webpages.hsl.contact.mailer"), "/hsl/mailing-list", target: "_blank" %>
+      <hr />
         <%= image_tag('journal_finder.png', class: "decorative", style: "width: 100px", alt: "") %>
         <%= link_to t("manifold.webpages.hsl.links.journal_finder"), "/journal-finder" %>
       <hr />
       <div style="height:79px;" class="two-lines">
-        <%= image_tag "gift_white.png", style: "width: 100px;" %>
+        <%= image_tag "gift_white.png", style: "width: 100px;", class: "decorative", alt: "" %>
         <%= link_to t("manifold.webpages.hsl.links.support"), "/hsl/giving" %>
       </div>
 		</div>

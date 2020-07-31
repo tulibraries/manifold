@@ -22,7 +22,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     hours: HoursField.with_options(admin_only: true),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
-    covid_alert: Field::String.with_options(admin_only: true),
+    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

@@ -18,7 +18,7 @@ class PolicyDashboard < Administrate::BaseDashboard
     expiration_date: Field::DateTime,
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
-    covid_alert: Field::String.with_options(admin_only: true),
+    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

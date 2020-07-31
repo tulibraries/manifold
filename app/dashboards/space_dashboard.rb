@@ -29,7 +29,7 @@ class SpaceDashboard < BaseDashboard
     ancestry: Field::String,
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
-    covid_alert: Field::String.with_options(admin_only: true),
+    covid_alert: DescriptionField.with_options(admin_only: true),
   }.freeze
 
   # COLLECTION_ATTRIBUTES

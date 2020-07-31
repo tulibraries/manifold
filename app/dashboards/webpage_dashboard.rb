@@ -26,7 +26,7 @@ class WebpageDashboard < Administrate::BaseDashboard
       order: "name",
       class_name: "FileUpload"
     ),
-    covid_alert: Field::String.with_options(admin_only: true),
+    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

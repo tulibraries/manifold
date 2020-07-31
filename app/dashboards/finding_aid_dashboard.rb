@@ -27,7 +27,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
       class_name: "Person"
     ),
     categories: Field::HasMany,
-    covid_alert: Field::String.with_options(admin_only: true),
+    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

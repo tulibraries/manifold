@@ -21,7 +21,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     end_date: Field::DateTime,
     promoted_to_events: Field::Boolean,
     categories: Field::HasMany,
-    DescriptionField.with_options(admin_only: true),
+    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze

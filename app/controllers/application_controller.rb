@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   before_action :show_hours
 
   def get_alert
-    @alert = Alert.where(published: true)
+    @alert = Alert.where(published: true).where(for_header: false)
   end
 
   def show_hours

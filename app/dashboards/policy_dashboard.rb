@@ -18,6 +18,7 @@ class PolicyDashboard < Administrate::BaseDashboard
     expiration_date: Field::DateTime,
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
+    covid_alert: Field::String.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -37,6 +38,7 @@ class PolicyDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :covid_alert,
     :name,
     :id,
     :description,
@@ -58,7 +60,8 @@ class PolicyDashboard < Administrate::BaseDashboard
     :effective_date,
     :expiration_date,
     :categories,
-    :accounts
+    :accounts,
+    :covid_alert
   ].freeze
 
   def display_resource(policy)

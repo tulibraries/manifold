@@ -22,6 +22,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
+    covid_alert: Field::String.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -39,6 +40,7 @@ class CollectionDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :covid_alert,
     :name,
     :id,
     :image,
@@ -62,6 +64,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :space,
     :external_link,
     :accounts,
+    :covid_alert
   ].freeze
 
   # Overwrite this method to customize how collections are displayed

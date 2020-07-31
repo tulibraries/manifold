@@ -23,6 +23,15 @@
 			
 		<% end %>
 
+	    <% unless @webpage.covid_alert.nil? %>
+      <div class="row covid-alert">
+        <div class="col-12 col-lg-10 offset-lg-1">
+        <strong><%= t("manifold.default.covid_alert") %></strong> 
+        <%= sanitize @webpage.covid_alert.html_safe %>
+        </div>
+      </div>
+      <% end %>
+
 		    <h1><%= title @webpage.title %></h1>
 		    <div class="text-left page-description">
 		    	<%= render @webpage.layout.parameterize %>

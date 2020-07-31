@@ -68,6 +68,7 @@ en:
         accounts: "Individual Owners"
   manifold:  
     default:
+      covid_alert: COVID-19 Alert
       signout: "Log Out"
       site_title: Temple University Libraries
       content_skip: Skip to main content

@@ -129,6 +129,7 @@ class WebpagesController < ApplicationController
 
   def home
     @todays_hours = LibraryHour.todays_hours_at("charles")
+    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def scrc

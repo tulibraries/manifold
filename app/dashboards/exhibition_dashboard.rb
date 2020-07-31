@@ -21,6 +21,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     end_date: Field::DateTime,
     promoted_to_events: Field::Boolean,
     categories: Field::HasMany,
+    DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -42,6 +43,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :covid_alert,
     :title,
     :id,
     :image,
@@ -66,7 +68,8 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :promoted_to_events,
     :space,
     :collection,
-    :categories
+    :categories,
+    :covid_alert
   ].freeze
 
   # Overwrite this method to customize how exhibitions are displayed

@@ -27,6 +27,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
       class_name: "Person"
     ),
     categories: Field::HasMany,
+    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -45,6 +46,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :covid_alert,
     :name,
     :id,
     :subject,
@@ -70,7 +72,8 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :subject,
     :content_link,
     :person,
-    :categories
+    :categories,
+    :covid_alert
   ].freeze
 
   # Overwrite this method to customize how finding aids are displayed

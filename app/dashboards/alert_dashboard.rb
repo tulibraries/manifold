@@ -15,6 +15,7 @@ class AlertDashboard < Administrate::BaseDashboard
     link: Field::String,
     description:  DescriptionField,
     published: Field::Boolean,
+    for_header: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,6 +27,7 @@ class AlertDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :published,
+    :for_header,
     :scroll_text,
     :link,
   ].freeze
@@ -37,6 +39,7 @@ class AlertDashboard < Administrate::BaseDashboard
     :link,
     :description,
     :published,
+    :for_header,
     :created_at,
     :updated_at,
   ].freeze
@@ -49,6 +52,7 @@ class AlertDashboard < Administrate::BaseDashboard
     :link,
     :description,
     :published,
+    :for_header,
   ].freeze
 
   # Overwrite this method to customize how alerts are displayed

@@ -147,3 +147,20 @@ blockquote {
 marquee {
 	color: $red;
 }
+
+.covid-alert {
+	font-family: 'roboto condensed';
+	background-color: #e5edf8;
+	border-top: solid #A50030 6px;
+	margin-bottom: 14px;
+	padding: 10px 0;
+	strong {
+	  font-family: 'roboto condensed';
+	  font-weight: 900;
+	  font-size: 1.35rem;
+	}
+	p {
+	  display: inline;
+	  padding-left: 7px;
+	}
+  }

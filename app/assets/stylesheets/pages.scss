@@ -30,10 +30,11 @@
 	}
 }
 #todays-date {
-	padding-left: 9%;
+	padding-right: 0;
+	padding-left: 4%;
 	.inner-date {
 		border-left: solid $foamgreen 1px;
-		padding-left: 14px;
+		padding-left: 14%;
 	}
 	@media (max-width: 649px) {
 		margin-top: 14px;

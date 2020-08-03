@@ -12,14 +12,7 @@
   </div>
   <div class="col-12 col-lg-6">
 
-      <% unless @exhibition.covid_alert.nil? %>
-      <div class="row covid-alert">
-        <div class="col-12 col-lg-10 offset-lg-1">
-        <strong><%= t("manifold.default.covid_alert") %></strong> 
-        <%= sanitize @exhibition.covid_alert.html_safe %>
-        </div>
-      </div>
-      <% end %>
+    <%= render "covid_alert" unless @covid_alert.nil? %>
 
     <div class="exhibition-description">
       <h1 class="page-title"><%= title @exhibition.title %></h1>

@@ -10,4 +10,7 @@
 	<% if field.attribute == :promoted_to_events %>
 	  <p class="text-muted" style="margin-bottom: 0"><%= t("manifold.default.fields.boolean") %></p>
   <% end %>
+  <% if field.attribute == :for_header %>
+    <p class="text-muted" style="margin-bottom: 0"><%= t("manifold.default.fields.alert_for_header") %></p>
+  <% end %>
 </div>

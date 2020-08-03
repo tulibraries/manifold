@@ -18,6 +18,7 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   # GET /spaces/1.json
   def show
+    @covid_alert = @space.covid_alert
     @categories = @space.categories
     serializable_show
   end

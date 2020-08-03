@@ -14,6 +14,7 @@ class ServicesController < ApplicationController
   end
 
   def show
+    @covid_alert = @service.covid_alert
     serializable_show
   end
 

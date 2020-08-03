@@ -22,9 +22,9 @@
 
   <% unless @header_alert.nil? %>
 
-    <div class="col-12 col-sm-5 col-lg-4 offset-lg-1 text-center d-none d-lg-block d-print-none covid-alert" style="margin-bottom: 0;margin-top: 4px">
-      <strong><%= t("manifold.default.covid_alert") %></strong> 
-      <br /><%= link_to @header_alert.scroll_text.truncate(50, separator: ' ', omission: ''), @header_alert.link %>
+    <div class="col-12 col-sm-5 col-lg-4 offset-lg-1 text-center d-none d-lg-block d-print-none covid-alert home">
+      <strong><%= t("manifold.default.covid_alert") %></strong>
+      <br /><%= link_to @header_alert.scroll_text.truncate(55, separator: ' ', omission: ''), @header_alert.link %>
     </div>
 
     <div id="todays-date" class="col-12 col-sm-5 col-lg-3 text-left d-lg-block d-none d-print-none">

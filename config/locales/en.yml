@@ -81,6 +81,7 @@ en:
         confirm: "Are you sure?"
         belongs_to: "Link will appear in a button with the title of \"Library Website\""
         boolean: "When checked, will display on Events page"
+        alert_for_header: COVID header alerts are limited to 55 characters.
         email: "If left blank, email address from related building will be displayed."
         file_field:
           pdf: "* PDF files only"

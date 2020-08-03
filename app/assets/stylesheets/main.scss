@@ -154,18 +154,20 @@ marquee {
 	border-top: solid #A50030 6px;
 	margin-bottom: 14px;
 	padding: 10px 0;
-	strong {
-	  font-family: 'Roboto';
-	  font-weight: 900;
-	  font-size: 1.35rem;
-	}
-	p {
-	  display: block;
-	  padding-left: 7px;
-	}
+  strong {
+    font-family: 'Roboto';
+    font-weight: 900;
+    font-size: 1.35rem;
+    display: block;
+    text-align: center;
   }
+  p {
+    display: block;
+    padding-left: 7px;
+  }
+}
 
-  .covid-alert.home {
+.covid-alert.home {
 	margin-bottom: 0;
 	margin-top: 4px;
-  }
+}

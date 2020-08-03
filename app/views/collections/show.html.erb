@@ -12,14 +12,7 @@
       <div class="col-12">
     <% end %>
 
-      <% unless @collection.covid_alert.nil? %>
-      <div class="row covid-alert">
-        <div class="col-12 col-lg-10 offset-lg-1">
-        <strong><%= t("manifold.default.covid_alert") %></strong> 
-        <%= sanitize @collection.covid_alert.html_safe %>
-        </div>
-      </div>
-      <% end %>
+    <%= render "covid_alert" unless @covid_alert.nil? %>
 
       <h1 class="page-title"><%= title @collection.name %></h1>
       <% if @collection.image.attached? %>

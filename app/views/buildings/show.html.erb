@@ -11,14 +11,7 @@
 
       <div class="col-12 col-lg-6">
 
-      <% unless @building.covid_alert.nil? %>
-      <div class="row covid-alert">
-        <div class="col-12 col-lg-10 offset-lg-1">
-        <strong><%= t("manifold.default.covid_alert") %></strong> 
-        <%= sanitize @building.covid_alert.html_safe %>
-        </div>
-      </div>
-      <% end %>
+      <%= render "covid_alert" unless @covid_alert.nil? %>
 
       <h1 class="page-title"><%= title @building.label %></h1>
       <ul class="list-unstyled building-contact">
@@ -26,6 +19,7 @@
         <li class="lib_phone"><span><%= phone_formatted(@building.phone_number) %></span></li>
         <li class="lib_email"><span><%= mail_to @building.email %></span></li>
       </ul>
+      
       <%= sanitize @building.description.html_safe unless @building.description.nil?  %>
 
     </div>

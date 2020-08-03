@@ -160,7 +160,12 @@ marquee {
 	  font-size: 1.35rem;
 	}
 	p {
-	  display: inline;
+	  display: block;
 	  padding-left: 7px;
 	}
+  }
+
+  .covid-alert.home {
+	margin-bottom: 0;
+	margin-top: 4px;
   }

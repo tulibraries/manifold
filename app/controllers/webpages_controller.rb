@@ -159,6 +159,17 @@ class WebpagesController < ApplicationController
     @research_links = Category.find_by(slug: "hsl-research").items
     @visit_links = Category.find_by(slug: "hsl-study").items
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.zone.now]).order(:start_time).take(5)
+    @resources = "/hsl/resources"
+    @research = "/hsl/research"
+    @remote_learning = "/categories/coronavirus"
+    @ginsburg = "/hsl/ginsburg"
+    @podiatry = "/hsl/podiatry"
+    @chat = "/hsl/chat"
+    @appointment = "https://library.temple.edu/people?department=health-sciences-library-staff&page=1&specialists=true"
+    @mailer = "/hsl/mailing-list"
+    @journal_finder = "/journal-finder"
+    @support = "/hsl/giving"
+    @visit = "/hsl/info"
   end
 
   def about

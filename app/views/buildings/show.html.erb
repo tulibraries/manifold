@@ -7,19 +7,20 @@
       <div class="col-3 d-none d-md-none d-lg-block">
         <%= render "categories_list" %>
       </div>
+    <% end %>
 
       <div class="col-12 col-lg-6">
-    <% else %>
-      <div class="col-12 col-lg-6">
-    <% end %>
-    
+
+      <%= render "covid_alert" unless @covid_alert.nil? %>
+
       <h1 class="page-title"><%= title @building.label %></h1>
       <ul class="list-unstyled building-contact">
         <li class="lib_location"><span><%= @building.address1 %> <%= @building.address2 %></span></li>
         <li class="lib_phone"><span><%= phone_formatted(@building.phone_number) %></span></li>
         <li class="lib_email"><span><%= mail_to @building.email %></span></li>
       </ul>
-      <%= sanitize @building.description.html_safe %>
+      
+      <%= sanitize @building.description.html_safe unless @building.description.nil?  %>
 
     </div>
 

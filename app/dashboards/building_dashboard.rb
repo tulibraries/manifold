@@ -24,6 +24,7 @@ class BuildingDashboard < BaseDashboard
     email: Field::Email,
     policies: Field::HasMany,
     external_link: Field::BelongsTo.with_options(order: "title"),
+    covid_alert: DescriptionField.with_options(admin_only: true),
     categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -45,6 +46,7 @@ class BuildingDashboard < BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :covid_alert,
     :name,
     :id,
     :description,
@@ -78,7 +80,8 @@ class BuildingDashboard < BaseDashboard
     :hours,
     :email,
     :policies,
-    :categories
+    :categories,
+    :covid_alert
   ].freeze
 
   # Overwrite this method to customize how buildings are displayed

@@ -22,6 +22,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     hours: HoursField.with_options(admin_only: true),
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
+    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -42,6 +43,7 @@ class ServiceDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :covid_alert,
     :title,
     :id,
     :intended_audience,
@@ -64,7 +66,8 @@ class ServiceDashboard < Administrate::BaseDashboard
     :intended_audience,
     :hours,
     :categories,
-    :accounts
+    :accounts,
+    :covid_alert
   ].freeze
 
   def display_resource(service)

@@ -68,6 +68,7 @@ en:
         accounts: "Individual Owners"
   manifold:  
     default:
+      covid_alert: COVID-19 Alert
       signout: "Log Out"
       site_title: Temple University Libraries
       content_skip: Skip to main content
@@ -80,6 +81,7 @@ en:
         confirm: "Are you sure?"
         belongs_to: "Link will appear in a button with the title of \"Library Website\""
         boolean: "When checked, will display on Events page"
+        alert_for_header: COVID header alerts are limited to 55 characters.
         email: "If left blank, email address from related building will be displayed."
         file_field:
           pdf: "* PDF files only"
@@ -928,7 +930,7 @@ en:
             research: Research Help
             reserve_study_space: Reserve a Study Space
             in_person: Visit Us in Person
-            remote_support: Remote Support Services
+            remote_support: Fully Online Support
           main:
             books: Books & Media
             articles: Articles
@@ -955,6 +957,7 @@ en:
         contact:
           mailer: Mailing List
           chat: Chat with a Health Sciences Librarian
+          appointment: Make an Appointment with a Health Sciences Librarian
         links: 
           journal_finder: Journal Finder
           support: Support the Health Sciences Libraries

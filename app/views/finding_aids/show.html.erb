@@ -5,8 +5,10 @@
       < <%= link_to t("manifold.finding_aids.show.breadcrumb"), finding_aids_path, class: "inline" %>
     </div>
 
-
     <div class="col-12 col-lg-6">
+          
+    <%= render "covid_alert" unless @covid_alert.nil? %>
+
       <h1 class="page-title">
         <%= title sanitize @finding_aid.name.html_safe %>
       </h1>

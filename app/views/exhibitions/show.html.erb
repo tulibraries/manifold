@@ -11,6 +11,9 @@
     </div>
   </div>
   <div class="col-12 col-lg-6">
+
+    <%= render "covid_alert" unless @covid_alert.nil? %>
+
     <div class="exhibition-description">
       <h1 class="page-title"><%= title @exhibition.title %></h1>
 

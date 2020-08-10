@@ -21,6 +21,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     long_description: DescriptionField,
     get_help: DescriptionField,
     accounts: Field::HasMany.with_options(admin_only: true),
+    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -39,6 +40,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :covid_alert,
     :name,
     :id,
     :image,
@@ -66,7 +68,8 @@ class CategoryDashboard < Administrate::BaseDashboard
     :long_description,
     :get_help,
     :external_link,
-    :accounts
+    :accounts,
+    :covid_alert
   ].freeze
 
   def display_resource(category)

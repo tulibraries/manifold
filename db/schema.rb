@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_134152) do
+ActiveRecord::Schema.define(version: 2020_07_31_134752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "for_header"
   end
 
   create_table "blog_posts", force: :cascade do |t|
@@ -143,6 +144,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.string "city"
     t.string "state"
     t.string "zipcode"
+    t.string "covid_alert"
     t.index ["external_link_id"], name: "index_buildings_on_external_link_id"
   end
 
@@ -156,6 +158,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.text "get_help"
     t.text "long_description"
     t.bigint "external_link_id"
+    t.string "covid_alert"
     t.index ["external_link_id"], name: "index_categories_on_external_link_id"
   end
 
@@ -191,6 +194,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.integer "space_id"
     t.bigint "external_link_id"
     t.string "slug"
+    t.string "covid_alert"
     t.index ["building_id"], name: "index_collections_on_building_id"
     t.index ["external_link_id"], name: "index_collections_on_external_link_id"
     t.index ["space_id"], name: "index_collections_on_space_id"
@@ -244,6 +248,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.datetime "updated_at", null: false
     t.boolean "promoted_to_events"
     t.string "slug"
+    t.string "covid_alert"
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
@@ -296,6 +301,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.string "drupal_id"
     t.string "path"
     t.string "slug"
+    t.string "covid_alert"
     t.index ["collection_id"], name: "index_finding_aids_on_collection_id"
   end
 
@@ -407,6 +413,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.string "slug"
+    t.string "covid_alert"
   end
 
   create_table "policy_applications", force: :cascade do |t|
@@ -442,6 +449,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.string "hours"
     t.integer "external_link_id"
     t.string "slug"
+    t.string "covid_alert"
     t.index ["external_link_id"], name: "index_services_on_external_link_id"
   end
 
@@ -468,6 +476,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.string "ancestry"
     t.bigint "external_link_id"
     t.string "slug"
+    t.string "covid_alert"
     t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
     t.index ["external_link_id"], name: "index_spaces_on_external_link_id"
@@ -493,6 +502,7 @@ ActiveRecord::Schema.define(version: 2020_07_21_134152) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.bigint "external_link_id"
+    t.string "covid_alert"
     t.index ["external_link_id"], name: "index_webpages_on_external_link_id"
     t.index ["group_id"], name: "index_webpages_on_group_id"
   end

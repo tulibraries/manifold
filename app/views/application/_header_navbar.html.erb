@@ -7,7 +7,7 @@
   </div>
 
 <div id="header-navbar" class="container navbar navbar-static-top d-print-block" role="navigation">
-  <div class="col-8 col-sm-7 col-lg-7 logo-container text-left ">
+  <div class="col-8 col-sm-7 col-lg-4 logo-container text-left ">
     <%= link_to root_path, class: "header-name", id: "header-logo" do %>
       <%= image_tag('temple-logo-t-box.svg', class: "header-logo", alt: "") %> 
       <span><%= t("manifold.default.application.header_navbar.logo_tag") %></span>
@@ -19,11 +19,35 @@
     <%= render "header-search" %>
   </div>
 <% else %>
-  <div id="todays-date" class="col-12 col-sm-5 col-lg-4 text-left d-print-none">
-    <div class="inner-date">
-      <%= render "todays_date" %>
+
+  <% unless @header_alert.nil? %>
+
+    <div class="col-12 col-sm-5 col-lg-4 offset-lg-1 text-center d-none d-lg-block d-print-none covid-alert home">
+      <strong><%= t("manifold.default.covid_alert") %></strong>
+      <%= link_to @header_alert.scroll_text.truncate(55, separator: ' ', omission: ''), @header_alert.link %>
     </div>
-  </div>
+
+    <div id="todays-date" class="col-12 col-sm-5 col-lg-3 text-left d-lg-block d-none d-print-none">
+      <div class="inner-date">
+        <%= render "todays_date" %>
+      </div>
+    </div>
+
+    <div id="todays-date" class="col-12 col-sm-5 d-lg-none text-left d-print-none">
+      <div class="inner-date">
+        <%= render "todays_date" %>
+      </div>
+    </div>
+
+  <% else %>
+
+    <div id="todays-date" class="col-12 col-sm-5 col-lg-4 text-left d-print-none">
+      <div class="inner-date">
+        <%= render "todays_date" %>
+      </div>
+    </div>
+
+  <% end %>
 <% end %>
 
   <div class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right d-print-none">

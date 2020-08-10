@@ -30,15 +30,11 @@ class LibraryHoursController < ApplicationController
       @sunday = @date.end_of_week
       @next_week = @date.next_week
       @last_week = @date.prev_week
-      @next_month = @date.at_beginning_of_month.next_month
-      @last_month = @date.at_beginning_of_month.prev_month
     else
       @monday = @today.beginning_of_week
       @sunday = @today.end_of_week
       @next_week = @today.next_week
       @last_week = @today.prev_week
-      @next_month = @today.at_beginning_of_month.next_month
-      @last_month = @today.at_beginning_of_month.prev_month
     end
   end
 

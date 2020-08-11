@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  paginates_per 5
+  paginates_per 12
   belongs_to :building, optional: true
   belongs_to :space, optional: true
   belongs_to :person, optional: true
@@ -50,7 +50,15 @@ class Event < ApplicationRecord
   end
 
   def get_date
-    start_time.strftime("%^A, %^B %d, %Y ").titleize unless start_time.nil?
+    start_time.strftime("%^a, %^b %d, %Y ").titleize unless start_time.nil?
+  end
+
+  def set_start_time
+    unless all_day
+      start_time.strftime("%l:%M %P")
+    else
+      "(All day)"
+    end
   end
 
   def set_times

@@ -56,11 +56,6 @@
 		text-decoration: underline;
 	}
 }
-.exhibits {
-	@media (max-width: 1039px) {
-		margin-top: 35px;
-	}
-}
 .events {
 	h2 {
 		padding-top: 0;
@@ -89,13 +84,17 @@
 }
 .exhibits {
 	font-family: "Roboto Condensed";
+	@media (max-width: 1039px) {
+		margin-top: 35px;
+	}
 	.exhibits-header {
 		padding-right: 14px;
-		background-color: $lightest-grey;
+		background-color: $red;
 		padding: 10px 21px;
-		color: $seagreen ;
+		color: $white ;
 		font-size:150%;
-		margin-bottom: 14px;
+    margin-bottom: 14px;
+    border-radius: 4px;
 	}
 	.exhibit {
 		font-family: "Roboto Condensed";
@@ -157,26 +156,26 @@
 		display: block;
 	}
 }
-	a.location {
-		font-weight: 600;
-		color: $black!important;
-	}
-	.past-events-button, .video-button {
-		background-color: $seagreen;
-		padding: 21px;
-		color: $white!important;
-		font-size: 150%;
-		text-align: center;
-		border-radius: 7px;
-		display: inline-block;
-		width: 100%;
-		margin-bottom: 14px;
-		text-decoration: underline;
-		text-align: left;
-	}
-	.video-button {
-		background-color: $foamgreen;
-	}
+a.location {
+	font-weight: 600;
+	color: $black!important;
+}
+.past-events-button, .video-button {
+	background-color: $seagreen;
+	padding: 21px;
+	color: $white!important;
+	font-size: 150%;
+	text-align: center;
+	border-radius: 7px;
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 14px;
+	text-decoration: underline;
+	text-align: left;
+}
+.video-button {
+	background-color: $foamgreen;
+}
 .event-location {
 	border: solid $seagreen 1px;
   border-radius: 7px;
@@ -185,94 +184,107 @@
   margin-bottom: 14px;
 }
 .register-link {
-		background-color: $foamgreen;
-		padding: 21px;
-		border-radius: 7px;
-		display: inline-block;
-		width: 100%;
-		margin-bottom: 14px;
-		a {
-			font-size: 150%;
-			color: $white!important;
-			text-decoration: underline;
-		}
+	background-color: $foamgreen;
+	padding: 21px;
+	border-radius: 7px;
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 14px;
+	a {
+		font-size: 150%;
+		color: $white!important;
+		text-decoration: underline;
+	}
 }
-.events_facets {
-	padding-bottom: 21px;
+#event-date {
+    padding-left: 0.75rem;
+    input[type="submit"] {
+      background-color: $red;
+      color: $white;
+      border: solid $red 1px;
+      border-radius: 4px;
+      padding-top: 0;
+    }
+    input[type="date"] {
+      border: solid $red 1px;
+      border-radius: 4px;
+    }
+}
 
-	.events_search {
-		padding-left: 42px;
+.event-index {
+	strong {
+		// font-weight: 900px;
+		font-family: 'DroidBld';
 	}
-	.fa.fa-search {
-		position: absolute;
-    top: 32px;
-    left: 42px;
-    font-size: 1.25rem;
-    color: #ccc;
-	}
-	ul {
-		margin-top: 10px;
-		li {
-			padding: 6px 14px;
-			padding-right: 7px;
-			font-size: 1rem;
-			a {
-				margin: 0 2px;
-				font-size: 1rem;
-				color: $black;
-			}
+	.online-notice {
+		p {
+		margin-bottom: 0;
 		}
+		border-radius: 4px;
+		font-family: 'Roboto';
+		background-color: #e5edf8;
+		font-size: 1.25rem;
+		margin-bottom: 14px;
+		padding: 10px 0;
 	}
-	a[data-toggle="collapse"]:after {
-		content: "\f105";
-    font-family: "FontAwesome";
-    font-size: larger;
-  	float: right;
-  	padding-right: 7px;
-	}
-	a[aria-expanded="true"]:after {
-		content: "\f107";
-    font-family: "FontAwesome";
-    font-size: larger;
-  	float: right;
-  	padding-right: 7px;
-	}
-	.types_header {
-		color: #187768;
-		font-weight: 600;
-	}
-	.spaces_header {
-		color: #187768;
-		font-weight: 600;
-	}
-	.event_types, .event_spaces {
-		.active {
-			background-color: $seagreen;
-			color: $white;
-			margin-left: 4px;
-			padding-left: 14px;
-			a {
-				color: $white;
-				font-weight: 900;
-			}
-		}
-	}
-	.filter-reset {
-		text-align:center;
-		margin-top: 42px;
-		border-top: solid $seagreen-dark 2px;
-		margin-left: 1px;
-		margin-right: 1px;
-		padding-top: 21px;
-		a {
-			width:65%;
-			border-radius:4px;
-			padding: 7px;
-			background-color: $white;
-			border: solid $seagreen 1px;
-			margin-left: auto;
-			margin-right: auto;
-			color: $seagreen!important;
-		}
-	}
+}
+
+.event-title {
+    display: block;
+    margin-top: 0;
+    font-size: 1.15rem;
+    font-family: "Roboto Condensed";
+    line-height: 1.15rem;
+}
+
+.featured-event {
+  .event-title {
+    font-size: 1.65rem!important;
+    margin-top: 1rem;
+    line-height: 1.5rem;
+  }
+}
+#featured-events {
+  background-color:#eee;
+  border-top: solid #951936 2px;
+}
+
+.event-filters {
+  .dropdown-toggle {
+    width: 85%;
+    background-color: transparent;
+    color: #951936;
+    border:0;
+    font-size: 1.5rem;
+  }
+  .dropdown-menu {
+    width: 100%
+  }
+  .filter_links {
+    a {
+      font-family: 'Roboto Condensed';
+      font-size:larger;
+    }
+  }
+}
+.sub-level-background {
+  background-color: white;
+  border-radius: 4px;
+}
+#events {
+  h2.current-events, h2.past-events {
+    background-color: $red;
+    border-radius:4px;
+    color:white;
+    font-size: 2rem;
+  }
+}
+
+#events-exhibits {
+  h2.current-exhibits {
+    font-size: 2rem;
+    background-color: #A50030;
+    color: #fff;
+    border-radius: 4px;
+  }
 }

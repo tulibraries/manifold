@@ -17,6 +17,7 @@ class LibraryHoursController < ApplicationController
 
   def set_dates
     @today = Time.zone.today
+    @date_picker_date = params[:date] ? params[:date] : @today
     begin
       @date = params[:date].nil? ? @today : Date.parse(params[:date])
     rescue ArgumentError

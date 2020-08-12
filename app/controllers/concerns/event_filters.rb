@@ -17,18 +17,14 @@ module EventFilters
     types.compact.flatten.uniq.sort
   end
 
-  def locations_list(events)
-    to_add = events.select { |event| event.building == params[:location] || event.external_building == params[:location] }
+  def dates_list(events)
+    to_add = events.select { |event| event.start_time == params[:date] }
 
-    locations = to_add.map { |event|
-      unless event.building.nil?
-        event.building.label
-      else
-        unless event.external_building.nil?
-          event.external_building
-        end
+    dates = to_add.map { |event|
+      unless event.start_time.nil?
+        event.start_time
       end
     }
-    locations.compact.uniq.sort
+    dates.compact.uniq.sort
   end
 end

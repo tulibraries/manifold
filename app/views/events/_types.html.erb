@@ -1,0 +1,16 @@
+<ul class="list-unstyled" style="width: 100%;padding-left: 1rem;padding-right:1rem">
+  <% unless action_name == "past" %>
+  <li><%= link_to "- none -", events_path(anchor: "list") %></li>
+  <% else %>
+  <li><%= link_to t("- none -"), past_events_path(anchor: "list") %></li>
+  <% end %>
+  <% @event_types.each do |type| %>
+  <li>
+  <% unless action_name == "past" %>
+    <%= link_to type, events_path(anchor: "list", type: type, page: 1) %>
+  <% else %>
+    <%= link_to type, past_events_path(anchor: "list", type: type, page: 1) %>
+  <% end %>
+  </li>
+  <% end %>
+</ul>

@@ -1,25 +1,22 @@
+<%# binding.pry %>
+<div class="row event">
 <% @events_list.each do |event| %>
-  <div class="row event">
-    <div class="col-12 col-lg-3">
+  <div class="col-12 col-md-4 col-lg-6">
+    <div class="row mb-4">
+    <div class="col-12 col-lg-4 p-0 text-sm-center">
     <% if event.image.attached? %>
       <%= link_to (image_tag event.index_image, class: "decorative", alt: ""), event_path(event.id) %>
     <% else %>
       <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
     <% end %>
     </div>
-    <div class="col-12 col-lg-9">
-      <h2><%= link_to event.title, event_path(event.id) %></h2>
-      <p><strong>
-        <%= event.get_date %> | <%= event.set_times %> 
-        <% unless event.building.nil? %>
-          | <%= get_bldg_name(event.building.name) %>
-        <% else %>
-          <% unless event.external_building.nil? %>
-          | <%= event.external_building %>
-          <% end %>
-        <% end %>
-      </strong></p>
-      <p><%= sanitize strip_tags(event.description.html_safe.truncate(250)) %></p>
+    <div class="col-12 col-lg-8 mt-2">
+      <%= link_to event.title, event_path(event.id), class: "event-title" %>
+      <p class="my-2" style="font-size:89%;font-weight:900">
+      
+          <%= event.get_date %> | <%= event.set_start_time %>
+        
+      </p>
       <p>
         <% unless event.get_types.nil? %>
           <% event.get_types.each do |type| %>
@@ -30,16 +27,21 @@
               <% end %>
           <% end %>
         <% end %>
-
-          <%# binding.pry %>
-        <% unless event.building.nil? %>
-          <%= link_to get_bldg_name(event.building.name), event.building, class: "event_location" %>
-        <% else %>
-          <% unless event.external_building.nil? %>
-            <span class="event_location"><%= event.external_building %></span> 
-          <% end %>
-        <% end %>
       </p>
     </div>
   </div>
+  </div>
+<% end if @events.present? %>
+
+<% unless @events.present? %>
+<h3 class="mt-5 ml-3">
+  No events are scheduled for this day, 
+  <%= Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %>
+</h3>
 <% end %>
+
+  <div class="col-12 text-right paginator">
+    <%= paginate @events_list, :params => { anchor: "list" } if @events_list.present? %>
+  </div>
+
+</div>

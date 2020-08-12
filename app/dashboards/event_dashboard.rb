@@ -41,6 +41,7 @@ class EventDashboard < BaseDashboard
     ensemble_identifier: Field::String,
     categories: Field::HasMany,
     guid: Field::String,
+    featured: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -52,6 +53,7 @@ class EventDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
+    :featured,
     :event_type,
     :start_time,
     :end_time,
@@ -103,6 +105,7 @@ class EventDashboard < BaseDashboard
     :slug,
     :description,
     :event_type,
+    :featured,
     :tags,
     :start_time,
     :end_time,

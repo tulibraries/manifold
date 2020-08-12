@@ -11,8 +11,8 @@
   </div>
   <div class="col-12 col-lg-4 text-lg-center today-button-container date-picker">
     <%= form_tag "/hours", method: "get" do %>
-      <%= date_field_tag "date", Time.zone.today, id: "date", name: "date", 
-                                  min: Time.zone.today, max: 2.years.from_now %>
+      <%= date_field_tag "date", @date_picker_date, id: "date", name: "date", 
+                                  min: @today, max: 2.years.from_now %>
       <%= submit_tag "Go" %>
     <% end %>  
   </div>

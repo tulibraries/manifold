@@ -1,4 +1,3 @@
-<%# binding.pry %>
 <div class="row event">
 <% @events_list.each do |event| %>
   <div class="col-12 col-md-4 col-lg-6">
@@ -10,7 +9,7 @@
       <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
     <% end %>
     </div>
-    <div class="col-12 col-lg-8 mt-2">
+    <div class="col-12 col-lg-8">
       <%= link_to event.title, event_path(event.id), class: "event-title" %>
       <p class="my-2" style="font-size:89%;font-weight:900">
       
@@ -18,15 +17,21 @@
         
       </p>
       <p>
-        <% unless event.get_types.nil? %>
-          <% event.get_types.each do |type| %>
-            <% unless action_name == "past" %>
+      <% unless action_name == "past" %>
+        <% unless event.get_tags.nil? %>
+          <% event.get_tags.each do |type| %>
+            <% if @new_tags.include?(type) %>
               <%= link_to type, events_path(type: type), class: "event_type" %> 
-              <% else %>
-                <%= link_to type, past_events_path(type: type), class: "event_type" %> 
-              <% end %>
+            <% end %>
           <% end %>
         <% end %>
+      <% else %>
+        <% unless event.get_types.nil? %>
+          <% event.get_types.each do |type| %>
+            <%= link_to type, past_events_path(type: type), class: "event_type" %> 
+          <% end %>
+        <% end %>
+      <% end %>
       </p>
     </div>
   </div>
@@ -35,8 +40,14 @@
 
 <% unless @events.present? %>
 <h3 class="mt-5 ml-3">
-  No events are scheduled for this day, 
-  <%= Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %>
+  <% if params[:date].present? %>
+    <%= t("manifold.events.index.no_scheduled_events") %>, 
+    <%= Date.parse(params[:date]).strftime("%m-%d-%Y") %>
+  <% else %>
+    <%= t("manifold.events.index.no_event_types") %> 
+    "<%= params[:type] %>"
+  <% end %>
+
 </h3>
 <% end %>
 

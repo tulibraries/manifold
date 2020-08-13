@@ -4,10 +4,14 @@
 	margin-top: 21px;
 }
 .event-index {
-	.intro {
+	.intro {    
+    column-count: 2;
+    column-gap: 4rem;
 		margin-bottom: 21px;
-		font-size: 105%;
+    font-size: 115%;
+    line-height: 1.5rem;
 		@media (min-width: 0) and (max-width: 1040px) {
+      column-count: 1;
 			margin-top: 28px;
 		}
 	}
@@ -213,10 +217,15 @@ a.location {
 
 .event-index {
 	strong {
-		// font-weight: 900px;
-		font-family: 'DroidBld';
+    display: inline-block;
+		font-weight: 900px;
+		font-family: 'Faustina-Bold';
 	}
 	.online-notice {
+    span {
+      font-weight: 600;
+      font-family:DroidBld;
+    }
 		p {
 		margin-bottom: 0;
 		}
@@ -258,7 +267,10 @@ a.location {
     font-size: 1.5rem;
   }
   .dropdown-menu {
-    width: 100%
+    width: 100%;
+    @media (max-width: 1042px) {
+      width: 85%;
+    }
   }
   .filter_links {
     a {

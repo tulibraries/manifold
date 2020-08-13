@@ -13,7 +13,8 @@
       
       <strong><%= event.get_date %> | <%= event.set_start_time %></strong>
 
-      <p class="pt-2"><%= sanitize strip_tags(event.description.html_safe.truncate(150)) %></p>
+      <p class="pt-2"><%= sanitize strip_tags(event.description.html_safe.truncate(125)) %></p>
+      
       <p>
         <% unless event.get_types.nil? %>
           <% event.get_types.each do |type| %>

@@ -3,30 +3,35 @@
 <div class="container event-index">
   <div class="container">
   <div class="row">
-    <div class="col-12 col-lg-8">
-      <h1 class="d-none d-lg-block"><%= title t("manifold.events.index.page_title") %></h1>
+  <div class="col-12">
+  <h1 class="d-none d-lg-block"><%= title t("manifold.events.index.page_title") %></h1>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
       <% unless @intro.nil? %>
-        <div class="intro"><%= sanitize @intro.description.html_safe %></div>
+        <div class="intro mb-0"><%= sanitize @intro.description.html_safe %></div>
       <% end %>
     </div>
     <div class="col-12 text-center online-notice">
-      <p>All library events are <strong>online only</strong> until further notice.</p>
+      <%= t("manifold.events.index.online_notice_html") %>
     </div>
   </div>
 </div>
 <div class="container pb-3" id="featured-events">
   <div class="row mb-3">
     <div class="col-12 pt-2">
-      <h2 style="font-size: 175%">Past Events</h2>
+      <h2 style="font-size: 175%"><%= t("manifold.events.index.past_events_label") %></h2>
     </div>
   </div>
 
   <div class="row event-filters">
+    <a name="list"></a>
     <div class="col-12 col-md-3 text-center">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button"  
         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Event Types
+          <%= t("manifold.events.index.event_types") %>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <%= render "types" %>
@@ -38,7 +43,7 @@
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle pl-0" type="button"
         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Calendar
+          <%= t("manifold.events.index.calendar") %>
         </button>
         <div class="dropdown-menu pl-2" aria-labelledby="dropdownMenuButton">
           <%= render "dates" %>
@@ -58,17 +63,20 @@
     <div class="col-12 col-lg-8 events pt-3 mb-3" id="events">
       <div class="row">
         <div class="col-12">  
-          <a name="list"></a>
-          <h2 class="p-3 mb-3 past-events">Past Events</h2>
+          <h2 class="p-3 mb-3 current-events"><%= t("manifold.events.index.past_events_label") %></h2>
         </div>
       </div>
-    <% if params[:type].present? %>
-      <h2 class="ml-4 mb-4"><%= params[:type] %> Events</h2>
+    <% if params[:type].present? && params[:type] != "none" %>
+      <h2 class="ml-4 mb-4">
+        <%= params[:type]+ " " +  t("manifold.events.index.events") %>
+      </h2>
     <% end %>
     <% if params[:date].present? %>
-      <h2 class="ml-4 mb-4">Events on <%= Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %></h2>
+      <h2 class="ml-4 mb-4">
+        <%= t("manifold.events.index.events_on") + " " + Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %>
+      </h2>
     <% end %>
-    
+
       <%= render "events" %>
 
     </div>
@@ -78,15 +86,13 @@
     <div class="col-12 pt-3 mb-3" id="events-exhibits">
 
       <% unless @exhibitions.blank? %>
-        <h2 class="p-3 mb-3 current-exhibits"><%= t("manifold.events.index.current_exhibits_label") %></h2>
+        <h2 class="p-3 mb-3 current-exhibits">
+          <%= t("manifold.events.index.current_exhibits_label") %>
+        </h2>
         
         <%= render "exhibitions" %>
       
       <% end %>
-
-      <div class="exhibit">
-        <%= t("manifold.events.index.general_admission") %>
-      </div>
 
     </div>
   </div>

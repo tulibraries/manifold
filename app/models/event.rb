@@ -31,10 +31,11 @@ class Event < ApplicationRecord
   end
 
   def get_tags
-    self.tags.split(",").collect(&:strip)
+    self.tags.split(",").collect(&:strip) unless self.tags.nil?
   end
+
   def get_types
-    self.event_type.split(",").collect(&:strip)
+    self.event_type.split(",").collect(&:strip) unless self.event_type.nil?
   end
 
   def building_name

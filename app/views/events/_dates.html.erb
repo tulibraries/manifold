@@ -7,8 +7,8 @@
   <% end %>
 <% else %>
 <%= link_to "- clear date -", past_events_path(anchor: "list"), class: "d-block pb-2 pl-2" %>
-  <%= form_tag past_events_path(anchor: "list"), method: "get" do %>
-    <%= date_field_tag "date", Time.zone.yesterday, id: "event-date", name: "date", 
+  <%= form_tag past_events_path(anchor: "list"), id: "event-date", method: "get" do %>
+    <%= date_field_tag "date", Time.zone.yesterday, id: "date", name: "date", 
                                 min: 2.years.ago, max: Time.zone.yesterday %>
     <%= submit_tag "Go" %>
   <% end %>

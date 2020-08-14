@@ -60,7 +60,17 @@
 
 @font-face {
   font-family: 'Faustina';
-  src: font-url('faustina.woff2') format('woff2');
+  src: font-url('Faustina-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Faustina-Italic;
+  src: font-url('Faustina-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Faustina-Bold;
+  src: font-url('Faustina-SemiBold.ttf') format('truetype');
 }
 
 @font-face {

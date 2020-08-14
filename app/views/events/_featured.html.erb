@@ -1,0 +1,31 @@
+<% @featured_events.each do |event| %>
+    <div class="col-12 col-md-4 featured-event">
+      <div class="p-3" style="background-color: white;border-radius: 4px;">
+      <% if event.image.attached? %>
+        <%= link_to (image_tag event.custom_image(340, 200), 
+                    class: "decorative", alt: ""), 
+                    event_path(event.id) %>
+      <% else %>
+        <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
+      <% end %>
+
+      <%= link_to event.title.truncate(32), event_path(event.id), class: "event-title pb-2" %>
+      
+      <strong><%= event.get_date %> | <%= event.set_start_time %></strong>
+
+      <p class="pt-2"><%= sanitize strip_tags(event.description.html_safe.truncate(125)) %></p>
+      
+      <p>
+        <% unless event.get_types.nil? %>
+          <% event.get_types.each do |type| %>
+            <% unless action_name == "past" %>
+              <%= link_to type, events_path(type: type), class: "event_type" %> 
+            <% else %>
+              <%= link_to type, past_events_path(type: type), class: "event_type" %> 
+            <% end %>
+          <% end %>
+        <% end %>
+      </p>
+      </div>
+    </div>
+  <% end %>

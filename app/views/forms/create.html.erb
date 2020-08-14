@@ -22,12 +22,11 @@
         </div>
       </div>
 
-      <% unless @type == "event-space-request" %>      
+      <% unless ["event-space-request", "group-visit"].include? @type %>   
 
       <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
 
-      <% unless @type == "event-space-request" %>
         <div class="row">
           <div class="col">
             <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
@@ -36,7 +35,6 @@
             </fieldset>
           </div>
         </div>
-      <% end %>
 
       <% unless ["graduate-locker-request"].include? params[:type] %>
         <div class="row">

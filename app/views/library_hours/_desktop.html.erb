@@ -57,8 +57,8 @@
       <% end %>
     <% else %> <!-- unless -->
       <div class="row" style="margin-top: 14px;">
-        <div class="col-9 offset-3 text-left">
-          <%= "<h3>#{t("manifold.webpages.hours.no_data")}</h3>" if location[:spaces].first.second.empty? %>
+        <div class="col-9 offset-3 text-center">
+          <h3><%= "#{t("manifold.webpages.hours.no_data")}" if location[:spaces].first.second.empty? %></h3>
         </div>
       </div> 
     <% end %>

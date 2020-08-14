@@ -68,7 +68,7 @@ en:
         accounts: "Individual Owners"
   manifold:  
     default:
-      covid_alert: COVID-19 Alert
+      covid_alert: COVID-19 Update
       signout: "Log Out"
       site_title: Temple University Libraries
       content_skip: Skip to main content
@@ -348,10 +348,6 @@ en:
         explore: Explore this Collection
 
     events:
-      facets:
-        event_type: Event Type
-        location: Location
-        clear_all: Clear All
       mobile_menu:
         heading: Events & Exhibits
       index:
@@ -362,7 +358,15 @@ en:
         view_current_events: "View current events & exhibits."
         view_past_events: "View past events & exhibits"
         view_past_events_videos: "View video recordings from past events"
-        general_admission: "Most Temple University Libraries events are free and open to all."
+        filters:
+          none: "- none -"
+        online_notice_html: <p>All library events are <span>online only</span> until further notice.</p>
+        featured_events: Featured Events
+        event_types: Event Types
+        calendar: Calendar
+        upcoming_events: Upcoming Events
+        events: Events
+        events_on: Events on
       show:
         breadcrumb: All Events & Exhibits
         register: Register
@@ -599,6 +603,7 @@ en:
         proxy_name: Proxy Name
         proxy_tuid: Proxy TUid Number
         proxy_account_expiration: Proxy Account Expiration Date
+
       library_instruction:
         title: "Request a Library Instruction Session"
         intro_html: >-
@@ -637,6 +642,7 @@ en:
         minors: Non-Temple affiliates, check box if there are minors in your class
         file: Please attach a copy of your syllabus, if available.
         comments: Goals for This Session/What Do You Want Us to Cover?
+
       table_request:
         title: "Library Staff and Registered Student Organization Table Request"
         intro_html: >-
@@ -654,6 +660,7 @@ en:
         preferred_date: Preferred Date
         preferred_time: Preferred Time
         easel: Do you need an easel?
+
       filming_request:
         title: Guidelines for Requesting Permission to Use the Libraries for Filming
         location_of_filming: Location of Filming
@@ -665,6 +672,7 @@ en:
         temple_course_project: Is this for a Temple Course Project?
         additional_crew_name: Name of one additional crew member
         additional_email: Crew member email
+
       cac_internal:
         title: "Cultural Analytics Certificate Internal Application"
         intro_html: >-
@@ -694,6 +702,7 @@ en:
         personal_statement: >-
                             Please write a personal statement of no more than 250 words indicating your research objectives and how the tools of 
                             Cultural Analytics can contribute to their realization.
+
       cac_external:
         title: "Cultural Analytics Certificate External Application"
         intro_html: >-
@@ -719,6 +728,7 @@ en:
         personal_statement: >-
                       "Please write a personal statement of no more than 250 words indicating your research objectives and 
                       how the tools of Cultural Analytics can contribute to their realization."
+
       event_space_request:
         intro_html: Our Event Spaces are unavailable during the fall 2020 semester as they are being used as classrooms and as quiet study rooms for student use.
         title: "Charles Library Event Space Request"
@@ -759,7 +769,8 @@ en:
         foapal_hint: "in case of damages or additional cleaning costs"
         policy_check_html: >-
                           I agree to <a href=\"https://library.temple.edu/policies/17\" class=\"inline\">
-                          Temple University Libraries\’ policies and guidelines</a>x
+                          Temple University Libraries\’ policies and guidelines</a>
+
       graduate_locker_request:
         title: "Charles Library Graduate Studio Locker Request"
         intro_html: >-
@@ -771,6 +782,7 @@ en:
         temple_affiliation_options:
           graduate: Graduate
           faculty: Faculty
+
       partners_borrowing:
         title: "Partners Borrowing Privileges Application/Renewal"
         intro_html: >-
@@ -785,6 +797,7 @@ en:
                     <p>You may contact the Circulation/Reserve Unit of Paley Library at 215-204-8212 if you have any questions.</p>
         partner_name: Name of Spouse/Partner
         partner_email: Email of Spouse/Partner
+
       storage_request:
         title: "Recall item from Charles Library temporary storage"
         intro_html: >-
@@ -799,7 +812,9 @@ en:
           three: Harrisburg
           four: HSL
           five: Podiatry
+
       group_visit:
+        intro_html: Tours of Charles Library will not be provided during the fall 2020 semester.
         title: "Group Visit Request"
         description: Describe reason for this request
         requested_date: Requested date and time window (e.g., morning, afternoon)
@@ -808,6 +823,7 @@ en:
         school_visit: If this is a school visit, please provide name of school, grade level, and age range of students
         referrer: Referred to us by (if applicable)
         comments: Provide any additional information about this request
+
       review_protocol:
         title: Temple Review Protocol
         intro_html: >-

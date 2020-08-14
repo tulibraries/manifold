@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
 
   def index
-    events = @all_events.having("start_time >= ?", @today).order(:start_time)
+    events = @all_events.having("start_time >= ?", @today).order(start_time: :asc)
     @events = return_events(events)
     @mailing_list = ExternalLink.find_by(slug: "events-mailing-list")
     @intro = Webpage.find_by(slug: "events-intro")
@@ -32,48 +32,25 @@ class EventsController < ApplicationController
   def return_events(events)
     @events = []
     if params["type"].present?
-      if params["location"].present?
-        @types = events.where("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
-        @internals = events.where(building: params[:location]).order(:start_time)
-        @externals = events.where(external_building: params[:location]).order(:start_time)
-        @externals += @internals
-        if @externals.nil?
-          @events = @types
-        else
-          @events = @types.to_a & @externals.to_a
-        end
-      else
-        @events = events.where("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
-      end
+      @events = events.having("tags LIKE ?", "%#{params[:type]}%").order(:start_time) unless action_name == "past"
+      @events = events.having("event_type LIKE ?", "%#{params[:type]}%").order(:start_time) if action_name == "past"
     end
 
-    if params["location"].present?
-      if params["type"].present?
-        @types = events.where("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
-        @internals = events.where(building: params[:location]).order(:start_time)
-        @externals = events.where(external_building: params[:location]).order(:start_time)
-        @externals += @internals
-        if @externals.nil?
-          @events = @types
-        else
-          @events = @types.to_a & @externals.to_a
-        end
-      else
-        @events = events.where(building: params[:location]).or(events.where(external_building: params[:location])).order(:start_time)
-      end
+    if params["date"].present?
+      day_start = Date.parse(params[:date]).beginning_of_day
+      day_end = Date.parse(params[:date]).end_of_day
+      @events = events.having("start_time > ?", day_start)
+                      .merge(events.having("start_time < ?", day_end))
+                      .order(:start_time)
     end
+
+    @event_types = all_types(events)
+    @event_dates = dates_list(events)
 
     unless @events.empty?
-      @event_types = types_list(@events)
-    else
-      @event_types = all_types(events)
+      @event_dates = dates_list(@events)
     end
-
-    @event_locations = locations_list(events)
-    unless @events.empty?
-      @event_locations = locations_list(@events)
-    end
-
+    #
     if @events.present?
       unless action_name == "past"
         events_list = Event.where(id: @events.map(&:id)).order(:start_time)
@@ -82,7 +59,15 @@ class EventsController < ApplicationController
       end
       @events_list = events_list.page params[:page]
     else
-      @events_list = events.page params[:page]
+      if params[:date].present?
+        @events_list = @events.page params[:page]
+      else
+        unless params[:type].present? && @events.empty?
+          @events_list = events.page params[:page]
+        else
+          @events_list = @events.page params[:page]
+        end
+      end
     end
   end
 
@@ -96,8 +81,22 @@ class EventsController < ApplicationController
   private
     def init
       @all_events = Event.group(:id)
+      @featured_events = Event.where(featured: true).order(:start_time).take(3)
       @exhibitions = Exhibition.where(promoted_to_events: true)
-      @today = Time.zone.today
+      @today = Date.current
+      @new_tags = ["Interruption",
+        "Change and Action",
+        "Blockson",
+        "Health Sciences",
+        "Digital Scholarship",
+        "Workshop",
+        "Chat in the Stacks",
+        "Midday Arts",
+        "Beyond the Notes",
+        "Book Club",
+        "Concert",
+        "Reading",
+        "Speaker"].sort
     end
 
     def set_event

@@ -16,3 +16,4 @@ function mobile () {
   $('#dsc-left').insertAfter('#dsc-description');
   $('#libchat_fe2bd0cb1f04720f51641c4f01b8e22e').appendTo('#chat-nav-mobile');
 }
+

@@ -32,7 +32,8 @@ class EventsController < ApplicationController
   def return_events(events)
     @events = []
     if params["type"].present?
-      @events = events.having("event_type LIKE ?", "%#{params[:type]}%").order(:start_time)
+      @events = events.having("tags LIKE ?", "%#{params[:type]}%").order(:start_time) unless action_name == "past"
+      @events = events.having("event_type LIKE ?", "%#{params[:type]}%").order(:start_time) if action_name == "past"
     end
 
     if params["date"].present?
@@ -61,7 +62,11 @@ class EventsController < ApplicationController
       if params[:date].present?
         @events_list = @events.page params[:page]
       else
-        @events_list = events.page params[:page]
+        unless params[:type].present? && @events.empty?
+          @events_list = events.page params[:page]
+        else
+          @events_list = @events.page params[:page]
+        end
       end
     end
   end
@@ -79,6 +84,19 @@ class EventsController < ApplicationController
       @featured_events = Event.where(featured: true).order(:start_time).take(3)
       @exhibitions = Exhibition.where(promoted_to_events: true)
       @today = Date.current
+      @new_tags = ["Interruption",
+        "Change and Action",
+        "Blockson",
+        "Health Sciences",
+        "Digital Scholarship",
+        "Workshop",
+        "Chat in the Stacks",
+        "Midday Arts",
+        "Beyond the Notes",
+        "Book Club",
+        "Concert",
+        "Reading",
+        "Speaker"].sort
     end
 
     def set_event

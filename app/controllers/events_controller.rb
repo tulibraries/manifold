@@ -32,8 +32,8 @@ class EventsController < ApplicationController
   def return_events(events)
     @events = []
     if params["type"].present?
-      @events = events.having("tags LIKE ?", "%#{params[:type]}%").order(:start_time) unless action_name == "past"
-      @events = events.having("event_type LIKE ?", "%#{params[:type]}%").order(:start_time) if action_name == "past"
+      @events = events.having("lower(tags) LIKE ?", "%#{params[:type].downcase}%").order(:start_time) unless action_name == "past"
+      @events = events.having("lower(event_type) LIKE ?", "%#{params[:type].downcase}%").order(:start_time) if action_name == "past"
     end
 
     if params["date"].present?

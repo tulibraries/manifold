@@ -20,7 +20,7 @@
       <% unless action_name == "past" %>
         <% unless event.get_tags.nil? %>
           <% event.get_tags.each do |type| %>
-            <% if @new_tags.include?(type.upcase) %>
+            <% if @new_tags.include?(type.titleize) %>
               <%= link_to type, events_path(type: type), class: "event_type" %> 
             <% end %>
           <% end %>

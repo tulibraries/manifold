@@ -16,12 +16,10 @@
       <p class="pt-2"><%= sanitize strip_tags(event.description.html_safe.truncate(125)) %></p>
       
       <p>
-        <% unless event.get_types.nil? %>
-          <% event.get_types.each do |type| %>
-            <% unless action_name == "past" %>
+        <% unless event.get_tags.nil? %>
+          <% event.get_tags.each do |type| %>
+            <% if @new_tags.include?(type.titleize) %>
               <%= link_to type, events_path(type: type), class: "event_type" %> 
-            <% else %>
-              <%= link_to type, past_events_path(type: type), class: "event_type" %> 
             <% end %>
           <% end %>
         <% end %>

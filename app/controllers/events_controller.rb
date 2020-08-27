@@ -85,14 +85,14 @@ class EventsController < ApplicationController
       @exhibitions = Exhibition.where(promoted_to_events: true)
       @today = Date.current
       @new_tags = ["Interruption",
-        "Change and Action",
+        "Change And Action",
         "Blockson",
         "Health Sciences",
         "Digital Scholarship",
         "Workshop",
-        "Chat in the Stacks",
+        "Chat In The Stacks",
         "Midday Arts",
-        "Beyond the Notes",
+        "Beyond The Notes",
         "Book Club",
         "Concert",
         "Reading",

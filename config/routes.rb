@@ -36,6 +36,11 @@ Rails.application.routes.draw do
     resources :spaces
     resources :webpages
 
+    namespace :active_storage do
+      resources :blobs
+      resources :attachments
+    end
+
     resource :events do
       member do
         post :sync
@@ -68,7 +73,15 @@ Rails.application.routes.draw do
     end
 
     root to: "people#index"
+
   end
+
+  direct(:admin_blob) { |blob, options| route_for(:admin_active_storage_blob, blob, options) }
+  direct(:admin_blobs) { |opts| route_for(:admin_active_storage_blobs, opts) }
+  direct(:edit_admin_blob) { |blob, opts| route_for(:edit_admin_active_storage_blob, blob, opts) }
+  direct(:admin_attachment) { |attachment, options| route_for(:admin_active_storage_attachment, attachment, options) }
+  direct(:admin_attachments) { |opts| route_for(:admin_active_storage_attachments, opts) }
+  direct(:edit_admin_attachment) { |attachment, opts| route_for(:edit_admin_active_storage_attachment, attachment, opts) }
 
   root "webpages#home"
   resources :alerts, only: [:index]

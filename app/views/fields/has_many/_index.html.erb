@@ -1,9 +1,15 @@
-<% unless field.resource.class.to_s == "Service" || field.resource.class.to_s == "Policy" %>
+<% unless field.resource.class.to_s == "Service" || 
+   field.resource.class.to_s == "Policy" || 
+   field.resource.class.to_s == "ActiveStorage::Blob" %>
 	<ul style="list-style-type: none;padding-left: 0px">
 	<% field.data.each do |category| %>
 		<li><%= category.label %></li>
 	<% end %>
 	</ul>
 <% else %>
-	<%= field.data.take.label unless field.data.take.nil? %>
+  <% unless field.resource.class.to_s == "ActiveStorage::Blob" %>
+	  <%= field.data.take.label unless field.data.take.label.nil? %>
+  <% else %>
+	  <%= field.resource.filename.to_s %>
+  <% end %>
 <% end %>

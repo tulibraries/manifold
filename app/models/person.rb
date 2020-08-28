@@ -10,14 +10,14 @@ class Person < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
+  serialize :specialties
+
   paginates_per 20
 
   validates :first_name, :last_name, :job_title, presence: true
   validates :email_address, presence: true, email: true
   validates :phone_number, phone_number: true
   validates :spaces, presence: true
-
-  serialize :specialties
 
   auto_strip_attributes :email_address
 
@@ -47,7 +47,7 @@ class Person < ApplicationRecord
   }
 
   scope :with_specialty, ->(specialty) {
-    where("specialties LIKE ?", "%#{specialty}%") if specialty.present?
+    where("specialties LIKE ?", "%\n- #{specialty}\n%") if specialty.present?
   }
 
   scope :in_department, ->(groups) {

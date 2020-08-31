@@ -36,11 +36,6 @@ Rails.application.routes.draw do
     resources :spaces
     resources :webpages
 
-    namespace :active_storage do
-      resources :blobs
-      resources :attachments
-    end
-
     resource :events do
       member do
         post :sync

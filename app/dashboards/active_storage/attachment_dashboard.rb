@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class ActiveStorage::AttachmentDashboard < Administrate::BaseDashboard
@@ -8,10 +10,10 @@ class ActiveStorage::AttachmentDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    record: Field::Polymorphic,
-    blob: Field::BelongsTo.with_options(class_name: "ActiveStorage::Blob"),
     id: Field::Number,
     name: Field::String,
+    record: Field::Polymorphic.with_options(classes: []),
+    blob: Field::BelongsTo.with_options(class_name: "ActiveStorage::Blob"),
     blob_id: Field::Number,
     created_at: Field::DateTime,
   }.freeze
@@ -67,4 +69,8 @@ class ActiveStorage::AttachmentDashboard < Administrate::BaseDashboard
   # def display_resource(attachment)
   #   "ActiveStorage::Attachment ##{attachment.id}"
   # end
+
+  def tinymce?
+    false
+  end
 end

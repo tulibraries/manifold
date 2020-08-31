@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "administrate/base_dashboard"
 
 class ActiveStorage::BlobDashboard < Administrate::BaseDashboard
@@ -8,9 +10,6 @@ class ActiveStorage::BlobDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    preview_image_attachment: Field::HasOne,
-    preview_image_blob: Field::HasOne,
-    attachments: Field::HasMany,
     id: Field::Number,
     key: Field::String,
     filename: Field::String,
@@ -19,6 +18,9 @@ class ActiveStorage::BlobDashboard < Administrate::BaseDashboard
     byte_size: Field::Number,
     checksum: Field::String,
     created_at: Field::DateTime,
+    attachments: Field::HasMany.with_options(class_name: "ActiveStorage::Attachment"),
+    preview_image_attachment: Field::HasOne.with_options(class_name: "ActiveStorage::Attachment"),
+    preview_image_blob: Field::HasOne.with_options(class_name: "ActiveStorage::Blob"),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -82,4 +84,8 @@ class ActiveStorage::BlobDashboard < Administrate::BaseDashboard
   # def display_resource(blob)
   #   "ActiveStorage::Blob ##{blob.id}"
   # end
+
+  def tinymce?
+    false
+  end
 end

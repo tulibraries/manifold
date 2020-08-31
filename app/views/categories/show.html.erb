@@ -22,7 +22,7 @@
         <div class="details">
           <%= render "categories/marketing/slideshow" if explore_charles(@category) %>
           <% unless @category.long_description.nil? %>
-            <%= sanitize @category.long_description.html_safe %>
+            <%= @category.long_description %>
           <% else %>
             <p style="font-size: 150%;"><%= t("manifold.categories.under_construction") %></p>
           <% end %>
@@ -39,7 +39,7 @@
         <% unless @category.get_help.blank? %>
           <h2>Get Help</h2>
         <div class="entity-help">
-          <p><%= sanitize @category.get_help.html_safe %></p>
+          <p><%= @category.get_help %></p>
         </div>
         <% end %>
       </div>

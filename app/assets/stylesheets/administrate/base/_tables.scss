@@ -1,5 +1,3 @@
-@import "../library/variables.scss";
-
 table {
   border-collapse: collapse;
   font-size: 0.9em;
@@ -23,6 +21,9 @@ tr {
 tbody tr {
   &:hover {
     background-color: $base-background-color;
+  }
+
+  [role=link] {
     cursor: pointer;
   }
 

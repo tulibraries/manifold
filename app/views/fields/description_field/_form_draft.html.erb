@@ -3,7 +3,7 @@
 </div>
 
 <div class="field-unit__field field-draft">
-  <%= f.text_area draft_name(field), class: "tinymce", rows: 10, cols: 120 %>
+  <%= f.rich_text_area(field.attribute) draft_name(field) %>
 </div>
 
 <div contenteditable="false"

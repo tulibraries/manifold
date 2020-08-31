@@ -3,7 +3,7 @@
 class Category < ApplicationRecord
   include Accountable
   include Draftable
-  include Imageable
+  # include Imageable
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
@@ -16,6 +16,10 @@ class Category < ApplicationRecord
 
   belongs_to :external_link, optional: true
   has_draft :long_description
+
+  has_rich_text :long_description
+  has_rich_text :get_help
+  has_rich_text :covid_alert
 
   validates :name, presence: true
 

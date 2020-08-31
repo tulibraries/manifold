@@ -29,9 +29,10 @@ FactoryBot.define do
     alt_text { "Charles Library" }
     trait :with_image do
       after :create do |event|
-        file_path = Rails.root.join("spec/fixtures/charles.jpg")
-        file = fixture_file_upload(file_path, "image/jpeg")
-        event.image.attach(file)
+        event.image.attach(io:
+          File.open(Rails.root.join("spec/fixtures/charles.jpg")),
+          filename: "charles.jpg",
+          content_type: "image/jpeg")
       end
     end
   end

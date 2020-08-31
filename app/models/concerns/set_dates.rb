@@ -9,13 +9,13 @@ module SetDates
 
   def todays_hours
     if self.hours.present?
-      LibraryHour.where(location_id: self.hours, date: @today).pluck(:hours).first
+      LibraryHour.where(location_id: self.hours, date: @today).pick(:hours).first
     end
     if self.hours.blank?
       if self.space.hours.present?
-        LibraryHour.where(location_id: self.building.hours, date: @today).pluck(:hours).first
+        LibraryHour.where(location_id: self.building.hours, date: @today).pick(:hours).first
       else
-        LibraryHour.where(location_id: self.space.hours, date: @today).pluck(:hours).first
+        LibraryHour.where(location_id: self.space.hours, date: @today).pick(:hours).first
       end
     end
   end

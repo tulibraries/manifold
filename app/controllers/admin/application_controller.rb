@@ -59,7 +59,11 @@ module Admin
     end
 
     def find_resource(param)
-      scoped_resource.friendly.find(param)
+      unless scoped_resource.class.to_s == "ActiveStorage::Attachment::ActiveRecord_Relation"
+        scoped_resource.friendly.find(param)
+      else
+        scoped_resource.find(param)
+      end
     end
 
     # Override this value to specify the number of elements to display at a time

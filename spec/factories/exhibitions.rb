@@ -9,9 +9,10 @@ FactoryBot.define do
 
     trait :with_image do
       after :create do |exhibition|
-        file_path = Rails.root.join("spec/fixtures/charles.jpg")
-        file = fixture_file_upload(file_path, "image/jpeg")
-        exhibition.image.attach(file)
+        exhibition.image.attach(io:
+          File.open(Rails.root.join("spec/fixtures/charles.jpg")),
+          filename: "charles.jpg",
+          content_type: "image/jpeg")
       end
     end
     promoted_to_events { false }

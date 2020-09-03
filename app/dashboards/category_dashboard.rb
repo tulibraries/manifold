@@ -10,7 +10,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    # image: PhotoField.with_options(admin_only: true),
+    image: PhotoField.with_options(admin_only: true),
     id: Field::Number,
     name: Field::String,
     slug: Field::String,
@@ -43,7 +43,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     :covid_alert,
     :name,
     :id,
-    # :image,
+    :image,
     :description,
     :long_description,
     :get_help,
@@ -61,7 +61,7 @@ class CategoryDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :slug,
-    # :image,
+    :image,
     :custom_url,
     :categories,
     :description,

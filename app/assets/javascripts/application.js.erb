@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
@@ -20,7 +19,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {  
+$(document).ready(function() {
   $('.decorative').each(function() {
     $(this).attr('alt', "");
   });
@@ -34,7 +33,7 @@ $(document).ready(function() {
     $('#slide-previous').css("opacity", 0);
   });
 
-  $('.icon-toggler').on("click", function() { 
+  $('.icon-toggler').on("click", function() {
     if (this.id == "mobile-menu-button") {
       document.getElementById("sub-toggler-icon").classList.toggle("change");
     }
@@ -46,7 +45,7 @@ $(document).ready(function() {
     }
   });
 
-  $('#mobile-menu-image-button').on("click", function() {  
+  $('#mobile-menu-image-button').on("click", function() {
     x = document.getElementById("icon_filter").src;
     if (x.includes("icon_x")) {
       document.getElementById("icon_filter").src = "<%= asset_path('icon_filter_red.png') %>";

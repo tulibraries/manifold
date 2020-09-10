@@ -62,4 +62,8 @@ class Building < ApplicationRecord
       googleId: google_id,
     }
   end
+
+  def label
+    name
+  end
 end

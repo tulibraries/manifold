@@ -54,9 +54,13 @@ class Group < ApplicationRecord
     end
     members.uniq
   end
+
   def todays_hours
     unless space.nil?
       space.todays_hours
     end
+  end
+  def label
+    name
   end
 end

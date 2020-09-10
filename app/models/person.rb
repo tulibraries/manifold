@@ -62,7 +62,9 @@ class Person < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  alias :label :name
+  def label
+    name
+  end
 
   def burpSpecialties
     if self.specialties.is_a? Array

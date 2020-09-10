@@ -44,3 +44,10 @@ gem.tags
 # Ignore real account seed
 /db/account_seeds.rb
 coverage
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

@@ -16,9 +16,10 @@ FactoryBot.define do
     sequence(:specialties) { |n| [ "Subject #{n}" ] }
     trait :with_image do
       after :create do |person|
-        file_path = Rails.root.join("spec/fixtures/charles.jpg")
-        file = fixture_file_upload(file_path, "image/png")
-        person.image.attach(file)
+        person.image.attach(io:
+          File.open(Rails.root.join("spec/fixtures/charles.jpg")),
+          filename: "charles.jpg",
+          content_type: "image/jpeg")
       end
     end
   end

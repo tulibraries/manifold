@@ -9,7 +9,7 @@ module SchemaDotOrgable
       "@context" => "https://schema.org",
       "@type" => "#{schema_dot_org_type}",
       name: label,
-      description: (ActionController::Base.helpers.strip_tags(description) if respond_to?(:description)),
+      description: description.body.to_html if description.body.present?,
       image: (index_image_url if (respond_to?(:index_image_url) && image&.attached?)),
     }.compact
   end

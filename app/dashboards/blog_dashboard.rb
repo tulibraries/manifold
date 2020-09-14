@@ -64,7 +64,4 @@ class BlogDashboard < Administrate::BaseDashboard
     "##{blog.id} #{blog.title}"
   end
 
-  def tinymce?
-    true
-  end
 end

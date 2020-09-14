@@ -632,7 +632,6 @@ DEPENDENCIES
   guard-rspec
   honeybadger (~> 4.7)
   httparty
-  image_processing (~> 1.2)
   jbuilder (~> 2.10)
   jquery-rails
   json-ld
@@ -674,7 +673,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.3.13)
   timecop
-  tinymce-rails (~> 4.9)
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

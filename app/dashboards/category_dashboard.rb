@@ -76,10 +76,6 @@ class CategoryDashboard < Administrate::BaseDashboard
     "#{category.name}"
   end
 
-  def tinymce?
-    true
-  end
-
   def permitted_attributes
     super + [categorizations_attributes: [:weight, :id]] + [:draft_long_description, :publish]
   end

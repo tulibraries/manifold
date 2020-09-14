@@ -69,8 +69,4 @@ class ActiveStorage::AttachmentDashboard < Administrate::BaseDashboard
   # def display_resource(attachment)
   #   "ActiveStorage::Attachment ##{attachment.id}"
   # end
-
-  def tinymce?
-    false
-  end
 end

@@ -2,7 +2,7 @@
 
 require "administrate/field/base"
 
-class DescriptionField < Administrate::Field::Text
+class TrixField < Administrate::Field::Base
   def to_s
     data
   end

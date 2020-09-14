@@ -84,9 +84,6 @@ class WebpageDashboard < Administrate::BaseDashboard
     "#{webpage.title}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
     super + [:draft_description, :publish]

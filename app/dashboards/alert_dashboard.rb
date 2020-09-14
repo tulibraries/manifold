@@ -62,7 +62,4 @@ class AlertDashboard < Administrate::BaseDashboard
   #   "Alert ##{alert.id}"
   # end
 
-  def tinymce?
-    true
-  end
 end

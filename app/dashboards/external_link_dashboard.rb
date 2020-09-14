@@ -58,7 +58,4 @@ class ExternalLinkDashboard < BaseDashboard
     "#{external_link.title}"
   end
 
-  def tinymce?
-    true
-  end
 end

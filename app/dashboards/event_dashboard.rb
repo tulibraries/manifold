@@ -139,7 +139,4 @@ class EventDashboard < BaseDashboard
     "#{event.title}"
   end
 
-  def tinymce?
-    true
-  end
 end

@@ -14,8 +14,10 @@ class Policy < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
 
   has_draft :description
+  has_rich_text :description
+  has_rich_text :covid_alert
 
-  validates :name, :description, :effective_date, presence: true
+  validates :name, :effective_date, presence: true
   serialize :category
 
   def slug_candidates

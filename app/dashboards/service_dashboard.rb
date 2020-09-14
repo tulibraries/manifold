@@ -74,9 +74,6 @@ class ServiceDashboard < Administrate::BaseDashboard
     "#{service.title}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
     super + [:draft_description, :draft_access_description, :publish]

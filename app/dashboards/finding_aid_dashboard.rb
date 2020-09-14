@@ -83,9 +83,6 @@ class FindingAidDashboard < Administrate::BaseDashboard
     "#{finding_aid.name}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
     super + [:draft_description, :publish]

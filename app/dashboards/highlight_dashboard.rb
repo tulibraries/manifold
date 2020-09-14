@@ -74,7 +74,4 @@ class HighlightDashboard < Administrate::BaseDashboard
   #   "Highlight ##{highlight.id}"
   # end
 
-  def tinymce?
-    true
-  end
 end

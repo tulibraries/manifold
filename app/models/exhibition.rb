@@ -17,7 +17,8 @@ class Exhibition < ApplicationRecord
 
   has_draft :description
 
-  before_save :sanitize_description
+  has_rich_text :description
+  has_rich_text :covid_alert
 
   validates :start_date, :end_date, presence: true
 

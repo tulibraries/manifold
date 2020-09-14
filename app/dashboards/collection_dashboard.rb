@@ -74,9 +74,6 @@ class CollectionDashboard < Administrate::BaseDashboard
     "#{collection.name}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
     super + [:draft_description, :publish]

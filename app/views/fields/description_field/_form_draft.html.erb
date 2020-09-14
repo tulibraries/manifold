@@ -9,5 +9,5 @@
 <div contenteditable="false"
      class="field-unit__field field-published field-description"
      id="<%= fieldname_in_draft(@requested_resource, field) %>">
-  <%= sanitize field.data unless field.data.nil?%>
+  <%= sanitize field.data if field.data.present? %>
 </div>

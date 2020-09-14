@@ -14,7 +14,10 @@ class Webpage < ApplicationRecord
 
   has_draft :description
 
-  validates :title, :description, presence: true
+  has_rich_text :description
+  has_rich_text :covid_alert
+
+  validates :title, presence: true
   belongs_to :group, optional: true
   belongs_to :external_link, optional: true
 

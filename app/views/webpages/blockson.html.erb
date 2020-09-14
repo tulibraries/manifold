@@ -34,7 +34,7 @@
 		<% unless @webpage.description.nil? %>
 		<div class="row">
 			<div class="col-12 description">
-				<%= sanitize(@webpage.description.html_safe) %>
+				<%= @webpage.description %>
 			</div>
 		</div>
 		<% end %>

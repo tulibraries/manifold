@@ -84,8 +84,4 @@ class ActiveStorage::BlobDashboard < Administrate::BaseDashboard
   # def display_resource(blob)
   #   "ActiveStorage::Blob ##{blob.id}"
   # end
-
-  def tinymce?
-    false
-  end
 end

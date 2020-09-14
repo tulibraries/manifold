@@ -15,7 +15,6 @@ module Tude
     config.load_defaults 6.0
     config.exceptions_app = self.routes
     config.active_storage.replace_on_assign_to_many = false
-    config.tinymce.install
     config.action_view.sanitized_allowed_tags = ["div", "p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ul", "ol", "li", "dl", "dt", "dd", "address", "hr", "pre", "blockquote", "center",
         "a", "span", "bdo", "br", "em", "strong", "dfn", "code", "samp", "cite", "basefont",

@@ -16,7 +16,7 @@
           <%= render "covid_alert" if @covid_alert.present? %>
 
 	  <h1 class="page-title"><%= title @policy.name %></h1>
-	    <%= sanitize @policy.description.html_safe %>
+	    <%= @policy.description %>
 	  </div>
 
 	  <% unless @policy.effective_date.nil? %>

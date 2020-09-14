@@ -7,7 +7,7 @@ class AddFooterLinkCheckboxes < ActiveRecord::Migration[5.2]
     add_column :groups, :add_to_footer, :boolean
     add_column :collections, :add_to_footer, :boolean
   end
-  def udown
+  def down
     add_column :buildings, :add_to_footer, :boolean
     add_column :services, :add_to_footer, :boolean
     add_column :groups, :add_to_footer, :boolean

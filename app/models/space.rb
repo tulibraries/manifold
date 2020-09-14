@@ -18,11 +18,10 @@ class Space < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
 
   validates :name, presence: true
-  validates :description, presence: true
+  has_rich_text :description
+  has_rich_text :covid_alert
 
   validates :building_id, presence: true
-
-  before_validation :sanitize_description
 
   auto_strip_attributes :email
 

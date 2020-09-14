@@ -15,7 +15,7 @@ class Group < ApplicationRecord
   validates :name, :chair_dept_heads, presence: true
   validates :group_type, presence: true, group_type: true
 
-  before_validation :sanitize_description
+  has_rich_text :description
 
   has_many :webpages, dependent: :destroy
 

@@ -71,7 +71,4 @@ class AdminGroupDashboard < Administrate::BaseDashboard
     "#{admin_group.name}"
   end
 
-  def tinymce?
-    true
-  end
 end

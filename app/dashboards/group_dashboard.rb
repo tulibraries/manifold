@@ -100,7 +100,4 @@ class GroupDashboard < BaseDashboard
     super
   end
 
-  def tinymce?
-    true
-  end
 end

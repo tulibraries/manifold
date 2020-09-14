@@ -15,7 +15,8 @@ class FindingAid < ApplicationRecord
   has_paper_trail
 
   before_save :weed_nils
-  before_validation :sanitize_description
+  has_rich_text :description
+  has_rich_text :covid_alert
   validates :collection_id, collection_or_subject: true
 
   scope :with_subject, ->(subjects) {

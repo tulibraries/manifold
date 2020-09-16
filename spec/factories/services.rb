@@ -3,12 +3,8 @@
 FactoryBot.define do
   factory :service do
     sequence(:title) { "Printing" }
-    description {
-    <<~EOD.strip.gsub(/\n/, " ")
-      The best drink in existence is the Pan Galactic Gargle Blaster.
-    EOD
-  }
-    access_description { "Fully accessible" }
+    description { ActionText::Content.new("Hello World") }
+    access_description { ActionText::Content.new("Goodbye, Cruel World") }
     intended_audience { ["General"] }
     hours { "hours" }
   end

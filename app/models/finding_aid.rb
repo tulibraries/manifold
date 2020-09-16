@@ -55,6 +55,10 @@ class FindingAid < ApplicationRecord
     }
   end
 
+  def label
+    name
+  end
+
   private
     # TODO: find and eliminate the cause of nil values on form submission
     def weed_nils

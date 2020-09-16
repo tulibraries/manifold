@@ -136,6 +136,7 @@ class WebpagesController < ApplicationController
     @visit_links = Category.find_by(slug: "scrc-study").items
     @collection_links = Category.find_by(slug: "scrc-collections").items
     @webpage = Webpage.find_by(slug: "scrc-intro")
+    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def blockson
@@ -143,6 +144,7 @@ class WebpagesController < ApplicationController
     @visit_links = Category.find_by(slug: "blockson-study").items
     @research_links = Category.find_by(slug: "blockson-research").items
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
+    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def tudsc
@@ -152,6 +154,7 @@ class WebpagesController < ApplicationController
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.zone.now]).order(:start_time).take(5)
     @blog = Blog.find_by(slug: "lcdss-blog")
     @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
+    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def hsl
@@ -170,6 +173,7 @@ class WebpagesController < ApplicationController
     @journal_finder = "/journal-finder"
     @support = "/hsl/giving"
     @visit = "/hsl/info"
+    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def about

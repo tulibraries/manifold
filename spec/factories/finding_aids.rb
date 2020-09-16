@@ -2,16 +2,16 @@
 
 FactoryBot.define do
   factory :finding_aid do
-    name { "MyString" }
-    description { "MyText" }
+    name { "finding aid" }
+    description { ActionText::Content.new("Hello World") }
     subject { ["history"] }
-    content_link { "MyString" }
-    identifier { "MyString" }
-    drupal_id { "MyString" }
+    content_link { "content_link" }
+    identifier { "identifier" }
+    drupal_id { "drupal_id" }
     path { "a-finding-aid" }
 
     factory :multi_subject_finding_aid do
-      subject { ["MyString", "Another One"] }
+      subject { ["subject 1", "subject 2"] }
     end
   end
 end

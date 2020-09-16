@@ -60,4 +60,8 @@ class Category < ApplicationRecord
   def link
     custom_url.presence || self
   end
+
+  def label
+    name
+  end
 end

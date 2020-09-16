@@ -15,6 +15,7 @@ class Webpage < ApplicationRecord
   has_draft :description
 
   has_rich_text :description
+  # validates_presence_of :description # required rich text fields throw error in administrate if blank
   has_rich_text :covid_alert
 
   validates :title, presence: true

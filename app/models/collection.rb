@@ -53,4 +53,8 @@ class Collection < ApplicationRecord
       }
     }
   end
+
+  def label
+    name
+  end
 end

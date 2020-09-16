@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :exhibition do
     title { "Salvador Dali" }
-    description { "Spontaneous" }
+    description { ActionText::Content.new("Hello World") }
     start_date { "2019-01-16" }
     end_date { "2019-01-16" }
 

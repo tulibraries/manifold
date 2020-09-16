@@ -9,7 +9,7 @@ default: &default
 
 development:
   <<: *default
-  database: manifold_development
+  database: manifold_actiontext
 
 test:
   <<: *default

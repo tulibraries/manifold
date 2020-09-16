@@ -2,7 +2,7 @@
   "name": "tude",
   "private": true,
   "dependencies": {
-    "@rails/actiontext": "^6.0.3-2",
+    "@rails/actiontext": "^6.0.3-3",
     "@rails/webpacker": "4.2.2",
     "flatpickr": "^4.6.6",
     "stimulus": "^1.1.1",

@@ -8,7 +8,7 @@ RSpec.describe FindingAid, type: :model do
     # [TODO] create factory with default collection
     fields = {
       name: ["The Text 1", "The Text 2"],
-      description: ["The Text 1", "The Text 2"],
+      description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       # Subject not testable in rspec in this context
       # subject: ["The Text 1", "The Text 2"],
       content_link: ["The Text 1", "The Text 2"],

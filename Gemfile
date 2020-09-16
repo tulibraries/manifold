@@ -4,7 +4,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.5"
-gem "rails", ">= 6.0.3.2"
+gem "rails", ">= 6.0.3.3"
 
 gem "timecop"
 gem "administrate"
@@ -25,7 +25,7 @@ gem "feedjira"
 gem "font-awesome-rails"
 gem "fuzzy_match"
 gem "google-analytics-rails", "1.1.1"
-gem "google-api-client", "~> 0.43"
+gem "google-api-client", "~> 0.44"
 gem "honeybadger", "~> 4.7"
 gem "httparty"
 gem "jbuilder", "~> 2.10"

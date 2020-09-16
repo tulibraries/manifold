@@ -8,7 +8,7 @@
 	</ul>
 <% else %>
   <% unless field.resource.class.to_s == "ActiveStorage::Blob" %>
-	  <%= field.data.take.label unless field.data.take.label.nil? %>
+	  <%= field.data.take.label if field.data.take.present? %>
   <% else %>
 	  <%= field.resource.filename.to_s %>
   <% end %>

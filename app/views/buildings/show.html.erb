@@ -20,7 +20,7 @@
         <li class="lib_email"><span><%= mail_to @building.email %></span></li>
       </ul>
       
-      <%= sanitize @building.description unless @building.description.nil?  %>
+      <%= @building.description unless @building.description.nil?  %>
 
     </div>
 

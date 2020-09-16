@@ -35,6 +35,7 @@ class Building < ApplicationRecord
   auto_strip_attributes :email
 
   has_rich_text :description
+  # validates_presence_of :description
   has_rich_text :covid_alert
 
   def slug_candidates
@@ -68,5 +69,9 @@ class Building < ApplicationRecord
       geo: coordinates,
       googleId: google_id,
     }
+  end
+
+  def label
+    name
   end
 end

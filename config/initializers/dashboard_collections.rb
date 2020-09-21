@@ -109,6 +109,7 @@ module Tude
                             "Economics",
                             "Education",
                             "Electrical & Computer Engineering",
+                            "Engineering, Technology & Management",
                             "English",
                             "Environmental Studies",
                             "FIlm & Media Arts",

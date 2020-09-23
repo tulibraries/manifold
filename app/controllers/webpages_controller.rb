@@ -72,6 +72,7 @@ class WebpagesController < ApplicationController
     unless params[:id].nil?
       api_query = @basepath + "/content/" + URI::encode(params[:id])
       ensemble_api(api_query)
+      # binding.pry
       unless @videos.nil?
         @featured_video_id = @videos[:ID]
         @featured_video_title = @videos[:Title]
@@ -119,8 +120,8 @@ class WebpagesController < ApplicationController
   end
 
   def ensemble_api(api_query)
-    videos = HTTParty.get(api_query)
     begin
+      videos = HTTParty.get(api_query)
       @videos = JSON.parse(videos&.body, symbolize_names: true)
     rescue => e
       e.message

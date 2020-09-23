@@ -119,8 +119,8 @@ class WebpagesController < ApplicationController
   end
 
   def ensemble_api(api_query)
-    videos = HTTParty.get(api_query)
     begin
+      videos = HTTParty.get(api_query)
       @videos = JSON.parse(videos&.body, symbolize_names: true)
     rescue => e
       e.message

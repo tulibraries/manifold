@@ -72,7 +72,6 @@ class WebpagesController < ApplicationController
     unless params[:id].nil?
       api_query = @basepath + "/content/" + URI::encode(params[:id])
       ensemble_api(api_query)
-      # binding.pry
       unless @videos.nil?
         @featured_video_id = @videos[:ID]
         @featured_video_title = @videos[:Title]

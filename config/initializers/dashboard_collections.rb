@@ -176,6 +176,7 @@ module Tude
     config.event_local_tags = [
                             "Interruption",
                             "Blockson",
+                            "Data",
                             "Health Sciences",
                             "Digital Scholarship",
                             "Workshop",

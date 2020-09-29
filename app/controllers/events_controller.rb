@@ -86,6 +86,7 @@ class EventsController < ApplicationController
       @today = Date.current
       @new_tags = ["Interruption",
         "Change And Action",
+        "Data",
         "Blockson",
         "Health Sciences",
         "Digital Scholarship",

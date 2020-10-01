@@ -26,7 +26,8 @@ class ServicesController < ApplicationController
   private
     def set_service
       @service = find_instance
-      return redirect_or_404 unless @service
+      return redirect_or_404(@service)
+
       @categories = @service.categories
     end
 end

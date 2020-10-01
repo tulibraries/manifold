@@ -3,7 +3,8 @@
 module RedirectLogic
   extend ActiveSupport::Concern
 
-  def redirect_or_404
+  def redirect_or_404(instance = nil)
+    # binding.pry
     redirect = Redirect.find_by(legacy_path: legacy_path)
     if redirect
       unless redirect.no_message
@@ -15,7 +16,15 @@ module RedirectLogic
                   notice: message
                   )
     else
-      raise ActionController::RoutingError.new("Not Found")
+      if Rails.application.routes.recognize_path(legacy_path)
+        if instance
+          return
+        else
+          raise ActionController::RoutingError.new("Not Found")
+        end
+      else
+        raise ActionController::RoutingError.new("Not Found")
+      end
     end
   end
 

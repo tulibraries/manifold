@@ -17,6 +17,6 @@ class HighlightsController < ApplicationController
   private
     def set_highlight
       @highlight = find_instance
-      return redirect_or_404 unless @highlight
+      return redirect_or_404(@highlight)
     end
 end

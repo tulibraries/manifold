@@ -4,14 +4,14 @@
 
     <li><%= link_to t("manifold.events.index.filters.none"), events_path(anchor: "list") %></li>
     <% @new_tags.each do |type| %>
-      <li><%= link_to type, events_path(anchor: "list", type: type, page: 1) %></li>
+      <li><%= link_to type.titleize, events_path(anchor: "list", type: type, page: 1) %></li>
     <% end %>
 
   <% else %>
 
     <li><%= link_to t("manifold.events.index.filters.none"), past_events_path(anchor: "list") %></li>
     <% @event_types.each do |type| %>
-      <li><%= link_to type, past_events_path(anchor: "list", type: type, page: 1) %></li>
+      <li><%= link_to type.titleize, past_events_path(anchor: "list", type: type, page: 1) %></li>
     <% end %>
   <% end %>
 

@@ -24,7 +24,7 @@ class BuildingsController < ApplicationController
   private
     def set_building
       @building = find_instance
-      return redirect_or_404 unless @building
+      return redirect_or_404(@building)
       @categories = @building.categories
     end
 

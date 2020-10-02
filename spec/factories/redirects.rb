@@ -7,7 +7,7 @@ FactoryBot.define do
   end
 
   factory :full_url_redirect, class: Redirect do
-    legacy_path { "/srcr/search" }
+    legacy_path { "/scrc/search" }
     manifold_path { "https://librarysearch.temple.edu/scrc" }
   end
 
@@ -52,7 +52,7 @@ FactoryBot.define do
   end
 
   factory :policy_redirect, class: Redirect do
-    legacy_path { "/policiess/9" }
+    legacy_path { "/policies/9" }
     manifold_path { "/blockson_collection" }
   end
 

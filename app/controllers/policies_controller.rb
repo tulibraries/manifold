@@ -25,6 +25,6 @@ class PoliciesController < ApplicationController
   private
     def set_policy
       @policy = find_instance
-      return redirect_or_404 unless @policy
+      return redirect_or_404(@policy)
     end
 end

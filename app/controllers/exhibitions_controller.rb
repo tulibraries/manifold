@@ -18,6 +18,6 @@ class ExhibitionsController < ApplicationController
   private
     def set_exhibition
       @exhibition = find_instance
-      return redirect_or_404 unless @exhibition
+      return redirect_or_404(@exhibition)
     end
 end

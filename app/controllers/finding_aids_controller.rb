@@ -60,9 +60,9 @@ class FindingAidsController < ApplicationController
   private
     def set_finding_aid
       @finding_aid = find_instance
-      return redirect_or_404 (@finding_aid)
       @title = @finding_aid.label
       blockson = Collection.find_by(slug: "blockson_collection")
       @aeon = @finding_aid.collections.include?(blockson)
+      return redirect_or_404 (@finding_aid)
     end
 end

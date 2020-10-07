@@ -102,7 +102,7 @@ class EventsController < ApplicationController
 
     def set_event
       @event = find_instance
-      return redirect_or_404(@event)
       @event_url = @event.event_url
+      return redirect_or_404(@event)
     end
 end

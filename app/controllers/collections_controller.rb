@@ -26,7 +26,7 @@ class CollectionsController < ApplicationController
   private
     def set_collection
       @collection = find_instance
-      @categories = @collection.categories
+      @categories = @collection.categories unless @collection.nil?
       return redirect_or_404(@collection)
     end
 end

@@ -233,6 +233,6 @@ class WebpagesController < ApplicationController
       else
         @webpage = Webpage.find_by(slug: action_name)
       end
-      @categories = @webpage.categories
+      @categories = @webpage.categories unless @webpage.nil?
     end
 end

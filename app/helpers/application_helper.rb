@@ -21,4 +21,23 @@ module ApplicationHelper
   def json_ld(entity)
     raw(entity.map_to_schema_dot_org.to_json)
   end
+
+  def edit_url
+    path = request.env["PATH_INFO"]
+    controller = path.split("/").slice(1)
+    id = path.split("/").slice(2)
+    exemptions = [nil, "library_hours", "webpages"]
+
+    controller == "libraries" ? controller = "buildings" : controller = controller_name
+
+    unless exemptions.include?(controller)
+      "/admin/#{controller}/#{id}?admin=show"
+    else
+      if controller == "webpages" && action_name == "show"
+        "/admin/#{controller}/#{id}?admin=show"
+      else
+        "/admin/#{controller}?admin=index"
+      end
+    end
+  end
 end

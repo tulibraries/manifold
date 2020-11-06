@@ -186,7 +186,7 @@ GEM
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     formatador (0.2.5)
-    friendly_id (5.4.0)
+    friendly_id (5.4.1)
       activerecord (>= 4.0.0)
     fuzzy_match (2.1.0)
     globalid (0.4.2)
@@ -587,7 +587,7 @@ GEM
     yaml_db (0.7.0)
       rails (>= 3.0)
       rake (>= 0.8.7)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby
@@ -616,7 +616,7 @@ DEPENDENCIES
   fast_jsonapi (~> 1.0)
   feedjira
   font-awesome-rails
-  friendly_id (~> 5.4.0)
+  friendly_id (~> 5.4.1)
   fuzzy_match
   google-analytics-rails (= 1.1.1)
   google-api-client (~> 0.48)

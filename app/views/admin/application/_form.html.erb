@@ -49,7 +49,7 @@ and renders all form fields for a resource's editable attributes.
               <%= render_field attribute, f: f if attribute.attribute != :slug && !is_admin? %>
             <% end %>
           <% else %>
-            <%= render_field attribute, f: f %>
+            <%= render_field attribute, f: f unless attribute.name.start_with?("draft_") %>
           <% end %>
 
         <% else %>

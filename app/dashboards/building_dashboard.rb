@@ -12,6 +12,7 @@ class BuildingDashboard < BaseDashboard
     name: Field::String,
     slug: Field::String,
     description: DescriptionField,
+    draft_description: DescriptionField.with_options(admin_only: true),
     address1: Field::String,
     address2: Field::String,
     city: Field::String,
@@ -68,6 +69,7 @@ class BuildingDashboard < BaseDashboard
     :name,
     :slug,
     :description,
+    :draft_description,
     :external_link,
     :address1,
     :address2,
@@ -93,6 +95,6 @@ class BuildingDashboard < BaseDashboard
 
 
   def permitted_attributes
-    super + [:draft_description, :publish]
+    super + [:publish]
   end
 end

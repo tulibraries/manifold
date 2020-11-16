@@ -25,16 +25,16 @@ class Building < ApplicationRecord
   #     model.errors.add( attribute, :blank )
   #   end
   # end
-  
+
   belongs_to :external_link, optional: true
   has_many :spaces, dependent: :destroy
   has_paper_trail
 
-  has_draft :description
-
   auto_strip_attributes :email
 
   has_rich_text :description
+  has_rich_text :draft_description
+  # validates_presence_of :description
   has_rich_text :covid_alert
 
   def slug_candidates

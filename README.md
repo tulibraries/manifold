@@ -45,13 +45,7 @@ sudo npm install -g ajv-cli
 
 ```
 bundle exec rake db:migrate
-```
-
-* Populate the database with fake data
-
-```
-bundle exec rake db:populate
-```
+ ```
 
 * Seed initial user from the command line. Note that the email address should be a TUAccess email address.
 Aliased email addresses will not work.

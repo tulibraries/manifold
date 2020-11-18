@@ -32,7 +32,6 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
     task all: :environment do
 
       [ServiceGroup,
-       ServiceSpace,
        Service,
        Occupant,
        SpaceGroup,
@@ -42,8 +41,12 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
        Building,
        Space,
        Group,
-       Person].each(&:delete_all)
-
+       Person].each do |klass|
+        begin
+          klass.delete_all
+        rescue
+        end
+      end
 
       def fake_email
         Faker::Internet.user_name + "@temple.edu"
@@ -51,7 +54,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
 
       for b in 1..6 do
         building = Building.create!(
-          name:                 Faker::Name.name_with_middle + " Library",
+          name:                 "#{Faker::Name.name_with_middle} Library",
           description:          Faker::Lorem.paragraph,
           address1:             Faker::Address.street_address,
           address2:             Faker::Address.street_address,
@@ -65,24 +68,22 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
 
         for s in 1..4 do
           space = Space.create!(
-            name:            "Room " + Faker::Number.number(2) + "0",
+            name:            "Room #{Faker::Number.number(2)}0",
             description:     Faker::Lorem.paragraph,
             hours:           "0800-2100",
             accessibility:   "Yes",
             email:           fake_email,
             phone_number:    Faker::Number.number(10),
-            building:        building,
-            image:           Faker::File.file_name("images", "tubldg", "jpg"))
+            building:        building)
         end
         for s in 1..2 do
           space = Space.create!(
-            name:            "Room " + Faker::Number.number(2) + "0",
+            name:            "Room #{Faker::Number.number(2)}0",
             description:     Faker::Lorem.paragraph,
             hours:           "0800-2100",
             accessibility:   "Yes",
             email:           fake_email,
             phone_number:    Faker::Number.number(10),
-            image:           Faker::File.file_name("images", "tubldg", "jpg"),
             parent:          Space.all.sample,
             building:        building)
         end
@@ -96,7 +97,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
           email_address: fake_email,
           chat_handle:   Faker::Twitter.screen_name,
           job_title:     Faker::Job.title,
-          research_identifier:    "TU" + Faker::Number.number(6),
+          research_identifier:    "TU #{Faker::Number.number(6)}",
           spaces:        [Space.all.sample])
       end
 

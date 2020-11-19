@@ -1018,6 +1018,7 @@ en:
         all:
           page_title: Past Program and Event Videos
           search_label: "Search all Past Program videos:"
+          recent: Recent Videos
           see_all: See all Past Program videos
           beyond: Beyond the Page
           beyond_all: See all Beyond the Page videos

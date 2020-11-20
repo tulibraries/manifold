@@ -15,9 +15,8 @@ class Exhibition < ApplicationRecord
   belongs_to :space, optional: true
   belongs_to :collection, optional: true
 
-  has_draft :description
-
   has_rich_text :description
+  has_rich_text :draft_description
   has_rich_text :covid_alert
 
   validates :start_date, :end_date, presence: true

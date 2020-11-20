@@ -15,6 +15,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     description: DescriptionField,
+    draft_description: DescriptionField.with_options(admin_only: true),
     layout: Field::Select.with_options(
       collection: Rails.configuration.page_layouts,
       multiple: false,
@@ -59,6 +60,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     :title,
     :slug,
     :description,
+    :draft_description,
     :group,
     :categories,
     :accounts,

@@ -19,6 +19,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     external_link: Field::BelongsTo.with_options(order: "title"),
     description: Field::String,
     long_description: DescriptionField,
+    draft_long_description: DescriptionField.with_options(admin_only: true),
     get_help: DescriptionField,
     accounts: Field::HasMany.with_options(admin_only: true),
     covid_alert: DescriptionField.with_options(admin_only: true),
@@ -66,6 +67,7 @@ class CategoryDashboard < Administrate::BaseDashboard
     :categories,
     :description,
     :long_description,
+    :draft_long_description,
     :get_help,
     :external_link,
     :accounts,
@@ -77,6 +79,6 @@ class CategoryDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [categorizations_attributes: [:weight, :id]] + [:draft_long_description, :publish]
+    super + [categorizations_attributes: [:weight, :id]] + [:publish, :draft_long_description]
   end
 end

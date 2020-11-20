@@ -15,9 +15,9 @@ class Category < ApplicationRecord
   has_many :categories, through: :nested_categorizations
 
   belongs_to :external_link, optional: true
-  has_draft :long_description
 
   has_rich_text :long_description
+  has_rich_text :draft_long_description
   has_rich_text :get_help
   has_rich_text :covid_alert
 

@@ -20,9 +20,9 @@ class Service < ApplicationRecord
 
   belongs_to :external_link, optional: true
 
-  has_draft :description, :access_description
   has_rich_text :description
-  has_rich_text :access_description
+  has_rich_text :draft_description
+  has_rich_text :draft_access_description
   has_rich_text :covid_alert
 
   before_validation :remove_empty_audience

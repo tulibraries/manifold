@@ -22,7 +22,7 @@ class Collection < ApplicationRecord
 
   has_rich_text :covid_alert
   has_rich_text :description
-  has_draft :description
+  has_rich_text :draft_description
 
   serialize :subject
 

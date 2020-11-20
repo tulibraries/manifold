@@ -1,0 +1,24 @@
+<% page.attributes.each do |attribute| -%>
+  <% if user_editable_field?(current_account, attribute) %>
+    <div class="field-unit field-unit--<%= attribute.html_class %> <%= required?(attribute) %>" >
+
+      <% draft_field_name = "draft_" + attribute.name %>
+
+      <% unless attribute.resource.respond_to?(draft_field_name) && action_name == "edit" && Rails.configuration.draftable %>
+
+        <% if attribute.attribute == :title || attribute.attribute == :name || attribute.attribute == :slug %>
+          <%= render_field attribute, f: f if is_admin? %>
+          <% if action_name == "new" %>
+            <%= render_field attribute, f: f if attribute.attribute != :slug && !is_admin? %>
+          <% end %>
+        <% else %>
+          <%= render_field attribute, f: f unless attribute.name.start_with?("draft_") %>
+        <% end %>
+
+      <% else %>
+        <%= render_draft_field attribute, f: f %>
+      <% end %>
+
+    </div>
+  <% end -%>
+<% end -%>

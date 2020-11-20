@@ -33,8 +33,7 @@ module Admin::ApplicationHelper
 
   def is_draftable?(attributes)
     attributes.each do |attribute|
-      draft_field_name = "draft_" + attribute.name
-      return true if attribute.resource.respond_to?(draft_field_name)
+      return true if attribute.resource.respond_to?("draft_" + attribute.name)
     end
     return false
   end

@@ -12,9 +12,9 @@ class Webpage < ApplicationRecord
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  has_draft :description
-
   has_rich_text :description
+  has_rich_text :draft_description
+  # validates_presence_of :description # required rich text fields throw error in administrate if blank
   has_rich_text :covid_alert
 
   validates :title, presence: true

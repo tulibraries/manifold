@@ -16,6 +16,7 @@ class FindingAid < ApplicationRecord
 
   before_save :weed_nils
   has_rich_text :description
+  has_rich_text :draft_description
   has_rich_text :covid_alert
   validates :collection_id, collection_or_subject: true
 
@@ -40,8 +41,6 @@ class FindingAid < ApplicationRecord
       [:name, :identifier]
     ]
   end
-
-  has_draft :description
 
   def schema_dot_org_type
     "ArchiveComponent"

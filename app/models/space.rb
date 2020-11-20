@@ -19,6 +19,7 @@ class Space < ApplicationRecord
 
   validates :name, presence: true
   has_rich_text :description
+  has_rich_text :draft_description
   has_rich_text :covid_alert
 
   validates :building_id, presence: true
@@ -44,8 +45,6 @@ class Space < ApplicationRecord
       [:name, :building]
     ]
   end
-
-  has_draft :description
 
   def schema_dot_org_type
     "Place"

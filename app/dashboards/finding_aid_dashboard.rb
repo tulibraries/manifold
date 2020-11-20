@@ -13,6 +13,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
+    draft_description: DescriptionField.with_options(admin_only: true),
     slug: Field::String,
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
@@ -67,6 +68,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :slug,
     :identifier,
     :path,
+    :draft_description,
     :description,
     :collections,
     :subject,

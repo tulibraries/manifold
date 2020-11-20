@@ -28,40 +28,13 @@ and renders all form fields for a resource's editable attributes.
     </div>
   <% end %>
 
-  <% has_draft = false %>
-
   <% if action_name == "edit" && @models.include?(resource_name.to_s) && !is_admin? %>
     <div style="margin-bottom: 21px;"> <%= I18n.t("manifold.default.forms.hidden_title_text").html_safe %> </div>
   <% end %>
 
-  <% page.attributes.each do |attribute| -%>
+  <%= render("form_fields", page: page, f: f, current_account: current_account) %>
 
-    <% if user_editable_field?(current_account, attribute) %>
-      <div class="field-unit field-unit--<%= attribute.html_class %> <%= required?(attribute) %>" >
-
-        <% draft_field_name = "draft_" + attribute.name %>
-
-        <% unless attribute.resource.respond_to?(draft_field_name) && action_name == "edit" && Rails.configuration.draftable %>
-
-          <% if attribute.attribute == :title || attribute.attribute == :name || attribute.attribute == :slug %>
-            <%= render_field attribute, f: f if is_admin? %>
-            <% if action_name == "new" %>
-              <%= render_field attribute, f: f if attribute.attribute != :slug && !is_admin? %>
-            <% end %>
-          <% else %>
-            <%= render_field attribute, f: f unless attribute.name.start_with?("draft_") %>
-          <% end %>
-
-        <% else %>
-          <%= render_draft_field attribute, f: f %>
-          <% has_draft = true %>
-        <% end %>
-
-      </div>
-    <% end -%>
-  <% end -%>
-
-  <% if has_draft && action_name == "edit" %>
+  <% if action_name == "edit" && is_draftable?(page.attributes) %>
     <div class="field-unit field-unit--apply-draft %>" >
       <div class="field-unit__label">
         <%= f.label :publish, t("manifold.admin.actions.publish")%>

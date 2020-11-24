@@ -40,18 +40,17 @@ RSpec.feature "Dashboard::SpaceDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/spaces/#{@space.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"space_description\"]/text()[contains(., \"#{@space.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"space_draft_description\"]/text()[contains(., \"#{@space.draft_description}\")]")
-      find("textarea#space_draft_description").set(new_description)
+      expect(page).to have_xpath("//div[@id=\"space_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@space.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//trix-editor[@id=\"space_draft_description\"]")
+      find(:xpath, "//\*[starts-with(@id, \"space_draft_description_trix_input_space\")]", visible: false).set(new_description)
       click_button("Update Space")
+      expect(page).to have_content(@space.description.body.to_trix_html)
+      expect(page).to_not have_content(new_description)
       visit("/admin/spaces/#{@space.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"space_description\"]/text()[contains(., \"#{@space.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"space_draft_description\"]/text()[contains(., \"#{new_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Space")
-      visit("/admin/spaces/#{@space.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"space_description\"]/text()[contains(., \"#{@space.description}\")]")
-      expect(page).to have_xpath("//div[@id=\"space_description\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to_not have_content(@space.description.body.to_trix_html)
+      expect(page).to have_content(new_description)
     end
   end
 end

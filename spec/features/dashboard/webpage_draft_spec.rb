@@ -40,18 +40,17 @@ RSpec.feature "Dashboard::WebPageDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/webpages/#{@webpage.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"webpage_description\"]/text()[contains(., \"#{@webpage.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"webpage_draft_description\"]/text()[contains(., \"#{@webpage.draft_description}\")]")
-      find("textarea#webpage_draft_description").set(new_description)
+      expect(page).to have_xpath("//div[@id=\"webpage_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@webpage.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//trix-editor[@id=\"webpage_draft_description\"]")
+      find(:xpath, "//\*[starts-with(@id, \"webpage_draft_description_trix_input_webpage\")]", visible: false).set(new_description)
       click_button("Update Webpage")
+      expect(page).to have_content(@webpage.description.body.to_trix_html)
+      expect(page).to_not have_content(new_description)
       visit("/admin/webpages/#{@webpage.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"webpage_description\"]/text()[contains(., \"#{@webpage.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"webpage_draft_description\"]/text()[contains(., \"#{new_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Webpage")
-      visit("/admin/webpages/#{@webpage.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"webpage_description\"]/text()[contains(., \"#{@webpage.description}\")]")
-      expect(page).to have_xpath("//div[@id=\"webpage_description\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to_not have_content(@webpage.description.body.to_trix_html)
+      expect(page).to have_content(new_description)
     end
   end
 end

@@ -54,9 +54,11 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :content_link,
     :identifier,
     :path,
+    :description,
     :collections,
     :person,
     :categories,
+    :covid_alert,
     :updated_at,
   ].freeze
 
@@ -81,8 +83,8 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how finding aids are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(finding_aid)
-    "#{finding_aid.name}"
+  def display_resource(findingaid)
+    "#{findingaid.name}"
   end
 
 

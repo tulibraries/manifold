@@ -48,8 +48,10 @@ class WebpageDashboard < Administrate::BaseDashboard
     :covid_alert,
     :title,
     :id,
+    :description,
     :categories,
     :accounts,
+    :covid_alert,
     :file_uploads
   ].freeze
 

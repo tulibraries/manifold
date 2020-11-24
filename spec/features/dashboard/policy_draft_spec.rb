@@ -40,18 +40,17 @@ RSpec.feature "Dashboard::PolicyDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/policies/#{@policy.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"policy_description\"]/text()[contains(., \"#{@policy.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"policy_draft_description\"]/text()[contains(., \"#{@policy.draft_description}\")]")
-      find("textarea#policy_draft_description").set(new_description)
+      expect(page).to have_xpath("//div[@id=\"policy_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@policy.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//trix-editor[@id=\"policy_draft_description\"]")
+      find(:xpath, "//\*[starts-with(@id, \"policy_draft_description_trix_input_policy\")]", visible: false).set(new_description)
       click_button("Update Policy")
+      expect(page).to have_content(@policy.description.body.to_trix_html)
+      expect(page).to_not have_content(new_description)
       visit("/admin/policies/#{@policy.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"policy_description\"]/text()[contains(., \"#{@policy.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"policy_draft_description\"]/text()[contains(., \"#{new_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Policy")
-      visit("/admin/policies/#{@policy.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"policy_description\"]/text()[contains(., \"#{@policy.description}\")]")
-      expect(page).to have_xpath("//div[@id=\"policy_description\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to_not have_content(@policy.description.body.to_trix_html)
+      expect(page).to have_content(new_description)
     end
   end
 end

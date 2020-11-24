@@ -37,23 +37,20 @@ RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
     let(:new_description) { "Don't Panic!" }
 
     scenario "Change the Building Description" do
-      skip "Cannot set trix-editor contents"
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/buildings/#{@building.id}/edit")
       expect(page).to have_xpath("//div[@id=\"building_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@building.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"building_draft_description\"]")
-      find("#building_draft_description").click.set(new_description)
-      expect(page).to have_xpath("//trix-editor[@id=\"building_draft_description\"]/text()[contains(., \"#{new_description}\")]")
+      find(:xpath, "//\*[starts-with(@id, \"building_draft_description_trix_input_building\")]", visible: false).set(new_description)
       click_button("Update Building")
+      expect(page).to have_content(@building.description.body.to_trix_html)
+      expect(page).to_not have_content(new_description)
       visit("/admin/buildings/#{@building.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"building_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@building.description.body.to_trix_html}\")]")
-      expect(page).to have_xpath("//trix-editor[@id=\"building_draft_description\"]/text()[contains(., \"#{new_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Building")
-      visit("/admin/buildings/#{@building.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"building_description\"]/text()[contains(., \"#{@building.description}\")]")
-      expect(page).to have_xpath("//div[@id=\"building_description\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to_not have_content(@building.description.body.to_trix_html)
+      expect(page).to have_content(new_description)
     end
   end
 
@@ -65,8 +62,7 @@ RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
       login_as(@account, scope: :account)
       visit("/admin/buildings/new")
       fill_in("Name", with: building.name)
-      # TODO: Fix inability to modify contents of trix-editor
-      find("trix-editor#building_description").click.set(building.description.body.to_trix_html)
+      find(:xpath, "//\*[@id=\"building_description_trix_input_building\"]", visible: false).set(building.description.body.to_trix_html)
       fill_in("Street Address", with: building.address1)
       fill_in("City, State Zip", with: building.address2)
       fill_in("Coordinates", with: building.coordinates)
@@ -76,6 +72,7 @@ RSpec.feature "Dashboard::BuildingDrafts", type: :feature do
       fill_in("Email", with: building.email)
       click_button("Create Building")
       expect(page).to have_content(building.name)
+      expect(page).to have_content(building.description.body.html_safe)
     end
   end
 end

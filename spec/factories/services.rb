@@ -10,8 +10,8 @@ FactoryBot.define do
   end
   factory :service_static, class: Service do
     title { "Service Static" }
-    description { "The best drink in existence is the Pan Galactic Gargle Blaster." }
-    access_description { "Fully accessible" }
+    description { ActionText::Content.new("The best drink in existence is the Pan Galactic Gargle Blaster.") }
+    access_description { ActionText::Content.new("Fully accessible") }
     intended_audience { ["General"] }
     hours { "hours" }
   end

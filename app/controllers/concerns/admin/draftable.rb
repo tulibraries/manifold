@@ -5,7 +5,7 @@ module Admin::Draftable
 
   def update
     klass = params[:controller].split("/").last.classify
-    resource_name = klass.downcase
+    resource_name = klass.underscore
     requested_resource = klass.constantize.find(params[:id])
     resource_params = params[resource_name]
 

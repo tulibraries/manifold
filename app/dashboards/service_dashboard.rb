@@ -48,10 +48,13 @@ class ServiceDashboard < Administrate::BaseDashboard
     :covid_alert,
     :title,
     :id,
+    :description,
+    :access_description,
     :intended_audience,
     :external_link,
     :categories,
     :accounts,
+    :covid_alert,
     :created_at,
     :updated_at,
   ].freeze

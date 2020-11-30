@@ -60,7 +60,7 @@ class WebpagesController < ApplicationController
           when "Special Collections Research Center"
             @scrc << video
           end
-        end
+        end if video[:Keywords].present?
       end
     else
       return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video information.")

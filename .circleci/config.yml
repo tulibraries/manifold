@@ -31,7 +31,7 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: circleci/ruby:2.6.5-node
+      - image: circleci/ruby:2.7.2-node
         environment:
           TZ: "America/New_York"
 

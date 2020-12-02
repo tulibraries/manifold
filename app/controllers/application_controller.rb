@@ -13,8 +13,11 @@ class ApplicationController < ActionController::Base
 
   def menu_items
     @about_items = Category.find_by(slug: "about-page").items
+    @about_items.unshift(Category.find_by(slug: "about-page"))
     @visit_items = Category.find_by(slug: "visit").items
+    @visit_items.unshift(Category.find_by(slug: "visit"))
     @research_items = Category.find_by(slug: "research-services").items
+    @research_items.unshift(Category.find_by(slug: "research-services"))
   end
 
   def get_alert

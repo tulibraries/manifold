@@ -85,7 +85,7 @@
   <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
     <div class="container nav-container">
 
-        <div class="btn-group ml-2">
+        <div class="btn-group ml-2 dropdown">
           <% if action_name == "about" %>
           <ul class="list-unstyled" style="display:inline-block">
             <li class="active">
@@ -93,12 +93,12 @@
             </li>
           </ul>
           <% else %>
-            <%= button_tag t("manifold.header.about"), 
-            {id: "dropdownMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle", 
-            style: "display:inline-block;background-color:transparent;border:0;", 
-            "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
-            method: :get} %>
-            <div class="dropdown-menu p-2" x-placement="bottom-start">
+            <%= button_tag t("manifold.header.about"),
+                        {id: "dropdownMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle", 
+                        style: "display:inline-block;background-color:transparent;border:0;", 
+                        "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+                        method: :get} %>
+            <div class="dropdown-menu p-2">
               <% @about_items.each do |i| %>
                 <li><%= link_to i.name, i %></li>
               <% end %>
@@ -106,7 +106,7 @@
           <% end %>
         </div>
 
-        <div class="btn-group ml-2">
+        <div class="btn-group ml-2 dropdown">
         <% if action_name == "visit" %>
           <ul class="list-unstyled" style="display:inline-block">
             <li class="active">
@@ -127,7 +127,7 @@
         <% end %>
         </div>
 
-        <div class="btn-group ml-2">
+        <div class="btn-group ml-2 dropdown">
         <% if action_name == "research" %>
           <ul class="list-unstyled" style="display:inline-block">
             <li class="active">

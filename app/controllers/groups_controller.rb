@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = find_instance
-      return redirect_or_404 unless @group
+      return redirect_or_404(@group)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

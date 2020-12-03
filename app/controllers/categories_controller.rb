@@ -46,6 +46,6 @@ class CategoriesController < ApplicationController
   private
     def set_category
       @category = find_instance
-      return redirect_or_404 unless @category
+      return redirect_or_404(@category)
     end
 end

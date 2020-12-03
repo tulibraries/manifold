@@ -86,6 +86,7 @@ class EventsController < ApplicationController
       @today = Date.current
       @new_tags = ["Interruption",
         "Change And Action",
+        "Data",
         "Blockson",
         "Health Sciences",
         "Digital Scholarship",
@@ -101,7 +102,7 @@ class EventsController < ApplicationController
 
     def set_event
       @event = find_instance
-      return redirect_or_404 unless @event
-      @event_url = @event.event_url
+      @event_url = @event.event_url unless @event.nil?
+      return redirect_or_404(@event)
     end
 end

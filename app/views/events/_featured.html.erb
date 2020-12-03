@@ -18,8 +18,8 @@
       <p>
         <% unless event.get_tags.nil? %>
           <% event.get_tags.each do |type| %>
-            <% if @new_tags.include?(type.titleize) %>
-              <%= link_to type, events_path(type: type), class: "event_type" %> 
+            <% if @new_tags.include?(type) %>
+              <%= link_to type.titleize, events_path(type: type), class: "event_type" %> 
             <% end %>
           <% end %>
         <% end %>

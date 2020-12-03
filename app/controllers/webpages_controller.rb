@@ -60,7 +60,7 @@ class WebpagesController < ApplicationController
           when "Special Collections Research Center"
             @scrc << video
           end
-        end
+        end if video[:Keywords].present?
       end
     else
       return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video information.")
@@ -119,8 +119,8 @@ class WebpagesController < ApplicationController
   end
 
   def ensemble_api(api_query)
-    videos = HTTParty.get(api_query)
     begin
+      videos = HTTParty.get(api_query)
       @videos = JSON.parse(videos&.body, symbolize_names: true)
     rescue => e
       e.message
@@ -233,6 +233,6 @@ class WebpagesController < ApplicationController
       else
         @webpage = Webpage.find_by(slug: action_name)
       end
-      @categories = @webpage.categories
+      @categories = @webpage.categories unless @webpage.nil?
     end
 end

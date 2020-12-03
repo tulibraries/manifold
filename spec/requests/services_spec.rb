@@ -21,7 +21,7 @@ RSpec.describe "Services", type: :request do
 
   describe "a redirect with a legacy path starting with /services" do
     let(:redirect) {
-      FactoryBot.create(:redirect)
+      FactoryBot.create(:service_redirect)
     }
     it "redirects to the expected redirect path" do
       get url_for(redirect.legacy_path)
@@ -30,9 +30,8 @@ RSpec.describe "Services", type: :request do
   end
 
   describe "a redirect with a legacy path with additional /" do
-    let(:legacy_path) { "/services/printing/color" }
     let(:redirect) {
-      FactoryBot.create(:redirect, legacy_path: legacy_path)
+      FactoryBot.create(:entity_redirect)
     }
     it "redirects to the expected redirect path" do
       get url_for(redirect.legacy_path)

@@ -109,6 +109,7 @@ module Tude
                             "Economics",
                             "Education",
                             "Electrical & Computer Engineering",
+                            "Engineering, Technology & Management",
                             "English",
                             "Environmental Studies",
                             "FIlm & Media Arts",
@@ -175,6 +176,7 @@ module Tude
     config.event_local_tags = [
                             "Interruption",
                             "Blockson",
+                            "Data",
                             "Health Sciences",
                             "Digital Scholarship",
                             "Workshop",

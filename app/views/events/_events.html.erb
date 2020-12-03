@@ -21,14 +21,14 @@
         <% unless event.get_tags.nil? %>
           <% event.get_tags.each do |type| %>
             <% if @new_tags.include?(type.titleize) %>
-              <%= link_to type, events_path(type: type), class: "event_type" %> 
+              <%= link_to type.titleize, events_path(type: type), class: "event_type yo" %> 
             <% end %>
           <% end %>
         <% end %>
       <% else %>
         <% unless event.get_types.nil? %>
           <% event.get_types.each do |type| %>
-            <%= link_to type, past_events_path(type: type), class: "event_type" %> 
+            <%= link_to type.titleize, past_events_path(type: type), class: "event_type" %> 
           <% end %>
         <% end %>
       <% end %>

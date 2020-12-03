@@ -7,7 +7,7 @@ class ScrcController < ApplicationController
     if matches_finding_aid
       redirect_to(finding_aid_path(@finding_aid), status: :moved_permanently)
     else
-      redirect_or_404
+      redirect_or_404(nil)
     end
   end
 

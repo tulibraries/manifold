@@ -139,7 +139,7 @@ RSpec.describe Group, type: :model do
       external: [false, true]
     }
     fields.each do |k, v|
-      # 
+      #
 
       example "#{k} changes" do
         group = FactoryBot.create(:group, k => v.first)

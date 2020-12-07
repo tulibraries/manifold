@@ -87,6 +87,6 @@ class ExhibitionDashboard < Administrate::BaseDashboard
 
 
   def permitted_attributes
-    super + [:draft_title, :draft_description, :publish]
+    super + [:draft_description, :publish]
   end
 end

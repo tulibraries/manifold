@@ -25,7 +25,7 @@ class Building < ApplicationRecord
   #     model.errors.add( attribute, :blank )
   #   end
   # end
-  
+
   belongs_to :external_link, optional: true
   has_many :spaces, dependent: :destroy
   has_paper_trail

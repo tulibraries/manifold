@@ -73,5 +73,4 @@ class HighlightDashboard < Administrate::BaseDashboard
   # def display_resource(highlight)
   #   "Highlight ##{highlight.id}"
   # end
-
 end

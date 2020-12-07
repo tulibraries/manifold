@@ -99,5 +99,4 @@ class GroupDashboard < BaseDashboard
     # super + [documents: []]
     super
   end
-
 end

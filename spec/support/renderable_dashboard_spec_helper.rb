@@ -29,7 +29,6 @@ RSpec.shared_examples "renderable_dashboard" do
     it "access #{model_name} adminstrate" do
       get index_path
       expect(response).to have_http_status(200)
-      #expect(response.body).to match(factory_model.label)
     end
   end
 

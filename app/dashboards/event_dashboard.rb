@@ -138,5 +138,4 @@ class EventDashboard < BaseDashboard
   def display_resource(event)
     "#{event.title}"
   end
-
 end

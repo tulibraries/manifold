@@ -70,5 +70,4 @@ class AdminGroupDashboard < Administrate::BaseDashboard
   def display_resource(admin_group)
     "#{admin_group.name}"
   end
-
 end

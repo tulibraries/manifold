@@ -139,13 +139,12 @@ RSpec.describe Group, type: :model do
       external: [false, true]
     }
     fields.each do |k, v|
-      # 
+      #
 
       example "#{k} changes" do
         group = FactoryBot.create(:group, k => v.first)
         group.update(k => v.last)
         group.save!
-        binding.pry
         expect(group.versions.last.changeset[k]).to match_array(v)
       end
     end

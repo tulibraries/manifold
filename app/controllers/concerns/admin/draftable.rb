@@ -23,7 +23,7 @@ module Admin::Draftable
     params[resource_name].keys.each do |k|
       if k.starts_with?("draft_")
         draft_content = k
-        content = k.delete_prefix('draft_')
+        content = k.delete_prefix("draft_")
         resource.update_attribute(content, resource_params[draft_content])
       end
     end

@@ -1,1 +1,7 @@
-<%= field.data&.html_safe %>
+<% if field.attribute.to_s == "description" && field.resource.description.present? %>
+  <%= field.resource.description.truncate(255).html_safe %>
+<% elsif field.attribute.to_s == "access_description" && field.resource.access_description.present? %>
+  <%= field.resource.access_description.truncate(255).html_safe %>
+<% else %>
+  <%= field.data %>
+<% end %>

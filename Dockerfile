@@ -1,4 +1,4 @@
-FROM ruby:2.6.5 as rubybox
+FROM ruby:2.7.2 as rubybox
 LABEL Steven Ng <steven.ng@temple.edu>
 ARG GOOGLE_OAUTH_CLIENT_ID
 ARG GOOGLE_OAUTH_SECRET

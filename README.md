@@ -5,7 +5,7 @@ manifold manages, orchestrates, and displays data about Temple University Librar
 
 ## System Requirements
 
-- Ruby 2.5.1
+- Ruby 2.7.2
 - Postgres >= 9.5
 
 ##  Getting Started

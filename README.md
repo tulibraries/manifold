@@ -5,7 +5,7 @@ manifold manages, orchestrates, and displays data about Temple University Librar
 
 ## System Requirements
 
-- Ruby 2.5.1
+- Ruby 2.7.2
 - Postgres >= 9.5
 
 ##  Getting Started
@@ -45,13 +45,7 @@ sudo npm install -g ajv-cli
 
 ```
 bundle exec rake db:migrate
-```
-
-* Populate the database with fake data
-
-```
-bundle exec rake db:populate
-```
+ ```
 
 * Seed initial user from the command line. Note that the email address should be a TUAccess email address.
 Aliased email addresses will not work.

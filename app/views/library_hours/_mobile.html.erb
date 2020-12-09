@@ -6,6 +6,11 @@
         <%= location_name(location[:slug]) %>
       </h2>
     </div>
+    <% if location_name(location[:slug]) == "Charles Library" %>
+    <div class="col-12 mt-1 text-center">
+      <%= t("manifold.hours.charles_note_html").html_safe %>
+    </div>
+    <% end %>
   </div>
 
   <% unless location[:spaces].first.second.empty? %> <!-- hours for at least one space -->

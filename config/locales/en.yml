@@ -76,7 +76,7 @@ en:
       chat: Chat
       filters_reset: Reset All Filters
       get_help: Get Help
-      search_everything: Search everything
+      search_everything: Search books, articles, the library website, and more...
       fields:
         confirm: "Are you sure?"
         belongs_to: "Link will appear in a button with the title of \"Library Website\""

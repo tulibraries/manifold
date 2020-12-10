@@ -100,6 +100,7 @@
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2">
+              <li><%= link_to "About", webpages_about_path %></li>
               <% @about_items.each do |i| %>
                 <li><%= link_to i.name, i %></li>
               <% end %>
@@ -121,6 +122,7 @@
           "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
           method: :get} %>
           <div class="dropdown-menu p-2" x-placement="bottom-start">
+          <li><%= link_to "About", webpages_visit_path %></li>
             <% @visit_items.each do |i| %>
               <li><%= link_to i.name, i %></li>
             <% end %>
@@ -143,6 +145,7 @@
               method: :get} %>
 
           <div class="dropdown-menu p-2" x-placement="bottom-start">
+            <li><%= link_to "About", webpages_research_path %></li>
             <% @research_items.each do |i| %>
               <li><%= link_to i.name, i %></li>
             <% end %>

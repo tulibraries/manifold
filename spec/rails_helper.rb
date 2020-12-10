@@ -76,8 +76,8 @@ RSpec.configure do |config|
 
   config.before(:each) do
     #stubs out main menu items for application controller
-    FactoryBot.create(:category, slug: "about-page") 
-    FactoryBot.create(:category, slug: "visit") 
+    FactoryBot.create(:category, slug: "about-page")
+    FactoryBot.create(:category, slug: "visit")
     FactoryBot.create(:category, slug: "research-services")
 
     stub_request(:get, /.*events\.temple\.edu\/.*\.jpg.*/im)

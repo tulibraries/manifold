@@ -82,21 +82,89 @@
     </div>
   </div> <!-- #header -->
 
+
   <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
     <div class="container nav-container">
-      <ul class="list-unstyled">
-        <li class="<% if action_name == 'about' %>active<% end %>">
-          <%= link_to t("manifold.header.about"), webpages_about_path %>
-        </li>
-        <li class="<% if action_name == 'visit' %>active<% end %>">
-          <%= link_to t("manifold.header.visit"), webpages_visit_path %>
-        </li>
-        <li class="<% if action_name == 'research' %>active<% end %>">
-          <%= link_to t("manifold.header.research"), webpages_research_path %>
-        </li>
-        <li class="<% if action_name == 'contact' %>active<% end %>">
-          <%= link_to t("manifold.header.contact"), webpages_contact_path %>
-        </li>
+
+        <div class="btn-group ml-2 dropdown">
+          <% if action_name == "about" %>
+          <ul class="list-unstyled" style="display:inline-block">
+            <li class="active">
+              <span><%= t("manifold.header.about") %></span>
+            </li>
+          </ul>
+          <% else %>
+            <%= button_tag t("manifold.header.about"),
+                        {id: "dropdownMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle", 
+                        style: "display:inline-block;background-color:transparent;border:0;", 
+                        "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+                        method: :get} %>
+            <div class="dropdown-menu p-2">
+              <li><%= link_to t("manifold.header.about"), webpages_about_path %></li>
+              <% @about_items.each do |i| %>
+                <li><%= link_to i.name, i unless i.link.present? %></li>
+                <li><%= link_to i.name, i.link if i.link.present? %></li>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="btn-group ml-2 dropdown">
+        <% if action_name == "visit" %>
+          <ul class="list-unstyled" style="display:inline-block">
+            <li class="active">
+              <span><%= t("manifold.header.visit") %></span>
+            </li>
+          </ul>
+        <% else %>
+          <%= button_tag t("manifold.header.visit"), 
+          {id: "dropdownMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle", 
+          style: "display:inline-block;background-color:transparent;border:0;", 
+          "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+          method: :get} %>
+          <div class="dropdown-menu p-2" x-placement="bottom-start">
+          <li><%= link_to t("manifold.header.visit"), webpages_visit_path %></li>
+            <% @visit_items.each do |i| %>
+              <li><%= link_to i.name, i unless i.link.present? %></li>
+              <li><%= link_to i.name, i.link if i.link.present? %></li>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+
+        <div class="btn-group ml-2 dropdown">
+        <% if action_name == "research" %>
+          <ul class="list-unstyled" style="display:inline-block">
+            <li class="active">
+              <span><%= t("manifold.header.research") %></span>
+            </li>
+          </ul>
+        <% else %>
+          <%= button_tag t("manifold.header.research"), 
+              {id: "dropdownMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle", 
+              style: "display:inline-block;background-color:transparent;border:0;", 
+              "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+              method: :get} %>
+
+          <div class="dropdown-menu p-2" x-placement="bottom-start">
+            <li><%= link_to t("manifold.header.research"), webpages_research_path %></li>
+            <% @research_items.each do |i| %>
+              <li><%= link_to i.name, i unless i.link.present? %></li>
+              <li><%= link_to i.name, i.link if i.link.present? %></li>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+
+        <div class="btn-group ml-2">
+          <ul class="list-unstyled" style="display:inline-block;">
+          <li class="<% if action_name == 'contact' %>active<% end %>">
+            <%= link_to t("manifold.header.contact"), webpages_contact_path %>
+          </li>
+          </ul>
+        </div>
+
+      <ul class="list-unstyled" style="display:inline-block;float:right">
         <li class="nav-right hours-nav<% if controller_name == 'library_hours' %> active<% end %>">
           <%= link_to t("manifold.header.hours"), hours_path %>
         </li>
@@ -109,6 +177,9 @@
       </ul>
     </div>
   </div>
+
+
+
   <div class="row d-block d-sm-block d-md-block d-lg-none text-center" id="mobile-search-container">
     <%= render "mobile-search" %>
   </div>

@@ -39,6 +39,23 @@
 		margin: auto;
 		margin-bottom: 0;
 	}
+	#dropdownMenuButton:after {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+  .dropdown:hover > .dropdown-menu {
+      display: block;
+  }
+  .dropdown-menu {
+    margin-top: 0;
+    width: 150%;
+    min-width: 260px;
+    li {
+      a {
+        font-size: 1.15rem;
+      }
+    }
+  }
 	ul {
 		width: auto;
 		padding-bottom: 0;
@@ -86,6 +103,10 @@
 		background-size: 42px 42px;
 		}
 		li.active {
+			span {
+				font-size: 1.35rem;
+				color: $white;
+			}
 			background-color: $black;
 			border: inset $white 1px;
 			border-top: 0;

@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   before_action :set_paper_trail_whodunnit
   before_action :locations, :set_dates, :set_location
   before_action :show_hours, :menu_items
-  include HasCategories
 
   def menu_items
     @about_items = Category.find_by(slug: "about-page").items

@@ -102,7 +102,8 @@
             <div class="dropdown-menu p-2">
               <li><%= link_to t("manifold.header.about"), webpages_about_path %></li>
               <% @about_items.each do |i| %>
-                <li><%= link_to i.name, i %></li>
+                <li><%= link_to i.name, i unless i.link.present? %></li>
+                <li><%= link_to i.name, i.link if i.link.present? %></li>
               <% end %>
             </div>
           <% end %>
@@ -124,7 +125,8 @@
           <div class="dropdown-menu p-2" x-placement="bottom-start">
           <li><%= link_to t("manifold.header.visit"), webpages_visit_path %></li>
             <% @visit_items.each do |i| %>
-              <li><%= link_to i.name, i %></li>
+              <li><%= link_to i.name, i unless i.link.present? %></li>
+              <li><%= link_to i.name, i.link if i.link.present? %></li>
             <% end %>
           </div>
         <% end %>
@@ -147,7 +149,8 @@
           <div class="dropdown-menu p-2" x-placement="bottom-start">
             <li><%= link_to t("manifold.header.research"), webpages_research_path %></li>
             <% @research_items.each do |i| %>
-              <li><%= link_to i.name, i %></li>
+              <li><%= link_to i.name, i unless i.link.present? %></li>
+              <li><%= link_to i.name, i.link if i.link.present? %></li>
             <% end %>
           </div>
         <% end %>

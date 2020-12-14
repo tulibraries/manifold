@@ -8,7 +8,7 @@ RSpec.describe "exhibitions/show", type: :view do
     @exhibition = FactoryBot.create(:exhibition)
     render
     expect(rendered).to match(/Salvador Dali/)
-    expect(rendered).to match(/Spontaneous/)
+    expect(rendered).to match(/Hello World/)
   end
 
   it "renders the sample image" do

@@ -843,10 +843,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@rails/actiontext@^6.0.3-3":
-  version "6.0.3-3"
-  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.0.3-3.tgz#a934e13eb21ba38e1442aa8bf2d74e879ff82403"
-  integrity sha512-C6ZvyEfMmcg+IxDkl/LKddBMaAHzE0sKBhhmfFZBTP6jXTugDEqaxWZS7hoCZNNwhi1YiVkMzQsfc3C5s11Jtw==
+"@rails/actiontext@^6.0.3-4":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.1.0.tgz#3b68327e670b2b9b6c0f6efc94cbe121b8c1e70d"
+  integrity sha512-AmVRWEeuElBdnzE2QL1uBM6hEyqAJtSPjp5ngN3/xrSsSX7STU6EHBmaE5xeMJpuN/AFDdTjbkEgWAAcOw6x+Q==
   dependencies:
     "@rails/activestorage" "^6.0.0-alpha"
 
@@ -4571,8 +4571,8 @@ nice-try@^1.0.4:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
-node-forge@0.10.0:
-  version "0.10.0"
+node-forge@0.9.0:
+  version "0.9.0"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.9.0.tgz#d624050edbb44874adca12bb9a52ec63cb782579"
   integrity sha512-7ASaDa3pD+lJ3WvXFsxekJQelBKRpne+GOVbLbtHYdd7pFspyeuJHnWfLplGf3SwKGbfs/aYl5V/JCIaHVUKKQ==
 

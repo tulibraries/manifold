@@ -34,7 +34,6 @@ class Building < ApplicationRecord
 
   has_rich_text :description
   has_rich_text :draft_description
-  # validates_presence_of :description
   has_rich_text :covid_alert
 
   def slug_candidates

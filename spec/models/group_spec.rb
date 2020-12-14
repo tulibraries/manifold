@@ -145,7 +145,6 @@ RSpec.describe Group, type: :model do
         group = FactoryBot.create(:group, k => v.first)
         group.update(k => v.last)
         group.save!
-        binding.pry
         expect(group.versions.last.changeset[k]).to match_array(v)
       end
     end

@@ -5,6 +5,14 @@ require "rails_helper"
 RSpec.describe Building, type: :model do
 
   context "Required Fields" do
+     required_fields = [
+      "name",
+      "address1",
+      "address2",
+      "coordinates",
+      "google_id",
+    ]
+
     required_fields = [
       "name",
       "description",
@@ -67,7 +75,7 @@ RSpec.describe Building, type: :model do
   describe "version all fields" do
     fields = {
       name: ["The Text 1", "The Text 2"],
-      description: ["The Text 1", "The Text 2"],
+      # description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       address1: ["The Text 1", "The Text 2"],
       coordinates: ["The Text 1", "The Text 2"],
       hours: ["The Text 1", "The Text 2"],
@@ -97,7 +105,7 @@ RSpec.describe Building, type: :model do
       subject { building.map_to_schema_dot_org }
 
       it { is_expected.to include("name" => building[:name]) }
-      it { is_expected.to include("description" => building[:description]) }
+      # it { is_expected.to include("description" => building[:description]) }
       it { is_expected.to include("address") }
 
       describe "address" do

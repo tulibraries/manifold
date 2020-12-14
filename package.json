@@ -2,7 +2,11 @@
   "name": "tude",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "4.2.2"
+    "@rails/actiontext": "^6.0.3-4",
+    "@rails/webpacker": "4.2.2",
+    "flatpickr": "^4.6.6",
+    "stimulus": "^1.1.1",
+    "trix": "^1.2.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"

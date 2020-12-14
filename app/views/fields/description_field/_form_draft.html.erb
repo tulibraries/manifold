@@ -8,8 +8,6 @@
       class="field-unit__field field-published field-description"
       id="<%= fieldname_in_draft(@requested_resource, field) %>">
 
-      
-      
       <%= field.resource.description if field.attribute == :description && field.resource.description.present? %>
       
       <% if field.attribute == :long_description && field.resource.long_description.present?  %>
@@ -30,7 +28,7 @@
     <%= f.label field.attribute.to_s.titleize %>
   <% end %>
 </div>
-
 <div class="field-unit__field field-draft">
+  <% @requested_resource.draft_description.body = field.data.body.to_html if @requested_resource.draft_description.body.nil? %>
   <%= f.rich_text_area draft_name(field) %>
 </div>

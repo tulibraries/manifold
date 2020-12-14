@@ -5,4 +5,5 @@ class Alert < ApplicationRecord
   include InputCleaner
 
   has_rich_text :description
+  has_rich_text :draft_description
 end

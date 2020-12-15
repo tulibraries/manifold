@@ -79,6 +79,6 @@ class CategoryDashboard < Administrate::BaseDashboard
   end
 
   def permitted_attributes
-    super + [categorizations_attributes: [:weight, :id]] + [:publish, :draft_long_description]
+    super + [categorizations_attributes: [:weight, :id]] + [:publish, :long_description, :draft_long_description]
   end
 end

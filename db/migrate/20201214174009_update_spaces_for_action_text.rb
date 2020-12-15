@@ -2,7 +2,7 @@
 
 class UpdateSpacesForActionText < ActiveRecord::Migration[6.0]
   include ActionView::Helpers::TextHelper
-    
+
   def up
     rename_column :spaces, :description, :description_old
     rename_column :spaces, :covid_alert, :covid_alert_old

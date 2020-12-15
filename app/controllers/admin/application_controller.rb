@@ -12,6 +12,7 @@ module Admin
     before_action :set_paper_trail_whodunnit
     before_action :use_version, only: [:edit]
     before_action :non_editable_titles, only: [:edit]
+    before_action :populate_drafts, only: [:edit]
 
     helper_method :required?
     helper_method :admin_only?
@@ -63,6 +64,23 @@ module Admin
         scoped_resource.friendly.find(param)
       else
         scoped_resource.find(param)
+      end
+    end
+
+    def populate_drafts
+      if requested_resource.respond_to?(:description) && resource_name != :category
+        requested_resource.draft_description.present? ? requested_resource.draft_description :
+          (requested_resource.draft_description = requested_resource.description)
+      end
+
+      if requested_resource.respond_to?(:long_description)
+        requested_resource.draft_long_description.present? ? requested_resource.draft_long_description :
+          (requested_resource.draft_long_description = requested_resource.long_description)
+      end
+
+      if requested_resource.respond_to?(:access_description)
+        requested_resource.draft_access_description.present? ? requested_resource.draft_access_description :
+          (requested_resource.draft_access_description = requested_resource.access_description)
       end
     end
 

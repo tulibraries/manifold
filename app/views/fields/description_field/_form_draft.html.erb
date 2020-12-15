@@ -29,6 +29,7 @@
   <% end %>
 </div>
 <div class="field-unit__field field-draft">
-  <% @requested_resource.draft_description.body = field.data.body.to_html if @requested_resource.draft_description.body.nil? %>
+  <%#x populate_drafts(field.attribute) %>
+
   <%= f.rich_text_area draft_name(field) %>
 </div>

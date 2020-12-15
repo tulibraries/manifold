@@ -5,13 +5,13 @@ require "rails_helper"
 RSpec.describe Building, type: :model do
 
   context "Required Fields" do
-     required_fields = [
-      "name",
-      "address1",
-      "address2",
-      "coordinates",
-      "google_id",
-    ]
+    required_fields = [
+     "name",
+     "address1",
+     "address2",
+     "coordinates",
+     "google_id",
+   ]
 
     required_fields = [
       "name",

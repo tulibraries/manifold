@@ -4,22 +4,26 @@ class UpdateEventsForActionText < ActiveRecord::Migration[6.0]
   include ActionView::Helpers::TextHelper
 
   def up
-    rename_column :events, :description, :description_old
+    change_table :events, bulk: true do |t|
+      rename_column :events, :description, :description_old
 
-    Event.find_each do |event|
-      event.update(description: event.description_old)
+      Event.find_each do |event|
+        event.update(description: event.description_old)
+      end
+
+      remove_column :events, :description_old
     end
-
-    remove_column :events, :description_old
   end
 
   def down
-    add_column :events, :description_new, :text
+    change_table :events, bulk: true do |t|
+      add_column :events, :description_new, :text
 
-    Event.find_each do |event|
-      event.update(description_new: event.description.body.to_html) if event.description.body.present?
+      Event.find_each do |event|
+        event.update(description_new: event.description.body.to_html) if event.description.body.present?
+      end
+
+      rename_column :events, :description_new, :description
     end
-
-    rename_column :events, :description_new, :description
   end
 end

@@ -53,6 +53,7 @@ RSpec.describe Collection, type: :model do
 
     fields.each do |k, v|
       example "#{k} changes" do
+        skip("description not versionable") if k == :description
         collection = FactoryBot.create(:collection, k => v.first)
         collection.update(k => v.last)
         collection.save!

@@ -40,7 +40,7 @@ RSpec.feature "Dashboard::ExhibitionDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/exhibitions/#{@exhibition.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"exhibition_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@exhibition.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"exhibition_description\"]/text()[contains(., \"#{@exhibition.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"exhibition_draft_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"exhibition_draft_description_trix_input_exhibition\")]", visible: false).set(new_description)
       click_button("Update Exhibition")

@@ -40,7 +40,7 @@ RSpec.feature "Dashboard::PolicyDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/policies/#{@policy.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"policy_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@policy.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"policy_description\"]/text()[contains(., \"#{@policy.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"policy_draft_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"policy_draft_description_trix_input_policy\")]", visible: false).set(new_description)
       click_button("Update Policy")

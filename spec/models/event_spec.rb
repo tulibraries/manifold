@@ -91,6 +91,7 @@ RSpec.describe Event, type: :model do
 
     fields.each do |k, v|
       example "#{k} changes" do
+        skip("description not versionable") if k == :description
         event = FactoryBot.create(:event, k => v.first)
         event.update(k => v.last)
         event.save!

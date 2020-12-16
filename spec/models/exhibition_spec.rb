@@ -15,6 +15,7 @@ RSpec.describe Exhibition, type: :model do
 
     fields.each do |k, v|
       example "#{k} changes" do
+        skip("description not versionable") if k == :description
         exhibition = FactoryBot.create(:exhibition, k => v.first)
         exhibition.update(k => v.last)
         exhibition.save!

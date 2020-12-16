@@ -7,8 +7,8 @@
   <div contenteditable="false"
       class="field-unit__field field-published field-description"
       id="<%= fieldname_in_draft(@requested_resource, field) %>">
-
-      <%= field.resource.description if field.attribute == :description && field.resource.description.present? %>
+      
+      <%= field.resource.description.body.html_safe if field.attribute == :description && field.resource.description.present? %>
       
       <% if field.attribute == :long_description && field.resource.long_description.present?  %>
         <%= field.resource.long_description if field.data.class.to_s != "ActionText::RichText" %>

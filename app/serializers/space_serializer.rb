@@ -2,6 +2,9 @@
 
 class SpaceSerializer < ApplicationSerializer
   include LinkSerializable
+  include DescriptionSerializable
 
-  attributes :name, :description, :hours, :accessibility, :phone_number, :email
+  set_type :space
+
+  attributes :name, :hours, :accessibility, :phone_number, :email
 end

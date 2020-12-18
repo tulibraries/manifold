@@ -56,7 +56,6 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
 gem "yaml_db"
 gem "friendly_id", "~> 5.4.1"
-gem "action-draft"
 gem "webpacker"
 
 group :development, :test do

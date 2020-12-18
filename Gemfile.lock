@@ -2,8 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     abstract_type (0.0.7)
-    action-draft (0.4.0)
-      rails (>= 5.2)
     actioncable (6.0.3.4)
       actionpack (= 6.0.3.4)
       nio4r (~> 2.0)
@@ -602,7 +600,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  action-draft
   administrate
   ancestry
   attr_json

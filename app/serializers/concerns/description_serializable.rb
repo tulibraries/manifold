@@ -6,6 +6,6 @@ module DescriptionSerializable
   included do
     attribute :description do |the_object|
       the_object.description.body.to_html
-    end 
+    end
   end
 end

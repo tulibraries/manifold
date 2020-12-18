@@ -24,7 +24,7 @@ module Admin::Draftable
       if k.starts_with?("draft_")
         draft_content = k
         content = k.delete_prefix("draft_")
-        resource.update_attribute(content, resource_params[draft_content])
+        resource.update(content => resource_params[draft_content])
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DropActionDraftContentsTable < ActiveRecord::Migration[6.0]
   def change
     drop_table :action_draft_contents do |t|

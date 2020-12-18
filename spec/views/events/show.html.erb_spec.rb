@@ -23,7 +23,7 @@ RSpec.describe "events/show", type: :view do
       render
       event_ld = JSON.parse(Nokogiri::XML(rendered).xpath("//script", "@type" => "Event").text)
       expect(event_ld["name"]).to match(@event.title)
-      expect(event_ld["description"]).to match(@event.description)
+      expect(event_ld["description"]).to match(@event.description.body.to_html)
     end
   end
 end

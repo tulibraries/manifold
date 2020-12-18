@@ -61,7 +61,7 @@ class FindingAid < ApplicationRecord
   private
     # TODO: find and eliminate the cause of nil values on form submission
     def weed_nils
-      subject.reject! { |s| s == "" }
+      subject.reject! { |s| s == "" } if subject.present?
     end
 
     def self.subject_query(subjects)

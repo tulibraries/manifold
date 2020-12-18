@@ -59,7 +59,7 @@ gem "yaml_db"
 gem "friendly_id", "~> 5.4.1"
 gem "action-draft"
 gem "webpacker"
-gem 'image_processing', '~> 1.2'
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -15,7 +15,7 @@ class SyncService::Events
     @stdout = Logger.new(STDOUT)
     @eventsUrl = params.fetch(:events_url) || Rails.configuration.events_feed_url
     @force = params.fetch(:force, false)
-    @eventsDoc = Nokogiri::XML(URI.open(@eventsUrl))
+    @eventsDoc = Nokogiri::XML(open(@eventsUrl))
     stdout_and_log("Syncing events from #{@eventsUrl}")
   end
 
@@ -177,7 +177,7 @@ class SyncService::Events
       {
         image:
           {
-            io: URI.open(image_path),
+            io: open(image_path),
             filename: image_path.split("/thumbnail/")&.second&.split("?").first.gsub("%20", "_")
           },
         alt_text: img.attribute("alt")&.value
@@ -202,6 +202,6 @@ class SyncService::Events
 
   def stdout_and_log(message, level: :info)
     @log.send(level, message)
-    # @stdout.send(level, message)
+    @stdout.send(level, message)
   end
 end

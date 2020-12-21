@@ -19,6 +19,7 @@ html, body {
 }
 #wrapper {
 	background-color: $white;
+	overflow: hidden;
 	position: relative;
 	z-index: 100;
 	margin-top: 14px;

@@ -9,6 +9,7 @@ RSpec.describe GroupsController, type: :controller do
 
   describe "GET #index" do
     xit "returns json when requested" do
+      # we do not provide serialization for groups
       get :index, format: :json
       expect(response.header["Content-Type"]).to include "json"
     end

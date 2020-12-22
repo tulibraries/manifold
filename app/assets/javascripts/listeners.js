@@ -22,7 +22,25 @@ $(document).ready(function(){
     tracks = [
       {id: "digcol", category: "Outbound Links"},
       {id: "main-search", category: "Search"},
-      {id: "header-search", category: "Search"}
+      {id: "header-search", category: "Search"},
+      {id: "research-help", category: "homepage"},
+      {id: "study-space", category: "homepage"},
+      {id: "visit-us", category: "homepage"},
+      {id: "online-support", category: "homepage"},
+      {id: "books-media", category: "homepage"},
+      {id: "articles", category: "homepage"},
+      {id: "databases", category: "homepage"},
+      {id: "research-guides", category: "homepage"},
+      {id: "journal-finder", category: "homepage"},
+      {id: "collections-search", category: "homepage"},
+      {id: "events", category: "homepage"},
+      {id: "news", category: "homepage"},
+      {id: "charles-library", category: "homepage"},
+      {id: "hsl", category: "homepage"},
+      {id: "lcdss", category: "homepage"},
+      {id: "blockson", category: "homepage"},
+      {id: "scrc", category: "homepage"},
+      {id: "law", category: "homepage"}
     ];
 
     function handleEventClicks(label, category) {

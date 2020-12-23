@@ -27,10 +27,10 @@ FactoryBot.define do
       description { "It's what the category is about" }
     end
     trait :with_long_description do
-      long_description { "It's more about what the category is about" }
+      long_description { ActionText::Content.new("Hello World") }
     end
     trait :with_get_help do
-      get_help { "It's what help is for" }
+      get_help { ActionText::Content.new("Helping Hands Help the World") }
     end
   end
 

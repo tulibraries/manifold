@@ -1,7 +1,7 @@
 <%= render "categories-mobile-menu" %>
 
 <div class="container category-show<% if explore_charles(@category) %> charles<% end %>">
-
+  
   <div class="row">
     <% unless @nav_items.blank? %>
       <div class="col-lg-3 d-none d-lg-block">
@@ -39,7 +39,7 @@
         <% unless @category.get_help.blank? %>
           <h2>Get Help</h2>
         <div class="entity-help">
-          <p><%= sanitize @category.get_help.html_safe %></p>
+          <p><%= @category.get_help %></p>
         </div>
         <% end %>
       </div>

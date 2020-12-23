@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(version: 2020_12_18_151606) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "for_header"
-    t.text "description"
   end
 
   create_table "blog_posts", force: :cascade do |t|
@@ -224,7 +223,6 @@ ActiveRecord::Schema.define(version: 2020_12_18_151606) do
     t.string "guid"
     t.string "event_url"
     t.boolean "featured"
-    t.text "description"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -333,7 +331,6 @@ ActiveRecord::Schema.define(version: 2020_12_18_151606) do
     t.boolean "add_to_footer"
     t.integer "parent_group_id"
     t.string "slug"
-    t.text "description"
     t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
   end
 

@@ -5,8 +5,8 @@ FactoryBot.define do
     name { "Dreaming" }
     custom_url { "" }
     description { "" }
-    long_description { "Extended explanation" }
-    get_help { "" }
+    long_description { ActionText::Content.new("Hello World") }
+    get_help { ActionText::Content.new("Helping Hands Help the World") }
 
     trait :custom_url do
       custom_url { "http://sand.man" }

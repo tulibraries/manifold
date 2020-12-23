@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :webpage do
-    title { "MyString" }
-    description { "MyText" }
+    title { "Webpage" }
+    description { ActionText::Content.new("Hello World") }
     layout { "None" }
     trait :with_file do
       after :create do |webpage|

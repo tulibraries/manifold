@@ -8,7 +8,7 @@ RSpec.describe Exhibition, type: :model do
   describe "version all fields" do
     fields = {
       title: ["The Text 1", "The Text 2"],
-      description: ["The Text 1", "The Text 2"],
+      description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       start_date: [Date.parse("2018/9/24"), DateTime.parse("2018/9/1")],
       end_date: [Date.parse("2018/10/24"), DateTime.parse("2018/10/10")],
     }

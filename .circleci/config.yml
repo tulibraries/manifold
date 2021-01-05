@@ -75,10 +75,6 @@ jobs:
             RAILS_ENV=test bundle exec rake db:setup
 
       - run:
-          name: Install trix editor
-          command: sudo bundle exec rails action_text:install
-          
-      - run:
           name: Install node packages required for tests
           command: | 
             sudo npm install -g ajv@6.12.6

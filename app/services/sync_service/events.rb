@@ -177,7 +177,7 @@ class SyncService::Events
       {
         image:
           {
-            io: open(image_path),
+            io: URI.open(image_path),
             filename: image_path.split("/thumbnail/")&.second&.split("?").first.gsub("%20", "_")
           },
         alt_text: img.attribute("alt")&.value
@@ -202,6 +202,6 @@ class SyncService::Events
 
   def stdout_and_log(message, level: :info)
     @log.send(level, message)
-    @stdout.send(level, message)
+    # @stdout.send(level, message)
   end
 end

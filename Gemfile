@@ -32,7 +32,7 @@ gem "jbuilder", "~> 2.10"
 gem "jquery-rails"
 gem "json-ld"
 gem "kaminari"
-gem "listen", ">= 3.0.5", "< 3.4"
+gem "listen", ">= 3.0.5", "< 3.5"
 gem "lockbox"
 gem "mail_form"
 gem "meta-tags"
@@ -57,6 +57,7 @@ gem "uglifier", ">= 1.3.0"
 gem "yaml_db"
 gem "friendly_id", "~> 5.4.1"
 gem "webpacker"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

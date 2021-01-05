@@ -73,6 +73,10 @@ jobs:
           command: |
             sudo psql -c "create role manifold with createdb login password 'password';" -U postgres -h localhost
             RAILS_ENV=test bundle exec rake db:setup
+
+      - run:
+          name: Install trix editor
+          command: sudo bundle exec rails action_text:install
           
       - run:
           name: Install node packages required for tests

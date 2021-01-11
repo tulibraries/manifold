@@ -10,7 +10,7 @@ RSpec.shared_examples "detachable" do
 
     before(:each) {
       file_path = Rails.root.join("spec/fixtures/charles.jpg")
-      file = fixture_file_upload(file_path, "image/jpg")
+      file = Rack::Test::UploadedFile.new(file_path, "image/jpg")
       factory_model.image.attach(file)
     }
 

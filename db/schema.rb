@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 2021_01_11_172125) do
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
@@ -526,6 +528,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_172125) do
   end
 
   add_foreign_key "accounts", "admin_groups"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "categories", "external_links"
   add_foreign_key "collections", "external_links"

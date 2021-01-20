@@ -84,20 +84,20 @@ class EventsController < ApplicationController
       @featured_events = Event.where(featured: true).order(:start_time).take(3)
       @exhibitions = Exhibition.where(promoted_to_events: true)
       @today = Date.current
-      @new_tags = ["Interruption",
-        "Change And Action",
-        "Data",
-        "Blockson",
-        "Health Sciences",
-        "Digital Scholarship",
-        "Workshop",
-        "Chat In The Stacks",
-        "Midday Arts",
+      @new_tags = [
         "Beyond The Notes",
+        "Blockson",
         "Book Club",
+        "Chat In The Stacks",
         "Concert",
+        "Data",
+        "Digital Scholarship",
+        "Health Sciences",
+        "Midday Arts",
+        "North Philly",
         "Reading",
-        "Speaker"].sort
+        "Speaker",
+        "Workshop"].sort
     end
 
     def set_event

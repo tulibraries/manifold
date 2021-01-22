@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     @exhibitions = Exhibition.where("end_date >= ?", @today)
                              .where(promoted_to_events: true)
                              .order(start_date: :desc, end_date: :desc)
-                             .take(2)
+                             .take(3)
     @mailing_list = ExternalLink.find_by(slug: "events-mailing-list")
     @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     @exhibitions = Exhibition.where("end_date < ?", @today)
                    .where(promoted_to_events: true)
                    .order(end_date: :desc, start_date: :desc)
-                   .take(2)
+                   .take(3)
     @events = return_events(events)
     @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|

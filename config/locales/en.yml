@@ -351,14 +351,14 @@ en:
       mobile_menu:
         heading: Events & Exhibits
       index:
-        page_title: "Events & Exhibits"
-        current_exhibits_label: "Current Exhibits"
-        past_exhibits_label: "Past Exhibits"
-        past_events_label: "Past Events"
+        page_title: Events & Exhibits
+        current_exhibits_label: Current Exhibits
+        past_exhibits_label: Past Exhibits
+        past_events_label: Past Events
         mailing_list: Sign up for our mailing list
-        view_current_events: "View current events & exhibits."
-        view_past_events: "View past events & exhibits"
-        view_past_events_videos: "View video recordings from past events"
+        view_current_events: View current events & exhibits
+        view_past_events: View past events & exhibits
+        view_past_events_videos: View video recordings from past events
         filters:
           none: "- none -"
         online_notice_html: <p>All library events are <span>online only</span> until further notice.</p>

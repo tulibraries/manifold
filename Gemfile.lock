@@ -667,7 +667,7 @@ DEPENDENCIES
   mini_magick (~> 4.11)
   mutant-rspec
   okcomputer
-  omniauth
+  omniauth (~> 1.9.1)
   omniauth-google-oauth2
   paper_trail
   pg

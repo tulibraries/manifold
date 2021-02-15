@@ -351,13 +351,14 @@ en:
       mobile_menu:
         heading: Events & Exhibits
       index:
-        page_title: "Events & Exhibits"
-        current_exhibits_label: "Current Exhibits"
-        past_events_label: "Past Events"
+        page_title: Events & Exhibits
+        current_exhibits_label: Current Exhibits
+        past_exhibits_label: Past Exhibits
+        past_events_label: Past Events
         mailing_list: Sign up for our mailing list
-        view_current_events: "View current events & exhibits."
-        view_past_events: "View past events & exhibits"
-        view_past_events_videos: "View video recordings from past events"
+        view_current_events: View current events & exhibits
+        view_past_events: View past events & exhibits
+        view_past_events_videos: View video recordings from past events
         filters:
           none: "- none -"
         online_notice_html: <p>All library events are <span>online only</span> until further notice.</p>
@@ -730,7 +731,7 @@ en:
                       how the tools of Cultural Analytics can contribute to their realization."
 
       event_space_request:
-        intro_html: Our Event Spaces are unavailable during the fall 2020 semester as they are being used as classrooms and as quiet study rooms for student use.
+        intro_html: Our Event Spaces are unavailable during the Spring and Summer 2021 semesters as they are being used as classrooms and as quiet study rooms for student use.
         title: "Charles Library Event Space Request"
         date_legend: "Event Dates/Times"
         date: "Date of Event"

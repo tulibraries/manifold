@@ -28,7 +28,7 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
 
   <div>
     <%= link_to(
-      t("administrate.actions.show_resource", name: page.page_title),
+      t("administrate.actions.show_resource", name: page.resource_name.humanize),
       [namespace, page.resource],
       class: "button",
     ) if valid_action?(:show) && show_action?(:show, page.resource) %>

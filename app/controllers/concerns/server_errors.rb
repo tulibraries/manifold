@@ -9,8 +9,7 @@ module ServerErrors
     rescue_from PG::Error do |exception|
       message = "#{exception.message} \n #{exception.backtrace[0]}"
       Honeybadger.notify(message)
-      @alert = nil
-      render "webpages/home", status: :internal_server_error
+      render status: :service_unavailable
     end
   end
 end

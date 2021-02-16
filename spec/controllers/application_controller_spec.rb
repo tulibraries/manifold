@@ -4,6 +4,7 @@ require "rails_helper"
 
 RSpec.describe ApplicationController, type: :controller do
   render_views
+  @alert = FactoryBot.create(:alert)
 
   controller do
     def test_action
@@ -22,8 +23,8 @@ RSpec.describe ApplicationController, type: :controller do
     allow(pg_connection).to receive(:quote_ident).and_raise(PG::Error)
 
     get :test_action
-    expect(response).to have_http_status 500
-    expect(response.body).to include "Chat"
+    expect(response).to have_http_status 200
+    expect(response.body).to include "ok"
   end
 
 end

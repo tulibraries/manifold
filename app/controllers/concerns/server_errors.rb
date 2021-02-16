@@ -4,7 +4,7 @@ module ServerErrors
   extend ActiveSupport::Concern
 
   included do
-    next unless ENV['MANIFOLD_RESCUE_FROM_DB_ERRORS']
+    next unless ENV["MANIFOLD_RESCUE_FROM_DB_ERRORS"]
 
     rescue_from PG::Error do |exception|
       message = "#{exception.message} \n #{exception.backtrace[0]}"

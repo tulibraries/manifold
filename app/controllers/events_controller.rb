@@ -11,6 +11,10 @@ class EventsController < ApplicationController
   def index
     events = @all_events.having("start_time >= ?", @today).order(start_time: :asc)
     @events = return_events(events)
+    @exhibitions = Exhibition.where("end_date >= ?", @today)
+                             .where(promoted_to_events: true)
+                             .order(start_date: :desc, end_date: :desc)
+                             .take(3)
     @mailing_list = ExternalLink.find_by(slug: "events-mailing-list")
     @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
@@ -21,6 +25,10 @@ class EventsController < ApplicationController
 
   def past
     events = @all_events.having("start_time < ?", @today).order(start_time: :desc)
+    @exhibitions = Exhibition.where("end_date < ?", @today)
+                   .where(promoted_to_events: true)
+                   .order(end_date: :desc, start_date: :desc)
+                   .take(3)
     @events = return_events(events)
     @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
@@ -82,22 +90,21 @@ class EventsController < ApplicationController
     def init
       @all_events = Event.group(:id)
       @featured_events = Event.where(featured: true).order(:start_time).take(3)
-      @exhibitions = Exhibition.where(promoted_to_events: true)
       @today = Date.current
-      @new_tags = ["Interruption",
-        "Change And Action",
-        "Data",
-        "Blockson",
-        "Health Sciences",
-        "Digital Scholarship",
-        "Workshop",
-        "Chat In The Stacks",
-        "Midday Arts",
+      @new_tags = [
         "Beyond The Notes",
+        "Blockson",
         "Book Club",
+        "Chat In The Stacks",
         "Concert",
+        "Data",
+        "Digital Scholarship",
+        "Health Sciences",
+        "Midday Arts",
+        "North Philly",
         "Reading",
-        "Speaker"].sort
+        "Speaker",
+        "Workshop"].sort
     end
 
     def set_event

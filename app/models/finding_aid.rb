@@ -16,7 +16,8 @@ class FindingAid < ApplicationRecord
 
   before_save :weed_nils
   before_validation :sanitize_description
-  validates :collection_id, collection_or_subject: true
+  validates :name, :collection_id, collection_or_subject: true
+  validates :name, presence: true
 
   scope :with_subject, ->(subjects) {
     where(subject_query(subjects), *(subjects.map { |s| "%#{s}%" })) if subjects.present?
@@ -61,7 +62,7 @@ class FindingAid < ApplicationRecord
   private
     # TODO: find and eliminate the cause of nil values on form submission
     def weed_nils
-      subject.reject! { |s| s == "" }
+      subject.reject! { |s| s == "" } if subject.present?
     end
 
     def self.subject_query(subjects)

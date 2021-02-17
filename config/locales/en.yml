@@ -270,8 +270,69 @@ en:
       invalid_group_type: "is not a valid group type"
       invalid_url: "is not a valid url"
       invalid_document_type: "is not a valid file type"
+      service_unavailable_header: Service is currently unavailable. Please see resources listed below until service is restored.
+      service_unavailable_html: >- 
+                                    <main class="page-content" aria-label="Content">
+                                    <div class="wrapper">
+                                    <article class="post text-center">
+                                    <a href="https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flibrary.temple.edu">Chat with a librarian</a>
+                                    <div class="post-content">
+                                    <div class="home">
+                                    <div style="font-family:arial, sans;">
+                                    <ul class="intro">
+                                    <li>Use this basic alternate site to access some of our resources.</li>
+                                    <li>Call&nbsp;<strong>215 204-0744</strong> for assistance with services normally available through using our forms for the Paley, and Ambler Libraries.</li>
+                                    </ul>
+                                    <p><strong><a class="inline" href="https://alt.library.temple.edu/databases">A-Z Research Databases Listing</a></strong><br>
+                                    The full listing of citation and full-text research databases usually available via 
+                                    the Libraries’ Web site is being made available here as an alternative access point 
+                                    in the event of unexpected downtime. While updated regularly, this listing may represent 
+                                    a slightly older version of what appears on the Libraries’ site, which is often updated 
+                                    on a daily basis.</p>
+                                    <p><strong><span class="heading"><a class="inline" href="https://librarysearch.temple.edu/journals">Journal Finder</a></span></strong><br>
+                                    Search or browse journal, magazine, or newspaper titles to determine their availability in online or print format. Follow database links from results to access full-text content when available.</p>
+                                    <p><strong><span class="heading"><a class="inline" href="http://guides.temple.edu">Research Guides</a></span></strong><br>
+                                    Access an extensive array of online research guides on general and science-related topics that can help with library research.</p>
+                                    <p><strong><span class="heading"><a class="inline" href="http://ask.library.temple.edu/">Ask a Librarian!</a></span></strong></p>
+                                    <table border="0" cellpadding="4">
+                                    <tbody>
+                                    <tr>
+                                    <td valign="middle" width="30%">Charles Library One Stop Desk:</td>
+                                    <td valign="middle" width="30%" align="center">215-204-8212</td>
+                                    <td valign="middle" width="30%">asktulib@temple.edu</td>
+                                    </tr>
+                                    <tr>
+                                    <td valign="middle">Ginsburg HSL Reference Desk:</td>
+                                    <td valign="middle" align="center">215-707-4033</td>
+                                    <td valign="middle">hscref@temple.edu</td>
+                                    </tr>
+                                    <tr>
+                                    <td valign="middle">Ambler Campus Reference Desk:</td>
+                                    <td valign="middle" align="center">267-468-8648</td>
+                                    <td valign="middle">tulamblr@temple.edu</td>
+                                    <td></td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <p><strong><a class="inline" href="https://ezb.relaisd2d.com/?LS=TEMPLE">E-Z Borrow</a></strong> or<strong> <a class="inline" href="http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/paley/logon.html">ILLiad</a></strong><br>
+                                    Use these interlibrary lending services to request items unavailable at Temple’s libraries. Use E-Z Borrow to search and request books from over 60 Pennsylvania academic libraries. Books are received in 3-5 business days. Use ILLiad to borrow books and other materials from libraries across North America.</p>
+                                    <p><strong><span class="heading"><a class="inline" href="https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=TULI&amp;sortby=rank">Library Search</a></span></strong><br>
+                                    Search the books, media, articles through our backup search.</p>
+                                    <p><strong><span class="heading"><a class="inline" href="http://temple.worldcat.org/">WorldCat</a></span></strong><br>
+                                    In the event of downtime involving the Library Search, use WorldCat to search for materials and check holdings information to determine Temple ownership.</p>
+                                    <p><strong><span class="heading"><a class="inline" href="http://guides.temple.edu/refworks2">RefWorks</a></span></strong><br>
+                                    Create and manage citations.</p>
+                                    <p><strong><span class="heading"><a class="inline" href="http://digital.library.temple.edu/">Digital Collections</a></span></strong><br>
+                                    Our Digital Collections site offers free worldwide access to the unique primary historical and cultural resources held by the Temple University Libraries and to selected scholarly works and other publications produced at Temple.</p>
+                                    <p>&nbsp;</p>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </article>
+                                    </div>
+                                    </main>
       internal_server_error_header: "There was a problem with this page."
-      internal_server_error_html: "Please check the address for typos or <a href=\"/contact-us\">contact</a> us for further assistance."
+      internal_server_error_html: 
       not_found_header: "The page you were looking for cannot be found."
       not_found_text_html: "Please check the address for typos or <a href=\"/contact-us\">contact</a> us for further assistance."
 

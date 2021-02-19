@@ -26,7 +26,8 @@ class SyncService::LibraryHours
                   { coordinates: "#{worksheet}!L2:L", slug: "ambler" },
                   { coordinates: "#{worksheet}!M2:M", slug: "ginsburg" },
                   { coordinates: "#{worksheet}!N2:N", slug: "podiatry" },
-                  { coordinates: "#{worksheet}!O2:O", slug: "innovation" }
+                  { coordinates: "#{worksheet}!O2:O", slug: "innovation" },
+                  { coordinates: "#{worksheet}!P2:P", slug: "24-7" }
                 ]
 
     locations.each do |location|

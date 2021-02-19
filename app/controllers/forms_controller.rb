@@ -12,7 +12,7 @@ class FormsController < ApplicationController
       @type = params[:type]
       render template: "forms/index"
     else
-      render file: "errors/not_found", status: :not_found
+      render "errors/not_found", status: :not_found
     end
   end
 

@@ -32,7 +32,7 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
     end
   end
 
-  context "Visit Collection Administrate Page", skip: "MAN-930: Capybara unable to write to form. seed=22566" do
+  context "Visit Collection Administrate Page" do
     let(:new_description) { "Don't Panic!" }
 
     scenario "Change the Collection Description" do

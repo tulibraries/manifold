@@ -31,4 +31,18 @@ RSpec.describe ErrorsController, type: :controller do
       expect(response.body).to include(I18n.t("manifold.error.internal_server_error_html"))
     end
   end
+
+  describe "the 503 page" do
+    before { get :service_unavailable }
+    it "includes the render of the expected template" do
+      expect(response).to render_template(:service_unavailable)
+    end
+
+    it "includes the expected title" do
+      expect(response.body).to include(I18n.t("manifold.error.service_unavailable_header"))
+    end
+    it "includes the expected text" do
+      expect(response.body).to include(I18n.t("manifold.error.service_unavailable_html"))
+    end
+  end
 end

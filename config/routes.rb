@@ -122,6 +122,7 @@ Rails.application.routes.draw do
   controller :webpages do
     get "scrc" => :scrc, as: "webpages_scrc"
     get "blockson" => :blockson, as: "webpages_blockson"
+    get "vtours" => :vtours, as: "webpages_vtours"
     get "ambler" => :ambler, as: "webpages_ambler"
     get "hsl" => :hsl, as: "webpages_hsl"
     get "contact-us" => :contact, as: "webpages_contact"

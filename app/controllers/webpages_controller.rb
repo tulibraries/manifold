@@ -226,6 +226,10 @@ class WebpagesController < ApplicationController
     serializable_show
   end
 
+  def epub
+    @file = params[:file]
+  end
+
   private
     def set_webpage
       unless params[:id].nil?

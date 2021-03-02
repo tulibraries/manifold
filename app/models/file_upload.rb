@@ -9,5 +9,5 @@ class FileUpload < ApplicationRecord
   has_one_attached :file, dependent: :destroy
 
   validates :name, presence: true
-  validates :file, content_type: ["application/pdf"]
+  validates :file, content_type: ["application/pdf", "application/epub+zip"]
 end

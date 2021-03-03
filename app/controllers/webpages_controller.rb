@@ -147,11 +147,6 @@ class WebpagesController < ApplicationController
     @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
-  def vtours
-    @blockson_tours = Webpage.where(layout: "Virtual Tour").find_by(group: "Blockson Collection Staff")
-    @admin_tours = Webpage.where(layout: "Virtual Tour").find_by(group: "Library Administration")
-  end
-
   def tudsc
     @webpage = Webpage.find_by(slug: "lcdss-intro")
     @visit_links =  Category.find_by(slug: "lcdss-study").items unless Category.find_by(slug: "lcdss-study").nil?

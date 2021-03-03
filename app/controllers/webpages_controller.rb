@@ -148,6 +148,8 @@ class WebpagesController < ApplicationController
   end
 
   def vtours
+    @blockson_tours = Webpage.where(layout: "Virtual Tour").find_by(group: "Blockson Collection Staff")
+    @admin_tours = Webpage.where(layout: "Virtual Tour").find_by(group: "Library Administration")
   end
 
   def tudsc

@@ -8,7 +8,8 @@
 			</div>
 
       <% if @webpage.external_link.nil? || 
-            @webpage.categories.any?{|cat| cat.name.include?("Virtual Tours")} %>
+            @webpage.categories.any?{|cat| cat.name.include?("Virtual Tours")} || 
+            @webpage.categories.any?{|cat| cat.name.include?("Tours")} %>
         <div class="col-12 col-md-9">
       <% else %>
         <div class="col-12 col-md-6">
@@ -33,7 +34,7 @@
       <%= render "attachments" %>
     </div>
 
-  <% unless @webpage.categories.any?{|cat| cat.name.include?("Virtual Tours")} %>
+  <% unless @webpage.categories.any?{|cat| cat.name.include?("Tours")} %>
     <% if @webpage.external_link %>
       <div class="col-12 col-md-3">
       <% unless @webpage.external_link.blank? %>

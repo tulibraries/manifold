@@ -6,7 +6,7 @@
   <% end %>
 </div>
 <div class="field-unit__field">
-  <%= f.select(field.permitted_attribute, field.html_attributes) do %>
+  <%= f.select(field.permitted_attribute, nil, {include_blank: true}, field.html_attributes) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
   <% end %>
   <% if field.resource.class.to_s == "Building" && field.attribute == :external_link %>

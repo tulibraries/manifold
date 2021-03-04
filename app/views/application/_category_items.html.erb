@@ -4,7 +4,7 @@
   <% else %>
     <div class="d-none d-lg-block index-category">
   <% end %>
-      <h2><%= link_to @category.name, @category %></h2>
+      <h2><%= link_to @category.name.html_safe, @category %></h2>
     </div>
 
   <div class="index-items">

@@ -81,7 +81,7 @@ class WebpageDashboard < Administrate::BaseDashboard
   # end
 
   def display_resource(webpage)
-    "#{webpage.title}"
+    webpage.title
   end
 
   def tinymce?

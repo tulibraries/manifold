@@ -146,7 +146,7 @@ class WebpagesController < ApplicationController
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
     @header_alert = Alert.where(published: true).find_by(for_header: true)
     @tours = Category.find_by(name: "360&deg; Virtual Tours")
-    @tour_links = @tours.items
+    @tour_links = @tours.items if @tours.present?
   end
 
   def tudsc

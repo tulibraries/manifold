@@ -62,7 +62,8 @@ class LibraryHoursController < ApplicationController
                   "scholars_studio",
                   "asrs",
                   "guest_computers",
-                  "cafe"
+                  "cafe",
+                  "24-7"
                 ]
       },
       {

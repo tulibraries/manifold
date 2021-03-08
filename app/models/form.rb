@@ -147,7 +147,7 @@ class Form < MailForm::Base
       "ir" => ["Incident Report", ["richieh@temple.edu", "bells@temple.edu"]],
       "data-purchase-grants-application" => ["Data Purchase Application", ["librarydatagrants@temple.edu"]],
       "library-instruction" => ["Request a Library Instruction Session", ["cshanley@temple.edu"]],
-      "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["msly@temple.edu", "tuf12871@temple.edu"]],
+      "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["msly@temple.edu", "tuf12871@temple.edu", "scrc@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["jhill@temple.edu", "eschiller@temple.edu"]],
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["john.pyle@temple.edu"]],
       "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu", "richieh@temple.edu"]],

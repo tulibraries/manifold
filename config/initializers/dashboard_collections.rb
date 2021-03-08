@@ -11,9 +11,7 @@ module Tude
 
     config.page_layouts = ["None",
                             "Email",
-                            # "Form Other"
-                            # "Publication",
-                            # "Orgchart",
+                            "Virtual Tour"
                           ]
 
     config.finding_aid_subjects = ["African Americans",

@@ -2,12 +2,14 @@
 
 <div class="container" style="margin-top: 35px;">
 	<div class="row page">
+
 		<% unless @webpage.categories.blank? %>
 			<div class="d-none d-md-block col-3">
 				<%= render "categories_list" %>
 			</div>
 
-      <% if @webpage.external_link.nil? %>
+      <% if @webpage.external_link.nil? || 
+            @webpage.categories.any?{|cat| cat.name.include?("Tours")} %>
         <div class="col-12 col-md-9">
       <% else %>
         <div class="col-12 col-md-6">
@@ -25,22 +27,27 @@
 
     <%= render "covid_alert" if @covid_alert.present? %>
 
-		  <h1><%= title @webpage.title %></h1>
-      <div class="text-left page-description">
-        <%= render @webpage.layout.parameterize %>
-      </div>
-      <%= render "attachments" %>
+		<h1><%= title @webpage.title %></h1>
+    <div class="text-left page-description">
+      <%= render @webpage.layout.parameterize %>
     </div>
+    <%= render "attachments" %>
+  </div>
 
-    <% if @webpage.external_link.present? %>
+  <% unless @webpage.categories.any?{ |cat| cat.name.include?("Tours")} %>
+    <% if @webpage.external_link %>
     <div class="col-12 col-md-3">
-      <div class="access-link">
-        <h2><%= link_to @webpage.external_link.title, @webpage.external_link.link %></h2>
-      </div>
+      <% unless @webpage.external_link.blank? %>
+        <div class="access-link">
+          <h2><%= link_to @webpage.external_link.title, @webpage.external_link.link %></h2>
+        </div>
+      <% end %>
 	  </div>
     <% end %>
+  <% end %>
 
-	</div>
+  </div>
+</div>
 
 <script type="application/ld+json">
   <%= json_ld(@webpage) %>

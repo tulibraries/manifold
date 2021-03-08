@@ -228,6 +228,11 @@ class WebpagesController < ApplicationController
     serializable_show
   end
 
+  def epub
+    @webpage = Webpage.find(params[:id])
+    render layout: false
+  end
+
   private
     def set_webpage
       unless params[:id].nil?

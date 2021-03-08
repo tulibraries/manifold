@@ -47,6 +47,6 @@ class FileUploadDashboard < BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(file_upload)
-    "#{file_upload.name}"
+    file_upload.name
   end
 end

@@ -35,7 +35,7 @@
 
   </head>
   <body>
-    <div id="sidebar">
+    <div id="sidebar" style="display:none;">
       <div id="panels">
         <input id="searchBox" placeholder="search" type="search">
         <a id="show-Search" class="show_view icon-search" data-view="Search">Search</a>
@@ -63,15 +63,15 @@
     <div id="main">
 
       <div id="titlebar">
-        <div id="opener">
+        <div id="opener" style="display:none;">
           <a id="slider" class="icon-menu">Menu</a>
         </div>
         <div id="metainfo">
           <span id="book-title"></span>
-          <span id="title-seperator">&nbsp;&nbsp;–&nbsp;&nbsp;</span>
-          <span id="chapter-title"></span>
+          <span style="display:none;"><span id="title-seperator">&nbsp;&nbsp;–&nbsp;&nbsp;</span></span>
+          <span id="chapter-title" style="display:none;"></span>
         </div>
-        <div id="title-controls">
+        <div id="title-controls" style="display:none;">
           <a id="bookmark" class="icon-bookmark-empty">Bookmark</a>
           <a id="setting" class="icon-cog">Settings</a>
           <a id="fullscreen" class="icon-resize-full">Fullscreen</a>
@@ -86,7 +86,7 @@
       <div id="loader"><%= image_tag('loader.gif') %></div>
     </div>
 
-    <div class="modal md-effect-1" id="settings-modal">
+    <div class="modal md-effect-1" id="settings-modal" style="display:none;">
         <div class="md-content">
             <h3>Settings</h3>
             <div>
@@ -98,6 +98,6 @@
         </div>
     </div>
     
-    <div class="overlay"></div>
+    <div class="overlay" style="display:none;"></div>
   </body>
 </html>

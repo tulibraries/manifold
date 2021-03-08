@@ -1,0 +1,3 @@
+<% if field.data.attached? %>
+	<%= link_to field.data.attachment.filename, url_for(field.data.attachment), disposition: "attachment" %><br />
+<% end %>

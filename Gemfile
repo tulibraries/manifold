@@ -59,6 +59,7 @@ gem "friendly_id", "~> 5.4.2"
 gem "action-draft"
 gem "webpacker"
 gem "image_processing", "~> 1.2"
+gem "carrierwave", "~> 2.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

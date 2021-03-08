@@ -48,6 +48,7 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
       visit("/admin/collections/#{@collection.id}/edit")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Collection")
+      visit("/admin/collections/#{@collection.id}/edit")
       expect(page).to_not have_content(@collection.description.body.to_trix_html)
       expect(page).to have_content(new_description)
     end

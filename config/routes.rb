@@ -58,12 +58,14 @@ Rails.application.routes.draw do
     resource :buildings, :categories, :collections, :events, :exhibitions, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
       member do
         get ":id/detach" => :detach
+        get ":id/detach_epub" => :detach_epub
       end
     end
 
     resource :buildings, :categories, :collections, :events, :exhibitions, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
       member do
         post "detach" => :detach
+        post "detach_epub" => :detach_epub
       end
     end
 
@@ -97,7 +99,7 @@ Rails.application.routes.draw do
   resources :policies, only: [:index, :show]
   resources :services, only: [:index, :show], concerns: [:imageable]
   resources :spaces, only: [:index, :show], concerns: [:imageable]
-  resources :webpages, only: [:index, :show]
+  resources :webpages, only: [:index, :show, :epub]
 
   get "forms", to: "forms#all", as: "forms_index"
   get "forms/*type", to: "forms#new"
@@ -122,7 +124,7 @@ Rails.application.routes.draw do
   controller :webpages do
     get "scrc" => :scrc, as: "webpages_scrc"
     get "blockson" => :blockson, as: "webpages_blockson"
-    get "epub" => :epub, as: "webpages_epub"
+    get "epub/webpages/:id" => :epub, as: "webpages_epub"
     get "ambler" => :ambler, as: "webpages_ambler"
     get "hsl" => :hsl, as: "webpages_hsl"
     get "contact-us" => :contact, as: "webpages_contact"

@@ -227,7 +227,10 @@ class WebpagesController < ApplicationController
   end
 
   def epub
-    @file = params[:file]
+    @webpage = Webpage.find(params[:id])
+    # binding.pry
+
+    render layout: false
   end
 
   private

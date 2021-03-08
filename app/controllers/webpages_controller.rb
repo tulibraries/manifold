@@ -230,8 +230,6 @@ class WebpagesController < ApplicationController
 
   def epub
     @webpage = Webpage.find(params[:id])
-    # binding.pry
-
     render layout: false
   end
 

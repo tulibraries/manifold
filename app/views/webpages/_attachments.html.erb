@@ -19,8 +19,6 @@
     <ul class="list-unstyled">
       <li>
         <%= link_to @webpage.epub_identifier, webpages_epub_url %>
-        <%# link_to @webpage.epub_identifier, "#{root_path}epub/#{@webpage.epub_identifier}", 
-                    target: "_blank", title: "Opens in New Window" if @webpage.epub_identifier %>
       </li>
     </ul>
 <% end %>

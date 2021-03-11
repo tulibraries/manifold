@@ -30,7 +30,7 @@
 /node_modules
 /yarn-error.log
 
-/public/assets
+# /public/assets
 /public/sitemap.xml.gz
 .byebug_history
 tags

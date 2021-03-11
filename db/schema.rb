@@ -490,7 +490,6 @@ ActiveRecord::Schema.define(version: 2021_03_08_174527) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.bigint "external_link_id"
-    t.string "covid_alert"
     t.string "epub"
     t.index ["external_link_id"], name: "index_webpages_on_external_link_id"
     t.index ["group_id"], name: "index_webpages_on_group_id"

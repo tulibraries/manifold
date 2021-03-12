@@ -1,0 +1,54 @@
+{
+  "application.js": "/packs-test/js/application-f2c013d96df5d21dc3ca.js",
+  "application.js.map": "/packs-test/js/application-f2c013d96df5d21dc3ca.js.map",
+  "application_BACKUP_5663.js": "/packs-test/js/application_BACKUP_5663-ea039ec0d05f1e65fb31.js",
+  "application_BACKUP_5663.js.map": "/packs-test/js/application_BACKUP_5663-ea039ec0d05f1e65fb31.js.map",
+  "application_BASE_5663.js": "/packs-test/js/application_BASE_5663-4b15bed6f3175c7e2197.js",
+  "application_BASE_5663.js.map": "/packs-test/js/application_BASE_5663-4b15bed6f3175c7e2197.js.map",
+  "application_LOCAL_5663.js": "/packs-test/js/application_LOCAL_5663-685b4afff22f9486ebee.js",
+  "application_LOCAL_5663.js.map": "/packs-test/js/application_LOCAL_5663-685b4afff22f9486ebee.js.map",
+  "application_REMOTE_5663.js": "/packs-test/js/application_REMOTE_5663-b1c2405a518b3850a4f1.js",
+  "application_REMOTE_5663.js.map": "/packs-test/js/application_REMOTE_5663-b1c2405a518b3850a4f1.js.map",
+  "entrypoints": {
+    "application_BACKUP_5663": {
+      "js": [
+        "/packs-test/js/application_BACKUP_5663-ea039ec0d05f1e65fb31.js"
+      ],
+      "js.map": [
+        "/packs-test/js/application_BACKUP_5663-ea039ec0d05f1e65fb31.js.map"
+      ]
+    },
+    "application_BASE_5663": {
+      "js": [
+        "/packs-test/js/application_BASE_5663-4b15bed6f3175c7e2197.js"
+      ],
+      "js.map": [
+        "/packs-test/js/application_BASE_5663-4b15bed6f3175c7e2197.js.map"
+      ]
+    },
+    "application_LOCAL_5663": {
+      "js": [
+        "/packs-test/js/application_LOCAL_5663-685b4afff22f9486ebee.js"
+      ],
+      "js.map": [
+        "/packs-test/js/application_LOCAL_5663-685b4afff22f9486ebee.js.map"
+      ]
+    },
+    "application_REMOTE_5663": {
+      "js": [
+        "/packs-test/js/application_REMOTE_5663-b1c2405a518b3850a4f1.js"
+      ],
+      "js.map": [
+        "/packs-test/js/application_REMOTE_5663-b1c2405a518b3850a4f1.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs-test/js/application-f2c013d96df5d21dc3ca.js"
+      ],
+      "js.map": [
+        "/packs-test/js/application-f2c013d96df5d21dc3ca.js.map"
+      ]
+    }
+  }
+}

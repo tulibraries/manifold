@@ -1,0 +1,54 @@
+{
+  "application.js": "/packs/js/application-d8158e1e49272609d9a3.js",
+  "application.js.map": "/packs/js/application-d8158e1e49272609d9a3.js.map",
+  "application_BACKUP_5663.js": "/packs/js/application_BACKUP_5663-611445e30fed9d415bff.js",
+  "application_BACKUP_5663.js.map": "/packs/js/application_BACKUP_5663-611445e30fed9d415bff.js.map",
+  "application_BASE_5663.js": "/packs/js/application_BASE_5663-fb67291b35f40ed1709e.js",
+  "application_BASE_5663.js.map": "/packs/js/application_BASE_5663-fb67291b35f40ed1709e.js.map",
+  "application_LOCAL_5663.js": "/packs/js/application_LOCAL_5663-6151323a5705bd53b14a.js",
+  "application_LOCAL_5663.js.map": "/packs/js/application_LOCAL_5663-6151323a5705bd53b14a.js.map",
+  "application_REMOTE_5663.js": "/packs/js/application_REMOTE_5663-580b5a18e644cbe6ac9f.js",
+  "application_REMOTE_5663.js.map": "/packs/js/application_REMOTE_5663-580b5a18e644cbe6ac9f.js.map",
+  "entrypoints": {
+    "application_BACKUP_5663": {
+      "js": [
+        "/packs/js/application_BACKUP_5663-611445e30fed9d415bff.js"
+      ],
+      "js.map": [
+        "/packs/js/application_BACKUP_5663-611445e30fed9d415bff.js.map"
+      ]
+    },
+    "application_BASE_5663": {
+      "js": [
+        "/packs/js/application_BASE_5663-fb67291b35f40ed1709e.js"
+      ],
+      "js.map": [
+        "/packs/js/application_BASE_5663-fb67291b35f40ed1709e.js.map"
+      ]
+    },
+    "application_LOCAL_5663": {
+      "js": [
+        "/packs/js/application_LOCAL_5663-6151323a5705bd53b14a.js"
+      ],
+      "js.map": [
+        "/packs/js/application_LOCAL_5663-6151323a5705bd53b14a.js.map"
+      ]
+    },
+    "application_REMOTE_5663": {
+      "js": [
+        "/packs/js/application_REMOTE_5663-580b5a18e644cbe6ac9f.js"
+      ],
+      "js.map": [
+        "/packs/js/application_REMOTE_5663-580b5a18e644cbe6ac9f.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs/js/application-d8158e1e49272609d9a3.js"
+      ],
+      "js.map": [
+        "/packs/js/application-d8158e1e49272609d9a3.js.map"
+      ]
+    }
+  }
+}

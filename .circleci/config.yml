@@ -86,6 +86,9 @@ jobs:
           name: Brakeman
           command: bundle exec brakeman --no-pager
       - run:
+          name: Install ActionText
+          command: printf "n\nn\n"  | bundle exec rails action_text:install && git clean -f db
+      - run:
           name: Ruby tests
           command: bundle exec rspec
 

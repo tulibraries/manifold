@@ -41,18 +41,18 @@ RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/categories/#{@category.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"category_long_description\"]/text()[contains(., \"#{@category.long_description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"category_draft_long_description\"]/text()[contains(., \"#{@category.draft_long_description}\")]")
-      find("textarea#category_draft_long_description").set(new_long_description)
+      expect(page).to have_xpath("//div[@id=\"category_long_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@category.long_description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//trix-editor[@id=\"category_draft_long_description\"]")
+      find(:xpath, "//\*[starts-with(@id, \"category_draft_long_description_trix_input_category\")]", visible: false).set(new_long_description)
       click_button("Update Category")
+      expect(page).to have_content(@category.long_description.body.to_trix_html)
+      expect(page).to_not have_content(new_long_description)
       visit("/admin/categories/#{@category.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"category_long_description\"]/text()[contains(., \"#{@category.long_description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"category_draft_long_description\"]/text()[contains(., \"#{new_long_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Category")
       visit("/admin/categories/#{@category.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"category_long_description\"]/text()[contains(., \"#{@category.long_description}\")]")
-      expect(page).to have_xpath("//div[@id=\"category_long_description\"]/text()[contains(., \"#{new_long_description}\")]")
+      expect(page).to_not have_content(@category.long_description.body.to_trix_html)
+      expect(page).to have_content(new_long_description)
     end
   end
 
@@ -64,9 +64,10 @@ RSpec.feature "Dashboard::CategoryDrafts", type: :feature do
       login_as(@account, scope: :account)
       visit("/admin/categories/new")
       fill_in("Name", with: category.name)
-      fill_in("Long description", with: category.long_description)
+      find(:xpath, "//\*[@id=\"category_long_description_trix_input_category\"]", visible: false).set(category.long_description.body.to_trix_html)
       click_button("Create Category")
       expect(page).to have_content(category.name)
+      expect(page).to have_content(category.long_description.body.html_safe)
     end
   end
 end

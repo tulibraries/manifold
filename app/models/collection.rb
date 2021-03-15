@@ -12,7 +12,7 @@ class Collection < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  validates :name, :description, presence: true
+  validates :name, presence: true
 
   belongs_to :space
   belongs_to :external_link, optional: true
@@ -20,8 +20,9 @@ class Collection < ApplicationRecord
   has_many :collection_aids, dependent: :destroy
   has_many :finding_aids, through: :collection_aids
 
-  has_draft :description
-
+  has_rich_text :covid_alert
+  has_rich_text :description
+  has_rich_text :draft_description
 
   serialize :subject
 

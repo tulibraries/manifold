@@ -61,8 +61,4 @@ class AlertDashboard < Administrate::BaseDashboard
   # def display_resource(alert)
   #   "Alert ##{alert.id}"
   # end
-
-  def tinymce?
-    true
-  end
 end

@@ -30,11 +30,6 @@ RSpec.describe GroupSerializer do
     end
   end
 
-  describe "serialized_json" do
-    it "validates against the schema" do
-      pending "Need to find a better schema json ruby processor. Current one doesn't support json schema v0.7"
-      schema = open(Rails.root.join("app/schemas/group_schema.json")).read
-      expect(JSON::Validator.validate(schema, serialized.serialized_json)).to be true
-    end
-  end
+  it_behaves_like "serializer"
+
 end

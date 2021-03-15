@@ -17,6 +17,7 @@ class SpaceDashboard < BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
+    draft_description: DescriptionField.with_options(admin_only: true),
     hours: HoursField.with_options(admin_only: true),
     accessibility: Field::Text,
     image: PhotoField,
@@ -68,6 +69,7 @@ class SpaceDashboard < BaseDashboard
     :slug,
     :image,
     :description,
+    :draft_description,
     :external_link,
     :building,
     :email,
@@ -86,9 +88,6 @@ class SpaceDashboard < BaseDashboard
     "#{space.name}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
     super + [:draft_description, :publish]

@@ -40,18 +40,17 @@ RSpec.feature "Dashboard::ExhibitionDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/exhibitions/#{@exhibition.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"exhibition_description\"]/text()[contains(., \"#{@exhibition.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"exhibition_draft_description\"]/text()[contains(., \"#{@exhibition.draft_description}\")]")
-      find("textarea#exhibition_draft_description").set(new_description)
+      expect(page).to have_xpath("//div[@id=\"exhibition_description\"]/text()[contains(., \"#{@exhibition.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//trix-editor[@id=\"exhibition_draft_description\"]")
+      find(:xpath, "//\*[starts-with(@id, \"exhibition_draft_description_trix_input_exhibition\")]", visible: false).set(new_description)
       click_button("Update Exhibition")
+      expect(page).to have_content(@exhibition.description.body.to_trix_html)
+      expect(page).to_not have_content(new_description)
       visit("/admin/exhibitions/#{@exhibition.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"exhibition_description\"]/text()[contains(., \"#{@exhibition.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"exhibition_draft_description\"]/text()[contains(., \"#{new_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Exhibition")
-      visit("/admin/exhibitions/#{@exhibition.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"exhibition_description\"]/text()[contains(., \"#{@exhibition.description}\")]")
-      expect(page).to have_xpath("//div[@id=\"exhibition_description\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to_not have_content(@exhibition.description.body.to_trix_html)
+      expect(page).to have_content(new_description)
     end
   end
 end

@@ -15,8 +15,7 @@ class Event < ApplicationRecord
   belongs_to :space, optional: true
   belongs_to :person, optional: true
 
-  before_save :sanitize_description
-
+  has_rich_text :description
   serialize :tags
 
   def to_param  # overridden for tests

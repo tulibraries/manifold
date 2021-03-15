@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :event do
     slug { "lecture" }
     sequence(:title) { |n| "Event #{n}" }
-    description { "MyText" }
+    description { ActionText::Content.new("Hello World") }
     start_time { "2018-09-24 11:32:13" }
     end_time { "2018-09-24 11:32:13" }
     building { nil }

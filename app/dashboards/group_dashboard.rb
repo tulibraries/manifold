@@ -99,8 +99,4 @@ class GroupDashboard < BaseDashboard
     # super + [documents: []]
     super
   end
-
-  def tinymce?
-    true
-  end
 end

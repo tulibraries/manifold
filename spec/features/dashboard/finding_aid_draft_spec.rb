@@ -40,18 +40,17 @@ RSpec.feature "Dashboard::FindingAidDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/finding_aids/#{@finding_aid.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"findingaid_description\"]/text()[contains(., \"#{@finding_aid.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"finding_aid_draft_description\"]/text()[contains(., \"#{@finding_aid.draft_description}\")]")
-      find("textarea#finding_aid_draft_description").set(new_description)
+      expect(page).to have_xpath("//div[@id=\"findingaid_description\"]/text()[contains(., \"#{@finding_aid.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//trix-editor[@id=\"finding_aid_draft_description\"]")
+      find(:xpath, "//\*[starts-with(@id, \"finding_aid_draft_description_trix_input_finding_aid\")]", visible: false).set(new_description)
       click_button("Update Finding aid")
+      expect(page).to have_content(@finding_aid.description.body.to_trix_html)
+      expect(page).to_not have_content(new_description)
       visit("/admin/finding_aids/#{@finding_aid.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"findingaid_description\"]/text()[contains(., \"#{@finding_aid.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"finding_aid_draft_description\"]/text()[contains(., \"#{new_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Finding aid")
-      visit("/admin/finding_aids/#{@finding_aid.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"findingaid_description\"]/text()[contains(., \"#{@finding_aid.description}\")]")
-      expect(page).to have_xpath("//div[@id=\"findingaid_description\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to_not have_content(@finding_aid.description.body.to_trix_html)
+      expect(page).to have_content(new_description)
     end
   end
 end

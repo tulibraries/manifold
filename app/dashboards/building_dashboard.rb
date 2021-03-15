@@ -11,6 +11,7 @@ class BuildingDashboard < BaseDashboard
     id: Field::Number,
     name: Field::String,
     slug: Field::String,
+    draft_description: DescriptionField.with_options(admin_only: true),
     description: DescriptionField,
     address1: Field::String,
     address2: Field::String,
@@ -67,6 +68,7 @@ class BuildingDashboard < BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :slug,
+    :draft_description,
     :description,
     :external_link,
     :address1,
@@ -91,11 +93,8 @@ class BuildingDashboard < BaseDashboard
     "#{building.name}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
-    super + [:draft_description, :publish]
+    super + [:publish]
   end
 end

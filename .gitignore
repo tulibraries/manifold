@@ -23,6 +23,7 @@
 !/log/.keep
 !/tmp/.keep
 *.sw[p-z]
+.DS_Store
 
 # Ignore uploaded files in development
 /storage/*

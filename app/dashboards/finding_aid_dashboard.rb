@@ -13,6 +13,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
+    draft_description: DescriptionField.with_options(admin_only: true),
     slug: Field::String,
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
@@ -53,9 +54,11 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :content_link,
     :identifier,
     :path,
+    :description,
     :collections,
     :person,
     :categories,
+    :covid_alert,
     :updated_at,
   ].freeze
 
@@ -67,6 +70,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :slug,
     :identifier,
     :path,
+    :draft_description,
     :description,
     :collections,
     :subject,
@@ -79,13 +83,10 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how finding aids are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(finding_aid)
-    "#{finding_aid.name}"
+  def display_resource(findingaid)
+    "#{findingaid.name}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
     super + [:draft_description, :publish]

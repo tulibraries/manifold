@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem "rails", "~> 6.1.3"
 ruby "2.7.2"
 
 gem "timecop"
@@ -43,7 +44,6 @@ gem "paper_trail"
 gem "pg"
 gem "popper_js", "~> 1.16.0"
 gem "puma", "~> 5.2"
-gem "rails", "~> 6.1.3"
 gem "rswag-api"
 gem "rswag-ui"
 gem "sass-rails", "~> 6.0"
@@ -51,7 +51,6 @@ gem "simple_form"
 gem "sitemap_generator"
 gem "skylight"
 gem "sqlite3", "~> 1.3.13"
-gem "tinymce-rails", "~> 4.9"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"

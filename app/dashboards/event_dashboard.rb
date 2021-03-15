@@ -138,8 +138,4 @@ class EventDashboard < BaseDashboard
   def display_resource(event)
     "#{event.title}"
   end
-
-  def tinymce?
-    true
-  end
 end

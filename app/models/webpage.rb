@@ -10,7 +10,7 @@ class Webpage < ApplicationRecord
   include Validators
   extend FriendlyId
   include SchemaDotOrgable
-  mount_uploader :epub, EpubUploader
+  # mount_uploader :epub, EpubUploader
 
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged

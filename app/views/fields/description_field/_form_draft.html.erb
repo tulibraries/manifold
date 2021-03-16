@@ -7,15 +7,22 @@
   <div contenteditable="false"
       class="field-unit__field field-published field-description"
       id="<%= fieldname_in_draft(@requested_resource, field) %>">
-      
-      <%= field.resource.description if field.attribute == :description && field.resource.description.present? %>
+
+      <% if field.attribute == :description && field.resource.description.present? %>
+        <%= field.resource.description if field.data.class.to_s != "ActionText::RichText" %>
+        <%= field.data if field.data.class.to_s == "ActionText::RichText" %>
+      <% end %>
       
       <% if field.attribute == :long_description && field.resource.long_description.present?  %>
         <%= field.resource.long_description if field.data.class.to_s != "ActionText::RichText" %>
         <%= field.data if field.data.class.to_s == "ActionText::RichText" %>
       <% end %>
 
-      <%= field.resource.access_description if field.attribute == :access_description  && field.resource.access_description.present? %>
+      <% if field.attribute == :access_description  && field.resource.access_description.present? %>
+        <%= field.resource.access_description  if field.data.class.to_s != "ActionText::RichText" %>
+        <%= field.data if field.data.class.to_s == "ActionText::RichText" %>
+      <% end %>
+      
       <%= field.data if field.attribute == :covid_alert %>
       <%= field.data if field.attribute == :get_help %>
   </div>
@@ -30,6 +37,5 @@
 </div>
 <div class="field-unit__field field-draft">
   <%#x populate_drafts(field.attribute) %>
-
   <%= f.rich_text_area draft_name(field) %>
 </div>

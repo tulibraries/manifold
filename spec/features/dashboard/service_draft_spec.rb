@@ -23,7 +23,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
     end
   end
 
-  context "Don't show draftable if draftable feature flag clear", skip: "Does not behave as other specs" do
+  context "Don't show draftable if draftable feature flag clear" do
     scenario "disable draftable" do
       Rails.configuration.draftable = false
       login_as(@account, scope: :account)
@@ -32,10 +32,10 @@ RSpec.feature "ServiceDrafts", type: :feature do
     end
   end
 
-  context "Visit Service Administrate Page", skip: "Does not behave as other specs" do
+  context "Visit Service Administrate Page" do
     let(:new_description) { "Don't Panic!" }
 
-    scenario "Change the Service Description" do
+    scenario "Change the Service Description", skip: "Does not behave as other specs" do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/services/#{@service.id}/edit")

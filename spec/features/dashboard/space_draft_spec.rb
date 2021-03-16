@@ -40,7 +40,7 @@ RSpec.feature "Dashboard::SpaceDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/spaces/#{@space.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"space_description\"]/text()[contains(., \"#{@space.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"space_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@space.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"space_draft_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"space_draft_description_trix_input_space\")]", visible: false).set(new_description)
       click_button("Update Space")

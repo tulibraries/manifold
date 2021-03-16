@@ -40,7 +40,7 @@ RSpec.feature "Dashboard::FindingAidDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/finding_aids/#{@finding_aid.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"findingaid_description\"]/text()[contains(., \"#{@finding_aid.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"findingaid_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@finding_aid.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"finding_aid_draft_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"finding_aid_draft_description_trix_input_finding_aid\")]", visible: false).set(new_description)
       click_button("Update Finding aid")

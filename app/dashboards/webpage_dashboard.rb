@@ -27,7 +27,7 @@ class WebpageDashboard < Administrate::BaseDashboard
       order: "name",
       class_name: "FileUpload"
     ),
-    epub: EpubField,
+    # epub: EpubField,
     covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -70,7 +70,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     :layout,
     :external_link,
     :file_uploads,
-    :epub,
+    # :epub,
     :covid_alert
   ].freeze
 

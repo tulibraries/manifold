@@ -39,7 +39,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@service.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"service_description\"]/div[@class=\"trix-content\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@service.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"service_draft_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"service_draft_description_trix_input_service\")]", visible: false).set(new_description)
       click_button("Update Service")

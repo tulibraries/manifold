@@ -40,7 +40,7 @@ RSpec.feature "Dashboard::WebPageDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/webpages/#{@webpage.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"webpage_description\"]/text()[contains(., \"#{@webpage.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"webpage_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@webpage.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"webpage_draft_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"webpage_draft_description_trix_input_webpage\")]", visible: false).set(new_description)
       click_button("Update Webpage")

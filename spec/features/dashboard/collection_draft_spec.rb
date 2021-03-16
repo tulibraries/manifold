@@ -39,7 +39,7 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/collections/#{@collection.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"collection_description\"]/text()[contains(., \"#{@collection.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"collection_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@collection.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"collection_draft_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"collection_draft_description_trix_input_collection\")]", visible: false).set(new_description)
       click_button("Update Collection")

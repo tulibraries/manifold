@@ -23,7 +23,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
     end
   end
 
-  context "Don't show draftable if draftable feature flag clear", skip: "Does not behave as other specs" do
+  context "Don't show draftable if draftable feature flag clear" do
     scenario "disable draftable" do
       Rails.configuration.draftable = false
       login_as(@account, scope: :account)
@@ -32,14 +32,15 @@ RSpec.feature "ServiceDrafts", type: :feature do
     end
   end
 
-  context "Visit Service Administrate Page", skip: "Does not behave as other specs" do
+  context "Visit Service Administrate Page" do
     let(:new_description) { "Don't Panic!" }
+    let(:new_access_description) { "Don't Jump! We need you!" }
 
     scenario "Change the Service Description" do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_description\"]/div[@class=\"trix-content\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@service.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"service_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@service.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"service_draft_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"service_draft_description_trix_input_service\")]", visible: false).set(new_description)
       click_button("Update Service")
@@ -52,11 +53,11 @@ RSpec.feature "ServiceDrafts", type: :feature do
       expect(page).to have_content(new_description)
     end
 
-    scenario "Change the Service Access Description", skip: "Does not behave as other specs" do
+    scenario "Change the Service Access Description" do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@service.access_description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"service_draft_access_description\"]")
       find(:xpath, "//\*[starts-with(@id, \"service_draft_access_description_trix_input_service\")]", visible: false).set(new_access_description)
       click_button("Update Service")

@@ -108,7 +108,7 @@
                     <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
                     <% end %>
                   </ul>
-              <% end %>
+              <% end if @about_items.present? %>
               </ul>
             </div>
         </div>
@@ -135,7 +135,7 @@
                     <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
                     <% end %>
                   </ul>
-              <% end %>
+              <% end if @visit_items.present? %>
               </ul>
             </div>
         </div>
@@ -162,7 +162,7 @@
                     <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
                     <% end %>
                   </ul>
-              <% end %>
+              <% end if @research_items.present? %>
               </ul>
             </div>
         </div>

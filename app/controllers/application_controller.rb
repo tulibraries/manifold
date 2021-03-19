@@ -9,7 +9,17 @@ class ApplicationController < ActionController::Base
   before_action :get_alert
   before_action :set_paper_trail_whodunnit
   before_action :locations, :set_dates, :set_location
-  before_action :show_hours
+  before_action :show_hours, :menu_items
+
+  def menu_items
+    @about_items = Category.find_by(slug: "about-page").items
+    @visit_items = Category.find_by(slug: "visit").items
+    @research_items = Category.find_by(slug: "research-services").items
+    @quick_links = []
+    @quick_links << ExternalLink.find_by(slug: "ezborrow")
+    @quick_links << ExternalLink.find_by(slug: "illiad")
+    @quick_links << ExternalLink.find_by(slug: "refworks")
+  end
 
   def get_alert
     @alert = Alert.where(published: true).where(for_header: false)

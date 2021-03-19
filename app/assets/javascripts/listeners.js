@@ -66,3 +66,7 @@ $(document).ready(function(){
 	  
   }, 2000);
 });
+
+$("#visitMenuButton").click(function(event) {
+  event.preventDefault();
+});

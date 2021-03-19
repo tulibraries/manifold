@@ -1,8 +1,8 @@
 $(document).ready(function() {  
-  $(window).width() < 1040 ? mobile() : desktop();
+  $(window).width() < 1200 ? mobile() : desktop();
 });
 $(window).resize(function() {  
-  $(window).width() < 1040 ? mobile() : desktop();
+  $(window).width() < 1200 ? mobile() : desktop();
 });
 
 function desktop () {

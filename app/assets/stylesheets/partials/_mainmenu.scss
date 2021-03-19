@@ -39,6 +39,12 @@
 		margin: auto;
 		margin-bottom: 0;
 	}
+	.dropdown-toggle.disabled {
+		display:inline-block;
+		background-color: transparent;
+		border: 0;
+		opacity: 1;
+	}
 	.dropdownToggle:after {
 		display: inline-block;
 		margin-left: 1rem;

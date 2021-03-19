@@ -88,8 +88,7 @@
 
         <div class="btn-group ml-2 dropdown">
             <%= button_tag t("manifold.header.about"),
-                        {id: "aboutMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle", 
-                        style: "display:inline-block;background-color:transparent;border:0;", 
+                        {id: "aboutMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2" id="about-links" style="columns:3;width: 1200px;">
@@ -116,8 +115,7 @@
 
          <div class="btn-group ml-2 dropdown">
             <%= button_tag t("manifold.header.visit"),
-                        {id: "visitMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle", 
-                        style: "display:inline-block;background-color:transparent;border:0;", 
+                        {id: "visitMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled",
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2" id="visit-links" style="columns:3;width: 1200px;">
@@ -143,9 +141,8 @@
         </div>
 
        <div class="btn-group ml-2 dropdown">
-            <%= button_tag t("manifold.header.research"),
-                        {id: "researchMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle", 
-                        style: "display:inline-block;background-color:transparent;border:0;", 
+            <%= button_tag t("manifold.header.research"), 
+                        {id: "researchMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2" id="research-links" style="columns:3;width: 1200px;">

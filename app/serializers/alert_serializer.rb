@@ -7,5 +7,5 @@ class AlertSerializer
     Rails.application.routes.url_helpers
   end
 
-  attributes :published, :scroll_text, :link, :description, :updated_at
+  attributes :published, :scroll_text, :link, :for_header, :description, :updated_at
 end

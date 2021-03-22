@@ -82,21 +82,100 @@
     </div>
   </div> <!-- #header -->
 
+
   <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
     <div class="container nav-container">
-      <ul class="list-unstyled">
-        <li class="<% if action_name == 'about' %>active<% end %>">
-          <%= link_to t("manifold.header.about"), webpages_about_path %>
-        </li>
-        <li class="<% if action_name == 'visit' %>active<% end %>">
-          <%= link_to t("manifold.header.visit"), webpages_visit_path %>
-        </li>
-        <li class="<% if action_name == 'research' %>active<% end %>">
-          <%= link_to t("manifold.header.research"), webpages_research_path %>
-        </li>
-        <li class="<% if action_name == 'contact' %>active<% end %>">
-          <%= link_to t("manifold.header.contact"), webpages_contact_path %>
-        </li>
+
+        <div class="btn-group ml-2 dropdown">
+            <%= button_tag t("manifold.header.about"),
+                        {id: "aboutMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
+                        "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+                        method: :get} %>
+            <div class="dropdown-menu p-2" id="about-links" style="columns:3;width: 1200px;">
+            <ul class="list-unstyled">
+              <% @about_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
+                <% if index == 2 %>
+                <li><h2 style="color:#903;text-decoration: underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
+                  <ul class="list-unstyled">
+                    <% @quick_links.each do |ql| %>
+                    <li><%= link_to ql.label, ql.link, style: "color: black" %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
+                  <ul class="list-unstyled">
+                    <% item.items.each do |page| %>
+                    <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
+                    <% end %>
+                  </ul>
+              <% end if @about_items.present? %>
+              </ul>
+            </div>
+        </div>
+
+         <div class="btn-group ml-2 dropdown">
+            <%= button_tag t("manifold.header.visit"),
+                        {id: "visitMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled",
+                        "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+                        method: :get} %>
+            <div class="dropdown-menu p-2" id="visit-links" style="columns:3;width: 1200px;">
+            <ul class="list-unstyled">
+              <% @visit_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
+                <% if index == 2 %>
+                <li><h2 style="color:#903;text-decoration: underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
+                  <ul class="list-unstyled">
+                    <% @quick_links.each do |ql| %>
+                    <li><%= link_to ql.label, ql.link, style: "color: black" %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
+                  <ul class="list-unstyled">
+                    <% item.items.each do |page| %>
+                    <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
+                    <% end %>
+                  </ul>
+              <% end if @visit_items.present? %>
+              </ul>
+            </div>
+        </div>
+
+       <div class="btn-group ml-2 dropdown">
+            <%= button_tag t("manifold.header.research"), 
+                        {id: "researchMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
+                        "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+                        method: :get} %>
+            <div class="dropdown-menu p-2" id="research-links" style="columns:3;width: 1200px;">
+            <ul class="list-unstyled">
+              <% @research_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
+                <% if index == 1 %>
+                <li><h2 style="color:#903;text-decoration: underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
+                  <ul class="list-unstyled">
+                    <% @quick_links.each do |ql| %>
+                    <li><%= link_to ql.label, ql.link, style: "color: black" %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
+                  <ul class="list-unstyled">
+                    <% item.items.each do |page| %>
+                    <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
+                    <% end %>
+                  </ul>
+              <% end if @research_items.present? %>
+              </ul>
+            </div>
+        </div>
+
+        <div class="btn-group ml-2">
+          <ul class="list-unstyled" style="display:inline-block;">
+          <li class="<% if action_name == 'contact' %>active<% end %>">
+            <%= link_to t("manifold.header.contact"), webpages_contact_path %>
+          </li>
+          </ul>
+        </div>
+
+      <ul class="list-unstyled nav-right-links">
         <li class="nav-right hours-nav<% if controller_name == 'library_hours' %> active<% end %>">
           <%= link_to t("manifold.header.hours"), hours_path %>
         </li>
@@ -109,6 +188,9 @@
       </ul>
     </div>
   </div>
+
+
+
   <div class="row d-block d-sm-block d-md-block d-lg-none text-center" id="mobile-search-container">
     <%= render "mobile-search" %>
   </div>

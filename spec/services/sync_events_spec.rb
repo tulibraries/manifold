@@ -115,13 +115,9 @@ RSpec.describe SyncService::Events, type: :service do
       expect(students_event).to be
     end
 
-    it "it attaches images to records" do
-      begin
-        expect(students_event.image.attached?).to be true
-      rescue => e
-        e.message
-      end
-
+    xit "it attaches images to records" do
+      # university server housing these images randomly gives a 403 forbidden error
+      expect(students_event.image.attached?).to be true
     end
   end
 

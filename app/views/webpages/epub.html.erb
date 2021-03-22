@@ -9,19 +9,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag '/assets/reader/js/hooks.min.js' %>
-    <%= javascript_include_tag '/assets/reader/js/libs/jquery.min.js' %>
-    <%= javascript_include_tag '/assets/reader/js/libs/zip.min.js' %>
-    <%= javascript_include_tag '/assets/reader/js/libs/screenfull.min.js' %>
-    <%= javascript_include_tag '/assets/reader/js/epub.min.js' %>
-    <%= javascript_include_tag '/assets/reader/js/reader.min.js' %>
+    <%= javascript_include_tag '/reader/js/hooks.min.js' %>
+    <%= javascript_include_tag '/reader/js/libs/jquery.min.js' %>
+    <%= javascript_include_tag '/reader/js/libs/zip.min.js' %>
+    <%= javascript_include_tag '/reader/js/libs/screenfull.min.js' %>
+    <%= javascript_include_tag '/reader/js/epub.min.js' %>
+    <%= javascript_include_tag '/reader/js/reader.min.js' %>
 
     <script>
         "use strict";
         document.onreadystatechange = function () {
           if (document.readyState == "complete") {
-            EPUBJS.filePath = "<%= '/assets/reader/js' %>";
-            EPUBJS.cssPath = "<%= '/assets/reader/css' %>";
+            EPUBJS.filePath = "<%= '/reader/js' %>";
+            EPUBJS.cssPath = "<%= '/reader/css' %>";
             //fileStorage.filePath = EPUBJS.filePath;
             window.reader = ePubReader("<%= root_path+'epub/webpages/'+@webpage.id.to_s+'/'+@webpage.epub_identifier %>", {});
           }
@@ -29,9 +29,9 @@
     </script>
     
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag '/assets/reader/css/normalize.css' %>
-    <%= stylesheet_link_tag '/assets/reader/css/main.css' %>
-    <%= stylesheet_link_tag '/assets/reader/css/popup.css' %>
+    <%= stylesheet_link_tag '/reader/css/normalize.css' %>
+    <%= stylesheet_link_tag '/reader/css/main.css' %>
+    <%= stylesheet_link_tag '/reader/css/popup.css' %>
 
   </head>
   <body>

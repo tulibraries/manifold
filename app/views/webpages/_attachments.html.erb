@@ -14,13 +14,11 @@
   <% end %>
 <% end %>
 
-<%# if @webpage.epub.present? %>
-<!-- 
+<% if @webpage.epub.present? %>
   <h2><%= t("manifold.webpages.attachments.epub_files") %></h2>
     <ul class="list-unstyled">
       <li>
-        <%# link_to @webpage.epub_identifier, webpages_epub_url %>
+        <%= link_to @webpage.epub_identifier, webpages_epub_path %>
       </li>
     </ul>
-  -->
-<%# end %>
+<% end %>

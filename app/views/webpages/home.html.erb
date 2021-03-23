@@ -93,14 +93,17 @@
 						</div>
 			    <% end %>
 				</div>
-				<div class="quicklinks" style="background-color:#fff;height:213px;font-family:Roboto;">
-					<ul class="list-unstyled" style="padding:2px 14px;margin-bottom:1px;line-height: 2.5rem">
-						<li style="font-size:x-large;border-bottom:solid #ccc 1px;">EZBorrow</li>
-						<li style="font-size:x-large;border-bottom:solid #ccc 1px;">Illiad</li>
-						<li style="font-size:x-large;border-bottom:solid #ccc 1px;">Refworks</li>
-						<li style="font-size:x-large;">Find by Citation</li>
+				<div class="quicklinks">
+					<div class="d-block d-lg-none quicklinks-caption">
+						<%= "Quick Links" %>
+					</div>
+					<ul class="list-unstyled">
+						<li class="quicklinks-link"><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
+						<li class="quicklinks-link"><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
+						<li class="quicklinks-link"><%= link_to t("manifold.footer.refworks_link"), "/refworks" %></li>
+						<li class="quicklinks-link"><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
 					</ul>
-					<div class="caption text-right pr-4 pt-2" id="newsscaption">
+					<div class="d-none d-lg-block quicklinks-caption text-right pr-4 pt-2">
 						<%= "Quick Links" %>
 					</div>
 				</div>

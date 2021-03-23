@@ -1,6 +1,6 @@
 <% unless @news_items.nil? %>
   <% @news_items.each do |item| %>
-		<div class="col-12 col-lg-4 library-news">
+		<div class="col-12 col-lg-4 mb-3 library-news">
 			<% if item.image.attached?  %>
 			<%= link_to (image_tag item.custom_image(350, 250), class: "decorative", alt: ""), strip_tags(item.link) %>
 			<% end %>

@@ -93,14 +93,16 @@
 						</div>
 			    <% end %>
 				</div>
-				<div class="news">
-					<%= link_to news_path, id: "news" do %>
-			      <%= image_tag('library-news-banner.jpg', class: "d-none d-lg-block decorative", alt: "") %>
-			      <%= image_tag('newspaper.png', class: "d-inline d-lg-none decorative", alt: "") %>
-			      <div class="caption" id="newscaption">
-							<span class="lynde"><%= t("manifold.webpages.home.links.main.news") %></span>
-						</div>
-			    <% end %>
+				<div class="quicklinks" style="background-color:#fff;height:213px;font-family:Roboto;">
+					<ul class="list-unstyled" style="padding:2px 14px;margin-bottom:1px;line-height: 2.5rem">
+						<li style="font-size:x-large;border-bottom:solid #ccc 1px;">EZBorrow</li>
+						<li style="font-size:x-large;border-bottom:solid #ccc 1px;">Illiad</li>
+						<li style="font-size:x-large;border-bottom:solid #ccc 1px;">Refworks</li>
+						<li style="font-size:x-large;">Find by Citation</li>
+					</ul>
+					<div class="caption text-right pr-4 pt-2" id="newsscaption">
+						<%= "Quick Links" %>
+					</div>
 				</div>
 			</div>
 			<div class="col-12 col-lg-3 locations-links px-0">
@@ -117,8 +119,14 @@
 		</div>
 	</div>
 </div>
-
-
+</div>
 </div>
 
+<div>
+	<div class="container">
+	<h2 class="text-center" style="font-size:300%;margin-bottom: 42px">Library News</h2>
+		<div class="row">
+		<%= render "featured" %>
+		</div>
+	</div>
 </div>

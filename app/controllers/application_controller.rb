@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def menu_items
     @about_items = Category.find_by(slug: "about-page").items if Category.find_by(slug: "about-page").present?
     @visit_items = Category.find_by(slug: "visit").items if Category.find_by(slug: "visit").present?
-    @research_items = Category.find_by(slug: "research-services").items if Category.find_by(slug: "research_services").present?
+    @research_items = Category.find_by(slug: "research-services").items if Category.find_by(slug: "research-services").present?
     @quick_links = []
     @quick_links << ExternalLink.find_by(slug: "ezborrow")
     @quick_links << ExternalLink.find_by(slug: "illiad")

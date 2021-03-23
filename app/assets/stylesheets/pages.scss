@@ -495,3 +495,22 @@
 .minipage .left-links .covid-alert {
   padding: 14px;
 }
+.library-news-caption {
+	font-family: roboto;
+	a {
+	display: inline-block;
+	margin-top: 14px;
+	font-size: 1.25rem;
+	font-weight:600;
+	}
+	.unnecessary-link a.read-more {
+		display: inline-block;
+		float: right;
+		margin-right: 28px;
+		padding: 7px 10px;
+		background-color: $black;
+		color: $white;
+		font-size: 1rem;
+		letter-spacing: .17rem;
+	}
+}

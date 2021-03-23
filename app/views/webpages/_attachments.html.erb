@@ -1,24 +1,23 @@
 <% if @webpage.file_uploads.present? %>
   <% if @webpage.file_uploads.any? { |fu| fu.file.content_type == "application/pdf" } %>
-    <h2><%= t("manifold.webpages.attachments.pdf_files") %></h2>
       <ul class="list-unstyled">
       <% @webpage.file_uploads.each do |fu| %>
         <% if fu.file.content_type == "application/pdf" %>
-          <li>
-            <%= image_tag "pdf.png", class: "decorative", alt: "", style: "width:42px" %> 
-            <%= link_to fu.name, url_for(fu.file), disposition: "attachment" %>
+          <li class="press-button">
+            <%= link_to "Download PDF", url_for(fu.file), disposition: "attachment" %>
           </li>
       <% end %>
     <% end %>
-    </ul>
+    <% "</ul>" unless @webpage.epub.present? %>
   <% end %>
 <% end %>
 
 <% if @webpage.epub.present? %>
-  <h2><%= t("manifold.webpages.attachments.epub_files") %></h2>
-    <ul class="list-unstyled">
-      <li>
-        <%= link_to @webpage.epub_identifier, webpages_epub_path %>
+      <li class="press-button">
+        <%= link_to "Download ePub", @webpage.epub.file.file, disposition: "attachment" %>
+      </li>
+      <li class="press-button">
+        <%= link_to "Read it Online", webpages_epub_path %>
       </li>
     </ul>
 <% end %>

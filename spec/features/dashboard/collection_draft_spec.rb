@@ -48,7 +48,8 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
       visit("/admin/collections/#{@collection.id}/edit")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Collection")
-      expect(page).to_not have_css "div.trix-content", text: @collection.description.body.to_trix_html
+      binding.pry
+      expect(page).to_not have_css("div.trix-content", text: @collection.description.body.to_trix_html, match: :first)
       expect(page).to have_css "div.trix-content", text: new_description
     end
   end

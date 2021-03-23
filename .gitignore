@@ -33,6 +33,7 @@
 
 # /public/assets
 /public/sitemap.xml.gz
+/public/epub
 .byebug_history
 tags
 .tags*

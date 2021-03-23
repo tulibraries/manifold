@@ -4,8 +4,7 @@
       <% @webpage.file_uploads.each do |fu| %>
         <% if fu.file.content_type == "application/pdf" %>
           <li class="press-button">
-            <%= image_tag "pdf.png", class: "decorative", alt: "", style: "width:42px" %> 
-            <%= link_to fu.name, url_for(fu.file), disposition: "attachment" %>
+            <%= link_to "Download PDF", url_for(fu.file), disposition: "attachment" %>
           </li>
       <% end %>
     <% end %>
@@ -15,10 +14,10 @@
 
 <% if @webpage.epub.present? %>
       <li class="press-button">
-        <%= link_to "Read it Online", webpages_epub_path %>
+        <%= link_to "Download ePub", @webpage.epub.file.file, disposition: "attachment" %>
       </li>
       <li class="press-button">
-        <%= link_to "Download ePub", @webpage.epub.file.file, disposition: "attachment" %>
+        <%= link_to "Read it Online", webpages_epub_path %>
       </li>
     </ul>
 <% end %>

@@ -495,3 +495,52 @@
 .minipage .left-links .covid-alert {
   padding: 14px;
 }
+.library-news-caption {
+	font-family: roboto;
+	a {
+	display: inline-block;
+	margin-top: 14px;
+	font-size: 1.25rem;
+	font-weight:600;
+	}
+	.unnecessary-link a.read-more {
+		display: inline-block;
+		float: right;
+		margin-right: 28px;
+		padding: 7px 10px;
+		background-color: $black;
+		color: $white;
+		font-size: 1rem;
+		letter-spacing: .15rem;
+	}
+}
+#news-events {
+	h2 {
+		font-size:300%;
+		margin-bottom: 42px;
+		margin-top: 84px;
+	}
+}
+.home-events-row {
+	margin-bottom: 84px;
+}
+.library-event:first-of-type {
+		border-right: solid $red 1px;
+	}
+	.library-event:last-of-type {
+			border-left: solid $red 1px;
+		}
+.library-event {
+	font-family: roboto;
+	padding: 35px;
+	.event-title {
+		font-size: 120%;
+	}
+	.event-date {
+		background-color: gold;
+		padding: 7px;
+		padding-left: 14px;
+		width: 100%;
+		margin-top: 21px;
+	}
+}

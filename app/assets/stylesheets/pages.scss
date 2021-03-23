@@ -514,6 +514,13 @@
 		letter-spacing: .15rem;
 	}
 }
+#news-events {
+	h2 {
+		font-size:300%;
+		margin-bottom: 42px;
+		margin-top: 84px;
+	}
+}
 .home-events-row {
 	margin-bottom: 84px;
 }
@@ -526,6 +533,9 @@
 .library-event {
 	font-family: roboto;
 	padding: 35px;
+	.event-title {
+		font-size: 120%;
+	}
 	.event-date {
 		background-color: gold;
 		padding: 7px;

@@ -511,6 +511,26 @@
 		background-color: $black;
 		color: $white;
 		font-size: 1rem;
-		letter-spacing: .17rem;
+		letter-spacing: .15rem;
+	}
+}
+.home-events-row {
+	margin-bottom: 84px;
+}
+.library-event:first-of-type {
+		border-right: solid $red 1px;
+	}
+	.library-event:last-of-type {
+			border-left: solid $red 1px;
+		}
+.library-event {
+	font-family: roboto;
+	padding: 35px;
+	.event-date {
+		background-color: gold;
+		padding: 7px;
+		padding-left: 14px;
+		width: 100%;
+		margin-top: 21px;
 	}
 }

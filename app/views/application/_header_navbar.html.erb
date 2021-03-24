@@ -95,11 +95,9 @@
             <ul class="list-unstyled">
               <% @about_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
                 <% if index == 2 %>
-                <li><h2 style="color:#903;text-decoration: underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
+                <li><h2 style="color:#903;text-decoration:underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
                   <ul class="list-unstyled">
-                    <% @quick_links.each do |ql| %>
-                    <li><%= link_to ql.label, ql.link, style: "color: black" %></li>
-                    <% end %>
+                    <%= render "quicklinks" %>
                   </ul>
                 <% end %>
                 <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
@@ -124,9 +122,7 @@
                 <% if index == 2 %>
                 <li><h2 style="color:#903;text-decoration: underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
                   <ul class="list-unstyled">
-                    <% @quick_links.each do |ql| %>
-                    <li><%= link_to ql.label, ql.link, style: "color: black" %></li>
-                    <% end %>
+                    <%= render "quicklinks" %>
                   </ul>
                 <% end %>
                 <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
@@ -151,9 +147,7 @@
                 <% if index == 1 %>
                 <li><h2 style="color:#903;text-decoration: underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
                   <ul class="list-unstyled">
-                    <% @quick_links.each do |ql| %>
-                    <li><%= link_to ql.label, ql.link, style: "color: black" %></li>
-                    <% end %>
+                    <%= render "quicklinks" %>
                   </ul>
                 <% end %>
                 <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>

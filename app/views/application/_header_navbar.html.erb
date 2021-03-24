@@ -91,21 +91,14 @@
                         {id: "aboutMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
-            <div class="dropdown-menu p-2" id="about-links" style="columns:3;width: 1200px;">
+            <div class="dropdown-menu p-2" id="about-links">
             <ul class="list-unstyled">
               <% @about_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
+                <% next if item.slug == "about-page" %>
                 <% if index == 2 %>
-                <li><h2 style="color:#903;text-decoration:underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
-                  <ul class="list-unstyled">
-                    <%= render "quicklinks" %>
-                  </ul>
+                  <%= render "quicklinks" %>
                 <% end %>
-                <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
-                  <ul class="list-unstyled">
-                    <% item.items.each do |page| %>
-                    <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
-                    <% end %>
-                  </ul>
+                <%= render "menu-items", item: item  %>
               <% end if @about_items.present? %>
               </ul>
             </div>
@@ -116,21 +109,13 @@
                         {id: "visitMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled",
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
-            <div class="dropdown-menu p-2" id="visit-links" style="columns:3;width: 1200px;">
+            <div class="dropdown-menu p-2" id="visit-links">
             <ul class="list-unstyled">
               <% @visit_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
                 <% if index == 2 %>
-                <li><h2 style="color:#903;text-decoration: underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
-                  <ul class="list-unstyled">
-                    <%= render "quicklinks" %>
-                  </ul>
+                  <%= render "quicklinks" %>
                 <% end %>
-                <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
-                  <ul class="list-unstyled">
-                    <% item.items.each do |page| %>
-                    <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
-                    <% end %>
-                  </ul>
+                <%= render "menu-items", item: item  %>
               <% end if @visit_items.present? %>
               </ul>
             </div>
@@ -141,21 +126,13 @@
                         {id: "researchMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
-            <div class="dropdown-menu p-2" id="research-links" style="columns:3;width: 1200px;">
+            <div class="dropdown-menu p-2" id="research-links">
             <ul class="list-unstyled">
               <% @research_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
                 <% if index == 1 %>
-                <li><h2 style="color:#903;text-decoration: underline;font-size:large;margin-top:.5rem;">Quick Links</h2></li>
-                  <ul class="list-unstyled">
-                    <%= render "quicklinks" %>
-                  </ul>
+                  <%= render "quicklinks" %>
                 <% end %>
-                <li><h2><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
-                  <ul class="list-unstyled">
-                    <% item.items.each do |page| %>
-                    <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
-                    <% end %>
-                  </ul>
+                <%= render "menu-items", item: item %>
               <% end if @research_items.present? %>
               </ul>
             </div>

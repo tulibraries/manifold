@@ -184,7 +184,7 @@ GEM
       loofah (>= 2.3.1)
       sax-machine (>= 1.0)
     ffaker (2.17.0)
-    ffi (1.14.2)
+    ffi (1.15.0)
     font-awesome-rails (4.7.0.7)
       railties (>= 3.2, < 7)
     formatador (0.2.5)
@@ -286,7 +286,7 @@ GEM
     launchy (2.5.0)
       addressable (~> 2.7)
     link_header (0.0.8)
-    listen (3.4.1)
+    listen (3.5.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lockbox (0.6.2)
@@ -630,7 +630,7 @@ DEPENDENCIES
   json-schema
   kaminari
   launchy
-  listen (>= 3.0.5, < 3.5)
+  listen (>= 3.0.5, < 3.6)
   lockbox
   mail_form
   meta-tags

@@ -115,7 +115,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.7.2)
+    bootsnap (1.7.3)
       msgpack (~> 1.0)
     bootstrap (4.6.0)
       autoprefixer-rails (>= 9.1.0)
@@ -292,7 +292,7 @@ GEM
     launchy (2.5.0)
       addressable (~> 2.7)
     link_header (0.0.8)
-    listen (3.4.1)
+    listen (3.5.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lockbox (0.6.2)
@@ -630,7 +630,7 @@ DEPENDENCIES
   google-analytics-rails (= 1.1.1)
   google-api-client (~> 0.53)
   guard-rspec
-  honeybadger (~> 4.7)
+  honeybadger (~> 4.8)
   httparty
   image_processing (~> 1.2)
   jbuilder (~> 2.11)
@@ -639,7 +639,7 @@ DEPENDENCIES
   json-schema
   kaminari
   launchy
-  listen (>= 3.0.5, < 3.5)
+  listen (>= 3.0.5, < 3.6)
   lockbox
   mail_form
   meta-tags

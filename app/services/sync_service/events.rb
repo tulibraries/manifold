@@ -15,7 +15,7 @@ class SyncService::Events
     @stdout = Logger.new(STDOUT)
     @eventsUrl = params.fetch(:events_url) || Rails.configuration.events_feed_url
     @force = params.fetch(:force, false)
-    @eventsDoc = Nokogiri::XML(open(@eventsUrl))
+    @eventsDoc = Nokogiri::XML(URI.open(@eventsUrl))
     stdout_and_log("Syncing events from #{@eventsUrl}")
   end
 

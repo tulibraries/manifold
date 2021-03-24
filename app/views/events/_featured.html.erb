@@ -13,7 +13,7 @@
       
       <strong><%= event.get_date %> | <%= event.set_start_time %></strong>
 
-      <p class="pt-2"><%= sanitize strip_tags(event.description.truncate(125)) %></p>
+      <p class="pt-2"><%= event.description.to_plain_text.truncate(125) %></p>
       
       <p>
         <% unless event.get_tags.nil? %>

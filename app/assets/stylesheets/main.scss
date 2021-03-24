@@ -19,7 +19,6 @@ html, body {
 }
 #wrapper {
 	background-color: $white;
-	overflow: hidden;
 	position: relative;
 	z-index: 100;
 	margin-top: 14px;
@@ -80,7 +79,6 @@ a.inline {
 #content {
 	margin: 0;
 	background-color: $white;
-	padding-bottom: 42px;
 }
 .home #content {
 	margin-top: 46px;
@@ -127,7 +125,7 @@ form {
 }
 .breadcrumbs {
 	margin-bottom: 17px;
-	color: #A50030
+	color: $red;
 }
 
 img {
@@ -151,7 +149,7 @@ marquee {
 .covid-alert {
 	font-family: 'Roboto';
 	background-color: #e5edf8;
-	border-top: solid #A50030 6px;
+	border-top: solid $red 6px;
 	margin-bottom: 14px;
 	padding: 10px 0;
   strong {
@@ -170,4 +168,14 @@ marquee {
 .covid-alert.home {
 	margin-bottom: 0;
 	margin-top: 4px;
+}
+
+.press-button {
+	border: outset #ccc 1px;
+	background-color: #fff !important;
+	padding: 10px;
+	border-radius: 7px;
+	vertical-align: middle;
+	display: inline-block;
+	margin-top: 14px;
 }

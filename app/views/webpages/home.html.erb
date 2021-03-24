@@ -93,14 +93,19 @@
 						</div>
 			    <% end %>
 				</div>
-				<div class="news">
-					<%= link_to news_path, id: "news" do %>
-			      <%= image_tag('library-news-banner.jpg', class: "d-none d-lg-block decorative", alt: "") %>
-			      <%= image_tag('newspaper.png', class: "d-inline d-lg-none decorative", alt: "") %>
-			      <div class="caption" id="newscaption">
-							<span class="lynde"><%= t("manifold.webpages.home.links.main.news") %></span>
-						</div>
-			    <% end %>
+				<div class="quicklinks">
+					<div class="d-block d-lg-none quicklinks-caption">
+						<%= "Quick Links" %>
+					</div>
+					<ul class="list-unstyled">
+						<li class="quicklinks-link"><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
+						<li class="quicklinks-link"><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
+						<li class="quicklinks-link"><%= link_to t("manifold.footer.refworks_link"), "/refworks" %></li>
+						<li class="quicklinks-link"><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
+					</ul>
+					<div class="d-none d-lg-block quicklinks-caption text-right pr-4 pt-2">
+						<%= "Quick Links" %>
+					</div>
 				</div>
 			</div>
 			<div class="col-12 col-lg-3 locations-links px-0">
@@ -117,8 +122,20 @@
 		</div>
 	</div>
 </div>
-
-
+</div>
 </div>
 
+<div id="news-events">
+	<div class="container">
+	<h2>Library News</h2>
+		<div class="row home-news-row">
+		<%= render "featured" %>
+		</div>
+
+	<h2>Events</h2>
+		<div class="row home-events-row">
+		<%= render "events" %>
+		</div>
+
+	</div>
 </div>

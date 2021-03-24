@@ -130,6 +130,8 @@ class WebpagesController < ApplicationController
   def home
     @todays_hours = LibraryHour.todays_hours_at("charles")
     @header_alert = Alert.where(published: true).find_by(for_header: true)
+    @news_items = Highlight.where(promoted: true).take(3)
+    @featured_events = Event.where(featured: true).order(:start_time).take(3)
   end
 
   def scrc

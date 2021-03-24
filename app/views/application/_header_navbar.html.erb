@@ -141,7 +141,9 @@
         <div class="btn-group ml-2">
           <ul class="list-unstyled" style="display:inline-block;">
           <li class="<% if action_name == 'contact' %>active<% end %>">
-            <%= link_to t("manifold.header.contact"), webpages_contact_path %>
+            <%= button_to t("manifold.header.contact"), webpages_contact_path, 
+                            {id: "researchMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
+                              method: :get}  %>
           </li>
           </ul>
         </div>

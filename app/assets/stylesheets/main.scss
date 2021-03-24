@@ -125,7 +125,7 @@ form {
 }
 .breadcrumbs {
 	margin-bottom: 17px;
-	color: #A50030
+	color: $red;
 }
 
 img {
@@ -149,7 +149,7 @@ marquee {
 .covid-alert {
 	font-family: 'Roboto';
 	background-color: #e5edf8;
-	border-top: solid #A50030 6px;
+	border-top: solid $red 6px;
 	margin-bottom: 14px;
 	padding: 10px 0;
   strong {

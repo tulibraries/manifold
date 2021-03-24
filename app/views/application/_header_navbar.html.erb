@@ -93,7 +93,7 @@
                         method: :get} %>
             <div class="dropdown-menu p-2" id="about-links">
             <ul class="list-unstyled">
-              <% @about_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
+              <% @about_items.each_with_index do |item, index| %>
                 <% next if item.slug == "about-page" %>
                 <% if index == 2 %>
                   <%= render "quicklinks" %>
@@ -111,7 +111,7 @@
                         method: :get} %>
             <div class="dropdown-menu p-2" id="visit-links">
             <ul class="list-unstyled">
-              <% @visit_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
+              <% @visit_items.each_with_index do |item, index| %>
                 <% if index == 2 %>
                   <%= render "quicklinks" %>
                 <% end %>
@@ -128,7 +128,7 @@
                         method: :get} %>
             <div class="dropdown-menu p-2" id="research-links">
             <ul class="list-unstyled">
-              <% @research_items.sort_by{|i| i.label}.each_with_index do |item, index| %>
+              <% @research_items.each_with_index do |item, index| %>
                 <% if index == 1 %>
                   <%= render "quicklinks" %>
                 <% end %>
@@ -141,7 +141,9 @@
         <div class="btn-group ml-2">
           <ul class="list-unstyled" style="display:inline-block;">
           <li class="<% if action_name == 'contact' %>active<% end %>">
-            <%= link_to t("manifold.header.contact"), webpages_contact_path %>
+            <%= button_to t("manifold.header.contact"), webpages_contact_path, 
+                            {id: "researchMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
+                              method: :get}  %>
           </li>
           </ul>
         </div>

@@ -520,11 +520,18 @@
 #news-events {
 	h2 {
 		font-size:300%;
+		margin-bottom: 0;
+		margin-top: 42px;
+	}
+	h2.news {
+		margin-top:0;
 		margin-bottom: 42px;
-		margin-top: 84px;
 	}
 }
 .home-events-row {
+	margin-bottom: 21px;
+}
+.home-news-row {
 	margin-bottom: 84px;
 }
 .library-event:first-of-type {

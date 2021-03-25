@@ -6,6 +6,5 @@
       
       <p><%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %></p>
 
-      <p><%= event.description.to_plain_text.truncate(250) %></p>
     </div>
   <% end %>

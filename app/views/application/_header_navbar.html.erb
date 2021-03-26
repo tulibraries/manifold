@@ -92,15 +92,20 @@
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2" id="about-links">
-            <ul class="list-unstyled">
+              <div class="row" style="padding-left:21px">
               <% @about_items.each_with_index do |item, index| %>
                 <% next if item.slug == "about-page" %>
-                <% if index == 2 %>
+                <% if index == 4 %>
                   <%= render "quicklinks" %>
-                <% end %>
+                <% else %>
                 <%= render "menu-items", item: item  %>
+                <% end %>
               <% end if @about_items.present? %>
-              </ul>
+
+              <% @empty_abouts.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_abouts.present? %>
+              </div>
             </div>
         </div>
 
@@ -110,14 +115,20 @@
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2" id="visit-links">
-            <ul class="list-unstyled">
+              <div class="row" style="padding-left:21px">
               <% @visit_items.each_with_index do |item, index| %>
-                <% if index == 2 %>
+                <% next if item.slug == "about-page" %>
+                <% if index == 3 %>
                   <%= render "quicklinks" %>
-                <% end %>
+                <% else %>
                 <%= render "menu-items", item: item  %>
+                <% end %>
               <% end if @visit_items.present? %>
-              </ul>
+
+              <% @empty_visits.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_visits.present? %>
+              </div>
             </div>
         </div>
 
@@ -127,14 +138,20 @@
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2" id="research-links">
-            <ul class="list-unstyled">
+              <div class="row" style="padding-left:21px">
               <% @research_items.each_with_index do |item, index| %>
-                <% if index == 1 %>
+                <% next if item.slug == "about-page" %>
+                <% if index == 3 %>
                   <%= render "quicklinks" %>
+                <% else %>
+                <%= render "menu-items", item: item  %>
                 <% end %>
-                <%= render "menu-items", item: item %>
               <% end if @research_items.present? %>
-              </ul>
+
+              <% @empty_researches.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_researches.present? %>
+              </div>
             </div>
         </div>
 

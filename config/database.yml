@@ -9,7 +9,7 @@ default: &default
 
 development:
   <<: *default
-  database: non-existent
+  database: manifold_development
 
 test:
   <<: *default
@@ -17,4 +17,4 @@ test:
 
 production:
   <<: *default
-  database: non-existent
+  database: manifold

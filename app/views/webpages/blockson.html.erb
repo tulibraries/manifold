@@ -42,7 +42,7 @@
 		<% end %>
 		<div class="row links-container">
 			<div class="col-12 col-lg-6">
-				<div class="links d-none d-lg-block">
+				<div class="links">
 					<h2><%= link_to t("manifold.webpages.blockson.links.visit"), "/blockson/study" %></h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
@@ -51,7 +51,7 @@
 					</ul>
 				</div>
 				<% if @tours.present? %>
-				<div class="links d-none d-lg-block">
+				<div class="links">
 					<h2><%= link_to t("manifold.webpages.blockson.links.tours").html_safe, category_path(@tours) %></h2>
 					<ul class="list-unstyled">
 						<% @tour_links.each do |link| %>

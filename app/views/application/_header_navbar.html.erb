@@ -101,6 +101,10 @@
                 <%= render "menu-items", item: item  %>
                 <% end %>
               <% end if @about_items.present? %>
+
+              <% @empty_abouts.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_abouts.present? %>
               </div>
             </div>
         </div>
@@ -111,15 +115,19 @@
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2" id="visit-links">
-            <div class="row" style="padding-left:21px">
+              <div class="row" style="padding-left:21px">
               <% @visit_items.each_with_index do |item, index| %>
                 <% next if item.slug == "about-page" %>
-                <% if index == 4 %>
+                <% if index == 3 %>
                   <%= render "quicklinks" %>
                 <% else %>
                 <%= render "menu-items", item: item  %>
                 <% end %>
               <% end if @visit_items.present? %>
+
+              <% @empty_visits.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_visits.present? %>
               </div>
             </div>
         </div>
@@ -130,15 +138,19 @@
                         "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                         method: :get} %>
             <div class="dropdown-menu p-2" id="research-links">
-            <div class="row" style="padding-left:21px">
+              <div class="row" style="padding-left:21px">
               <% @research_items.each_with_index do |item, index| %>
                 <% next if item.slug == "about-page" %>
-                <% if index == 4 %>
+                <% if index == 3 %>
                   <%= render "quicklinks" %>
                 <% else %>
                 <%= render "menu-items", item: item  %>
                 <% end %>
               <% end if @research_items.present? %>
+
+              <% @empty_researches.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_researches.present? %>
               </div>
             </div>
         </div>

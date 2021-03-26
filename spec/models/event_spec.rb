@@ -67,7 +67,7 @@ RSpec.describe Event, type: :model do
   describe "version all fields" do
     fields = {
       title: ["The Text 1", "The Text 2"],
-      description: ["The Text 1", "The Text 2"],
+      description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       start_time: [Time.zone.parse("2018/9/24 11:00"), Time.zone.parse("2018/9/24 11:30")],
       end_time: [Time.zone.parse("2018/9/24 12:00"), Time.zone.parse("2018/9/24 12:30")],
       external_building: ["The Text 1", "The Text 2"],
@@ -91,6 +91,7 @@ RSpec.describe Event, type: :model do
 
     fields.each do |k, v|
       example "#{k} changes" do
+        skip("description not versionable") if k == :description
         event = FactoryBot.create(:event, k => v.first)
         event.update(k => v.last)
         event.save!

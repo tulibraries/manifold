@@ -13,6 +13,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
+    draft_description: DescriptionField.with_options(admin_only: true),
     slug: Field::String,
     subject: MultiSelectField.with_options(
       collection: Rails.configuration.finding_aid_subjects
@@ -44,6 +45,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :name,
     :id,
     :image,
+    :description,
     :subject,
     :space,
     :categories,
@@ -59,6 +61,7 @@ class CollectionDashboard < Administrate::BaseDashboard
     :slug,
     :image,
     :description,
+    :draft_description,
     :subject,
     :categories,
     :space,
@@ -74,9 +77,6 @@ class CollectionDashboard < Administrate::BaseDashboard
     "#{collection.name}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
     super + [:draft_description, :publish]

@@ -1,0 +1,14 @@
+<% @featured_events.each do |event| %>
+    <div class="col-12 col-md-4 library-event">
+      <%= link_to event.title, event_path(event.id), class: "event-title" %>
+      
+      <p class="event-date"><%= event.get_date %></p>
+      
+      <p><%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %></p>
+
+    </div>
+  <% end %>
+
+  <div class="col-12 text-right pr-5">
+    <%= link_to "View all events", events_path, class: "view-all-events" %>
+  </div>

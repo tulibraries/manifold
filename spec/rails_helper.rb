@@ -8,6 +8,7 @@ require File.expand_path("../../config/environment", __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
 require "capybara/rails"
+require "action_text/system_test_helper"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -15,7 +16,6 @@ include Warden::Test::Helpers
 
 require "simplecov"
 SimpleCov.start
-
 
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -91,4 +91,6 @@ RSpec.configure do |config|
     stub_request(:put, "https://bucket.s3.region.amazonaws.com/sitemap.xml.gz").
     to_return(status: 200, body: "", headers: {})
   end
+
+  config.include ActionText::SystemTestHelper, type: :system
 end

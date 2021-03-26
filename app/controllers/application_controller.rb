@@ -9,7 +9,37 @@ class ApplicationController < ActionController::Base
   before_action :get_alert
   before_action :set_paper_trail_whodunnit
   before_action :locations, :set_dates, :set_location
-  before_action :show_hours
+  before_action :show_hours, :menu_items
+
+  def menu_items
+    @empty_abouts = []
+    @empty_visits = []
+    @empty_researches = []
+    about = Category.find_by(slug: "about-page")
+    @about_items = Category.find_by(slug: "about-page").items(exclude: [about]) if Category.find_by(slug: "about-page").present?
+    @about_items.each do |item|
+      if item.items.count < 1
+        @empty_abouts << item
+        @about_items.delete(Category.find(item.id))
+      end
+    end if @about_items.present?
+
+    @visit_items = Category.find_by(slug: "visit").items if Category.find_by(slug: "visit").present?
+    @visit_items.each do |item|
+      if item.items.count < 1
+        @empty_visits << item
+        @visit_items.delete(Category.find(item.id))
+      end
+    end if @visit_items.present?
+
+    @research_items = Category.find_by(slug: "research-services").items if Category.find_by(slug: "research-services").present?
+    @research_items.each do |item|
+      if item.items.count < 1
+        @empty_researches << item
+        @research_items.delete(Category.find(item.id))
+      end
+    end if @research_items.present?
+  end
 
   def get_alert
     @alert = Alert.where(published: true).where(for_header: false)

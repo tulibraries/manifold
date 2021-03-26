@@ -14,16 +14,19 @@ class Service < ApplicationRecord
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  validates :title, :description, :intended_audience, presence: true
+  validates :title, :intended_audience, presence: true
 
   serialize :intended_audience
 
   belongs_to :external_link, optional: true
 
-  has_draft :description, :access_description
+  has_rich_text :description
+  has_rich_text :draft_description
+  has_rich_text :access_description
+  has_rich_text :draft_access_description
+  has_rich_text :covid_alert
 
   before_validation :remove_empty_audience
-  before_validation :sanitize_description
 
   def slug_candidates
     [

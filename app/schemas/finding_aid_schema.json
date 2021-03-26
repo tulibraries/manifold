@@ -71,7 +71,7 @@
 						},
 						"description": {
 							"$id": "#/properties/data/properties/attributes/properties/description",
-							"type": "string",
+							"type": "object",
 							"title": "The Description Schema",
 							"default": "",
 							"examples": [

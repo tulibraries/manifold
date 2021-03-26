@@ -1,13 +1,41 @@
+<% if field.data.present? %>
+
+  <div class="field-unit__label">
+    <%= f.label "Published #{field.attribute.to_s.titleize}" %>
+  </div>
+
+  <div contenteditable="false"
+      class="field-unit__field field-published field-description"
+      id="<%= fieldname_in_draft(@requested_resource, field) %>">
+
+      <% if field.attribute == :description && field.resource.description.present? %>
+        <%= field.resource.description if field.data.class.to_s != "ActionText::RichText" %>
+        <%= field.data if field.data.class.to_s == "ActionText::RichText" %>
+      <% end %>
+      
+      <% if field.attribute == :long_description && field.resource.long_description.present?  %>
+        <%= field.resource.long_description if field.data.class.to_s != "ActionText::RichText" %>
+        <%= field.data if field.data.class.to_s == "ActionText::RichText" %>
+      <% end %>
+
+      <% if field.attribute == :access_description  && field.resource.access_description.present? %>
+        <%= field.resource.access_description  if field.data.class.to_s != "ActionText::RichText" %>
+        <%= field.data if field.data.class.to_s == "ActionText::RichText" %>
+      <% end %>
+      
+      <%= field.data if field.attribute == :covid_alert %>
+      <%= field.data if field.attribute == :get_help %>
+  </div>
+<% end %>
+
 <div class="field-unit__label">
-  <%= f.label field.attribute %>
+  <% if field.data.present? %>
+    <%= f.label "Edit #{field.attribute.to_s.titleize}" %>
+  <% else %>
+    <%= f.label field.attribute.to_s.titleize %>
+  <% end %>
 </div>
-
 <div class="field-unit__field field-draft">
-  <%= f.text_area draft_name(field), class: "tinymce", rows: 10, cols: 120 %>
-</div>
-
-<div contenteditable="false"
-     class="field-unit__field field-published field-description"
-     id="<%= fieldname_in_draft(@requested_resource, field) %>">
-  <%= field.data.sanitize.html_safe unless field.data.nil?%>
+  <%#x populate_drafts(field.attribute) %>
+  <%= f.rich_text_area draft_name(field) %>
 </div>

@@ -57,8 +57,4 @@ class ExternalLinkDashboard < BaseDashboard
   def display_resource(external_link)
     "#{external_link.title}"
   end
-
-  def tinymce?
-    true
-  end
 end

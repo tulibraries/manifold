@@ -17,18 +17,24 @@ class Building < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
 
   before_validation :normalize_phone_number
-  before_validation :sanitize_description
   validates :name, :address1, :address2, :coordinates, :google_id, presence: true
   validates :phone_number, presence: true, phone_number: true
-  validates :description, presence: true
+
+  # validates_each :intro do |record, attribute, value|
+  #   if value.blank? || value.strip == "<br/>"
+  #     model.errors.add( attribute, :blank )
+  #   end
+  # end
 
   belongs_to :external_link, optional: true
   has_many :spaces, dependent: :destroy
   has_paper_trail
 
-  has_draft :description
-
   auto_strip_attributes :email
+
+  has_rich_text :description
+  has_rich_text :draft_description
+  has_rich_text :covid_alert
 
   def slug_candidates
     [

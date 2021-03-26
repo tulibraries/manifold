@@ -8,8 +8,13 @@ RSpec.describe Group, type: :model do
     subject { Group.new.attributes.keys }
 
     it { is_expected.to include("name") }
-    it { is_expected.to include("description") }
 
+  end
+
+  context "Group Class Rich Text Attribute" do
+    subject { Group.new }
+
+    it { is_expected.to respond_to(:description) }
   end
 
   describe "has many through member" do
@@ -130,14 +135,19 @@ RSpec.describe Group, type: :model do
   end
 
   describe "version all fields" do
+    at1 = ActionText::Content.new("Hello World")
+    at2 = ActionText::Content.new("Goodbye, Cruel World")
+    # binding.pry
     fields = {
       name: ["The Text 1", "The Text 2"],
-      description: ["The Text 1", "The Text 2"],
+      description: [ActionText::Content.new("Hello World").to_html, ActionText::Content.new("Goodbye, Cruel World").to_html],
       external: [false, true]
     }
-
     fields.each do |k, v|
+      #
+
       example "#{k} changes" do
+        skip("description not versionable") if k == :description
         group = FactoryBot.create(:group, k => v.first)
         group.update(k => v.last)
         group.save!

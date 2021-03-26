@@ -5,7 +5,7 @@ include ActionDispatch::TestProcess
 FactoryBot.define do
   factory :building do
     sequence(:name) { |n| "Charles Samuel Addams Library %03d" % n }
-    description { "Main Campus Main Library" }
+    description { ActionText::Content.new("Hello World") }
     address1 { "1250 Polett Walk" }
     address2 { "Philadelphia, PA 19122" }
     coordinates { "test,coordinated" }

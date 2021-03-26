@@ -19,8 +19,7 @@ RSpec.feature "ServiceDrafts", type: :feature do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/services/new")
-      expect(page).to_not have_xpath("//textarea[@id=\"service_draft_description\"]")
-      expect(page).to_not have_xpath("//textarea[@id=\"service_draft_access_description\"]")
+      expect(page).to_not have_xpath("//trix-editor[@id=\"service_draft_description\"]")
     end
   end
 
@@ -29,48 +28,46 @@ RSpec.feature "ServiceDrafts", type: :feature do
       Rails.configuration.draftable = false
       login_as(@account, scope: :account)
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to_not have_xpath("//textarea[@id=\"service_draft_description\"]")
-      expect(page).to_not have_xpath("//textarea[@id=\"service_draft_access_description\"]")
+      expect(page).to_not have_xpath("//trix-editor[@id=\"service_draft_description\"]")
     end
   end
 
   context "Visit Service Administrate Page" do
     let(:new_description) { "Don't Panic!" }
+    let(:new_access_description) { "Don't Jump! We need you!" }
 
     scenario "Change the Service Description" do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{@service.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"service_draft_description\"]/text()[contains(., \"#{@service.draft_description}\")]")
-      find("textarea#service_draft_description").set(new_description)
+      expect(page).to have_xpath("//div[@id=\"service_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@service.description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//trix-editor[@id=\"service_draft_description\"]")
+      find(:xpath, "//\*[starts-with(@id, \"service_draft_description_trix_input_service\")]", visible: false).set(new_description)
       click_button("Update Service")
+      expect(page).to have_content(@service.description.body.to_trix_html)
+      expect(page).to_not have_content(new_description)
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{@service.description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"service_draft_description\"]/text()[contains(., \"#{new_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Service")
-      visit("/admin/services/#{@service.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{@service.description}\")]")
-      expect(page).to have_xpath("//div[@id=\"service_description\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to_not have_content(@service.description.body.to_trix_html)
+      expect(page).to have_content(new_description)
     end
 
     scenario "Change the Service Access Description" do
       Rails.configuration.draftable = true
       login_as(@account, scope: :account)
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"service_draft_access_description\"]/text()[contains(., \"#{@service.draft_access_description}\")]")
-      find("textarea#service_draft_access_description").set(new_description)
+      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@service.access_description.body.to_trix_html}\")]")
+      expect(page).to have_xpath("//trix-editor[@id=\"service_draft_access_description\"]")
+      find(:xpath, "//\*[starts-with(@id, \"service_draft_access_description_trix_input_service\")]", visible: false).set(new_access_description)
       click_button("Update Service")
+      expect(page).to have_content(@service.access_description.body.to_trix_html)
+      expect(page).to_not have_content(new_access_description)
       visit("/admin/services/#{@service.id}/edit")
-      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description}\")]")
-      expect(page).to have_xpath("//textarea[@id=\"service_draft_access_description\"]/text()[contains(., \"#{new_description}\")]")
       check(I18n.t("manifold.admin.actions.publish"))
       click_button("Update Service")
-      visit("/admin/services/#{@service.id}/edit")
-      expect(page).to_not have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{@service.access_description}\")]")
-      expect(page).to have_xpath("//div[@id=\"service_access_description\"]/text()[contains(., \"#{new_description}\")]")
+      expect(page).to_not have_content(@service.access_description.body.to_trix_html)
+      expect(page).to have_content(new_access_description)
     end
   end
 end

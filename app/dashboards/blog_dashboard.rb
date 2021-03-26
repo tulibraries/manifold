@@ -63,8 +63,4 @@ class BlogDashboard < Administrate::BaseDashboard
   def display_resource(blog)
     "##{blog.id} #{blog.title}"
   end
-
-  def tinymce?
-    true
-  end
 end

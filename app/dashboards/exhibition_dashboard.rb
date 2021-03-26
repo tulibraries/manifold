@@ -17,6 +17,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     description: DescriptionField,
+    draft_description: DescriptionField.with_options(admin_only: true),
     start_date: Field::DateTime,
     end_date: Field::DateTime,
     promoted_to_events: Field::Boolean,
@@ -48,6 +49,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :id,
     :image,
     :description,
+    :description,
     :start_date,
     :end_date,
     :space,
@@ -63,6 +65,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :slug,
     :image,
     :description,
+    :draft_description,
     :start_date,
     :end_date,
     :promoted_to_events,
@@ -82,11 +85,8 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     "#{exhibition.title}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
-    super + [:draft_title, :draft_description, :publish]
+    super + [:draft_description, :publish]
   end
 end

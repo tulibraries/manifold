@@ -70,8 +70,4 @@ class AdminGroupDashboard < Administrate::BaseDashboard
   def display_resource(admin_group)
     "#{admin_group.name}"
   end
-
-  def tinymce?
-    true
-  end
 end

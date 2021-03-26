@@ -238,6 +238,9 @@
       }
     }
 		.news-events {
+			@media screen and (max-width: 1039px) {
+				background-color: $white;
+			}
 			.caption {
 				@media screen and (max-width: 1039px) {
 					display: inline-block;
@@ -494,4 +497,103 @@
 
 .minipage .left-links .covid-alert {
   padding: 14px;
+}
+.library-news-caption {
+	font-family: roboto;
+	a {
+	display: inline-block;
+	margin-top: 14px;
+	font-size: 1.25rem;
+	font-weight:600;
+	}
+	.unnecessary-link a.read-more {
+		display: inline-block;
+		float: right;
+		margin-right: 28px;
+		padding: 7px 10px;
+		background-color: $black;
+		color: $white;
+		font-size: 1rem;
+		letter-spacing: .15rem;
+	}
+}
+#news-events {
+	h2 {
+		font-size:300%;
+		margin-bottom: 0;
+		margin-top: 42px;
+	}
+	h2.news {
+		margin-top:0;
+		margin-bottom: 42px;
+	}
+}
+.home-events-row {
+	margin-bottom: 21px;
+}
+.home-news-row {
+	margin-bottom: 84px;
+}
+.library-event:first-of-type {
+		border-right: solid $red 1px;
+	}
+	.library-event:last-of-type {
+			border-left: solid $red 1px;
+		}
+.library-event {
+	font-family: roboto;
+	padding: 35px;
+	.event-title {
+		font-size: 120%;
+	}
+	.event-date {
+		background-color: gold;
+		padding: 7px;
+		padding-left: 14px;
+		width: 100%;
+		margin-top: 21px;
+	}
+}
+.quicklinks {
+	position: relative;
+	top: -12px;
+	background-color: #fff;
+	height: 222px;
+	font-family: Roboto;
+	ul {
+		padding:0px 14px;
+		margin-bottom: 1px;
+		line-height: 2.5rem;
+	}
+	.quicklinks-link {
+		padding-top: 3px;
+		border-bottom: solid #ccc 1px;
+		a {
+			font-size: 140%!important;
+			color: $black!important;
+		}
+	}
+	.quicklinks-link:last-of-type {
+		border-bottom: 0;
+	}
+	.quicklinks-caption {
+		background-color: $black;
+		height: 45px;
+		color: $white;
+		font-size: 135%;
+		padding-top: 7px;
+		padding-left: 7px;
+		@media screen and (max-width: 1039px) {
+			background-color: $black;
+			height: 45px;
+			margin-top: 11px;
+			padding-right: 7px;
+		}
+	}
+}
+
+a.view-all-events {
+	text-decoration: underline;
+	font-size: larger;
+	font-family: roboto;
 }

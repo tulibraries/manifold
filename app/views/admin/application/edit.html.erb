@@ -14,6 +14,9 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
+<%# binding.pry %>
+<%# dash = resource_name.to_s.camelize + "Dashboard".to_sym %>
+<%# page ||= Administrate::Page::Form.new(BuildingDashboard.new, params[resource_name]) %>
 
 <% content_for(:title) { page.page_title } %>
 

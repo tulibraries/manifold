@@ -14,7 +14,9 @@ class ServiceDashboard < Administrate::BaseDashboard
     title: Field::String,
     slug: Field::String,
     description: DescriptionField,
+    draft_description: DescriptionField.with_options(admin_only: true),
     access_description: DescriptionField,
+    draft_access_description: DescriptionField.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
     intended_audience: MultiSelectField.with_options(
       collection: Rails.configuration.audience_types
@@ -46,10 +48,13 @@ class ServiceDashboard < Administrate::BaseDashboard
     :covid_alert,
     :title,
     :id,
+    :description,
+    :access_description,
     :intended_audience,
     :external_link,
     :categories,
     :accounts,
+    :covid_alert,
     :created_at,
     :updated_at,
   ].freeze
@@ -61,7 +66,9 @@ class ServiceDashboard < Administrate::BaseDashboard
     :title,
     :slug,
     :description,
+    :draft_description,
     :access_description,
+    :draft_access_description,
     :external_link,
     :intended_audience,
     :hours,
@@ -74,9 +81,6 @@ class ServiceDashboard < Administrate::BaseDashboard
     "#{service.title}"
   end
 
-  def tinymce?
-    true
-  end
 
   def permitted_attributes
     super + [:draft_description, :draft_access_description, :publish]

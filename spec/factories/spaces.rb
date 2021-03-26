@@ -5,7 +5,7 @@ include ActionDispatch::TestProcess
 FactoryBot.define do
   factory :space do
     sequence(:name) { |n| "Room #{n}" }
-    description { "Situation room where maps were consulted to track the project's progress" }
+    description { ActionText::Content.new("Hello World") }
     accessibility { "Yes" }
     phone_number { "2155551213" }
     email { "mmuffley@example.com" }

@@ -23,6 +23,7 @@
 !/log/.keep
 !/tmp/.keep
 *.sw[p-z]
+.DS_Store
 
 # Ignore uploaded files in development
 /storage/*
@@ -32,6 +33,7 @@
 
 # /public/assets
 /public/sitemap.xml.gz
+/public/epub
 .byebug_history
 tags
 .tags*

@@ -2,6 +2,7 @@
 
 class WebpageSerializer < ApplicationSerializer
   include LinkSerializable
+  include DescriptionSerializable
 
-  attributes :title, :description, :layout
+  attributes :title, :layout
 end

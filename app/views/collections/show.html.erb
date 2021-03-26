@@ -20,7 +20,7 @@
       <% end %>
         <div class="details">
           <h2><%= t("manifold.collections.show.about") %></h2>
-          <%= sanitize @collection.description.html_safe %>
+          <%= @collection.description %>
 
           <% unless @collection.subject.blank? %>
           <h2></h2>

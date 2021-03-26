@@ -64,7 +64,7 @@
 						},
 						"long_description": {
 							"$id": "#/properties/data/properties/attributes/properties/long_description",
-							"type": "string",
+							"type": "object",
 							"title": "The Description Schema",
 							"default": "",
 							"examples": [

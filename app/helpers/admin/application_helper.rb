@@ -23,6 +23,7 @@ module Admin::ApplicationHelper
 
   def render_draft_field(field, locals = {})
     locals.merge!(field: field)
+    locals.merge!(draft_field: locals[:f].object.send(draft_name(field)))
     render locals: locals, partial: "#{field.to_partial_path}_draft"
   end
 
@@ -32,8 +33,7 @@ module Admin::ApplicationHelper
 
   def is_draftable?(attributes)
     attributes.each do |attribute|
-      draft_field_name = "draft_" + attribute.name
-      return true if attribute.resource.respond_to?(draft_field_name)
+      return true if attribute.resource.respond_to?("draft_" + attribute.name)
     end
     return false
   end

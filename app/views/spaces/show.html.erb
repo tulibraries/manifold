@@ -30,7 +30,7 @@
         </ul>
 
         <div class="description">
-          <%= sanitize @space.description.html_safe %>
+          <%= @space.description %>
 
           <% if @space.image.attached?  %>
             <div class="space-image">

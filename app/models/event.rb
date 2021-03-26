@@ -15,8 +15,7 @@ class Event < ApplicationRecord
   belongs_to :space, optional: true
   belongs_to :person, optional: true
 
-  before_save :sanitize_description
-
+  has_rich_text :description
   serialize :tags
 
   def to_param  # overridden for tests
@@ -59,6 +58,14 @@ class Event < ApplicationRecord
       start_time.strftime("%l:%M %P")
     else
       "(All day)"
+    end
+  end
+
+  def set_end_time
+    unless all_day
+      end_time.strftime("%l:%M %P")
+    else
+      ""
     end
   end
 

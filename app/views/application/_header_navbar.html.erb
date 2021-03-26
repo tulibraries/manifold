@@ -97,6 +97,7 @@
                 <% next if item.slug == "about-page" %>
                 <% if index == 4 %>
                   <%= render "quicklinks" %>
+                  <%= render "menu-items", item: item  %>
                 <% else %>
                 <%= render "menu-items", item: item  %>
                 <% end %>
@@ -120,6 +121,7 @@
                 <% next if item.slug == "about-page" %>
                 <% if index == 3 %>
                   <%= render "quicklinks" %>
+                  <%= render "menu-items", item: item  %>
                 <% else %>
                 <%= render "menu-items", item: item  %>
                 <% end %>
@@ -143,6 +145,7 @@
                 <% next if item.slug == "about-page" %>
                 <% if index == 3 %>
                   <%= render "quicklinks" %>
+                  <%= render "menu-items", item: item  %>
                 <% else %>
                 <%= render "menu-items", item: item  %>
                 <% end %>

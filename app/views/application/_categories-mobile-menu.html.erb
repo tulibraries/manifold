@@ -8,7 +8,7 @@
         <div class="bar3"></div>
       </span>
       <span id="mobile-navbar-brand" class="navbar-brand">
-        <%= @category.name %>
+        <%= @category.name.html_safe %>
       </span>
     </button>
     <div class="collapse navbar-collapse" id="secondary-mobile-menu">

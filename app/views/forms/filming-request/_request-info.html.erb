@@ -14,6 +14,12 @@
 <%= f.input :description, as: :text, label: t("manifold.forms.filming_request.description"), required: :true %>
 <%= f.input :temple_course_project, as: :radio_buttons, required: :true, 
             label: t("manifold.forms.filming_request.temple_course_project") %>
+<%= f.input :total_number_of_production_members, as: :text, 
+            label: t("manifold.forms.filming_request.number_of_members"), required: :true,
+            hint: t("manifold.forms.filming_request.number_of_members.hint") %>
+<%= f.input :mobile_telephone_number_of_the_key_crew_member, as: :text, 
+            label: t("manifold.forms.filming_request.mobile_of_key_member"), required: :true %>
+            
 <%= f.input :additional_crew_name, as: :email, required: :true, 
             label: t("manifold.forms.filming_request.additional_crew_name") %>
 <%= f.input :additional_email, as: :email, required: true, 

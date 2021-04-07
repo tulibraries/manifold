@@ -8,8 +8,8 @@
 <%= f.input :time_of_filming, as: :time, html5: true, 
             label: t("manifold.forms.time_of_filming"), required: :true %>
 <%= f.input :duration_of_filming, 
-            label: t("manifold.forms.duration_of_filming_label"), 
-            hint: t("manifold.forms.duration_of_filming_hint"), 
+            label: t("manifold.forms.filming_request.duration_of_filming_label"), 
+            hint: t("manifold.forms.filming_request.duration_of_filming_hint"), 
             required: :true %>
 <%= f.input :description, as: :text, label: t("manifold.forms.filming_request.description"), required: :true %>
 <%= f.input :temple_course_project, as: :radio_buttons, required: :true, 

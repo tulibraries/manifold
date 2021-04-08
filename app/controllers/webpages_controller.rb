@@ -22,7 +22,7 @@ class WebpagesController < ApplicationController
     @key = ENV["ENSEMBLE_API_KEY"]
     @basepath = "https://svc.#{@user}:#{@key}@ensemble.temple.edu/api"
     @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
-    @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center"]
+    @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center", "Temple Alumni"]
     @category = @categories[params[:collection].to_i]
     @all = []
     @beyond_page = []
@@ -31,6 +31,7 @@ class WebpagesController < ApplicationController
     @awards = []
     @lcdss = []
     @scrc = []
+    @alumni = []
   end
 
   def videos_all
@@ -59,6 +60,8 @@ class WebpagesController < ApplicationController
             @lcdss << video
           when "Special Collections Research Center"
             @scrc << video
+          when "Temple Alumni"
+            @alumni << video
           end
         end if video[:Keywords].present?
       end

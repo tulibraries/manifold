@@ -14,7 +14,7 @@
 
 <% if @webpage.epub.present? %>
       <li class="press-button">
-        <%= link_to "Download ePub", @webpage.epub.file.file, disposition: "attachment" %>
+        <%= link_to "Download ePub", @webpage.epub.url, disposition: "attachment" %>
       </li>
       <li class="press-button">
         <%= link_to "Read it Online", webpages_epub_path %>

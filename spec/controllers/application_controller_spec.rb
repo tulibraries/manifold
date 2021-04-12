@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe ApplicationController, type: :controller do
   render_views
   @alert = FactoryBot.create(:alert)
+  @category = FactoryBot.create(:category)
 
   controller do
     def test_action

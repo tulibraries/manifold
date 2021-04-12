@@ -13,10 +13,11 @@
 <% end %>
 
 <% if @webpage.epub.present? %>
-      <li class="press-button">
-        <%= link_to "Download ePub", @webpage.epub.file.file, disposition: "attachment" %>
+    <ul class="list-unstyled">
+      <li class="press-button text-center">
+        <%= link_to "Download ePub", @webpage.epub.url, disposition: "attachment" %>
       </li>
-      <li class="press-button">
+      <li class="press-button text-center">
         <%= link_to "Read it Online", webpages_epub_path %>
       </li>
     </ul>

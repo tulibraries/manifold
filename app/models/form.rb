@@ -136,6 +136,8 @@ class Form < MailForm::Base
   attribute :first_choice_date
   attribute :second_choice_date
   attribute :instruction_mode
+  attribute :total_number_of_production_members
+  attribute :mobile_telephone_number_of_the_key_crew_member
 
 
   def get_subject

@@ -3,21 +3,20 @@
 <div class="container" style="margin-top: 35px;">
 	<div class="row page">
 
-		<% unless @webpage.categories.blank? %>
+		<% if @webpage.categories.present? %>
 			<div class="d-none d-md-block col-3">
 				<%= render "categories_list" %>
 			</div>
 
-      <% if @webpage.external_link.nil? || 
-            @webpage.categories.any?{|cat| cat.name.include?("Tours")} %>
+      <% if (@webpage.external_link.nil? && @webpage.epub.nil?) || @webpage.layout == "Virtual Tour" %>
         <div class="col-12 col-md-9">
       <% else %>
         <div class="col-12 col-md-6">
       <% end %>
 
-    <% else %>
+    <% else %> <!-- no category list -->
     
-      <% if @webpage.external_link.nil? %>
+      <% if (@webpage.external_link.nil? && @webpage.epub.nil?) || @webpage.layout == "Virtual Tour" %>
         <div class="col-12">
       <% else %>
         <div class="col-12 col-md-9">
@@ -31,19 +30,20 @@
     <div class="text-left page-description">
       <%= render @webpage.layout.parameterize %>
     </div>
-    <%= render "attachments" %>
   </div>
 
-  <% unless @webpage.categories.any?{ |cat| cat.name.include?("Tours")} %>
-    <% if @webpage.external_link %>
+  <% unless @webpage.layout == "Virtual Tour" %>
     <div class="col-12 col-md-3">
-      <% unless @webpage.external_link.blank? %>
+
+      <% if @webpage.external_link.present? %>
         <div class="access-link">
           <h2><%= link_to @webpage.external_link.title, @webpage.external_link.link %></h2>
         </div>
       <% end %>
+
+      <%= render "attachments" %>
+      
 	  </div>
-    <% end %>
   <% end %>
 
   </div>

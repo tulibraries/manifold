@@ -729,10 +729,13 @@ en:
         time_of_filming: Time of Filming
         duration_of_filming_label: Duration of Filming
         duration_of_filming_hint: (How much time is required.)
+        number_of_members: Total Number of Production Members
+        number_of_members.hint: (crew and talent)
+        mobile_of_key_member: Mobile Telephone Number of the Key Crew Member
         description: Description of Project
-        temple_course_project: Is this for a Temple Course Project?
-        additional_crew_name: Name of one additional crew member
-        additional_email: Crew member email
+        temple_course_project: Is This for a Temple Course Project?
+        additional_crew_name: Name of One Additional Crew Member
+        additional_email: Crew Member Email
 
       cac_internal:
         title: "Cultural Analytics Certificate Internal Application"
@@ -988,7 +991,7 @@ en:
           visit: Visit & Study
           research: Research Services
           events: Workshops & Events
-          tours: 360&deg; Virtual Tours
+          tours: 360&deg; Virtual Exhibits
       contact:
         staff_directory: Staff Directory
         specialist_link: Find your subject librarian
@@ -1095,6 +1098,8 @@ en:
           lcdss_all: See All Scholars Studio Videos
           scrc: Special Collections Research Center
           scrc_all: See All Special Collections Videos
+          alumni: Temple Alumni
+          alumni_all: See All Temple Alumni Videos
       visit:
         page_title: Visit & Study
       wpvi:

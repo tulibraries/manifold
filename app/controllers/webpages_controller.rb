@@ -22,7 +22,7 @@ class WebpagesController < ApplicationController
     @key = ENV["ENSEMBLE_API_KEY"]
     @basepath = "https://svc.#{@user}:#{@key}@ensemble.temple.edu/api"
     @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
-    @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center"]
+    @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center", "Temple Alumni"]
     @category = @categories[params[:collection].to_i]
     @all = []
     @beyond_page = []
@@ -31,6 +31,7 @@ class WebpagesController < ApplicationController
     @awards = []
     @lcdss = []
     @scrc = []
+    @alumni = []
   end
 
   def videos_all
@@ -59,6 +60,8 @@ class WebpagesController < ApplicationController
             @lcdss << video
           when "Special Collections Research Center"
             @scrc << video
+          when "Temple Alumni"
+            @alumni << video
           end
         end if video[:Keywords].present?
       end
@@ -147,7 +150,7 @@ class WebpagesController < ApplicationController
     @research_links = Category.find_by(slug: "blockson-research").items
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
     @header_alert = Alert.where(published: true).find_by(for_header: true)
-    @tours = Category.find_by(name: "360&deg; Virtual Tours")
+    @tours = Category.find_by(name: "360&deg; Virtual Exhibits")
     @tour_links = @tours.items if @tours.present?
   end
 

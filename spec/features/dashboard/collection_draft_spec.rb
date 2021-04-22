@@ -32,8 +32,7 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
     end
   end
 
-  xcontext "Visit Collection Administrate Page" do
-    # TODO: need to find and remove extra trix field from page output
+  context "Visit Collection Administrate Page" do
     let(:new_description) { "Don't Panic!" }
 
     scenario "Change the Collection Description" do

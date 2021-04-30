@@ -39,15 +39,6 @@ module Validators
     end
   end
 
-  class ContentTypeValidator < ActiveModel::EachValidator
-    def validate_each(record, attribute, value)
-      unless value.attached? && value.content_type.in?(options.fetch(:in))
-        value.purge if record.new_record? # Only purge the offending blob if the record is new
-        record.errors[attribute] << (options[:content_type] || I18n.t("manifold.error.invalid_document_type"))
-      end
-    end
-  end
-
   class CollectionOrSubjectValidator < ActiveModel::Validator
     def validate(record)
       record.subject.reject! { |s| s.empty? } if record.subject.present?

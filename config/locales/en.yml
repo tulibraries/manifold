@@ -68,6 +68,10 @@ en:
         accounts: "Individual Owners"
   manifold:  
     default:
+      image_file_size_limit: 700
+      thumb_image_size: 120
+      index_image_size: 220
+      show_image_size: 300
       covid_alert: COVID-19 Update
       signout: "Log Out"
       site_title: Temple University Libraries

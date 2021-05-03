@@ -8,12 +8,12 @@ module Imageable
     has_one_attached :image, dependent: :destroy
     validates :image, content_type: { in: ["image/png", "image/jpg", "image/jpeg", "image/gif"],
                                       message: I18n.t("manifold.error.content_type_invalid_image") },
-                      size: { less_than: 700.kilobyte ,
+                      size: { less_than: I18n.t("manifold.default.image_file_size_limit").kilobyte ,
                               message: I18n.t("manifold.error.file_size_out_of_range_image") }
   end
 
   def index_image
-    custom_image(220, 220)
+    custom_image(I18n.t("manifold.default.index_image_size"), I18n.t("manifold.default.index_image_size"))
   end
 
   def index_image_path
@@ -25,7 +25,7 @@ module Imageable
   end
 
   def thumb_image
-    custom_image(120, 120)
+    custom_image(I18n.t("manifold.default.index_image_size"), I18n.t("manifold.default.index_image_size"))
   end
 
   def thumb_image_path
@@ -37,7 +37,7 @@ module Imageable
   end
 
   def show_image
-    custom_image(300, 300)
+    custom_image(I18n.t("manifold.default.index_image_size"), I18n.t("manifold.default.index_image_size"))
   end
 
   def show_image_path

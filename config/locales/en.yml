@@ -83,7 +83,7 @@ en:
         boolean: "When checked, will display on Events page"
         alert_for_header: COVID header alerts are limited to 55 characters.
         email: "If left blank, email address from related building will be displayed."
-        file_field: "* PDFs or ePubs only"
+        file_field: "* PDFs only"
         has_many:
           finding_aid: "Please select at least one <strong>Collection</strong> or <strong>Subject</strong> from the below lists in order for the link to Aeon to appear on this finding aid."
           categories: "Categories determine the left hand menu that appears on the page and also the navigation category to which this page belongs."
@@ -982,7 +982,6 @@ en:
         page_title: About
       attachments:
         pdf_files: PDF File(s)
-        epub_files: ePub Files(s)
       blockson:
         page_title: Charles L. Blockson Afro-American Collection
         links:

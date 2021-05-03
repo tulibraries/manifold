@@ -10,6 +10,5 @@ module Admin
       flash[:notice] = "Document purged"
       redirect_to admin_webpage_path
     end
-
   end
 end

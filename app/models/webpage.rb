@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Webpage < ApplicationRecord
-  require "carrierwave/orm/activerecord"
   include Accountable
   include Attachable
   include Categorizable

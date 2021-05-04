@@ -47,7 +47,6 @@
 					"required": [
 						"title",
 						"label",
-						"description",
             "intended_audience"
 					],
 					"properties": {
@@ -70,16 +69,6 @@
 							"examples": [
 								"Document Delivery",
                 "Borrow Books & DVDs"
-							],
-							"pattern": "^(.*)$"
-						},
-						"description": {
-							"$id": "#/properties/data/properties/attributes/properties/description",
-							"type": "string",
-							"title": "The Description Schema",
-							"default": "",
-							"examples": [
-								"This is the description of the service"
 							],
 							"pattern": "^(.*)$"
 						},

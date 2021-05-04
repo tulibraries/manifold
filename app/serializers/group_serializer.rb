@@ -2,6 +2,7 @@
 
 class GroupSerializer < ApplicationSerializer
   include LinkSerializable
+  include DescriptionSerializable
 
-  attributes :name, :description, :group_type, :external
+  attributes :name, :group_type, :external
 end

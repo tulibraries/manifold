@@ -20,7 +20,7 @@ RSpec.describe EventSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:title, :description, :start_time, :end_time, :cancelled,
+      expect(data[:attributes].keys).to include(:title, :start_time, :end_time, :cancelled,
                                                 :registration_status, :registration_link, :content_hash,
                                                 :alt_text, :ensemble_identifier, :tags, :all_day,
                                                 :space, :address1, :address2, :contact_name,

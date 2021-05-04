@@ -47,7 +47,6 @@
 					"required": [
 						"name",
 						"label",
-						"description",
 						"group_type",
 						"external"
 					],
@@ -71,16 +70,6 @@
 								"Council of Committees Group"
 							],
 							"pattern": "^(.*)$"
-						},
-						"description": {
-							"$id": "#/properties/data/properties/attributes/properties/description",
-							"type": "object",
-							"title": "The Description Schema",
-							"default": "",
-							"examples": [
-								"The Temple University Ambler Library supports undergraduate and graduate courses, including landscape architecture, horticulture, business, education, criminal justice, and community and regional planning"
-							],
-							"pattern": "^(.*)"
 						},
 						"updated_at": {
 							"$id": "#/properties/data/properties/attributes/properties/updated_at",

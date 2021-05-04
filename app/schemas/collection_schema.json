@@ -46,8 +46,7 @@
 					"title": "The Attributes Schema",
 					"required": [
 						"name",
-						"label",
-						"description"
+						"label"
 					],
 					"properties": {
 						"name": {
@@ -67,17 +66,6 @@
 							"default": "",
 							"examples": [
 								"The Library Collection"
-							],
-							"pattern": "^(.*)$"
-						},
-						"description": {
-							"$id": "#/properties/data/properties/attributes/properties/description",
-							"type": "object",
-							"title": "The Description Schema",
-							"default": "",
-							"examples": [
-								"This is the description of the collection"
-
 							],
 							"pattern": "^(.*)$"
 						},

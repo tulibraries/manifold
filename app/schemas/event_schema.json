@@ -67,16 +67,6 @@
               ],
               "pattern": "^(.*)$"
             },
-            "description": {
-              "$id": "#/properties/data/properties/attributes/properties/description",
-              "type": "object",
-              "title": "The Description Schema",
-              "default": "",
-              "examples": [
-                "<p>The Lewis Katz School of Medicine's student a cappella singing group, TachyChordia, will be performing a selection of holiday favorites and will lead us in a sing-a-long. Hot cocoa, marshmallows, cookies, candy canes, and chocolate will be served for those who stay for the performance!</p>"
-              ],
-              "pattern": "^(.*)$"
-            },
             "start_time": {
               "$id": "#/properties/data/properties/attributes/properties/start_time",
               "type": "string",

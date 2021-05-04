@@ -2,6 +2,7 @@
 
 class CollectionSerializer < ApplicationSerializer
   include LinkSerializable
+  include DescriptionSerializable
 
-  attributes :name, :description, :subject, :contents
+  attributes :name, :subject, :contents
 end

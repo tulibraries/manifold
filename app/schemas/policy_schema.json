@@ -47,7 +47,6 @@
 					"required": [
 						"name",
 						"label",
-						"description",
             "effective_date"
 					],
 					"properties": {
@@ -68,16 +67,6 @@
 							"default": "",
 							"examples": [
 								"Food & Drink"
-							],
-							"pattern": "^(.*)$"
-						},
-						"description": {
-							"$id": "#/properties/data/properties/attributes/properties/description",
-							"type": "object",
-							"title": "The Description Schema",
-							"default": "",
-							"examples": [
-								"This is the description of the policy"
 							],
 							"pattern": "^(.*)$"
 						},

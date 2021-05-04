@@ -17,6 +17,9 @@ class CategoriesController < ApplicationController
           @nav_items << item
         end
       }
+      format.json {
+        serializable_show
+      }
     end
 
     if @category.slug == "explore-charles"
@@ -48,4 +51,6 @@ class CategoriesController < ApplicationController
       @category = find_instance
       return redirect_or_404(@category)
     end
+
+    attr_reader :long_description
 end

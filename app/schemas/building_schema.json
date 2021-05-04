@@ -49,7 +49,6 @@
 					"required": [
 						"name",
 						"label",
-						"description",
 						"address1",
 						"address2",
 						"phone_number",
@@ -76,16 +75,6 @@
 								"Ambler Campus Library"
 							],
 							"pattern": "^(.*)$"
-						},
-						"description": {
-							"$id": "#/properties/data/properties/attributes/properties/description",
-							"type": "object",
-							"title": "The Description Schema",
-							"default": "",
-							"examples": [
-								"The Temple University Ambler Library supports undergraduate and graduate courses, including landscape architecture, horticulture, business, education, criminal justice, and community and regional planning"
-							],
-							"pattern": "^(.*)"
 						},
 						"address1": {
 							"$id": "#/properties/data/properties/attributes/properties/address1",

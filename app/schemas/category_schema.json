@@ -48,7 +48,7 @@
 					"required": [
 						"name",
 						"label",
-						"long_description",
+						"description",
 						"updated_at"
 					],
 					"properties": {
@@ -62,13 +62,13 @@
 							],
 							"pattern": "^(.*)$"
 						},
-						"long_description": {
-							"$id": "#/properties/data/properties/attributes/properties/long_description",
-							"type": "object",
+						"description": {
+							"$id": "#/properties/data/properties/attributes/properties/description",
+							"type": "string",
 							"title": "The Description Schema",
 							"default": "",
 							"examples": [
-								"This is the full description of the category"
+								"This is the short description of the category"
 							],
 							"pattern": "^(.*)$"
 						},

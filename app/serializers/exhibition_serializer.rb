@@ -2,7 +2,7 @@
 
 class ExhibitionSerializer < ApplicationSerializer
   include LinkSerializable
+  include DescriptionSerializable
 
-
-  attributes :title, :description, :start_date, :end_date, :promoted_to_events
+  attributes :title, :start_date, :end_date, :promoted_to_events
 end

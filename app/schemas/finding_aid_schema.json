@@ -69,16 +69,6 @@
 							],
 							"pattern": "^(.*)$"
 						},
-						"description": {
-							"$id": "#/properties/data/properties/attributes/properties/description",
-							"type": "object",
-							"title": "The Description Schema",
-							"default": "",
-							"examples": [
-								"This is the description of the finding aid"
-							],
-							"pattern": "^(.*)$"
-						},
 						"subject": {
 							"$id": "#/properties/data/properties/attributes/properties/subject",
 							"items": [

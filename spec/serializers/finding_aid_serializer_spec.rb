@@ -20,7 +20,7 @@ RSpec.describe FindingAidSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :description, :subject, :content_link,
+      expect(data[:attributes].keys).to include(:name, :subject, :content_link,
                                                 :identifier, :drupal_id, :label, :updated_at)
     end
 

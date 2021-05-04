@@ -12,8 +12,8 @@ class BuildingsController < ApplicationController
   end
 
   def show
-    serializable_show
     @covid_alert = @building.covid_alert
+    serializable_show
   end
 
   def list_item(category)

@@ -11,7 +11,6 @@ class WebpagesController < ApplicationController
   def wpvi
   end
 
-
   def get_highlights
     @highlights = Highlight.where(promoted: true).take(4)
   end
@@ -231,11 +230,6 @@ class WebpagesController < ApplicationController
     @covid_alert = @webpage.covid_alert
     @categories = @webpage.categories
     serializable_show
-  end
-
-  def epub
-    @webpage = Webpage.find(params[:id])
-    render layout: false
   end
 
   private

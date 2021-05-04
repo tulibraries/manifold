@@ -8,7 +8,7 @@
 			<div class="d-none d-md-block col-3">
 				<%= render "categories_list" %>
 			</div>
-      <% unless @webpage.external_link.present? || @webpage.layout == "Virtual Tour" %>
+      <% unless @webpage.external_link.present? || @webpage.layout == "Virtual Tour" || @webpage.file_uploads.present? %>
         <div class="col-12 col-md-9">
       <% else %>
         <div class="col-12 col-md-6">
@@ -16,7 +16,7 @@
 
     <% else %> <!-- no category list -->
     
-      <% unless @webpage.external_link.present? || @webpage.layout == "Virtual Tour" %>
+      <% unless @webpage.external_link.present? || @webpage.layout == "Virtual Tour" || @webpage.file_uploads.present? %>
         <div class="col-12">
       <% else %>
         <div class="col-12 col-md-9">

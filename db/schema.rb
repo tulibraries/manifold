@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_162623) do
+ActiveRecord::Schema.define(version: 2021_05_03_132757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -490,7 +490,6 @@ ActiveRecord::Schema.define(version: 2021_03_18_162623) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.bigint "external_link_id"
-    t.string "epub"
     t.index ["external_link_id"], name: "index_webpages_on_external_link_id"
     t.index ["group_id"], name: "index_webpages_on_group_id"
   end

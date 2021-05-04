@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Webpage < ApplicationRecord
-  require "carrierwave/orm/activerecord"
   include Accountable
   include Attachable
   include Categorizable
@@ -10,7 +9,6 @@ class Webpage < ApplicationRecord
   include Validators
   extend FriendlyId
   include SchemaDotOrgable
-  mount_uploader :epub, EpubUploader
 
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged

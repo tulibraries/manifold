@@ -60,7 +60,6 @@ gem "friendly_id", "~> 5.4.2"
 gem "action-draft"
 gem "webpacker"
 gem "image_processing", "~> 1.2"
-gem "carrierwave", "~> 2.2"
 gem "mimemagic", "0.4.3"
 gem "active_storage_validations"
 
@@ -72,6 +71,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
   gem "vcr"
 end
 

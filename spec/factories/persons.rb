@@ -19,7 +19,7 @@ FactoryBot.define do
         person.image.attach(io:
           File.open(Rails.root.join("spec/fixtures/charles.jpg")),
           filename: "charles.jpg",
-          content_type: "image/jpeg")
+          content_type: "image/jpg")
       end
     end
   end

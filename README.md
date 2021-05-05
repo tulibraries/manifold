@@ -257,5 +257,5 @@ export MANIFOLD_DRAFTABLE=true
 or command line for developement:
 
 ```bash
-bundle exec rails server MANIFOLD_DRAFTABLE=true
+MANIFOLD_DRAFTABLE=true bundle exec rails server
 ```

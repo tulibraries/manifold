@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Space::Service", type: :feature do
+RSpec.feature "Dashboard::Service", type: :feature do
   before(:all) do
     @admin = FactoryBot.create(:account, admin: true)
     @space = FactoryBot.create(:space)

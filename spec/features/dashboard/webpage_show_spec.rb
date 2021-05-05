@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Space::Webpage", type: :feature do
+RSpec.feature "Dashboard::Webpage", type: :feature do
   before(:all) do
     @admin = FactoryBot.create(:account, admin: true)
     @webpage = FactoryBot.create(:webpage)

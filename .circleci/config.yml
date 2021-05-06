@@ -82,15 +82,21 @@ jobs:
       - run:
           name: Ruby Lint
           command: bundle exec rubocop
+
       - run:
           name: Brakeman
           command: bundle exec brakeman --no-pager
+
       - run:
           name: Install ActionText
           command: printf "n\nn\n"  | bundle exec rails action_text:install && git clean -f db
+
       - run:
           name: Ruby tests
           command: bundle exec rspec
+          
+      - coveralls/upload:
+          path_to_lcov: ./app.lcov
 
   qa_deploy:
     docker:

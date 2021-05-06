@@ -1,4 +1,7 @@
-version: 2
+version: 2.1
+
+orbs:
+  coveralls: coveralls/coveralls@1.0.6
 
 workflows:
   version: 2
@@ -94,7 +97,7 @@ jobs:
       - run:
           name: Ruby tests
           command: bundle exec rspec
-          
+
       - coveralls/upload:
           path_to_lcov: ./app.lcov
 

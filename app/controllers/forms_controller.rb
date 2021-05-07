@@ -37,7 +37,7 @@ class FormsController < ApplicationController
     existing_forms.map do |form|
         OpenStruct.new(
           id: form,
-          label: t("manifold.default.forms.#{form.underscore}.title"),
+          label: t("manifold.forms.#{form.underscore}.title"),
           link: "#{request.base_url}/forms/#{form}",
           updated_at: DateTime.new(0)
         )

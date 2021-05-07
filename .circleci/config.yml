@@ -1,4 +1,7 @@
-version: 2
+version: 2.1
+
+orbs:
+  coveralls: coveralls/coveralls@1.0.6
 
 workflows:
   version: 2
@@ -82,15 +85,22 @@ jobs:
       - run:
           name: Ruby Lint
           command: bundle exec rubocop
+
       - run:
           name: Brakeman
           command: bundle exec brakeman --no-pager
+
       - run:
           name: Install ActionText
           command: printf "n\nn\n"  | bundle exec rails action_text:install && git clean -f db
+
       - run:
           name: Ruby tests
-          command: bundle exec rspec
+          command: |
+              bundle exec rspec
+
+      - coveralls/upload:
+          path_to_lcov: ./coverage/lcov/app.lcov
 
   qa_deploy:
     docker:

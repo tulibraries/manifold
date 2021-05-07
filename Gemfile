@@ -95,7 +95,8 @@ group :test do
   gem "rspec-activemodel-mocks"
   gem "rspec-rails", ">=3.8.0"
   gem "selenium-webdriver"
-  gem "simplecov", require: false
+  gem "simplecov"
+  gem "simplecov-lcov"
   gem "webmock"
   gem "launchy"
 end

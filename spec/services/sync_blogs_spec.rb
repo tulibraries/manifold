@@ -89,4 +89,16 @@ RSpec.describe SyncService::Blogs, type: :service do
       expect(blog_post).to be
     end
   end
+
+  context "sync timeout" do
+    let(:feed_path) { "#{fixture_path}/blog_post_internal_author.rss"  }
+
+    it "passes timeout to http request" do
+      expect(URI).to receive(:open).with(feed_path, { read_timeout: Rails.configuration.sync_timeout })
+
+      blog_feed = OpenStruct.new(feed_path: feed_path, id: @blog.id)
+      sync_blogs = described_class.new(blog: blog_feed)
+      sync_blogs.read_blog_posts
+    end
+  end
 end

@@ -53,5 +53,6 @@ module Tude
     config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]
 
     config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "true"
+    config.sync_timeout = ENV.fetch("MANIFOLD_SYNC_TIMEOUT", "180").to_i
   end
 end

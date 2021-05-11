@@ -20,7 +20,7 @@ RSpec.describe CategorySerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :long_description, :updated_at)
+      expect(data[:attributes].keys).to include(:name, :description, :updated_at)
     end
 
     it "returns the name" do

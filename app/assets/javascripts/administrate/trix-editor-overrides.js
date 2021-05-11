@@ -1,4 +1,3 @@
-//= require trix
 
 
 window.addEventListener("trix-file-accept", function(event) {
@@ -16,8 +15,6 @@ window.addEventListener("trix-file-accept", function(event) {
     alert("Only support attachment files up to size 1MB!")
   }
 })
-
-addHeadingAttributes()
 
 addEventListener("trix-initialize", function (event) {
     new RichText(event.target)
@@ -114,10 +111,4 @@ class RichText {
       </div>
     `
   }
-}
-
-function addHeadingAttributes() {
-  Array.from(["h1", "h2", "h3", "h4", "h5", "h6"]).forEach((tagName, i) => {
-    Trix.config.blockAttributes[`heading${(i + 1)}`] = { tagName: tagName, terminal: true, breakOnReturn: true, group: false }
-  })
 }

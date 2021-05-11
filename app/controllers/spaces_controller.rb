@@ -15,8 +15,6 @@ class SpacesController < ApplicationController
     end
   end
 
-  # GET /spaces/1
-  # GET /spaces/1.json
   def show
     @covid_alert = @space.covid_alert
     @categories = @space.categories
@@ -29,14 +27,8 @@ class SpacesController < ApplicationController
   helper_method :list_item
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_space
       @space = find_instance
       return redirect_or_404(@space)
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def space_params
-      params.require(:space).permit()
     end
 end

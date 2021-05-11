@@ -51,7 +51,7 @@ as well as a link to its edit page.
 
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
         <%= render_field attribute, page: page unless attribute.attribute.to_s == "id" %>
-        <%= "https://library.temple.edu/categories/#{attribute.to_s}" if attribute.attribute.to_s == "id" %>
+        <%= "/categories/#{attribute.to_s}" if attribute.attribute.to_s == "id" %>
       </dd>
     <% end %>
     <dt class="attribute-label" id="Entites">
@@ -70,10 +70,11 @@ as well as a link to its edit page.
         <tbody>
           <% page.resource.items.each do |item| %>
             <%= tag.tr do %>
+          <%# binding.pry %>
               <%= tag.td(item.label, class: "item-label") %>
               <%= tag.td(item.class, class: "item-class") %>
               <%= tag.td(item.category_weight, class: "item-category-weight") %>
-              <%= tag.td(link_to("Show", ["admin", item], class: "button")) %>
+              <%= tag.td(link_to("Show", [namespace, item], class: "button")) %>
             <% end %>
           <% end %>
         </tbody>

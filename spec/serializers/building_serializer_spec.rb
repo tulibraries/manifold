@@ -21,7 +21,7 @@ RSpec.describe BuildingSerializer do
 
     it "has the expected attributes" do
       expect(data[:attributes].keys).to include(:name, :address1, :address2, :coordinates, :google_id,
-                                                :phone_number, :description, :label, :updated_at)
+                                                :phone_number, :label, :updated_at)
     end
 
     it "has a link to the object" do

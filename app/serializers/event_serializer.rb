@@ -3,10 +3,11 @@
 class EventSerializer < ApplicationSerializer
   include ImageSerializable
   include LinkSerializable
+  include DescriptionSerializable
 
   set_type :event
 
-  attributes :title, :description, :start_time, :end_time, :cancelled, :registration_status,
+  attributes :title, :start_time, :end_time, :cancelled, :registration_status,
              :registration_link, :content_hash, :alt_text, :ensemble_identifier, :tags, :all_day
 
   attribute :space do |event|

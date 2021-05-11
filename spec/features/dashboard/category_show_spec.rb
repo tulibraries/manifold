@@ -17,7 +17,7 @@ RSpec.feature "Dashboard::Category", type: :feature do
     scenario "Display existing item show page" do
       login_as(@admin, scope: :account)
       visit("/admin/categories/#{@category.id}")
-      expect(page).to have_text("library.temple.edu/categories/#{@category.id}")
+      expect(page).to have_text("/categories/#{@category.id}")
     end
   end
 

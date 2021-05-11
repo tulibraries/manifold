@@ -2,6 +2,7 @@
 
 class CategorySerializer < ApplicationSerializer
   include LinkSerializable
+  include LongDescriptionSerializable
 
-  attributes :name, :long_description
+  attributes :name, :description
 end

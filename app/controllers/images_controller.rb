@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
       if @parent.image.attached?
         redirect_to url_for(@parent.send(type))
       else
-        raise ActionController::RoutingError.new("Image Not Found")
+        raise ActionController::RoutingError.new("Image Not Attached")
       end
     end
 

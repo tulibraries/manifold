@@ -3,17 +3,17 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "rails", "~> 6.1.3"
+gem "rails", "~> 6.1.3.2"
 ruby "2.7.2"
 
 gem "timecop"
-gem "administrate"
+gem "administrate", ">= 0.16.0"
 gem "ancestry"
 gem "attr_json"
 gem "auto_strip_attributes"
 gem "aws-sdk-s3"
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap", "~> 4.6.0"
+gem "bootstrap", "~> 5.0.0"
 gem "browser"
 gem "cancancan", "~> 3.2"
 gem "coffee-rails", "~> 4.2"
@@ -38,18 +38,19 @@ gem "mail_form"
 gem "meta-tags"
 gem "mini_magick", "~> 4.11"
 gem "okcomputer"
-gem "omniauth", "~> 1.9.1"
+gem "omniauth", "~> 2.0.4"
 gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 gem "paper_trail"
 gem "pg"
-gem "popper_js", "~> 1.16.0"
-gem "puma", "~> 5.2"
+gem "popper_js", "~> 2.9.2"
+gem "puma", "~> 5.3"
 gem "rswag-api"
 gem "rswag-ui"
 gem "sass-rails", "~> 6.0"
 gem "simple_form"
 gem "sitemap_generator"
-gem "skylight"
+gem "skylight", "4.3.2"
 gem "sqlite3", "~> 1.3.13"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -59,8 +60,8 @@ gem "friendly_id", "~> 5.4.2"
 gem "action-draft"
 gem "webpacker"
 gem "image_processing", "~> 1.2"
-gem "carrierwave", "~> 2.2"
 gem "mimemagic", "0.4.3"
+gem "active_storage_validations"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -70,6 +71,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
   gem "vcr"
 end
 
@@ -86,14 +88,15 @@ end
 group :test do
   gem "capybara", ">= 2.15", "< 4.0"
   gem "chromedriver-helper"
-  gem "factory_bot_rails", "~> 6.1.0"
+  gem "factory_bot_rails", "~> 6.2.0"
   gem "guard-rspec", require: false
   gem "mutant-rspec"
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails", ">=3.8.0"
   gem "selenium-webdriver"
-  gem "simplecov", require: false
+  gem "simplecov"
+  gem "simplecov-lcov"
   gem "webmock"
   gem "launchy"
 end

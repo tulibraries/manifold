@@ -2,6 +2,7 @@
 
 class PolicySerializer < ApplicationSerializer
   include LinkSerializable
+  include DescriptionSerializable
 
-  attributes :name, :description, :effective_date, :expiration_date
+  attributes :name, :effective_date, :expiration_date
 end

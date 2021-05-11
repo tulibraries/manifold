@@ -20,7 +20,7 @@ RSpec.describe ExhibitionSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:title, :description, :start_date, :end_date,
+      expect(data[:attributes].keys).to include(:title, :start_date, :end_date,
                                                 :promoted_to_events, :label)
     end
 

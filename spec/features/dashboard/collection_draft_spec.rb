@@ -32,8 +32,7 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
     end
   end
 
-  xcontext "Visit Collection Administrate Page" do
-    # TODO: need to find and remove extra trix field from page output
+  context "Visit Collection Administrate Page" do
     let(:new_description) { "Don't Panic!" }
 
     scenario "Change the Collection Description" do
@@ -42,13 +41,15 @@ RSpec.feature "Dashboard::CollectionDrafts", type: :feature do
       visit("/admin/collections/#{@collection.id}/edit")
       expect(page).to have_xpath("//div[@id=\"collection_description\"]/div[@class=\"trix-content\"]/text()[contains(., \"#{@collection.description.body.to_trix_html}\")]")
       expect(page).to have_xpath("//trix-editor[@id=\"collection_draft_description\"]")
-      find(:xpath, "//\*[starts-with(@id, \"collection_draft_description_trix_input_collection\")]", visible: false).set(new_description)
       click_button("Update Collection")
       expect(page).to have_content(@collection.description.body.to_trix_html)
       expect(page).to_not have_content(new_description)
       visit("/admin/collections/#{@collection.id}/edit")
+      find(:xpath, "//\*[starts-with(@id, \"collection_draft_description_trix_input_collection\")]", visible: false).set(new_description)
       check(I18n.t("manifold.admin.actions.publish"))
+      expect(page).to have_checked_field("collection_publish")
       click_button("Update Collection")
+      visit("/admin/collections/#{@collection.id}/edit")
       expect(page).to_not have_css("div.trix-content", text: @collection.description.body.to_trix_html, match: :first)
       expect(page).to have_css "div.trix-content", text: new_description
     end

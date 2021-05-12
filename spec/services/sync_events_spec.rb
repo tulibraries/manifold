@@ -173,13 +173,13 @@ RSpec.describe SyncService::Events, type: :service do
 
     context "space" do
       it "has a space reference" do
-      allow(::FuzzyFind::Space).to receive(:find).with(kind_of(String), anything).and_return(@space)
-      internal_events.sync
-      event = Event.find_by(space_id: @space.id)
-      expect(event.space_id).to eq @space.id
-      expect(event.space.name).to eq @space.name
-      expect(event.external_space).to eq nil
-    end
+        allow(::FuzzyFind::Space).to receive(:find).with(kind_of(String), anything).and_return(@space)
+        internal_events.sync
+        event = Event.find_by(space_id: @space.id)
+        expect(event.space_id).to eq @space.id
+        expect(event.space.name).to eq @space.name
+        expect(event.external_space).to eq nil
+      end
       it "doesn't have a space reference" do
         allow(::FuzzyFind::Space).to receive(:find).with(kind_of(String), anything).and_return(nil)
         external_events.sync
@@ -282,6 +282,15 @@ RSpec.describe SyncService::Events, type: :service do
           expect(Event.count).to eq (@starting_event_count + 1)
         end
       end
+    end
+  end
+
+  context "sync timeout" do
+    let(:feed_url) { "https://example.com/events/feed.xml" }
+
+    it "passes timeout to http request" do
+      expect(URI).to receive(:open).with(feed_url, { read_timeout: Rails.configuration.sync_timeout })
+      sync_events = described_class.new(events_url: feed_url)
     end
   end
 end

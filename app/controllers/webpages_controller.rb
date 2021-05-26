@@ -112,7 +112,6 @@ class WebpagesController < ApplicationController
     else
       api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
       ensemble_api(api_query)
-      binding.pry
       if @videos.first[1].nil?
         @categoryTitle = "your search for: #{params[:q]} returned 0 results"
       else

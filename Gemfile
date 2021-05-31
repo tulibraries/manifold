@@ -50,7 +50,7 @@ gem "rswag-ui"
 gem "sass-rails", "~> 6.0"
 gem "simple_form"
 gem "sitemap_generator"
-gem "skylight", "5.1.0"
+gem "skylight", "5.1.1"
 gem "sqlite3", "~> 1.3.13"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -4,7 +4,7 @@ module LongDescriptionSerializable
   extend ActiveSupport::Concern
   included do
     attribute :long_description do |the_object|
-      the_object.long_description.body.to_html
+      the_object.long_description.body
     end
   end
 end

@@ -857,8 +857,8 @@ en:
         foapal: "FOAPAL"
         foapal_hint: "in case of damages or additional cleaning costs"
         policy_check_html: >-
-                          I agree to <a href=\"https://library.temple.edu/policies/17\" class=\"inline\">
-                          Temple University Libraries\’ policies and guidelines</a>
+                          I agree to <a href="https://library.temple.edu/policies/17" class="inline">
+                          Temple University Libraries's policies and guidelines</a>
 
       graduate_locker_request:
         title: "Charles Library Graduate Studio Locker Request"

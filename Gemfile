@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "rails", "~> 6.1.3.2"
+gem "rails", "~> 6.1.4"
 ruby "2.7.2"
 
 gem "timecop"
@@ -15,7 +15,7 @@ gem "aws-sdk-s3"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap", "~> 4.6.0", "< 5.0.0"
 gem "browser"
-gem "cancancan", "~> 3.2"
+gem "cancancan", "~> 3.3"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
 gem "diffy"
@@ -26,7 +26,7 @@ gem "font-awesome-rails"
 gem "fuzzy_match"
 gem "google-analytics-rails", "1.1.1"
 gem "google-api-client", "~> 0.53"
-gem "honeybadger", "~> 4.8"
+gem "honeybadger", "~> 4.9"
 gem "httparty"
 gem "jbuilder", "~> 2.11"
 gem "jquery-rails"

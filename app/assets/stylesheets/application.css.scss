@@ -56,3 +56,7 @@ $sizes: map-merge(
 @import "*";
 @import "partials/_vars.scss";
 @import "font-awesome";
+
+.print-only {
+  display: none;
+}

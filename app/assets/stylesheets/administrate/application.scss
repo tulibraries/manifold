@@ -1,5 +1,3 @@
-
-
 @charset "utf-8";
 
 @import "reset/normalize";
@@ -39,9 +37,6 @@
 
 .field-unit--description-field {
   display: inline-block;
-  .field-unit__label {
-    // margin-top: 2.2rem;
-  }
   trix-editor {
     height: 21rem;
     overflow:auto;

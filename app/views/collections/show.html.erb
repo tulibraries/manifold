@@ -49,8 +49,10 @@
         </div>
         <% end %>
         <% unless @collection.external_link.nil? %>
-        <div>
-          <h2><%= link_to @collection.external_link.title, @collection.external_link.link, class: "collections-external-link" %></h2>
+        <div class="collections-external-link">
+          <h2><%= link_to @collection.external_link.title, @collection.external_link.link %></h2>
+          <p class="print-only"><%= @collection.external_link.link %></p>
+
         </div>
         <% end %>
       </div>

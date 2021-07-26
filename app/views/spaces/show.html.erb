@@ -57,8 +57,9 @@
 
 
       <% unless @space.external_link.nil? %>
-        <div>
-          <h2 class="access-link"><%= link_to @space.external_link.title, @space.external_link.link %></h2>
+        <div class="access-link">
+          <h2><%= link_to @space.external_link.title, @space.external_link.link %></h2>
+          <p class="print-only"><%= @space.external_link.link %></li>             
         </div>          
       <% end %>
       

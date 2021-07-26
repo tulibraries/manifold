@@ -36,7 +36,6 @@
 	.collections-external-link {
 		background-color: $red;
 		padding: 21px;
-		color: #fff !important;
 		text-align: center;
 		border-radius: 7px;
 		display: inline-block;
@@ -44,5 +43,8 @@
 		margin-bottom: 14px;
 		text-decoration: underline;
 		text-align: left;
+		a {
+			color: #fff !important;
+		}
   }
 }

@@ -1,3 +1,13 @@
+<% if ["services", "policies"].include? controller_name %>
+<div class="container" id="print-page">
+  <div class="row">
+    <div class="col-12 text-center py-3">
+      <%= link_to t("manifold.default.print_page"), "#", onclick: "printPage()" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
 <div id="site-footer">
   <div class="container">
   <div class="row social" id="social-row">

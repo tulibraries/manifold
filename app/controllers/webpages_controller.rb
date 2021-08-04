@@ -134,6 +134,8 @@ class WebpagesController < ApplicationController
     @header_alert = Alert.where(published: true).find_by(for_header: true)
     @news_items = Highlight.where(promoted: true).take(3)
     @featured_events = Event.where(featured: true).order(:start_time).take(3)
+    @cta3 = Category.find_by(slug: "computers-printing-technology")
+    @cta4 = Category.find_by(slug: "explore-charles")
   end
 
   def scrc

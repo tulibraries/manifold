@@ -1,5 +1,9 @@
 body { width: 1200px !important; }
 
+#print-page {
+  display: none;
+}
+
 #toolbar, #header-navbar, #wrapper, #site-footer, .lcs_slide_out, .covid-alert, .flash {
   display: none !important;
 }

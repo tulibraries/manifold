@@ -68,6 +68,7 @@ en:
         accounts: "Individual Owners"
   manifold:  
     default:
+      print_page: Print This Page
       image_file_size_limit: 700
       thumb_image_size: 120
       index_image_size: 220

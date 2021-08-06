@@ -2,7 +2,6 @@
 
 class Service < ApplicationRecord
   has_paper_trail
-
   include Accountable
   include Categorizable
   include Draftable
@@ -10,6 +9,7 @@ class Service < ApplicationRecord
   include HasPolicies
   include SetDates
   include SchemaDotOrgable
+
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged

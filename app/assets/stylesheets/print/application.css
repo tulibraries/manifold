@@ -1,0 +1,41 @@
+body { width: 1200px !important; }
+
+#print-page {
+  display: none;
+}
+
+#toolbar, #header-navbar, #wrapper, #site-footer, .lcs_slide_out, .covid-alert, .flash {
+  display: none !important;
+}
+
+.print-only {
+  display: inline-block;
+  overflow-wrap: anywhere;
+}
+
+.print-only.dark {
+  color: black !important;
+}
+.print-only.light {
+  color: white !important;
+}
+.access-link, .external-link, .collections-external-link {
+  background-color: transparent !important;
+  color: black !important;
+  margin-top: 21px;
+}
+
+.access-link a, .external-link a, .collections-external-link a {
+  color: black !important;
+}
+
+.collection-show > .collections-external-link {
+  padding: 0;
+  text-align: left !important;
+  background-color: transparent !important;
+}
+
+.collection-show > .collections-external-link > h2, 
+.collection-show > .collections-external-link > a {
+  color: black !important;
+}

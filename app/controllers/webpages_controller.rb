@@ -172,7 +172,7 @@ class WebpagesController < ApplicationController
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.zone.now]).order(:start_time).take(5)
     @resources = "/hsl/resources"
     @research = "/hsl/research"
-    @remote_learning = Webpage.find_by(slug: "explore-online-collections")
+    @remote_learning = Webpage.find_by(slug: "online-support")
     @ginsburg = "/hsl/ginsburg"
     @podiatry = "/hsl/podiatry"
     @chat = "/hsl/chat"

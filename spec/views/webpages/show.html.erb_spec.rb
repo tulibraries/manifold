@@ -25,10 +25,11 @@ RSpec.describe "webpages/show", type: :view do
   end
 
   it "displays a virtual tour" do
-    @webpage = FactoryBot.create(:webpage, :as_virtual_tour)
+    @webpage = FactoryBot.create(:webpage, layout: "virtual-tour", virtual_tour: "http://google.com")
     render
     expect(rendered).to render_template(partial: "_virtual-tour")
     expect(rendered).to match /TOUR NAME/
+    expect(rendered).to match @webpage.virtual_tour
   end
 
   it "displays an external link" do

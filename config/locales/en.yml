@@ -447,7 +447,7 @@ en:
         view_past_events_videos: View video recordings from past events
         filters:
           none: "- none -"
-        online_notice_html: <p>All library events are <span>online only</span> until further notice.</p>
+        online_notice_html: <p>Most library events are online this semester. Check event listings for details.</p>
         featured_events: Featured Events
         event_types: Event Types
         calendar: Calendar

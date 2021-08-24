@@ -64,6 +64,10 @@ class PersonsController < ApplicationController
     @locations = get_location_filter_values(filtered_persons)
   end
 
+  def specialists_print
+    @persons_list = Person.specialists
+  end
+
   private
     def set_person
       @person = Person.friendly.find(params[:id])

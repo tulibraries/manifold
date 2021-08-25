@@ -3,25 +3,31 @@
 require "rails_helper"
 
 RSpec.describe "People", type: :request do
-  let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building_id: building.id) }
-  describe "GET /people" do
 
-    it "renders the person home page with all the people" do
-      skip "This should be revisited later"
-      person = FactoryBot.create(:person, space_ids: [space.id])
+  context "People Views" do
+    it "renders the index page" do
+      person = FactoryBot.create(:person, :with_image, specialties: [])
+      specialist = FactoryBot.create(:person, :with_image)
       get people_path
       expect(response).to render_template(:index)
-      expect(response.body).to include(person.last_name)
+      expect(response.body).to include(specialist.label)
     end
 
-    it "works! (now write some real specs)" do
-
-      skip "This should be revisited later"
-      person = FactoryBot.create(:person, space_ids: [space.id])
-      get people_path + "/#{person.id}"
+    it "renders the show page" do
+      person = FactoryBot.create(:person, :with_image, specialties: [])
+      specialist = FactoryBot.create(:person, :with_image)
+      get person_path(person)
       expect(response).to render_template(:show)
-      expect(response.body).to include(person.name)
+      expect(response.body).to include(person.label)
+    end
+
+    it "renders the print page" do
+      person = FactoryBot.create(:person, :with_image, specialties: [])
+      specialist = FactoryBot.create(:person, :with_image)
+      get specialists_print_path
+      expect(response).to render_template(:specialists_print)
+      expect(response.body).to include(specialist.label)
+      expect(response.body).not_to include(person.label)
     end
   end
 end

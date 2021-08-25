@@ -119,6 +119,10 @@ Rails.application.routes.draw do
     get "collections/scrc/*path" => :show
   end
 
+  controller :persons do
+    get "people/specialists/print" => :specialists_print, as: "specialists_print"
+  end
+
   controller :webpages do
     get "scrc" => :scrc, as: "webpages_scrc"
     get "blockson" => :blockson, as: "webpages_blockson"

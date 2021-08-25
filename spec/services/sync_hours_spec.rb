@@ -76,7 +76,7 @@ RSpec.describe SyncService::LibraryHours, type: :service do
     end
   end
 
-  context "Sync's data from Google Spreadsheet" do
+  context "Syncs data from Google Spreadsheet" do
     before(:all) do
       VCR.configure do |config|
         config.cassette_library_dir = "spec/fixtures/vcr_cassettes"

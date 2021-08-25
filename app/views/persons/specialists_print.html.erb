@@ -30,11 +30,6 @@
             <h3>Profile</h3> 
             <%= person_url(person) %>
 
-            <% if person.springshare_id.present? %>
-              <h3 class="mt-3">Appointment Bookings</h3>
-              <%= "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment" %>
-            <% end %>
-
             <% if person.personal_site.present? %>
               <h3>Website</h3>
               <%= person.personal_site %>

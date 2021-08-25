@@ -8,9 +8,44 @@ RSpec.describe "LibraryHours", type: :request do
     let(:hour) { FactoryBot.create(:library_hour) }
     let(:hour1) { FactoryBot.create(:library_hour, location_id: "online") }
     let(:hour2) { FactoryBot.create(:library_hour, location_id: "drop_in") }
+    @buildings = [
+      {
+        slug: "online",
+        spaces: ["ask_a_librarian"]
+      },
+      {
+        slug: "ambler",
+        spaces: ["ambler"]
+      },
+      {
+        slug: "blockson",
+        spaces: ["blockson"]
+      },
+      {
+        slug: "charles",
+        spaces: [
+                  "charles",
+                  "service_zone",
+                  "scrc",
+                  "scholars_studio",
+                  "asrs",
+                  "guest_computers",
+                  "cafe",
+                  "24-7",
+                  "drop_in"
+                ]
+      },
+      {
+        slug: "ginsburg",
+        spaces: ["ginsburg", "innovation"]
+      },
+      {
+        slug: "podiatry",
+        spaces: ["podiatry"]
+      }
+    ]
 
-    it "correctly names locations fron sync" do
-      binding.pry
+    it "correctly names locations from sync" do
       expect { get hours_path.to have_text(/Drop-in Research Help/) }
       expect { get hours_path.to have_text(/Online/) }
     end

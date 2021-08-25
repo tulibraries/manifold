@@ -63,7 +63,8 @@ class LibraryHoursController < ApplicationController
                   "asrs",
                   "guest_computers",
                   "cafe",
-                  "24-7"
+                  "24-7",
+                  "drop_in"
                 ]
       },
       {

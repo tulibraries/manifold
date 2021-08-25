@@ -19,22 +19,25 @@
     <%= @service.description %>
 
     </div>
+
+  <% if @service.external_link.present? || @service.access_description.present? %>
     <div class="col-12 col-md-3 rightside-service">
-      <% unless @service.external_link.blank? %>
+      <% if @service.external_link.present? %>
         <div class="access-link">
           <h2><%= link_to @service.external_link.title, @service.external_link.link %></h2>
           <p class='print-only'><%= @service.external_link.link %></p>
         </div>
       <% end %>
-      <% unless @service.access_description.blank? %>
+      <% if @service.access_description.present? %>
       <h2><%= t("manifold.get_help") %></h2>
         <div class="entity-help">
           <%= @service.access_description %>
         </div>
       <% end %>
     </div>
-  </div>
+  <% end %>
 
+  </div>
 </div>
 
 <script type="application/ld+json">

@@ -57,8 +57,8 @@ class LibraryHoursController < ApplicationController
         slug: "charles",
         spaces: [
                   "charles",
-                  "scrc",
                   "service_zone",
+                  "scrc",
                   "scholars_studio",
                   "asrs",
                   "guest_computers",

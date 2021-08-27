@@ -138,6 +138,15 @@ class Form < MailForm::Base
   attribute :instruction_mode
   attribute :total_number_of_production_members
   attribute :mobile_telephone_number_of_the_key_crew_member
+  attribute :exhibit_title
+  attribute :exhibit_date_range
+  attribute :exhibit_location
+  attribute :exhibit_display_methods
+  attribute :exhibit_funding_source
+  attribute :exhibit_insurance
+  attribute :exhibit_temple_connection
+  attribute :exhibit_temple_connection_description
+  attribute :exhibit_policies_acknowledgement
 
 
   def get_subject
@@ -155,18 +164,19 @@ class Form < MailForm::Base
       "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu", "richieh@temple.edu"]],
       "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cacert@temple.edu"]],
       "cac-external" => ["Cultural Analytics Certificate External Application", ["cacert@temple.edu"]],
-      "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
+      "event-space-request" => ["Charles Library Event Space Request", ["cdoyle@temple.edu"]],
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
       "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["jhill@temple.edu", "eschiller@temple.edu"]],
       "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu", "tuf16063@temple.edu", "j.martin@temple.edu"]],
       "group-visit" => ["Group Visit Request", ["charlestours@temple.edu"]],
-      "review-protocol" => ["Temple Review Protocol", ["burstein@temple.edu", "stephanie.roth@temple.edu"]]
+      "review-protocol" => ["Temple Review Protocol", ["burstein@temple.edu", "stephanie.roth@temple.edu"]],
+      "exhibit-request" => ["Charles Library Exhibit Request", ["libraries@temple.edu"]]
     }
 
     @forms.fetch(form_type)
   end
 
-  # Some forms don't supply a email and name, so they we're failing
+  # Some forms don't supply an email and name, so they we're failing
   def default_from_name
     "Temple University Libraries"
   end

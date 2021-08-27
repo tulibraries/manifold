@@ -17,72 +17,75 @@
 
   <div class="row">
     <div class="col">
-      <h2><%= t("manifold.forms.index.temple_materials") %></h2>
+      <h2><%= t("manifold.forms.index.temple_materials.label") %></h2>
       <ul class="list-unstyled">
         <li>
-          <a href="/forms/missing-book">Missing Book Search Request</a>
+            <%= link_to t("manifold.forms.index.temple_materials.missing_book"), [forms_path, "missing-book"].join("/") %>
         </li>
         <li>
-          <a href="/forms/recall-book">Request Recall of Books Already Checked Out (Faculty/Library Staff only)</a>
+            <%= link_to t("manifold.forms.index.temple_materials.recall_book"), [forms_path, "recall-book"].join("/") %>
         </li>
       </ul>
-      <h2><%= t("manifold.forms.index.instructional_materials") %></h2>
-      <ul class="list-unstyled">
-        <li>
-          <a href="/forms/library-instruction">Request a Library Instruction Session</a>
-        </li>
-        <li>
-          <a href="/forms/scrc-instruction">SCRC Instruction Session/Visit Request Form</a>
-        </li>
-      </ul>
-      <h2><%= t("manifold.forms.index.library_privileges") %></h2>
-      <ul class="list-unstyled">
-        <li>
-          <a href="/forms/proxy-account">Proxy Account</a>
-        </li>
-        <li>
-          <a href="/forms/graduate-locker-request">Charles Library Graduate Studio Locker Request</a>
-        </li>
-        <li>
-          <a href="/forms/partners-borrowing">Partners Borrowing Privileges Application/Renewal</a>
-        </li>
-        </ul>
-      <h2><%= t("manifold.forms.index.collection_development") %></h2>
+      <h2><%= t("manifold.forms.index.instructional_services.label") %></h2>
         <ul class="list-unstyled">
           <li>
-            <a href="/forms/purchase-request">Request a Purchase for the Library Collections</a>
+            <%= link_to t("manifold.forms.index.instructional_services.library_instruction"), [forms_path, "library-instruction"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.instructional_services.scrc_instruction"), [forms_path, "scrc-instruction"].join("/") %>
           </li>
         </ul>
-        <h2><%= t("manifold.forms.index.administrative_services") %></h2>
-          <ul class="list-unstyled">
-            <li>
-              <a href="/forms/table-request">Library Staff and Registered Student Organization Table Request</a>
-            </li>
-            <li>
-              <a href="/forms/event-space-request">Charles Library Event Space Request</a>
-            </li>
-            <li>
-              <a href="/forms/group-visit">Group Visit Request</a>
-            </li>
-            <li>
-              <a href="/forms/filming-request">Guidelines for Requesting Permission to Use the Libraries for Filming</a>
-            </li>
-          </ul>
-        <h2><%= t("manifold.forms.index.requests") %></h2>
-          <ul class="list-unstyled">
-            <li>
-              <%= t("manifold.forms.index.requests_html") %> 
-            </li>
-          </ul>
-        <h2><%= t("manifold.forms.index.not_held") %></h2>
-          <ul class="list-unstyled">
-            <li>
-              <%= t("manifold.forms.index.not_held_one_html") %>
-            </li>
-            <li>
-              <%= t("manifold.forms.index.not_held_two_html") %>
-            </li>
-          </ul>
+      <h2><%= t("manifold.forms.index.library_privileges.label") %></h2>
+        <ul class="list-unstyled">
+          <li>
+            <%= link_to t("manifold.forms.index.library_privileges.proxy_account"), [forms_path, "proxy-account"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.library_privileges.graduate_locker_request"), [forms_path, "graduate-locker-request"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.library_privileges.partners_borrowing"), [forms_path, "partners-borrowing"].join("/") %>
+          </li>
+        </ul>
+      <h2><%= t("manifold.forms.index.collection_development.label") %></h2>
+        <ul class="list-unstyled">
+          <li>
+            <%= link_to t("manifold.forms.index.collection_development.purchase_request"), [forms_path, "purchase-request"].join("/") %>
+          </li>
+        </ul>
+      <h2><%= t("manifold.forms.index.administrative_services.label") %></h2>
+        <ul class="list-unstyled">
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.table_request"), [forms_path, "table-request"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.event_space_request"), [forms_path, "event-space-request"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.group_visit"), [forms_path, "group-visit"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.filming_request"), [forms_path, "filming-request"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.exhibit_request"), [forms_path, "exhibit-request"].join("/") %>
+          </li>
+        </ul>
+      <h2><%= t("manifold.forms.index.requests") %></h2>
+        <ul class="list-unstyled">
+          <li>
+            <%= t("manifold.forms.index.requests_html") %> 
+          </li>
+        </ul>
+      <h2><%= t("manifold.forms.index.not_held") %></h2>
+        <ul class="list-unstyled">
+          <li>
+            <%= t("manifold.forms.index.not_held_one_html") %>
+          </li>
+          <li>
+            <%= t("manifold.forms.index.not_held_two_html") %>
+          </li>
+        </ul>
       </div>
   </div>
 </div>

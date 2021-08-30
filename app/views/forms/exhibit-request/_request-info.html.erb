@@ -25,7 +25,7 @@
 <%= f.input :exhibit_temple_connection, as: :boolean, 
             collection: t("manifold.forms.fields.boolean.yes_no").map{ |k,v| v },
             label: t("manifold.forms.exhibit_request.temple_connection"), 
-            required: true %>
+            required: false %>
 <%= f.input :exhibit_temple_connection_description, as: :text,
             label: t("manifold.forms.exhibit_request.temple_connection_description") %>
 <%= f.input :exhibit_policies_acknowledgement, as: :boolean, 

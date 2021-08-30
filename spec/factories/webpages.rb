@@ -5,12 +5,7 @@ FactoryBot.define do
     title { "Webpage" }
     description { ActionText::Content.new("Hello World") }
     layout { "None" }
-    trait :as_virtual_tour do
-      after :create do |webpage|
-        external_link = FactoryBot.create(:external_link)
-        webpage.assign_attributes(title: "Tour Page", external_link: external_link, layout: "Virtual Tour")
-      end
-    end
+    virtual_tour { "" }
     trait :with_external_link do
       after :create do |webpage|
         external_link = FactoryBot.create(:external_link)

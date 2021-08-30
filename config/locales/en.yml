@@ -1,34 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   helpers:
     label:
@@ -247,7 +216,17 @@ en:
           first_choice_date: "First Choice Date"
           second_choice_date: "Second Choice Date"
           instruction_mode: "Mode of Instruction"
-          
+          exhibit_title: Exhibit Title
+          exhibit_date_range: Proposed Date Range
+          description: Description
+          exhibit_location: Location Within Charles
+          exhibit_display_methods: Display Methods
+          exhibit_funding_source: Funding Source
+          exhibit_insurance: Insurance
+          exhibit_temple_connection: Connection to Temple?
+          exhibit_temple_connection_description: Temple Connection
+          exhibit_policies_acknowledgement: Policies Acknowledgement
+            
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
         charles_library: "Charles Library"
@@ -447,7 +426,7 @@ en:
         view_past_events_videos: View video recordings from past events
         filters:
           none: "- none -"
-        online_notice_html: <p>All library events are <span>online only</span> until further notice.</p>
+        online_notice_html: <p>Most library events are online this semester. Check event listings for details.</p>
         featured_events: Featured Events
         event_types: Event Types
         calendar: Calendar
@@ -499,11 +478,29 @@ en:
                     <p align="center">Use of these forms is intended for and restricted to members of the Temple 
                     University Community</p>
                     <p><a href="/contact-us">Library Suggestions/Feedback</a></p>
-        temple_materials: Temple-owned materials
-        instructional_services: Instructional Services
-        library_privileges: Library Privileges
-        collection_development: Collection Development
-        administrative_services: Administrative Services
+        temple_materials: 
+          label: Temple-owned materials
+          missing_book: Missing Book Search Request
+          recall_book: Request Recall of Books Already Checked Out (Faculty/Library Staff only)
+        instructional_services: 
+          label: Instructional Services
+          library_instruction: Request a Library Instruction Session
+          scrc_instruction: SCRC Instruction Session/Visit Request Form
+        library_privileges: 
+          label: Library Privileges
+          proxy_account: Proxy Account
+          graduate_locker_request: Charles Library Graduate Studio Locker Request
+          partners_borrowing: Partners Borrowing Privileges Application/Renewal
+        collection_development: 
+          label: Collection Development
+          purchase_request: Request a Purchase for the Library Collections
+        administrative_services: 
+          label: Administrative Services
+          table_request: Library Staff and Registered Student Organization Table Request
+          event_space_request: Charles Library Event Space Request
+          group_visit: Group Visit Request
+          filming_request: Guidelines for Requesting Permission to Use the Libraries for Filming
+          exhibit_request: Charles Library Exhibit Request
         requests: Requesting books and journal articles owned by Temple
         requests_html: >-
                       You can request books and journal articles from other Temple campuses and Remote Storage. To do so, 
@@ -559,7 +556,40 @@ en:
         call_number: Call Number
         publisher: Publisher
         comments: Comments (optional)
+        organizing_name: Organization Name
 
+      exhibit_request:
+        title: Charles Library Exhibit Request
+        exhibit_title: Title of exhibit
+        date_range: Requested time frame
+        description: Description
+        description_hint_html: >- 
+                          <div style="font-style:italic;margin-bottom: 2rem;">
+                            Briefly describe the exhibit, and provide links to any existing material
+                          </div>
+        location: Requested location in Charles Library
+        location_options:
+          one: Charles Library Exhibit Space (first floor; Room 116)
+          two: Fourth Floor Reading Room cases
+          three: Other
+        display_method: Proposed display methods
+        display_method_options:
+          one: Cases belonging to the Libraries
+          two: Cases brought in as part of the exhibit
+          three: Wall hangings
+          four: Digital screens (digital displays must be silent)
+          five: Other
+        funding_source: What is the source of funding for this exhibit?
+        insurance: What is insuring the content?
+        temple_connection: Does this exhibit or its materials have any connection to Temple or Temple Libraries?
+        temple_connection_hint: >- 
+                                Examples: research done in Special Collections Research Center or 
+                                Charles L. Blockson Afro-American Collection, includes work by Temple 
+                                faculty or students
+        temple_connection_description: If yes, briefly describe the connection
+        acknowledgement_html: >-
+                          Check to confirm that you have read and understood the 
+                          <a href="/policies/charles-library-exhibit-policies">Charles Library exhibit policies</a>
       recall_book:
         title: Request Recall of Books Already Checked Out
         intro_html: >-

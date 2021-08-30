@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class FormsController < ApplicationController
-  # def new
-  #   @form = Form.new
-  #   render template: "forms/#{params[:type]}"
-  # end
   def new
     @form = Form.new
     @collection = Rails.configuration.affiliation
@@ -16,6 +12,15 @@ class FormsController < ApplicationController
     end
   end
 
+  def index
+    respond_to do |format|
+      format.html { render template: "forms/index" }
+      format.json do
+        @forms = form_objects_for_json
+        render json: FormSerializer.new(@forms)
+      end
+    end
+  end
 
   def all
     respond_to do |format|

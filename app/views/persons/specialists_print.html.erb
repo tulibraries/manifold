@@ -1,0 +1,60 @@
+
+   <div class="container mt-2" id="spec_print">
+   <h1 class="mt-0">Subject Specialists</h1>
+   <% if @persons_list.present? %>
+   <hr />
+    <% @persons_list.each do |person| %>
+      <div class="row person">
+        <div class="col-6">
+          <ul class="details list-unstyled">
+            <li>
+              <h2>
+                <%= person.name %>
+              </h2>
+            </li>
+            <li>
+              <span style="font-size:larger;font-weight:600;"><%= person.job_title %></span>
+            </li>
+            <li>
+              <%= person.email_address %>
+            </li>
+            <li>
+              <%= phone_formatted(person.phone_number) %>
+            </li>
+            <li>
+              <%= depts_list(person).html_safe %>
+            </li>
+          </ul>
+          <div class="person-actions">
+
+            <h3>Profile</h3> 
+            <%= person_url(person) %>
+
+            <% if person.personal_site.present? %>
+              <h3>Website</h3>
+              <%= person.personal_site %>
+            <% end %>
+              
+          </div>
+        </div>
+        <div class="col-6 mt-md-5">
+        <h3>Subject Specialties</h3>
+          <ul>
+          <% person.specialties.each do |specialty| %>
+            <li><%= specialty %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+<hr>
+      <% end %>
+
+      <% else %> <!-- unless -->
+      <div class="row" style="margin-top: 14px;">
+        <div class="col-12 text-center">
+          <h3><%= t("manifold.people.no_results") %></h3>
+        </div>
+      </div>
+
+    <% end %>
+      </div>

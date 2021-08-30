@@ -87,7 +87,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
   resources :external_link, only: [:show]
-  resources :forms, only: [:new, :create]
+  resources :forms, only: [:index, :new, :create]
   resources :file_uploads, only: [:new, :create]
   resources :finding_aids, only: [:index, :show]
   resources :groups, only: [:index, :show]
@@ -117,6 +117,10 @@ Rails.application.routes.draw do
   controller :scrc do
     get "scrc/*path" => :show
     get "collections/scrc/*path" => :show
+  end
+
+  controller :persons do
+    get "people/specialists/print" => :specialists_print, as: "specialists_print"
   end
 
   controller :webpages do

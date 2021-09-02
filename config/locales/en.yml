@@ -415,6 +415,21 @@ en:
     events:
       mobile_menu:
         heading: Events & Exhibits
+      tags:
+        one: Beyond The Notes
+        two: Blockson
+        three: Book Club
+        four: Chat In The Stacks
+        five: Concert
+        six: Data
+        seven: Digital Scholarship
+        eight: Health Sciences
+        nine: Midday Arts
+        ten: North Philly
+        eleven: Reading
+        twelve: SCOP
+        thirteen: Speaker
+        fourteen: Workshop
       index:
         page_title: Events & Exhibits
         current_exhibits_label: Current Exhibits

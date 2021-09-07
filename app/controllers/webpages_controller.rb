@@ -168,7 +168,7 @@ class WebpagesController < ApplicationController
   def scop
     @webpage = Webpage.find_by(slug: "scop-intro")
     @description = @webpage.description if @webpage.present?
-    @pub_services = Category.find_by(slug: "publishing_services")
+    @pub_services = Category.find_by(slug: "publishing-services")
     @pub_services_links = @pub_services.items if @pub_services.present?
     @scholar_share = Category.find_by(slug: "tuscholarshare")
     @scholar_share_links = @scholar_share.items if @scholar_share.present?

@@ -68,7 +68,9 @@
     <div class="col-12 <%= @exhibitions.blank? ? "col-lg-12" : "col-lg-8" %> events pt-3 mb-3" id="events">
       <div class="row">
         <div class="col-12">  
-          <h2 class="p-3 mb-3 current-events"><%= t("manifold.events.index.upcoming_events") %></h2>
+          <h2 class="p-3 mb-3 current-events" id="upcoming-events">
+            <%= t("manifold.events.index.upcoming_events") %>
+          </h2>
         </div>
       </div>
     <% if params[:type].present? && params[:type] != "none" %>

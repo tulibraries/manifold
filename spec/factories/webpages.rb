@@ -6,6 +6,11 @@ FactoryBot.define do
     description { ActionText::Content.new("Hello World") }
     layout { "None" }
     virtual_tour { "" }
+    trait :as_scop do
+      after :create do |webpage|
+        webpage.assign_attributes(slug: "scop-intro")
+      end
+    end
     trait :with_external_link do
       after :create do |webpage|
         external_link = FactoryBot.create(:external_link)

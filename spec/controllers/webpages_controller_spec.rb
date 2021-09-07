@@ -32,6 +32,19 @@ RSpec.describe WebpagesController, type: :controller do
     end
   end
 
+  describe "GET #scop" do
+    let(:blog) { FactoryBot.create(:blog, title: "Scholarly Communications at Temple", slug: "scholarly-communications-at-temple") }
+    let(:category) { FactoryBot.create(:category, slug: "publishing_services") }
+    let(:category2) { FactoryBot.create(:category, slug: "tuscholarshare") }
+    let(:webpage) { FactoryBot.create(:webpage, slug: "scop-intro", categories: [category, category2]) }
+
+    it "returns a success response" do
+      get :scop
+      expect(response).to be_successful
+    end
+
+  end
+
   it_behaves_like "serializable"
 
 end

@@ -80,5 +80,5 @@ RSpec.describe Webpage, type: :model do
 
   # it_behaves_like "accountable"
   # it_behaves_like "attachable"
-  # it_behaves_like "categorizable"
+  it_behaves_like "categorizable"
 end

@@ -157,11 +157,27 @@ class WebpagesController < ApplicationController
 
   def tudsc
     @webpage = Webpage.find_by(slug: "lcdss-intro")
-    @visit_links =  Category.find_by(slug: "lcdss-study").items unless Category.find_by(slug: "lcdss-study").nil?
-    @research_links = Category.find_by(slug: "lcdss-research").items unless Category.find_by(slug: "lcdss-research").nil?
+    @visit_links =  Category.find_by(slug: "lcdss-study").items || nil
+    @research_links = Category.find_by(slug: "lcdss-research").items || nil
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.zone.now]).order(:start_time).take(5)
     @blog = Blog.find_by(slug: "lcdss-blog")
     @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
+    @header_alert = Alert.where(published: true).find_by(for_header: true)
+  end
+
+  def scop
+    @webpage = Webpage.find_by(slug: "scop-intro")
+    @description = @webpage.description if @webpage.present?
+    @pub_services = Category.find_by(slug: "publishing_services")
+    @pub_services_links = @pub_services.items if @pub_services.present?
+    @scholar_share = Category.find_by(slug: "tuscholarshare")
+    @scholar_share_links = @scholar_share.items if @scholar_share.present?
+    @event_links = Event.where(tags: ["SCOP"])
+                        .where(end_time: Time.zone.now..Float::INFINITY)
+                        .order(:start_time)
+                        .take(5)
+    @blog = Blog.find_by(slug: "scholarly-communications-at-temple")
+    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5) if @blog.present?
     @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 

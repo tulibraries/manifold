@@ -1153,7 +1153,21 @@ en:
           research: Research Services
           events: Workshops & Events
           blog: Research Blog
-          view_all: View All 
+          view_all: View All
+      scop:
+        page_title: Center for Scholarly Communication & Open Publishing
+        publishing_services:  Publishing Services
+        scholar_share: TUScholarShare
+        blog: Blog (Scholarly Communication @ Temple)
+        events: Workshops & Events
+        view_all: View All
+        call_outs:
+          pub
+        links:
+          scholar_share: TUScholarShare
+          nb_press: North Broad Press
+          open_journals: Open Journals
+        contact: Contact Us
       videos:
         page_title: Past Program and Event Videos
         breadcrumb: < Watch Past Programs & Events

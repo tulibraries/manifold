@@ -17,7 +17,7 @@ RSpec.feature "Dashboard::Blog", type: :feature do
     scenario "Display existing item show page" do
       login_as(@admin, scope: :account)
       visit("/admin/blogs/#{@blog.id}")
-      expect(page).to have_text("library.temple.edu/blogs/#{@blog.id}")
+      expect(page).to have_text(@blog.slug)
     end
   end
 

@@ -1,7 +1,3 @@
-<% set_meta_tags title: :title, reverse: true,
-                 description: 'The Loretta C. Duckworth Scholars Studio supports digital methods for teaching and research, including at its Makerspace, VR Lab, and Specialized Computing Lab.',
-                 keywords: 'Makerspace, VR Lab, Specialized Computing Lab, Tech Sandbox, Charles Library, Temple University, 3D, games, geospatial, digital arts, cultural analytics, critical making, text mining' %>
-
 <% content_for :body_class, "minipage scop" %>
 
 <div class="banner-image scop"></div>
@@ -39,12 +35,12 @@
 
 	<div class="col-12 col-lg-8 description-container">
 		<div class="row">
-			<div class="col-12 description">
+			<div class="col-12 mb-4 description">
 				<%= @description %>
 			</div>
 		</div>
-		<div class="row links-container">
 
+		<div class="row links-container">
 			<% if @pub_services.present? %>
 			<div class="col-12 col-lg-6">
 				<div class="links">

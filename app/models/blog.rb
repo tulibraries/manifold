@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Blog < ApplicationRecord
-  has_paper_trail
   include Validators
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]

@@ -28,8 +28,6 @@ class BlogDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :blog_posts,
-    :id,
     :title,
     :base_url,
     :last_sync_date,
@@ -39,7 +37,7 @@ class BlogDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :title,
-    :id,
+    :slug,
     :base_url,
     :feed_path,
     :last_sync_date,

@@ -91,20 +91,7 @@ class EventsController < ApplicationController
       @all_events = Event.group(:id)
       @featured_events = Event.where(featured: true).order(:start_time).take(3)
       @today = Date.current
-      @new_tags = [
-        "Beyond The Notes",
-        "Blockson",
-        "Book Club",
-        "Chat In The Stacks",
-        "Concert",
-        "Data",
-        "Digital Scholarship",
-        "Health Sciences",
-        "Midday Arts",
-        "North Philly",
-        "Reading",
-        "Speaker",
-        "Workshop"].sort
+      @new_tags = t("manifold.events.tags").map { |tag| tag[1] }.sort
     end
 
     def set_event

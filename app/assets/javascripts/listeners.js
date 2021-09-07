@@ -39,7 +39,8 @@ $(document).ready(function(){
       {id: "lcdss", category: "homepage"},
       {id: "blockson", category: "homepage"},
       {id: "scrc", category: "homepage"},
-      {id: "law", category: "homepage"}
+      {id: "law", category: "homepage"},
+      {id: "scop", category: "homepage"}
     ];
 
     function handleEventClicks(label, category) {

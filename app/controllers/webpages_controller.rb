@@ -172,7 +172,7 @@ class WebpagesController < ApplicationController
     @pub_services_links = @pub_services.items if @pub_services.present?
     @scholar_share = Category.find_by(slug: "tuscholarshare")
     @scholar_share_links = @scholar_share.items if @scholar_share.present?
-    @event_links = Event.where(tags: ["SCOP"])
+    @event_links = Event.where(tags: "SCOP")
                         .where(end_time: Time.zone.now..Float::INFINITY)
                         .order(:start_time)
                         .take(5)

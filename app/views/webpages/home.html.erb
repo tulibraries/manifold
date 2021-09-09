@@ -109,13 +109,14 @@
 				</div>
 			</div>
 			<div class="col-12 col-lg-3 locations-links px-0">
-				<div class="h-20"><%= link_to t("manifold.webpages.home.links.main.locations.charles"), "/explore-charles", id: "charles-library" %></div>
-				<div class="h-20"><%= link_to t("manifold.webpages.home.links.main.locations.hsl"), webpages_hsl_path, id: "hsl" %></div>
-				<div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.lcdss"), webpages_lcdss_path, {class: "not-wrapped", id: "lcdss"} %></div>
+				<div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.charles"), "/explore-charles", id: "charles-library" %></div>
+				<div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.hsl"), webpages_hsl_path, id: "hsl" %></div>
+				<div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.lcdss"), webpages_lcdss_path, {id: "lcdss"} %></div>
 				<div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.blockson"), webpages_blockson_path, id: "blockson" %></div>
-				<div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.scrc"), webpages_scrc_path, {class: "not-wrapped", id: "scrc"} %></div>
-				<div class="h-20 bb-0"><%= link_to t("manifold.webpages.home.links.main.locations.law"), "/law-library", id: "law" %></div>
-				<div class="caption">
+				<div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.scrc"), webpages_scrc_path, {id: "scrc"} %></div>
+				<div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.law"), "/law-library", id: "law" %></div>
+				<div class="h-10 bb-0"><%= link_to "Center for Scholarly Communication & Open Publishing", webpages_scop_path, id: "scop" %></div>
+				<div class="caption caption-right">
 					<%= link_to(t("manifold.webpages.home.links.main.locations.all"), "/all-locations", {class: "gobel", id: "all-locations"}) %>
 				</div>
 			</div>

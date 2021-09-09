@@ -289,60 +289,40 @@
 		}
 		.locations-links {
 			background-color: $foamgreen;
-			div.h-18 {
-				padding-top: 9%;
-				padding-left: 21px;
-				padding-right: 21px;
+			div.h-10, div.h-20 {
+				height: 10%;
+				padding: 2.5% 21px;
 				border-bottom:solid white 1px;
 				@media screen and (max-width: 1040px) {
-					padding-top: 5%;
-					padding-bottom: 5%;
+					height: 12%;
+					padding-top: 2.5%;
+					padding-bottom: 2.5%;
 					padding-left: 5%;
 				}
 			}
-			div.h-18.two-lines {
-				padding-top: 5%;
-				@media screen and (max-width: 1040px) {
-					padding-top: 6%;
-					padding-bottom: 0;
-					padding-left: 5%;
-				}
-			}
-			div.h-20 {
-				padding-top: 7%;
-				padding-left: 21px;
-				padding-right: 21px;
-				border-bottom:solid white 1px;
-				@media screen and (max-width: 1040px) {
-					padding-top: 4%;
-					padding-bottom: 3%;
-					padding-left: 5%;
-				}
-			}
-			div.h-20.two-lines {
-				padding-top: 3%;
+			div.h-10.two-lines {
 				font-size: 100%!important;
-				@media screen and (max-width: 369px) {
-					// height: 20%!important;
+				@media screen and (max-width: 379px) {
+					height: 12% !important;
 					padding-top: 2%;
-
-					a.not-wrapped {
-						display: inline-block;
-						margin-top: 2.5%;
-					}
+					padding-bottom: 2%;
 				}
 			}
-			div.h-20.bb-0 {
-				@media screen and (max-width: 379px) {
-
-				}
+			div.h-10.bb-0 {
+				border-bottom: 0;
 			}
 
 			a {
 				font-size: 115%;
 			}
 			.caption {
-				position: relative;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				@media screen and (max-width: 379px) {
+					position: relative;
+					top: 21px;
+				}
 			}
 		}
 	}
@@ -575,6 +555,7 @@
 	}
 	.quicklinks-caption {
 		background-color: $black;
+		margin-top: 4px;
 		height: 45px;
 		color: $white;
 		font-size: 135%;

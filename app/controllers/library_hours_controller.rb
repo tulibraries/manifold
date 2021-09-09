@@ -42,8 +42,18 @@ class LibraryHoursController < ApplicationController
   def buildings
     @buildings = [
       {
-        slug: "online",
-        spaces: ["ask_a_librarian"]
+        slug: "charles",
+        spaces: [
+                  "charles",
+                  "24-7",
+                  "asrs",
+                  "guest_computers",
+                  "drop_in",
+                  "scholars_studio",
+                  "service_zone",
+                  "scrc",
+                  "cafe",
+                ]
       },
       {
         slug: "ambler",
@@ -54,27 +64,17 @@ class LibraryHoursController < ApplicationController
         spaces: ["blockson"]
       },
       {
-        slug: "charles",
-        spaces: [
-                  "charles",
-                  "service_zone",
-                  "scrc",
-                  "scholars_studio",
-                  "asrs",
-                  "guest_computers",
-                  "cafe",
-                  "24-7",
-                  "drop_in"
-                ]
-      },
-      {
         slug: "ginsburg",
         spaces: ["ginsburg", "innovation"]
       },
       {
         slug: "podiatry",
         spaces: ["podiatry"]
-      }
+      },
+      {
+        slug: "online",
+        spaces: ["ask_a_librarian"]
+      },
     ]
   end
 

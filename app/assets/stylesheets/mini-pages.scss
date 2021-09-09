@@ -9,6 +9,9 @@
 			padding-top: 21px;
 		}
 	}
+	.page-title.scop {
+		font-size: 300%;
+	}
 	.banner-image {
 		background-size: cover!important;
 		height: 240px;
@@ -22,6 +25,9 @@
 	}
 	.banner-image.dsc {
 		background:asset-data-url('dsc-banner.jpg') 0 15% no-repeat;
+	}
+	.banner-image.scop {
+		background:asset-data-url('scop-banner.jpg') 0 40% no-repeat;
 	}
 	.banner-image.scrc {
 		background:asset-data-url('scrc-banner.jpg') 0 70% no-repeat;

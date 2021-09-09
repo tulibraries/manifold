@@ -415,6 +415,21 @@ en:
     events:
       mobile_menu:
         heading: Events & Exhibits
+      tags:
+        one: Beyond The Notes
+        two: Blockson
+        three: Book Club
+        four: Chat In The Stacks
+        five: Concert
+        six: Data
+        seven: Digital Scholarship
+        eight: Health Sciences
+        nine: Midday Arts
+        ten: North Philly
+        eleven: Reading
+        twelve: SCOP
+        thirteen: Speaker
+        fourteen: Workshop
       index:
         page_title: Events & Exhibits
         current_exhibits_label: Current Exhibits
@@ -1138,7 +1153,21 @@ en:
           research: Research Services
           events: Workshops & Events
           blog: Research Blog
-          view_all: View All 
+          view_all: View All
+      scop:
+        page_title: Center for Scholarly Communication & Open Publishing
+        publishing_services:  Publishing Services
+        scholar_share: TUScholarShare
+        blog: Blog
+        events: Workshops & Events
+        view_all: View All
+        call_outs:
+          pub
+        links:
+          scholar_share: TUScholarShare
+          nb_press: North Broad Press
+          open_journals: Open Journals
+        contact: Staff Directory
       videos:
         page_title: Past Program and Event Videos
         breadcrumb: < Watch Past Programs & Events

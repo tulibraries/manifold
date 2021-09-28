@@ -197,6 +197,7 @@ class WebpagesController < ApplicationController
     @journal_finder = "/journal-finder"
     @support = "/hsl/giving"
     @visit = "/hsl/info"
+    @study_room = ExternalLink.find_by(slug: "hsl-study-rooms")
     @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 

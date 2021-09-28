@@ -19,14 +19,17 @@
     <%= render "covid_alert_mini" unless @header_alert.nil? %>
 
 		<div class="locations">
-			<%= link_to t("manifold.webpages.hsl.locations.remote_learning"), @remote_learning %>
-			<hr />
 			<%= link_to t("manifold.webpages.hsl.locations.ginsburg"), @ginsburg %>
 			<hr />
 			<%= link_to t("manifold.webpages.hsl.locations.krausz"), @podiatry %>
 		</div>
 
 		<div class="contact">
+			<div>
+				<%= image_tag "study_room_white.png", style: "width: 100px;", class: "decorative", alt: "" %>
+				<%= link_to t("manifold.webpages.hsl.contact.study_room"), @study_room.link, target: "_blank" %>
+			</div>
+      <hr />
 			<div class="two-lines">
 				<%= image_tag "chat.png", style: "width: 100px;", class: "decorative", alt: "" %>
 				<%= link_to t("manifold.webpages.hsl.contact.chat"), @chat, target: "_blank" %>

@@ -240,7 +240,7 @@ GEM
     hashie (4.1.0)
     honeybadger (4.9.0)
     htmlentities (4.3.4)
-    httparty (0.19.0)
+    httparty (0.20.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)

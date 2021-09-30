@@ -21,6 +21,7 @@ class Space < ApplicationRecord
   has_rich_text :description
   has_rich_text :draft_description
   has_rich_text :covid_alert
+  has_rich_text :accessibility
 
   validates :building_id, presence: true
 

@@ -20,7 +20,7 @@ RSpec.describe SpaceSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :description, :hours, :phone_number, 
+      expect(data[:attributes].keys).to include(:name, :description, :hours, :phone_number,
                                                 :email, :label, :updated_at)
     end
 

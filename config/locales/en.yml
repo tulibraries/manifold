@@ -427,7 +427,7 @@ en:
         nine: Midday Arts
         ten: North Philly
         eleven: Reading
-        twelve: SCOP
+        twelve: Scholarly Communications & Open Publishing
         thirteen: Speaker
         fourteen: Workshop
       index:
@@ -444,6 +444,7 @@ en:
         online_notice_html: <p>Most library events are online this semester. Check event listings for details.</p>
         featured_events: Featured Events
         event_types: Event Types
+        no_event_types: No events for
         calendar: Calendar
         upcoming_events: Upcoming Events
         events: Events
@@ -1116,6 +1117,7 @@ en:
           mailer: Mailing List
           chat: Chat with a Health Sciences Librarian
           appointment: Make an Appointment with a Health Sciences Librarian
+          study_room: Reserve a Study Room
         links: 
           journal_finder: Journal Finder
           support: Support the Health Sciences Libraries
@@ -1127,7 +1129,7 @@ en:
       research:
         page_title: Research Services
       scrc:
-        page_title: xSpecial Collections Research Center
+        page_title: Special Collections Research Center
         locations:
           reading_room: SCRC Reading Room
           finding_aids: Browse Finding Aids

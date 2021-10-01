@@ -118,7 +118,7 @@ module Tude
                             "German",
                             "Global Studies",
                             "Government Information",
-                            "Greek and Roman Classics",
+                            "Greek & Roman Classics",
                             "History",
                             "Horticulture",
                             "Italian",

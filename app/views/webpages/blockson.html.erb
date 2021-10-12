@@ -23,11 +23,15 @@
 		</div>
 
 		<div class="contact">
-			<%= image_tag "information_white.png", style: "width: 100px" %>
-			<%= link_to t("manifold.webpages.blockson.links.hours"), "/blockson/info" %>
+			<div class="one-liner">
+				<%= image_tag "information_white.png" %>
+				<%= link_to t("manifold.webpages.blockson.links.hours"), "/blockson/info" %>
+			</div>
 			<hr />
-			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			215-204-6632
+			<div class="one-liner">
+				<%= image_tag "phone-handle-white.png", class: "decorative", alt: "" %>
+				215-204-6632
+			</div>
 		</div>
 
 	</div>

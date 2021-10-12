@@ -69,15 +69,6 @@
 							],
 							"pattern": "^(.*)$"
 						},
-						"accessibility": {
-							"$id": "#/properties/data/properties/attributes/properties/accessibility",
-							"type": "string",
-							"title": "The Accesibility Schema",
-							"default": "",
-							"examples": [
-								"This space has accesibility information"
-							]
-						},
 						"phone_number": {
 							"$id": "#/properties/data/properties/attributes/properties/phone_number",
 							"type": "string",

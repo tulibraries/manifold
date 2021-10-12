@@ -27,8 +27,10 @@
 		</div>
 
 		<div class="contact">
-			<%= image_tag "chat.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<span class="mailer"><%= link_to t("manifold.webpages.scop.contact"), people_path(department: "scop") %></span>
+			<div class="one-liner">
+				<%= image_tag "chat.png", class: "decorative", alt: "" %>
+				<span class="mailer"><%= link_to t("manifold.webpages.scop.contact"), people_path(department: "scop") %></span>
+			</div>
 		</div>
 
 	</div>

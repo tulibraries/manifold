@@ -31,14 +31,20 @@
 		</div>
 
 		<div class="contact">
-			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			215-204-0752
+			<div class="one-liner">
+				<%= image_tag "phone-handle-white.png", class: "decorative", alt: "" %>
+				215-204-0752
+			</div>
 			<hr />
-			<%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<span class="mailer"><%= link_to t("manifold.webpages.tudsc.contact.newsletter"), "/lcdss/newsletter", target: "_blank" %></span>
+			<div class="one-liner">
+				<%= image_tag "email-white.png", class: "decorative", alt: "" %>
+				<span class="mailer"><%= link_to t("manifold.webpages.tudsc.contact.newsletter"), "/lcdss/newsletter", target: "_blank" %></span>
+			</div>
 			<hr />
-			<%= image_tag "chat.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<span class="mailer"><%= link_to t("manifold.webpages.tudsc.contact.staff"), people_path(department: "duckworth-scholars-studio-staff") %></span>
+			<div class="one-liner">
+				<%= image_tag "chat.png", class: "decorative", alt: "" %>
+				<span class="mailer"><%= link_to t("manifold.webpages.tudsc.contact.staff"), people_path(department: "duckworth-scholars-studio-staff") %></span>
+			</div>
 		</div>
 
 	</div>

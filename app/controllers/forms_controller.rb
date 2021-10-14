@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 class FormsController < ApplicationController
+  def show
+    new
+  end
+
   def new
     @form = Form.new
     @collection = Rails.configuration.affiliation
-    if existing_forms.include? params[:type]
-      @type = params[:type]
+    if existing_forms.include? params[:id]
+      @type = params[:id]
       render template: "forms/index"
     else
       render "errors/not_found", status: :not_found

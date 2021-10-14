@@ -31,7 +31,7 @@ RSpec.shared_examples "email form" do
       expect(the_email.body.raw_source).to include(*form_params.values)
       # Check that after the email has been delivered, the
       # form persists to the db. Hard to do in isolation
-      expect(FormSubmission.take.form_type).to eq(form_type)
+      expect(FormSubmission.take.form_type).to eq(params[:params][:form][:form_type])
     end
   end
 end

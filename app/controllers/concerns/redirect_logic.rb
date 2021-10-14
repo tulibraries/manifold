@@ -4,7 +4,6 @@ module RedirectLogic
   extend ActiveSupport::Concern
 
   def redirect_or_404(instance = nil)
-    # binding.pry
     redirect = Redirect.find_by(legacy_path: legacy_path)
     if redirect
       unless redirect.no_message

@@ -27,14 +27,20 @@
 		</div>
 
 		<div class="contact">
-			<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<%= link_to t("manifold.webpages.scrc.contact.contact"), "forms/ask-scrc" %>
+			<div class="one-liner">
+				<%= image_tag "phone-handle-white.png", class: "decorative", alt: "" %>
+				<%= link_to t("manifold.webpages.scrc.contact.contact"), "forms/ask-scrc" %>
+			</div>
 			<hr />
-			<%= image_tag "search.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<%= link_to t("manifold.webpages.scrc.contact.search"), "/scrc/search" %>
+			<div class="one-liner">
+				<%= image_tag "search.png", class: "decorative", alt: "" %>
+				<%= link_to t("manifold.webpages.scrc.contact.search"), "/scrc/search" %>
+			</div>
 			<hr />
-			<%= image_tag "information_white.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<%= link_to t("manifold.webpages.scrc.contact.hours"), "/scrc/info" %>
+			<div class="one-liner">
+				<%= image_tag "information_white.png", class: "decorative", alt: "" %>
+				<%= link_to t("manifold.webpages.scrc.contact.hours"), "/scrc/info" %>
+			</div>
 		</div>
 	</div>
 

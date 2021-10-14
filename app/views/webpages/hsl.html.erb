@@ -26,28 +26,32 @@
 
 		<div class="contact">
 			<div>
-				<%= image_tag "study_room_white.png", style: "width: 100px;", class: "decorative", alt: "" %>
+				<%= image_tag "study_room_white.png", class: "decorative", alt: "" %>
 				<%= link_to t("manifold.webpages.hsl.contact.study_room"), @study_room.link, target: "_blank" %>
 			</div>
       <hr />
 			<div class="two-lines">
-				<%= image_tag "chat.png", style: "width: 100px;", class: "decorative", alt: "" %>
+				<%= image_tag "chat.png", class: "decorative", alt: "" %>
 				<%= link_to t("manifold.webpages.hsl.contact.chat"), @chat, target: "_blank" %>
 			</div>
       <hr />
 			<div class="two-lines">
-				<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+				<%= image_tag "phone-handle-white.png", class: "decorative", alt: "" %>
         <%= link_to t("manifold.webpages.hsl.contact.appointment"), @appointment %>
 			</div>
 			<hr />
-        <%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
+			<div class="one-liner">
+        <%= image_tag "email-white.png", class: "decorative", alt: "" %>
         <%= link_to t("manifold.webpages.hsl.contact.mailer"), @mailer, target: "_blank" %>
-      <hr />
-        <%= image_tag('journal_finder.png', class: "decorative", style: "width: 100px", alt: "") %>
+      </div>
+			<hr />
+			<div class="one-liner">
+        <%= image_tag('journal_finder.png', class: "decorative", alt: "") %>
         <%= link_to t("manifold.webpages.hsl.links.journal_finder"), @journal_finder %>
-      <hr />
-      <div style="height:79px;" class="two-lines">
-        <%= image_tag "gift_white.png", style: "width: 100px;", class: "decorative", alt: "" %>
+      </div>
+			<hr />
+      <div class="two-lines">
+        <%= image_tag "gift_white.png", class: "decorative", alt: "" %>
         <%= link_to t("manifold.webpages.hsl.links.support"), @support %>
       </div>
 		</div>

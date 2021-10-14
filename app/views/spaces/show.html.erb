@@ -33,13 +33,13 @@
           <%= @space.description %>
 
           <% if @space.image.attached?  %>
-            <div class="space-image">
+            <div class="space-image my-3">
               <%= image_tag @space.custom_image(900,600), class: "decorative", alt: "" %>
             </div>
           <% end %>
         </div>
-
-        <% unless @space.accessibility.blank? %>
+        
+        <% if @space.accessibility.body.present? %>
         <h2><%= t("manifold.spaces.show.access") %></h2>
         <div>
           <%= @space.accessibility %>

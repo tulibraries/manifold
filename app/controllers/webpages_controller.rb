@@ -186,18 +186,8 @@ class WebpagesController < ApplicationController
     @research_links = Category.find_by(slug: "hsl-research").items
     @visit_links = Category.find_by(slug: "hsl-study").items
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.zone.now]).order(:start_time).take(5)
-    @resources = "/hsl/resources"
-    @research = "/hsl/research"
-    @remote_learning = Webpage.find_by(slug: "online-support")
-    @ginsburg = "/hsl/ginsburg"
-    @podiatry = "/hsl/podiatry"
-    @chat = "/hsl/chat"
-    @appointment = "https://library.temple.edu/people?department=health-sciences-library-staff&page=1&specialists=true"
-    @mailer = "/hsl/mailing-list"
-    @journal_finder = "/journal-finder"
-    @support = "/hsl/giving"
-    @visit = "/hsl/info"
     @study_room = ExternalLink.find_by(slug: "hsl-study-rooms")
+    @remote_learning = Webpage.find_by(slug: "online-support")
     @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 

@@ -547,7 +547,6 @@ en:
           three: Ambler Campus Library
         pickup_location_label: Pickup Location
         pickup_location_options:
-          ambler: Ambler
           charles: Charles
           podiatry: Podiatry
           harrisburg: Harrisburg
@@ -944,13 +943,6 @@ en:
                     require approximately 24 hours to retrieve. You will receive a notification when the item is on the 
                     hold shelf ready for pick up.</p>
         call_number_hint: Please copy and paste from Library Search record if possible
-        pickup_location: Pickup Location
-        pickup_location_options:
-          one: Ambler
-          two: Charles
-          three: Harrisburg
-          four: HSL
-          five: Podiatry
 
       group_visit:
         intro_html: Tours of Charles Library will not be provided during the fall 2020 semester.
@@ -1057,15 +1049,23 @@ en:
         page_title: About
       attachments:
         pdf_files: PDF File(s)
+
       blockson:
         page_title: Charles L. Blockson Afro-American Collection
         links:
-          materials: Digitized Materials
-          hours: Hours & Info
-          visit: Visit & Study
-          research: Research Services
+          materials_label: Digitized Materials
+          materials_link: /digital-library
+          hours_label: Hours & Info
+          hours_link: /blockson/info
+          visit_label: Visit & Study
+          visit_link: /blockson/study
+          research_label: Research Services
+          research_link: /blockson/research
           events: Workshops & Events
+          events_type: blockson
           tours: 360&deg; Virtual Exhibits
+          view_all: View All
+
       contact:
         staff_directory: Staff Directory
         specialist_link: Find your subject librarian
@@ -1080,6 +1080,7 @@ en:
         search_faqs: Search FAQs
         special_collections: Special Collections
         feedback: Give Us Your Feedback
+
       home:
         links:
           help:
@@ -1107,56 +1108,85 @@ en:
               scrc: Special Collections Research Center
               law: Law Library
               all: See all libraries and locations >
+
       hsl:
         page_title: Health Sciences Libraries
         locations:
           remote_learning: Remote Learning Support
-          ginsburg: Ginsburg Health Sciences Library
-          krausz: Krausz Library of Podiatric Medicine
+          ginsburg_label: Ginsburg Health Sciences Library
+          ginsburg_link: /hsl/ginsburg
+          krausz_label: Krausz Library of Podiatric Medicine
+          krausz_link: /hsl/podiatry
         contact:
-          mailer: Mailing List
-          chat: Chat with a Health Sciences Librarian
-          appointment: Make an Appointment with a Health Sciences Librarian
+          mailer_label: Mailing List
+          mailer_link: /hsl/mailing-list
+          chat_label: Chat with a Health Sciences Librarian
+          chat_link: /hsl/chat
+          appointment_label: Make an Appointment with a Health Sciences Librarian
+          appointment_link: https://library.temple.edu/people?department=health-sciences-library-staff&page=1&specialists=true
           study_room: Reserve a Study Room
           not_study_room: Not a Study Room
-        links: 
-          journal_finder: Journal Finder
-          support: Support the Health Sciences Libraries
-          visit: Visit & Study
-          resources: Resources & Media
-          research: Research Services
-          events: Workshops & Events
+        links:
+          journal_finder_label: Journal Finder
+          journal_finder_link: /journal-finder
+          support_label: Support the Health Sciences Libraries
+          support_link: /hsl/giving
+          visit_label: Visit & Study
+          visit_link: /hsl/info
+          resources_label: Resources & Media
+          resources_link: /hsl/resources
+          research_label: Research Services
+          research_link: /hsl/research
+          events_label: Workshops & Events
+          events_type: Health Sciences
           all_events: View all
       research:
         page_title: Research Services
+
       scrc:
         page_title: Special Collections Research Center
         locations:
           reading_room: SCRC Reading Room
           finding_aids: Browse Finding Aids
           materials: Digitized Materials
+          materials_link: https://digital.library.temple.edu/
         contact:
-          contact: Contact Us
-          search: SCRC Catalog Search
-          hours: Hours & Info
+          contact_label: Contact Us
+          search_label: SCRC Catalog Search
+          search_redirect: /scrc/search
+          info_label: Hours & Info
+          info_redirect: /scrc/info
+          form_id: ask-scrc
         links:
-          visit: Visit & Study
-          emphases: Collecting Emphases
+          visit_label: Visit & Study
+          visit_link: /scrc/study
+          emphases_label: Collecting Emphases
+          emphases_link: /scrc-collections
+
       tudsc:
         page_title: Loretta C. Duckworth Scholars Studio
         locations: 
-          makerspace: Makerspace
-          vr_studio: VR/Visualization Studio
-          innovation: Innovation Lab
+          makerspace_label: Makerspace
+          makerspace_link: /lcdss/makerspace
+          vr_studio_label: VR/Visualization Studio
+          vr_studio_link: /lcdss/vr-studio
+          innovation_label: Innovation Lab
+          innovation_link: /lcdss/innovation-lab
         contact:
-          newsletter: Newsletter Signup
-          staff: LCDSS Staff Directory
+          newsletter_label: Newsletter Signup
+          newsletter_link: /lcdss/newsletter
+          staff_label: LCDSS Staff Directory
+          staff_department: duckworth-scholars-studio-staff
         links:
-          visit: Visit & Study
-          research: Research Services
-          events: Workshops & Events
-          blog: Research Blog
-          view_all: View All
+          visit_label: Visit & Study
+          visit_link: /lcdss/info
+          research_label: Research Services
+          research_link: /lcdss/research
+          events_label: Workshops & Events
+          events_type: Digital Scholarship 
+          blog_label: Research Blog
+          view_all_label: View All
+
       scop:
         page_title: Center for Scholarly Communication & Open Publishing
         publishing_services:  Publishing Services
@@ -1167,9 +1197,12 @@ en:
         call_outs:
           pub
         links:
-          scholar_share: TUScholarShare
-          nb_press: North Broad Press
-          open_journals: Open Journals
+          scholar_share_label: TUScholarShare
+          scholar_share_link: https://scholarshare.temple.edu
+          nb_press_label: North Broad Press
+          nb_press_link: https://temple.manifoldapp.org
+          open_journals_label: Open Journals
+          open_journals_link: https://tuljournals.temple.edu/
         contact: Staff Directory
       videos:
         page_title: Past Program and Event Videos

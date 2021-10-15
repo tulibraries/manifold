@@ -103,7 +103,7 @@ RSpec.describe Space, type: :model do
       name: ["The Text 1", "The Text 2"],
       description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       hours: ["The Text 1", "The Text 2"],
-      accessibility: ["https://example.com/doc1", "https://example.com/doc2"],
+      accessibility: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       phone_number: ["2155551212", "2155551234"],
       email: ["first@example.com", "second@email.com"],
     }
@@ -111,6 +111,7 @@ RSpec.describe Space, type: :model do
     fields.each do |k, v|
       example "#{k} changes" do
         skip("description not versionable") if k == :description
+        skip("accessibility not versionable") if k == :accessibility
         space = FactoryBot.create(:space, k => v.first)
         space.update(k => v.last)
         space.save!

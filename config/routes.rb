@@ -87,7 +87,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
   resources :external_link, only: [:show]
-  resources :forms, only: [:index, :new, :create]
+  resources :forms, only: [:index, :new, :create, :show]
   resources :file_uploads, only: [:new, :create]
   resources :finding_aids, only: [:index, :show]
   resources :groups, only: [:index, :show]
@@ -100,7 +100,6 @@ Rails.application.routes.draw do
   resources :webpages, only: [:index, :show]
 
   get "forms", to: "forms#all", as: "forms_index"
-  get "forms/*type", to: "forms#new"
 
   controller :collections do
     get "finding_aids/:id" => :finding_aids
@@ -142,6 +141,8 @@ Rails.application.routes.draw do
     get "watchpastprograms/show" => :videos_show, as: "webpages_videos_show"
     get "/pages/:id" => :show
   end
+
+  get "/scrc-reading-room" => redirect("spaces/scrc_reading_room"), as: "scrc_reading_room"
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all

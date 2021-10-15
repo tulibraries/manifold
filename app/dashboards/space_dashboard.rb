@@ -19,7 +19,7 @@ class SpaceDashboard < BaseDashboard
     description: DescriptionField,
     draft_description: DescriptionField.with_options(admin_only: true),
     hours: HoursField.with_options(admin_only: true),
-    accessibility: Field::Text,
+    accessibility: DescriptionField,
     image: PhotoField,
     phone_number: PhoneField,
     email: Field::Email,
@@ -71,6 +71,7 @@ class SpaceDashboard < BaseDashboard
     :description,
     :draft_description,
     :external_link,
+    :accessibility,
     :building,
     :email,
     :hours,
@@ -90,6 +91,6 @@ class SpaceDashboard < BaseDashboard
 
 
   def permitted_attributes
-    super + [:draft_description, :publish]
+    super + [:draft_description, :publish, :accessibility]
   end
 end

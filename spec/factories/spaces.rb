@@ -6,7 +6,7 @@ FactoryBot.define do
   factory :space do
     sequence(:name) { |n| "Room #{n}" }
     description { ActionText::Content.new("Hello World") }
-    accessibility { "Yes" }
+    accessibility { ActionText::Content.new("Hello World")  }
     phone_number { "2155551213" }
     email { "mmuffley@example.com" }
     association :building

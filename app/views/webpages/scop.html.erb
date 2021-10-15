@@ -19,16 +19,28 @@
     <%= render "covid_alert_mini" unless @header_alert.nil? %>
 
 		<div class="locations">
-			<%= link_to t("manifold.webpages.scop.links.scholar_share"), "https://scholarshare.temple.edu" %>
+			<%= link_to t("manifold.webpages.scop.links.scholar_share_label"), 
+									t("manifold.webpages.scop.links.scholar_share_link"), 
+									id: "scop_scholar_share_button" %>
 			<hr />
-			<%= link_to t("manifold.webpages.scop.links.nb_press"), "https://temple.manifoldapp.org" %>
+			<%= link_to t("manifold.webpages.scop.links.nb_press_label"), 
+									t("manifold.webpages.scop.links.nb_press_link"), 
+									id: "scop_nb_press_button" %>
 			<hr />
-			<%= link_to t("manifold.webpages.scop.links.open_journals "), "https://tuljournals.temple.edu/" %>
+			<%= link_to t("manifold.webpages.scop.links.open_journals_label"), 
+									t("manifold.webpages.scop.links.open_journals_link"), 
+									id: "scop_open_journals_button" %>
 		</div>
 
 		<div class="contact">
-			<%= image_tag "chat.png", style: "width: 100px", class: "decorative", alt: "" %>
-			<span class="mailer"><%= link_to t("manifold.webpages.scop.contact"), people_path(department: "scop") %></span>
+			<div class="one-liner">
+				<%= image_tag "chat.png", class: "decorative", alt: "" %>
+				<span class="mailer">
+					<%= link_to t("manifold.webpages.scop.contact"), 
+											people_path(department: "scop"), 
+											id: "scop_contact_button" %>
+				</span>
+			</div>
 		</div>
 
 	</div>
@@ -44,10 +56,18 @@
 			<% if @pub_services.present? %>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to t("manifold.webpages.scop.publishing_services"), category_path(@pub_services) %></h2>
+					<h2>
+						<%= link_to t("manifold.webpages.scop.publishing_services"), 
+												category_path(@pub_services), 
+												id: "scop_pub_services_header" %>
+					</h2>
 					<ul class="list-unstyled">
 						<% @pub_services_links.each do |link| %>
-							<li><%= link_to link.label, link %></li>
+							<li>
+								<%= link_to link.label, 
+														link, 
+														id: "scop_pub_services_link_#{link.label.parameterize}" %>
+							</li>
 						<% end unless @pub_services_links.nil? %>
 					</ul>
 				</div>
@@ -57,10 +77,18 @@
 			<% if @scholar_share.present? %>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to t("manifold.webpages.scop.scholar_share"), category_path(@scholar_share) %></h2>
+					<h2>
+						<%= link_to t("manifold.webpages.scop.scholar_share"), 
+												category_path(@scholar_share), 
+												id: "scop_scholar_share_header" %>
+					</h2>
 					<ul class="list-unstyled">
 						<% @scholar_share_links.each do |link| %>
-							<li><%= link_to link.label, link %></li>
+							<li>
+								<%= link_to link.label, 
+														link, 
+														id: "scop_scholar_share_link_#{link.label.parameterize}" %>
+							</li>
 						<% end unless @scholar_share_links.nil? %>
 					</ul>
 				</div>
@@ -70,13 +98,23 @@
 			<% if @event_links.count > 0 %>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to t("manifold.webpages.scop.events"), events_path(type: "SCOP", anchor: "upcoming-events") %></h2>
+					<h2>
+						<%= link_to t("manifold.webpages.scop.events"), 
+												events_path(type: "SCOP", anchor: "upcoming-events"), 
+												id: "scop_events_header" %>
+						</h2>
 					<ul class="list-unstyled">
 						<% @event_links.each do |link|  %>
-							<li><%= link_to link.label, event_path(link.id) %></li>
+							<li>
+								<%= link_to link.label, 
+														event_path(link.id), 
+														id: "scop_events_link_#{link.label.parameterize}" %>
+							</li>
 						<% end unless @event_links.nil? %>
 						<li class="text-right dsc-event">
-							<%= link_to t("manifold.webpages.scop.view_all"), events_path(type: "SCOP", anchor: "upcoming-events"), style: "text-decoration:underline" %> >
+							<%= link_to t("manifold.webpages.scop.view_all"), 
+													events_path(type: "SCOP", anchor: "upcoming-events"), 
+													{style: "text-decoration:underline", id: "scop_events_view_all"} %> >
 						</li>
 					</ul>
 				</div>
@@ -86,13 +124,23 @@
 			<% if @blog.present? %>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to t("manifold.webpages.scop.blog"), @blog.base_url %></h2>
+					<h2>
+						<%= link_to t("manifold.webpages.scop.blog"), 
+												@blog.base_url, 
+												id: "scop_blog_header" %>
+					</h2>
 					<ul class="list-unstyled">
 						<% @blog_posts.each do |link| %>
-							<li><%= link_to link.title, link.post_guid %></li>
+							<li>
+								<%= link_to link.title,
+															link.post_guid, 
+															id: "scop_blog_link_#{link.title.parameterize}" %>
+							</li>
 						<% end unless @blog_posts.nil? %>
 						<li class="text-right all-events">
-							<%= link_to t("manifold.webpages.scop.links.view_all"), strip_tags(@blog.base_url), style: "text-decoration:underline" %> >
+							<%= link_to t("manifold.webpages.scop.links.view_all"), 
+													strip_tags(@blog.base_url), 
+													{style: "text-decoration:underline", id: "scop_blog_view_all"} %> >
 						</li>
 					</ul>
 				</div>

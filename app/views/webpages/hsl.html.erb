@@ -19,36 +19,56 @@
     <%= render "covid_alert_mini" unless @header_alert.nil? %>
 
 		<div class="locations">
-			<%= link_to t("manifold.webpages.hsl.locations.ginsburg"), @ginsburg %>
+			<%= link_to t("manifold.webpages.hsl.locations.ginsburg_label"), 
+									t("manifold.webpages.hsl.locations.ginsburg_link"), 
+									id: "hsl_ginsburg_link_button" %>
 			<hr />
-			<%= link_to t("manifold.webpages.hsl.locations.krausz"), @podiatry %>
+			<%= link_to t("manifold.webpages.hsl.locations.krausz_label"), 
+									t("manifold.webpages.hsl.locations.krausz_link"), 
+									id: "hsl_podiatry_link_button" %>
 		</div>
 
 		<div class="contact">
-			<div>
-				<%= image_tag "study_room_white.png", style: "width: 100px;", class: "decorative", alt: "" %>
-				<%= link_to t("manifold.webpages.hsl.contact.study_room"), @study_room.link, target: "_blank" %>
+			<div class="one-liner">
+				<%= image_tag "study_room_white.png", class: "decorative", alt: "" %>
+				<%= link_to t("manifold.webpages.hsl.contact.study_room"), 
+										@study_room.link, 
+										{id: "hsl_study_room_button", target: "_blank"} %>
 			</div>
       <hr />
 			<div class="two-lines">
-				<%= image_tag "chat.png", style: "width: 100px;", class: "decorative", alt: "" %>
-				<%= link_to t("manifold.webpages.hsl.contact.chat"), @chat, target: "_blank" %>
+				<%= image_tag "chat.png", class: "decorative", alt: "" %>
+				<%= link_to t("manifold.webpages.hsl.contact.chat_label"), 
+										t("manifold.webpages.hsl.contact.chat_link"), 
+										{id: "hsl_chat_link_button", target: "_blank"}  %>
 			</div>
       <hr />
 			<div class="two-lines">
-				<%= image_tag "phone-handle-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-        <%= link_to t("manifold.webpages.hsl.contact.appointment"), @appointment %>
+				<%= image_tag "phone-handle-white.png", class: "decorative", alt: "" %>
+        <%= link_to t("manifold.webpages.hsl.contact.appointment_label"), 
+										t("manifold.webpages.hsl.contact.appointment_link"), 
+										id: "hsl_appointment_link_button"  %>
 			</div>
 			<hr />
-        <%= image_tag "email-white.png", style: "width: 100px", class: "decorative", alt: "" %>
-        <%= link_to t("manifold.webpages.hsl.contact.mailer"), @mailer, target: "_blank" %>
-      <hr />
-        <%= image_tag('journal_finder.png', class: "decorative", style: "width: 100px", alt: "") %>
-        <%= link_to t("manifold.webpages.hsl.links.journal_finder"), @journal_finder %>
-      <hr />
-      <div style="height:79px;" class="two-lines">
-        <%= image_tag "gift_white.png", style: "width: 100px;", class: "decorative", alt: "" %>
-        <%= link_to t("manifold.webpages.hsl.links.support"), @support %>
+			<div class="one-liner">
+        <%= image_tag "email-white.png", class: "decorative", alt: "" %>
+        <%= link_to t("manifold.webpages.hsl.contact.mailer_label"), 
+										t("manifold.webpages.hsl.contact.mailer_link"), 
+										{id: "hsl_email_link_button", target: "_blank"}  %>
+      </div>
+			<hr />
+			<div class="one-liner">
+        <%= image_tag('journal_finder.png', class: "decorative", alt: "") %>
+        <%= link_to t("manifold.webpages.hsl.links.journal_finder_label"), 
+										t("manifold.webpages.hsl.links.journal_finder_link"), 
+										id: "hsl_journal_finder_button"  %>
+      </div>
+			<hr />
+      <div class="two-lines">
+        <%= image_tag "gift_white.png", class: "decorative", alt: "" %>
+        <%= link_to t("manifold.webpages.hsl.links.support_label"), 
+										t("manifold.webpages.hsl.links.support_link"), 
+										id: "hsl_support_button" %>
       </div>
 		</div>
 	</div>
@@ -57,42 +77,78 @@
 		<div class="row links-container">
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to t("manifold.webpages.hsl.links.visit"), @visit %></h2>
+					<h2>
+						<%= link_to t("manifold.webpages.hsl.links.visit_label"),  
+												t("manifold.webpages.hsl.links.visit_link"), 
+												id: "hsl_visit_header" %>
+					</h2>
 					<ul class="list-unstyled">
 						<% @visit_links.each do |link| %>
-							<li><%= link_to link.label, link %></li>
+							<li>
+								<%= link_to link.label, 
+														link, 
+														id: "hsl_visit_link_#{link.label.parameterize}" %>
+							</li>
 						<% end %>
 					</ul>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to t("manifold.webpages.hsl.links.resources"), @resources %></h2>
+					<h2>
+						<%= link_to t("manifold.webpages.hsl.links.resources_label"), 
+												t("manifold.webpages.hsl.links.resources_link"), 
+												id: "hsl_resources_header" %>
+					</h2>
 					<ul class="list-unstyled">
 						<% @resource_links.each do |link| %>
-							<li><%= link_to link.label, link %></li>
+							<li>
+								<%= link_to link.label, 
+														link, 
+														id: "hsl_resources_link_#{link.label.parameterize}" %>
+							</li>
 						<% end %>
 					</ul>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to t("manifold.webpages.hsl.links.research"), @research %></h2>
+					<h2>
+						<%= link_to t("manifold.webpages.hsl.links.research_label"), 
+												t("manifold.webpages.hsl.links.research_link"), 
+												id: "hsl_research_header" %>
+					</h2>
 					<ul class="list-unstyled">
 						<% @research_links.each do |link| %>
-							<li><%= link_to link.label, link %></li>
+							<li>
+								<%= link_to link.label, 
+														link, 
+														id: "hsl_research_link_#{link.label.parameterize}" %>
+							</li>
 						<% end %>
 					</ul>
 				</div>
 			</div>
 			<div class="col-12 col-lg-6">
 				<div class="links">
-					<h2><%= link_to t("manifold.webpages.hsl.links.events"), events_path %></h2>
+					<h2>
+						<%= link_to t("manifold.webpages.hsl.links.events_label"), 
+												events_path(type: t("manifold.webpages.hsl.links.events_type"), anchor: "upcoming-events"), 
+												id: "hsl_events_header" %>
+					</h2>
 					<ul class="list-unstyled">
 						<% @event_links.each do |link| %>
-							<li><%= link_to link.title, event_path(link.id) %></li>
+							<li>
+								<%= link_to link.title, 
+														event_path(link.id), 
+														id: "hsl_events_link_#{link.title.parameterize}" %>
+							</li>
 						<% end %>
-						<li class="text-right all-events"><%= link_to t("manifold.webpages.hsl.links.all_events"), events_path, style: "text-decoration:underline" %> ></li>
+						<li class="text-right all-events">
+							<%= link_to t("manifold.webpages.hsl.links.all_events"), 
+													events_path(type: t("manifold.webpages.hsl.links.events_type"), anchor: "upcoming-events"), 
+													{id: "hsl_events_view_all", style: "text-decoration:underline"} %> >
+						</li>
 					</ul>
 				</div>
 			</div>

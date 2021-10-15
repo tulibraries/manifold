@@ -547,7 +547,6 @@ en:
           three: Ambler Campus Library
         pickup_location_label: Pickup Location
         pickup_location_options:
-          ambler: Ambler
           charles: Charles
           podiatry: Podiatry
           harrisburg: Harrisburg
@@ -944,13 +943,6 @@ en:
                     require approximately 24 hours to retrieve. You will receive a notification when the item is on the 
                     hold shelf ready for pick up.</p>
         call_number_hint: Please copy and paste from Library Search record if possible
-        pickup_location: Pickup Location
-        pickup_location_options:
-          one: Ambler
-          two: Charles
-          three: Harrisburg
-          four: HSL
-          five: Podiatry
 
       group_visit:
         intro_html: Tours of Charles Library will not be provided during the fall 2020 semester.

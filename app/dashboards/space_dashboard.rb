@@ -91,6 +91,6 @@ class SpaceDashboard < BaseDashboard
 
 
   def permitted_attributes
-    super + [:draft_description, :publish]
+    super + [:draft_description, :publish, :accessibility]
   end
 end

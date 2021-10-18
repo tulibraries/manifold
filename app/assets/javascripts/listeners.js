@@ -83,14 +83,14 @@ $(document).ready(function(){
     ];
 
     scrc_tracks = [
-      {id: "scrc_reading_room_button", category: "scop"},
-      {id: "scrc_finding_aids_button", category: "scop"},
-      {id: "scrc_materials_button", category: "scop"},
-      {id: "scrc_contact_button", category: "scop"},
-      {id: "scrc_search_button", category: "scop"},
-      {id: "scrc_info_button", category: "scop"},
-      {id: "scrc_visit_header", category: "scop"},
-      {id: "scrc_emphases_header", category: "scop"}
+      {id: "scrc_reading_room_button", category: "scrc"},
+      {id: "scrc_finding_aids_button", category: "scrc"},
+      {id: "scrc_materials_button", category: "scrc"},
+      {id: "scrc_contact_button", category: "scrc"},
+      {id: "scrc_search_button", category: "scrc"},
+      {id: "scrc_info_button", category: "scrc"},
+      {id: "scrc_visit_header", category: "scrc"},
+      {id: "scrc_emphases_header", category: "scrc"}
     ];
 
     tudsc_tracks = [

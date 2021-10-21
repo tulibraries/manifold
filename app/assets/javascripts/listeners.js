@@ -5,7 +5,7 @@ $(document).ready(function(){
   $("#nav-sec21a-tab").click(function() {
     $('html, body').animate({
         scrollTop: $("#nav-tabs").offset().top
-    }, 100);
+    }, 1500);
   });
   $("#nav-sec21b-tab").click(function() {
     $('html, body').animate({

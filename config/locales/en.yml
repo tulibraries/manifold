@@ -595,7 +595,7 @@ en:
           four: Digital screens (digital displays must be silent)
           five: Other
         funding_source: What is the source of funding for this exhibit?
-        insurance: What is insuring the content?
+        insurance: Who is insuring the content?
         temple_connection: Does this exhibit or its materials have any connection to Temple or Temple Libraries?
         temple_connection_hint: >- 
                                 Examples: research done in Special Collections Research Center or 

@@ -5,22 +5,22 @@ $(document).ready(function(){
   $("#nav-sec21a-tab").click(function() {
     $('html, body').animate({
         scrollTop: $("#nav-tabs").offset().top
-    }, 2000);
+    }, 100);
   });
   $("#nav-sec21b-tab").click(function() {
     $('html, body').animate({
         scrollTop: $("#nav-tabs").offset().top
-    }, 2000);
+    }, 1500);
   });
   $("#nav-sec22-tab").click(function() {
     $('html, body').animate({
         scrollTop: $("#nav-tabs").offset().top
-    }, 2000);
+    }, 1500);
   });
   $("#nav-sec23-tab").click(function() {
     $('html, body').animate({
         scrollTop: $("#nav-tabs").offset().top
-    }, 2000);
+    }, 1500);
   });
 
   setTimeout(function(){

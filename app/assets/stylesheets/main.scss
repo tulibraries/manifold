@@ -180,3 +180,10 @@ marquee {
 	font-family: roboto;
 	font-size: 1.25rem;
 }
+
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+}

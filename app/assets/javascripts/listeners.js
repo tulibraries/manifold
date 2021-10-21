@@ -2,6 +2,27 @@
 
 $(document).ready(function(){
 
+  $("#nav-sec21a-tab").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#nav-tabs").offset().top
+    }, 2000);
+  });
+  $("#nav-sec21b-tab").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#nav-tabs").offset().top
+    }, 2000);
+  });
+  $("#nav-sec22-tab").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#nav-tabs").offset().top
+    }, 2000);
+  });
+  $("#nav-sec23-tab").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#nav-tabs").offset().top
+    }, 2000);
+  });
+
   setTimeout(function(){
     $('form#main-search').on('keypress', function (evt) {
       if (evt.keyCode == 13) {

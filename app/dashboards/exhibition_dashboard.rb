@@ -71,8 +71,8 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :promoted_to_events,
     :space,
     :collection,
-    :categories,
     :covid_alert
+    # :categories
   ].freeze
 
   # Overwrite this method to customize how exhibitions are displayed

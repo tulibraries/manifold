@@ -129,7 +129,7 @@ class EventDashboard < BaseDashboard
     :content_hash,
     :ensemble_identifier,
     :guid,
-    :categories
+    # :categories #TODO make work with url_for in category pages and main menu category.items
   ].freeze
 
   # Overwrite this method to customize how events are displayed

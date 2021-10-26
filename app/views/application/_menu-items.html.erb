@@ -1,9 +1,15 @@
-
 <div class="col-4">
-<li><h2 style="margin-top:.5rem;"><%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %></h2></li>
-	<ul class="list-unstyled">
-		<% item.items.each do |page| %>
-		<li><%= link_to page.label, url_for(page), style: "color: black" %></li>
-		<% end %>
-	</ul>
+
+  <li>
+    <h2 style="margin-top:.5rem;">
+      <%= link_to item.name, item, style: "text-decoration: underline;font-size:large" %>
+    </h2>
+  </li>
+
+  <ul class="list-unstyled">
+    <% item.items.each do |page| %>
+    <li><%= link_to page.label, url_for(page), style: "color: black" %></li>
+    <% end %>
+  </ul>
+
 </div>

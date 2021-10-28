@@ -1233,7 +1233,8 @@ en:
         intro_html: >-
                     <p>
                       This video collection is only accessible in the Special Collections Research Center's reading room, in the Charles Library.<br />
-                      For more information about this collection please see the finding aid (Series 2, Accession B)<br />
+                      For more information about this collection please see the finding aid 
+                      <a href="https://library.temple.edu/finding_aids/wpvi-news-footage-and-logs" class="inline">(Series 2, Accession B)</a><br />
                       When searching the play lists, do not use truncation/wildcard symbol :yellow_star: or quotation marks ("")
                     </p>
                     <p style="font-size:large;font-weight:600;">The collection is divided into 4 play lists</strong>:</p>

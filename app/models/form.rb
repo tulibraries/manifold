@@ -152,7 +152,7 @@ class Form < MailForm::Base
   def get_subject
     @forms = {
       "missing-book" => ["Missing Book Search Request", ["delcottos@temple.edu"]],
-      "recall-book" => ["Request Recall of Books Already Checked Out", ["jhill@temple.edu", "tue98491@temple.edu"]],
+      "recall-book" => ["Request Recall of Books Already Checked Out", ["jhill@temple.edu", "eschiller@temple.edu"]],
       "purchase-request" => ["Purchase Request",  ["jbrian@temple.edu", "tub82123@temple.edu "]],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
       "ir" => ["Incident Report", ["richieh@temple.edu", "bells@temple.edu"]],

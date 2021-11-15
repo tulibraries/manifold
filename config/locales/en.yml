@@ -595,7 +595,7 @@ en:
           four: Digital screens (digital displays must be silent)
           five: Other
         funding_source: What is the source of funding for this exhibit?
-        insurance: What is insuring the content?
+        insurance: Who is insuring the content?
         temple_connection: Does this exhibit or its materials have any connection to Temple or Temple Libraries?
         temple_connection_hint: >- 
                                 Examples: research done in Special Collections Research Center or 
@@ -1231,13 +1231,19 @@ en:
       wpvi:
         page_title: WPVI News Footage Collection
         intro_html: >-
-                    <ul>
-                      <li>This video collection is only accessible in the Special Collections Research Center's 
-                      reading room, in the Charles Library.</li>
-                      <li>For more information about this collection please see the finding aid (Series 2, Accession B)</li>
-                      <li>When searching the collection, do not use truncation/wildcard symbol (*) or quotation marks ("")</li>
-                      <li><strong style="font-size: larger">And please be patient. Due to the large number of files, searching and loading will be gradual.</strong></li>
-                    </ul>
+                    <p>
+                      This video collection is only accessible in the Special Collections Research Center's reading room, in the Charles Library.<br />
+                      For more information about this collection please see the finding aid 
+                      <a href="https://library.temple.edu/finding_aids/wpvi-news-footage-and-logs" class="inline">(Series 2, Accession B)</a><br />
+                      When searching the play lists, do not use truncation/wildcard symbol :yellow_star: or quotation marks ("")
+                    </p>
+                    <p style="font-size:large;font-weight:600;">The collection is divided into 4 play lists</strong>:</p>
+                    <ol style="font-size:large;">
+                      <li><strong>Subseries 2.1, News Footage</strong>, consists of approx. 7000 low-resolution WMV files of news stories and news related programming, 1977 to 1995.</li>
+                      <li><strong>Subseries 2.1, News Footage</strong>, consists of approx. 7000 low-resolution WMV files of news stories and news related programming, 1996 to 2006.</li>
+                      <li><strong>Subseries 2.2, Public Affairs and Programming</strong>, consists of 927 low-resolution WMV files including recordings of the programs Visions, Prime Time, Philly After Midnight, Sunday Live and AM Live.</li>
+                      <li><strong>Subseries 2.3, Savers</strong>, includes 1,069 low-resolution WMV files of “saver” compilations.</li>
+                    </ol>
       hours:
         hours_title: Library Hours
         no_data: No data for current date range

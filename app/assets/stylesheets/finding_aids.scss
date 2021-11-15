@@ -3,7 +3,7 @@
 .container.finding-aid {
 	margin-top: 21px;
 	ul.collections {
-		line-height: .75rem;
+		line-height: 1.5rem;
 		padding-bottom: 28px;
 		border-bottom: solid $seagreen-dark 2px;
 		li {
@@ -12,12 +12,17 @@
 		}
 	}
 	ul.subjects {
-		line-height: .75rem;
+		line-height: 1.5rem;
 		li {
 			padding-left: 0;
 			a {color: $black;}
 		}
 	}
+  .trix-content {
+    h2 {
+      margin-top: 21px;
+    }
+  }
 	.access-link {
 		background-color: $foamgreen;
 		padding: 14px;

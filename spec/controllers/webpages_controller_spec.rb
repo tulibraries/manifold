@@ -7,6 +7,11 @@ RSpec.describe WebpagesController, type: :controller do
   let(:webpage) { FactoryBot.create(:webpage) }
 
   describe "GET #index" do
+    it "returns a success response", skip: "TBA: No views exist" do
+      get :index
+      expect(response).to be_successful
+    end
+
     it "returns json when requested" do
       get :index, format: :json
       expect(response.header["Content-Type"]).to include "json"
@@ -16,7 +21,7 @@ RSpec.describe WebpagesController, type: :controller do
   describe "GET #show" do
     let(:webpage) { FactoryBot.create(:webpage) }
 
-    it "returns a success response" do
+    it "returns a success response", skip: "TBA: No views exist" do
       get :show, params: { id: webpage.to_param }
       expect(response).to be_successful
     end
@@ -38,23 +43,6 @@ RSpec.describe WebpagesController, type: :controller do
       expect(response).to be_successful
     end
 
-  end
-
-  describe "menu creation" do
-    render_views false
-    it "only shows categories in main menu" do
-      # binding.pry
-      @parent_category = FactoryBot.create(:category_parent, slug: "about-page")
-      @child_category = FactoryBot.create(:category, slug: "welcome", categories: [@parent_category])
-      @webpage1 = FactoryBot.create(:webpage, categories: [@parent_category])
-      @space = FactoryBot.create(:space, categories: [@parent_category])
-      @webpage2 = FactoryBot.create(:webpage, categories: [@child_category])
-      @cta3 = FactoryBot.create(:category, slug: "welcome")
-      @cta4 = FactoryBot.create(:category, slug: "welcome")
-
-      get :home
-      expect(response.body).to have_text(@parent_category.label)
-    end
   end
 
   it_behaves_like "serializable"

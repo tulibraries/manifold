@@ -38,6 +38,7 @@ class Category < ApplicationRecord
   # to items of that Class
   # eg @category.items(limit_to: [:events]) would
   def items(limit_to: [], exclude: [])
+
     grouped = categorizations.group_by(&:categorizable_type)
 
     if limit_to.present?
@@ -45,7 +46,7 @@ class Category < ApplicationRecord
     end
 
     if exclude.present?
-      grouped.reject! { |ct, _ | exclude.include?(ct.underscore.to_sym)  }
+      grouped.reject! { |ct, _ | exclude.include?(ct.underscore.to_sym) }
     end
 
     grouped.map do |type, objs|

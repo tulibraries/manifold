@@ -38,7 +38,6 @@ class Category < ApplicationRecord
   # to items of that Class
   # eg @category.items(limit_to: [:events]) would
   def items(limit_to: [], exclude: [])
-
     grouped = categorizations.group_by(&:categorizable_type)
 
     if limit_to.present?

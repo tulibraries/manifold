@@ -38,4 +38,20 @@ RSpec.describe "webpages/show", type: :view do
     expect(rendered).to match /"#{@webpage.external_link.link}/
   end
 
+
+  it "excludes non-categories for parsing menu sections" do
+    # @books = assign(:books, [book])
+    # @results = assign(:results, true)
+    @parent_category = FactoryBot.create(:category, slug: "about-page", categories: [@parent_category])
+    @child_category = FactoryBot.create(:category, slug: "welcome", categories: [@parent_category])
+    @webpage1 = FactoryBot.create(:webpage, categories: [@parent_category])
+    @space = FactoryBot.create(:space, categories: [@parent_category])
+    @webpage2 = FactoryBot.create(:webpage, categories: [@child_category])
+    render
+    expect(rendered).to match /#{@webpage2.label}/
+    expect(rendered).to match /#{@child_category.label}/
+    expect(rendered).to_not match /#{@parent_category.label}/
+    expect(rendered).to_not match /#{@webpage1.label}/
+    expect(rendered).to_not match /#{@space.label}/
+  end
 end

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     @empty_abouts = []
     @empty_visits = []
     @empty_researches = []
-    
+
     about = Category.find_by(slug: "about-page")
     @about_items = Category.find_by(slug: "about-page").items(exclude: [about]) if Category.find_by(slug: "about-page").present?
     @about_items.each do |item|

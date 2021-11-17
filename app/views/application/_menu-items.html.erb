@@ -8,7 +8,7 @@
   </li>
 
   <ul class="list-unstyled">
-    <% items = item.respond_to? :items ? item.items : [] %>
+    <% items = item.respond_to?(:items) ? item.items : [] %>
     <% items.each do |page| %>
       <% page_label = page.label if page.respond_to? :label %>
       <li><%= link_to "#{page_label}", url_for(page), style: "color: black" %></li>

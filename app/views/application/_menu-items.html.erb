@@ -2,17 +2,10 @@
 
   <li>
     <h2 style="margin-top:.5rem;">
-      <% item_name = item.name if item.respond_to? :name %>
-      <%= link_to "#{item_name}", item, style: "text-decoration: underline;font-size:large" %>
+      <%= link_to item.label, item, style: "text-decoration: underline;font-size:large" %>
     </h2>
   </li>
 
-  <ul class="list-unstyled">
-    <% items = item.respond_to?(:items) ? item.items : [] %>
-    <% items.each do |page| %>
-      <% page_label = page.label if page.respond_to? :label %>
-      <li><%= link_to "#{page_label}", url_for(page), style: "color: black" %></li>
-    <% end %>
-  </ul>
+  <%= sanitize get_item_list(item).html_safe %>
 
 </div>

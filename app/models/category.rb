@@ -45,7 +45,7 @@ class Category < ApplicationRecord
     end
 
     if exclude.present?
-      grouped.reject! { |ct, _ | exclude.include?(ct.underscore.to_sym)  }
+      grouped.reject! { |ct, _ | exclude.include?(ct.underscore.to_sym) }
     end
 
     grouped.map do |type, objs|

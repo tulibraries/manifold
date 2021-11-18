@@ -6,6 +6,6 @@
     </h2>
   </li>
 
-  <%= sanitize get_item_list(item).html_safe %>
+  <%= sanitize get_item_list(item).html_safe unless get_item_list(item).nil? %>
 
 </div>

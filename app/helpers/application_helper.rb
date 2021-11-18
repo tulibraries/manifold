@@ -40,4 +40,15 @@ module ApplicationHelper
       end
     end
   end
+
+  def get_item_list(item)
+    # binding.pry
+    if item.is_a?(Category)
+      list = '<ul class="list-unstyled">'
+      item.items.each do |page|
+        list += "<li>#{link_to page.label, url_for(page), style: "color: black"}</li>"
+      end 
+      list += "</ul>"
+    end
+  end
 end

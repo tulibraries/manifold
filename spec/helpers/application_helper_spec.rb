@@ -55,12 +55,31 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  context "json_ld" do
-    let(:entity) { OpenStruct.new(map_to_schema_dot_org: { one: 2 }) }
-    let(:ld) { json_ld(entity) }
+  describe "json response" do
+    context "json_ld" do
+      let(:entity) { OpenStruct.new(map_to_schema_dot_org: { one: 2 }) }
+      let(:ld) { json_ld(entity) }
 
-    it "returns parseable json" do
-      expect(JSON.parse(ld)).to eql("one" => 2)
+      it "returns parseable json" do
+        expect(JSON.parse(ld)).to eql("one" => 2)
+      end
+    end
+  end
+
+  describe "menu navigation" do
+    context "parses out non-category menu groups" do
+      let(:category) { FactoryBot.create(:category, name: "Menu Group") }
+      let(:menu_item_1) { FactoryBot.create(:webpage, title: "Menu Item 1", categories: [category]) }
+      let(:menu_item_2) { FactoryBot.create(:webpage, title: "Menu Item 2") }
+
+      it "returns list of links within child category group" do
+        expect(menu_item_1).to be
+        expect(helper.get_item_list(category)).to include(menu_item_1.label)
+      end
+      it "does not allow non-categories" do
+        expect(menu_item_2).to be
+        expect(helper.get_item_list(menu_item_2)).to_not be
+      end
     end
   end
 

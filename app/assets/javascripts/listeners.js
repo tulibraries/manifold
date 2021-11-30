@@ -1,5 +1,3 @@
-// This file configures the Google Analytics Tracking service.
-
 $(document).ready(function(){
 
   $("#nav-sec21a-tab").click(function() {

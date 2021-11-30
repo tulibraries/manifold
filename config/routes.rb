@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :groups
     resources :highlights
     resources :library_hours
+    resources :menu_groups
     resources :people
     resources :policies
     resources :redirects

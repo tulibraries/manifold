@@ -8,33 +8,9 @@ class ApplicationController < ActionController::Base
   before_action :show_hours, :menu_items, unless: ->(c) { ["accounts/omniauth_callbacks", "devise/sessions"].include?(c.controller_path) }
 
   def menu_items
-    @empty_abouts = []
-    @empty_visits = []
-    @empty_researches = []
-
-    @about_items = MenuGroup.find_by(slug: "about-page").categories
-    @about_items.each do |item|
-      if item.items.count < 1
-        @empty_abouts << item
-        @about_items.delete(Category.find(item.id))
-      end if item.is_a?(Category)
-    end if @about_items.present?
-
-    @visit_items = MenuGroup.find_by(slug: "visit").categories
-    @visit_items.each do |item|
-      if item.items.count < 1
-        @empty_visits << item
-        @visit_items.delete(Category.find(item.id))
-      end if item.is_a?(Category)
-    end if @visit_items.present?
-
-    @research_items = MenuGroup.find_by(slug: "research-services").categories
-    @research_items.each do |item|
-      if item.items.count < 1
-        @empty_researches << item
-        @research_items.delete(Category.find(item.id))
-      end if item.is_a?(Category)
-    end if @research_items.present?
+    @about_menu = MenuGroup.find_by(slug: "about-page")
+    @visit_menu = MenuGroup.find_by(slug: "visit")
+    @research_menu = MenuGroup.find_by(slug: "research-services")
   end
 
   def get_alert
@@ -116,10 +92,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  # Devise has current_user hard_coded so if we use anything other than
-  # user, we have no access to the devise object. So, we need to override
-  # current_user to return the current account. This is needed both
-  # in ApplicationController and in Admin::ApplicationController
+    # Devise has current_user hard_coded so if we use anything other than
+    # user, we have no access to the devise object. So, we need to override
+    # current_user to return the current account. This is needed both
+    # in ApplicationController and in Admin::ApplicationController
 
     def current_user
       current_account

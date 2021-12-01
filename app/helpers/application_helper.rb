@@ -41,13 +41,15 @@ module ApplicationHelper
     end
   end
 
-  def get_item_list(item)
-    if item.is_a?(Category)
+  def get_item_list(category)
+    if category.items.count > 0
       list = '<ul class="list-unstyled">'
-      item.items.each do |page|
+      category.items.each do |page|
         list += "<li>#{link_to page.label, url_for(page), style: "color: black"}</li>"
       end
       list += "</ul>"
+    else
+      ""
     end
   end
 end

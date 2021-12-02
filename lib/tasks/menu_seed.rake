@@ -22,9 +22,9 @@ namespace :seed do
       stdout_and_log("Saved: #{menu} menu, categories: #{menu.categories}")
     end
 
-    # Category.destroy(Category.find_by(slug: 'about-page').id)
-    # Category.destroy(Category.find_by(slug: 'visit').id)
-    # Category.destroy(Category.find_by(slug: 'research-services').id)
+    Category.destroy(Category.find_by(slug: "about-page").id)
+    Category.destroy(Category.find_by(slug: "visit").id)
+    Category.destroy(Category.find_by(slug: "research-services").id)
   end
 end
 

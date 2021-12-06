@@ -34,14 +34,14 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: circleci/ruby:2.7.2-node
+      - image: cimg/ruby:2.7.5-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
         environment:
           TZ: "America/New_York"
 
-      - image: circleci/postgres:11-alpine
+      - image: cimg/postgres:11.12
         environment:
           TZ: "America/New_York"
     resource_class: small
@@ -105,7 +105,7 @@ jobs:
 
   qa_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.7.11
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -122,7 +122,7 @@ jobs:
 
   stage_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.7.11
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -139,7 +139,7 @@ jobs:
 
   prod_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.7.11
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD

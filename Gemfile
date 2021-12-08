@@ -4,7 +4,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails", "~> 6.1.4"
-ruby "2.7.5"
+ruby "2.7.3"
 
 gem "timecop"
 gem "administrate", ">= 0.16.0"

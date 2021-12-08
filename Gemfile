@@ -75,7 +75,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "brakeman", "5.1.0"
+  gem "brakeman", "5.0.4"
   gem "faker"
   gem "populate"
   gem "rails-erd"

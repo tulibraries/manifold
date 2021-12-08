@@ -4,7 +4,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails", "~> 6.1.4"
-ruby "2.7.3"
+ruby "2.7.4"
 
 gem "timecop"
 gem "administrate", ">= 0.16.0"
@@ -51,6 +51,7 @@ gem "sass-rails", "~> 6.0"
 gem "simple_form"
 gem "sitemap_generator"
 gem "skylight", "4.3.2"
+gem "sqlite3", "~> 1.3.13"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
@@ -75,7 +76,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "brakeman", "5.0.4"
+  gem "brakeman"
   gem "faker"
   gem "populate"
   gem "rails-erd"

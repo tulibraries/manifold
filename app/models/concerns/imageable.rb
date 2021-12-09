@@ -58,8 +58,9 @@ module Imageable
   end
 
   def image_variation(width, height)
+    # binding.pry
     image.blob.analyze
-    if (blob.image.blob.metadata[:width] > 0) && (blob.image.blob.metadata[:height] > 0)
+    if (image.blob.metadata[:width] > 0) && (image.blob.metadata[:height] > 0)
       if image.blob.metadata[:width] > image.blob.metadata[:height]
         ActiveStorage::Variation.new(Uploads.resize_x_and_pad(width: width, height: height, blob: image.blob))
       else

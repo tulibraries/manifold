@@ -59,15 +59,14 @@ module Imageable
 
   def image_variation(width, height)
     image.blob.analyze
-
-    # binding.pry if image.blob.metadata[:width].nil?
-
-    if image.blob.metadata[:width] > image.blob.metadata[:height]
-      ActiveStorage::Variation.new(Uploads.resize_x_and_pad(width: width, height: height, blob: image.blob))
-    else
-      # ActiveStorage::Variation.new(Uploads.resize_to_fit(width: width, height: height, blob: self.send(image_field.to_sym).blob))
-      ActiveStorage::Variation.new(Uploads.resize_to_fit(width: width, height: height, blob: image.blob))
-    end if image.present?
+    if (blob.image.blob.metadata[:width] > 0) && (blob.image.blob.metadata[:height] > 0)
+      if image.blob.metadata[:width] > image.blob.metadata[:height]
+        ActiveStorage::Variation.new(Uploads.resize_x_and_pad(width: width, height: height, blob: image.blob))
+      else
+        # ActiveStorage::Variation.new(Uploads.resize_to_fit(width: width, height: height, blob: self.send(image_field.to_sym).blob))
+        ActiveStorage::Variation.new(Uploads.resize_to_fit(width: width, height: height, blob: image.blob))
+      end
+    end
   end
 
   def entity_image_path(type)

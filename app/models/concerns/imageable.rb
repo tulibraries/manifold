@@ -67,7 +67,7 @@ module Imageable
     else
       # ActiveStorage::Variation.new(Uploads.resize_to_fit(width: width, height: height, blob: self.send(image_field.to_sym).blob))
       ActiveStorage::Variation.new(Uploads.resize_to_fit(width: width, height: height, blob: image.blob))
-    end if image.blob.metadata[:width].present? && image.blob.metadata[:height]
+    end if image.present?
   end
 
   def entity_image_path(type)

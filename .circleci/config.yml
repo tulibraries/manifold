@@ -88,7 +88,7 @@ jobs:
 
       - run:
           name: Brakeman
-          command: bundle exec brakeman --no-pager
+          command: bundle exec brakeman --no-pager --no-threads
 
       - run:
           name: Install ActionText

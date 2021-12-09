@@ -324,8 +324,6 @@ en:
                                     Search the books, media, articles through our backup search.</p>
                                     <p><strong><span class="heading"><a class="inline" href="http://temple.worldcat.org/">WorldCat</a></span></strong><br>
                                     In the event of downtime involving the Library Search, use WorldCat to search for materials and check holdings information to determine Temple ownership.</p>
-                                    <p><strong><span class="heading"><a class="inline" href="http://guides.temple.edu/refworks2">RefWorks</a></span></strong><br>
-                                    Create and manage citations.</p>
                                     <p><strong><span class="heading"><a class="inline" href="http://digital.library.temple.edu/">Digital Collections</a></span></strong><br>
                                     Our Digital Collections site offers free worldwide access to the unique primary historical and cultural resources held by the Temple University Libraries and to selected scholarly works and other publications produced at Temple.</p>
                                     <p>&nbsp;</p>
@@ -382,7 +380,6 @@ en:
       standards_link: "Community Standards"
       illiad_link: "ILLiad"
       diversity_link: "Diversity Statement"
-      refworks_link: "Refworks"
       privacy_link: "Virtual Reference Privacy Guidelines"
       tu_homepage_link: "Temple University homepage"
       charles_address: "Temple University Libraries<br />1900 N. 13th Street<br />Philadelphia, PA 19122<br />(215) 204-8212"

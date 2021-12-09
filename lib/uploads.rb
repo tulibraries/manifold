@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # lib/uploads.rb
-
 class Uploads
   class << self
     def jpeg?(blob)
@@ -42,7 +41,7 @@ class Uploads
     end
 
     def resize_to_fill(width:, height:, blob:, gravity: "Center")
-      blob.analyze
+      blob.analyze unless blob.analyzed?
 
       cols = blob.metadata[:width].to_f
       rows = blob.metadata[:height].to_f

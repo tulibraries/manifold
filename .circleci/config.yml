@@ -50,7 +50,7 @@ jobs:
           name: make sure we have the latest bundler
           command: |
             sudo gem update --system
-            gem install -f bundler:2.1.4
+            gem install -f bundler:2.2.27
 
       - restore_cache:
           keys:

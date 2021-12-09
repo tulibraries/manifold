@@ -4,7 +4,6 @@ orbs:
   coveralls: coveralls/coveralls@1.0.6
 
 workflows:
-  version: 2
   run_tests:
     jobs:
       - run_tests
@@ -34,7 +33,7 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: circleci/ruby:2.7.2-node
+      - image: cimg/ruby-2.7.3-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD

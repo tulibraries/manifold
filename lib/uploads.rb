@@ -49,8 +49,7 @@ class Uploads
         scale_x = width / cols
         scale_y = height / rows
         if scale_x >= scale_y
-          cols = (scale_x * (cols + 0.5))
-          cols = cols.round unless cols == Infinity
+          cols = (scale_x * (cols + 0.5)).round
           resize = cols.to_s
         else
           rows = (scale_y * (rows + 0.5)).round

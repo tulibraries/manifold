@@ -11,7 +11,6 @@ class Building < ApplicationRecord
   include SetDates
   include SchemaDotOrgable
   include Validators
-  require "uploads"
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged

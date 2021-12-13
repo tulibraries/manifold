@@ -3,6 +3,7 @@
 class Service < ApplicationRecord
   has_paper_trail
   include Accountable
+  include Attachable
   include Categorizable
   include Draftable
   include InputCleaner
@@ -14,6 +15,7 @@ class Service < ApplicationRecord
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
+  before_validation :remove_empty_audience
   validates :title, :intended_audience, presence: true
 
   serialize :intended_audience
@@ -25,8 +27,6 @@ class Service < ApplicationRecord
   has_rich_text :access_description
   has_rich_text :draft_access_description
   has_rich_text :covid_alert
-
-  before_validation :remove_empty_audience
 
   def slug_candidates
     [

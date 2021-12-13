@@ -40,5 +40,10 @@
   trix-editor {
     height: 21rem;
     overflow:auto;
+    resize: vertical; 
   }
+}
+
+select[multiple] { 
+  resize: vertical; 
 }

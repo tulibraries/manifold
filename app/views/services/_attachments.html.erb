@@ -1,0 +1,13 @@
+<% if @service.file_uploads.present? %>
+  <% if @service.file_uploads.any? { |fu| fu.file.content_type == "application/pdf" } %>
+    <ul class="list-unstyled">
+    <% @service.file_uploads.each do |fu| %>
+      <% if fu.file.content_type == "application/pdf" %>
+        <li class="press-button text-center">
+          <%= link_to "#{fu.name} -- View PDF", url_for(fu.file), disposition: "attachment" %>
+        </li>
+      <% end %>
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>

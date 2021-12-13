@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Building < ApplicationRecord
-  require "uploads"
-
   include Categorizable
   include Draftable
   include HasHours

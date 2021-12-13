@@ -6,8 +6,6 @@ cd ..
 git clone --single-branch --branch qa git@github.com:tulibraries/ansible-playbook-manifold.git
 cd ansible-playbook-manifold
 # install playbook requirements
-sudo pip install pipenv
-# install playbook requirements
 pipenv install
 # install playbook role requirements
 pipenv run ansible-galaxy install -r requirements.yml

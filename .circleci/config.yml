@@ -40,7 +40,7 @@ jobs:
         environment:
           TZ: "America/New_York"
 
-      - image: cimg/postgres:11.12
+      - image: cimg/postgres:13.4
         environment:
           TZ: "America/New_York"
     resource_class: small
@@ -50,7 +50,7 @@ jobs:
           name: make sure we have the latest bundler
           command: |
             sudo gem update --system
-            gem install -f bundler:2.1.4
+            gem install -f bundler:2.2.27
 
       - restore_cache:
           keys:
@@ -82,6 +82,13 @@ jobs:
           command: | 
             sudo npm install -g ajv@6.12.6
             sudo npm install -g ajv-cli@3.3.0
+
+      - run:
+          name: Install ImageMagick
+          command: |
+            sudo apt-get update
+            sudo apt-get -y install imagemagick
+
       - run:
           name: Ruby Lint
           command: bundle exec rubocop

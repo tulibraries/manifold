@@ -2,7 +2,6 @@
 
 module Imageable
   extend ActiveSupport::Concern
-  require Rails.root.join("lib/uploads.rb")
 
   included do
     has_one_attached :image, dependent: :destroy
@@ -49,16 +48,15 @@ module Imageable
   end
 
   def custom_image(width, height)
-    if ((image.blob.metadata[:width] != width) ||
-        (image.blob.metadata[:height] != height))
-      image.variant(image_variation(width, height)).processed
+    if (image.blob.metadata[:width] != width) || (image.blob.metadata[:height] != height)
+      image.variant(format: :png,
+                    background: :transparent,
+                    gravity: :center,
+                    resize_and_pad: [width, height]
+                  ).processed
     else
       image
     end
-  end
-
-  def image_variation(width, height)
-    ActiveStorage::Variation.new(Uploads.resize_to_fill(width: width, height: height, blob: image.blob, gravity: "Center"))
   end
 
   def entity_image_path(type)

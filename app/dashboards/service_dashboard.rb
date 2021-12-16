@@ -25,6 +25,10 @@ class ServiceDashboard < Administrate::BaseDashboard
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     covid_alert: DescriptionField.with_options(admin_only: true),
+    file_uploads: Field::HasMany.with_options(
+      order: "name",
+      class_name: "FileUpload"
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -55,6 +59,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :categories,
     :accounts,
     :covid_alert,
+    :file_uploads,
     :created_at,
     :updated_at,
   ].freeze
@@ -74,6 +79,7 @@ class ServiceDashboard < Administrate::BaseDashboard
     :hours,
     :categories,
     :accounts,
+    :file_uploads,
     :covid_alert
   ].freeze
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_30_164446) do
+ActiveRecord::Schema.define(version: 2021_12_15_201523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2021_09_30_164446) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "for_header"
+    t.index ["published"], name: "index_alerts_on_published"
   end
 
   create_table "blog_posts", force: :cascade do |t|
@@ -162,7 +163,9 @@ ActiveRecord::Schema.define(version: 2021_09_30_164446) do
     t.string "description"
     t.string "slug"
     t.bigint "external_link_id"
+    t.bigint "menu_group_id"
     t.index ["external_link_id"], name: "index_categories_on_external_link_id"
+    t.index ["menu_group_id"], name: "index_categories_on_menu_group_id"
   end
 
   create_table "categorizations", force: :cascade do |t|
@@ -374,6 +377,13 @@ ActiveRecord::Schema.define(version: 2021_09_30_164446) do
     t.index ["person_id"], name: "index_members_on_person_id"
   end
 
+  create_table "menu_groups", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "occupants", force: :cascade do |t|
     t.integer "space_id"
     t.integer "person_id"
@@ -498,6 +508,7 @@ ActiveRecord::Schema.define(version: 2021_09_30_164446) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "categories", "external_links"
+  add_foreign_key "categories", "menu_groups"
   add_foreign_key "collections", "external_links"
   add_foreign_key "spaces", "external_links"
   add_foreign_key "webpages", "external_links"

@@ -2,10 +2,9 @@
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+ruby "2.7.4"
 
 gem "rails", "~> 6.1.4"
-ruby "2.7.2"
-
 gem "timecop"
 gem "administrate", ">= 0.16.0"
 gem "ancestry"
@@ -36,7 +35,6 @@ gem "listen", ">= 3.0.5", "< 3.8"
 gem "lockbox"
 gem "mail_form"
 gem "meta-tags"
-gem "mini_magick", "~> 4.11"
 gem "okcomputer"
 gem "omniauth", "~> 2.0.4"
 gem "omniauth-google-oauth2"
@@ -51,7 +49,6 @@ gem "sass-rails", "~> 6.0"
 gem "simple_form"
 gem "sitemap_generator"
 gem "skylight", "4.3.2"
-gem "sqlite3", "~> 1.3.13"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"

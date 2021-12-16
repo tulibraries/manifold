@@ -533,17 +533,16 @@
 }
 .quicklinks {
 	position: relative;
-	top: -12px;
 	background-color: #fff;
 	height: 222px;
 	font-family: Roboto;
 	ul {
 		padding:0px 14px;
 		margin-bottom: 1px;
-		line-height: 2.5rem;
+		line-height: 2.75rem;
 	}
 	.quicklinks-link {
-		padding-top: 3px;
+		padding-top: 8px;
 		border-bottom: solid #ccc 1px;
 		a {
 			font-size: 140%!important;
@@ -555,7 +554,7 @@
 	}
 	.quicklinks-caption {
 		background-color: $black;
-		margin-top: 4px;
+		margin-top: 10px;
 		height: 45px;
 		color: $white;
 		font-size: 135%;

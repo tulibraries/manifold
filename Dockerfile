@@ -25,7 +25,7 @@ ENV S3_SECRET_ACCESS_KEY=$S3_SECRET_ACCESS_KEY
 RUN mkdir /manifold
 WORKDIR /manifold
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler:2.1.4
+RUN gem install bundler:2.2.27
 RUN bundle install
 COPY . .
 

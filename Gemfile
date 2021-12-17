@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby "2.7.4"
+ruby "2.7.2"
 
 gem "rails", "~> 6.1.4"
 gem "timecop"
@@ -55,7 +55,6 @@ gem "uglifier", ">= 1.3.0"
 gem "yaml_db"
 gem "friendly_id", "~> 5.4.2"
 gem "action-draft"
-gem "webpacker"
 gem "image_processing", "~> 1.2"
 gem "mimemagic", "0.4.3"
 gem "active_storage_validations"

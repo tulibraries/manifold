@@ -67,20 +67,19 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "menu navigation" do
-    context "parses out menu groups" do
-      let(:category) { FactoryBot.create(:category, name: "Category") }
-      let(:category_2) { FactoryBot.create(:category, name: "Category 2") }
-      let(:menu) { FactoryBot.create(:menu_group, title: "Menu Group", categories: [category]) }
-      let(:menu_item) { FactoryBot.create(:webpage, title: "Menu Item", categories: [category]) }
+    context "parses out non-category menu groups" do
+      let(:category) { FactoryBot.create(:category, name: "Menu Group") }
+      let(:menu_item_1) { FactoryBot.create(:webpage, title: "Menu Item 1", categories: [category]) }
+      let(:menu_item_2) { FactoryBot.create(:webpage, title: "Menu Item 2") }
 
-      it "returns a list of links from the category's items" do
-        expect(menu).to be
-        expect(menu_item).to be
-        expect(helper.get_item_list(category)).to include(menu_item.label)
+      it "returns list of links within child category group" do
+        expect(menu_item_1).to be
+        expect(helper.get_item_list(category)).to include(menu_item_1.label)
       end
-      it "returns empty string when no category items" do
-        expect(category_2).to be
-        expect(helper.get_item_list(category_2)).to eq("")
+
+      it "does not allow non-categories" do
+        expect(menu_item_2).to be
+        expect(helper.get_item_list(menu_item_2)).to eql("")
       end
     end
   end

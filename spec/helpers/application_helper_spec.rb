@@ -79,7 +79,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
       it "does not allow non-categories" do
         expect(menu_item_2).to be
-        expect(helper.get_item_list(menu_item_2)).to_not be
+        expect(helper.get_item_list(menu_item_2)).to eql("")
       end
     end
   end

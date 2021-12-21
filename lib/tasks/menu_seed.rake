@@ -17,7 +17,7 @@ namespace :deseed do
       # remove categories inadvertantly assigned
       category.categories.each do |cat|
         category.categories.delete(cat)
-      end if category.categories.any? 
+      end if category.categories.any?
 
       oldgroup = MenuGroup.find_by(slug: category.slug)
 

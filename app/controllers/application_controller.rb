@@ -8,9 +8,34 @@ class ApplicationController < ActionController::Base
   before_action :show_hours, :menu_items, unless: ->(c) { ["accounts/omniauth_callbacks", "devise/sessions"].include?(c.controller_path) }
 
   def menu_items
-    @about_menu = MenuGroup.find_by(slug: "about-page")
-    @visit_menu = MenuGroup.find_by(slug: "visit")
-    @research_menu = MenuGroup.find_by(slug: "research-services")
+    @empty_abouts = []
+    @empty_visits = []
+    @empty_researches = []
+
+    about = Category.find_by(slug: "about-page")
+    @about_items = Category.find_by(slug: "about-page").items(exclude: [about]) if Category.find_by(slug: "about-page").present?
+    @about_items.each do |item|
+      if item.items.count < 1
+        @empty_abouts << item
+        @about_items.delete(Category.find(item.id))
+      end if item.is_a?(Category)
+    end if @about_items.present?
+
+    @visit_items = Category.find_by(slug: "visit").items if Category.find_by(slug: "visit").present?
+    @visit_items.each do |item|
+      if item.items.count < 1
+        @empty_visits << item
+        @visit_items.delete(Category.find(item.id))
+      end if item.is_a?(Category)
+    end if @visit_items.present?
+
+    @research_items = Category.find_by(slug: "research-services").items if Category.find_by(slug: "research-services").present?
+    @research_items.each do |item|
+      if item.items.count < 1
+        @empty_researches << item
+        @research_items.delete(Category.find(item.id))
+      end if item.is_a?(Category)
+    end if @research_items.present?
   end
 
   def get_alert

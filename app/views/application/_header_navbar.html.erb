@@ -93,14 +93,19 @@
                         method: :get} %>
             <div class="dropdown-menu p-2" id="about-links">
               <div class="row" style="padding-left:21px">
-              <% @about_menu.categories.each_with_index do |item, index| %>
+              <% @about_items.each_with_index do |item, index| %>
+                <% next if item.slug == "about-page" %>
                 <% if index == 3 %>
                   <%= render "quicklinks" %>
                   <%= render "menu-items", item: item  %>
                 <% else %>
                   <%= render "menu-items", item: item  %>
                 <% end %>
-              <% end if @about_menu.present? %>
+              <% end if @about_items.present? %>
+
+              <% @empty_abouts.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_abouts.present? %>
               </div>
             </div>
         </div>
@@ -112,14 +117,19 @@
                         method: :get} %>
             <div class="dropdown-menu p-2" id="visit-links">
               <div class="row" style="padding-left:21px">
-              <% @visit_menu.categories.each_with_index do |item, index| %>
+               <% @visit_items.each_with_index do |item, index| %>
+                <% next if item.slug == "about-page" %>
                 <% if index == 3 %>
                   <%= render "quicklinks" %>
                   <%= render "menu-items", item: item  %>
                 <% else %>
                   <%= render "menu-items", item: item  %>
                 <% end %>
-              <% end if @visit_menu.present? %>
+              <% end if @visit_items.present? %>
+
+              <% @empty_visits.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_visits.present? %>
               </div>
             </div>
         </div>
@@ -131,14 +141,19 @@
                         method: :get} %>
             <div class="dropdown-menu p-2" id="research-links">
               <div class="row" style="padding-left:21px">
-              <% @research_menu.categories.each_with_index do |item, index| %>
+              <% @research_items.each_with_index do |item, index| %>
+                <% next if item.slug == "about-page" %>
                 <% if index == 3 %>
                   <%= render "quicklinks" %>
                   <%= render "menu-items", item: item  %>
                 <% else %>
                   <%= render "menu-items", item: item  %>
                 <% end %>
-              <% end if @research_menu.present? %>
+              <% end if @research_items.present? %>
+
+              <% @empty_researches.each do |item| %>
+                <%= render "menu-items", item: item  %>
+              <% end if @empty_researches.present? %>
               </div>
             </div>
         </div>

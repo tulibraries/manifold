@@ -34,14 +34,14 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: circleci/ruby:2.7.2-node
+      - image: cimg/ruby:2.7.2-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
         environment:
           TZ: "America/New_York"
 
-      - image: circleci/postgres:11-alpine
+      - image: cimg/postgres:13.4
         environment:
           TZ: "America/New_York"
     resource_class: small
@@ -51,7 +51,7 @@ jobs:
           name: make sure we have the latest bundler
           command: |
             sudo gem update --system
-            gem install -f bundler:2.1.4
+            gem install -f bundler:2.2.27
 
       - restore_cache:
           keys:
@@ -84,12 +84,17 @@ jobs:
             sudo npm install -g ajv@6.12.6
             sudo npm install -g ajv-cli@3.3.0
       - run:
+          name: Install ImageMagick
+          command: |
+            sudo apt-get update
+            sudo apt-get -y install imagemagick
+      - run:
           name: Ruby Lint
           command: bundle exec rubocop
 
       - run:
           name: Brakeman
-          command: bundle exec brakeman --no-pager
+          command: bundle exec brakeman --no-pager --no-threads
 
       - run:
           name: Install ActionText
@@ -105,7 +110,7 @@ jobs:
 
   qa_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.7.11
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -122,7 +127,7 @@ jobs:
 
   stage_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.7.11
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -139,7 +144,7 @@ jobs:
 
   prod_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.7.11
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD

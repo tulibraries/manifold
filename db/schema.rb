@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_222602) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "for_header"
+    t.index ["published"], name: "index_alerts_on_published"
   end
 
   create_table "blog_posts", force: :cascade do |t|

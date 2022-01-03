@@ -318,14 +318,12 @@ en:
                                     </tr>
                                     </tbody>
                                     </table>
-                                    <p><strong><a class="inline" href="https://ezb.relaisd2d.com/?LS=TEMPLE">E-Z Borrow</a></strong> or<strong> <a class="inline" href="http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/paley/logon.html">ILLiad</a></strong><br>
-                                    Use these interlibrary lending services to request items unavailable at Temple’s libraries. Use E-Z Borrow to search and request books from over 60 Pennsylvania academic libraries. Books are received in 3-5 business days. Use ILLiad to borrow books and other materials from libraries across North America.</p>
+                                    <p><strong><a class="inline" href="https://ezb.relaisd2d.com/?LS=TEMPLE">EZborrow</a></strong> or<strong> <a class="inline" href="http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/paley/logon.html">ILLiad</a></strong><br>
+                                    Use these interlibrary lending services to request items unavailable at Temple’s libraries. Use EZborrow to search and request books from over 60 Pennsylvania academic libraries. Books are received in 3-5 business days. Use ILLiad to borrow books and other materials from libraries across North America.</p>
                                     <p><strong><span class="heading"><a class="inline" href="https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=TULI&amp;sortby=rank">Library Search</a></span></strong><br>
                                     Search the books, media, articles through our backup search.</p>
                                     <p><strong><span class="heading"><a class="inline" href="http://temple.worldcat.org/">WorldCat</a></span></strong><br>
                                     In the event of downtime involving the Library Search, use WorldCat to search for materials and check holdings information to determine Temple ownership.</p>
-                                    <p><strong><span class="heading"><a class="inline" href="http://guides.temple.edu/refworks2">RefWorks</a></span></strong><br>
-                                    Create and manage citations.</p>
                                     <p><strong><span class="heading"><a class="inline" href="http://digital.library.temple.edu/">Digital Collections</a></span></strong><br>
                                     Our Digital Collections site offers free worldwide access to the unique primary historical and cultural resources held by the Temple University Libraries and to selected scholarly works and other publications produced at Temple.</p>
                                     <p>&nbsp;</p>
@@ -377,12 +375,11 @@ en:
       quick_links: Quick Links
       patron_forms_label: "Patron Forms"
       donate_link: "Support the Libraries"
-      ezborrow_link: "E-ZBorrow"
+      ezborrow_link: "EZborrow"
       employment_opportunities: "Employment Opportunities"
       standards_link: "Community Standards"
       illiad_link: "ILLiad"
       diversity_link: "Diversity Statement"
-      refworks_link: "Refworks"
       privacy_link: "Virtual Reference Privacy Guidelines"
       tu_homepage_link: "Temple University homepage"
       charles_address: "Temple University Libraries<br />1900 N. 13th Street<br />Philadelphia, PA 19122<br />(215) 204-8212"
@@ -523,8 +520,8 @@ en:
                       <a class="inline" href="#{librarysearch_url}/users/account">log in to the Library Search</a>, locate 
                       the item's record in the Library Search, and click on the <strong>Request</strong> button.
         not_held: Temple doesn't have it?
-        not_held_one_html: The best place to request books that Temple doesn't own is through <a class="inline" href="https://ezb.relaisd2d.com/?LS=TEMPLE">E-ZBorrow</a>.
-        not_held_two_html: For books not available through E-ZBorrow, <em>as well as journal articles</em>, use <a class="inline" href="https://temple.illiad.oclc.org/illiad/charles/logon.html">ILLiad</a>, our new service for requesting hard to find materials.
+        not_held_one_html: The best place to request books that Temple doesn't own is through <a class="inline" href="https://ezb.relaisd2d.com/?LS=TEMPLE">EZborrow</a>.
+        not_held_two_html: For books not available through EZborrow, <em>as well as journal articles</em>, use <a class="inline" href="https://temple.illiad.oclc.org/illiad/charles/logon.html">ILLiad</a>, our new service for requesting hard to find materials.
       fields:
         boolean: 
           yes_no: 
@@ -611,7 +608,7 @@ en:
                     <div style="font-size: 1.5rem;margin-bottom: 2.5rem;">(Faculty/Library Staff only)</div>
                     <div style="line-height: 1.15rem;">
                     <p>When you recall a book, the person who has it checked out has two weeks to return it.</p>
-                    <p>Try <a href="https://e-zborrow.relaisd2d.com/gateway/TEMPLE.html"%>E-ZBorrow</a> instead. 
+                    <p>Try <a href="https://e-zborrow.relaisd2d.com/gateway/TEMPLE.html"%>EZborrow</a> instead. 
                     Books generally arrive in three to five days.</p>
                     <p>One request per form. You must complete the form again for another request.</p>
                     <p>Only recall requests submitted by current Temple University staff and faculty will be reviewed.</p>
@@ -1268,3 +1265,4 @@ en:
 
     redirects:
       moved_permanently: "has moved. Please update bookmarks and links."
+      

@@ -20,7 +20,7 @@
 
     </div>
 
-  <% if @service.external_link.present? || @service.access_description.present? %>
+  <% if @service.external_link.present? || @service.access_description.present? || @service.file_uploads.present? %>
     <div class="col-12 col-md-3 rightside-service">
       <% if @service.external_link.present? %>
         <div class="access-link">
@@ -33,6 +33,9 @@
         <div class="entity-help">
           <%= @service.access_description %>
         </div>
+      <% end %>
+      <% if @service.file_uploads.present? %>
+        <%= render "attachments" %>
       <% end %>
     </div>
   <% end %>

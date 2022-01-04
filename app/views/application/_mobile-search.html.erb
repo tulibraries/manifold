@@ -2,11 +2,15 @@
 
   <div class="collapse navbar-collapse" id="mobile-search">
     <div class="navbar-nav">
-      <form action=<%= "#{librarysearch_url("everything")}" %> class="mobile">
+      <form action="https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search" class="mobile" id="mobile-search-form">
         <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
-        <input type="text" name="q" id="librarySearch" class="mobile" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
+        <input type="text" name="query" id="librarySearch" class="mobile" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
         <input type="submit" class="mobile" value = "" aria-label="submit search query">
         <input type="hidden" name="search_field" id="search_field" value="all">
+        <input type="hidden" name="tab" id="tab" value="default_tab">
+        <input type="hidden" name="search_scope" id="search_scope" value="default_scope">
+        <input type="hidden" name="vid" id="vid" value="TULI">
+        <input type="hidden" name="offset" id="offset" value="0">
       </form>
       <ul class="text-center">
         <li><%= link_to t("manifold.header.search.books"), "#{librarysearch_url("books")}" %></li>

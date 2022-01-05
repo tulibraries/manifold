@@ -2,29 +2,36 @@
 
 require "logger"
 
-namespace :seed do
+namespace :deseed do
   task menus: [:environment] do
 
-    @log = Logger.new("log/menu-seeds.log")
+    @log = Logger.new("log/menus-deseeded.log")
     @stdout = Logger.new(STDOUT)
-    stdout_and_log("Initializes main menu groups and adds existing categories")
+    stdout_and_log("Re-initializes deleted top-level categories and reassigns categories from MenuGroups")
 
-    menus = MenuGroup.create([{ title: "About", slug: "about-page" },
-                              { title: "Visit", slug: "visit" },
-                              { title: "Research Services", slug: "research-services" }])
+    categories = Category.create([{ name: "About", slug: "about-page" },
+                              { name: "Visit", slug: "visit" },
+                              { name: "Research Services", slug: "research-services" }])
 
-    menus.each do |menu|
-      oldgroup = Category.find_by(slug: menu.slug)
-      oldgroup.items.each do |item|
-        menu.categories << item if item.is_a?(Category)
+    categories.each do |category|
+      # remove categories inadvertantly assigned
+      category.categories.each do |cat|
+        category.categories.delete(cat)
+      end if category.categories.any?
+
+      oldgroup = MenuGroup.find_by(slug: category.slug)
+
+      # add categories from menugroups as categorizations
+      oldgroup.categories.each do |item|
+        category.categorizations << item if item.is_a?(Category)
       end
-      menu.save!
-      stdout_and_log("Saved: #{menu} menu, categories: #{menu.categories}")
+      category.save!
+      stdout_and_log("Saved: #{category.name} category, categories: #{category.categorizations}")
     end
 
-    Category.destroy(Category.find_by(slug: "about-page").id)
-    Category.destroy(Category.find_by(slug: "visit").id)
-    Category.destroy(Category.find_by(slug: "research-services").id)
+    # MenuGroup.destroy(MenuGroup.find_by(slug: "about-page").id)
+    # MenuGroup.destroy(MenuGroup.find_by(slug: "visit").id)
+    # MenuGroup.destroy(MenuGroup.find_by(slug: "research-services").id)
   end
 end
 

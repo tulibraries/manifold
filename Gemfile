@@ -2,10 +2,9 @@
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
-gem "rails", "~> 6.1.4"
 ruby "2.7.2"
 
+gem "rails", "~> 6.1.3.2"
 gem "timecop"
 gem "administrate", ">= 0.16.0"
 gem "ancestry"

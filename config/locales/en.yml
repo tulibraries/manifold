@@ -426,7 +426,8 @@ en:
         eleven: Reading
         twelve: Scholarly Communications & Open Publishing
         thirteen: Speaker
-        fourteen: Workshop
+        fourteen: What Comes Next
+        fifteen: Workshop
       index:
         page_title: Events & Exhibits
         current_exhibits_label: Current Exhibits
@@ -1265,3 +1266,4 @@ en:
 
     redirects:
       moved_permanently: "has moved. Please update bookmarks and links."
+      

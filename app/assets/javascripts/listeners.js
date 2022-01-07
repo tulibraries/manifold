@@ -1,25 +1,5 @@
 $(document).ready(function(){
 
-  $("#global-search").submit(function(){
-    var query = document.getElementById("global-search").elements[0].value;
-    var delims = "any,contains,";
-    document.getElementById("global-search").elements[0].style.color = "white";
-    document.getElementById("global-search").elements[0].value = delims+query;
-  });
-  $("#minor-search-form").submit(function(event){
-    var query = document.getElementById("minor-search-form").elements[0].value;
-    var delims = "any,contains,";
-    document.getElementById("minor-search-form").elements[0].style.color = "white";
-    document.getElementById("minor-search-form").elements[0].value = delims+query;
-    event.preventDefault();
-  });
-  $("#main-search-form").submit(function(){
-    var query = document.getElementById("main-search-form").elements[0].value;
-    var delims = "any,contains,";
-    document.getElementById("main-search-form").elements[0].style.color = "white";
-    document.getElementById("main-search-form").elements[0].value = delims+query;
-  });
-
   $("#nav-sec21a-tab").click(function() {
     $('html, body').animate({
         scrollTop: $("#nav-tabs").offset().top

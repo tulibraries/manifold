@@ -1,12 +1,12 @@
 <div id="home">
 <div id="searchFields">
 
-	<%= render "page-search" %>
+	<%= render "page-search", view: "main" %>
 
 </div>
 
 <div class="col-12 d-block d-lg-none px-0" id="search-in-page">
-	<%= render "page-search" %>
+	<%= render "page-search", view: "minor" %>
 </div>
 <div class="container under">
 	<div class="row ctaRow">
@@ -50,13 +50,13 @@
 		<div class="row">
 			<div class="col-12 col-lg-3 catalog-search h-auto">
 				<div class="h-18 square">
-			    <%= link_to "#{librarysearch_url}/catalog", id: "books-media" do %>
+			    <%= link_to "#", id: "books-media" do %>
 			      <%= image_tag('book_white.png', class: "icon decorative", alt: "") %> 
 				  <span><%= t("manifold.webpages.home.links.main.books") %></span>
 			    <% end %>
 				</div>
 				<div class="h-18 square">
-			    <%= link_to "#{librarysearch_url}/articles", id: "articles" do %>
+			    <%= link_to "#", id: "articles" do %>
 			      <%= image_tag('magazine_white.png', class: "icon decorative", alt: "") %> 
 				  <span><%= t("manifold.webpages.home.links.main.articles") %></span>
 			    <% end %>

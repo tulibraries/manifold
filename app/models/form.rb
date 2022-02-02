@@ -137,6 +137,7 @@ class Form < MailForm::Base
   attribute :second_choice_date
   attribute :instruction_mode
   attribute :total_number_of_production_members
+  attribute :mobile_number
   attribute :mobile_telephone_number_of_the_key_crew_member
   attribute :exhibit_title
   attribute :exhibit_date_range

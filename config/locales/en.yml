@@ -158,6 +158,7 @@ en:
           description: "Description of Project"
           temple_course_project: "Temple Course Project"
           additional_crew_name: "Addtional Crew Member"
+          mobile_number: "Your Mobile Number"
           additional_email: "Crew member's email"
           bachelor_degree: "Bachelors degree earned?"
           institution_of_degree: "Institution Where Degree Earned"
@@ -804,6 +805,7 @@ en:
         duration_of_filming_hint: (How much time is required.)
         number_of_members: Total Number of Production Members
         number_of_members.hint: (crew and talent)
+        mobile_number: Your Mobile Telephone Number
         mobile_of_key_member: Mobile Telephone Number of the Key Crew Member
         description: Description of Project
         temple_course_project: Is This for a Temple Course Project?

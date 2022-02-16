@@ -253,7 +253,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (1.0.1)
     hashie (5.0.0)
-    honeybadger (4.10.0)
+    honeybadger (4.11.0)
     htmlentities (4.3.4)
     httparty (0.20.0)
       mime-types (~> 3.0)
@@ -642,7 +642,7 @@ DEPENDENCIES
   google-analytics-rails (= 1.1.1)
   google-api-client (~> 0.53)
   guard-rspec
-  honeybadger (~> 4.10)
+  honeybadger (~> 4.11)
   httparty
   image_processing (~> 1.2)
   jbuilder (~> 2.11)

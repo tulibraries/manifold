@@ -154,9 +154,6 @@
 		color: $white;
 	}
 }
-a.multiples {
-  font-size:larger;
-}
 a.multiples::after {
   content: "\203A";
   font-size: large;
@@ -204,5 +201,8 @@ a.multiples.active {
 	}
   .list-group {
     border-right: solid #ccc 1px;
+    a {
+      font-size: larger;
+    }
   }
 }

@@ -55,4 +55,12 @@ module ApplicationHelper
       ""
     end
   end
+
+  def quick_links(action)
+    link_to "Quick Links", "#list-quick-links", 
+                            {class: "mt-0 p-2 pl-3 multiples", 
+                            id: "list-quick-links-list", "data-toggle": "list", 
+                            href: "#list-quick-links", role: "tab", 
+                            "aria-controls": "home"}
+  end
 end

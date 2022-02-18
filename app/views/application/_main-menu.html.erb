@@ -7,7 +7,7 @@
                     method: :get} %>
         <div class="dropdown-menu" id="about-links">
           <div class="row">
-            <%= render "menu-items", items: @about_menu.categories if @about_menu.present?  %>
+            <%= render "menu-items", menu: "about", items: @about_menu.categories if @about_menu.present?  %>
           </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
                     method: :get} %>
         <div class="dropdown-menu" id="visit-links">
           <div class="row">
-            <%= render "menu-items", items: @visit_menu.categories if @visit_menu.present?  %>
+            <%= render "menu-items", menu: "visit", items: @visit_menu.categories if @visit_menu.present?  %>
           </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                     method: :get} %>
         <div class="dropdown-menu" id="research-links">
           <div class="row">
-            <%= render "menu-items", items: @research_menu.categories if @research_menu.present? %>
+            <%= render "menu-items", menu: "research", items: @research_menu.categories if @research_menu.present? %>
           </div>
         </div>
     </div>

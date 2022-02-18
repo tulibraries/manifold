@@ -1,23 +1,23 @@
 <div class="col-4">
-  <div class="list-group" id="list-tab" role="tablist">
+  <div class="list-group h-100" id="list-tab" role="tablist" style="background:rgba(255,255,255,0.3)!important">
     <% items.each_with_index do |item, index| %>
-    <% unless get_item_list(item) == "" %>
-      <%= link_to item.label, "##{item.label.parameterize}", 
-                                  {class: "mt-0 p-2 pl-3 multiples#{" active" if index == 0}", 
-                                  id: "list-#{item.label.parameterize}-list", "data-toggle": "list", 
-                                  href: "#list-#{item.label.parameterize}", role: "tab", 
-                                  "aria-controls": "home"} %>
-    <% else %>
-      <%= link_to item.label, item, class: "p-2 pl-3" %>
-    <% end %>
+      <% unless get_item_list(item) == "" %>
+        <%= link_to item.label, "##{menu}-#{item.label.parameterize}", 
+                                    {class: "mt-0 p-2 pl-3 multiples#{" active" if index == 0}", 
+                                    id: "list-#{menu}-#{item.label.parameterize}-list", "data-toggle": "list", 
+                                    href: "#list-#{menu}-#{item.label.parameterize}", role: "tab", 
+                                    "aria-controls": "home"} %>
+      <% else %>
+        <%= link_to item.label, item, class: "p-2 pl-3" %>
+      <% end %>
   <% end %>
   </div>
 </div>
 
 <div class="col-8">
-  <div class="tab-content" id="nav-tabContent">
+  <div class="tab-content mb-4" id="nav-tabContent">
     <% items.each_with_index do |item, index| %>
-    <div class="tab-pane fade<%= " active show" if index == 0 %>" id="list-<%= item.label.parameterize %>" 
+    <div class="tab-pane fade<%= " active show" if index == 0 %>" id="list-<%= menu+"-"+item.label.parameterize %>" 
          role="tabpanel" aria-labelledby="list-<%= item.label.parameterize %>-list">
       <%= sanitize get_item_list(item).html_safe unless get_item_list(item) == "" %>
     </div>

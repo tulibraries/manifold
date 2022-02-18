@@ -44,7 +44,7 @@ module ApplicationHelper
   def get_item_list(item)
     if item.items.count > 0
       list = "<h1 class=\"menu-category mr-4 pb-3\">#{link_to item.label, item}"
-      list += "<span style=\"margin-top:14px;display:block;font-size:1rem;\">#{item.description}</span>"
+      list += "<span>#{item.description}</span>"
       list += "</h1>"
       list += '<ul class="list-unstyled menu-items">'
       item.items.each do |page|

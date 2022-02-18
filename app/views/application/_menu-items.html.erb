@@ -1,14 +1,14 @@
 <div class="col-4">
-  <div class="list-group" style="border-right: solid #ccc 1px;" id="list-tab" role="tablist">
+  <div class="list-group" id="list-tab" role="tablist">
     <% items.each_with_index do |item, index| %>
     <% unless get_item_list(item) == "" %>
       <%= link_to item.label, "##{item.label.parameterize}", 
                                   {class: "mt-0 p-2 pl-3 multiples#{" active" if index == 0}", 
                                   id: "list-#{item.label.parameterize}-list", "data-toggle": "list", 
                                   href: "#list-#{item.label.parameterize}", role: "tab", 
-                                  "aria-controls": "home", style: "font-size:larger;vertical-align:middle;"} %>
+                                  "aria-controls": "home"} %>
     <% else %>
-      <%= link_to item.label, item, class: "p-2 pl-3", style: "font-size:larger;" %>
+      <%= link_to item.label, item, class: "p-2 pl-3" %>
     <% end %>
   <% end %>
   </div>

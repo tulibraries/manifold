@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
     @about_menu = MenuGroup.find_by(slug: "about-page")
     @visit_menu = MenuGroup.find_by(slug: "visit")
     @research_menu = MenuGroup.find_by(slug: "research-services")
+    @quick_links = Category.find_by(slug: "quick-links")
   end
 
   def get_alert

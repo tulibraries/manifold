@@ -10,31 +10,30 @@ namespace :reseed do
     stdout_and_log("Re-initializes top-level categories as MenuGroups with assigned categories after schema adjust removes them")
 
     @about_page = ["Welcome",
+      "Reports & Statistics",
       "Support the Libraries",
-      "Grants, Fellowships & Competitions",
-      "Charles Library Public Spaces",
       "Policies & Guidelines",
-      "Blogs & News",
-      "Reports & Statistics"
-      ]
+      "Blogs & News"]
 
     @visit = ["Temple Libraries & Locations",
+      "Study Spaces",
       "Borrowing",
-      "Events, Exhibits & Workshops",
-      "Explore Charles Library",
-      "Access and services during COVID-19",
       "Computers, Printing & Technology",
+      "Charles Library Public Spaces",
       "Visitor & Alumni Access",
-      "Study Spaces"]
+      "Access and services during COVID-19",
+      "Events, Exhibits & Workshops",
+      "Explore Charles Library"]
 
-    @research_services = ["Textbook Affordability Project",
-      "Get Started",
-      "TUScholarShare",
-      "Research Data Services",
+    @research_services = [ "Get Started",
       "Support for Instructors",
-      "Collections",
       "Support for Researchers",
+      "Collections",
+      "Textbook Affordability Project",
+      "Research Data Services",
+      "TUScholarShare",
       "Publishing Services",
+      "Grants, Fellowships & Competitions",
       "Library Workshops"]
 
     MenuGroup.all.each do |menu|

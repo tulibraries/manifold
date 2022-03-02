@@ -48,7 +48,7 @@ gem "rswag-ui"
 gem "sass-rails", "~> 6.0"
 gem "simple_form"
 gem "sitemap_generator"
-gem "skylight", "4.3.2"
+gem "skylight", "5.3.1"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"

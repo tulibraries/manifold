@@ -56,7 +56,7 @@ gem "yaml_db"
 gem "friendly_id", "~> 5.4.2"
 gem "action-draft"
 gem "webpacker"
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.12"
 gem "mimemagic", "0.4.3"
 gem "active_storage_validations"
 

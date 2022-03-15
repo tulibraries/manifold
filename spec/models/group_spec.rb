@@ -46,15 +46,15 @@ RSpec.describe Group, type: :model do
   describe "has one chair_dept_heads" do
     context "Attach a chair_dept_heads" do
       example "valid" do
-        chair_person = FactoryBot.create(:person, spaces: [FactoryBot.create(:space)])
+        chair_person = FactoryBot.create(:person, buildings: [FactoryBot.create(:building)])
         group = FactoryBot.create(:group, chair_dept_heads: [chair_person])
         expect(group.chair_dept_heads).to eq([chair_person])
       end
     end
     context "Change a chair_dept_heads" do
       example "valid" do
-        chair_person_1 = FactoryBot.create(:person, spaces: [FactoryBot.create(:space)])
-        chair_person_2 = FactoryBot.create(:person, last_name: "Fawlty", first_name: "Basil", spaces: [FactoryBot.create(:space)])
+        chair_person_1 = FactoryBot.create(:person, buildings: [FactoryBot.create(:building)])
+        chair_person_2 = FactoryBot.create(:person, last_name: "Fawlty", first_name: "Basil", buildings: [FactoryBot.create(:building)])
         group = FactoryBot.create(:group, persons: [], chair_dept_heads: [chair_person_1])
         expect(group.chair_dept_heads).to eq([chair_person_1])
         group.chair_dept_heads = [chair_person_2]

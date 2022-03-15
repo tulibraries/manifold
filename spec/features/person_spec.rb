@@ -7,7 +7,7 @@ RSpec.feature "People", type: :feature do
   describe "index page with pagination" do
     before(:all) do
       Person.delete_all
-      Building.delete_all
+      Space.delete_all
       21.times do |i|
         FactoryBot.create(:person)
       end
@@ -15,7 +15,7 @@ RSpec.feature "People", type: :feature do
 
     after(:all) do
       Person.delete_all
-      Building.delete_all
+      Space.delete_all
     end
 
     scenario "One full page plus one page with one entry" do
@@ -35,7 +35,7 @@ RSpec.feature "People", type: :feature do
 
     after(:all) do
       Person.delete_all
-      Building.delete_all
+      Space.delete_all
       Group.delete_all
     end
 
@@ -46,7 +46,7 @@ RSpec.feature "People", type: :feature do
           expect(page).to have_content(@person1.email_address)
           expect(page).to have_content(@person2.email_address)
           within("#locations") do
-            click_on(@person1.building.first.name)
+            click_on(@person1.buildings.first.name)
           end
           expect(page).to have_content(@person1.email_address)
           expect(page).to_not have_content(@person2.email_address)

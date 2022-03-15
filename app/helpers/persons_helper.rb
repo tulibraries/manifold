@@ -2,7 +2,7 @@
 
 module PersonsHelper
   def get_loc_name(id)
-    location = Space.find_by(id: id)
+    location = Building.find_by(id: id)
     unless location.nil?
       location.name
     end

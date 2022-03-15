@@ -55,8 +55,8 @@ class Person < ApplicationRecord
     includes(:groups).where(groups: { "slug" => groups }).where(groups: { "group_type" => "Department" }) if groups.present?
   }
 
-  scope :at_location, ->(space_id) {
-    includes(:spaces).where(spaces: { "slug" => space_id }) if space_id.present?
+  scope :at_location, ->(building_id) {
+    includes(:buildings).where(buildings: { "slug" => building_id }) if building_id.present?
   }
 
   def name

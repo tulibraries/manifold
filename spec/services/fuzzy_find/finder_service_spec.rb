@@ -56,20 +56,22 @@ RSpec.describe FuzzyFind::FinderService do
       before do
         Person.destroy_all
         building = FactoryBot.create(:building)
-        FactoryBot.create(:person, buildings: [@building])
-        @group = FactoryBot.create(:group, building: @building, chair_dept_heads: [Person.take(1).first])
+        @space = FactoryBot.create(:space, building: building)
+        FactoryBot.create(:person, buildings: [building])
+        @group = FactoryBot.create(:group, space: @space, chair_dept_heads: [Person.take(1).first])
 
         @new_person = Person.create!(
           first_name: "New", last_name: "Person",
           phone_number: "1234567890",
           email_address: "new.person@temple.edu",
-          groups: [@group], buildings: [@building],
+          groups: [@group], buildings: [building],
           job_title: "FooBarbarian")
       end
 
       after(:all) do
         Person.destroy_all
         Building.destroy_all
+        Space.destroy_all
       end
 
       context "with a similar name" do

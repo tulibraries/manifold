@@ -76,11 +76,6 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(menu_item_1).to be
         expect(helper.get_item_list(category)).to include(menu_item_1.label)
       end
-
-      it "does not allow non-categories" do
-        expect(menu_item_2).to be
-        expect(helper.get_item_list(menu_item_2)).to eql("")
-      end
     end
   end
 

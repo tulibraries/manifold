@@ -13,7 +13,7 @@ FactoryBot.define do
     springshare_id { "0123-4567-8901" }
     libguides_account { "1098-7654-3210" }
     buildings { [FactoryBot.create(:building)] }
-    pronouns { "He/Him/His"}
+    pronouns { "He/Him/His" }
     sequence(:specialties) { |n| [ "Subject #{n}" ] }
     trait :with_image do
       after :create do |person|

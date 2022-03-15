@@ -12,7 +12,8 @@ FactoryBot.define do
     personal_site { "http://prez.example.com" }
     springshare_id { "0123-4567-8901" }
     libguides_account { "1098-7654-3210" }
-    spaces { [FactoryBot.create(:space)] }
+    buildings { [FactoryBot.create(:building)] }
+    pronouns { "He/Him/His"}
     sequence(:specialties) { |n| [ "Subject #{n}" ] }
     trait :with_image do
       after :create do |person|

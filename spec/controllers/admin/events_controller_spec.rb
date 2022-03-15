@@ -20,7 +20,7 @@ RSpec.describe Admin::EventsController, type: :controller do
   describe "GET #edit" do
     let(:building) { FactoryBot.create(:building) }
     let(:space) { FactoryBot.create(:space, building: building) }
-    let(:person) { FactoryBot.build(:person, spaces: [space]) }
+    let(:person) { FactoryBot.build(:person) }
     let(:original_title) { "Original Title" }
     let(:updated_title) { "Updated Title" }
 

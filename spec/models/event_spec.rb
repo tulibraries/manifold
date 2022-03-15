@@ -6,7 +6,7 @@ RSpec.describe Event, type: :model do
 
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
-  let(:person) { FactoryBot.build(:person, spaces: [space]) }
+  let(:person) { FactoryBot.build(:person, buildings: [building]) }
 
   describe "past event video" do
     let(:ensemble_id) { "12345ABCDEF09876ZYXWVU" }
@@ -21,6 +21,7 @@ RSpec.describe Event, type: :model do
   describe "has associations" do
     let(:event) { FactoryBot.create(:event, building: building, space: space, person: person) }
     example "building" do
+      # binding.pry
       expect(event.building.name).to match(/#{Building.last.name}/)
     end
     example "space" do

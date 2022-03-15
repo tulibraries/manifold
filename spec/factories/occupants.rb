@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :occupant do
-    space { nil }
+    building { nil }
     person { nil }
   end
 end

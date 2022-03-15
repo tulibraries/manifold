@@ -11,16 +11,8 @@ RSpec.describe Building, type: :model do
      "address2",
      "coordinates",
      "google_id",
-   ]
-
-    required_fields = [
-      "name",
-      "address1",
-      "address2",
-      "coordinates",
-      "google_id",
     ]
-
+    
     required_fields.each do |f|
       example "missing #{f} field" do
         building = FactoryBot.build(:building)

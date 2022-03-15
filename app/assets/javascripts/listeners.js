@@ -1,3 +1,17 @@
+$(document).on('turbolinks:load', function() {
+  x = $('#header-navbar').offset();
+  x2 = $('#visitMenuButton').offset();
+  x3 = $('#researchMenuButton').offset();
+
+  $("#visitMenuButton").mouseover(function() {
+    $('#visit-links').css("left", x.left - x2.left);
+  });
+
+  $("#researchMenuButton").mouseover(function() {
+    $('#research-links').css("left", x.left - x3.left);
+  });
+});
+
 $(document).ready(function(){
 
   $("#nav-sec21a-tab").click(function() {

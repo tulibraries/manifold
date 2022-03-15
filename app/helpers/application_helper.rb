@@ -42,10 +42,13 @@ module ApplicationHelper
   end
 
   def get_item_list(item)
-    if item.is_a?(Category)
-      list = '<ul class="list-unstyled">'
+    if item.items.count > 0
+      list = "<h1 class=\"menu-category mr-4 pb-3\">#{link_to item.label, item}"
+      list += "<span>#{item.description}</span>"
+      list += "</h1>"
+      list += '<ul class="list-unstyled menu-items">'
       item.items.each do |page|
-        list += "<li>#{link_to page.label, url_for(page), style: "color: black"}</li>"
+        list += "<li class=\"mt-0\">#{link_to page.label, url_for(page)}</li>"
       end
       list += "</ul>"
     else

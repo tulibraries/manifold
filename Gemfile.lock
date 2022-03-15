@@ -622,9 +622,9 @@ DEPENDENCIES
   google-analytics-rails (= 1.1.1)
   google-api-client (~> 0.53)
   guard-rspec
-  honeybadger (~> 4.10)
+  honeybadger (~> 4.11)
   httparty
-  image_processing (~> 1.2)
+  image_processing (~> 1.12)
   jbuilder (~> 2.11)
   jquery-rails
   json-ld

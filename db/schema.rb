@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_15_152847) do
+ActiveRecord::Schema.define(version: 2022_03_15_195154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -392,14 +392,12 @@ ActiveRecord::Schema.define(version: 2022_03_15_152847) do
   end
 
   create_table "occupants", force: :cascade do |t|
-    t.integer "space_id"
     t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "building_id"
     t.index ["building_id"], name: "index_occupants_on_building_id"
     t.index ["person_id"], name: "index_occupants_on_person_id"
-    t.index ["space_id"], name: "index_occupants_on_space_id"
   end
 
   create_table "people", force: :cascade do |t|

@@ -11,14 +11,6 @@ RSpec.describe Building, type: :model do
      "address2",
      "coordinates",
      "google_id",
-   ]
-
-    required_fields = [
-      "name",
-      "address1",
-      "address2",
-      "coordinates",
-      "google_id",
     ]
 
     required_fields.each do |f|

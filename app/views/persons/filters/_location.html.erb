@@ -4,7 +4,7 @@
   </a>
 </h2>
   <ul class="list-unstyled navbar-collapse collapse <%= @locations.blank? ? '' : 'show' %>" id="locations">
-    <% unless params[:location].blank? || @locations.exclude?(Space.find(params[:location])) %>
+    <% unless params[:location].blank? || @locations.exclude?(Building.find(params[:location])) %>
 
       <% @locations.each do |loc| %>
         <% if loc.slug.to_s == params[:location] %>

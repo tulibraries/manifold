@@ -46,7 +46,7 @@ RSpec.feature "People", type: :feature do
           expect(page).to have_content(@person1.email_address)
           expect(page).to have_content(@person2.email_address)
           within("#locations") do
-            click_on(@person1.spaces.first.name)
+            click_on(@person1.buildings.first.name)
           end
           expect(page).to have_content(@person1.email_address)
           expect(page).to_not have_content(@person2.email_address)

@@ -17,15 +17,10 @@
 
       <%= sanitize depts_list(@person).html_safe %>
 
-      <% unless @person.spaces.empty? %>
+      <% if @person.buildings.empty? %>
         <div>
           <% @buildings.each do |building| %>
-            <%= link_to building.name, building %>:
-            <ul>
-            <% @person.spaces.select { |space| space.building == building }.each do |space| %>
-              <li><%= link_to space.name, space %></li>
-            <% end %>
-             </ul>
+            <%= link_to building.name, building %> 
           <% end %>
         </div>
         <% end %>

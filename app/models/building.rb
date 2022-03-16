@@ -27,6 +27,9 @@ class Building < ApplicationRecord
   has_many :spaces, dependent: :destroy
   has_paper_trail
 
+  has_many :occupant, dependent: :destroy
+  has_many :persons, -> { order "last_name ASC" }, through: :occupant, source: :person
+
   auto_strip_attributes :email
 
   has_rich_text :description

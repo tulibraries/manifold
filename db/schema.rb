@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_175947) do
+ActiveRecord::Schema.define(version: 2022_03_15_195154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -392,12 +392,12 @@ ActiveRecord::Schema.define(version: 2022_02_18_175947) do
   end
 
   create_table "occupants", force: :cascade do |t|
-    t.integer "space_id"
     t.integer "person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_occupants_on_building_id"
     t.index ["person_id"], name: "index_occupants_on_person_id"
-    t.index ["space_id"], name: "index_occupants_on_space_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -415,6 +415,9 @@ ActiveRecord::Schema.define(version: 2022_02_18_175947) do
     t.string "specialties"
     t.string "libguides_account"
     t.string "slug"
+    t.string "pronouns"
+    t.bigint "building_id"
+    t.index ["building_id"], name: "index_people_on_building_id"
   end
 
   create_table "policies", force: :cascade do |t|
@@ -517,6 +520,8 @@ ActiveRecord::Schema.define(version: 2022_02_18_175947) do
   add_foreign_key "categories", "external_links"
   add_foreign_key "categories", "menu_groups"
   add_foreign_key "collections", "external_links"
+  add_foreign_key "occupants", "buildings"
+  add_foreign_key "people", "buildings"
   add_foreign_key "spaces", "external_links"
   add_foreign_key "webpages", "external_links"
 end

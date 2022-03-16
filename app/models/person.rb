@@ -17,7 +17,6 @@ class Person < ApplicationRecord
   validates :first_name, :last_name, :job_title, presence: true
   validates :email_address, presence: true, email: true
   validates :phone_number, phone_number: true
-  validates :spaces, presence: true
 
   auto_strip_attributes :email_address
 
@@ -28,7 +27,7 @@ class Person < ApplicationRecord
   has_many :groups, through: :member, source: :group
 
   has_many :occupant, dependent: :destroy
-  has_many :spaces, through: :occupant, source: :space
+  has_many :buildings, through: :occupant, source: :building
 
   def slug_candidates
     [
@@ -56,8 +55,8 @@ class Person < ApplicationRecord
     includes(:groups).where(groups: { "slug" => groups }).where(groups: { "group_type" => "Department" }) if groups.present?
   }
 
-  scope :at_location, ->(space_id) {
-    includes(:spaces).where(spaces: { "slug" => space_id }) if space_id.present?
+  scope :at_location, ->(building_id) {
+    includes(:buildings).where(buildings: { "slug" => building_id }) if building_id.present?
   }
 
   def name

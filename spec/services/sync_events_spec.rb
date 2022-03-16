@@ -128,7 +128,7 @@ RSpec.describe SyncService::Events, type: :service do
     before(:example) do
       @building = FactoryBot.create(:building)
       @space = FactoryBot.create(:space, building: @building)
-      @person = FactoryBot.create(:person, spaces: [@space])
+      @person = FactoryBot.create(:person, buildings: [@building])
       # create law library to ensure that the Paley Library event does not match
       @law = FactoryBot.create(:building, name: "Law Library")
     end

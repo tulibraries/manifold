@@ -5,8 +5,8 @@ FactoryBot.define do
     sequence(:name) { |n| "Conquerors #{n}" }
     description { ActionText::Content.new("Hello World") }
     group_type { "Department" }
-    persons { [ FactoryBot.create(:person, spaces: [ FactoryBot.create(:space) ]) ] }
-    chair_dept_heads { [ FactoryBot.create(:person, spaces: [ FactoryBot.create(:space) ]) ] }
+    persons { [ FactoryBot.create(:person) ] }
+    chair_dept_heads { [ FactoryBot.create(:person) ] }
     space { FactoryBot.create(:space) }
 
     trait :with_file do

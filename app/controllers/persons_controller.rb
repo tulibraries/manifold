@@ -13,8 +13,7 @@ class PersonsController < ApplicationController
   end
 
   def show
-    @buildings = @person.spaces.map { |space| space.building }
-                .uniq
+    @buildings = @person.buildings
     @departments = @person.groups.select { |group| group.group_type == "Department" }
                   .sort
 
@@ -40,7 +39,7 @@ class PersonsController < ApplicationController
 
   def get_location_filter_values(people)
     people
-      .map(&:spaces)
+      .map(&:buildings)
       .flatten
       .sort
       .uniq

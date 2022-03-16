@@ -48,6 +48,11 @@ $(document).ready(function(){
       }
     });
 
+    $("#person_id").change(function() {
+      console.log("search form");
+      $("#people-search").submit();
+    });
+
     dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');
     if(dc) dc.setAttribute("id","digcol")
 

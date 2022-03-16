@@ -9,29 +9,29 @@
     </div>
   </div>
 
-  <div class="row">
-
-    <div class="col-3 leftside-index">
-      <div class="panel-group d-none d-md-none d-lg-block" id="accordion">
-        <div class="filter_staff_type">
-          <%= render "persons/filters/staff_type" %>
-        </div>
-        <div class="filter_subjects">
-          <%= render "persons/filters/subjects" %>
-        </div>
-        <div class="filter_location">
-          <%= render "persons/filters/location" %>
-        </div>
-        <div class="filter_department">
-          <%= render "persons/filters/department" %>
-        </div>
-        <div class="filter_reset">
-          <%= render "persons/filters/reset" %>
-        </div>
-      </div>
+  <div class="row p-4 mb-4" style="background-color:#eee;">
+  <%= form_with url: people_path, method: "GET", id: "people-search" do |f| %>
+    <div class="col-4">
+      <form action=<%= "#{librarysearch_url("everything")}" %> id="global-search" name="header-search" >
+        <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
+        <input type="text" name="q" id="librarySearch" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
+        <input type="hidden" name="search_field" id="search_field" value="all">
+      </form>
     </div>
-
-    <div class="col-12 col-lg-6">
+    <div class="col-4">
+      <%= f.select :person_id, @departments.collect { |p| [ p.name, 
+                                                      people_path(request.query_parameters.merge({department: p, page: 1}))
+                                                      ]}, 
+                          { include_blank: "filter by department",
+                            class: "p-2" } %>
+    </div>
+    <div class="col-4">
+      <%= render "persons/filters/subjects" %>
+    </div>
+  <% end %>
+  </div>
+  <div class="row">
+    <div class="col-9">
       <div class="d-block d-lg-none filters">
         <% unless filter_tags.empty? %>
           <% filter_tags.each do |tag| %>

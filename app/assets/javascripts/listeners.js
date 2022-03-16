@@ -48,9 +48,13 @@ $(document).ready(function(){
       }
     });
 
-    $("#person_id").change(function() {
-      console.log("search form");
-      $("#people-search").submit();
+    $("#department").change(function() {
+      var dept = $("#department").find(":selected").val();
+      window.location.href = "/people?department="+dept+"&page=1";
+    });
+    $("#subject").change(function() {
+      var dept = $("#subject").find(":selected").val();
+      window.location.href = "/people?specialty="+dept+"&page=1";
     });
 
     dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');

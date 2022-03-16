@@ -3,30 +3,21 @@
 <div class="container staff-index">
 
   <h1><%= title "Staff Directory" %></h1>
-  <div class="row">
-    <div class="col ml-5 mb-4">
-      <%= t("manifold.people.intro_html") %>
-    </div>
-  </div>
 
-  <div class="row p-4 mb-4" style="background-color:#eee;">
-  <%= form_with url: people_path, method: "GET", id: "people-search" do |f| %>
-    <div class="col-4">
-      <form action=<%= "#{librarysearch_url("everything")}" %> id="global-search" name="header-search" >
-        <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
-        <input type="text" name="q" id="librarySearch" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
-        <input type="hidden" name="search_field" id="search_field" value="all">
-      </form>
-    </div>
-    <div class="col-4">
-      <%= f.select :person_id, @departments.collect { |p| [ p.name, 
-                                                      people_path(request.query_parameters.merge({department: p, page: 1}))
-                                                      ]}, 
-                          { include_blank: "filter by department",
-                            class: "p-2" } %>
-    </div>
-    <div class="col-4">
-      <%= render "persons/filters/subjects" %>
+  <div class="filters row py-4 px-0 mb-4" style="background-color:#eee;">
+  <%= form_with url: people_path, method: "GET", id: "people-search", class: "w-100" do |f| %>
+    <div class="col-12 d-inline-block">
+    <i class="fa fa-search" style="position:relative;left:28px;z-index:3"></i>
+    <input class="" type="text" name="q" id="staffSearch" 
+            placeholder="search staff directory by name or title" autocomplete="off" />
+    <%= f.select :department, @departments.collect { |p| [ p.name, p.slug ]}, 
+                              { include_blank: "filter by department",
+                                class: "d-inline-block float-left" } %>
+    <%= f.select :subject, @subjects.collect { |p| [ p, p ]}, 
+                             include_blank: "filter by specialty",
+                              selected: "selected",
+                              style: "width: 100%;margin:auto",
+                              class: "d-inline-block float-left"  %>
     </div>
   <% end %>
   </div>

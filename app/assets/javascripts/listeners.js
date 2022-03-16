@@ -46,6 +46,13 @@ $(document).ready(function(){
       if (evt.keyCode == 13) {
         handleEventClicks("header-search", "Search");
       }
+    });   
+    
+    $('staffSearch').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        var q = $("#staffSearch").val();
+        window.location.href = "/people?q="+q+"&page=1";
+      }
     });
 
     $("#department").change(function() {

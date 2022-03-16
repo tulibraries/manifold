@@ -1,0 +1,40 @@
+    <div class="row person">
+      <div class="col-4">
+        <% if person.image.attached?  %>
+        <%= image_tag person.index_image, class: "decorative", alt: "" %>
+        <% else %>
+        <%= image_tag "T.gif", style: 'width: 300px;', class: "decorative", alt: "" %>
+        <% end %>
+      </div>
+      <div class="col-8">
+        <ul class="details list-unstyled">
+          <li>
+            <span style="font-size:larger;font-weight:600;">
+              <%= person.name %>
+            </span>
+          </li>
+          <li>
+            <span style="font-size:larger;font-weight:600;"><%= person.job_title %></span>
+          </li>
+          <li>
+            <%= person.email_address %>
+          </li>
+          <li>
+            <%= phone_formatted(person.phone_number) %>
+          </li>
+          <li>
+            <%= depts_list(person).html_safe %>
+          </li>
+        </ul>
+        <div class="person-actions" style="margin-bottom: 21px">
+
+            <%= link_to "View Profile", person, class: "view-profile" %>
+
+          <% unless person.springshare_id.blank? %>
+
+              <%= link_to t("manifold.people.show.appointment_link"), "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-id", target: "_new", style: "color: white" %>
+
+          <% end %>
+        </div>
+      </div>
+    </div>

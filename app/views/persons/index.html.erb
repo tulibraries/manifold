@@ -4,35 +4,30 @@
 
   <h1><%= title "Staff Directory" %></h1>
 
-  <div class="filters row py-4 px-0 mb-4" style="background-color:#eee;">
+  <div class="filters row pt-4 pb-3 px-0 mb-4" style="background-color:#eee;">
   <%= form_with url: people_path, method: "GET", id: "people-search", class: "w-100" do |f| %>
     <div class="col-12 d-inline-block">
     <i class="fa fa-search" style="position:relative;left:28px;z-index:3"></i>
     <input class="" type="text" name="q" id="staffSearch" 
             placeholder="search staff directory by name or title" autocomplete="off" />
     <%= f.select :department, @departments.collect { |p| [ p.name, p.slug ]}, 
-                              { include_blank: "filter by department",
-                                class: "d-inline-block float-left" } %>
+                              { include_blank: "filter by department" } %>
     <%= f.select :subject, @subjects.collect { |p| [ p, p ]}, 
-                             include_blank: "filter by specialty",
-                              selected: "selected",
-                              style: "width: 100%;margin:auto",
-                              class: "d-inline-block float-left"  %>
+                             include_blank: "filter by specialty" %>
+    </div>
+    <div class="col-12 mt-3 mb-0 ml-3">
+    <% if params[:specialists] %>
+      <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true), class: "float-left pr-3" %>
+       -- <%= link_to "[Print this view]", specialists_print_path, class: "ml-2" %></span>
+    <% else %>
+      <%= link_to t("manifold.people.filters.limit_to_specialists"), people_path(specialists: true), class: "float-left" %>
+    <% end %>
+      <span class="float-right mr-4"><%= link_to "Reset Staff List", people_path %></span>
     </div>
   <% end %>
   </div>
   <div class="row">
     <div class="col-9">
-      <div class="d-block d-lg-none filters">
-        <% unless filter_tags.empty? %>
-          <% filter_tags.each do |tag| %>
-            <span class="filter-tag"><%= tag.html_safe %></span>
-          <% end %>
-          <% unless filter_tags.size < 2 %>
-            <%= link_to "Reset Filters", people_path, class: "reset-filters" %>
-          <% end %>
-        <% end %>
-      </div>
       <%= render "persons_list" %>
     </div>
 

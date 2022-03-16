@@ -72,4 +72,16 @@ class Person < ApplicationRecord
       self.specialties.reject! { |s| s.empty? }
     end
   end
+
+  def index
+    @search_results = Person.search(params[:q]).order([:last_name, :first_name])
+  end
+
+  def self.search(q)
+    if q
+      Person.where("name REGEXP ?", "(^|\\W)#{q}(\\W|$)")
+      .or(Person.where("title REGEXP ?", "(^|\\W)#{q}(\\W|$)"))
+      .order([:last_name, :first_name])
+    end
+  end
 end

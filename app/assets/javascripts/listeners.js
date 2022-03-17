@@ -57,11 +57,13 @@ $(document).ready(function(){
 
     $("#department").change(function() {
       var dept = $("#department").find(":selected").val();
+      console.log("dept: "+dept);
       window.location.href = "/people?department="+dept+"&page=1";
     });
     $("#subject").change(function() {
-      var dept = $("#subject").find(":selected").val();
-      window.location.href = "/people?specialty="+dept+"&page=1";
+      var subject = $("#subject").find(":selected").val();
+      console.log("subject: "+subject);
+      window.location.href = "/people?specialty="+subject+"&page=1";
     });
 
     dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');

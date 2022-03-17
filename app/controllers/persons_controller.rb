@@ -37,19 +37,10 @@ class PersonsController < ApplicationController
       .uniq
   end
 
-  def get_location_filter_values(people)
-    people
-      .map(&:buildings)
-      .flatten
-      .sort
-      .uniq
-  end
-
   def get_persons
     @filtered_persons = Person
                         .is_specialist(params[:specialists])
                         .with_specialty(params[:specialty])
-                        .at_location(params[:location])
                         .in_department(params[:department])
                         .order(:last_name, :first_name)
 
@@ -58,9 +49,8 @@ class PersonsController < ApplicationController
   end
 
   def return_filters(filtered_persons)
-    @subjects = get_specialty_filter_values(filtered_persons)
-    @departments = get_department_filter_values(filtered_persons)
-    @locations = get_location_filter_values(filtered_persons)
+    @subjects = get_specialty_filter_values(Person.all)
+    @departments = get_department_filter_values(Person.all)
   end
 
   def specialists_print

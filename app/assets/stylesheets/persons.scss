@@ -6,92 +6,25 @@
 		left: -3px;
 	}
 }
-.leftside-index {
-	padding-left: 0!important;
-	padding-right: 0!important;
-	h2 {
-		@media (max-width: 1042px) {
-			font-size: 150%;
-		}
-	}
-	ul {
-		margin-top: 10px;
-		li {
-			padding: 6px 14px;
-			font-size: 1rem;
-			a {
-				font-size: 1rem;
-			}
-		}
-		li.active {
-			font-family: 'Faustina';
-			color: $seagreen;
-			margin-right: 5px;
-			font-weight: 900;
-			a {
-				color: $seagreen;
-				font-weight: 900;
-			}
-		}
-	}
-	a[data-toggle="collapse"]:after {
-		content: "\f105";
-    font-family: "FontAwesome";
-  	float: right;
-  	padding-right: 7px;
-	}
-	a[aria-expanded="true"]:after {
-		content: "\f107";
-    font-family: "FontAwesome";
-  	float: right;
-  	padding-right: 7px;
-	}
-	.list-unstyled.navbar-collapse.collapse {
-		height: auto;
-		max-height:16rem!important;
-		margin-right:4px;
-		overflow-y: auto;
-		overflow-x: hidden;
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar {
-    -webkit-appearance: none;
-    margin-left: 2px;
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar:vertical {
-	    width: 11px;
-	    border: solid #eee 1px;
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar:horizontal {
-	    height: 11px;
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar-thumb {
-	    border-radius: 8px;
-	    border: 2px solid #ccc; /* should match background, can't be transparent */
-	    background-color: rgba(0, 0, 0, .5);
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar-track {
-	    background-color: #fff;
-	    border-radius: 8px;
-	    border: solid #ccc 1px;
-	    padding: 2px;
-	}
-}
-
-.people-filter-reset {
-	width:50%;
-	background-color: $white;
-	text-align:center;
-	border: solid $seagreen 1px;
-	border-radius:4px;
-	padding: 7px;
-	margin: 21px auto;
-	a {
-		color: $seagreen!important;
-	}
-}
 
 .staff-index {
-
+  font-family: "PT Sans";
+  .filters {
+    input, select {
+      font-family: "PT Sans";
+      display: inline-block !important;
+      margin-left: 14px !important;
+      height: 42px;
+      padding-left: 10px;
+    }
+    #staffSearch {
+      width: 27%;
+      position: relative;
+      left: -14px;
+      margin-left: 0;
+      padding-left: 28px;
+    }
+  }
 	.right-side {
 		@media (max-width: 1039px) {
 			margin-top: 21px;
@@ -227,12 +160,5 @@
 		img {
 			margin-top: 7px;
 		}
-	}
-}
-.clear-filter {
-	display:inline-block;
-	float: right;
-	a {
-		color: $seagreen;
 	}
 }

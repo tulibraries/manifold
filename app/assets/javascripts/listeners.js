@@ -46,6 +46,22 @@ $(document).ready(function(){
       if (evt.keyCode == 13) {
         handleEventClicks("header-search", "Search");
       }
+    });   
+    
+    $('staffSearch').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        var q = $("#staffSearch").val();
+        window.location.href = "/people?q="+q+"&page=1";
+      }
+    });
+
+    $("#department").change(function() {
+      var dept = $("#department").find(":selected").val();
+      window.location.href = "/people?department="+dept+"&page=1";
+    });
+    $("#subject").change(function() {
+      var dept = $("#subject").find(":selected").val();
+      window.location.href = "/people?specialty="+dept+"&page=1";
     });
 
     dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');

@@ -27,66 +27,6 @@ RSpec.feature "People", type: :feature do
 
   end
 
-  describe "filter by" do
-    before(:all) do
-      @person1 = FactoryBot.create(:person)
-      @person2 = FactoryBot.create(:person)
-    end
-
-    after(:all) do
-      Person.delete_all
-      Space.delete_all
-      Group.delete_all
-    end
-
-    describe "Location" do
-      scenario "Filter person by location" do
-        visit("/people")
-        within(".staff-index") do
-          expect(page).to have_content(@person1.email_address)
-          expect(page).to have_content(@person2.email_address)
-          within("#locations") do
-            click_on(@person1.buildings.first.name)
-          end
-          expect(page).to have_content(@person1.email_address)
-          expect(page).to_not have_content(@person2.email_address)
-        end
-      end
-    end
-
-    describe "Department" do
-      scenario "Filter person by department" do
-        @person1.groups = [ FactoryBot.create(:group, group_type: "Department") ]
-        @person2.groups = [ FactoryBot.create(:group, group_type: "Department") ]
-        visit("/people")
-        within(".staff-index") do
-          expect(page).to have_content(@person1.email_address)
-          expect(page).to have_content(@person2.email_address)
-          within("#departments") do
-            click_on(@person1.groups.first.name)
-          end
-          expect(page).to have_content(@person1.email_address)
-          expect(page).to_not have_content(@person2.email_address)
-        end
-      end
-    end
-
-    describe "Specialty" do
-      scenario "Filter person by specialty" do
-        visit("/people")
-        within(".staff-index") do
-          expect(page).to have_content(@person1.email_address)
-          expect(page).to have_content(@person2.email_address)
-          within(".filter_subjects") do
-            click_on(@person1.specialties.first)
-          end
-          expect(page).to have_content(@person1.email_address)
-          expect(page).to_not have_content(@person2.email_address)
-        end
-      end
-    end
-  end
-
   describe "Specialist" do
     before(:all) do
       @person1 = FactoryBot.create(:person)
@@ -104,9 +44,9 @@ RSpec.feature "People", type: :feature do
         expect(page).to have_content(@person1.email_address)
         expect(page).to have_content(@person2.email_address)
         expect(page).to have_content(@person3.email_address)
-        within("#staff-type") do
-          click_on("Limit to Subject Librarians Only")
-        end
+
+          click_on("Limit to Subject Librarians")
+
         expect(page).to have_content(@person1.email_address)
         expect(page).to_not have_content(@person2.email_address)
         expect(page).to_not have_content(@person3.email_address)

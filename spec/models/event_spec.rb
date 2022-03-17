@@ -21,7 +21,6 @@ RSpec.describe Event, type: :model do
   describe "has associations" do
     let(:event) { FactoryBot.create(:event, building: building, space: space, person: person) }
     example "building" do
-      # binding.pry
       expect(event.building.name).to match(/#{Building.last.name}/)
     end
     example "space" do

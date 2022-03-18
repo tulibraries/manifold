@@ -26,8 +26,12 @@
   </div>
   <div class="row">
     <div class="col-9">
-    <% if @filter.present? %>
-      <h3 class="mb-5 selected-filter"><%= @filter.html_safe %></h3>
+    <% if @filter.any?.present? %>
+      <h3 class="mb-4">
+      <span class="selected-filter">
+        <span class="key"><%= @filter[0] %></span>: <%= @filter[1] %>
+      </span>
+      </h3>
     <% end %>
       <%= render "persons_list" %>
     </div>

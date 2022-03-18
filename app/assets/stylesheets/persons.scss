@@ -12,6 +12,8 @@
   .selected-filter {
     .key {
       font-family: Roboto;
+      border-left: solid $new-gold 4px;
+      padding-left: 10px;
     }
   }
   .filters {

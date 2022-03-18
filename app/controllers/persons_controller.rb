@@ -8,10 +8,19 @@ class PersonsController < ApplicationController
   def index
     if params[:department].present?
       d = Group.friendly.find(params[:department])
-      department = "<span class=\"key\">Department</span>: #{d.label}" if d.present?
+      if d.present?
+        key = "Department"
+        value = d.label
+      end
     end
-    specialty = "<span class=\"key\">Specialty</span>: #{params[:specialty]}" if params[:specialty].present?
-    @filter = department.presence || specialty
+    
+    if params[:specialty].present?
+      key = "Specialty"
+      value = params[:specialty]
+    end
+
+    @filter = [key, value]
+    
     respond_to do |format|
       format.html
       format.json { render json: PersonSerializer.new(Person.all.to_a) }

@@ -19,8 +19,4 @@ module PersonsHelper
     depts = person.groups.select { |group| group.group_type == "Department" }
     depts.collect(&:label).join(",<br />")
   end
-
-  def filter(filter)
-    "" if filter.blank?
-  end
 end

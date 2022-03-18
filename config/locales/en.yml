@@ -1018,7 +1018,7 @@ en:
                   <p>Welcome to the Library Staff Directory. To search for a specific individual by name, 
                   please use the Search Everything box in the upper right corner of your screen. Alternatively, 
                   filter out search results by Subject Specialty, Location and Department.</p>
-      entity_help_html: <h3>Charles Library Main Phone:</h3>215-204-8212
+      entity_help_html: <h3>Charles Library Main Phone</h3><p>215-204-8212</p>
       fcn_link: Frequently Called Numbers
       no_results: No people found. Try another search.
       filters:
@@ -1026,8 +1026,8 @@ en:
         location: Location
         staff_type: Staff Type
         specialties: Subject Specialty
-        limited_to_specialists: Limited to Subject Librarians
-        limit_to_specialists: Limit to Subject Librarians
+        limited_to_specialists: Limited to Subject Specialists
+        limit_to_specialists: Limit to Subject Specialists Only
         mobile_options: Filter options
       show:
         subjects: Subjects

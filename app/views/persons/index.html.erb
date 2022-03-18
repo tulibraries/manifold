@@ -4,18 +4,16 @@
 
   <h1><%= title "Staff Directory" %></h1>
 
-  <div class="filters row pt-4 pb-3 px-0 mb-4" style="background-color:#eee;">
+  <div class="filters row pt-4 pb-3 px-0 mb-4">
   <%= form_with url: people_path, method: "GET", id: "people-search", class: "w-100" do |f| %>
     <div class="col-12 d-inline-block">
-    <i class="fa fa-search" style="position:relative;left:28px;z-index:3"></i>
-    <input class="" type="text" name="q" id="staffSearch" 
+    <i class="fa fa-search"></i>
+    <input type="text" name="q" id="staffSearch" 
             placeholder="search staff directory by name or title" autocomplete="off" />
-    <%= f.select :department, @departments.collect { |p| [ p.name, p.slug ]}, 
-                              { include_blank: "filter by department" } %>
-    <%= f.select :subject, @subjects.collect { |p| [ p, p ]}, 
-                             include_blank: "filter by specialty" %>
+    <%= f.select :department, @departments, include_blank: "filter by department" %>
+    <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
     </div>
-    <div class="col-12 mt-3 mb-0 ml-3">
+    <div class="col-12 mt-3 mb-0 ml-3 filter-links">
     <% if params[:specialists] %>
       <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true), class: "float-left pr-3" %>
        -- <%= link_to "[Print this view]", specialists_print_path, class: "ml-2" %></span>
@@ -28,13 +26,20 @@
   </div>
   <div class="row">
     <div class="col-9">
+    <% if @filter.present? %>
+      <h3 class="mb-5 selected-filter"><%= @filter.html_safe %></h3>
+    <% end %>
       <%= render "persons_list" %>
     </div>
 
     <div class="col-12 col-lg-3 right-side">
-      <div class="entity-help"><%= t("manifold.people.entity_help_html") %></div>
+      <div class="entity-help">
+        <%= t("manifold.people.entity_help_html") %>
+      </div>
       <% unless @fcn_link.nil? %>
-        <div class="access-link"><h3><%= link_to t("manifold.people.fcn_link"), @fcn_link %></h3></div>
+        <div class="access-link">
+          <h3><%= link_to t("manifold.people.fcn_link"), @fcn_link %></h3>
+        </div>
       <% end %>
     </div>
 

@@ -6,6 +6,21 @@ class PersonsController < ApplicationController
   include SerializableRespondTo
 
   def index
+    if params[:department].present?
+      d = Group.friendly.find(params[:department])
+      if d.present?
+        key = "Department"
+        value = d.label
+      end
+    end
+
+    if params[:specialty].present?
+      key = "Specialty"
+      value = params[:specialty]
+    end
+
+    @filter = [key, value]
+
     respond_to do |format|
       format.html
       format.json { render json: PersonSerializer.new(Person.all.to_a) }
@@ -33,6 +48,7 @@ class PersonsController < ApplicationController
     people
       .map { |p| p.groups.select { |g| g.group_type == "Department" } }
       .flatten
+      .collect { |p| [ p.name, p.slug ] }
       .sort
       .uniq
   end

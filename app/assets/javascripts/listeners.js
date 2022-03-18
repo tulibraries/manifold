@@ -10,6 +10,18 @@ $(document).on('turbolinks:load', function() {
   $("#researchMenuButton").mouseover(function() {
     $('#research-links').css("left", x.left - x3.left);
   });
+
+  $("#department").change(function() {
+    var dept = $("#department").find(":selected").val();
+    console.log("dept: "+dept);
+    window.location.href = "/people?department="+dept+"&page=1";
+  });
+  
+  $("#subject").change(function() {
+    var subject = $("#subject").find(":selected").val();
+    console.log("subject: "+subject);
+    window.location.href = "/people?specialty="+subject+"&page=1";
+  });
 });
 
 $(document).ready(function(){
@@ -53,17 +65,6 @@ $(document).ready(function(){
         var q = $("#staffSearch").val();
         window.location.href = "/people?q="+q+"&page=1";
       }
-    });
-
-    $("#department").change(function() {
-      var dept = $("#department").find(":selected").val();
-      console.log("dept: "+dept);
-      window.location.href = "/people?department="+dept+"&page=1";
-    });
-    $("#subject").change(function() {
-      var subject = $("#subject").find(":selected").val();
-      console.log("subject: "+subject);
-      window.location.href = "/people?specialty="+subject+"&page=1";
     });
 
     dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');

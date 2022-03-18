@@ -8,21 +8,42 @@
 }
 
 .staff-index {
-  font-family: "PT Sans";
-  .filters {
-    input, select {
-      font-family: "PT Sans";
-      display: inline-block !important;
-      margin-left: 14px !important;
-      height: 42px;
+  font-family: "Roboto Light";
+  .selected-filter {
+    .key {
+      font-family: Roboto;
+      border-left: solid $new-gold 4px;
       padding-left: 10px;
     }
-    #staffSearch {
-      width: 27%;
-      position: relative;
-      left: -14px;
-      margin-left: 0;
-      padding-left: 28px;
+  }
+  .filters {
+    background-color: $lighter-grey;
+    .filter-links {
+      font-family: Roboto;
+    }
+    #people-search {
+      input, select {
+        font-family: "Roboto Light";
+        display: inline-block !important;
+        margin-left: 4px !important;
+        height: 42px;
+        padding-left: 10px;
+      }
+      i.fa-search {
+        position: relative;
+        left: 17px;
+        z-index: 3;
+      }
+      #staffSearch {
+        width: 28%;
+        position: relative;
+        left: -19px;
+        padding-left: 35px;
+      }
+      #department {
+        position: relative;
+        left: -9px;
+      }
     }
   }
 	.right-side {
@@ -30,12 +51,18 @@
 			margin-top: 21px;
 		}
 		.entity-help {
+      font-size: .90rem;
+      font-family: Roboto;
+      text-align: center;
 			padding-left: 0;
-	    border: solid $seagreen 1px;
-	    border-radius: 7px;
+      background-color: $lighter-grey;
 	    padding: 14px;
 	    overflow-wrap: break-word;
 	    line-height: .75;
+      p {
+        font-size: 1.25rem;
+        margin: 14px auto 4px auto;
+      }
 	    @media (max-width: 1023px) {
 	    	margin-top: 14px;
 	    }
@@ -58,20 +85,32 @@
 		margin-bottom: 21px;
 		margin-left: 7px;
 		padding-bottom: 14px;
+    font-size: 1.15rem !important;
+    .p-name {
+      font-size: 135%;
+      font-weight: 600;
+      font-family: Roboto;
+      // color: #A32035;
+      color: $red;
+    }
 		img {
+      width: 90%;
 			max-width: 100%;
 		}
+    ul.details {
+      border-left: solid #A32035 2px;
+      margin-bottom: 28px;
+    }
 		.person-actions {
-			.view-profile {
-				background-color: $seagreen;
-				padding: 5px 14px 8px 14px;
-				color: $white;
-				border-radius: 7px;
-			}
-			.springshare-id {
-				background-color: $foamgreen;
-				padding: 5px 14px 8px 14px;
-				border-radius: 7px;
+      margin-top: 14px;
+      margin-bottom: 21px;
+			.view-profile, .springshare-id {
+        display: inline-block;
+        margin-left: 24px;
+				background-color: $lighter-grey;
+				padding: 4px 8px 6px 8px;
+				color: $royal-blue;
+        font-family: Faustina-Bold;
 			}
 			@media (max-width: 1039px) {
 				a {

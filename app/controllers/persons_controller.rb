@@ -13,14 +13,14 @@ class PersonsController < ApplicationController
         value = d.label
       end
     end
-    
+
     if params[:specialty].present?
       key = "Specialty"
       value = params[:specialty]
     end
 
     @filter = [key, value]
-    
+
     respond_to do |format|
       format.html
       format.json { render json: PersonSerializer.new(Person.all.to_a) }

@@ -24,7 +24,7 @@ RSpec.describe ApplicationController, type: :controller do
 
     # pg_connection = class_double("PG::Connection").as_stubbed_const
     # allow(pg_connection).to receive(:quote_ident).and_raise(PG::Error)
-    
+
     # Failure/Error: @about_menu = MenuGroup.find_by(slug: "about-page")
     #  PG::Error:
     #  PG::Error
@@ -39,7 +39,7 @@ RSpec.describe ApplicationController, type: :controller do
     # /Users/cdoyle/.rvm/gems/ruby-2.7.2/gems/rails-controller-testing-1.0.5/lib/rails/controller/testing/integration.rb:16:in `block (2 levels) in <module:Integration>'
     # ./spec/controllers/application_controller_spec.rb:27:in `block (2 levels) in <top (required)>'
     # /Users/cdoyle/.rvm/gems/ruby-2.7.2/gems/webmock-3.14.0/lib/webmock/rspec.rb:37:in `block (2 levels) in <top (required)>'
-    
+
     get :test_action
     expect(response).to have_http_status 200
     expect(response.body).to include "ok"

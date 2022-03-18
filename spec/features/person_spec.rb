@@ -44,9 +44,10 @@ RSpec.feature "People", type: :feature do
         expect(page).to have_content(@person1.email_address)
         expect(page).to have_content(@person2.email_address)
         expect(page).to have_content(@person3.email_address)
+      end
 
-        click_on("Limit to Subject Librarians")
-
+      visit("/people?specialists=true")
+      within(".staff-index") do
         expect(page).to have_content(@person1.email_address)
         expect(page).to_not have_content(@person2.email_address)
         expect(page).to_not have_content(@person3.email_address)

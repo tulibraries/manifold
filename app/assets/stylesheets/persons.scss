@@ -21,6 +21,21 @@
     .filter-links {
       font-family: Roboto;
     }
+    #people-search {
+      width: 29%;
+      #search {
+        width: 28%;
+        position: relative;
+        left: 0;
+        padding-left: 35px;
+      }
+      i.fa-search {
+        position: relative;
+        top: 34px;
+        left: 16px;
+        z-index: 3;
+      }
+    }
     #people-search, #people-filters {
       input, select {
         font-family: "Roboto Light";
@@ -28,21 +43,12 @@
         margin-left: 4px !important;
         height: 42px;
         padding-left: 10px;
-      }
-      i.fa-search {
-        position: relative;
-        left: 17px;
-        z-index: 3;
-      }
-      #staffSearch {
-        width: 28%;
-        position: relative;
-        left: -19px;
-        padding-left: 35px;
+        border-radius: 0;
+        border: solid $black 1px;
       }
       #department {
         position: relative;
-        left: -9px;
+        left: -6px;
       }
     }
   }

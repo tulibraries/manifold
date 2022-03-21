@@ -12,14 +12,12 @@ $(document).on('turbolinks:load', function() {
   });
 
   $("#department").change(function() {
-    var dept = $("#department").find(":selected").val();
-    console.log("dept: "+dept);
+    var dept = encodeURIComponent($("#department").find(":selected").val());
     window.location.href = "/people?department="+dept+"&page=1";
   });
   
   $("#subject").change(function() {
-    var subject = $("#subject").find(":selected").val();
-    console.log("subject: "+subject);
+    var subject = encodeURIComponent($("#subject").find(":selected").val());
     window.location.href = "/people?specialty="+subject+"&page=1";
   });
 });

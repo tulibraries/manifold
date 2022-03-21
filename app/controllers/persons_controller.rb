@@ -2,8 +2,8 @@
 
 class PersonsController < ApplicationController
   before_action :set_person, only: [:show]
-  before_action :get_persons, only: [:index] 
-  before_action :set_filters, only: [:index] 
+  before_action :get_persons, only: [:index]
+  before_action :set_filters, only: [:index]
   include SerializableRespondTo
 
   def index
@@ -65,7 +65,7 @@ class PersonsController < ApplicationController
     all = Person.all
     @subjects = get_specialty_filter_values(all)
     @departments = get_department_filter_values(all)
-    if params[:search].present? 
+    if params[:search].present?
       @filtered_persons = Person.search(params[:search])
     else
       @filtered_persons = Person

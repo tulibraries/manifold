@@ -129,7 +129,7 @@
 	}
 }
 
-.container.staff {
+.container.staff { /* Person index page */
 	.heading {
 		border-bottom: solid #ccc 2px;
 		padding: 21px 0;
@@ -144,29 +144,45 @@
 	}
 }
 .container.person {  /* Person show page */
+  font-family: "Roboto Light";
 	margin-top: 35px;
-	.subject-list, .contact-list {
-		border: solid $seagreen 1px;
-		border-radius: 7px;
-		padding: 14px;
+  .label {
+    display: block;
+    font-family: Faustina-Bold;
+    font-weight: 900;
+  }
+  .contact-details {
+    hr {
+      background-color: $black;
+      height: 1px;
+      width:95%;
+      margin: auto;
+    }
+    .col-6 {
+      padding-top: 14px;
+    }
+  }
+
+  .person-actions {
+    margin-bottom: 14px;
+    .libguides-link, .springshare-appointment {
+      display: inline-block;
+      margin-right: 14px;
+      margin-left: 15px;
+      background-color: $lighter-grey;
+      padding: 4px 8px 6px 8px;
+      color: $black;
+      font-family: Faustina;
+    }
+  }
+
+	.subject-list {
+    background-color: $lighter-grey;
+		padding: 21px;
 		margin-bottom: 14px;
 		ul {
 			margin-bottom: 0;
 		}
-	}
-	.springshare-appointment, .libguides-link {
-		display: inline-block;
-		background-color: $foamgreen;
-		padding: 14px;
-		border-radius: 7px;
-		margin-top: 7px;
-		color: $white!important;
-		text-decoration: underline;
-		font-size: 92%;
-		width: 100%;
-	}
-	.libguides-link {
-		background-color: $red;
 	}
 	.right-side {
 		@media (max-width: 750px) {
@@ -174,29 +190,40 @@
 		}
 	}
 	.person-block {
-		background-color: $lightest-grey;
-		padding: 21px;
+		padding: 21px 0;
 		.person-name {
-			margin-bottom: 14px;
+      font-family: faustina;
+      color: $red;
+			margin-bottom: 0;
 			@media (max-width: 750px) {
 				margin-bottom: 0;
 			}
 		}
 		.job-title {
 			font-size: 150%;
-			margin-top: 0;
 			margin-bottom: 10px;
 		}
-		img {
-			@media (min-width: 0) and (max-width: 450px) {
-				width: 90%;
-				margin: auto;
-			}
-			@media (min-width: 451) and (max-width: 750px) {
-				width: 340px;
-				margin: auto;
-			}
-		}
+    .person-depts {
+      margin-left: 21px;
+			margin-top: 14px;
+      margin-bottom: 18px;
+      span {
+        border-left: solid $red 2px;
+        padding-left: 7px;
+      }
+    }
+    img {
+      padding-bottom: 7px;
+      border-bottom: solid $red 3px;
+      @media (min-width: 0) and (max-width: 450px) {
+        width: 90%;
+        margin: auto;
+      }
+      @media (min-width: 451) and (max-width: 750px) {
+        width: 340px;
+        margin: auto;
+      }
+    }
 	}
 	.person-block.desktop {
 		width: 100%;

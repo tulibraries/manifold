@@ -17,6 +17,6 @@ module PersonsHelper
 
   def depts_list(person)
     depts = person.groups.select { |group| group.group_type == "Department" }
-    depts.collect(&:label).join(",<br />")
+    depts.collect(&:label).join(", ")
   end
 end

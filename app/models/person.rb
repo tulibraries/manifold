@@ -79,9 +79,10 @@ class Person < ApplicationRecord
 
   def self.search(q)
     if q
-      Person.where("name REGEXP ?", "(^|\\W)#{q}(\\W|$)")
-      .or(Person.where("title REGEXP ?", "(^|\\W)#{q}(\\W|$)"))
-      .order([:last_name, :first_name])
+      Person.where("lower(last_name) LIKE ?", "%#{q}%".downcase)
+            .or(Person.where("lower(first_name) LIKE ?", "%#{q}%".downcase))
+            .or(Person.where("lower(job_title) LIKE ?", "%#{q}%".downcase))
+            .order(:last_name, :first_name)
     end
   end
 end

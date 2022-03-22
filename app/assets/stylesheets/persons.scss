@@ -152,6 +152,7 @@
     font-weight: 900;
   }
   .contact-details {
+    padding-top: 14px;
     hr {
       background-color: $black;
       height: 1px;
@@ -164,6 +165,7 @@
   }
 
   .person-actions {
+    margin-top: 14px;
     margin-bottom: 14px;
     .libguides-link, .springshare-appointment {
       display: inline-block;

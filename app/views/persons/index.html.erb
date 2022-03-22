@@ -4,14 +4,21 @@
 
   <h1><%= title "Staff Directory" %></h1>
 
-  <div class="filters row pt-4 pb-3 px-0 mb-4">
-  <%= form_with url: people_path, method: "GET", id: "people-search", class: "w-100" do |f| %>
-    <div class="col-12 d-inline-block">
-    <i class="fa fa-search"></i>
-    <input type="text" name="q" id="staffSearch" 
-            placeholder="search staff directory by name or title" autocomplete="off" />
-    <%= f.select :department, @departments, include_blank: "filter by department" %>
-    <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
+  <div class="filters row pb-3 px-0 mb-4">
+    <div class="col-12 d-inline-block mt-0">
+    <%= form_tag(person_search_path, method: "POST", class: "d-inline-block mr-3 mt-0", id: "people-search") do %>
+			<%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
+      <i class="fa fa-search"></i>
+			<%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
+								placeholder: "search staff directory by name or title",
+								results: "0"
+								) %>
+		<% end %>
+
+    <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block" do |f| %>
+      <%= f.select :department, @departments, include_blank: "filter by department" %>
+      <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
+    <% end %>
     </div>
     <div class="col-12 mt-3 mb-0 ml-3 filter-links">
     <% if params[:specialists] %>
@@ -22,8 +29,8 @@
     <% end %>
       <span class="float-right mr-4"><%= link_to "Reset Staff List", people_path %></span>
     </div>
-  <% end %>
   </div>
+  
   <div class="row">
     <div class="col-9">
     <% if @filter.any?.present? %>

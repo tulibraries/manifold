@@ -36,7 +36,7 @@ module Imageable
   end
 
   def show_image
-    custom_image(I18n.t("manifold.default.index_image_size"), I18n.t("manifold.default.index_image_size"))
+    custom_image(I18n.t("manifold.default.show_image_size"), I18n.t("manifold.default.show_image_size"))
   end
 
   def show_image_path

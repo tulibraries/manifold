@@ -122,6 +122,7 @@ Rails.application.routes.draw do
 
   controller :persons do
     get "people/specialists/print" => :specialists_print, as: "specialists_print"
+    post "people" => :index, as: "person_search"
   end
 
   controller :webpages do

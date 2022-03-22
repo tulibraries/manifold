@@ -1,42 +1,62 @@
     <div class="row person">
-      <div class="col-4">
+      <div class="col-3">
         <% if person.image.attached?  %>
         <%= image_tag person.index_image, class: "decorative", alt: "" %>
         <% else %>
         <%= image_tag "T.gif", style: 'width: 300px;', class: "decorative", alt: "" %>
         <% end %>
       </div>
-      <div class="col-8 pl-0">
-        <ul class="list-unstyled">
-          <li>
-            <span class="p-name">
+      <div class="col-9 pl-0">
+        <div class="row">
+          <div class="col-12">
+            <p class="p-name">
               <%= person.name %>
-            </span>
-          </li>
-          <li>
-            <span><%= person.job_title %></span>
-          </li>
-        </ul>
-        <ul class="details list-unstyled pl-3 ml-2">
-          <li>
-            <%= person.email_address %>
-          </li>
-          <li style="margin-bottom:14px;">
-            <%= phone_formatted(person.phone_number) %>
-          </li>
-          <li>
-            <%= depts_list(person).html_safe %>
-          </li>
-        </ul>
-        <div class="person-actions">
+            </p>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-8">
+                <p>
+                  <span><%= person.job_title %></span>
+                </p>
+                <ul class="details list-unstyled pl-3 ml-2">
+                  <li>
+                    <%= person.email_address %>
+                  </li>
+                  <li style="margin-bottom:14px;">
+                    <%= phone_formatted(person.phone_number) %>
+                  </li>
+                  <li>
+                    <%= depts_list(person).html_safe %>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="col-4 ">
+                <% if person.specialties.present? %>
+                <div class="">
+                <p style="font-weight:600;font-family:faustina;" class="mb-1"><%= t("manifold.people.show.subjects") %></p>
+                  <ul class="list-unstyled index-specialties" style="font-size:.9rem;">
+                    <% person.specialties.each do |s| %>
+                      <li><%= s %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <% end %>
+              </div>
 
-            <%= link_to "View Profile", person, class: "view-profile" %>
+            </div>
+            <div class="person-actions">
 
-          <% unless person.springshare_id.blank? %>
+                <%= link_to "View Profile", person, class: "view-profile" %>
 
-              <%= link_to t("manifold.people.show.appointment_link"), "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-id", target: "_new"%>
+              <% unless person.springshare_id.blank? %>
 
-          <% end %>
+                  <%= link_to t("manifold.people.show.appointment_link"), "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", class: "springshare-id", target: "_new"%>
+
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

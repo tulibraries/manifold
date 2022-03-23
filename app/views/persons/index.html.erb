@@ -4,7 +4,7 @@
 
   <h1><%= title "Staff Directory" %></h1>
 
-  <div class="filters row pb-3 px-0 mb-4">
+  <div class="filters row pb-3 px-0 mb-4 d-none d-lg-block">
     <div class="col-12 d-inline-block mt-0">
     <%= form_tag(person_search_path, method: "POST", class: "d-inline-block mr-3 mt-0", id: "people-search") do %>
 			<%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
@@ -16,7 +16,7 @@
 		<% end %>
 
     <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block" do |f| %>
-      <%= f.select :department, @departments, include_blank: "filter by department" %>
+      <%= f.select :department, @departments, {include_blank: "filter by department", class: "depts-list"} %>
       <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
     <% end %>
     </div>
@@ -32,14 +32,14 @@
   </div>
   
   <div class="row">
-    <div class="col-12">
-      <h3 class="mb-5">
+    <div class="col-12 px-0">
+      <h3 class="mb-5 text-center">
       <% if @filter.any?.present? %>
-        <span class="selected-filter float-left">
+        <span class="selected-filter float-lg-left">
           <span class="key"><%= @filter[0] %></span>: <%= @filter[1] %>
         </span>
       <% end %>
-        <span class="float-right">
+        <span class="float-lg-right">
           <%= t("manifold.people.entity_help_html") %>
         </span>
       </h3>

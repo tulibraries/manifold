@@ -12,7 +12,32 @@
     </div>
     <div class="collapse navbar-collapse" id="secondary-mobile-menu">
       <div class="navbar-nav"> 
-         <%= render "filters" %>
+           <div class="filters row pb-3 px-0 mb-4">
+            <div class="col-12 d-inline-block mt-0">
+            <%= form_tag(person_search_path, method: "POST", class: "d-inline-block mr-3 mt-0", id: "people-search") do %>
+              <%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
+              <i class="fa fa-search"></i>
+              <%= text_field_tag(:search, nil, class: "form-control d-inline-block", 
+                        placeholder: "search staff directory by name or title",
+                        results: "0"
+                        ) %>
+            <% end %>
+
+            <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block" do |f| %>
+              <%= f.select :department, @departments, include_blank: "filter by department" %>
+              <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
+            <% end %>
+            </div>
+            <div class="col-12 mt-3 mb-0 ml-3 filter-links">
+            <% if params[:specialists] %>
+              <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true), class: "d-block" %>
+              -- <%= link_to "[Print this view]", specialists_print_path, class: "ml-2" %></span>
+            <% else %>
+              <%= link_to t("manifold.people.filters.limit_to_specialists"), people_path(specialists: true), class: "d-block" %>
+            <% end %>
+              <%= link_to "Reset Staff List", people_path, class: "d-block" %>
+            </div>
+          </div>
       </div>
     </div>
   </nav>

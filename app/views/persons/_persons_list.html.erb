@@ -1,13 +1,9 @@
-<% if @persons_list.present? || params[:q].present? %>
+<% if @persons_list.present? %>
   <% @persons_list.each do |person| %>
-    <%= render "persons", person: person %>
-  <% end unless params[:q].present? %>
-
-  <% if params[:q].present? %>
     <%= render "persons", person: person %>
   <% end %>
 
-  <div class="row text-center paginator" style="border-left: solid white 14px;">
+  <div class="row text-center paginator">
     <div class="col">
       <%= paginate @persons_list %>
     </div>

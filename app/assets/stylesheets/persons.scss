@@ -15,7 +15,6 @@
 }
 .filters {
   background-color: $lighter-grey;
-  max-width:100%;
   .filter-links {
     font-family: Roboto;
     @media (max-width: 750px) {
@@ -51,11 +50,12 @@
       font-family: "Roboto Light";
       display: inline-block !important;
       margin-left: 4px !important;
-      height: 42px;
       padding-left: 10px;
+      height: 42px;
       border-radius: 0;
       border: solid $black 1px;
       @media (max-width: 750px) {
+        padding-left: 10px;
         max-width: 100%;
         width: 100%;
         margin-bottom: 10px;
@@ -74,6 +74,7 @@
 .staff-index {
   font-family: "Roboto Light";
 	.person {
+    clear: both;
 		border-bottom: solid #eee 2px;
 		margin-bottom: 21px;
 		margin-left: 7px;

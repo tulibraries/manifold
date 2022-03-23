@@ -4,8 +4,8 @@
 
   <h1><%= title "Staff Directory" %></h1>
 
-  <div class="filters row pb-3 px-0 mb-4 d-none d-lg-block">
-    <div class="col-12 d-inline-block mt-0">
+  <div class="filters row pb-3 px-0 d-none d-lg-block">
+    <div class="col-12 d-inline-block mt-0 pr-0">
     <%= form_tag(person_search_path, method: "POST", class: "d-inline-block mr-3 mt-0", id: "people-search") do %>
 			<%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
       <i class="fa fa-search"></i>
@@ -20,28 +20,28 @@
       <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
     <% end %>
     </div>
-    <div class="col-12 mt-3 mb-0 ml-3 filter-links">
+    <div class="col-12 mt-3 mb-0 ml-2 ml-lg-0 filter-links">
     <% if params[:specialists] %>
       <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true), class: "float-left pr-3" %>
-       -- <%= link_to "[Print this view]", specialists_print_path, class: "ml-2" %></span>
+      -- <%= link_to "[Print this view]", specialists_print_path, class: "ml-2" %>
     <% else %>
-      <%= link_to t("manifold.people.filters.limit_to_specialists"), people_path(specialists: true), class: "float-left" %>
+      <p class="d-inline-block text-left ml-2 mb-0"><%= link_to t("manifold.people.filters.limit_to_specialists"), people_path(specialists: true) %></p>
     <% end %>
-      <span class="float-right mr-4"><%= link_to "Reset Staff List", people_path %></span>
+      <p class="d-inline-block float-right mb-0 mr-2"><%= link_to "Reset Staff List", people_path %></p>
     </div>
   </div>
   
   <div class="row">
     <div class="col-12 px-0">
       <h3 class="mb-5 text-center">
-      <% if @filter.any?.present? %>
-        <span class="selected-filter float-lg-left">
-          <span class="key"><%= @filter[0] %></span>: <%= @filter[1] %>
-        </span>
-      <% end %>
         <span class="float-lg-right">
           <%= t("manifold.people.entity_help_html") %>
         </span>
+      <% if @filter.any?.present? %>
+        <span class="selected-filter d-inline-block ml-2 mt-3 mb-3 mb-lg-0 mt-lg-0 ml-lg-0 float-left">
+          <span class="key"><%= @filter[0] %></span>: <%= @filter[1] %>
+        </span>
+      <% end %>
       </h3>
 
       <%= render "persons_list" %>

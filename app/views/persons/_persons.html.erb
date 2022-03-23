@@ -15,11 +15,11 @@
           </div>
           <div class="col-12 px-0">
             <div class="row px-0 mx-0">
-              <div class="col-12 col-lg-8 px-0 pl-lg-3 pl-lg-0">
+              <div class="col-12 col-lg-7 px-0 pl-lg-3 pl-lg-0">
                 <p class="text-center text-lg-left">
                   <%= person.job_title %>
                 </p>
-                <ul class="details list-unstyled pl-3 ml-5">
+                <ul class="details list-unstyled pl-3 ml-5 pr-lg-5">
                   <li>
                     <%= person.email_address %>
                   </li>
@@ -32,7 +32,7 @@
                 </ul>
               </div>
               
-              <div class="d-none d-lg-block col-4">
+              <div class="d-none d-lg-block col-5">
                 <% if person.specialties.present? %>
                 <div class="">
                 <p style="font-weight:600;font-family:faustina;" class="mb-1"><%= t("manifold.people.show.subjects") %></p>

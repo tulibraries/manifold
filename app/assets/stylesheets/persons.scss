@@ -22,7 +22,7 @@
       width: 75%;
     }
   }
-  #people-search {
+  #people-search, #m-people-search {
     width: 29%;
     @media (max-width: 750px) {
       max-width: 100%;
@@ -45,7 +45,7 @@
       z-index: 3;
     }
   }
-  #people-search, #people-filters {
+  #people-search, #m-people-search, #people-filters, #m-people-filters {
     input, select {
       font-family: "Roboto Light";
       display: inline-block !important;
@@ -68,6 +68,14 @@
         left: 0;
       }
     }
+  }
+  #m-people-search, #m-people-filters {
+    @media (max-width: 750px) {
+      margin-left: 10px;
+      max-width: 95%;
+      width: 95%;
+    }
+
   }
 }
 

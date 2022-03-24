@@ -14,7 +14,7 @@
       <div class="navbar-nav"> 
            <div class="filters row pb-3 px-0 mb-4">
             <div class="col-12 d-inline-block mt-0">
-            <%= form_tag(person_search_path, method: "POST", class: "d-inline-block mr-3 mt-0", id: "people-search") do %>
+            <%= form_tag(person_search_path, method: "POST", class: "d-inline-block mr-3 mt-0", id: "m-people-search") do %>
               <%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
               <i class="fa fa-search"></i>
               <%= text_field_tag(:search, nil, class: "form-control d-inline-block", 
@@ -23,9 +23,9 @@
                         ) %>
             <% end %>
 
-            <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block" do |f| %>
-              <%= f.select :department, @departments, include_blank: "filter by department" %>
-              <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
+            <%= form_with url: people_path, method: "GET", id: "m-people-filters", class: "d-inline-block" do |f| %>
+              <%= f.select :m_department, @departments, include_blank: "filter by department" %>
+              <%= f.select :m_subject, @subjects, include_blank: "filter by specialty" %>
             <% end %>
             </div>
             <div class="col-12 mt-3 mb-0 ml-3 filter-links">

@@ -4,8 +4,6 @@ require "rails_helper"
 
 RSpec.feature "People", type: :feature do
 
-  describe "index page with pagination" do
-
   describe "Specialist" do
     before(:all) do
       @person1 = FactoryBot.create(:person)

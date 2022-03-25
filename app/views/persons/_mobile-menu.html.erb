@@ -30,8 +30,9 @@
             </div>
             <div class="col-12 mt-3 mb-0 ml-3 filter-links">
             <% if params[:specialists] %>
-              <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true), class: "d-block" %>
-              -- <%= link_to "[Print this view]", specialists_print_path, class: "ml-2" %></span>
+              <span class="d-block d-md-inline-block">
+                <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true) %>
+              -- <%= link_to "[Print this view]", specialists_print_path %></span>
             <% else %>
               <%= link_to t("manifold.people.filters.limit_to_specialists"), people_path(specialists: true), class: "d-block" %>
             <% end %>

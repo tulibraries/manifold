@@ -5,27 +5,6 @@ require "rails_helper"
 RSpec.feature "People", type: :feature do
 
   describe "index page with pagination" do
-    before(:all) do
-      Person.delete_all
-      Space.delete_all
-      21.times do |i|
-        FactoryBot.create(:person)
-      end
-    end
-
-    after(:all) do
-      Person.delete_all
-      Space.delete_all
-    end
-
-    scenario "One full page plus one page with one entry" do
-      visit people_path
-      expect(page.all(:xpath, "//*[@class='row person']", visible: false).count).to eq(20)
-      click_on("Next")
-      expect(page.all(:xpath, "//*[@class='row person']", visible: false).count).to eq(1)
-    end
-
-  end
 
   describe "Specialist" do
     before(:all) do

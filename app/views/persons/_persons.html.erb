@@ -23,7 +23,7 @@
                   <li>
                     <%= person.email_address %>
                   </li>
-                  <li style="margin-bottom:14px;">
+                  <li class="mb-3">
                     <%= phone_formatted(person.phone_number) %>
                   </li>
                   <li class="pr-2">
@@ -34,16 +34,16 @@
               
               <div class="d-none d-md-block col-5">
                 <% if person.specialties.present? %>
-                <div class="">
-                <p style="font-weight:600;font-family:faustina;" class="mb-1"><%= t("manifold.people.show.subjects") %></p>
-                  <ul class="list-unstyled index-specialties" style="font-size:.9rem;">
-                    <% person.specialties.each do |s| %>
-                      <li><%= s %></li>
-                    <% end %>
-                  </ul>
-                </div>
-                <% end %>
-              </div>
+                <p style="" class="mb-1 label">
+                  <%= t("manifold.people.show.subjects") %>
+                </p>
+                <ul class="list-unstyled index-specialties" style="font-size:.9rem;">
+                  <% person.specialties.each do |s| %>
+                    <li><%= s %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
 
             </div>
             <div class="person-actions">

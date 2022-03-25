@@ -11,6 +11,16 @@ $(document).on('turbolinks:load', function() {
     $('#research-links').css("left", x.left - x3.left);
   });
 
+  $("#m_department").change(function() {
+    var dept = encodeURIComponent($("#m_department").find(":selected").val());
+    window.location.href = "/people?department="+dept+"&page=1";
+  });
+  
+  $("#m_subject").change(function() {
+    var subject = encodeURIComponent($("#m_subject").find(":selected").val());
+    window.location.href = "/people?specialty="+subject+"&page=1";
+  });
+
   $("#department").change(function() {
     var dept = encodeURIComponent($("#department").find(":selected").val());
     window.location.href = "/people?department="+dept+"&page=1";

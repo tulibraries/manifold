@@ -1,92 +1,96 @@
 @import "partials/_vars.scss";
 
+.no-results {
+  margin-top: 14px;
+}
 #icon_filter {
-	@media (max-width: 948px) {
+	@media (max-width: 1199px) {
 		position: relative;
 		left: -3px;
 	}
 }
+.selected-filter {
+  .key {
+    font-family: Roboto;
+    border-left: solid $new-gold 4px;
+    padding-left: 10px;
+  }
+}
+.filters {
+  background-color: $lighter-grey;
+  .filter-links {
+    font-family: Roboto;
+    @media (max-width: 1199px) {
+      max-width: 75%;
+      width: 75%;
+    }
+  }
+  #people-search, #m-people-search {
+    width: 29%;
+    @media (max-width: 1199px) {
+      max-width: 100%;
+      width: 100%;
+    }
+    #search {
+      width: 28%;
+      position: relative;
+      left: 0;
+      padding-left: 35px;
+      @media (max-width: 1199px) {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+    i.fa-search {
+      position: relative;
+      top: 32px;
+      left: 16px;
+      z-index: 3;
+    }
+  }
+  #people-search, #m-people-search, #people-filters, #m-people-filters {
+    input, select {
+      font-family: "Roboto Light";
+      display: inline-block !important;
+      margin-left: 4px !important;
+      padding-left: 10px;
+      height: 42px;
+      border-radius: 0;
+      border: solid $black 1px;
+      @media (max-width: 1199px) {
+        padding-left: 10px;
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+    #department {
+      position: relative;
+      left: -6px;
+      @media (max-width: 1199px) {
+        left: 0;
+      }
+    }
+  }
+  #m-people-search, #m-people-filters {
+    @media (max-width: 1199px) {
+      margin-left: 10px;
+      max-width: 95%;
+      width: 95%;
+    }
+
+  }
+}
 
 .staff-index {
   font-family: "Roboto Light";
-  .selected-filter {
-    .key {
-      font-family: Roboto;
-      border-left: solid $new-gold 4px;
-      padding-left: 10px;
-    }
+  .label {
+    display: block;
+    font-family: Faustina-Bold;
+    font-weight: 900;
   }
-  .filters {
-    background-color: $lighter-grey;
-    .filter-links {
-      font-family: Roboto;
-    }
-    #people-search {
-      width: 29%;
-      #search {
-        width: 28%;
-        position: relative;
-        left: 0;
-        padding-left: 35px;
-      }
-      i.fa-search {
-        position: relative;
-        top: 34px;
-        left: 16px;
-        z-index: 3;
-      }
-    }
-    #people-search, #people-filters {
-      input, select {
-        font-family: "Roboto Light";
-        display: inline-block !important;
-        margin-left: 4px !important;
-        height: 42px;
-        padding-left: 10px;
-        border-radius: 0;
-        border: solid $black 1px;
-      }
-      #department {
-        position: relative;
-        left: -6px;
-      }
-    }
-  }
-	.right-side {
-		@media (max-width: 1039px) {
-			margin-top: 21px;
-		}
-		.entity-help {
-      font-size: .90rem;
-      font-family: Roboto;
-      text-align: center;
-			padding-left: 0;
-      background-color: $lighter-grey;
-	    padding: 14px;
-	    overflow-wrap: break-word;
-	    line-height: .75;
-      p {
-        font-size: 1.25rem;
-        margin: 14px auto 4px auto;
-      }
-	    @media (max-width: 1023px) {
-	    	margin-top: 14px;
-	    }
-		}
-		.access-link {
-			background-color: $foamgreen;
-	    padding: 14px;
-	    border-radius: 7px;
-	    margin-top: 17px;
-	    h3 {
-	    	margin-bottom: 0;
-	    }
-	    a {
-	    	color: $white;
-	    }
-		}
-	}
 	.person {
+    clear: both;
 		border-bottom: solid #eee 2px;
 		margin-bottom: 21px;
 		margin-left: 7px;
@@ -96,53 +100,37 @@
       font-size: 135%;
       font-weight: 600;
       font-family: Roboto;
-      // color: #A32035;
       color: $red;
+      @media (max-width: 750px) {
+        margin-bottom: 10px;
+      }
     }
 		img {
-      width: 90%;
-			max-width: 100%;
+      min-width: 240px!important;
+      max-width: 240px!important;
 		}
     ul.details {
       border-left: solid #A32035 2px;
       margin-bottom: 28px;
+      @media (max-width: 750px) {
+        // border-left: 0;
+      }
     }
 		.person-actions {
       margin-top: 14px;
       margin-bottom: 21px;
 			.view-profile, .springshare-id {
         display: inline-block;
-        margin-left: 24px;
 				background-color: $lighter-grey;
 				padding: 4px 8px 6px 8px;
 				color: $royal-blue;
         font-family: Faustina-Bold;
-			}
-			@media (max-width: 1039px) {
-				a {
-					display: block;
-					margin-bottom: 4px;
-					width: 180px;
-				}
+        white-space: nowrap;
 			}
 		}
 	}
 }
 
-.container.staff { /* Person index page */
-	.heading {
-		border-bottom: solid #ccc 2px;
-		padding: 21px 0;
-		.col-3 {
-			font-weight: 600;
-			font-size: larger;
-		}
-	}
-	.details {
-		border-bottom: solid #ccc 1px;
-		padding: 21px 0;
-	}
-}
 .container.person {  /* Person show page */
   font-family: "Roboto Light";
 	margin-top: 35px;
@@ -218,10 +206,13 @@
       padding-bottom: 7px;
       border-bottom: solid $red 3px;
       @media (min-width: 0) and (max-width: 450px) {
-        width: 90%;
+        min-width: 340px!important;
+        max-width: 340px!important;
         margin: auto;
       }
       @media (min-width: 451) and (max-width: 750px) {
+        min-width: 340px!important;
+        max-width: 340px!important;
         width: 340px;
         margin: auto;
       }

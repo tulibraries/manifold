@@ -6,11 +6,90 @@
     </div>
   </div>
 
-  <div class="d-none d-md-block">
-    <%= render "desktop" %>
-  </div>
+<div class="row p-0 m-0 person-block desktop">
 
-  <div class="d-block d-md-none">
-    <%= render "mobile" %>
+  <div class="col-3 pr-0">
+      <% if @person.image.attached?  %>
+        <%= image_tag @person.show_image, class: "decorative", alt: "" %>
+      <% else %>
+        <%= image_tag "T.gif", style: 'width: 240px;', class: "decorative", alt: "" %>
+      <% end %>
+  </div>
+  <div class="col-6 px-0">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="person-name page-title"><%= title "#{@person.first_name} #{@person.last_name}" %></h1>
+        <div class="job-title"><%= @person.job_title %></div>
+        <div class="person-depts">
+          <span><%= sanitize depts_list(@person).html_safe %></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <% if @person.libguides_account.present? || @person.springshare_id.present? %>
+      <div class="person-actions">
+        <%= link_to t("manifold.people.show.guides_link"), 
+                          "https://guides.temple.edu/prf.php?account_id=#{@person.libguides_account}", 
+                          class: "libguides-link", 
+                          target: "_new" if @person.libguides_account.present? %>
+
+        <%= link_to t("manifold.people.show.appointment_link"), 
+                        "https://api3.libcal.com/appointments-widget.php?u=#{@person.springshare_id}&iid=1621&t=Make%20an%20Appointment", 
+                        class: "springshare-appointment", 
+                        target: "_new" if @person.springshare_id.present? %>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="row contact-details">
+        <hr />
+        <% if @person.pronouns.present? %>
+        <div class="col-6">
+          <span class="label">Pronouns</span>
+          <%= @person.pronouns %>
+        </div>
+        <% end %>
+
+        <% if @person.email_address.present? %>
+        <div class="col-6">
+          <span class="label">Email</span>
+          <%= mail_to @person.email_address, @person.email_address %>
+        </div>
+        <% end %>
+
+        <% if @person.phone_number.present? %>
+        <div class="col-6">
+          <span class="label">Phone</span>
+          <%= phone_formatted(@person.phone_number) %>
+        </div>
+        <% end %>
+        
+        <% if @person.research_identifier.present? %>
+        <div class="col-6">
+          <span class="label">ORCD</span>
+          <%= @person.research_identifier %>
+        </div>
+        <% end %>
+
+        <% if @person.buildings.present? %>
+        <div class="col-6">
+          <span class="label">Building</span>
+          <ul class="list-unstyled">
+          <% @buildings.each do |building| %>
+            <li><%= link_to building.name, building %></li>
+          <% end %>
+          </ul>
+        </div>
+        <% end %>
+
+        <% if @person.personal_site.present? %>
+        <div class="col-6">
+          <span class="label">Website</span>
+          <%= link_to t("manifold.people.show.personal_site"), strip_tags(@person.personal_site) %>
+        </div>
+        <% end %>
+
+    </div>
   </div>
 </div>

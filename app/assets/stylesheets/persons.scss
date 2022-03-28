@@ -134,6 +134,7 @@
 .container.person {  /* Person show page */
   font-family: "Roboto Light";
 	margin-top: 35px;
+  min-height: 52vh;
   img {
     padding-bottom: 7px;
     border-bottom: solid $red 3px;

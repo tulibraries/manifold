@@ -3,7 +3,7 @@
 class PersonsController < ApplicationController
   before_action :set_person, only: [:show]
   before_action :get_persons, only: [:index]
-  before_action :set_filters, only: [:index]
+  before_action :set_filters, only: [:index, :show]
   include SerializableRespondTo
 
   def index
@@ -14,6 +14,10 @@ class PersonsController < ApplicationController
   end
 
   def set_filters
+    all = Person.all
+    @subjects = get_specialty_filter_values(all)
+    @departments = get_department_filter_values(all)
+
     if params[:department].present?
       d = Group.friendly.find(params[:department])
       if d.present?
@@ -62,9 +66,6 @@ class PersonsController < ApplicationController
   end
 
   def get_persons
-    all = Person.all
-    @subjects = get_specialty_filter_values(all)
-    @departments = get_department_filter_values(all)
     if params[:search].present?
       @filtered_persons = Person.search(params[:search])
     else

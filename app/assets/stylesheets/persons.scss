@@ -28,8 +28,8 @@
   #people-search, #m-people-search {
     width: 29%;
     @media (max-width: 1199px) {
-      max-width: 100%;
-      width: 100%;
+      max-width: 806px;
+      width: 806px;
     }
     #search {
       width: 28%;
@@ -134,6 +134,22 @@
 .container.person {  /* Person show page */
   font-family: "Roboto Light";
 	margin-top: 35px;
+  min-height: 52vh;
+  img {
+    padding-bottom: 7px;
+    border-bottom: solid $red 3px;
+    @media (min-width: 0) and (max-width: 1199px) {
+      min-width: 240px!important;
+      max-width: 240px!important;
+      border-bottom: 0;
+    }
+    @media (min-width: 451) and (max-width: 1199px) {
+      min-width: 240px!important;
+      max-width: 240px!important;
+      width: 240px;
+      border-bottom: 0;
+    }
+  }
   .label {
     display: block;
     font-family: Faustina-Bold;
@@ -146,6 +162,9 @@
       height: 1px;
       width:95%;
       margin: auto;
+		  @media (max-width: 1199px) {
+        margin-bottom: 14px;
+      }  
     }
     .col-6 {
       padding-top: 14px;
@@ -161,11 +180,14 @@
       margin-left: 15px;
       background-color: $lighter-grey;
       padding: 4px 8px 6px 8px;
-      color: $black;
+      color: $royal-blue;
       font-family: Faustina;
+      @media (max-width: 649px) {
+        display: block;
+        margin-bottom: 10px;
+      }
     }
   }
-
 	.subject-list {
     background-color: $lighter-grey;
 		padding: 21px;
@@ -173,14 +195,21 @@
 		ul {
 			margin-bottom: 0;
 		}
-	}
-	.right-side {
-		@media (max-width: 750px) {
-			margin-top: 21px;
+		@media (max-width: 1199px) {
+			background-color: $white;
+      h2 {
+        font-size: 1rem;
+      }
 		}
 	}
 	.person-block {
 		padding: 21px 0;
+		width: 100%;
+		margin: auto 14px;
+		padding-bottom: 42px;
+		img {
+			margin-top: 7px;
+		}
 		.person-name {
       font-family: faustina;
       color: $red;
@@ -202,28 +231,5 @@
         padding-left: 7px;
       }
     }
-    img {
-      padding-bottom: 7px;
-      border-bottom: solid $red 3px;
-      @media (min-width: 0) and (max-width: 450px) {
-        min-width: 340px!important;
-        max-width: 340px!important;
-        margin: auto;
-      }
-      @media (min-width: 451) and (max-width: 750px) {
-        min-width: 340px!important;
-        max-width: 340px!important;
-        width: 340px;
-        margin: auto;
-      }
-    }
-	}
-	.person-block.desktop {
-		width: 100%;
-		margin: auto 14px;
-		padding-bottom: 42px;
-		img {
-			margin-top: 7px;
-		}
 	}
 }

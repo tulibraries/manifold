@@ -6,16 +6,17 @@
     </div>
   </div>
 
-<div class="row p-0 m-0 person-block desktop">
+<div class="row p-0 m-0 person-block">
 
-  <div class="col-3 pr-0">
+  <div class="col-12 col-lg-3 pr-0">
       <% if @person.image.attached?  %>
         <%= image_tag @person.show_image, class: "decorative", alt: "" %>
       <% else %>
         <%= image_tag "T.gif", style: 'width: 240px;', class: "decorative", alt: "" %>
       <% end %>
   </div>
-  <div class="col-6 px-0">
+
+  <div class="col-12 col-lg-6 px-lg-0">
     <div class="row">
       <div class="col-12">
         <h1 class="person-name page-title"><%= title "#{@person.first_name} #{@person.last_name}" %></h1>
@@ -26,7 +27,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row pl-3 pl-lg-0">
       <% if @person.libguides_account.present? || @person.springshare_id.present? %>
       <div class="person-actions">
         <%= link_to t("manifold.people.show.guides_link"), 
@@ -42,38 +43,38 @@
       <% end %>
     </div>
 
-    <div class="row contact-details">
+    <div class="row contact-details ml-1 ml-lg-0">
         <hr />
         <% if @person.pronouns.present? %>
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
           <span class="label">Pronouns</span>
           <%= @person.pronouns %>
         </div>
         <% end %>
 
         <% if @person.email_address.present? %>
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
           <span class="label">Email</span>
           <%= mail_to @person.email_address, @person.email_address %>
         </div>
         <% end %>
 
         <% if @person.phone_number.present? %>
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
           <span class="label">Phone</span>
           <%= phone_formatted(@person.phone_number) %>
         </div>
         <% end %>
         
         <% if @person.research_identifier.present? %>
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
           <span class="label">ORCD</span>
           <%= @person.research_identifier %>
         </div>
         <% end %>
 
         <% if @person.buildings.present? %>
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
           <span class="label">Building</span>
           <ul class="list-unstyled">
           <% @buildings.each do |building| %>
@@ -84,7 +85,7 @@
         <% end %>
 
         <% if @person.personal_site.present? %>
-        <div class="col-6">
+        <div class="col-12 col-sm-6">
           <span class="label">Website</span>
           <%= link_to t("manifold.people.show.personal_site"), strip_tags(@person.personal_site) %>
         </div>
@@ -92,4 +93,18 @@
 
     </div>
   </div>
+
+  <div class="col-12 col-lg-3">
+    <% if @person.specialties.present? %>
+      <div class="subject-list text-left">
+      <h2 class="label"><%= t("manifold.people.show.subjects") %></h2>
+        <ul class="list-unstyled">
+          <% @person.specialties.each do |s| %>
+            <li><%= s %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
 </div>

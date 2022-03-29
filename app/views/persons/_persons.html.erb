@@ -1,5 +1,5 @@
     <div class="row person mx-0">
-      <div class="col-12 col-lg-3 px-0 text-center text-md-left text-lg-center pl-md-5 mb-2">
+      <div class="col-12 col-lg-3 text-lg-center pl-md-5 mb-2">
         <% if person.image.attached?  %>
         <%= image_tag person.index_image, class: "decorative", alt: "" %>
         <% else %>
@@ -9,17 +9,17 @@
       <div class="col-12 col-lg-9">
         <div class="row">
           <div class="col-12 pl-md-0">
-            <p class="p-name text-center text-md-left pl-md-5 mb-0 mb-lg-2">
+            <p class="p-name ml-md-5 mb-2">
               <%= person.name %>
             </p>
           </div>
           <div class="col-12 px-0">
             <div class="row px-0 mx-0">
-              <div class="col-12 col-md-7 px-0 pl-md-3">
-                <p class="text-center text-md-left pl-md-3 ml-md-3 mt-0">
+              <div class="col-12 col-md-7 pl-md-3">
+                <p class="pl-md-3 ml-md-3 mt-0">
                   <%= person.job_title %>
                 </p>
-                <ul class="details list-unstyled pl-3 ml-5">
+                <ul class="details list-unstyled pl-3 ml-3 ml-md-5">
                   <li>
                     <%= person.email_address %>
                   </li>
@@ -46,7 +46,7 @@
             </div>
 
             </div>
-            <div class="person-actions">
+            <div class="person-actions ml-md-4">
                 <%= link_to "View Profile", person, class: "view-profile ml-3" %>
 
               <% unless person.springshare_id.blank? %>

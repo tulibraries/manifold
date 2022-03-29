@@ -18,6 +18,7 @@ class Webpage < ApplicationRecord
   # validates_presence_of :description # required rich text fields throw error in administrate if blank
   has_rich_text :covid_alert
 
+
   validates :title, presence: true
   belongs_to :group, optional: true
   belongs_to :external_link, optional: true
@@ -42,5 +43,9 @@ class Webpage < ApplicationRecord
       name: title,
       description: description
     }
+  end
+
+  def items
+    self.fileabilities.select { |f| f.file_upload.present? }.sort_by { |f| [f.weight, f.file_upload.name] }
   end
 end

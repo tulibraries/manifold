@@ -1018,7 +1018,9 @@ en:
                   <p>Welcome to the Library Staff Directory. To search for a specific individual by name, 
                   please use the Search Everything box in the upper right corner of your screen. Alternatively, 
                   filter out search results by Subject Specialty, Location and Department.</p>
-      entity_help_html: "Charles Library Main Phone: <strong>215-204-8212</strong>"
+      entity_help_html: >-
+                        <span style="display:inline-block;white-space:nowrap;">Charles Library Main Phone: </span>
+                        <span style="display:inline-block;white-space:nowrap;font-weight:900;font-family:'roboto bold'">215-204-8212</span>
       fcn_link: Frequently Called Numbers
       no_results: No people found. Try another search.
       filters:

@@ -32,17 +32,17 @@ and renders all form fields for a resource's editable attributes.
   <%= render("form_fields", page: page, f: f, current_account: current_account) %>
 
   <hr />
-  <div style="width:100%;">
+  <div style="width:70%;margin:auto;">
     <p>On the list of file uploads below, please assign a weight to
       each. The weight will determine the order from lowest
-      to highest. For example, the file with a weight of one will
-      appear first in the list, a weight of two will appear next,
+      to highest. For example, a file with a weight of <strong>1</strong> will
+      appear first in the list. A weight of <strong>2</strong> will appear next,
       and so on.
     </p>
   </div>
   <div class="field-unit field-unit--file-uploads" style="align-items:baseline;" >
     <div class="field-unit__label">
-      <label>Entity Weights</label>
+      <label>File Uploads</label>
     </div>
       <div class="field-unit__field" style="width:90%;">
         <%= f.fields_for :fileabilities, page.resource.fileabilities.sort_by(&:weight) do |file_uploads_form| %>

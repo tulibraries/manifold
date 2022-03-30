@@ -906,7 +906,7 @@ en:
         foapal: "FOAPAL"
         foapal_hint: "in case of damages or additional cleaning costs"
         policy_check_html: >-
-                          I agree to <a href="https://library.temple.edu/policies/17" class="inline">
+                          I agree to <a href="/policies/17" class="inline">
                           Temple University Libraries's policies and guidelines</a>
 
       graduate_locker_request:
@@ -1123,7 +1123,7 @@ en:
           chat_label: Chat with a Health Sciences Librarian
           chat_link: /hsl/chat
           appointment_label: Make an Appointment with a Health Sciences Librarian
-          appointment_link: https://library.temple.edu/people?department=health-sciences-library-staff&page=1&specialists=true
+          appointment_link: /people?department=health-sciences-library-staff&page=1&specialists=true
           study_room: Reserve a Study Room
           not_study_room: Not a Study Room
         links:
@@ -1234,7 +1234,7 @@ en:
                     <p>
                       This video collection is only accessible in the Special Collections Research Center's reading room, in the Charles Library.<br />
                       For more information about this collection please see the finding aid 
-                      <a href="https://library.temple.edu/finding_aids/wpvi-news-footage-and-logs" class="inline">(Series 2, Accession B)</a><br />
+                      <a href="https:///finding_aids/wpvi-news-footage-and-logs" class="inline">(Series 2, Accession B)</a><br />
                       When searching the play lists, do not use truncation/wildcard symbol :yellow_star: or quotation marks ("")
                     </p>
                     <p style="font-size:large;font-weight:600;">The collection is divided into 4 play lists</strong>:</p>

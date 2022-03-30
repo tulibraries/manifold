@@ -76,7 +76,7 @@ as well as a link to its edit page.
 
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
         <%= render_field attribute, page: page unless attribute.attribute.to_s == "id" %>
-        <%= "/categories/#{attribute.to_s}" if attribute.attribute.to_s == "id" %>
+        <%= ["#{resource_name}".pluralize, "#{attribute.to_s}"].join("/") if attribute.attribute.to_s == "id" %>
       </dd>
     <% end %>
     <% end %>

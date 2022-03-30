@@ -78,6 +78,10 @@ $(document).ready(function(){
     dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');
     if(dc) dc.setAttribute("id","digcol")
 
+    general_tracks = [
+      {id: "specialist-print", category: "general"}
+    ]
+
     home_tracks = [
       {id: "digcol", category: "Outbound Links"},
       {id: "main-search", category: "Search"},
@@ -177,6 +181,16 @@ $(document).ready(function(){
         });
       };
     };
+
+    general_tracks.forEach((track) => {
+      if(track.id) {
+        if (el = document.getElementById(track.id)) {
+          el.addEventListener("click", () => {
+            handleEventClicks(track.id, track.category)
+          });
+        };
+      }
+    });
 
     home_tracks.forEach((track) => {
       if(track.id) {

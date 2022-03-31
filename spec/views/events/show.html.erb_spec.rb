@@ -13,7 +13,7 @@ RSpec.describe "events/show", type: :view do
   it "displays the default event image when image from xml feed cannot be rendered" do
     @event = FactoryBot.create(:event)
     render
-    expect(rendered).to match /#{"assets/T-borderless"}/
+    expect(rendered).to match /#{"assets/T"}/
   end
 
   context "JSON LD" do

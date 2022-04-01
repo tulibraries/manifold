@@ -1,0 +1,76 @@
+<%#
+# Form Partial
+This partial is rendered on a resource's `new` and `edit` pages,
+and renders all form fields for a resource's editable attributes.
+## Local variables:
+- `page`:
+  An instance of [Administrate::Page::Form][1]
+  Contains helper methods to display a form,
+  and knows which attributes should be displayed in the resource's form.
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
+%>
+
+<%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
+  <% if page.resource.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= t(
+          "administrate.form.errors",
+          pluralized_errors: pluralize(page.resource.errors.count, t("administrate.form.error")),
+          resource_name: display_resource_name(page.resource_name)
+        ) %>
+      </h2>
+
+      <ul>
+        <% page.resource.errors.full_messages.each do |message| %>
+          <li class="flash-error"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render("form_fields", page: page, f: f, current_account: current_account) %>
+
+  <hr />
+  <div style="width:70%;margin:auto;">
+    <p>On the list of file uploads below, please assign a weight to
+      each. The weight will determine the order from lowest
+      to highest. For example, a file with a weight of <strong>1</strong> will
+      appear first in the list. A weight of <strong>2</strong> will appear next,
+      and so on.
+    </p>
+  </div>
+  <div class="field-unit field-unit--file-uploads" style="align-items:baseline;" >
+    <div class="field-unit__label">
+      <label>File Uploads</label>
+    </div>
+      <div class="field-unit__field" style="width:90%;">
+        <%= f.fields_for :fileabilities, page.resource.fileabilities.sort_by(&:weight) do |file_uploads_form| %>
+        <% if file_uploads_form.object.file_upload.present? %>
+          <div style="padding: 1.1em;border-bottom: 1px solid;">
+            <span style="width:80%;display:inline-block">
+              <%= file_uploads_form.label file_uploads_form.object.file_upload.name %>
+            </span>
+            <span style="display:inline-block;width:10%">
+              <%= file_uploads_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
+            </span>
+          </div>
+          <% end %>
+        <% end -%>
+      </div>
+	</div>
+
+  <% if action_name == "edit" && is_draftable?(page.attributes) %>
+    <div class="field-unit field-unit--apply-draft %>" >
+      <div class="field-unit__label">
+        <%= f.label :publish, t("manifold.admin.actions.publish")%>
+      </div>
+      <div class="field-unit__field">
+        <%= f.check_box :publish%>
+      </div>
+    </div>
+  <% end -%>
+  <div class="form-actions">
+    <%= f.submit %>
+  </div>
+<% end %>

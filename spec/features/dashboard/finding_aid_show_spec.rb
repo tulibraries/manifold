@@ -17,7 +17,7 @@ RSpec.feature "Dashboard::FindingAid", type: :feature do
     scenario "Display existing item show page" do
       login_as(@admin, scope: :account)
       visit("/admin/finding_aids/#{@finding_aid.id}")
-      expect(page).to have_text("library.temple.edu/finding_aids/#{@finding_aid.id}")
+      expect(page).to have_text("/finding_aids/#{@finding_aid.id}")
     end
   end
 

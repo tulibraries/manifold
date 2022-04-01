@@ -17,7 +17,7 @@ RSpec.feature "Dashboard::Group", type: :feature do
     scenario "Display existing item show page" do
       login_as(@admin, scope: :account)
       visit("/admin/groups/#{@group.id}")
-      expect(page).to have_text("library.temple.edu/groups/#{@group.id}")
+      expect(page).to have_text("/groups/#{@group.id}")
     end
   end
 

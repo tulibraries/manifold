@@ -137,7 +137,6 @@ RSpec.describe Group, type: :model do
   describe "version all fields" do
     at1 = ActionText::Content.new("Hello World")
     at2 = ActionText::Content.new("Goodbye, Cruel World")
-    # binding.pry
     fields = {
       name: ["The Text 1", "The Text 2"],
       description: [ActionText::Content.new("Hello World").to_html, ActionText::Content.new("Goodbye, Cruel World").to_html],

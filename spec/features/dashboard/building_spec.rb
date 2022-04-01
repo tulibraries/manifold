@@ -34,7 +34,7 @@ RSpec.feature "Dashboard::Building", type: :feature do
     scenario "Display existing item show page" do
       login_as(@admin, scope: :account)
       visit("/admin/buildings/#{@building.id}")
-      expect(page).to have_text("library.temple.edu/libraries/#{@building.id}")
+      expect(page).to have_text("/libraries/#{@building.id}")
     end
   end
 

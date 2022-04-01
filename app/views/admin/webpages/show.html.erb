@@ -1,0 +1,84 @@
+<%#
+# Show
+
+This view is the template for the show page.
+It renders the attributes of a resource,
+as well as a link to its edit page.
+
+## Local variables:
+
+- `page`:
+  An instance of [Administrate::Page::Show][1].
+  Contains methods for accessing the resource to be displayed on the page,
+  as well as helpers for describing how each attribute of the resource
+  should be displayed.
+
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
+%>
+
+<% content_for(:title) { t("administrate.actions.show_resource", name: page.page_title) } %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title">
+    <%= content_for(:title) %>
+  </h1>
+
+  <div>
+    <%= link_to(
+      t("administrate.actions.edit_resource", name: page.page_title),
+      [:edit, namespace, page.resource],
+      class: "button",
+    ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
+  </div>
+  <% if Rails.application.routes.url_helpers.method_defined?(page.resource.class.name.downcase + "_path") %>
+  <div>
+    <%= link_to(t("manifold.admin.actions.show_website"), page.resource, class: "button green")  %>
+  </div>
+  <% end %>
+</header>
+
+<section class="main-content__body">
+  <dl>
+    <% page.attributes.each do |attribute| %>
+    <% if attribute.name == "file_uploads" %>
+      <dt class="attribute-label" id="<%= attribute.name %>">
+        File Uploads
+      </dt>
+        <dd class="attribute-data attribute-data--file-uploads">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Weight</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% page.resource.items.each do |item| %>
+              <%= tag.tr do %>
+                <%= tag.td(item.file_upload.name, class: "item-label") %>
+                <%= tag.td(item.weight, class: "item-weight") %>
+                <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
+              <% end if item.file_upload.present? %>
+            <% end %>
+            </tbody>
+          </table>
+        </dd>
+    <% else %>
+      <dt class="attribute-label" id="<%= attribute.name %>">
+      <%= t(
+        "helpers.label.#{resource_name}.#{attribute.name}",
+        default: attribute.name.titleize,
+      ) unless attribute.attribute.to_s == "id" %>
+
+      <%= t("Permalink") if attribute.attribute.to_s == "id" %>
+      </dt>
+
+      <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
+        <%= render_field attribute, page: page unless attribute.attribute.to_s == "id" %>
+        <%= ["#{resource_name}".pluralize, "#{attribute.to_s}"].join("/") if attribute.attribute.to_s == "id" %>
+      </dd>
+    <% end %>
+    <% end %>
+  </dl>
+</section>

@@ -5,9 +5,9 @@
 	.navbar-light .navbar-nav .nav-link {
 		color: $white;
 		font-size:1.10rem;
-		font-family: "Roboto Condensed"!important;
+		font-family: "Roboto Bold"!important;
 		a {
-			font-family: "Roboto Condensed"!important;
+			font-family: "Roboto Bold"!important;
 		}
 	}
 	.nav-link, .nav-link:focus, .nav-link:hover {
@@ -32,7 +32,7 @@
 	display: inline-block;
 	position: relative;
 	z-index: 1;
-	font-family: "Roboto Condensed";
+	font-family: "Roboto";
 	.nav-container {
 		padding-left: 0;
 		padding-right: 0;
@@ -148,7 +148,7 @@
 	color: $white;
 	padding-top: 6px;
 	font-size: 1rem;
-	font-family: 'Roboto Condensed';
+	font-family: 'Roboto Bold';
 	a {
 		padding-left: 21px;
 		color: $white;

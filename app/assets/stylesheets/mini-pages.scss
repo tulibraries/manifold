@@ -46,7 +46,7 @@
 			padding-right: 21px;
 			color: $white;
 			font-size: 135%;
-			font-family: "Roboto Condensed";
+			font-family: "Roboto Bold";
 			@media (max-width: 1039px) {
 				font-size: 130%;
 			}
@@ -68,7 +68,7 @@
 			padding-right: 10px;
 		font-size: 135%;
 		color: $white;
-		font-family: "Roboto Condensed";
+		font-family: "Roboto Bold";
 		@media (max-width: 1039px) {
 			margin-bottom: 21px;
 		}
@@ -104,7 +104,7 @@
 		}
 		div.two-lines {
 			height: 79px!important;
-			font-family: "Roboto Condensed";
+			font-family: "Roboto Bold";
 			display: flex;
 			flex-direction: row;
 			flex-wrap: nowrap;
@@ -141,7 +141,7 @@
 			padding-right: 14px;
 			height: auto;
 			padding-bottom: 14px;
-			font-family: "Roboto Condensed";
+			font-family: "Roboto Bold";
 		}
 		hr {
 			background-color: $white;

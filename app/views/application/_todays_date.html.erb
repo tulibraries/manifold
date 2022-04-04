@@ -1,6 +1,3 @@
-<h2><%= t("manifold.header.todays_hours") %></h2>
-<strong>
-  <%= t("manifold.header.todays_hours_text", hours: @todays_hours.hours) unless @todays_hours.nil? %>
-</strong>
-<br />
+<span class="d-block"><%= t("manifold.header.todays_hours") %></span>
+<span class="d-block"><%= t("manifold.header.todays_hours_text", hours: @todays_hours.hours) unless @todays_hours.nil? %></span>
 <%= link_to t("manifold.header.all_hours"), hours_path %> >

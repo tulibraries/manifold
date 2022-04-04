@@ -33,32 +33,34 @@
 #header-navbar {
 	padding-bottom: 0;
 	padding-right: 0;
+  background-color: $red;
 	.col {
 		padding-left: 0;
 	}
 
 	.logo-container {
 		padding-left: 0;
+    color: $white;
 		@media (max-width: 640px) {
 			text-align: center;
 		}
-	}
-	.header-logo {
-	  max-width: 90px;
-	  max-height: 77px;
-	  min-width: 90px;
-	  min-height: 77px;
-	  vertical-align: bottom;
-		@media screen and (min-width: 450) and (max-width: 1039px) {
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-		@media screen and (max-width: 449px) {
-			vertical-align: top;
-		}
+    .header-logo {
+      max-width: 90px;
+      max-height: 77px;
+      min-width: 90px;
+      min-height: 77px;
+      vertical-align: bottom;
+      @media screen and (min-width: 450) and (max-width: 1039px) {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      @media screen and (max-width: 449px) {
+        vertical-align: top;
+      }
+    }
 	}
 	a.header-name, a.header-name:hover, a.header-name:focus {
-		color: #000;
+		color: $white;
 		font-size: 2.2rem;
 		font-family: "Faustina";
 		vertical-align: bottom;

@@ -1,140 +1,139 @@
 <div id="home">
-<div id="searchFields">
-	<%= render "page-search", view: "main" %>
-</div>
+  <div class="row">
+    <div class="col-12" id="searchFields">
+      <%= render "page-search", view: "main" %>
+    </div>
+  </div>
 
-<div class="col-12 d-block d-lg-none px-0" id="search-in-page">
-	<%= render "page-search", view: "minor" %>
-</div>
-<div class="container under">
-	<div class="row ctaRow">
-		<div class="col-12 col-lg-3 pr-3">
-	    <div class="cta-white">
-		    <%= link_to "/research-help", {class: "strong", id: "research-help"} do %>
-		      <%= image_tag('research_help.png', class: "decorative", alt: "") %> 
-			  <span><%= t("manifold.webpages.home.links.help.research") %></span>
-		    <% end %>
-	    </div>
-	  </div>
-		<div class="col-12 col-lg-3 pr-3">
-	    <div class="cta-white">
-		    <%= link_to "https://charlesstudy.temple.edu", {class: "strong", id: "study-space"} do %>
-		      <%= image_tag('study_room.png', class: "decorative", alt: "") %> 
-			  <span><%= t("manifold.webpages.home.links.help.reserve_study_space") %></span>
-		    <% end %>
-	    </div>
-	  </div>
-	  <div class="col-12 col-lg-3 pr-3">
-	    <div class="cta-white">
-		    <%= link_to category_path(@cta3), {class: "strong", id: "printing-computing"} do %>
-		      <%= image_tag('printer.png', class: "decorative", alt: "") %> 
-			  <span><%= t("manifold.webpages.home.links.help.printing_computing") %></span>
-		    <% end %>
-	    </div>
-	  </div>
-	  <div class="col-12 col-lg-3">
-	    <div class="cta-white">
-		    <%= link_to category_path(@cta4), {class: "strong", id: "online-resources"} do %>
-		      <%= image_tag('explore_charles.png', class: "decorative", alt: "") %> 
-			  <span><%= t("manifold.webpages.home.links.help.explore_charles") %></span>
-		    <% end %>
-	    </div>
-	  </div>
-	</div>
-</div>
+  <div class="lcs_slide_out">
+    <%= link_to t("manifold.default.chat"), "/sidebar", target: "_blank" %>
+  </div>
 
-<div id="hollywood-squares">
-	<div class="container">
-		<div class="row">
-			<div class="col-12 col-lg-3 catalog-search h-auto">
-				<div class="h-18 square">
-			    <%= link_to "#{librarysearch_url}/catalog", id: "books-media" do %>
-			      <%= image_tag('book_white.png', class: "icon decorative", alt: "") %> 
-				  <span><%= t("manifold.webpages.home.links.main.books") %></span>
-			    <% end %>
-				</div>
-				<div class="h-18 square">
-			    <%= link_to "#{librarysearch_url}/articles", id: "articles" do %>
-			      <%= image_tag('magazine_white.png', class: "icon decorative", alt: "") %> 
-				  <span><%= t("manifold.webpages.home.links.main.articles") %></span>
-			    <% end %>
-				</div>
-				<div class="h-18 square">
-			    <%= link_to "/databases", id: "databases" do %>
-			      <%= image_tag('database_white.png', class: "icon decorative", alt: "") %> 
-				  <span><%= t("manifold.webpages.home.links.main.databases") %></span>
-			    <% end %>
-				</div>
-        <div class="h-18 square">
-          <%= link_to "/research-guides", id: "research-guides" do %>
-            <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> 
-			<span><%= t("manifold.webpages.home.links.main.guides") %></span>
-          <% end %>
+  <div class="container">
+    <div class="col-12 d-block d-lg-none px-0" id="search-in-page">
+      <%= render "page-search", view: "minor" %>
+    </div>
+
+    <div class="under">
+      <div class="row ctaRow">
+        <div class="col-12 col-lg-3 pr-3">
+          <div class="cta-white">
+            <%= link_to "/research-help", {class: "strong", id: "research-help"} do %>
+            <span><%= t("manifold.webpages.home.links.help.research") %></span>
+            <% end %>
+          </div>
         </div>
-        <div class="h-18 square bb-0">
-          <%= link_to "/journal-finder", id: "journal-finder" do %>
-            <%= image_tag('journal_finder.png', class: "icon decorative", alt: "") %> 
-			<span><%= t("manifold.webpages.home.links.main.journals") %></span>
-          <% end %>
+        <div class="col-12 col-lg-3 pr-3">
+          <div class="cta-white">
+            <%= link_to "https://charlesstudy.temple.edu", {class: "strong", id: "study-space"} do %>
+            <span><%= t("manifold.webpages.home.links.help.reserve_study_space") %></span>
+            <% end %>
+          </div>
         </div>
-				<div class="caption">
-					<%= link_to t("manifold.webpages.home.links.main.collections_search"), librarysearch_url, {class: "price", id: "collections-search"} %>
-				</div>
-			</div>
-			<div class="col-12 col-lg-6 px-0 px-lg-5 news-events">
-				<div class="events">
-			    <%= link_to events_path, id: "events" do %>
-			      <%= image_tag('homepage-events.jpg', class: "d-none d-lg-block decorative", alt: "") %>
-			      <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
-			      <div class="caption" id="eventscaption">
-							<span class="lynde"><%= t("manifold.webpages.home.links.main.events") %></span>
-						</div>
-			    <% end %>
-				</div>
-				<div class="quicklinks">
-					<div class="d-block d-lg-none quicklinks-caption">
-						<%= "Quick Links" %>
-					</div>
-					<ul class="list-unstyled">
-						<li class="quicklinks-link"><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
-						<li class="quicklinks-link"><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
-						<li class="quicklinks-link"><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
-					</ul>
-					<div class="d-none d-lg-block quicklinks-caption text-right pr-4 pt-2">
-						<%= "Quick Links" %>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-lg-3 locations-links px-0">
-				<div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.charles"), "/explore-charles", id: "charles-library" %></div>
-				<div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.hsl"), webpages_hsl_path, id: "hsl" %></div>
-				<div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.lcdss"), webpages_lcdss_path, {id: "lcdss"} %></div>
-				<div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.blockson"), webpages_blockson_path, id: "blockson" %></div>
-				<div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.scrc"), webpages_scrc_path, {id: "scrc"} %></div>
-				<div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.law"), "/law-library", id: "law" %></div>
-				<div class="h-10 bb-0"><%= link_to "Center for Scholarly Communication & Open Publishing", webpages_scop_path, id: "scop" %></div>
-				<div class="caption caption-right">
-					<%= link_to(t("manifold.webpages.home.links.main.locations.all"), "/all-locations", {class: "gobel", id: "all-locations"}) %>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-</div>
+        <div class="col-12 col-lg-3 pr-3">
+          <div class="cta-white">
+            <%= link_to category_path(@cta3), {class: "strong", id: "printing-computing"} do %>
+            <span><%= t("manifold.webpages.home.links.help.printing_computing") %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3">
+          <div class="cta-white">
+            <%= link_to category_path(@cta4), {class: "strong", id: "online-resources"} do %>
+            <span><%= t("manifold.webpages.home.links.help.explore_charles") %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div id="news-events">
-	<div class="container">
+    <div id="hollywood-squares" class="container">
+      <div class="row">
+        <div class="col-12 col-lg-3 catalog-search h-auto">
+          <div class="h-18 square">
+            <%= link_to "#{librarysearch_url}/catalog", id: "books-media" do %>
+              <%= image_tag('book_white.png', class: "icon decorative", alt: "") %> 
+            <span><%= t("manifold.webpages.home.links.main.books") %></span>
+            <% end %>
+          </div>
+          <div class="h-18 square">
+            <%= link_to "#{librarysearch_url}/articles", id: "articles" do %>
+              <%= image_tag('magazine_white.png', class: "icon decorative", alt: "") %> 
+            <span><%= t("manifold.webpages.home.links.main.articles") %></span>
+            <% end %>
+          </div>
+          <div class="h-18 square">
+            <%= link_to "/databases", id: "databases" do %>
+              <%= image_tag('database_white.png', class: "icon decorative", alt: "") %> 
+            <span><%= t("manifold.webpages.home.links.main.databases") %></span>
+            <% end %>
+          </div>
+          <div class="h-18 square">
+            <%= link_to "/research-guides", id: "research-guides" do %>
+              <%= image_tag('guides_white.png', class: "icon decorative", alt: "") %> 
+              <span><%= t("manifold.webpages.home.links.main.guides") %></span>
+            <% end %>
+          </div>
+          <div class="h-18 square bb-0">
+            <%= link_to "/journal-finder", id: "journal-finder" do %>
+              <%= image_tag('journal_finder.png', class: "icon decorative", alt: "") %> 
+              <span><%= t("manifold.webpages.home.links.main.journals") %></span>
+            <% end %>
+          </div>
+          <div class="caption">
+            <%= link_to t("manifold.webpages.home.links.main.collections_search"), librarysearch_url, {class: "price", id: "collections-search"} %>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 px-0 px-lg-3 news-events">
+          <div class="events">
+            <%= link_to events_path, id: "events" do %>
+              <%= image_tag('homepage-events.jpg', class: "d-none d-lg-block decorative", alt: "") %>
+              <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
+              <div class="caption" id="eventscaption">
+                <span class="lynde"><%= t("manifold.webpages.home.links.main.events") %></span>
+              </div>
+            <% end %>
+          </div>
+          <div class="quicklinks">
+            <div class="d-block d-lg-none quicklinks-caption">
+              <%= "Quick Links" %>
+            </div>
+            <ul class="list-unstyled">
+              <li class="quicklinks-link"><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
+              <li class="quicklinks-link"><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
+              <li class="quicklinks-link"><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
+            </ul>
+            <div class="d-none d-lg-block quicklinks-caption text-right pr-4">
+              <%= "Quick Links" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 locations-links px-0">
+          <div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.charles"), "/explore-charles", id: "charles-library" %></div>
+          <div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.hsl"), webpages_hsl_path, id: "hsl" %></div>
+          <div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.lcdss"), webpages_lcdss_path, {id: "lcdss"} %></div>
+          <div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.blockson"), webpages_blockson_path, id: "blockson" %></div>
+          <div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.scrc"), webpages_scrc_path, {id: "scrc"} %></div>
+          <div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.law"), "/law-library", id: "law" %></div>
+          <div class="h-20 two-lines"><%= link_to "Center for Scholarly Communication & Open Publishing", webpages_scop_path, id: "scop" %></div>
+          <div class="caption caption-right">
+            <%= link_to(t("manifold.webpages.home.links.main.locations.all"), "/all-locations", {class: "gobel", id: "all-locations"}) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<h2>Events</h2>
-		<div class="row home-events-row">
-		<%= render "events" %>
-		</div>
+  <div id="news-events">
+    <div class="container">
+      <h2>Events</h2>
+      <div class="row home-events-row">
+      <%= render "events" %>
+      </div>
 
-
-	<h2 class="news">Library News</h2>
-		<div class="row home-news-row">
-		<%= render "featured" %>
-		</div>	
-	</div>
-</div>
+      <h2 class="news">Library News</h2>
+      <div class="row home-news-row">
+        <%= render "featured" %>
+      </div>	
+    </div>
+  </div>

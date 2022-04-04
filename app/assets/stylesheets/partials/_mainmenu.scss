@@ -142,18 +142,6 @@
 	}
 }
 
-#toolbar {
-	height: 35px;
-	background-color: $grey;
-	color: $white;
-	padding-top: 6px;
-	font-size: 1rem;
-	font-family: 'Roboto Bold';
-	a {
-		padding-left: 21px;
-		color: $white;
-	}
-}
 a.multiples::after {
   content: "\203A";
   font-size: large;

@@ -17,12 +17,13 @@ html, body {
 	position: static;
 	overflow: scroll;
 	font-family: "Roboto";
+  color: $black;
 }
 #wrapper {
-	background-color: $white;
+	background-color: $red;
 	position: relative;
 	z-index: 100;
-	margin-top: 14px;
+	padding-top: 14px;
 }
 h1 {
 	margin-top:14px;
@@ -65,9 +66,9 @@ strong, .strong {
 }
 
 a:not(.dropdown-item) {
-		color: #903;
+		color: $red;
 	a:active, a:hover, a:visited {
-		color: #903;
+		color: $red;
 	}
 }
 a.inline {

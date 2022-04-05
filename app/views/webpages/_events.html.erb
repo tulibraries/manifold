@@ -1,14 +1,20 @@
 <% @featured_events.each do |event| %>
     <div class="col-12 col-md-4 library-event">
+
+			<% if event.image.attached?  %>
+			<%= link_to (image_tag event.custom_image(350, 250), class: "decorative", alt: ""), event_path(event.friendly_id) %>
+			<% end %>
+
       <%= link_to event.title, event_path(event.id), class: "event-title" %>
       
-      <p class="event-date"><%= event.get_date %></p>
-      
-      <p><%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %></p>
+      <p class="event-date">
+        <span class="d-block"><%= event.get_date %></span>
+        <%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %>
+      </p>
 
     </div>
   <% end %>
 
-  <div class="col-12 text-right pr-5">
+  <div class="col-12 text-right px-0">
     <%= link_to "View all events", events_path, class: "view-all-events" %>
   </div>

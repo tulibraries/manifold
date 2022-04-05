@@ -443,6 +443,9 @@
 }
 #news-events {
   background-color: $royal-blue;
+  @media screen and (min-width: 1599px) {
+    padding-bottom: 60px;
+  }
 	h2 {
 		font-size:300%;
 		margin-bottom: 0;
@@ -526,11 +529,15 @@
   }
 }
   #diagonal {
+    background-color: $white;
     position: relative;
     top: -35px;
-    background-color: $white;
-    height: 70px;
+    height: 91px;
     transform: skewY(-2.5deg);
+    @media screen and (min-width: 1599px) {
+      top: -64px;
+      height: 127px;
+    }
   }
 
 .quicklinks {

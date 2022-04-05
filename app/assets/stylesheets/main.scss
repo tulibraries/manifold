@@ -16,18 +16,21 @@ html, body {
 	width: 100%;
 	position: static;
 	overflow: scroll;
+	font-family: "Roboto";
+  color: $black;
 }
 #wrapper {
-	background-color: $white;
+	background-color: $red;
 	position: relative;
 	z-index: 100;
-	margin-top: 14px;
+	padding-top: 14px;
 }
 h1 {
 	margin-top:14px;
 	font-size: 220%;
 	margin-bottom: 21px;
-	font-family: "Roboto Condensed";
+	font-family: "Faustina";
+  font-weight: 800;
 }
 h1.page-title {
 	margin-top: 0;
@@ -37,18 +40,16 @@ h1.page-title {
 }
 h2 {
 	font-size: 160%;
-	font-family: "Roboto Condensed";
 }
 h3 {
 	font-size: 125%;
 	}
 h4,h5,h6 {
 	font-size: 100%;
-	font-family: "Roboto Condensed";
 }
 
 strong, .strong {
-	font-family: 'Faustina';
+	font-family: 'Roboto Bold';
 }
 
 .flash {
@@ -58,16 +59,16 @@ strong, .strong {
 	text-align: center;
 	margin-bottom: 0;
 	color: black;
-	font-family: "Roboto Condensed";
+	font-family: "Roboto";
 	.error {
 		color: $red;
 	}
 }
 
 a:not(.dropdown-item) {
-		color: #903;
+		color: $red;
 	a:active, a:hover, a:visited {
-		color: #903;
+		color: $red;
 	}
 }
 a.inline {

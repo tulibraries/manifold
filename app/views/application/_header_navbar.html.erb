@@ -1,63 +1,35 @@
-
-  <div id="toolbar" class="d-none d-md-block">
-    <div class="container text-right">
-        <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu" %>
-        <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
-    </div>
-  </div>
-
-<div id="header-navbar" class="container navbar navbar-static-top d-print-block" role="navigation">
-  <div class="col-8 col-sm-7 col-lg-4 logo-container text-left ">
-    <%= link_to root_path, class: "header-name", id: "header-logo" do %>
-      <%= image_tag('temple-logo-t-box.svg', class: "header-logo", alt: "") %> 
-      <span><%= t("manifold.default.application.header_navbar.logo_tag") %></span>
-    <% end %>
-  </div>
-
-<% unless action_name == "home" %>
-  <div id="header-search" class="col-12 col-sm-5 col-lg-5 d-none d-lg-block text-right d-print-none">
-    <%= render "header-search" %>
-  </div>
-<% else %>
-
-  <% unless @header_alert.nil? %>
-
-    <div class="col-12 col-sm-5 col-lg-4 offset-lg-1 text-center d-none d-lg-block d-print-none covid-alert home">
-      <strong><%= t("manifold.default.covid_alert") %></strong>
-      <%= link_to @header_alert.scroll_text.truncate(55, separator: ' ', omission: ''), @header_alert.link %>
+<div id="header-navbar" class="row navbar navbar-static-top d-print-block mx-0" role="navigation">
+  <div class="container pl-0">
+    <div class="col-8 col-sm-7 col-lg-4 logo-container text-left">
+      <%= link_to root_path, class: "header-name", id: "header-logo" do %>
+        <%= image_tag('temple-logo-t-box.svg', class: "header-logo", alt: "") %> 
+        <span><%= t("manifold.default.application.header_navbar.logo_tag") %></span>
+      <% end %>
     </div>
 
-    <div id="todays-date" class="col-12 col-sm-5 col-lg-3 text-left d-lg-block d-none d-print-none">
-      <div class="inner-date">
+  <% if action_name == "home" %>
+    <div id="todays-date" class="col-12 col-sm-5 col-lg-3 text-left d-print-none">
+      <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu", class: "pr-3" %>
+      <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
+      <div class="inner-date mt-2">
         <%= render "todays_date" %>
       </div>
     </div>
-
-    <div id="todays-date" class="col-12 col-sm-5 d-lg-none text-left d-print-none">
-      <div class="inner-date">
-        <%= render "todays_date" %>
-      </div>
-    </div>
-
   <% else %>
-
-    <div id="todays-date" class="col-12 col-sm-5 col-lg-4 text-left d-print-none">
-      <div class="inner-date">
-        <%= render "todays_date" %>
-      </div>
+    <div id="header-search" class="col-12 col-sm-5 col-lg-5 d-none d-lg-block text-right d-print-none">
+      <%= render "header-search" %>
     </div>
-
   <% end %>
-<% end %>
 
-  <div class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right d-print-none">
-    <button id="mobile-search-button" class="navbar-toggler icon-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
-    <span class="navbar-toggler-icon" id="search-toggler-icon">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </span>
-  </button>
+    <div class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right d-print-none">
+      <button id="mobile-search-button" class="navbar-toggler icon-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
+      <span class="navbar-toggler-icon" id="search-toggler-icon">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </span>
+    </button>
+    </div>
   </div>
 </div>
 

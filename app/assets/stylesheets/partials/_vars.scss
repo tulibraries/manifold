@@ -1,6 +1,5 @@
 // Colors
-$red: #A41e35;
-$aged-red: #951936;
+$red: #A32035;
 $cinnamon: #f7d1d1;
 $tan: #f1efe7;
 $black: #000;
@@ -8,14 +7,12 @@ $white: #fff;
 $grey: #333;
 $light-grey: #ccc;
 $lightest-grey: #eee;
-$lighter-grey: #F0F0F0;
-$royal-blue: #001E61;
 $dark-grey: #444;
 $med-grey: #666;
 $background-grey: #eee;
 $green: #2f287e;
-$seagreen: #A41e35;
-$seagreen-dark: #A41e35;
+$seagreen: $red;
+$seagreen-dark: $red;
 $seagreen-complement: #c7e5e0;
 $seagreen-on-grey: #1f9584;
 $foamgreen: #2f287e;
@@ -33,4 +30,11 @@ $saffron: #fdf5c2;
 $footer-grey: #a3a3a3;
 $footer-gray: #525353;
 $footer-dark-gray: #403f3f;
+
+// new styles
+
+$red: #A32035;
+$lighter-grey: #F0F0F0;
 $new-gold: #CCA969;
+$royal-blue: #001E61;
+$crystal-blue: #D4E9F2;

@@ -1,43 +1,51 @@
 @import "_vars.scss";
 
 #site-footer {
-	background-color: $footer-gray;
-	border-top: solid #303030 0;
-	color:#fff!important;
+	// background-color: $footer-gray;
+	// border-top: solid #303030 0;
+	// color:#fff!important;
 	width: 100%;
-	color: #666;
-	margin-top: 42px;
+	color: $black;
+  font-family: "roboto light";
+	// margin-top: 42px;
 	.row {
 		margin-left: 0;
 		margin-right: 0; 
 	}
 	a {
-		color: $light-grey;
+		color: $black;
 	}
 	.tu-links {
 		border-top: solid #303030 0;
-		color: $light-grey;
-		padding: 24px 0 56px 0;
+		color: $black;
+		padding: 24px 0px 56px 7px;
 		clear:both;
+    font-size: 1.35rem;
 		h2 {
-			font-family: "Faustina"!important;
+			font-family: "Roboto";
 			font-size: 125%;
 			margin-bottom: 14px;
 		}
 		ul {
 			margin-bottom: 0;
 			li {
-				/*line-height: .85rem;*/
 				text-decoration: none;
 				/*font-size: 90%;*/
-				color: $light-grey;
+				color: $black;
 				padding-left: 0;
 				a {
-					color: $light-grey;
+					color: $black;
 				}
 			}
 		}
 		.address {
+      line-height: 3rem;
+      .street-address {
+        font-family: "roboto";
+        font-weight: 600;
+				line-height: 2rem;
+        letter-spacing: 1.25px;
+      }
 			@media (max-width: 1040px) {
 				border-top: solid $white 1px;
 				margin-top: 14px;
@@ -49,18 +57,19 @@
 
 a.donate {
 	vertical-align: middle;
-	padding: 7px;
+	padding: 10px 14px;
 	position: relative;
 	top: 17px;
 	left: 0;
-	background-color: $white;
-	color: $red!important;
-	font-family: "Roboto Bold";
+	background-color: $crystal-blue;
+	color: $royal-blue !important;
+	font-family: "faustina bold";
+  font-weight: 600;
 	font-size: 20px;
-	border-radius: 7px;
+  box-shadow: 0px 2px 5px $light-grey;
 }
 .social {
-	border-bottom: solid $white 1px;
+	background-color: $lighter-grey;
 	.social-link {
 		a:hover {
 			text-decoration: none;

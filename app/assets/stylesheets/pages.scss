@@ -107,6 +107,7 @@
 			display: inline-block;
 		}
 	}
+
   #searchFields {
 		background: transparent asset-data-url('charles.jpg') no-repeat 0% 0%;
 		background-position: 0 75%;
@@ -223,11 +224,13 @@
 			}
 		}
 	}
+
 	.container.under {
 		@media screen and (max-width: 1040px) {
 			padding: 0;
 		}
 	}
+
 	.row.ctaRow {
 		padding-bottom: 35px;
 		@media screen and (max-width: 1039px) {
@@ -257,13 +260,13 @@
 				padding-bottom: 14px;
 				text-align: center;
 				a {
-					color: $black;
 					font-size: 135%;
 					padding-left: 0;
 				}
 			}
 		}
 	}
+
 	#hollywood-squares {
 		padding-top: 35px;
 		padding-bottom: 35px;
@@ -287,53 +290,49 @@
 			background-color: $crystal-blue;
 			height:45px;
 			text-align: center;
+      @media screen and (min-width: 0) and (max-width: 1039px) {
+        margin-top: 0;
+        padding: 8px 7px 8px 14px;
+        text-align: left;
+        font-size: 125%;
+      }
 			a {
         font-family: "faustina bold";
-        font-size: 125% !important;
-			}
-			a.price, a.gobel {
+        font-size: 1.25rem;
 				padding-top: 8px;
 				padding-right: 21px;
 				float: right;
+        @media screen and (min-width: 0) and (max-width: 1039px) {
+          color: $royal-blue;
+          float: none;
+          text-align: left;
+        }
 			}
 		}
-    #eventscaption {
-      box-shadow: 0px 2px 5px $light-grey;
-    }
-		.catalog-search {
-			padding: 0;
-			.square  {
-				height: 100%;
-				padding-top: 3%;
-				@media screen and (max-width: 1039px) {
-					padding-top: 0;
-					padding-left: 5%;
-				}
-			}
-      div.square:nth-child(odd) {
-        background-color: $lighter-grey;
-      }
-			.caption {
-				position: relative;
-        top: 14px;
-			}
-		}
-    .h-18.bb-0 {
-      @media (max-width: 1040px) {
-        height: 17%!important;
+    .caption.no-link {
+      @media screen and (min-width: 0) and (max-width: 1039px) {
+        background-color: $black !important;
+        color: $white;
+        a {
+          color: $white !important;
+        }
       }
     }
-		.news-events {
+    
+		.center-column {
 			@media screen and (max-width: 1039px) {
 				background-color: $white;
 			}
-			.caption {
-				@media screen and (max-width: 1039px) {
+			.events .caption {
+        color: $royal-blue;
+        box-shadow: 0px 2px 5px $light-grey;
+				@media screen and (min-width: 0) and (max-width: 1039px) {
+          box-shadow: none;
 					display: inline-block;
-					background-color: $crystal-blue;
+					background-color: $white;
 					text-align: left;
 					height: 4.5rem;
-					padding-top: 17px;
+					padding-top: 10px;
 					padding-bottom: 14px;
 				}
 			}
@@ -360,15 +359,68 @@
 					}
 				}
 			}
-			.lynde {
-					position: relative;
-					top: 7px;
-					color: $royal-blue;
-			}
+      .quicklinks {
+        position: relative;
+        top: 12px;
+        background-color: #fff;
+        height: 216px;
+        max-height: 216px;
+        font-family: Roboto;
+        @media screen and (min-width: 0) and (max-width: 1039px){
+          top: 0;
+          height: auto;
+          max-height: 1000px;
+        }
+        ul {
+          padding:0px 14px;
+          margin-bottom: 14px;
+          line-height: 2.75rem;
+          li {
+            @media screen and (max-width: 1039px) {
+              padding-left:63px;
+            }
+          }
+        }
+        .quicklinks-link {
+          padding-top: 21px;
+          border-bottom: solid #ccc 1px;
+          @media screen and (max-width: 1039px) {
+            padding-left: 4%;
+          }
+          a {
+            font-size: 140%!important;
+            color: $royal-blue;
+          }
+        }
+        .quicklinks-link:last-of-type {
+          border-bottom: 0;
+        }
+      }
 		}
+
+		.catalog-search {
+			padding: 0;
+			.square  {
+				height: 100%;
+				padding-top: 3%;
+				@media screen and (max-width: 1039px) {
+					padding-top: 0;
+					padding-left: 5%;
+				}
+			}
+      div.square:nth-child(odd) {
+        background-color: $lighter-grey;
+      }
+		}
+
 		.locations-links {
       div:nth-child(odd) {
         background-color: $lighter-grey;
+      }
+      div:last-of-type {
+        @media screen and (max-width: 1039px) {
+          background-color: $crystal-blue !important;
+        }
       }
 			div.h-10, div.h-20 {
 				height: 10%;
@@ -388,68 +440,25 @@
 					padding-bottom: 2%;
 				}
 			}
-			a {
-				font-size: 110%;
-			}
-			.caption {
-        position: relative;
-				top: 14px;
-				@media screen and (max-width: 1039px) {
-					top: 0px;
-				}
-			}
 		}
+
+    .h-18.bb-0 {
+      @media (max-width: 1040px) {
+        height: 17%!important;
+      }
+    }
 	}
 }
 
-.access-link {
-	background-color: $foamgreen;
-	padding: 14px;
-	border-radius: 7px;
-	margin-bottom: 17px;
-	a {
-		color: $white;
-		text-decoration: underline;
-	}
-	h2 {
-		margin-bottom: 3px;
-	}
-	@media (max-width: 950px) {
-		width: 95%;
-	}
-}
-
-.minipage .left-links .covid-alert {
-  padding: 14px;
-}
-.library-news-caption {
-	font-family: roboto;
-	a {
-	display: inline-block;
-	margin-top: 14px;
-	font-size: 1.25rem;
-	font-weight:600;
-	}
-	.unnecessary-link a.read-more {
-		display: inline-block;
-		float: right;
-		margin-right: 28px;
-		padding: 7px 10px;
-		background-color: $black;
-		color: $white;
-		font-size: 1rem;
-		letter-spacing: .15rem;
-	}
-}
 #news-events {
   background-color: $royal-blue;
   @media screen and (min-width: 1599px) {
     padding-bottom: 60px;
   }
-	h2 {
-		font-size:300%;
-		margin-bottom: 0;
-		padding-top: 42px;
+  h2 {
+    font-size:300%;
+    margin-bottom: 0;
+    padding-top: 42px;
     color: $white;
     font-family: "roboto";
     text-transform: uppercase;
@@ -457,7 +466,7 @@
     @media screen and (max-width: 1039px) {
       margin-top: 14px;
     }
-	}
+  }
   .home-events-row {
     margin-bottom: 21px;
     color: $white;
@@ -501,6 +510,9 @@
     }
     .library-news {
       padding: 35px 14px;
+      @media screen and (max-width: 1039px) {
+        padding: 7px 14px;
+      }
       .news-item {
         height: 100%;
         border: solid $new-gold 2px;
@@ -528,60 +540,36 @@
     padding-left: 14px;
   }
 }
-  #diagonal {
-    background-color: $white;
-    position: relative;
-    top: -35px;
-    height: 91px;
-    transform: skewY(-2.5deg);
-    @media screen and (min-width: 1599px) {
-      top: -64px;
-      height: 127px;
-    }
-  }
 
-.quicklinks {
-	position: relative;
-  top: 12px;
-	background-color: #fff;
-	height: 216px;
-	max-height: 216px;
-	font-family: Roboto;
-	ul {
-		padding:0px 14px;
-		margin-bottom: 14px;
-		line-height: 2.75rem;
-    li {
-      @media screen and (max-width: 1039px) {
-        padding-left:63px;
-      }
-    }
+.access-link {
+	background-color: $foamgreen;
+	padding: 14px;
+	border-radius: 7px;
+	margin-bottom: 17px;
+	a {
+		color: $white;
+		text-decoration: underline;
 	}
-	.quicklinks-link {
-		padding-top: 21px;
-		border-bottom: solid #ccc 1px;
-		a {
-			font-size: 140%!important;
-			color: $royal-blue;
-		}
+	h2 {
+		margin-bottom: 3px;
 	}
-	.quicklinks-link:last-of-type {
-		border-bottom: 0;
+	@media (max-width: 950px) {
+		width: 95%;
 	}
-	.quicklinks-caption {
-		background-color: $crystal-blue;
-		height: 45px;
-		color: $royal-blue;
-    font-family: "faustina bold";
-    font-size: 125%;
-		padding-top: 8px;
-		padding-left: 7px;
-		@media screen and (max-width: 1039px) {
-			background-color: $black;
-			height: 45px;
-			margin-top: 0;
-			padding-right: 7px;
-      padding-left:49px;
-		}
-	}
+}
+
+.minipage .left-links .covid-alert {
+  padding: 14px;
+}
+
+#diagonal {
+  background-color: $white;
+  position: relative;
+  top: -35px;
+  height: 91px;
+  transform: skewY(-2.5deg);
+  @media screen and (min-width: 1599px) {
+    top: -64px;
+    height: 127px;
+  }
 }

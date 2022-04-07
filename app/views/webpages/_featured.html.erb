@@ -1,6 +1,6 @@
 <% unless @news_items.nil? %>
   <% @news_items.each do |item| %>
-		<div class="col-12 col-lg-4 mb-3 library-news">
+		<div class="col-12 col-md-6 col-lg-4 mb-3 library-news">
       <div class="news-item">
         <div class="news-item-caption">
           <%= link_to item.label.truncate(52), strip_tags(item.link) %>

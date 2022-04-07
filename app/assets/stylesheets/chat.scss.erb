@@ -12,24 +12,24 @@
 }
 .lcs_slide_out a, .lcs_slide_out a:hover {
   display:block;
-  text-align: left;
-  padding: 2px 0 0 12px;
+  text-align: right;
+  padding: 12px 21px;
   position: absolute;
   background-image: url(<%= asset_path "chat.png" %>);
-  background-position: right center;
+  background-position: center left;
   background-repeat: no-repeat;
   background-size: 42px 49px;
   font-size: 1.55rem;
-  font-family: "Faustina";
-  width: 110px;
-  height: 50px;
+  font-family: "Roboto";
+  width: 120px;
+  height: 64px;
   color: $white!important;
-  background-color: rgb(47, 40, 126);
-  box-shadow: rgb(204, 204, 204) 0px 0px 5px;
-  border: solid $white 4px;
-  border-width: 0 4px 4px!important;
-  border-radius: 0 0 4px 4px!important;
-  border-color: $white!important;
+  background-color: $royal-blue;
+  <%# box-shadow: rgb(204, 204, 204) 0px 0px 5px; %>
+  border: 0;
+  border-bottom: solid $new-gold 3px;
+  <%# border-width: 0 4px 4px!important; %>
+  <%# border-radius: 0 0 4px 4px!important; %>
   cursor: hand;
   text-decoration: none;
 }

@@ -135,12 +135,12 @@
 			input[type="submit"] {
 				height: 60px;
 				width: 60px;
-				background-color: $foamgreen;
+				background-color: $royal-blue;
 				background-image:asset-data-url('search.png');
 				background-position: center center;
 				background-repeat: no-repeat;
 				background-size: 42px 42px;
-				border: solid $foamgreen 1px;
+				border: solid $royal-blue 1px;
 				position: relative;
 				top: 23px;
 				@media screen and (min-width: 0) and (max-width: 1039px) {
@@ -349,6 +349,7 @@
 				background-color: $white;
 			}
 			.events .caption {
+        padding-top: 7px;
         color: $royal-blue;
         box-shadow: 0px 2px 5px $light-grey;
         font-size: 1.35rem;

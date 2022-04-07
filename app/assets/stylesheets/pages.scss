@@ -270,26 +270,31 @@
 	#hollywood-squares {
 		padding-top: 35px;
 		padding-bottom: 35px;
+
 		@media screen and (max-width: 1039px) {
 			padding-top: 0;
 			padding-bottom: 0;
 		}
+
 		a {
 			color: $royal-blue;
-			font-size: 145%;
+			font-size: 110%;
       font-family: "Roboto Light";
 		}
+
 		img.icon {
 			width: 68px;
       position:relative;
       top: -3px;
 		}
+
 		.caption {
       font-family: "faustina bold";
 			color: $royal-blue;
 			background-color: $crystal-blue;
 			height:45px;
 			text-align: center;
+      font-size: 1.25rem;
       @media screen and (min-width: 0) and (max-width: 1039px) {
         margin-top: 0;
         padding: 8px 7px 8px 14px;
@@ -309,7 +314,9 @@
         }
 			}
 		}
+
     .caption.no-link {
+      padding-top: 8px;
       @media screen and (min-width: 0) and (max-width: 1039px) {
         background-color: $black !important;
         color: $white;
@@ -318,7 +325,25 @@
         }
       }
     }
-    
+
+		.catalog-search {
+			padding: 0;
+			.square  {
+				height: 100%;
+				padding-top: 3%;
+        a {
+          font-size: 145%;
+        }
+				@media screen and (max-width: 1039px) {
+					padding-top: 0;
+					padding-left: 5%;
+				}
+			}
+      div.square:nth-child(odd) {
+        background-color: $lighter-grey;
+      }
+		}
+
 		.center-column {
 			@media screen and (max-width: 1039px) {
 				background-color: $white;
@@ -326,6 +351,7 @@
 			.events .caption {
         color: $royal-blue;
         box-shadow: 0px 2px 5px $light-grey;
+        font-size: 1.35rem;
 				@media screen and (min-width: 0) and (max-width: 1039px) {
           box-shadow: none;
 					display: inline-block;
@@ -373,7 +399,7 @@
         }
         ul {
           padding:0px 14px;
-          margin-bottom: 14px;
+          margin-bottom: 0;
           line-height: 2.75rem;
           li {
             @media screen and (max-width: 1039px) {
@@ -398,23 +424,8 @@
       }
 		}
 
-		.catalog-search {
-			padding: 0;
-			.square  {
-				height: 100%;
-				padding-top: 3%;
-				@media screen and (max-width: 1039px) {
-					padding-top: 0;
-					padding-left: 5%;
-				}
-			}
-      div.square:nth-child(odd) {
-        background-color: $lighter-grey;
-      }
-		}
-
 		.locations-links {
-      div:nth-child(odd) {
+      div:nth-child(even) {
         background-color: $lighter-grey;
       }
       div:last-of-type {
@@ -443,7 +454,7 @@
 		}
 
     .h-18.bb-0 {
-      @media (max-width: 1040px) {
+      @media (max-width: 1039px) {
         height: 17%!important;
       }
     }

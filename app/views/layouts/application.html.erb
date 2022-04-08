@@ -33,6 +33,9 @@
        <div class="flash <%= key %>"><%= value %></div>
     <% end %>
 
+
+  <%= render "covid_alert" if @covid_alert.present? %>
+
   <%= render "header_navbar" %>
 
   <div id="content">

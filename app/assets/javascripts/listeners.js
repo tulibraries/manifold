@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  x = $('#header-navbar').offset();
+  x = $('.container.nav-container').offset();
   x2 = $('#visitMenuButton').offset();
   x3 = $('#researchMenuButton').offset();
 
@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function() {
 });
 
 $(document).ready(function(){
-
+  // wpvi
   $("#nav-sec21a-tab").click(function() {
     $('html, body').animate({
         scrollTop: $("#nav-tabs").offset().top
@@ -54,6 +54,7 @@ $(document).ready(function(){
         scrollTop: $("#nav-tabs").offset().top
     }, 1000);
   });
+  // end wpvi
 
   setTimeout(function(){
     $('form#main-search').on('keypress', function (evt) {

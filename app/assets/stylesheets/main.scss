@@ -23,7 +23,7 @@ html, body {
 	background-color: $red;
 	position: relative;
 	z-index: 100;
-	padding-top: 14px;
+	padding-top: 21px;
 }
 h1 {
 	margin-top:14px;
@@ -153,13 +153,7 @@ marquee {
 	background-color: #e5edf8;
   color: $royal-blue;
   font-size: 1.35rem;
-	padding: 21px 0 0 0;
-  strong {
-    font-family: 'Roboto';
-    font-weight: 900;
-    display: block;
-    text-align: center;
-  }
+	padding: 21px 0 14px 0;
   p {
     display: block;
     padding-left: 7px;

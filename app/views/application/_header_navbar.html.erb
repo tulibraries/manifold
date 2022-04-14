@@ -34,6 +34,26 @@
 </div>
 
 <div id="wrapper">
+
+  <% unless @alert.blank? %>
+  <div id="header" class="row mx-0">
+    <div class="container">
+      <div class="col">
+          <%= image_tag "information.png", class: "decorative", alt: "" , style: "display:inline-block;height:42px;float:left;margin-right:10px" %>
+          <div>
+          <% @alert.each do |alert| %>
+            <% unless alert.link.blank? %>
+              <%= alert.scroll_text %> <%= link_to t("manifold.default.application.header_navbar.scroll_text"), alert.link %>
+            <% else %>
+              <%= alert.scroll_text %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div> <!-- #header -->
+  <% end %>
+
   <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
     <%= render "main-menu" %>
   </div>

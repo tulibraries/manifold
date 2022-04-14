@@ -4,6 +4,27 @@
 	display:none;
 }
 
+#header {
+	color: #000;
+	max-width: 100%;
+	font-size: 1.25rem;
+	font-family: "Roboto";
+	img {
+		position: relative;
+		top: -5px;
+	}
+	.container {
+	  background-color: #F8EBD5;
+		padding: 17px;
+		height: auto;
+		vertical-align: middle;
+		a {
+			text-decoration: underline;
+		}
+	}
+}
+
+
 #mobile-search-container {
 	nav.navbar {
 		padding: 0;

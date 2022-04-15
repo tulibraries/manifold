@@ -6,7 +6,6 @@ class WebpagesController < ApplicationController
   include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
-  before_action :header_alert, only: [:home, :scrc, :blockson, :tudsc, :scop, :hsl]
   before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
 
   def wpvi
@@ -128,10 +127,6 @@ class WebpagesController < ApplicationController
     rescue => e
       e.message
     end
-  end
-
-  def header_alert
-    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def home

@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col">
-		<h1 class="page-title text-center">
+		<h1 class="page-title">
 			<%= title t("manifold.webpages.hsl.page_title") %>
 		</h1>
 	</div>
@@ -18,59 +18,48 @@
 
     <%= render "covid_alert_mini" unless @header_alert.nil? %>
 
-		<div class="locations">
-			<%= link_to t("manifold.webpages.hsl.locations.ginsburg_label"), 
+		<ul class="locations list-unstyled">
+			<li>
+        <%= link_to t("manifold.webpages.hsl.locations.ginsburg_label"), 
 									t("manifold.webpages.hsl.locations.ginsburg_link"), 
 									id: "hsl_ginsburg_link_button" %>
-			<hr />
-			<%= link_to t("manifold.webpages.hsl.locations.krausz_label"), 
+      </li>
+      <li>
+			  <%= link_to t("manifold.webpages.hsl.locations.krausz_label"), 
 									t("manifold.webpages.hsl.locations.krausz_link"), 
 									id: "hsl_podiatry_link_button" %>
-		</div>
-
-		<div class="contact">
-			<div class="one-liner">
-				<%= image_tag "study_room_white.png", class: "decorative", alt: "" %>
-				<%= link_to t("manifold.webpages.hsl.contact.study_room"), 
-										@study_room.link, 
-										{id: "hsl_study_room_button", target: "_blank"} %>
-			</div>
-      <hr />
-			<div class="two-lines">
-				<%= image_tag "chat.png", class: "decorative", alt: "" %>
-				<%= link_to t("manifold.webpages.hsl.contact.chat_label"), 
-										t("manifold.webpages.hsl.contact.chat_link"), 
-										{id: "hsl_chat_link_button", target: "_blank"}  %>
-			</div>
-      <hr />
-			<div class="two-lines">
-				<%= image_tag "phone-handle-white.png", class: "decorative", alt: "" %>
+      </li>
+      <li>
+			  <%= link_to t("manifold.webpages.hsl.contact.study_room"), 
+                  @study_room.link, 
+                  {id: "hsl_study_room_button", target: "_blank"} %>
+      </li>
+      <li>
+        <%= link_to t("manifold.webpages.hsl.contact.chat_label"), 
+                  t("manifold.webpages.hsl.contact.chat_link"), 
+                  {id: "hsl_chat_link_button", target: "_blank"}  %>
+      </li>
+      <li>
         <%= link_to t("manifold.webpages.hsl.contact.appointment_label"), 
-										t("manifold.webpages.hsl.contact.appointment_link"), 
-										id: "hsl_appointment_link_button"  %>
-			</div>
-			<hr />
-			<div class="one-liner">
-        <%= image_tag "email-white.png", class: "decorative", alt: "" %>
+                  t("manifold.webpages.hsl.contact.appointment_link"), 
+                  id: "hsl_appointment_link_button"  %>
+      </li>
+      <li>
         <%= link_to t("manifold.webpages.hsl.contact.mailer_label"), 
-										t("manifold.webpages.hsl.contact.mailer_link"), 
-										{id: "hsl_email_link_button", target: "_blank"}  %>
-      </div>
-			<hr />
-			<div class="one-liner">
-        <%= image_tag('journal_finder.png', class: "decorative", alt: "") %>
+                  t("manifold.webpages.hsl.contact.mailer_link"), 
+                  {id: "hsl_email_link_button", target: "_blank"}  %>
+      </li>
+      <li>
         <%= link_to t("manifold.webpages.hsl.links.journal_finder_label"), 
-										t("manifold.webpages.hsl.links.journal_finder_link"), 
-										id: "hsl_journal_finder_button"  %>
-      </div>
-			<hr />
-      <div class="two-lines">
-        <%= image_tag "gift_white.png", class: "decorative", alt: "" %>
+                  t("manifold.webpages.hsl.links.journal_finder_link"), 
+                  id: "hsl_journal_finder_button"  %>
+      </li>
+      <li>
         <%= link_to t("manifold.webpages.hsl.links.support_label"), 
-										t("manifold.webpages.hsl.links.support_link"), 
-										id: "hsl_support_button" %>
-      </div>
-		</div>
+                  t("manifold.webpages.hsl.links.support_link"), 
+                  id: "hsl_support_button" %>
+      </li>
+		</ul>
 	</div>
 
 	<div class="col-12 col-lg-8">

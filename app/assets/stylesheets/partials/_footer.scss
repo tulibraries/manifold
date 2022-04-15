@@ -4,6 +4,10 @@
 	width: 100%;
 	color: $black;
   font-family: "roboto light";
+  margin-top: 49px;
+  .footer-header {
+    background-color: #F0F0F0;
+  }
 	.row {
 		margin-left: 0;
 		margin-right: 0; 
@@ -16,7 +20,7 @@
 		color: $black;
 		padding: 24px 0px 56px 7px;
 		clear:both;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
 		h2 {
 			font-family: "Roboto";
 			font-size: 125%;

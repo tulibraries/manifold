@@ -45,11 +45,11 @@
       border-bottom: solid $new-gold 4px;
       li {
         padding: 10px;
-        a {
+        font-size: 130%;
+        a, span {
           display: block;
           padding: 10px 5px;
           color: $black;
-          font-size: 120%;
           font-family: "Roboto Light";
           @media (max-width: 1039px) {
             font-size: 130%;
@@ -62,15 +62,12 @@
     }
 	}
 
-	#description-container {
-		@media (max-width: 1039px) {
-			padding-left: 0;
-			padding-right: 0;
-		}
+	.description-container {
 		.description {
 			padding-left: 15px;
 			padding-right: 15px;
 			margin-bottom: 35px;
+      font-size: 1.15rem;
 		}
 	}
 
@@ -111,8 +108,6 @@
 	}
 
 	li.all-events {
-		background-color: white;
-		padding: 6px;
 		margin-top: 14px;
 		margin-left: 14px;
     @media (max-width: 1039px) {
@@ -122,4 +117,25 @@
 	h2.hsl-links-title a {
 		color: $seagreen!important;
 	}
+}
+
+.minipage.dsc {
+  .links-container {
+    border-top: solid $lighter-grey 2px;
+    padding-top: 49px;
+    .links {
+      padding-left: 0;
+      padding-right: 14px;
+    }
+    .links:nth-child(odd) {
+      border-right: solid $lighter-grey 2px;
+      padding-right: 42px;
+      @media (max-width: 1039px) {
+        padding-left: 28px;
+      }
+    }
+    .links:nth-child(even) {
+      padding-left: 28px;
+    }
+  }
 }

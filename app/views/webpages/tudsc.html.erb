@@ -10,57 +10,44 @@
 
 <div class="row">
 	<div class="col">
-		<h1 class="page-title text-center">
+		<h1 class="page-title">
 			<%= title t("manifold.webpages.tudsc.page_title") %>
 		</h1>
 	</div>
 </div>
 
 <div class="row">
-
 	<div class="col-12 col-lg-4 pr-14 left-links">
-
-    <%= render "covid_alert_mini" unless @header_alert.nil? %>
-
-		<div class="locations">
-			<%= link_to t("manifold.webpages.tudsc.locations.makerspace_label"), 
+		<ul class="locations list-unstyled">
+      <li>
+			  <%= link_to t("manifold.webpages.tudsc.locations.makerspace_label"), 
 									t("manifold.webpages.tudsc.locations.makerspace_link"),
 									id: "lcdss_makerspace_button" %>
-			<hr />
-			<%= link_to t("manifold.webpages.tudsc.locations.vr_studio_label"), 
+      </li>
+      <li>
+			  <%= link_to t("manifold.webpages.tudsc.locations.vr_studio_label"), 
 									t("manifold.webpages.tudsc.locations.vr_studio_link"),
 									id: "lcdss_vr_studio_button" %>
-			<hr />
-			<%= link_to t("manifold.webpages.tudsc.locations.innovation_label"), 
+      </li>
+      <li>
+			  <%= link_to t("manifold.webpages.tudsc.locations.innovation_label"), 
 									t("manifold.webpages.tudsc.locations.innovation_link"),
 									id: "lcdss_innovation_lab_button" %>
-		</div>
-
-		<div class="contact">
-			<div class="one-liner">
-				<%= image_tag "phone-handle-white.png", class: "decorative", alt: "" %>
-				215-204-0752
-			</div>
-			<hr />
-			<div class="one-liner">
-				<%= image_tag "email-white.png", class: "decorative", alt: "" %>
-				<span class="mailer">
-					<%= link_to t("manifold.webpages.tudsc.contact.newsletter_label"), 
-											t("manifold.webpages.tudsc.contact.newsletter_link"),
-											{id: "lcdss_newsletter_button", target: "_blank"} %>
-				</span>
-			</div>
-			<hr />
-			<div class="one-liner">
-				<%= image_tag "chat.png", class: "decorative", alt: "" %>
-				<span class="mailer">
-					<%= link_to t("manifold.webpages.tudsc.contact.staff"), 
-											people_path(department: t("manifold.webpages.tudsc.contact.staff_department")),
-											id: "lcdss_staff_link_button" %>
-				</span>
-			</div>
-		</div>
-
+      </li>
+      <li>
+        <span>215-204-0752</span>
+      </li>
+      <li>
+        <%= link_to t("manifold.webpages.tudsc.contact.newsletter_label"), 
+                    t("manifold.webpages.tudsc.contact.newsletter_link"),
+                    {id: "lcdss_newsletter_button", target: "_blank"} %>
+      </li>
+      <li>
+        <%= link_to t("manifold.webpages.tudsc.contact.staff"), 
+                    people_path(department: t("manifold.webpages.tudsc.contact.staff_department")),
+                    id: "lcdss_staff_link_button" %>
+      </li>
+		</ul>
 	</div>
 
 	<div class="col-12 col-lg-8 description-container">
@@ -71,91 +58,83 @@
 			</div>
 		</div>
 		<% end %>
-		<div class="row links-container">
-			<div class="col-12 col-lg-6">
-				<div class="links">
-					<h2>
-						<%= link_to t("manifold.webpages.tudsc.links.visit_label"), 
-												t("manifold.webpages.tudsc.links.visit_link"),
-												id: "lcdss_visit_header" %>
-					</h2>
-					<ul class="list-unstyled">
-						<% @visit_links.each do |link| %>
-							<li>
-								<%= link_to link.label, 
-														link, 
-														id: "lcdss_visit_link_#{link.label.parameterize}" %>
-							</li>
-						<% end unless @visit_links.nil? %>
-					</ul>
-				</div>
-			</div>
-			<div class="col-12 col-lg-6">
-				<div class="links">
-					<h2>
-						<%= link_to t("manifold.webpages.tudsc.links.research_label"), 
-												t("manifold.webpages.tudsc.links.research_link"),
-												id: "lcdss_research_header" %>
-					</h2>
-					<ul class="list-unstyled">
-						<% @research_links.each do |link| %>
-							<li>
-								<%= link_to link.label, 
-														link,
-														id: "lcdss_research_link_#{link.label.parameterize}" %>
-							</li>
-						<% end unless @research_links.nil? %>
-					</ul>
-				</div>
-			</div>
-			<div class="col-12 col-lg-6">
-				<div class="links">
-					<h2>
-						<%= link_to t("manifold.webpages.tudsc.links.events"), 
-												events_path(type: t("manifold.webpages.tudsc.links.events_type"), anchor: "upcoming-events"),
-												id: "lcdss_events_header" %>
-					</h2>
-					<ul class="list-unstyled">
-						<% @event_links.each do |link|  %>
-							<li>
-								<%= link_to link.label, 
-														event_path(link.id),
-														id: "lcdss_events_link_#{link.label.parameterize}" %></li>
-						<% end unless @event_links.nil? %>
-						<li class="text-right dsc-event">
-							<%= link_to t("manifold.webpages.tudsc.links.view_all"), 
-													events_path(type: t("manifold.webpages.tudsc.links.events_type"), anchor: "upcoming-events"), 
-													{style: "text-decoration:underline", id: "lcdss_events_view_all"} %> >
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-12 col-lg-6">
-				<div class="links">
-					<h2>
-						<%= link_to t("manifold.webpages.tudsc.locations.blog"), 
-												@blog.base_url,
-												id: "lcdss_blog_header" %>
-					</h2>
-					<ul class="list-unstyled">
-						<% @blog_posts.each do |link| %>
-							<li>
-								<%= link_to link.title, 
-														link.post_guid,
-														id: "lcdss_blog_link_#{link.title.parameterize}" %>
-							</li>
-						<% end unless @blog_posts.nil? %>
-						<li class="text-right all-events">
-							<%= link_to t("manifold.webpages.tudsc.links.view_all"), 
-													strip_tags(@blog.base_url), 
-													{id: "lcdss_blog_view_all", style: "text-decoration:underline"} %> >
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+  </div>
+</div>
 
+<div class="row links-container">
+  <div class="col-12 col-lg-6 links">
+      <h2>
+        <%= link_to t("manifold.webpages.tudsc.links.visit_label"), 
+                    t("manifold.webpages.tudsc.links.visit_link"),
+                    id: "lcdss_visit_header" %>
+      </h2>
+      <ul class="list-unstyled">
+        <% @visit_links.each do |link| %>
+          <li>
+            <%= link_to link.label, 
+                        link, 
+                        id: "lcdss_visit_link_#{link.label.parameterize}" %>
+          </li>
+        <% end unless @visit_links.nil? %>
+      </ul>
+  </div>
+  <div class="col-12 col-lg-6 links">
+      <h2>
+        <%= link_to t("manifold.webpages.tudsc.links.research_label"), 
+                    t("manifold.webpages.tudsc.links.research_link"),
+                    id: "lcdss_research_header" %>
+      </h2>
+      <ul class="list-unstyled">
+        <% @research_links.each do |link| %>
+          <li>
+            <%= link_to link.label, 
+                        link,
+                        id: "lcdss_research_link_#{link.label.parameterize}" %>
+          </li>
+        <% end unless @research_links.nil? %>
+      </ul>
+  </div>
+  <div class="col-12 col-lg-6 links">
+      <h2>
+        <%= link_to t("manifold.webpages.tudsc.links.events"), 
+                    events_path(type: t("manifold.webpages.tudsc.links.events_type"), anchor: "upcoming-events"),
+                    id: "lcdss_events_header" %>
+      </h2>
+      <ul class="list-unstyled">
+        <% @event_links.each do |link|  %>
+          <li>
+            <%= link_to link.label, 
+                        event_path(link.id),
+                        id: "lcdss_events_link_#{link.label.parameterize}" %></li>
+        <% end unless @event_links.nil? %>
+        <li class="text-lg-right dsc-event">
+          <%= link_to t("manifold.webpages.tudsc.links.view_all"), 
+                      events_path(type: t("manifold.webpages.tudsc.links.events_type"), anchor: "upcoming-events"), 
+                      {id: "lcdss_events_view_all"} %> >
+        </li>
+      </ul>
+  </div>
+  <div class="col-12 col-lg-6 links">
+      <h2>
+        <%= link_to t("manifold.webpages.tudsc.locations.blog"), 
+                    @blog.base_url,
+                    id: "lcdss_blog_header" %>
+      </h2>
+      <ul class="list-unstyled">
+        <% @blog_posts.each do |link| %>
+          <li>
+            <%= link_to link.title, 
+                        link.post_guid,
+                        id: "lcdss_blog_link_#{link.title.parameterize}" %>
+          </li>
+        <% end unless @blog_posts.nil? %>
+        <li class="text-lg-right all-events">
+          <%= link_to t("manifold.webpages.tudsc.links.view_all"), 
+                      strip_tags(@blog.base_url), 
+                      {id: "lcdss_blog_view_all"} %> >
+        </li>
+      </ul>
+  </div>
 </div>
 
 </div>

@@ -26,17 +26,12 @@
 	}
 	form {
 		width: 100%;
-			position: relative;
-			top: 14px;
 		#librarySearch {
 			height: 42px;
       font-family: "roboto light";
 			font-size: 1.2rem;
 			font-style: normal;
 			border: solid $foamgreen 1px;
-			border-right: 0;
-			border-top-right-radius: 0;
-			border-bottom-right-radius: 0;
 			width: 87%;
 			display: inline-block;
 			padding-right: 0;
@@ -48,9 +43,6 @@
 			width: 70%;
 			float:none;
 			display: inline-block;
-			position: relative;
-			left: 7px;
-			top: 0;
 		}
 		input[type="submit"] {
 			margin:0;
@@ -65,13 +57,9 @@
 			background-position: center center;
 			background-repeat: no-repeat;
 			background-size: 42px 42px;
-			border-radius: 4px;
-			border-top-left-radius: 0;
-			border-bottom-left-radius: 0;
 			border: solid $foamgreen 1px;
 			border-left: 0;
 			@media screen and (min-width: 0px) and (max-width: 949px) {
-				border-radius: 0;
 				margin-right: 14px;
 			}
 		}
@@ -80,11 +68,8 @@
 			margin-right: 0;
 			padding-left: 0;
 			position: relative;
-			left: -7px;
-			top: 11px;
+			top: 22px;
 			float: none;
-			border-top-right-radius: 4px;
-			border-bottom-right-radius: 4px;
 		}
 	}
 	ul {

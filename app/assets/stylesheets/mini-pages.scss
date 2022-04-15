@@ -115,6 +115,9 @@
 		padding: 6px;
 		margin-top: 14px;
 		margin-left: 14px;
+    @media (max-width: 1039px) {
+      margin-left: 0;
+    }
 	}
 	h2.hsl-links-title a {
 		color: $seagreen!important;

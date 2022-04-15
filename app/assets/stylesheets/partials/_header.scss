@@ -5,16 +5,16 @@
 }
 
 #header {
-	background-color: #F9E7BD;
 	color: #000;
 	max-width: 100%;
 	font-size: 1.25rem;
-	font-family: "Roboto Bold";
+	font-family: "Roboto";
 	img {
 		position: relative;
-		top: -2px;
+		top: -5px;
 	}
 	.container {
+	  background-color: #F8EBD5;
 		padding: 17px;
 		height: auto;
 		vertical-align: middle;
@@ -23,6 +23,7 @@
 		}
 	}
 }
+
 
 #mobile-search-container {
 	nav.navbar {

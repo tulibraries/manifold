@@ -25,7 +25,7 @@
 }
 
 #main-menu {
-	background-color: $seagreen;
+  background-color: #910C22;
 	width: 100%;
 	margin: 0;
 	height: auto;
@@ -38,6 +38,7 @@
 		padding-right: 0;
 		margin: auto;
 		margin-bottom: 0;
+    background-color: #910C22;
 	}
 	.dropdown-toggle.disabled {
 		display:inline-block;
@@ -85,7 +86,6 @@
 			@media screen and (min-width: 1040px) {
 				float: right;
 			}
-			background-color: $seagreen-dark;
 			padding-left: 49px;
 			padding-right: 16px;
 			display: inline-block;
@@ -101,19 +101,19 @@
       background-image:asset-data-url('hours.png');
       background-position: 7px center;
       background-repeat: no-repeat;
-      background-size: 42px 42px;
+      background-size: 26px 26px;
 		}
 		li.nav-right.chat-nav {
       background-image:asset-data-url('chat.png');
-      background-position: 00 center;
+      background-position: left 10px center;
       background-repeat: no-repeat;
-      background-size: 52px 59px;
+      background-size: 26px 26px;
 		}
 		li.nav-right.account-nav {
       background-image:asset-data-url('person.png');
       background-position: 7px center;
       background-repeat: no-repeat;
-      background-size: 42px 42px;
+      background-size: 26px 26px;
 		}
 		li.active {
 			span {

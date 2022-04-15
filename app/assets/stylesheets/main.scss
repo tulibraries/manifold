@@ -23,7 +23,7 @@ html, body {
 	background-color: $red;
 	position: relative;
 	z-index: 100;
-	padding-top: 14px;
+	padding-top: 21px;
 }
 h1 {
 	margin-top:14px;
@@ -53,12 +53,13 @@ strong, .strong {
 }
 
 .flash {
-	background-color: #F9E7BD;
+	background-color: $crystal-blue;
 	padding:10px;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 0;
-	color: black;
+  border-bottom: solid $new-gold 7px;
+	color: $royal-blue;
 	font-family: "Roboto";
 	.error {
 		color: $red;
@@ -150,19 +151,17 @@ marquee {
 .covid-alert {
 	font-family: 'Roboto';
 	background-color: #e5edf8;
-	border-top: solid $red 6px;
-	margin-bottom: 14px;
-	padding: 10px 0;
-  strong {
-    font-family: 'Roboto';
-    font-weight: 900;
-    font-size: 1.35rem;
-    display: block;
-    text-align: center;
-  }
+  color: $royal-blue;
+  font-size: 1.35rem;
+	padding: 21px 0 14px 0;
   p {
     display: block;
     padding-left: 7px;
+  }
+  .covid-border {
+	  border-top: solid $new-gold 10px;
+	  border-bottom: solid #bc7254 10px;
+    height: 1px;
   }
 }
 

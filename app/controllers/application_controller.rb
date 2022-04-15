@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include ServerErrors
-  before_action :get_alert
+  before_action :get_alert, :covid_alert
   before_action :set_paper_trail_whodunnit
   before_action :locations, :set_dates, :set_location
   before_action :show_hours, :menu_items, unless: ->(c) { ["accounts/omniauth_callbacks", "devise/sessions"].include?(c.controller_path) }
@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   def get_alert
     @alert = Alert.where(published: true).where(for_header: false)
+  end
+
+  def covid_alert
+    @covid_alert = Alert.where(published: true).where(for_header: true)
   end
 
   def show_hours

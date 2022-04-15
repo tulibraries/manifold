@@ -9,30 +9,30 @@
 <div class="container">
 
 <div class="row">
-	<div class="col">
-		<h1 class="page-title">
-			<%= title t("manifold.webpages.tudsc.page_title") %>
-		</h1>
-	</div>
+  <div class="col">
+    <h1 class="page-title">
+      <%= title t("manifold.webpages.tudsc.page_title") %>
+    </h1>
+  </div>
 </div>
 
 <div class="row">
-	<div class="col-12 col-lg-4 pr-14 left-links">
-		<ul class="locations list-unstyled">
+  <div class="col-12 col-lg-4 pr-14 left-links">
+    <ul class="locations list-unstyled">
       <li>
-			  <%= link_to t("manifold.webpages.tudsc.locations.makerspace_label"), 
-									t("manifold.webpages.tudsc.locations.makerspace_link"),
-									id: "lcdss_makerspace_button" %>
+        <%= link_to t("manifold.webpages.tudsc.locations.makerspace_label"), 
+                  t("manifold.webpages.tudsc.locations.makerspace_link"),
+                  id: "lcdss_makerspace_button" %>
       </li>
       <li>
-			  <%= link_to t("manifold.webpages.tudsc.locations.vr_studio_label"), 
-									t("manifold.webpages.tudsc.locations.vr_studio_link"),
-									id: "lcdss_vr_studio_button" %>
+        <%= link_to t("manifold.webpages.tudsc.locations.vr_studio_label"), 
+                  t("manifold.webpages.tudsc.locations.vr_studio_link"),
+                  id: "lcdss_vr_studio_button" %>
       </li>
       <li>
-			  <%= link_to t("manifold.webpages.tudsc.locations.innovation_label"), 
-									t("manifold.webpages.tudsc.locations.innovation_link"),
-									id: "lcdss_innovation_lab_button" %>
+        <%= link_to t("manifold.webpages.tudsc.locations.innovation_label"), 
+                  t("manifold.webpages.tudsc.locations.innovation_link"),
+                  id: "lcdss_innovation_lab_button" %>
       </li>
       <li>
         <span>215-204-0752</span>
@@ -47,17 +47,17 @@
                     people_path(department: t("manifold.webpages.tudsc.contact.staff_department")),
                     id: "lcdss_staff_link_button" %>
       </li>
-		</ul>
-	</div>
+    </ul>
+  </div>
 
-	<div class="col-12 col-lg-8 description-container">
-		<% unless @webpage.description.nil? %>
-		<div class="row">
-			<div class="col-12 description">
-				<%= @webpage.description %>
-			</div>
-		</div>
-		<% end %>
+  <div class="col-12 col-lg-8 description-container">
+    <% unless @webpage.description.nil? %>
+    <div class="row">
+      <div class="col-12 description">
+        <%= @webpage.description %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 

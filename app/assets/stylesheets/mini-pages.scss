@@ -2,7 +2,8 @@
 
 .minipage {
 	.page-title {
-		font-size: 400%;
+		font-size: 300%;
+		margin-top: 14px;
 		margin-bottom: 42px;
 		@media (max-width: 1039px) {
 			font-size: 210%;
@@ -15,6 +16,7 @@
 	.banner-image {
 		background-size: cover!important;
 		height: 240px;
+		border-bottom: solid $red 10px;
 		margin-bottom: 21px;
 		@media (max-width: 1039px) {
 			display: none;
@@ -36,124 +38,30 @@
 		background:asset-data-url('blockson-banner.jpg') 0 66% no-repeat;
 		background-position: center 60%;
 	}
-	.locations {
-		background-color: $foamgreen;
-		padding: 21px 0;
-		margin-bottom: 21px;
-		a {
-			display: inline-block;
-			margin-left: 21px;
-			padding-right: 21px;
-			color: $white;
-			font-size: 135%;
-			font-family: "Roboto Bold";
-			@media (max-width: 1039px) {
-				font-size: 130%;
-			}
-		}
-		hr {
-			background-color: $white;
-			width: 100%;
-		}
-	}
+
 	.left-links {
-		@media (max-width: 1039px) {
-			padding-left: 0;
-			padding-right: 0;
-		}
+		margin-bottom: 21px;
+    ul {
+      border-bottom: solid $new-gold 4px;
+      li {
+        padding: 10px;
+        a {
+          display: block;
+          padding: 10px 5px;
+          color: $black;
+          font-size: 120%;
+          font-family: "Roboto Light";
+          @media (max-width: 1039px) {
+            font-size: 130%;
+          }
+        }
+      }
+      li:nth-child(odd) {
+        background-color: $lighter-grey;
+      }
+    }
 	}
-	.contact {
-		background-color: $seagreen;
-		padding: 0;
-			padding-right: 10px;
-		font-size: 135%;
-		color: $white;
-		font-family: "Roboto Bold";
-		@media (max-width: 1039px) {
-			margin-bottom: 21px;
-		}
-		img {
-			width: 60px;
-		}
-		a {
-			color: $white;
-		}
-		p {
-			margin-right: 7px;
-			padding: 10px 0;
-			margin-left: 107px;
-			a {
-				overflow:hidden;
-				height: 79px;
-			}
-		}
-		div.one-liner {
-			height: 79px!important;	
-			display: flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
-			align-content: center;
-			justify-content: flex-start;
-			align-items: center;
-			a {
-				@media (min-width: 1040px) {
-					position: relative;
-					left: 7px;
-				}
-			}
-		}
-		div.two-lines {
-			height: 79px!important;
-			font-family: "Roboto Bold";
-			display: flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
-			align-content: center;
-			justify-content: flex-start;
-			align-items: center;
-			a {
-				@media (min-width: 1040px) {
-					position: relative;
-					left: 7px;
-				}
-			}
-			img {
-				float: left!important;
-				position: relative;
-				top: -7px;
-				@media (min-width: 450px) {
-					position: relative;
-					top: -10px;
-				}
-				@media (max-width: 1039px) {
-					position: relative;
-					top: 0px;
-				}
-				@media (min-width: 1040px) {
-					padding-top: 0;
-					padding-bottom: 0;
-					top: 0;
-				}
-			}
-		}
-		.boxtroll.two-lines {
-			padding-top: 14px;
-			padding-right: 14px;
-			height: auto;
-			padding-bottom: 14px;
-			font-family: "Roboto Bold";
-		}
-		hr {
-			background-color: $white;
-			width: 100%;
-			margin: 0;
-		}
-		.mailer {
-			display: inline-block;
-			height: 79px; 
-			padding-top: 21px;
-		}
-	}
+
 	#description-container {
 		@media (max-width: 1039px) {
 			padding-left: 0;
@@ -174,24 +82,29 @@
 			}
 		}
 		.links {
-			background-color: $lightest-grey;
-			padding:14px;
 			margin-bottom: 28px;
+      padding-left: 28px;
 			@media (max-width: 1039px) {
 				margin: 0;
 			}
-			li {
-				margin-bottom: 7px;
+      ul {
+        margin-left: 21px;
+        li {
+          margin-bottom: 7px;
+          line-height: 1.75;
+          a {
+            color: $black;
+            font-size: 1.2rem;
+            font-family: "Roboto Light";
+          }
+        }
+      }
+
+			h2 {
+				border-left: solid $red 4px;
+        padding-left: 14px;
 				a {
 					color: $black;
-				}
-			}
-			h2 {
-				color: $seagreen;
-				padding-bottom: 14px;
-				border-bottom: solid $seagreen 2px;
-				a {
-					color: $seagreen;
 				}
 			}
 		}

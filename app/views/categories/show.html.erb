@@ -16,8 +16,6 @@
       <div class="col-12">
     <% end %>
 
-        <%= render "covid_alert" if @covid_alert.present? %>
-
         <h1 class="page-title"><%= title @category.label.html_safe %></h1>
         <div class="details">
           <%= render "categories/marketing/slideshow" if explore_charles(@category) %>

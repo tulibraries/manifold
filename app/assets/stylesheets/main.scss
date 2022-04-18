@@ -1,99 +1,99 @@
 @import "partials/_vars.scss";
 
 .container {
-	max-width: 100%;
-	@media (min-width: 1200px) {
+  max-width: 100%;
+  @media (min-width: 1200px) {
     max-width: 1200px;
     min-width: 1200px;
-	}
+  }
 }
 html, body {
-	background-color: $white;
-	font-size: 16px;
-	margin: 0px;
-	padding: 0px;
-	width: 100%;
-	position: static;
-	overflow: scroll;
-	font-family: "Roboto";
+  background-color: $white;
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  position: static;
+  overflow: scroll;
+  font-family: "Roboto";
   color: $black;
 }
 #wrapper {
-	background-color: $red;
-	position: relative;
-	z-index: 100;
-	padding-top: 21px;
+  background-color: $red;
+  position: relative;
+  z-index: 100;
+  padding-top: 21px;
 }
 h1 {
-	margin-top:14px;
-	font-size: 220%;
-	margin-bottom: 21px;
-	font-family: "Faustina";
+  margin-top:14px;
+  font-size: 220%;
+  margin-bottom: 21px;
+  font-family: "Faustina";
   font-weight: 800;
 }
 h1.page-title {
-	margin-top: 0;
-	@media (max-width: 1039px) {
-		margin-top: 14px;
-	}
+  margin-top: 0;
+  @media (max-width: 1039px) {
+    margin-top: 14px;
+  }
 }
 h2 {
-	font-size: 160%;
+  font-size: 160%;
 }
 h3 {
-	font-size: 125%;
-	}
+  font-size: 125%;
+  }
 h4,h5,h6 {
-	font-size: 100%;
+  font-size: 100%;
 }
 
 strong, .strong {
-	font-family: 'Roboto Bold';
+  font-family: 'Roboto Bold';
 }
 
 .flash {
-	background-color: $crystal-blue;
-	padding:10px;
-	width: 100%;
-	text-align: center;
-	margin-bottom: 0;
+  background-color: $crystal-blue;
+  padding:10px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0;
   border-bottom: solid $new-gold 7px;
-	color: $royal-blue;
-	font-family: "Roboto";
-	.error {
-		color: $red;
-	}
+  color: $royal-blue;
+  font-family: "Roboto";
+  .error {
+    color: $red;
+  }
 }
 
 a:not(.dropdown-item) {
-		color: $red;
-	a:active, a:hover, a:visited {
-		color: $red;
-	}
+    color: $red;
+  a:active, a:hover, a:visited {
+    color: $red;
+  }
 }
 a.inline {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 .back-button {
-	color: $red;
+  color: $red;
 }
 #content {
-	margin: 0;
-	background-color: $white;
+  margin: 0;
+  background-color: $white;
 }
 .home #content {
-	margin-top: 46px;
-	padding-bottom: 0!important;
+  margin-top: 46px;
+  padding-bottom: 0!important;
 }
 #skip-link {
-	left: 50%;
+  left: 50%;
   margin-left: -5.25em;
   margin-top: 0;
   position: absolute;
   width: auto;
   z-index: 50;
   a, a:visited, a:link {
-  	background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.6);
     color: white;
     display: block;
     font-size: 0.94em;
@@ -103,63 +103,63 @@ a.inline {
   }
 }
 .element-invisible {
-	position: absolute !important;
-	clip: rect(1px 1px 1px 1px);
-	overflow: hidden;
-	height: 1px;
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  overflow: hidden;
+  height: 1px;
 }
 .home #mobile-search-button .navbar-toggler-icon {
-	display: none;
+  display: none;
 }
 form {
-	#q-error, #email-error {
-	 	color: $red;
-	 	font-size: 85%;
- 	}
+  #q-error, #email-error {
+     color: $red;
+     font-size: 85%;
+   }
  label {
- 	font-weight: 600;
- 	padding-right: 10px;
+   font-weight: 600;
+   padding-right: 10px;
  }
 }
 .no-padding {
-	padding: 0;
+  padding: 0;
 }
 .breadcrumbs {
-	margin-bottom: 17px;
-	color: $red;
+  margin-bottom: 17px;
+  color: $red;
 }
 
 img {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 img.map {
-	min-height: 100%;
-	height: 100%;
-	max-height: 100%!important;
+  min-height: 100%;
+  height: 100%;
+  max-height: 100%!important;
 }
 
 blockquote {
-	margin: 21px;
+  margin: 21px;
 }
 
 marquee {
-	color: $red;
+  color: $red;
 }
 
 .covid-alert {
-	font-family: 'Roboto';
-	background-color: #e5edf8;
+  font-family: 'Roboto';
+  background-color: #e5edf8;
   color: $royal-blue;
   font-size: 1.35rem;
-	padding: 21px 0 14px 0;
+  padding: 21px 0 14px 0;
   p {
     display: block;
     padding-left: 7px;
   }
   .covid-border {
-	  border-top: solid $new-gold 10px;
-	  border-bottom: solid #bc7254 10px;
+    border-top: solid $new-gold 10px;
+    border-bottom: solid #bc7254 10px;
     height: 1px;
   }
 }
@@ -176,19 +176,19 @@ marquee {
 }
 
 .covid-alert.home {
-	margin-bottom: 0;
-	margin-top: 4px;
+  margin-bottom: 0;
+  margin-top: 4px;
 }
 
 .press-button {
-	border: outset #ccc 1px;
-	background-color: #fff !important;
-	padding: 10px;
-	border-radius: 7px;
-	vertical-align: middle;
-	margin-bottom: 14px;
-	font-family: roboto;
-	font-size: 1.25rem;
+  border: outset #ccc 1px;
+  background-color: #fff !important;
+  padding: 10px;
+  border-radius: 7px;
+  vertical-align: middle;
+  margin-bottom: 14px;
+  font-family: roboto;
+  font-size: 1.25rem;
 }
 
 .tab-pane {

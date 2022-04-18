@@ -1195,7 +1195,6 @@ en:
         scholar_share: TUScholarShare
         blog: Blog
         events: Workshops & Events
-        view_all: View All
         call_outs:
           pub
         links:
@@ -1205,6 +1204,7 @@ en:
           nb_press_link: https://temple.manifoldapp.org
           open_journals_label: Open Journals
           open_journals_link: https://tuljournals.temple.edu/
+          view_all: View All
         contact: Staff Directory
       videos:
         page_title: Past Program and Event Videos

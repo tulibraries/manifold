@@ -62,13 +62,11 @@
     }
 	}
 
-	.description-container {
-		.description {
-			padding-left: 15px;
-			padding-right: 15px;
-			margin-bottom: 35px;
-      font-size: 1.15rem;
-		}
+	.description {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 35px;
+    font-size: 1.15rem;
 	}
 
 	.links-container {
@@ -119,7 +117,7 @@
 	}
 }
 
-.minipage.dsc {
+.minipage {
   .links-container {
     border-top: solid $lighter-grey 2px;
     padding-top: 49px;
@@ -137,5 +135,15 @@
     .links:nth-child(even) {
       padding-left: 28px;
     }
+    .links:last-of-type {
+      border-right: 0;
+    }
+  }
+}
+
+.minipage.hsl {
+  .links-container {
+    border-top: 0;
+    padding-top: 0;
   }
 }

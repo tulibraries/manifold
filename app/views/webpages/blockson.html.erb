@@ -6,14 +6,13 @@
 
   <div class="row">
     <div class="col">
-      <h1 class="page-title text-center">
+      <h1 class="page-title">
         <%= title t("manifold.webpages.blockson.page_title") %>
       </h1>
     </div>
   </div>
 
   <div class="row">
-
     <div class="col-12 col-lg-4 pr-14 left-links">
       <ul class="list-unstyled locations">
         <li>
@@ -32,37 +31,28 @@
       </ul>
     </div>
 
-    <div class="col-12 col-lg-8 description-container">
-      <% unless @webpage.description.nil? %>
-      <div class="row">
-        <div class="col-12 description">
-          <%= @webpage.description %>
-        </div>
-      </div>
-      <% end %>
+    <div class="col-12 col-lg-8 description">
+      <%= @webpage.description if @webpage.description.present? %>
     </div>
   </div>
 
   <div class="row links-container">
-    <div class="col-12 col-lg-6">
-      <div class="links">
-        <h2>
-          <%= link_to t("manifold.webpages.blockson.links.visit_label"), 
-                      t("manifold.webpages.blockson.links.visit_link"), 
-                      id: "blockson_visit_header" %>
-        </h2>
-        <ul class="list-unstyled">
-          <% @visit_links.each do |link| %>
-            <li>
-              <%= link_to link.label, 
-                          link, 
-                          id: "blockson_visit_link_#{link.label.parameterize}" %>
-            </li>
-          <% end unless @visit_links.nil? %>
-        </ul>
-      </div>
+    <div class="col-12 col-lg-6 links">
+      <h2>
+        <%= link_to t("manifold.webpages.blockson.links.visit_label"), 
+                    t("manifold.webpages.blockson.links.visit_link"), 
+                    id: "blockson_visit_header" %>
+      </h2>
+      <ul class="list-unstyled">
+        <% @visit_links.each do |link| %>
+          <li>
+            <%= link_to link.label, 
+                        link, 
+                        id: "blockson_visit_link_#{link.label.parameterize}" %>
+          </li>
+        <% end if @visit_links.present? %>
+      </ul>
       <% if @tours.present? %>
-      <div class="links">
         <h2>
           <%= link_to t("manifold.webpages.blockson.links.tours").html_safe, 
                       category_path(@tours), 
@@ -77,8 +67,8 @@
             </li>
           <% end if @tour_links.present? %>
         </ul>
-      </div>
       <% end %>
+
       <% if @events_links.present? %>
       <div class="links">
         <h2>
@@ -103,23 +93,21 @@
       </div>
       <% end %>
     </div>
-    <div class="col-12 col-lg-6">
-      <div class="links">
-        <h2>
-          <%= link_to t("manifold.webpages.blockson.links.research_label"), 
-                      t("manifold.webpages.blockson.links.research_link"), 
-                      id: "blockson_research_header" %>
-        </h2>
-        <ul class="list-unstyled">
-          <% @research_links.each do |link| %>
-            <li>
-              <%= link_to link.label, 
-                          link, 
-                          id: "blockson_research_link_#{link.label.parameterize}" %>
-            </li>
-          <% end unless @research_links.nil? %>
-        </ul>
-      </div>
+    <div class="col-12 col-lg-6 links">
+      <h2>
+        <%= link_to t("manifold.webpages.blockson.links.research_label"), 
+                    t("manifold.webpages.blockson.links.research_link"), 
+                    id: "blockson_research_header" %>
+      </h2>
+      <ul class="list-unstyled">
+        <% @research_links.each do |link| %>
+          <li>
+            <%= link_to link.label, 
+                        link, 
+                        id: "blockson_research_link_#{link.label.parameterize}" %>
+          </li>
+        <% end if @research_links.present? %>
+      </ul>
     </div>
 
   </div>

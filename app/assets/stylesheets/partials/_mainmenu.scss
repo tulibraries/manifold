@@ -25,7 +25,7 @@
 }
 
 #main-menu {
-  background-color: #910C22;
+  background-color: $dark-red;
 	width: 100%;
 	margin: 0;
 	height: auto;
@@ -38,7 +38,7 @@
 		padding-right: 0;
 		margin: auto;
 		margin-bottom: 0;
-    background-color: #910C22;
+    background-color: $dark-red;
 	}
 	.dropdown-toggle.disabled {
 		display:inline-block;
@@ -184,7 +184,7 @@ a.multiples.active {
 		margin-bottom: 10px!important;
 	}
 	#ql {
-		color: #903;
+		color: $red;
 		margin-top: .5rem;
 	}
   .list-group {

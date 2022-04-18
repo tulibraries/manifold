@@ -10,14 +10,14 @@
 	}
 	.header-search-container {
 		width: 100%;
+    a {
+      color: $white;
+    }
 		ul {
 			margin-left: .65rem;
 			margin-top: .65rem;
       li {
         color: $white;
-        a {
-          color: $white;
-        }
       }
 		}
 	}

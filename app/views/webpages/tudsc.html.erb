@@ -50,14 +50,8 @@
     </ul>
   </div>
 
-  <div class="col-12 col-lg-8 description-container">
-    <% unless @webpage.description.nil? %>
-    <div class="row">
-      <div class="col-12 description">
-        <%= @webpage.description %>
-      </div>
-    </div>
-    <% end %>
+  <div class="col-12 col-lg-8 description">
+    <%= @webpage.description if @webpage.description.present? %>
   </div>
 </div>
 
@@ -75,10 +69,9 @@
                         link, 
                         id: "lcdss_visit_link_#{link.label.parameterize}" %>
           </li>
-        <% end unless @visit_links.nil? %>
+        <% end if @visit_links.present? %>
       </ul>
-  </div>
-  <div class="col-12 col-lg-6 links">
+
       <h2>
         <%= link_to t("manifold.webpages.tudsc.links.research_label"), 
                     t("manifold.webpages.tudsc.links.research_link"),
@@ -91,7 +84,7 @@
                         link,
                         id: "lcdss_research_link_#{link.label.parameterize}" %>
           </li>
-        <% end unless @research_links.nil? %>
+        <% end if @research_links.present? %>
       </ul>
   </div>
   <div class="col-12 col-lg-6 links">
@@ -106,15 +99,14 @@
             <%= link_to link.label, 
                         event_path(link.id),
                         id: "lcdss_events_link_#{link.label.parameterize}" %></li>
-        <% end unless @event_links.nil? %>
+        <% end if @event_links.present? %>
         <li class="text-lg-right dsc-event">
           <%= link_to t("manifold.webpages.tudsc.links.view_all"), 
                       events_path(type: t("manifold.webpages.tudsc.links.events_type"), anchor: "upcoming-events"), 
                       {id: "lcdss_events_view_all"} %> >
         </li>
       </ul>
-  </div>
-  <div class="col-12 col-lg-6 links">
+
       <h2>
         <%= link_to t("manifold.webpages.tudsc.locations.blog"), 
                     @blog.base_url,
@@ -127,7 +119,7 @@
                         link.post_guid,
                         id: "lcdss_blog_link_#{link.title.parameterize}" %>
           </li>
-        <% end unless @blog_posts.nil? %>
+        <% end if @blog_posts.present? %>
         <li class="text-lg-right all-events">
           <%= link_to t("manifold.webpages.tudsc.links.view_all"), 
                       strip_tags(@blog.base_url), 

@@ -1,14 +1,16 @@
 <div class="header-search-container">
-	<form action=<%= "#{librarysearch_url("everything")}" %> id="global-search" name="header-search">
-		<label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
-	  <input type="text" name="q" id="librarySearch" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
-	  <input type="submit" value = "" aria-label="submit search query">
-	  <input type="hidden" name="search_field" id="search_field" value="all">
+  <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu", class: "pr-3" %>
+  <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
+  <form action=<%= "#{librarysearch_url("everything")}" %> id="global-search" name="header-search">
+    <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
+    <input type="text" name="q" id="librarySearch" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
+    <input type="submit" value = "" aria-label="submit search query">
+    <input type="hidden" name="search_field" id="search_field" value="all">
 
     <ul class="text-left">
       <li><%= link_to t("manifold.header.search.books"), "#{librarysearch_url("books")}" %></li>
       <li><%= link_to t("manifold.header.search.articles"), "#{librarysearch_url("articles")}" %></li>
       <li><%= link_to t("manifold.header.search.databases"), "/databases" %></li>
     </ul>
-	</form>
+  </form>
 </div>

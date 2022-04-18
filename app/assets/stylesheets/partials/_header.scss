@@ -1,52 +1,51 @@
 @import "_vars.scss";
 
 .flash.timedout {
-	display:none;
+  display:none;
 }
 
 #header {
-	color: #000;
-	max-width: 100%;
-	font-size: 1.25rem;
-	font-family: "Roboto";
-	img {
-		position: relative;
-		top: -5px;
-	}
-	.container {
-	  background-color: #F8EBD5;
-		padding: 17px;
-		height: auto;
-		vertical-align: middle;
-		a {
-			text-decoration: underline;
-		}
-	}
+  color: #000;
+  max-width: 100%;
+  font-size: 1.25rem;
+  font-family: "Roboto";
+  img {
+    position: relative;
+    top: -5px;
+  }
+  .container {
+    background-color: #F8EBD5;
+    padding: 17px;
+    height: auto;
+    vertical-align: middle;
+    a {
+      text-decoration: underline;
+    }
+  }
 }
 
 
 #mobile-search-container {
-	nav.navbar {
-		padding: 0;
-	}
+  nav.navbar {
+    padding: 0;
+  }
 }
 
 #header-navbar {
-	padding-bottom: 0;
-	padding-right: 0;
+  padding-right: 0;
   background-color: $red;
-	.col {
-		padding-left: 0;
-	}
+  .col {
+    padding-left: 0;
+  }
   .container {
     height: 6rem;
   }
-	.logo-container {
-		padding-left: 0;
+  .logo-container {
+    padding-left: 0;
     color: $white;
-		@media (max-width: 640px) {
-			text-align: center;
-		}
+    @media (max-width: 640px) {
+      text-align: center;
+    }
     .header-logo {
       max-width: 90px;
       max-height: 77px;
@@ -61,37 +60,37 @@
         vertical-align: top;
       }
     }
-	}
-	a.header-name, a.header-name:hover, a.header-name:focus {
-		color: $white;
-		font-size: 2.2rem;
-		font-family: "Faustina";
-		vertical-align: bottom;
-		text-decoration: none;
-		white-space: nowrap;
-		line-height: 3.25rem;
-		@media screen and (max-width: 459px) {
-			span {
-				display: inline-block;
-				width: 200px!important;
-				line-height: 2.4rem;
-				padding-right: 10px;
-				white-space: normal;
-				font-size: 2.2rem;
-			}
-		}
-	}
-	@media screen and (max-width: 1040px) {
-		padding: 10px 4px 14px 0;
-	}
+  }
+  a.header-name, a.header-name:hover, a.header-name:focus {
+    color: $white;
+    font-size: 2.2rem;
+    font-family: "Faustina";
+    vertical-align: bottom;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 3.25rem;
+    @media screen and (max-width: 459px) {
+      span {
+        display: inline-block;
+        width: 200px!important;
+        line-height: 2.4rem;
+        padding-right: 10px;
+        white-space: normal;
+        font-size: 2.2rem;
+      }
+    }
+  }
+  @media screen and (max-width: 1040px) {
+    padding: 10px 4px 14px 0;
+  }
 }
 .navbar-default {
-	background-color: $tan;
+  background-color: $tan;
 }
 
 .form-control:focus {
-	border-color: $red;
-	box-shadow: 0 0 8px rgba(165, 0, 48, 0.6);
+  border-color: $red;
+  box-shadow: 0 0 8px rgba(165, 0, 48, 0.6);
 }
 
 .navbar-collapse.collapse.show {
@@ -99,5 +98,5 @@
 }
 
 .home #header-search {
-	display:none!important;
+  display:none!important;
 }

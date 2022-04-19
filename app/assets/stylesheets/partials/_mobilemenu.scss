@@ -39,16 +39,16 @@
 		}
 	}
 	.hours-icon {
-		width: 40px;
-		height: 40px;
+		width: 30px;
+		height: 30px;
 	}
 	.chat-icon {
-		width: 46px;
-		height: 46px;
+		width: 30px;
+		height: 30px;
 	}
 	.person-icon {
-		width: 40px;
-		height: 40px;
+		width: 30px;
+		height: 30px;
 	}
 	#libchat_fe2bd0cb1f04720f51641c4f01b8e22e {
 		display: inline-block;
@@ -72,7 +72,7 @@
 			width: 100%; /* Firefox fix */
 		}
 		a {
-			font-family: "Roboto Condensed"!important;
+			font-family: "Roboto Bold"!important;
 		}
 	}
 	.navbar {
@@ -102,7 +102,7 @@
 			background-image: none;
 		}
 		.navbar-brand {
-			font-family: "Roboto Condensed";
+			font-family: "Roboto Bold";
 		}
 		.row {
 			margin-top: 2px;
@@ -171,7 +171,7 @@
 	    top: 3px;
 	    position: relative;
 	    display: inline;
-	    font-family: "Roboto Condensed";
+	    font-family: "Roboto Bold";
 		}
 	}
 }

@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0088/8647.js" async="async"></script>
+
     <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
   <body class="<%= yield (:body_class) %>">
@@ -33,14 +33,17 @@
        <div class="flash <%= key %>"><%= value %></div>
     <% end %>
 
+
+  <%= render "covid_alert" if @covid_alert.present? %>
+
   <%= render "header_navbar" %>
 
-  <div id="content" style="min-height: 640px">
-    <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a>
+  <div id="content">
+    <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a> 
+    
     <div class="lcs_slide_out">
       <%= link_to t("manifold.default.chat"), "/sidebar", target: "_blank" %>
     </div>
-
 
     <%= yield %>
 

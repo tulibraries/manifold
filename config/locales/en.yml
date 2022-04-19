@@ -41,7 +41,7 @@ en:
       image_file_size_limit: 700
       thumb_image_size: 120
       index_image_size: 220
-      show_image_size: 300
+      show_image_size: 240
       covid_alert: COVID-19 Update
       signout: "Log Out"
       site_title: Temple University Libraries
@@ -906,7 +906,7 @@ en:
         foapal: "FOAPAL"
         foapal_hint: "in case of damages or additional cleaning costs"
         policy_check_html: >-
-                          I agree to <a href="https://library.temple.edu/policies/17" class="inline">
+                          I agree to <a href="/policies/17" class="inline">
                           Temple University Libraries's policies and guidelines</a>
 
       graduate_locker_request:
@@ -1018,7 +1018,9 @@ en:
                   <p>Welcome to the Library Staff Directory. To search for a specific individual by name, 
                   please use the Search Everything box in the upper right corner of your screen. Alternatively, 
                   filter out search results by Subject Specialty, Location and Department.</p>
-      entity_help_html: <h3>Charles Library Main Phone:</h3>215-204-8212
+      entity_help_html: >-
+                        <span style="display:inline-block;white-space:nowrap;">Charles Library Main Phone: </span>
+                        <span style="display:inline-block;white-space:nowrap;font-weight:900;font-family:'roboto bold'">215-204-8212</span>
       fcn_link: Frequently Called Numbers
       no_results: No people found. Try another search.
       filters:
@@ -1026,8 +1028,8 @@ en:
         location: Location
         staff_type: Staff Type
         specialties: Subject Specialty
-        limited_to_specialists: Limited to Subject Librarians Only
-        limit_to_specialists: Limit to Subject Librarians Only
+        limited_to_specialists: Limited to Subject Specialists
+        limit_to_specialists: Limit to Subject Specialists Only
         mobile_options: Filter options
       show:
         subjects: Subjects
@@ -1123,7 +1125,7 @@ en:
           chat_label: Chat with a Health Sciences Librarian
           chat_link: /hsl/chat
           appointment_label: Make an Appointment with a Health Sciences Librarian
-          appointment_link: https://library.temple.edu/people?department=health-sciences-library-staff&page=1&specialists=true
+          appointment_link: /people?department=health-sciences-library-staff&page=1&specialists=true
           study_room: Reserve a Study Room
           not_study_room: Not a Study Room
         links:
@@ -1193,7 +1195,6 @@ en:
         scholar_share: TUScholarShare
         blog: Blog
         events: Workshops & Events
-        view_all: View All
         call_outs:
           pub
         links:
@@ -1203,6 +1204,7 @@ en:
           nb_press_link: https://temple.manifoldapp.org
           open_journals_label: Open Journals
           open_journals_link: https://tuljournals.temple.edu/
+          view_all: View All
         contact: Staff Directory
       videos:
         page_title: Past Program and Event Videos
@@ -1234,7 +1236,7 @@ en:
                     <p>
                       This video collection is only accessible in the Special Collections Research Center's reading room, in the Charles Library.<br />
                       For more information about this collection please see the finding aid 
-                      <a href="https://library.temple.edu/finding_aids/wpvi-news-footage-and-logs" class="inline">(Series 2, Accession B)</a><br />
+                      <a href="https:///finding_aids/wpvi-news-footage-and-logs" class="inline">(Series 2, Accession B)</a><br />
                       When searching the play lists, do not use truncation/wildcard symbol :yellow_star: or quotation marks ("")
                     </p>
                     <p style="font-size:large;font-weight:600;">The collection is divided into 4 play lists</strong>:</p>

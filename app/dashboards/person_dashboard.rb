@@ -12,7 +12,7 @@ class PersonDashboard < BaseDashboard
     slug: Field::String,
     groups: Field::HasMany,
     occupant: Field::HasMany,
-    spaces: Field::HasMany,
+    buildings: Field::HasMany,
     id: Field::Number,
     first_name: Field::String,
     last_name: Field::String,
@@ -28,6 +28,7 @@ class PersonDashboard < BaseDashboard
     libguides_account: Field::String,
     research_identifier: Field::String,
     personal_site: Field::String,
+    pronouns: Field::String,
     categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -60,7 +61,7 @@ class PersonDashboard < BaseDashboard
     :springshare_id,
     :research_identifier,
     :groups,
-    :spaces,
+    :buildings,
     :personal_site,
     :categories
   ].freeze
@@ -73,6 +74,7 @@ class PersonDashboard < BaseDashboard
     :last_name,
     :slug,
     :image,
+    :pronouns,
     :phone_number,
     :email_address,
     :chat_handle,
@@ -82,7 +84,7 @@ class PersonDashboard < BaseDashboard
     :libguides_account,
     :research_identifier,
     :groups,
-    :spaces,
+    :buildings,
     :personal_site,
     :categories
   ].freeze

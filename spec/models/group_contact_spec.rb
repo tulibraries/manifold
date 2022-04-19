@@ -6,8 +6,8 @@ RSpec.describe GroupContact, type: :model do
   context "Group has a Chair or Department Head" do
     let(:building) { FactoryBot.create(:building) }
     let(:space) { FactoryBot.create(:space, building: building) }
-    let(:person1) { FactoryBot.create(:person, spaces: [space]) }
-    let(:person2) { FactoryBot.create(:person, spaces: [space]) }
+    let(:person1) { FactoryBot.create(:person, buildings: [building]) }
+    let(:person2) { FactoryBot.create(:person, buildings: [building]) }
     let(:group) { FactoryBot.create(:group, persons: [person1], space: space, chair_dept_heads: [person1]) }
     let(:another_group) { FactoryBot.create(:group, persons: [person1], space: space, chair_dept_heads: [person1]) }
 

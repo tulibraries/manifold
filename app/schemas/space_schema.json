@@ -35,8 +35,7 @@
 					"default": "space",
 					"examples": [
 						"building",
-						"event",
-						"person"
+						"event"
 					],
 					"pattern": "^(.*)$"
 				},

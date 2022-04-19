@@ -59,9 +59,9 @@ as well as a link to its edit page.
         <% unless attribute.attribute.to_s.downcase == "id" %>
           <%= render_field attribute, page: page %>
         <% else %>
-          <%= "https://library.temple.edu/#{attribute.resource.class.to_s.underscore.downcase.pluralize}/#{attribute.to_s}" unless attribute.resource.class.to_s == "Building" || attribute.resource.class.to_s == "Person" %>
-          <%= "https://library.temple.edu/libraries/#{attribute.to_s}" if attribute.resource.class.to_s == "Building" %>
-          <%= "https://library.temple.edu/people/#{attribute.to_s}" if attribute.resource.class.to_s == "Person" %>
+          <%= "/#{attribute.resource.class.to_s.underscore.downcase.pluralize}/#{attribute.to_s}" unless attribute.resource.class.to_s == "Building" || attribute.resource.class.to_s == "Person" %>
+          <%= "/libraries/#{attribute.to_s}" if attribute.resource.class.to_s == "Building" %>
+          <%= "/people/#{attribute.to_s}" if attribute.resource.class.to_s == "Person" %>
         <% end %>
       </dd>
     <% end %>

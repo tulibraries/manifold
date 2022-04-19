@@ -69,7 +69,6 @@ RSpec.feature "FindingAids", type: :feature do
         visit("/finding_aids")
         within(".aid-index") do
           within(".filter_subjects") do
-            # binding.pry
             click_on @finding_aid_1.subject.first
             expect(page).to have_content(@finding_aid_1.subject.first)
             expect(page).to_not have_content(@finding_aid_2.subject.first)

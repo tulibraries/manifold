@@ -6,7 +6,7 @@ RSpec.describe Event, type: :model do
 
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
-  let(:person) { FactoryBot.build(:person, spaces: [space]) }
+  let(:person) { FactoryBot.build(:person, buildings: [building]) }
 
   describe "past event video" do
     let(:ensemble_id) { "12345ABCDEF09876ZYXWVU" }

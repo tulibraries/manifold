@@ -6,12 +6,12 @@ RSpec.describe Person, type: :model do
 
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
-  let(:person) { FactoryBot.build(:person, spaces: [space]) }
-  let(:chair_person) { FactoryBot.build(:person, spaces: [space]) }
+  let(:person) { FactoryBot.build(:person) }
+  let(:chair_person) { FactoryBot.build(:person) }
 
   describe "relation to" do
     let(:group) { FactoryBot.create(:group, chair_dept_heads: [chair_person], space: space) }
-    let(:person) { FactoryBot.create(:person, groups: [group], spaces: [space]) }
+    let(:person) { FactoryBot.create(:person, groups: [group]) }
     context "Group" do
       example "attach group" do
         expect(person.groups.last.name).to match(/#{group.name}/)
@@ -21,26 +21,21 @@ RSpec.describe Person, type: :model do
 
   describe "Required fields" do
     example "Person must have a last name" do
-      person = FactoryBot.build(:person, last_name: "", spaces: [space])
+      person = FactoryBot.build(:person, last_name: "", buildings: [building])
       expect { person.save! }.to raise_error(/Last name can't be blank/)
     end
     example "Person must have a first name" do
-      person = FactoryBot.build(:person, first_name: "", spaces: [space])
+      person = FactoryBot.build(:person, first_name: "", buildings: [building])
       expect { person.save! }.to raise_error(/First name can't be blank/)
     end
   end
 
   describe "required relations" do
-    context "Space" do
-      example "attach space" do
-        person = FactoryBot.create(:person, spaces: [space])
+    context "Building" do
+      example "attach building" do
+        person = FactoryBot.create(:person, buildings: [building])
         expect { person.save! }.to_not raise_error
-        expect(person.spaces.last.name).to match(/#{Space.last.name}/)
-      end
-      example "no space" do
-        person = FactoryBot.build(:person)
-        person.spaces = []
-        expect { person.save! }.to raise_error(/Spaces can't be blank/)
+        expect(person.buildings.last.name).to match(/#{Building.last.name}/)
       end
     end
   end
@@ -64,7 +59,7 @@ RSpec.describe Person, type: :model do
 
   describe "show name" do
     example "with first and last name" do
-      person = FactoryBot.create(:person, spaces: [space])
+      person = FactoryBot.create(:person, buildings: [building])
       expect(person.name).to match(/Zaphod Beeblebrox/)
     end
   end
@@ -96,7 +91,7 @@ RSpec.describe Person, type: :model do
 
   describe "specialties" do
     it "cleans out empty arrays" do
-      person = FactoryBot.create(:person, spaces: [space], specialties: ["a", "", "b"])
+      person = FactoryBot.create(:person, buildings: [building], specialties: ["a", "", "b"])
       expect(person.specialties).to match_array(["a", "b"])
     end
   end

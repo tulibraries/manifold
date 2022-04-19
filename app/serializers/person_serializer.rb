@@ -15,5 +15,5 @@ class PersonSerializer < ApplicationSerializer
   attributes :name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties
 
   has_many :groups
-  has_many :spaces
+  has_many :buildings
 end

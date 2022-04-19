@@ -7,7 +7,7 @@ RSpec.describe EventsController, type: :controller do
 
   let(:building) { FactoryBot.create(:building) }
   let(:space) { FactoryBot.create(:space, building: building) }
-  let(:person) { FactoryBot.build(:person, spaces: [space]) }
+  let(:person) { FactoryBot.build(:person, buildings: [building]) }
 
   let(:event) {
     FactoryBot.create(:event, building: building, space: space, person: person)

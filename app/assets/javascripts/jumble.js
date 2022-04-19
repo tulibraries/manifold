@@ -12,8 +12,8 @@ function desktop () {
   x = $('#header-navbar').offset();
   x2 = $('#visitMenuButton').offset();
   x3 = $('#researchMenuButton').offset();
-  $("#visit-links").css("left", -(x2.left)+x.left);
-  $("#research-links").css("left", -(x3.left)+x.left);
+  $("#visit-links").css("left", x.left - x2.left);
+  $("#research-links").css("left", x.left - x3.left);
 }
 
 function mobile () {

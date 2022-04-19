@@ -5,15 +5,14 @@ require "rails_helper"
 RSpec.describe "persons/show", type: :view do
 
   let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
 
   before(:each) do
     @buildings = [building]
-    @person =  FactoryBot.create(:person, libguides_account: "", springshare_id: "", spaces: [space])
+    @person =  FactoryBot.create(:person, libguides_account: "", springshare_id: "", buildings: [building])
   end
 
   it "displays the sample person image" do
-    @person = FactoryBot.create(:person, :with_image, spaces: [space])
+    @person = FactoryBot.create(:person, :with_image, buildings: [building])
     render
     expect(rendered).to match /#{@person.image.attachment.blob.filename.to_s}/
   end
@@ -24,7 +23,7 @@ RSpec.describe "persons/show", type: :view do
   end
 
   it "returns a Make an Appointment link if springshare_id field populated" do
-    @person = FactoryBot.create(:person, spaces: [space])
+    @person = FactoryBot.create(:person, buildings: [building])
     render
     expect(rendered).to match(@person.springshare_id)
   end
@@ -35,7 +34,7 @@ RSpec.describe "persons/show", type: :view do
   end
 
   it "returns a libguides link if libguides_account field populated" do
-    @person = FactoryBot.create(:person, spaces: [space])
+    @person = FactoryBot.create(:person, buildings: [building])
     render
     expect(rendered).to match(@person.libguides_account)
   end

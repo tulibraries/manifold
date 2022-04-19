@@ -1,18 +1,14 @@
 <% unless @news_items.nil? %>
   <% @news_items.each do |item| %>
-		<div class="col-12 col-lg-4 mb-3 library-news">
-			<% if item.image.attached?  %>
-			<%= link_to (image_tag item.custom_image(350, 250), class: "decorative", alt: ""), strip_tags(item.link) %>
-			<% end %>
-			<div class="library-news-caption">
-				<%= link_to item.label.truncate(52), strip_tags(item.link) %>
-				<div class="library-news-description">
-					<%= strip_tags(item.blurb.truncate(120).html_safe) %>
-				</div>
-				<div class="unnecessary-link">
-					<%= link_to t("manifold.blogs.read_more"), strip_tags(item.link), class: "read-more d-none" %>
-				</div>
-			</div>
+		<div class="col-12 col-md-6 col-lg-4 mb-3 library-news">
+      <div class="news-item">
+        <div class="news-item-caption">
+          <%= link_to item.label.truncate(52), strip_tags(item.link) %>
+        </div>
+        <div class="news-item-description mt-3">
+          <%= strip_tags(item.blurb.truncate(120).html_safe) %>
+        </div>
+      </div>
 		</div>
   <% end %>
 <% end %>

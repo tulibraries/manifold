@@ -131,7 +131,6 @@ class WebpagesController < ApplicationController
 
   def home
     @todays_hours = LibraryHour.todays_hours_at("charles")
-    @header_alert = Alert.where(published: true).find_by(for_header: true)
     @news_items = Highlight.where(promoted: true).take(3)
     @featured_events = Event.where(featured: true).order(:start_time).take(3)
     @cta3 = Category.find_by(slug: "computers-printing-technology")
@@ -142,7 +141,6 @@ class WebpagesController < ApplicationController
     @visit_links = Category.find_by(slug: "scrc-study").items
     @collection_links = Category.find_by(slug: "scrc-collections").items
     @webpage = Webpage.find_by(slug: "scrc-intro")
-    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def blockson
@@ -150,7 +148,6 @@ class WebpagesController < ApplicationController
     @visit_links = Category.find_by(slug: "blockson-study").items
     @research_links = Category.find_by(slug: "blockson-research").items
     @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
-    @header_alert = Alert.where(published: true).find_by(for_header: true)
     @tours = Category.find_by(name: "360&deg; Virtual Exhibits")
     @tour_links = @tours.items if @tours.present?
   end
@@ -162,7 +159,6 @@ class WebpagesController < ApplicationController
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.zone.now]).order(:start_time).take(5)
     @blog = Blog.find_by(slug: "lcdss-blog")
     @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
-    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def scop
@@ -178,7 +174,6 @@ class WebpagesController < ApplicationController
                         .take(5)
     @blog = Blog.find_by(slug: "scholarly-communications-at-temple")
     @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5) if @blog.present?
-    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def hsl
@@ -188,7 +183,6 @@ class WebpagesController < ApplicationController
     @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Health Science%", Time.zone.now]).order(:start_time).take(5)
     @study_room = ExternalLink.find_by(slug: "hsl-study-rooms")
     @remote_learning = Webpage.find_by(slug: "online-support")
-    @header_alert = Alert.where(published: true).find_by(for_header: true)
   end
 
   def about
@@ -236,7 +230,6 @@ class WebpagesController < ApplicationController
   end
 
   def show
-    @covid_alert = @webpage.covid_alert
     @categories = @webpage.categories
     serializable_show
   end

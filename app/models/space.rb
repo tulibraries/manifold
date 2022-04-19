@@ -34,9 +34,6 @@ class Space < ApplicationRecord
 
   has_ancestry
 
-  has_many :occupant, dependent: :destroy
-  has_many :persons, -> { order "last_name ASC" }, through: :occupant, source: :person
-
   has_many :space_group, dependent: :destroy
   has_many :groups, through: :space_group, source: :group
 

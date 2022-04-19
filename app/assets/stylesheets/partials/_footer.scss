@@ -1,103 +1,110 @@
 @import "_vars.scss";
 
 #site-footer {
-	background-color: $footer-gray;
-	border-top: solid #303030 0;
-	color:#fff!important;
-	width: 100%;
-	color: #666;
-	margin-top: 42px;
-	.row {
-		margin-left: 0;
-		margin-right: 0; 
-	}
-	a {
-		color: $light-grey;
-	}
-	.tu-links {
-		border-top: solid #303030 0;
-		color: $light-grey;
-		padding: 24px 0 56px 0;
-		clear:both;
-		h2 {
-			font-family: "Faustina"!important;
-			font-size: 125%;
-			margin-bottom: 14px;
-		}
-		ul {
-			margin-bottom: 0;
-			li {
-				/*line-height: .85rem;*/
-				text-decoration: none;
-				/*font-size: 90%;*/
-				color: $light-grey;
-				padding-left: 0;
-				a {
-					color: $light-grey;
-				}
-			}
-		}
-		.address {
-			@media (max-width: 1040px) {
-				border-top: solid $white 1px;
-				margin-top: 14px;
-				padding-top: 14px;
-			}
-		}
-	}
+  background-color: $lighter-grey;
+  width: 100%;
+  color: $black;
+  font-family: "roboto light";
+  border-bottom: solid $new-gold 35px;
+  .row {
+    margin-left: 0;
+    margin-right: 0; 
+  }
+  a {
+    color: $black;
+  }
+  .tu-links {
+    border-top: solid $grey 1px;
+    margin-top: 21px;
+    color: $black;
+    padding: 14px 0px 56px 7px;
+    clear:both;
+    font-size: 1.25rem;
+    h2 {
+      font-family: "Roboto";
+      font-size: 125%;
+      margin-bottom: 14px;
+    }
+    ul {
+      margin-bottom: 0;
+      li {
+        text-decoration: none;
+        /*font-size: 90%;*/
+        color: $black;
+        padding-left: 0;
+        a {
+          color: $black;
+        }
+      }
+    }
+    .address {
+      line-height: 3rem;
+      .street-address {
+        font-family: "roboto";
+        font-weight: 600;
+        line-height: 2rem;
+        letter-spacing: 1.25px;
+      }
+      @media (max-width: 1040px) {
+        border-top: solid $white 1px;
+        margin-top: 14px;
+        padding-top: 14px;
+      }
+    }
+  }
 }
 
 a.donate {
-	vertical-align: middle;
-	padding: 7px;
-	position: relative;
-	top: 17px;
-	left: 0;
-	background-color: $white;
-	color: $red!important;
-	font-family: "Roboto Condensed";
-	font-size: 20px;
-	border-radius: 7px;
+  vertical-align: middle;
+  padding: 10px 14px;
+  position: relative;
+  top: 17px;
+  left: 0;
+  background-color: $crystal-blue;
+  color: $royal-blue !important;
+  font-family: "faustina bold";
+  font-weight: 600;
+  font-size: 20px;
+  box-shadow: 0px 2px 5px $light-grey;
 }
 .social {
-	border-bottom: solid $white 1px;
-	.social-link {
-		a:hover {
-			text-decoration: none;
-		}
-	}
-	ul {
-		padding-left: 0;
-		@media(max-width: 1040px) {
-			margin-top: 35px;
-		}
-	}
-	li.social-footer {
-		display: inline-block;
-		position: relative;
-		top: 7px;
-		padding: 6px 14px;
-		img {
-			width: 36px;
-			height: 36px;
-		  max-width: 36px;
-		  max-height: 36px;
-		  /*margin: 7px;*/
-		}
-	}
-	li.facebook {
-		display: inline-block;
-	}
-	li.instagram {
-		display: inline-block;
-		@media (max-width: 1040px) {
-			padding-left: 0;
-			img {
-				margin-left:0;
-			}
-		}
-	}
-	li.twitter {
-		display: inline-block;
-	}
+  background-color: $lighter-grey;
+  .social-link {
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  ul {
+    padding-left: 0;
+    @media(max-width: 766px) {
+      margin-top: 35px;
+    }
+  }
+  li.social-footer {
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    padding: 6px 14px;
+    img {
+      width: 42px;
+      height: 42px;
+      max-width: 42px;
+      max-height: 42px;
+    }
+  }
+  li.facebook {
+    display: inline-block;
+  }
+  li.instagram {
+    display: inline-block;
+    @media (max-width: 1040px) {
+      padding-left: 0;
+      img {
+        margin-left:0;
+      }
+    }
+  }
+  li.twitter {
+    display: inline-block;
+  }
 }

@@ -180,7 +180,7 @@
           "title": "The Relationships Schema",
           "required": [
             "groups",
-            "spaces"
+            "buildings"
           ],
           "properties": {
             "groups": {
@@ -229,20 +229,20 @@
                 }
               }
             },
-            "spaces": {
-              "$id": "#/properties/data/properties/relationships/properties/spaces",
+            "buildings": {
+              "$id": "#/properties/data/properties/relationships/properties/buildings",
               "type": "object",
-              "title": "The Spaces Schema",
+              "title": "The Buildings Schema",
               "required": [
                 "data"
               ],
               "properties": {
                 "data": {
-                  "$id": "#/properties/data/properties/relationships/properties/spaces/properties/data",
+                  "$id": "#/properties/data/properties/relationships/properties/buildings/properties/data",
                   "type": "array",
                   "title": "The Data Schema",
                   "items": {
-                    "$id": "#/properties/data/properties/relationships/properties/spaces/properties/data/items",
+                    "$id": "#/properties/data/properties/relationships/properties/buildings/properties/data/items",
                     "type": "object",
                     "title": "The Items Schema",
                     "required": [
@@ -251,7 +251,7 @@
                     ],
                     "properties": {
                       "id": {
-                        "$id": "#/properties/data/properties/relationships/properties/spaces/properties/data/items/properties/id",
+                        "$id": "#/properties/data/properties/relationships/properties/buildings/properties/data/items/properties/id",
                         "type": "string",
                         "title": "The Id Schema",
                         "default": "",
@@ -261,12 +261,12 @@
                         "pattern": "^(.*)$"
                       },
                       "type": {
-                        "$id": "#/properties/data/properties/relationships/properties/spaces/properties/data/items/properties/type",
+                        "$id": "#/properties/data/properties/relationships/properties/buildings/properties/data/items/properties/type",
                         "type": "string",
                         "title": "The Type Schema",
                         "default": "",
                         "examples": [
-                          "space"
+                          "building"
                         ],
                         "pattern": "^(.*)$"
                       }

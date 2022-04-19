@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :webpage do
-    title { "Webpage" }
+    title { "This is a Webpage" }
     description { ActionText::Content.new("Hello World") }
     layout { "None" }
     virtual_tour { "" }
@@ -28,7 +28,6 @@ FactoryBot.define do
         file1 = FactoryBot.create(:file_upload)
         file2 = FactoryBot.create(:file_upload)
         webpage.assign_attributes(file_uploads: [file1, file2])
-
       end
     end
   end

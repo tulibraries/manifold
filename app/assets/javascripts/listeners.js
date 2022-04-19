@@ -1,5 +1,39 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
+  x = $('.container.nav-container').offset();
+  x2 = $('#visitMenuButton').offset();
+  x3 = $('#researchMenuButton').offset();
 
+  $("#visitMenuButton").mouseover(function() {
+    $('#visit-links').css("left", x.left - x2.left);
+  });
+
+  $("#researchMenuButton").mouseover(function() {
+    $('#research-links').css("left", x.left - x3.left);
+  });
+
+  $("#m_department").change(function() {
+    var dept = encodeURIComponent($("#m_department").find(":selected").val());
+    window.location.href = "/people?department="+dept+"&page=1";
+  });
+  
+  $("#m_subject").change(function() {
+    var subject = encodeURIComponent($("#m_subject").find(":selected").val());
+    window.location.href = "/people?specialty="+subject+"&page=1";
+  });
+
+  $("#department").change(function() {
+    var dept = encodeURIComponent($("#department").find(":selected").val());
+    window.location.href = "/people?department="+dept+"&page=1";
+  });
+  
+  $("#subject").change(function() {
+    var subject = encodeURIComponent($("#subject").find(":selected").val());
+    window.location.href = "/people?specialty="+subject+"&page=1";
+  });
+});
+
+$(document).ready(function(){
+  // wpvi
   $("#nav-sec21a-tab").click(function() {
     $('html, body').animate({
         scrollTop: $("#nav-tabs").offset().top
@@ -20,6 +54,7 @@ $(document).ready(function(){
         scrollTop: $("#nav-tabs").offset().top
     }, 1000);
   });
+  // end wpvi
 
   setTimeout(function(){
     $('form#main-search').on('keypress', function (evt) {
@@ -32,10 +67,21 @@ $(document).ready(function(){
       if (evt.keyCode == 13) {
         handleEventClicks("header-search", "Search");
       }
+    });   
+    
+    $('staffSearch').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        var q = $("#staffSearch").val();
+        window.location.href = "/people?q="+q+"&page=1";
+      }
     });
 
     dc = document.querySelector('a[href="https://digital.library.temple.edu/"]');
     if(dc) dc.setAttribute("id","digcol")
+
+    general_tracks = [
+      {id: "specialist-print", category: "general"}
+    ]
 
     home_tracks = [
       {id: "digcol", category: "Outbound Links"},
@@ -136,6 +182,16 @@ $(document).ready(function(){
         });
       };
     };
+
+    general_tracks.forEach((track) => {
+      if(track.id) {
+        if (el = document.getElementById(track.id)) {
+          el.addEventListener("click", () => {
+            handleEventClicks(track.id, track.category)
+          });
+        };
+      }
+    });
 
     home_tracks.forEach((track) => {
       if(track.id) {

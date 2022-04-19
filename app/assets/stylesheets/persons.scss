@@ -1,238 +1,235 @@
 @import "partials/_vars.scss";
 
+.no-results {
+  margin-top: 14px;
+}
 #icon_filter {
-	@media (max-width: 948px) {
+	@media (max-width: 1199px) {
 		position: relative;
 		left: -3px;
 	}
 }
-.leftside-index {
-	padding-left: 0!important;
-	padding-right: 0!important;
-	h2 {
-		@media (max-width: 1042px) {
-			font-size: 150%;
-		}
-	}
-	ul {
-		margin-top: 10px;
-		li {
-			padding: 6px 14px;
-			font-size: 1rem;
-			a {
-				font-size: 1rem;
-			}
-		}
-		li.active {
-			font-family: 'Faustina';
-			color: $seagreen;
-			margin-right: 5px;
-			font-weight: 900;
-			a {
-				color: $seagreen;
-				font-weight: 900;
-			}
-		}
-	}
-	a[data-toggle="collapse"]:after {
-		content: "\f105";
-    font-family: "FontAwesome";
-  	float: right;
-  	padding-right: 7px;
-	}
-	a[aria-expanded="true"]:after {
-		content: "\f107";
-    font-family: "FontAwesome";
-  	float: right;
-  	padding-right: 7px;
-	}
-	.list-unstyled.navbar-collapse.collapse {
-		height: auto;
-		max-height:16rem!important;
-		margin-right:4px;
-		overflow-y: auto;
-		overflow-x: hidden;
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar {
-    -webkit-appearance: none;
-    margin-left: 2px;
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar:vertical {
-	    width: 11px;
-	    border: solid #eee 1px;
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar:horizontal {
-	    height: 11px;
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar-thumb {
-	    border-radius: 8px;
-	    border: 2px solid #ccc; /* should match background, can't be transparent */
-	    background-color: rgba(0, 0, 0, .5);
-	}
-	.list-unstyled.navbar-collapse.collapse::-webkit-scrollbar-track {
-	    background-color: #fff;
-	    border-radius: 8px;
-	    border: solid #ccc 1px;
-	    padding: 2px;
-	}
+.selected-filter {
+  .key {
+    font-family: Roboto;
+    border-left: solid $new-gold 4px;
+    padding-left: 10px;
+  }
 }
+.filters {
+  background-color: $lighter-grey;
+  .filter-links {
+    font-family: Roboto;
+    @media (max-width: 1199px) {
+      max-width: 75%;
+      width: 75%;
+    }
+  }
+  #people-search, #m-people-search {
+    width: 29%;
+    @media (max-width: 1199px) {
+      max-width: 806px;
+      width: 806px;
+    }
+    #search {
+      width: 28%;
+      position: relative;
+      left: 0;
+      padding-left: 35px;
+      @media (max-width: 1199px) {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+    i.fa-search {
+      position: relative;
+      top: 32px;
+      left: 16px;
+      z-index: 3;
+    }
+  }
+  #people-search, #m-people-search, #people-filters, #m-people-filters {
+    input, select {
+      font-family: "Roboto Bold Light";
+      display: inline-block !important;
+      margin-left: 4px !important;
+      padding-left: 10px;
+      height: 42px;
+      border-radius: 0;
+      border: solid $black 1px;
+      @media (max-width: 1199px) {
+        padding-left: 10px;
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+    #department {
+      position: relative;
+      left: -6px;
+      @media (max-width: 1199px) {
+        left: 0;
+      }
+    }
+  }
+  #m-people-search, #m-people-filters {
+    @media (max-width: 1199px) {
+      margin-left: 10px;
+      max-width: 95%;
+      width: 95%;
+    }
 
-.people-filter-reset {
-	width:50%;
-	background-color: $white;
-	text-align:center;
-	border: solid $seagreen 1px;
-	border-radius:4px;
-	padding: 7px;
-	margin: 21px auto;
-	a {
-		color: $seagreen!important;
-	}
+  }
 }
 
 .staff-index {
-
-	.right-side {
-		@media (max-width: 1039px) {
-			margin-top: 21px;
-		}
-		.entity-help {
-			padding-left: 0;
-	    border: solid $seagreen 1px;
-	    border-radius: 7px;
-	    padding: 14px;
-	    overflow-wrap: break-word;
-	    line-height: .75;
-	    @media (max-width: 1023px) {
-	    	margin-top: 14px;
-	    }
-		}
-		.access-link {
-			background-color: $foamgreen;
-	    padding: 14px;
-	    border-radius: 7px;
-	    margin-top: 17px;
-	    h3 {
-	    	margin-bottom: 0;
-	    }
-	    a {
-	    	color: $white;
-	    }
-		}
-	}
+  font-family: "Roboto Bold Light";
+  .label {
+    display: block;
+    font-family: Faustina-Bold;
+    font-weight: 900;
+  }
 	.person {
+    clear: both;
 		border-bottom: solid #eee 2px;
 		margin-bottom: 21px;
 		margin-left: 7px;
 		padding-bottom: 14px;
+    font-size: 1.15rem !important;
+    .p-name {
+      font-size: 135%;
+      font-weight: 600;
+      font-family: Roboto;
+      color: $red;
+      @media (max-width: 750px) {
+        margin-bottom: 10px;
+      }
+    }
 		img {
-			max-width: 100%;
+      min-width: 240px!important;
+      max-width: 240px!important;
 		}
+    ul.details {
+      border-left: solid #A32035 2px;
+      margin-bottom: 28px;
+      @media (max-width: 750px) {
+        // border-left: 0;
+      }
+    }
 		.person-actions {
-			.view-profile {
-				background-color: $seagreen;
-				padding: 5px 14px 8px 14px;
-				color: $white;
-				border-radius: 7px;
-			}
-			.springshare-id {
-				background-color: $foamgreen;
-				padding: 5px 14px 8px 14px;
-				border-radius: 7px;
-			}
-			@media (max-width: 1039px) {
-				a {
-					display: block;
-					margin-bottom: 4px;
-					width: 180px;
-				}
+      margin-top: 14px;
+      margin-bottom: 21px;
+			.view-profile, .springshare-id {
+        display: inline-block;
+				background-color: $lighter-grey;
+				padding: 4px 8px 6px 8px;
+				color: $royal-blue;
+        font-family: Faustina-Bold;
+        white-space: nowrap;
 			}
 		}
 	}
 }
 
-.container.staff {
-	.heading {
-		border-bottom: solid #ccc 2px;
-		padding: 21px 0;
-		.col-3 {
-			font-weight: 600;
-			font-size: larger;
-		}
-	}
-	.details {
-		border-bottom: solid #ccc 1px;
-		padding: 21px 0;
-	}
-}
 .container.person {  /* Person show page */
+  font-family: "Roboto Light";
 	margin-top: 35px;
-	.subject-list, .contact-list {
-		border: solid $seagreen 1px;
-		border-radius: 7px;
-		padding: 14px;
+  min-height: 52vh;
+  img {
+    padding-bottom: 7px;
+    border-bottom: solid $red 3px;
+    @media (min-width: 0) and (max-width: 1199px) {
+      min-width: 240px!important;
+      max-width: 240px!important;
+      border-bottom: 0;
+    }
+    @media (min-width: 451) and (max-width: 1199px) {
+      min-width: 240px!important;
+      max-width: 240px!important;
+      width: 240px;
+      border-bottom: 0;
+    }
+  }
+  .label {
+    display: block;
+    font-family: Faustina-Bold;
+    font-weight: 900;
+  }
+  .contact-details {
+    padding-top: 14px;
+    hr {
+      background-color: $black;
+      height: 1px;
+      width:95%;
+      margin: auto;
+		  @media (max-width: 1199px) {
+        margin-bottom: 14px;
+      }  
+    }
+    .col-6 {
+      padding-top: 14px;
+    }
+  }
+
+  .person-actions {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    .libguides-link, .springshare-appointment {
+      display: inline-block;
+      margin-right: 14px;
+      margin-left: 15px;
+      background-color: $lighter-grey;
+      padding: 4px 8px 6px 8px;
+      color: $royal-blue;
+      font-family: Faustina;
+      @media (max-width: 649px) {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+  }
+	.subject-list {
+    background-color: $lighter-grey;
+		padding: 21px;
 		margin-bottom: 14px;
 		ul {
 			margin-bottom: 0;
 		}
-	}
-	.springshare-appointment, .libguides-link {
-		display: inline-block;
-		background-color: $foamgreen;
-		padding: 14px;
-		border-radius: 7px;
-		margin-top: 7px;
-		color: $white!important;
-		text-decoration: underline;
-		font-size: 92%;
-		width: 100%;
-	}
-	.libguides-link {
-		background-color: $red;
-	}
-	.right-side {
-		@media (max-width: 750px) {
-			margin-top: 21px;
+		@media (max-width: 1199px) {
+			background-color: $white;
+      h2 {
+        font-size: 1rem;
+      }
 		}
 	}
 	.person-block {
-		background-color: $lightest-grey;
-		padding: 21px;
-		.person-name {
-			margin-bottom: 14px;
-			@media (max-width: 750px) {
-				margin-bottom: 0;
-			}
-		}
-		.job-title {
-			font-size: 150%;
-			margin-top: 0;
-			margin-bottom: 10px;
-		}
-		img {
-			@media (min-width: 0) and (max-width: 450px) {
-				width: 90%;
-				margin: auto;
-			}
-			@media (min-width: 451) and (max-width: 750px) {
-				width: 340px;
-				margin: auto;
-			}
-		}
-	}
-	.person-block.desktop {
+		padding: 21px 0;
 		width: 100%;
 		margin: auto 14px;
 		padding-bottom: 42px;
 		img {
 			margin-top: 7px;
 		}
-	}
-}
-.clear-filter {
-	display:inline-block;
-	float: right;
-	a {
-		color: $seagreen;
+		.person-name {
+      font-family: faustina;
+      color: $red;
+			margin-bottom: 0;
+			@media (max-width: 750px) {
+				margin-bottom: 0;
+			}
+		}
+		.job-title {
+			font-size: 150%;
+			margin-bottom: 10px;
+		}
+    .person-depts {
+      margin-left: 21px;
+			margin-top: 14px;
+      margin-bottom: 18px;
+      span {
+        border-left: solid $red 2px;
+        padding-left: 7px;
+      }
+    }
 	}
 }

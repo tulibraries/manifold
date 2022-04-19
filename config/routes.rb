@@ -86,7 +86,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show], concerns: [:imageable]
   resources :blogs, only: [:index, :show]
   resources :collections, only: [:index, :show], concerns: [:imageable]
-  resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]
+  resources :events, only: [:index, :show], concerns: [:imageable]
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
   resources :external_link, only: [:show]
   resources :forms, only: [:index, :new, :create, :show]
@@ -122,6 +122,7 @@ Rails.application.routes.draw do
 
   controller :persons do
     get "people/specialists/print" => :specialists_print, as: "specialists_print"
+    post "people" => :index, as: "person_search"
   end
 
   controller :webpages do

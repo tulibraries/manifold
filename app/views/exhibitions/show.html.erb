@@ -12,13 +12,11 @@
       <% if @exhibition.image.attached? %>
         <%= image_tag @exhibition.custom_image(600,300), class: "decorative", alt: "" %>
       <% else %>
-        <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
+        <%= image_tag 'T.png', class: "decorative", alt: "" %>
       <% end %>
     </div>
   </div>
   <div class="col-12 col-lg-6">
-
-    <%= render "covid_alert" if @covid_alert.present? %>
 
     <div class="exhibition-description">
       <h1 class="page-title"><%= title @exhibition.title %></h1>

@@ -6,7 +6,7 @@
                     class: "decorative", alt: ""), 
                     event_path(event.id) %>
       <% else %>
-        <%= image_tag 'T-borderless.gif', class: "decorative", alt: "" %>
+        <%= image_tag 'T.png', class: "decorative", alt: "" %>
       <% end %>
 
       <%= link_to event.title.truncate(32), event_path(event.id), class: "event-title pb-2" %>

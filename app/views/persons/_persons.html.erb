@@ -1,0 +1,64 @@
+    <div class="row person mx-0">
+      <div class="col-12 col-lg-3 text-lg-center pl-md-5 mb-2">
+        <% if person.image.attached?  %>
+        <%= image_tag person.index_image, class: "decorative", alt: "" %>
+        <% else %>
+        <%= image_tag "T.png", style: 'width: 300px;', class: "decorative", alt: "" %>
+        <% end %>
+      </div>
+      <div class="col-12 col-lg-9">
+        <div class="row">
+          <div class="col-12 pl-md-0">
+            <p class="p-name ml-md-5 mb-2">
+              <%= person.name %>
+            </p>
+          </div>
+          <div class="col-12 px-0">
+            <div class="row px-0 mx-0">
+              <div class="col-12 col-md-7 pl-md-3">
+                <p class="pl-md-3 ml-md-3 mt-0">
+                  <%= person.job_title %>
+                </p>
+                <ul class="details list-unstyled pl-3 ml-3 ml-md-5">
+                  <li>
+                    <%= person.email_address %>
+                  </li>
+                  <li class="mb-3">
+                    <%= phone_formatted(person.phone_number) %>
+                  </li>
+                  <li class="pr-2">
+                    <%= depts_list(person).html_safe %>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="d-none d-md-block col-5">
+                <% if person.specialties.present? %>
+                <p style="" class="mb-1 label">
+                  <%= t("manifold.people.show.subjects") %>
+                </p>
+                <ul class="list-unstyled index-specialties" style="font-size:.9rem;">
+                  <% person.specialties.each do |s| %>
+                    <li><%= s %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+
+            </div>
+            <div class="person-actions ml-md-4">
+                <%= link_to "View Profile", person, class: "view-profile ml-3" %>
+
+              <% unless person.springshare_id.blank? %>
+                  <%= link_to t("manifold.people.show.appointment_link"), 
+                                "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", 
+                                class: "springshare-id ml-3 ml-md-4", 
+                                target: "_new"
+                                %>
+
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

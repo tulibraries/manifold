@@ -520,10 +520,11 @@
       .event-title {
         margin-top: 28px;
         font-family: faustina !important;
-        font-size: 120%;
+        font-size: 1.5rem;
+        line-height: 1.85rem;
       }
       .event-date {
-        border-left: solid $new-gold 2px;
+        border-left: solid $new-gold 4px;
         padding-left: 14px;
         width: 100%;
         margin-top: 21px;

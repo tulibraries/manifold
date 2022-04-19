@@ -520,10 +520,11 @@
       .event-title {
         margin-top: 28px;
         font-family: faustina !important;
-        font-size: 120%;
+        font-size: 1.5rem;
+        line-height: 1.85rem;
       }
       .event-date {
-        border-left: solid $new-gold 2px;
+        border-left: solid $new-gold 4px;
         padding-left: 14px;
         width: 100%;
         margin-top: 21px;
@@ -591,14 +592,21 @@
   padding: 14px;
 }
 
-#diagonal {
-  background-color: $white;
-  position: relative;
-  top: -35px;
-  height: 91px;
-  transform: skewY(-2.5deg);
-  @media screen and (min-width: 1599px) {
-    top: -64px;
-    height: 127px;
+.diagonal {
+  background-color: #F0F0F0;
+  margin-bottom: 0;
+  #diagonal-line {
+    background-color: $lighter-grey;
+    position: relative;
+    top: -35px;
+    height: 91px;
+    transform: skewY(-2.5deg);
+    @media screen and (min-width: 1599px) {
+      top: -55px;
+      height: 121px;
+    }
   }
+}
+.diagonal.footer-diagonal {
+  margin-top: 10rem;
 }

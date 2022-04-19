@@ -10,8 +10,10 @@
   font-size: 1.25rem;
   font-family: "Roboto";
   img {
-    position: relative;
-    top: -5px;
+    display: inline-block;
+    height: 42px;
+    float: left;
+    margin-right: 10px;
   }
   .container {
     background-color: #F8EBD5;

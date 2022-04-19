@@ -1,15 +1,11 @@
 @import "_vars.scss";
 
 #site-footer {
+  background-color: $lighter-grey;
 	width: 100%;
 	color: $black;
   font-family: "roboto light";
-  margin-top: 49px;
-  margin-bottom: 49px;
-  border-bottom: solid $new-gold 4px;
-  .footer-header {
-    background-color: #F0F0F0;
-  }
+  border-bottom: solid $new-gold 35px;
 	.row {
 		margin-left: 0;
 		margin-right: 0; 
@@ -18,9 +14,10 @@
 		color: $black;
 	}
 	.tu-links {
-		border-top: solid #303030 0;
+		border-top: solid $grey 1px;
+    margin-top: 21px;
 		color: $black;
-		padding: 24px 0px 56px 7px;
+		padding: 14px 0px 56px 7px;
 		clear:both;
     font-size: 1.25rem;
 		h2 {

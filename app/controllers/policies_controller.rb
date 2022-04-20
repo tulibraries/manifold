@@ -12,7 +12,6 @@ class PoliciesController < ApplicationController
   end
 
   def show
-    @covid_alert = @policy.covid_alert
     @categories = @policy.categories
     serializable_show
   end

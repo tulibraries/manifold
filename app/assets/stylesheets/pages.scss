@@ -401,7 +401,7 @@
 			}
       .quicklinks {
         position: relative;
-        top: 12px;
+        top: 11px;
         background-color: #fff;
         height: 216px;
         max-height: 216px;
@@ -502,6 +502,9 @@
     color: $white;
     a {
       color: $white;
+      img {
+        // max-width: none;
+      }
     }
     a.view-all-events {
       display: block;

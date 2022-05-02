@@ -32,6 +32,14 @@ RSpec.describe "webpages/show", type: :view do
     expect(rendered).to match @webpage.virtual_tour
   end
 
+  it "displays a tutorial" do
+    @webpage = FactoryBot.create(:webpage, layout: "tutorial", tutorial_path: "helpful-hints")
+    render
+    expect(rendered).to render_template(partial: "_tutorial")
+    expect(rendered).to match /temple-library-tutorial/
+    expect(rendered).to match @webpage.tutorial_path
+  end
+
   it "displays an external link" do
     @webpage = FactoryBot.create(:webpage, :with_external_link)
     render

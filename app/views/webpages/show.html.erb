@@ -26,11 +26,12 @@
 
 		<h1><%= title @webpage.title %></h1>
     <div class="text-left page-description">
+      <div><%= @webpage.description %></div>
       <%= render @webpage.layout.parameterize %>
     </div>
   </div>
 
-  <% unless @webpage.layout == "Virtual Tour" %>
+  <% unless ["Virtual Tour", "Tutorial"].include?(@webpage.layout)  %>
     <div class="col-12 col-md-3">
 
       <% if @webpage.external_link.present? %>

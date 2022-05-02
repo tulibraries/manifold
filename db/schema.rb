@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_191146) do
+ActiveRecord::Schema.define(version: 2022_05_02_125348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -511,6 +511,7 @@ ActiveRecord::Schema.define(version: 2022_03_28_191146) do
     t.string "slug"
     t.bigint "external_link_id"
     t.string "virtual_tour"
+    t.string "tutorial_path"
     t.index ["external_link_id"], name: "index_webpages_on_external_link_id"
     t.index ["group_id"], name: "index_webpages_on_group_id"
   end

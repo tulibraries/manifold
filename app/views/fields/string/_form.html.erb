@@ -1,10 +1,13 @@
 <div class="field-unit__label">
   <%= f.label field.attribute %>
   <% if is_admin? %>
-    <% if field.attribute == :slug %>
+    <% if [:tutorial_path].include? field.attribute %>
+      <p style="height:1.5rem"></p>
+    <% end %>
+    <% if [:slug].include? field.attribute %>
       <p style="height:3rem"></p>
     <% end %>
-    <% if field.attribute == :title || field.attribute == :name %>
+    <% if [:title, :name].include? field.attribute %>
       <p style="height:4rem"></p>
     <% end %>
   <% end %>
@@ -17,6 +20,9 @@
     <% end %>
     <% if field.attribute == :name || field.attribute == :title %>
       <p><%= t("manifold.default.fields.string.renaming") %></p>
+    <% end %>
+    <% if field.attribute == :tutorial_path %>
+      <p><%= t("manifold.default.fields.string.tutorial_path") %></p>
     <% end %>
   <% end %>
 </div>

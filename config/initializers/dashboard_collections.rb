@@ -11,6 +11,7 @@ module Tude
 
     config.page_layouts = ["None",
                             "Email",
+                            "Tutorial",
                             "Virtual Tour"
                           ]
 

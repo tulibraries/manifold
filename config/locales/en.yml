@@ -465,8 +465,8 @@ en:
         breadcrumb: Finding Aids Directory
         headings:
           collection_id: Collection ID
-          related_subjects: Related Subject(s)
-          collecting_areas: Collecting Area(s)
+          related_subjects: Related Subjects
+          collecting_areas: Collecting Areas
           description: Description
       intro_html: >-
                     <p>Finding aids are online guides to selected archival materials in the 

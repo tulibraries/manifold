@@ -47,9 +47,11 @@ class FindingAid < ApplicationRecord
   end
 
   def additional_schema_dot_org_attributes
+    subjects = subject.map(&:inspect).join(", ") if subject.present?
+    collections = collections.map(&:inspect).join(", ") if collections.present?
     {
-      about: subject.map(&:inspect).join(", "),
-      isPartOf: collections.map(&:inspect).join(", "),
+      about: subjects,
+      isPartOf: collections,
       identifier: identifier
     }
   end

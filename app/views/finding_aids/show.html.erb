@@ -8,26 +8,30 @@
     <div class="col-12 col-lg-6">
           
       <h1 class="page-title">
-        <%= title sanitize @finding_aid.name.html_safe %>
+        <%== title sanitize @finding_aid.name %>
       </h1>
 
       <div class="details">
         <h2><%= t("manifold.finding_aids.show.headings.collection_id") %></h2>
         <p><%= @finding_aid.identifier %></p>
 
+        <% if @finding_aid.subject.present?  %>
         <h2><%= t("manifold.finding_aids.show.headings.related_subjects") %></h2>
         <ul class="list-unstyled subjects">
           <% @finding_aid.subject.each do |subject| %>
             <li><%= link_to subject, finding_aids_path(subject: subject), class: "inline" %></li>
-          <% end %>
+          <% end if @finding_aid.subject.present? %>
         </ul>
+        <% end %>
 
+        <% if @finding_aid.collections.present? %>
         <h2><%= t("manifold.finding_aids.show.headings.collecting_areas") %></h2>
         <ul class="list-unstyled collections">
-          <% @finding_aid.collections.each do |collection| %>
+        <% @finding_aid.collections.each do |collection| %>
             <li><%= link_to collection.name, collection_path(collection), class: "inline" %></li>
-          <% end %>
+        <% end %>
         </ul>
+        <% end %>
 
         <h2><%= t("manifold.finding_aids.show.headings.description") %></h2>
         <%= @finding_aid.description %>

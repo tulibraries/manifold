@@ -20,6 +20,8 @@ class FindingAid < ApplicationRecord
   has_rich_text :covid_alert
   validates :collection_id, collection_or_subject: true
 
+  scope :has_subjects, -> { where.not(subject: []) }
+  scope :has_collections, -> { where.not(collections: []) }
   scope :with_subject, ->(subjects) {
     where(subject_query(subjects), *(subjects.map { |s| "%#{s}%" })) if subjects.present?
   }
@@ -47,9 +49,11 @@ class FindingAid < ApplicationRecord
   end
 
   def additional_schema_dot_org_attributes
+    subjects = subject.map(&:inspect).join(", ") if subject.present?
+    collections = collections.map(&:inspect).join(", ") if collections.present?
     {
-      about: subject.map(&:inspect).join(", "),
-      isPartOf: collections.map(&:inspect).join(", "),
+      about: subjects,
+      isPartOf: collections,
       identifier: identifier
     }
   end

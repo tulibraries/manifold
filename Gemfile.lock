@@ -512,6 +512,8 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     shellany (0.0.1)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     signet (0.16.1)
       addressable (~> 2.8)
       faraday (>= 0.17.5, < 3.0)
@@ -660,6 +662,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (~> 6.0)
   selenium-webdriver
+  shoulda-matchers (~> 5.1)
   simple_form
   simplecov
   simplecov-lcov

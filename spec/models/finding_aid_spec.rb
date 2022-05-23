@@ -4,6 +4,10 @@ require "rails_helper"
 
 RSpec.describe FindingAid, type: :model do
 
+  describe "validations" do
+    it { should validate_presence_of(:description) }
+  end
+
   describe "version all fields", :skip do
     # [TODO] create factory with default collection
     fields = {
@@ -43,7 +47,6 @@ RSpec.describe FindingAid, type: :model do
       expect { finding_aid.save! }.to raise_error(/Values for either Collections or Subjects need to be selected./)
     end
   end
-
 
   describe "Scope" do
     describe ":with_subject" do

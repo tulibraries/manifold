@@ -20,6 +20,8 @@ class FindingAid < ApplicationRecord
   has_rich_text :covid_alert
   validates :collection_id, collection_or_subject: true
 
+  scope :has_subjects, -> { where.not(subject: []) }
+  scope :has_collections, -> { where.not(collections: []) }
   scope :with_subject, ->(subjects) {
     where(subject_query(subjects), *(subjects.map { |s| "%#{s}%" })) if subjects.present?
   }

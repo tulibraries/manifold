@@ -33,6 +33,7 @@ class FindingAidsController < ApplicationController
 
   def get_subject_filter_values(finding_aids)
     finding_aids
+      .has_subjects
       .map(&:subject)
       .flatten
       .sort
@@ -41,6 +42,7 @@ class FindingAidsController < ApplicationController
 
   def get_collection_filter_values(finding_aids)
     finding_aids
+      .has_collections
       .map(&:collections)
       .flatten
       .sort

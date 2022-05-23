@@ -96,4 +96,5 @@ group :test do
   gem "simplecov-lcov"
   gem "webmock"
   gem "launchy"
+  gem "shoulda-matchers", "~> 5.1"
 end

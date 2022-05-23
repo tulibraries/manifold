@@ -93,4 +93,11 @@ RSpec.configure do |config|
   end
 
   config.include ActionText::SystemTestHelper, type: :system
+
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 end

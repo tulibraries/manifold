@@ -7,6 +7,8 @@ class Highlight < ApplicationRecord
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
+  validates :title, presence: true
+
   serialize :tags
 
   def slug_candidates

@@ -14,7 +14,7 @@ gem "aws-sdk-s3"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap", "~> 4.6.1", "< 5.0.0"
 gem "browser"
-gem "cancancan", "~> 3.3"
+gem "cancancan", "~> 3.4"
 gem "coffee-rails", "~> 4.2"
 gem "devise"
 gem "diffy"

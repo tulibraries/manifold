@@ -1140,11 +1140,12 @@ en:
           visit_link: /hsl/info
           resources_label: Resources & Media
           resources_link: /hsl/resources
+          resources_all: hsl-resources
           research_label: Research Services
           research_link: /hsl/research
           events_label: Workshops & Events
           events_type: Health Sciences
-          all_events: View all
+          view_all: View all
       research:
         page_title: Research Services
 

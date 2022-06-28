@@ -663,7 +663,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (~> 6.0)
-  selenium-webdriver
+  selenium-webdriver (~> 4.2.1)
   shoulda-matchers (~> 5.1)
   simple_form
   simplecov

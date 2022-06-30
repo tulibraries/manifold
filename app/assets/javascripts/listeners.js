@@ -131,7 +131,8 @@ $(document).ready(function(){
       {id: "hsl_resources_header", category: "hsl"},
       {id: "hsl_research_header", category: "hsl"},
       {id: "hsl_events_header", category: "hsl"},
-      {id: "hsl_events_view_all", category: "hsl"}
+      {id: "hsl_events_view_all", category: "hsl"},
+      {id: "hsl_resources_view_all", category: "hsl"}
     ];
 
     scop_tracks = [

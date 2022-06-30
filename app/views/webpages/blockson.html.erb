@@ -21,6 +21,11 @@
                     id: "blockson_digitized_materials_button" %>
         </li>
         <li>
+          <%= link_to t("manifold.webpages.scrc.locations.finding_aids"), 
+                    finding_aids_path(collection: 10),
+                    id:"scrc_finding_aids_button" %>
+        </li>
+        <li>
           <%= link_to t("manifold.webpages.blockson.links.hours_label"), 
                       t("manifold.webpages.blockson.links.hours_link"), 
                       id: "blockson_hours_and_info_button" %>

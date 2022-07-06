@@ -14,25 +14,25 @@ ARG S3_REGION
 ARG S3_SECRET_ACCESS_KEY
 ARG RAILS_MASTER_KEY
 
-RUN apk add -U --no-cache && \
-      bash=5.1.16-r0 \
-      busybox=1.34.1-r5 \
-      imagemagick=7.1.0.16-r0 \
-      libc6-compat=1.2.2-r7 \
+RUN apk add -U --no-cache \
+      bash=5.1.16-r2 \
+      busybox=1.35.0-r14 \
+      imagemagick=7.1.0.35-r0 \
+      libc6-compat=1.2.3-r0 \
       libxslt=1.1.35-r0 \
-      postgresql14-client=14.1-r5 \
-      shared-mime-info=2.1-r0 \
-      ssl_client=1.34.1-r5 \
+      postgresql14-client=14.4-r0 \
+      shared-mime-info=2.2-r0 \
+      ssl_client=1.35.0-r14 \
       tzdata=2022a-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
-      git=2.34.2-r0 \
+      git=2.36.1-r0 \
       build-base=0.5-r3 \
       libxslt-dev=1.1.35-r0 \
-      postgresql14-dev=14.1-r5 \
-      nodejs=16.14.2-r0 \
-      yarn=1.22.17-r0 && \
+      postgresql14-dev=14.4-r0 \
+      nodejs=16.15.0-r1 \
+      yarn=1.22.19-r0 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
-    gem install bundler:2.1.4 && \
+    gem install bundler:2.2.18 && \
     bundle config build.nokogiri --use-system-libraries && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \

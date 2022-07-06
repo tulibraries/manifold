@@ -32,7 +32,7 @@ RUN apk add -U --no-cache \
       nodejs=16.15.0-r1 \
       yarn=1.22.19-r0 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
-    gem install bundler:2.1.4 && \
+    gem install bundler:2.2.18 && \
     bundle config build.nokogiri --use-system-libraries && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \

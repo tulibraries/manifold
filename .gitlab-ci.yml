@@ -1,0 +1,71 @@
+include:
+  - project: "infrastructure-engineering-shared/gitlab-ci-templates"
+    file:
+      - "lint_docker.yaml"
+      - "build_docker.yaml"
+      - "security_scan.yaml"
+      - "kubectl_commands.yaml"
+
+variables:
+  IMAGE: "tulibraries/manifold"
+
+.export_variables: &export_variables
+  - source .env
+  - export VERSION="${DOCKER_IMAGE_VERSION}-${CI_COMMIT_SHORT_SHA}"
+
+before_script:
+- *export_variables
+
+stages:
+  - lint
+  - build
+  - scan
+  - tag
+  - deploy
+
+lint:
+  extends: .lint_docker
+  variables:
+    DF: ".docker/app/Dockerfile"
+
+build:
+  stage: build
+  extends: .build_image
+  image: harbor.k8s.temple.edu/gitlab-ci/docker:20-dind
+  variables:
+    DF: ".docker/app/Dockerfile --build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY --no-cache"
+  services:
+    - name: harbor.k8s.temple.edu/gitlab-ci/docker:20-dind
+      command: ["--tls=false"]
+  except:
+    - tags
+
+scan:
+  stage: scan
+  extends: .scanimage_high
+  allow_failure: false
+  variables:
+    THRESHOLD: 10
+  except:
+    - tags
+
+tag:
+  stage: tag
+  extends: .tag_image
+  except:
+    - tags
+
+qa_deploy:
+  variables: 
+    IMAGE: harbor.k8s.temple.edu/tulibraries/manifold
+    RANCHER: rancher-np
+    CLUSTER: dev-library
+  stage: deploy
+  extends: .helm_setup
+  only:
+    - main
+  script:
+    - *export_variables
+    - helm repo add tulibraries https://$HARBOR/chartrepo/tulibraries
+    - helm pull tulibraries/manifold --untar
+    - helm upgrade manifold ./manifold --history-max=5 --namespace=manifold-qa --set image.repository=$IMAGE:$VERSION

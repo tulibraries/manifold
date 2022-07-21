@@ -88,7 +88,7 @@ GEM
       activerecord (>= 5.0.0, < 7.1)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)
-    autoprefixer-rails (10.4.2.0)
+    autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     aws-eventstream (1.2.0)
     aws-partitions (1.583.0)
@@ -110,9 +110,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.12.0)
       msgpack (~> 1.2)
-    bootstrap (4.6.1)
+    bootstrap (5.2.0)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
+      popper_js (>= 2.11.5, < 3)
       sassc-rails (>= 2.0.0)
     brakeman (5.2.3)
     browser (5.3.1)
@@ -240,7 +240,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.11.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
@@ -363,7 +363,7 @@ GEM
     parser (3.1.2.0)
       ast (~> 2.4.1)
     pg (1.4.1)
-    popper_js (1.16.0)
+    popper_js (2.11.5)
     populate (0.0.2)
       activerecord (>= 3.1.0)
       ffaker (>= 1.13.0)
@@ -557,7 +557,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     uber (0.1.0)
     uglifier (4.2.0)
@@ -607,7 +607,7 @@ DEPENDENCIES
   auto_strip_attributes
   aws-sdk-s3
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.6.1, < 5.0.0)
+  bootstrap (~> 5.2.0)
   brakeman
   browser
   byebug
@@ -649,7 +649,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   paper_trail
   pg
-  popper_js (~> 1.16.0, < 2.0.0)
+  popper_js (~> 2.11.5)
   populate
   pry-byebug
   pry-rails

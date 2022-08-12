@@ -193,7 +193,7 @@ class Form < MailForm::Base
       subject: get_subject[0],
       to: get_subject[1],
       cc: email,
-      from: %("#{name || default_from_name }" <#{email || default_from_email }>)
+      from: %("#{name || default_from_name } <#{email || default_from_email }>")
     }
   end
 end

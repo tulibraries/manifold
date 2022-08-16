@@ -1125,7 +1125,7 @@ en:
         contact:
           mailer_label: Mailing List
           mailer_link: /hsl/mailing-list
-          chat_label: Chat with a Health Sciences Librarian
+          chat_label: Chat with Health Sciences Staff
           chat_link: /hsl/chat
           appointment_label: Make an Appointment with a Health Sciences Librarian
           appointment_link: /people?department=health-sciences-library-staff&page=1&specialists=true

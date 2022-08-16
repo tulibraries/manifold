@@ -234,7 +234,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (1.0.1)
     hashie (5.0.0)
-    honeybadger (4.12.1)
+    honeybadger (4.12.2)
     htmlentities (4.3.4)
     httparty (0.20.0)
       mime-types (~> 3.0)

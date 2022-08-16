@@ -163,8 +163,6 @@ class Form < MailForm::Base
       "proxy-account" => ["Proxy Account", ["jhill@temple.edu", "eschiller@temple.edu"]],
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["john.pyle@temple.edu"]],
       "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu", "richieh@temple.edu"]],
-      "cac-internal" => ["Cultural Analytics Certificate Internal Application", ["cacert@temple.edu"]],
-      "cac-external" => ["Cultural Analytics Certificate External Application", ["cacert@temple.edu"]],
       "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
       "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["jhill@temple.edu", "eschiller@temple.edu"]],

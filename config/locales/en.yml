@@ -739,22 +739,19 @@ en:
       library_instruction:
         title: "Request a Library Instruction Session"
         intro_html: >-
-                    <p>Teaching librarians will have limited on-campus availability, and can arrange
-                    in-person instruction by request. Librarians can provide online instruction for
-                    classes in all formats, either synchronously through Zoom or asynchronously.
-                    Asynchronous instruction can include pre-recorded lectures, interactive tutorials,
-                    demonstrations via screen recording, information literacy assignments, and more.
-                    Please use this form to schedule a synchronous session, or to indicate that you’d
-                    like a librarian to contact you about asynchronous instruction.</p>
+                    <p>Librarians can partner with instructors to help your students achieve course learning goals related to 
+                    research, information and digital literacy, and more. Invite a librarian to visit your in-person or online 
+                    class using this form. Your request will be forwarded to a subject librarian, and you can expect a response 
+                    within 48 hours.</p>
         course_title: Course Title
         course_code: Course Code (e.g,. SOC 0832)
         first_choice_date: First Choice Date
         second_choice_date: Second Choice Date
         instruction_mode: Mode of Instruction
         instruction_mode_options:
-          one: Synchronous via Zoom
-          two: Asynchronous
-          three: I'm not sure
+          one: In-person
+          two: Online
+          three: Hybrid/Other
         class_time: Time Class Meets
         class_days: Day(s) Class Meets
         number_of_students: Number of Students

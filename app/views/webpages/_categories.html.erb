@@ -11,7 +11,7 @@
 					<% unless category.image.attachment.nil? %>
 						<%= image_tag category.image, class: "category-icon decorative", alt: "" %> 
 					<% else %>
-						<%= image_tag "T.png", class: "decorative", alt: "" %>
+						<%= image_tag "T.png", class: "category-icon decorative p-3", alt: "" %>
 					<% end %>
 						<br /><%= category.name %>
 					<% end %>

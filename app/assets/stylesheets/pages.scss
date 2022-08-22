@@ -572,6 +572,19 @@
   .library-event:first-of-type, .library-news:first-of-type {
     padding-left: 14px;
   }
+
+  a.view-all-blogs {
+    display: block;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding: 7px;
+    background-color: $crystal-blue;
+    color: $royal-blue;
+    padding-right: 35px;
+    font-family: "faustina bold" !important;
+    font-size: 135%;
+    font-weight: 900;
+  }
 }
 
 .access-link {

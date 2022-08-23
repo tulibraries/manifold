@@ -177,11 +177,11 @@ class Form < MailForm::Base
 
   # Some forms don't supply an email and name, so they we're failing
   def default_from_name
-    "Temple University Libraries"
+    name ? name : "Temple University Libraries"
   end
 
   def default_from_email
-    "templelibraries@gmail.com"
+    email ? email : "templelibraries@gmail.com"
   end
 
   # Declare the e-mail headers. It accepts anything the mail method
@@ -191,7 +191,7 @@ class Form < MailForm::Base
       subject: get_subject[0],
       to: get_subject[1],
       cc: email,
-      from: %("#{name || default_from_name } <#{email || default_from_email }>")
+      from: %("#{ default_from_name }" <#{ default_from_email }>)
     }
   end
 end

@@ -111,7 +111,7 @@ jobs:
 
   qa_deploy:
     docker:
-      - image: cimg/python:3.7.11
+      - image: cimg/python:3.9.10
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -128,7 +128,7 @@ jobs:
 
   stage_deploy:
     docker:
-      - image: cimg/python:3.7.11
+      - image: cimg/python:3.9.10
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -145,7 +145,7 @@ jobs:
 
   prod_deploy:
     docker:
-      - image: cimg/python:3.7.11
+      - image: cimg/python:3.9.10
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD

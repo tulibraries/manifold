@@ -6,27 +6,6 @@
   </div>
 </div>
 
-<div class="row highlights">
-  <% unless @highlights.nil? %>
-  <% @highlights.each do |highlight| %>
-  <div class="col-12 col-lg-6 highlight">
-    <% if highlight.image.attached?  %>
-    <%= link_to (image_tag highlight.custom_image(600, 264), class: "decorative", alt: ""), strip_tags(highlight.link) %>
-    <% end %>
-    <div class="highlight-caption">
-      <h2><%= link_to highlight.label.truncate(52), strip_tags(highlight.link) %></h2>
-      <div class="highlight-description">
-        <%= strip_tags(highlight.blurb.truncate(120).html_safe) %>
-      </div>
-      <div class="unnecessary-link">
-        <%= link_to t("manifold.blogs.read_more"), strip_tags(highlight.link), class: "read-more" %>
-      </div>
-    </div>
-  </div>
-  <% end %>
-  <% end %>
-</div>
-
 <div class="row" id="blog-section">
   <div class="col-12 section-title">
     <h2><%= t("manifold.blogs.read_more") %></h2>

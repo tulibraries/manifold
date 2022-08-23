@@ -429,8 +429,7 @@ en:
         eleven: Reading
         twelve: Scholarly Communications & Open Publishing
         thirteen: Speaker
-        fourteen: What Comes Next
-        fifteen: Workshop
+        fourteen: Workshop
       index:
         page_title: Events & Exhibits
         current_exhibits_label: Current Exhibits
@@ -739,22 +738,19 @@ en:
       library_instruction:
         title: "Request a Library Instruction Session"
         intro_html: >-
-                    <p>Teaching librarians will have limited on-campus availability, and can arrange
-                    in-person instruction by request. Librarians can provide online instruction for
-                    classes in all formats, either synchronously through Zoom or asynchronously.
-                    Asynchronous instruction can include pre-recorded lectures, interactive tutorials,
-                    demonstrations via screen recording, information literacy assignments, and more.
-                    Please use this form to schedule a synchronous session, or to indicate that you’d
-                    like a librarian to contact you about asynchronous instruction.</p>
+                    <p>Librarians can partner with instructors to help your students achieve course learning goals related to 
+                    research, information and digital literacy, and more. Invite a librarian to visit your in-person or online 
+                    class using this form. Your request will be forwarded to a subject librarian, and you can expect a response 
+                    within 48 hours.</p>
         course_title: Course Title
         course_code: Course Code (e.g,. SOC 0832)
         first_choice_date: First Choice Date
         second_choice_date: Second Choice Date
         instruction_mode: Mode of Instruction
         instruction_mode_options:
-          one: Synchronous via Zoom
-          two: Asynchronous
-          three: I'm not sure
+          one: In-person
+          two: Online
+          three: Hybrid/Other
         class_time: Time Class Meets
         class_days: Day(s) Class Meets
         number_of_students: Number of Students
@@ -927,13 +923,13 @@ en:
         intro_html: >-
                     <p>Spouses/partners of current Temple University faculty and staff members may apply for a library 
                     borrowing card that will allow them to borrow up to ten items at a time and 2-hour use of the guest 
-                    computers on the ground floor of the Tuttleman Learning Center.</p>
+                    computers on the first floor of Charles Library.</p>
                     <p>The spouse/partner borrowing card does not allow for off-site access to databases as the University 
                     Libraries contracts with database vendors prohibit this. Once your application is received, and your 
                     status is confirmed, it may take up to two weeks for you to receive your card in the mail.</p>
                     <p>To begin this process, the sponsoring faculty/staff member must fill out the below form and submit 
                     for approval.</p>
-                    <p>You may contact the Circulation/Reserve Unit of Paley Library at 215-204-8212 if you have any questions.</p>
+                    <p>You may contact the Circulation/Reserve Unit of Charles Library at 215-204-8212 if you have any questions.</p>
         partner_name: Name of Spouse/Partner
         partner_email: Email of Spouse/Partner
 

@@ -17,7 +17,7 @@ RSpec.describe "ApplicationFailover", type: :feature do
 
   context "librarysearch experiencing outage" do
     scenario "correctly redirects homepage form action to Primo" do
-      login_as(@admin, scope: :account)      
+      login_as(@admin, scope: :account)
       visit("/admin/application_failovers/#{@failover.id}/edit")
       check("application_failover[turn_on]")
       expect(page).to have_checked_field("application_failover[turn_on]")
@@ -27,7 +27,7 @@ RSpec.describe "ApplicationFailover", type: :feature do
       expect(find("form#desktop-search-form")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
     end
     scenario "correctly redirects global form action to Primo" do
-      login_as(@admin, scope: :account)      
+      login_as(@admin, scope: :account)
       visit("/admin/application_failovers/#{@failover.id}/edit")
       check("application_failover[turn_on]")
       expect(page).to have_checked_field("application_failover[turn_on]")
@@ -37,7 +37,7 @@ RSpec.describe "ApplicationFailover", type: :feature do
       expect(find("form#global-search")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
     end
     scenario "correctly redirects mobile global form action to Primo" do
-      login_as(@admin, scope: :account)      
+      login_as(@admin, scope: :account)
       visit("/admin/application_failovers/#{@failover.id}/edit")
       check("application_failover[turn_on]")
       expect(page).to have_checked_field("application_failover[turn_on]")
@@ -50,7 +50,7 @@ RSpec.describe "ApplicationFailover", type: :feature do
 
   context "librarysearch restored" do
     scenario "correctly redirects homepage form action to librarysearch" do
-      login_as(@admin, scope: :account)      
+      login_as(@admin, scope: :account)
       visit("/admin/application_failovers/#{@failover.id}/edit")
       expect(page).to_not have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
@@ -59,7 +59,7 @@ RSpec.describe "ApplicationFailover", type: :feature do
       expect(find("form#desktop-search-form")["action"]).to_not match(I18n.t("manifold.default.alternate_search_url"))
     end
     scenario "correctly redirects global form action to librarysearch" do
-      login_as(@admin, scope: :account)      
+      login_as(@admin, scope: :account)
       visit("/admin/application_failovers/#{@failover.id}/edit")
       expect(page).to_not have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
@@ -68,7 +68,7 @@ RSpec.describe "ApplicationFailover", type: :feature do
       expect(find("form#global-search")["action"]).to_not match(I18n.t("manifold.default.alternate_search_url"))
     end
     scenario "correctly redirects mobile global form action to librarysearch" do
-      login_as(@admin, scope: :account)      
+      login_as(@admin, scope: :account)
       visit("/admin/application_failovers/#{@failover.id}/edit")
       expect(page).to_not have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")

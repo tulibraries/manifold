@@ -47,3 +47,10 @@
 select[multiple] { 
   resize: vertical; 
 }
+
+.application-failover-text {
+  padding: 42px;
+  h2 {
+    margin-bottom: 35px;
+  }
+}

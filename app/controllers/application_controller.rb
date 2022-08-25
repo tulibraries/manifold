@@ -2,10 +2,18 @@
 
 class ApplicationController < ActionController::Base
   include ServerErrors
+  before_action :failover
   before_action :get_alert, :covid_alert
   before_action :set_paper_trail_whodunnit
   before_action :locations, :set_dates, :set_location
   before_action :show_hours, :menu_items, unless: ->(c) { ["accounts/omniauth_callbacks", "devise/sessions"].include?(c.controller_path) }
+
+  def failover
+    f = ApplicationFailover.all.first
+    @search = f.turn_on ? "alt-page-search" : "page-search"
+    @header_search = f.turn_on ? "alt-header-search" : "header-search"
+    @mobile_search = f.turn_on ? "alt-mobile-search" : "mobile-search"
+  end
 
   def menu_items
     @about_menu = MenuGroup.find_by(slug: "about-page")

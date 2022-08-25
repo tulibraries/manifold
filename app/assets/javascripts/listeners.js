@@ -30,6 +30,32 @@ $(document).on('turbolinks:load', function() {
     var subject = encodeURIComponent($("#subject").find(":selected").val());
     window.location.href = "/people?specialty="+subject+"&page=1";
   });
+
+  $("#global-search").submit(function(){
+    var query = document.getElementById("global-search").elements[0].value;
+    var delims = "any,contains,";
+    document.getElementById("global-search").elements[0].style.color = "white";
+    document.getElementById("global-search").elements[0].value = delims+query;
+  });
+  $("#mobile-search-form").submit(function(){
+    var query = document.getElementById("mobile-search-form").elements[0].value;
+    var delims = "any,contains,";
+    document.getElementById("mobile-search-form").elements[0].style.color = "white";
+    document.getElementById("mobile-search-form").elements[0].value = delims+query;
+  });
+  $("#global-mobile-search-form").submit(function(){
+    var query = document.getElementById("global-mobile-search-form").elements[0].value;
+    var delims = "any,contains,";
+    document.getElementById("global-mobile-search-form").elements[0].style.color = "white";
+    document.getElementById("global-mobile-search-form").elements[0].value = delims+query;
+  });
+  $("#desktop-search-form").submit(function(){
+    var query = document.getElementById("desktop-search-form").elements[0].value;
+    var delims = "any,contains,";
+    document.getElementById("desktop-search-form").elements[0].style.setProperty("color", "white", "important");
+    document.getElementById("desktop-search-form").elements[0].value = delims+query;
+  });
+
 });
 
 $(document).ready(function(){
@@ -57,17 +83,24 @@ $(document).ready(function(){
   // end wpvi
 
   setTimeout(function(){
-    $('form#main-search').on('keypress', function (evt) {
+    $('form#desktop-search-form').on('keypress', function (evt) {
       if (evt.keyCode == 13) {
         handleEventClicks("main-search", "Search");
+
       }
     });
 
-    $('form#header-search').on('keypress', function (evt) {
+    $('form#header-search-form').on('keypress', function (evt) {
       if (evt.keyCode == 13) {
         handleEventClicks("header-search", "Search");
       }
-    });   
+    });
+
+    $('form#mobile-search-form').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        handleEventClicks("mobile-search", "Search");
+      }
+    });
     
     $('staffSearch').on('keypress', function (evt) {
       if (evt.keyCode == 13) {

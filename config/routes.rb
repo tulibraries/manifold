@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :accounts
     resources :admin_groups
     resources :alerts
+    resources :application_failovers
     resources :blogs
     resources :buildings
     resources :categories

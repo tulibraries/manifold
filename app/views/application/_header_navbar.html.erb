@@ -17,7 +17,7 @@
     </div>
   <% else %>
     <div id="header-search" class="col-12 col-sm-5 col-lg-5 d-none d-lg-block text-right d-print-none">
-      <%= render "header-search" %>
+      <%= render @header_search %>
     </div>
   <% end %>
 
@@ -59,7 +59,7 @@
   </div>
 
   <div class="row d-block d-sm-block d-md-block d-lg-none text-center" id="mobile-search-container">
-    <%= render "mobile-search" %>
+    <%= render @mobile_search %>
   </div>
 
   <div class="row d-block d-sm-block d-md-block d-lg-none" id="mobile-nav">

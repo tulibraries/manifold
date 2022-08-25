@@ -1,0 +1,2 @@
+class ApplicationFailoversController < ApplicationController
+end

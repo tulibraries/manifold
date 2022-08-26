@@ -68,7 +68,7 @@ module Admin
     end
 
     def populate_drafts
-      if requested_resource.respond_to?(:description) && resource_name != :category && resource_name != :event && resource_name != :alert && resource_name != :group
+      if requested_resource.respond_to?(:description) && resource_name != :category && resource_name != :event && resource_name != :alert && resource_name != :group && resource_name != :application_failover
         requested_resource.draft_description.present? ? requested_resource.draft_description :
           (requested_resource.draft_description = requested_resource.description)
       end

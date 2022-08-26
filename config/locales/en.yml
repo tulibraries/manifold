@@ -37,6 +37,8 @@ en:
         accounts: "Individual Owners"
   manifold:  
     default:
+      search_url: https://librarysearch.temple.edu
+      alternate_search_url: https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search
       print_page: Print This Page
       image_file_size_limit: 700
       thumb_image_size: 120

@@ -10,9 +10,11 @@ class ApplicationController < ActionController::Base
 
   def failover
     f = ApplicationFailover.all.first
-    @search = f.turn_on ? "alt-page-search" : "page-search"
-    @header_search = f.turn_on ? "alt-header-search" : "header-search"
-    @mobile_search = f.turn_on ? "alt-mobile-search" : "mobile-search"
+    if f.present?
+      @search = f.turn_on ? "alt-page-search" : "page-search"
+      @header_search = f.turn_on ? "alt-header-search" : "header-search"
+      @mobile_search = f.turn_on ? "alt-mobile-search" : "mobile-search"
+    end
   end
 
   def menu_items

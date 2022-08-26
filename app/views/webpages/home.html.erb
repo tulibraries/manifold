@@ -1,13 +1,13 @@
 <div id="home">
   <div class="row">
     <div class="col-12" id="searchFields">
-      <%= render @search, view: "desktop" %>
+      <%= render @search, view: "desktop" if @search.present? %>
     </div>
   </div>
 
   <div class="container px-0">
     <div class="col-12 d-block d-lg-none px-0" id="search-in-page">
-      <%= render @search, view: "mobile" %>
+      <%= render @search, view: "mobile" if @search.present? %>
     </div>
 
     <div class="under">

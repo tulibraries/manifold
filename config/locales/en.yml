@@ -427,11 +427,10 @@ en:
         seven: Digital Scholarship
         eight: Health Sciences
         nine: Midday Arts
-        ten: North Philly
-        eleven: Reading
-        twelve: Scholarly Communications & Open Publishing
-        thirteen: Speaker
-        fourteen: Workshop
+        ten: Reading
+        eleven: Scholarly Communications & Open Publishing
+        twelve: Speaker
+        thirteen: Workshop
       index:
         page_title: Events & Exhibits
         current_exhibits_label: Current Exhibits

@@ -1,7 +1,7 @@
 <div class="header-search-container">
   <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu", class: "pr-3" %>
   <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
-  <form action=<%= t("manifold.default.alternate_search_url") %> id="global-search" name="header-search">
+  <form action=<%= t("manifold.default.alternate_search_url") %> id="<%= @search_mode %>global-search" name="header-search">
     <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
     <input type="text" name="query" id="librarySearch" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
     <input type="submit" value = "" aria-label="submit search query">

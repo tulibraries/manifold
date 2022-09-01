@@ -2,7 +2,7 @@
 
   <div class="collapse navbar-collapse" id="mobile-search">
     <div class="navbar-nav">
-      <form action=<%= t("manifold.default.alternate_search_url") %> class="mobile" id="global-mobile-search-form">
+      <form action=<%= t("manifold.default.alternate_search_url") %> class="mobile" id="<%= @search_mode %>global-mobile-search-form">
         <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
         <input type="text" name="query" id="librarySearch" class="mobile" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
         <input type="submit" class="mobile" value = "" aria-label="submit search query">

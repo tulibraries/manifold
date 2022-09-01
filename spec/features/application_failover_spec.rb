@@ -23,8 +23,8 @@ RSpec.describe "ApplicationFailover", type: :feature do
       expect(page).to have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
       visit(root_path)
-      expect(find("form#desktop-search-form")["action"]).to_not match(I18n.t("manifold.default.search_url"))
-      expect(find("form#desktop-search-form")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
+      expect(find("form#failover-desktop-search-form")["action"]).to_not match(I18n.t("manifold.default.search_url"))
+      expect(find("form#failover-desktop-search-form")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
     end
     scenario "correctly redirects global form action to Primo" do
       login_as(@admin, scope: :account)
@@ -33,8 +33,8 @@ RSpec.describe "ApplicationFailover", type: :feature do
       expect(page).to have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
       visit(hours_path)
-      expect(find("form#global-search")["action"]).to_not match(I18n.t("manifold.default.search_url"))
-      expect(find("form#global-search")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
+      expect(find("form#failover-global-search")["action"]).to_not match(I18n.t("manifold.default.search_url"))
+      expect(find("form#failover-global-search")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
     end
     scenario "correctly redirects mobile global form action to Primo" do
       login_as(@admin, scope: :account)
@@ -43,8 +43,8 @@ RSpec.describe "ApplicationFailover", type: :feature do
       expect(page).to have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
       visit(hours_path)
-      expect(find("form#global-mobile-search-form")["action"]).to_not match(I18n.t("manifold.default.search_url"))
-      expect(find("form#global-mobile-search-form")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
+      expect(find("form#failover-global-mobile-search-form")["action"]).to_not match(I18n.t("manifold.default.search_url"))
+      expect(find("form#failover-global-mobile-search-form")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
     end
   end
 

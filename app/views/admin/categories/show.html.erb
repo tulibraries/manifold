@@ -70,7 +70,6 @@ as well as a link to its edit page.
         <tbody>
           <% page.resource.items.each do |item| %>
             <%= tag.tr do %>
-          <%# binding.pry %>
               <%= tag.td(item.label, class: "item-label") %>
               <%= tag.td(item.class, class: "item-class") %>
               <%= tag.td(item.category_weight, class: "item-category-weight") %>

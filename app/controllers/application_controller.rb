@@ -11,9 +11,12 @@ class ApplicationController < ActionController::Base
   def failover
     f = ApplicationFailover.all.first
     if f.present?
+      @search_mode = "failover-"
       @search = f.turn_on ? "alt-page-search" : "page-search"
       @header_search = f.turn_on ? "alt-header-search" : "header-search"
       @mobile_search = f.turn_on ? "alt-mobile-search" : "mobile-search"
+    else
+      @search_mode = ""
     end
   end
 

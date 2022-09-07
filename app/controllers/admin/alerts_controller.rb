@@ -2,6 +2,8 @@
 
 module Admin
   class AlertsController < Admin::ApplicationController
+    after_action :create_json_file, only: [:update, :destroy, :create]
+    
     def order
       @order ||= Administrate::Order.new(
         params.fetch(resource_name, {}).fetch(:order, "published"),
@@ -40,6 +42,12 @@ module Admin
 
     rescue_from CanCan::AccessDenied do |exception|
       redirect_to admin_root_url, alert: t("manifold.error.modification_denied", class: "Alert")
+    end
+
+    private
+    def create_json_file
+      published_alerts = Alert.where(published: true)
+      File.open("public/notifications.json", "w") { |file| file.write(published_alerts.to_json) }
     end
   end
 end

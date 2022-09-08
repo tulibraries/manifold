@@ -2,6 +2,8 @@
 
 module Admin
   class AlertsController < Admin::ApplicationController
+    after_action :create_json_file, only: [:update, :destroy, :create]
+
     def order
       @order ||= Administrate::Order.new(
         params.fetch(resource_name, {}).fetch(:order, "published"),
@@ -30,6 +32,18 @@ module Admin
     #     per(10)
     # end
 
+    def create
+      super
+    end
+
+    def update
+      super
+    end
+
+    def destroy
+      super
+    end
+
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
     #   Alert.find_by!(slug: param)
@@ -41,5 +55,12 @@ module Admin
     rescue_from CanCan::AccessDenied do |exception|
       redirect_to admin_root_url, alert: t("manifold.error.modification_denied", class: "Alert")
     end
+
+    private
+
+      def create_json_file
+        published_alerts = Alert.where(published: true)
+        File.open("public/alerts.json", "w") { |file| file.write(AlertSerializer.new(published_alerts).serializable_hash.to_json) }
+      end
   end
 end

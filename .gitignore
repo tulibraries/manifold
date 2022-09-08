@@ -55,3 +55,4 @@ yarn-debug.log*
 .yarn-integrity
 .DS_Store
 spec/.DS_Store
+public/alerts.json

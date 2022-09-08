@@ -96,7 +96,14 @@ a.category-home {
   .carousel-indicators {
     bottom: -42px;
     li {
-    background-color: $black;
+      background-color: $black;
     }
+  }
+  .image-caption {
+    height: 28px;
+    background-color: $black;
+    color: $white;
+    font-family: 'Robot Bold';
+    padding-top: 2px
   }
 }

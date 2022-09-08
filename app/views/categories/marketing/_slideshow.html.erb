@@ -12,11 +12,15 @@
       <div class="carousel-inner" role="listbox" id="slide-image">
       <% @images.each_with_index do |image, index| %>  
         <div class="carousel-item text-center<% if index == 0 %> active<% end %>">
+          <% if [0, 1, 2, 3].include?(index) %>
+            <%= link_to image_tag("charles/"+image, class: 'img-fluid'), asset_path("charles/"+image), target: "_blank" %>
+          <% else %>
             <%= image_tag("charles/"+image, class: 'img-fluid') %>
-            <p style="height: 28px;background-color: black;color: white;font-family: 'Robot Bold';padding-top: 2px">
+            <p class="image-caption">
               <%= @captions[index] %>
             </p>
-          </div>
+          <% end %>
+        </div>
         <% end %>
         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev" id="slide-previous">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

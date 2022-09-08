@@ -53,6 +53,7 @@ class LibraryHoursController < ApplicationController
                   "service_zone",
                   "scrc",
                   "cafe",
+                  "exhibits"
                 ]
       },
       {
@@ -74,7 +75,7 @@ class LibraryHoursController < ApplicationController
       {
         slug: "online",
         spaces: ["ask_a_librarian"]
-      },
+      }
     ]
   end
 

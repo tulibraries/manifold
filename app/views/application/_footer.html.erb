@@ -15,85 +15,79 @@
 <% end %>
 
 <div id="site-footer">
-  <div class="footer-header">
-    <div class="container">
-      <div class="row social px-3 py-1" id="social-row">
-        <div class="col-12 col-md-6 px-0">
-          <%= link_to(t("manifold.footer.donate_link"), "/support-the-libraries", class: "donate") %>
+  <div class="container">
+    <div class="row social justify-content-between px-2 px-lg-4 mb-4">
+      
+      <%= link_to(t("manifold.footer.donate_link"), "/support-the-libraries", class: "donate") %>
+
+      <ul class="mb-0 social-links">
+        <%= link_to "/social-media" do %>
+        <li class="instagram">
+          <%= image_tag('IG_red_round.png', alt: "instagram logo") %>
+        </li>
+        <li class="facebook">
+          <%= image_tag('FB_red_round.png', alt: "facebook logo") %>
+        </li>
+        <li class="twitter">
+          <%= image_tag('Twitter_red_round.png', alt: "twitter logo") %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="row tu-links">
+      <div class="col-12 col-lg-8 px-0">
+        <div class="row">
+          <div class="col px-0 pt-2">
+            <h2><%= t("manifold.default.footer.quick_links") %></h2>
+          </div>
         </div>
-        <div class="col-12 col-md-6 text-left text-md-right px-0 social-link">
-          <ul>
-            <%= link_to "/social-media" do %>
-            <li class="social-footer instagram">
-              <%= image_tag('IG_red_round.png', alt: "instagram logo") %>
-            </li>
-            <li class="social-footer facebook">
-              <%= image_tag('FB_red_round.png', alt: "facebook logo") %>
-            </li>
-            <li class="social-footer twitter">
-              <%= image_tag('Twitter_red_round.png', alt: "twitter logo") %>
-            </li>
-            <% end %>
-          </ul>
+        <div class="row mt-3">
+          <div class="col-12 col-lg-3 px-0">
+            <ul class="list-unstyled">
+              <li><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
+              <li><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
+              <li><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
+              <li><%= link_to t("manifold.footer.patron_forms_label"), forms_index_path %></li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-4 px-0">
+            <ul class="list-unstyled">
+              <li><%= link_to t("manifold.footer.standards_link"), "/standards" %></li>
+              <li><%= link_to t("manifold.footer.diversity_link"), "/diversity" %></li>
+              <li><%= link_to t("manifold.footer.accessibility_link"), category_path("accessibility-services") %></li>
+              <li><%= link_to t("manifold.footer.employment_opportunities"), "/jobs" %></li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-5 px-0">
+            <ul class="list-unstyled">
+              <li><%= link_to t("manifold.footer.privacy_link"), "/privacy" %></li>
+              <li><%= link_to t("manifold.footer.tu_homepage_link"), "/tu-home" %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4 px-0">
+        <div class="row">
+          <div class="col-12 col-lg-9 offset-lg-2 px-0 address mt-4">
+            <p class="street-address mt-5"><%= t("manifold.footer.charles_address").html_safe %></p>
+            <p><%= link_to t("manifold.footer.numbers_link"), "/numbers" %></p>
+            <p><%= link_to t("manifold.footer.staff_directory"), people_path %></p>
+            <p><%= link_to t("manifold.footer.org_charts"), "/org-charts" %></p>
+            <p><%= link_to(t("manifold.footer.staff_forms"), "/staff-forms", target: "_blank") %></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container px-0">
-    <div class="tu-links">
-      <div class="row">
-        <div class="col-12 col-lg-8 px-0">
-          <div class="row">
-            <div class="col px-0 pt-2">
-              <h2><%= t("manifold.default.footer.quick_links") %></h2>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-12 col-lg-3 px-0">
-              <ul class="list-unstyled">
-                <li><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
-                <li><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
-                <li><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
-                <li><%= link_to t("manifold.footer.patron_forms_label"), forms_index_path %></li>
-              </ul>
-            </div>
-            <div class="col-12 col-lg-4 px-0">
-              <ul class="list-unstyled">
-                <li><%= link_to t("manifold.footer.standards_link"), "/standards" %></li>
-                <li><%= link_to t("manifold.footer.diversity_link"), "/diversity" %></li>
-          		  <li><%= link_to t("manifold.footer.accessibility_link"), category_path("accessibility-services") %></li>
-                <li><%= link_to t("manifold.footer.employment_opportunities"), "/jobs" %></li>
-              </ul>
-            </div>
-            <div class="col-12 col-lg-5 px-0">
-              <ul class="list-unstyled">
-                <li><%= link_to t("manifold.footer.privacy_link"), "/privacy" %></li>
-                <li><%= link_to t("manifold.footer.tu_homepage_link"), "/tu-home" %></li>
-              </ul>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col p-0 mt-5">
-              <%= link_to (image_tag "gear.png",
-                            style: "width: 35px", 
-                            class: "decorative", 
-                            alt: ""), edit_url %>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-12 col-lg-4 px-0">
-          <div class="row">
-            <div class="col-12 col-lg-9 offset-lg-2 px-0 address mt-4">
-              <p class="street-address mt-5"><%= t("manifold.footer.charles_address").html_safe %></p>
-              <p><%= link_to t("manifold.footer.numbers_link"), "/numbers" %></p>
-              <p><%= link_to t("manifold.footer.staff_directory"), people_path %></p>
-              <p><%= link_to t("manifold.footer.org_charts"), "/org-charts" %></p>
-              <p><%= link_to(t("manifold.footer.staff_forms"), "/staff-forms", target: "_blank") %></p>
-            </div>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col p-0 mt-0 mb-5">
+        <%= link_to (image_tag "gear.png",
+                      style: "width: 35px", 
+                      class: "decorative", 
+                      alt: ""), edit_url %>
+      </div>
     </div>
-  </div>
 
 </div>

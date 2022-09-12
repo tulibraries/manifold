@@ -30,6 +30,32 @@ $(document).on('turbolinks:load', function() {
     var subject = encodeURIComponent($("#subject").find(":selected").val());
     window.location.href = "/people?specialty="+subject+"&page=1";
   });
+
+  $("#failover-global-search").submit(function(){
+    var query = document.getElementById("failover-global-search").elements[0].value;
+    var delims = "any,contains,";
+    document.getElementById("failover-global-search").elements[0].style.color = "white";
+    document.getElementById("failover-global-search").elements[0].value = delims+query;
+  });
+  $("#failover-mobile-search-form").submit(function(){
+    var query = document.getElementById("failover-mobile-search-form").elements[0].value;
+    var delims = "any,contains,";
+    document.getElementById("failover-mobile-search-form").elements[0].style.color = "white";
+    document.getElementById("failover-mobile-search-form").elements[0].value = delims+query;
+  });
+  $("#failover-global-mobile-search-form").submit(function(){
+    var query = document.getElementById("failover-global-mobile-search-form").elements[0].value;
+    var delims = "any,contains,";
+    document.getElementById("failover-global-mobile-search-form").elements[0].style.color = "white";
+    document.getElementById("failover-global-mobile-search-form").elements[0].value = delims+query;
+  });
+  $("#failover-desktop-search-form").submit(function(){
+    var query = document.getElementById("failover-desktop-search-form").elements[0].value;
+    var delims = "any,contains,";
+    document.getElementById("failover-desktop-search-form").elements[0].style.setProperty("color", "white", "important");
+    document.getElementById("failover-desktop-search-form").elements[0].value = delims+query;
+  });
+
 });
 
 $(document).ready(function(){
@@ -57,17 +83,40 @@ $(document).ready(function(){
   // end wpvi
 
   setTimeout(function(){
-    $('form#main-search').on('keypress', function (evt) {
+    $('form#desktop-search-form').on('keypress', function (evt) {
       if (evt.keyCode == 13) {
         handleEventClicks("main-search", "Search");
+
+      }
+    });
+    $('form#failover-desktop-search-form').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        handleEventClicks("main-search", "Search");
+
       }
     });
 
-    $('form#header-search').on('keypress', function (evt) {
+    $('form#global-search-form').on('keypress', function (evt) {
       if (evt.keyCode == 13) {
         handleEventClicks("header-search", "Search");
       }
-    });   
+    });
+    $('form#failover-global-search-form').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        handleEventClicks("header-search", "Search");
+      }
+    });
+
+    $('form#mobile-search-form').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        handleEventClicks("mobile-search", "Search");
+      }
+    });
+    $('form#failover-mobile-search-form').on('keypress', function (evt) {
+      if (evt.keyCode == 13) {
+        handleEventClicks("mobile-search", "Search");
+      }
+    });
     
     $('staffSearch').on('keypress', function (evt) {
       if (evt.keyCode == 13) {

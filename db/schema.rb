@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_125348) do
+ActiveRecord::Schema.define(version: 2022_08_24_181717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,12 @@ ActiveRecord::Schema.define(version: 2022_05_02_125348) do
     t.datetime "updated_at", null: false
     t.boolean "for_header"
     t.index ["published"], name: "index_alerts_on_published"
+  end
+
+  create_table "application_failovers", force: :cascade do |t|
+    t.boolean "turn_on", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "blog_posts", force: :cascade do |t|

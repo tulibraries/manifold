@@ -1,0 +1,18 @@
+<div class="header-search-container">
+  <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu", class: "pr-3" %>
+  <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
+  <form action=<%= t("manifold.default.alternate_search_url") %> id="<%= @search_mode %>global-search" name="header-search">
+    <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
+    <input type="text" name="query" id="librarySearch" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
+    <input type="submit" value = "" aria-label="submit search query">
+	  <input type="hidden" name="tab" id="tab" value="default_tab">
+	  <input type="hidden" name="search_scope" id="search_scope" value="default_scope">
+	  <input type="hidden" name="vid" id="vid" value="TULI">
+
+    <ul class="text-left">
+      <li><%= link_to t("manifold.header.search.books"), "#{librarysearch_url("books")}" %></li>
+      <li><%= link_to t("manifold.header.search.articles"), "#{librarysearch_url("articles")}" %></li>
+      <li><%= link_to t("manifold.header.search.databases"), "/databases" %></li>
+    </ul>
+  </form>
+</div>

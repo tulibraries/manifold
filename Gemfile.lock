@@ -516,7 +516,7 @@ GEM
       websocket (~> 1.0)
     semantic_range (3.0.0)
     shellany (0.0.1)
-    shoulda-matchers (5.1.0)
+    shoulda-matchers (5.2.0)
       activesupport (>= 5.2.0)
     signet (0.16.1)
       addressable (~> 2.8)
@@ -671,7 +671,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (~> 6.0)
   selenium-webdriver (~> 4.2.1)
-  shoulda-matchers (~> 5.1)
+  shoulda-matchers (~> 5.2)
   simple_form
   simplecov
   simplecov-lcov

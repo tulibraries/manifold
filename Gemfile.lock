@@ -364,7 +364,7 @@ GEM
     parser (3.1.2.1)
       ast (~> 2.4.1)
     pg (1.4.3)
-    popper_js (1.16.0)
+    popper_js (1.16.1)
     populate (0.0.2)
       activerecord (>= 3.1.0)
       ffaker (>= 1.13.0)
@@ -654,7 +654,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   paper_trail
   pg
-  popper_js (~> 1.16.0, < 2.0.0)
+  popper_js (~> 1.16.1)
   populate
   pry-byebug
   pry-rails

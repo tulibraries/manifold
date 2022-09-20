@@ -151,11 +151,11 @@ class SyncService::Events
     if building
       location_hash["building"] = building
     else
-      location_hash["external_building"] = location || nil
-      location_hash["external_address"] = event.fetch("Address") { nil }
-      location_hash["external_city"] = event.fetch("City") { nil }
-      location_hash["external_state"] = event.fetch("State") { nil }
-      location_hash["external_zip"] = event.fetch("Zip") { nil }
+      location_hash["external_building"] = event.fetch("LocationUnaffiliated") { nil }
+      location_hash["external_address"] = event.fetch("AddressUnaffiliated") { nil }
+      location_hash["external_city"] = event.fetch("CityUnaffilaited") { nil }
+      location_hash["external_state"] = event.fetch("StateUnaffiliated") { nil }
+      location_hash["external_zip"] = event.fetch("ZipUnaffiliated") { nil }
     end
 
     room = event.fetch("Room", nil)

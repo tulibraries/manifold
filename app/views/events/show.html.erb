@@ -45,10 +45,10 @@
               <%= @event.building.address2 %>
             </p>
           <% else %>
-            <h3><%= @event.external_building %></h3>
-            <p><%= @event.external_space %>
+          <p>
+            <strong><%= @event.external_building %></strong><br />
             <% unless @event.external_address.blank? %>
-              <br /><%= @event.external_address %><br />
+              <%= @event.external_address %><br />
               <%= @event.external_city %>, <%= @event.external_state %> <%= @event.external_zip %>
             <% end %>
           </p>

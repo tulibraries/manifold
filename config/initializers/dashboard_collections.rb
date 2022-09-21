@@ -114,7 +114,7 @@ module Tude
                             "Film & Media Arts",
                             "French",
                             "Gender, Sexuality & Women's Studies",
-                            "Geographic Information Systems (GIS)",
+                            "GIS & Mapping",
                             "Geography & Urban Studies",
                             "German",
                             "Global Studies",

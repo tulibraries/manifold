@@ -47,27 +47,23 @@ RSpec.describe SyncService::Events, type: :service do
       end
 
       it "maps Location to external_building field" do
-        expect(subject["external_building"]).to match(@events.first["Location"])
-      end
-
-      it "maps Room to external_building field" do
-        expect(subject["external_space"]).to match(@events.first["Room"])
+        expect(subject["external_building"]).to match(@events.first["LocationUnaffiliated"])
       end
 
       it "maps Address to external_building field" do
-        expect(subject["external_address"]).to match(@events.first["Address"])
+        expect(subject["external_address"]).to match(@events.first["AddressUnaffiliated"])
       end
 
       it "maps City to external_building field" do
-        expect(subject["external_city"]).to match(@events.first["City"])
+        expect(subject["external_city"]).to match(@events.first["CityUnaffiliated"])
       end
 
       it "maps State to external_state field" do
-        expect(subject["external_state"]).to match(@events.first["State"])
+        expect(subject["external_state"]).to match(@events.first["StateUnaffiliated"])
       end
 
       it "maps Zip to external_zip field" do
-        expect(subject["external_zip"]).to match(@events.first["Zip"])
+        expect(subject["external_zip"]).to match(@events.first["ZipUnaffiliated"])
       end
 
       it "maps ContactName to external_contact_name field" do

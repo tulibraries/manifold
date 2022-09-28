@@ -640,6 +640,7 @@ DEPENDENCIES
   jquery-rails
   json-ld
   json-schema
+  jwt
   kaminari
   launchy
   listen (>= 3.0.5, < 3.8)

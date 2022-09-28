@@ -10,17 +10,9 @@
 		<div class="col">
 			<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
 			<hr >
-			<h2><%= @categoryTitle %></h2>
+			<h2>Test Category</h2>
 			<div class="row">
-			<% @videos[:Data].each do |video| %>
-			<div class="col-6 col-md-4 col-lg-3 text-center" style="margin-top: 14px">
-				<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-				<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;", class: "decorative", alt: "" %>
-				<br>
-				<%= video[:Title].truncate(64) %>
-		    <% end %>
-			</div>
-			<% end %>
+				<iframe src="https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?pid=614517f5-5710-4b2a-8e11-af18012c7aa1&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="640px" width="100%" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
 		</div>
 		</div>
 	</div>

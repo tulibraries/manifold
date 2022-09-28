@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class WebpagesController < ApplicationController
+  require 'jwt'
   include HasCategories
   include HTTParty
   include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
-  before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
+  before_action :video_init, only: [:videos_all]
 
   def wpvi
   end
@@ -16,13 +17,22 @@ class WebpagesController < ApplicationController
   end
 
   def video_init
-    @libraryID = "fd034a20-5fb2-4c61-8269-df7e357e78e1"
-    @user = ENV["ENSEMBLE_API_USER"]
-    @key = ENV["ENSEMBLE_API_KEY"]
-    @basepath = "https://svc.#{@user}:#{@key}@ensemble.temple.edu/api"
-    @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
-    @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center", "Temple Alumni"]
-    @category = @categories[params[:collection].to_i]
+    params =  { "scope" => "api", "grant_type" => "client_credentials" }
+    key = "6e760c72-57bd-4d54-80ea-af1e00d7aed7"
+    token = "YXnZpSCFdL8rguhK+kpEDLZobaPuPAqQX7QHt8euKLA="
+    auth = {username: key, password: token}
+
+    response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
+
+    puts response.body, response.code, response.message, response.headers.inspect
+
+    binding.pry
+
+    # @user = ENV["ENSEMBLE_API_USER"]
+    # @key = ENV["ENSEMBLE_API_KEY"]
+    @basepath = "https://temple.hosted.panopto.com"
+    @categories = [["All Past Programs", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Beyond the Page", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Beyond the Notes", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Charles L. Blockson Collection", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Livingstone Undergraduate Research Awards", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Loretta C. Duckworth Scholars Studio", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Special Collections Research Center", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Temple Alumni", "98a7258a-f81f-48c1-8541-af1900e5a7af"]]
+    # @category = @categories[params[:collection].to_i]
     @all = []
     @beyond_page = []
     @beyond_notes = []
@@ -31,42 +41,43 @@ class WebpagesController < ApplicationController
     @lcdss = []
     @scrc = []
     @alumni = []
+    
   end
 
   def videos_all
-    @displayMode = "all"
-    api_query = @basepath + "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
-    ensemble_api(api_query)
-    unless @videos.nil?
-      @featured_video_id = @videos[:Data].first[:ID]
-      @featured_video_title = @videos[:Data].first[:Title]
-      @videos[:Data].each do |video|
-        unless video[:ThumbnailUrl].include?("Width=240")
-          video[:ThumbnailUrl] = video[:ThumbnailUrl][0..-4] + "240"
-        end
-        @all << video
-        tags = video[:Keywords].split(",").each do |tag|
-          case tag
-          when "Beyond the Page"
-            @beyond_page << video
-          when "Beyond the Notes"
-            @beyond_notes << video
-          when "Charles L. Blockson Collection"
-            @blockson << video
-          when "Livingstone Undergraduate Research Awards"
-            @awards << video
-          when "Loretta C. Duckworth Scholars Studio"
-            @lcdss << video
-          when "Special Collections Research Center"
-            @scrc << video
-          when "Temple Alumni"
-            @alumni << video
-          end
-        end if video[:Keywords].present?
-      end
-    else
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video information.")
-    end
+    # @displayMode = "all"
+    # api_query = @basepath + "/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/sessions"
+    # ensemble_api(api_query)
+    # unless @videos.nil?
+    #   @featured_video_id = @videos[:Data].first[:ID]
+    #   @featured_video_title = @videos[:Data].first[:Title]
+    #   @videos[:Data].each do |video|
+    #     unless video[:ThumbnailUrl].include?("Width=240")
+    #       video[:ThumbnailUrl] = video[:ThumbnailUrl][0..-4] + "240"
+    #     end
+    #     @all << video
+    #     tags = video[:Keywords].split(",").each do |tag|
+    #       case tag
+    #       when "Beyond the Page"
+    #         @beyond_page << video
+    #       when "Beyond the Notes"
+    #         @beyond_notes << video
+    #       when "Charles L. Blockson Collection"
+    #         @blockson << video
+    #       when "Livingstone Undergraduate Research Awards"
+    #         @awards << video
+    #       when "Loretta C. Duckworth Scholars Studio"
+    #         @lcdss << video
+    #       when "Special Collections Research Center"
+    #         @scrc << video
+    #       when "Temple Alumni"
+    #         @alumni << video
+    #       end
+    #     end if video[:Keywords].present?
+    #   end
+    # else
+    #   return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video information.")
+    # end
   end
 
   def videos_show
@@ -123,7 +134,7 @@ class WebpagesController < ApplicationController
   def ensemble_api(api_query)
     begin
       videos = HTTParty.get(api_query)
-      @videos = JSON.parse(videos&.body, symbolize_names: true)
+      @videos = JSON.parse(videos&.data, symbolize_names: true)
     rescue => e
       e.message
     end

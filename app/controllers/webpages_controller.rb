@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class WebpagesController < ApplicationController
-  require 'jwt'
   include HasCategories
   include HTTParty
   include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
-  before_action :video_init, only: [:videos_all]
+  before_action :get_panopto_token, only: [:videos_all]
 
   def wpvi
   end
@@ -16,42 +15,19 @@ class WebpagesController < ApplicationController
     @highlights = Highlight.where(promoted: true).take(4)
   end
 
-  def video_init
-    params =  { "scope" => "api", "grant_type" => "client_credentials" }
-    key = "6e760c72-57bd-4d54-80ea-af1e00d7aed7"
-    token = "YXnZpSCFdL8rguhK+kpEDLZobaPuPAqQX7QHt8euKLA="
-    auth = {username: key, password: token}
-
-    response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
-
-    puts response.body, response.code, response.message, response.headers.inspect
-
-    binding.pry
-
-    # @user = ENV["ENSEMBLE_API_USER"]
-    # @key = ENV["ENSEMBLE_API_KEY"]
-    @basepath = "https://temple.hosted.panopto.com"
-    @categories = [["All Past Programs", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Beyond the Page", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Beyond the Notes", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Charles L. Blockson Collection", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Livingstone Undergraduate Research Awards", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Loretta C. Duckworth Scholars Studio", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Special Collections Research Center", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Temple Alumni", "98a7258a-f81f-48c1-8541-af1900e5a7af"]]
-    # @category = @categories[params[:collection].to_i]
-    @all = []
-    @beyond_page = []
-    @beyond_notes = []
-    @blockson = []
-    @awards = []
-    @lcdss = []
-    @scrc = []
-    @alumni = []
-    
-  end
-
   def videos_all
-    # @displayMode = "all"
-    # api_query = @basepath + "/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/sessions"
+    @categories = [["All Past Programs", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Beyond the Page", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Beyond the Notes", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Charles L. Blockson Collection", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Livingstone Undergraduate Research Awards", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Loretta C. Duckworth Scholars Studio", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Special Collections Research Center", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Temple Alumni", "98a7258a-f81f-48c1-8541-af1900e5a7af"]]
+        api_query = "https://temple.hosted.panopto.com/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/playlists"
+    videos = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{@access_token}" })
+    binding.pry
+    @videos = JSON.parse(videos, symbolize_names: true)
+
     # ensemble_api(api_query)
     # unless @videos.nil?
     #   @featured_video_id = @videos[:Data].first[:ID]
     #   @featured_video_title = @videos[:Data].first[:Title]
     #   @videos[:Data].each do |video|
+
     #     unless video[:ThumbnailUrl].include?("Width=240")
     #       video[:ThumbnailUrl] = video[:ThumbnailUrl][0..-4] + "240"
     #     end
@@ -131,10 +107,14 @@ class WebpagesController < ApplicationController
     end
   end
 
-  def ensemble_api(api_query)
+  def get_panopto_token
     begin
-      videos = HTTParty.get(api_query)
-      @videos = JSON.parse(videos&.data, symbolize_names: true)
+      key = "6e760c72-57bd-4d54-80ea-af1e00d7aed7"
+      code = "YXnZpSCFdL8rguhK+kpEDLZobaPuPAqQX7QHt8euKLA="
+      auth = {username: key, password: code}
+      params =  { "scope" => "api", "grant_type" => "client_credentials" }
+      response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
+      @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token]
     rescue => e
       e.message
     end

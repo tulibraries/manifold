@@ -30,7 +30,7 @@
     <div class="row">
       <% @categories.drop(1).each do |category| %>
       <div class="col-6 text-left border p-4">
-        %= link_to "#{category.second} Videos", webpages_videos_collection_path(category.first), class: "playlist-link d-inline-block align-middle" %>
+        <%= link_to "#{category.second} Videos", webpages_videos_collection_path(category.first), class: "playlist-link d-inline-block align-middle" %>
       </div>
       <% end %>
     </div>

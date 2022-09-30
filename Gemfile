@@ -59,7 +59,6 @@ gem "webpacker"
 gem "image_processing", "~> 1.12"
 gem "mimemagic", "0.4.3"
 gem "active_storage_validations"
-gem "jwt"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

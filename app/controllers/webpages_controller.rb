@@ -2,11 +2,10 @@
 
 class WebpagesController < ApplicationController
   include HasCategories
-  include HTTParty
   include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
-  before_action :get_panopto_token, only: [:videos_all]
+  before_action :set_playlists, only: [:videos_all, :videos_list]
 
   def wpvi
   end
@@ -15,108 +14,30 @@ class WebpagesController < ApplicationController
     @highlights = Highlight.where(promoted: true).take(4)
   end
 
-  def videos_all
-    @categories = [["All Past Programs", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Beyond the Page", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Beyond the Notes", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Charles L. Blockson Collection", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Livingstone Undergraduate Research Awards", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Loretta C. Duckworth Scholars Studio", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Special Collections Research Center", "98a7258a-f81f-48c1-8541-af1900e5a7af"], ["Temple Alumni", "98a7258a-f81f-48c1-8541-af1900e5a7af"]]
-        api_query = "https://temple.hosted.panopto.com/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/playlists"
-    videos = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{@access_token}" })
-    binding.pry
-    @videos = JSON.parse(videos, symbolize_names: true)
-
-    # ensemble_api(api_query)
-    # unless @videos.nil?
-    #   @featured_video_id = @videos[:Data].first[:ID]
-    #   @featured_video_title = @videos[:Data].first[:Title]
-    #   @videos[:Data].each do |video|
-
-    #     unless video[:ThumbnailUrl].include?("Width=240")
-    #       video[:ThumbnailUrl] = video[:ThumbnailUrl][0..-4] + "240"
-    #     end
-    #     @all << video
-    #     tags = video[:Keywords].split(",").each do |tag|
-    #       case tag
-    #       when "Beyond the Page"
-    #         @beyond_page << video
-    #       when "Beyond the Notes"
-    #         @beyond_notes << video
-    #       when "Charles L. Blockson Collection"
-    #         @blockson << video
-    #       when "Livingstone Undergraduate Research Awards"
-    #         @awards << video
-    #       when "Loretta C. Duckworth Scholars Studio"
-    #         @lcdss << video
-    #       when "Special Collections Research Center"
-    #         @scrc << video
-    #       when "Temple Alumni"
-    #         @alumni << video
-    #       end
-    #     end if video[:Keywords].present?
-    #   end
-    # else
-    #   return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video information.")
-    # end
+  def set_playlists
+    @categories = ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
+                  ["beyond-the-page", "Beyond the Page", "eba32425-d6bf-4e9c-983f-af1f0128b62b"],
+                  ["beyond-the-notes", "Beyond the Notes", "e01cdfba-bc19-4f27-bdc6-af1c00f52773"],
+                  ["blockson", "Charles L. Blockson Afro-American Collection", "1aab1d3f-4626-43fd-924d-af1c00f290d5"],
+                  ["research-awards", "Livingstone Undergraduate Research Awards", "ad6a8ada-242e-4ddd-8115-af1c00fc3621"],
+                  ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
+                  ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"]
   end
 
-  def videos_show
-    @displayMode = "show"
-    unless params[:id].nil?
-      api_query = @basepath + "/content/" + URI::encode(params[:id])
-      ensemble_api(api_query)
-      unless @videos.nil?
-        @featured_video_id = @videos[:ID]
-        @featured_video_title = @videos[:Title]
-        @featured_video_description = CGI.unescapeHTML(@videos[:Description]) unless @videos[:Description].nil?
-      else
-        return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
-      end
-      if @featured_video_id.nil?
-        return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
-      end
-    else
-      return redirect_to(webpages_videos_all_path, alert: "You must choose a video to stream.")
-    end
+  def videos_all
+    @playlist_title = @categories.first.second
+    @playlist_id = @categories.first.third
   end
 
   def videos_list
     @category = params[:collection]
-    unless @category.nil? || @category.blank? || @category == "0"
-      @categoryTitle = @categories[params[:collection].to_i]
-      unless @categoryTitle.nil?
-        api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
-      end
+    if @category.present?
+      playlist = @categories.each.select { |m| m if m[0] == @category }.flatten
+      @playlist_title = playlist.second
+      @playlist_id = playlist.third
     else
-      @categoryTitle = "All Past Programs"
-      api_query = @basepath + @medialibrary
-    end
-    ensemble_api(api_query) unless api_query.nil?
-    if @videos.nil?
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video list.")
-    end
-  end
-
-  def videos_search
-    if params[:q].blank?
-      return redirect_to(webpages_videos_all_path)
-    else
-      api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
-      ensemble_api(api_query)
-      if @videos.first[1].nil?
-        @categoryTitle = "your search for: #{params[:q]} returned 0 results"
-      else
-        @categoryTitle = "your search for: #{params[:q]} returned #{@videos.first[1].count} results"
-      end
-    end
-  end
-
-  def get_panopto_token
-    begin
-      key = "6e760c72-57bd-4d54-80ea-af1e00d7aed7"
-      code = "YXnZpSCFdL8rguhK+kpEDLZobaPuPAqQX7QHt8euKLA="
-      auth = {username: key, password: code}
-      params =  { "scope" => "api", "grant_type" => "client_credentials" }
-      response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
-      @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token]
-    rescue => e
-      e.message
+      @playlist_title = @categories.first.second
+      @playlist_id = @categories.first.third
     end
   end
 

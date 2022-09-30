@@ -1,19 +1,20 @@
-<div class="container" id="videos-index" style="margin-top: 14px">
+<div class="container mt-3" id="videos-index">
 
-	<div class="row backlink">
-		<div class="col">
-			<%= link_to t("manifold.webpages.videos.breadcrumb"), webpages_videos_all_path %> 
-		</div>
-	</div>
+<div class="row">
+	<div class="col text-center my-2">
+		<h1 class="page-title">
+      <p class="pb-2"><%= link_to t("manifold.webpages.videos.page_title"), webpages_videos_all_path %> </p>
+      <hr />
+      <p class="pt-2"><%= @playlist_title %></p>
+    </h1>
+  </div>
+</div>
 
-	<div class="row" style="margin-top: 21px;">
+	<div class="row pb-5 mt-4">
 		<div class="col">
-			<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
-			<hr >
-			<h2>Test Category</h2>
-			<div class="row">
-				<iframe src="https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?pid=614517f5-5710-4b2a-8e11-af18012c7aa1&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="640px" width="100%" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
-		</div>
+			<div class="text-center">
+        <iframe src=<%= "https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?pid=#{ @playlist_id }&autoplay=false&offerviewer=false&showtitle=true&showbrand=false&captions=false&interactivity=none" %> height="740px" width="90%" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
+		  </div>
 		</div>
 	</div>
 

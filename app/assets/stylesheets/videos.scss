@@ -1,6 +1,29 @@
 @import "partials/_vars.scss";
 
 #videos-index {
+  #video-list {
+    .row {
+      width: 80%!important;
+      margin: auto;
+    }
+    .playlist-link {
+      color: $royal-blue;
+      font-size: 120%;
+      border-left: solid $red 2px;
+      padding-left: 14px;
+    }
+  }
+  hr {
+    background-color: $red;
+    height: 3px;
+    width: 25%;
+  }
+  h1.page-title {
+    color: $royal-blue;
+    a {
+      color: $royal-blue;
+    }
+  }
 	h2 {
 		margin-top: 4px;
 		font-size: 1.75rem;

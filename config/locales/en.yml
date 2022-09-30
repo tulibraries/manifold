@@ -1207,26 +1207,8 @@ en:
         contact: Staff Directory
       videos:
         page_title: Past Program and Event Videos
-        breadcrumb: < Watch Past Programs & Events
-        all:
-          page_title: Past Program and Event Videos
-          search_label: "Search all Past Program videos:"
-          recent: Recent Videos
-          see_all: See all Past Program videos
-          beyond: Beyond the Page
-          beyond_all: See all Beyond the Page videos
-          notes: Beyond the Notes
-          notes_all: See All Beyond the Notes Videos
-          blockson: Charles L. Blockson Afro-American Collection 
-          blockson_all: See All Blockson Collection Videos
-          awards: Livingstone Undergraduate Research Awards
-          awards_all: See All Research Award Videos
-          lcdss: Loretta C. Duckworth Scholars Studio
-          lcdss_all: See All Scholars Studio Videos
-          scrc: Special Collections Research Center
-          scrc_all: See All Special Collections Videos
-          alumni: Temple Alumni
-          alumni_all: See All Temple Alumni Videos
+        default_playlist: Recent Videos
+        all: All Videos
       visit:
         page_title: Visit & Study
       wpvi:

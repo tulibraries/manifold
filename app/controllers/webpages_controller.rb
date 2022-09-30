@@ -2,11 +2,10 @@
 
 class WebpagesController < ApplicationController
   include HasCategories
-  include HTTParty
   include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
-  before_action :video_init, only: [:videos_all, :videos_show, :videos_list, :videos_search]
+  before_action :set_playlists, only: [:videos_all, :videos_list]
 
   def wpvi
   end
@@ -15,117 +14,30 @@ class WebpagesController < ApplicationController
     @highlights = Highlight.where(promoted: true).take(4)
   end
 
-  def video_init
-    @libraryID = "fd034a20-5fb2-4c61-8269-df7e357e78e1"
-    @user = ENV["ENSEMBLE_API_USER"]
-    @key = ENV["ENSEMBLE_API_KEY"]
-    @basepath = "https://svc.#{@user}:#{@key}@ensemble.temple.edu/api"
-    @medialibrary = "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
-    @categories = ["All Past Programs", "Beyond the Page", "Beyond the Notes", "Charles L. Blockson Collection", "Livingstone Undergraduate Research Awards", "Loretta C. Duckworth Scholars Studio", "Special Collections Research Center", "Temple Alumni"]
-    @category = @categories[params[:collection].to_i]
-    @all = []
-    @beyond_page = []
-    @beyond_notes = []
-    @blockson = []
-    @awards = []
-    @lcdss = []
-    @scrc = []
-    @alumni = []
+  def set_playlists
+    @categories = ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
+                  ["beyond-the-page", "Beyond the Page", "eba32425-d6bf-4e9c-983f-af1f0128b62b"],
+                  ["beyond-the-notes", "Beyond the Notes", "e01cdfba-bc19-4f27-bdc6-af1c00f52773"],
+                  ["blockson", "Charles L. Blockson Afro-American Collection", "1aab1d3f-4626-43fd-924d-af1c00f290d5"],
+                  ["research-awards", "Livingstone Undergraduate Research Awards", "ad6a8ada-242e-4ddd-8115-af1c00fc3621"],
+                  ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
+                  ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"]
   end
 
   def videos_all
-    @displayMode = "all"
-    api_query = @basepath + "/medialibrary/" + @libraryID + "?PageIndex=1&PageSize=1000"
-    ensemble_api(api_query)
-    unless @videos.nil?
-      @featured_video_id = @videos[:Data].first[:ID]
-      @featured_video_title = @videos[:Data].first[:Title]
-      @videos[:Data].each do |video|
-        unless video[:ThumbnailUrl].include?("Width=240")
-          video[:ThumbnailUrl] = video[:ThumbnailUrl][0..-4] + "240"
-        end
-        @all << video
-        tags = video[:Keywords].split(",").each do |tag|
-          case tag
-          when "Beyond the Page"
-            @beyond_page << video
-          when "Beyond the Notes"
-            @beyond_notes << video
-          when "Charles L. Blockson Collection"
-            @blockson << video
-          when "Livingstone Undergraduate Research Awards"
-            @awards << video
-          when "Loretta C. Duckworth Scholars Studio"
-            @lcdss << video
-          when "Special Collections Research Center"
-            @scrc << video
-          when "Temple Alumni"
-            @alumni << video
-          end
-        end if video[:Keywords].present?
-      end
-    else
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video information.")
-    end
-  end
-
-  def videos_show
-    @displayMode = "show"
-    unless params[:id].nil?
-      api_query = @basepath + "/content/" + URI::encode(params[:id])
-      ensemble_api(api_query)
-      unless @videos.nil?
-        @featured_video_id = @videos[:ID]
-        @featured_video_title = @videos[:Title]
-        @featured_video_description = CGI.unescapeHTML(@videos[:Description]) unless @videos[:Description].nil?
-      else
-        return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
-      end
-      if @featured_video_id.nil?
-        return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
-      end
-    else
-      return redirect_to(webpages_videos_all_path, alert: "You must choose a video to stream.")
-    end
+    @playlist_title = @categories.first.second
+    @playlist_id = @categories.first.third
   end
 
   def videos_list
     @category = params[:collection]
-    unless @category.nil? || @category.blank? || @category == "0"
-      @categoryTitle = @categories[params[:collection].to_i]
-      unless @categoryTitle.nil?
-        api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
-      end
+    if @category.present?
+      playlist = @categories.each.select { |m| m if m[0] == @category }.flatten
+      @playlist_title = playlist.second
+      @playlist_id = playlist.third
     else
-      @categoryTitle = "All Past Programs"
-      api_query = @basepath + @medialibrary
-    end
-    ensemble_api(api_query) unless api_query.nil?
-    if @videos.nil?
-      return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video list.")
-    end
-  end
-
-  def videos_search
-    if params[:q].blank?
-      return redirect_to(webpages_videos_all_path)
-    else
-      api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
-      ensemble_api(api_query)
-      if @videos.first[1].nil?
-        @categoryTitle = "your search for: #{params[:q]} returned 0 results"
-      else
-        @categoryTitle = "your search for: #{params[:q]} returned #{@videos.first[1].count} results"
-      end
-    end
-  end
-
-  def ensemble_api(api_query)
-    begin
-      videos = HTTParty.get(api_query)
-      @videos = JSON.parse(videos&.body, symbolize_names: true)
-    rescue => e
-      e.message
+      @playlist_title = @categories.first.second
+      @playlist_id = @categories.first.third
     end
   end
 

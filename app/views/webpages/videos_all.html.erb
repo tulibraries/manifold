@@ -1,230 +1,38 @@
-<div class="container" id="videos-index" style="margin-top: 35px;">
+<div class="container mt-5" id="videos-index">
 
-<div class="row">
-	<div class="col">
-		<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
-		<div class="row video-container">
-			<div class="col-lg-10 offset-lg-1">
-  	    <div id="ensembleEmbeddedContent_<%= @featured_video_id %>"><script type="text/javascript" src="https://ensemble.temple.edu/hapi/v1/contents/<%= @featured_video_id %>/plugin/javascript?embedId=ensembleEmbeddedContent_<%= @featured_video_id %>&embedAsThumbnail=false&displayTitle=false&startTime=0&autoPlay=false&hideControls=true&showCaptions=false&displaySharing=false&displayAnnotations=false&displayAttachments=false&displayLinks=false&displayEmbedCode=false&displayDownloadIcon=false&displayMetaData=false&displayCredits=false&audioPreviewImage=false&displayCaptionSearch=false&displayViewersReport=false&displayAxdxs=false"></script>
-				</div>
-			</div>
-		</div>
-</div>
-</div>
+  <div class="row">
+    <div class="col text-center my-2">
+      <h1 class="page-title">
+        <p class="pb-2"><%= title t("manifold.webpages.videos.page_title") %></p>
+        <hr />
+        <p class="pt-2"><%= title t("manifold.webpages.videos.default_playlist") %></p>
+      </h1>
+    </div>
+  </div>
 
-<div class="row">
-	<div class="col-lg-10 offset-lg-1 text-center">
-		<div id="featuredTitle" class="text-center"><%= @featured_video_title %></div>
+  <div class="container mb-3">
+    <div class="row">
+      <div class="col-12 text-center">
+        <iframe src=<%= "https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?pid=#{ @playlist_id }&autoplay=false&offerviewer=false&showtitle=true&showbrand=false&captions=false&interactivity=none" %> height="420px" width="70%" style="border: 1px solid #dee2e6;padding: 14px;" allowfullscreen allow="autoplay"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="video-list">
+    <div class="row">
+      <div class="col">
+        <h1 class="page-title">
+          <p class="pt-2"><%= title t("manifold.webpages.videos.all") %></p>
+        </h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <% @categories.drop(1).each do |category| %>
+      <div class="col-6 text-left border p-4">
+        <%= link_to "#{category.second} Videos", webpages_videos_collection_path(category.first), class: "playlist-link d-inline-block align-middle" %>
+      </div>
+      <% end %>
+    </div>
 	</div>
 </div>
-
-<div class="row">
-	<div class="col text-center">
-		<div id="videosearchbar">
-    <form action="/watchpastprograms/search" method="GET">
-        <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
-        <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
-        <input type="submit" id="videosearchbutton" value="Search">
-    </form>
-		</div>
-	</div>
-</div>
-
-	<div class="row odd">
-		<div class="col-sm-8">
-			<h2><%= t("manifold.webpages.videos.all.recent") %></h2>
-		</div>
-		<div class="col-sm-4">
-			<span class="morevideos">
-				<a href="/watchpastprograms/list/0"><%= title t("manifold.webpages.videos.all.see_all") %></a>
-			</span>
-		</div>
-		<div class="col-12">
-			<div class="row">
-				<% @all.take(8).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Title].truncate(64) %>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row even">
-		<div class="col-sm-8">
-			<h2><%= title t("manifold.webpages.videos.all.beyond") %></h2>
-		</div>
-		<div class="col-sm-4">
-			<span class="morevideos">
-				<a href="/watchpastprograms/list/1"><%= title t("manifold.webpages.videos.all.beyond_all") %></a>
-			</span>
-		</div>
-		<div class="col-12">
-			<div class="row">
-				<% @beyond_page.take(4).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Title].truncate(64) %>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row odd">
-		<div class="col-sm-8">
-			<h2><%= title t("manifold.webpages.videos.all.notes") %></h2>
-		</div>
-		<div class="col-sm-4">
-			<span class="morevideos">
-				<a href="/watchpastprograms/list/2"><%= title t("manifold.webpages.videos.all.notes_all") %></a>
-			</span>
-		</div>
-		<div class="col-12">
-			<div class="row">
-				<% @beyond_notes.take(4).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Title].truncate(64) %>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row even">
-		<div class="col-sm-8">
-			<h2><%= title t("manifold.webpages.videos.all.blockson") %></h2>
-		</div>
-		<div class="col-sm-4">
-			<span class="morevideos">
-				<a href="/watchpastprograms/list/3"><%= title t("manifold.webpages.videos.all.blockson_all") %></a>
-			</span>
-		</div>
-		<div class="col-12">
-			<div class="row">
-				<% @blockson.take(4).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Title].truncate(64) %>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row odd">
-		<div class="col-sm-8">
-			<h2><%= title t("manifold.webpages.videos.all.awards") %></h2>
-		</div>
-		<div class="col-sm-4">
-			<span class="morevideos">
-				<a href="/watchpastprograms/list/4"><%= title t("manifold.webpages.videos.all.awards_all") %></a>
-			</span>
-		</div>
-		<div class="col-12">
-			<div class="row">
-				<% @awards.take(4).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Title].truncate(64) %>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row even">
-		<div class="col-sm-8">
-			<h2><%= title t("manifold.webpages.videos.all.lcdss") %></h2>
-		</div>
-		<div class="col-sm-4">
-			<span class="morevideos">
-				<a href="/watchpastprograms/list/5"><%= title t("manifold.webpages.videos.all.lcdss_all") %></a>
-			</span>
-		</div>
-		<div class="col-12">
-			<div class="row">
-				<% @lcdss.take(4).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Title].truncate(64) %>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-
-
-  <% unless @scrc.empty? %>
-	<div class="row odd">
-		<div class="col-sm-8">
-			<h2><%= title t("manifold.webpages.videos.all.scrc") %></h2>
-		</div>
-		<div class="col-sm-4">
-			<span class="morevideos">
-				<a href="/watchpastprograms/list/6"><%= title t("manifold.webpages.videos.all.scrc_all") %></a>
-			</span>
-		</div>
-		<div class="col-12">
-			<div class="row">
-				<% @scrc.take(4).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Title].truncate(64) %>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-	<% end %>
-
-  <% unless @alumni.empty? %>
-	<div class="row even">
-		<div class="col-sm-8">
-			<h2><%= title t("manifold.webpages.videos.all.alumni") %></h2>
-		</div>
-		<div class="col-sm-4">
-			<span class="morevideos">
-				<a href="/watchpastprograms/list/7"><%= title t("manifold.webpages.videos.all.alumni_all") %></a>
-			</span>
-		</div>
-		<div class="col-12">
-			<div class="row">
-				<% @alumni.take(4).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-					<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-						<%= image_tag video[:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Title].truncate(64) %>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-	<% end %>
-
-	</div>

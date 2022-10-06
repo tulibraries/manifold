@@ -41,7 +41,7 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_storage_validations (0.9.8)
+    active_storage_validations (1.0.0)
       activejob (>= 5.2.0)
       activemodel (>= 5.2.0)
       activestorage (>= 5.2.0)
@@ -598,7 +598,7 @@ GEM
     yaml_db (0.7.0)
       rails (>= 3.0)
       rake (>= 0.8.7)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   ruby

@@ -20,8 +20,8 @@ class WebpagesController < ApplicationController
     begin
       key = "6e760c72-57bd-4d54-80ea-af1e00d7aed7"
       code = "YXnZpSCFdL8rguhK+kpEDLZobaPuPAqQX7QHt8euKLA="
-      auth = {username: key, password: code}
-      params =  { "scope" => "api", "grant_type" => "client_credentials" }
+      auth = { username: key, password: code }
+      params = { "scope" => "api", "grant_type" => "client_credentials" }
       response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
       @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token]
     rescue => e
@@ -64,7 +64,7 @@ class WebpagesController < ApplicationController
              ]
 
     @categories.each do |category|
-      get_videos = panopto_api_call(["playlists", "sessions"], category[2])   
+      get_videos = panopto_api_call(["playlists", "sessions"], category[2])
       get_videos[:Results].each do |video|
         @all << video
         case category[1]
@@ -98,7 +98,7 @@ class WebpagesController < ApplicationController
     @displayMode = "show"
     if params[:id].present?
       @video = panopto_api_call(["sessions", nil], params[:id])
-      unless @video.present?
+      if @video.blank?
         return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video. #{ @video[:Id] }")
       end
       if @video[:Id].nil?
@@ -113,19 +113,19 @@ class WebpagesController < ApplicationController
     page_results = []
     more = false
     i = 0
-    @category = @categories.select{|c| c[0] == params[:collection]}.first
+    @category = @categories.select { |c| c[0] == params[:collection] }.first
 
     if @category.present?
       page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
       @videos = page_results[:Results]
-      more = true if @videos.size == 50 
+      more = true if @videos.size == 50
       while more
         page_results = nil
-        i+=1
+        i += 1
         results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
         page_results = results[:Results] if results[:Results].size > 0 && results[:Results].size <= 50
         if page_results.present?
-          @videos += page_results 
+          @videos += page_results
           more = page_results.size == 50 ? true : false
         end
       end
@@ -143,14 +143,14 @@ class WebpagesController < ApplicationController
     else
       page_results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
       @videos = page_results[:Results]
-      more = true if @videos.size == 50 
+      more = true if @videos.size == 50
       while more
         page_results = nil
-        i+=1
+        i += 1
         results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
         page_results = results[:Results] if results[:Results].size > 0 && results[:Results].size <= 50
         if page_results.present?
-          @videos += page_results 
+          @videos += page_results
           more = page_results.size == 50 ? true : false
         end
       end

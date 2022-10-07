@@ -1,4 +1,4 @@
-<div class="container" id="videos-index" style="margin-top: 35px;">
+<div class="container mt-4" id="videos-index">
 
 <div class="row">
 	<div class="col">
@@ -18,7 +18,7 @@
 </div>
 
 <div class="row">
-	<div class="col text-center">
+	<div class="col text-center mb-3">
 		<div id="videosearchbar">
     <form action="/watchpastprograms/search" method="GET">
         <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
@@ -30,9 +30,10 @@
 </div>
 
 <% @categories.each_with_index do |category, i| %>
+  <% i == 0 ? vids = 8 : vids = 4 %>
 	<div class="row <%= i.odd? ? "odd" : "even" %>">
 		<div class="col-sm-8">
-			<h2><%= t("manifold.webpages.videos.all.#{category[0]}") %></h2>
+			<h2><%= t("manifold.webpages.videos.categories.#{category[0]}") %></h2>
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
@@ -41,12 +42,11 @@
 		</div>
 		<div class="col-12">
 			<div class="row">
-				<% @lists[i].take(4).each do |video| %>
-				<div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+				<% @lists[i].take(vids).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 mb-3 text-center video-block">
 					<%= link_to webpages_videos_show_path(id: video[:Id]) do %>
 						<%= image_tag video[:Urls][:ThumbnailUrl], style: "max-height: 135px;" %>
-						<br>
-						<%= video[:Name].truncate(64) %>
+						<p class="mt-2"><%= video[:Name].truncate(64) %></p>
 					<% end %>
 				</div>
 				<% end %>

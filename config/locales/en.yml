@@ -1208,22 +1208,24 @@ en:
       videos:
         page_title: Past Program and Event Videos
         breadcrumb: < Watch Past Programs & Events
+        categories:
+          recent: Recent Videos
+          beyond-the-page: Beyond the Page
+          beyond-the-notes: Beyond the Notes
+          blockson: Charles L. Blockson Afro-American Collection 
+          research-awards: Livingstone Undergraduate Research Awards
+          lcdss: Loretta C. Duckworth Scholars Studio
+          scrc: Special Collections Research Center
         all:
+          recent: See More Recent Videos
           page_title: Past Program and Event Videos
           search_label: "Search all Past Program videos:"
-          recent: Recent Videos
           see_all: See all Past Program videos
-          beyond-title: Beyond the Page
           beyond-the-page: See all Beyond the Page videos
-          notes-title: Beyond the Notes
           beyond-the-notes: See All Beyond the Notes Videos
-          blockson-title: Charles L. Blockson Afro-American Collection 
           blockson: See All Blockson Collection Videos
-          awards-title: Livingstone Undergraduate Research Awards
           research-awards: See All Research Award Videos
-          lcdss-title: Loretta C. Duckworth Scholars Studio
           lcdss: See All Scholars Studio Videos
-          scrc-title: Special Collections Research Center
           scrc: See All Special Collections Videos
       visit:
         page_title: Visit & Study

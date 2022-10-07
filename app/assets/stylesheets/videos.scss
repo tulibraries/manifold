@@ -81,7 +81,6 @@
 	#videosearchbar {
 		margin-top: 35px;
 		padding-bottom: 21px;
-		border-bottom: solid #ccc 1px;
 	}
 
 	.ev-navbar.mb-0.navbar-custom {
@@ -92,3 +91,8 @@
 	}
 }
 
+.video-block {
+  img {
+    max-height: 135px;
+  }
+}

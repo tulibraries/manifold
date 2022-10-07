@@ -84,14 +84,13 @@ end
 
 group :test do
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "chromedriver-helper"
   gem "factory_bot_rails", "~> 6.2.0"
   gem "guard-rspec", require: false
   gem "mutant-rspec"
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails", ">=3.8.0"
-  gem "selenium-webdriver", "~> 4.2.1"
+  gem "selenium-webdriver", "~> 4.5.0"
   gem "simplecov"
   gem "simplecov-lcov"
   gem "webmock"

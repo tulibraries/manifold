@@ -139,9 +139,7 @@ Rails.application.routes.draw do
     get "scop" => :scop, as: "webpages_scop"
     get "wpvi" => :wpvi
     get "watchpastprograms" => :videos_all, as: "webpages_videos_all"
-    get "watchpastprograms/list/:collection" => :videos_list, as: "webpages_videos_collection"
-    get "watchpastprograms/search" => :videos_search, as: "webpages_videos_search"
-    get "watchpastprograms/show" => :videos_show, as: "webpages_videos_show"
+    get "watchpastprograms/:collection" => :videos_list, as: "webpages_videos_collection"
     get "/pages/:id" => :show
   end
 

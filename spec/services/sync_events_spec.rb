@@ -7,9 +7,8 @@ RSpec.describe SyncService::Events, type: :service do
     @sync_events = described_class.new(events_url: file_fixture("events.xml").to_path)
     @events = @sync_events.read_events
   end
+
   context "valid events" do
-    # let(:sync_events) {  }
-    # let(:events) { sync_events.read_events }
 
     it "extracts the event hash" do
       expect(@events.first["Title"]).to match(/^Data Transparency: Policies and Best Practices$/)
@@ -94,7 +93,6 @@ RSpec.describe SyncService::Events, type: :service do
 
   context "write event to event table" do
     before(:each) do
-      #sync_events = described_class.call(events_url: file_fixture("events.xml").to_path)
       @sync_events.sync
     end
 
@@ -215,8 +213,6 @@ RSpec.describe SyncService::Events, type: :service do
       second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
       expect(second_time).to be > first_time
     end
-
-
   end
 
   context "all day event" do

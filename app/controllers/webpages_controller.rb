@@ -2,7 +2,6 @@
 
 class WebpagesController < ApplicationController
   include HasCategories
-  include HTTParty
   include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]

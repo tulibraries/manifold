@@ -11,12 +11,6 @@ module EventHelper
         tags << "#{type}&nbsp;<a href=\"#{events_path(request.query_parameters.except(:type).merge(page: 1))}\">X</a>"
       end
     end
-    # unless params[:location].nil?
-    #   locations = params[:location].split(",")
-    #   locations.each do |location|
-    #     tags << "#{location}&nbsp;<a href=\"#{events_path(request.query_parameters.except("," + location).merge(page: 1))}\">X</a>"
-    #   end
-    # end
     tags
   end
 

@@ -59,7 +59,6 @@ gem "webpacker"
 gem "image_processing", "~> 1.12"
 gem "mimemagic", "0.4.3"
 gem "active_storage_validations"
-gem "jwt"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -79,7 +78,7 @@ group :development do
   gem "populate"
   gem "rails-erd"
   gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "spring-watcher-listen", "~> 2.1.0"
   gem "web-console", ">= 3.3.0"
 end
 

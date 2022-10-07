@@ -1,10 +1,14 @@
 <div class="container mt-3" id="videos-index">
 
-	<div class="row backlink">
-		<div class="col">
-			<%= link_to t("manifold.webpages.videos.breadcrumb"), webpages_videos_all_path %> 
-		</div>
-	</div>
+  <div class="row">
+    <div class="col text-center my-2">
+      <h1 class="page-title">
+        <p class="pb-2"><%= link_to t("manifold.webpages.videos.page_title"), webpages_videos_all_path %></p>
+        <hr />
+        <p class="pt-2"><%= @playlist_title %></p>
+      </h1>
+    </div>
+  </div>
 
 	<div class="row mt-3">
 		<div class="col">

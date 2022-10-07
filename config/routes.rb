@@ -140,6 +140,8 @@ Rails.application.routes.draw do
     get "wpvi" => :wpvi
     get "watchpastprograms" => :videos_all, as: "webpages_videos_all"
     get "watchpastprograms/:collection" => :videos_list, as: "webpages_videos_collection"
+    get "watchpastprograms/search" => :videos_search, as: "webpages_videos_search"
+    get "watchpastprograms/show" => :videos_show, as: "webpages_videos_show"
     get "/pages/:id" => :show
   end
 

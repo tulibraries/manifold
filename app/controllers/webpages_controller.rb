@@ -17,8 +17,9 @@ class WebpagesController < ApplicationController
 
   def get_panopto_token
     begin
-      key = "6e760c72-57bd-4d54-80ea-af1e00d7aed7"
-      code = "YXnZpSCFdL8rguhK+kpEDLZobaPuPAqQX7QHt8euKLA="
+      key = ENV["PANOPTO_API_USER"]
+      code = ENV["PANOPTO_API_KEY"]
+
       auth = { username: key, password: code }
       params = { "scope" => "api", "grant_type" => "client_credentials" }
       response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)

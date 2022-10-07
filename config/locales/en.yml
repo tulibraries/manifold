@@ -1213,20 +1213,18 @@ en:
           search_label: "Search all Past Program videos:"
           recent: Recent Videos
           see_all: See all Past Program videos
-          beyond: Beyond the Page
-          beyond_all: See all Beyond the Page videos
-          notes: Beyond the Notes
-          notes_all: See All Beyond the Notes Videos
-          blockson: Charles L. Blockson Afro-American Collection 
-          blockson_all: See All Blockson Collection Videos
-          awards: Livingstone Undergraduate Research Awards
-          awards_all: See All Research Award Videos
-          lcdss: Loretta C. Duckworth Scholars Studio
-          lcdss_all: See All Scholars Studio Videos
-          scrc: Special Collections Research Center
-          scrc_all: See All Special Collections Videos
-          alumni: Temple Alumni
-          alumni_all: See All Temple Alumni Videos
+          beyond-title: Beyond the Page
+          beyond-the-page: See all Beyond the Page videos
+          notes-title: Beyond the Notes
+          beyond-the-notes: See All Beyond the Notes Videos
+          blockson-title: Charles L. Blockson Afro-American Collection 
+          blockson: See All Blockson Collection Videos
+          awards-title: Livingstone Undergraduate Research Awards
+          research-awards: See All Research Award Videos
+          lcdss-title: Loretta C. Duckworth Scholars Studio
+          lcdss: See All Scholars Studio Videos
+          scrc-title: Special Collections Research Center
+          scrc: See All Special Collections Videos
       visit:
         page_title: Visit & Study
       wpvi:

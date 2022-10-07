@@ -6,7 +6,8 @@ class WebpagesController < ApplicationController
   include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
-  before_action :get_panopto_token, only: [:videos_all, :videos_show]
+  before_action :get_panopto_token, only: [:videos_all, :videos_show, :videos_list]
+  before_action :get_video_categories, only: [:videos_all, :videos_list]
 
   def wpvi
   end
@@ -35,7 +36,7 @@ class WebpagesController < ApplicationController
     JSON.parse(request&.body, symbolize_names: true)
   end
 
-  def videos_all
+  def get_video_categories
     @categories = ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
                   ["beyond-the-page", "Beyond the Page", "eba32425-d6bf-4e9c-983f-af1f0128b62b"],
                   ["beyond-the-notes", "Beyond the Notes", "e01cdfba-bc19-4f27-bdc6-af1c00f52773"],
@@ -43,15 +44,19 @@ class WebpagesController < ApplicationController
                   ["research-awards", "Livingstone Undergraduate Research Awards", "ad6a8ada-242e-4ddd-8115-af1c00fc3621"],
                   ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
                   ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"]
+  end
 
+  def videos_all
     @all = []
-    @recent = []
-    @beyond_page = []
-    @beyond_notes = []
-    @blockson = []
-    @awards = []
-    @lcdss = []
-    @scrc = []
+    @lists = [
+              @recent = [],
+              @beyond_page = [],
+              @beyond_notes = [],
+              @blockson = [],
+              @awards = [],
+              @lcdss = [],
+              @scrc = []
+             ]
 
     @categories.each do |category|
       get_videos = panopto_api_call(["playlists", "sessions"], category[2])   
@@ -87,7 +92,6 @@ class WebpagesController < ApplicationController
   def videos_show
     @displayMode = "show"
     if params[:id].present?
-      # binding.pry
       @video = panopto_api_call(["sessions", nil], params[:id])
       unless @video.present?
         return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video. #{ @video[:Id] }")
@@ -101,18 +105,12 @@ class WebpagesController < ApplicationController
   end
 
   def videos_list
-    @category = params[:collection]
-    unless @category.nil? || @category.blank? || @category == "0"
-      @categoryTitle = @categories[params[:collection].to_i]
-      unless @categoryTitle.nil?
-        api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(@categoryTitle)
-      end
+    @category = @categories.select{|c| c[0] == params[:collection]}.first
+
+    if @category.present?
+      videos = panopto_api_call(["playlists", "sessions"], @category[2])
+      @videos = videos[:Results]
     else
-      @categoryTitle = "All Past Programs"
-      api_query = @basepath + @medialibrary
-    end
-    ensemble_api(api_query) unless api_query.nil?
-    if @videos.nil?
       return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video list.")
     end
   end

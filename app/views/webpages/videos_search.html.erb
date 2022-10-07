@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 14px;">
+<div class="container" id="videos-index" style="margin-top: 14px;">
 
 	<div class="row backlink">
 		<div class="col">
@@ -9,20 +9,32 @@
 	<div class="row" style="margin-top: 21px;">
 		<div class="col">
 			<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
-			<hr >
-			<h2><%= sanitize @categoryTitle %></h2>
-			<div class="row">
-			<% @videos[:Data].each do |video| %>
-			<div class="col-6 col-md-4 col-lg-3 text-center" style="margin-top: 14px">
-				<%= link_to webpages_videos_show_path(id: video[:ID]) do %>
-				<%= image_tag (video[:ThumbnailUrl].sub! "Width=100", "Width=240"), style: "max-height: 135px;", class: "decorative", alt: "" %>
-				<br>
-				<%= video[:Title] %>
-		    <% end %>
-			</div>
-			<% end %>
+    </div>
+  </div>
+
+  <div class="row">
+	<div class="col text-center">
+		<div id="videosearchbar">
+    <form action="/watchpastprograms/search" method="GET">
+        <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
+        <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
+        <input type="submit" id="videosearchbutton" value="Search">
+    </form>
 		</div>
-		</div>
+		<h2 class="text-left mt-3"><%= sanitize @categoryTitle %></h2>
 	</div>
+</div>
+
+  <div class="row">
+    <% @videos.each do |video| %>
+    <div class="col-6 col-md-4 col-lg-3 text-center" style="margin-top: 14px">
+      <%= link_to webpages_videos_show_path(id: video[:Id]) do %>
+        <%= image_tag video[:Urls][:ThumbnailUrl], style: "max-height: 135px;" %>
+        <br>
+        <%= video[:Name].truncate(64) %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 
 </div>

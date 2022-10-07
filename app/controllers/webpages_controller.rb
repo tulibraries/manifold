@@ -6,7 +6,7 @@ class WebpagesController < ApplicationController
   include SerializableRespondTo
   before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
-  before_action :get_panopto_token, only: [:videos_all, :videos_show, :videos_list]
+  before_action :get_panopto_token, only: [:videos_all, :videos_show, :videos_list, :videos_search]
   before_action :get_video_categories, only: [:videos_all, :videos_list]
 
   def wpvi
@@ -30,8 +30,11 @@ class WebpagesController < ApplicationController
   end
 
   def panopto_api_call(type, panopto_id)
-    api_query = "https://temple.hosted.panopto.com/Panopto/api/v1/#{ type[0] }/#{ panopto_id }"
-    api_query += "/#{ type[1] }" if type[1].present?
+    api_query = "https://temple.hosted.panopto.com/Panopto/api/v1/#{ type[0] }/#{ panopto_id }/"
+    api_query += "#{ type[1] }/" if type[1].present?
+    api_query += "#{ type[2] }" if type[2].present?
+    api_query += "?id=#{ panopto_id }&searchQuery=#{ type[3] }&pageNumber=#{ type[4] }" if type[3].present?
+    # binding.pry
     request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
     JSON.parse(request&.body, symbolize_names: true)
   end
@@ -116,15 +119,29 @@ class WebpagesController < ApplicationController
   end
 
   def videos_search
+    page_results = []
+    more = false
+    i = 0
     if params[:q].blank?
       return redirect_to(webpages_videos_all_path)
     else
-      api_query = @basepath + @medialibrary + "&FilterValue=" + URI::encode(params[:q])
-      ensemble_api(api_query)
-      if @videos.first[1].nil?
-        @categoryTitle = "your search for: #{params[:q]} returned 0 results"
+      page_results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
+      @videos = page_results[:Results]
+      more = true if @videos.size == 50 
+      while more
+        page_results = nil
+        i+=1
+        results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
+        page_results = results[:Results] if results[:Results].size > 0 && results[:Results].size <= 50
+        if page_results.present?
+          @videos += page_results 
+          more = page_results.size == 50 ? true : false
+        end
+      end
+      if @videos.present?
+        @categoryTitle = "your search for: <span style=\"color:#A41E35;\">\"#{params[:q]}\"</span> returned #{@videos.count} results"
       else
-        @categoryTitle = "your search for: #{params[:q]} returned #{@videos.first[1].count} results"
+        @categoryTitle = "your search for: <span style=\"color:#A41E35;\">\"#{params[:q]}\"</span> returned 0 results"
       end
     end
   end

@@ -1,20 +1,10 @@
 <div class="container mt-3" id="videos-index">
 
-  <div class="row">
-    <div class="col text-center my-2">
-      <h1 class="page-title">
-        <p class="pb-2"><%= link_to t("manifold.webpages.videos.page_title"), webpages_videos_all_path %></p>
-        <hr />
-        <p class="pt-2"><%= @playlist_title %></p>
-      </h1>
-    </div>
-  </div>
-
-	<div class="row mt-3">
-		<div class="col">
-			<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
+  <div class="row backlink">
+    <div class="col">
+      <%= link_to t("manifold.webpages.videos.breadcrumb"), webpages_videos_all_path %>
 			<hr >
-      <h2>All <%= @category[1] %> Videos</h2>
+      <h1><%= @category[1] %></h1>
     </div>
   </div>
       

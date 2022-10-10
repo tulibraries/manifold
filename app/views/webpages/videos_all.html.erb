@@ -20,11 +20,11 @@
 <div class="row">
 	<div class="col text-center mb-3">
 		<div id="videosearchbar">
-    <form action="/watchpastprograms/search" method="GET">
+      <form action="/watchpastprograms/search" method="GET">
         <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
         <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
         <input type="submit" id="videosearchbutton" value="Search">
-    </form>
+      </form>
 		</div>
 	</div>
 </div>
@@ -37,7 +37,7 @@
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-				<a href=<%="/watchpastprograms/list/#{ category[0] }"%>><%= title t("manifold.webpages.videos.all.#{ category[0] }") %></a>
+        <%= link_to (title t("manifold.webpages.videos.all.#{ category[0] }")), webpages_videos_collection_path(category[0]) %>
 			</span>
 		</div>
 		<div class="col-12">
@@ -49,10 +49,10 @@
 						<p class="mt-2"><%= video[:Name].truncate(64) %></p>
 					<% end %>
 				</div>
-				<% end %>
+				<% end if @lists.present? %>
 			</div>
 		</div>
 	</div>
-  <% end %>
+  <% end if @categories.present? %>
 
 	</div>

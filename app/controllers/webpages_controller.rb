@@ -24,6 +24,7 @@ class WebpagesController < ApplicationController
       params = { "scope" => "api", "grant_type" => "client_credentials" }
       response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
       @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token]
+
     rescue => e
       e.message
     end
@@ -37,8 +38,7 @@ class WebpagesController < ApplicationController
     api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
     api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
     request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
-    # binding.pry
-    JSON.parse(request&.body, symbolize_names: true)
+    JSON.parse(request.body, symbolize_names: true)
   end
 
   def get_video_categories
@@ -139,7 +139,7 @@ class WebpagesController < ApplicationController
     more = false
     i = 0
     if params[:q].blank?
-      return redirect_to(webpages_videos_all_path)
+      # return redirect_to(webpages_videos_all_path)
     else
       page_results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
       @videos = page_results[:Results]

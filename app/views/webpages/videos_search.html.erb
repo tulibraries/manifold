@@ -35,7 +35,7 @@
         <%= video[:Name].truncate(64) %>
       <% end %>
     </div>
-    <% end %>
+    <% end if @videos.present? %>
   </div>
 
 </div>

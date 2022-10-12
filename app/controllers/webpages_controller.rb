@@ -41,7 +41,7 @@ class WebpagesController < ApplicationController
       request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
       JSON.parse(request.body, symbolize_names: true) if request.body.size > 0
     rescue => e
-      print e
+      Rails.logger.debug e
     end
  end
 
@@ -123,17 +123,17 @@ class WebpagesController < ApplicationController
     if @category.present?
       page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
       @videos = page_results[:Results]
-        binding.pry
       more = true if @videos.size == 50
       while more
         page_results = nil
         i += 1
         results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
         page_results = results[:Results] if results.present? && results[:Results].size > 0 && results[:Results].size <= 50
+
         if page_results.present?
           @videos += page_results
         end
-        
+
         more = (page_results.present? && page_results.size == 50) ? true : false
       end
     else
@@ -146,22 +146,24 @@ class WebpagesController < ApplicationController
     more = false
     i = 0
     if params[:q].blank?
-      # return redirect_to(webpages_videos_all_path)
+      return redirect_to(webpages_videos_all_path)
     else
       page_results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
-      @videos = page_results[:Results]
-      more = true if @videos.size == 50
-      while more
-        page_results = nil
-        i += 1
-        results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
-        page_results = results[:Results] if results[:Results].size > 0 && results[:Results].size <= 50
-        if page_results.present?
-          @videos += page_results
-          more = page_results.size == 50 ? true : false
+      if page_results.present?
+        @videos = page_results[:Results]
+        more = true if @videos.size == 50
+        while more
+          page_results = nil
+          i += 1
+          results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
+          page_results = results[:Results] if results.present? && results[:Results].size > 0 && results[:Results].size <= 50
+
+          if page_results.present?
+            @videos += page_results
+          end
+
+          more = (page_results.present? && page_results.size == 50) ? true : false
         end
-      end
-      if @videos.present?
         @categoryTitle = "your search for: <span style=\"color:#A41E35;\">\"#{params[:q]}\"</span> returned #{@videos.count} results"
       else
         @categoryTitle = "your search for: <span style=\"color:#A41E35;\">\"#{params[:q]}\"</span> returned 0 results"

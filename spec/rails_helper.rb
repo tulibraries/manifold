@@ -89,7 +89,129 @@ RSpec.configure do |config|
     to_return(status: 200, body: File.open("#{fixture_path}/blog_posts.rss") , headers: {})
 
     stub_request(:put, "https://bucket.s3.region.amazonaws.com/sitemap.xml.gz").
-    to_return(status: 200, body: "", headers: {})
+    to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+
+    stub_request(:post, "https://temple.hosted.panopto.com/Panopto/oauth2/connect/token").
+    with(
+      body: "scope=api&grant_type=client_credentials",
+      headers: {
+     'Accept'=>'*/*',
+     'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+     'Authorization'=>'Basic YWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Okhid2M2WWVseWdXcC9SSUpyeU9aT0JLcVFMNW1rVjVaTFRnUHl6RytYcjg9',
+     'User-Agent'=>'Ruby'
+      }).
+    to_return(status: 200, body: "foo", headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Authorization'=>'Bearer',
+          'User-Agent'=>'Ruby'
+           }).
+         to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/eba32425-d6bf-4e9c-983f-af1f0128b62b/sessions/").
+        with(
+          headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Authorization'=>'Bearer',
+          'User-Agent'=>'Ruby'
+          }).
+        to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/e01cdfba-bc19-4f27-bdc6-af1c00f52773/sessions/").
+          with(
+            headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Authorization'=>'Bearer',
+          'User-Agent'=>'Ruby'
+            }).
+          to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/1aab1d3f-4626-43fd-924d-af1c00f290d5/sessions/").
+        with(
+          headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Authorization'=>'Bearer',
+          'User-Agent'=>'Ruby'
+          }).
+        to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/ad6a8ada-242e-4ddd-8115-af1c00fc3621/sessions/").
+        with(
+          headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Authorization'=>'Bearer',
+        'User-Agent'=>'Ruby'
+          }).
+        to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/d320fce9-a51c-4e6f-b85a-af1901046d79/sessions/").
+        with(
+          headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Authorization'=>'Bearer',
+          'User-Agent'=>'Ruby'
+          }).
+        to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/980a89be-5d85-43e2-b171-af1c00fdd352/sessions/").
+          with(
+            headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Authorization'=>'Bearer',
+          'User-Agent'=>'Ruby'
+            }).
+          to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/sessions/fb431580-ed13-4125-b1aa-af2600f2f3f3/").
+          with(
+            headers: {
+            'Accept'=>'*/*',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Authorization'=>'Bearer',
+            'User-Agent'=>'Ruby'
+            }).
+          to_return(status: 200, body: file_fixture("show-video.json").read, headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/?pageNumber=0").
+          with(
+            headers: {
+            'Accept'=>'*/*',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Authorization'=>'Bearer',
+            'User-Agent'=>'Ruby'
+            }).
+          to_return(status: 200, body: file_fixture("list-videos.json").read, headers: {})
+    
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/?pageNumber=1").
+          with(
+            headers: {
+            'Accept'=>'*/*',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Authorization'=>'Bearer',
+            'User-Agent'=>'Ruby'
+            }).
+          to_return(status: 200, body: "", headers: {})
+
+    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/?pageNumber=2").
+          with(
+            headers: {
+           'Accept'=>'*/*',
+           'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+           'Authorization'=>'Bearer',
+           'User-Agent'=>'Ruby'
+            }).
+          to_return(status: 200, body: "", headers: {})
+
   end
 
   config.include ActionText::SystemTestHelper, type: :system

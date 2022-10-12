@@ -23,7 +23,7 @@ class WebpagesController < ApplicationController
       auth = { username: key, password: code }
       params = { "scope" => "api", "grant_type" => "client_credentials" }
       response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
-      @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token]
+      @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
 
     rescue => e
       e.message
@@ -31,15 +31,19 @@ class WebpagesController < ApplicationController
   end
 
   def panopto_api_call(type, panopto_id)
-    api_query = "https://temple.hosted.panopto.com/Panopto/api/v1/#{ type[0] }/#{ panopto_id }/"
-    api_query += "#{ type[1] }/" if type[1].present?
-    api_query += "#{ type[2] }" if type[2].present?
-    api_query += "?id=#{ panopto_id }&searchQuery=#{ type[3] }" if type[3].present?
-    api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
-    api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
-    request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
-    JSON.parse(request.body, symbolize_names: true)
-  end
+    begin
+      api_query = "https://temple.hosted.panopto.com/Panopto/api/v1/#{ type[0] }/#{ panopto_id }/"
+      api_query += "#{ type[1] }/" if type[1].present?
+      api_query += "#{ type[2] }" if type[2].present?
+      api_query += "?id=#{ panopto_id }&searchQuery=#{ type[3] }" if type[3].present?
+      api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
+      api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
+      request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
+      JSON.parse(request.body, symbolize_names: true) if request.body.size > 0
+    rescue => e
+      print e
+    end
+ end
 
   def get_video_categories
     @categories = ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
@@ -63,7 +67,7 @@ class WebpagesController < ApplicationController
               @scrc = []
              ]
 
-    @categories.each do |category|
+    get_video_categories.each do |category|
       get_videos = panopto_api_call(["playlists", "sessions"], category[2])
       get_videos[:Results].each do |video|
         @all << video
@@ -97,6 +101,7 @@ class WebpagesController < ApplicationController
   def videos_show
     @displayMode = "show"
     if params[:id].present?
+      # binding.pry
       @video = panopto_api_call(["sessions", nil], params[:id])
       if @video.blank?
         return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video. #{ @video[:Id] }")
@@ -113,21 +118,23 @@ class WebpagesController < ApplicationController
     page_results = []
     more = false
     i = 0
-    @category = @categories.select { |c| c[0] == params[:collection] }.first
+    @category = get_video_categories.select { |c| c[0] == params[:collection] }.first
 
     if @category.present?
       page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
       @videos = page_results[:Results]
+        binding.pry
       more = true if @videos.size == 50
       while more
         page_results = nil
         i += 1
         results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
-        page_results = results[:Results] if results[:Results].size > 0 && results[:Results].size <= 50
+        page_results = results[:Results] if results.present? && results[:Results].size > 0 && results[:Results].size <= 50
         if page_results.present?
           @videos += page_results
-          more = page_results.size == 50 ? true : false
         end
+        
+        more = (page_results.present? && page_results.size == 50) ? true : false
       end
     else
       return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video list.")

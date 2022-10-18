@@ -92,6 +92,17 @@ RSpec.configure do |config|
       to_return(status: 200, body: "", headers: {})
 
     stub_request(:post, "https://temple.hosted.panopto.com/Panopto/oauth2/connect/token").
+        with(
+          body: "scope=api&grant_type=client_credentials",
+          headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Authorization'=>'Basic Og==',
+        'User-Agent'=>'Ruby'
+          }).
+        to_return(status: 200, body: "", headers: {})
+         
+    stub_request(:post, "https://temple.hosted.panopto.com/Panopto/oauth2/connect/token").
     with(
       body: "scope=api&grant_type=client_credentials",
       headers: {

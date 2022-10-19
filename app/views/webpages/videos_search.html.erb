@@ -1,0 +1,41 @@
+<div class="container mt-3" id="videos-index">
+
+	<div class="row backlink">
+		<div class="col">
+			<%= link_to t("manifold.webpages.videos.breadcrumb"), webpages_videos_all_path %> 
+		</div>
+	</div>
+
+	<div class="row mt-3">
+		<div class="col">
+			<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
+    </div>
+  </div>
+
+  <div class="row">
+	<div class="col text-center">
+		<div id="videosearchbar">
+    <form action="/watchpastprograms/search" method="GET">
+        <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
+        <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
+        <input type="submit" id="videosearchbutton" value="Search">
+    </form>
+		</div>
+    <hr />
+		<h2 class="text-left mt-3"><%= sanitize @categoryTitle %></h2>
+	</div>
+</div>
+
+  <div class="row" id="video-search-results">
+    <% @videos.each do |video| %>
+    <div class="col-6 col-md-4 col-lg-3 text-center mt-4 video-block">
+      <%= link_to webpages_videos_show_path(id: video[:Id]) do %>
+        <%= image_tag video[:Urls][:ThumbnailUrl] %>
+        <br>
+        <%= video[:Name].truncate(64) %>
+      <% end %>
+    </div>
+    <% end if @videos.present? %>
+  </div>
+
+</div>

@@ -1,38 +1,58 @@
-<div class="container mt-5" id="videos-index">
+<div class="container mt-4" id="videos-index">
 
-  <div class="row">
-    <div class="col text-center my-2">
-      <h1 class="page-title">
-        <p class="pb-2"><%= title t("manifold.webpages.videos.page_title") %></p>
-        <hr />
-        <p class="pt-2"><%= title t("manifold.webpages.videos.default_playlist") %></p>
-      </h1>
-    </div>
+<div class="row">
+	<div class="col">
+		<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
+		<div class="row video-container">
+			<div class="col-lg-10 offset-lg-1">
+  	    <iframe src=<%= "https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=#{ @featured_video_id }&autoplay=false&offerviewer=false&showtitle=false&showbrand=false&captions=false&interactivity=none" %> height="640px" width="968px" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
+			</div>
+		</div>
   </div>
+</div>
 
-  <div class="container mb-3">
-    <div class="row">
-      <div class="col-12 text-center">
-        <iframe src=<%= "https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?pid=#{ @playlist_id }&autoplay=false&offerviewer=false&showtitle=true&showbrand=false&captions=false&interactivity=none" %> height="420px" width="70%" style="border: 1px solid #dee2e6;padding: 14px;" allowfullscreen allow="autoplay"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div class="container" id="video-list">
-    <div class="row">
-      <div class="col">
-        <h1 class="page-title">
-          <p class="pt-2"><%= title t("manifold.webpages.videos.all") %></p>
-        </h1>
-      </div>
-    </div>
-
-    <div class="row">
-      <% @categories.drop(1).each do |category| %>
-      <div class="col-6 text-left border p-4">
-        <%= link_to "#{category.second} Videos", webpages_videos_collection_path(category.first), class: "playlist-link d-inline-block align-middle" %>
-      </div>
-      <% end %>
-    </div>
+<div class="row">
+	<div class="col-lg-10 offset-lg-1 text-center">
+		<div id="featuredTitle" class="text-center"><%= @featured_video_title %></div>
 	</div>
 </div>
+
+<div class="row">
+	<div class="col text-center mb-3">
+		<div id="videosearchbar">
+      <form action="/watchpastprograms/search" method="GET">
+        <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
+        <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
+        <input type="submit" id="videosearchbutton" value="Search">
+      </form>
+		</div>
+	</div>
+</div>
+
+<% @categories.each_with_index do |category, i| %>
+  <% i == 0 ? vids = 8 : vids = 4 %>
+	<div class="row <%= i.odd? ? "odd" : "even" %>">
+		<div class="col-sm-8">
+			<h2><%= t("manifold.webpages.videos.categories.#{category[0]}") %></h2>
+		</div>
+		<div class="col-sm-4">
+			<span class="morevideos">
+        <%= link_to (title t("manifold.webpages.videos.all.#{ category[0] }")), webpages_videos_collection_path(category[0]) %>
+			</span>
+		</div>
+		<div class="col-12">
+			<div class="row">
+				<% @lists[i].take(vids).each do |video| %>
+				<div class="col-12 col-sm-6 col-lg-3 mb-3 text-center video-block">
+					<%= link_to webpages_videos_show_path(id: video[:Id]) do %>
+						<%= image_tag video[:Urls][:ThumbnailUrl]%>
+						<p class="mt-2"><%= video[:Name].truncate(64) %></p>
+					<% end %>
+				</div>
+				<% end if @lists.present? %>
+			</div>
+		</div>
+	</div>
+  <% end if @categories.present? %>
+
+	</div>

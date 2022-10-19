@@ -1,27 +1,98 @@
 @import "partials/_vars.scss";
 
 #videos-index {
-  #video-list {
-    .row {
-      width: 80%!important;
-      margin: auto;
-    }
-    .playlist-link {
-      color: $royal-blue;
-      font-size: 120%;
-      border-left: solid $red 2px;
-      padding-left: 14px;
-    }
+	h2 {
+		margin-top: 4px;
+		font-size: 1.75rem;
+		display: inline-block;
+	}
+	.video-container {
+		height: 100%;
+	}
+	#featuredTitle {
+		color: $white;
+		background-color: $black;
+		width: 100%;
+		padding: 10px;
+		border-right: solid $white 1px;
+	}
+	.morevideos {
+		float: right;
+		padding-right: 10px;
+		display:inline-block;
+		font-weight: 900;
+		font-family: 'Roboto Bold';
+		font-size: large;
+		@media (min-width: 0px) and (max-width: 767px) {
+			float: none;
+		}
+	}
+	.even {
+		background-color: rgba(0,0,0,0.08);
+		border-top: solid #ccc 2px;
+		border-bottom: solid #ccc 2px;
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+	.odd {
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+	.video-block {
+		margin: 10px 0;
+		max-width:300px;
+		min-width:300px;
+		@media (max-width: 1199px) {
+			max-width: 100%;
+			width: 100%;
+			a {
+				display: inline-block;
+				max-width: 240px;
+			}
+		}
+	}
+  .video-description {
+    line-height: 1.85rem;
+    font-size: 110%;
   }
-  hr {
-    background-color: $red;
-    height: 3px;
-    width: 25%;
-  }
-  h1.page-title {
-    color: $royal-blue;
-    a {
-      color: $royal-blue;
-    }
+	#videosearchbutton {
+		color: white;
+    font-size: 115%;
+    background-color: #951936;
+    border: double #f1efe7 4px;
+    border-radius: 4px;
+    padding: 6px 14px;
+    cursor: hand;
+    cursor: pointer;
+    display: inline-block;
+	}
+	#videosearchterm {
+		height: 45px;
+		border: inset #ccc 2px;
+		border-radius: 4px;
+		width: 512px;
+		@media (min-width: 550px) and (max-width: 768px) {
+			width: 320px;
+		}
+		@media (min-width: 0) and (max-width: 549px) {
+			width: 165px;
+		}
+	}
+	#videosearchbar {
+		margin-top: 35px;
+		padding-bottom: 21px;
+	}
+
+	.ev-navbar.mb-0.navbar-custom {
+		display: none;
+	}
+	.backlink {
+		margin-bottom: 14px;
+	}
+}
+
+.video-block {
+  img {
+    max-height: 135px;
   }
 }

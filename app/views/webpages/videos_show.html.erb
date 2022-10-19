@@ -1,0 +1,30 @@
+<div class="container mt-3" id="videos-index">
+
+  <div class="row backlink">
+    <div class="col">
+      <%= link_to t("manifold.webpages.videos.breadcrumb"), webpages_videos_all_path %> 
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-lg-10 offset-lg-1">
+      <iframe src=<%= "https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=#{ @video[:Id] }&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" %> height="640px" width="100%" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1 text-center">
+      <div id="featuredTitle" class="text-center"><%= @video[:Name] %></div>
+    </div>
+  </div>
+
+  <% if @video[:Description].present? %>
+  <div class="row">
+    <div class="col video-description mt-3 mx-5">
+      <hr >
+      <%= sanitize @video[:Description].html_safe %>
+    </div>
+  </div>
+  <% end %>
+
+</div>

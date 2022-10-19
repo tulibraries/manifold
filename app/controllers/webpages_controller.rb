@@ -56,6 +56,8 @@ class WebpagesController < ApplicationController
   end
 
   def videos_all
+    @log = Logger.new("log/video-api.log")
+    @stdout = Logger.new(STDOUT)
     @all = []
     @lists = [
               @recent = [],
@@ -69,10 +71,10 @@ class WebpagesController < ApplicationController
 
     get_video_categories.each do |category|
       get_videos = panopto_api_call(["playlists", "sessions"], category[2])
-      print "token: #{@access_token} "
-      print " api call: #{get_videos} "
+      stdout_and_log("token: #{@access_token} ")
+      stdout_and_log(" api call: #{get_videos} ")
       get_videos[:Results].each do |video|
-        print "************ #{category[1]}: #{video[:Name]} **************"
+        stdout_and_log("************ #{category[1]}: #{video[:Name]} **************")
         @all << video
         case category[1]
         when "Recent Videos"
@@ -99,6 +101,11 @@ class WebpagesController < ApplicationController
     else
       return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video information.")
     end
+  end
+
+  def stdout_and_log(message, level: :info)
+    @log.send(level, message)
+    @stdout.send(level, message)
   end
 
   def videos_show

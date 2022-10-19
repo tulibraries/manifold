@@ -69,7 +69,10 @@ class WebpagesController < ApplicationController
 
     get_video_categories.each do |category|
       get_videos = panopto_api_call(["playlists", "sessions"], category[2])
+      print "token: #{@access_token} "
+      print " api call: #{get_videos} "
       get_videos[:Results].each do |video|
+        print "************ #{category[1]}: #{video[:Name]} **************"
         @all << video
         case category[1]
         when "Recent Videos"
@@ -101,7 +104,6 @@ class WebpagesController < ApplicationController
   def videos_show
     @displayMode = "show"
     if params[:id].present?
-      # binding.pry
       @video = panopto_api_call(["sessions", nil], params[:id])
       if @video.blank?
         return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video. #{ @video[:Id] }")

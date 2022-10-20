@@ -171,7 +171,7 @@ GEM
     faraday-net_http (3.0.0)
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
-    feedjira (3.2.1)
+    feedjira (3.2.2)
       loofah (>= 2.3.1)
       sax-machine (>= 1.0)
     ffaker (2.20.0)

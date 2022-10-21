@@ -69,7 +69,6 @@
       text-decoration: underline;
     }
   }
-
   .upcoming-header {
     background-color:$footer-gray;
     padding: 10px 21px;
@@ -77,7 +76,7 @@
     font-size:150%;
     width: 100%;
     margin: 0 15px 35px 15px;
-    font-family: "Roboto Bold";
+    font-family: "Roboto";
   }
   .event {
     border-bottom: solid $lightest-grey 2px;
@@ -87,7 +86,9 @@
   }
 }
 .exhibits {
-  font-family: "Roboto Bold";
+  font-family: "Roboto";
+  border-left: solid $lightest-grey 1px;
+  padding-left: 14px;
   @media (max-width: 1039px) {
     margin-top: 35px;
   }
@@ -102,27 +103,23 @@
   }
   .exhibit {
     font-family: "Roboto Bold";
-    border: solid $seagreen 1px;
-    border-radius: 7px;
-    background-color: transparent;
     padding: 21px;
     margin-bottom: 14px;
+    border-bottom: solid $light-grey 1px;
     .exhibit_title {
-      font-size: 125%;
-      font-weight: 600;
-      color: $black;
-      text-decoration: underline;
+      font-size: 1.35rem;
+      font-family: faustina;
+      color: $royal-blue;
+      padding-bottom: 14px;
+      display: block;
     }
-    .faustina {
-      font-family: "faustina";
-    }
-    a {
-      font-family: "Roboto Bold";
+    span {
+      font-family: "Roboto Light";
+      color: $royal-blue;
     }
     a.location {
-      font-weight: 600;
-      color: $black!important;
-      font-family: "Faustina";
+      color: $royal-blue;
+      font-family: "Roboto Light";
     }
   }
 }
@@ -161,10 +158,6 @@
   @media (max-width: 767px) {
     display: block;
   }
-}
-a.location {
-  font-weight: 600;
-  color: $black!important;
 }
 .past-events-button, .video-button {
   background-color: $seagreen;
@@ -216,7 +209,11 @@ a.location {
     border-radius: 4px;
   }
 }
-
+.event-date {
+  font-family: "Roboto Light";
+  color: $royal-blue;
+  margin-top: 21px;
+}
 .event-index {
   strong {
     display: inline-block;
@@ -243,52 +240,86 @@ a.location {
 .event-title {
   display: block;
   margin-top: 0;
-  font-size: 1.15rem;
-  line-height: 1.15rem;
+  font-size: 1.35rem;
+  line-height: 1.25rem;
+  color: $royal-blue !important;
+  font-family: faustina !important;
 }
 
 .featured-event {
+  color: $royal-blue !important;
+  border: solid $royal-blue 2px;
+  font-size: 1.15rem;
+  font-family: "Roboto Light";
+  a {
+    color: $royal-blue !important;
+  }
   .event-title {
     font-size: 1.65rem!important;
     margin-top: 1rem;
     line-height: 1.5rem;
+    font-family: "Roboto";
   }
 }
 #featured-events {
   background-color:#eee;
-  border-top: solid #951936 2px;
+  border-top: solid $new-gold 9px;
+  border-bottom: solid $new-gold 14px;
 }
 
-.event-filters {
-  .dropdown-toggle {
-    width: 85%;
-    background-color: transparent;
-    color: #951936;
-    border:0;
-    font-size: 1.5rem;
+
+.filter_links {
+  a {
+    font-family: faustina;
+    font-size:1.35rem;
   }
-  .dropdown-menu {
-    width: 100%;
-    @media (max-width: 1042px) {
-      width: 85%;
-    }
-  }
-  .filter_links {
-    a {
-      font-family: 'Roboto Bold';
-      font-size:larger;
-    }
+  hr {
+    display: inline-block;
+    background-color: $red;
+    width: 10%;
+    padding-left: 21px;
+    padding-right: 21px;
+    vertical-align: middle;
+    height: 3px;
   }
 }
+.event-filters{
+  i.fa-search {
+    position: relative;
+    top: 32px;
+    left: 16px;
+    z-index: 3;
+  }
+  #search {
+    padding-left: 42px;
+  }
+  #date, #event-date {
+    width: 90%;
+  }
+  #dropdownMenuButton {
+    background-color: $lightest-grey;
+    color: $royal-blue;
+    border: solid $light-grey 1px;
+  }
+  .form-control, #dropdownMenuButton {
+    border-radius: 0;
+    border: solid $royal-blue 1px;
+  }
+  .workshops-link {
+    font-size: 1.3rem;
+  }
+}
+
 .sub-level-background {
   background-color: white;
   border-radius: 4px;
 }
 #events {
   h2.current-events, h2.past-events {
-    background-color: $red;
-    border-radius:4px;
-    color:white;
+    span {
+      border-left: solid $red 4px;
+      padding-left: 14px;
+    }
     font-size: 2rem;
   }
 }
@@ -296,8 +327,9 @@ a.location {
 #events-exhibits {
   h2.current-exhibits {
     font-size: 2rem;
-    background-color: $red;
-    color: #fff;
-    border-radius: 4px;
+    span{
+      border-left: solid $red 4px;
+      padding-left: 14px;
+    }
   }
 }

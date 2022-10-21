@@ -1,7 +1,7 @@
 <% @exhibitions.each do |exhibit| %>
   <div class="exhibit">
-    <%= link_to exhibit.title, exhibit, class: "exhibit_title" %><br />
-    <span class="faustina"><%= exhibit.start_date.strftime("%^B %Y").titleize %> -  
+    <%= link_to exhibit.title, exhibit, class: "exhibit_title" %>
+    <span><%= exhibit.start_date.strftime("%^B %Y").titleize %> -  
     <%= exhibit.end_date.strftime("%^B %Y").titleize %></span>
     <% unless exhibit.space.nil? %>
     <br />

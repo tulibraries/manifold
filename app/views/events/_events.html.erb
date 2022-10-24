@@ -1,7 +1,7 @@
 <div class="row event">
 <% @events_list.each do |event| %>
   <div class="col-12 col-md-4 col-lg-6">
-    <div class="row mb-4">
+    <div class="row mb-4 pr-2">
       <div class="col-12 col-lg-4 p-0 text-sm-center">
       <% if event.image.attached? %>
         <%= link_to (image_tag event.index_image, class: "decorative", alt: ""), event_path(event.id) %>
@@ -14,12 +14,15 @@
         <p class="mt-4 event-date bl-blue">
           <%= event.get_date %><br /><%= event.set_start_time %>
         </p>
+        <p>
+          <%= event.event_type %>
+        </p>
       </div>
     </div>
   </div>
-<% end if @events.present? %>
+<% end if @events_list.present? %>
 
-<% unless @events.present? %>
+<% unless @events_list.present? %>
 <h3 class="mt-5 ml-3">
   <% if params[:date].present? %>
     <%= t("manifold.events.index.no_scheduled_events") %>, 

@@ -19,4 +19,18 @@ module EventHelper
       t("manifold.default.event.#{bldg_name.parameterize.underscore}", default: bldg_name)
     end
   end
+
+  def workshops_link
+    if params["type"].present?
+      if params["type"].downcase == "workshop"
+        link_to "See all events", events_path, class: "workshops-link d-block mt-4 roboto-light"
+      end
+    else
+      link_to "Limit to workshops", events_path(page: 1, type: "Workshop"), class: "workshops-link d-block mt-4 roboto-light"
+    end
+  end
+
+  def display_date
+    Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present?
+  end
 end

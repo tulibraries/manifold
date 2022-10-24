@@ -79,7 +79,6 @@
     font-family: "Roboto";
   }
   .event {
-    border-bottom: solid $lightest-grey 2px;
     margin-bottom: 14px;
     margin-left: 15px;
     margin-right:15px;
@@ -125,8 +124,8 @@
 }
 .paginator {
   background-color: $lightest-grey;
-  border-left: solid $white 14px;
-  border-right: solid $white 14px;
+  margin-left: 0;
+  padding-left: 0;
 }
 .event_type {
   background-color: $foamgreen!important;
@@ -309,6 +308,10 @@
     font-size: 1.3rem;
   }
 }
+.workshops-label {
+  background-color: $crystal-blue;
+  padding: 10px;
+}
 
 .sub-level-background {
   background-color: white;
@@ -316,10 +319,6 @@
 }
 #events {
   h2.current-events, h2.past-events {
-    span {
-      border-left: solid $red 4px;
-      padding-left: 14px;
-    }
     font-size: 2rem;
   }
 }
@@ -327,9 +326,5 @@
 #events-exhibits {
   h2.current-exhibits {
     font-size: 2rem;
-    span{
-      border-left: solid $red 4px;
-      padding-left: 14px;
-    }
   }
 }

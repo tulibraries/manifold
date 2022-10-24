@@ -108,6 +108,8 @@ Rails.application.routes.draw do
   end
 
   controller :events do
+    post "events" => :search, as: "events_search"
+    post "events/past" => :past, as: "past_events_search"
     get "events/past" => :past, as: "past_events"
   end
 

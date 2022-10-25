@@ -1,4 +1,4 @@
-<% unless action_name == "past" %>
+<% unless action_name == "past" || action_name == "past_search" %>
 <%= link_to "- clear date -", events_path(anchor: "list"), class: "d-block py-3 pl-2" %>
   <%= form_tag events_path(anchor: "list"), id: "event-date", method: "get" do %>
     <%= date_field_tag "date", Time.zone.today, id: "date", name: "date", 

@@ -31,6 +31,7 @@
 </div>
 
 <div class="container mt-4">
+  <a name="list" id="list"></a>
   <div class="row event-filters">
     <div class="col-12 col-lg-6 text-center">
       <%= form_tag(events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-left", id: "event-search") do %>
@@ -60,7 +61,7 @@
   </div>
 
   <div class="row mt-3 mb-3 sub-level-background">
-    <div class="col-12 <%= @exhibitions.blank? ? "col-lg-12" : "col-lg-8" %> events pt-3 mb-3 pl-0" id="events">
+    <div class="col-12 <%= (@exhibitions.blank? || params[:date].present? || params[:type].present?) ? "col-lg-12" : "col-lg-8" %> events pt-3 mb-3 pl-0" id="events">
       <div class="row">
         <div class="col-12">  
           <h2 class="p-3 mb-3 current-events" id="upcoming-events">
@@ -71,7 +72,6 @@
       <% if @workshops.present? %>
       <div class="row">
         <div class="col">
-          <a name="list" id="list"></a>
           <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.workshops") %></h2>
         </div>
       </div>
@@ -89,7 +89,7 @@
 
     </div>
 
-    <% unless @exhibitions.blank? %>
+    <% unless @exhibitions.blank? || params[:date].present? %>
     <div class="col-12 col-lg-4 exhibits">
       <div class="row">
         <div class="col-12 pt-3 mb-3" id="events-exhibits">

@@ -26,7 +26,20 @@ module EventHelper
         link_to "See all events", events_path, class: "workshops-link d-block mt-4 roboto-light"
       end
     else
-      link_to "Limit to workshops", events_path(page: 1, type: "Workshop"), class: "workshops-link d-block mt-4 roboto-light"
+      link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 roboto-light"
+    end
+  end
+
+  def events_title_link
+    case action_name
+    when "search" 
+      link_to t("manifold.events.index.page_title"), events_path
+    when"past" 
+      link_to "Past #{t("manifold.events.index.page_title")}", past_events_path
+    when "past_search"
+      link_to "Past #{t("manifold.events.index.page_title")}", past_events_path
+    else
+      t("manifold.events.index.page_title")
     end
   end
 

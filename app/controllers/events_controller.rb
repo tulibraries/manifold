@@ -51,8 +51,10 @@ class EventsController < ApplicationController
   end
 
   def past_search
+    # binding.pry
     events = Event.is_past.search(params[:search]).order(start_time: :asc)
     return_events(events)
+    render "search"
   end
 
   def return_events(events)

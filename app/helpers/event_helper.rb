@@ -31,16 +31,16 @@ module EventHelper
   end
 
   def current_link?
-    (action_name == "past" || action_name == "past_search") ?  
-      (link_to "View current events & exhibits", events_path, class: "pr-4") : 
+    (action_name == "past" || action_name == "past_search") ?
+      (link_to "View current events & exhibits", events_path, class: "pr-4") :
       (link_to "View past events & exhibits", past_events_path, class: "pr-4")
   end
 
   def events_title
     case action_name
-    when "search" 
+    when "search"
       t("manifold.events.index.page_title")
-    when"past" 
+    when "past"
       "Past #{t("manifold.events.index.page_title")}"
     when "past_search"
       "Past #{t("manifold.events.index.page_title")}"
@@ -51,7 +51,7 @@ module EventHelper
 
   def close_button
     case action_name
-    when"past" 
+    when "past"
       link_to "X", past_events_path, class: "close-events-search"
     when "past_search"
       link_to "X", past_events_path, class: "close-events-search"

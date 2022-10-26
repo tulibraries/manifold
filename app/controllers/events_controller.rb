@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   def index
     if params["type"].present? && params["type"].downcase == "workshop"
       @workshops = Event.is_current.is_workshop
-      return_events(@workshops) 
+      return_events(@workshops)
     else
       return_events(@all_current_events)
     end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
       format.json { render json: EventSerializer.new(@all_current_events) }
     end
   end
-  
+
   def search
     @query = params[:search]
     if @query.present?
@@ -87,17 +87,17 @@ class EventsController < ApplicationController
   end
 
   private
-  def init_current
-    @all_current_events = Event.is_current.group(:id).order(start_time: :asc)
-    @all_past_events = Event.is_past.group(:id).order(start_time: :asc)
-    @featured_events = Event.where(featured: true).order(:start_time).take(3)
-    @today = Date.current
-  end
+    def init_current
+      @all_current_events = Event.is_current.group(:id).order(start_time: :asc)
+      @all_past_events = Event.is_past.group(:id).order(start_time: :asc)
+      @featured_events = Event.where(featured: true).order(:start_time).take(3)
+      @today = Date.current
+    end
 
-  def init_past
-    @all_past_events = Event.is_past.group(:id).order(start_time: :asc)
-    @today = Date.current
-  end
+    def init_past
+      @all_past_events = Event.is_past.group(:id).order(start_time: :asc)
+      @today = Date.current
+    end
 
     def set_event
       @event = find_instance

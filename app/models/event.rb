@@ -20,7 +20,7 @@ class Event < ApplicationRecord
 
   scope :is_past, -> { where("end_time < ?", Date.current) }
   scope :is_current, -> { where("end_time >= ?", Date.current) }
-  scope :is_workshop, -> { where("lower(event_type) LIKE ?", "%workshop%").order(:start_time) }
+  scope :is_workshop, -> { where("lower(event_type) LIKE ?", "%workshop%") }
 
   def to_param  # overridden for tests
     id

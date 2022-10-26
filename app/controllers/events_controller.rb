@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
   def past
     workshops = Event.is_past.is_workshop
-    (params["type"].present? && params["type"].downcase == "workshops") ? return_events(workshops) : return_events(@all_past_events)
+    (params["type"].present? && params["type"].downcase == "workshop") ? return_events(workshops) : return_events(@all_past_events)
     @exhibitions = Exhibition.is_past
                               .order(end_date: :desc, start_date: :desc)
                               .take(3)
@@ -51,7 +51,6 @@ class EventsController < ApplicationController
   end
 
   def past_search
-    # binding.pry
     events = Event.is_past.search(params[:search]).order(start_time: :asc)
     return_events(events)
     render "search"
@@ -72,7 +71,11 @@ class EventsController < ApplicationController
       end
       @events_list = events_list.page params[:page]
     else
-      @events_list = events.page params[:page]
+      if action_name == "past"
+        @events_list = events.order(start_time: :desc).page params[:page]
+      else
+        @events_list = events.page params[:page]
+      end
     end
   end
 

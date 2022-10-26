@@ -15,6 +15,17 @@
       margin-top: 28px;
     }
   }
+  .close-events-search {
+    float: right;
+    display: inline-block;
+    margin-right: 7px;
+    margin-top: 0;
+    text-decoration: none;
+    color: $black !important;
+    border: solid $black 1px;
+    padding: 4px 8px 4px 8px;
+    font-size: 1rem;
+  }
   .signup-desktop, .signup-mobile {
     margin-top: 21px;
     border: solid #ccc 2px;
@@ -310,7 +321,7 @@
 }
 .workshops-label {
   background-color: $crystal-blue;
-  padding: 10px;
+  padding: 12px 10px 10px 14px !important;
 }
 
 .sub-level-background {

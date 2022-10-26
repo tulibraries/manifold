@@ -4,14 +4,16 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h1 class="d-none d-lg-block"><%= events_title_link %></h1>
+        <h1 class="d-none d-lg-block"><%= events_title %></h1>
       </div>
     </div>
 
     <div class="container pb-3 mt-4" id="featured-events">
-      <div class="row mb-3">
-        <div class="col-12 pt-2">
-          <h2 style="font-size: 175%"><%= t("manifold.events.index.past_events_label") %></h2>
+      <div class="row">
+        <div class="col-12 text-center filter_links pt-4">
+          <%= link_to "View current & upcoming events", events_path, class: "d-block d-lg-inline pr-4 faustina" %>
+          <hr />
+          <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline pl-4 faustina" %>
         </div>
       </div>
 
@@ -45,9 +47,9 @@
       </div>
     </div>
 
-    <div class="container pr-md-4">
-      <div class="row mt-3 mr-lg-2 mb-3 sub-level-background">
-        <div class="col-12 col-lg-<%= params[:date].present? ? 12 : 8 %> events pt-3 mb-3" id="events">
+    <div class="container">
+      <div class="row mt-3 mr-lg-2 mb-3">
+        <div class="col-12 col-lg-<%= (params[:date].present? || params[:type].present?) ? 12 : 8 %> events pt-3 mb-3" id="events">
           <div class="row">
             <div class="col-12">  
               <h2 class="p-3 mb-3 current-events">
@@ -56,19 +58,19 @@
             </div>
           </div>
         <% if params[:type].present? && params[:type] != "none" %>
-          <h2 class="pt-2 mb-4 workshops-label">
-            <%= params[:type]+ " " +  t("manifold.events.index.events") %>
+          <h2 class="mb-4 workshops-label">
+            <%= params[:type]+ " " +  t("manifold.events.index.events") %> <%= close_button %>
           </h2>
         <% end %>
         <% if params[:date].present? %>
-          <h2 class="pt-2 mb-4 workshops-label">
-            <%= t("manifold.events.index.events_on") + " " + Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %>
+          <h2 class="mb-4 workshops-label">
+            <%= t("manifold.events.index.events_on") + " " + Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %> <%= close_button %>
           </h2>
         <% end %>
           <%= render "events" %>
         </div>
 
-        <% unless params[:date].present? %>
+        <% unless params[:date].present? || params[:type].present? %>
         <div class="col-12 col-lg-4 exhibits">
           <div class="row">
             <div class="col-12 pt-3 mb-3" id="events-exhibits">

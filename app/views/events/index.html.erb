@@ -24,6 +24,7 @@
     <%= render "featured" if @featured_events.present? %>
   </div>
   <div class="col-12 text-center filter_links mb-3">
+    <a name="list" id="list"></a>
     <%= link_to t("manifold.events.index.view_past_events"), past_events_path, class: "d-block d-lg-inline pr-4 faustina" %>
     <hr />
     <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline pl-4 faustina" %>
@@ -31,7 +32,6 @@
 </div>
 
 <div class="container mt-4">
-  <a name="list" id="list"></a>
   <div class="row event-filters">
     <div class="col-12 col-lg-6 text-center">
       <%= form_tag(events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-left", id: "event-search") do %>
@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="col-12">
-      <%= workshops_link %>
+      <%= workshops_link(params[:type])%>
     </div>
   </div>
 </div>
@@ -74,7 +74,7 @@
         <% if @workshops.present? %>
         <div class="row">
           <div class="col">
-            <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.workshops") %> <%= close_button %></h2>
+            <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.workshops") %> <%= close_button(action_name) %></h2>
           </div>
         </div>
         <% end %>
@@ -82,7 +82,7 @@
         <div class="row">
           <div class="col">
             <a name="list" id="list"></a>
-            <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.events_on") + display_date %> <%= close_button %></h2>
+            <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.events_on") + " #{display_date(params[:date])}" %> <%= close_button(action_name) %></h2>
           </div>
         </div>
         <% end %>

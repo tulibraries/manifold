@@ -20,24 +20,20 @@ module EventHelper
     end
   end
 
-  def workshops_link
-    if params["type"].present?
-      if params["type"].downcase == "workshop"
-        link_to "See all events", events_path, class: "workshops-link d-block mt-4 roboto-light"
-      end
-    else
+  def workshops_link(type)
+    unless params["type"].present?
       link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 roboto-light"
     end
   end
 
-  def current_link?
-    (action_name == "past" || action_name == "past_search") ?
+  def current_link(type)
+    (type == "past" || type == "past_search") ?
       (link_to "View current events & exhibits", events_path, class: "pr-4") :
       (link_to "View past events & exhibits", past_events_path, class: "pr-4")
   end
 
-  def events_title
-    case action_name
+  def events_title(type)
+    case type
     when "search"
       t("manifold.events.index.page_title")
     when "past"
@@ -49,18 +45,18 @@ module EventHelper
     end
   end
 
-  def close_button
-    case action_name
+  def close_button(type)
+    case type
     when "past"
-      link_to "X", past_events_path, class: "close-events-search"
+      link_to "X", past_events_path(anchor: "list"), class: "close-events-search"
     when "past_search"
-      link_to "X", past_events_path, class: "close-events-search"
+      link_to "X", past_events_path(anchor: "list"), class: "close-events-search"
     else
-      link_to "X", events_path, class: "close-events-search"
+      link_to "X", events_path(anchor: "list"), class: "close-events-search"
     end
   end
 
-  def display_date
-    Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present?
+  def display_date(date)
+    Date.parse(date).strftime("%m-%d-%Y") if date.present?
   end
 end

@@ -89,7 +89,7 @@
         <%= render "events" %>
       </div>
 
-      <% unless @exhibitions.blank? || params[:date].present? %>
+      <% unless @exhibitions.blank? || params[:date].present? || params[:type].present? %>
       <div class="col-12 col-lg-4 exhibits">
         <div class="row">
           <div class="col-12 pt-3 mb-3" id="events-exhibits">

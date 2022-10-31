@@ -2,99 +2,89 @@
 
 <div class="container event-index">
   <div class="container">
-  <div class="row">
-  <div class="col-12">
-  <h1 class="d-none d-lg-block"><%= title t("manifold.events.index.page_title") %></h1>
-  </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <% unless @intro.nil? %>
-        <div class="intro mb-0"><%= @intro.description %></div>
-      <% end %>
-    </div>
-  </div>
-</div>
-<div class="container pb-3 mt-4" id="featured-events">
-  <div class="row mb-3">
-    <div class="col-12 pt-2">
-      <h2 style="font-size: 175%"><%= t("manifold.events.index.past_events_label") %></h2>
-    </div>
-  </div>
-
-  <div class="row event-filters">
-    <a name="list"></a>
-    <div class="col-12 col-md-3 text-center">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button"  
-        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= t("manifold.events.index.event_types") %>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <%= render "types" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-3 text-center pl-md-0">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle pl-0" type="button"
-        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= t("manifold.events.index.calendar") %>
-        </button>
-        <div class="dropdown-menu pl-2" aria-labelledby="dropdownMenuButton">
-          <%= render "dates" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 text-center text-md-right pr-lg-4 pt-3 filter-links">
-      <%= link_to t("manifold.events.index.view_current_events"), events_path, class: "d-block d-lg-inline" %>
-      | 
-      <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline" %>
-    </div>
-  </div>
-
-<div class="container pr-md-4">
-  <div class="row mt-3 mr-lg-2 mb-3 sub-level-background">
-    <div class="col-12 col-lg-8 events pt-3 mb-3" id="events">
-      <div class="row">
-        <div class="col-12">  
-          <h2 class="p-3 mb-3 current-events"><%= t("manifold.events.index.past_events_label") %></h2>
-        </div>
-      </div>
-    <% if params[:type].present? && params[:type] != "none" %>
-      <h2 class="ml-4 mb-4">
-        <%= params[:type]+ " " +  t("manifold.events.index.events") %>
-      </h2>
-    <% end %>
-    <% if params[:date].present? %>
-      <h2 class="ml-4 mb-4">
-        <%= t("manifold.events.index.events_on") + " " + Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %>
-      </h2>
-    <% end %>
-
-      <%= render "events" %>
-
-    </div>
-
-    <div class="col-12 col-lg-4 exhibits">
     <div class="row">
-    <div class="col-12 pt-3 mb-3" id="events-exhibits">
-
-      <% unless @exhibitions.blank? %>
-        <h2 class="p-3 mb-3 current-exhibits">
-          <%= t("manifold.events.index.past_exhibits_label") %>
-        </h2>
-        
-        <%= render "exhibitions" %>
-      
-      <% end %>
-
+      <div class="col-12">
+        <h1 class="d-none d-lg-block"><%= events_title(action_name) %></h1>
+      </div>
     </div>
-  </div>
-  </div>
+
+    <div class="container pb-3 mt-4" id="featured-events">
+      <div class="row">
+        <div class="col-12 text-center filter_links pt-4">
+          <a name="list"></a>
+          <%= link_to "View current & upcoming events", events_path, class: "d-block d-lg-inline pr-4 faustina" %>
+          <hr />
+          <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline pl-4 faustina" %>
+        </div>
+      </div>
+
+      <div class="row event-filters">
+        <div class="col-12 col-lg-6 text-center">
+          <%= form_tag(past_events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-left", id: "past-events-search") do %>
+            <%= label_tag(:search, "search past events by name", :class=>"element-invisible") %>
+            <i class="fa fa-search"></i>
+            <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
+                    placeholder: "search past events by name",
+                    results: "0"
+                    ) %>
+          <% end %>
+        </div>
+
+        <div class="col-12 col-lg-6 text-center mt-4 pl-md-0">
+          <div class="dropdown align-bottom">
+            <button class="btn btn-secondary dropdown-toggle pl-0 w-100 pl-3 text-left" type="button"
+            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t("manifold.events.index.calendar") %>
+            </button>
+            <div class="dropdown-menu pl-2 w-100 pb-3" aria-labelledby="dropdownMenuButton">
+              <%= render "dates" %>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <%= link_to "Limit to workshops", past_events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 roboto-light" %>
+        </div>
+      </div>
     </div>
-  </div>
+
+    <div class="container">
+      <div class="row mt-3 mr-lg-2 mb-3">
+        <div class="col-12 col-lg-<%= (params[:date].present? || params[:type].present?) ? 12 : 8 %> events pt-3 mb-3" id="events">
+          <div class="row">
+            <div class="col-12">  
+              <h2 class="p-3 mb-3 current-events">
+                <span class="bl-red"><%= t("manifold.events.index.past_events_label") %></span>
+              </h2>
+            </div>
+          </div>
+        <% if params[:type].present? && params[:type] != "none" %>
+          <h2 class="mb-4 workshops-label">
+            <%= params[:type]+ " " +  t("manifold.events.index.events") %> <%= close_button(action_name) %>
+          </h2>
+        <% end %>
+        <% if params[:date].present? %>
+          <h2 class="mb-4 workshops-label">
+            <%= t("manifold.events.index.events_on") + " " + Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %> <%= close_button(action_name) %>
+          </h2>
+        <% end %>
+          <%= render "events" %>
+        </div>
+
+        <% unless params[:date].present? || params[:type].present? %>
+        <div class="col-12 col-lg-4 exhibits">
+          <div class="row">
+            <div class="col-12 pt-3 mb-3" id="events-exhibits">
+            <% unless @exhibitions.blank? %>
+              <h2 class="px-3 pt-3 mb-0 current-exhibits">
+                <span class="bl-red"><%= t("manifold.events.index.past_exhibits_label") %></span>
+              </h2>
+              <%= render "exhibitions" %>
+            <% end %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

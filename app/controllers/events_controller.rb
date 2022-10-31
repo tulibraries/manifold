@@ -4,76 +4,77 @@ class EventsController < ApplicationController
   include SetInstance
   include RedirectLogic
   before_action :set_event, only: [:show]
-  before_action :init, only: [:index, :past]
+  before_action :init_current, only: [:index]
+  before_action :init_past, only: [:past]
   include EventFilters
 
 
   def index
-    events = @all_events.having("start_time >= ?", @today).order(start_time: :asc)
-    @events = return_events(events)
-    @exhibitions = Exhibition.where("end_date >= ?", @today)
-                             .where(promoted_to_events: true)
-                             .order(start_date: :desc, end_date: :desc)
-                             .take(5)
+    if params[:type].present? && params[:type].downcase == "workshop"
+      @workshops = Event.is_current.is_workshop
+      return_events(@workshops)
+    else
+      return_events(@all_current_events)
+    end
+    @exhibitions = Exhibition.is_current
+                              .where(promoted_to_events: true)
+                              .order(start_date: :desc, end_date: :desc)
+                              .take(5)
     @mailing_list = ExternalLink.find_by(slug: "events-mailing-list")
     @intro = Webpage.find_by(slug: "events-intro")
+
     respond_to do |format|
       format.html
-      format.json { render json: EventSerializer.new(@all_events) }
+      format.json { render json: EventSerializer.new(@all_current_events) }
+    end
+  end
+
+  def search
+    @query = params[:search]
+    if @query.present?
+      events = Event.is_current.search(@query).order(start_time: :asc)
+      return_events(events)
     end
   end
 
   def past
-    events = @all_events.having("start_time < ?", @today).order(start_time: :desc)
-    @exhibitions = Exhibition.where("end_date < ?", @today)
-                   .order(end_date: :desc, start_date: :desc)
-                   .take(3)
-    @events = return_events(events)
+    workshops = Event.is_past.is_workshop
+    (params[:type].present? && params[:type].downcase == "workshop") ? return_events(workshops) : return_events(@all_past_events)
+    @exhibitions = Exhibition.is_past
+                              .order(end_date: :desc, start_date: :desc)
+                              .take(3)
     @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
       format.html
-      format.json { render json: EventSerializer.new(@all_events) }
+      format.json { render json: EventSerializer.new(@all_past_events) }
     end
+  end
+
+  def past_search
+    events = Event.is_past.search(params[:search]).order(start_time: :asc)
+    return_events(events)
+    render "search"
   end
 
   def return_events(events)
     @events = []
-    if params["type"].present?
-      @events = events.having("lower(tags) LIKE ?", "%#{params[:type].downcase}%").order(:start_time) unless action_name == "past"
-      @events = events.having("lower(event_type) LIKE ?", "%#{params[:type].downcase}%").order(:start_time) if action_name == "past"
-    end
-
-    if params["date"].present?
+    if params[:date].present?
       day_start = Date.parse(params[:date]).beginning_of_day
       day_end = Date.parse(params[:date]).end_of_day
-      @events = events.having("start_time > ?", day_start)
-                      .merge(events.having("start_time < ?", day_end))
-                      .order(:start_time)
-    end
-
-    @event_types = all_types(events)
-    @event_dates = dates_list(events)
-
-    unless @events.empty?
-      @event_dates = dates_list(@events)
-    end
-    #
-    if @events.present?
-      unless action_name == "past"
-        events_list = Event.where(id: @events.map(&:id)).order(:start_time)
+      @events = dates_list(events.having("start_time >= ?", day_start)
+                      .and(events.having("start_time <= ?", day_end))
+                      .order(:start_time))
+      if action_name == "past"
+        events_list = Event.is_past.where(id: @events.map(&:id)).order(start_time: :desc)
       else
-        events_list = Event.where(id: @events.map(&:id)).order(start_time: :desc)
+        events_list = Event.is_current.where(id: @events.map(&:id)).order(:start_time)
       end
       @events_list = events_list.page params[:page]
     else
-      if params[:date].present?
-        @events_list = @events.page params[:page]
+      if action_name == "past"
+        @events_list = events.order(start_time: :desc).page params[:page]
       else
-        unless params[:type].present? && @events.empty?
-          @events_list = events.page params[:page]
-        else
-          @events_list = @events.page params[:page]
-        end
+        @events_list = events.page params[:page]
       end
     end
   end
@@ -86,11 +87,16 @@ class EventsController < ApplicationController
   end
 
   private
-    def init
-      @all_events = Event.group(:id)
+    def init_current
+      @all_current_events = Event.is_current.group(:id).order(start_time: :asc)
+      @all_past_events = Event.is_past.group(:id).order(start_time: :asc)
       @featured_events = Event.where(featured: true).order(:start_time).take(3)
       @today = Date.current
-      @new_tags = t("manifold.events.tags").map { |tag| tag[1] }.sort
+    end
+
+    def init_past
+      @all_past_events = Event.is_past.group(:id).order(start_time: :asc)
+      @today = Date.current
     end
 
     def set_event

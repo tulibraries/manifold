@@ -21,6 +21,10 @@ class Exhibition < ApplicationRecord
 
   validates :start_date, :end_date, presence: true
 
+
+  scope :is_past, -> { where("end_date < ?", Date.current) }
+  scope :is_current, -> { where("end_date >= ?", Date.current) }
+
   def slug_candidates
     [
       :title,

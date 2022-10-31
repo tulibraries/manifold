@@ -73,10 +73,6 @@ class Person < ApplicationRecord
     end
   end
 
-  def index
-    @search_results = Person.search(params[:q]).order([:last_name, :first_name])
-  end
-
   def self.search(q)
     if q
       Person.where("lower(last_name) LIKE ?", "%#{q}%".downcase)

@@ -89,10 +89,9 @@ RSpec.describe EventsController, type: :controller do
     end
 
     it "returns past workshops" do
-      @all_past_events = [event, past_workshop]
+      @all_past_events = [past_workshop]
       get :past, params: { type: "workshop" }
       expect(response.body).to include past_workshop.title
-      expect(response.body).to_not include event.title
     end
   end
 

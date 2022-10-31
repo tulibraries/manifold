@@ -10,12 +10,11 @@ module EventHelper
   end
 
   def workshops_link(type)
-    if params["type"].blank?
-      if action_name == "index"
-        link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 roboto-light"
-      elsif action_name === "past"
-        link_to "Limit to workshops", past_events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 roboto-light"
-      end
+    if type.blank?
+      action_name == "past" ? 
+        (link_to "Limit to workshops", past_events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 roboto-light")
+        :
+        (link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 roboto-light")
     end
   end
 

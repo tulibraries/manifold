@@ -1,66 +1,71 @@
 <% content_for :body_class, "categories" %>
-<div class="container contact-us" style="margin-top: 21px;">
 
-<h1 class="d-block d-lg-none"><%= title "Contact Us" %></h1>
-	<div class="row text-center">
-		<div class="col-12 col-md-6 col-lg-4 text-center chat-box">
+
+<div class="container contact-us mt-0">
+  <h1 class="d-block d-lg-none"><%= title "Contact Us" %></h1>
+
+  <div class="row staff-directory-row mb-0">
+    <div class="col p-4 text-center">
+      <p class="display-4 faustina"><%= t("manifold.webpages.contact.staff_directory") %></p>
+      <p>
+        <%= link_to t("manifold.webpages.contact.specialist_link"), people_path(specialists: true) %>, 
+        or <%= link_to t("manifold.webpages.contact.appointment_link"), "https://charlesstudy.temple.edu/appointments" %>, 
+        <%= t("manifold.webpages.contact.contact_other") %>
+      </p>
+    </div>
+  </div>
+
+	<div class="row mt-0">
+  <div class="container mt-0 pb-5 contact-us-grid">
+    <div class="col-12 mb-3">
+      <p class="display-4 faustina" style="color: white;">Chat Us 24/7</p>
+    </div>
+		<div class="col-12 col-md-4 text-center chat-box pl-4">
 			<div id="libchat_62e4dcbf0881db4f1514b077fbfd45b7"></div>
 			<script src="//v2.libanswers.com/load_chat.php?hash=62e4dcbf0881db4f1514b077fbfd45b7">
 			</script>
 		</div>
-		<div class="col-12 col-md-6 col-lg-8">
-			<div class="row">
-				<div class="col-12 col-lg-6 text-center">
-					<%= render "webpages/contact/one" %>
-				</div>
-				<div class="col-12 col-lg-6 text-center">
-					<%= render "webpages/contact/two" %>
-				</div>
-			</div>
+		<div class="d-none d-md-block col-md-8 charles-image"></div>
+  </div>
 
-			<div class="row d-none d-lg-flex">
-				<div class="col-6 text-center">
-					<%= render "webpages/contact/three" %>
-				</div>
-				<div class="col-6 text-center">
-					<%= render "webpages/contact/four" %>
-				</div>
-			</div>
-
-		</div>	<!-- top two rows -->
-
-		<div class="col-12 col-md-6 d-lg-none">
-			<%= render "webpages/contact/three" %>
-		</div>
-		<div class="col-12 col-md-6 d-lg-none">
-			<%= render "webpages/contact/four" %>
-		</div>
-
-		<div class="col-12 col-md-6 col-lg-4">
-			<%= link_to "/libanswers" do %>
-			<h2>
-				<%= image_tag "search-dark.png", class: "category-icon decorative", alt: ""  %>
-				<br /><%= t("manifold.webpages.contact.search_faqs") %>
-			</h2>
-			<% end %>
-		</div>
-
-		<div class="col-12 col-md-6 col-lg-4">
-			<%= link_to "/forms/ask-scrc" do %>
-			<h2>
-				<%= image_tag "collection.png", class: "category-icon decorative", alt: ""  %>
-				<br /><%= t("manifold.webpages.contact.special_collections") %>
-			</h2>
-			<% end %>
-		</div>
-
-		<div class="col-12 col-md-6 col-lg-4">
-			<%= link_to "/suggestions" do %>
-			<h2>
-				<%= image_tag "feedback.png", class: "category-icon decorative", alt: ""  %>
-				<br /><%= t("manifold.webpages.contact.feedback") %>
-			</h2>
-			<% end %>
-		</div>
+    <div class="container mt-0 pb-5 lower-grid">
+    <div class="row px-5 top">
+      <div class="col-12 col-md-6 col-lg-4 mt-3 contact-us-square">
+        <%= render "webpages/contact/one" %>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-3 contact-us-square">
+        <%= render "webpages/contact/two" %>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mt-3 contact-us-square">
+        <%= render "webpages/contact/three" %>
+      </div>
+    </div>
+    <div class="row px-5 bottom">
+      <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+        <%= link_to "/libanswers" do %>
+        <h2>
+          <%= image_tag "search-dark.png", class: "category-icon decorative", alt: ""  %>
+          <br /><%= t("manifold.webpages.contact.search_faqs") %>
+        </h2>
+        <% end %>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+        <%= link_to "/forms/ask-scrc" do %>
+        <h2>
+          <%= image_tag "collection.png", class: "category-icon decorative", alt: ""  %>
+          <br /><%= t("manifold.webpages.contact.special_collections") %>
+        </h2>
+        <% end %>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+        <%= link_to "/suggestions" do %>
+        <h2>
+          <%= image_tag "feedback.png", class: "category-icon decorative", alt: ""  %>
+          <br /><%= t("manifold.webpages.contact.feedback") %>
+        </h2>
+        <% end %>
+      </div>
+      </div>
+    </div>
 	</div>
 </div>

@@ -29,10 +29,10 @@ RSpec.describe EventHelper, type: :helper do
 
   describe "workshops_link" do
     it "returns workshops link when limiter not active" do
-      expect(helper.workshops_link(nil)).to include("workshops-link")
+      expect(helper.workshops_link(nil)).to match("Limit to workshops")
     end
     it "returns nothing when limiter active" do
-      expect(helper.workshops_link(nil)).to_not eq("")
+      expect(helper.workshops_link("workshop")).to_not be
     end
   end
 

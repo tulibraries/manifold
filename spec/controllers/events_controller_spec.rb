@@ -14,7 +14,7 @@ RSpec.describe EventsController, type: :controller do
     FactoryBot.create(:event, building: building, space: space, person: person)
   }
   let(:current_event) {
-    FactoryBot.create(:event, start_time: DateTime.tomorrow, end_time: DateTime.tomorrow+1, event_type: "workshop")
+    FactoryBot.create(:event, start_time: DateTime.tomorrow, end_time: DateTime.tomorrow + 1, event_type: "workshop")
   }
   let(:past_workshop) {
     FactoryBot.create(:event, start_time: DateTime.yesterday, end_time: DateTime.yesterday, event_type: "workshop")
@@ -57,25 +57,25 @@ RSpec.describe EventsController, type: :controller do
     end
 
     it "returns search results" do
-      post :search, params: {search: current_event.title}
+      post :search, params: { search: current_event.title }
       expect(response.body).to include current_event.title
       expect(response.body).to_not include event.title
     end
 
     it "returns past search results" do
-      post :past_search, params: {search: event.title}
+      post :past_search, params: { search: event.title }
       expect(response.body).to include event.title
       expect(response.body).to_not include current_event.title
     end
 
     it "returns date matched results" do
-      get :index, params: {date: current_event.start_time}
+      get :index, params: { date: current_event.start_time }
       expect(response.body).to include current_event.title
       expect(response.body).to_not include event.title
     end
 
     it "returns past date matched results" do
-      get :past, params: {date: event.start_time}
+      get :past, params: { date: event.start_time }
       expect(response.body).to include event.title
       expect(response.body).to_not include current_event.title
     end
@@ -83,14 +83,14 @@ RSpec.describe EventsController, type: :controller do
     it "returns current workshops" do
       @all_current_events = [current_event]
       @all_past_events = [event]
-      get :index, params: {type: "workshop"}
+      get :index, params: { type: "workshop" }
       expect(response.body).to include current_event.title
       expect(response.body).to_not include event.title
     end
 
     it "returns past workshops" do
       @all_past_events = [event, past_workshop]
-      get :past, params: {type: "workshop"}
+      get :past, params: { type: "workshop" }
       expect(response.body).to include past_workshop.title
       expect(response.body).to_not include event.title
     end

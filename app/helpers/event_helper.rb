@@ -10,7 +10,7 @@ module EventHelper
   end
 
   def workshops_link(type)
-    unless params["type"].present?
+    if params["type"].blank?
       link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 roboto-light"
     end
   end

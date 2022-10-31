@@ -69,13 +69,13 @@ RSpec.describe EventsController, type: :controller do
     end
 
     it "returns date matched results" do
-      get :index, params: { date: current_event.start_time }
+      get :index, params: { date: current_event.start_time.strftime("%Y-%m-%d") }
       expect(response.body).to include current_event.title
       expect(response.body).to_not include event.title
     end
 
     it "returns past date matched results" do
-      get :past, params: { date: event.start_time }
+      get :past, params: { date: event.start_time.strftime("%Y-%m-%d") }
       expect(response.body).to include event.title
       expect(response.body).to_not include current_event.title
     end

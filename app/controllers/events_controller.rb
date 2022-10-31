@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
 
   def index
-    if params["type"].present? && params["type"].downcase == "workshop"
+    if params[:type].present? && params[:type].downcase == "workshop"
       @workshops = Event.is_current.is_workshop
       return_events(@workshops)
     else
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
   def past
     workshops = Event.is_past.is_workshop
-    (params["type"].present? && params["type"].downcase == "workshop") ? return_events(workshops) : return_events(@all_past_events)
+    (params[:type].present? && params[:type].downcase == "workshop") ? return_events(workshops) : return_events(@all_past_events)
     @exhibitions = Exhibition.is_past
                               .order(end_date: :desc, start_date: :desc)
                               .take(3)
@@ -58,11 +58,11 @@ class EventsController < ApplicationController
 
   def return_events(events)
     @events = []
-    if params["date"].present?
+    if params[:date].present?
       day_start = Date.parse(params[:date]).beginning_of_day
       day_end = Date.parse(params[:date]).end_of_day
-      @events = dates_list(events.having("start_time > ?", day_start)
-                      .merge(events.having("start_time < ?", day_end))
+      @events = dates_list(events.having("start_time >= ?", day_start)
+                      .and(events.having("start_time <= ?", day_end))
                       .order(:start_time))
       if action_name == "past"
         events_list = Event.is_past.where(id: @events.map(&:id)).order(start_time: :desc)

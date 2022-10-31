@@ -3,17 +3,6 @@
 require "json/ld"
 
 module EventHelper
-  def filter_tags_events
-    tags = []
-    unless params[:type].nil?
-      types = params[:type].split(",")
-      types.each do |type|
-        tags << "#{type}&nbsp;<a href=\"#{events_path(request.query_parameters.except(:type).merge(page: 1))}\">X</a>"
-      end
-    end
-    tags
-  end
-
   def get_bldg_name(bldg_name)
     unless bldg_name.nil?
       t("manifold.default.event.#{bldg_name.parameterize.underscore}", default: bldg_name)
@@ -27,9 +16,9 @@ module EventHelper
   end
 
   def current_link(type)
-    (type == "past" || type == "past_search") ?
-      (link_to "View current events & exhibits", events_path, class: "pr-4") :
-      (link_to "View past events & exhibits", past_events_path, class: "pr-4")
+    type == "past_search" ?
+      (link_to "View current events & exhibits", events_path, class: "pr-4 current-events") :
+      (link_to "View past events & exhibits", past_events_path, class: "pr-4 past-events")
   end
 
   def events_title(type)

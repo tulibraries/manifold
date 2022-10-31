@@ -26,7 +26,7 @@ RSpec.describe EventHelper, type: :helper do
       expect(helper.display_date("2022-10-26")).to eq("10-26-2022")
     end
   end
-  
+
   describe "workshops_link" do
     it "returns workshops link when limiter not active" do
       expect(helper.workshops_link(nil)).to include("workshops-link")
@@ -38,12 +38,12 @@ RSpec.describe EventHelper, type: :helper do
 
   describe "current_link" do
     it "displays current events link when in past events" do
-      expect(helper.current_link("past")).to include(events_path)
-      expect(helper.current_link("past")).to_not include(past_events_path)
+      expect(helper.current_link("search")).to include("past-events")
+      expect(helper.current_link("search")).to_not include("current-events")
     end
     it "displays current events link when in past events search" do
-      expect(helper.current_link("past_search")).to include(events_path)
-      expect(helper.current_link("past_search")).to_not include(past_events_path)
+      expect(helper.current_link("past_search")).to include("current-events")
+      expect(helper.current_link("past_search")).to_not include("past-events")
     end
   end
 
@@ -65,15 +65,15 @@ RSpec.describe EventHelper, type: :helper do
   end
 
   describe "close_button" do
-    it "displays past events title on past template" do
+    it "displays past events link on past template" do
       expect(helper.close_button("past")).to include(past_events_path)
     end
-    it "displays past events title on past search template" do
+    it "displays past events link on past search template" do
       expect(helper.close_button("past_search")).to include(past_events_path)
     end
-    it "displays current events title on past template" do
+    it "displays current events title on current template" do
       expect(helper.close_button("index")).to include(events_path)
-      expect(helper.close_button("search")).to_not include(events_path)
+      expect(helper.close_button("search")).to include(events_path)
     end
   end
 end

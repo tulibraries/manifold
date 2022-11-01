@@ -1,6 +1,16 @@
-<h2>
-  <%= image_tag "email.png", class: "category-icon decorative", alt: "" %>
-	<br /><%= t("manifold.webpages.contact.email_label") %>
-</h2>
+<div class="row p-0 m-0">
+  <div class="col">
+    <span>
+      <p class="contact-link-heading"><%= t("manifold.webpages.contact.email_label") %></p>
+      <p class="contact-link-text">
+        <%= t("manifold.webpages.contact.email_text") %> <%= mail_to "asktulibrary@temple.edu", "asktulibrary@temple.edu", class: "red-link" %>
+      </p>
+    </span>
+  </div>
+</div>
 
-<p><%= t("manifold.webpages.contact.email_text") %> <%= mail_to "asktulibrary@temple.edu" %></p>
+<div class="row p-0 m-0">
+  <div class="col p-0 m-0 text-right">
+    <%= image_tag("contact-email.png", class: "d-block decorative float-right", style: "width: 49px;") %>
+  </div>
+</div>

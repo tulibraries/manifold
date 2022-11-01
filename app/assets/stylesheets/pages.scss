@@ -1,16 +1,6 @@
 @import "partials/_vars.scss";
 
 .contact-us {
-	p {
-		width: 80%;
-		margin: auto;
-		a {
-			color: $red;
-		}
-	}
-	h2 a {
-		color: $red;
-	}
 	.chat-box div {
 		min-height: 420px;
 		max-height: 420px;

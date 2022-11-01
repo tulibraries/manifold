@@ -1,0 +1,70 @@
+@import "partials/_vars.scss";
+
+.staff-directory-row {
+  background-color: $lighter-grey;
+  color: $royal-blue;
+  font-family: 'Roboto Light';
+  font-size: 1.25rem;
+  a {
+    color: $royal-blue !important;
+    font-family: 'Roboto';
+  }
+}
+
+.contact-us-options {
+  background-image: asset-data-url('white-bar.png');
+  background-size: 1200px 950px;
+  background-repeat: no-repeat;
+  .contact-us-grid {
+    padding-top: 35px;
+    .charles-image-container {
+      border: solid $new-gold 4px;
+      padding: 21px;
+      .charles-image {
+        background-image: asset-data-url('charles-square.jpg');
+        height: 100%;
+        background-size: fit;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
+
+.lower-grid {
+  .shadowed {
+    box-shadow: 0px 2px #eee;
+  }
+  .top {
+  }
+  .bottom {
+  }
+  .contact-us-square {
+    padding: 0;
+    background-color: $white;
+    border-top: solid $lighter-grey 1px;
+    border-left: solid $lighter-grey 1px;
+    border-right: solid $lighter-grey 1px;
+    text-align: center;
+    span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .contact-link-heading {
+      margin-top: 3rem;
+      font-size: 2.75rem;
+      line-height: 3.11rem;
+      font-family: "roboto light";
+    }
+    .contact-link-text {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-family: "roboto light";
+    }
+    a {
+      color: $royal-blue;
+    }
+    a.red-link {
+      color: $red;
+    }
+  }
+}

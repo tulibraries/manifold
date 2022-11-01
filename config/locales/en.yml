@@ -1078,9 +1078,9 @@ en:
         email_label: Email
         email_text: Email us your question at
         text: Text
-        search_faqs: Search FAQs
-        special_collections: Special Collections
-        feedback: Give Us Your Feedback
+        search_faqs_html: Search<br />FAQs
+        special_collections_html: Special<br />Collections
+        feedback_html: Give Us Your<br />Feedback
 
       home:
         links:

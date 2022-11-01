@@ -1,3 +1,19 @@
-<%= render_as_sms_link_on_mobile(number:"267-415-8925" , link_content: text_icon)  %>
-<h2><%= t("manifold.webpages.contact.text") %></h2>
-<%= render_as_sms_link_on_mobile(number:"267-415-8925")  %>
+<div class="row p-0 m-0">
+  <div class="col">
+    <span>
+      <p class="contact-link-heading"><%= t("manifold.webpages.contact.text") %></p>
+      <p class="contact-link-text">
+        <%= render_as_phone_link_on_mobile(number: "267-415-8925") %>
+        <br />
+        <%= t("manifold.webpages.contact.other") %> 
+        <%= link_to t("manifold.webpages.contact.fcn_link"), "/numbers", class: "red-link" %>
+      </p>
+    </span>
+  </div>
+</div>
+
+<div class="row p-0 m-0">
+  <div class="col p-0 m-0 text-right">
+    <%= image_tag("contact-text.png", class: "d-block decorative float-right", style: "width: 49px;") %>
+  </div>
+</div>

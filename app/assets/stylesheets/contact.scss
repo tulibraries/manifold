@@ -11,6 +11,12 @@
   }
 }
 
+.chat-container {
+  min-height: 500px;
+  max-height: 500px;
+  overflow: hidden;
+}
+
 .contact-us-options {
   background-image: asset-data-url('white-bar.png');
   background-size: 1200px 950px;

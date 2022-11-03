@@ -205,8 +205,14 @@ marquee {
   padding-left: 10px;
 }
 .faustina {
-  font-family: faustina;
+  font-family: faustina !important;
 }
 .roboto-light {
   font-family: "Roboto Light";
+}
+.display-5 {
+  font-size: 2.75rem;
+}
+.white {
+  color: $white;
 }

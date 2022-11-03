@@ -6,10 +6,10 @@
 
   <div class="row staff-directory-row mb-0">
     <div class="col p-4 text-center">
-      <p class="display-4 faustina"><%= link_to t("manifold.webpages.contact.staff_directory"), people_path %></p>
+      <p class="display-5"><%= link_to t("manifold.webpages.contact.staff_directory"), people_path, class: "faustina" %></p>
       <p>
-        <%= link_to t("manifold.webpages.contact.specialist_link"), people_path(specialists: true) %>, 
-        or <%= link_to t("manifold.webpages.contact.appointment_link"), "https://charlesstudy.temple.edu/appointments" %>, 
+        <%= link_to t("manifold.webpages.contact.specialist_link"), people_path(specialists: true) %> <%= t("manifold.webpages.contact.specialist_text") %>
+        <%= link_to t("manifold.webpages.contact.appointment_link"), "https://charlesstudy.temple.edu/appointments" %>, 
         <%= t("manifold.webpages.contact.contact_other") %>
       </p>
     </div>
@@ -19,12 +19,12 @@
   <div class="container mt-0 pb-5 contact-us-grid">
     <div class="row">
       <div class="col-12 mb-5 pl-5">
-        <p class="display-4 faustina" style="color: white;">Chat Us 24/7</p>
+        <p class="display-4 faustina white"><%= t("manifold.webpages.contact.chat_label") %></p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 text-center pl-md-5">
-        <div class="pr-xs-5" id="libchat_f602a34992696fce39ed84d63a53f6dd"></div>
+        <div class="pr-xs-5 chat-container" id="libchat_f602a34992696fce39ed84d63a53f6dd"></div>
         <script src="https://answers.library.temple.edu/load_chat.php?hash=f602a34992696fce39ed84d63a53f6dd"></script>
       </div>
       <div class="d-none d-lg-flex col-md-7 pr-5">

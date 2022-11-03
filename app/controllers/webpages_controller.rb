@@ -16,6 +16,7 @@ class WebpagesController < ApplicationController
   end
 
   def get_panopto_token
+    # API KEYS MUST BE SET VIA THE PLAYBOOK
     begin
       key = ENV["PANOPTO_API_USER"]
       code = ENV["PANOPTO_API_KEY"]

@@ -16,14 +16,17 @@ class WebpagesController < ApplicationController
   end
 
   def get_panopto_token
-    # API KEYS MUST BE SET VIA THE PLAYBOOK
     begin
+      @log = Logger.new("log/video-api.log")
+      @stdout = Logger.new(STDOUT)
+      
       key = ENV["PANOPTO_API_USER"]
       code = ENV["PANOPTO_API_KEY"]
 
       auth = { username: key, password: code }
       params = { "scope" => "api", "grant_type" => "client_credentials" }
       response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
+      stdout_and_log("response: #{response}")
       @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
 
     rescue => e
@@ -57,8 +60,6 @@ class WebpagesController < ApplicationController
   end
 
   def videos_all
-    @log = Logger.new("log/video-api.log")
-    @stdout = Logger.new(STDOUT)
     @all = []
     @lists = [
               @recent = [],

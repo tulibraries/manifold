@@ -19,7 +19,7 @@ class WebpagesController < ApplicationController
     begin
       @log = Logger.new("log/video-api.log")
       @stdout = Logger.new(STDOUT)
-      
+
       key = ENV["PANOPTO_API_USER"]
       code = ENV["PANOPTO_API_KEY"]
 

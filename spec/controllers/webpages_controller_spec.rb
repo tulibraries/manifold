@@ -53,7 +53,6 @@ RSpec.describe WebpagesController, type: :controller do
       expect(json_all).to be
     end
     it "returns the index view" do
-      # videos = file_fixture("recent-videos.json").read
       get :videos_all
       expect(response).to be_successful
       expect(response.body).to match json_all

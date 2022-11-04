@@ -17,9 +17,6 @@ class WebpagesController < ApplicationController
 
   def get_panopto_token
     begin
-      @log = Logger.new("log/video-api.log")
-      @stdout = Logger.new(STDOUT)
-      
       key = ENV["PANOPTO_API_USER"]
       code = ENV["PANOPTO_API_KEY"]
 
@@ -106,6 +103,8 @@ class WebpagesController < ApplicationController
   end
 
   def stdout_and_log(message, level: :info)
+    @log = Logger.new("log/video-api.log")
+    @stdout = Logger.new(STDOUT)
     @log.send(level, message)
     @stdout.send(level, message)
   end

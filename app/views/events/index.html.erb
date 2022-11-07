@@ -17,10 +17,10 @@
 </div>
 
 <div class="container" id="featured-events">
-  <div class="col-12 py-4">
+  <div class="col-12 pt-3 pb-2">
     <h2 class="bl-red" style="font-size: 175%"><%= t("manifold.events.index.featured_events") %></h2>
   </div>
-  <div class="row mb-3 px-3 justify-content-evenly d-flex">
+  <div class="row mb-0 px-3 justify-content-evenly d-flex">
     <%= render "featured" if @featured_events.present? %>
   </div>
   <div class="col-12 text-center filter_links mb-3">

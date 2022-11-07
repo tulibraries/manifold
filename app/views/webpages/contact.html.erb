@@ -6,12 +6,10 @@
 
   <div class="row staff-directory-row mb-0">
     <div class="col p-4 text-center">
-      <p class="display-5">
-        <%= link_to t("manifold.webpages.contact.staff_directory"), people_path, class: "faustina" %>
-      </p>
+      <p class="display-5"><%= link_to t("manifold.webpages.contact.staff_directory"), people_path, class: "faustina" %></p>
       <p>
-        <%= t("manifold.webpages.contact.specialist_link") %>,
-        <%= t("manifold.webpages.contact.appointment_link") %>, 
+        <%= link_to t("manifold.webpages.contact.specialist_link"), people_path(specialists: true) %> <%= t("manifold.webpages.contact.specialist_text") %>
+        <%= link_to t("manifold.webpages.contact.appointment_link"), "https://charlesstudy.temple.edu/appointments" %>, 
         <%= t("manifold.webpages.contact.contact_other") %>
       </p>
     </div>

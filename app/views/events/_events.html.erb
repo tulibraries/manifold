@@ -10,7 +10,7 @@
       <% end %>
       </div>
       <div class="col-12 col-lg-8">
-        <%= link_to event.title, event_path(event.id), class: "event-title" %>
+        <%= link_to event.title.truncate(42), event_path(event.id), class: "event-title" %>
         <p class="mt-4 event-date bl-blue">
           <%= event.get_date %><br /><%= event.set_start_time %>
         </p>

@@ -276,10 +276,16 @@
     color: $royal-blue !important;
   }
   .event-title {
-    font-size: 1.65rem!important;
-    margin-top: 1rem;
+    font-size: 1.35rem!important;
+    margin-top: .25rem;
     line-height: 1.5rem;
     font-family: "Roboto";
+  }
+  .featured-dates {
+    font-size: 1rem;
+  }
+  .featured-description {
+    font-size: 1rem;
   }
 }
 #featured-events {

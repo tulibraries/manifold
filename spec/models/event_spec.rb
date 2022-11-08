@@ -51,6 +51,14 @@ RSpec.describe Event, type: :model do
       event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_time, end_time: end_time, all_day: false)
       expect(event.set_times).to match("10:00 am -  2:00 pm")
     end
+    example "empty start_date does not error" do
+      event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: nil, end_time: end_time, all_day: false)
+      expect(event.set_start_time).to match("")
+    end
+    example "empty end_date does not error" do
+      event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_time, end_time: nil, all_day: false)
+      expect(event.set_end_time).to match("")
+    end
   end
 
   describe "all-day flag" do

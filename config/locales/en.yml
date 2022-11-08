@@ -1070,17 +1070,18 @@ en:
       contact:
         staff_directory: Staff Directory
         specialist_link: Find your subject librarian or specialist
-        appointment_link: make an appointment
-        contact_other: or contact another library staff member.
+        appointment_link: Make an appointment
+        contact_other: Contact another library staff member
         call: Call
         other: Other
         fcn_link: Frequently Called Numbers
         email_label: Email
         email_text: Email us your question at
         text: Text
-        search_faqs: Search FAQs
-        special_collections: Special Collections
-        feedback: Give Us Your Feedback
+        search_faqs_html: Search<br />FAQs
+        special_collections_html: Special<br />Collections
+        feedback_html: Give Us Your<br />Feedback
+        chat_label: Chat Us 24/7
 
       home:
         links:
@@ -1207,8 +1208,26 @@ en:
         contact: Staff Directory
       videos:
         page_title: Past Program and Event Videos
-        default_playlist: Recent Videos
-        all: All Videos
+        breadcrumb: < Watch Past Programs & Events
+        categories:
+          recent: Recent Videos
+          beyond-the-page: Beyond the Page
+          beyond-the-notes: Beyond the Notes
+          blockson: Charles L. Blockson Afro-American Collection 
+          research-awards: Livingstone Undergraduate Research Awards
+          lcdss: Loretta C. Duckworth Scholars Studio
+          scrc: Special Collections Research Center
+        all:
+          recent: See More Recent Videos
+          page_title: Past Program and Event Videos
+          search_label: "Search all Past Program videos:"
+          see_all: See all Past Program videos
+          beyond-the-page: See all Beyond the Page videos
+          beyond-the-notes: See All Beyond the Notes Videos
+          blockson: See All Blockson Collection Videos
+          research-awards: See All Research Award Videos
+          lcdss: See All Scholars Studio Videos
+          scrc: See All Special Collections Videos
       visit:
         page_title: Visit & Study
       wpvi:

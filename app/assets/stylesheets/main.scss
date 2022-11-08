@@ -196,3 +196,23 @@ marquee {
 .tab-pane.active {
   display: block;
 }
+.bl-blue {
+  border-left: solid $royal-blue 3px;
+  padding-left: 10px;
+}
+.bl-red {
+  border-left: solid $red 3px;
+  padding-left: 10px;
+}
+.faustina {
+  font-family: faustina !important;
+}
+.roboto-light {
+  font-family: "Roboto Light";
+}
+.display-5 {
+  font-size: 2.75rem;
+}
+.white {
+  color: $white;
+}

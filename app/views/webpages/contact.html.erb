@@ -1,66 +1,63 @@
 <% content_for :body_class, "categories" %>
-<div class="container contact-us" style="margin-top: 21px;">
 
-<h1 class="d-block d-lg-none"><%= title "Contact Us" %></h1>
-	<div class="row text-center">
-		<div class="col-12 col-md-6 col-lg-4 text-center chat-box">
-			<div id="libchat_62e4dcbf0881db4f1514b077fbfd45b7"></div>
-			<script src="//v2.libanswers.com/load_chat.php?hash=62e4dcbf0881db4f1514b077fbfd45b7">
-			</script>
-		</div>
-		<div class="col-12 col-md-6 col-lg-8">
-			<div class="row">
-				<div class="col-12 col-lg-6 text-center">
-					<%= render "webpages/contact/one" %>
-				</div>
-				<div class="col-12 col-lg-6 text-center">
-					<%= render "webpages/contact/two" %>
-				</div>
-			</div>
 
-			<div class="row d-none d-lg-flex">
-				<div class="col-6 text-center">
-					<%= render "webpages/contact/three" %>
-				</div>
-				<div class="col-6 text-center">
-					<%= render "webpages/contact/four" %>
-				</div>
-			</div>
+<div class="container contact-us mt-0">
+  <h1 class="sr-only"><%= title "Contact Us" %></h1>
 
-		</div>	<!-- top two rows -->
+  <div class="row staff-directory-row mb-0">
+    <div class="col p-4 text-center">
+      <p class="display-5"><%= link_to t("manifold.webpages.contact.staff_directory"), people_path, class: "faustina" %></p>
+      <p>
+        <%= link_to t("manifold.webpages.contact.specialist_link"), people_path(specialists: true), class: "d-block d-lg-inline-block" %> --
+        <%= link_to t("manifold.webpages.contact.appointment_link"), "https://charlesstudy.temple.edu/appointments", class: "d-block d-lg-inline-block" %> --
+        <%= link_to t("manifold.webpages.contact.contact_other"), people_path, class: "d-block d-lg-inline-block" %>
+      </p>
+    </div>
+  </div>
 
-		<div class="col-12 col-md-6 d-lg-none">
-			<%= render "webpages/contact/three" %>
-		</div>
-		<div class="col-12 col-md-6 d-lg-none">
-			<%= render "webpages/contact/four" %>
-		</div>
+	<div class="row mt-0 contact-us-options">
+  <div class="container mt-0 pb-5 contact-us-grid">
+    <div class="row">
+      <div class="col-12 mb-5 pl-5">
+        <p class="display-4 faustina white"><%= t("manifold.webpages.contact.chat_label") %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 text-center pl-md-5">
+        <div class="pr-xs-5 chat-container" id="libchat_62e4dcbf0881db4f1514b077fbfd45b7"></div>
+        <script src="https://answers.library.temple.edu/load_chat.php?hash=62e4dcbf0881db4f1514b077fbfd45b7"></script>
+      </div>
+      <div class="d-none d-lg-flex col-md-7 pr-5">
+        <div class="charles-image-container ml-2 w-100">
+          <div class="charles-image"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-		<div class="col-12 col-md-6 col-lg-4">
-			<%= link_to "/libanswers" do %>
-			<h2>
-				<%= image_tag "search-dark.png", class: "category-icon decorative", alt: ""  %>
-				<br /><%= t("manifold.webpages.contact.search_faqs") %>
-			</h2>
-			<% end %>
-		</div>
-
-		<div class="col-12 col-md-6 col-lg-4">
-			<%= link_to "/forms/ask-scrc" do %>
-			<h2>
-				<%= image_tag "collection.png", class: "category-icon decorative", alt: ""  %>
-				<br /><%= t("manifold.webpages.contact.special_collections") %>
-			</h2>
-			<% end %>
-		</div>
-
-		<div class="col-12 col-md-6 col-lg-4">
-			<%= link_to "/suggestions" do %>
-			<h2>
-				<%= image_tag "feedback.png", class: "category-icon decorative", alt: ""  %>
-				<br /><%= t("manifold.webpages.contact.feedback") %>
-			</h2>
-			<% end %>
-		</div>
+    <div class="container mt-0 pb-5 lower-grid">
+      <div class="row px-5 pb-0 top">
+      <div class="row shadowed p-0 m-0">
+        <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+          <%= render "webpages/contact/one" %>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+          <%= render "webpages/contact/two" %>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+          <%= render "webpages/contact/three" %>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+          <%= render "webpages/contact/four" %>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+          <%= render "webpages/contact/five" %>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 contact-us-square">
+          <%= render "webpages/contact/six" %>
+        </div>
+        </div>
+      </div>
+    </div>
 	</div>
 </div>

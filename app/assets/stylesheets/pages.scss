@@ -1,16 +1,6 @@
 @import "partials/_vars.scss";
 
 .contact-us {
-	p {
-		width: 80%;
-		margin: auto;
-		a {
-			color: $red;
-		}
-	}
-	h2 a {
-		color: $red;
-	}
 	.chat-box div {
 		min-height: 420px;
 		max-height: 420px;
@@ -110,7 +100,7 @@
 
   #searchFields {
 		background: transparent asset-data-url('charles.jpg') no-repeat 0% 0%;
-		background-position: 0 75%;
+		background-position: 0 50%;
 		position: relative;
 		width: 100%;
 		z-index: 0;

@@ -15,6 +15,17 @@
       margin-top: 28px;
     }
   }
+  .close-events-search {
+    float: right;
+    display: inline-block;
+    margin-right: 7px;
+    margin-top: 0;
+    text-decoration: none;
+    color: $black !important;
+    border: solid $black 1px;
+    padding: 4px 8px 4px 8px;
+    font-size: 1rem;
+  }
   .signup-desktop, .signup-mobile {
     margin-top: 21px;
     border: solid #ccc 2px;
@@ -69,7 +80,6 @@
       text-decoration: underline;
     }
   }
-
   .upcoming-header {
     background-color:$footer-gray;
     padding: 10px 21px;
@@ -77,17 +87,29 @@
     font-size:150%;
     width: 100%;
     margin: 0 15px 35px 15px;
-    font-family: "Roboto Bold";
+    font-family: "Roboto";
   }
-  .event {
-    border-bottom: solid $lightest-grey 2px;
+  .events {
     margin-bottom: 14px;
-    margin-left: 15px;
-    margin-right:15px;
+    margin-left: 0;
+    margin-right: 0;
+    .event {
+      border: solid $lighter-grey 1px;
+      padding-top: 10px;
+      img {
+        padding-left: 14px;
+      }
+      row {
+        padding: 4px;
+        padding-left: 14px;
+      }
+    }
   }
 }
 .exhibits {
-  font-family: "Roboto Bold";
+  font-family: "Roboto";
+  border-left: solid $lightest-grey 1px;
+  padding-left: 14px;
   @media (max-width: 1039px) {
     margin-top: 35px;
   }
@@ -102,34 +124,30 @@
   }
   .exhibit {
     font-family: "Roboto Bold";
-    border: solid $seagreen 1px;
-    border-radius: 7px;
-    background-color: transparent;
     padding: 21px;
     margin-bottom: 14px;
+    border-bottom: solid $light-grey 1px;
     .exhibit_title {
-      font-size: 125%;
-      font-weight: 600;
-      color: $black;
-      text-decoration: underline;
+      font-size: 1.35rem;
+      font-family: faustina;
+      color: $royal-blue;
+      padding-bottom: 14px;
+      display: block;
     }
-    .faustina {
-      font-family: "faustina";
-    }
-    a {
-      font-family: "Roboto Bold";
+    span {
+      font-family: "Roboto Light";
+      color: $royal-blue;
     }
     a.location {
-      font-weight: 600;
-      color: $black!important;
-      font-family: "Faustina";
+      color: $royal-blue;
+      font-family: "Roboto Light";
     }
   }
 }
 .paginator {
   background-color: $lightest-grey;
-  border-left: solid $white 14px;
-  border-right: solid $white 14px;
+  margin-left: 0;
+  padding-left: 0;
 }
 .event_type {
   background-color: $foamgreen!important;
@@ -161,10 +179,6 @@
   @media (max-width: 767px) {
     display: block;
   }
-}
-a.location {
-  font-weight: 600;
-  color: $black!important;
 }
 .past-events-button, .video-button {
   background-color: $seagreen;
@@ -216,7 +230,11 @@ a.location {
     border-radius: 4px;
   }
 }
-
+.event-date {
+  font-family: "Roboto Light";
+  color: $royal-blue;
+  margin-top: 21px;
+}
 .event-index {
   strong {
     display: inline-block;
@@ -243,52 +261,92 @@ a.location {
 .event-title {
   display: block;
   margin-top: 0;
-  font-size: 1.15rem;
-  line-height: 1.15rem;
+  font-size: 1.35rem;
+  line-height: 1.25rem;
+  color: $royal-blue !important;
+  font-family: faustina !important;
 }
 
 .featured-event {
+  color: $royal-blue !important;
+  border: solid $royal-blue 2px;
+  font-size: 1.15rem;
+  font-family: "Roboto Light";
+  a {
+    color: $royal-blue !important;
+  }
   .event-title {
-    font-size: 1.65rem!important;
-    margin-top: 1rem;
+    font-size: 1.35rem!important;
+    margin-top: .25rem;
     line-height: 1.5rem;
+    font-family: "Roboto";
+  }
+  .featured-dates {
+    font-size: 1rem;
+  }
+  .featured-description {
+    font-size: 1rem;
   }
 }
 #featured-events {
   background-color:#eee;
-  border-top: solid #951936 2px;
+  border-top: solid $new-gold 9px;
+  border-bottom: solid $new-gold 14px;
 }
 
-.event-filters {
-  .dropdown-toggle {
-    width: 85%;
-    background-color: transparent;
-    color: #951936;
-    border:0;
-    font-size: 1.5rem;
+
+.filter_links {
+  a {
+    font-family: faustina;
+    font-size:1.35rem;
   }
-  .dropdown-menu {
-    width: 100%;
-    @media (max-width: 1042px) {
-      width: 85%;
-    }
-  }
-  .filter_links {
-    a {
-      font-family: 'Roboto Bold';
-      font-size:larger;
-    }
+  hr {
+    display: inline-block;
+    background-color: $red;
+    width: 10%;
+    padding-left: 21px;
+    padding-right: 21px;
+    vertical-align: middle;
+    height: 3px;
   }
 }
+.event-filters{
+  i.fa-search {
+    position: relative;
+    top: 32px;
+    left: 16px;
+    z-index: 3;
+  }
+  #search {
+    padding-left: 42px;
+  }
+  #date, #event-date {
+    width: 90%;
+  }
+  #dropdownMenuButton {
+    background-color: $lightest-grey;
+    color: $royal-blue;
+    border: solid $light-grey 1px;
+  }
+  .form-control, #dropdownMenuButton {
+    border-radius: 0;
+    border: solid $royal-blue 1px;
+  }
+  .workshops-link {
+    font-size: 1.3rem;
+  }
+}
+.workshops-label {
+  background-color: $crystal-blue;
+  padding: 12px 10px 10px 14px !important;
+}
+
 .sub-level-background {
   background-color: white;
   border-radius: 4px;
 }
 #events {
   h2.current-events, h2.past-events {
-    background-color: $red;
-    border-radius:4px;
-    color:white;
     font-size: 2rem;
   }
 }
@@ -296,8 +354,5 @@ a.location {
 #events-exhibits {
   h2.current-exhibits {
     font-size: 2rem;
-    background-color: $red;
-    color: #fff;
-    border-radius: 4px;
   }
 }

@@ -1,29 +1,19 @@
 <% @featured_events.each do |event| %>
-    <div class="col-12 col-md-4 featured-event">
-      <div class="p-3" style="background-color: white;border-radius: 4px;">
-      <% if event.image.attached? %>
-        <%= link_to (image_tag event.custom_image(340, 200), 
-                    class: "decorative", alt: ""), 
-                    event_path(event.id) %>
-      <% else %>
-        <%= image_tag 'T.png', class: "decorative", alt: "" %>
-      <% end %>
+<div class="col-12 col-md-4 px-4 pb-4">
+  <div class="py-2 px-3 featured-event">
+    <% if event.image.attached? %>
+      <%= link_to (image_tag event.custom_image(180, 180), 
+                  class: "decorative", alt: ""), 
+                  event_path(event.id) %>
+    <% else %>
+      <%= image_tag 'T.png', class: "decorative", alt: "" %>
+    <% end %>
 
-      <%= link_to event.title.truncate(32), event_path(event.id), class: "event-title pb-2" %>
-      
-      <strong><%= event.get_date %> | <%= event.set_start_time %></strong>
+    <%= link_to event.title.truncate(32), event_path(event.id), class: "event-title pb-2" %>
+    
+    <p class="bl-blue my-2 py-0 featured-dates"><%= event.get_date %> <br /> <%= event.set_start_time %></p>
 
-      <p class="pt-2"><%= event.description.to_plain_text.truncate(125) %></p>
-      
-      <p>
-        <% unless event.get_tags.nil? %>
-          <% event.get_tags.each do |type| %>
-            <% if @new_tags.include?(type) %>
-              <%= link_to type.titleize, events_path(type: type), class: "event_type" %> 
-            <% end %>
-          <% end %>
-        <% end %>
-      </p>
-      </div>
-    </div>
-  <% end %>
+    <p class="mb-0 featured-description"><%= event.description.to_plain_text.truncate(65) %></p>
+  </div>
+</div>
+<% end %>

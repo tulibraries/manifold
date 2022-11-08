@@ -80,7 +80,7 @@ module Tude
                              "Visitors & community members",
                              "Visiting scholars"]
 
-    config.specialties = [  "Advertising",
+    config.specialties = [  "Advertising & Marketing",
                             "Africology & African-American Studies",
                             "American Studies",
                             "Anthropology",
@@ -120,6 +120,7 @@ module Tude
                             "Global Studies",
                             "Government Information",
                             "Greek & Roman Classics",
+                            "Health & Rehabilitation Sciences",
                             "History",
                             "Horticulture",
                             "Italian",
@@ -160,7 +161,8 @@ module Tude
                             "Social Work",
                             "Sociology",
                             "Spanish",
-                            "Sport, Tourism & Hospitality Management",
+                            "Sport & Recreation Management",
+                            "Tourism & Hospitality",
                             "Theater",
                             "Urban Bioethics"]
 

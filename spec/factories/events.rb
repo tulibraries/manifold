@@ -25,6 +25,7 @@ FactoryBot.define do
     content_hash { "MyString" }
     ensemble_identifier { "MyString" }
     tags { "" }
+    event_type { "" }
     all_day { false }
     alt_text { "Charles Library" }
     trait :with_image do

@@ -2,15 +2,15 @@
 
 
 <div class="container contact-us mt-0">
-  <h1><%= title "Contact Us" %></h1>
+  <h1 class="sr-only"><%= title "Contact Us" %></h1>
 
   <div class="row staff-directory-row mb-0">
     <div class="col p-4 text-center">
       <p class="display-5"><%= link_to t("manifold.webpages.contact.staff_directory"), people_path, class: "faustina" %></p>
       <p>
-        <%= link_to t("manifold.webpages.contact.specialist_link"), people_path(specialists: true) %> --
-        <%= link_to t("manifold.webpages.contact.appointment_link"), "https://charlesstudy.temple.edu/appointments" %> --
-        <%= link_to t("manifold.webpages.contact.contact_other"), people_path %>
+        <%= link_to t("manifold.webpages.contact.specialist_link"), people_path(specialists: true), class: "d-block d-lg-inline-block" %> --
+        <%= link_to t("manifold.webpages.contact.appointment_link"), "https://charlesstudy.temple.edu/appointments", class: "d-block d-lg-inline-block" %> --
+        <%= link_to t("manifold.webpages.contact.contact_other"), people_path, class: "d-block d-lg-inline-block" %>
       </p>
     </div>
   </div>

@@ -120,6 +120,7 @@ module Tude
                             "Global Studies",
                             "Government Information",
                             "Greek & Roman Classics",
+                            "Health & Rehabilitation Sciences",
                             "History",
                             "Horticulture",
                             "Italian",

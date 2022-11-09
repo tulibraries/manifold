@@ -1068,9 +1068,11 @@ en:
           view_all: View All
 
       contact:
+        page_title: Contact Us
         staff_directory: Staff Directory
-        specialist_link: Find your subject librarian or specialist
-        appointment_link: Make an appointment
+        specialist_text: Find your subject librarian or specialist
+        appointment_text: Make an appointment
+        appointment_link: https://charlesstudy.temple.edu/appointments
         contact_other: Contact another library staff member
         call: Call
         other: Other
@@ -1082,6 +1084,8 @@ en:
         special_collections_html: Special<br />Collections
         feedback_html: Give Us Your<br />Feedback
         chat_label: Chat Us 24/7
+        chat_id: libchat_62e4dcbf0881db4f1514b077fbfd45b7
+        chat_script_link: https://answers.library.temple.edu/load_chat.php?hash=62e4dcbf0881db4f1514b077fbfd45b7
 
       home:
         links:

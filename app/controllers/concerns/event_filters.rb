@@ -4,8 +4,7 @@ module EventFilters
   extend ActiveSupport::Concern
 
   def dates_list(events)
-    # binding.pry
-    to_add = events.select { |event| event if event.start_time.strftime("%Y-%m-%d") == params[:date] }
+    to_add = events.map { |event| event if event.start_time.strftime("%Y-%m-%d") == params[:date] }
 
     dates = to_add.map { |event|
       unless event.start_time.nil?

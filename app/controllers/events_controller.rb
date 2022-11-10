@@ -4,17 +4,18 @@ class EventsController < ApplicationController
   include SetInstance
   include RedirectLogic
   before_action :set_event, only: [:show]
-  before_action :init_current, only: [:index]
-  before_action :init_past, only: [:past]
+  before_action :init, only: [:index, :past]
   include EventFilters
 
 
   def index
+    events = Event.is_current
+    @featured_events = Event.where(featured: true).order(:start_time).take(3)
     if params[:type].present? && params[:type].downcase == "workshop"
-      @workshops = Event.is_current.is_workshop
+      @workshops = events.is_workshop
       return_events(@workshops)
     else
-      return_events(@all_current_events)
+      return_events(events)
     end
     @exhibitions = Exhibition.is_current
                               .where(promoted_to_events: true)
@@ -25,33 +26,34 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: EventSerializer.new(@all_current_events) }
+      format.json { render json: EventSerializer.new(events) }
     end
   end
 
   def search
     @query = params[:search]
     if @query.present?
-      events = Event.is_current.search(@query).order(start_time: :asc)
+      events = Event.is_current.search(@query).order(:start_time)
       return_events(events)
     end
   end
 
   def past
+    past_events = Event.is_past
     workshops = Event.is_past.is_workshop
-    (params[:type].present? && params[:type].downcase == "workshop") ? return_events(workshops) : return_events(@all_past_events)
+    (params[:type].present? && params[:type].downcase == "workshop") ? return_events(workshops) : return_events(past_events)
     @exhibitions = Exhibition.is_past
                               .order(end_date: :desc, start_date: :desc)
                               .take(3)
     @intro = Webpage.find_by(slug: "events-intro")
     respond_to do |format|
       format.html
-      format.json { render json: EventSerializer.new(@all_past_events) }
+      format.json { render json: EventSerializer.new(past_events) }
     end
   end
 
   def past_search
-    events = Event.is_past.search(params[:search]).order(start_time: :asc)
+    events = Event.is_past.search(params[:search]).order(:start_time, :desc)
     return_events(events)
     render "search"
   end
@@ -61,21 +63,14 @@ class EventsController < ApplicationController
     if params[:date].present?
       day_start = Date.parse(params[:date]).beginning_of_day
       day_end = Date.parse(params[:date]).end_of_day
+      events = events.group(:id)
       @events = dates_list(events.having("start_time >= ?", day_start)
                       .and(events.having("start_time <= ?", day_end))
                       .order(:start_time))
-      if action_name == "past"
-        events_list = Event.is_past.where(id: @events.map(&:id)).order(start_time: :desc)
-      else
-        events_list = Event.is_current.where(id: @events.map(&:id)).order(:start_time)
-      end
+      events_list = Event.where(id: @events.map(&:id))
       @events_list = events_list.page params[:page]
     else
-      if action_name == "past"
-        @events_list = events.order(start_time: :desc).page params[:page]
-      else
-        @events_list = events.page params[:page]
-      end
+      @events_list = action_name == "past" ? (events.order(start_time: :desc).page params[:page]) : (events.page params[:page])
     end
   end
 
@@ -87,15 +82,7 @@ class EventsController < ApplicationController
   end
 
   private
-    def init_current
-      @all_current_events = Event.is_current.group(:id).order(start_time: :asc)
-      @all_past_events = Event.is_past.group(:id).order(start_time: :asc)
-      @featured_events = Event.where(featured: true).order(:start_time).take(3)
-      @today = Date.current
-    end
-
-    def init_past
-      @all_past_events = Event.is_past.group(:id).order(start_time: :asc)
+    def init
       @today = Date.current
     end
 

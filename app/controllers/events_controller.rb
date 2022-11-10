@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   def search
     @query = params[:search]
     if @query.present?
-      events = Event.is_current.search(@query).order(:start_time)
+      events = Event.is_current.search(@query)
       return_events(events)
     end
   end
@@ -53,7 +53,7 @@ class EventsController < ApplicationController
   end
 
   def past_search
-    events = Event.is_past.search(params[:search]).order(:start_time, :desc)
+    events = Event.is_past.search(params[:search])
     return_events(events)
     render "search"
   end
@@ -70,7 +70,7 @@ class EventsController < ApplicationController
       events_list = Event.where(id: @events.map(&:id))
       @events_list = events_list.page params[:page]
     else
-      @events_list = action_name == "past" ? (events.order(start_time: :desc).page params[:page]) : (events.page params[:page])
+      @events_list = events.page params[:page]
     end
   end
 

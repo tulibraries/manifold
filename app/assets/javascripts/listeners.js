@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  x = $('.container.nav-container').offset();
+  x = $('.container-lg.nav-container').offset();
   x2 = $('#visitMenuButton').offset();
   x3 = $('#researchMenuButton').offset();
 

@@ -48,8 +48,8 @@
     </div>
 
     <div class="container-lg">
-      <div class="row mt-3 mr-lg-2 mb-3">
-        <div class="col-12 col-lg-<%= (params[:date].present? || params[:type].present?) ? 12 : 9 %> events pt-3 px-lg-0 mb-3" id="past-events">
+      <div class="row my-3">
+        <div class="col-12 col-lg-<%= (params[:date].present? || params[:type].present? || params[:search].present?) ? 12 : 9 %> events pt-3 px-lg-0 mb-3" id="past-events">
           <div class="row">
             <div class="col-12">  
               <h2 class="p-3 mb-3 current-events">
@@ -70,7 +70,7 @@
           <%= render "events" %>
         </div>
 
-        <% unless params[:date].present? || params[:type].present? %>
+        <% unless params[:date].present? || params[:type].present? || params[:search].present? %>
         <div class="col-12 col-lg-3 exhibits">
           <div class="row">
             <div class="col-12 pt-3 mb-3" id="events-exhibits">

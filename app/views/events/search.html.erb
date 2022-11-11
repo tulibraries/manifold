@@ -1,7 +1,7 @@
 <%= render "mobile_menu" %>
 
-<div class="container event-index">
-  <div class="container">
+<div class="container-lg event-index">
+  <div class="container-lg">
     <div class="row">
       <div class="col-12">
       <h1 class="d-none d-lg-block"><%= events_title(action_name) %></h1>
@@ -10,7 +10,7 @@
   </div>
 
 
-  <div class="container" id="featured-events">
+  <div class="container-lg" id="featured-events">
     <div class="row">
       <div class="col-12 text-center filter_links pt-4">
         <%= current_link(action_name) %>
@@ -48,14 +48,13 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container-lgß">
     <div class="row mt-3 mb-3">
       <div class="col-12 events pt-3 mb-3 pl-0" id="search-events">
         <div class="row">
           <div class="col pl-4">
             <a name="list" id="list"></a>
             <h2 class="mb-4 workshops-label d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
-            
           </div>
         </div>
 

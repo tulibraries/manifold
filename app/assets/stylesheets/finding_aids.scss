@@ -30,7 +30,6 @@
 		margin-bottom: 17px;
 		a {
 			color: $white;
-			text-decoration: underline;
 		}
 		h2 {
 			margin-bottom: 3px;
@@ -88,6 +87,16 @@
 		padding-top: 14px;
 		border-top: solid $seagreen-dark 2px;
 	}
+  .aids {
+    .aid {
+      font-size:larger;
+      font-weight:600;
+      margin:10px 15px;
+      padding-bottom: 14px;
+      padding-left: 0;
+      border-bottom:solid #ccc 1px;
+    }
+  }
 }
 .aids-filter-reset {
 	width:50%;
@@ -103,14 +112,12 @@
 }
 
 .catalog-link {
-  background-color: $seagreen;
-  padding: 21px;
+  background-color: $red;
   color: #fff !important;
   text-align: center;
-  border-radius: 7px;
+  border-radius: 3px;
   display: inline-block;
   width: 100%;
   margin-bottom: 14px;
-  text-decoration: underline;
-  text-align: left;
+  text-decoration: none;
 }

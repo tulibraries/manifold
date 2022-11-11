@@ -1,11 +1,13 @@
-<div class="container finding-aid">
+<div class="container-lg finding-aid">
 
   <div class="row">
-    <div class="col-12 col-lg-3 back-button">
+    <div class="col-12 col-lg-3 mt-3 back-button">
       < <%= link_to t("manifold.finding_aids.show.breadcrumb"), finding_aids_path, class: "inline" %>
     </div>
+  </div>
 
-    <div class="col-12 col-lg-6">
+  <div class="row mt-3">
+    <div class="col-12 col-lg-9 pl-5">
           
       <h1 class="page-title">
         <%== title sanitize @finding_aid.name %>
@@ -39,7 +41,7 @@
 
     </div>
 
-    <div class="col-12 col-lg-3">
+    <div class="col-12 col-lg-3 mt-4 mt-lg-0">
       <% unless @finding_aid.collections.blank? || @finding_aid.identifier.blank? %>
       <% unless @aeon %>
       <div class="access-link">

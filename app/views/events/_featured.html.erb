@@ -13,7 +13,7 @@
     
     <p class="bl-blue my-2 py-0 featured-dates"><%= event.get_date %> <br /> <%= event.set_start_time %></p>
 
-    <p class="mb-0 featured-description"><%= event.description.to_plain_text.truncate(65) %></p>
+    <p class="mb-0 featured-description"><%= event.description.to_plain_text.truncate(100) %></p>
   </div>
 </div>
 <% end %>

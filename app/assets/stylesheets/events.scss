@@ -269,6 +269,9 @@
   border: solid $royal-blue 2px;
   font-size: 1.15rem;
   font-family: "Roboto Light";
+  min-height: 364px;
+  max-height: 364px;
+  overflow: hidden;
   a {
     color: $royal-blue !important;
   }

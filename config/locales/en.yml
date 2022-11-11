@@ -490,10 +490,7 @@ en:
         submit: Send Request
       index: 
         title: Request Forms
-        intro_html: >-
-                    <p align="center">Use of these forms is intended for and restricted to members of the Temple 
-                    University Community</p>
-                    <p><a href="/contact-us">Library Suggestions/Feedback</a></p>
+        intro: Use of these forms is intended for and restricted to members of the Temple University Community
         temple_materials: 
           label: Temple-owned materials
           missing_book: Missing Book Search Request

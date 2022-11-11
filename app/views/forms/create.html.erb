@@ -1,8 +1,8 @@
-<div class="container form">
+<div class="container-lg form">
   <% unless @type.nil? || @type == "all" %>
 
   <div class="row">
-    <div class="col-12 col-lg-9">
+    <div class="col-12 col-lg-9 offset-lg-1">
 
       <div class="row">
         <div class="col back-button">
@@ -22,25 +22,23 @@
         </div>
       </div>
 
-      <% unless ["group-visit"].include? @type %>   
-
       <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
 
-       <% unless @type == "event-space-request" %>  
+      <% unless ["event-space-request"].include? @type %> 
         <div class="row">
-          <div class="col">
+          <div class="col mx-3">
             <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;margin-bottom: 35px;">
               <legend style="width: auto;padding: 0 21px;"><%= t("manifold.forms.shared.your_info") %></legend>
-            <%= render "forms/shared/personal_info", f: f %>
+            <%= render "forms/#{@type}/personal_info", f: f %>
             </fieldset>
           </div>
         </div>
-        <% end %>
+      <% end %>
 
       <% unless ["graduate-locker-request"].include? params[:type] %>
         <div class="row">
-          <div class="col">
+          <div class="col mx-3">
             <fieldset style="border: solid #ccc 2px;padding: 21px;border-radius:7px;">
               <legend style="width: auto;padding: 0 21px;"><%= t("manifold.forms.shared.request_info") %></legend>
               <%= render "forms/#{@type}/request-info", f: f %>
@@ -49,11 +47,10 @@
       <% end %>
 
         <div class="row" style="margin-top: 28px;">
-          <div class="col">
+          <div class="col mx-3">
             <%= f.button :submit, t("manifold.forms.shared.submit"), class: "btn btn-primary" %>
           </div>
         </div>
-      <% end %>
       <% end %>
     </div>
   </div>

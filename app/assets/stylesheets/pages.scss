@@ -217,7 +217,7 @@
 
 	.container.under {
 		@media screen and (max-width: 1040px) {
-			padding: 0;
+			// padding: 0;
 		}
 	}
 
@@ -319,7 +319,6 @@
     }
 
 		.catalog-search {
-			padding: 0;
 			.square  {
 				height: 100%;
 				padding-top: 3%;
@@ -390,8 +389,6 @@
 				}
 			}
       .quicklinks {
-        position: relative;
-        top: 11px;
         background-color: #fff;
         height: 216px;
         max-height: 216px;
@@ -477,7 +474,7 @@
   h2 {
     font-size:300%;
     margin-bottom: 0;
-    padding-top: 42px;
+    padding-top: 21px;
     color: $white;
     font-family: "roboto";
     text-transform: uppercase;

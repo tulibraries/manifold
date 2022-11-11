@@ -1,5 +1,5 @@
 <div id="header-navbar" class="row navbar navbar-static-top d-print-block mx-0 px-0" role="navigation">
-  <div class="container pl-0">
+  <div class="container-lg pl-0">
     <div class="col-8 col-sm-7 col-lg-4 logo-container text-left">
       <%= link_to root_path, class: "header-name", id: "header-logo" do %>
         <%= image_tag('temple-logo-t-box.svg', class: "header-logo", alt: "") %> 
@@ -37,7 +37,7 @@
 
   <% unless @alert.blank? %>
   <div id="header" class="row mx-0 mb-3">
-    <div class="container">
+    <div class="container-lg">
       <div class="col d-table">
           <div class="d-table-cell" style="vertical-align:middle;">
           <%= image_tag "information.png", class: "decorative", alt: "" %>

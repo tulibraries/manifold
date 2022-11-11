@@ -1,11 +1,10 @@
 <%= render "mobile_menu" %>
 
-<div class="container event-index">
-  <div class="container">
+<div class="container-lg event-index">
   <div class="row">
-  <div class="col-12">
-  <h1 class="d-none d-lg-block"><%= title t("manifold.events.index.page_title") %></h1>
-  </div>
+    <div class="col-12">
+      <h1 class="d-none d-lg-block"><%= title t("manifold.events.index.page_title") %></h1>
+    </div>
   </div>
   <div class="row">
     <div class="col-12">
@@ -14,9 +13,9 @@
       <% end %>
     </div>
   </div>
-</div>
 
-<div class="container" id="featured-events">
+
+<div class="container-lg" id="featured-events">
   <div class="col-12 pt-3 pb-2">
     <h2 class="bl-red" style="font-size: 175%"><%= t("manifold.events.index.featured_events") %></h2>
   </div>
@@ -63,7 +62,7 @@
 
   <div class="container" id="results">
     <div class="row mt-3 mb-3">
-      <div class="col-12 <%= (@exhibitions.blank? || params[:date].present? || params[:type].present?) ? "col-lg-12" : "col-lg-8" %> events pt-3 mb-3 px-0" id="events">
+      <div class="col-12 <%= (@exhibitions.blank? || params[:date].present? || params[:type].present?) ? "col-lg-12" : "col-lg-8" %> events pt-3 mb-3 px-0" id="current-events">
         <div class="row">
           <div class="col-12">  
             <h2 class="p-3 mb-3 current-events" id="upcoming-events">

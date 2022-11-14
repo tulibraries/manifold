@@ -14,6 +14,9 @@
         <p class="mt-4 event-date bl-blue">
           <%= event.get_date %><br /><%= event.set_start_time %>
         </p>
+        <p class="d-none d-xl-flex blue mb-0 pt-2 roboto-light">
+          <%= event.description.to_plain_text.truncate(121) %>
+        </p>
       </div>
     </div>
   </div>

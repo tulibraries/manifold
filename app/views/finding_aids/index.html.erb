@@ -1,11 +1,11 @@
 <%= render "mobile_menu" %>
 
-<div class="container aid-index">
+<div class="container-lg aid-index">
 
   <h1 class="d-none d-lg-block"><%= title t("manifold.finding_aids.index.page_title") %></h1>
 
   <div class="row">
-    <div class="col-3 leftside-index d-none d-md-none d-lg-block">
+    <div class="col-3 pr-5 leftside-index pl-3 pl-lg-2 d-none d-md-none d-lg-block">
       <div class="panel-group" id="accordion">
 			  <div class="filter_collections">
 			    <%= render "collections" %>
@@ -19,12 +19,12 @@
 			</div>
     </div>
 
-    <div class="col-12 col-lg-6" style="padding-left: 28px;">
+    <div class="col-12 col-lg-7 px-4">
       <%= render "aid_list" %>
     </div>
 
-    <div class="col-12 col-lg-3" style="padding-left: 28px;">
-      <h2><%= link_to t("manifold.finding_aids.index.search_link"), "/finding_aids/search", class: "catalog-link" %></h2>
+    <div class="col-12 col-lg-2 pl-3">
+      <h2 class=""><%= link_to t("manifold.finding_aids.index.search_link"), "/finding_aids/search", class: "catalog-link p-2 m-4 m-lg-0" %></h2>
     </div>
   </div>
 

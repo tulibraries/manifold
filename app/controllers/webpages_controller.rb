@@ -70,10 +70,7 @@ class WebpagesController < ApplicationController
 
     get_video_categories.each do |category|
       get_videos = panopto_api_call(["playlists", "sessions"], category[2])
-      stdout_and_log("token: #{@access_token} ")
-      stdout_and_log(" api call: #{get_videos} ")
       get_videos[:Results].each do |video|
-        stdout_and_log("************ #{category[1]}: #{video[:Name]} **************")
         @all << video
         case category[1]
         when "Recent Videos"

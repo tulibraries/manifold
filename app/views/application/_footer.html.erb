@@ -1,5 +1,5 @@
 <% if ["services", "policies"].include? controller_name %>
-<div class="container" id="print-page">
+<div class="container-lg" id="print-page">
   <div class="row">
     <div class="col-12 text-center py-3">
       <%= link_to t("manifold.default.print_page"), "#", onclick: "printPage()" %>
@@ -15,7 +15,7 @@
 <% end %>
 
 <div id="site-footer">
-  <div class="container">
+  <div class="container-lg">
     <div class="row social justify-content-between px-2 px-lg-4 mb-4">
       
       <%= link_to(t("manifold.footer.donate_link"), "/support-the-libraries", class: "donate") %>

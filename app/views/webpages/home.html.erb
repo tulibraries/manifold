@@ -5,13 +5,13 @@
     </div>
   </div>
 
-  <div class="container px-0">
+  <div class="container-lg px-0">
     <div class="col-12 d-block d-lg-none px-0" id="search-in-page">
       <%= render @search, view: "mobile" if @search.present? %>
     </div>
 
     <div class="under">
-      <div class="row ctaRow">
+      <div class="row ctaRow px-lg-3">
         <div class="col-12 col-lg-3 pr-3">
           <div class="cta-white">
             <%= link_to "/research-help", {class: "strong", id: "research-help"} do %>
@@ -43,9 +43,9 @@
       </div>
     </div>
 
-    <div id="hollywood-squares" class="container">
-      <div class="row row-eq-height">
-        <div class="col-12 col-lg-3 catalog-search h-auto">
+    <div id="hollywood-squares" class="container-lg">
+      <div class="row">
+        <div class="col-12 col-lg-3 px-0 pl-xl-3 pr-0 catalog-search">
           <div class="h-18 square">
             <%= link_to "#{librarysearch_url}/catalog", id: "books-media" do %>
               <%= image_tag('books_blue.png', class: "icon decorative", alt: "") %> 
@@ -76,37 +76,38 @@
               <span><%= t("manifold.webpages.home.links.main.journals") %></span>
             <% end %>
           </div>
-          <div class="caption">
+          <div class="caption bottom mr-xl-4">
             <%= link_to t("manifold.webpages.home.links.main.collections_search"), librarysearch_url, {id: "collections-search"} %>
           </div>
         </div>
-        <div class="col-12 col-lg-6 px-0 px-lg-3 center-column">
+        <div class="col-12 col-lg-6 px-0 px-lg-3 px-xl-5 center-column">
           <div class="events">
-            <%= link_to events_path, id: "events" do %>
-              <%= image_tag('homepage-events.jpg', class: "d-none d-lg-block decorative", alt: "") %>
-              <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
-              <div class="caption" id="eventscaption">
-                <span><%= t("manifold.webpages.home.links.main.events") %></span>
-              </div>
-            <% end %>
+          <%= link_to events_path, id: "events" do %>
+            <%= image_tag('homepage-events.jpg', class: "d-none d-lg-block w-100 decorative", alt: "") %>
+            <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
+            <span class="d-inline d-lg-none"><%= t("manifold.webpages.home.links.main.events") %></span>
+          <% end %>
+            <div class="caption d-none d-lg-block" id="eventscaption">
+              <p><%= t("manifold.webpages.home.links.main.events") %></p>
+            </div>
           </div>
           <div class="quicklinks">
             <div class="d-block d-lg-none caption no-link">
               <%= "Quick Links" %>
             </div>
-            <ul class="list-unstyled">
-              <li class="quicklinks-link"><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
-              <li class="quicklinks-link"><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
-              <li class="quicklinks-link"><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
-          		<li class="quicklinks-link"><%= link_to t("manifold.footer.accessibility_link"), category_path("accessibility-services") %></li>
+            <ul class="list-unstyled mb-0 pt-xl-3">
+              <li class="quicklinks-link py-2"><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
+              <li class="quicklinks-link py-2"><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
+              <li class="quicklinks-link py-2"><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
+          		<li class="quicklinks-link py-2"><%= link_to t("manifold.footer.accessibility_link"), category_path("accessibility-services") %></li>
             </ul>
-            <div class="d-none d-lg-block caption no-link text-right pr-4">
-              <%= "Quick Links" %>
-            </div>
           </div>
+            <div class="d-none d-lg-block caption bottom text-right ql-caption">
+              <%= link_to("Quick Links", "/all-locations", {id: "all-locations", class: "text-right"}) %>
+            </div>
         </div>
-        <div class="col-12 col-lg-3 locations-links px-0">
-          <div class="d-block d-lg-none caption no-link">
+        <div class="col-12 col-lg-3 px-0 pr-xl-3 pl-0 mb-4 mb-lg-0 locations-links">
+          <div class="d-block d-lg-none caption no-links">
             <%= "Locations" %>
           </div>
           <div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.charles"), "/explore-charles", id: "charles-library" %></div>
@@ -116,7 +117,7 @@
           <div class="h-20 two-lines"><%= link_to t("manifold.webpages.home.links.main.locations.scrc"), webpages_scrc_path, {id: "scrc"} %></div>
           <div class="h-10"><%= link_to t("manifold.webpages.home.links.main.locations.law"), "/law-library", id: "law" %></div>
           <div class="h-20 two-lines"><%= link_to "Center for Scholarly Communication & Open Publishing", webpages_scop_path, id: "scop" %></div>
-          <div class="caption">
+          <div class="caption bottom">
             <%= link_to(t("manifold.webpages.home.links.main.locations.all"), "/all-locations", {id: "all-locations"}) %>
           </div>
         </div>
@@ -125,7 +126,7 @@
   </div>
 
   <div class="mt-5" id="news-events">
-    <div class="container">
+    <div class="container-lg px-5">
       <h2>Events</h2>
       <div class="row home-events-row row-eq-height">
       <%= render "events" %>

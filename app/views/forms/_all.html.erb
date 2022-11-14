@@ -1,24 +1,23 @@
-<div class="container">
+<div class="container-lg">
   <div class="row">
-    <div class="col-12 col-lg-9">
-
-      <div class="row">
-        <div class="col" style="padding-left: 0">
-          <h1><%= title t("manifold.forms.index.title") %></h1>
-        </div>
-      </div>
-    </div>
-
-  <div class="row">
-    <div class="col text-center" style="font-size: larger;margin-bottom: 21px">
-      <%= t("manifold.forms.index.intro_html") %>
+    <div class="col-12 col-lg-9 offset-lg-1">
+      <h1><%= title t("manifold.forms.index.title") %></h1>
     </div>
   </div>
 
   <div class="row">
-    <div class="col">
-      <h2><%= t("manifold.forms.index.temple_materials.label") %></h2>
-      <ul class="list-unstyled">
+    <div class="col-12 col-lg-8 offset-lg-1 text-left" style="font-size: larger;margin-bottom: 21px">
+      <%= t("manifold.forms.index.intro") %>
+    </div>
+    <div class="col-12 col-lg-3">
+      <h2 class="access-link mb-5 mb-lg-0"><%= link_to "Library Suggestions/Feedback", webpages_contact_path %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-9 offset-lg-1">
+      <h2 class="bl-red"><%= t("manifold.forms.index.temple_materials.label") %></h2>
+      <ul class="list-unstyled ml-3">
         <li>
             <%= link_to t("manifold.forms.index.temple_materials.missing_book"), [forms_path, "missing-book"].join("/") %>
         </li>
@@ -26,8 +25,8 @@
             <%= link_to t("manifold.forms.index.temple_materials.recall_book"), [forms_path, "recall-book"].join("/") %>
         </li>
       </ul>
-      <h2><%= t("manifold.forms.index.instructional_services.label") %></h2>
-        <ul class="list-unstyled">
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.instructional_services.label") %></h2>
+        <ul class="list-unstyled ml-3">
           <li>
             <%= link_to t("manifold.forms.index.instructional_services.library_instruction"), [forms_path, "library-instruction"].join("/") %>
           </li>
@@ -35,8 +34,8 @@
             <%= link_to t("manifold.forms.index.instructional_services.scrc_instruction"), [forms_path, "scrc-instruction"].join("/") %>
           </li>
         </ul>
-      <h2><%= t("manifold.forms.index.library_privileges.label") %></h2>
-        <ul class="list-unstyled">
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.library_privileges.label") %></h2>
+        <ul class="list-unstyled ml-3">
           <li>
             <%= link_to t("manifold.forms.index.library_privileges.proxy_account"), [forms_path, "proxy-account"].join("/") %>
           </li>
@@ -47,14 +46,14 @@
             <%= link_to t("manifold.forms.index.library_privileges.partners_borrowing"), [forms_path, "partners-borrowing"].join("/") %>
           </li>
         </ul>
-      <h2><%= t("manifold.forms.index.collection_development.label") %></h2>
-        <ul class="list-unstyled">
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.collection_development.label") %></h2>
+        <ul class="list-unstyled ml-3">
           <li>
             <%= link_to t("manifold.forms.index.collection_development.purchase_request"), [forms_path, "purchase-request"].join("/") %>
           </li>
         </ul>
-      <h2><%= t("manifold.forms.index.administrative_services.label") %></h2>
-        <ul class="list-unstyled">
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.administrative_services.label") %></h2>
+        <ul class="list-unstyled ml-3">
           <li>
             <%= link_to t("manifold.forms.index.administrative_services.table_request"), [forms_path, "table-request"].join("/") %>
           </li>
@@ -71,14 +70,14 @@
             <%= link_to t("manifold.forms.index.administrative_services.exhibit_request"), [forms_path, "exhibit-request"].join("/") %>
           </li>
         </ul>
-      <h2><%= t("manifold.forms.index.requests") %></h2>
-        <ul class="list-unstyled">
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.requests") %></h2>
+        <ul class="list-unstyled ml-3">
           <li>
             <%= t("manifold.forms.index.requests_html") %> 
           </li>
         </ul>
-      <h2><%= t("manifold.forms.index.not_held") %></h2>
-        <ul class="list-unstyled">
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.not_held") %></h2>
+        <ul class="list-unstyled ml-3">
           <li>
             <%= t("manifold.forms.index.not_held_one_html") %>
           </li>

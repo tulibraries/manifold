@@ -1,12 +1,5 @@
 @import "partials/_vars.scss";
 
-.container {
-  max-width: 100%;
-  @media (min-width: 1200px) {
-    max-width: 1200px;
-    min-width: 1200px;
-  }
-}
 html, body {
   background-color: $white;
   font-size: 16px;
@@ -215,4 +208,7 @@ marquee {
 }
 .white {
   color: $white;
+}
+.blue {
+  color: $royal-blue  ;
 }

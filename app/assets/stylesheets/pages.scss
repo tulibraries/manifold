@@ -284,14 +284,18 @@
 			color: $royal-blue;
 			background-color: $crystal-blue;
 			height:45px;
+      width: 100%;
 			text-align: center;
       font-size: 1.25rem;
-      margin-top: 14px;
+      margin-top: 8px;
       @media screen and (min-width: 0) and (max-width: 1039px) {
         margin-top: 0;
         padding: 8px 7px 8px 14px;
         text-align: left;
         font-size: 125%;
+      }
+      @media screen and (min-width: 1040) {
+        margin-top: 17px;
       }
 			a {
         font-family: "faustina bold";
@@ -306,6 +310,21 @@
         }
 			}
 		}
+
+    .caption.bottom {
+      position: absolute;
+      bottom: -14px;
+      @media screen and (min-width: 1401px) {
+        width: calc(100% - 16px);
+      }
+    }
+
+    .ql-caption {
+      position: relative !important;
+      @media screen and (min-width: 1401px) {
+        width: 100% !important;
+      }
+    }
 
     .caption.no-link {
       padding-top: 8px;
@@ -366,7 +385,12 @@
 				}
 			}
 			.events {
+        // background-image: asset-data-url('homepage-events.jpg');
+        // background-position: top left;
+        // background-repeat: no-repeat;
+        // background-size: contain;
 				@media screen and (max-width: 1039px) {
+          background-image: none;
 					margin-top: 0;
 					margin-bottom: 0;
 					border-bottom: solid $black 1px;
@@ -377,6 +401,10 @@
 						width: 84px;
 					}
 				}
+        #eventscaption {
+          // position: absolute;
+          // bottom: 324px;
+        }
 			}
 			.news {
 				@media screen and (max-width: 1039px) {
@@ -390,30 +418,28 @@
 			}
       .quicklinks {
         background-color: #fff;
-        height: 216px;
-        max-height: 216px;
+        // height: 216px;
+        // max-height: 216px;
         font-family: Roboto;
         @media screen and (min-width: 0) and (max-width: 1039px){
           top: 0;
           height: auto;
           max-height: 1000px;
         }
-        ul {
-          padding:0px 14px;
-          margin-bottom: 0;
-          line-height: 1.95rem;
-          @media screen and (max-width: 1039px) {
-            margin-top: 0;
-            margin-bottom: 14px;
-          }
-          li {
-            @media screen and (max-width: 1039px) {
-              padding-left:63px;
-            }
-          }
-        }
+        // ul {
+        //   padding:0px 14px;
+        //   margin-bottom: 0;
+        //   @media screen and (max-width: 1039px) {
+        //     margin-top: 0;
+        //     margin-bottom: 14px;
+        //   }
+        //   li {
+        //     @media screen and (max-width: 1039px) {
+        //       padding-left:63px;
+        //     }
+        //   }
+        // }
         .quicklinks-link {
-          padding-top: 21px;
           border-bottom: solid #ccc 1px;
           @media screen and (max-width: 1039px) {
             padding-left: 4%;

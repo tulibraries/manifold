@@ -18,8 +18,8 @@ class Event < ApplicationRecord
   has_rich_text :description
   serialize :tags
 
-  scope :is_past, -> { where("end_time < ?", Date.current) }
-  scope :is_current, -> { where("end_time >= ?", Date.current) }
+  scope :is_past, -> { where("end_time < ?", Date.current).order(start_time: :desc) }
+  scope :is_current, -> { where("end_time >= ?", Date.current).order(:start_time) }
   scope :is_workshop, -> { where("lower(event_type) LIKE ?", "%workshop%") }
 
   def to_param  # overridden for tests

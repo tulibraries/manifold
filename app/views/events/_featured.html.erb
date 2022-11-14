@@ -9,7 +9,7 @@
       <%= image_tag 'T.png', class: "decorative", alt: "" %>
     <% end %>
 
-    <%= link_to event.title.truncate(32), event_path(event.id), class: "d-block event-title pb-2" %>
+    <%= link_to event.title.truncate(42), event_path(event.id), class: "d-block event-title pb-2" %>
     
     <p class="bl-blue my-2 py-0 featured-dates"><%= event.get_date %> <br /> <%= event.set_start_time %></p>
 

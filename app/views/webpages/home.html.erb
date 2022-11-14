@@ -44,8 +44,8 @@
     </div>
 
     <div id="hollywood-squares" class="container-lg">
-      <div class="row h-100">
-        <div class="col-12 col-lg-3 px-0 pl-xl-3 pr-0 catalog-search h-auto">
+      <div class="row">
+        <div class="col-12 col-lg-3 px-0 pl-xl-3 pr-0 catalog-search">
           <div class="h-18 square">
             <%= link_to "#{librarysearch_url}/catalog", id: "books-media" do %>
               <%= image_tag('books_blue.png', class: "icon decorative", alt: "") %> 
@@ -80,13 +80,14 @@
             <%= link_to t("manifold.webpages.home.links.main.collections_search"), librarysearch_url, {id: "collections-search"} %>
           </div>
         </div>
-        <div class="col-12 col-lg-6 px-3 px-xl-5 center-column">
-          <div class="events" style="height: 235px;">
+        <div class="col-12 col-lg-6 px-0 px-lg-3 px-xl-5 center-column">
+          <div class="events">
           <%= link_to events_path, id: "events" do %>
             <%= image_tag('homepage-events.jpg', class: "d-none d-lg-block w-100 decorative", alt: "") %>
             <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
+            <span class="d-inline d-lg-none"><%= t("manifold.webpages.home.links.main.events") %></span>
           <% end %>
-            <div class="caption" id="eventscaption">
+            <div class="caption d-none d-lg-block" id="eventscaption">
               <p><%= t("manifold.webpages.home.links.main.events") %></p>
             </div>
           </div>

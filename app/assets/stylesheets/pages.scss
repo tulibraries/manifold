@@ -449,10 +449,11 @@
         }
       }
 			div.h-10, div.h-20 {
-				height: 10%;
 				padding: 4% 14px;
+        a {
+          vertical-align: middle;
+        }
 				@media screen and (max-width: 1190px) {
-					height: 12%;
 					padding-top: 1.5%;
 					padding-bottom: 0;
 					padding-left: 5%;
@@ -461,7 +462,6 @@
 			div.h-10.two-lines {
 				font-size: 100%!important;
 				@media screen and (max-width: 379px) {
-					height: 12% !important;
 					padding-top: 2%;
 					padding-bottom: 2%;
 				}
@@ -470,7 +470,6 @@
 
     .h-18.bb-0 {
       @media (max-width: 1190px) {
-        height: 17%!important;
       }
     }
 	}

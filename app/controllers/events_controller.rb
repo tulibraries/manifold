@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   def index
     events = Event.is_current
     @featured_events = Event.where(featured: true).order(:start_time).take(3)
-    if params[:type].present? && params[:type] == "workshop"
+    if params[:type].present? && params[:type].downcase == "workshop"
       @workshops = events.is_workshop
       return_events(@workshops)
     else

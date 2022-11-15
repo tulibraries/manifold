@@ -106,3 +106,22 @@ a.donate {
     display: inline-block;
   }
 }
+
+.diagonal {
+  background-color: #F0F0F0;
+  margin-bottom: 0;
+  #diagonal-line {
+    background-color: $lighter-grey;
+    position: relative;
+    top: -35px;
+    height: 91px;
+    transform: skewY(-2.5deg);
+    @media screen and (min-width: 1599px) {
+    top: -55px;
+    height: 121px;
+    }
+  }
+}
+.diagonal.footer-diagonal {
+  margin-top: 10rem;
+}

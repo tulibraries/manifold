@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   def index
     events = Event.is_current
     @featured_events = Event.where(featured: true).order(:start_time).take(3)
-    if params[:type].present? && params[:type].downcase == "workshop"
+    if params[:type].present? && params[:type] == "workshop"
       @workshops = events.is_workshop
       return_events(@workshops)
     else
@@ -28,6 +28,13 @@ class EventsController < ApplicationController
       format.html
       format.json { render json: EventSerializer.new(events) }
     end
+  end
+
+  def dss_events
+    @dss_events = Event.is_current.is_dss_event
+    params[:search] = "digital scholarship"
+    return_events(@dss_events)
+    render :search, search: params[:search]
   end
 
   def search

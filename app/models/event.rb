@@ -21,6 +21,7 @@ class Event < ApplicationRecord
   scope :is_past, -> { where("end_time < ?", Date.current).order(start_time: :desc) }
   scope :is_current, -> { where("end_time >= ?", Date.current).order(:start_time) }
   scope :is_workshop, -> { where("lower(event_type) LIKE ?", "%workshop%") }
+  scope :is_dss_event, -> { where("lower(tags) LIKE ?", "%digital scholarship%") }
 
   def to_param  # overridden for tests
     id
@@ -118,7 +119,7 @@ class Event < ApplicationRecord
 
   def self.search(q)
     if q
-      Event.where("lower(title) LIKE ?", "%#{q}%".downcase).order(:start_time)
+      Event.where("lower(title) LIKE ? or lower(tags) LIKE ?", "%#{q}%".downcase, "%#{q}%".downcase).order(:start_time)
     end
   end
 end

@@ -30,6 +30,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def dss_events
+    @dss_events = Event.is_current.is_dss_event
+    params[:search] = "digital scholarship"
+    return_events(@dss_events)
+    render :search, search: params[:search]
+  end
+
   def search
     @query = params[:search]
     if @query.present?

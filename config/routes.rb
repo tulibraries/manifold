@@ -111,6 +111,7 @@ Rails.application.routes.draw do
     post "events" => :search, as: "events_search"
     post "events/past" => :past_search, as: "past_events_search"
     get "events/past" => :past, as: "past_events"
+    get "events/dss-events" => :dss_events, as: "dss_events"
   end
 
   controller :blogs do

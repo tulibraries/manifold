@@ -91,7 +91,7 @@
     <% if @event_links.present? %>
       <h2>
         <%= link_to t("manifold.webpages.tudsc.links.events"), 
-                    events_path(type: t("manifold.webpages.tudsc.links.events_type"), anchor: "upcoming-events"),
+                    events_path(type: t("manifold.webpages.tudsc.links.events_type")),
                     id: "lcdss_events_header" %>
       </h2>
       <ul class="list-unstyled mb-5">

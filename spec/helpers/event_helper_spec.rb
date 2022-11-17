@@ -34,6 +34,9 @@ RSpec.describe EventHelper, type: :helper do
     it "returns nothing when limiter active" do
       expect(helper.workshops_link("workshop")).to_not be
     end
+    it "returns all workshops link on search page" do
+      expect(helper.workshops_link("dss_events")).to match("View all workshops")
+    end
   end
 
   describe "current_link" do

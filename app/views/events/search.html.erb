@@ -10,7 +10,7 @@
   </div>
 
 
-  <div class="container-lg" id="featured-events">
+  <div class="container-lg pb-2" id="featured-events">
     <div class="row">
       <div class="col-12 text-center filter_links pt-4">
         <%= current_link(action_name) %>
@@ -43,12 +43,12 @@
         </div>
       </div>
       <div class="col-12">
-        <%= link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block my-4 roboto-light" %>
+        <%= workshops_link(action_name) %>
       </div>
     </div>
   </div>
 
-  <div class="container-lgß">
+  <div class="container-lg">
     <div class="row mt-3 mb-3">
       <div class="col-12 events pt-3 mb-3 pl-0" id="search-events">
         <div class="row">

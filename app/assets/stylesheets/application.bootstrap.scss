@@ -1,0 +1,84 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 720px,
+  md: 968px,
+  lg: 1190px,
+  xl: 1401px
+);
+
+$container-max-widths: (
+  sm: 750px,
+  md: 1040px,
+  lg: 1400px,
+  xl: 1600px
+);
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$sizes: map-merge(
+  (
+    10: 10%,
+    12: 12%,
+    16: 16%,
+    18: 18%,
+    20: 15%,
+    22: 22.5%,
+    23: 23%,
+    25: 25%,
+    30: 30%,
+    50: 50%,
+    75: 75%,
+    80: 80%,
+    100: 100%,
+    auto: auto
+  ),
+  $sizes
+);
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+@import "partials/_categories.scss";
+@import "partials/_filter-tags.scss";
+@import "partials/_footer.scss";
+@import "partials/_header.scss";
+@import "partials/_hours.scss";
+@import "partials/_mainmenu.scss";
+@import "partials/_mixins.scss";
+@import "partials/_mobilemenu.scss";
+@import "partials/_pagination.scss";
+@import "partials/_responsive.scss";
+@import "partials/_searchbar.scss";
+@import "partials/_typography.scss";
+@import "partials/_vars.scss";
+
+
+@import "actiontext.scss";
+@import "blogs.scss";
+@import "buildings.scss";
+@import "categories.scss";
+@import "chat.scss";
+@import "collections.scss";
+@import "contact.scss";
+@import "drafts.scss";
+@import "errors.scss";
+@import "events.scss";
+@import "exhibitions.scss";
+@import "finding_aids.scss";
+@import "forms.scss";
+@import "groups.scss";
+@import "main.scss";
+@import "mini-pages.scss";
+@import "pages.scss";
+@import "persons.scss";
+@import "policies.scss";
+@import "services.scss";
+@import "spaces.scss";
+@import "videos.scss";
+
+// @import "font-awesome";
+
+.print-only {
+  display: none;
+}

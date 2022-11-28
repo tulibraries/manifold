@@ -2,11 +2,15 @@
 
 class ApplicationController < ActionController::Base
   include ServerErrors
-  before_action :failover
+  before_action :failover, :script_nonce
   before_action :get_alert, :covid_alert
   before_action :set_paper_trail_whodunnit
   before_action :locations, :set_dates, :set_location
   before_action :show_hours, :menu_items, unless: ->(c) { ["accounts/omniauth_callbacks", "devise/sessions"].include?(c.controller_path) }
+
+  rescue_from ActionController::Redirecting::UnsafeRedirectError do
+    redirect_to root_url
+  end
 
   def failover
     f = ApplicationFailover.all.first
@@ -105,6 +109,12 @@ class ApplicationController < ActionController::Base
         spaces: ["podiatry"]
       }
     ]
+  end
+
+  def script_nonce
+    if Rails.env.production?
+      @nonce = SecureRandom.base64(12)
+    end
   end
 
   protected

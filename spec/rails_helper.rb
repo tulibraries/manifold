@@ -14,9 +14,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 include Warden::Test::Helpers
 
-require "simplecov"
-SimpleCov.start
-
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -42,7 +39,7 @@ require "webmock/rspec"
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = Rails.root.join("/spec/fixtures")
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

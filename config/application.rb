@@ -12,7 +12,8 @@ module Tude
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.time_zone = "Eastern Time (US & Canada)"
-    config.load_defaults 6.0
+    config.load_defaults 7.0
+    config.active_storage.variant_processor = :mini_magick
     config.exceptions_app = self.routes
     config.active_storage.replace_on_assign_to_many = false
     config.action_view.sanitized_allowed_tags = ["div", "p", "h1", "h2", "h3", "h4", "h5", "h6",

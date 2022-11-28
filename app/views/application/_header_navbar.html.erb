@@ -1,68 +1,74 @@
-<div id="header-navbar" class="row navbar navbar-static-top d-print-block mx-0 px-0" role="navigation">
-  <div class="container-lg pl-0">
-    <div class="col-8 col-sm-7 col-lg-4 logo-container text-left">
+<div id="header">
+  <div id="header-top" class="container-xl">
+    
+    <div class="row d-print-block mx-0 px-0">
+      <div class="col-12 py-3 logo-container text-start">
       <%= link_to root_path, class: "header-name", id: "header-logo" do %>
         <%= image_tag('temple-logo-t-box.svg', class: "header-logo", alt: "") %> 
         <span><%= t("manifold.default.application.header_navbar.logo_tag") %></span>
       <% end %>
-    </div>
 
-  <% if action_name == "home" %>
-    <div id="todays-date" class="col-12 col-sm-5 col-lg-3 text-left d-print-none">
-      <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu", class: "pr-3" %>
-      <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
-      <div class="inner-date mt-2">
-        <%= render "todays_date" %>
+      <% if action_name == "home" %>
+        <div id="todays-date" class="d-inline w-25 float-end text-start d-print-none">
+          <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu", class: "pe-3" %>
+          <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
+          <div class="inner-date mt-2">
+            <%= render "todays_date" %>
+          </div>
+        </div>
+      <% else %>
+        <div id="header-search" class="d-none d-lg-inline float-end d-print-none">
+          <%= render @header_search if @header_search.present? %>
+        </div>
+      <% end %>
+
+      <div class="<% unless action_name == "home" %>d-md-inline float-end mt-4 pe-3 d-lg-none<% else %>d-none<% end %> text-end d-print-none">
+        <button id="mobile-search-button" class="navbar-toggler icon-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
+        <span class="navbar-toggler-icon" id="search-toggler-icon">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </span>
+      </button>
       </div>
-    </div>
-  <% else %>
-    <div id="header-search" class="col-12 col-sm-5 col-lg-5 d-none d-lg-block text-right d-print-none">
-      <%= render @header_search if @header_search.present? %>
-    </div>
-  <% end %>
-
-    <div class="col-3 <% unless action_name == "home" %>d-md-block d-lg-none<% else %>d-none<% end %> text-right d-print-none">
-      <button id="mobile-search-button" class="navbar-toggler icon-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
-      <span class="navbar-toggler-icon" id="search-toggler-icon">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </span>
-    </button>
     </div>
   </div>
 </div>
 
-<div id="wrapper">
-
-  <% unless @alert.blank? %>
-  <div id="header" class="row mx-0 mb-3">
-    <div class="container-xl">
-      <div class="col d-table">
-          <div class="d-table-cell" style="vertical-align:middle;">
-          <%= image_tag "information.png", class: "decorative", alt: "" %>
-          <% @alert.each do |alert| %>
-            <% unless alert.link.blank? %>
-              <%= alert.scroll_text %> <%= link_to t("manifold.default.application.header_navbar.scroll_text"), alert.link %>
-            <% else %>
-              <%= alert.scroll_text %>
+<div class="bg-dk-red">
+  <div id="wrapper" class="container-xl">
+    <% unless @alert.blank? %>
+    <div id="alert" class="row mx-0 mb-3">
+      <div class="container-xl">
+        <div class="col d-table">
+            <div class="d-table-cell" style="vertical-align:middle;">
+            <%= image_tag "information.png", class: "decorative", alt: "" %>
+            <% @alert.each do |alert| %>
+              <% unless alert.link.blank? %>
+                <%= alert.scroll_text %> <%= link_to t("manifold.default.application.header_navbar.scroll_text"), alert.link %>
+              <% else %>
+                <%= alert.scroll_text %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div> <!-- #header -->
-  <% end %>
+    
+    
+    <% end %>
 
-  <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
-    <%= render "main-menu" %>
-  </div>
+    <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
+      <%= render "main-menu" %>
+    </div>
 
-  <div class="row d-block d-sm-block d-md-block d-lg-none text-center" id="mobile-search-container">
-    <%= render @mobile_search if @mobile_search.present? %>
-  </div>
+    <div class="row d-block d-sm-block d-md-block d-lg-none text-center" id="mobile-search-container">
+      <%= render @mobile_search if @mobile_search.present? %>
+    </div>
 
-  <div class="row d-block d-sm-block d-md-block d-lg-none" id="mobile-nav">
-    <%= render "mobile-nav" %>
+    <div class="row d-block d-sm-block d-md-block d-lg-none" id="mobile-nav">
+      <%= render "mobile-nav" %>
+    </div>
   </div>
+</div>
 </div>

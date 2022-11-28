@@ -32,7 +32,7 @@
 
     </div>
 
-    <div class="col-5 text-left">
+    <div class="col-5 text-start">
 
       <% @building.get_hours.sort_by(&:date).each_with_index do |time,index| %> <!-- hours -->
       <% if @monday.to_date+index == @today.to_date %>

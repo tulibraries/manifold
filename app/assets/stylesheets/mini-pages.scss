@@ -23,19 +23,19 @@
     }
   }
   .banner-image.hsl {
-    background:asset-data-url('hsl-banner.jpg') 0 25% no-repeat;
+    background: url('hsl-banner.jpg') 0 25% no-repeat;
   }
   .banner-image.dsc {
-    background:asset-data-url('dsc-banner.jpg') 0 15% no-repeat;
+    background: url('dsc-banner.jpg') 0 15% no-repeat;
   }
   .banner-image.scop {
-    background:asset-data-url('scop-banner.jpg') 0 40% no-repeat;
+    background: url('scop-banner.jpg') 0 40% no-repeat;
   }
   .banner-image.scrc {
-    background:asset-data-url('scrc-banner.jpg') 0 70% no-repeat;
+    background: url('scrc-banner.jpg') 0 70% no-repeat;
   }
   .banner-image.blockson {
-    background:asset-data-url('blockson-banner.jpg') 0 66% no-repeat;
+    background: url('blockson-banner.jpg') 0 66% no-repeat;
     background-position: center 60%;
   }
 

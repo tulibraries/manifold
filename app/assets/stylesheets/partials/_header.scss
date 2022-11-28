@@ -3,8 +3,11 @@
 .flash.timedout {
   display:none;
 }
-
 #header {
+  background-color: $red;
+}
+
+#alert {
   color: #000;
   max-width: 100%;
   font-size: 1.25rem;
@@ -33,7 +36,7 @@
   }
 }
 
-#header-navbar {
+#header-top {
   padding-right: 0;
   background-color: $red;
   .col {

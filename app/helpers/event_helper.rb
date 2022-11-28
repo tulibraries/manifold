@@ -20,8 +20,8 @@ module EventHelper
 
   def current_link(type)
     type == "past_search" ?
-      (link_to "View current events & exhibits", events_path, class: "pr-4 current-events") :
-      (link_to "View past events & exhibits", past_events_path, class: "pr-4 past-events")
+      (link_to "View current events & exhibits", events_path, class: "pe-4 current-events") :
+      (link_to "View past events & exhibits", past_events_path, class: "pe-4 past-events")
   end
 
   def events_title(type)

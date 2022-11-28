@@ -3,15 +3,18 @@
   <head>
     <%= display_meta_tags site: t("manifold.default.site_title") %>
     <%= csrf_meta_tags %>
+
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-<%= @nonce %>' www.google-analytics.com ssl.google-analytics.com;img-src 'self' www.google-analytics.com ssl.google-analytics.com tulib-manifold-prod.s3.amazonaws.com;">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= yield :head %>
 
+    <%# analytics_init if GoogleAnalytics.valid_tracker? %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload", defer: true %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+    <%# stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body class="<%= yield (:body_class) %>">
 
@@ -19,7 +22,7 @@
     <div class="col-6">
       <h1>Temple University Libraries</h1>
     </div>
-    <div class="col-6 text-right">
+    <div class="col-6 text-end">
       <%= request.url %>
     </div>
   </div>

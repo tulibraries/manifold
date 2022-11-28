@@ -1,7 +1,7 @@
 <div class="row events">
 <% @events_list.each do |event| %>
   <div class="col-12 col-md-4 col-lg-6 event">
-    <div class="row mb-4 pr-2">
+    <div class="row mb-4 pe-2">
       <div class="col-12 col-lg-4 mb-3">
       <% if event.image.attached? %>
         <%= link_to (image_tag event.index_image, class: "decorative", alt: ""), event_path(event.id) %>
@@ -35,7 +35,7 @@
 </h3>
 <% end %>
 
-  <div class="col-12 text-right paginator">
+  <div class="col-12 text-end paginator">
     <%= paginate @events_list, :params => { anchor: "list" } if @events_list.present? %>
   </div>
 

@@ -19,6 +19,8 @@ class SyncService::Blogs
     # can specify just a file path or feed_path
     @feed_uri =  params[:blog].feed_path
     # if URI, prepend the base url
+    @log = Logger.new("log/sync-blogs.log")
+    @stdout = Logger.new(STDOUT)
     @feed_uri = "#{params[:blog].base_url}#{@feed_uri}" if params[:blog].base_url
     @blog_id = params[:blog].id
   end
@@ -32,7 +34,9 @@ class SyncService::Blogs
   end
 
   def read_blog_posts
-    blog_feed = Nokogiri::XML(URI.open(@feed_uri, { read_timeout: Rails.configuration.sync_timeout }))
+    # blog_feed = Nokogiri::XML(URI.open(@feed_uri, { read_timeout: Rails.configuration.sync_timeout }))
+    # ruby 3.1.2 -- options hash no longer works: "no implicit conversion of Hash into String"
+    blog_feed = Nokogiri::XML(URI.open(@feed_uri))
     blog_feed.xpath("//channel/item").map do |blog_post|
       blog_post_xml = blog_post.to_xml
       blog_post_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\">" + blog_post.to_xml + "</xml>"
@@ -81,5 +85,10 @@ class SyncService::Blogs
     blog = Blog.find(@blog_id)
     blog.last_sync_date = DateTime.now
     blog.save!
+  end
+
+  def stdout_and_log(message, level: :info)
+    # @log.send(level, message)
+    @stdout.send(level, message)
   end
 end

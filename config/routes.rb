@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     get "image/large",     to: "images#large_image"
   end
 
-
   devise_for :accounts, controllers: { omniauth_callbacks: "accounts/omniauth_callbacks" }
 
   namespace :admin do
@@ -149,6 +148,9 @@ Rails.application.routes.draw do
   end
 
   get "/scrc-reading-room" => redirect("spaces/scrc-reading-room"), as: "scrc_reading_room"
+
+  get '/alerts.json', to: redirect('assets/alerts.json')
+
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all

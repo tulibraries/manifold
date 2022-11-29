@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby "3.1.2"
+ruby "3.1.0"
 
 gem "rails", "~> 7.0.4"
 gem "timecop"
@@ -61,7 +61,7 @@ gem "cssbundling-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "mini_magick"
-gem "sprockets-rails", "~> 2.3.3"
+gem "propshaft"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

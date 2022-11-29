@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative "boot"
 
 require "rails/all"
@@ -8,14 +6,13 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Tude
+module Sevena
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.time_zone = "Eastern Time (US & Canada)"
     config.load_defaults 7.0
     config.active_storage.variant_processor = :mini_magick
     config.exceptions_app = self.routes
-    config.active_storage.replace_on_assign_to_many = false
+    config.active_storage.replace_on_assign_to_many = true
     config.action_view.sanitized_allowed_tags = ["div", "p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ul", "ol", "li", "dl", "dt", "dd", "address", "hr", "pre", "blockquote", "center",
         "a", "span", "bdo", "br", "em", "strong", "dfn", "code", "samp", "cite", "basefont",

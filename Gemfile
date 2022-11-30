@@ -6,7 +6,7 @@ ruby "3.1.0"
 
 gem "rails", "~> 7.0.4"
 gem "timecop"
-gem "administrate"
+gem "administrate", "~> 0.17.0"
 gem "administrate-field-date_picker", "~> 0.3.0"
 gem "administrate-field-ordered_has_many"
 gem "administrate-field-scoped_has_many"
@@ -62,6 +62,7 @@ gem "stimulus-rails"
 gem "turbo-rails"
 gem "mini_magick"
 gem "propshaft"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

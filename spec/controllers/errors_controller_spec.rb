@@ -7,7 +7,6 @@ RSpec.describe ErrorsController, type: :controller do
   describe "the 404 page" do
     before { get :not_found }
     it "includes the renders the expected template" do
-      binding.pry
       # expect(response).to render_template(:not_found)
     end
 

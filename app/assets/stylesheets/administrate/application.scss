@@ -2,7 +2,8 @@
 
 @import "reset/normalize";
 
-@import "selectize";
+@import "selectize/dist/css/selectize";
+@import "selectize/dist/css/selectize.default";
 // @import "datetime_picker";
 
 @import "library/action-text";
@@ -31,8 +32,7 @@
 
 @import "utilities/text-color";
 
-@import "drafts";
-
+@import "trix/dist/trix";
 @import "richtext";
 
 .field-unit--description-field {

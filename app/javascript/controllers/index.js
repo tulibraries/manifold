@@ -10,8 +10,5 @@ application.register("desk-exam", DeskExamController)
 import ExternalLinksController from "./external_links_controller"
 application.register("external-links", ExternalLinksController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
 import SelectizeController from "./selectize_controller"
 application.register("selectize", SelectizeController)

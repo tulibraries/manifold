@@ -9,7 +9,7 @@ RSpec.shared_examples "email form" do
 
   let(:the_email) { ActionMailer::Base.deliveries.first }
   let(:title) { I18n.t("manifold.forms.#{form_type.underscore}.title") }
-  let(:params) {{
+  let(:params) { {
         form_type: form_type,
         name: "test",
         email: "test@example.com"

@@ -59,7 +59,7 @@ module Admin
     private
 
       def create_json_file
-        Alert.publish_json("public/assets/alerts.json")
+        Alert.publish_json(File.open("public/assets/alerts.json", "w"))
       end
   end
 end

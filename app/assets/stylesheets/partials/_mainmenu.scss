@@ -70,6 +70,7 @@
 
   .dropdown-menu {
     margin-top: 0;
+    border-radius: 0!important;
   }
   ul {
     width: auto;
@@ -179,7 +180,10 @@ a.multiples.active {
 }
 
 #about-links, #research-links, #visit-links {
+  position: absolute;
   width: 1200px;
+  top: 46px;
+  // left: 0;
   ul {
     margin-bottom: 10px!important;
   }
@@ -193,4 +197,13 @@ a.multiples.active {
       font-size: larger;
     }
   }
+}
+
+#contactMenuButton::after {
+  display: none;
+}
+
+#contactMenuButton {
+  cursor: pointer !important;
+  pointer-events: visible;
 }

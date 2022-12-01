@@ -16,7 +16,7 @@
     <%# stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body class="<%= yield (:body_class) %>">
+  <body class="<%= yield (:body_class) %>" data-controller="jumble">
 
   <div class="row d-none d-print-flex">
     <div class="col-6">

@@ -59,8 +59,7 @@ module Admin
     private
 
       def create_json_file
-        published_alerts = Alert.where(published: true)
-        File.open("public/assets/alerts.json", "w") { |file| file.write(AlertSerializer.new(published_alerts).serializable_hash.to_json) }
+        Alert.publish_json("public/assets/alerts.json")
       end
   end
 end

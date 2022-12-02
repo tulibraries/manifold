@@ -23,7 +23,7 @@
       <% end %>
 
       <div class="<% unless action_name == "home" %>d-md-inline float-end mt-4 pe-3 d-lg-none<% else %>d-none<% end %> text-end d-print-none">
-        <button id="mobile-search-button" class="navbar-toggler icon-toggler" type="button" data-toggle="collapse" data-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
+        <button id="mobile-search-button" class="navbar-toggler icon-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobile-search" aria-controls="mobile-search" aria-expanded="false" aria-label="Toggle search form">
         <span class="navbar-toggler-icon" id="search-toggler-icon">
           <div class="bar1"></div>
           <div class="bar2"></div>
@@ -55,18 +55,17 @@
       </div>
     </div>
     
-    
     <% end %>
 
-    <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
+    <div class="row d-none d-lg-block" id="main-menu">
       <%= render "main-menu" %>
     </div>
 
-    <div class="row d-block d-sm-block d-md-block d-lg-none text-center" id="mobile-search-container">
+    <div class="row d-block d-lg-none text-center" id="mobile-search-container">
       <%= render @mobile_search if @mobile_search.present? %>
     </div>
 
-    <div class="row d-block d-sm-block d-md-block d-lg-none" id="mobile-nav">
+    <div class="row d-block d-lg-none" id="mobile-nav">
       <%= render "mobile-nav" %>
     </div>
   </div>

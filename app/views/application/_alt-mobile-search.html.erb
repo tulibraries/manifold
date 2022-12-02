@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
 
-  <div class="collapse navbar-collapse" id="mobile-search">
+  <div class="collapse navbar-collapse" id="mobile-search" data-controller="failover">
     <div class="navbar-nav">
-      <form action=<%= t("manifold.default.alternate_search_url") %> class="mobile" id="<%= @search_mode %>global-mobile-search-form">
+      <form action=<%= t("manifold.default.alternate_search_url") %> class="mobile" id="<%= @search_mode %>global-mobile-search-form" data-failover-target="form">
         <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
-        <input type="text" name="query" id="librarySearch" class="mobile" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
-        <input type="submit" class="mobile" value = "" aria-label="submit search query">
+        <input type="text" name="query" id="librarySearch" class="mobile" data-failover-target="thequery" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
+        <input type="submit" class="mobile" value = "" data-action="click->failover#updatequery" aria-label="submit search query">
         <input type="hidden" name="tab" id="tab" value="default_tab">
         <input type="hidden" name="search_scope" id="search_scope" value="default_scope">
         <input type="hidden" name="vid" id="vid" value="TULI">

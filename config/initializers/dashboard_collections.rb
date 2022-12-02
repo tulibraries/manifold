@@ -133,6 +133,7 @@ module Tude
                             "LGBT Studies",
                             "Mathematics",
                             "Mechanical Engineering",
+                            "Media & Communication",
                             "Media Studies & Production",
                             "Medicine",
                             "Music",

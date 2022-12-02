@@ -90,7 +90,7 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails", ">=3.8.0"
-  gem "selenium-webdriver", "~> 4.6.1"
+  gem "selenium-webdriver", "~> 4.7.0"
   gem "simplecov"
   gem "simplecov-lcov"
   gem "webmock"

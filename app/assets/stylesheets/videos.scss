@@ -10,9 +10,11 @@
 		height: 100%;
 	}
 	#featuredTitle {
+    text-align: center;
 		color: $white;
 		background-color: $black;
 		width: 100%;
+    max-width: 100%;
 		padding: 10px;
 		border-right: solid $white 1px;
 	}

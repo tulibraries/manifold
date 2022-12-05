@@ -15,16 +15,16 @@
 
 $grid-breakpoints: (
   xs: 0,
-  sm: 650px,
-  md: 767px,
-  lg: 1040px,
-  xl: 1440px
+  sm: 720px,
+  md: 968px,
+  lg: 1190px,
+  xl: 1401px
 );
 
 $container-max-widths: (
   sm: 750px,
   md: 1040px,
-  lg: 1200px,
+  lg: 1400px,
   xl: 1600px
 );
 
@@ -43,6 +43,7 @@ $sizes: map-merge(
     30: 30%,
     50: 50%,
     75: 75%,
+    80: 80%,
     100: 100%,
     auto: auto
   ),

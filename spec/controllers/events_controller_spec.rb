@@ -16,6 +16,9 @@ RSpec.describe EventsController, type: :controller do
   let(:current_event) {
     FactoryBot.create(:event, start_time: DateTime.tomorrow, end_time: DateTime.tomorrow + 1, event_type: "workshop")
   }
+  let(:future_event) {
+    FactoryBot.create(:event, start_time: Date.current, end_time: Date.current + 1, tags: "digital scholarship", title: "DSS Event")
+  }
   let(:past_workshop) {
     FactoryBot.create(:event, start_time: DateTime.yesterday, end_time: DateTime.yesterday, event_type: "workshop")
   }
@@ -62,6 +65,13 @@ RSpec.describe EventsController, type: :controller do
       expect(response.body).to_not include event.title
     end
 
+    it "returns tag-based search results" do
+      @all_current_events = [current_event, future_event]
+      post :search, params: { search: "digital scholarship" }
+      expect(response.body).to include future_event.title
+      expect(response.body).to_not include current_event.title
+    end
+
     it "returns past search results" do
       post :past_search, params: { search: event.title }
       expect(response.body).to include event.title
@@ -92,6 +102,13 @@ RSpec.describe EventsController, type: :controller do
       @all_past_events = [past_workshop]
       get :past, params: { type: "workshop" }
       expect(response.body).to include past_workshop.title
+    end
+
+    it "returns dss events" do
+      @all_current_events = [current_event, future_event]
+      get :dss_events
+      expect(response.body).to include future_event.title
+      expect(response.body).to_not include current_event.title
     end
   end
 

@@ -4,7 +4,7 @@
 
 @import "partials/_vars.scss";
 
-.container.exhibit-show {
+.container-lg.exhibit-show {
 	margin-top: 35px;
 	h1.page-title {
 		@media(max-width:1039px) {
@@ -19,7 +19,6 @@
 		margin-bottom: 17px;
 		a {
 			color: $white;
-			text-decoration: underline;
 			font-family: "Roboto Bold";
 		}
 		h2 {
@@ -59,7 +58,6 @@
 		margin-bottom: 17px;
 		a {
 			color: $white;
-			text-decoration: underline;
 			font-family: "Roboto Bold";
 		}
 		h2 {

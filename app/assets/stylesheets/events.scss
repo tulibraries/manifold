@@ -269,6 +269,9 @@
   border: solid $royal-blue 2px;
   font-size: 1.15rem;
   font-family: "Roboto Light";
+  min-height: 364px;
+  max-height: 364px;
+  overflow: hidden;
   a {
     color: $royal-blue !important;
   }
@@ -342,7 +345,7 @@
   background-color: white;
   border-radius: 4px;
 }
-#events {
+#current-events, #past-events {
   h2.current-events, h2.past-events {
     font-size: 2rem;
   }

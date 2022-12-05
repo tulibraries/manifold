@@ -1,4 +1,4 @@
-<div class="container mt-3" id="videos-index">
+<div class="container-lg mt-3" id="videos-index">
 
   <div class="row backlink">
     <div class="col">
@@ -7,16 +7,16 @@
   </div>
 
   <div class="row mt-5">
-    <div class="col-lg-10 offset-lg-1">
-      <iframe src=<%= "https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=#{ @video[:Id] }&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" %> height="640px" width="100%" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
+    <div class="col-lg-10 offset-lg-1 px-5">
+      <iframe src=<%= "https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=#{ @video[:Id] }&autoplay=false&offerviewer=false&showtitle=false&showbrand=false&captions=false&interactivity=none" %> height="640px" width="100%" style="border: 1px solid #464646;" allowfullscreen allow="autoplay"></iframe>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1 text-center">
-      <div id="featuredTitle" class="text-center"><%= @video[:Name] %></div>
-    </div>
-  </div>
+<div class="row">
+	<div class="col-lg-10 offset-lg-1 px-5">
+		<div id="featuredTitle" class="m-auto"><%= @video[:Name] %></div>
+	</div>
+</div>
 
   <% if @video[:Description].present? %>
   <div class="row">

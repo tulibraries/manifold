@@ -283,7 +283,7 @@ en:
                                     <main class="page-content" aria-label="Content">
                                     <div class="wrapper">
                                     <article class="post text-center">
-                                    <a href="https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flibrary.temple.edu">Chat with a librarian</a>
+                                    <a href="https://answers.library.temple.edu/chat/widget/62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flibrary.temple.edu">Chat with a librarian</a>
                                     <div class="post-content">
                                     <div class="home">
                                     <div style="font-family:arial, sans;">
@@ -490,10 +490,7 @@ en:
         submit: Send Request
       index: 
         title: Request Forms
-        intro_html: >-
-                    <p align="center">Use of these forms is intended for and restricted to members of the Temple 
-                    University Community</p>
-                    <p><a href="/contact-us">Library Suggestions/Feedback</a></p>
+        intro: Use of these forms is intended for and restricted to members of the Temple University Community
         temple_materials: 
           label: Temple-owned materials
           missing_book: Missing Book Search Request

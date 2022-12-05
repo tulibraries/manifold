@@ -70,10 +70,7 @@ class WebpagesController < ApplicationController
 
     get_video_categories.each do |category|
       get_videos = panopto_api_call(["playlists", "sessions"], category[2])
-      stdout_and_log("token: #{@access_token} ")
-      stdout_and_log(" api call: #{get_videos} ")
       get_videos[:Results].each do |video|
-        stdout_and_log("************ #{category[1]}: #{video[:Name]} **************")
         @all << video
         case category[1]
         when "Recent Videos"
@@ -208,7 +205,7 @@ class WebpagesController < ApplicationController
     @webpage = Webpage.find_by(slug: "lcdss-intro")
     @visit_links =  Category.find_by(slug: "lcdss-study").items || nil
     @research_links = Category.find_by(slug: "lcdss-research").items || nil
-    @event_links = Event.where(["tags LIKE ? and end_time >= ?", "%Digital Scholarship%", Time.zone.now]).order(:start_time).take(5)
+    @event_links = Event.is_current.where("lower(tags) LIKE ?", "%digital scholarship%").order(:start_time).take(5)
     @blog = Blog.find_by(slug: "lcdss-blog")
     @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
   end

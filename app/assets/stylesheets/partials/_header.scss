@@ -11,17 +11,17 @@
   font-family: "Roboto";
   img {
     display: inline-block;
-    height: 42px;
+    height: 32px;
     float: left;
     margin-right: 10px;
   }
-  .container-lg {
+  .container-xl {
     background-color: #F8EBD5;
     padding: 17px;
-    height: auto;
-    vertical-align: middle;
-    a {
-      text-decoration: underline;
+    p {
+      a {
+        text-decoration: underline;
+      }
     }
   }
 }

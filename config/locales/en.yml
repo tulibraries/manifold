@@ -444,7 +444,7 @@ en:
           none: "- none -"
         featured_events: Featured Events
         event_types: Event Types
-        no_event_types: No events for
+        no_event_types: No events found.
         calendar: Calendar
         upcoming_events: Upcoming Events
         events: Events

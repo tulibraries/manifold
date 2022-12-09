@@ -14,7 +14,7 @@ gem "ancestry"
 gem "attr_json"
 gem "auto_strip_attributes"
 gem "aws-sdk-s3"
-gem "bootsnap", "~> 1.14.0", require: false
+gem "bootsnap", "~> 1.13.0", require: false
 gem "bootstrap"
 gem "browser"
 gem "cancancan", "~> 3.4"

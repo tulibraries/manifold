@@ -33,14 +33,14 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: cimg/ruby:3.1.2
+      - image: cimg/ruby:3.1.2-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
         environment:
           TZ: "America/New_York"
 
-      - image: cimg/postgres:13.8
+      - image: cimg/postgres:15.0.0
         environment:
           TZ: "America/New_York"
     resource_class: small

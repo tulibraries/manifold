@@ -18,7 +18,7 @@
 }
 
 .contact-us-options {
-  background-image: asset-data-url('/white-bar.png');
+  background-image: url('/white-bar.png');
   background-size: 1600px 950px;
   background-repeat: no-repeat;
   .contact-us-grid {
@@ -27,7 +27,7 @@
       border: solid $new-gold 4px;
       padding: 21px;
       .charles-image {
-        background-image: asset-data-url('/charles-square.jpg');
+        background-image: url('/charles-square.jpg');
         height: 100%;
         background-size: cover;
         background-repeat: no-repeat;

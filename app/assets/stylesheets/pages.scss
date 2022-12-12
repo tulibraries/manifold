@@ -43,7 +43,7 @@
       position: relative;
       top: 13px;
       background-color: $foamgreen;
-      background-image: asset-data-url('/search.png');
+      background-image: url('/search.png');
       background-position: center center;
       background-repeat: no-repeat;
       background-size: 42px 42px;
@@ -99,7 +99,7 @@
     }
   }
   #searchFields {
-    background: transparent asset-data-url('/charles.jpg') no-repeat 0% 0%;
+    background: transparent url('/charles.jpg') no-repeat 0% 0%;
     background-position: 0 50%;
     position: relative;
     width: 100%;
@@ -126,7 +126,7 @@
       height: 60px;
       width: 60px;
       background-color: $royal-blue;
-      background-image: asset-data-url('/search.png');
+      background-image: url('/search.png');
       background-position: center center;
       background-repeat: no-repeat;
       background-size: 42px 42px;

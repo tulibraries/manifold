@@ -5,7 +5,7 @@ module Imageable
 
   included do
     has_one_attached :image, dependent: :destroy
-    validates :image, content_type: { in: ["image/png", "image/jpg", "image/jpeg", "image/gif"],
+    validates :image, content_type: { in: ["image/png", "image/jpeg", "image/gif"],
                                       message: I18n.t("manifold.error.content_type_invalid_image") },
                       size: { less_than: I18n.t("manifold.default.image_file_size_limit").kilobyte ,
                               message: I18n.t("manifold.error.file_size_out_of_range_image") }

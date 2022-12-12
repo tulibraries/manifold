@@ -38,6 +38,7 @@ $sizes: map-merge(
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import "selectize.bootstrap5.scss";
 
 @import "partials/_categories.scss";
 @import "partials/_filter-tags.scss";
@@ -76,9 +77,10 @@ $sizes: map-merge(
 @import "services.scss";
 @import "spaces.scss";
 @import "videos.scss";
+@import 'actiontext.css';
 
 // @import "font-awesome";
 
 .print-only {
   display: none;
-}@import 'actiontext.css';
+}

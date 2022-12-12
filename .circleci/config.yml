@@ -2,6 +2,8 @@ version: 2.1
 
 orbs:
   coveralls: coveralls/coveralls@1.0.6
+  ruby: circleci/ruby@2.0.0
+  node: circleci/node@5.0.2
 
 workflows:
   run_tests:
@@ -33,14 +35,14 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: cimg/ruby:2.7.6-node
+      - image: cimg/ruby:3.1.2-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
         environment:
           TZ: "America/New_York"
 
-      - image: cimg/postgres:13.4
+      - image: cimg/postgres:14.5
         environment:
           TZ: "America/New_York"
     resource_class: small
@@ -50,13 +52,13 @@ jobs:
           name: make sure we have the latest bundler
           command: |
             sudo gem update --system
-            gem install -f bundler:2.1.4
+            gem install -f bundler:2.3.26
 
       - restore_cache:
           keys:
-            - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v1-{{ arch }}-{{ .Branch }}
-            - gem-cache-v1
+            - gem-cache-v2-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v2-{{ arch }}-{{ .Branch }}
+            - gem-cache-v2
 
       - run:
           name: bundle install w/ dependent libs
@@ -67,7 +69,7 @@ jobs:
             bundle install --path vendor/bundle
       
       - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v2-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
 

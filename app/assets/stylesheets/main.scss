@@ -11,24 +11,13 @@ html, body {
   font-family: "Roboto";
   color: $black;
 }
-#wrapper {
-  background-color: $red;
-  position: relative;
-  z-index: 100;
-  padding-top: 21px;
-}
+
 h1 {
   margin-top:14px;
   font-size: 220%;
   margin-bottom: 21px;
   font-family: "Faustina";
   font-weight: 800;
-}
-h1.page-title {
-  margin-top: 0;
-  @media (max-width: 1039px) {
-    margin-top: 14px;
-  }
 }
 h2 {
   font-size: 160%;
@@ -58,6 +47,9 @@ strong, .strong {
   }
 }
 
+a {
+  text-decoration: none;
+}
 a:not(.dropdown-item) {
     color: $red;
   a:active, a:hover, a:visited {
@@ -196,6 +188,12 @@ marquee {
 .bl-red {
   border-left: solid $red 3px;
   padding-left: 10px;
+}
+.bg-red {
+  background-color: $red;
+}
+.bg-dk-red {
+  background-color: $dark-red;
 }
 .faustina {
   font-family: faustina !important;

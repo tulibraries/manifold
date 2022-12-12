@@ -52,7 +52,7 @@ RSpec.describe Person, type: :model do
       end
       example "invalid email - blank " do
         person.email_address = ""
-        expect { person.save! }.to raise_error(/Email address can't be blank/)
+        expect { person.save! }.to raise_error(/Email address is not an email/)
       end
     end
   end

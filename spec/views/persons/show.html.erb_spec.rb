@@ -19,7 +19,7 @@ RSpec.describe "persons/show", type: :view do
 
   it "displays the default image when no custom image supplied" do
     render
-    expect(rendered).to match /#{"assets/T-"}/
+    expect(rendered).to match /#{"assets/T"}/
   end
 
   it "returns a Make an Appointment link if springshare_id field populated" do

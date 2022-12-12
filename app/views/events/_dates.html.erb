@@ -1,12 +1,12 @@
 <% unless action_name == "past" || action_name == "past_search" %>
-<%= link_to "- clear date -", events_path(anchor: "list"), class: "d-block py-3 pl-2" %>
+<%= link_to "- clear date -", events_path(anchor: "list"), class: "d-block py-3 ps-2" %>
   <%= form_tag events_path(anchor: "list"), id: "event-date", method: "get" do %>
     <%= date_field_tag "date", Time.zone.today, id: "date", name: "date", 
                                 min: Time.zone.today, max: 2.years.from_now %>
     <%= submit_tag "Go", class: "ml-2" %>
   <% end %>
 <% else %>
-<%= link_to "- clear date -", past_events_path(anchor: "list"), class: "d-block py-3 pl-2" %>
+<%= link_to "- clear date -", past_events_path(anchor: "list"), class: "d-block py-3 ps-2" %>
   <%= form_tag past_events_path(anchor: "list"), id: "event-date", class: "w-100", method: "get" do %>
     <%= date_field_tag "date", Time.zone.yesterday, id: "date", name: "date", 
                                 min: 2.years.ago, max: Time.zone.yesterday %>

@@ -10,10 +10,14 @@ module RedirectLogic
         message =
         "#{request.host}#{legacy_path} #{t('manifold.redirects.moved_permanently')}"
       end
-      redirect_to(url_for(redirect.path),
-                  status: :moved_permanently,
-                  notice: message
-                  )
+      if is_external_url?(redirect.path)
+        redirect_to(redirect.path, allow_other_host: true)
+      else
+        redirect_to(url_for(redirect.path),
+                    status: :moved_permanently,
+                    notice: message
+                    )
+      end
     else
       if Rails.application.routes.recognize_path(legacy_path)
         if instance
@@ -29,5 +33,9 @@ module RedirectLogic
 
   def legacy_path
     request.fullpath
+  end
+
+  def is_external_url?(url)
+    true if url.is_a?(String) && url.include?("http")
   end
 end

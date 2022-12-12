@@ -5,6 +5,10 @@
   text-align: right;
   padding-right: 10px;
   padding-left: 0;
+  width: 35%;
+  @media screen and (min-width: 0px) and (max-width: 1314px) {
+    width: 35%;
+  }
   .fa.fa-search {
     display: none;
   }
@@ -14,7 +18,7 @@
       color: $white;
     }
     ul {
-      margin-left: 2rem;
+      margin-left: 0;
       margin-top: .65rem;
       li {
         color: $white;
@@ -53,7 +57,7 @@
       position: relative;
       top: 7px;
       background-color: $foamgreen;
-      background-image:asset-data-url('search.png');
+      background-image: url('/search.png');
       background-position: center center;
       background-repeat: no-repeat;
       background-size: 42px 42px;

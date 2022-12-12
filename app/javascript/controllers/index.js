@@ -2,13 +2,21 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+// import { application } from "./application"
 
-import DeskExamController from "./desk_exam_controller"
-application.register("desk-exam", DeskExamController)
+// import DeskExamController from "./desk_exam_controller"
+// application.register("desk-exam", DeskExamController)
 
-import ExternalLinksController from "./external_links_controller"
-application.register("external-links", ExternalLinksController)
+// import ExternalLinksController from "./external_links_controller"
+// application.register("external-links", ExternalLinksController)
 
-import SelectizeController from "./selectize_controller"
-application.register("selectize", SelectizeController)
+// import SelectizeController from "./selectize_controller"
+// application.register("selectize", SelectizeController)
+
+import { Application } from "@hotwired/stimulus"
+const application = Application.start()
+
+import controllers from "./**/*_controller.js"
+controllers.forEach((controller) => {
+  application.register(controller.name, controller.module.default)
+})

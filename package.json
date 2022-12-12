@@ -3,6 +3,7 @@
   "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.0",
+    "@hotwired/turbo": "^7.2.4",
     "@hotwired/turbo-rails": "^7.2.4",
     "@popperjs/core": "^2.11.6",
     "@rails/actiontext": "^7.0.4",
@@ -13,7 +14,7 @@
     "sass": "^1.56.1",
     "selectize": "^0.12.6",
     "selectize.js": "^0.12.12",
-    "trix": "^2.0.1"
+    "trix": "^2.0.3"
   },
   "scripts": {
     "build": "node esbuild.config.js",

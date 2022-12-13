@@ -2,8 +2,6 @@ version: 2.1
 
 orbs:
   coveralls: coveralls/coveralls@1.0.6
-  ruby: circleci/ruby@2.0.0
-  node: circleci/node@5.0.2
 
 workflows:
   run_tests:

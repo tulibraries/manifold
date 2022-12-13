@@ -1,3 +1,5 @@
+//= require trix
+
 @charset "utf-8";
 
 @import "reset/normalize";
@@ -30,7 +32,6 @@
 
 @import "utilities/text-color";
 
-@import "trix";
 @import "richtext";
 
 .field-unit--description-field {

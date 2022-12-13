@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import DeskExamController from "./desk_exam_controller"
-application.register("desk-exam", DeskExamController)
-
 import ExternalLinksController from "./external_links_controller"
 application.register("external-links", ExternalLinksController)
 

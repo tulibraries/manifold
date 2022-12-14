@@ -274,7 +274,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
-    json (2.6.2)
+    json (2.6.3)
     json-canonicalization (0.3.1)
     json-ld (3.2.3)
       htmlentities (~> 4.3)
@@ -515,7 +515,7 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
-    rubocop-rspec (2.15.0)
+    rubocop-rspec (2.16.0)
       rubocop (~> 1.33)
     ruby-graphviz (1.2.5)
       rexml

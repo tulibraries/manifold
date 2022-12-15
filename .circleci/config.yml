@@ -108,7 +108,7 @@ jobs:
               bundle exec rspec
 
       - coveralls/upload:
-          path_to_lcov: ./app.lcov
+          path_to_lcov: ./coverage/lcov/app.lcov
 
   qa_deploy:
     docker:

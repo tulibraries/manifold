@@ -1,6 +1,6 @@
 trix-toolbar {
-  .trix-button--icon-horizontal-rule::before { background-image: url("/trix_horizontal_rule.svg"); }
-  .trix-button--icon-color::before { background-image: url("/trix_color.svg"); }
+  .trix-button--icon-horizontal-rule::before { background-image: url("trix_horizontal_rule.svg"); }
+  .trix-button--icon-color::before { background-image: url("trix_color.svg"); }
 
   .trix-dialog--heading { max-width: 200px; }
 

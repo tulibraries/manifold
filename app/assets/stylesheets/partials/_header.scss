@@ -12,20 +12,19 @@
   max-width: 100%;
   font-size: 1.25rem;
   font-family: "Roboto";
+  background-color: #F8EBD5;
+  padding: 17px;
+  margin-bottom: 10px;
+  p {
+    a {
+      text-decoration: underline;
+    }
+  }
   img {
     display: inline-block;
     height: 32px;
     float: left;
     margin-right: 10px;
-  }
-  .container-xl {
-    background-color: #F8EBD5;
-    padding: 17px;
-    p {
-      a {
-        text-decoration: underline;
-      }
-    }
   }
 }
 

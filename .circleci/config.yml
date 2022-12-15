@@ -4,6 +4,7 @@ orbs:
   coveralls: coveralls/coveralls@1.0.6
 
 workflows:
+  version: 2
   run_tests:
     jobs:
       - run_tests
@@ -33,7 +34,7 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: cimg/ruby:3.1.3-node
+      - image: cimg/ruby:3.1.0-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -107,7 +108,7 @@ jobs:
               bundle exec rspec
 
       - coveralls/upload:
-          path_to_lcov: ./coverage/lcov/app.lcov
+          path_to_lcov: ./app.lcov
 
   qa_deploy:
     docker:

@@ -56,3 +56,6 @@ yarn-debug.log*
 .DS_Store
 /spec/.DS_Store
 /public/alerts.json
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

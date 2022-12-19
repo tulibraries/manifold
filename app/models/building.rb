@@ -17,12 +17,6 @@ class Building < ApplicationRecord
   validates :name, :address1, :address2, :coordinates, :google_id, presence: true
   validates :phone_number, presence: true, phone_number: true
 
-  # validates_each :intro do |record, attribute, value|
-  #   if value.blank? || value.strip == "<br/>"
-  #     model.errors.add( attribute, :blank )
-  #   end
-  # end
-
   belongs_to :external_link, optional: true
   has_many :spaces, dependent: :destroy
   has_paper_trail

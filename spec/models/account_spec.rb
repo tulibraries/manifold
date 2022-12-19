@@ -13,11 +13,11 @@ RSpec.describe Account, type: :model do
       end
       example "invalid email" do
         account.email = "abc"
-        expect { account.save! }.to raise_error(email_error)
+        expect { account.save! }.to raise_error(/Email is not an email/)
       end
       example "invalid email - blank " do
         account.email = ""
-        expect { account.save! }.to raise_error(email_error)
+        expect { account.save! }.to raise_error(/Email is not an email/)
       end
       example "non TU access ID" do
         account.email = "stella@temple.edu"

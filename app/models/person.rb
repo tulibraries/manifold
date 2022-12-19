@@ -77,6 +77,7 @@ class Person < ApplicationRecord
     if q
       Person.where("lower(last_name) LIKE ?", "%#{q}%".downcase)
             .or(Person.where("lower(first_name) LIKE ?", "%#{q}%".downcase))
+            .or(Person.where("lower(concat_ws(' ', first_name, last_name)) LIKE ?", "%#{q}%".downcase))
             .or(Person.where("lower(job_title) LIKE ?", "%#{q}%".downcase))
             .order(:last_name, :first_name)
     end

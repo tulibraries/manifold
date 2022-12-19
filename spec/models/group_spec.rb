@@ -6,14 +6,11 @@ RSpec.describe Group, type: :model do
 
   context "Group Class Attributes" do
     subject { Group.new.attributes.keys }
-
     it { is_expected.to include("name") }
-
   end
 
   context "Group Class Rich Text Attribute" do
     subject { Group.new }
-
     it { is_expected.to respond_to(:description) }
   end
 
@@ -98,7 +95,7 @@ RSpec.describe Group, type: :model do
       end
       example "invalid group type" do
         group.group_type = "not a group"
-        expect { group.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_group_type')}/)
+        expect { group.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Group type is not a valid group type")
       end
       example "invalid group type - blank " do
         group.group_type = ""

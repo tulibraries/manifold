@@ -1,4 +1,0 @@
-
-
-ignored_endpoints:
-  - OkComputer::OkComputerController#show

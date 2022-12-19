@@ -17,7 +17,7 @@
 </div>
 
 <div class="row">
-  <div class="col-12 col-lg-4 pr-14 left-links">
+  <div class="col-12 col-lg-4 pe-14 left-links">
     <ul class="locations list-unstyled">
       <li>
         <%= link_to t("manifold.webpages.tudsc.locations.makerspace_label"), 
@@ -91,7 +91,7 @@
     <% if @event_links.present? %>
       <h2>
         <%= link_to t("manifold.webpages.tudsc.links.events"), 
-                    events_path(type: t("manifold.webpages.tudsc.links.events_type")),
+                    events_path(type: t("manifold.webpages.tudsc.links.events_type"), anchor: "upcoming-events"),
                     id: "lcdss_events_header" %>
       </h2>
       <ul class="list-unstyled mb-5">

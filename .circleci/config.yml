@@ -91,6 +91,11 @@ jobs:
             sudo apt-get -y install imagemagick
 
       - run:
+          name: Precompile assets
+          command: |
+            rails assets:precompile
+
+      - run:
           name: Ruby Lint
           command: bundle exec rubocop
 

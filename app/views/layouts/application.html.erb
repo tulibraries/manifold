@@ -11,7 +11,7 @@
     <%= stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+    <%# analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
   <body class="<%= yield (:body_class) %>">
 

@@ -91,14 +91,8 @@ jobs:
             sudo apt-get -y install imagemagick
 
       - run:
-          name: Precompile assets
-          command: |
-            rails assets:precompile
-
-      - run:
           name: Ruby Lint
           command: bundle exec rubocop
-
       - run:
           name: Brakeman
           command: bundle exec brakeman --no-pager --no-threads
@@ -106,6 +100,11 @@ jobs:
       - run:
           name: Install ActionText
           command: printf "n\nn\n"  | bundle exec rails action_text:install && git clean -f db
+
+      - run:
+          name: Precompile assets
+          command: |
+            bundle exec rails assets:precompile
 
       - run:
           name: Ruby tests

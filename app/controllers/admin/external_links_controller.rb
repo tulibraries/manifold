@@ -47,7 +47,7 @@ module Admin
             end
           end
         end
-        notice = "<p class=text-left>External Link could not be deleted. "
+        notice = "<p class=text-start>External Link could not be deleted. "
         notice +=  "It is still attached to the following objects.<br />"
         notice +=  "Detach from listed objects and try again.</p>"
         links.each do |link|

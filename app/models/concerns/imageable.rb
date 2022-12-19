@@ -5,65 +5,45 @@ module Imageable
 
   included do
     has_one_attached :image, dependent: :destroy
-    validates :image, content_type: { in: ["image/png", "image/jpg", "image/jpeg", "image/gif"],
+    validates :image, content_type: { in: ["image/png", "image/jpeg", "image/gif"],
                                       message: I18n.t("manifold.error.content_type_invalid_image") },
                       size: { less_than: I18n.t("manifold.default.image_file_size_limit").kilobyte ,
                               message: I18n.t("manifold.error.file_size_out_of_range_image") }
   end
 
-  def index_image
-    custom_image(I18n.t("manifold.default.index_image_size"), I18n.t("manifold.default.index_image_size"))
-  end
-
-  def index_image_path
-    entity_image_path("medium")
-  end
-
-  def index_image_url
-    entity_image_url("medium")
-  end
-
   def thumb_image
-    custom_image(I18n.t("manifold.default.index_image_size"), I18n.t("manifold.default.index_image_size"))
+    custom_image(160, 220)
   end
 
-  def thumb_image_path
-    entity_image_path("thumbnail")
+  def index_image()
+    custom_image(250, 350)
   end
 
-  def thumb_image_url
-    entity_image_url("thumbnail")
-  end
-
-  def show_image
-    custom_image(I18n.t("manifold.default.show_image_size"), I18n.t("manifold.default.show_image_size"))
-  end
-
-  def show_image_path
-    entity_image_path("large")
-  end
-
-  def show_image_url
-    entity_image_url("large")
+  def show_image()
+    custom_image(271, 421)
   end
 
   def custom_image(width, height)
-    if (image.blob.metadata[:width] != width) || (image.blob.metadata[:height] != height)
-      image.variant(format: :png,
-                    background: :transparent,
-                    gravity: :center,
-                    resize_and_pad: [width, height]
-                  ).processed
-    else
-      image
+    if image.blob.present?
+      if image.blob.metadata[:width] == nil
+        image.blob.analyze
+      end
+      if (image.blob.metadata[:width] != width) || (image.blob.metadata[:height] != height)
+        if image.blob.metadata[:width] > image.blob.metadata[:height]
+          image.variant(format: :png,
+                        background: :transparent,
+                        gravity: "North",
+                        resize_to_fit: [width, height])
+        else
+          image.variant(format: :png,
+                        background: :transparent,
+                        gravity: :center,
+                        resize_and_pad: [width,
+                                        height])
+        end
+      else
+        image
+      end
     end
-  end
-
-  def entity_image_path(type)
-    Rails.application.routes.url_helpers.send("#{self.class.to_s.underscore}_image_#{type}_path", to_param)
-  end
-
-  def entity_image_url(type)
-    Rails.application.routes.url_helpers.send("#{self.class.to_s.underscore}_image_#{type}_url", to_param)
   end
 end

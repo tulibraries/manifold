@@ -1,0 +1,32 @@
+@import "partials/_vars.scss";
+
+.lcs_slide_out {
+  position: fixed;
+  right: 0;
+  top: 300px;
+  z-index: 1000;
+  transform: rotate(90deg)!important;
+  @media (max-device-width: 767px) {
+    display: none!important;
+  }
+}
+.lcs_slide_out a, .lcs_slide_out a:hover {
+  display: block;
+  text-align: right;
+  padding: 12px 21px;
+  position: absolute;
+  background-image: url('chat.png');
+  background-position: center left 14px;
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  font-size: 1.55rem;
+  font-family: "Roboto";
+  width: 130px;
+  height: 64px;
+  color: $white!important;
+  background-color: $royal-blue;
+  border: 0;
+  border-bottom: solid $new-gold 3px;
+  cursor: hand;
+  text-decoration: none;
+}

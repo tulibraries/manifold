@@ -10,6 +10,7 @@ class Account < ApplicationRecord
   auto_strip_attributes :email
 
   validates :email, presence: true, email: true
+
   validates :name, presence: true
 
   belongs_to :admin_group, optional: true

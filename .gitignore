@@ -47,8 +47,6 @@ gem.tags
 /db/account_seeds.rb
 coverage
 
-/public/packs
-/public/packs-test
 /node_modules
 /yarn-error.log
 yarn-debug.log*

@@ -68,7 +68,7 @@
 			font-weight: 900;
 		}
 	}
-	a[data-toggle="collapse"]:after {
+	a[data-bs-toggle="collapse"]:after {
 		content: "\f105";
 	  font-family: "FontAwesome";
 	  font-size: larger;

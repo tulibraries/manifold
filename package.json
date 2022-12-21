@@ -8,13 +8,13 @@
     "@rails/actiontext": "^7.0.4",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
-    "esbuild": "^0.15.16",
+    "esbuild": "^0.16.7",
     "esbuild-rails": "^1.0.3",
-    "sass": "^1.56.1",
+    "sass": "^1.56.2",
     "selectize": "^0.12.6",
     "selectize.js": "^0.12.12",
     "stimulus-use": "^0.51.1",
-    "trix": "^2.0.1"
+    "trix": "^2.0.3"
   },
   "scripts": {
     "build": "node esbuild.config.js",

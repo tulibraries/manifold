@@ -29,7 +29,6 @@
     <%= Date.parse(params[:date]).strftime("%m-%d-%Y") %>
   <% else %>
     <%= t("manifold.events.index.no_event_types") %> 
-    "<%= params[:type] %>"
   <% end %>
 
 </h3>

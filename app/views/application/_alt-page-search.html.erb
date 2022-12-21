@@ -1,8 +1,8 @@
-<div class="page-search-container text-center container-lg">
-	<form action=<%= t("manifold.default.alternate_search_url") %> id=<%= "#{@search_mode}#{view}-search-form" %>>
+<div class="page-search-container text-center container-lg" data-controller="failover">
+	<form action=<%= t("manifold.default.alternate_search_url") %> id=<%= "#{@search_mode}#{view}-search-form" %> data-failover-target="form">
 		<label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
-	  <input type="text" class="text-start" name="query" id="librarySearch" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
-	  <input type="submit" value = "" aria-label="submit search query">
+	  <input type="text" class="text-start" name="query" id="librarySearch" data-failover-target="thequery" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
+	  <input type="submit" data-action="click->failover#updatequery" value = "" aria-label="submit search query">
 	  <input type="hidden" name="tab" id="tab" value="default_tab">
 	  <input type="hidden" name="search_scope" id="search_scope" value="default_scope">
 	  <input type="hidden" name="vid" id="vid" value="TULI">

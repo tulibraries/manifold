@@ -1,12 +1,12 @@
+//= require trix
+
 @charset "utf-8";
 
 @import "reset/normalize";
 
-@import "selectize/dist/css/selectize";
-@import "selectize/dist/css/selectize.default";
+@import "../selectize.bootstrap5.scss";
 // @import "datetime_picker";
 
-@import "library/action-text";
 @import "library/clearfix";
 @import "library/data-label";
 @import "library/variables";
@@ -32,7 +32,6 @@
 
 @import "utilities/text-color";
 
-@import "trix/dist/trix";
 @import "richtext";
 
 .field-unit--description-field {

@@ -35,29 +35,28 @@
   </div>
 </div>
 
-<div class="bg-dk-red">
   <div id="wrapper" class="container-xl">
-    <% unless @alert.blank? %>
-    <div id="alert" class="row mx-0 mb-3">
-      <div class="container-xl">
-        <div class="col d-table">
-            <div class="d-table-cell" style="vertical-align:middle;">
-            <%= image_tag "information.png", class: "decorative", alt: "" %>
-            <% @alert.each do |alert| %>
-              <% unless alert.link.blank? %>
-                <%= alert.scroll_text %> <%= link_to t("manifold.default.application.header_navbar.scroll_text"), alert.link %>
-              <% else %>
-                <%= alert.scroll_text %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+  <% unless @alert.blank? %>
+    <div id="alert" class="row h-100">
+      <div class="col-12 align-self-center">
+        <%= image_tag "information.png", class: "decorative", alt: "" %>
+        <p class="mb-0">
+        <% @alert.each do |alert| %>
+          <% unless alert.link.blank? %>
+            <%= alert.scroll_text %> <%= link_to t("manifold.default.application.header_navbar.scroll_text"), alert.link %>
+          <% else %>
+            <%= alert.scroll_text %>
+          <% end %>
+        <% end %>
+        </p>
       </div>
     </div>
-    
     <% end %>
+</div>
 
-    <div class="row d-none d-lg-block" id="main-menu">
+<div class="bg-dk-red">
+  <div class="container-xl">
+    <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
       <%= render "main-menu" %>
     </div>
 
@@ -68,6 +67,6 @@
     <div class="row d-block d-lg-none" id="mobile-nav">
       <%= render "mobile-nav" %>
     </div>
+    
   </div>
-</div>
 </div>

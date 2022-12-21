@@ -1,0 +1,98 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "21f3267af2337ff683f649c2cbfd60020b6472ac80c76b6ecc54cfd1ae5fdcd1",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/concerns/redirect_logic.rb",
+      "line": 14,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Redirect.find_by(:legacy_path => legacy_path).path, :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RedirectLogic",
+        "method": "redirect_or_404"
+      },
+      "user_input": "Redirect.find_by(:legacy_path => legacy_path).path",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 70,
+      "fingerprint": "26de2923c8b3a419d65fd503ec16fa41f1a3f68c7fa9083e6c8af2e1589f8764",
+      "check_name": "MassAssignment",
+      "message": "Specify exact keys allowed for mass assignment instead of using `permit!` which allows any keys",
+      "file": "app/controllers/admin/groups_controller.rb",
+      "line": 26,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params[:group].permit!",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::GroupsController",
+        "method": "update"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "cwe_id": [
+        915
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Mass Assignment",
+      "warning_code": 70,
+      "fingerprint": "7a8e4552d89bb53cf073729b06e4f1f6489e74f3657f7bc5f521e847f1e28b88",
+      "check_name": "MassAssignment",
+      "message": "Specify exact keys allowed for mass assignment instead of using `permit!` which allows any keys",
+      "file": "app/controllers/admin/groups_controller.rb",
+      "line": 7,
+      "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
+      "code": "params[:group].permit!",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::GroupsController",
+        "method": "create"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "cwe_id": [
+        915
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "8d2501ea41801dd441c1ea7b3044ace44aa18f470e19149d4775314d85c2a7e0",
+      "check_name": "UnsafeReflection",
+      "message": "Unsafe reflection method `constantize` called on parameter value",
+      "file": "app/controllers/concerns/admin/detachable.rb",
+      "line": 8,
+      "link": "https://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "params[:controller].split(\"/\").last.classify.constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Admin::Detachable",
+        "method": "detach"
+      },
+      "user_input": "params[:controller].split(\"/\").last.classify",
+      "confidence": "High",
+      "cwe_id": [
+        470
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2022-12-02 10:02:24 -0500",
+  "brakeman_version": "5.4.0"
+}

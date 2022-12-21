@@ -1,6 +1,6 @@
 <%= render "mobile-menu" %>
 
-<div class="container-lg staff-index">
+<div class="container-lg staff-index" data-controller="people">
 
   <h1><%= title "Staff Directory" %></h1>
 
@@ -16,8 +16,8 @@
 		<% end %>
 
     <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block" do |f| %>
-      <%= f.select :department, @departments, include_blank: "filter by department" %>
-      <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
+      <%= f.select :department, @departments, { include_blank: "filter by department" }, { "data-action" => "change->people#departments" } %>
+      <%= f.select :subject, @subjects, { include_blank: "filter by specialty" }, { "data-action" => "change->people#specialties" } %>
     <% end %>
     </div>
     <div class="col-12 mt-3 mb-0 ml-2 ml-lg-0 filter-links">

@@ -206,6 +206,7 @@ GEM
     gems (1.2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    google-analytics-rails (1.1.1)
     google-api-client (0.53.0)
       google-apis-core (~> 0.1)
       google-apis-generator (~> 0.1)
@@ -356,8 +357,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
-    nokogiri (1.13.10-x86_64-darwin)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -651,6 +650,7 @@ DEPENDENCIES
   font-awesome-rails
   friendly_id
   fuzzy_match
+  google-analytics-rails (= 1.1.1)
   google-api-client (~> 0.53)
   guard-rspec
   honeybadger (~> 5.0)

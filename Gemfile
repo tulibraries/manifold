@@ -29,7 +29,7 @@ gem "feedjira"
 gem "font-awesome-rails"
 gem "friendly_id"
 gem "fuzzy_match"
-gem 'google-analytics-rails', '1.1.1'
+gem "google-analytics-rails", "1.1.1"
 gem "google-api-client", "~> 0.53"
 gem "honeybadger", "~> 5.0"
 gem "httparty"

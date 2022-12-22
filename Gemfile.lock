@@ -204,6 +204,7 @@ GEM
     gems (1.2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    google-analytics-rails (1.1.1)
     google-api-client (0.53.0)
       google-apis-core (~> 0.1)
       google-apis-generator (~> 0.1)
@@ -646,6 +647,7 @@ DEPENDENCIES
   feedjira
   friendly_id
   fuzzy_match
+  google-analytics-rails (= 1.1.1)
   google-api-client (~> 0.53)
   guard-rspec
   honeybadger (~> 5.0)

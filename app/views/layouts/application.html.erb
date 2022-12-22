@@ -14,8 +14,21 @@
     <%= stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
-    <%# analytics_init if GoogleAnalytics.valid_tracker? %>
+    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
+
+  <% if @nonce.present? %>
+    <!-- Google tag (gtag.js) -->
+    <script nonce="<%= @nonce %>" async src="https://www.googletagmanager.com/gtag/js?id=G-WB27M7RJYY"></script>
+    <script nonce="<%= @nonce %>">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WB27M7RJYY');
+    </script>
+  <% end %>
+
   <body class="<%= yield (:body_class) %>" data-controller="jumble external_links">
 
   <div class="row d-none d-print-flex">

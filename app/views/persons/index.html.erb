@@ -1,44 +1,44 @@
 <%= render "mobile-menu" %>
 
-<div class="container-lg staff-index">
+<div class="container-lg staff-index" data-controller="people">
 
   <h1><%= title "Staff Directory" %></h1>
 
   <div class="filters row pb-3 px-0 d-none d-lg-block">
-    <div class="col-12 d-inline-block mt-0 pe-0">
-    <%= form_tag(person_search_path, method: "POST", class: "d-inline-block mr-3 mt-0", id: "people-search") do %>
+    <div class="col-12 d-inline-block mt-0 pt-4 pe-0">
+    <%= form_tag(person_search_path, method: "POST", class: "d-inline-block me-4 mt-0", id: "people-search") do %>
 			<%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
-      <i class="fa fa-search"></i>
+      <i class="search"></i>
 			<%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
 								placeholder: "search staff directory by name or title",
 								results: "0"
 								) %>
 		<% end %>
 
-    <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block" do |f| %>
-      <%= f.select :department, @departments, include_blank: "filter by department" %>
-      <%= f.select :subject, @subjects, include_blank: "filter by specialty" %>
+    <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block ms-2" do |f| %>
+      <%= f.select :department, @departments, { include_blank: "filter by department" }, { "data-action" => "change->people#departments" } %>
+      <%= f.select :subject, @subjects, { include_blank: "filter by specialty" }, { "data-action" => "change->people#specialties" } %>
     <% end %>
     </div>
-    <div class="col-12 mt-3 mb-0 ml-2 ml-lg-0 filter-links">
+    <div class="col-12 mt-3 mb-0 ms-3 ms-lg-0 filter-links">
     <% if params[:specialists] %>
-      <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true), class: "float-start pe-3" %>
-      -- <%= link_to "[Print this view]", specialists_print_path, class: "ml-2", id: "specialist-print" %>
+      <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true), class: "ps-3" %>
+      -- <%= link_to "[Print this view]", specialists_print_path, class: "ms-2", id: "specialist-print" %>
     <% else %>
-      <p class="d-inline-block text-start ml-2 mb-0"><%= link_to t("manifold.people.filters.limit_to_specialists"), people_path(specialists: true) %></p>
+      <p class="d-inline-block text-start ms-3 mb-0"><%= link_to t("manifold.people.filters.limit_to_specialists"), people_path(specialists: true) %></p>
     <% end %>
-      <p class="d-inline-block float-end mb-0 mr-2"><%= link_to "Reset Staff List", people_path %></p>
+      <p class="d-inline-block float-end mb-0 me-2"><%= link_to "Reset Staff List", people_path %></p>
     </div>
   </div>
   
   <div class="row">
     <div class="col-12 px-0">
       <h3 class="mb-5 ps-2 ps-lg-0">
-        <span class="float-lg-right d-inline-block ml-2">
+        <span class="float-lg-end d-inline-block ms-2">
           <%= t("manifold.people.entity_help_html") %>
         </span>
       <% if @filter.any?.present? %>
-        <span class="selected-filter d-inline-block ml-2 mt-3 mb-3 mb-lg-0 mt-lg-0 ml-lg-0 float-start">
+        <span class="selected-filter d-inline-block ms-2 mt-3 mb-3 mb-lg-0 mt-lg-0 ms-lg-0 float-start">
           <span class="key"><%= @filter[0] %></span>: <%= @filter[1] %>
         </span>
       <% end %>

@@ -10,6 +10,7 @@
     "bootstrap-icons": "^1.10.2",
     "esbuild": "^0.16.7",
     "esbuild-rails": "^1.0.3",
+    "font-awesome": "^4.7.0",
     "sass": "^1.56.2",
     "selectize": "^0.12.6",
     "selectize.js": "^0.12.12",
@@ -18,7 +19,7 @@
   },
   "scripts": {
     "build": "node esbuild.config.js",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:css": "sass ./app/assets/stylesheets/application.css.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build:admin": "sass ./app/assets/stylesheets/administrate/application.scss:./app/assets/builds/administrate/application.css --no-source-map --load-path=node_modules"
   }
 }

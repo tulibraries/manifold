@@ -36,9 +36,10 @@ $sizes: map-merge(
   $sizes
 );
 
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
 @import "selectize.bootstrap5.scss";
+@import "font-awesome/css/font-awesome";
 
 @import "partials/_categories.scss";
 @import "partials/_filter-tags.scss";
@@ -78,8 +79,17 @@ $sizes: map-merge(
 @import "spaces.scss";
 @import "videos.scss";
 
-// @import "font-awesome";
-
 .print-only {
   display: none;
+}
+
+i.search {
+  background-image: url("search.svg");
+  background-repeat: no-repeat;
+  width: 32px;
+  height:32px;
+  color: $black;
+  position: relative;
+  left: 32px;
+  padding-left: 16px;
 }

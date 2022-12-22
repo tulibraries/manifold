@@ -197,8 +197,6 @@ GEM
     ffi (1.15.5)
     flatpickr_rails (1.1.0)
       railties (>= 3.0)
-    font-awesome-rails (4.7.0.8)
-      railties (>= 3.2, < 8.0)
     formatador (1.1.0)
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
@@ -356,8 +354,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
-    nokogiri (1.13.10-x86_64-darwin)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -648,7 +644,6 @@ DEPENDENCIES
   faker
   fast_jsonapi (~> 1.0)
   feedjira
-  font-awesome-rails
   friendly_id
   fuzzy_match
   google-api-client (~> 0.53)

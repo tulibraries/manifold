@@ -52,21 +52,23 @@
       </div>
     </div>
     <% end %>
-</div>
-
-<div class="bg-dk-red">
-  <div class="container-xl">
-    <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
-      <%= render "main-menu" %>
-    </div>
-
-    <div class="row d-block d-lg-none text-center" id="mobile-search-container">
-      <%= render @mobile_search if @mobile_search.present? %>
-    </div>
-
-    <div class="row d-block d-lg-none" id="mobile-nav">
-      <%= render "mobile-nav" %>
-    </div>
-    
   </div>
+
+  <div class="bg-dk-red">
+    <div class="container-xl">
+      <div class="row d-none d-sm-none d-md-none d-lg-block" id="main-menu">
+        <%= render "main-menu" %>
+      </div>
+
+      <div class="row d-block d-lg-none text-center" id="mobile-search-container">
+        <%= render @mobile_search if @mobile_search.present? %>
+      </div>
+
+      <div class="row d-block d-lg-none" id="mobile-nav">
+        <%= render "mobile-nav" %>
+      </div>
+      
+    </div>
+  </div>
+
 </div>

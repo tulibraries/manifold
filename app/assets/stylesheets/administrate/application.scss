@@ -1,11 +1,9 @@
-//= require trix
-
 @charset "utf-8";
 
 @import "reset/normalize";
 
 @import "../selectize.bootstrap5.scss";
-// @import "datetime_picker";
+@import "trix/dist/trix";
 
 @import "library/clearfix";
 @import "library/data-label";

@@ -15,7 +15,7 @@
     "selectize": "^0.12.6",
     "selectize.js": "^0.12.12",
     "stimulus-use": "^0.51.1",
-    "trix": "^2.0.3"
+    "trix": "^2.0.4"
   },
   "scripts": {
     "build": "node esbuild.config.js",

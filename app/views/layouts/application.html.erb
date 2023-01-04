@@ -4,8 +4,6 @@
     <%= display_meta_tags site: t("manifold.default.site_title") %>
     <%= csrf_meta_tags %>
 
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-<%= @nonce %>' www.google-analytics.com ssl.google-analytics.com;img-src 'self' www.google-analytics.com ssl.google-analytics.com tulib-manifold-prod.s3.amazonaws.com;">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= yield :head %>
@@ -29,7 +27,7 @@
     </script>
   <% end %>
 
-  <body class="<%= yield (:body_class) %>" data-controller="jumble external-links">
+  <body class="<%= yield (:body_class) %>" data-controller="jumble external-links analytics">
 
   <div class="row d-none d-print-flex">
     <div class="col-6">

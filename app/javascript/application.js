@@ -9,6 +9,4 @@ import "trix"
 import Trix from "trix";
 import "@rails/actiontext"
 import "./src/selectize"
-import "./src/jumble"
-import "./src/listeners"
 import "./src/administrate-trix"

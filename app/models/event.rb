@@ -22,6 +22,7 @@ class Event < ApplicationRecord
   scope :is_current, -> { where("end_time >= ?", Date.current).order(:start_time) }
   scope :is_workshop, -> { where("lower(event_type) LIKE ?", "%workshop%") }
   scope :is_dss_event, -> { where("lower(tags) LIKE ?", "%digital scholarship%") }
+  scope :is_hsl_event, -> { where("lower(tags) LIKE ?", "%health sciences%") }
 
   def to_param  # overridden for tests
     id

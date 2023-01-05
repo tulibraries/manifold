@@ -37,6 +37,13 @@ class EventsController < ApplicationController
     render :search, search: params[:search]
   end
 
+  def hsl_events
+    @hsl_events = Event.is_current.is_hsl_event
+    params[:search] = "health sciences"
+    return_events(@hsl_events)
+    render :search, search: params[:search]
+  end
+
   def search
     @query = params[:search]
     if @query.present?

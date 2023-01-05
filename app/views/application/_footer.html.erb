@@ -1,8 +1,8 @@
 <% if ["services", "policies"].include? controller_name %>
 <div class="container-lg" id="print-page">
   <div class="row">
-    <div class="col-12 text-center py-3">
-      <%= link_to t("manifold.default.print_page"), "#", onclick: "printPage()" %>
+    <div class="col-12 text-center py-3" data-controller="print">
+      <%= link_to t("manifold.default.print_page"), "#print", id: "print", data: { action: "click->print#printPage" } %>
     </div>
   </div>
 </div>

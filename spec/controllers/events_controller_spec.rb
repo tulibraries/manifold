@@ -17,7 +17,7 @@ RSpec.describe EventsController, type: :controller do
     FactoryBot.create(:event, start_time: DateTime.tomorrow, end_time: DateTime.tomorrow + 1, event_type: "workshop")
   }
   let(:future_event) {
-    FactoryBot.create(:event, start_time: Date.current, end_time: Date.current + 1, tags: "digital scholarship", title: "DSS Event")
+    FactoryBot.create(:event, start_time: Date.current, end_time: Date.current + 1, tags: "digital scholarship, health sciences", title: "DSS Event")
   }
   let(:past_workshop) {
     FactoryBot.create(:event, start_time: DateTime.yesterday, end_time: DateTime.yesterday, event_type: "workshop")
@@ -107,6 +107,13 @@ RSpec.describe EventsController, type: :controller do
     it "returns dss events" do
       @all_current_events = [current_event, future_event]
       get :dss_events
+      expect(response.body).to include future_event.title
+      expect(response.body).to_not include current_event.title
+    end
+
+    it "returns hsl events" do
+      @all_current_events = [current_event, future_event]
+      get :hsl_events
       expect(response.body).to include future_event.title
       expect(response.body).to_not include current_event.title
     end

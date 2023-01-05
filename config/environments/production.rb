@@ -105,7 +105,7 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = ENV["MANIFOLD_FQDN"]
   Rails.application.routes.default_url_options[:protocol] = "https"
 
-  # GA.tracker = "UA-2152985-1"
+  GA.tracker = "UA-2152985-1"
 
   config.skylight.probes -= ["middleware"]
 end

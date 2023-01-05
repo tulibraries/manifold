@@ -8,7 +8,7 @@
     <div class="col-12 d-inline-block mt-0 pt-4 pe-0">
     <%= form_tag(person_search_path, method: "GET", class: "d-inline-block me-4 mt-0", id: "people-search") do %>
 			<%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
-      <i class="search"></i>
+      <%= image_tag "search.svg", class: "people-search-glass" %>
 			<%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
 								placeholder: "search staff directory by name or title",
 								results: "0"

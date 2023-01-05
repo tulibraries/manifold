@@ -80,14 +80,3 @@ $sizes: map-merge(
 .print-only {
   display: none;
 }
-
-i.search {
-  background-image: url("search.svg");
-  background-repeat: no-repeat;
-  width: 32px;
-  height:32px;
-  color: $black;
-  position: relative;
-  left: 32px;
-  padding-left: 16px;
-}

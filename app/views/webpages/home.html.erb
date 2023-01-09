@@ -1,6 +1,6 @@
 <div id="home">
   <div class="row">
-    <div class="col-12" id="searchFields">
+    <div class="col-12 <%= @season %>" id="searchFields">
       <%= render @search, view: "desktop" if @search.present? %>
     </div>
   </div>

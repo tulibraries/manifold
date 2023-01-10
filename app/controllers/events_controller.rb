@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
 
   def index
+    @snippet = Snippet.find_by(slug: "events-intro-snippet")
     events = Event.is_current
     @featured_events = Event.where(featured: true).order(:start_time).take(3)
     if params[:type].present? && params[:type].downcase == "workshop"

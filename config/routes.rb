@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :policies
     resources :redirects
     resources :services
+    resources :snippets
     resources :spaces
     resources :webpages
 

@@ -1,6 +1,52 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def get_season
+    today = Time.zone.today
+    case today.month
+    when 1
+      "winter"
+    when 2
+      "winter"
+    when 3
+      if today.day <= 20
+        "winter"
+      else
+        "spring"
+      end
+    when 4
+      "spring"
+    when 5
+      "spring"
+    when 6
+      if today.day <= 20
+        "spring"
+      else
+        "summer"
+      end
+    when 7
+      "summer"
+    when 8
+      "summer"
+    when 9
+      if today.day <= 20
+        "summer"
+      else
+        "fall"
+      end
+    when 10
+      "fall"
+    when 11
+      "fall"
+    when 12
+      if today.day <= 20
+        "fall"
+      else
+        "winter"
+      end
+    end
+  end
+
   def render_map(name, coordinates, google_id)
     link_to image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{coordinates}&zoom=15&size=520x520&markers=size:mid%7Ccolor:red%7Clabel:%7C#{coordinates}&key=#{Rails.configuration.google_maps_api_key}", alt: "Google Map of #{name}", class: "map"),
     "https://www.google.com/maps/search/?api=1&query=#{coordinates}&query_place_id=#{google_id}"

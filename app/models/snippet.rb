@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Snippet < ApplicationRecord
   include Draftable
   extend FriendlyId

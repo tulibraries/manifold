@@ -117,6 +117,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def home
+  end
+
   protected
     # Devise has current_user hard_coded so if we use anything other than
     # user, we have no access to the devise object. So, we need to override

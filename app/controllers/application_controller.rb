@@ -2,7 +2,6 @@
 
 class ApplicationController < ActionController::Base
   include ServerErrors
-  before_action :get_season, only: :home
   before_action :failover, :script_nonce
   before_action :get_alert, :covid_alert
   before_action :set_paper_trail_whodunnit
@@ -11,52 +10,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::Redirecting::UnsafeRedirectError do
     redirect_to root_url
-  end
-
-  def get_season
-    today = Time.zone.today
-    case today.month
-    when 1
-      @season = "winter"
-    when 2
-      @season = "winter"
-    when 3
-      if today.day <= 20
-        @season = "winter"
-      else
-        @season = "spring"
-      end
-    when 4
-      @season = "spring"
-    when 5
-      @season = "spring"
-    when 6
-      if today.day <= 20
-        @season = "spring"
-      else
-        @season = "summer"
-      end
-    when 7
-      @season = "summer"
-    when 8
-      @season = "summer"
-    when 9
-      if today.day <= 20
-        @season = "summer"
-      else
-        @season = "fall"
-      end
-    when 10
-      @season = "fall"
-    when 11
-      @season = "fall"
-    when 12
-      if today.day <= 20
-        @season = "fall"
-      else
-        @season = "winter"
-      end
-    end
   end
 
   def failover

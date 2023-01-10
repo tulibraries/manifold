@@ -3,8 +3,6 @@
 require "rails_helper"
 
 RSpec.describe ApplicationHelper, type: :helper do
-
-
   describe "#menu_category_list" do
     context "With more than one category" do
 
@@ -75,6 +73,67 @@ RSpec.describe ApplicationHelper, type: :helper do
       it "returns list of links within child category group" do
         expect(menu_item_1).to be
         expect(helper.get_item_list(category)).to include(menu_item_1.label)
+      end
+    end
+  end
+
+  describe "get_season" do
+    context " -- returns season --" do
+      it "winter" do
+        Timecop.freeze(Time.new(2022, 12, 21)) do
+          expect(helper.get_season).to eql "winter"
+        end
+        Timecop.freeze(Time.new(2023, 1, 1)) do
+          expect(helper.get_season).to eql "winter"
+        end
+        Timecop.freeze(Time.new(2023, 2, 1)) do
+          expect(helper.get_season).to eql "winter"
+        end
+        Timecop.freeze(Time.new(2023, 3, 20)) do
+          expect(helper.get_season).to eql "winter"
+        end
+      end
+      it "spring" do
+        Timecop.freeze(Time.new(2023, 3, 21)) do
+          expect(helper.get_season).to eql "spring"
+        end
+        Timecop.freeze(Time.new(2023, 4, 1)) do
+          expect(helper.get_season).to eql "spring"
+        end
+        Timecop.freeze(Time.new(2023, 5, 1)) do
+          expect(helper.get_season).to eql "spring"
+        end
+        Timecop.freeze(Time.new(2023, 6, 20)) do
+          expect(helper.get_season).to eql "spring"
+        end
+      end
+      it "sumer" do
+        Timecop.freeze(Time.new(2023, 6, 21)) do
+          expect(helper.get_season).to eql "summer"
+        end
+        Timecop.freeze(Time.new(2023, 7, 1)) do
+          expect(helper.get_season).to eql "summer"
+        end
+        Timecop.freeze(Time.new(2023, 8, 1)) do
+          expect(helper.get_season).to eql "summer"
+        end
+        Timecop.freeze(Time.new(2023, 9, 20)) do
+          expect(helper.get_season).to eql "summer"
+        end
+      end
+      it "fall" do
+        Timecop.freeze(Time.new(2023, 9, 21)) do
+          expect(helper.get_season).to eql "fall"
+        end
+        Timecop.freeze(Time.new(2023, 10, 1)) do
+          expect(helper.get_season).to eql "fall"
+        end
+        Timecop.freeze(Time.new(2023, 11, 1)) do
+          expect(helper.get_season).to eql "fall"
+        end
+        Timecop.freeze(Time.new(2023, 12, 20)) do
+          expect(helper.get_season).to eql "fall"
+        end
       end
     end
   end

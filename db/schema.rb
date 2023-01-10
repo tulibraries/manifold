@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_205604) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_10_170513) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -468,6 +468,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_205604) do
     t.integer "external_link_id"
     t.string "slug"
     t.index ["external_link_id"], name: "index_services_on_external_link_id"
+  end
+
+  create_table "snippets", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "space_groups", force: :cascade do |t|

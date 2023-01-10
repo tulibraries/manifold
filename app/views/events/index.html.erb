@@ -8,59 +8,58 @@
   </div>
   <div class="row">
     <div class="col-12 mb-3">
-      <% unless @intro.nil? %>
-        <div class="intro"><%= @intro.description %></div>
+      <% if @intro.present? %>
+        <div class="intro"><%= @snippet.description if @snippet.present? %></div>
       <% end %>
     </div>
   </div>
 
-
-<div class="container-lg" id="featured-events">
-  <div class="col-12 pt-3 pb-2">
-<% if @featured_events.present? %>
-    <h2 class="bl-red" style="font-size: 175%"><%= t("manifold.events.index.featured_events") %></h2>
-<% end %>
-  </div>
-  <div class="row mb-0 px-3 justify-content-evenly ">
-    <%= render "featured" if @featured_events.present? %>
-  </div>
-  <div class="col-12 text-center filter_links mb-3">
-    <a name="list" id="list"></a>
-    <%= link_to t("manifold.events.index.view_past_events"), past_events_path, class: "d-block d-lg-inline pe-4 faustina" %>
-    <hr />
-    <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline ps-4 faustina" %>
-  </div>
-</div>
-
-<div class="container-lg mt-4">
-  <div class="row event-filters">
-    <div class="col-12 col-lg-6 text-center">
-      <%= form_tag(events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "event-search") do %>
-        <%= label_tag(:search, "search events by name", :class=>"element-invisible") %>
-        <i class="fa fa-search"></i>
-        <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
-                  placeholder: "search events by name",
-                  results: "0"
-                  ) %>
-		  <% end %>
+  <div class="container-lg" id="featured-events">
+    <div class="col-12 pt-3 pb-2">
+  <% if @featured_events.present? %>
+      <h2 class="bl-red" style="font-size: 175%"><%= t("manifold.events.index.featured_events") %></h2>
+  <% end %>
     </div>
+    <div class="row mb-0 px-3 justify-content-evenly ">
+      <%= render "featured" if @featured_events.present? %>
+    </div>
+    <div class="col-12 text-center filter_links mb-3">
+      <a name="list" id="list"></a>
+      <%= link_to t("manifold.events.index.view_past_events"), past_events_path, class: "d-block d-lg-inline pe-4 faustina" %>
+      <hr />
+      <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline ps-4 faustina" %>
+    </div>
+  </div>
 
-    <div class="col-12 col-lg-6 text-center mt-4 ps-md-0">
-      <div class="dropdown align-bottom">
-        <button class="btn btn-secondary dropdown-toggle ps-0 w-100 ps-3 text-start" type="button"
-        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= t("manifold.events.index.calendar") %>
-        </button>
-        <div class="dropdown-menu ps-2 w-100 pb-3" aria-labelledby="dropdownMenuButton">
-          <%= render "dates" %>
+  <div class="container-lg mt-4">
+    <div class="row event-filters">
+      <div class="col-12 col-lg-6 text-center">
+        <%= form_tag(events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "event-search") do %>
+          <%= label_tag(:search, "search events by name", :class=>"element-invisible") %>
+          <i class="fa fa-search"></i>
+          <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
+                    placeholder: "search events by name",
+                    results: "0"
+                    ) %>
+        <% end %>
+      </div>
+
+      <div class="col-12 col-lg-6 text-center mt-4 ps-md-0">
+        <div class="dropdown align-bottom">
+          <button class="btn btn-secondary dropdown-toggle ps-0 w-100 ps-3 text-start" type="button"
+          id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t("manifold.events.index.calendar") %>
+          </button>
+          <div class="dropdown-menu ps-2 w-100 pb-3" aria-labelledby="dropdownMenuButton">
+            <%= render "dates" %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-12">
-      <%= workshops_link(params[:type])%>
+      <div class="col-12">
+        <%= workshops_link(params[:type])%>
+      </div>
     </div>
   </div>
-</div>
 
   <div class="container-lg" id="results">
     <div class="row mt-3 mb-3">

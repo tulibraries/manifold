@@ -3,23 +3,37 @@
   <head>
     <%= display_meta_tags site: t("manifold.default.site_title") %>
     <%= csrf_meta_tags %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= yield :head %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
     <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
-  <body class="<%= yield (:body_class) %>">
+
+  <% if @nonce.present? %>
+    <!-- Google tag (gtag.js) -->
+    <script nonce="<%= @nonce %>" async src="https://www.googletagmanager.com/gtag/js?id=G-WB27M7RJYY"></script>
+    <script nonce="<%= @nonce %>">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WB27M7RJYY');
+    </script>
+  <% end %>
+
+  <body class="<%= yield (:body_class) %>" data-controller="jumble external-links<%= " failover" if @search_mode == "failover-" %>">
 
   <div class="row d-none d-print-flex">
     <div class="col-6">
       <h1>Temple University Libraries</h1>
     </div>
-    <div class="col-6 text-right">
+    <div class="col-6 text-end">
       <%= request.url %>
     </div>
   </div>

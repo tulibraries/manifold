@@ -1,18 +1,3 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_self
- */
-
 $grid-breakpoints: (
   xs: 0,
   sm: 720px,
@@ -33,6 +18,7 @@ $sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $sizes: map-merge(
   (
+    10: 10%,
     12: 12%,
     16: 16%,
     18: 18%,
@@ -50,13 +36,47 @@ $sizes: map-merge(
   $sizes
 );
 
-@import "bootstrap";
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "partials/*";
-@import "*";
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
+@import "selectize.bootstrap5.scss";
+@import "font-awesome/css/font-awesome";
+
+@import "partials/_categories.scss";
+@import "partials/_filter-tags.scss";
+@import "partials/_footer.scss";
+@import "partials/_header.scss";
+@import "partials/_hours.scss";
+@import "partials/_mainmenu.scss";
+@import "partials/_mixins.scss";
+@import "partials/_mobilemenu.scss";
+@import "partials/_pagination.scss";
+@import "partials/_responsive.scss";
+@import "partials/_searchbar.scss";
+@import "partials/_typography.scss";
 @import "partials/_vars.scss";
-@import "font-awesome";
+
+@import "blogs.scss";
+@import "buildings.scss";
+@import "categories.scss";
+@import "chat.scss";
+@import "collections.scss";
+@import "contact.scss";
+@import "drafts.scss";
+@import "errors.scss";
+@import "events.scss";
+@import "exhibitions.scss";
+@import "finding_aids.scss";
+@import "forms.scss";
+@import "groups.scss";
+@import "main.scss";
+@import "mini-pages.scss";
+@import "pages.scss";
+@import "persons.scss";
+@import "policies.scss";
+@import "services.scss";
+@import "spaces.scss";
+@import "videos.scss";
+@import "homepage-image.scss";
 
 .print-only {
   display: none;

@@ -3,6 +3,11 @@
 .no-results {
   margin-top: 14px;
 }
+.people-search-glass {
+  position: relative;
+  top: 32px;
+  left: 14px;
+}
 #icon_filter {
 	@media (max-width: 1199px) {
 		position: relative;
@@ -33,9 +38,8 @@
     }
     #search {
       width: 28%;
-      position: relative;
-      left: 0;
       padding-left: 35px;
+      margin-right: 14px;
       @media (max-width: 1199px) {
         max-width: 100%;
         width: 100%;

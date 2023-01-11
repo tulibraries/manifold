@@ -15,13 +15,13 @@
       <div class="col-12 text-center filter_links pt-4">
         <%= current_link(action_name) %>
         <hr />
-        <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline pl-4 faustina" %>
+        <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline ps-4 faustina" %>
       </div>
     </div>
     <div class="row event-filters">
       <a name="list"></a>
       <div class="col-12 col-lg-6 text-center">
-        <%= form_tag(action_name == "search" ? events_search_path : past_events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-left", id: "event-search") do %>
+        <%= form_tag(action_name == "search" ? events_search_path : past_events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "event-search") do %>
         <%= label_tag(:search, "search events by name", :class=>"element-invisible") %>
         <i class="fa fa-search"></i>
         <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
@@ -31,13 +31,13 @@
         <% end %>
       </div>
 
-      <div class="col-12 col-lg-6 text-center mt-4 pl-md-0">
+      <div class="col-12 col-lg-6 text-center mt-4 ps-md-0">
         <div class="dropdown align-bottom">
-          <button class="btn btn-secondary dropdown-toggle pl-0 w-100 pl-3 text-left" type="button"
-          id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle ps-0 w-100 ps-3 text-start" type="button"
+          id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= t("manifold.events.index.calendar") %>
           </button>
-          <div class="dropdown-menu pl-2 w-100 pb-3" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu ps-2 w-100 pb-3" aria-labelledby="dropdownMenuButton">
             <%= render "dates" %>
           </div>
         </div>
@@ -50,9 +50,9 @@
 
   <div class="container-lg">
     <div class="row mt-3 mb-3">
-      <div class="col-12 events pt-3 mb-3 pl-0" id="search-events">
+      <div class="col-12 events pt-3 mb-3 ps-0" id="search-events">
         <div class="row">
-          <div class="col pl-4">
+          <div class="col ps-4">
             <a name="list" id="list"></a>
             <h2 class="mb-4 workshops-label d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
           </div>

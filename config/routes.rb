@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     resources :policies
     resources :redirects
     resources :services
+    resources :snippets
     resources :spaces
     resources :webpages
 
@@ -112,6 +113,7 @@ Rails.application.routes.draw do
     post "events/past" => :past_search, as: "past_events_search"
     get "events/past" => :past, as: "past_events"
     get "events/dss-events" => :dss_events, as: "dss_events"
+    get "events/hsl-events" => :hsl_events, as: "hsl_events"
   end
 
   controller :blogs do
@@ -125,7 +127,7 @@ Rails.application.routes.draw do
 
   controller :persons do
     get "people/specialists/print" => :specialists_print, as: "specialists_print"
-    post "people" => :index, as: "person_search"
+    get "people" => :index, as: "person_search"
   end
 
   controller :webpages do

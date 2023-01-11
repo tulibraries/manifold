@@ -1,28 +1,5 @@
 @import "_vars.scss";
 
-.navbar {
-  background-color: $white;
-  .navbar-light .navbar-nav .nav-link {
-    color: $white;
-    font-size:1.10rem;
-    font-family: "Roboto Bold"!important;
-    a {
-      font-family: "Roboto Bold"!important;
-    }
-  }
-  .nav-link, .nav-link:focus, .nav-link:hover {
-    color: $white !important;
-  }
-  .dropdown-menu {
-    .dropdown-item, .dropdown-toggle {
-      color: $white;
-    }
-    .dropdown-item:hover, .dropdown-item:focus {
-      color: $white;
-      background-color:#760027;
-    }
-  }
-}
 
 #main-menu {
   background-color: $dark-red;
@@ -33,6 +10,29 @@
   position: relative;
   z-index: 1;
   font-family: "Roboto";
+  .navbar {
+    background-color: $white;
+    .navbar-light .navbar-nav .nav-link {
+      color: $white;
+      font-size:1.10rem;
+      font-family: "Roboto Bold"!important;
+      a {
+        font-family: "Roboto Bold"!important;
+      }
+    }
+    .nav-link, .nav-link:focus, .nav-link:hover {
+      color: $white !important;
+    }
+    .dropdown-menu {
+      .dropdown-item, .dropdown-toggle {
+        color: $white; 
+      }
+      .dropdown-item:hover, .dropdown-item:focus {
+        color: $white;
+        background-color:#760027;
+      }
+    }
+  }
   .nav-container {
     padding-left: 0;
     padding-right: 0;
@@ -70,6 +70,7 @@
 
   .dropdown-menu {
     margin-top: 0;
+    border-radius: 0!important;
   }
   ul {
     width: auto;
@@ -98,19 +99,19 @@
       }
     }
     li.nav-right.hours-nav {
-      background-image:asset-data-url('hours.png');
+      background-image: url('hours.png');
       background-position: 7px center;
       background-repeat: no-repeat;
       background-size: 26px 26px;
     }
     li.nav-right.chat-nav {
-      background-image:asset-data-url('chat.png');
+      background-image: url('chat.png');
       background-position: left 10px center;
       background-repeat: no-repeat;
       background-size: 26px 26px;
     }
     li.nav-right.account-nav {
-      background-image:asset-data-url('person.png');
+      background-image: url('person.png');
       background-position: 7px center;
       background-repeat: no-repeat;
       background-size: 26px 26px;
@@ -179,7 +180,10 @@ a.multiples.active {
 }
 
 #about-links, #research-links, #visit-links {
+  position: absolute;
   width: 1200px;
+  top: 46px;
+  // left: 0;
   ul {
     margin-bottom: 10px!important;
   }
@@ -193,4 +197,13 @@ a.multiples.active {
       font-size: larger;
     }
   }
+}
+
+#contactMenuButton::after {
+  display: none;
+}
+
+#contactMenuButton {
+  cursor: pointer !important;
+  pointer-events: visible;
 }

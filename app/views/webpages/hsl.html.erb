@@ -14,7 +14,7 @@
 
 <div class="row">
 
-  <div class="col-12 col-lg-4 pr-14 left-links">
+  <div class="col-12 col-lg-4 pe-14 left-links">
     <ul class="locations list-unstyled">
       <li>
         <%= link_to t("manifold.webpages.hsl.locations.ginsburg_label"), 
@@ -114,6 +114,7 @@
           </ul>
         </div>
       </div>
+      <% if @event_links.present? %>
       <div class="col-12 col-lg-6">
         <div class="links">
           <h2>
@@ -131,12 +132,13 @@
             <% end %>
             <li class="text-lg-right all-events">
               <%= link_to t("manifold.webpages.hsl.view_all"), 
-                          events_path(type: t("manifold.webpages.hsl.links.events_type"), anchor: "upcoming-events"), 
+                          hsl_events_path(anchor: "upcoming-events"), 
                           {id: "hsl_events_view_all", style: "text-decoration:underline"} %> >
             </li>
           </ul>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 

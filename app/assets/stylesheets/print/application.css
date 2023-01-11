@@ -4,7 +4,7 @@ body { width: 1200px !important; }
   display: none;
 }
 
-#toolbar, #header-navbar, #wrapper, #site-footer, .lcs_slide_out, .covid-alert, .flash {
+#toolbar, #header-top, #wrapper, #site-footer, .lcs_slide_out, .covid-alert, .flash {
   display: none !important;
 }
 

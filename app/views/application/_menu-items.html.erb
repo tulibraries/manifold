@@ -3,12 +3,12 @@
     <% items.each_with_index do |item, index| %>
       <% unless get_item_list(item) == "" %>
         <%= link_to item.label, "##{menu}-#{item.label.parameterize}", 
-                                    {class: "mt-0 p-2 pl-3 multiples#{" active" if index == 0}", 
-                                    id: "list-#{menu}-#{item.label.parameterize}-list", "data-toggle": "list", 
+                                    {class: "mt-0 p-2 ps-3 multiples#{" active" if index == 0}", 
+                                    id: "list-#{menu}-#{item.label.parameterize}-list", "data-bs-toggle": "list", 
                                     href: "#list-#{menu}-#{item.label.parameterize}", role: "tab", 
                                     "aria-controls": "home"} %>
       <% else %>
-        <%= link_to item.label, item, class: "p-2 pl-3" %>
+        <%= link_to item.label, item, class: "p-2 ps-3" %>
       <% end %>
   <% end %>
   </div>

@@ -1,8 +1,8 @@
 <% if ["services", "policies"].include? controller_name %>
 <div class="container-lg" id="print-page">
   <div class="row">
-    <div class="col-12 text-center py-3">
-      <%= link_to t("manifold.default.print_page"), "#", onclick: "printPage()" %>
+    <div class="col-12 text-center py-3" data-controller="print">
+      <%= link_to t("manifold.default.print_page"), "#print", id: "print", data: { action: "click->print#printPage" } %>
     </div>
   </div>
 </div>
@@ -18,8 +18,10 @@
   <div class="container-lg">
     <div class="row social justify-content-between px-2 px-lg-4 mb-4">
       
+      <div class="col-12 col-sm-6 mt-4">
       <%= link_to(t("manifold.footer.donate_link"), "/support-the-libraries", class: "donate") %>
-
+  </div>
+  <div class="col-12 col-sm-6 text-sm-end">
       <ul class="mb-0 social-links">
         <%= link_to "/social-media" do %>
         <li class="instagram">
@@ -34,6 +36,7 @@
         <% end %>
       </ul>
     </div>
+  </div>
 
     <div class="row tu-links">
       <div class="col-12 col-lg-8 px-0">

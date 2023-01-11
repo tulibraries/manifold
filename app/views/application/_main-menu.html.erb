@@ -1,9 +1,9 @@
-<div class="container-lg nav-container px-lg-2">
+<div class="nav-container px-lg-2" role="navigation">
 
     <div class="btn-group dropdown">
         <%= button_tag t("manifold.header.about"),
                     {id: "aboutMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
-                    "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+                    "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                     method: :get} %>
         <div class="dropdown-menu" id="about-links">
           <div class="row">
@@ -15,7 +15,7 @@
       <div class="btn-group dropdown">
         <%= button_tag t("manifold.header.visit"),
                     {id: "visitMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled",
-                    "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+                    "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                     method: :get} %>
         <div class="dropdown-menu" id="visit-links">
           <div class="row">
@@ -27,7 +27,7 @@
     <div class="btn-group dropdown">
         <%= button_tag t("manifold.header.research"), 
                     {id: "researchMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
-                    "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
+                    "data-bs-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "false", 
                     method: :get} %>
         <div class="dropdown-menu" id="research-links">
           <div class="row">
@@ -40,7 +40,7 @@
       <ul class="list-unstyled" style="display:inline-block;">
       <li class="<% if action_name == 'contact' %>active<% end %>">
         <%= button_to t("manifold.header.contact"), webpages_contact_path, 
-                        {id: "researchMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
+                        {id: "contactMenuButton", type: "button", class: "btn btn-lg btn-secondary dropdown-toggle disabled", 
                           method: :get}  %>
       </li>
       </ul>

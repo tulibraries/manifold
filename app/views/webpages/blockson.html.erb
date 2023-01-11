@@ -13,7 +13,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12 col-lg-4 pr-14 left-links">
+    <div class="col-12 col-lg-4 pe-14 left-links">
       <ul class="list-unstyled locations">
         <li>
           <%= link_to t("manifold.webpages.blockson.links.materials_label"), 
@@ -89,7 +89,7 @@
                           id: "blockson_events_link_#{link.label.parameterize}" %>
             </li>
           <% end %>
-          <li class="text-right all-events">
+          <li class="text-end all-events">
             <%= link_to t("manifold.webpages.blockson.links.view_all_label"), 
                         events_path(type: t("manifold.webpages.blockson.links.events_type"), anchor: "upcoming-events"), 
                         {style: "text-decoration:underline", id: "blockson_events_view_all"} %> >

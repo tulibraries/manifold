@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
 
   def index
+    @snippet = Snippet.find_by(slug: "events-intro-snippet")
     events = Event.is_current
     @featured_events = Event.where(featured: true).order(:start_time).take(3)
     if params[:type].present? && params[:type].downcase == "workshop"
@@ -34,6 +35,13 @@ class EventsController < ApplicationController
     @dss_events = Event.is_current.is_dss_event
     params[:search] = "digital scholarship"
     return_events(@dss_events)
+    render :search, search: params[:search]
+  end
+
+  def hsl_events
+    @hsl_events = Event.is_current.is_hsl_event
+    params[:search] = "health sciences"
+    return_events(@hsl_events)
     render :search, search: params[:search]
   end
 

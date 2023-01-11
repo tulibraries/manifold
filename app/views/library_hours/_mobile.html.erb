@@ -40,10 +40,10 @@
             </div>
           <% end %>
           <% if space[1].first.location_id == "scrc" || space[1].first.location_id == "blockson"%>
-            <div class="col-1 py-4 pr-0 text-center">
+            <div class="col-1 py-4 pe-0 text-center">
              <span class="hours-note"></span>
             </div>
-            <div class="col-11 py-4 pl-0">
+            <div class="col-11 py-4 ps-0">
               <%= t("manifold.hours.scrc_note_html").html_safe if space[1].first.location_id == "scrc" %>
               <%= t("manifold.hours.blockson_note_html").html_safe if space[1].first.location_id == "blockson" %>
             </div>

@@ -13,6 +13,8 @@
       <div class="col-12 col-lg-9">
     <% end %>
 
+    <%= render "covid_alert" if @covid_alert.present? %>
+
     <h1 class="page-title"><%= title @policy.name %></h1>
       <%= @policy.description %>
     </div>

@@ -13,6 +13,8 @@
       <div class="col-12 col-md-9 col-lg-9">
     <% end %>
 
+    <%= render "covid_alert" if @covid_alert.present? %>
+
     <h1 class="unstyled"><%= title @service.title %></h1>
     <%= @service.description %>
 

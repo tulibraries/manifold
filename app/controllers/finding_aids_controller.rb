@@ -16,6 +16,7 @@ class FindingAidsController < ApplicationController
   end
 
   def show
+    @covid_alert = @finding_aid.covid_alert
     serializable_show
   end
 

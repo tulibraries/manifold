@@ -14,6 +14,7 @@ class CollectionsController < ApplicationController
   end
 
   def show
+    @covid_alert = @collection.covid_alert
     serializable_show
   end
 

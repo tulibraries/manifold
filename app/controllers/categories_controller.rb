@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   include SerializableRespondTo
 
   def show
+    @covid_alert = @category.covid_alert
     respond_to do |format|
       format.html {
         @nav_items = []

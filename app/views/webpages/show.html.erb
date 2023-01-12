@@ -24,6 +24,8 @@
 			
 		<% end %>
 
+    <%= render "covid_alert" if @covid_alert.present? %>
+
 		<h1><%= title @webpage.title %></h1>
     <div class="text-start page-description">
       <div><%= @webpage.description %></div>

@@ -11,6 +11,8 @@
 
       <div class="col-12 col-lg-6">
 
+      <%= render "covid_alert" if @covid_alert.present? %>
+
       <h1 class="page-title"><%= title @building.label %></h1>
       <ul class="list-unstyled building-contact">
         <li class="lib_location"><span><%= @building.address1 %> <%= @building.address2 %></span></li>

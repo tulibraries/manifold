@@ -11,7 +11,9 @@
     <% else %>
       <div class="col-12">
     <% end %>
-
+      
+      <%= render "secondary_covid_alert" if @header_alert.present? %>
+      
       <h1 class="page-title"><%= title @collection.name %></h1>
       <% if @collection.image.attached? %>
         <%= image_tag @collection.custom_image(600,300), class: "decorative", alt: "" %>

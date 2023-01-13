@@ -16,6 +16,7 @@ class SpacesController < ApplicationController
   end
 
   def show
+    @header_alert = @space.covid_alert
     @categories = @space.categories
     serializable_show
   end

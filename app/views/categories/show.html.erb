@@ -17,8 +17,9 @@
     <% end %>
 
     <%= render "secondary_covid_alert" if @header_alert.present? %>
-
+      
       <h1 class="page-title"><%= title @category.label.html_safe %></h1>
+
         <div class="details">
           <%= render "categories/marketing/slideshow" if explore_charles(@category) %>
           <% if @category.long_description.present? %>

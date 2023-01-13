@@ -12,7 +12,7 @@
       <div class="col-12">
     <% end %>
 
-    <%= render "covid_alert" if @covid_alert.present? %>
+    <%= render "secondary_covid_alert" if @covid_alert.present? %>
 
       <h1 class="page-title"><%= title @collection.name %></h1>
       <% if @collection.image.attached? %>

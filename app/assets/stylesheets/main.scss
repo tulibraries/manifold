@@ -164,6 +164,25 @@ marquee {
   margin-top: 4px;
 }
 
+.secondary-covid-alert {
+	font-family: 'Roboto';
+	background-color: #e5edf8;
+	border-top: solid $red 6px;
+	margin-bottom: 14px;
+	padding: 10px 0;
+  strong {
+    font-family: 'Roboto';
+    font-weight: 900;
+    font-size: 1.35rem;
+    display: block;
+    text-align: center;
+  }
+  p {
+    display: block;
+    padding-left: 7px;
+  }
+}
+
 .press-button {
   border: outset #ccc 1px;
   background-color: #fff !important;

@@ -11,7 +11,7 @@ class ExhibitionsController < ApplicationController
   end
 
   def show
-    @covid_alert = @exhibition.covid_alert
+    @header_alert = @exhibition.covid_alert
     serializable_show
   end
 

@@ -45,6 +45,7 @@ en:
       index_image_size: 220
       show_image_size: 240
       covid_alert: COVID-19 Update
+      service_alert: Service Alert
       signout: "Log Out"
       site_title: Temple University Libraries
       content_skip: Skip to main content

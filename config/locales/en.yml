@@ -45,6 +45,7 @@ en:
       index_image_size: 220
       show_image_size: 240
       covid_alert: COVID-19 Update
+      service_alert: Service Alert
       signout: "Log Out"
       site_title: Temple University Libraries
       content_skip: Skip to main content
@@ -799,7 +800,7 @@ en:
         duration_of_filming_label: Duration of Filming
         duration_of_filming_hint: (How much time is required.)
         number_of_members: Total Number of Production Members
-        number_of_members.hint: (crew and talent)
+        number_of_members_hint: (crew and talent)
         mobile_number: Your Mobile Telephone Number
         mobile_of_key_member: Mobile Telephone Number of the Key Crew Member
         description: Description of Project

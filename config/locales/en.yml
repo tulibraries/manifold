@@ -513,7 +513,7 @@ en:
           table_request: Library Staff and Registered Student Organization Table Request
           event_space_request: Charles Library Event Space Request
           group_visit: Group Visit Request
-          filming_request: Guidelines for Requesting Permission to Use the Libraries for Filming
+          filming_request: Request Permission to Use the Libraries for Filming
           exhibit_request: Charles Library Exhibit Request
         requests: Requesting books and journal articles owned by Temple
         requests_html: >-
@@ -793,7 +793,7 @@ en:
         easel: Do you need an easel?
 
       filming_request:
-        title: Guidelines for Requesting Permission to Use the Libraries for Filming
+        title: Request Permission to Use the Libraries for Filming
         location_of_filming: Location of Filming
         date_of_filming: Date of Filming
         time_of_filming: Time of Filming

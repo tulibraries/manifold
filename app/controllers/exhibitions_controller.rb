@@ -11,6 +11,7 @@ class ExhibitionsController < ApplicationController
   end
 
   def show
+    @header_alert = @exhibition.covid_alert
     serializable_show
   end
 

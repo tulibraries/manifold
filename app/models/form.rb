@@ -162,7 +162,7 @@ class Form < MailForm::Base
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["msly@temple.edu", "tuf12871@temple.edu", "scrc@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["jhill@temple.edu", "eschiller@temple.edu"]],
       "table-request" => ["Library Staff and Registered Student Organization Table Request", ["john.pyle@temple.edu"]],
-      "filming-request" => ["Guidelines for Requesting Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu", "richieh@temple.edu"]],
+      "filming-request" => ["Request Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu", "richieh@temple.edu"]],
       "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
       "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
       "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["jhill@temple.edu", "eschiller@temple.edu"]],

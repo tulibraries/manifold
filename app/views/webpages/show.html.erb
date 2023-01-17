@@ -1,7 +1,7 @@
 <%= render "mobile-menu-secondary" %>
 
 <div class="container-lg">
-	<div class="row page">
+	<div class="row page pt-3">
 
 		<% if @webpage.categories.present? %>
 
@@ -23,6 +23,8 @@
       <% end %>
 			
 		<% end %>
+
+    <%= render "secondary_covid_alert" if @header_alert.present? %>
 
 		<h1><%= title @webpage.title %></h1>
     <div class="text-start page-description">

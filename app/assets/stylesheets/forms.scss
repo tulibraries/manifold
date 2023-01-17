@@ -61,3 +61,12 @@ fieldset.form-section {
 		}
 	}
 }
+
+.form-control-label {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.col-form-label {
+  padding-top: calc(0.375rem + 1px) !important;
+}

@@ -1,4 +1,20 @@
 <div class="container-lg">
+
+  <% if params[:success] == "true" %>
+  <div class="row">
+    <div class="col-12 flash notice">
+      <%= t("manifold.forms.submissions.success_message") %>
+    </div>
+  </div>
+  <% end %>
+  <% if params[:success] == "false" %>
+  <div class="row">
+    <div class="col-12 flash error">
+      <%= t("manifold.forms.submissions.failure_message") %>
+    </div>
+  </div>
+  <% end %>
+
   <div class="row">
     <div class="col-12 col-lg-9 offset-lg-1">
       <h1><%= title t("manifold.forms.index.title") %></h1>

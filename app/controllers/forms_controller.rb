@@ -59,7 +59,7 @@ class FormsController < ApplicationController
     @collection = Rails.configuration.affiliation
 
     if @form.deliver
-      # persist_form!
+      persist_form!
       redirect_to forms_path(success: "true")
     else
       redirect_to forms_path(success: "false")

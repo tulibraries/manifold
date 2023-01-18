@@ -17,7 +17,6 @@ class FormsController < ApplicationController
   end
 
   def index
-    @form_message = params[:form_message] if params[:form_message].present?
     respond_to do |format|
       format.html { render template: "forms/index" }
       format.json do

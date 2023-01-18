@@ -2,5 +2,5 @@
 
 class FormSubmission < ApplicationRecord
   serialize :form_attributes, JSON
-  encrypts :form_attributes
+  has_encrypted :form_attributes
 end

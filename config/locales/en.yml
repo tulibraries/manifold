@@ -485,6 +485,9 @@ en:
       aeon_link_link: "https://temple.aeon.atlas-sys.com/Logon/?Action=10&Form=30&ItemTitle=%{name}&ItemPlace=%{collections_name}&CallNumber=%{identifier}&rft.pages=%{collections_name}"
 
     forms:
+      submissions:
+        success_message: Thank you for your message. We will contact you soon!
+        failure_message: Cannot send message.
       shared:
         your_info: Your Information
         request_info: Request Information -- Please do not abbreviate

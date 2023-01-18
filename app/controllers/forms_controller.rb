@@ -59,11 +59,10 @@ class FormsController < ApplicationController
     @collection = Rails.configuration.affiliation
 
     if @form.deliver
-      flash.now[:notice] = "Thank you for your message. We will contact you soon!"
       persist_form!
+      redirect_to forms_path(success: "true")
     else
-      flash.now[:error] = "Cannot send message."
-      render :new
+      redirect_to forms_path(success: "false")
     end
   end
 

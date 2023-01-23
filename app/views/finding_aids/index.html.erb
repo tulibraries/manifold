@@ -19,12 +19,30 @@
 			</div>
     </div>
 
-    <div class="col-12 col-lg-7 px-4">
-      <%= render "aid_list" %>
-    </div>
+    <div class="col-12 col-lg-9 px-4">
 
-    <div class="col-12 col-lg-2 ps-3">
-      <h2 class=""><%= link_to t("manifold.finding_aids.index.search_link"), "/finding_aids/search", class: "catalog-link p-2 m-4 m-lg-0" %></h2>
+      <div class="container-lg pb-2" id="">
+        <div class="row">
+          <div class="col mt-3 mt-lg-0">
+          <%= t("manifold.finding_aids.intro_html") %>
+          </div>
+        </div>
+        <div class="row fa-search-form">
+          <div class="col-12 text-center">
+            <%= form_tag(fa_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "fa-search") do %>
+            <%= label_tag(:search, "search finding aids by name", :class=>"element-invisible") %>
+            <i class="fa fa-search"></i>
+            <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
+                      placeholder: "search finding aids by name",
+                      results: "0"
+                      ) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
+      <%= render "aid_list" %>
     </div>
   </div>
 

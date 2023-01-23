@@ -58,6 +58,13 @@ class FindingAidsController < ApplicationController
     params["collection"]
   end
 
+  def search
+    query = params[:search]
+    if query.present?
+      @fa_list = FindingAid.search(query)
+    end
+  end
+
 
   private
     def set_finding_aid

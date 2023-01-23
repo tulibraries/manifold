@@ -105,7 +105,13 @@ Rails.application.routes.draw do
   get "forms", to: "forms#all", as: "forms_index"
 
   controller :collections do
-    get "finding_aids/:id" => :finding_aids
+    get "finding-aids/:id" => :finding_aids
+  end
+
+  controller :finding_aids do
+    get "finding-aids" => :index
+    get "search/finding-aids" => :search, as: "fa_new_search"
+    post "search/finding-aids" => :search, as: "fa_search"
   end
 
   controller :events do

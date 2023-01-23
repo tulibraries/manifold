@@ -364,7 +364,7 @@ GEM
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
     okcomputer (1.18.4)
-    omniauth (2.1.0)
+    omniauth (2.1.1)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
@@ -668,7 +668,7 @@ DEPENDENCIES
   mutant-rspec
   nokogiri (= 1.14.0)
   okcomputer
-  omniauth (~> 2.1.0)
+  omniauth (~> 2.1.1)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   paper_trail!

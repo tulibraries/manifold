@@ -1,0 +1,53 @@
+<%= render "mobile_menu" %>
+
+<div class="container-lg aid-index">
+  <div class="container-lg">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="d-none d-lg-block"><%= title t("manifold.finding_aids.index.page_title") %></h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-lg pb-2" id="">
+    <div class="row fa-search-form">
+      <div class="col-12 col-lg-6 text-center">
+        <%= form_tag(fa_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "fa-search") do %>
+        <%= label_tag(:search, "search finding aids by name", :class=>"element-invisible") %>
+        <i class="fa fa-search"></i>
+        <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
+                  placeholder: "search finding aids by name",
+                  results: "0"
+                  ) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-lg">
+    <div class="row mt-3 mb-3">
+      <div class="col-12 pt-3 mb-3 ps-0" id="search-aids">
+        <div class="row">
+          <div class="col ps-4">
+            <h2 class="mb-4 d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
+          </div>
+        </div>
+          <% unless @fa_list.nil? %>
+          <div class="row aids">
+          <% @fa_list.each do |aid| %>
+            <div class="col-12 aid">
+              <%= link_to aid.name.html_safe, finding_aid_path(aid), style: "color: black;" %>
+            </div> 
+            <% end %> 
+          </div>
+              
+          <div class="row text-center paginator" style="border-left: solid white 14px;margin-top: 21px;">
+            <div class="col">
+              <%= paginate @fa_list %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

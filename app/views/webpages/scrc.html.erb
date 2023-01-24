@@ -31,14 +31,14 @@
                     id:"scrc_materials_button" %>
         </li>
         <li>
-          <%= link_to t("manifold.webpages.scrc.contact.contact_label"), 
-                      form_path(t("manifold.webpages.scrc.contact.form_id")),
-                      id: "scrc_contact_button" %>
-        </li>
-        <li>
           <%= link_to t("manifold.webpages.scrc.contact.search_label"), 
                       t("manifold.webpages.scrc.contact.search_redirect"),
                       id: "scrc_search_button" %>
+        </li>
+        <li>
+          <%= link_to t("manifold.webpages.scrc.contact.contact_label"), 
+                      form_path(t("manifold.webpages.scrc.contact.form_id")),
+                      id: "scrc_contact_button" %>
         </li>
         <li>
           <%= link_to t("manifold.webpages.scrc.contact.info_label"), 
@@ -49,7 +49,7 @@
     </div>
 
     <div class="col-12 col-lg-8 description">
-      <%= @webpage.description if @webpage.description.present? %>
+      <%= @intro.description if @intro.description.present? %>
     </div>
   </div>
     

@@ -21,12 +21,15 @@ class FindingAidsController < ApplicationController
   end
 
   def return_aids
+    query = params[:search]
     @finding_aids = FindingAid
       .includes(:collections)
       .with_subject(subjects)
       .in_collection(collection)
       .order(:name)
-
+    if query.present?
+      @finding_aids = @finding_aids.search(query)
+    end
     @subjects = get_subject_filter_values(@finding_aids)
     @collections = get_collection_filter_values(@finding_aids)
     @aids_list = @finding_aids.page params[:page]
@@ -56,6 +59,9 @@ class FindingAidsController < ApplicationController
 
   def collection
     params["collection"]
+  end
+
+  def search
   end
 
 

@@ -100,6 +100,14 @@ RSpec.feature "FindingAids", type: :feature do
         expect(page).to_not have_content(@finding_aid_1a.name)
       end
     end
+
+    context "search results" do
+      scenario "search term found" do
+        visit("/finding_aids?search=1a")
+        expect(page).to have_content(@finding_aid_1a.name)
+        expect(page).to_not have_content(@finding_aid_2.name)
+      end
+    end
   end
 
 end

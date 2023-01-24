@@ -11,7 +11,7 @@ class FindingAid < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  paginates_per 15
+  paginates_per 25
   has_paper_trail
 
   before_save :weed_nils
@@ -61,6 +61,12 @@ class FindingAid < ApplicationRecord
 
   def label
     name
+  end
+
+  def self.search(q)
+    if q
+      FindingAid.where("lower(name) LIKE ?", "%#{q}%".downcase).order(:name)
+    end
   end
 
   private

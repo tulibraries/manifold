@@ -92,7 +92,7 @@ Rails.application.routes.draw do
   resources :external_link, only: [:show]
   resources :forms, only: [:index, :new, :create, :show]
   resources :file_uploads, only: [:new, :create]
-  resources :finding_aids, only: [:index, :show]
+  resources :finding_aids, only: [:index, :show], path: "/finding-aids"
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
@@ -105,7 +105,13 @@ Rails.application.routes.draw do
   get "forms", to: "forms#all", as: "forms_index"
 
   controller :collections do
-    get "finding_aids/:id" => :finding_aids
+    get "finding-aids/:id" => :finding_aids
+  end
+
+  controller :finding_aids do
+    get "finding_aids" => :index
+    get "finding_aids/:id" => :show
+    get "finding-aids/:id" => :show
   end
 
   controller :events do

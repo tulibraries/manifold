@@ -29,8 +29,8 @@ module FindingAidsHelper
   def subject_links(subjects)
     links = []
     unselected_links = []
-    unless subjects.nil?
-      unless params[:subject].nil?
+    if subjects.present?
+      if params[:subject].present?
 
         subjects.each do |subject|
 
@@ -40,20 +40,20 @@ module FindingAidsHelper
             subject_removed = chosen_subjects.reject { |sub| sub == subject }.uniq.join(",")
             link = '<li class="active"> ' + subject + '
                       <span class="clear-filter">
-                        <a href="' + finding_aids_path(request.query_parameters.merge(subject: subject_removed, page: 1)) + '">X</a>
+                        <a href="' + finding_aids_path(request.query_parameters.except(:search).merge(subject: subject_removed, page: 1)) + '" data-turbo-frame="_top">X</a>
                       </span>
                     </li>'
             links << link
           else
             chosen_subjects = chosen_subjects.split(",").push(subject).uniq.join(",")
-            link = '<li><a href="' + finding_aids_path(request.query_parameters.merge(subject: chosen_subjects, page: 1)) + '"> ' + subject + "</a></li>"
+            link = '<li><a href="' + finding_aids_path(request.query_parameters.except(:search).merge(subject: chosen_subjects, page: 1)) + '" data-turbo-frame="_top"> ' + subject + "</a></li>"
             unselected_links << link
           end
         end
 
       else
         subjects.each do |subject|
-          link = '<li><a href="' + finding_aids_path(request.query_parameters.merge(subject: subject, page: 1)) + '"> ' + subject + "</a></li>"
+          link = '<li><a href="' + finding_aids_path(request.query_parameters.except(:search).merge(subject: subject, page: 1)) + '" data-turbo-frame="_top"> ' + subject + "</a></li>"
           links << link
         end
       end

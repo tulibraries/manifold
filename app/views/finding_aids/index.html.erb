@@ -7,15 +7,17 @@
   <div class="row">
     <div class="col-3 pe-5 leftside-index ps-3 ps-lg-2 d-none d-md-none d-lg-block">
       <div class="panel-group" id="accordion">
-			  <div class="filter_collections">
+        <%= turbo_frame_tag "filters" do %>
+			  <div class="filter_collections" data-controller="search-form">
 			    <%= render "collections" %>
 			  </div>
-			  <div class="filter_subjects">
+			  <div class="filter_subjects" data-controller="search-form">
 			    <%= render "subjects" %>
 			  </div>
 			  <div class="filter_reset">
 			    <%= render "reset" %>
 			  </div>
+        <% end %>
 			</div>
     </div>
 
@@ -27,22 +29,33 @@
           <%= t("manifold.finding_aids.intro_html") %>
           </div>
         </div>
-        <div class="row fa-search-form">
-          <div class="col-12 text-center">
-            <%= form_tag(fa_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "fa-search") do %>
-            <%= label_tag(:search, "search finding aids by name", :class=>"element-invisible") %>
-            <i class="fa fa-search"></i>
-            <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
-                      placeholder: "search finding aids by name",
-                      results: "0"
-                      ) %>
+        <div class="row fa-search-form mb-4">
+          <div class="col-12">
+            <p class="fa-search-label">Browse using the filters to the left, <strong>or</strong> use the search box below.</p>
+              <i class="fa fa-search"></i>
+            <%= form_with(url: finding_aids_path, method: :get, 
+                                                  data: {controller: "search-form", 
+                                                          action: "input->search-form#search", 
+                                                          turbo_frame: "fas", 
+                                                          turbo_action: "advance"}, 
+                                                  class: "d-inline-block me-3 mb-4 mt-0 w-100 text-start", 
+                                                  id: "fa-search") do |form| %>
+                <%= form.text_field :search, placeholder: "Search by finding aid name", class: "form-control w-100 d-inline-block ps-5" %>
+              <%= form.text_field :collection, value: nil, type: "hidden"  %>
+              <%= form.text_field :subject, value: nil, type: "hidden"  %>
+              <%= form.label :search, "Search by finding aid name (Collecting Area and Subject filters do not affect this search)", class: "element-invisible" %>
+              </div>
             <% end %>
+
+            <%= turbo_frame_tag "fas" do %>
+              <%= render "aid_list" %>
+            <% end %>
+
           </div>
         </div>
       </div>
 
 
-      <%= render "aid_list" %>
     </div>
   </div>
 

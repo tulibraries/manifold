@@ -483,6 +483,8 @@ en:
       subjects_heading: "Subjects"
       aeon_link_label: "Request Materials from Special Collections Research Center"
       aeon_link_link: "https://temple.aeon.atlas-sys.com/Logon/?Action=10&Form=30&ItemTitle=%{name}&ItemPlace=%{collections_name}&CallNumber=%{identifier}&rft.pages=%{collections_name}"
+      search_hint: Search by finding aid name (Collecting Area and Subject filters do not affect this search)
+      search_label_html: Browse using the filters to the left, <strong>or</strong> use the search box below.
 
     forms:
       submissions:

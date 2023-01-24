@@ -92,7 +92,7 @@ Rails.application.routes.draw do
   resources :external_link, only: [:show]
   resources :forms, only: [:index, :new, :create, :show]
   resources :file_uploads, only: [:new, :create]
-  resources :finding_aids, only: [:index, :show], :path => '/finding-aids'
+  resources :finding_aids, only: [:index, :show], path: "/finding-aids"
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index, :show]
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"

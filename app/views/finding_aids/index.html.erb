@@ -31,7 +31,7 @@
         </div>
         <div class="row fa-search-form mb-4">
           <div class="col-12">
-            <p class="fa-search-label">Browse using the filters to the left, <strong>or</strong> use the search box below.</p>
+            <p class="fa-search-label"><%= t("manifold.finding_aids.search_label_html") %></p>
               <i class="fa fa-search"></i>
             <%= form_with(url: finding_aids_path, method: :get, 
                                                   data: {controller: "search-form", 
@@ -40,10 +40,10 @@
                                                           turbo_action: "advance"}, 
                                                   class: "d-inline-block me-3 mb-4 mt-0 w-100 text-start", 
                                                   id: "fa-search") do |form| %>
-                <%= form.text_field :search, placeholder: "Search by finding aid name", class: "form-control w-100 d-inline-block ps-5" %>
+              <%= form.text_field :search, placeholder: t("manifold.finding_aids.search_hint"), class: "form-control w-100 d-inline-block ps-5" %>
               <%= form.text_field :collection, value: nil, type: "hidden"  %>
               <%= form.text_field :subject, value: nil, type: "hidden"  %>
-              <%= form.label :search, "Search by finding aid name (Collecting Area and Subject filters do not affect this search)", class: "element-invisible" %>
+              <%= form.label :search, t("manifold.finding_aids.search_hint"), class: "element-invisible" %>
               </div>
             <% end %>
 

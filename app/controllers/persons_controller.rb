@@ -27,6 +27,7 @@ class PersonsController < ApplicationController
     end
 
     if params[:specialty].present?
+      binding.pry
       key = "Specialty"
       value = params[:specialty]
     end

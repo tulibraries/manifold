@@ -6,14 +6,17 @@
 
   <div class="filters row pb-3 px-0 d-none d-lg-block">
     <div class="col-12 d-inline-block mt-0 pt-4 pe-0">
-    <%= form_tag(person_search_path, method: "GET", class: "d-inline-block me-4 mt-0", id: "people-search") do %>
-			<%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
       <%= image_tag "search.svg", class: "people-search-glass" %>
-			<%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
-								placeholder: "search staff directory by name or title",
-								results: "0"
-								) %>
-		<% end %>
+      <%= form_with(url: people_path, method: :get, 
+                                        data: {controller: "search-form", 
+                                                action: "input->search-form#search", 
+                                                turbo_frame: "people", 
+                                                turbo_action: "advance"}, 
+                                        class: "d-inline-block me-4 mt-0", 
+                                        id: "people-search") do |form| %>
+                                          <%= form.text_field :search, placeholder: "search staff directory by name or title", class: "form-control w-100 d-inline-block ps-5" %>
+                                          <%= form.label :search, "search staff directory by name or title", class: "element-invisible" %>
+                                        <% end %>
 
     <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block ms-2" do |f| %>
       <%= f.select :department, @departments, { include_blank: "filter by department" }, { "data-action" => "change->people#departments" } %>
@@ -44,7 +47,9 @@
       <% end %>
       </h3>
 
-      <%= render "persons_list" %>
+      <%= turbo_frame_tag "people" do %>
+        <%= render "persons_list" %>
+      <% end %>
     
     </div>
 

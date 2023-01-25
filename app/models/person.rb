@@ -48,7 +48,6 @@ class Person < ApplicationRecord
   scope :specialists, -> { where.not(specialties: []).sort_by { |p| [p.last_name, p.first_name] } }
 
   scope :with_specialty, ->(specialty) {
-    # binding.pry
     where("specialties LIKE ?", "%#{specialty}%") if specialty.present?
   }
 

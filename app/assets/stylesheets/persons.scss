@@ -5,7 +5,7 @@
 }
 .people-search-glass {
   position: relative;
-  left: 42px;
+  left: 36px;
 }
 #icon_filter {
 	@media (max-width: 1199px) {
@@ -27,34 +27,33 @@
     @media (max-width: 1199px) {
       max-width: 75%;
       width: 75%;
+      padding-left: 21px;
     }
   }
   #people-search, #m-people-search {
-    width: 29%;
-    @media (max-width: 1199px) {
-      max-width: 806px;
-      width: 806px;
-    }
+    width: 100%;
     #search {
-      width: 28%;
-      padding-left: 35px;
-      margin-right: 14px;
+      width: 95%;
+      padding-left: 42px;
       @media (max-width: 1199px) {
-        max-width: 100%;
+        margin-top: 21px;
         width: 100%;
+        padding-left: 14px;
       }
     }
     i.fa-search {
       position: relative;
       left: 36px;
       z-index: 3;
+      @media (max-width: 1199px) {
+        display: none;
+      }
     }
   }
   #people-search, #m-people-search, #people-filters, #m-people-filters {
     input, select {
       font-family: "Roboto Bold Light";
       display: inline-block !important;
-      margin-left: 4px !important;
       padding-left: 10px;
       height: 42px;
       border-radius: 0;

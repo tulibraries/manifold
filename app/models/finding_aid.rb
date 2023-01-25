@@ -65,7 +65,7 @@ class FindingAid < ApplicationRecord
 
   def self.search(q)
     if q
-      FindingAid.where("lower(name) LIKE ?", "%#{q}%".downcase).order(:name)
+      FindingAid.where("lower(name) LIKE ? or lower(subject) LIKE ?", "%#{q}%".downcase, "%#{q}%".downcase).order(:name)
     end
   end
 

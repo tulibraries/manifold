@@ -14,7 +14,7 @@ module FindingAidsHelper
   def filter_tags_aids(collections)
     tags = []
     unless params[:collection].nil?
-      tags << "#{get_collection_name(collections, params[:collection])}&nbsp;<a href=\"#{finding_aids_path(request.query_parameters.except(:collection).merge(page: 1))}\">X</a>"
+      # tags << "#{get_collection_name(collections, params[:collection])}&nbsp;<a href=\"#{finding_aids_path(request.query_parameters.except(:collection).merge(page: 1))}\">X</a>"
     end
     unless params[:subject].nil?
       subjects = params[:subject].kind_of?(Array) ? params[:subject].join(",").split(",") : params[:subject].split(",")

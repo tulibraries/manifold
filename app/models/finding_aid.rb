@@ -18,7 +18,8 @@ class FindingAid < ApplicationRecord
   has_rich_text :description
 
   has_one :action_text_rich_text,
-  class_name: 'ActionText::RichText',
+  class_name: "ActionText::RichText",
+  dependent: :destroy,
   as: :record
 
   has_rich_text :draft_description

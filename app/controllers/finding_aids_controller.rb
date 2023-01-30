@@ -9,10 +9,6 @@ class FindingAidsController < ApplicationController
   include SerializableRespondTo
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: FindingAidSerializer.new(@finding_aids) }
-    end
   end
 
   def show

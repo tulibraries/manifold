@@ -112,6 +112,7 @@ Rails.application.routes.draw do
     get "finding_aids" => :index
     get "finding_aids/:id" => :show
     get "finding-aids/:id" => :show
+    get "finding_aids.json", to: redirect("assets/finding_aids.json")
   end
 
   controller :events do

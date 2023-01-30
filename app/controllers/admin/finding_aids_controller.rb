@@ -19,8 +19,8 @@ module Admin
 
     private
 
-    def create_json_file
-      File.open("public/finding_aids.json", "w") { |file| file.write(FindingAidSerializer.new(FindingAid.all).serializable_hash.to_json) }
-    end
+      def create_json_file
+        File.open("public/finding_aids.json", "w") { |file| file.write(FindingAidSerializer.new(FindingAid.all).serializable_hash.to_json) }
+      end
   end
 end

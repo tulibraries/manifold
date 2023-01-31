@@ -27,4 +27,6 @@ RSpec.describe FindingAidsController, type: :controller do
     end
   end
 
+  it_behaves_like "serializable"
+
 end

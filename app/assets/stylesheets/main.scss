@@ -229,3 +229,9 @@ marquee {
 .blue {
   color: $royal-blue  ;
 }
+i.fa-search {
+  content: "\f002";
+  font-family: "FontAwesome";
+  display: inline-block;
+  position:relative;
+}

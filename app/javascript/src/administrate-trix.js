@@ -5,7 +5,8 @@ Trix.config.textAttributes.center = {
   parser: false,
   inheritable: true
   }
-  
+Trix.config.blockAttributes.heading2 = { tagName: 'h2' };
+Trix.config.blockAttributes.heading3 = { tagName: 'h3' };
   /* insert the button visual in the default toolbar */
   addEventListener("trix-initialize", function(event) {
   var buttonHTML = '<button type="button" class="trix-button" title="center" data-trix-attribute="center">><</button>'
@@ -65,7 +66,6 @@ Trix.config.textAttributes.center = {
       this.insertNewHeadingButton()
       this.insertHeadingDialog()
       this.removeOriginalCodeButton()
-      this.insertNewCodeButton()
     }
   
     removeOriginalHeadingButton() {

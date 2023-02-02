@@ -483,6 +483,8 @@ en:
       subjects_heading: "Subjects"
       aeon_link_label: "Request Materials from Special Collections Research Center"
       aeon_link_link: "https://temple.aeon.atlas-sys.com/Logon/?Action=10&Form=30&ItemTitle=%{name}&ItemPlace=%{collections_name}&CallNumber=%{identifier}&rft.pages=%{collections_name}"
+      search_hint: Search finding aids by keyword
+      search_label_html: Browse using the filters to the left, <strong>or</strong> use the search box below.
 
     forms:
       submissions:
@@ -1154,7 +1156,7 @@ en:
         page_title: Special Collections Research Center
         locations:
           reading_room: SCRC Reading Room
-          finding_aids: Browse Finding Aids
+          finding_aids: Search Finding Aids
           materials: Digitized Materials
           materials_link: https://digital.library.temple.edu/
         contact:

@@ -14,13 +14,12 @@ RSpec.describe FindingAidSerializer do
   describe "serialized_hash" do
     let(:sh) { serialized.serializable_hash }
     let(:data) { sh[:data] }
-
     it "has the expected type" do
       expect(data[:type]).to eql :finding_aid
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :subject, :content_link,
+      expect(data[:attributes].keys).to include(:name, :subject, :content_link, :description,
                                                 :identifier, :drupal_id, :label, :updated_at)
     end
 

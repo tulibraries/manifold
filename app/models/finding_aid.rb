@@ -11,11 +11,17 @@ class FindingAid < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  paginates_per 15
+  paginates_per 25
   has_paper_trail
 
   before_save :weed_nils
   has_rich_text :description
+
+  has_one :action_text_rich_text,
+  class_name: "ActionText::RichText",
+  dependent: :destroy,
+  as: :record
+
   has_rich_text :draft_description
   has_rich_text :covid_alert
   validates :collection_id, collection_or_subject: true
@@ -61,6 +67,15 @@ class FindingAid < ApplicationRecord
 
   def label
     name
+  end
+
+  def self.search(q)
+    if q
+      FindingAid.joins(:action_text_rich_text)
+                .where("lower(finding_aids.name) LIKE ? or lower(subject) LIKE ?", "%#{q}%".downcase, "%#{q}%".downcase)
+                .or(FindingAid.where("record_type = ? AND lower(action_text_rich_texts.body) LIKE ?", "FindingAid", "%#{q}%".downcase))
+                .distinct.order(:name)
+    end
   end
 
   private

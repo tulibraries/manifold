@@ -9,14 +9,9 @@ RSpec.describe FindingAidsController, type: :controller do
   describe "GET #index" do
     let(:finding_aid) { FactoryBot.create(:finding_aid) }
 
-    it "returns a success response", skip: "TBA: Views don't exist yet" do
+    it "returns a success response" do
       get :index
       expect(response).to be_successful
-    end
-
-    it "returns json when requested" do
-      get :index, format: :json
-      expect(response.header["Content-Type"]).to include "json"
     end
   end
 

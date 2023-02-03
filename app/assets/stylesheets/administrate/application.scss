@@ -32,6 +32,13 @@
 
 @import "richtext";
 
+.application-failover-text {
+  padding: 42px;
+  h2 {
+    margin-bottom: 35px;
+  }
+}
+
 .field-unit--description-field {
   display: inline-block;
   trix-editor {
@@ -41,13 +48,52 @@
   }
 }
 
+.file-uploads-text {
+  width: 65%;
+  margin: auto;
+}
+
 select[multiple] { 
   resize: vertical; 
 }
 
-.application-failover-text {
-  padding: 42px;
-  h2 {
-    margin-bottom: 35px;
+// categories
+
+.field-unit--categorizations, 
+.field-unit--file-uploads {
+  align-items: baseline;
+  .entity-weight-list {
+    padding: 1.1em;
+    border-bottom: 1px solid;
+    .categorizable-type {
+      width: 20%;
+      display: inline-block;
+    }
+    .categorizable-label {
+      width: 40%;
+      display: inline-block;
+    }
+    .categorizable-weight {
+      display: inline-block;
+      width: 8%;
+    }
+    .fileabilities {
+      width: 90%;
+    }
+    .file-upload-name {
+      width: 80%;
+      display: inline-block;
+    }
+    .file-upload-weight {
+      width: 10%;
+      display: inline-block;
+    }
   }
+}
+
+
+// library hours
+
+#last-sync {
+  padding-left: 2rem;
 }

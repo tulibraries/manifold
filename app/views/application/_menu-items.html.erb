@@ -1,5 +1,5 @@
 <div class="col-4">
-  <div class="list-group h-100" id="list-tab" role="tablist" style="background:rgba(255,255,255,0.3)!important">
+  <div class="list-group h-100" id="list-tab" role="tablist">
     <% items.each_with_index do |item, index| %>
       <% unless get_item_list(item) == "" %>
         <%= link_to item.label, "##{menu}-#{item.label.parameterize}", 

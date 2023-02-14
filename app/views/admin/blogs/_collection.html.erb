@@ -69,7 +69,7 @@
             [namespace, resource],
             class: "text-color-red",
             method: :delete,
-            data: { confirm: t("administrate.actions.confirm") }
+            data: { "turbo-method": :delete, "turbo-confirm": t("administrate.actions.confirm") }
           ) if show_action? :destroy, resource %></td>
         <% end %>
 

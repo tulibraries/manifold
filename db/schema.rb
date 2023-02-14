@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_10_170513) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_14_154825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -240,6 +240,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_170513) do
     t.string "guid"
     t.string "event_url"
     t.boolean "featured"
+    t.boolean "suppress", default: false
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
@@ -501,6 +502,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_170513) do
     t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
     t.index ["external_link_id"], name: "index_spaces_on_external_link_id"
+  end
+
+  create_table "streaming_videos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "panoptoid"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "versions", force: :cascade do |t|

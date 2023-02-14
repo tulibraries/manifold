@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StreamingVideosController < ApplicationController
   before_action :set_streaming_video, only: %i[ show ]
   include SetInstance
@@ -50,7 +52,7 @@ class StreamingVideosController < ApplicationController
               @feature_films = [],
               @philadelphia_stories = []
              ]
-    
+
     @panopto_collection = params[:panopto_collection]
 
     @categories = ["documentaries", "Documentaries", "72465e2b-7d68-45b7-bdb3-af63013c5d6b"],

@@ -10,8 +10,8 @@ class EventsController < ApplicationController
 
   def index
     @snippet = Snippet.find_by(slug: "events-intro-snippet")
-    events = Event.is_current
-    @featured_events = Event.where(featured: true).order(:start_time).take(3)
+    events = Event.is_current.is_displayable
+    @featured_events = Event.is_current.is_displayable.where(featured: true).order(:start_time).take(3)
     if params[:type].present? && params[:type].downcase == "workshop"
       @workshops = events.is_workshop
       return_events(@workshops)
@@ -32,14 +32,14 @@ class EventsController < ApplicationController
   end
 
   def dss_events
-    @dss_events = Event.is_current.is_dss_event
+    @dss_events = Event.is_current.is_dss_event.is_displayable
     params[:search] = "digital scholarship"
     return_events(@dss_events)
     render :search, search: params[:search]
   end
 
   def hsl_events
-    @hsl_events = Event.is_current.is_hsl_event
+    @hsl_events = Event.is_current.is_hsl_event.is_displayable
     params[:search] = "health sciences"
     return_events(@hsl_events)
     render :search, search: params[:search]
@@ -48,14 +48,14 @@ class EventsController < ApplicationController
   def search
     @query = params[:search]
     if @query.present?
-      events = Event.is_current.search(@query)
+      events = Event.is_current.is_displayable.search(@query)
       return_events(events)
     end
   end
 
   def past
-    past_events = Event.is_past
-    workshops = Event.is_past.is_workshop
+    past_events = Event.is_past.is_displayable
+    workshops = Event.is_past.is_workshop.is_displayable
     (params[:type].present? && params[:type].downcase == "workshop") ? return_events(workshops) : return_events(past_events)
     @exhibitions = Exhibition.is_past
                               .order(end_date: :desc, start_date: :desc)
@@ -68,7 +68,7 @@ class EventsController < ApplicationController
   end
 
   def past_search
-    events = Event.is_past.search(params[:search])
+    events = Event.is_past.is_displayable.search(params[:search])
     return_events(events)
     render "search"
   end

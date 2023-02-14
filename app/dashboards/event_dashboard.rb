@@ -42,6 +42,7 @@ class EventDashboard < BaseDashboard
     categories: Field::HasMany,
     guid: Field::String,
     featured: Field::Boolean,
+    suppress: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -57,6 +58,7 @@ class EventDashboard < BaseDashboard
     :event_type,
     :start_time,
     :end_time,
+    :suppress,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -129,6 +131,7 @@ class EventDashboard < BaseDashboard
     :content_hash,
     :ensemble_identifier,
     :guid,
+    :suppress,
     # :categories # TODO: make work with url_for in category pages and main menu category.items
   ].freeze
 

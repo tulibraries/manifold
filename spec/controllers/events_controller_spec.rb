@@ -16,6 +16,9 @@ RSpec.describe EventsController, type: :controller do
   let(:current_event) {
     FactoryBot.create(:event, start_time: DateTime.tomorrow, end_time: DateTime.tomorrow + 1, event_type: "workshop")
   }
+  let(:suppressed_event) {
+    FactoryBot.create(:event, suppress: true, start_time: DateTime.tomorrow, end_time: DateTime.tomorrow + 1, title: "Suppressed Event")
+  }
   let(:future_event) {
     FactoryBot.create(:event, start_time: Date.current, end_time: Date.current + 1, tags: "digital scholarship, health sciences", title: "DSS Event")
   }
@@ -43,6 +46,12 @@ RSpec.describe EventsController, type: :controller do
       @all_current_events = [current_event]
       get :index
       expect(response.body).to include current_event.title
+    end
+
+    it "does not return suppressed future events" do
+      @all_current_events = [current_event, suppressed_event]
+      get :index
+      expect(response.body).not_to include suppressed_event.title
     end
 
     it "does not return past events" do

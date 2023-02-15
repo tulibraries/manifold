@@ -28,14 +28,14 @@
   <%= f.input :comments, as: :text, label: t("manifold.forms.event_space_request.comments"), 
               style: "display: inline-block;width: 14px" %>
 
-<fieldset>
+<fieldset class="mt-4">
   <legend><%= t("manifold.forms.event_space_request.your_info_legend") %></legend>
-  <span style="font-size:large;font-weight:900;"><%= t("manifold.forms.event_space_request.span") %></span>
+  <span class="fs-5"><%= t("manifold.forms.event_space_request.span") %></span>
   <%= f.input :name, label: t("manifold.forms.fields.name"), required: :true %>
   <%= f.input :email, label: t("manifold.forms.fields.email"), required: :true %>
   <%= f.input :phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
   <%= f.input :department, label: t("manifold.forms.fields.department"), required: :true %>
-  <span style="font-size:large;font-weight:900;"><%= t("manifold.forms.event_space_request.span_2") %></span>
+  <span class="fs-5"><%= t("manifold.forms.event_space_request.span_2") %></span>
   <%= f.input :financial_name, label: t("manifold.forms.fields.name"), required: :true %>
   <%= f.input :financial_email, label: t("manifold.forms.fields.email"), required: :true %>
   <%= f.input :financial_phone, label: t("manifold.forms.fields.phone_number"), required: :true %>

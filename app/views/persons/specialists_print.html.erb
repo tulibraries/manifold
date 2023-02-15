@@ -13,7 +13,7 @@
               </h2>
             </li>
             <li>
-              <span style="font-size:larger;font-weight:600;"><%= person.job_title %></span>
+              <span class="fs-5"><%= person.job_title %></span>
             </li>
             <li>
               <%= person.email_address %>
@@ -50,7 +50,7 @@
       <% end %>
 
       <% else %> <!-- unless -->
-      <div class="row" style="margin-top: 14px;">
+      <div class="row mt-3">
         <div class="col-12 text-center">
           <h3><%= t("manifold.people.no_results") %></h3>
         </div>

@@ -101,3 +101,11 @@ select[multiple] {
 #last-sync {
   padding-left: 2rem;
 }
+
+.icons {
+  display: none;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}

@@ -16,7 +16,7 @@ en:
         suppress: Hide from display
       exhibition:
         title: "Name"
-        promoted_to_events: "Published"
+        promoted_to_events: "Publish/Unpublish"
       highlight:
         created_at: "Published at"
       policy:
@@ -360,6 +360,19 @@ en:
       notification:
         all_blogs_synced: "Blogs: All synched"
         blog_synced: "Blogs: %{id} - %{title} synced"
+      help_text:
+        entity_weights: >-
+          On the list of entities below, please assign a weight to
+          each entity. The weight will determine the order from lowest
+          to highest. For example, the item with a weight of one will
+          appear first in the list, a weight of one will appear next,
+          and so on.
+        file_uploads_html: >-
+          On the list of file uploads below, please assign a weight to
+          each. The weight will determine the order from lowest
+          to highest. For example, a file with a weight of <strong>1</strong> will
+          appear first in the list. A weight of <strong>2</strong> will appear next,
+          and so on.          
 
     header:
       about: "About"

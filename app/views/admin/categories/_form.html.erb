@@ -32,29 +32,24 @@ and renders all form fields for a resource's editable attributes.
   <%= render("form_fields", page: page, f: f, current_account: current_account) %>
 
   <hr />
-  <div style="width:100%;">
-    <p>On the list of entities below, please assign a weight to
-      each entity. The weight will determine the order from lowest
-      to highest. For example, the item with a weight of one will
-      appear first in the list, a weight of one will appear next,
-      and so on.
-    </p>
-  </div>
-  <div class="field-unit field-unit--categorizations" style="align-items:baseline;" >
+  <p>
+    <%= t("manifold.admin.help_text.entity_weights") %>
+  </p>
+  <div class="field-unit field-unit--categorizations">
 
     <div class="field-unit__label">
       <label>Entity Weights</label>
     </div>
-      <div class="field-unit__field" style="width:75%;">
+      <div class="field-unit__field w-75">
         <%= f.fields_for :categorizations, page.resource.categorizations.sort_by(&:weight) do |categorizations_form| %>
-        <div style="padding: 1.1em;border-bottom: 1px solid;">
-          <span style="width:20%;display:inline-block;">
+        <div class="entity-weight-list">
+          <span class="categorizable-type">
             <strong><%= categorizations_form.object.categorizable_type %></strong>
           </span>
-          <span style="width:40%;display:inline-block">
+          <span class="categorizable-label">
             <%= categorizations_form.label categorizations_form.object.categorizable.label %>
           </span>
-          <span style="display:inline-block;width:8%">
+          <span class="categorizable-weight">
             <%= categorizations_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
           </span>
         </div>
@@ -65,10 +60,10 @@ and renders all form fields for a resource's editable attributes.
   <% if action_name == "edit" && is_draftable?(page.attributes) %>
     <div class="field-unit field-unit--apply-draft %>" >
       <div class="field-unit__label">
-        <%= f.label :publish, t("manifold.admin.actions.publish")%>
+        <%= f.label :publish, t("manifold.admin.actions.publish") %>
       </div>
       <div class="field-unit__field">
-        <%= f.check_box :publish%>
+        <%= f.check_box :publish %>
       </div>
     </div>
   <% end -%>

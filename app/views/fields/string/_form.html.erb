@@ -2,13 +2,13 @@
   <%= f.label field.attribute %>
   <% if is_admin? %>
     <% if [:tutorial_path].include? field.attribute %>
-      <p style="height:1.5rem"></p>
+      <p class="h-one-half"></p>
     <% end %>
     <% if [:slug].include? field.attribute %>
-      <p style="height:3rem"></p>
+      <p class="h-one-half"></p>
     <% end %>
     <% if [:title, :name].include? field.attribute %>
-      <p style="height:4rem"></p>
+      <p class="h-one-half"></p>
     <% end %>
   <% end %>
 </div>

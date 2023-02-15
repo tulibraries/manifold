@@ -70,3 +70,18 @@ fieldset.form-section {
 .col-form-label {
   padding-top: calc(0.375rem + 1px) !important;
 }
+
+fieldset {
+  margin-top: 1.5rem;
+}
+
+.fieldset-border {
+  border: solid #ccc 2px;
+  padding: 21px;
+  border-radius: 7px;
+}
+
+.fieldset-legend {
+  width: auto;
+  padding: 0 21px;
+}

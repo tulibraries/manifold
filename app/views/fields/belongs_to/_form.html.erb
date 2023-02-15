@@ -10,6 +10,6 @@
     <%= options_for_select(field.associated_resource_options, field.selected_option) %>
   <% end %>
   <% if field.resource.class.to_s == "Building" && field.attribute == :external_link %>
-    <p class="text-muted" style="margin-bottom: 0"><%= t("manifold.default.fields.belongs_to") %></p>
+    <p class="text-muted mb-0"><%= t("manifold.default.fields.belongs_to") %></p>
   <% end %>
 </div>

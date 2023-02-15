@@ -6,9 +6,6 @@
   padding-right: 10px;
   padding-left: 0;
   width: 35%;
-  @media screen and (min-width: 0px) and (max-width: 1314px) {
-    width: 35%;
-  }
   .fa.fa-search {
     display: none;
   }
@@ -122,6 +119,9 @@
   }
 }
 
+#mobile-search-container {
+  width: 100%;
+}
 #mobile-search {
   background-color: $lightest-grey;
   padding: 14px 0;
@@ -129,11 +129,7 @@
     margin-top: 7px;
   }
 }
-#mobile-search-container {
-  @media screen and (min-width: 1040px) {
-    display: none!important;
-  }
-}
+
 #mobile-search.collapse {
   height: 0;
 }

@@ -1,7 +1,7 @@
 <div class="field-unit__label">
 	<% case field.attribute %>
   <% when :promoted_to_events %>
-    <%= f.label "Publish/Unpublish" %> <p style="height:.5rem"></p>
+    <%= f.label t("helpers.label.exhibition.promoted_to_events") %>
   <% when :suppress %>
     <%= f.label t("helpers.label.event.suppress") %>
   <% else %>
@@ -17,3 +17,4 @@
     <p class="text-muted mb-0"><%= t("manifold.default.fields.alert_for_header") %></p>
   <% end %>
 </div>
+

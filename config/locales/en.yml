@@ -14,7 +14,7 @@ en:
         accounts: "Individual Owners"
       exhibition:
         title: "Name"
-        promoted_to_events: "Published"
+        promoted_to_events: "Publish/Unpublish"
       highlight:
         created_at: "Published at"
       policy:

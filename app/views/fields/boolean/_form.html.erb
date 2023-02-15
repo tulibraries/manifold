@@ -1,16 +1,20 @@
 <div class="field-unit__label">
-	<% unless field.attribute == :promoted_to_events %>
-	  <%= f.label field.attribute %>
-	<% else %>
-  	<%= f.label "Publish/Unpublish" %>
+	<% case field.attribute %>
+  <% when :promoted_to_events %>
+    <%= f.label t("helpers.label.exhibition.promoted_to_events") %>
+  <% when :suppress %>
+    <%= f.label t("helpers.label.event.suppress") %>
+  <% else %>
+    <%= f.label field.attribute %>
   <% end %>
 </div>
 <div class="field-unit__field">
   <%= f.check_box field.attribute %>
 	<% if field.attribute == :promoted_to_events %>
-	  <span class="text-muted mb-0 d-inline-block"><%= t("manifold.default.fields.boolean") %></span>
+	  <p class="text-muted mb-0"><%= t("manifold.default.fields.boolean") %></p>
   <% end %>
   <% if field.attribute == :for_header %>
-    <span class="text-muted mb-0 d-inline-block"><%= t("manifold.default.fields.alert_for_header") %></span>
+    <p class="text-muted mb-0"><%= t("manifold.default.fields.alert_for_header") %></p>
   <% end %>
 </div>
+

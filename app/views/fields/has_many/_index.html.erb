@@ -1,7 +1,7 @@
 <% unless field.resource.class.to_s == "Service" || 
    field.resource.class.to_s == "Policy" || 
    field.resource.class.to_s == "ActiveStorage::Blob" %>
-	<ul style="list-style-type: none;padding-left: 0px">
+	<ul class="has-many-list">
 	<% field.data.each do |category| %>
 		<li><%= category.label %></li>
 	<% end %>

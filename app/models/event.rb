@@ -23,6 +23,7 @@ class Event < ApplicationRecord
   scope :is_workshop, -> { where("lower(event_type) LIKE ?", "%workshop%") }
   scope :is_dss_event, -> { where("lower(tags) LIKE ?", "%digital scholarship%") }
   scope :is_hsl_event, -> { where("lower(tags) LIKE ?", "%health sciences%") }
+  scope :is_displayable, -> { where("suppress = ?", false) }
 
   def to_param  # overridden for tests
     id

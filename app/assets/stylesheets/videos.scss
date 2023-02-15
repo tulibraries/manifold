@@ -6,6 +6,9 @@
 		font-size: 1.75rem;
 		display: inline-block;
 	}
+  iframe {
+    border: 1px solid #464646;
+  }
 	.video-container {
 		height: 100%;
 	}
@@ -96,5 +99,29 @@
 .video-block {
   img {
     max-height: 135px;
+  }
+}
+
+.ensembleEmbeddedContent {
+  height: 680px;
+  overflow: hidden;
+  script {
+    position: relative;
+  }
+}
+
+.wpvi-playlist {
+  position: relative; 
+  padding-bottom: 56.25%; 
+  padding-top: 400px; 
+  height: 0; 
+  overflow: auto; 
+  -webkit-overflow-scrolling: touch;
+  iframe {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
   }
 }

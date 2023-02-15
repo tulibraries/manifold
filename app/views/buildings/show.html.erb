@@ -34,7 +34,7 @@
       <% unless @building.external_link.nil? %>
         <div class="external-link text-center">
           <h2><%= link_to @building.external_link.title, @building.external_link.link %></h2>
-          <span class="print-only" style="color: white"><%= @building.external_link.link %></span>  
+          <span class="print-only white"><%= @building.external_link.link %></span>  
         </div>          
       <% end %>
       <% unless @building.coordinates.blank? || @building.google_id.blank? %>

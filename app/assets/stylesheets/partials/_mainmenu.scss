@@ -154,8 +154,11 @@ a.multiples.active {
   border-bottom: solid $light-grey 1px;
   border-top: solid $light-grey 1px;
 }
-#list-tab a:hover {
-  outline: solid $light-grey 1px !important;
+#list-tab {
+  background: rgba(255,255,255,0.3) !important;
+  a:hover {
+    outline: solid $light-grey 1px !important;
+  }
 }
 .menu-category {
   border-bottom: solid $light-grey 1px;

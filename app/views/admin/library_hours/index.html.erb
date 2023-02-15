@@ -44,16 +44,16 @@ It renders the `_table` partial to display details about the resources.
 </header>
 
 <section class="main-content__body main-content__body--flush">
-  <div class="container" style="padding-left: 2rem;">
+  <div class="container">
+    <div id="last-sync">
     <% unless @last_sync.nil? %>
-      <div id="last-sync">
-        <p>Last Library Hours Sync: 
-          <%= @last_sync.updated_at.in_time_zone.strftime("%m/%e/%Y %l:%M %p") %>
-        </p>
-      </div>
+      <p>Last Library Hours Sync: 
+        <%= @last_sync.updated_at.in_time_zone.strftime("%m/%e/%Y %l:%M %p") %>
+      </p>
     <% end %>
 
-    <%= link_to "Library Hours Public Page", hours_path  %>
+      <p><%= link_to "Library Hours Public Page", hours_path %></p>
+    </div>
 
   </div>
 </section>

@@ -28,6 +28,7 @@ FactoryBot.define do
     event_type { "" }
     all_day { false }
     alt_text { "Charles Library" }
+    suppress { false }
     trait :with_image do
       after :create do |event|
         event.image.attach(io:

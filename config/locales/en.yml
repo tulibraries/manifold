@@ -12,6 +12,8 @@ en:
         accounts: "Individual Owners"
       collection:
         accounts: "Individual Owners"
+      event:
+        suppress: Hide from display
       exhibition:
         title: "Name"
         promoted_to_events: "Publish/Unpublish"

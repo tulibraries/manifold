@@ -1,0 +1,33 @@
+<% content_for(:title) do %>
+  <%= display_resource_name(page.resource_name) %>
+<% end %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title" id="page-title">
+    <%= content_for(:title) %>
+  </h1>
+
+  <%= button_to(
+    t(
+      "manifold.admin.actions.sync_library_hours",
+      name: page.resource_name.titleize.downcase
+    ),
+    action: "sync",
+  )  %>
+</header>
+
+<section class="main-content__body main-content__body--flush">
+  <div class="container">
+    <div id="last-sync">
+    <% unless @last_sync.nil? %>
+      <p>Last Library Hours Sync: 
+        <%= @last_sync.updated_at.in_time_zone.strftime("%m/%e/%Y %l:%M %p") %>
+      </p>
+    <% end %>
+
+      <p><%= link_to "Library Hours Public Page", hours_path %></p>
+    </div>
+
+  </div>
+</section>
+

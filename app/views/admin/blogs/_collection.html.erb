@@ -45,7 +45,7 @@
           >
         <% collection_presenter.attributes_for(resource).each do |attribute| %>
           <td class="cell-data cell-data--<%= attribute.html_class %>">
-            <% if existing_action? resource.class, :show -%>
+            <% if authorized_action? resource.class, :show -%>
               <a href="<%= polymorphic_path([namespace, resource]) -%>"
                  class="action-show"
                  >
@@ -60,7 +60,7 @@
             t("administrate.actions.edit"),
             [:edit, namespace, resource],
             class: "action-edit",
-          ) %></td>
+          ) if authorized_action? resource, :edit %></td>
         <% end %>
 
         <% if existing_action? collection_presenter.resource_name, :destroy %>
@@ -70,7 +70,7 @@
             class: "text-color-red",
             method: :delete,
             data: { "turbo-method": :delete, "turbo-confirm": t("administrate.actions.confirm") }
-          ) %></td>
+          ) if authorized_action? resource, :destroy %></td>
         <% end %>
 
         <td>

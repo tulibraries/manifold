@@ -9,7 +9,7 @@
       <% end %>
 
       <% if action_name == "home" %>
-        <div id="todays-date" class="d-inline w-25 float-end text-start d-print-none">
+        <div id="todays-date" class="d-none d-md-inline w-25 float-end text-start d-print-none">
           <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu", class: "pe-3" %>
           <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
           <div class="inner-date mt-2">

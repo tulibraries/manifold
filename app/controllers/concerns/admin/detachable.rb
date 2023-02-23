@@ -6,12 +6,13 @@ module Admin::Detachable
   def detach
     klass = params[:controller].split("/").last.classify
     entity = klass.constantize.find(params[:id])
+    type = params[:type]
 
     if klass == "FileUpload"    # some models now have more than one attachable type
-      if params[:type] == "file"
+      if type == "file"
         entity.file.purge
         flash[:notice] = "File detached"
-      elsif params[:type] == "image"
+      elsif type == "image"
         entity.image.purge
         flash[:notice] = "Image detached"
       end if params[:type]

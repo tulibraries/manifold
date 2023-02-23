@@ -14,7 +14,7 @@ class FileUploadDashboard < BaseDashboard
     slug: Field::String,
     name: Field::String,
     file: FileField,
-    image: FileField,
+    image: PhotoField,
     image_title: Field::String
   }.freeze
 

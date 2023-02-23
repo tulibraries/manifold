@@ -10,10 +10,10 @@
 	  <%= f.file_field field.attribute %>
     <%= link_to field.data.attachment.filename, url_for(field.data.attachment), disposition: "attachment" %>
     &nbsp;-&nbsp; 
-    <%= link_to t("manifold.admin.actions.detach"), { action: :detach }, data: { confirm: t("manifold.default.fields.confirm") } %>
+    <%= link_to t("manifold.admin.actions.detach"), { action: :detach, type: field.attribute }, data: { confirm: t("manifold.default.fields.confirm") } %>
 	<% else %>
 	  <%= f.file_field field.attribute %> 
-    <% if field.resource.class.to_s == "FileUpload" && field.attribute == "file" %>
+    <% if field.resource.class.to_s == "FileUpload" %>
       <p class="text-muted"><%= t("manifold.default.fields.file_field") %></p>
     <% end %>
 	<% end %>

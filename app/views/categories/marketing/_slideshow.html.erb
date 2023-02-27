@@ -16,9 +16,6 @@
             <%= link_to image_tag("charles/"+image, class: 'img-fluid'), asset_path("charles/"+image), target: "_blank" %>
           <% else %>
             <%= image_tag("charles/"+image, class: 'img-fluid') %>
-            <p class="image-caption">
-              <%= @captions[index] %>
-            </p>
           <% end %>
         </div>
         <% end %>

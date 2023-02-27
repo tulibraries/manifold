@@ -32,7 +32,7 @@ module Admin
       spaces = Space.where(external_link_id: link_id)
       buildings = Building.where(external_link_id: link_id)
 
-      attached_links = webpages+collections+services+categories+spaces+buildings
+      attached_links = webpages + collections + services + categories + spaces + buildings
 
       if attached_links.present?
         models = [webpages, collections, services, categories, spaces, buildings]

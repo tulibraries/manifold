@@ -20,7 +20,7 @@ module Admin::Detachable
       entity.image.purge
       flash[:notice] = "Image detached"
     end
-    
+
     redirect_to url_for(controller: params[:controller], action: :show, id: params[:id], only_path: true)
   end
 end

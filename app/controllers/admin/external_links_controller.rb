@@ -21,20 +21,20 @@ module Admin
     # for more information
 
     def destroy
-      begin
-        super
-      rescue StandardError => error
-        link_id = ExternalLink.find_by(slug: params[:id])
-        if link_id.nil?
-          link_id = ExternalLink.find_by(id: params[:id])
-        end
-        webpages = Webpage.where(external_link_id: link_id)
-        collections = Collection.where(external_link_id: link_id)
-        services = Service.where(external_link_id: link_id)
-        categories = Category.where(external_link_id: link_id)
-        spaces = Space.where(external_link_id: link_id)
-        buildings = Building.where(external_link_id: link_id)
+      link_id = ExternalLink.find_by(slug: params[:id])
+      if link_id.nil?
+        link_id = ExternalLink.find_by(id: params[:id])
+      end
+      webpages = Webpage.where(external_link_id: link_id)
+      collections = Collection.where(external_link_id: link_id)
+      services = Service.where(external_link_id: link_id)
+      categories = Category.where(external_link_id: link_id)
+      spaces = Space.where(external_link_id: link_id)
+      buildings = Building.where(external_link_id: link_id)
 
+      attached_links = webpages+collections+services+categories+spaces+buildings
+
+      if attached_links.present?
         models = [webpages, collections, services, categories, spaces, buildings]
         links = {}
 
@@ -57,9 +57,10 @@ module Admin
           end
           notice += "<br />"
         end
-        redirect_to :admin_external_links, notice: notice
-
+      else
+        super
       end
+      redirect_to :admin_external_links, notice: notice
     end
   end
 end

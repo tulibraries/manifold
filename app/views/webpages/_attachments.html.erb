@@ -1,9 +1,9 @@
 <% if @webpage.items.present? || @webpage.featured_item.present? %>
   <% if @webpage.featured_item.present? %>
 
-    <div class="row d-flex align-items-center my-5" style="height:280px;overflow:hidden;background-color: #001E61; color: white;">
+    <div class="row d-flex align-items-center my-5 px-0 mx-2" style="height:280px;overflow:hidden;background-color: #001E61; color: white;">
     <% if @webpage.featured_item.first.file_upload.image.present? %>
-      <div class="col-4 featured-item">
+      <div class="col-4 featured-item ps-0">
         <%= image_tag @webpage.featured_item.first.file_upload.image, class: "inline p-0", style: "height:280px" %>
       </div>
 
@@ -19,7 +19,7 @@
   <% end %>
   </div>
 
-  <div class="row">
+  <div class="row non-featured-publications">
     <% @webpage.items.each do |item| %>
       <div class="col-12 col-md-6 col-lg-4 m-3 p-0" style="background-color: #eee;">
         <%= image_tag item.file_upload.image.variant(:gravity=>"Center", resize: "535x250^", crop: '535x250+0+0'), class: "block p-0" if item.file_upload.image.attached? %>

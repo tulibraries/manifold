@@ -5,22 +5,26 @@
 }
 
 .leftside-index {
+  font-family: "Roboto Light";
 	width: 85%;
 	@media (max-width: 950px) {
 		width: 100%;
 		border-bottom: solid $white 4px;
 	}
 	h2 {
-		color: $seagreen-dark;
-		border-bottom: solid $seagreen-dark 2px;
-		background-color: transparent;
-		padding: 12px 0;
+		background-color: $royal-blue;
+		padding: 12px;
+    margin-bottom: 21px;
+    a {
+      color: $white;
+    }
 	}
 	ul {
-		
+		padding-bottom: 21px;
+    border-bottom: solid $new-gold 2px;
 	}
 	li {
-		padding: 7px 0;
+		padding: 14px;
 		line-height: 1.25rem;
 	}
 	li a {
@@ -33,6 +37,9 @@
 			color: $seagreen;
 			font-weight: 900;
 		}
+	}
+	li:nth-child(odd) {
+		background-color: $lightest-grey;
 	}
 }
 

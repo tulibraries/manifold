@@ -555,15 +555,15 @@
 }
 
 .access-link {
-  background-color: $foamgreen;
-  padding: 14px;
-  border-radius: 7px;
-  margin-bottom: 17px;
   a {
-    color: $white;
+    color: $black;
   }
   h2 {
     margin-bottom: 3px;
+    background-color: $crystal-blue;
+    padding: 14px;
+    margin-bottom: 17px;
+    font-family: faustina;
   }
   @media (max-width: 950px) {
     width: 95%;
@@ -604,8 +604,4 @@
     display: block;
     padding-left: 2rem;
   }
-}
-.non-featured-publications {
-  // position: relative;
-  // left: -20px;
 }

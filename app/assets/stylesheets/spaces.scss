@@ -30,19 +30,4 @@
 			margin-top: 21px;
 		}
 	}
-	.access-link {
-		background-color: $foamgreen;
-		padding: 14px;
-		border-radius: 7px;
-		margin-bottom: 17px;
-		@media screen and (max-width: 768px) {
-			text-align: center;
-		}
-		a {
-			color: $white;
-		}
-		h2 {
-			margin-bottom: 3px;
-		}
-	}
 }

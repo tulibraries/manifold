@@ -8,7 +8,7 @@
 			<div class="d-none d-md-block col-3">
 				<%= render "categories_list" %>
 			</div>
-      <% if @webpage.external_link.present? || @webpage.file_uploads.present? %>
+      <% if @webpage.external_link.present? %>
         <div class="col-12 col-md-6">
       <% else %>
         <div class="col-12 col-md-9">
@@ -16,7 +16,7 @@
 
     <% else %> <!-- no category list -->
     
-      <% if @webpage.external_link.present? || @webpage.file_uploads.present? %>
+      <% if @webpage.external_link.present? %>
         <div class="col-12 col-md-9">
       <% else %>
         <div class="col-12">
@@ -42,11 +42,14 @@
         </div>
       <% end %>
 
-      <%= render "attachments" %>
-      
 	  </div>
   <% end %>
 
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= render "attachments" %>
+    </div>
   </div>
 </div>
 

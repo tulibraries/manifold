@@ -592,3 +592,16 @@
     max-width: 100%;
   }
 }
+
+.featured-publication {
+  background-image: url("top-left-corner.png");
+  background-repeat: no-repeat;
+  background-position: -10px -10px;
+  h2 {
+    padding-left: 2rem;
+  }
+  a {
+    display: block;
+    padding-left: 2rem;
+  }
+}

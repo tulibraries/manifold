@@ -1,12 +1,32 @@
-<% if @webpage.items.any? { |item| item.file_upload.file.content_type == "application/pdf" } %>
-  <ul class="list-unstyled">
-  <% @webpage.items.each do |item| %>
-    <% if item.file_upload.file.content_type == "application/pdf" %>
-      <li class="press-button text-center">
-        <%= link_to "#{item.file_upload.name} -- View PDF", url_for(item.file_upload.file), disposition: "attachment" %>
-      </li>
+<% if @webpage.items.present? || @webpage.featured_item.present? %>
+  <% if @webpage.featured_item.present? %>
+
+    <div class="row d-flex align-items-center my-5" style="height:280px;overflow:hidden;background-color: #001E61; color: white;">
+    <% if @webpage.featured_item.first.file_upload.image.present? %>
+      <div class="col-4 featured-item">
+        <%= image_tag @webpage.featured_item.first.file_upload.image, class: "inline p-0", style: "height:280px" %>
+      </div>
+
+    <div class="col col-8 ps-5 featured-publication">
+
+    <% else %>
+
+    <div class="col col-12 text-center featured-publication">
     <% end %>
+      <h2 class="pt-2 ps-0 fs-1 roboto-bold mb-3">Featured Publication</h2>
+      <%= link_to "#{@webpage.featured_item.first.file_upload.name} -- View PDF", url_for(@webpage.featured_item.first.file_upload.file), disposition: "attachment", style: "color:white", class: "ps-0 fs-2 roboto-light" %>
+    </div>
   <% end %>
-  </ul>
-<% end if @webpage.items.present? %>
+  </div>
+
+  <div class="row">
+    <% @webpage.items.each do |item| %>
+      <div class="col-12 col-md-6 col-lg-4 m-3 p-0" style="background-color: #eee;">
+        <%= image_tag item.file_upload.image.variant(:gravity=>"Center", resize: "535x250^", crop: '535x250+0+0'), class: "block p-0" if item.file_upload.image.attached? %>
+        <%= link_to "#{item.file_upload.name} -- View PDF", url_for(item.file_upload.file), disposition: "attachment", class: "d-block fs-2 p-4", style: "color: black" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% end %>
 

@@ -282,6 +282,9 @@ class WebpagesController < ApplicationController
   def show
     @categories = @webpage.categories
     @header_alert = @webpage.covid_alert
+    # @featured_attachment = @webpage.file_uploads.find_by(featured: true)
+    # @featured_image = @featured_attachment.image
+    # @attachments = @webpage.file_uploads.where(featured: false)
     serializable_show
   end
 

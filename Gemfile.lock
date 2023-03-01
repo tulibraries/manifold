@@ -104,7 +104,7 @@ GEM
     ancestry (4.2.0)
       activerecord (>= 5.2.6)
     ast (2.4.2)
-    attr_json (2.0.0)
+    attr_json (2.0.1)
       activerecord (>= 6.0.0, < 7.1)
     auto_strip_attributes (2.6.0)
       activerecord (>= 4.0)

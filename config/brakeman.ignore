@@ -3,7 +3,7 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
-      "fingerprint": "21f3267af2337ff683f649c2cbfd60020b6472ac80c76b6ecc54cfd1ae5fdcd1",
+      "fingerprint": "19f8c5775c6f13df2decede0e2d9ea6891f45b9dd9c6ab787731f6d4bb931f45",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/concerns/redirect_logic.rb",
@@ -17,7 +17,7 @@
         "method": "redirect_or_404"
       },
       "user_input": "Redirect.find_by(:legacy_path => legacy_path).path",
-      "confidence": "High",
+      "confidence": "Weak",
       "cwe_id": [
         601
       ],
@@ -93,6 +93,6 @@
       "note": ""
     }
   ],
-  "updated": "2022-12-02 10:02:24 -0500",
-  "brakeman_version": "5.4.0"
+  "updated": "2023-03-01 09:31:05 -0500",
+  "brakeman_version": "5.4.1"
 }

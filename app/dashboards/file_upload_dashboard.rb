@@ -15,7 +15,6 @@ class FileUploadDashboard < BaseDashboard
     name: Field::String,
     file: FileField,
     image: PhotoField,
-    image_title: Field::String,
     featured: Field::Boolean
   }.freeze
 
@@ -36,7 +35,6 @@ class FileUploadDashboard < BaseDashboard
     :slug,
     :file,
     :image,
-    :image_title,
     :featured
   ].freeze
 
@@ -48,7 +46,6 @@ class FileUploadDashboard < BaseDashboard
     :slug,
     :file,
     :image,
-    :image_title,
     :featured
   ].freeze
 

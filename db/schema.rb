@@ -276,7 +276,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_140156) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
-    t.string "image_title"
     t.boolean "featured", default: false
   end
 

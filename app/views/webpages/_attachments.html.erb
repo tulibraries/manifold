@@ -14,7 +14,7 @@
     <div class="col col-12 text-center featured-publication">
     <% end %>
       <h2 class="pt-2 ps-0 fs-1 roboto-bold mb-3">Featured Publication</h2>
-      <%= link_to "#{@webpage.featured_item.first.file_upload.name} -- View PDF", url_for(@webpage.featured_item.first.file_upload.file), disposition: "attachment", style: "color:white", class: "ps-0 fs-2 roboto-light" %>
+      <%= link_to "#{@webpage.featured_item.first.file_upload.image_title} -- View PDF", url_for(@webpage.featured_item.first.file_upload.file), disposition: "attachment", style: "color:white", class: "ps-0 fs-2 roboto-light" %>
     </div>
   <% end %>
   </div>
@@ -23,7 +23,7 @@
     <% @webpage.items.each do |item| %>
       <div class="col-12 col-md-6 col-lg-4 m-3 p-0" style="background-color: #eee;">
         <%= image_tag item.file_upload.image.variant(:gravity=>"Center", resize: "535x250^", crop: '535x250+0+0'), class: "block p-0" if item.file_upload.image.attached? %>
-        <%= link_to "#{item.file_upload.name} -- View PDF", url_for(item.file_upload.file), disposition: "attachment", class: "d-block fs-2 p-4", style: "color: black" %>
+        <%= link_to "#{item.file_upload.image_title} -- View PDF", url_for(item.file_upload.file), disposition: "attachment", class: "d-block fs-2 p-4", style: "color: black" %>
       </div>
     <% end %>
   </div>

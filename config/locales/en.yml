@@ -17,6 +17,8 @@ en:
       exhibition:
         title: "Name"
         promoted_to_events: "Publish/Unpublish"
+      file_upload:
+        image_title: "Display title"
       highlight:
         created_at: "Published at"
       policy:

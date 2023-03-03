@@ -39,5 +39,10 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>45321</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
 </Events>

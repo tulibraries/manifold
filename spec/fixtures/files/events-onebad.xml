@@ -39,6 +39,11 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>52246</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Random Event 101</Title>
@@ -79,5 +84,10 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>52246</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
 </Events>

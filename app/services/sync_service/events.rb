@@ -153,10 +153,10 @@ class SyncService::Events
     if building
       location_hash["building"] = building
     else
-      if event.fetch("LocationUnaffiliated").present?
+      if event["LocationUnaffiliated"].present?
         location_hash["external_building"] = event.fetch("LocationUnaffiliated") { nil }
         location_hash["external_address"] = event.fetch("AddressUnaffiliated") { nil }
-        location_hash["external_city"] = event.fetch("CityUnaffilaited") { nil }
+        location_hash["external_city"] = event.fetch("CityUnaffiliated") { nil }
         location_hash["external_state"] = event.fetch("StateUnaffiliated") { nil }
         location_hash["external_zip"] = event.fetch("ZipUnaffiliated") { nil }
       else

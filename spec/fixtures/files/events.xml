@@ -59,6 +59,11 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>45321</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Learning Good Data Habits at the ICPSR Summer Program</Title>
@@ -97,12 +102,12 @@
     <Tags>library workshops</Tags>
     <PrivateTags></PrivateTags>
     <Campus>Main Campus</Campus>
-    <Location>Anderson Hall</Location>
+    <LocationUnaffiliated>Anderson Hall</LocationUnaffiliated>
     <Room>Room 1221</Room>
-    <Address>1835 N. 12th Street</Address>
-    <City>Philadelphia</City>
-    <State>PA</State>
-    <Zip>19122</Zip>
+    <AddressUnaffiliated>1835 N. 12th Street</AddressUnaffiliated>
+    <CityUnaffiliated>Philadelphia</CityUnaffiliated>
+    <StateUnaffiliated>PA</StateUnaffiliated>
+    <ZipUnaffiliated>19122</ZipUnaffiliated>
     <Sponsors>Temple University Department of Criminal Justice and Temple University Libraries</Sponsors>
     <Audience>Public</Audience>
     <ContactName>Olivia Given Castello</ContactName>
@@ -118,6 +123,12 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>45331</GUID>
+    <Location/>
+    <Address/>
+    <City/>
+    <State/>
+    <Zip/>
+    <LocationFormatted/>
   </Event>
   <Event>
     <Title>Building the 21st Century Library: Transformation of a Campus</Title>
@@ -171,6 +182,11 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>44741</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>The Cost of Being a Girl: Author Yasemin Besen-Cassino on the Gender Pay Gap</Title>
@@ -214,6 +230,11 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>41746</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Students, Labor Activism, and Publishing: From Radical America to Jacobin</Title>
@@ -262,6 +283,11 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>44846</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Refugees &amp; Resettlement: The Hebrew Immigrant Aid Society in the Vietnam War Era and Beyond</Title>
@@ -306,6 +332,11 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>45301</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>1968 Kerner Commission: What Can We Learn 50 Years Later? Steve Gillon and Alan Curtis in Conversation with Karen M. Turner</Title>
@@ -350,6 +381,11 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>41751</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>The Working People of Philadelphia, Then and Now</Title>
@@ -406,6 +442,11 @@
     <Promoted>0</Promoted>
     <Weight>1</Weight>
     <GUID>45316</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Extended - Food For Fines</Title>
@@ -450,6 +491,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>44486</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Introducing the United States Census Bureau Data Repository</Title>
@@ -509,6 +555,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>45346</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Calling Bullsh*t in an Era of Misinformation: Developing a Fact-Checking Mindset</Title>
@@ -551,6 +602,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42646</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Philly Public Arts Forum: Building the #TempleFreewall</Title>
@@ -602,6 +658,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>41766</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>&quot;I&#039;ve got these data, where do I put them?&quot;: A Look at Deposit Options at ICPSR</Title>
@@ -662,6 +723,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>45336</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>From Asking Questions to Sharing Data: A Look at Ethics in Social Research</Title>
@@ -722,6 +788,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>45341</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Midday Arts Series: An Afternoon with Ryan Eckes and Meg Lemieur</Title>
@@ -768,6 +839,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>45456</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Calling Bullsh*t in an Era of Misinformation: Detecting Misleading Data</Title>
@@ -810,6 +886,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42651</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Zinemaking</Title>
@@ -853,6 +934,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42746</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Chat in the Stacks: Remembering 1968</Title>
@@ -899,6 +985,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>44966</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Developing Your Scholarly Profile</Title>
@@ -941,6 +1032,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>41491</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>How to Write and Publish a Case Report</Title>
@@ -984,6 +1080,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>44266</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Calling Bullsh*t in an Era of Misinformation: Refuting Claims Persuasively</Title>
@@ -1026,6 +1127,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42656</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Boyer Artist-in-Residence Zach Brock, Jazz Violinist</Title>
@@ -1071,6 +1177,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>43091</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Integrating Open Access Resources into your Canvas Course</Title>
@@ -1113,6 +1224,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42661</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Zines and &#039;Za</Title>
@@ -1155,6 +1271,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>44241</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Introduction to the Open Science Framework</Title>
@@ -1198,6 +1319,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42546</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Zinemaking</Title>
@@ -1241,6 +1367,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42751</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Using Open Textbooks in the Classroom</Title>
@@ -1285,6 +1416,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42551</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Temple University Libraries&#039; Data Grants Program Data</Title>
@@ -1327,6 +1463,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>43416</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Know Your Copyright: Sharing Your Research</Title>
@@ -1373,6 +1514,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>45256</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Introduction to Virtual Reality</Title>
@@ -1416,6 +1562,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>44271</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Early Music Led by Shannon Merlino</Title>
@@ -1459,6 +1610,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>43101</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Systematic Reviews Overview</Title>
@@ -1502,6 +1658,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>44276</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Zinemaking</Title>
@@ -1545,6 +1706,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42756</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Zinemaking</Title>
@@ -1588,6 +1754,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>42761</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Temple University Percussion Ensemble Under the Direction of Phillip O’Banion</Title>
@@ -1633,6 +1804,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>43111</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>Amplifying Your Research</Title>
@@ -1675,6 +1851,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>41496</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
   <Event>
     <Title>*CANCELLED* Measuring Your Research Impact</Title>
@@ -1717,6 +1898,11 @@
     <Promoted>0</Promoted>
     <Weight>0</Weight>
     <GUID>41501</GUID>
+    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
   </Event>
 	<Event>
 		<Title>Last Chance! A Long Separation Exhibition</Title>
@@ -1763,5 +1949,10 @@
 		<Promoted>0</Promoted>
 		<Weight>1</Weight>
 		<GUID>48731</GUID>
-	</Event>
+	    <LocationUnaffiliated/>
+    <AddressUnaffiliated/>
+    <StateUnaffiliated/>
+    <ZipUnaffiliated/>
+    <LocationFormattedUnaffiliated/>
+  </Event>
 </Events>

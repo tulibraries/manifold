@@ -19,7 +19,7 @@ gem "aws-sdk-s3"
 gem "bootsnap", require: false
 gem "bootstrap"
 gem "browser"
-gem "cancancan", "~> 3.4"
+gem "cancancan", "~> 3.5"
 gem "cssbundling-rails"
 gem "devise"
 gem "diffy"

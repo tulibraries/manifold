@@ -282,6 +282,9 @@ class WebpagesController < ApplicationController
   def show
     @categories = @webpage.categories
     @header_alert = @webpage.covid_alert
+    featured = @webpage.items.select{ |item| item.weight == 1 }
+    @featured = featured.pop if featured.present?
+    @items = @webpage.items.select{ |item| item.weight > 1 }
     serializable_show
   end
 

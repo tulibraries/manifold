@@ -14,8 +14,7 @@ class FileUploadDashboard < BaseDashboard
     slug: Field::String,
     name: Field::String,
     file: FileField,
-    image: PhotoField,
-    featured: Field::Boolean
+    image: PhotoField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,8 +23,7 @@ class FileUploadDashboard < BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :name,
-    :featured
+    :name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,8 +32,7 @@ class FileUploadDashboard < BaseDashboard
     :name,
     :slug,
     :file,
-    :image,
-    :featured
+    :image
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -45,8 +42,7 @@ class FileUploadDashboard < BaseDashboard
     :name,
     :slug,
     :file,
-    :image,
-    :featured
+    :image
   ].freeze
 
   # Overwrite this method to customize how external links are displayed

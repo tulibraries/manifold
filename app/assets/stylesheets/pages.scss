@@ -645,10 +645,12 @@
     padding-left: 2rem;
   }
   a::after {
-    padding-left: 2.5rem;
+    padding-left: 2rem;
     height: 35px;
     display: inline-block;
     content: url("pdf-white-sm.png");
+    position: relative;
+    top: 7px;
   }
 }
 .non-featured-publications {
@@ -661,5 +663,12 @@
   a {
     font-family: "Roboto Light";
     color: $royal-blue;
+  }
+  a::after {
+    padding-left: .75rem;
+    display: inline-block;
+    content: url("pdf-black-sm.png");
+    position: relative;
+    top: 7px;
   }
 }

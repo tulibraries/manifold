@@ -40,11 +40,6 @@ RSpec.describe Policy, type: :model do
         expect { policy.save! }.to raise_error(/Description can't be blank/)
       end
     end
-
-    example "Missing effective date" do
-      policy = FactoryBot.build(:policy, effective_date: "")
-      expect { policy.save! }.to raise_error(/Effective date can't be blank/)
-    end
   end
 
   describe "version all fields" do

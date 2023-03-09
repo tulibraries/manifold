@@ -17,7 +17,7 @@ class Policy < ApplicationRecord
   has_rich_text :draft_description
   has_rich_text :covid_alert
 
-  validates :name, :effective_date, presence: true
+  validates :name, presence: true
   serialize :category
 
   def slug_candidates

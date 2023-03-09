@@ -593,17 +593,17 @@
   }
 }
 .featured-publication {
-  min-height: 280px;
+  min-height: 180px;
   overflow: hidden;
   background-color: $royal-blue;
   color: $white;
   .featured-item {
-    height: 280px;
-    max-height: 280px;
+    height: 180px;
+    max-height: 180px;
     img {
-      width: 100%;
+      width: 90%;
       height:100%;
-      max-height:280px;
+      max-height:180px;
     }
   }
   a {
@@ -614,8 +614,9 @@
 .featured-publication-with {
   background-image: url("top-left-corner.png");
   background-repeat: no-repeat;
-  background-position: 10px -17px;
-  max-height: 280px;
+  background-position: 24px -29px;
+  max-height: 180px;
+  padding-left: 4rem;
   h2 {
     padding-bottom: 14px;
     padding-top: 17px;
@@ -624,25 +625,26 @@
     display: block;
     padding-left: 2rem;
   }
+  a::after {
+    padding-left: 2rem;
+    height: 35px;
+    display: inline-block;
+    content: url("pdf-white-sm.png");
+    position: relative;
+    top: 7px;
+  }
 }
 .featured-publication-without {
-  // background-image: url("pdf-white.png");
-  // background-repeat: no-repeat;
-  // background-position: bottom right;
-  max-height: 280px;
-  h2 {
-    padding-left: 2rem;
-    padding-bottom: 28px;
-    span {
-      background-image: url("top-left-corner.png");
-      background-repeat: no-repeat;
-      background-position: 0 -30px;
-      padding-left: 35px;
-    }
-  }
+  max-height: 180px;
   a {
     display: block;
     padding-left: 2rem;
+  }
+  a::before {
+    content: url("top-left-corner-sm.png");
+    padding-right: 14px;
+    position: relative;
+    top: -4px;
   }
   a::after {
     padding-left: 2rem;

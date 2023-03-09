@@ -23,6 +23,12 @@ FactoryBot.define do
         webpage.assign_attributes(file_uploads: [file])
       end
     end
+    trait :with_file_and_image do
+      after :create do |webpage|
+        file = FactoryBot.create(:file_upload, :with_image)
+        webpage.assign_attributes(file_uploads: [file])
+      end
+    end
     trait :with_files do
       after :create do |webpage|
         file1 = FactoryBot.create(:file_upload)

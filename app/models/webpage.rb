@@ -45,12 +45,11 @@ class Webpage < ApplicationRecord
   end
 
   def items
-    self.fileabilities.select { |f| (f.file_upload.present? && f.file_upload.featured == false) }
-                                      .sort_by { |f| [f.weight, f.file_upload.name] }
+    self.fileabilities.select { |f| (f.file_upload.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.file_upload.name] }
   end
 
   def featured_item
-    self.fileabilities.select { |f| (f.file_upload.present? && f.file_upload.featured == true) }
-                                      .sort_by { |f| f.file_upload.updated_at }
+    f = self.fileabilities.select { |f| (f.file_upload.present? && f.weight == 1) }.sort_by { |f| f.file_upload.updated_at }
+    f.first if f.present?
   end
 end

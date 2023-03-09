@@ -21,7 +21,7 @@ RSpec.describe "webpages/show", type: :view do
     expect(rendered).to render_template(partial: "_attachments")
     expect(rendered).to match /#{@webpage.file_uploads.first.image.attachment.filename.to_s}/
   end
-  
+
   it "displays multiple pdfs" do
     @webpage = FactoryBot.create(:webpage, :with_files)
     render

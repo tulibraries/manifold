@@ -12,7 +12,7 @@ RSpec.feature "Webpages", type: :feature do
         expect(page).to have_content(featured_item.featured_item.file_upload.name)
       end
     end
-    
+
     scenario "featured item without image" do
       webpage = FactoryBot.create(:webpage, :with_files)
       webpage.fileabilities.first.update("weight" => 1)

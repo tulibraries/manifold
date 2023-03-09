@@ -282,6 +282,7 @@ class WebpagesController < ApplicationController
   def show
     @categories = @webpage.categories
     @header_alert = @webpage.covid_alert
+    @featured = @webpage.featured_item
     serializable_show
   end
 

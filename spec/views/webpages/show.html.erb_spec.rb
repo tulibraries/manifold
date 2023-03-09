@@ -8,19 +8,25 @@ RSpec.describe "webpages/show", type: :view do
     view.lookup_context.prefixes << "application"
   end
 
-  it "displays the sample webpage pdf" do
+  it "displays pdf" do
     @webpage = FactoryBot.create(:webpage, :with_file)
     render
     expect(rendered).to render_template(partial: "_attachments")
     expect(rendered).to match /#{@webpage.file_uploads.first.name}/
-    expect(rendered).to match /-- View PDF/
   end
 
-  it "displays multiple sample webpage pdfs" do
+  it "displays file upload image" do
+    @webpage = FactoryBot.create(:webpage, :with_file_and_image)
+    render
+    expect(rendered).to render_template(partial: "_attachments")
+    expect(rendered).to match /#{@webpage.file_uploads.first.image.attachment.filename.to_s}/
+  end
+
+  it "displays multiple pdfs" do
     @webpage = FactoryBot.create(:webpage, :with_files)
     render
-    @webpage.file_uploads.each do |wp|
-      expect(rendered).to match /#{wp.name}/
+    @webpage.file_uploads.each do |file_upload|
+      expect(rendered).to match /#{file_upload.name}/
     end
   end
 

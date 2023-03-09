@@ -85,9 +85,9 @@ RSpec.describe Webpage, type: :model do
           @file1 = FactoryBot.create(:file_upload, name: "A Good Day")
           @file2 = FactoryBot.create(:file_upload, name: "Sunshine and Blue Skies")
           @with_uploads = FactoryBot.create(:webpage, file_uploads: [@file1])
-          @with_uploads.fileabilities.first.update("weight" => 2)
+          @with_uploads.fileabilities.first.update("weight" => 3)
           @with_uploads.file_uploads << @file2
-          @with_uploads.fileabilities.second.update("weight" => 1)
+          @with_uploads.fileabilities.second.update("weight" => 2)
         end
 
         it "returns items in the expected order" do
@@ -119,6 +119,24 @@ RSpec.describe Webpage, type: :model do
         end
         it "sorts them alphabetically by label" do
           expect(@with_uploads.items.map(&:file_upload_id)).to eql [@file1.id, @file2.id]
+        end
+      end
+
+      context "when there is a featured item" do
+        before do
+          @file1 = FactoryBot.create(:file_upload, name: "A Good Day")
+          @file2 = FactoryBot.create(:file_upload, name: "Sunshine and Blue Skies")
+          @with_uploads = FactoryBot.create(:webpage, file_uploads: [@file1])
+          @with_uploads.fileabilities.first.update("weight" => 2)
+          @with_uploads.file_uploads << @file2
+          @with_uploads.fileabilities.second.update("weight" => 1)
+        end
+        it "puts item into featured variable" do
+          expect(@with_uploads.featured_item.file_upload_id).to eql @file2.id
+        end
+        it "removes item from items array" do
+          expect(@with_uploads.items.map(&:file_upload_id)).to_not eql [@file2.id]
+          expect(@with_uploads.items.map(&:file_upload_id)).to eql [@file1.id]
         end
       end
     end

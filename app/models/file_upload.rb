@@ -4,6 +4,7 @@ class FileUpload < ApplicationRecord
   # has_paper_trail
   include Validators
   extend FriendlyId
+  include Imageable
   friendly_id :name, use: [:slugged, :finders]
 
   has_one_attached :file, dependent: :destroy

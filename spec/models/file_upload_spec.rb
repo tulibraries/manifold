@@ -14,4 +14,6 @@ RSpec.describe FileUpload, type: :model do
       expect(file_upload.file.content_type).to eq "application/pdf"
     end
   end
+
+  it_behaves_like "imageable"
 end

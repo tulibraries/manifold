@@ -8,7 +8,7 @@
 	<% if field.data.attached? %>
 	  <%= image_tag field.data %><br />
     <%= f.file_field field.attribute %>
-    <%= link_to t("manifold.admin.actions.detach"), { action: :detach }, data: { confirm: t("manifold.default.fields.confirm") } %>
+    <%= link_to t("manifold.admin.actions.detach"), { action: :detach, type: field.attribute }, data: { confirm: t("manifold.default.fields.confirm") } %>
   <% else %>
 	  <%= f.file_field field.attribute %>
     <% if field.resource.class.to_s == "Collection" || field.resource.class.to_s == "Space"%>

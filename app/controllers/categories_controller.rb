@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
 
     if @category.slug == "explore-charles"
       @images = []
-      11.times do |i|
+      28.times do |i|
         @images << (i.to_s + ".jpg")
       end
       @captions = []
@@ -31,6 +31,24 @@ class CategoriesController < ApplicationController
       @captions << "2nd floor floorplan"
       @captions << "3rd floor floorplan"
       @captions << "4th floor floorplan"
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
+      @captions << ""
       @captions << ""
       @captions << ""
       @captions << ""

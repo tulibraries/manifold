@@ -1,12 +1,28 @@
-<% if @webpage.items.any? { |item| item.file_upload.file.content_type == "application/pdf" } %>
-  <ul class="list-unstyled">
-  <% @webpage.items.each do |item| %>
-    <% if item.file_upload.file.content_type == "application/pdf" %>
-      <li class="press-button text-center">
-        <%= link_to "#{item.file_upload.name} -- View PDF", url_for(item.file_upload.file), disposition: "attachment" %>
-      </li>
-    <% end %>
+<% if featured.present? %>
+  <div class="row d-flex align-items-center my-5 ps-0 pe-5 mx-2 featured-publication">
+  <% if featured.file_upload.image.attached? %>
+    <div class="col-12 col-lg-4 d-none d-lg-block featured-item ps-0">
+      <%= image_tag featured.file_upload.image.variant(:gravity=>"Center", resize: "445x180^", crop: '445x180+0+0'), class: "inline p-0" %>
+    </div>
+    <div class="col-12 col-lg-8 featured-publication-with">
+  <% else %>
+    <div class="col col-12 text-center featured-publication-without">
   <% end %>
-  </ul>
-<% end if @webpage.items.present? %>
+      <span><%= link_to "#{featured.file_upload.name}", url_for(featured.file_upload.file), disposition: "attachment", class: "ps-0 fs-2", title: t("manifold.webpages.view_pdf") %></span>
+    </div>
+  </div>
+<% end %>
+
+<% if items.present? %>
+  <div class="row non-featured-publications">
+  <% if items.is_a? Array %>
+    <% items.each do |item| %>
+      <%= render "attachment", item: item %>
+    <% end %>
+  <% else %>
+    <%= render "attachment", item: items %>
+  <% end %>
+  </div>
+<% end %>
+
 

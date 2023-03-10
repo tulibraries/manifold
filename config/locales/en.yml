@@ -425,7 +425,7 @@ en:
 
     collections:
       show:
-        about: About the Collection
+        about: Browse this Collection
         subjects: Subjects
         locations: Locations
         explore: Explore this Collection
@@ -1068,6 +1068,8 @@ en:
       attachments:
         pdf_files: PDF File(s)
       tutorials_link: https://alt.library.temple.edu/tutorials/
+      featured_publication: Featured Publication
+      view_pdf: This link opens a PDF document
 
       blockson:
         page_title: Charles L. Blockson Afro-American Collection

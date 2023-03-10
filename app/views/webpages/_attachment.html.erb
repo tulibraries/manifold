@@ -1,0 +1,6 @@
+<div class="col-12 col-md-12 col-lg-4 p-3 nfp-item">
+  <div>
+    <%= image_tag item.file_upload.image.variant(:gravity=>"Center", resize: "535x220^", crop: '535x220+0+0'), class: "block p-0" if item.file_upload.image.attached? %>
+    <%= link_to item.file_upload.name, url_for(item.file_upload.file), disposition: "attachment", class: "d-block fs-3 p-4", title: t("manifold.webpages.view_pdf") %>
+  </div>
+</div>

@@ -46,23 +46,23 @@ RSpec.describe SyncService::Events, type: :service do
       end
 
       it "maps Location to external_building field" do
-        expect(subject["external_building"]).to match(@events.first["LocationUnaffiliated"])
+        expect(subject["external_building"]).to match(@events.first["Location"])
       end
 
       it "maps Address to external_building field" do
-        expect(subject["external_address"]).to match(@events.first["AddressUnaffiliated"])
+        expect(subject["external_address"]).to match(@events.first["Address"])
       end
 
       it "maps City to external_building field" do
-        expect(subject["external_city"]).to match(@events.first["CityUnaffiliated"])
+        expect(subject["external_city"]).to match(@events.first["City"])
       end
 
       it "maps State to external_state field" do
-        expect(subject["external_state"]).to match(@events.first["StateUnaffiliated"])
+        expect(subject["external_state"]).to match(@events.first["State"])
       end
 
       it "maps Zip to external_zip field" do
-        expect(subject["external_zip"]).to match(@events.first["ZipUnaffiliated"])
+        expect(subject["external_zip"]).to match(@events.first["Zip"])
       end
 
       it "maps ContactName to external_contact_name field" do
@@ -88,6 +88,30 @@ RSpec.describe SyncService::Events, type: :service do
       it "maps document's digest to content_has field" do
         expect(subject["content_hash"]).to match(Digest::SHA1.hexdigest(@events.first[:xml]))
       end
+    end
+  end
+
+  context "maps non-Temple affiliated Locations to external_building field" do
+    subject { @sync_events.record_hash(@events.second) }
+
+    it "maps Location to external_building field" do
+      expect(subject["external_building"]).to match(@events.second["LocationUnaffiliated"])
+    end
+
+    it "maps Address to external_building field" do
+      expect(subject["external_address"]).to match(@events.second["AddressUnaffiliated"])
+    end
+
+    it "maps City to external_building field" do
+      expect(subject["external_city"]).to match(@events.second["CityUnaffiliated"])
+    end
+
+    it "maps State to external_state field" do
+      expect(subject["external_state"]).to match(@events.second["StateUnaffiliated"])
+    end
+
+    it "maps Zip to external_zip field" do
+      expect(subject["external_zip"]).to match(@events.second["ZipUnaffiliated"])
     end
   end
 

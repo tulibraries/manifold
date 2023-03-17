@@ -148,6 +148,8 @@ class Form < MailForm::Base
   attribute :exhibit_temple_connection
   attribute :exhibit_temple_connection_description
   attribute :exhibit_policies_acknowledgement
+  attribute :format_preference
+  attribute :format_preference_other
 
 
   def get_subject

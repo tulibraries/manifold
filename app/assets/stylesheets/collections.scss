@@ -14,20 +14,6 @@
 		width:35px;
 		opacity: .5;
 	}
-	.access-link {
-		background-color: $crystal-blue;
-		padding: 14px;
-		margin-bottom: 17px;
-		a {
-			color: $black;
-		}
-		h2 {
-			margin-bottom: 3px;
-		}
-		@media (max-width: 1039px) {
-			margin-top: 35px;
-		}
-	}
 	.collections-external-link {
 		background-color: $red;
 		padding: 21px;

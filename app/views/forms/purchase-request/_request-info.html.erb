@@ -1,16 +1,21 @@
 <%= f.input :material_type, as: :radio_buttons, 
-                        label: t("manifold.forms.purchase_request.material_type"), 
-                        collection: t("manifold.forms.purchase_request.material_type_options").map{ |k,v| v }, 
-                        required: true, 
-                        wrapper_html: { class: "form_affiliation" } %> 
+            label: t("manifold.forms.purchase_request.material_type"), 
+            collection: t("manifold.forms.purchase_request.material_type_options").map{ |k,v| v }, 
+            required: true, 
+            wrapper_html: { class: "form_affiliation" } %> 
 <%= f.input :material_type_other, label: false, placeholder: t("manifold.forms.fields.other_placeholder"), 
-                                  wrapper_html: { class: "specify-other" } %>
+            wrapper_html: { class: "specify-other" } %>
 <%= f.input :author, label: t("manifold.forms.fields.author"), required: true %>
 <%= f.input :title, label: t("manifold.forms.fields.title"), required: true %>
 <%= f.input :year, label: t("manifold.forms.fields.year"), required: true %>
 <%= f.input :publisher, label: t("manifold.forms.fields.publisher"), required: true %>
+<%= f.input :format_preference, as: :select, 
+            label: t("manifold.forms.purchase_request.format_preference"), 
+            collection: t("manifold.forms.purchase_request.format_preference_array").map{ |k,v| v }  %>
+<%= f.input :format_preference_other, label: false, placeholder: t("manifold.forms.fields.other_placeholder"), 
+                                wrapper_html: { class: "specify-other" } %>
 <%= f.input :source_of_information, as: :text, 
-                                    label: t("manifold.forms.purchase_request.source_of_information"), 
-                                    hint:  t("manifold.forms.purchase_request.source_of_information_hint") %>
+            label: t("manifold.forms.purchase_request.source_of_information"), 
+            hint:  t("manifold.forms.purchase_request.source_of_information_hint") %>
 <%= f.input :reason_for_purchase, as: :text, label: t("manifold.forms.purchase_request.reason_for_purchase") %>
 <%= f.input :comments, as: :text, label: "Comments (optional)" %>

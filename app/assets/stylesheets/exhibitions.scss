@@ -11,23 +11,6 @@
 			margin-top: 0;
 		}
 	}
-
-	.access-link {
-		background-color: $foamgreen;
-		padding: 14px;
-		border-radius: 7px;
-		margin-bottom: 17px;
-		a {
-			color: $white;
-			font-family: "Roboto Bold";
-		}
-		h2 {
-			margin-bottom: 3px;
-		}
-		@media (max-width: 1039px) {
-			margin-top: 35px;
-		}
-	}
 	.dates {
 		font-size: 1.3rem;
 		font-weight: 900;
@@ -50,21 +33,5 @@
 	  	text-decoration: underline;
 			font-family: "Faustina";
 	  }
-	}
-	.access-link {
-		background-color: $foamgreen;
-		padding: 14px;
-		border-radius: 7px;
-		margin-bottom: 17px;
-		a {
-			color: $white;
-			font-family: "Roboto Bold";
-		}
-		h2 {
-			margin-bottom: 3px;
-		}
-		@media (max-width: 1039px) {
-			margin-top: 35px;
-		}
 	}
 }

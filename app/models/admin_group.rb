@@ -41,6 +41,7 @@ class AdminGroup < ApplicationRecord
           Group
           Highlight
           LibraryHour
+          MenuGroup
           Person
           Policy
           Redirect

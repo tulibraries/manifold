@@ -23,9 +23,12 @@ class ApplicationController < ActionController::Base
   end
 
   def menu_items
-    @about_menu = MenuGroup.find_by(slug: "about-page")
-    @visit_menu = MenuGroup.find_by(slug: "visit")
-    @research_menu = MenuGroup.find_by(slug: "research-services")
+    about_menu = MenuGroup.find_by(slug: "about-page")
+    @about_menu = about_menu.menu_group_categories.sort_by{|mg| mg.weight} if about_menu.present?
+    visit_menu = MenuGroup.find_by(slug: "visit")
+    @visit_menu = visit_menu.menu_group_categories.sort_by{|mg| mg.weight} if visit_menu.present?
+    research_menu = MenuGroup.find_by(slug: "research-services")
+    @research_menu = research_menu.menu_group_categories.sort_by{|mg| mg.weight} if research_menu.present?
     @quick_links = Category.find_by(slug: "quick-links")
   end
 

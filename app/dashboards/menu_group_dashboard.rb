@@ -25,19 +25,12 @@ class MenuGroupDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     title
-    slug
-    categories
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = %i[
-    id
+  SHOW_PAGE_ATTRIBUTES = %i[    
     title
-    slug
-    categories
-    created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES

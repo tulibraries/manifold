@@ -1,0 +1,60 @@
+<%#
+# Form Partial
+This partial is rendered on a resource's `new` and `edit` pages,
+and renders all form fields for a resource's editable attributes.
+## Local variables:
+- `page`:
+  An instance of [Administrate::Page::Form][1]
+  Contains helper methods to display a form,
+  and knows which attributes should be displayed in the resource's form.
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
+%>
+
+<%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
+  <% if page.resource.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= t(
+          "administrate.form.errors",
+          pluralized_errors: pluralize(page.resource.errors.count, t("administrate.form.error")),
+          resource_name: display_resource_name(page.resource_name)
+        ) %>
+      </h2>
+
+      <ul>
+        <% page.resource.errors.full_messages.each do |message| %>
+          <li class="flash-error"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render("form_fields", page: page, f: f, current_account: current_account) %>
+
+  <hr />
+  <p>
+    <%= t("manifold.admin.help_text.entity_weights") %>
+  </p>
+  <div class="field-unit field-unit--categorizations">
+
+    <div class="field-unit__label">
+      <label>Entity Weights</label>
+    </div>
+      <div class="field-unit__field w-75">
+        <%= f.fields_for :menu_group_categories, page.resource.menu_group_categories.sort_by(&:weight) do |categories_form| %>
+        <div class="entity-weight-list">
+          <span class="categorizable-label">
+            <%= categories_form.label categories_form.object.category.label %>
+          </span>
+          <span class="categorizable-weight">
+            <%= categories_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
+          </span>
+        </div>
+        <% end -%>
+      </div>
+	</div>
+
+  <div class="form-actions">
+    <%= f.submit %>
+  </div>
+<% end %>

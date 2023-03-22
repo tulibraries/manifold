@@ -63,6 +63,8 @@ a.inline {
   color: $red;
 }
 #content {
+  position: relative;
+  z-index: 10;
   background-color: $white;
 }
 .home #content {

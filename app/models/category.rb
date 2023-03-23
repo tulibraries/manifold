@@ -14,6 +14,8 @@ class Category < ApplicationRecord
   has_many :nested_categorizations, as: :categorizable, dependent: :destroy, class_name: "Categorization"
   has_many :categories, through: :nested_categorizations
 
+  has_many :menu_group_categories, dependent: :destroy
+
   belongs_to :external_link, optional: true
 
   has_rich_text :long_description

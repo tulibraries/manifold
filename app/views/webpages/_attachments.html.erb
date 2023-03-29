@@ -2,7 +2,7 @@
   <div class="row d-flex align-items-center my-5 ps-0 pe-5 mx-2 featured-publication">
   <% if featured.file_upload.image.attached? %>
     <div class="col-12 col-lg-4 d-none d-lg-block featured-item ps-0">
-      <%= image_tag featured.file_upload.image.variant(:gravity=>"Center", resize: "535x220^", crop: '445x180+0+0'), class: "inline p-0" %>
+      <%= image_tag featured.file_upload.image.variant(:gravity=>"Center", resize: "535x220^", crop: '535x220+0+0'), class: "inline p-0" %>
     </div>
     <div class="col-12 col-lg-8 featured-publication-with">
   <% else %>

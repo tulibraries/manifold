@@ -9,9 +9,9 @@
 <%= f.input :title, label: t("manifold.forms.fields.title"), required: true %>
 <%= f.input :year, label: t("manifold.forms.fields.year"), required: true %>
 <%= f.input :publisher, label: t("manifold.forms.fields.publisher"), required: true %>
-<%= f.input :format_preference, as: :select, 
+<%= f.input :format_preference, as: :radio_buttons, 
             label: t("manifold.forms.purchase_request.format_preference"), 
-            collection: t("manifold.forms.purchase_request.format_preference_array").map{ |k,v| v }  %>
+            collection: t("manifold.forms.purchase_request.format_preference_array").map{ |k,v| v }, required: true  %>
 <%= f.input :format_preference_other, label: false, placeholder: t("manifold.forms.fields.other_placeholder"), 
                                 wrapper_html: { class: "specify-other" } %>
 <%= f.input :source_of_information, as: :text, 

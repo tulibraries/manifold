@@ -593,17 +593,17 @@
   }
 }
 .featured-publication {
-  min-height: 180px;
+  min-height: 220px;
   overflow: hidden;
   background-color: $royal-blue;
   color: $white;
   .featured-item {
-    height: 180px;
-    max-height: 180px;
+    height: 220px;
+    max-height: 220px;
     img {
-      width: 90%;
+      width: 100%;
       height:100%;
-      max-height:180px;
+      max-height:220px;
     }
   }
   a {
@@ -615,7 +615,7 @@
   background-image: url("top-left-corner.png");
   background-repeat: no-repeat;
   background-position: 24px -29px;
-  max-height: 180px;
+  max-height: 220px;
   padding-left: 4rem;
   h2 {
     padding-bottom: 14px;
@@ -635,7 +635,7 @@
   }
 }
 .featured-publication-without {
-  max-height: 180px;
+  max-height: 220px;
   a {
     display: block;
     padding-left: 2rem;

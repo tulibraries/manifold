@@ -40,6 +40,7 @@ as well as a link to its edit page.
 <section class="main-content__body">
   <dl>
     <% page.attributes.each do |attribute| %>
+    <%# binding.pry %>
     <% if attribute.name == "file_uploads" %>
       <dt class="attribute-label" id="<%= attribute.name %>">
         File Uploads
@@ -54,6 +55,14 @@ as well as a link to its edit page.
               </tr>
             </thead>
             <tbody>
+            <% if page.resource.featured_item.present? %>
+              <% item = page.resource.featured_item %>
+              <%= tag.tr do %>
+                <%= tag.td(item.file_upload.name, class: "item-label") %>
+                <%= tag.td(item.weight, class: "item-weight") %>
+                <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
+              <% end if item.file_upload.present? %>
+            <% end %>
             <% page.resource.items.each do |item| %>
               <%= tag.tr do %>
                 <%= tag.td(item.file_upload.name, class: "item-label") %>

@@ -34,10 +34,6 @@
             <p class="fa-search-label"><%= t("manifold.finding_aids.search_label_html") %></p>
               <i class="fa fa-search"></i>
             <%= form_with(url: finding_aids_path, method: :get, 
-                                                  data: {controller: "search-form", 
-                                                          action: "input->search-form#search", 
-                                                          turbo_frame: "fas", 
-                                                          turbo_action: "advance"}, 
                                                   class: "d-inline-block me-3 mb-4 mt-0 w-100 text-start", 
                                                   id: "fa-search") do |form| %>
               <%= form.text_field :search, placeholder: t("manifold.finding_aids.search_hint"), class: "form-control w-100 d-inline-block ps-5" %>

@@ -101,4 +101,19 @@ module ApplicationHelper
       ""
     end
   end
+
+  def get_items(category)
+    if category.items.count > 0
+      list = "<h1 class=\"menu-category mr-4 pb-3\">#{link_to category.name, category}"
+      list += "<span>#{category.description}</span>"
+      list += "</h1>"
+      list += '<ul class="list-unstyled menu-items">'
+      category.items.each do |page|
+        list += "<li class=\"mt-0\">#{link_to page.label, url_for(page)}</li>"
+      end
+      list += "</ul>"
+    else
+      ""
+    end
+  end
 end

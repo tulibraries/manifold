@@ -1,14 +1,14 @@
 <div class="col-4">
   <div class="list-group h-100" id="list-tab" role="tablist">
     <% items.each_with_index do |item, index| %>
-      <% unless get_item_list(item) == "" %>
-        <%= link_to item.label, "##{menu}-#{item.label.parameterize}", 
+      <% unless get_items(item.category) == "" %>
+        <%= link_to item.category.name, "##{menu}-#{item.category.name.parameterize}", 
                                     {class: "mt-0 p-2 ps-3 multiples#{" active" if index == 0}", 
-                                    id: "list-#{menu}-#{item.label.parameterize}-list", "data-bs-toggle": "list", 
-                                    href: "#list-#{menu}-#{item.label.parameterize}", role: "tab", 
+                                    id: "list-#{menu}-#{item.category.name.parameterize}-list", "data-bs-toggle": "list", 
+                                    href: "#list-#{menu}-#{item.category.name.parameterize}", role: "tab", 
                                     "aria-controls": "home"} %>
       <% else %>
-        <%= link_to item.label, item, class: "p-2 ps-3" %>
+        <%= link_to item.category.name, item.category, class: "p-2 ps-3" %>
       <% end %>
   <% end %>
   </div>
@@ -17,9 +17,9 @@
 <div class="col-8">
   <div class="tab-content mb-4" id="nav-tabContent">
     <% items.each_with_index do |item, index| %>
-    <div class="tab-pane fade<%= " active show" if index == 0 %>" id="list-<%= menu+"-"+item.label.parameterize %>" 
-         role="tabpanel" aria-labelledby="list-<%= item.label.parameterize %>-list">
-      <%= sanitize get_item_list(item).html_safe unless get_item_list(item) == "" %>
+    <div class="tab-pane fade<%= " active show" if index == 0 %>" id="list-<%= menu+"-"+item.category.name.parameterize %>" 
+         role="tabpanel" aria-labelledby="list-<%= item.category.name.parameterize %>-list">
+      <%= sanitize get_items(item.category).html_safe unless get_items(item.category) == "" %>
     </div>
     <% end %>
   </div>

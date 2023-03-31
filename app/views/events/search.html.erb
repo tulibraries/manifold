@@ -21,14 +21,7 @@
     <div class="row event-filters">
       <a name="list"></a>
       <div class="col-12 col-lg-6 text-center">
-        <%= form_tag(action_name == "search" ? events_search_path : past_events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "event-search") do %>
-        <%= label_tag(:search, "search events by name", :class=>"element-invisible") %>
-        <i class="fa fa-search"></i>
-        <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
-                  placeholder: "search events by name",
-                  results: "0"
-                  ) %>
-        <% end %>
+        <%= render "form" %>
       </div>
 
       <div class="col-12 col-lg-6 text-center mt-4 ps-md-0">
@@ -54,11 +47,20 @@
         <div class="row">
           <div class="col ps-4">
             <a name="list" id="list"></a>
-            <h2 class="mb-4 workshops-label d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
+            <% if @type.present? %>
+            <h2 class="mb-4 workshops-label d-inline-block w-100">
+              <%= set_header(@type) %> <%= close_button(action_name) %>
+            </h2>
+            <% end %>
           </div>
         </div>
 
-        <%= render "events" %>
+
+        <%= turbo_frame_tag "events" do %>
+
+          <h2 class="mb-4 workshops-label d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
+          <%= render "events" %>
+        <% end %>
 
       </div>
     </div>

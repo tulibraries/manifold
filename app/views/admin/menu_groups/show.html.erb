@@ -40,40 +40,6 @@ as well as a link to its edit page.
 <section class="main-content__body">
   <dl>
     <% page.attributes.each do |attribute| %>
-    <%# binding.pry %>
-    <% if attribute.name == "file_uploads" %>
-      <dt class="attribute-label" id="<%= attribute.name %>">
-        File Uploads
-      </dt>
-        <dd class="attribute-data attribute-data--file-uploads">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Weight</th>
-                <th>Link</th>
-              </tr>
-            </thead>
-            <tbody>
-            <% if page.resource.featured_item.present? %>
-              <% item = page.resource.featured_item %>
-              <%= tag.tr do %>
-                <%= tag.td(item.file_upload.name, class: "item-label") %>
-                <%= tag.td(item.weight, class: "item-weight") %>
-                <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
-              <% end if item.file_upload.present? %>
-            <% end %>
-            <% page.resource.items.each do |item| %>
-              <%= tag.tr do %>
-                <%= tag.td(item.file_upload.name, class: "item-label") %>
-                <%= tag.td(item.weight, class: "item-weight") %>
-                <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
-              <% end if item.file_upload.present? %>
-            <% end %>
-            </tbody>
-          </table>
-        </dd>
-    <% else %>
       <dt class="attribute-label" id="<%= attribute.name %>">
       <%= t(
         "helpers.label.#{resource_name}.#{attribute.name}",
@@ -85,9 +51,31 @@ as well as a link to its edit page.
 
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
         <%= render_field attribute, page: page unless attribute.attribute.to_s == "id" %>
-        <%= ["#{resource_name}".pluralize, "#{attribute.to_s}"].join("/") if attribute.attribute.to_s == "id" %>
+        <%= "/categories/#{attribute.to_s}" if attribute.attribute.to_s == "id" %>
       </dd>
     <% end %>
-    <% end %>
+    <dt class="attribute-label" id="Entites">
+      Entities
+    </dt>
+    <dd class="attribute-data attribute-data--entities">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Label</th>
+            <th>Weight</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% page.resource.menu_group_categories.each do |item| %>
+            <%= tag.tr do %>
+              <%= tag.td(item.category.label, class: "item-label") %>
+              <%= tag.td(item.weight, class: "item-category-weight") %>
+              <%= tag.td(link_to("Show", [namespace, item.category], class: "button")) %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </dd>
   </dl>
 </section>

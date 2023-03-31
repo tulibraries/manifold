@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :menu_group do
-
+    title { "Menu Group" }
   end
 end

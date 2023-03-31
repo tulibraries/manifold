@@ -79,4 +79,19 @@ RSpec.describe EventHelper, type: :helper do
       expect(helper.close_button("search")).to include(events_path)
     end
   end
+
+  describe "set_heading" do
+    it "displays dsc heading" do
+      expect(helper.set_header("dss_events")).to include(t("manifold.events.headings.dsc"))
+    end
+    it "displays hsl heading" do
+      expect(helper.set_header("hsl_events")).to include(t("manifold.events.headings.hsl"))
+    end
+    it "displays past events heading" do
+      expect(helper.set_header("index")).to include(t("manifold.events.headings.upcoming_events"))
+    end
+    it "displays current events heading" do
+      expect(helper.set_header("past")).to include(t("manifold.events.headings.past_events"))
+    end
+  end
 end

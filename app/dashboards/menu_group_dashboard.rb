@@ -10,7 +10,7 @@ class MenuGroupDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    categories: Field::HasMany,
+    categories: Field::HasMany.with_options(admin_only: true),
     id: Field::Number,
     title: Field::String,
     slug: Field::String,
@@ -25,19 +25,12 @@ class MenuGroupDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     title
-    slug
-    categories
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    id
     title
-    slug
-    categories
-    created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -64,7 +57,11 @@ class MenuGroupDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how menu groups are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(menu_group)
-  #   "MenuGroup ##{menu_group.id}"
-  # end
+  def display_resource(menu_group)
+    "#{menu_group.title} Menu"
+  end
+
+  def permitted_attributes
+    super + [menu_group_categories_attributes: [:weight, :id]]
+  end
 end

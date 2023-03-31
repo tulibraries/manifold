@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     events = Event.is_current.is_displayable
     @featured_events = Event.is_current.is_displayable.where(featured: true).order(:start_time).take(3)
     if params[:type].present? && params[:type].downcase == "workshop"
-      @workshops = events.is_workshop
+      @workshops = events.is_current.is_displayable.is_workshop
       return_events(@workshops)
     else
       return_events(events)
@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   def dss_events
     @dss_events = Event.is_current.is_dss_event.is_displayable
     return_events(@dss_events)
-    render :search, search: params[:search]
+    render :search
   end
 
   def hsl_events

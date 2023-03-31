@@ -82,16 +82,16 @@ RSpec.describe EventHelper, type: :helper do
 
   describe "set_heading" do
     it "displays dsc heading" do
-      expect(helper.set_header("digital_scholarship")).to include(t("manifold.events.headings.dsc"))
+      expect(helper.set_header("dss_events")).to include(t("manifold.events.headings.dsc"))
     end
     it "displays hsl heading" do
-      expect(helper.set_header("health_sciences")).to include(t("manifold.events.headings.hsl"))
+      expect(helper.set_header("hsl_events")).to include(t("manifold.events.headings.hsl"))
     end
     it "displays past events heading" do
       expect(helper.set_header("index")).to include(t("manifold.events.headings.upcoming_events"))
     end
     it "displays current events heading" do
-      expect(helper.set_header("past_events")).to include(t("manifold.events.headings.past_events"))
+      expect(helper.set_header("past")).to include(t("manifold.events.headings.past_events"))
     end
   end
 end

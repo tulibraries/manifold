@@ -11,13 +11,13 @@ module EventHelper
 
   def set_header(type)
     case type
-    when "digital_scholarship"
+    when "dss_events"
       t("manifold.events.headings.dsc")
-    when "health_sciences"
+    when "hsl_events"
       t("manifold.events.headings.hsl")
     when "index"
       t("manifold.events.headings.upcoming_events")
-    when "past_events"
+    when "past"
       t("manifold.events.headings.past_events")
     end
   end

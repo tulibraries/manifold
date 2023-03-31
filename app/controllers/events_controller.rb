@@ -90,7 +90,7 @@ class EventsController < ApplicationController
       events_list = Event.where(id: @events.map(&:id))
       @events_list = events_list.page params[:page]
     else
-      params[:page].present? ?  params[:page] : 1 
+      params[:page].presence || 1
       @events_list = events.page params[:page]
     end
   end

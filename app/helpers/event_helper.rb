@@ -19,6 +19,10 @@ module EventHelper
       t("manifold.events.headings.upcoming_events")
     when "past"
       t("manifold.events.headings.past_events")
+    when "upcoming_workshops"
+      t("manifold.events.headings.upcoming_workshops")
+    when "past_workshops"
+      t("manifold.events.headings.past_workshops")
     end
   end
 
@@ -29,7 +33,7 @@ module EventHelper
         :
         (link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 mb-2 roboto-light")
     else
-      if type == "dss_events"
+      if type == "dss_events" || type == "hsl_events"
         link_to "View all workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 mb-2 roboto-light"
       end
     end

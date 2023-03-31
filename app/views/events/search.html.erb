@@ -1,6 +1,4 @@
-<!-- SEARCH -->
 <%= render "mobile_menu" %>
-
 
 <div class="container-lg event-index">
   <div class="container-lg">
@@ -49,14 +47,18 @@
         <div class="row">
           <div class="col ps-4">
             <a name="list" id="list"></a>
+            <% if @type.present? %>
             <h2 class="mb-4 workshops-label d-inline-block w-100">
-              <%= set_header(@type) %></span> <%= close_button(action_name) %>
+              <%= set_header(@type) %> <%= close_button(action_name) %>
             </h2>
+            <% end %>
           </div>
         </div>
 
 
         <%= turbo_frame_tag "events" do %>
+
+          <h2 class="mb-4 workshops-label d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
           <%= render "events" %>
         <% end %>
 

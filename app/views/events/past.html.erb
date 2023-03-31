@@ -61,18 +61,20 @@
               </h2>
             </div>
           </div>
-        <% if params[:type].present? && params[:type] != "none" %>
-          <h2 class="mb-4 workshops-label">
-            <%= params[:type]+ " " +  t("manifold.events.index.events") %> <%= close_button(action_name) %>
-          </h2>
-        <% end %>
-        <% if params[:date].present? %>
-          <h2 class="mb-4 workshops-label">
-            <%= t("manifold.events.index.events_on") + " " + Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %> <%= close_button(action_name) %>
-          </h2>
-        <% end %>
         <%= turbo_frame_tag "events" do %>
+          <% if params[:type].present? && params[:type].downcase == "workshop" %>
+            <h2 class="mb-4 workshops-label">
+              <%= params[:type]+ " " +  t("manifold.events.index.events") %> <%= close_button(action_name) %>
+            </h2>
+          <% end %>
+          <% if params[:date].present? %>
+            <h2 class="mb-4 workshops-label">
+              <%= t("manifold.events.index.events_on") + " " + Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %> <%= close_button(action_name) %>
+            </h2>
+          <% end %>
+          
           <%= render "events" %>
+
         <% end %>
         </div>
 

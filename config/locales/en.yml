@@ -466,6 +466,11 @@ en:
         upcoming_events: Upcoming Events
         events: Events
         events_on: Events on
+      headings:
+        dsc: Upcoming Digital Scholarship Events
+        hsl: Upcoming Health Sciences Events
+        index: Upcoming Events
+        past_events: Past Events
       show:
         breadcrumb: All Events & Exhibits
         register: Register

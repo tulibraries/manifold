@@ -1,0 +1,9 @@
+<%= form_tag(action_name == "past_search" ? past_events_search_path : events_search_path, method: "get", value: @query,
+              data: { turbo_frame: "events", turbo_action: "advance" }, class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "event-search") do %>
+        <%= label_tag(:search, "search events by name", :class=>"element-invisible") %>
+        <i class="fa fa-search"></i>
+        <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
+                  placeholder: "search events by name",
+                  results: "0"
+                  ) %>
+        <% end %>

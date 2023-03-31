@@ -1,3 +1,4 @@
+<!-- INDEX-->
 <%= render "mobile_menu" %>
 
 <div class="container-lg event-index">
@@ -34,14 +35,7 @@
   <div class="container-lg mt-4">
     <div class="row event-filters">
       <div class="col-12 col-lg-6 text-center">
-        <%= form_tag(events_search_path, method: "POST", class: "d-inline-block mr-3 mt-0 w-100 text-start", id: "event-search") do %>
-          <%= label_tag(:search, "search events by name", :class=>"element-invisible") %>
-          <i class="fa fa-search"></i>
-          <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
-                    placeholder: "search events by name",
-                    results: "0"
-                    ) %>
-        <% end %>
+      <%= render "form" %>
       </div>
 
       <div class="col-12 col-lg-6 text-center mt-4 ps-md-0">
@@ -67,7 +61,9 @@
         <div class="row">
           <div class="col-12">  
             <h2 class="p-3 mb-3 current-events" id="upcoming-events">
-              <span class="bl-red"><%= action_name == "dss_events" ? "Upcoming Digital Scholarship Events" : t("manifold.events.index.upcoming_events") %></span>
+              <span class="bl-red">
+                <%= set_header(@type) %>
+              </span>
             </h2>
           </div>
         </div>
@@ -86,7 +82,9 @@
           </div>
         </div>
         <% end %>
-        <%= render "events" %>
+        <%= turbo_frame_tag "events" do %>
+          <%= render "events" %>
+        <% end %>
       </div>
 
       <% unless @exhibitions.blank? || params[:date].present? || params[:type].present? %>

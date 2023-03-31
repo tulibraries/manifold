@@ -3,6 +3,7 @@
 class EventsController < ApplicationController
   include SetInstance
   include RedirectLogic
+  before_action :set_type
   before_action :set_event, only: [:show]
   before_action :init, only: [:index, :past]
   include EventFilters
@@ -31,18 +32,21 @@ class EventsController < ApplicationController
     end
   end
 
+  def set_type
+    @types = ["dss_events", "hsl_events", "index", "past"]
+    @type = action_name if @types.include? action_name
+  end
+
   def dss_events
     @dss_events = Event.is_current.is_dss_event.is_displayable
-    params[:search] = "digital scholarship"
     return_events(@dss_events)
     render :search, search: params[:search]
   end
 
   def hsl_events
     @hsl_events = Event.is_current.is_hsl_event.is_displayable
-    params[:search] = "health sciences"
     return_events(@hsl_events)
-    render :search, search: params[:search]
+    render :search
   end
 
   def search
@@ -68,7 +72,8 @@ class EventsController < ApplicationController
   end
 
   def past_search
-    events = Event.is_past.is_displayable.search(params[:search])
+    @query = params[:search]
+    events = Event.is_past.is_displayable.search(@query)
     return_events(events)
     render "search"
   end
@@ -85,6 +90,7 @@ class EventsController < ApplicationController
       events_list = Event.where(id: @events.map(&:id))
       @events_list = events_list.page params[:page]
     else
+      params[:page].presence || 1
       @events_list = events.page params[:page]
     end
   end

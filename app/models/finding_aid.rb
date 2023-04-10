@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class FindingAid < ApplicationRecord
+  include PgSearch::Model
   include InputCleaner
   include Categorizable
   include Draftable
@@ -69,12 +70,18 @@ class FindingAid < ApplicationRecord
     name
   end
 
+  pg_search_scope :full_text, against: {
+    name: "B",
+    subject: "A"
+  }, associated_against: {
+    rich_text_description: [:body]
+  }
+   
+  
+
   def self.search(q)
     if q
-      FindingAid.joins(:action_text_rich_text)
-                .where("lower(finding_aids.name) LIKE ? or lower(subject) LIKE ?", "%#{q}%".downcase, "%#{q}%".downcase)
-                .or(FindingAid.where("record_type = ? AND lower(action_text_rich_texts.body) LIKE ?", "FindingAid", "%#{q}%".downcase))
-                .distinct.order(:name)
+      FindingAid.full_text(q)
     end
   end
 

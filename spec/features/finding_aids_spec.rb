@@ -4,8 +4,8 @@ require "rails_helper"
 
 RSpec.feature "FindingAids", type: :feature do
   context "Finding Aids Home Page" do
-
     before(:all) do
+      @account = FactoryBot.create(:account, admin: true)
       @collection_1 = FactoryBot.create(:collection, name: "Collection 1")
       @collection_2 = FactoryBot.create(:collection, name: "Collection 2")
       @collection_3 = FactoryBot.create(:collection, name: "Collection 3")
@@ -18,6 +18,9 @@ RSpec.feature "FindingAids", type: :feature do
       @finding_aid_1a = FactoryBot.create(:finding_aid, name: "Finding Aid 1a",
                                           subject: ["subject 1"],
                                           collections: [@collection_3])
+      @finding_aid_4 = FactoryBot.create(:finding_aid, name: "First Finding Aid 1 and Done",
+                                          subject: ["subject 1"],
+                                          collections: [@collection_1])
     end
 
     after(:all) do
@@ -26,7 +29,7 @@ RSpec.feature "FindingAids", type: :feature do
     end
 
     context "Collecting Area" do
-      scenario "Visit finding aid that has an collection" do
+      scenario "Visit finding aid that has a collection" do
         visit("/finding_aids")
         within(".aid-index") do
           within(".filter_collections") do
@@ -107,7 +110,33 @@ RSpec.feature "FindingAids", type: :feature do
         expect(page).to have_content(@finding_aid_1a.name)
         expect(page).to_not have_content(@finding_aid_2.name)
       end
+      scenario "ordered search results" do
+        visit(finding_aids_path(search: @finding_aid_4.name))
+        expect(page).to have_content(@finding_aid_1.name)
+        expect(page).to have_content(@finding_aid_4.name)
+        expect(@finding_aid_4.name).to appear_before(@finding_aid_1.name, only_text: true)
+      end
     end
+
+    context "Updated description reflected in search_description" do
+      let(:new_description) { "Don't Panic!" }
+
+      scenario "Change the description" do
+        finding_aid_5 = FactoryBot.create(:finding_aid, name: "Finding Aid 5",
+          subject: ["subject 1"],
+          collections: [@collection_1])
+        login_as(@account, scope: :account)
+        visit(edit_admin_finding_aid_path(finding_aid_5))
+        # binding.pry
+        # find("#finding_aid_description_trix_input_finding_aid_#{finding_aid_5.id}").set(new_description)
+        find(:xpath, "//*[@name=\"finding_aid[description]\"]", visible: false).set(new_description)
+        click_button("Update Finding aid")
+        expect(page).to_not have_content(finding_aid_5.description.body.to_trix_html)
+        expect(page).to have_content(new_description)
+      end
+    end
+
   end
+
 
 end

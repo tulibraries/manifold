@@ -165,11 +165,11 @@ RSpec.configure do |config|
   end
 
   VCR.configure do |c|
-    c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+    c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
     c.hook_into :webmock
     c.configure_rspec_metadata!
-    c.filter_sensitive_data('<key>') { ENV["PANOPTO_API_USER"] }
-    c.filter_sensitive_data('<code>') { ENV["PANOPTO_API_KEY"] }
+    c.filter_sensitive_data("<key>") { ENV["PANOPTO_API_USER"] }
+    c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
   end
 
   config.include ActionText::SystemTestHelper, type: :system

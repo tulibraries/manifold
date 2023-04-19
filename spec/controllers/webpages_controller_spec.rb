@@ -47,7 +47,7 @@ RSpec.describe WebpagesController, type: :controller do
     end
   end
 
-  describe "video methods", :vcr => true do
+  describe "video methods", vcr: true do
     render_views
     let(:json_all) {
       controller.send(:videos_all)

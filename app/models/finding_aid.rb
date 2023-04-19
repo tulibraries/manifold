@@ -76,8 +76,8 @@ class FindingAid < ApplicationRecord
   }, associated_against: {
     rich_text_description: [:body]
   }
-   
-  
+
+
 
   def self.search(q)
     if q

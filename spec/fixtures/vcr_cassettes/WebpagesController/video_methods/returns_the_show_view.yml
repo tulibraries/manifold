@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://temple.hosted.panopto.com/Panopto/oauth2/connect/token
+    body:
+      encoding: UTF-8
+      string: scope=api&grant_type=client_credentials
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic YWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Okhid2M2WWVseWdXcC9SSUpyeU9aT0JLcVFMNW1rVjVaTFRnUHl6RytYcjg9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Apr 2023 13:08:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store, no-cache, max-age=0, private
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Origin:
+      - https://temple.hosted.panopto.com
+      P3p:
+      - CP="Some Browsers Require This In Order to Set Third Party Cookies"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjgxODI2OTM2LCJuYmYiOjE2ODE4MjMzMzYsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.azh00Zv4wgFeIX9Gd420v1MXdtNOwvPYGx2KnOIBuCcGNNZMyGz4frSwtTBwJHOZ-_ssOYpYL0-9snGmnh0-J79__aLizxfW9wfwy0T2_bnuOKbGbqLJGwnTvLG9SebP3t3gCr4RataloSlKZyNjXjRLtEBnswbP6q9jvyShFpof7DhcbGCShGI9ArG_RrenN4xAIBuQ-Ge2uXwrIpYsmd-pTQMjKAh6mbyZxZ-d84nujqMFLzUIEHly3GvshEMrmW-c_KgLSNqlKn6nrXFo8T7exOViIXu6t636srwhvhigjKpwcBNisaiifnMynCnKT-mcvR7ft1E4iFsOz4GrRg","expires_in":3600,"token_type":"Bearer"}'
+  recorded_at: Tue, 18 Apr 2023 13:08:56 GMT
+- request:
+    method: get
+    uri: https://temple.hosted.panopto.com/Panopto/api/v1/sessions/fb431580-ed13-4125-b1aa-af2600f2f3f3/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjgxODI2OTM2LCJuYmYiOjE2ODE4MjMzMzYsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.azh00Zv4wgFeIX9Gd420v1MXdtNOwvPYGx2KnOIBuCcGNNZMyGz4frSwtTBwJHOZ-_ssOYpYL0-9snGmnh0-J79__aLizxfW9wfwy0T2_bnuOKbGbqLJGwnTvLG9SebP3t3gCr4RataloSlKZyNjXjRLtEBnswbP6q9jvyShFpof7DhcbGCShGI9ArG_RrenN4xAIBuQ-Ge2uXwrIpYsmd-pTQMjKAh6mbyZxZ-d84nujqMFLzUIEHly3GvshEMrmW-c_KgLSNqlKn6nrXFo8T7exOViIXu6t636srwhvhigjKpwcBNisaiifnMynCnKT-mcvR7ft1E4iFsOz4GrRg
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Apr 2023 13:08:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2844'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Origin:
+      - https://temple.hosted.panopto.com
+      Api-Supported-Versions:
+      - 1.0-beta, 1
+      Set-Cookie:
+      - csrfToken=A%2bcBzYd1XA%2fHashkxd%2fsRpJ3zu4rLlH2K7LVUnlUljigE07jOAJEiVSST%2bGiLo%2bFAgr1%2fcCD4TnuAyWjr3cDdZXXI3Omzp%2bfzS3kALLfnQf45SYCF0jVYhObrElg1FT8h%2bWC%2bRjBaBqh9q%2f8Lrf0%2bc%2fC3bgGw0ZSDpVEXiePeER3Xc4MfsWWS%2fB1Wo7ctcjem2aW6b8zHtvqdcwPiQxm7g%3d%3d;
+        path=/; secure; SameSite=None
+      - sandboxCookie=13326296937.1055; path=/; secure; SameSite=None
+      P3p:
+      - CP="Some Browsers Require This In Order to Set Third Party Cookies"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJEZXNjcmlwdGlvbiI6IkpvaW4gdXMgZm9yIHRoZSBzZWNvbmQgcGFydCBvZiB0aGlzIGNvbnZlcnNhdGlvbiwgY29udGludWVkIGZyb20gb3VyIEp1bmV0ZWVudGggY2VsZWJyYXRpb25zLCB3aXRoIEJvYiBQZXJraW5zIGFuZCBXUlRJIG11c2ljIGhvc3QgYW5kIHByb2R1Y2VyIEouIE1pY2hhZWwgSGFycmlzb24uIFxuXG5BYm91dCB0aGUgc3BlYWtlcnM6IFxuQm9iIFBlcmtpbnMsIGFsc28ga25vd24gYXMgXCJCUCB3aXRoIHRoZSBHTSxcIiAodHJhbnNsYXRpb246IFwiQm9iIFBlcmtpbnMgd2l0aCB0aGUgR29vZCBNdXNpY1wiKSwgaGFzIGJlZW4gaW4gdGhlIGJyb2FkY2FzdGluZyBpbmR1c3RyeSBmb3IgbW9yZSB0aGFuIGZpdmUgZGVjYWRlcyBhcyBhbiBvbi1haXIgaG9zdCwgYW5kIGlzIG5vdyBjb21tb25seSByZWZlcnJlZCB0byBhcyBhIFBoaWxhZGVscGhpYSBqYXp6IHJhZGlvIGxlZ2VuZC4gIFxuQlAgYnJva2UgaW50byB0aGUgcmFkaW8gYnVzaW5lc3MgaW4gMTk2NCB3aGVuIGhlIGxhbmRlZCBhbiBvbi1haXIgam9iIGluIERldHJvaXQuIEluIDE5NjksIGhpcyBob21ldG93biBvZiBQaGlsYWRlbHBoaWEgYmVja29uZWQgaGltIGJhY2sgd2l0aCBhIGdpZyBhdCByaHl0aG0tYW5kLWJsdWVzIHN0YXRpb24gV0RBUywgd2hlcmUgaGUgd29ya2VkIGZvciB0aGUgbmV4dCAxOSB5ZWFycy4gQWZ0ZXIgYSBsb25ndGltZSBnaWcgYXQgV0hZWSwgaGUgam9pbmVkIFdSVEkgaW4gMTk5Ny4gKGZyb20gV1JUSSkgXG5KLiBNaWNoYWVsIEhhcnJpc29u4oCZcyBmaXJzdCByYWRpbyBzaG93LCBXUEVC4oCZcyDigJxJcyBUaGF0IEphenrigJ0gbGF1bmNoZWQgaW4gSnVuZSBvZiAxOTkzLiBJbiAxOTk0IGhlIGJlZ2FuIHZvbHVudGVlcmluZyB3aXRoIFdSVEkgYXMgYSBwcm9kdWN0aW9uIGFzc2lzdGFudC4gSW4gMTk5NiwgSi4gTWljaGFlbCBkZWJ1dGVkIGhpcyBvd24gcHJvZ3JhbSwgVGhlIEJyaWRnZSwgd2hpY2ggY29udGludWVzIHRvIGFpciBGcmlkYXkgZXZlbmluZ3Mgb24gV1JUSS4gXG5UaGUgQnJpZGdlIHdhcyBzZWxlY3RlZCBhcyBQaGlsYWRlbHBoaWEgTWFnYXppbmXigJlzIFwiQmVzdCBSYWRpbyBQcm9ncmFt4oCdIGluIDIwMDIsIGFuZCBpbiAyMDA3LCB0aGUgUGhpbGFkZWxwaGlhIENpdHkgUGFwZXIgY2FsbGVkIGl0IHRoZSDigJxCZXN0IE9uLUFpciBSZW1pbmRlciBUaGF0IEphenogRGlkbuKAmXQgRGllIGluIDE5NjUu4oCdIChmcm9tIFdSVEkpIFxuXG5UaGlzIHByb2dyYW0gaXMgcHJlc2VudGVkIGluIHBhcnRuZXJzaGlwIHdpdGggdGhlIENoYXJsZXMgTC4gQmxvY2tzb24gQ29sbGVjdGlvbiBvZiBBZnJpY2FuLUFtZXJpY2FuYSBhbmQgdGhlIEFmcmljYW4gRGlhc3BvcmEgYXQgUGVubiBTdGF0ZSBTcGVjaWFsIENvbGxlY3Rpb25zIExpYnJhcnkuIiwiU3RhcnRUaW1lIjpudWxsLCJEdXJhdGlvbiI6NjI5MS41MTk5OTk5OTk5OTk1LCJNb3N0UmVjZW50Vmlld1Bvc2l0aW9uIjpudWxsLCJDcmVhdGVkQnkiOnsiSWQiOiI5MDM0ODgwYS1lMjFlLTQzYmQtYjY1My1hZDg2MDEyODllYjAiLCJVc2VybmFtZSI6InVuaWZpZWRcXHR1ZTgxNTMxQHRlbXBsZS5lZHUifSwiVXJscyI6eyJWaWV3ZXJVcmwiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9QYWdlcy9WaWV3ZXIuYXNweD9pZD1mYjQzMTU4MC1lZDEzLTQxMjUtYjFhYS1hZjI2MDBmMmYzZjMiLCJFbWJlZFVybCI6Imh0dHBzOi8vdGVtcGxlLmhvc3RlZC5wYW5vcHRvLmNvbS9QYW5vcHRvL1BhZ2VzL0VtYmVkLmFzcHg/aWQ9ZmI0MzE1ODAtZWQxMy00MTI1LWIxYWEtYWYyNjAwZjJmM2YzJnY9MSIsIlNoYXJlU2V0dGluZ3NVcmwiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9QYWdlcy9TZXNzaW9ucy9MaXN0LmFzcHg/aWQ9ZmI0MzE1ODAtZWQxMy00MTI1LWIxYWEtYWYyNjAwZjJmM2YzJm1vZGFsUGFnZT1TZXNzaW9uU2hhcmUiLCJEb3dubG9hZFVybCI6Imh0dHBzOi8vdGVtcGxlLmhvc3RlZC5wYW5vcHRvLmNvbS9QYW5vcHRvL1BvZGNhc3QvRG93bmxvYWQvZmI0MzE1ODAtZWQxMy00MTI1LWIxYWEtYWYyNjAwZjJmM2YzLm1wND9tZWRpYVRhcmdldFR5cGU9dmlkZW9Qb2RjYXN0IiwiQ2FwdGlvbkRvd25sb2FkVXJsIjoiaHR0cHM6Ly90ZW1wbGUuaG9zdGVkLnBhbm9wdG8uY29tL1Bhbm9wdG8vUGFnZXMvVHJhbnNjcmlwdGlvbi9HZW5lcmF0ZVNSVC5hc2h4P2lkPWZiNDMxNTgwLWVkMTMtNDEyNS1iMWFhLWFmMjYwMGYyZjNmMyZsYW5ndWFnZT1FbmdsaXNoX1VTQSIsIkVkaXRvclVybCI6Imh0dHBzOi8vdGVtcGxlLmhvc3RlZC5wYW5vcHRvLmNvbS9QYW5vcHRvL1BhZ2VzL1ZpZXdlci5hc3B4P2lkPWZiNDMxNTgwLWVkMTMtNDEyNS1iMWFhLWFmMjYwMGYyZjNmMyZlZGl0PXRydWUiLCJUaHVtYm5haWxVcmwiOiJodHRwczovL2QyeTM2dHdydGIxN3R5LmNsb3VkZnJvbnQubmV0L3Nlc3Npb25zLzJjZTAwZDE5LWUyYzAtNDdkZS05MmRjLWFmMjYwMGYyZjNlYS84NGQxODIxMS04MjhkLTQ1N2ItYTljOC1hZjI2MDBmZjQ2ZDdfZXQvdGh1bWJzL3NsaWRlMC5qcGcifSwiRm9sZGVyIjoiZTI3NTNhN2EtODVjMi00ZDAwLWEyNDEtYWVjZjAwMzkzYzI1IiwiRm9sZGVyRGV0YWlscyI6eyJJZCI6ImUyNzUzYTdhLTg1YzItNGQwMC1hMjQxLWFlY2YwMDM5M2MyNSIsIk5hbWUiOiJMaWJyYXJ5LVByb2dyYW1zIn0sIlBlcmNlbnRDb21wbGV0ZWQiOm51bGwsIklkIjoiZmI0MzE1ODAtZWQxMy00MTI1LWIxYWEtYWYyNjAwZjJmM2YzIiwiTmFtZSI6IkEgQ29udmVyc2F0aW9uIHdpdGggQm9iIFBlcmtpbnMgYW5kIEouIE1pY2hhZWwgSGFycmlzb24sIFBhcnQgMiJ9
+  recorded_at: Tue, 18 Apr 2023 13:08:57 GMT
+recorded_with: VCR 6.1.0

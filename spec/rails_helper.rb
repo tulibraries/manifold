@@ -93,28 +93,6 @@ RSpec.configure do |config|
     stub_request(:put, "https://bucket.s3.region.amazonaws.com/sitemap.xml.gz").
       to_return(status: 200, body: "", headers: {})
 
-    stub_request(:post, "https://temple.hosted.panopto.com/Panopto/oauth2/connect/token").
-        with(
-          body: "scope=api&grant_type=client_credentials",
-          headers: {
-        "Accept" => "*/*",
-        "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-        "Authorization" => "Basic Og==",
-        "User-Agent" => "Ruby"
-          }).
-        to_return(status: 200, body: "", headers: {})
-
-    stub_request(:post, "https://temple.hosted.panopto.com/Panopto/oauth2/connect/token").
-    with(
-      body: "scope=api&grant_type=client_credentials",
-      headers: {
-     "Accept" => "*/*",
-     "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-     "Authorization" => "Basic YWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Okhid2M2WWVseWdXcC9SSUpyeU9aT0JLcVFMNW1rVjVaTFRnUHl6RytYcjg9",
-     "User-Agent" => "Ruby"
-      }).
-    to_return(status: 200, body: "foo", headers: {})
-
     stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/").
          with(
            headers: {
@@ -184,88 +162,14 @@ RSpec.configure do |config|
           "User-Agent" => "Ruby"
             }).
           to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
+  end
 
-    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/sessions/fb431580-ed13-4125-b1aa-af2600f2f3f3/").
-          with(
-            headers: {
-            "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "Authorization" => "Bearer",
-            "User-Agent" => "Ruby"
-            }).
-          to_return(status: 200, body: file_fixture("show-video.json").read, headers: {})
-
-    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/?pageNumber=0").
-          with(
-            headers: {
-            "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "Authorization" => "Bearer",
-            "User-Agent" => "Ruby"
-            }).
-          to_return(status: 200, body: file_fixture("list-videos.json").read, headers: {})
-
-    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/?pageNumber=1").
-          with(
-            headers: {
-            "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "Authorization" => "Bearer",
-            "User-Agent" => "Ruby"
-            }).
-          to_return(status: 200, body: "", headers: {})
-
-    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/?pageNumber=2").
-          with(
-            headers: {
-           "Accept" => "*/*",
-           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-           "Authorization" => "Bearer",
-           "User-Agent" => "Ruby"
-            }).
-          to_return(status: 200, body: "", headers: {})
-
-    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/sessions/search?id=e2753a7a-85c2-4d00-a241-aecf00393c25&pageNumber=0&searchQuery=conversation").
-          with(
-            headers: {
-                  "Accept" => "*/*",
-                  "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-                  "Authorization" => "Bearer",
-                  "User-Agent" => "Ruby"
-            }).
-          to_return(status: 200, body: file_fixture("list-videos.json").read, headers: {})
-
-    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/sessions/search?id=e2753a7a-85c2-4d00-a241-aecf00393c25&pageNumber=1&searchQuery=conversation").
-          with(
-            headers: {
-           "Accept" => "*/*",
-           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-           "Authorization" => "Bearer",
-           "User-Agent" => "Ruby"
-            }).
-          to_return(status: 200, body: "", headers: {})
-
-    stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/sessions/search?id=e2753a7a-85c2-4d00-a241-aecf00393c25&pageNumber=0&searchQuery=bad%20wolf").
-          with(
-            headers: {
-           "Accept" => "*/*",
-           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-           "Authorization" => "Bearer",
-           "User-Agent" => "Ruby"
-            }).
-          to_return(status: 200, body: "", headers: {})
-
-    stub_request(:post, "https://temple.hosted.panopto.com/Panopto/oauth2/connect/token").
-          with(
-            body: "scope=api&grant_type=client_credentials",
-            headers: {
-           "Accept" => "*/*",
-           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-           "Authorization" => "Basic MjkzNDZmMDEtMDE3ZS00MzgyLThkZDktYWYzNDAxMzA2ZjkzOlIrQlhqRWxkYS9Ta0RSWHBzY2FFaUYwRlBsMTlxZHVmMHlBaHpHbWJISEU9",
-           "User-Agent" => "Ruby"
-            }).
-          to_return(status: 200, body: "", headers: {})
-
+  VCR.configure do |c|
+    c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+    c.hook_into :webmock
+    c.configure_rspec_metadata!
+    c.filter_sensitive_data("<key>") { ENV["PANOPTO_API_USER"] }
+    c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
   end
 
   config.include ActionText::SystemTestHelper, type: :system

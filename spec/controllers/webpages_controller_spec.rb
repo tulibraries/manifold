@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "net/http"
+require "webmock/rspec"
+require "vcr"
 
 RSpec.describe WebpagesController, type: :controller do
 
@@ -44,7 +47,7 @@ RSpec.describe WebpagesController, type: :controller do
     end
   end
 
-  describe "video methods" do
+  describe "video methods", vcr: true do
     render_views
     let(:json_all) {
       controller.send(:videos_all)
@@ -54,25 +57,25 @@ RSpec.describe WebpagesController, type: :controller do
     end
     it "returns the index view" do
       get :videos_all
-      # expect(response).to be_successful
+      expect(response).to be_successful
       # expect(response.body).to match json_all
     end
-    # it "returns the show view" do
-    #   get :videos_show, params: { id: "fb431580-ed13-4125-b1aa-af2600f2f3f3" }
-    #   expect(response).to be_successful
-    #   expect(response.body).to match json_all
-    # end
-    # it "returns the list view" do
-    #   get :videos_list, params: { collection: "recent" }
-    #   expect(response).to be_successful
-    #   expect(response.body).to match json_all
-    # end
-    # it "returns the search view" do
-    #   get :videos_search, params: { q: "conversation" }
-    #   expect(response).to be_successful
-    #   expect(response.body).to match json_all
-    #   expect(response.body).to match "returned 50 results"
-    # end
+    it "returns the show view" do
+      get :videos_show, params: { id: "fb431580-ed13-4125-b1aa-af2600f2f3f3" }
+      expect(response).to be_successful
+      # expect(response.body).to match json_all
+    end
+    it "returns the list view" do
+      get :videos_list, params: { collection: "recent" }
+      expect(response).to be_successful
+      # expect(response.body).to match json_all
+    end
+    it "returns the search view" do
+      get :videos_search, params: { q: "conversation" }
+      expect(response).to be_successful
+      # expect(response.body).to match json_all
+      # expect(response.body).to match "returned 50 results"
+    end
     # it "returns the search view" do
     #   get :videos_search, params: { q: "bad wolf" }
     #   expect(response).to be_successful

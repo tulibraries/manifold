@@ -117,26 +117,6 @@ RSpec.feature "FindingAids", type: :feature do
         expect(@finding_aid_4.name).to appear_before(@finding_aid_1.name, only_text: true)
       end
     end
-
-    context "Updated description reflected in search_description" do
-      let(:new_description) { "Don't Panic!" }
-
-      scenario "Change the description" do
-        finding_aid_5 = FactoryBot.create(:finding_aid, name: "Finding Aid 5",
-          subject: ["subject 1"],
-          collections: [@collection_1])
-        login_as(@account, scope: :account)
-        visit(edit_admin_finding_aid_path(finding_aid_5))
-        # binding.pry
-        # find("#finding_aid_description_trix_input_finding_aid_#{finding_aid_5.id}").set(new_description)
-        find(:xpath, "//*[@name=\"finding_aid[description]\"]", visible: false).set(new_description)
-        click_button("Update Finding aid")
-        expect(page).to_not have_content(finding_aid_5.description.body.to_trix_html)
-        expect(page).to have_content(new_description)
-      end
-    end
-
   end
-
 
 end

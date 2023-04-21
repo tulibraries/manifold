@@ -53,7 +53,7 @@ RSpec.describe Building, type: :model do
     context "External Link" do
       let(:external_link) { FactoryBot.create(:external_link) }
       example "attach external link" do
-        building = FactoryBot.create(:building, external_link: external_link)
+        building = FactoryBot.create(:building, external_link:)
         expect(building.external_link.title).to match(/#{external_link.title}/)
         expect(building.external_link.link).to match(/#{external_link.link}/)
       end

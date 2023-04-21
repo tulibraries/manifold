@@ -35,7 +35,7 @@ RSpec.describe Administrate::Field::String do
   describe "#required?" do
     context "resource class validates for presence" do
       let(:resource) { mock_model ValidateTrue }
-      let(:options) { { resource: resource } }
+      let(:options) { { resource: } }
       it "is true" do
         expect(field.required?).to be true
       end
@@ -43,7 +43,7 @@ RSpec.describe Administrate::Field::String do
 
     context "required option passed is false" do
       let(:resource) { mock_model ValidateFalse }
-      let(:options) { { resource: resource } }
+      let(:options) { { resource: } }
       it "is false" do
         expect(field.required?).to be false
       end
@@ -51,7 +51,7 @@ RSpec.describe Administrate::Field::String do
 
     context "required option is not passed" do
       let(:resource) { mock_model ValidateMissing }
-      let(:options) { { resource: resource } }
+      let(:options) { { resource: } }
       it "is false" do
         expect(field.required?).to be false
       end

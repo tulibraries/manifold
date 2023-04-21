@@ -10,7 +10,7 @@ module Admin
 
     def sync
       blog = Blog.find(params[:blog_id])
-      SyncService::Blogs.call(blog: blog)
+      SyncService::Blogs.call(blog:)
       flash[:notice] = t(
         "manifold.admin.notification.blog_synced",
         title: blog.title,

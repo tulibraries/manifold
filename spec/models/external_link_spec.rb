@@ -57,7 +57,7 @@ RSpec.describe ExternalLink, type: :model do
 
     context "when link is attached to other models" do
       let(:external_link) { FactoryBot.build(:external_link) }
-      let(:webpage) { FactoryBot.create(:webpage, external_link: external_link) }
+      let(:webpage) { FactoryBot.create(:webpage, external_link:) }
       it "is prevented from destruction" do
         external_link.delete
         expect(external_link).to be

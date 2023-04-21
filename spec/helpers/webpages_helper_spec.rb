@@ -14,7 +14,7 @@ RSpec.describe WebpagesHelper, type: :helper do
     let (:number_and_link_content) {
       render_as_phone_link_on_mobile(
         number: phone_number,
-        link_content: link_content)
+        link_content:)
     }
     let (:sms_number_only) {
       render_as_phone_link_on_mobile(number: phone_number, type: "sms")

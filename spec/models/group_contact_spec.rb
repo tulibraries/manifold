@@ -5,11 +5,11 @@ require "rails_helper"
 RSpec.describe GroupContact, type: :model do
   context "Group has a Chair or Department Head" do
     let(:building) { FactoryBot.create(:building) }
-    let(:space) { FactoryBot.create(:space, building: building) }
+    let(:space) { FactoryBot.create(:space, building:) }
     let(:person1) { FactoryBot.create(:person, buildings: [building]) }
     let(:person2) { FactoryBot.create(:person, buildings: [building]) }
-    let(:group) { FactoryBot.create(:group, persons: [person1], space: space, chair_dept_heads: [person1]) }
-    let(:another_group) { FactoryBot.create(:group, persons: [person1], space: space, chair_dept_heads: [person1]) }
+    let(:group) { FactoryBot.create(:group, persons: [person1], space:, chair_dept_heads: [person1]) }
+    let(:another_group) { FactoryBot.create(:group, persons: [person1], space:, chair_dept_heads: [person1]) }
 
     example "Create group with chair or department head" do
       expect(group.chair_dept_heads).to include person1

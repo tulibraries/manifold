@@ -16,8 +16,8 @@ module WebpagesHelper
 
   def render_as_sms_link_on_mobile(number:, link_content: nil)
     render_as_phone_link_on_mobile(
-      number: number,
-      link_content: link_content,
+      number:,
+      link_content:,
       type: "sms"
     )
   end

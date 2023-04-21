@@ -62,7 +62,7 @@ class FindingAid < ApplicationRecord
     {
       about: subjects,
       isPartOf: collections,
-      identifier: identifier
+      identifier:
     }
   end
 

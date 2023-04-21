@@ -19,7 +19,7 @@ RSpec.describe "events/show", type: :view do
   context "JSON LD" do
     example "Location is campus building" do
       building = FactoryBot.create(:building)
-      @event = FactoryBot.create(:event, building: building)
+      @event = FactoryBot.create(:event, building:)
       render
       event_ld = JSON.parse(Nokogiri::XML(rendered).xpath("//script", "@type" => "Event").text)
       expect(event_ld["name"]).to match(@event.title)

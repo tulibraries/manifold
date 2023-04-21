@@ -5,10 +5,10 @@ require "rails_helper"
 RSpec.describe Member, type: :model do
   context "Group has person" do
     let(:building) { FactoryBot.create(:building) }
-    let(:space) { FactoryBot.create(:space, building: building) }
+    let(:space) { FactoryBot.create(:space, building:) }
     let(:person1) { FactoryBot.build(:person) }
     let(:person2) { FactoryBot.build(:person) }
-    let(:group) { FactoryBot.create(:group, persons: [person1], space: space, chair_dept_heads: [person1]) }
+    let(:group) { FactoryBot.create(:group, persons: [person1], space:, chair_dept_heads: [person1]) }
 
     example "Create group with person" do
       expect(group.persons).to include person1
@@ -24,10 +24,10 @@ RSpec.describe Member, type: :model do
 
   context "Person has group" do
     let(:building) { FactoryBot.create(:building) }
-    let(:space) { FactoryBot.create(:space, building: building) }
+    let(:space) { FactoryBot.create(:space, building:) }
     let(:person1) { FactoryBot.create(:person) }
     let(:person2) { FactoryBot.create(:person) }
-    let(:group) { FactoryBot.create(:group, space: space, persons: [person1], chair_dept_heads: [person1]) }
+    let(:group) { FactoryBot.create(:group, space:, persons: [person1], chair_dept_heads: [person1]) }
 
     example "Person includes a group" do
       expect(person1.groups).to include group

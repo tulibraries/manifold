@@ -37,7 +37,7 @@ RSpec.describe "Collections", type: :request do
   describe "a redirect with a legacy path with additional /" do
     let(:legacy_path) { "/collections/blockson/other" }
     let(:redirect) {
-      FactoryBot.create(:collection_redirect, legacy_path: legacy_path)
+      FactoryBot.create(:collection_redirect, legacy_path:)
     }
     it "redirects to the expected redirect path" do
       get url_for(redirect.legacy_path)

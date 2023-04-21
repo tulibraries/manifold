@@ -8,7 +8,7 @@ class SyncService::Events
   class MissingGuidException < StandardError; end
 
   def self.call(events_url: nil, force: false)
-    new(events_url: events_url, force: force).sync
+    new(events_url:, force:).sync
   end
 
   def initialize(params = {})
@@ -169,7 +169,7 @@ class SyncService::Events
     end
 
     room = event.fetch("Room", nil)
-    space = (FuzzyFind::Space.find(room.to_s, addl_attribute: { building: building }) if building) || nil
+    space = (FuzzyFind::Space.find(room.to_s, addl_attribute: { building: }) if building) || nil
 
     if space
       location_hash["space"] = space

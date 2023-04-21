@@ -38,8 +38,8 @@ class Policy < ApplicationRecord
 
   def additional_schema_dot_org_attributes
     {
-      name: name,
-      description: description
+      name:,
+      description:
     }
   end
 end

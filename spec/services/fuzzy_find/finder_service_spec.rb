@@ -16,9 +16,9 @@ RSpec.describe FuzzyFind::FinderService do
   let(:attribute) { :name }
   let(:called_service) {
     described_class.call(
-      needle: needle,
-      haystack_model: haystack_model,
-      attribute: attribute
+      needle:,
+      haystack_model:,
+      attribute:
     )
   }
 
@@ -37,7 +37,7 @@ RSpec.describe FuzzyFind::FinderService do
 
     it "can be called without attribute argument" do
       expect {
-          described_class.call(needle: needle, haystack_model: haystack_model)
+          described_class.call(needle:, haystack_model:)
         }.to_not raise_error
     end
 
@@ -56,7 +56,7 @@ RSpec.describe FuzzyFind::FinderService do
       before do
         Person.destroy_all
         building = FactoryBot.create(:building)
-        @space = FactoryBot.create(:space, building: building)
+        @space = FactoryBot.create(:space, building:)
         FactoryBot.create(:person, buildings: [building])
         @group = FactoryBot.create(:group, space: @space, chair_dept_heads: [Person.take(1).first])
 

@@ -96,7 +96,7 @@ RSpec.describe SyncService::Blogs, type: :service do
     xit "passes timeout to http request" do
       skip("ruby 3.1.2 -- options hash no longer works: 'no implicit conversion of Hash into String'")
       expect(URI).to receive(:open).with(feed_path, { read_timeout: Rails.configuration.sync_timeout })
-      blog_feed = OpenStruct.new(feed_path: feed_path, id: @blog.id)
+      blog_feed = OpenStruct.new(feed_path:, id: @blog.id)
       sync_blogs = described_class.new(blog: blog_feed)
       sync_blogs.read_blog_posts
     end

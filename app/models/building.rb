@@ -57,7 +57,7 @@ class Building < ApplicationRecord
         # postalCode: zipcode
       },
       telephone: phone_number,
-      email: email,
+      email:,
       geo: coordinates,
       googleId: google_id,
     }

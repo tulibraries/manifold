@@ -22,7 +22,7 @@ RSpec.describe Policy, type: :model do
       policy = FactoryBot.create(:policy)
       building = FactoryBot.create(:building)
       building.policies = [policy]
-      space = FactoryBot.create(:space, building: building)
+      space = FactoryBot.create(:space, building:)
       space.policies = [policy]
       expect(space.policies).to include(policy)
     end

@@ -30,7 +30,7 @@ RSpec.describe Space, type: :model do
     ]
     required_references.each do |f|
       example "missing #{f}" do
-        space = FactoryBot.build(:space, building: building)
+        space = FactoryBot.build(:space, building:)
         space[f] = nil
         expect { space.save! }.to raise_error(/#{f.humanize(capitalize: true)} must exist/)
       end
@@ -43,7 +43,7 @@ RSpec.describe Space, type: :model do
     ]
     optional_references.each do |f|
       example "missing #{f}" do
-        space = FactoryBot.build(:space, building: building)
+        space = FactoryBot.build(:space, building:)
         space[f] = nil
         expect { space.save! }.to_not raise_error
       end
@@ -52,7 +52,7 @@ RSpec.describe Space, type: :model do
 
   describe "field validators" do
 
-    let (:space) { FactoryBot.build(:space, building: building) }
+    let (:space) { FactoryBot.build(:space, building:) }
 
     context "Building reference" do
       example "valid building" do
@@ -70,7 +70,7 @@ RSpec.describe Space, type: :model do
         expect { space.save! }.to_not raise_error
       end
       example "valid space ID" do
-        space = FactoryBot.build(:space_with_parent, building: building)
+        space = FactoryBot.build(:space_with_parent, building:)
         expect { space.save! }.to_not raise_error
       end
     end
@@ -87,7 +87,7 @@ RSpec.describe Space, type: :model do
     context "External Link" do
       let(:external_link) { FactoryBot.create(:external_link) }
       example "attach external link" do
-        space = FactoryBot.create(:space, external_link: external_link)
+        space = FactoryBot.create(:space, external_link:)
         expect(space.external_link.title).to match(/#{external_link.title}/)
         expect(space.external_link.link).to match(/#{external_link.link}/)
       end

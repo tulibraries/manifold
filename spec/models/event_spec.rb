@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe Event, type: :model do
 
   let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
+  let(:space) { FactoryBot.create(:space, building:) }
   let(:person) { FactoryBot.build(:person, buildings: [building]) }
 
   describe "past event video" do
@@ -19,7 +19,7 @@ RSpec.describe Event, type: :model do
   end
 
   describe "has associations" do
-    let(:event) { FactoryBot.create(:event, building: building, space: space, person: person) }
+    let(:event) { FactoryBot.create(:event, building:, space:, person:) }
     example "building" do
       expect(event.building.name).to match(/#{Building.last.name}/)
     end
@@ -33,7 +33,7 @@ RSpec.describe Event, type: :model do
 
   describe "get date" do
     example "event date renders as month day, year" do
-      event = FactoryBot.create(:event, building: nil, space: nil, person: person)
+      event = FactoryBot.create(:event, building: nil, space: nil, person:)
       expect(event.get_date).to match(/\w+ \d+\, \d\d\d\d/)
     end
   end
@@ -44,19 +44,19 @@ RSpec.describe Event, type: :model do
     let(:end_date) { Time.zone.parse "7/4/18" }
     let(:end_time) { Time.zone.parse "7/4/18 2:00 pm" }
     example "event is all day long" do
-      event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_date, all_day: true)
+      event = FactoryBot.create(:event, building:, space:, person:, start_time: start_date, all_day: true)
       expect(event.set_times).to match("(All day)")
     end
     example "event has an start and end time" do
-      event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_time, end_time: end_time, all_day: false)
+      event = FactoryBot.create(:event, building:, space:, person:, start_time:, end_time:, all_day: false)
       expect(event.set_times).to match("10:00 am -  2:00 pm")
     end
     example "empty start_date does not error" do
-      event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: nil, end_time: end_time, all_day: false)
+      event = FactoryBot.create(:event, building:, space:, person:, start_time: nil, end_time:, all_day: false)
       expect(event.set_start_time).to match("")
     end
     example "empty end_date does not error" do
-      event = FactoryBot.create(:event, building: building, space: space, person: person, start_time: start_time, end_time: nil, all_day: false)
+      event = FactoryBot.create(:event, building:, space:, person:, start_time:, end_time: nil, all_day: false)
       expect(event.set_end_time).to match("")
     end
   end
@@ -117,7 +117,7 @@ RSpec.describe Event, type: :model do
     describe "Location" do
       example "campus building" do
         building = FactoryBot.create(:building)
-        event = FactoryBot.create(:event, building: building)
+        event = FactoryBot.create(:event, building:)
         input = event.map_to_schema_dot_org
         expect(input["location"]["@type"]).to eq "Place"
         expect(input["location"]["name"]).to eq building.name

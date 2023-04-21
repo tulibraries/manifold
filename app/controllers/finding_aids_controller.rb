@@ -27,8 +27,8 @@ class FindingAidsController < ApplicationController
       .in_collection(collection)
       .order(:name)
     end
-    @subjects = get_subject_filter_values(@finding_aids)
-    @collections = get_collection_filter_values(@finding_aids)
+    @subjects = get_subject_filter_values(@finding_aids) if query.blank?
+    @collections = get_collection_filter_values(@finding_aids) if query.blank?
     @aids_list = @finding_aids.page params[:page]
   end
 

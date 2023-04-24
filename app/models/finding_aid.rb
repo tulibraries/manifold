@@ -77,8 +77,6 @@ class FindingAid < ApplicationRecord
     rich_text_description: [:body]
   }
 
-
-
   def self.search(q)
     if q
       FindingAid.full_text(q)

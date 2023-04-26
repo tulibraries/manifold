@@ -5,7 +5,6 @@
   <h1 class="d-none d-lg-block"><%= title t("manifold.finding_aids.index.page_title") %></h1>
 
   <div class="row">
-  <% if @collections.present? %>
     <div class="col-3 pe-5 leftside-index ps-3 ps-lg-2 d-none d-md-none d-lg-block">
       <div class="panel-group" id="accordion">
         <%= turbo_frame_tag "filters" do %>
@@ -21,8 +20,8 @@
         <% end %>
 			</div>
     </div>
-  <% end %>
-    <div class="col-12 col-lg-<%= @collections.present? ? 9 : 12 %> px-4">
+
+    <div class="col-12 col-lg-9 px-4">
 
       <div class="container-lg pb-2" id="">
         <div class="row">

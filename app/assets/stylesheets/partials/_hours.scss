@@ -198,7 +198,7 @@
     border-left: 0;
     border-right: 0;
     background-color: transparent;
-    padding: 7px;
+    padding: 0;
   }
   .bordered {
     border-bottom: solid $lightest-grey 1px;
@@ -334,6 +334,9 @@
   }
   .today_button {
     display: inline-block;
+  }
+  .current-week {
+    margin-top: 14px;
   }
 }
 

@@ -557,13 +557,20 @@
 .access-link {
   a {
     color: $royal-blue;
+    background-color: $crystal-blue;
+    font-family: faustina;
+    padding: 7px 14px;
+  }
+  a::after {
+    padding-left: 10px;
+    padding-top: 3px;
+    content: "\f0da";
+    font-family: FontAwesome;
+    position: relative;
+    top: 2px;
   }
   h2 {
-    margin-bottom: 3px;
-    background-color: $crystal-blue;
-    padding: 14px;
-    margin-bottom: 17px;
-    font-family: faustina;
+    margin: 28px 0;
   }
   @media (max-width: 950px) {
     width: 95%;

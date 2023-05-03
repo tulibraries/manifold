@@ -16,6 +16,12 @@
     <%= render "secondary_covid_alert" if @header_alert.present? %>
 
       <h1 class="page-title"><%= title @space.label %></h1>
+            <% unless @space.external_link.nil? %>
+        <div class="access-link">
+          <h2><%= link_to @space.external_link.title, @space.external_link.link %></h2>
+          <p class="print-only"><%= @space.external_link.link %></li>             
+        </div>          
+      <% end %>
 
       <div class="details">
         <ul class="list-unstyled space-contact">
@@ -31,12 +37,6 @@
 
         <div class="description">
           <%= @space.description %>
-
-          <% if @space.image.attached?  %>
-            <div class="space-image my-3">
-              <%= image_tag @space.custom_image(900,600), class: "decorative", alt: "" %>
-            </div>
-          <% end %>
         </div>
         
         <% if @space.accessibility.body.present? %>
@@ -47,6 +47,16 @@
         <% end %>
       </div>
 
+  <% if @space.hours.present? %>
+      <div class="d-none d-md-block col-12 hours-widget">
+        <%= render :partial => "/application/space_hours" %>
+      </div>
+
+      <div class="d-block d-md-none col-12">
+        <%= render :partial => "/application/space_mobile_hours" %>
+      </div>
+    <% end %>
+
     </div>
 
     <% unless @categories.blank? %>
@@ -54,37 +64,9 @@
     <% else %>
       <div class="col-12 col-lg-6 rightside-space">
     <% end %>
-
-
-      <% unless @space.external_link.nil? %>
-        <div class="access-link">
-          <h2><%= link_to @space.external_link.title, @space.external_link.link %></h2>
-          <p class="print-only"><%= @space.external_link.link %></li>             
-        </div>          
-      <% end %>
       
     </div>
   </div>
-
-<% unless @space.hours.blank? %>
-
-  <% unless @categories.blank? %>
-    <div class="d-none d-md-block col-12 col-lg-9 offset-lg-3 hours-widget">
-  <% else %>
-    <div class="d-none d-md-block col-12 hours-widget">
-  <% end %>
-
-    <hr />
-    <%= render :partial => "/application/space_hours" %>
-  </div>
-
-  <div class="d-block d-md-none col-12">
-    <hr />
-    <%= render :partial => "/application/space_mobile_hours" %>
-  </div>
-  
-<% end %>
-
 </div>
 
 <script type="application/ld+json">

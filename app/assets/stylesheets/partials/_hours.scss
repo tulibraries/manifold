@@ -2,10 +2,7 @@
 
 .today {
   font-weight: 600;
-  border-left: solid $red 1px;
-  border-right: solid $red 1px;
-  background-color: #efefef;
-  padding: 7px;
+  border-bottom: solid $red 3px;
 }
   .bordered {
     border-bottom: solid $lightest-grey 1px;
@@ -14,15 +11,16 @@
   .day-of-week {
     border: 0;
     color: $red;
-    padding: 7px;
     background-color: transparent;
   }
   .hours-dates {
-    border-bottom: solid #ccc 1px;
-    margin-bottom: 4px;
+    padding: 7px;
+    border-bottom: solid $new-gold 3px;
     font-weight: 900;
-    .col {
-      padding: 7px;
+  }
+  .hours-times {
+    .time {
+      padding-bottom: 10px;
     }
   }
   .closed {
@@ -43,27 +41,35 @@
     }
   }
   .today_button {
-    padding: 7px 10px 10px 9px;
-    background-color: $white;
-    border: solid $red 1px;
-    border-radius: 7px;
+    padding: 4px 10px;
+    background-color: $crystal-blue;
     text-decoration: none!important;
     display: inline-block;
-    margin-top: 1rem;
+    color: $royal-blue !important;
+    font-family: faustina;
+    font-size: 1.25rem;
     @media (max-width: 1039px) {
       top: 2px;
     }
   }
-
+  .today_button::after {
+    padding-left: 10px;
+    padding-top: 3px;
+    content: "\f0da";
+    font-family: FontAwesome;
+    position: relative;
+    top: 2px;
+  }
+  
   .hours-row {
-  margin-top: 14px;
-  @media (max-width: 1039px) {
-    padding-bottom: 14px;
+    margin-top: 14px;
+    @media (max-width: 1039px) {
+      padding-bottom: 14px;
+    }
+    h3 a {
+      color: $black;
+    }
   }
-  h3 a {
-    color: $black;
-  }
-}
 .building-row {
   margin-top: 35px;
   padding-top: 28px;
@@ -90,13 +96,17 @@
 }
 
 .hours-header {
-  margin-top: 35px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.hours-location, .hours-month-name {
+  font-weight: 600;
+  font-size: 120%;
+}
+.hours-month-name {
+  color: $red;
 }
 
-.hours-month-name {
-  font-weight: 600;
-  font-size: 150%;
-}
 
 .mobile-hours {
   .today {
@@ -188,4 +198,9 @@
     padding: 4px 14px;
     border: solid $red 1px;
   }
+}
+
+.hours-widget {
+  background-color: #f1efe7;
+  padding: 1.5rem 2.5rem;
 }

@@ -1,9 +1,10 @@
 @import "_vars.scss";
 
-.today {
-  font-weight: 600;
-  border-bottom: solid $red 3px;
-}
+.space-hours {
+  .today {
+    font-weight: 600;
+    border-bottom: solid $red 3px;
+  }
   .bordered {
     border-bottom: solid $lightest-grey 1px;
     padding-bottom: 14px;
@@ -203,4 +204,197 @@
 .hours-widget {
   background-color: #f1efe7;
   padding: 1.5rem 2.5rem;
+}
+}
+
+@import "_vars.scss";
+
+.today {
+  font-weight: 600;
+  border-left: solid $red 1px;
+  border-right: solid $red 1px;
+  background-color: #efefef;
+  padding: 7px;
+}
+  .bordered {
+    border-bottom: solid $lightest-grey 1px;
+    padding-bottom: 14px;
+  }
+  .day-of-week {
+    border: 0;
+    color: $red;
+    padding: 7px;
+    background-color: transparent;
+  }
+  .hours-dates {
+    border-bottom: solid #ccc 1px;
+    margin-bottom: 4px;
+    font-weight: 900;
+    .col {
+      padding: 7px;
+    }
+  }
+  .closed {
+    color: $red;
+  }
+  .date-nav {
+    background-color: $lightest-grey;
+    border-bottom: solid $background-grey 1px;
+    margin-top: 0;
+    padding: 21px 4px;
+    color: $red;
+    h1.page-title {
+      color: $black;
+      margin-bottom: 0;
+      @media (max-width: 1039px) {
+      margin-top: 0;
+      }
+    }
+  }
+  .today_button {
+    padding: 7px 10px 10px 9px;
+    background-color: $white;
+    border: solid $red 1px;
+    border-radius: 7px;
+    text-decoration: none!important;
+    display: inline-block;
+    margin-top: 1rem;
+    @media (max-width: 1039px) {
+      top: 2px;
+    }
+  }
+
+  .hours-row {
+  margin-top: 14px;
+  @media (max-width: 1039px) {
+    padding-bottom: 14px;
+  }
+  h3 a {
+    color: $black;
+  }
+}
+.building-row {
+  margin-top: 35px;
+  padding-top: 28px;
+  border-top: solid $red 2px;
+  @media (max-width: 1039px) {
+    margin-bottom: 0;
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.buildings {
+  padding-left: 10px;
+  padding-right:10px;
+}
+
+.building-row:first-child {
+  border-top: 0;
+  @media (max-width: 1039px) {
+    margin-top: 0;
+  }
+}
+
+.hours-header {
+  margin-top: 35px;
+}
+
+.hours-month-name {
+  font-weight: 600;
+  font-size: 150%;
+}
+
+.mobile-hours {
+  .today {
+    font-weight: 600;
+    border-left: solid $red 1px;
+    border-right: solid $red 1px;
+    background-color: $white;
+  }
+  .hours-dates {
+    border-bottom: 0;
+    margin-bottom: 7px;
+    padding: 2px;
+  }
+  .hours-location {
+    margin-top: 14px;
+    background-color: #eee;
+    padding: 14px 0 14px 0;
+  }
+  .hours-month-name {
+    color: $red;
+    margin-bottom: 14px;
+  }
+  .hours-header {
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+  .today_button {
+    display: inline-block;
+  }
+}
+
+.hours-note:before { 
+  content: "*";
+  color: $red;
+  font-size: 1.25rem;
+}
+
+.hours-note-desktop {
+  border-bottom: solid #ccc 1px;
+}
+
+.date-string {
+  font-size: 1.75rem;
+  display: inline-block;
+  padding: 4px 14px;
+
+  @media (max-width: 1039px) {
+    margin-bottom: 10px;
+  }
+}
+
+.date-range {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  .prev-hours, .next-hours {
+    padding: 10px 0;
+    a {
+      padding: 0 10px 4px 10px;
+      background-color: $white;
+      border: solid $red 1px;
+      border-radius: 4px;
+      color: $red;
+      font-size: 1rem;
+      margin-top: 0;
+    }
+  }
+  .left {
+    margin-right: 7px;
+  }
+  .right {
+    margin-left: 7px;
+  }
+}
+
+.date-picker {
+  margin-top: 1rem;
+  input[type="date"] {
+    border: solid $red 1px;
+    border-radius: 4px;
+    padding: 4px 14px;
+    color: $red;
+  }
+
+  input[type="submit"] {
+    background-color: $red;
+    color: $white;
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 4px 14px;
+    border: solid $red 1px;
+  }
 }

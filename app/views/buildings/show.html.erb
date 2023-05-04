@@ -1,48 +1,53 @@
 <%= render "mobile-menu-secondary" %>
 
-<div class="container-lg">
+<div class="container-lg building-show">
   
-  <div class="row building-show">
-    <% unless @categories.blank? %>
+  <div class="row">
+    <% if @categories.present? %>
       <div class="col-3 d-none d-md-none d-lg-block">
         <%= render "categories_list" %>
       </div>
     <% end %>
 
+    <% if @building.policies.present? %>
       <div class="col-12 col-lg-6">
-      
+    <% else %>
+      <div class="col-12 col-lg-9">
+    <% end %>
+    
       <%= render "secondary_covid_alert" if @header_alert.present? %>
       
       <h1 class="page-title"><%= title @building.label %></h1>
+
+      <% if @building.external_link.present? %>
+        <div class="access-link">
+          <h2><%= link_to @building.external_link.title, @building.external_link.link %></h2>
+          <span class="print-only white"><%= @building.external_link.link %></span>  
+        </div>          
+      <% end %>
+
       <ul class="list-unstyled building-contact">
         <li class="lib_location"><span><%= @building.address1 %> <%= @building.address2 %></span></li>
         <li class="lib_phone"><span><%= phone_formatted(@building.phone_number) %></span></li>
         <li class="lib_email"><span><%= mail_to @building.email %></span></li>
       </ul>
       
-      <%= @building.description unless @building.description.nil?  %>
+      <%= @building.description if @building.description.present?  %>
 
-    </div>
+      <% if @building.hours.present? %>
+        <div class="d-none d-md-block hours-widget mt-3">
+          <%= render "/application/model_hours" %>
+        </div>
 
-    <% unless @categories.blank? %>
-      <div class="col-12 col-lg-3 rightside-building">
-    <% else %>
-      <div class="col-12 col-lg-6 rightside-building">
-    <% end %>
-
-
-      <% unless @building.external_link.nil? %>
-        <div class="external-link text-center">
-          <h2><%= link_to @building.external_link.title, @building.external_link.link %></h2>
-          <span class="print-only white"><%= @building.external_link.link %></span>  
-        </div>          
-      <% end %>
-      <% unless @building.coordinates.blank? || @building.google_id.blank? %>
-        <div class="building-map">
-          <%= render_map(@building.name,@building.coordinates,@building.google_id) %>
+        <div class="d-block d-md-none mt-3">
+          <%= render "/application/model_mobile_hours" %>
         </div>
       <% end %>
-      <% unless @building.policies.blank? %>
+
+
+
+      <div class="col-12 col-lg-3 rightside-building">
+      <% if @building.policies.present? %>
         <div class="related-policies">
         <h2><%= t("manifold.buildings.show.related_policies") %></h2>
           <ul>
@@ -55,26 +60,6 @@
       <% end %>
     </div>
   </div>
-
-<% unless @building.hours.blank? %>
-
-  <% unless @categories.blank? %>
-    <div class="d-none d-md-block col-12 col-lg-9 offset-lg-3">
-  <% else %>
-    <div class="d-none d-md-block col-12">
-  <% end %>
-
-    <hr />
-    <%= render :partial => "/application/building_hours" %>
-  </div>
-
-  <div class="d-block d-md-none col-12">
-    <hr />
-    <%= render :partial => "/application/building_mobile_hours" %>
-  </div>
-
-<% end %>
-
 </div>
 
 <script type="application/ld+json">

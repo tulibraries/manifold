@@ -3,14 +3,16 @@
 <div class="container-lg space-show">
   
   <div class="row">
-    <% unless @categories.blank? %>
+    <% if @categories.present? %>
       <div class="col-3 d-none d-md-none d-lg-block">
         <%= render "categories_list" %>
       </div>
+    <% end %>
 
-      <div class="col-12 col-lg-9">
+    <% if @space.policies.present? %>
+      <div class="col-12 col-lg-6">
     <% else %>
-      <div class="col-12">
+      <div class="col-12 col-lg-9">
     <% end %>
     
     <%= render "secondary_covid_alert" if @header_alert.present? %>
@@ -47,15 +49,29 @@
         <% end %>
       </div>
 
-  <% if @space.hours.present? %>
+    <% if @space.hours.present? %>
       <div class="d-none d-md-block col-12 hours-widget">
-        <%= render :partial => "/application/space_hours" %>
+        <%= render "/application/model_hours" %>
       </div>
 
       <div class="d-block d-md-none col-12">
-        <%= render :partial => "/application/space_mobile_hours" %>
+        <%= render "/application/model_mobile_hours" %>
       </div>
     <% end %>
+
+    <div class="col-12 col-lg-3 rightside-space">
+      <% if @space.policies.present? %>
+        <div class="related-policies">
+        <h2><%= t("manifold.buildings.show.related_policies") %></h2>
+          <ul>
+            <% @space.policies.each do |policy| %>
+              <li><%= link_to policy.name, policy_path(policy) %></li>
+              <li class="print-only dark"><%= [request.base_url, policy_path(policy)].join %></li>             
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
 
     </div>
   </div>

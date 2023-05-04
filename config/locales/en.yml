@@ -82,7 +82,7 @@ en:
       application:
         building_hours:
           title: Weekly Hours
-          more_hours: See more hours for this location
+          more_hours: See more weekly hours for this location
         header_navbar:
           tuportal: TUportal
           support: Support the Libraries

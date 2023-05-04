@@ -1,69 +1,71 @@
-<div class="current-week">
+<div class="current-week space-hours">
 
-  <div class="row"> <!-- begin dates header -->
-    <div class="col-4"><h2><%= t("manifold.default.application.building_hours.title") %></h2></div>
-      <div class="col-lg-8 text-end">
-        <%= link_to t("manifold.default.application.building_hours.more_hours"), hours_path, class: "today_button"  %>
-      </div>
+  <div class="row">
+    <div class="col-4 pt-1 ps-2">
+      <h2><%= t("manifold.default.application.building_hours.title") %></h2>
+    </div>
+    <div class="col-lg-8 text-end">
+      <%= link_to t("manifold.default.application.building_hours.more_hours"), hours_path, class: "today_button"  %>
+    </div>
   </div>
 
 </div>
 
-  <div class="row hours-header">
-    <div class="col-3">
-      <span class="month hours-month-name">
-        <%= @today.to_date.strftime("%B %Y") %>
-      </span>
+<div class="row hours-header">
+  <div class="col-12 mb-2 ps-2 mt-3">
+    <span class="month hours-location float-start">
+    <%= location_name(@location) %>
+    </span>
+    <span class="month hours-month-name float-end">
+      <%= @today.to_date.strftime("%B") %>
+    </span>
+  </div>
+
+    <div class="col-12 mt-2">
+      <div class="row">
+      <% 7.times do |date| %>
+        <% if @monday.to_date+date == @today.to_date %>
+          <div class="col hours-dates today day-of-week ps-2 text-center">
+        <% else %>
+          <div class="col hours-dates ps-2 text-center">
+        <% end %>
+            <span><%= (@monday.to_date+date).strftime("%a %d") %></span>
+          </div>
+      <% end %>
+      </div>
     </div>
 
-      <div class="col-9">
-        <div class="row">
-        <% 7.times do |date| %>
-          <% if @monday.to_date+date == @today.to_date %>
-            <div class="col hours-dates today day-of-week text-center">
+  </div> 
+
+
+  <div class="row mt-3 hours-times">
+
+
+
+      <% @space.get_hours.sort_by(&:date).each_with_index do |time,index| %> 
+
+        <% if @monday.to_date+index == @today.to_date %>
+          <div class="col time text-center today">
           <% else %>
-            <div class="col hours-dates text-center">
-          <% end %>
-              <%= (@monday.to_date+date).strftime("%a %d") %> 
-            </div>
+          <div class="col time text-center">
         <% end %>
-        </div>
-      </div>
 
-    </div> <!-- end dates header -->
-
-
-    <div class="row mt-3">
-
-      <div class="col-3 text-end"> 
-        <h3>
-          <%= location_name(@location) %>
-        </h3>
-      </div>
-
-      <div class="col-9">
-        <div class="row">
-
-        <% @space.get_hours.sort_by(&:date).each_with_index do |time,index| %> <!-- hours -->
-
-          <% if @monday.to_date+index == @today.to_date %>
-            <div class="col today">
-            <% else %>
-            <div class="col">
+          <% if time.hours.downcase == "closed" %>
+            <span class="closed"><%= time.hours %></span>
+          <% else %>
+            <%= time.hours %>
           <% end %>
 
-            <% if time.hours.downcase == "closed" %>
-              <span class="closed"><%= time.hours %></span>
-            <% else %>
-              <%= time.hours %>
-            <% end %>
+          </div>
 
-            </div>
+      <% end %> 
 
-        <% end %> <!-- hours -->
 
-        </div>
-      </div>
-    </div> 
+  </div> 
 
+  <% if @space.image.attached?  %>
+    <div class="space-image mt-4">
+      <%= image_tag @space.custom_image(1096,730), class: "decorative w-100", alt: "" %>
+    </div>
+  <% end %>
 </div> 

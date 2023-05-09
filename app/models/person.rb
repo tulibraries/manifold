@@ -51,8 +51,8 @@ class Person < ApplicationRecord
     where("specialties LIKE ?", "%#{specialty}%") if specialty.present?
   }
 
-  scope :in_department, ->(groups) {
-    includes(:groups).where(groups: { "slug" => groups }).where(groups: { "group_type" => "Department" }) if groups.present?
+  scope :in_department, ->(group) {
+    joins(:groups).where(groups: { slug: group }) if group.present?
   }
 
   scope :at_location, ->(building_id) {

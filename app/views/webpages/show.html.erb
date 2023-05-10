@@ -31,6 +31,8 @@
       <div><%= @webpage.description %></div>
       <%= render @webpage.layout.parameterize %>
     </div>
+
+    <%= render "attachments", items: @webpage.items, featured: @featured %>
   </div>
 
   <% unless ["Virtual Tour", "Tutorial"].include?(@webpage.layout)  %>
@@ -46,11 +48,6 @@
   <% end %>
 
   </div>
-
-
-  <%= render "attachments", items: @webpage.items, featured: @featured %>
-
-
 </div>
 
 <script type="application/ld+json">

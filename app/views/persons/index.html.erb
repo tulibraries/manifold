@@ -7,13 +7,13 @@
   <div class="container filters">
     <div class="filters row mb-0 p-3 d-none d-lg-flex">
       <div class="col col-lg-4 ps-0">
-        <%= form_with(url: people_path, method: :get, 
+        <%= form_with(url: people_path, method: :get,
                                           data: {controller: "search-form", 
                                                   action: "input->search-form#search", 
                                                   turbo_frame: "people", 
                                                   turbo_action: "advance"}, 
                                           id: "people-search") do |form| %>
-                                            <%= image_tag "search.svg", class: "d-none d-lg-inline people-search-glass" %>
+                                            <i class="fa fa-search" aria-hidden="true"></i>
                                             <%= form.text_field :search, placeholder: "search staff directory by name or title", class: "form-control" %>
                                             <%= form.label :search, "search staff directory by name or title", class: "element-invisible" %>
                                           <% end %>

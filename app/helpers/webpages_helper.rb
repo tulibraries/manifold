@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module WebpagesHelper
+  def attachment_title(title)
+    (title.include? "Speaking Volumes ") ? title.gsub("Speaking Volumes ", "") : title
+  end
   def phone_icon
     image_tag("phone-handle.png", class: "category-icon decorative")
   end

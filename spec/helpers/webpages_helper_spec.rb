@@ -67,4 +67,12 @@ RSpec.describe WebpagesHelper, type: :helper do
       end
     end
   end
+  describe "attachment_title" do
+    it "returns the full title if Speaking Volumes absent" do
+      expect(helper.attachment_title("Sullivan Hall")).to eq ("Sullivan Hall")
+    end
+    it "removes Speaking Volumes if present" do
+      expect(helper.attachment_title("Speaking Volumes Spring 2023")).to eq ("Spring 2023")
+    end
+  end
 end

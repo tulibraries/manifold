@@ -9,7 +9,7 @@
     <div class="col col-12 text-center featured-publication-without">
   <% end %>
       <span>
-        <%= image_tag "top-left-corner-sm.png", style: "width: 35px;" unless featured.file_upload.image.attached? %>
+        <%= image_tag "top-left-corner-sm.png" unless featured.file_upload.image.attached? %>
         <%= link_to url_for(featured.file_upload.file.attachment), disposition: "attachment", class: "ps-0", title: t("manifold.webpages.view_pdf") do %>
           <%= attachment_title(featured.file_upload.name) %>
           <%= image_tag "pdf-black.svg", class: "pdf-icon white pt-0" %>

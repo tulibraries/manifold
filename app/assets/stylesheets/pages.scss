@@ -605,8 +605,6 @@
   background-color: $royal-blue;
   color: $white;
   .featured-item {
-    // height: 77px;
-    // max-height: 77px;
     img {
       width: 100%;
       height:100%;
@@ -626,42 +624,20 @@
   padding-left: 4rem;
   span {
     position: relative;
-    top: -7px;
+    top: 5px;
   }
   h2 {
     padding-bottom: 14px;
     padding-top: 17px;
   }
   a {
-    display: block;
-    padding-left: 2rem;
-  }
-  a::after {
-    padding-left: 2rem;
-    height: 35px;
     display: inline-block;
-    content: url("pdf-white-sm.png");
-    position: relative;
-    top: 7px;
+    padding-left: 2rem;
   }
 }
 .featured-publication-without {
   max-height: 220px;
   a {
-    display: block;
-    padding-left: 2rem;
-  }
-  a::before {
-    content: url("top-left-corner-sm.png");
-    padding-right: 14px;
-    position: relative;
-    top: -4px;
-  }
-  a::after {
-    padding-left: 2rem;
-    height: 35px;
-    display: inline-block;
-    content: url("pdf-white-sm.png");
     position: relative;
     top: 7px;
   }
@@ -676,11 +652,16 @@
       }
     }
   }
-  a::after {
-    padding-left: .75rem;
-    display: inline-block;
-    content: url("pdf-black-sm.png");
-    position: relative;
-    top: 7px;
-  }
 }
+  .pdf-icon {
+    display: inline-block;
+    transform: scale(0.8); 
+    height: 28px;
+    width: 28px;
+    position: relative; 
+    top: -3px;
+    filter: invert(11%) sepia(61%) saturate(3047%) hue-rotate(211deg) brightness(92%) contrast(112%);
+  }
+  .pdf-icon.white {
+    filter: invert(100%) sepia(0%) saturate(14%) hue-rotate(249deg) brightness(103%) contrast(107%);
+  }

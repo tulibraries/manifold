@@ -1,4 +1,4 @@
-<div class="page-search-container text-center container-lg" data-controller="failover">
+<div class="page-search-container text-center container-lg" data-controller="failover-desktop">
 	<form action=<%= "#{librarysearch_url("everything")}" %> id="<%= "#{@search_mode}#{view}-search-form" %>" data-failover-target="form">
 		<label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
 	  <input type="text" class="text-start" name="q" id="librarySearch" data-failover-target="thequery" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />

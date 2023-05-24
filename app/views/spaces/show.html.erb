@@ -57,6 +57,12 @@
       <div class="d-block d-md-none col-12">
         <%= render "/application/model_mobile_hours" %>
       </div>
+    <% else %>
+      <% if @space.hours.blank? && @space.image.attached? %>
+        <div class="space-image mt-4">
+          <%= image_tag @space.custom_image(1096,730), class: "decorative w-100", alt: "" %>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="col-12 col-lg-3 rightside-space">

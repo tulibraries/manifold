@@ -49,13 +49,17 @@
         <% end %>
       </div>
 
-    <% if @space.hours.present? %>
+    <% if @space.get_hours.any? %>
       <div class="d-none d-md-block col-12 hours-widget">
         <%= render "/application/model_hours" %>
       </div>
 
       <div class="d-block d-md-none col-12">
         <%= render "/application/model_mobile_hours" %>
+      </div>
+    <% elsif @space.image.attached? %>
+      <div class="space-image mt-4">
+        <%= image_tag @space.custom_image(1000,600), class: "decorative", alt: "" %>
       </div>
     <% end %>
 

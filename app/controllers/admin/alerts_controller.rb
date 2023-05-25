@@ -60,6 +60,7 @@ module Admin
 
       def write_json_alert
         published_alerts = Alert.where(published: true)
+        # Ensure an alert.json record exists
         if AlertsJson.count == 0
           AlertsJson.create(message: AlertSerializer.new(published_alerts).serializable_hash.to_json)
         else

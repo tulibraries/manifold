@@ -10,7 +10,7 @@ RSpec.shared_examples "email form" do
   let(:the_email) { ActionMailer::Base.deliveries.first }
   let(:title) { I18n.t("manifold.forms.#{form_type.underscore}.title") }
   let(:params) { {
-        form_type: form_type,
+        form_type:,
         name: "test",
         email: "test@example.com"
       }.merge(form_params || {})}
@@ -25,7 +25,7 @@ RSpec.shared_examples "email form" do
 
     it "accepts information" do
       skip("TODO: form_type not picked up in form model")
-      post forms_path, params: params
+      post(forms_path, params:)
       expect(the_email.subject).to eq(title)
       expect(the_email.body.raw_source).to include(*form_params.values)
       # Check that after the email has been delivered, the

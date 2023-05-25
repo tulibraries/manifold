@@ -1,5 +1,6 @@
 @import "_vars.scss";
 
+
 .today {
   font-weight: 600;
   border-left: solid $red 1px;
@@ -188,4 +189,221 @@
     padding: 4px 14px;
     border: solid $red 1px;
   }
+}
+
+.space-show, .building-show {
+  .today {
+    font-weight: 600;
+    border-bottom: solid $red 3px;
+    border-left: 0;
+    border-right: 0;
+    background-color: transparent;
+    padding: 0;
+  }
+  .bordered {
+    border-bottom: solid $lightest-grey 1px;
+    padding-bottom: 14px;
+  }
+  .day-of-week {
+    border: 0;
+    color: $red;
+    background-color: transparent;
+  }
+  .hours-dates {
+    padding: 7px;
+    border-bottom: solid $new-gold 3px;
+    font-weight: 900;
+  }
+  .hours-times {
+    .time {
+      padding-bottom: 10px;
+    }
+  }
+  .closed {
+    color: $red;
+  }
+  .date-nav {
+    background-color: $lightest-grey;
+    border-bottom: solid $background-grey 1px;
+    margin-top: 0;
+    padding: 21px 4px;
+    color: $red;
+    h1.page-title {
+      color: $black;
+      margin-bottom: 0;
+      @media (max-width: 1039px) {
+      margin-top: 0;
+      }
+    }
+  }
+  .today_button {
+    padding: 4px 10px;
+    background-color: $crystal-blue;
+    text-decoration: none!important;
+    display: inline-block;
+    color: $royal-blue !important;
+    font-family: faustina;
+    font-size: 1.25rem;
+    border: 0;
+    border-radius: 0;
+    margin-top: 0;
+    @media (max-width: 1039px) {
+      top: 2px;
+    }
+  }
+  .today_button::after {
+    padding-left: 10px;
+    padding-top: 3px;
+    content: "\f0da";
+    font-family: FontAwesome;
+    position: relative;
+    top: 2px;
+  }
+  
+  .hours-row {
+    margin-top: 14px;
+    @media (max-width: 1039px) {
+      padding-bottom: 14px;
+    }
+    h3 a {
+      color: $black;
+    }
+  }
+.building-row {
+  margin-top: 35px;
+  padding-top: 28px;
+  border-top: solid $red 2px;
+  @media (max-width: 1039px) {
+    margin-bottom: 0;
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.buildings {
+  padding-left: 10px;
+  padding-right:10px;
+}
+
+.building-row:first-child {
+  border-top: 0;
+  @media (max-width: 1039px) {
+    margin-top: 0;
+  }
+}
+
+.hours-header {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.hours-location, .hours-month-name {
+  font-weight: 600;
+  font-size: 120%;
+}
+.hours-month-name {
+  color: $red;
+}
+
+
+.mobile-hours {
+  .today {
+    font-weight: 600;
+    border-left: solid $red 1px;
+    border-right: solid $red 1px;
+    background-color: $white;
+  }
+  .hours-dates {
+    border-bottom: 0;
+    margin-bottom: 7px;
+    padding: 2px;
+  }
+  .hours-location {
+    margin-top: 14px;
+    background-color: #eee;
+    padding: 14px 0 14px 0;
+  }
+  .hours-month-name {
+    color: $red;
+    margin-bottom: 14px;
+  }
+  .hours-header {
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+  .today_button {
+    display: inline-block;
+  }
+  .current-week {
+    margin-top: 14px;
+  }
+}
+
+.hours-note:before { 
+  content: "*";
+  color: $red;
+  font-size: 1.25rem;
+}
+
+.hours-note-desktop {
+  border-bottom: solid #ccc 1px;
+}
+
+.date-string {
+  font-size: 1.75rem;
+  display: inline-block;
+  padding: 4px 14px;
+
+  @media (max-width: 1039px) {
+    margin-bottom: 10px;
+  }
+}
+
+.date-range {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  .prev-hours, .next-hours {
+    padding: 10px 0;
+    a {
+      padding: 0 10px 4px 10px;
+      background-color: $white;
+      border: solid $red 1px;
+      border-radius: 4px;
+      color: $red;
+      font-size: 1rem;
+      margin-top: 0;
+    }
+  }
+  .left {
+    margin-right: 7px;
+  }
+  .right {
+    margin-left: 7px;
+  }
+}
+
+.date-picker {
+  margin-top: 1rem;
+  input[type="date"] {
+    border: solid $red 1px;
+    border-radius: 4px;
+    padding: 4px 14px;
+    color: $red;
+  }
+
+  input[type="submit"] {
+    background-color: $red;
+    color: $white;
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 4px 14px;
+    border: solid $red 1px;
+  }
+}
+
+.hours-widget {
+  background-color: #f1efe7;
+  padding: 1.5rem 2.5rem;
+}
 }

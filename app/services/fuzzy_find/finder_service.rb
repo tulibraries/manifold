@@ -32,7 +32,7 @@ module FuzzyFind::FinderService
   # @option addl_attribute [Object, String, Integer] :attribute_
   # @return [String] the object converted into the expected format.
   def self.call(needle: , haystack_model:, attribute: :name, addl_attribute: {})
-    Finder.new(haystack_model: haystack_model, attribute: attribute, addl_attribute: addl_attribute)
+    Finder.new(haystack_model:, attribute:, addl_attribute:)
       .find(needle)
   end
 

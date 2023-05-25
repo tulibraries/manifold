@@ -40,7 +40,7 @@ class Webpage < ApplicationRecord
   def additional_schema_dot_org_attributes
     {
       name: title,
-      description: description
+      description:
     }
   end
 

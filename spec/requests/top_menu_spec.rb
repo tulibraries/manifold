@@ -9,8 +9,8 @@ RSpec.feature "TopMenu", type: :request do
       let(:category_2) { FactoryBot.create(:category, name: "Category 2") }
       let(:webpage) { FactoryBot.create(:webpage, categories: [category_2]) }
       let(:menu_group) { FactoryBot.create(:menu_group, slug: "about-page", categories: [category_1, category_2]) }
-      let(:menu_group_category_1) { FactoryBot.create(:menu_group_category, menu_group: menu_group, category: category_1) }
-      let(:menu_group_category_2) { FactoryBot.create(:menu_group_category, menu_group: menu_group, category: category_2, weight: 1) }
+      let(:menu_group_category_1) { FactoryBot.create(:menu_group_category, menu_group:, category: category_1) }
+      let(:menu_group_category_2) { FactoryBot.create(:menu_group_category, menu_group:, category: category_2, weight: 1) }
 
 
       it "lists weighted categories in order" do

@@ -53,7 +53,7 @@ module FindingAidsHelper
 
       else
         subjects.each do |subject|
-          link = '<li><a href="' + finding_aids_path(request.query_parameters.except(:search).merge(subject: subject, page: 1)) + '" data-turbo-frame="_top"> ' + subject + "</a></li>"
+          link = '<li><a href="' + finding_aids_path(request.query_parameters.except(:search).merge(subject:, page: 1)) + '" data-turbo-frame="_top"> ' + subject + "</a></li>"
           links << link
         end
       end

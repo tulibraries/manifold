@@ -27,7 +27,7 @@ RSpec.describe Webpage, type: :model do
   describe "Group association" do
     example "Specify group in a page" do
       group = FactoryBot.create(:group)
-      page = FactoryBot.create(:webpage, group: group)
+      page = FactoryBot.create(:webpage, group:)
       expect(page.group).to be(group)
     end
   end
@@ -145,7 +145,7 @@ RSpec.describe Webpage, type: :model do
   describe "Associated Class" do
     context "External Link" do
       example "attach external link" do
-        webpage = FactoryBot.create(:webpage, external_link: external_link)
+        webpage = FactoryBot.create(:webpage, external_link:)
         expect(webpage.external_link.title).to match(/#{external_link.title}/)
         expect(webpage.external_link.link).to match(/#{external_link.link}/)
       end

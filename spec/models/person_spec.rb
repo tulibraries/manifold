@@ -5,12 +5,12 @@ require "rails_helper"
 RSpec.describe Person, type: :model do
 
   let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
+  let(:space) { FactoryBot.create(:space, building:) }
   let(:person) { FactoryBot.build(:person) }
   let(:chair_person) { FactoryBot.build(:person) }
 
   describe "relation to" do
-    let(:group) { FactoryBot.create(:group, chair_dept_heads: [chair_person], space: space) }
+    let(:group) { FactoryBot.create(:group, chair_dept_heads: [chair_person], space:) }
     let(:person) { FactoryBot.create(:person, groups: [group]) }
     context "Group" do
       example "attach group" do

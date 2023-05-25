@@ -5,35 +5,29 @@
 </h2>
 	
   <ul class="list-unstyled navbar-collapse collapse show" id="collections">
-    <% if params[:search].present? %>
-      <% @collections.each do |collection| %>
-        <li>
-          <%= link_to collection.name, finding_aids_path(request.query_parameters.except(:search).merge({collection: collection.id, page: 1})), data: { turbo_frame: "_top" }  %>	
-        </li>
-      <% end %>
-    <% else %>
-      <% if @collections.present? %>
-        <% if params[:collection].present? %>
-          <% @collections.each do |collection| %>
-            <% if collection.id.to_s == params[:collection] %>
-            <li class="active">
-              <%= collection.name %>
-              <span class="clear-filter">
-                <%= link_to "X", finding_aids_path(request.query_parameters.except(:collection).merge({page: 1})), data: { turbo_frame: "_top" } %>
-              </span>
-            </li>
-            <% end %>
-          <% end %>
-          
-        <% else %>
 
-          <% @collections.each do |collection| %>
-            <li>
-              <%= link_to collection.name, finding_aids_path(request.query_parameters.merge({collection: collection.id, page: 1})), data: { turbo_frame: "_top" } %>	
-            </li>
+    <% if @collections.present? %>
+      <% if params[:collection].present? %>
+        <% @collections.each do |collection| %>
+          <% if collection.id.to_s == params[:collection] %>
+          <li class="active">
+            <%= collection.name %>
+            <span class="clear-filter">
+              <%= link_to "X", finding_aids_path(request.query_parameters.except(:collection).merge({page: 1})), data: { turbo_frame: "_top" } %>
+            </span>
+          </li>
           <% end %>
-        
         <% end %>
+        
+      <% else %>
+
+        <% @collections.each do |collection| %>
+          <li>
+            <%= link_to collection.name, finding_aids_path(request.query_parameters.merge({collection: collection.id, page: 1})), data: { turbo_frame: "_top" } %>	
+          </li>
+        <% end %>
+      
       <% end %>
-    <% end if @collections.present? %>
+    <% end %>
+
 	</ul>

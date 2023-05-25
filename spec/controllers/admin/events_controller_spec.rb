@@ -19,14 +19,14 @@ RSpec.describe Admin::EventsController, type: :controller do
 
   describe "GET #edit" do
     let(:building) { FactoryBot.create(:building) }
-    let(:space) { FactoryBot.create(:space, building: building) }
+    let(:space) { FactoryBot.create(:space, building:) }
     let(:person) { FactoryBot.build(:person) }
     let(:original_title) { "Original Title" }
     let(:updated_title) { "Updated Title" }
 
     before do
       sign_in(@account)
-      @event = FactoryBot.create(:event, title: original_title, building: building, space: space, person: person)
+      @event = FactoryBot.create(:event, title: original_title, building:, space:, person:)
       @event.update!(title: updated_title)
     end
 

@@ -60,7 +60,7 @@ module Admin
       else
         super
       end
-      redirect_to :admin_file_uploads, notice: notice
+      redirect_to :admin_file_uploads, notice:
     end
   end
 end

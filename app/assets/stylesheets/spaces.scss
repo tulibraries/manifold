@@ -29,5 +29,22 @@
 		@media (max-width: 950px) {
 			margin-top: 21px;
 		}
+
+		.related-policies {
+			ul {
+				border: solid $seagreen 1px;
+				border-radius: 7px;
+				padding: 14px;
+				padding-left: 28px;
+				overflow-wrap: break-word;
+				li {
+					color: $light-grey;
+					a {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
 	}
+
 }

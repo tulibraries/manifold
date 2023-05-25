@@ -14,7 +14,7 @@ RSpec.describe WebpagesHelper, type: :helper do
     let (:number_and_link_content) {
       render_as_phone_link_on_mobile(
         number: phone_number,
-        link_content: link_content)
+        link_content:)
     }
     let (:sms_number_only) {
       render_as_phone_link_on_mobile(number: phone_number, type: "sms")
@@ -65,6 +65,14 @@ RSpec.describe WebpagesHelper, type: :helper do
           expect(number_and_link_content).to eql("#{link_content}")
         end
       end
+    end
+  end
+  describe "attachment_title" do
+    it "returns the full title if Speaking Volumes absent" do
+      expect(helper.attachment_title("Sullivan Hall")).to eq ("Sullivan Hall")
+    end
+    it "removes Speaking Volumes if present" do
+      expect(helper.attachment_title("Speaking Volumes Spring 2023")).to eq ("Spring 2023")
     end
   end
 end

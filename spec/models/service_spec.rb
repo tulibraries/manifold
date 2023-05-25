@@ -45,7 +45,7 @@ RSpec.describe Service, type: :model do
     end
     context "External Link" do
       example "attach external link" do
-        service = FactoryBot.create(:service, external_link: external_link)
+        service = FactoryBot.create(:service, external_link:)
         expect(service.external_link.title).to match(/#{external_link.title}/)
         expect(service.external_link.link).to match(/#{external_link.link}/)
       end

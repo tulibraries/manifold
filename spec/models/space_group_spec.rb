@@ -5,8 +5,8 @@ require "rails_helper"
 RSpec.describe SpaceGroup, type: :model do
   context "Group has space" do
     let(:building) { FactoryBot.create(:building) }
-    let(:space1) { FactoryBot.create(:space, building: building) }
-    let(:space2) { FactoryBot.create(:space, building: building) }
+    let(:space1) { FactoryBot.create(:space, building:) }
+    let(:space2) { FactoryBot.create(:space, building:) }
     let(:person) { FactoryBot.build(:person) }
     let(:group) { FactoryBot.create(:group, persons: [person], space: space1, chair_dept_heads: [person]) }
 
@@ -26,8 +26,8 @@ RSpec.describe SpaceGroup, type: :model do
 
   context "Space has group" do
     let(:building) { FactoryBot.create(:building) }
-    let(:space1) { FactoryBot.create(:space, building: building) }
-    let(:space2) { FactoryBot.create(:space, building: building) }
+    let(:space1) { FactoryBot.create(:space, building:) }
+    let(:space2) { FactoryBot.create(:space, building:) }
     let(:person) { FactoryBot.create(:person) }
     let(:group) { FactoryBot.create(:group, space: space1, persons: [person], chair_dept_heads: [person]) }
 

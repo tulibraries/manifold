@@ -13,8 +13,8 @@ module Admin::ApplicationHelper
   end
 
   def render_show_field(field, locals = {})
-    locals.merge!(field: field)
-    render locals: locals, partial: field.to_partial_path
+    locals.merge!(field:)
+    render locals:, partial: field.to_partial_path
   end
 
   def fieldname_in_draft(resource, field)
@@ -22,9 +22,9 @@ module Admin::ApplicationHelper
   end
 
   def render_draft_field(field, locals = {})
-    locals.merge!(field: field)
+    locals.merge!(field:)
     locals.merge!(draft_field: locals[:f].object.send(draft_name(field)))
-    render locals: locals, partial: "#{field.to_partial_path}_draft"
+    render locals:, partial: "#{field.to_partial_path}_draft"
   end
 
   def draft_name(field)

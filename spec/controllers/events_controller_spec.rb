@@ -7,11 +7,11 @@ RSpec.describe EventsController, type: :controller do
   render_views
 
   let(:building) { FactoryBot.create(:building) }
-  let(:space) { FactoryBot.create(:space, building: building) }
+  let(:space) { FactoryBot.create(:space, building:) }
   let(:person) { FactoryBot.build(:person, buildings: [building]) }
 
   let(:event) {
-    FactoryBot.create(:event, building: building, space: space, person: person)
+    FactoryBot.create(:event, building:, space:, person:)
   }
   let(:current_event) {
     FactoryBot.create(:event, start_time: DateTime.tomorrow, end_time: DateTime.tomorrow + 1, event_type: "workshop")

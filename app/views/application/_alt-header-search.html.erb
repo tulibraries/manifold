@@ -1,9 +1,9 @@
-<div class="header-search-container" data-controller="failover">
+<div class="header-search-container" data-controller="<%= @search_mode %>global">
   <%= link_to t("manifold.default.application.header_navbar.tuportal"), "https://tuportal.temple.edu", class: "pe-3" %>
   <%= link_to t("manifold.default.application.header_navbar.support"), "/support-the-libraries" %>
-  <form action=<%= t("manifold.default.alternate_search_url") %> id="<%= @search_mode %>global-search" name="header-search" data-failover-target="form">
+  <form action=<%= t("manifold.default.alternate_search_url") %> id="<%= @search_mode %>global-search" name="header-search" data-failover-global-target="form">
     <label for="librarySearch" class="visuallyhidden"><%= t("manifold.header.search.everything") %></label>
-    <input type="text" name="query" id="librarySearch" data-failover-target="thequery" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
+    <input type="text" name="query" id="librarySearch" data-failover-global-target="thequery" placeholder="<%= t("manifold.default.search_everything") %>" autocomplete="off" />
     <input type="submit" value = "" data-action="click->failover#updatequery" aria-label="submit search query">
 	  <input type="hidden" name="tab" id="tab" value="default_tab">
 	  <input type="hidden" name="search_scope" id="search_scope" value="default_scope">

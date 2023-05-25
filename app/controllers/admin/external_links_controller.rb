@@ -60,7 +60,7 @@ module Admin
       else
         super
       end
-      redirect_to :admin_external_links, notice: notice
+      redirect_to :admin_external_links, notice:
     end
   end
 end

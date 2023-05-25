@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module WebpagesHelper
+  def attachment_title(title)
+    (title.include? "Speaking Volumes ") ? title.gsub("Speaking Volumes ", "") : title
+  end
   def phone_icon
     image_tag("phone-handle.png", class: "category-icon decorative")
   end
@@ -16,8 +19,8 @@ module WebpagesHelper
 
   def render_as_sms_link_on_mobile(number:, link_content: nil)
     render_as_phone_link_on_mobile(
-      number: number,
-      link_content: link_content,
+      number:,
+      link_content:,
       type: "sms"
     )
   end

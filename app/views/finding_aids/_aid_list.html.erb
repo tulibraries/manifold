@@ -1,3 +1,4 @@
+  <% if @collections.present? %>
   <div class="d-block d-lg-none filters">
     <% unless filter_tags_aids(@collections).empty? %>
       <% filter_tags_aids(@collections).each do |tag| %>
@@ -8,20 +9,19 @@
       <% end %>
     <% end %>
   </div>
-
-   <% unless @aids_list.nil? %>
-   
+<% end %>
+  <% if @aids_list.present? %>
    <div class="row aids">
     <% @aids_list.each do |aid| %>
       <div class="col-12 aid">
         <%= link_to aid.name.html_safe, finding_aid_path(aid), style: "color: black;" %>
       </div> 
-    <% end if @aids_list.present? %> 
+    <% end %> 
     </div>
       
     <div class="row text-center paginator fa">
       <div class="col">
-        <%= paginate @aids_list if @aids_list.present? %>
+        <%= paginate @aids_list %>
       </div>
     </div>
     

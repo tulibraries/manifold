@@ -21,7 +21,7 @@ RSpec.describe Collection, type: :model do
     context "External Link" do
       let(:external_link) { FactoryBot.create(:external_link) }
       example "attach external link" do
-        collection = FactoryBot.create(:collection, external_link: external_link)
+        collection = FactoryBot.create(:collection, external_link:)
         expect(collection.external_link.title).to match(/#{external_link.title}/)
         expect(collection.external_link.link).to match(/#{external_link.link}/)
       end
@@ -37,7 +37,7 @@ RSpec.describe Collection, type: :model do
   describe "Space association" do
     example "Specify space in a collection" do
       space = FactoryBot.build(:space)
-      collection = FactoryBot.create(:collection, space: space)
+      collection = FactoryBot.create(:collection, space:)
       expect(collection.space).to be(space)
     end
   end

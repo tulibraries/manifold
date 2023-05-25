@@ -49,12 +49,12 @@
 		img {
 			opacity: 1;
 			object-fit: cover;
-			height: 200px;
-			width: 269px;
-			max-height: 200px;
-			min-height: 200px;
-			max-width: 269px;
-			min-width: 269px;
+			height: 250px;
+			width: 1096px;
+			max-height: 250px;
+			min-height: 250px;
+			max-width: 1096px;
+			min-width: 1096px;
 			@media screen and (max-width: 984px) {
 				width: 75%;
 				max-width: 75%;
@@ -83,7 +83,6 @@
 	}
 
 	.rightside-building {
-		padding-top: 4rem;
 		@media screen and (max-width: 984px) {
 			padding-top: 0;
 		}

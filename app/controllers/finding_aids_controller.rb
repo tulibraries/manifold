@@ -18,16 +18,17 @@ class FindingAidsController < ApplicationController
 
   def return_aids
     query = params[:search]
-    @finding_aids = FindingAid
+    if query.present?
+      @finding_aids = FindingAid.search(query)
+    else
+      @finding_aids = FindingAid
       .includes(:collections)
       .with_subject(subjects)
       .in_collection(collection)
       .order(:name)
-    if query.present?
-      @finding_aids = @finding_aids.search(query)
     end
-    @subjects = get_subject_filter_values(@finding_aids)
-    @collections = get_collection_filter_values(@finding_aids)
+    @subjects = get_subject_filter_values(@finding_aids) if query.blank?
+    @collections = get_collection_filter_values(@finding_aids) if query.blank?
     @aids_list = @finding_aids.page params[:page]
   end
 

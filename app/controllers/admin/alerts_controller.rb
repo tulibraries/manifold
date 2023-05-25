@@ -2,7 +2,7 @@
 
 module Admin
   class AlertsController < Admin::ApplicationController
-    after_action :create_json_file, only: [:update, :destroy, :create]
+    after_action :write_json_alert, only: [:update, :destroy, :create]
 
     def order
       @order ||= Administrate::Order.new(
@@ -58,8 +58,13 @@ module Admin
 
     private
 
-      def create_json_file
+      def write_json_alert
         published_alerts = Alert.where(published: true)
+        if AlertsJson.count == 0
+          AlertsJson.create(message: AlertSerializer.new(published_alerts).serializable_hash.to_json)
+        else
+          AlertsJson.update(message: AlertSerializer.new(published_alerts).serializable_hash.to_json)
+        end
         File.open("public/alerts.json", "w") { |file| file.write(AlertSerializer.new(published_alerts).serializable_hash.to_json) }
       end
   end

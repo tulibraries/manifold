@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_20_123045) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_24_213140) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,6 +102,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_123045) do
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "for_header"
     t.index ["published"], name: "index_alerts_on_published"
+  end
+
+  create_table "alerts_jsons", force: :cascade do |t|
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "application_failovers", force: :cascade do |t|
@@ -276,6 +282,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_123045) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
+    t.string "image_title"
   end
 
   create_table "fileabilities", force: :cascade do |t|
@@ -395,6 +402,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_20_123045) do
   create_table "menu_groups", force: :cascade do |t|
     t.string "title"
     t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

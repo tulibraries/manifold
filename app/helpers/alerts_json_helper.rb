@@ -1,0 +1,2 @@
+module AlertsJsonHelper
+end

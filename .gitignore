@@ -39,6 +39,7 @@ tags
 .tags*
 gem.tags
 /spec/examples.txt
+/public/finding_aids.json
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

@@ -157,6 +157,7 @@ Rails.application.routes.draw do
   end
 
   get "/scrc-reading-room" => redirect("spaces/scrc-reading-room"), as: "scrc_reading_room"
+  get "alerts_json/show"
   get "/alerts.json" => redirect("alerts_json/show.json")
 
   match "/404", to: "errors#not_found", via: :all

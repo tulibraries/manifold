@@ -2,7 +2,7 @@
 
 module Admin
   class ExhibitionsController < Admin::ApplicationController
-    include Admin::Detachable
     include Admin::Draftable
+    include Admin::Detachable
   end
 end

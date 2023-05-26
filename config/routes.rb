@@ -71,6 +71,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resource :exhibitions do
+      member do
+        post "detach" => :detach
+      end
+    end
+
     root to: "people#index"
 
   end

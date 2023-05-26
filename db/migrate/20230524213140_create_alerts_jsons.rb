@@ -7,8 +7,5 @@ class CreateAlertsJsons < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-
-    # Create the alerts.json record
-    AlertsJson.create(message: "")
   end
 end

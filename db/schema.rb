@@ -282,7 +282,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_213140) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
-    t.string "image_title"
   end
 
   create_table "fileabilities", force: :cascade do |t|
@@ -402,12 +401,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_213140) do
   create_table "menu_groups", force: :cascade do |t|
     t.string "title"
     t.string "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

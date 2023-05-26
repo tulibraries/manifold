@@ -66,7 +66,6 @@ module Admin
         else
           AlertsJson.update(message: AlertSerializer.new(published_alerts).serializable_hash.to_json)
         end
-        File.open("public/alerts.json", "w") { |file| file.write(AlertSerializer.new(published_alerts).serializable_hash.to_json) }
       end
   end
 end

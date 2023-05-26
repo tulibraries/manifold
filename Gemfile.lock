@@ -93,6 +93,9 @@ GEM
       kaminari (>= 1.0)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
+    administrate-field-active_storage (0.4.2)
+      administrate (>= 0.2.2)
+      rails (>= 7.0)
     administrate-field-date_picker (0.3.0)
       administrate (< 1.0.0)
       flatpickr_rails (>= 0.0.2, < 1.2.0)
@@ -626,6 +629,7 @@ DEPENDENCIES
   active_storage_validations
   activestorage-validator
   administrate
+  administrate-field-active_storage
   administrate-field-date_picker (~> 0.3.0)
   administrate-field-ordered_has_many
   administrate-field-scoped_has_many

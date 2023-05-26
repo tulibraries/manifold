@@ -25,6 +25,10 @@ class Exhibition < ApplicationRecord
 
   has_many_attached :images
 
+  validates :images, content_type: ["image/png", "image/jpeg", "image/gif"],
+                      size: { less_than: 3.megabytes , message: "is too large" }
+
+
   def slug_candidates
     [
       :title,

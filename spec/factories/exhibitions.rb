@@ -9,7 +9,7 @@ FactoryBot.define do
 
     trait :with_image do
       after :create do |exhibition|
-        exhibition.image.attach(io:
+        exhibition.images.attach(io:
           File.open(Rails.root.join("spec/fixtures/charles.jpg")),
           filename: "charles.jpg",
           content_type: "image/jpeg")

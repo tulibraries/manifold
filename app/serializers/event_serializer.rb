@@ -29,7 +29,7 @@ class EventSerializer < ApplicationSerializer
     if event.building.nil?
       address2 = String.new
       address2 += event.external_city if event.external_city.present?
-      address2 += ", " + event.external_city if event.external_state.present?
+      address2 += ", " + event.external_state if event.external_state.present?
       address2 += "  " + event.external_zip if event.external_zip.present?
     else
       event.building.address2

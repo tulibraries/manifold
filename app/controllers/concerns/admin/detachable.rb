@@ -17,10 +17,14 @@ module Admin::Detachable
         flash[:notice] = "Image detached"
       end if params[:type]
     else
-      entity.image.purge
-      flash[:notice] = "Image detached"
+      if entity.respond_to?(:images) && entity.images.size > 0
+        entity.images.find(params[:attachment_id]).purge
+      else
+        entity.image.purge
+      end
+      flash[:notice] = "Image removed"
     end
 
-    redirect_to url_for(controller: params[:controller], action: :show, id: params[:id], only_path: true)
+    redirect_to url_for(controller: params[:controller], action: :edit, id: params[:id], only_path: true)
   end
 end

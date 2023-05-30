@@ -357,6 +357,7 @@ en:
         revert: "Edit"
         object_version: "Version"
         detach: "Detach"
+        remove: "Remove"
         publish: "Publish Draft"
       notification:
         all_blogs_synced: "Blogs: All synched"

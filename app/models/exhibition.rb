@@ -4,7 +4,6 @@ class Exhibition < ApplicationRecord
   has_paper_trail
   include InputCleaner
   include Categorizable
-  include Imageable
   include Draftable
   include SchemaDotOrgable
   extend FriendlyId
@@ -21,9 +20,14 @@ class Exhibition < ApplicationRecord
 
   validates :start_date, :end_date, presence: true
 
-
   scope :is_past, -> { where("end_date < ?", Date.current) }
   scope :is_current, -> { where("end_date >= ?", Date.current) }
+
+  has_many_attached :images
+
+  validates :images, content_type: ["image/png", "image/jpeg", "image/gif"],
+                      size: { less_than: 3.megabytes , message: "is too large" }
+
 
   def slug_candidates
     [

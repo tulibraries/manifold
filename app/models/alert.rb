@@ -5,5 +5,4 @@ class Alert < ApplicationRecord
   has_rich_text :description
 
   scope :for_librarysearch, -> { where(published: true).where(for_header: true) }
-
 end

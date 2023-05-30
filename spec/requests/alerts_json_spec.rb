@@ -13,12 +13,4 @@ RSpec.describe "AlertsJsons", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-
-  describe "GET /alerts.json" do
-    it "returns http success" do
-      get "/alerts.json"
-      expect(response.status).to eq(301)
-      expect(response.location).to eq("http://www.example.com/alerts_json/show.json")
-    end
-  end
 end

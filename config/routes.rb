@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     get "image/large",     to: "images#large_image"
   end
 
-
   devise_for :accounts, controllers: { omniauth_callbacks: "accounts/omniauth_callbacks" }
 
   namespace :admin do
@@ -94,6 +93,7 @@ Rails.application.routes.draw do
   resources :finding_aids, only: [:index, :show], path: "/finding-aids"
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index, :show]
+  resources :alerts_json, only: [:index], path: "/alerts.json"
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
   resources :policies, only: [:index, :show]
@@ -157,7 +157,6 @@ Rails.application.routes.draw do
   end
 
   get "/scrc-reading-room" => redirect("spaces/scrc-reading-room"), as: "scrc_reading_room"
-  get "alerts_json/show"
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all

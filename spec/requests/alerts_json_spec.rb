@@ -7,10 +7,10 @@ RSpec.describe "AlertsJsons", type: :request do
     alert = FactoryBot.create(:alerts_json)
   end
 
-  describe "GET /show" do
+  describe "GET /alerts.json" do
     it "returns http success" do
-      get "/alerts_json/show"
-      expect(response).to have_http_status(:success)
+      get "/alerts.json"
+      expect(response.status).to eq(200)
     end
   end
 end

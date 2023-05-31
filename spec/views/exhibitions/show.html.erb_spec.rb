@@ -15,6 +15,6 @@ RSpec.describe "exhibitions/show", type: :view do
   it "renders the sample image" do
     @exhibition = FactoryBot.create(:exhibition, :with_image)
     render
-    expect(rendered).to match /#{@exhibition.image.attachment.blob.filename}/
+    expect(rendered).to match /#{@exhibition.images.first.blob.filename}/
   end
 end

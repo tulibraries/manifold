@@ -25,6 +25,6 @@ RSpec.describe Exhibition, type: :model do
   end
 
   it_behaves_like "categorizable"
-  it_behaves_like "imageable"
+  it_behaves_like "imageables"
 
 end

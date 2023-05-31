@@ -13,7 +13,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     slug: Field::String,
     space: Field::BelongsTo.with_options(required: true),
     collection: Field::BelongsTo,
-    image: PhotoField,
+    images: Field::ActiveStorage,
     id: Field::Number,
     title: Field::String,
     description: DescriptionField,
@@ -46,15 +46,13 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :covid_alert,
     :title,
-    :id,
-    :image,
-    :description,
     :description,
     :start_date,
     :end_date,
     :space,
     :collection,
-    :categories
+    :categories,
+    :images,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -63,7 +61,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :title,
     :slug,
-    :image,
+    :images,
     :description,
     :draft_description,
     :start_date,

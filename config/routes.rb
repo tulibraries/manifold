@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   mount Rswag::Api::Engine => "/"
   mount Rswag::Ui::Engine  => "api-docs"
 
@@ -10,7 +9,6 @@ Rails.application.routes.draw do
     get "image/medium",    to: "images#medium_image"
     get "image/large",     to: "images#large_image"
   end
-
 
   devise_for :accounts, controllers: { omniauth_callbacks: "accounts/omniauth_callbacks" }
 
@@ -71,6 +69,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resource :exhibitions do
+      member do
+        post "detach" => :detach
+      end
+    end
+
     root to: "people#index"
 
   end
@@ -95,6 +99,7 @@ Rails.application.routes.draw do
   resources :finding_aids, only: [:index, :show], path: "/finding-aids"
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index, :show]
+  resources :alerts_json, only: [:index], path: "/alerts.json"
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
   resources :policies, only: [:index, :show]

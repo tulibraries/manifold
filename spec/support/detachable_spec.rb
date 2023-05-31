@@ -11,7 +11,11 @@ RSpec.shared_examples "detachable" do
     before(:each) {
       file_path = Rails.root.join("spec/fixtures/charles.jpg")
       file = Rack::Test::UploadedFile.new(file_path, "image/jpeg")
-      factory_model.image.attach(file)
+      if factory_model.respond_to?(:images)
+        factory_model.images.attach(file)
+      else
+        factory_model.image.attach(file)
+      end
     }
 
     it "detaches image from #{described_class}" do
@@ -21,10 +25,14 @@ RSpec.shared_examples "detachable" do
       expect(response).to render_template(:show)
       expect(response.body).to include("charles.jpg")
 
-      get "#{show_page}/detach"
+      if factory_model.respond_to?(:images)
+        get "#{show_page}/detach?attachment_id=#{factory_model.images.attachments.first.id}"
+      else
+        get "#{show_page}/detach"
+      end
       follow_redirect!
 
-      expect(response).to render_template(:show)
+      expect(response).to render_template(:edit)
       expect(response.body).to_not include("charles.jpg")
     end
   end

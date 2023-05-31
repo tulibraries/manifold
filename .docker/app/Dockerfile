@@ -15,21 +15,21 @@ ARG S3_SECRET_ACCESS_KEY
 ARG RAILS_MASTER_KEY
 
 RUN apk add -U --no-cache \
-      bash=5.2.12-r0 \
-      busybox=1.35.0-r29 \
-      imagemagick=7.1.0.52-r0 \
-      libc6-compat=1.2.3-r4 \
-      libxslt=1.1.37-r0 \
-      postgresql14-client=14.6-r1 \
-      shared-mime-info=2.2-r2 \
-      ssl_client=1.35.0-r29 \
-      tzdata=2022f-r1 && \
+      bash=5.2.15-r5 \
+      busybox=1.36.0-r9 \
+      imagemagick=7.1.1.10-r0 \
+      libc6-compat=1.2.4-r0 \
+      libxslt=1.1.38-r0 \
+      postgresql14-client=14.8-r0 \
+      shared-mime-info=2.2-r5 \
+      ssl_client=1.36.0-r9 \
+      tzdata=2023c-r1 && \
     apk add -U --no-cache --virtual build-dependencies \
-      git=2.38.1-r0 \
+      git=2.40.1-r0 \
       build-base=0.5-r3 \
-      libxslt-dev=1.1.37-r0 \
-      postgresql14-dev=14.6-r1 \
-      nodejs=16.17.1-r0 \
+      libxslt-dev=1.1.38-r0 \
+      postgresql14-dev=14.8-r0 \
+      nodejs=18.16.0-r1 \
       yarn=1.22.19-r0 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \

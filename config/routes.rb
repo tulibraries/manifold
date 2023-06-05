@@ -132,6 +132,10 @@ Rails.application.routes.draw do
     get "news" => :index, as: "news"
   end
 
+  controller :buildings do
+    get "libraries/ambler" => :show, as: "buildings_ambler"
+  end
+
   controller :scrc do
     get "scrc/*path" => :show
     get "collections/scrc/*path" => :show
@@ -145,7 +149,6 @@ Rails.application.routes.draw do
   controller :webpages do
     get "scrc" => :scrc, as: "webpages_scrc"
     get "blockson" => :blockson, as: "webpages_blockson"
-    get "ambler" => :ambler, as: "webpages_ambler"
     get "hsl" => :hsl, as: "webpages_hsl"
     get "contact-us" => :contact, as: "webpages_contact"
     get "about" => :about, as: "webpages_about"

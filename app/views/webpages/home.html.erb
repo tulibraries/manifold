@@ -96,10 +96,10 @@
               <%= "Quick Links" %>
             </div>
             <ul class="list-unstyled mb-0 pt-xl-4">
-              <li class="quicklinks-link py-2"><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
-              <li class="quicklinks-link py-2"><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
-              <li class="quicklinks-link py-2"><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
-          		<li class="quicklinks-link py-2"><%= link_to t("manifold.footer.accessibility_link"), category_path("accessibility-services") %></li>
+              <li class="quicklinks-link py-3"><%= link_to t("manifold.footer.ezborrow_link"), "/ezborrow"  %></li>
+              <li class="quicklinks-link py-3"><%= link_to t("manifold.footer.illiad_link"), "/illiad" %></li>
+              <li class="quicklinks-link py-3"><%= link_to t("manifold.footer.primo_articles"), "/find-by-citation" %></li>
+              <li class="quicklinks-link py-3"><%= link_to t("manifold.footer.accessibility_link"), category_path("accessibility-services") %></li>
             </ul>
           </div>
         </div>
@@ -113,7 +113,8 @@
           <div class="h-10 mb-xl-2s"><%= link_to t("manifold.webpages.home.links.main.locations.blockson"), webpages_blockson_path, id: "blockson" %></div>
           <div class="h-10 mb-xl-2"><%= link_to t("manifold.webpages.home.links.main.locations.scrc"), webpages_scrc_path, {id: "scrc"} %></div>
           <div class="h-10 mb-xl-2"><%= link_to t("manifold.webpages.home.links.main.locations.law"), "/law-library", id: "law" %></div>
-          <div class="h-10 mb-xl-2"><%= link_to "Center for Scholarly Communication & Open Publishing", webpages_scop_path, id: "scop" %></div>
+          <div class="h-10 mb-xl-2"><%= link_to t("manifold.webpages.home.links.main.locations.scop"), webpages_scop_path, id: "scop" %></div>
+          <div class="h-10 mb-xl-2"><%= link_to t("manifold.webpages.home.links.main.locations.ambler"), buildings_ambler_path, id: "ambler" %></div>
           <div class="d-block d-lg-none caption bottom">
             <%= link_to(t("manifold.webpages.home.links.main.locations.all"), "/all-locations", {id: "all-locations"}) %>
           </div>

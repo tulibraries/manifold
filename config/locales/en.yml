@@ -64,7 +64,7 @@ en:
         email: "If left blank, email address from related building will be displayed."
         file_field: "* PDFs only"
         has_many:
-          finding_aid: "Please select at least one <strong>Collection</strong> or <strong>Subject</strong> from the below lists in order for the link to Aeon to appear on this finding aid."
+          finding_aid: "In order for the link to Aeon to appear on this finding aid, at least one <strong>Collection</strong> must be selected AND the <strong>Identifier</strong> field must also be filled in."
           categories: "Categories determine the left hand menu that appears on the page and also the navigation category to which this page belongs."
         hours: "Hours identifier must match label in the hours spreadsheet"
         phone: "If left blank, phone number from related building will be displayed."
@@ -1149,8 +1149,9 @@ en:
               blockson: Charles L. Blockson Afro-American Collection
               scrc: Special Collections Research Center
               law: Law Library
-              all: See all libraries and locations >
-
+              scop: Center for Scholarly Communication & Open Publishing
+              ambler: Ambler Campus Library
+              all: See all libraries and centers >
       hsl:
         page_title: Health Sciences Libraries
         locations:

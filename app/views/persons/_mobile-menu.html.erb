@@ -24,8 +24,8 @@
             <% end %>
 
             <%= form_with url: people_path, method: "GET", id: "m-people-filters", class: "d-inline-block" do |f| %>
-              <%= f.select :m_department, @departments, include_blank: "filter by department" %>
-              <%= f.select :m_subject, @subjects, include_blank: "filter by specialty" %>
+              <%= f.select :m_department, @departments, include_blank: "filter by department" if @departments.present? %>
+              <%= f.select :m_subject, @subjects, include_blank: "filter by specialty" if @subjects.present? %>
             <% end %>
             </div>
             <div class="col-12 mt-3 mb-0 ml-3 filter-links">

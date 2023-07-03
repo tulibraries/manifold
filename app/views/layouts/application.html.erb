@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5BNMS63');</script>
+    <!-- End Google Tag Manager -->
+
     <%= display_meta_tags site: t("manifold.default.site_title") %>
     <%= csrf_meta_tags %>
 
@@ -11,23 +19,14 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbo-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
-
-    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
 
-  <% if @nonce.present? %>
-    <!-- Google tag (gtag.js) -->
-    <script nonce="<%= @nonce %>" async src="https://www.googletagmanager.com/gtag/js?id=G-WB27M7RJYY"></script>
-    <script nonce="<%= @nonce %>">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-WB27M7RJYY');
-    </script>
-  <% end %>
-
   <body class="<%= yield (:body_class) %>" data-controller="jumble external-links<%= " failover" if @search_mode == "failover-" %>">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BNMS63"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <div class="row d-none d-print-flex">
     <div class="col-6">

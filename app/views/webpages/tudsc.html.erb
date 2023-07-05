@@ -108,7 +108,7 @@
         </li>
       </ul>
     <% end %>
-    <% if @blog_posts.present? %>
+    <% if @blog.present? %>
       <h2>
         <%= link_to t("manifold.webpages.tudsc.locations.blog"), 
                     @blog.base_url,
@@ -121,7 +121,7 @@
                         link.post_guid,
                         id: "lcdss_blog_link_#{link.title.parameterize}" %>
           </li>
-        <% end %>
+        <% end if @blog_posts.present? %>
         <li class="text-lg-right all-events">
           <%= link_to t("manifold.webpages.tudsc.links.view_all"), 
                       strip_tags(@blog.base_url), 

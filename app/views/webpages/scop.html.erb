@@ -104,7 +104,7 @@
     </div>
     <% end %>
 
-    <% if @event_links.count > 0 %>
+    <% if @event_links.present? && @event_links.count > 0 %>
       <h2>
         <%= link_to t("manifold.webpages.scop.events"), 
                     events_path(type: "SCOP", anchor: "upcoming-events"), 

@@ -26,7 +26,7 @@
       <p class="fs-5 mt-4"><%= link_to item.title.truncate(52), strip_tags(item.path) %></p>
       <div class="pb-2 tags">
       <% get_tags(item.categories).each do |tag| %>
-        #<%= link_to tag[0], blog_path(id: item.blog_id, tag: tag[1]) %>
+        #<%= link_to tag[0], blog_post_tags_path(tag: tag[1]) %>
       <% end %>
       </div>
     </div>

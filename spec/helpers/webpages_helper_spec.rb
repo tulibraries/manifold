@@ -75,4 +75,21 @@ RSpec.describe WebpagesHelper, type: :helper do
       expect(helper.attachment_title("Speaking Volumes Spring 2023")).to eq ("Spring 2023")
     end
   end
+  describe "blog and highlights" do
+    # let(:category1) { FactoryBot.create(:category, name: "policy1") }
+    # let(:category2) { FactoryBot.create(:category, name: "policy2") }
+    let(:blog) { FactoryBot.create(:blog) }
+    let(:blog_post) { FactoryBot.create(:blog_post) }
+    let(:tags) { [["historynews", "history news"]] }
+
+    it "returns blog name from id" do
+      expect(helper.blog_name(blog.id)).to eq (blog.title)
+    end
+    it "returns blog url from id" do
+      expect(helper.blog_url(blog.id)).to eq (blog.base_url)
+    end
+    it "returns 2-dimensional array of tags" do
+      expect(helper.get_tags(blog_post.categories)).to match_array(tags)
+    end
+  end
 end

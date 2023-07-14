@@ -6,7 +6,7 @@ RSpec.describe BlogsController, type: :controller do
   describe "GET #index" do
     it "returns http success" do
       get :index
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:found)
     end
 
     it "returns html by default" do

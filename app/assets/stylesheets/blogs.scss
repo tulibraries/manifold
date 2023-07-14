@@ -69,19 +69,13 @@
         min-width: 280px;
         margin: 14px;
         height: auto;
-        .card-body {
-          // position: relative;
-        }
         .card-title {
-          // margin-bottom: 42px;
-          // position: absolute;
-          // top: 10px;
+          font-size: 110%;
         }
         .att {
           position: relative;
           bottom: 0;
           a {
-            // color: $red;
             text-decoration: underline;
           }
         }

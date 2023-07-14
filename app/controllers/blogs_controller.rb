@@ -1,26 +1,21 @@
 # frozen_string_literal: true
 
 class BlogsController < ApplicationController
-  before_action :set_blog, :get_posts, only: [:show]
+  before_action :set_blog, only: [:show]
   include SerializableRespondTo
 
   def index
     @blogs = Blog.all
 
     respond_to do |format|
-      format.html
+      format.html { redirect_to "/news" }
       format.json { render json: BlogSerializer.new(@blogs) }
     end
   end
 
   def show
     respond_to do |format|
-      format.html { 
-        if @posts.nil?
-          binding.pry
-          render "webpages/news"
-        end
-      }
+      format.html { redirect_to @blog.base_url, allow_other_host: true }
       format.json { render json: BlogSerializer.new(@blog) }
     end
   end
@@ -29,9 +24,5 @@ class BlogsController < ApplicationController
   private
     def set_blog
       @blog = Blog.friendly.find(params[:id])
-    end
-
-    def get_posts
-      @posts = BlogPost.where("categories LIKE ?", "%#{params[:tag]}%") if params[:tag].present?
     end
 end

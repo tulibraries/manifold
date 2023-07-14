@@ -90,6 +90,7 @@ Rails.application.routes.draw do
   resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
   resources :categories, only: [:index, :show], concerns: [:imageable]
   resources :blogs, only: [:index, :show]
+  resources :blog_posts, only: [:index]
   resources :collections, only: [:index, :show], concerns: [:imageable]
   resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
@@ -108,6 +109,10 @@ Rails.application.routes.draw do
   resources :webpages, only: [:index, :show]
 
   get "forms", to: "forms#all", as: "forms_index"
+
+  controller :blog_posts do
+    get "blogposts/tags/:tag" => :index, as: "blog_post_tags"
+  end
 
   controller :collections do
     get "finding-aids/:id" => :finding_aids

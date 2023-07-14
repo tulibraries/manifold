@@ -128,10 +128,6 @@ Rails.application.routes.draw do
     get "events/hsl-events" => :hsl_events, as: "hsl_events"
   end
 
-  controller :blogs do
-    get "news" => :index, as: "news"
-  end
-
   controller :buildings do
     get "libraries/ambler" => :show, as: "buildings_ambler"
   end
@@ -163,6 +159,7 @@ Rails.application.routes.draw do
     get "watchpastprograms/search" => :videos_search, as: "webpages_videos_search"
     get "watchpastprograms/show" => :videos_show, as: "webpages_videos_show"
     get "/pages/:id" => :show
+    get "/news" => :news, as: "news"
   end
 
   get "/scrc-reading-room" => redirect("spaces/scrc-reading-room"), as: "scrc_reading_room"

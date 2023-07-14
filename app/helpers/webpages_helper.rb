@@ -45,7 +45,7 @@ module WebpagesHelper
   def get_tags(tags)
     new_tags = []
     old_tags = tags.split(",")
-    old_tags.reject{|tag| tag == "Uncategorized"}.each do |tag|
+    old_tags.reject { |tag| tag == "Uncategorized" }.each do |tag|
       new_tags.push([tag.gsub(/\s+/, ""), tag])
     end
     new_tags

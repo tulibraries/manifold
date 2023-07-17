@@ -7,7 +7,7 @@ RSpec.describe "LibraryHours", type: :request do
   describe "/hours" do
     let(:hour) { FactoryBot.create(:library_hour) }
     let(:hour1) { FactoryBot.create(:library_hour, location_id: "online") }
-    let(:hour2) { FactoryBot.create(:library_hour, location_id: "drop_in") }
+    let(:hour2) { FactoryBot.create(:library_hour, location_id: "scrc") }
     @buildings = [
       {
         slug: "online",
@@ -31,8 +31,7 @@ RSpec.describe "LibraryHours", type: :request do
                   "asrs",
                   "guest_computers",
                   "cafe",
-                  "24-7",
-                  "drop_in"
+                  "24-7"
                 ]
       },
       {
@@ -46,7 +45,7 @@ RSpec.describe "LibraryHours", type: :request do
     ]
 
     it "correctly names locations from sync" do
-      expect { get hours_path.to have_text(/Drop-in Research Help/) }
+      expect { get hours_path.to have_text(/Special Collections Research Center/) }
       expect { get hours_path.to have_text(/Online/) }
     end
   end

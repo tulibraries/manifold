@@ -413,9 +413,10 @@ en:
       primo_articles: "Find by citation"
 
     blogs:
-      page_title: Recent Highlights
+      highlights: Highlights
+      blog_posts: Recent Blog Posts
       read_more: Read more >
-      all_blogs: Library Blogs
+      all_blogs: All Blogs
 
     buildings:
       show:

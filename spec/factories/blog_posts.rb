@@ -7,7 +7,7 @@ FactoryBot.define do
     publication_date { "2018-09-06 14:57:01" }
     path { "/yup-its-some-good-content" }
     post_guid { "5" }
-    categories { ["top-news", "good conetnt"] }
+    categories { "Uncategorized,history news" }
     blog { FactoryBot.build(:blog) }
     content_hash { "12345abcdef" }
 

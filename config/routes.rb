@@ -90,6 +90,7 @@ Rails.application.routes.draw do
   resources :buildings, only: [:index, :show], path: "libraries", concerns: [:imageable]
   resources :categories, only: [:index, :show], concerns: [:imageable]
   resources :blogs, only: [:index, :show]
+  resources :blog_posts, only: [:index]
   resources :collections, only: [:index, :show], concerns: [:imageable]
   resources :events, only: [:index, :show], constraints: { id: /[0-9]+/ }, concerns: [:imageable]
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
@@ -109,6 +110,10 @@ Rails.application.routes.draw do
 
   get "forms", to: "forms#all", as: "forms_index"
 
+  controller :blog_posts do
+    get "blogposts/tags/:tag" => :index, as: "blog_post_tags"
+  end
+
   controller :collections do
     get "finding-aids/:id" => :finding_aids
   end
@@ -126,10 +131,6 @@ Rails.application.routes.draw do
     get "events/past" => :past, as: "past_events"
     get "events/dss-events" => :dss_events, as: "dss_events"
     get "events/hsl-events" => :hsl_events, as: "hsl_events"
-  end
-
-  controller :blogs do
-    get "news" => :index, as: "news"
   end
 
   controller :buildings do
@@ -163,6 +164,7 @@ Rails.application.routes.draw do
     get "watchpastprograms/search" => :videos_search, as: "webpages_videos_search"
     get "watchpastprograms/show" => :videos_show, as: "webpages_videos_show"
     get "/pages/:id" => :show
+    get "/news" => :news, as: "news"
   end
 
   get "/scrc-reading-room" => redirect("spaces/scrc-reading-room"), as: "scrc_reading_room"

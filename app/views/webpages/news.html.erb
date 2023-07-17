@@ -1,0 +1,53 @@
+<div class="container-lg blogs">
+
+<div class="row border-bottom pb-5">
+  <h1 class="page-title"><%= title t("manifold.blogs.highlights") %></h1>
+  <% @highlights.each do |item| %>
+  <div class="col-12 col-md-6 col-lg-4 mb-3 highlights">
+    <div class="highlight text-center">
+      <%= link_to strip_tags(item.link) do %>
+        <%= image_tag item.image, class: "text-center" %>
+        <div class="highlight-caption text-start mt-3">
+        <h2><%= item.label.truncate(52) %></h2>
+        <p><%= strip_tags(item.blurb.truncate(120).html_safe) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% end unless @highlights.nil? %>
+</div>
+
+<div class="row mt-5 recent-posts border-bottom pb-5">
+  <h1><%= title t("manifold.blogs.blog_posts") %></h1>
+  <% @blogposts.each do |item| %>
+  <div class="col-12 col-md-6 col-lg-4 my-3 blogposts">
+    <div class="blogpost p-4 h-100" style="position:relative;">
+      <h2><span class="fs-5">From</span> <%= link_to blog_name(item.blog_id), blog_url(item.blog_id) %></h2>
+      <p class="fs-5 mt-4"><%= link_to item.title.truncate(52), strip_tags(item.path) %></p>
+      <div class="pb-2 tags">
+      <% get_tags(item.categories).each do |tag| %>
+        #<%= link_to tag[0], blog_post_tags_path(tag: tag[1]) %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <% end unless @highlights.nil? %>
+</div>
+
+
+<div class="row p-4" id="all-blogs">
+  <div class="col-12 section-title">
+    <h1><%= t("manifold.blogs.all_blogs") %></h1>
+  </div>
+  <div class="col-12">
+    <ul class="px-3 list-unstyled">
+    <% @blogs.each do |blog| %>
+      <li>
+        <%= link_to blog.title, strip_tags(blog.base_url), class: "fs-4" %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+</div>

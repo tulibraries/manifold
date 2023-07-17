@@ -235,6 +235,12 @@ class WebpagesController < ApplicationController
     @remote_learning = Webpage.find_by(slug: "online-support")
   end
 
+  def news
+    @blogs = Blog.all
+    @blogposts = BlogPost.all.order(:updated_at).reverse.take(3)
+    @highlights = Highlight.with_image.where(promoted: true).take(3)
+  end
+
   def about
     @categories = Category.find_by(slug: "about-page").items.select { |item| item.class == Category }
   end

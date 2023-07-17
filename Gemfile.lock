@@ -494,7 +494,7 @@ GEM
     rspec-support (3.12.1)
     rswag-api (2.10.1)
       railties (>= 3.1, < 7.1)
-    rswag-ui (2.9.0)
+    rswag-ui (2.10.1)
       actionpack (>= 3.1, < 7.1)
       railties (>= 3.1, < 7.1)
     rubocop (1.54.1)

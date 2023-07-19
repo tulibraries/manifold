@@ -1066,7 +1066,7 @@ en:
         mobile_options: Filter options
       show:
         subjects: Subjects
-        guides_link: Subject guides by this librarian
+        guides_link: Guides by %{name}
         appointment_link: Make an appointment
         personal_site: Personal web site
         breadcrumb: Staff Directory

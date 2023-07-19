@@ -159,7 +159,6 @@ class Form < MailForm::Base
       "purchase-request" => ["Purchase Request",  ["jbrian@temple.edu", "tub82123@temple.edu "]],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
       "ir" => ["Incident Report", ["richieh@temple.edu", "bells@temple.edu", "jhill@temple.edu"]],
-      "data-purchase-grants-application" => ["Data Purchase Application", ["librarydatagrants@temple.edu"]],
       "library-instruction" => ["Request a Library Instruction Session", ["cshanley@temple.edu"]],
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["msly@temple.edu", "tuf12871@temple.edu", "scrc@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["jhill@temple.edu", "eschiller@temple.edu"]],

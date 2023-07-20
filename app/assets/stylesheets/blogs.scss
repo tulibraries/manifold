@@ -47,8 +47,8 @@
       color: $white;
       padding: 7px 14px;
       min-height: 100px;
-      max-height:100px;
-      height: 100px;
+      max-height:107px;
+      height: 107px;
       @media (max-width: 1040px) {
         height: auto;
         max-height: 100%;
@@ -103,6 +103,7 @@
 		margin-left: -3px;
 		margin-right: 0;
 		background-color: $lightest-grey;
+    border-bottom: solid #001E61 2px;
 		padding: 0;
 		.section-title {
 			margin-bottom: 14px;

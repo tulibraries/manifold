@@ -17,7 +17,7 @@ class SyncService::Blogs
 
   def initialize(params = {})
     # can specify just a file path or feed_path
-    @feed_uri =  params[:blog].feed_path
+    @feed_uri = params[:blog].feed_path
     # if URI, prepend the base url
     @log = Logger.new("log/sync-blogs.log")
     @stdout = Logger.new(STDOUT)

@@ -1,7 +1,7 @@
 <div class="container-lg blogs">
 
 <div class="row border-bottom pb-5">
-  <h1 class="page-title"><%= title t("manifold.blogs.highlights") %></h1>
+  <h1 class="page-title"><%= title t("manifold.blogs.highlights") %></h1> 
   <% @highlights.each do |item| %>
   <div class="col-12 col-md-6 col-lg-4 mb-3 highlights">
     <div class="highlight text-center">
@@ -39,7 +39,7 @@
   <div class="col-12 section-title">
     <h1><%= t("manifold.blogs.all_blogs") %></h1>
   </div>
-  <div class="col-12">
+  <div class="col-12 mb-4">
     <ul class="px-3 list-unstyled">
     <% @blogs.each do |blog| %>
       <li>

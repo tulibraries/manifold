@@ -85,7 +85,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
-    administrate (0.18.0)
+    administrate (0.19.0)
       actionpack (>= 5.0)
       actionview (>= 5.0)
       activerecord (>= 5.0)
@@ -322,7 +322,7 @@ GEM
       rake
     mini_magick (4.12.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.2)
+    mini_portile2 (2.8.4)
     minitest (5.18.1)
     msgpack (1.7.1)
     multi_json (1.15.0)
@@ -563,10 +563,6 @@ GEM
     simplecov_json_formatter (0.1.4)
     sitemap_generator (6.3.0)
       builder (~> 3.0)
-    skylight (4.3.2)
-      skylight-core (= 4.3.2)
-    skylight-core (4.3.2)
-      activesupport (>= 4.2.0)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -705,7 +701,6 @@ DEPENDENCIES
   simplecov
   simplecov-lcov
   sitemap_generator
-  skylight (= 4.3.2)
   spring
   spring-watcher-listen (~> 2.1.0)
   sprockets-rails

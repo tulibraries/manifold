@@ -32,4 +32,8 @@ class BuildingsController < ApplicationController
     def building_params
       params.require(:building).permit()
     end
+
+    def permitted_attributes
+      super + [:publish]
+    end
 end

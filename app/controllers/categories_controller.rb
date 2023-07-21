@@ -69,5 +69,9 @@ class CategoriesController < ApplicationController
       return redirect_or_404(@category)
     end
 
+    def permitted_attributes
+      super + [categorizations_attributes: [:weight, :id]] + [:publish, :long_description, :draft_long_description]
+    end
+
     attr_reader :long_description
 end

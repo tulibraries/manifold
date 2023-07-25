@@ -22,12 +22,14 @@
   <% @blogposts.each do |item| %>
   <div class="col-12 col-md-6 col-lg-4 my-3 blogposts">
     <div class="blogpost p-4 h-100" style="position:relative;">
-      <h2><span class="fs-5">From</span> <%= link_to blog_name(item.blog_id), blog_url(item.blog_id) %></h2>
+      <h2>From <%= link_to blog_name(item.blog_id), blog_url(item.blog_id) %></h2>
       <p class="fs-5 mt-4"><%= link_to item.title.truncate(52), strip_tags(item.path) %></p>
-      <div class="pb-2 tags">
-      <% get_tags(item.categories).take(4).each do |tag| %>
-        #<%= link_to tag[0], blog_post_tags_path(tag: tag[1]) %>
-      <% end %>
+      <div class="tag-wrapper">
+        <div class="pb-2 tags">
+        <% get_tags(item.categories).take(4).each do |tag| %>
+          #<%= link_to tag[0], blog_post_tags_path(tag: tag[1]) %>
+        <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -43,7 +45,7 @@
     <ul class="px-3 list-unstyled">
     <% @blogs.each do |blog| %>
       <li>
-        <%= link_to blog.title, strip_tags(blog.base_url), class: "fs-4" %>
+        <%= link_to blog.title, strip_tags(blog.base_url), class: "fs-5" %>
       </li>
     <% end %>
     </ul>

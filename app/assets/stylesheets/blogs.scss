@@ -53,7 +53,12 @@
         height: auto;
         max-height: 100%;
       }
+      p {
+        font-family: "roboto light"
+      }
       h2 {
+        font-size: 130%;
+        font-weight: 100;
         a {
           color: $white;
         }
@@ -82,17 +87,24 @@
       }
     .blogpost {
       border: solid $royal-blue 2px;
+      height: auto;
       a {
         color: $royal-blue;
       }
       a:hover {
         text-decoration: underline;
       }
-      .tags {
-        position: absolute;
-        bottom: 0;
-        a:hover {
-          text-decoration: underline;
+      .tag-wrapper {
+        @media (max-width: 1340px) {
+          margin-top: 3rem;
+        }
+        .tags {
+          position: absolute;
+          bottom: 0;
+          margin-top: 14px;
+          a:hover {
+            text-decoration: underline;
+          }
         }
       }
     }

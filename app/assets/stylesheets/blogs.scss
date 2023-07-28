@@ -88,6 +88,15 @@
     .blogpost {
       border: solid $royal-blue 2px;
       height: auto;
+      min-height: 220px;
+      .post-wrapper {
+        position: absolute;
+        top: 18px;
+        margin-bottom: 35px;
+      }
+      @media (max-width: 1015px) {
+        min-height: 200px;
+      }
       a {
         color: $royal-blue;
       }
@@ -95,9 +104,6 @@
         text-decoration: underline;
       }
       .tag-wrapper {
-        @media (max-width: 1415px) {
-          margin-top: 3rem;
-        }
         .tags {
           position: absolute;
           bottom: 0;

@@ -22,7 +22,7 @@
   <% @blogposts.each do |item| %>
   <div class="col-12 col-md-6 col-lg-4 my-3 blogposts">
     <div class="blogpost p-4 h-100" style="position:relative;">
-      <h2>From <%= link_to blog_name(item.blog_id), blog_url(item.blog_id) %></h2>
+      <h2><%= link_to blog_name(item.blog_id), "From #{blog_url(item.blog_id)}" %></h2>
       <p class="fs-5 mt-4"><%= link_to item.title.truncate(52), strip_tags(item.path) %></p>
       <div class="tag-wrapper">
         <div class="pb-2 tags">

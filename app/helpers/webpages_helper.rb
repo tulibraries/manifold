@@ -35,4 +35,19 @@ module WebpagesHelper
       end
     end
   end
+
+  def blog_name(id)
+    Blog.find(id).title
+  end
+  def blog_url(id)
+    Blog.find(id).base_url
+  end
+  def get_tags(tags)
+    new_tags = []
+    old_tags = tags.split(",")
+    old_tags.reject { |tag| tag == "Uncategorized" }.each do |tag|
+      new_tags.push([tag.gsub(/\s+/, ""), tag])
+    end
+    new_tags
+  end
 end

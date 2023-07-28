@@ -11,6 +11,8 @@ class Highlight < ApplicationRecord
 
   serialize :tags
 
+  scope :with_image, -> { joins(:image_attachment) }
+
   def slug_candidates
     [
       :title,

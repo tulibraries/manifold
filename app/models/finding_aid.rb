@@ -26,7 +26,7 @@ class FindingAid < ApplicationRecord
   has_rich_text :draft_description
   has_rich_text :covid_alert
   validates :collection_id, collection_or_subject: true
-  validates :description, presence: true
+  validates :name, :description, presence: true
 
   scope :has_subjects, -> { where.not(subject: []) }
   scope :has_collections, -> { where.not(collections: []) }

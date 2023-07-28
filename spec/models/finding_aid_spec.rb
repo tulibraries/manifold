@@ -6,6 +6,7 @@ RSpec.describe FindingAid, type: :model do
 
   describe "validations" do
     it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:name) }
   end
 
   describe "version all fields", :skip do

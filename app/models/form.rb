@@ -159,7 +159,6 @@ class Form < MailForm::Base
       "purchase-request" => ["Purchase Request",  ["jbrian@temple.edu", "tub82123@temple.edu "]],
       "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
       "ir" => ["Incident Report", ["richieh@temple.edu", "bells@temple.edu", "jhill@temple.edu"]],
-      "data-purchase-grants-application" => ["Data Purchase Application", ["librarydatagrants@temple.edu"]],
       "library-instruction" => ["Request a Library Instruction Session", ["cshanley@temple.edu"]],
       "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["msly@temple.edu", "tuf12871@temple.edu", "scrc@temple.edu"]],
       "proxy-account" => ["Proxy Account", ["jhill@temple.edu", "eschiller@temple.edu"]],
@@ -171,7 +170,7 @@ class Form < MailForm::Base
       "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu", "tuf16063@temple.edu", "libdepot@temple.edu"]],
       "group-visit" => ["Group Visit Request", ["charlestours@temple.edu"]],
       "review-protocol" => ["Temple Review Protocol", ["burstein@temple.edu", "stephanie.roth@temple.edu"]],
-      "exhibit-request" => ["Charles Library Exhibit Request", ["libraries@temple.edu", "evanw@temple.edu"]]
+      "exhibit-request" => ["Charles Library Exhibit Request", ["libraries@temple.edu", "evanw@temple.edu", "richieh@temple.edu"]]
     }
 
     @forms.fetch(form_type)

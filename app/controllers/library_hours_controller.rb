@@ -48,7 +48,6 @@ class LibraryHoursController < ApplicationController
                   "24-7",
                   "asrs",
                   "guest_computers",
-                  "drop_in",
                   "scholars_studio",
                   "service_zone",
                   "scrc",

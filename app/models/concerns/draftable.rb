@@ -7,5 +7,6 @@ module Draftable
   included do
     # Virtual form attribute indicating to apply drafts to entity
     attr_accessor :publish
+    attr_accessor :fileabilities_attributes
   end
 end

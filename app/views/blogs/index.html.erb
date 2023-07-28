@@ -1,24 +1,3 @@
-<div class="container-lg blogs">
-
-<div class="row">
-  <div class="col">
-    <h1 class="page-title"><%= title t("manifold.blogs.page_title") %></h1>
-  </div>
-</div>
-
-<div class="row" id="blog-section">
-  <div class="col-12 section-title">
-    <h2><%= t("manifold.blogs.read_more") %></h2>
-  </div>
-  <div class="col-12">
-    <ul class="list-unstyled two-columns">
-    <% @blogs.each do |blog| %>
-      <li>
-        <strong><%= link_to blog.title, strip_tags(blog.base_url) %></strong>
-      </li>
-    <% end %>
-    </ul>
-  </div>
-</div>
-
-</div>
+<script type="application/ld+json">
+  <%= json_ld(@blog) %>
+</script>

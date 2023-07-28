@@ -28,14 +28,14 @@
         </div>
         <div class="col-12 col-lg-3 pe-3">
           <div class="cta-white">
-            <%= link_to category_path(@cta3), {class: "strong", id: "printing-computing"} do %>
+            <%= link_to @cta3, {class: "strong", id: "printing-computing"} do %>
             <span><%= t("manifold.webpages.home.links.help.printing_computing") %></span>
             <% end %>
           </div>
         </div>
         <div class="col-12 col-lg-3">
           <div class="cta-white">
-            <%= link_to category_path(@cta4), {class: "strong", id: "online-resources"} do %>
+            <%= link_to @cta4, {class: "strong", id: "online-resources"} do %>
             <span><%= t("manifold.webpages.home.links.help.explore_charles") %></span>
             <% end %>
           </div>
@@ -140,7 +140,7 @@
     <div class="container-lg px-5">
       <h2>Events</h2>
       <div class="row home-events-row row-eq-height">
-      <%= render "events" %>
+      <%= render "events" if @featured_events.present? %>
       </div>
 
       <h2 class="news">Library News</h2>

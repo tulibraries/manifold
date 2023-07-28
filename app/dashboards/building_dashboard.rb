@@ -92,9 +92,4 @@ class BuildingDashboard < BaseDashboard
   def display_resource(building)
     "#{building.name}"
   end
-
-
-  def permitted_attributes
-    super + [:publish]
-  end
 end

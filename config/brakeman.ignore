@@ -47,6 +47,29 @@
       "note": ""
     },
     {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "6350301add9b4eaff8dcbaf79872e63ccfef84d8f1d1a9e2fff8bcdb7471b019",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/blogs_controller.rb",
+      "line": 18,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Blog.friendly.find(params[:id]).base_url, :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "BlogsController",
+        "method": "show"
+      },
+      "user_input": "Blog.friendly.find(params[:id]).base_url",
+      "confidence": "Weak",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
       "warning_type": "Mass Assignment",
       "warning_code": 70,
       "fingerprint": "7a8e4552d89bb53cf073729b06e4f1f6489e74f3657f7bc5f521e847f1e28b88",
@@ -93,6 +116,6 @@
       "note": ""
     }
   ],
-  "updated": "2023-03-01 09:31:05 -0500",
-  "brakeman_version": "5.4.1"
+  "updated": "2023-07-14 17:05:50 -0400",
+  "brakeman_version": "6.0.0"
 }

@@ -413,9 +413,10 @@ en:
       primo_articles: "Find by citation"
 
     blogs:
-      page_title: Recent Highlights
+      highlights: Highlights
+      blog_posts: Recent Blog Posts
       read_more: Read more >
-      all_blogs: Library Blogs
+      all_blogs: All Blogs
 
     buildings:
       show:
@@ -730,26 +731,6 @@ en:
         other_action_taken: Other Action Taken
         police_report_number: Police Report Number
         supervisor_notified: Supervisor Notified
-      data_purchase_grants_application:
-        title: Library Data Grants
-        department: "Departmental Affiliation"
-        research_group: "Please list the names and email addresses of others in research or pedagogical group. (If not applicable, state this.)"
-        project_purpose: "Describe your research project or pedagogical purpose"
-        project_purpose_hint: "Max 500 words"
-        dataset: "Describe dataset. Explain why it is important to your research. Please provide a URL to a page describing the data, if available"
-        dataset_hint: "Max 500 words"
-        interest_level: "Beyond your own work, explain how this dataset might be of interest to other researchers or instructors at Temple University."
-        years_limit: "Please tell us if the data you need is limited to certain years? If so, what years?"
-        data_creator: "Who is the creator/distributor/provider/licensor of the requested data?"
-        data_discovery: "How did you find out about this data?"
-        comments: "Is there anything else you would like to add?"
-        disclaimer_html: >-
-                          <p>I have read and understand the terms and conditions of the Library Data Grants program. 
-                          I understand that awardees will be notified by December 15 and get access to the data during 
-                          the spring term. I also understand that if awarded, I will attend a brown bag lunch to discuss 
-                          how I used the data in my research or pedagogical work. For published research in which the data 
-                          is used, I will include this statement, "The author wishes to acknowledge the Temple University 
-                          Libraries\’ funding for data used in this research."</p>
       ask_scrc:
         title: "Special Collections Research Center: Ask a Question"
         intro: >-
@@ -938,7 +919,7 @@ en:
         foapal: "FOAPAL"
         foapal_hint: "in case of damages or additional cleaning costs"
         policy_check_html: >-
-                          I agree to <a href="/policies/17" class="inline">
+                          I agree to <a href="/policies/23" class="inline">
                           Temple University Libraries's policies and guidelines</a>
 
       graduate_locker_request:
@@ -1065,7 +1046,7 @@ en:
         mobile_options: Filter options
       show:
         subjects: Subjects
-        guides_link: Subject guides by this librarian
+        guides_link: Guides by %{name}
         appointment_link: Make an appointment
         personal_site: Personal web site
         breadcrumb: Staff Directory

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Blog < ApplicationRecord
+  include SchemaDotOrgable
   include Validators
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]

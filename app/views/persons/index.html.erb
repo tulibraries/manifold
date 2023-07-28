@@ -21,12 +21,12 @@
       <div class="col col-lg-4">
       <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block ms-2 w-100" do |f| %>
         <%= f.select :department, @departments, { include_blank: "filter by department" }, class: "w-100", data: { action: "change->people#departments" } %>
-      <% end %>
+      <% end if @departments.present? %>
       </div>
       <div class="col col-lg-4">
       <%= form_with url: people_path, method: "GET", id: "people-filters", class: "d-inline-block ms-2 w-100" do |f| %>
         <%= f.select :subject, @subjects, { include_blank: "filter by specialty" }, class: "w-100", data: { action: "change->people#specialties" } %>
-      <% end %>
+      <% end if @subjects.present? %>
       </div>
     </div>
 
@@ -52,7 +52,7 @@
         <div class="selected-filter d-inline-block ms-2 mt-3 mb-3 mb-lg-0 mt-lg-0 ms-lg-3 fs-5 float-start">
           <span class="key"><%= @filter[0] %></span>: <%= @filter[1] %>
         </div>
-      <% end %>
+      <% end if @filter.present? %>
       </div>
     </div>
 

@@ -170,7 +170,7 @@ class Form < MailForm::Base
       "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu", "tuf16063@temple.edu", "libdepot@temple.edu"]],
       "group-visit" => ["Group Visit Request", ["charlestours@temple.edu"]],
       "review-protocol" => ["Temple Review Protocol", ["burstein@temple.edu", "stephanie.roth@temple.edu"]],
-      "exhibit-request" => ["Charles Library Exhibit Request", ["libraries@temple.edu", "evanw@temple.edu"]]
+      "exhibit-request" => ["Charles Library Exhibit Request", ["libraries@temple.edu", "evanw@temple.edu", "richieh@temple.edu"]]
     }
 
     @forms.fetch(form_type)

@@ -733,9 +733,6 @@ en:
         supervisor_notified: Supervisor Notified
       ask_scrc:
         title: "Special Collections Research Center: Ask a Question"
-        intro: >-
-                If you are planning a research visit in the near future, please telephone us at 215-204-8257 to ask any 
-                questions you may have and to ensure the availability of the materials you wish to consult.
         comments_label: "What is your Question?"
         comments_hint: >-
                       Be sure to include names, locations, and dates that particularly pertinent to your research. 
@@ -827,18 +824,6 @@ en:
 
       cac_internal:
         title: "Cultural Analytics Certificate Internal Application"
-        intro_html: >-
-                    <p>This form should be used by applicants currently enrolled in a Temple University graduate degree program.</p>
-                    <p><strong>Program Requirements</strong>:</p>
-                    <p>Students must complete nine credits of course work and a variable (0-1) credit Cultural Analytics Practicum to 
-                    complete the Certificate. The introductory course surveys the range of methods. Students then select two electives 
-                    in the focal area needed for their own research interests. Finally, students complete a final project of their own 
-                    design in the Practicum, a semester-long workshop offered by the Scholars Studio of Temple University Libraries. The 
-                    final project will be part of the dissertation or thesis and will be overseen by their academic adviser.</p>
-                    <p>Students may apply for admission to the program at any time. Applications received prior to the end of the add/drop 
-                    period may be considered for current semester. Otherwise application is for the upcoming semester. Once you complete the 
-                    form below you will be contacted by the CAC Program Director. If you have any questions about the certificate program, 
-                    please contact Adrienne Shaw at <a href="mailto:adrienne.shaw@temple.edu">adrienne.shaw@temple.edu</a>.</p>
         degree_program_label: "Degree Program"
         degree_program_options:
           phd: "Ph.D."
@@ -857,22 +842,6 @@ en:
 
       cac_external:
         title: "Cultural Analytics Certificate External Application"
-        intro_html: >-
-                    <p>This form should be used by applicants not currently enrolled in a Temple University graduate degree program.</p>
-                    <p><strong>Program Requirements</strong>:</p>
-                    <p>Students must take nine credits of course work and a one-credit Cultural Analytics Practicum to complete the 
-                    Certificate. The introductory course surveys the range of methods. Students then select two electives in the 
-                    focal area needed for their own research interests. Finally, students complete a project of their own design 
-                    in the Practicum, a semester-long workshop offered by the Scholars Studio of Temple University Libraries. Students 
-                    in the Practicum must also sign up for a one-credit independent study with a faculty member who can serve as an 
-                    academic advisor on their project.</p>
-                    <p>In addition to completing and submitting this form, students must have earned a B.A./B.S. or equivalent. Please 
-                    arrange for official transcripts for all coursework since high school to be sent to our program administrator: Marianne 
-                    Moll at <a href="mailto:marianne.moll@temple.edu">marianne.moll@temple.edu</a>.</p>
-                    <p>Applications must be received by August 1 to be eligible for admission beginning in the Fall semester. Once you 
-                    complete the form below and all supporting materials have been received you will be contacted by the CAC Program Director. 
-                    If you have any questions about the certificate program, please contact Adrienne Shaw at 
-                    <a href="mailto:adrienne.shaw@temple.edu">adrienne.shaw@temple.edu</a>.</p>
         bachelor_degree: "Have you earned a B.A./B.S. degree?"
         institution_of_dehgree: "Name of the Institution where your degree was earned"
         overall_gpa: "Overall B.A. GPA (4.0 scale)"
@@ -882,7 +851,6 @@ en:
                       how the tools of Cultural Analytics can contribute to their realization."
 
       event_space_request:
-        intro_html: Our Event Spaces are unavailable during the Spring and Summer 2021 semesters as they are being used as classrooms and as quiet study rooms for student use.
         title: "Charles Library Event Space Request"
         date_legend: "Event Dates/Times"
         date: "Date of Event"
@@ -924,12 +892,6 @@ en:
 
       graduate_locker_request:
         title: "Charles Library Graduate Studio Locker Request"
-        intro_html: >-
-                    <p>Lockers are available on a first-come/first-served basis for graduate students and faculty 
-                    in the Charles Library. Due to high demand and the limited number of lockers (32), we cannot 
-                    guarantee that a locker will be available to each patron who makes a request. We will email you 
-                    to let you know if a locker is available once we receive your request.</p>
-                    <p><a href="/spaces/29">4th floor Graduate/Faculty Study</a></p>
         temple_affiliation_options:
           graduate: Graduate
           faculty: Faculty

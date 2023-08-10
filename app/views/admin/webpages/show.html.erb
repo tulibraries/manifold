@@ -40,7 +40,6 @@ as well as a link to its edit page.
 <section class="main-content__body">
   <dl>
     <% page.attributes.each do |attribute| %>
-    <%# binding.pry %>
     <% if attribute.name == "file_uploads" %>
       <dt class="attribute-label" id="<%= attribute.name %>">
         File Uploads

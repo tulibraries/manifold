@@ -36,8 +36,4 @@ class SnippetDashboard < Administrate::BaseDashboard
   def display_resource(snippet)
     snippet.title
   end
-
-  def permitted_attributes
-    super + [:draft_description, :publish]
-  end
 end

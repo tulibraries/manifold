@@ -16,11 +16,13 @@
         </div>
       </div>
 
+      <% if @intro.present? %>
       <div class="row">
         <div class="col mb-3">
-          <%= render "forms/#{@type}/intro" %>
+          <%= render "intro" %>
         </div>
       </div>
+      <% end %>
 
       <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
@@ -36,7 +38,7 @@
         </div>
       <% end %>
 
-      <% unless ["graduate-locker-request"].include? params[:type] %>
+      <% unless ["graduate-locker-request"].include? @type %>
         <div class="row">
           <div class="col mx-3">
             <fieldset class="fieldset-border">

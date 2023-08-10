@@ -10,6 +10,8 @@ class FormsController < ApplicationController
     @collection = Rails.configuration.affiliation
     if existing_forms.include? params[:id]
       @type = params[:id]
+      intro = Snippet.find_by(slug: "forms-#{@type}-intro")
+      @intro = intro.description if intro.present?
       render template: "forms/index"
     else
       render "errors/not_found", status: :not_found

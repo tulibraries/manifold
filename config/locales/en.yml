@@ -635,14 +635,6 @@ en:
                           <a href="/policies/charles-library-exhibit-policies">Charles Library exhibit policies</a>
       recall_book:
         title: Request Recall of Books Already Checked Out
-        intro_html: >-
-                    <div style="font-size: 1.5rem;margin-bottom: 2.5rem;">(Faculty/Library Staff only)</div>
-                    <div style="line-height: 1.15rem;">
-                    <p>When you recall a book, the person who has it checked out has two weeks to return it.</p>
-                    <p>Try <a href="https://e-zborrow.relaisd2d.com/gateway/TEMPLE.html"%>EZborrow</a> instead. 
-                    Books generally arrive in three to five days.</p>
-                    <p>One request per form. You must complete the form again for another request.</p>
-                    <p>Only recall requests submitted by current Temple University staff and faculty will be reviewed.</p>
         temple_affiliation_options:
           one: Faculty
           two: Staff
@@ -653,12 +645,6 @@ en:
         cancellation_date: Cancellation Date
       purchase_request:
         title: Purchase Request
-        intro_html: >-
-                    <p>Members of the Temple University community may request the purchase of materials the Libraries 
-                    do not currently own for inclusion in our collections. Requests will be considered in light of our 
-                    collection development policy and the availability of the item in the desired format. A Temple University 
-                    email address is required so that the Libraries can verify the requestor's affiliation.</p>
-                    <p>Requests will be forwarded to the library at the patron's home campus.</p> 
         material_type: Type of Material
         material_type_options:
           one: Book
@@ -677,10 +663,7 @@ en:
           four: No preference
           five: other...
       missing_book:
-        title: Missing Book Search Request
-        intro_html: >-
-                    <p>If you are unable to locate an item listed as available in the catalog, 
-                    please fill out this form and the library staff will conduct a search.</p>
+        title: Missing Book Search Request>
         affiliation_options:
           one: Faculty
           two: Staff
@@ -690,14 +673,6 @@ en:
           six: Other...
       ir:
         title: Incident Report
-        intro_html: >-
-                    <ul>
-                      <li><strong style="font-size: larger;">EMERGENCY</strong> - call 
-                      <strong style="font-size: larger;">1-1234</strong> <span style="padding-left:14px;">
-                      [Temple Campus Police: 215-204-1234]</span></li>
-                      <li>If this incident involves injury to Library staff or student assistant, a Worker’s 
-                      Compensation form needs to be filled out also.</li>
-                    </ul>
         incident_types:
           one: Vandalism
           two: Accident/Medical
@@ -739,8 +714,6 @@ en:
                       Please list manuscript collections or print materials in which you are or may be interested.
       proxy_account:
         title: "Proxy Account"
-        intro_html: >-
-                    <p>A copy of this request will be sent to the Faculty/Administrator email address specified in the form.</p>
         faculty_admin_name: Faculty/Administrator Name
         faculty_admin_email: Faculty/Administrator Email
         faculty_admin_tuid: Faculty/Administrator TUid Number
@@ -750,11 +723,6 @@ en:
 
       library_instruction:
         title: "Request a Library Instruction Session"
-        intro_html: >-
-                    <p>Librarians can partner with instructors to help your students achieve course learning goals related to 
-                    research, information and digital literacy, and more. Invite a librarian to visit your in-person or online 
-                    class using this form. Your request will be forwarded to a subject librarian, and you can expect a response 
-                    within 48 hours.</p>
         course_title: Course Title
         course_code: Course Code (e.g,. SOC 0832)
         first_choice_date: First Choice Date
@@ -790,16 +758,6 @@ en:
 
       table_request:
         title: "Library Staff and Registered Student Organization Table Request"
-        intro_html: >-
-                    <p>Temple University Libraries Staff and Registered Student Organizations may place a request 
-                    for one (1) six foot table and two (2) chairs in the foyer of Charles Library at the Liacouras 
-                    Walk entrance. Requests must be placed at least two (2) days in advance and are subject to review, 
-                    and all requests will be prioritized on a first come, first serve basis.</p>
-                    <p>For Registered Student Organizations (RSOs): the tabling period should not exceed two (2) hours 
-                    and must be specified in the request, with one (1) group per tabling session. Displays on the table 
-                    may not involve electrical power or running water, and the table may not be moved or relocated. RSOs 
-                    are responsible for any damage to the table and chairs sustained during use, and any use in violation 
-                    of the library code of conduct will result in termination of the agreement.</p>
         group: Group/Organization
         comments: Reason for table and description of distributed materials
         preferred_date: Preferred Date
@@ -898,25 +856,11 @@ en:
 
       partners_borrowing:
         title: "Partners Borrowing Privileges Application/Renewal"
-        intro_html: >-
-                    <p>Spouses/partners of current Temple University faculty and staff members may apply for a library 
-                    borrowing card that will allow them to borrow up to ten items at a time and 2-hour use of the guest 
-                    computers on the first floor of Charles Library.</p>
-                    <p>The spouse/partner borrowing card does not allow for off-site access to databases as the University 
-                    Libraries contracts with database vendors prohibit this. Once your application is received, and your 
-                    status is confirmed, it may take up to two weeks for you to receive your card in the mail.</p>
-                    <p>To begin this process, the sponsoring faculty/staff member must fill out the below form and submit 
-                    for approval.</p>
-                    <p>You may contact the Circulation/Reserve Unit of Charles Library at 215-204-8212 if you have any questions.</p>
         partner_name: Name of Spouse/Partner
         partner_email: Email of Spouse/Partner
 
       storage_request:
         title: "Recall item from Charles Library temporary storage"
-        intro_html: >-
-                    <p>Items recalled from Charles Library temporary storage will be pulled Monday through Friday and 
-                    require approximately 24 hours to retrieve. You will receive a notification when the item is on the 
-                    hold shelf ready for pick up.</p>
         call_number_hint: Please copy and paste from Library Search record if possible
 
       group_visit:
@@ -932,14 +876,6 @@ en:
 
       review_protocol:
         title: Temple Review Protocol
-        intro_html: >-
-                    <p>This is a required planning step performed a priori to a review or systematic review. This form 
-                    follows a modified version of the Prisma-P(extension) statement. If you are interested in registering 
-                    your protocol please visit Prospero or contact the library for help with protocol registration. This 
-                    protocol will be used solely for library purposes to help in constructing the literature search and it 
-                    will not be published or shared. All information shared is strictly held confidential. For questions 
-                    about this form, please contact Stephanie Roth 
-                    <a href="mail_to:stephanie.roth@temple.edu">stephanie.roth@temple.edu</a> or (215) 269-9469.</p>
         protocol_title: Protocol Title
         protocol_title_hint: (Please identify the type of review in the title, e.g. systematic review)
         review_update: Is this an update of a previously published systematic review?

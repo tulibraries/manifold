@@ -663,7 +663,7 @@ en:
           four: No preference
           five: other...
       missing_book:
-        title: Missing Book Search Request>
+        title: Missing Book Search Request
         affiliation_options:
           one: Faculty
           two: Staff

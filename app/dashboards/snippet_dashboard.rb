@@ -5,7 +5,6 @@ require "administrate/base_dashboard"
 class SnippetDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     description: DescriptionField,
-    draft_description: DescriptionField.with_options(admin_only: true),
     id: Field::Number,
     title: Field::String,
     slug: Field::String,
@@ -27,7 +26,6 @@ class SnippetDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     title
     slug
-    draft_description
     description
   ].freeze
 

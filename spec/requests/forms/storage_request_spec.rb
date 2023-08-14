@@ -5,9 +5,13 @@ require "rails_helper"
 RSpec.describe "Recall item from Charles Library temporary storage", type: :request do
 
   let(:form_type) { "storage-request" }
+  let(:the_info) { FactoryBot.create(:form_info, slug: form_type) }
+  let(:title) { the_info.title }
+  let(:recipients) { the_info.recipients }
+
   let(:form_params) {
     {
-      name: "1234567890", tu_id: "test_id", email: "test@dept.edu",
+      title:, recipients:, name: "1234567890", tu_id: "test_id", email: "test@dept.edu",
       title: "test title", call_number: "test-123 p.1", pickup_location: "Ambler"
     }
   }

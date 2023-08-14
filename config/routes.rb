@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :external_links
     resources :finding_aids
     resources :file_uploads
+    resources :form_infos
     resources :groups
     resources :highlights
     resources :library_hours
@@ -64,12 +65,6 @@ Rails.application.routes.draw do
     end
 
     resource :buildings, :categories, :collections, :events, :exhibitions, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
-      member do
-        post "detach" => :detach
-      end
-    end
-
-    resource :exhibitions do
       member do
         post "detach" => :detach
       end

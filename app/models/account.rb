@@ -15,8 +15,16 @@ class Account < ApplicationRecord
 
   belongs_to :admin_group, optional: true
 
+  has_many :account_form_infos, dependent: nil
+  has_many :form_infos, through: :account_form_infos
+
+
   def self.from_omniauth(access_token)
     data = access_token.info
     account = Account.find_by(email: data["email"])
+  end
+
+  def self.lookup(email)
+    Account.find_by(email:)
   end
 end

@@ -1,0 +1,21 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field" id="<%= field.attribute %>_select">
+  <%= f.select(
+        field.attribute,
+        options_from_collection_for_select(
+        field.selectable_options,
+          :email,
+          :label,
+          selected: field.data.presence,
+        ),
+        { include_blank: true, include_hidden: false }, 
+        { multiple: true }
+      )  %>
+
+  <div class="text-center">(Hold CTRL to select multiple options)</div>
+  <input type="button" id="<%= field.attribute %>_select_all" class="select-all" name="select_all" value="Select All">
+</div>
+
+

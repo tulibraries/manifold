@@ -5,9 +5,13 @@ require "rails_helper"
 RSpec.describe "Purchase Request", type: :request do
 
   let(:form_type) { "purchase-request" }
+  let(:the_info) { FactoryBot.create(:form_info, slug: form_type) }
+  let(:title) { the_info.title }
+  let(:recipients) { the_info.recipients }
+
   let(:form_params) {
     {
-      name: "x",
+      title:, recipients:, name: "x",
       email: "x@x.com",
       phone: "x",
       tu_id: "x",

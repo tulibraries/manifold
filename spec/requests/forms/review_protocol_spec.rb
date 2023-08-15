@@ -5,9 +5,13 @@ require "rails_helper"
 RSpec.describe "Temple Review Protocol", type: :request do
 
   let(:form_type) { "review-protocol" }
+  let(:the_info) { FactoryBot.create(:form_info, slug: form_type) }
+  let(:title) { the_info.title }
+  let(:recipients) { the_info.recipients }
+
   let(:form_params) {
     {
-      protocol_title: "test",
+      title:, recipients:, protocol_title: "test",
       review_update: "test",
       rationale: "test",
       explicit_statement: "test",

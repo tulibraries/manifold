@@ -1,41 +1,49 @@
 # frozen_string_literal: true
 
 class FormsController < ApplicationController
-  def show
-    new
+  def index
+    respond_to do |format|
+      format.json do
+        @forms = form_objects_for_json
+        render json: FormSerializer.new(@forms)
+      end
+    end
   end
 
-  def new
+  def show
     @form = Form.new
-    @collection = Rails.configuration.affiliation
     if existing_forms.include? params[:id]
       @type = params[:id]
-      intro = Snippet.find_by(slug: "forms-#{@type}-intro")
-      @intro = intro.description if intro.present?
-      render template: "forms/index"
+      info = FormInfo.find_by(slug: @type)
+      if info.present?
+        @title = info.title
+        @intro = info.intro
+        @recipients = info.recipients
+      end
     else
       render "errors/not_found", status: :not_found
     end
   end
 
-  def index
-    respond_to do |format|
-      format.html { render template: "forms/index" }
-      format.json do
-        @forms = form_objects_for_json
-        render json: FormSerializer.new(@forms)
-      end
+  def create
+    @form = Form.new(params[:form])
+    @form.request = request
+
+    if @form.deliver
+      persist_form!
+      redirect_to forms_path(success: "true")
+    else
+      redirect_to forms_path(success: "false")
     end
   end
 
-  def all
-    respond_to do |format|
-      format.html { render template: "forms/index" }
-      format.json do
-        @forms = form_objects_for_json
-        render json: FormSerializer.new(@forms)
-      end
-    end
+  def persist_form!
+    type = params[:form].delete(:form_type)
+    recipients = params[:form].delete(:recipients)
+    FormSubmission.create(
+      form_type: type,
+      form_attributes: params["form"].except(:recipients)
+    )
   end
 
   def existing_forms
@@ -53,26 +61,5 @@ class FormsController < ApplicationController
           updated_at: DateTime.new(0)
         )
       end
-  end
-
-  def create
-    @form = Form.new(params[:form])
-    @form.request = request
-    @collection = Rails.configuration.affiliation
-
-    if @form.deliver
-      persist_form!
-      redirect_to forms_path(success: "true")
-    else
-      redirect_to forms_path(success: "false")
-    end
-  end
-
-  def persist_form!
-    type = params[:form].delete(:form_type)
-    FormSubmission.create(
-      form_type: type,
-      form_attributes: params["form"]
-    )
   end
 end

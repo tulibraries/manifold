@@ -1,6 +1,6 @@
 <h4 class="text-decoration-underline"><%= message.subject %></h4>
 <% array_values = "" %>
-<% @resource.mail_form_attributes.each do |attribute, value| next if value.blank? %>
+<% @resource.mail_form_attributes.except("title").except("recipients").except("form_type").each do |attribute, value| next if value.blank? %>
   <% if value.is_a?(Array) %>
     <%
       array_values+="<ul>\n"

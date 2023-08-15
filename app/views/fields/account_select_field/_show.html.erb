@@ -1,0 +1,9 @@
+<% unless field.data.nil? %>
+<ol style="margin-top:0;">
+  <% field.data.each do |item| %>
+  <li>
+    <%= item %>
+  </li>
+  <% end %>
+</ol>
+<% end %>

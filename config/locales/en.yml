@@ -76,6 +76,7 @@ en:
           appointment_link: 
             label: "Schedule an Appointment"
         string:
+          no_edit_slug: "Changing this value requires a change in the code first. DO NOT change unless you're sure."
           slugs: "Slugs are used to set the browser path and in the code to link resources together. Edit with extreme caution. Read more in [<a href=\"https://tulibdev.atlassian.net/wiki/spaces/LWR/pages/1047166982/Slugs\">Confluence</a>]</p>"
           renaming: "When renaming, completely remove the slug field below. A new slug will be generated reflecting the new name/title. If you do not want the slug (browser path) to change, do not touch the existing slug."
           tutorial_path: "Only specify the portion of the url after https://alt.library.temple.edu/tutorials/"

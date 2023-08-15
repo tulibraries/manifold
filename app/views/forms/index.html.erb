@@ -1,62 +1,106 @@
-<div class="container-lg form">
-  <% unless @type.nil? || @type == "all" %>
+<div class="container-lg">
+
+  <% if params[:success] == "true" %>
+  <div class="row">
+    <div class="col-12 flash notice">
+      <%= t("manifold.forms.submissions.success_message") %>
+    </div>
+  </div>
+  <% end %>
+  <% if params[:success] == "false" %>
+  <div class="row">
+    <div class="col-12 flash error">
+      <%= t("manifold.forms.submissions.failure_message") %>
+    </div>
+  </div>
+  <% end %>
 
   <div class="row">
     <div class="col-12 col-lg-9 offset-lg-1">
-
-      <div class="row">
-        <div class="col back-button">
-          < <%= link_to "View all forms", forms_path, class: "inline" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <h1><%= title t("manifold.forms.#{@type.underscore}.title") %></h1>
-        </div>
-      </div>
-
-      <% if @intro.present? %>
-      <div class="row">
-        <div class="col mb-3">
-          <%= render "intro" %>
-        </div>
-      </div>
-      <% end %>
-
-      <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
-      <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
-
-      <% unless ["event-space-request"].include? @type %> 
-        <div class="row">
-          <div class="col mx-3">
-            <fieldset class="fieldset-border mb-4">
-              <legend class="fieldset-legend"><%= t("manifold.forms.shared.your_info") %></legend>
-            <%= render "forms/#{@type}/personal_info", f: f %>
-            </fieldset>
-          </div>
-        </div>
-      <% end %>
-
-      <% unless ["graduate-locker-request"].include? @type %>
-        <div class="row">
-          <div class="col mx-3">
-            <fieldset class="fieldset-border">
-              <legend class="fieldset-legend"><%= t("manifold.forms.shared.request_info") %></legend>
-              <%= render "forms/#{@type}/request-info", f: f %>
-          </div>
-        </div>
-      <% end %>
-
-        <div class="row mt-4">
-          <div class="col mx-3">
-            <%= f.button :submit, t("manifold.forms.shared.submit"), class: "btn btn-primary" %>
-          </div>
-        </div>
-      <% end %>
+      <h1><%= title t("manifold.forms.index.title") %></h1>
     </div>
   </div>
-  <% else %>
-    <%= render "all" %>
-  <% end %>
+
+  <div class="row">
+    <div class="col-12 col-lg-8 offset-lg-1 text-start fs-5">
+      <%= t("manifold.forms.index.intro") %>
+    </div>
+    <div class="col-12 col-lg-3">
+      <h2 class="access-link mb-5 mb-lg-0"><%= link_to "Library Suggestions/Feedback", webpages_contact_path %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-9 offset-lg-1">
+      <h2 class="bl-red"><%= t("manifold.forms.index.temple_materials.label") %></h2>
+      <ul class="list-unstyled ml-3">
+        <li>
+            <%= link_to t("manifold.forms.index.temple_materials.missing_book"), [forms_path, "missing-book"].join("/") %>
+        </li>
+        <li>
+            <%= link_to t("manifold.forms.index.temple_materials.recall_book"), [forms_path, "recall-book"].join("/") %>
+        </li>
+      </ul>
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.instructional_services.label") %></h2>
+        <ul class="list-unstyled ml-3">
+          <li>
+            <%= link_to t("manifold.forms.index.instructional_services.library_instruction"), [forms_path, "library-instruction"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.instructional_services.scrc_instruction"), [forms_path, "scrc-instruction"].join("/") %>
+          </li>
+        </ul>
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.library_privileges.label") %></h2>
+        <ul class="list-unstyled ml-3">
+          <li>
+            <%= link_to t("manifold.forms.index.library_privileges.proxy_account"), [forms_path, "proxy-account"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.library_privileges.graduate_locker_request"), [forms_path, "graduate-locker-request"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.library_privileges.partners_borrowing"), [forms_path, "partners-borrowing"].join("/") %>
+          </li>
+        </ul>
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.collection_development.label") %></h2>
+        <ul class="list-unstyled ml-3">
+          <li>
+            <%= link_to t("manifold.forms.index.collection_development.purchase_request"), [forms_path, "purchase-request"].join("/") %>
+          </li>
+        </ul>
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.administrative_services.label") %></h2>
+        <ul class="list-unstyled ml-3">
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.table_request"), [forms_path, "table-request"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.event_space_request"), [forms_path, "event-space-request"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.group_visit"), [forms_path, "group-visit"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.filming_request"), [forms_path, "filming-request"].join("/") %>
+          </li>
+          <li>
+            <%= link_to t("manifold.forms.index.administrative_services.exhibit_request"), [forms_path, "exhibit-request"].join("/") %>
+          </li>
+        </ul>
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.requests") %></h2>
+        <ul class="list-unstyled ml-3">
+          <li>
+            <%= t("manifold.forms.index.requests_html") %> 
+          </li>
+        </ul>
+      <h2 class="bl-red mt-5"><%= t("manifold.forms.index.not_held") %></h2>
+        <ul class="list-unstyled ml-3">
+          <li>
+            <%= t("manifold.forms.index.not_held_one_html") %>
+          </li>
+          <li>
+            <%= t("manifold.forms.index.not_held_two_html") %>
+          </li>
+        </ul>
+      </div>
+  </div>
 </div>

@@ -237,7 +237,7 @@ class WebpagesController < ApplicationController
 
   def news
     @blogs = Blog.all
-    @blogposts = BlogPost.all.order(:updated_at).reverse.take(3)
+    @blogposts = BlogPost.all.order(:created_at).reverse.take(3)
     @highlights = Highlight.with_image.where(promoted: true).take(3)
   end
 

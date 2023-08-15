@@ -1,8 +1,0 @@
-<%= f.input :bachelor_degree, as: :select, 
-               collection: t("manifold.forms.fields.boolean.yes_no").map{ |k,v| v },
-               label: t("manifold.forms.cac_external.bachelor_degree"), 
-               required: true %>
-<%= f.input :institution_of_degree, label: t("manifold.forms.cac_external.institution_of_degree"), required: true %>
-<%= f.input :overall_gpa, as: :decimal, label: t("manifold.forms.cac_external.overall_gpa"), required: true %>
-<%= f.input :degrees_earned, as: :text, label: t("manifold.forms.cac_external.degrees_earned"), required: true %>
-<%= f.input :personal_statement, as: :text, label: t("manifold.forms.cac_external.personal_statement"), required: true %>

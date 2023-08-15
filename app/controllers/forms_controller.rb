@@ -3,6 +3,7 @@
 class FormsController < ApplicationController
   def index
     respond_to do |format|
+      format.html {}
       format.json do
         @forms = form_objects_for_json
         render json: FormSerializer.new(@forms)

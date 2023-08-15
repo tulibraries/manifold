@@ -103,8 +103,6 @@ Rails.application.routes.draw do
   resources :spaces, only: [:index, :show], concerns: [:imageable]
   resources :webpages, only: [:index, :show]
 
-  get "forms", to: "forms#all", as: "forms_index"
-
   controller :blog_posts do
     get "blogposts/tags/:tag" => :index, as: "blog_post_tags"
   end

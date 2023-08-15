@@ -11,7 +11,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    slug: Field::String.with_options(admin_only: true, order: "name"),
+    slug: Field::String.with_options(admin_only: true),
     recipients: AccountSelectField.with_options(
       collection: Account.all
     ),

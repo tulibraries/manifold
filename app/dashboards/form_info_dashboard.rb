@@ -11,7 +11,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    slug: Field::String.with_options(admin_only: true),
+    slug: Field::String.with_options(admin_only: true, order: "name"),
     recipients: AccountSelectField.with_options(
       collection: Account.all
     ),
@@ -64,7 +64,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how form infos are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(form_info)
-  #   "FormInfo ##{form_info.id}"
-  # end
+  def display_resource(form_info)
+    form_info.title
+  end
 end

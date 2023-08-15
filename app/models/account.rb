@@ -15,7 +15,7 @@ class Account < ApplicationRecord
 
   belongs_to :admin_group, optional: true
 
-  has_many :account_form_infos, dependent: :destroy
+  has_many :account_form_infos, dependent: nil
   has_many :form_infos, through: :account_form_infos
 
 

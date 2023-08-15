@@ -64,7 +64,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how form infos are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(form_info)
-  #   "FormInfo ##{form_info.id}"
-  # end
+  def display_resource(form_info)
+    form_info.title
+  end
 end

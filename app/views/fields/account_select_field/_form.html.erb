@@ -5,7 +5,7 @@
   <%= f.select(
         field.attribute,
         options_from_collection_for_select(
-        field.selectable_options.order("name"),
+        field.selectable_options,
           :email,
           :label,
           selected: field.data.presence,

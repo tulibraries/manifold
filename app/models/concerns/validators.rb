@@ -49,5 +49,4 @@ module Validators
       end
     end
   end
-
 end

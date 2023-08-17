@@ -204,7 +204,7 @@ en:
           included_keywords: "Relevant Keywords"
           excluded_keywords: "Irrelevant Keywords"
           data_plan: "Data Management Plan"
-          independent_reviewers: "Independent Reveiwers?"
+          independent_reviewers: "Independent Reviewers?"
           outcomes: "Outcomes"
           quantitative_analysis: "Include Quantitative Analysis"
           quantitative_analysis_other: "Quantitative Analysis other"
@@ -874,39 +874,6 @@ en:
         school_visit: If this is a school visit, please provide name of school, grade level, and age range of students
         referrer: Referred to us by (if applicable)
         comments: Provide any additional information about this request
-
-      review_protocol:
-        title: Temple Review Protocol
-        protocol_title: Protocol Title
-        protocol_title_hint: (Please identify the type of review in the title, e.g. systematic review)
-        review_update: Is this an update of a previously published systematic review?
-        review_update_hint: If yes, list the PMID or DOI under Other.
-        rationale: Describe the rationale for the review in the context of what is already known.
-        explicit_statement: >-
-                            Provide an explicit statement of the question(s) the review will address with reference to 
-                            participants, interventions, comparators (if applicable), and outcomes (PICO) or similar format.
-        information_sources: Describe all intended information sources with planned dates of coverage.
-        information_sources_hint: >- 
-                    e.g., electronic databases, contact with study authors, trial registers, or other grey literature sources.
-        included_keywords: Present keywords that are relevant to your study.
-        excluded_keywords: Present keywords that you would like excluded from the study.
-        data_plan: What is your plan to manage and extract data for this review? What tools will you use to assist?
-        independent_reviewers: Will you be using two independent reviewers for study selection and screening?
-        independent_reviewers_hint: If yes, list the PMID or DOI under Other.
-        outcomes: List and define all outcomes for which data will be sought, including prioritization of main and additional outcomes, with rationale.
-        outcomes_hint: Include whether this will be done at the outcome or study level, or both; state how this information will be used in data synthesis.
-        quantitative_analysis: Will you be including a quantitative analysis (meta-analysis)?
-        bio_statistician: Are you working with a bio-statistician to combine data and create a summary measure of data?
-        summary_description: If quantitative synthesis is not appropriate, describe the type of summary planned.
-        evidence_assessment: Describe how the strength of the body of evidence will be assessed.
-        evidence_assessment_hint: e.g., GRADE
-        citations: Please include 3-5 citations that meet eligibility criteria and can be used to test the recall and precision of the search strategy.
-        librarian_contact: Are you interested in being contacted by a librarian to learn how you may choose to publish this protocol a priori to help minimize bias for your review?
-        authorship_permission: Do you grant authorship permission for the librarian working on your search and writing the search methodology statement?
-        other_reviews: Are there any competing or conflicting reviews?
-        other_reviews_hint: Please do a search to verify.
-        publication_journal: What journal do you plan to submit the completed review to for publication?
-        publication_journal_hint: If known.
 
       hidden_title_text: To change the title of this resource, please <a href=mailto:"tul-web-support@temple.edu">contact an administrator</a>.
 

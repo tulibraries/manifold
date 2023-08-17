@@ -44,7 +44,7 @@ jobs:
       - image: cimg/postgres:14.5
         environment:
           TZ: "America/New_York"
-    resource_class: small
+    resource_class: medium
     steps:
       - checkout
       - run:

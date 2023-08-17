@@ -1,9 +1,7 @@
-<% unless field.data.nil? %>
+<% unless field.data.nil? || field.data.compact_blank.nil? %>
 <ol style="margin-top:0;">
-  <% field.data.each do |item| %>
-  <li>
-    <%= item %>
-  </li>
-  <% end %>
+<% field.data.each do |item| %>
+  <%= "<li>#{item}</li>".html_safe unless item.blank? %>
+<% end %>
 </ol>
 <% end %>

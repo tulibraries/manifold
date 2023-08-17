@@ -41,4 +41,13 @@ module Validators
       record.errors.add :base, "Values for either Collections or Subjects need to be selected." if record.collections.blank? && record.subject.blank?
     end
   end
+
+  class HasRecipientsValidator < ActiveModel::EachValidator
+    def validate_each(record, attribute, value)
+      if value.size == 1
+        record.errors.add attribute, "field can not be empty." if value.first.blank?
+      end
+    end
+  end
+
 end

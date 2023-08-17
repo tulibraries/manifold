@@ -7,6 +7,14 @@ class AccountSelectField < Administrate::Field::Select
     data
   end
 
+  def self.permitted_attribute(attribute, _options = nil)
+    { attribute.to_sym => [] }
+  end
+
+  def permitted_attribute
+    self.class.permitted_attribute(attribute)
+  end
+
   def selectable_options
     Account.all.order("name")
   end

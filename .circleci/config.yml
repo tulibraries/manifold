@@ -44,7 +44,7 @@ jobs:
       - image: cimg/postgres:14.5
         environment:
           TZ: "America/New_York"
-    resource_class: small
+    resource_class: medium
     steps:
       - checkout
       - run:
@@ -65,7 +65,7 @@ jobs:
             sudo apt-get --allow-releaseinfo-change update
             sudo apt-get update
             sudo apt-get install postgresql-client
-            bundle install --path vendor/bundle
+            bundle install --path vendor/bundle --verbose
       
       - save_cache:
           key: gem-cache-v3-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}

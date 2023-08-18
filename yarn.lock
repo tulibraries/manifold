@@ -466,7 +466,7 @@ selectize.js@^0.12.12:
 
 selectize@^0.12.6:
   version "0.12.6"
-  resolved "https://registry.npmjs.org/selectize/-/selectize-0.12.6.tgz"
+  resolved "https://registry.yarnpkg.com/selectize/-/selectize-0.12.6.tgz#c2cf08cbaa4cb06c5e99bb452919d71b080690d6"
   integrity sha512-bWO5A7G+I8+QXyjLfQUgh31VI4WKYagUZQxAXlDyUmDDNrFxrASV0W9hxCOl0XJ/XQ1dZEu3G9HjXV4Wj0yb6w==
   dependencies:
     microplugin "0.0.3"

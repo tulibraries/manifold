@@ -1,17 +1,17 @@
-<% unless @news_items.nil? %>
-  <% @news_items.each do |item| %>
-		<div class="col-12 col-md-6 col-lg-4 mb-3 library-news">
-      <div class="news-item">
-        <div class="news-item-caption">
-          <%= link_to item.label.truncate(52), strip_tags(item.link) %>
-        </div>
-        <div class="news-item-description mt-3">
-          <%= strip_tags(item.blurb.truncate(120).html_safe) %>
-        </div>
+<% @highlights.each do |item| %>
+<div class="col-12 col-md-6 col-lg-4 mb-3 highlights">
+  <div class="highlight text-center">
+    <%= link_to strip_tags(item.link) do %>
+      <%= image_tag item.image, class: "text-center" %>
+      <div class="highlight-caption text-start mt-3">
+      <h2><%= item.label.truncate(52) %></h2>
+      <p><%= strip_tags(item.blurb.truncate(120).html_safe) %></p>
       </div>
-		</div>
-  <% end %>
-<% end %>
+    <% end %>
+  </div>
+</div>
+<% end unless @highlights.nil? %>
+
 
 <div class="col-12 text-end px-0">
   <%= link_to "View library blogs", blogs_path, class: "view-all-blogs" %>

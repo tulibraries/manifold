@@ -76,6 +76,7 @@ en:
           appointment_link: 
             label: "Schedule an Appointment"
         string:
+          no_edit_slug: "Changing this value requires a change in the code first. DO NOT change unless you're sure."
           slugs: "Slugs are used to set the browser path and in the code to link resources together. Edit with extreme caution. Read more in [<a href=\"https://tulibdev.atlassian.net/wiki/spaces/LWR/pages/1047166982/Slugs\">Confluence</a>]</p>"
           renaming: "When renaming, completely remove the slug field below. A new slug will be generated reflecting the new name/title. If you do not want the slug (browser path) to change, do not touch the existing slug."
           tutorial_path: "Only specify the portion of the url after https://alt.library.temple.edu/tutorials/"
@@ -203,7 +204,7 @@ en:
           included_keywords: "Relevant Keywords"
           excluded_keywords: "Irrelevant Keywords"
           data_plan: "Data Management Plan"
-          independent_reviewers: "Independent Reveiwers?"
+          independent_reviewers: "Independent Reviewers?"
           outcomes: "Outcomes"
           quantitative_analysis: "Include Quantitative Analysis"
           quantitative_analysis_other: "Quantitative Analysis other"
@@ -635,14 +636,6 @@ en:
                           <a href="/policies/charles-library-exhibit-policies">Charles Library exhibit policies</a>
       recall_book:
         title: Request Recall of Books Already Checked Out
-        intro_html: >-
-                    <div style="font-size: 1.5rem;margin-bottom: 2.5rem;">(Faculty/Library Staff only)</div>
-                    <div style="line-height: 1.15rem;">
-                    <p>When you recall a book, the person who has it checked out has two weeks to return it.</p>
-                    <p>Try <a href="https://e-zborrow.relaisd2d.com/gateway/TEMPLE.html"%>EZborrow</a> instead. 
-                    Books generally arrive in three to five days.</p>
-                    <p>One request per form. You must complete the form again for another request.</p>
-                    <p>Only recall requests submitted by current Temple University staff and faculty will be reviewed.</p>
         temple_affiliation_options:
           one: Faculty
           two: Staff
@@ -653,12 +646,6 @@ en:
         cancellation_date: Cancellation Date
       purchase_request:
         title: Purchase Request
-        intro_html: >-
-                    <p>Members of the Temple University community may request the purchase of materials the Libraries 
-                    do not currently own for inclusion in our collections. Requests will be considered in light of our 
-                    collection development policy and the availability of the item in the desired format. A Temple University 
-                    email address is required so that the Libraries can verify the requestor's affiliation.</p>
-                    <p>Requests will be forwarded to the library at the patron's home campus.</p> 
         material_type: Type of Material
         material_type_options:
           one: Book
@@ -678,9 +665,6 @@ en:
           five: other...
       missing_book:
         title: Missing Book Search Request
-        intro_html: >-
-                    <p>If you are unable to locate an item listed as available in the catalog, 
-                    please fill out this form and the library staff will conduct a search.</p>
         affiliation_options:
           one: Faculty
           two: Staff
@@ -690,14 +674,6 @@ en:
           six: Other...
       ir:
         title: Incident Report
-        intro_html: >-
-                    <ul>
-                      <li><strong style="font-size: larger;">EMERGENCY</strong> - call 
-                      <strong style="font-size: larger;">1-1234</strong> <span style="padding-left:14px;">
-                      [Temple Campus Police: 215-204-1234]</span></li>
-                      <li>If this incident involves injury to Library staff or student assistant, a Worker’s 
-                      Compensation form needs to be filled out also.</li>
-                    </ul>
         incident_types:
           one: Vandalism
           two: Accident/Medical
@@ -733,17 +709,12 @@ en:
         supervisor_notified: Supervisor Notified
       ask_scrc:
         title: "Special Collections Research Center: Ask a Question"
-        intro: >-
-                If you are planning a research visit in the near future, please telephone us at 215-204-8257 to ask any 
-                questions you may have and to ensure the availability of the materials you wish to consult.
         comments_label: "What is your Question?"
         comments_hint: >-
                       Be sure to include names, locations, and dates that particularly pertinent to your research. 
                       Please list manuscript collections or print materials in which you are or may be interested.
       proxy_account:
         title: "Proxy Account"
-        intro_html: >-
-                    <p>A copy of this request will be sent to the Faculty/Administrator email address specified in the form.</p>
         faculty_admin_name: Faculty/Administrator Name
         faculty_admin_email: Faculty/Administrator Email
         faculty_admin_tuid: Faculty/Administrator TUid Number
@@ -753,11 +724,6 @@ en:
 
       library_instruction:
         title: "Request a Library Instruction Session"
-        intro_html: >-
-                    <p>Librarians can partner with instructors to help your students achieve course learning goals related to 
-                    research, information and digital literacy, and more. Invite a librarian to visit your in-person or online 
-                    class using this form. Your request will be forwarded to a subject librarian, and you can expect a response 
-                    within 48 hours.</p>
         course_title: Course Title
         course_code: Course Code (e.g,. SOC 0832)
         first_choice_date: First Choice Date
@@ -793,16 +759,6 @@ en:
 
       table_request:
         title: "Library Staff and Registered Student Organization Table Request"
-        intro_html: >-
-                    <p>Temple University Libraries Staff and Registered Student Organizations may place a request 
-                    for one (1) six foot table and two (2) chairs in the foyer of Charles Library at the Liacouras 
-                    Walk entrance. Requests must be placed at least two (2) days in advance and are subject to review, 
-                    and all requests will be prioritized on a first come, first serve basis.</p>
-                    <p>For Registered Student Organizations (RSOs): the tabling period should not exceed two (2) hours 
-                    and must be specified in the request, with one (1) group per tabling session. Displays on the table 
-                    may not involve electrical power or running water, and the table may not be moved or relocated. RSOs 
-                    are responsible for any damage to the table and chairs sustained during use, and any use in violation 
-                    of the library code of conduct will result in termination of the agreement.</p>
         group: Group/Organization
         comments: Reason for table and description of distributed materials
         preferred_date: Preferred Date
@@ -827,18 +783,6 @@ en:
 
       cac_internal:
         title: "Cultural Analytics Certificate Internal Application"
-        intro_html: >-
-                    <p>This form should be used by applicants currently enrolled in a Temple University graduate degree program.</p>
-                    <p><strong>Program Requirements</strong>:</p>
-                    <p>Students must complete nine credits of course work and a variable (0-1) credit Cultural Analytics Practicum to 
-                    complete the Certificate. The introductory course surveys the range of methods. Students then select two electives 
-                    in the focal area needed for their own research interests. Finally, students complete a final project of their own 
-                    design in the Practicum, a semester-long workshop offered by the Scholars Studio of Temple University Libraries. The 
-                    final project will be part of the dissertation or thesis and will be overseen by their academic adviser.</p>
-                    <p>Students may apply for admission to the program at any time. Applications received prior to the end of the add/drop 
-                    period may be considered for current semester. Otherwise application is for the upcoming semester. Once you complete the 
-                    form below you will be contacted by the CAC Program Director. If you have any questions about the certificate program, 
-                    please contact Adrienne Shaw at <a href="mailto:adrienne.shaw@temple.edu">adrienne.shaw@temple.edu</a>.</p>
         degree_program_label: "Degree Program"
         degree_program_options:
           phd: "Ph.D."
@@ -857,22 +801,6 @@ en:
 
       cac_external:
         title: "Cultural Analytics Certificate External Application"
-        intro_html: >-
-                    <p>This form should be used by applicants not currently enrolled in a Temple University graduate degree program.</p>
-                    <p><strong>Program Requirements</strong>:</p>
-                    <p>Students must take nine credits of course work and a one-credit Cultural Analytics Practicum to complete the 
-                    Certificate. The introductory course surveys the range of methods. Students then select two electives in the 
-                    focal area needed for their own research interests. Finally, students complete a project of their own design 
-                    in the Practicum, a semester-long workshop offered by the Scholars Studio of Temple University Libraries. Students 
-                    in the Practicum must also sign up for a one-credit independent study with a faculty member who can serve as an 
-                    academic advisor on their project.</p>
-                    <p>In addition to completing and submitting this form, students must have earned a B.A./B.S. or equivalent. Please 
-                    arrange for official transcripts for all coursework since high school to be sent to our program administrator: Marianne 
-                    Moll at <a href="mailto:marianne.moll@temple.edu">marianne.moll@temple.edu</a>.</p>
-                    <p>Applications must be received by August 1 to be eligible for admission beginning in the Fall semester. Once you 
-                    complete the form below and all supporting materials have been received you will be contacted by the CAC Program Director. 
-                    If you have any questions about the certificate program, please contact Adrienne Shaw at 
-                    <a href="mailto:adrienne.shaw@temple.edu">adrienne.shaw@temple.edu</a>.</p>
         bachelor_degree: "Have you earned a B.A./B.S. degree?"
         institution_of_dehgree: "Name of the Institution where your degree was earned"
         overall_gpa: "Overall B.A. GPA (4.0 scale)"
@@ -882,7 +810,6 @@ en:
                       how the tools of Cultural Analytics can contribute to their realization."
 
       event_space_request:
-        intro_html: Our Event Spaces are unavailable during the Spring and Summer 2021 semesters as they are being used as classrooms and as quiet study rooms for student use.
         title: "Charles Library Event Space Request"
         date_legend: "Event Dates/Times"
         date: "Date of Event"
@@ -924,37 +851,17 @@ en:
 
       graduate_locker_request:
         title: "Charles Library Graduate Studio Locker Request"
-        intro_html: >-
-                    <p>Lockers are available on a first-come/first-served basis for graduate students and faculty 
-                    in the Charles Library. Due to high demand and the limited number of lockers (32), we cannot 
-                    guarantee that a locker will be available to each patron who makes a request. We will email you 
-                    to let you know if a locker is available once we receive your request.</p>
-                    <p><a href="/spaces/29">4th floor Graduate/Faculty Study</a></p>
         temple_affiliation_options:
           graduate: Graduate
           faculty: Faculty
 
       partners_borrowing:
         title: "Partners Borrowing Privileges Application/Renewal"
-        intro_html: >-
-                    <p>Spouses/partners of current Temple University faculty and staff members may apply for a library 
-                    borrowing card that will allow them to borrow up to ten items at a time and 2-hour use of the guest 
-                    computers on the first floor of Charles Library.</p>
-                    <p>The spouse/partner borrowing card does not allow for off-site access to databases as the University 
-                    Libraries contracts with database vendors prohibit this. Once your application is received, and your 
-                    status is confirmed, it may take up to two weeks for you to receive your card in the mail.</p>
-                    <p>To begin this process, the sponsoring faculty/staff member must fill out the below form and submit 
-                    for approval.</p>
-                    <p>You may contact the Circulation/Reserve Unit of Charles Library at 215-204-8212 if you have any questions.</p>
         partner_name: Name of Spouse/Partner
         partner_email: Email of Spouse/Partner
 
       storage_request:
         title: "Recall item from Charles Library temporary storage"
-        intro_html: >-
-                    <p>Items recalled from Charles Library temporary storage will be pulled Monday through Friday and 
-                    require approximately 24 hours to retrieve. You will receive a notification when the item is on the 
-                    hold shelf ready for pick up.</p>
         call_number_hint: Please copy and paste from Library Search record if possible
 
       group_visit:
@@ -967,47 +874,6 @@ en:
         school_visit: If this is a school visit, please provide name of school, grade level, and age range of students
         referrer: Referred to us by (if applicable)
         comments: Provide any additional information about this request
-
-      review_protocol:
-        title: Temple Review Protocol
-        intro_html: >-
-                    <p>This is a required planning step performed a priori to a review or systematic review. This form 
-                    follows a modified version of the Prisma-P(extension) statement. If you are interested in registering 
-                    your protocol please visit Prospero or contact the library for help with protocol registration. This 
-                    protocol will be used solely for library purposes to help in constructing the literature search and it 
-                    will not be published or shared. All information shared is strictly held confidential. For questions 
-                    about this form, please contact Stephanie Roth 
-                    <a href="mail_to:stephanie.roth@temple.edu">stephanie.roth@temple.edu</a> or (215) 269-9469.</p>
-        protocol_title: Protocol Title
-        protocol_title_hint: (Please identify the type of review in the title, e.g. systematic review)
-        review_update: Is this an update of a previously published systematic review?
-        review_update_hint: If yes, list the PMID or DOI under Other.
-        rationale: Describe the rationale for the review in the context of what is already known.
-        explicit_statement: >-
-                            Provide an explicit statement of the question(s) the review will address with reference to 
-                            participants, interventions, comparators (if applicable), and outcomes (PICO) or similar format.
-        information_sources: Describe all intended information sources with planned dates of coverage.
-        information_sources_hint: >- 
-                    e.g., electronic databases, contact with study authors, trial registers, or other grey literature sources.
-        included_keywords: Present keywords that are relevant to your study.
-        excluded_keywords: Present keywords that you would like excluded from the study.
-        data_plan: What is your plan to manage and extract data for this review? What tools will you use to assist?
-        independent_reviewers: Will you be using two independent reviewers for study selection and screening?
-        independent_reviewers_hint: If yes, list the PMID or DOI under Other.
-        outcomes: List and define all outcomes for which data will be sought, including prioritization of main and additional outcomes, with rationale.
-        outcomes_hint: Include whether this will be done at the outcome or study level, or both; state how this information will be used in data synthesis.
-        quantitative_analysis: Will you be including a quantitative analysis (meta-analysis)?
-        bio_statistician: Are you working with a bio-statistician to combine data and create a summary measure of data?
-        summary_description: If quantitative synthesis is not appropriate, describe the type of summary planned.
-        evidence_assessment: Describe how the strength of the body of evidence will be assessed.
-        evidence_assessment_hint: e.g., GRADE
-        citations: Please include 3-5 citations that meet eligibility criteria and can be used to test the recall and precision of the search strategy.
-        librarian_contact: Are you interested in being contacted by a librarian to learn how you may choose to publish this protocol a priori to help minimize bias for your review?
-        authorship_permission: Do you grant authorship permission for the librarian working on your search and writing the search methodology statement?
-        other_reviews: Are there any competing or conflicting reviews?
-        other_reviews_hint: Please do a search to verify.
-        publication_journal: What journal do you plan to submit the completed review to for publication?
-        publication_journal_hint: If known.
 
       hidden_title_text: To change the title of this resource, please <a href=mailto:"tul-web-support@temple.edu">contact an administrator</a>.
 

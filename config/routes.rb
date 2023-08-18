@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :external_links
     resources :finding_aids
     resources :file_uploads
+    resources :form_infos
     resources :groups
     resources :highlights
     resources :library_hours
@@ -69,12 +70,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :exhibitions do
-      member do
-        post "detach" => :detach
-      end
-    end
-
     root to: "people#index"
 
   end
@@ -107,8 +102,6 @@ Rails.application.routes.draw do
   resources :services, only: [:index, :show], concerns: [:imageable]
   resources :spaces, only: [:index, :show], concerns: [:imageable]
   resources :webpages, only: [:index, :show]
-
-  get "forms", to: "forms#all", as: "forms_index"
 
   controller :blog_posts do
     get "blogposts/tags/:tag" => :index, as: "blog_post_tags"

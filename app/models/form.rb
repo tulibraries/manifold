@@ -5,6 +5,7 @@ class Form < MailForm::Base
   attribute :email
   attribute :comments
   attribute :form_type
+  attribute :recipients
   attribute :tu_id
   attribute :phone
   attribute :department
@@ -15,6 +16,8 @@ class Form < MailForm::Base
   attribute :substitute_edition
   attribute :author
   attribute :title
+  attribute :missing_title
+  attribute :recall_title
   attribute :year
   attribute :call_number
   attribute :isbn
@@ -151,31 +154,6 @@ class Form < MailForm::Base
   attribute :format_preference
   attribute :format_preference_other
 
-
-  def get_subject
-    @forms = {
-      "missing-book" => ["Missing Book Search Request", ["jhill@temple.edu", "eschiller@temple.edu"]],
-      "recall-book" => ["Request Recall of Books Already Checked Out", ["jhill@temple.edu", "eschiller@temple.edu"]],
-      "purchase-request" => ["Purchase Request",  ["jbrian@temple.edu", "tub82123@temple.edu "]],
-      "ask-scrc" => ["Special Collections Research Center: Ask a Question", "scrc@temple.edu"],
-      "ir" => ["Incident Report", ["richieh@temple.edu", "bells@temple.edu", "jhill@temple.edu"]],
-      "library-instruction" => ["Request a Library Instruction Session", ["cshanley@temple.edu"]],
-      "scrc-instruction" => ["SCRC Instruction Session/Visit Request", ["msly@temple.edu", "tuf12871@temple.edu", "scrc@temple.edu"]],
-      "proxy-account" => ["Proxy Account", ["jhill@temple.edu", "eschiller@temple.edu"]],
-      "table-request" => ["Library Staff and Registered Student Organization Table Request", ["john.pyle@temple.edu"]],
-      "filming-request" => ["Request Permission to Use the Libraries for Filming", ["bells@temple.edu", "adiamond@temple.edu", "richieh@temple.edu"]],
-      "event-space-request" => ["Charles Library Event Space Request", ["charlesrooms@temple.edu"]],
-      "graduate-locker-request" => ["Charles Library Graduate Studio Locker Request", ["mmoll@temple.edu"]],
-      "partners-borrowing" => ["Partners Borrowing Privileges Application/Renewal", ["jhill@temple.edu", "eschiller@temple.edu"]],
-      "storage-request" => ["Recall item from Charles Library temporary storage", ["jhill@temple.edu", "musial@temple.edu", "tuf16063@temple.edu", "libdepot@temple.edu"]],
-      "group-visit" => ["Group Visit Request", ["charlestours@temple.edu"]],
-      "review-protocol" => ["Temple Review Protocol", ["burstein@temple.edu", "stephanie.roth@temple.edu"]],
-      "exhibit-request" => ["Charles Library Exhibit Request", ["libraries@temple.edu", "evanw@temple.edu", "richieh@temple.edu"]]
-    }
-
-    @forms.fetch(form_type)
-  end
-
   # Some forms don't supply an email and name, so they we're failing
   def default_from_name
     name ? name : "Temple University Libraries"
@@ -189,8 +167,8 @@ class Form < MailForm::Base
   # in ActionMailer accepts.
   def headers
     {
-      subject: get_subject[0],
-      to: get_subject[1],
+      subject: title,
+      to: JSON.parse(recipients),
       cc: email,
       from: %("#{ default_from_name }" <#{ default_from_email }>)
     }

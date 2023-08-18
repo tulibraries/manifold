@@ -12,7 +12,7 @@
 
       <div class="row">
         <div class="col">
-          <h1>Create: <%= title t("manifold.forms.#{@type.underscore}.title") %></h1>
+          <h1><%= title @title %></h1>
         </div>
       </div>
 
@@ -26,12 +26,13 @@
 
       <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
+      <%= f.input :title, as: :hidden, input_html: { value: "#{@title}" } %>
       <%= f.input :recipients, as: :hidden, input_html: { value: "#{@recipients}" } %>
 
       <% unless ["event-space-request"].include? @type %> 
         <div class="row">
           <div class="col mx-3">
-            <fieldset class="fieldset-border mb-4;">
+            <fieldset class="fieldset-border mb-4">
               <legend class="fieldset-legend"><%= t("manifold.forms.shared.your_info") %></legend>
             <%= render "forms/#{@type}/personal_info", f: f %>
             </fieldset>

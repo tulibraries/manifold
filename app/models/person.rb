@@ -10,8 +10,6 @@ class Person < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  serialize :specialties
-
   paginates_per 20
 
   validates :first_name, :last_name, :job_title, presence: true
@@ -29,6 +27,15 @@ class Person < ApplicationRecord
   has_many :occupant, dependent: :destroy
   has_many :buildings, through: :occupant, source: :building
 
+  has_many :subject_specialties
+
+  accepts_nested_attributes_for(
+    :subject_specialties,
+    reject_if: :all_blank,
+    allow_destroy: false
+  )
+
+    
   def slug_candidates
     [
       :name,

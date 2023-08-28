@@ -95,12 +95,12 @@
   </div>
 
   <div class="col-12 col-lg-3">
-    <% if @person.specialties.present? %>
+    <% if @person.subjects.present? %>
       <div class="subject-list text-start">
       <h2 class="label"><%= t("manifold.people.show.subjects") %></h2>
         <ul class="list-unstyled">
-          <% @person.specialties.each do |s| %>
-            <li><%= s %></li>
+          <% @person.subjects.order(:name).each do |s| %>
+            <li><%= s.name %></li>
           <% end %>
         </ul>
       </div>

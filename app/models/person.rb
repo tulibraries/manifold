@@ -27,14 +27,8 @@ class Person < ApplicationRecord
   has_many :occupant, dependent: :destroy
   has_many :buildings, through: :occupant, source: :building
 
-  has_many :subject_specialties
-
-  accepts_nested_attributes_for(
-    :subject_specialties,
-    reject_if: :all_blank,
-    allow_destroy: false
-  )
-
+  has_many :subject_specialties, dependent: nil
+  has_many :subjects, through: :subject_specialties, source: :subject
     
   def slug_candidates
     [
@@ -48,14 +42,14 @@ class Person < ApplicationRecord
     first_name_changed? || last_name_changed? || job_title_changed? || slug.blank?
   end
 
-  scope :is_specialist, ->(specialists) {
-    where.not(specialties: []) if specialists.present? && specialists == "true"
+  scope :is_specialist, -> {
+    joins(:subjects).where.not(subjects: []).distinct.order([:last_name, :first_name])
   }
 
-  scope :specialists, -> { where.not(specialties: []).sort_by { |p| [p.last_name, p.first_name] } }
+  # scope :specialists, -> { where.not(subjects: []).sort_by { |p| [p.last_name, p.first_name] } }
 
-  scope :with_specialty, ->(specialty) {
-    where("specialties LIKE ?", "%#{specialty}%") if specialty.present?
+  scope :with_specialty, ->(subject) {
+    joins(:subjects).where(subjects: { name: subject }).distinct if subject.present?
   }
 
   scope :in_department, ->(group) {
@@ -65,6 +59,7 @@ class Person < ApplicationRecord
   scope :at_location, ->(building_id) {
     includes(:buildings).where(buildings: { "slug" => building_id }) if building_id.present?
   }
+  
 
   def name
     "#{first_name} #{last_name}"
@@ -75,8 +70,8 @@ class Person < ApplicationRecord
   end
 
   def burpSpecialties
-    if self.specialties.is_a? Array
-      self.specialties.reject! { |s| s.empty? }
+    if self.subject_specialties.is_a? Array
+      self.subject_specialties.reject! { |s| s.empty? }
     end
   end
 
@@ -90,3 +85,5 @@ class Person < ApplicationRecord
     end
   end
 end
+
+

@@ -49,7 +49,7 @@ class PersonsController < ApplicationController
 
   def get_specialty_filter_values(people)
     people
-      .map(&:specialties)
+      .map { |p| p.subjects.collect { |s| [s.name, s.name] }}
       .compact
       .flatten
       .sort
@@ -68,18 +68,20 @@ class PersonsController < ApplicationController
   def get_persons
     if params[:search].present?
       @filtered_persons = Person.search(params[:search])
+    elsif params[:specialists].present? && params[:specialists] == "true"
+      @filtered_persons = Person.is_specialist
+    elsif params[:specialty].present?
+      @filtered_persons = Person.with_specialty(params[:specialty])
+    elsif params[:department]
+      @filtered_persons = Person.in_department(params[:department])
     else
-      @filtered_persons = Person
-      .is_specialist(params[:specialists])
-      .with_specialty(params[:specialty])
-      .in_department(params[:department])
-      .order(:last_name, :first_name)
+      @filtered_persons = Person.all
     end
-    @persons_list = @filtered_persons.page(params[:page])
+    @persons_list = @filtered_persons.order(:last_name, :first_name).page(params[:page])
   end
 
   def specialists_print
-    @persons_list = Person.specialists
+    @persons_list = Person.is_specialist
   end
 
   private

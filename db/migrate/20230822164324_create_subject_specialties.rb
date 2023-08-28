@@ -3,10 +3,8 @@
 class CreateSubjectSpecialties < ActiveRecord::Migration[7.0]
   def change
     create_table :subject_specialties do |t|
-      t.string :name
-      t.string :slug
       t.integer :person_id
-      t.index :name, unique: true
+      t.integer :subject_id
 
       t.timestamps
     end

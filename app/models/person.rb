@@ -19,7 +19,6 @@ class Person < ApplicationRecord
   auto_strip_attributes :email_address
 
   before_validation :normalize_phone_number
-  before_validation :burpSpecialties
 
   has_many :member, dependent: :destroy
   has_many :groups, through: :member, source: :group
@@ -67,12 +66,6 @@ class Person < ApplicationRecord
 
   def label
     name
-  end
-
-  def burpSpecialties
-    if self.subject_specialties.is_a? Array
-      self.subject_specialties.reject! { |s| s.empty? }
-    end
   end
 
   def self.search(q)

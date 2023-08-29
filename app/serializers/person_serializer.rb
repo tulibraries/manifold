@@ -12,7 +12,7 @@ class PersonSerializer < ApplicationSerializer
                                                       action: :show,
                                                       id: the_object.to_param) }
 
-  attributes :name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties
+  attributes :name, :first_name, :last_name, :job_title, :email_address, :phone_number
 
   has_many :groups
   has_many :buildings

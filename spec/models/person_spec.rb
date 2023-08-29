@@ -89,13 +89,6 @@ RSpec.describe Person, type: :model do
     end
   end
 
-  describe "specialties" do
-    it "cleans out empty arrays" do
-      person = FactoryBot.create(:person, buildings: [building], specialties: ["a", "", "b"])
-      expect(person.specialties).to match_array(["a", "b"])
-    end
-  end
-
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
 end

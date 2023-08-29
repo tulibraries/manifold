@@ -49,7 +49,7 @@ class PersonsController < ApplicationController
 
   def get_specialty_filter_values(people)
     people
-      .map { |p| p.subjects.collect { |s| [s.name, s.name] }}
+      .map { |p| p.subjects.collect { |s| [s.name, s.name] } }
       .compact
       .flatten
       .sort

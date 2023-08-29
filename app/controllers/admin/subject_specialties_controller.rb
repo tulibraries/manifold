@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class SubjectSpecialtiesController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
@@ -11,7 +13,7 @@ module Admin
         redirect_to :admin_subject_specialties, notice:
       end
     end
-    
+
     # def update
     #   super
     #   send_foo_updated_email(requested_resource)

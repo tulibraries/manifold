@@ -28,7 +28,7 @@ class Person < ApplicationRecord
 
   has_many :subject_specialties, dependent: nil
   has_many :subjects, through: :subject_specialties, source: :subject
-    
+
   def slug_candidates
     [
       :name,
@@ -58,7 +58,7 @@ class Person < ApplicationRecord
   scope :at_location, ->(building_id) {
     includes(:buildings).where(buildings: { "slug" => building_id }) if building_id.present?
   }
-  
+
 
   def name
     "#{first_name} #{last_name}"
@@ -78,5 +78,3 @@ class Person < ApplicationRecord
     end
   end
 end
-
-

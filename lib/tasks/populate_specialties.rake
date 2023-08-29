@@ -8,17 +8,17 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
       Person.where.not(specialties: nil).each do |p|
         # stdout_and_log("#{p.label}")
         s = p.specialties
-        s = s.gsub("--- []","")
-        s = s.gsub("---\n- ","")
-        s = s.gsub("\n- ","|")
-        s = s.gsub("\n","")
+        s = s.gsub("--- []", "")
+        s = s.gsub("---\n- ", "")
+        s = s.gsub("\n- ", "|")
+        s = s.gsub("\n", "")
         s = s.split("|")
         s = s.reject(&:empty?)
 
         s.each do |sp|
           p.subjects.push Subject.find_by(name: sp)
         end if s.first != " []"
-        
+
         p.save!
       end
     end

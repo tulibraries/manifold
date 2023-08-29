@@ -652,7 +652,8 @@ en:
           two: Newspaper
           three: Journal/Magazine
           four: Video
-          five: Other...
+          five: Data Set
+          six: Other...
         source_of_information: Source of Information
         source_of_information_hint: (Indicate catalog, research database, bibliography or other source)
         reason_for_purchase: Reason for Purchase

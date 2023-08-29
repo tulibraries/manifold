@@ -94,7 +94,7 @@ class WebpageDashboard < Administrate::BaseDashboard
   end
 
 
-  def permitted_attributes
-    super + [:draft_description, :publish]
-  end
+  # def permitted_attributes
+  #   super + [:draft_description, :publish]
+  # end
 end

@@ -160,6 +160,12 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.2.0)
       railties (>= 6.0.0)
+    database_cleaner (2.0.2)
+      database_cleaner-active_record (>= 2, < 3)
+    database_cleaner-active_record (2.1.0)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.3.3)
     declarative (0.0.20)
     devise (4.9.2)
@@ -652,6 +658,7 @@ DEPENDENCIES
   cancancan (~> 3.5)
   capybara (>= 2.15)
   cssbundling-rails
+  database_cleaner
   devise
   diffy
   dotenv-rails

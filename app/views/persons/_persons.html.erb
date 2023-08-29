@@ -33,16 +33,16 @@
               </div>
               
               <div class="d-none d-md-block col-5">
-                <% if person.specialties.present? %>
+                <% if person.subjects.any? %>
                 <p class="mb-1 label">
                   <%= t("manifold.people.show.subjects") %>
                 </p>
                 <ul class="list-unstyled index-specialties">
-                  <% person.specialties.each do |s| %>
-                    <li><%= s %></li>
+                  <% person.subjects.order(:name).each do |s| %>
+                    <li><%= s.name %></li>
                   <% end %>
                 </ul>
-              <% end %>
+                <% end %>
             </div>
 
             </div>

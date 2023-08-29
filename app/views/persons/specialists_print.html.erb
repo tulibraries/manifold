@@ -40,8 +40,8 @@
         <div class="col-6 mt-md-5">
         <h3>Subject Specialties</h3>
           <ul>
-          <% person.specialties.each do |specialty| %>
-            <li><%= specialty %></li>
+          <% person.subject_specialties.each do |specialty| %>
+            <li><%= specialty.subject.name %></li>
           <% end %>
           </ul>
         </div>

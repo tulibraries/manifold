@@ -6,9 +6,8 @@ RSpec.feature "People", type: :feature do
 
   describe "Specialist" do
     before(:all) do
-      @person1 = FactoryBot.create(:person)
-      @person2 = FactoryBot.create(:person, specialties: [])
-      @person3 = FactoryBot.create(:person, specialties: nil)
+      @person1 = FactoryBot.create(:person, :with_subjects)
+      @person2 = FactoryBot.create(:person)
     end
 
     after(:all) do
@@ -20,14 +19,12 @@ RSpec.feature "People", type: :feature do
       within(".staff-index") do
         expect(page).to have_content(@person1.email_address)
         expect(page).to have_content(@person2.email_address)
-        expect(page).to have_content(@person3.email_address)
       end
 
       visit("/people?specialists=true")
       within(".staff-index") do
         expect(page).to have_content(@person1.email_address)
         expect(page).to_not have_content(@person2.email_address)
-        expect(page).to_not have_content(@person3.email_address)
       end
     end
   end

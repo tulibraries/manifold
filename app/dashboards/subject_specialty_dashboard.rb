@@ -12,6 +12,8 @@ class SubjectSpecialtyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    people: Field::HasMany,
+    person_id: Field::Number,
     slug: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -31,6 +33,9 @@ class SubjectSpecialtyDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
+    people
+    person_id
+    slug
     created_at
     updated_at
   ].freeze
@@ -40,6 +45,9 @@ class SubjectSpecialtyDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
+    people
+    person_id
+    slug
   ].freeze
 
   # COLLECTION_FILTERS
@@ -54,7 +62,7 @@ class SubjectSpecialtyDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how subject specialties are displayed
+  # Overwrite this method to customize how subjects are displayed
   # across all pages of the admin dashboard.
   #
   def display_resource(subject_specialty)

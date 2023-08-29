@@ -45,8 +45,6 @@ class Person < ApplicationRecord
     joins(:subjects).where.not(subjects: []).distinct.order([:last_name, :first_name])
   }
 
-  # scope :specialists, -> { where.not(subjects: []).sort_by { |p| [p.last_name, p.first_name] } }
-
   scope :with_specialty, ->(subject) {
     joins(:subjects).where(subjects: { name: subject }).distinct if subject.present?
   }

@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :services
     resources :snippets
     resources :spaces
-    resources :subject_specialties
+    resources :subjects
     resources :webpages
 
     resource :events do

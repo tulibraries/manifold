@@ -23,7 +23,7 @@
       <% if field.attribute == :slug %>
         <p><%= t("manifold.default.fields.string.slugs").html_safe %></p>
       <% end %>
-      <% if (field.attribute == :name || field.attribute == :title) && (field.resource.class.to_s != "SubjectSpecialty") %>
+      <% if (field.attribute == :name || field.attribute == :title) %>
         <p><%= t("manifold.default.fields.string.renaming") %></p>
       <% end %>
       <% if field.attribute == :tutorial_path %>

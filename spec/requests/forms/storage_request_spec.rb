@@ -12,7 +12,7 @@ RSpec.describe "Recall item from Charles Library temporary storage", type: :requ
   let(:form_params) {
     {
       title:, recipients:, name: "1234567890", tu_id: "test_id", email: "test@dept.edu",
-      title: "test title", call_number: "test-123 p.1", pickup_location: "Ambler"
+      book_title: "test title", call_number: "test-123 p.1", pickup_location: "Ambler"
     }
   }
 

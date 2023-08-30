@@ -301,4 +301,8 @@ class WebpagesController < ApplicationController
       end
       @categories = @webpage.categories unless @webpage.nil?
     end
+
+    def permitted_attributes
+      super + [:draft_description, :publish]
+    end
 end

@@ -20,7 +20,7 @@ RSpec.describe "Purchase Request", type: :request do
       material_type: "x",
       material_type_other: "x",
       author: "x",
-      title: "x",
+      book_title: "x",
       year: "x",
       publisher: "x",
       format_preference: "x",

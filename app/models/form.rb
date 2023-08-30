@@ -16,6 +16,7 @@ class Form < MailForm::Base
   attribute :substitute_edition
   attribute :author
   attribute :title
+  attribute :book_title
   attribute :missing_title
   attribute :recall_title
   attribute :year

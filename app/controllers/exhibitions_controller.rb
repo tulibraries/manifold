@@ -20,4 +20,8 @@ class ExhibitionsController < ApplicationController
       @exhibition = find_instance
       return redirect_or_404(@exhibition)
     end
+
+    def permitted_attributes
+      super + [:draft_description, :publish]
+    end
 end

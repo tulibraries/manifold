@@ -69,9 +69,4 @@ class PolicyDashboard < Administrate::BaseDashboard
   def display_resource(policy)
     "#{policy.name}"
   end
-
-
-  def permitted_attributes
-    super + [:draft_description, :publish]
-  end
 end

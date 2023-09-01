@@ -29,4 +29,8 @@ class CollectionsController < ApplicationController
       @categories = @collection.categories unless @collection.nil?
       return redirect_or_404(@collection)
     end
+
+    def permitted_attributes
+      super + [:draft_description, :publish]
+    end
 end

@@ -72,4 +72,8 @@ class FindingAidsController < ApplicationController
       end
       return redirect_or_404 (@finding_aid)
     end
+
+    def permitted_attributes
+      super + [:draft_description, :publish]
+    end
 end

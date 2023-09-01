@@ -82,9 +82,4 @@ class ExhibitionDashboard < Administrate::BaseDashboard
   def display_resource(exhibition)
     "#{exhibition.title}"
   end
-
-
-  def permitted_attributes
-    super + [:draft_description, :publish]
-  end
 end

@@ -20,7 +20,7 @@ RSpec.describe PersonSerializer do
     end
 
     it "has the expected attributes" do
-      expect(data[:attributes].keys).to include(:name, :first_name, :last_name, :job_title, :email_address, :phone_number, :specialties,
+      expect(data[:attributes].keys).to include(:name, :first_name, :last_name, :job_title, :email_address, :phone_number,
                                                 :label, :updated_at)
     end
 

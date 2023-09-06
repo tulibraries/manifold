@@ -92,9 +92,4 @@ class WebpageDashboard < Administrate::BaseDashboard
   def display_resource(webpage)
     webpage.title
   end
-
-
-  def permitted_attributes
-    super + [:draft_description, :publish]
-  end
 end

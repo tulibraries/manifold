@@ -29,4 +29,8 @@ class ServicesController < ApplicationController
       @categories = @service.categories unless @service.nil?
       return redirect_or_404(@service)
     end
+
+    def permitted_attributes
+      super + [:draft_description, :draft_access_description, :publish]
+    end
 end

@@ -10,8 +10,6 @@ class Person < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  serialize :specialties
-
   paginates_per 20
 
   validates :first_name, :last_name, :job_title, presence: true
@@ -21,13 +19,15 @@ class Person < ApplicationRecord
   auto_strip_attributes :email_address
 
   before_validation :normalize_phone_number
-  before_validation :burpSpecialties
 
   has_many :member, dependent: :destroy
   has_many :groups, through: :member, source: :group
 
   has_many :occupant, dependent: :destroy
   has_many :buildings, through: :occupant, source: :building
+
+  has_many :subject_specialties, dependent: nil
+  has_many :subjects, through: :subject_specialties, source: :subject
 
   def slug_candidates
     [
@@ -41,14 +41,12 @@ class Person < ApplicationRecord
     first_name_changed? || last_name_changed? || job_title_changed? || slug.blank?
   end
 
-  scope :is_specialist, ->(specialists) {
-    where.not(specialties: []) if specialists.present? && specialists == "true"
+  scope :is_specialist, -> {
+    joins(:subjects).where.not(subjects: []).distinct.order([:last_name, :first_name])
   }
 
-  scope :specialists, -> { where.not(specialties: []).sort_by { |p| [p.last_name, p.first_name] } }
-
-  scope :with_specialty, ->(specialty) {
-    where("specialties LIKE ?", "%#{specialty}%") if specialty.present?
+  scope :with_specialty, ->(subject) {
+    joins(:subjects).where(subjects: { name: subject }).distinct if subject.present?
   }
 
   scope :in_department, ->(group) {
@@ -59,18 +57,13 @@ class Person < ApplicationRecord
     includes(:buildings).where(buildings: { "slug" => building_id }) if building_id.present?
   }
 
+
   def name
     "#{first_name} #{last_name}"
   end
 
   def label
     name
-  end
-
-  def burpSpecialties
-    if self.specialties.is_a? Array
-      self.specialties.reject! { |s| s.empty? }
-    end
   end
 
   def self.search(q)

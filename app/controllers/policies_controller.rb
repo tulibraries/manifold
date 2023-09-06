@@ -27,4 +27,8 @@ class PoliciesController < ApplicationController
       @policy = find_instance
       return redirect_or_404(@policy)
     end
+
+    def permitted_attributes
+      super + [:draft_description, :publish]
+    end
 end

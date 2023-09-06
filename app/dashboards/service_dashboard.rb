@@ -86,9 +86,4 @@ class ServiceDashboard < Administrate::BaseDashboard
   def display_resource(service)
     "#{service.title}"
   end
-
-
-  def permitted_attributes
-    super + [:draft_description, :draft_access_description, :publish]
-  end
 end

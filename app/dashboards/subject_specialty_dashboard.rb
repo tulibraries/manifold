@@ -2,7 +2,7 @@
 
 require "administrate/base_dashboard"
 
-class PolicyDashboard < Administrate::BaseDashboard
+class SubjectSpecialtyDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -12,14 +12,9 @@ class PolicyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    people: Field::HasMany,
+    person_id: Field::Number,
     slug: Field::String,
-    description: DescriptionField,
-    draft_description: DescriptionField.with_options(admin_only: true),
-    effective_date: Field::DateTime,
-    expiration_date: Field::DateTime,
-    categories: Field::HasMany,
-    accounts: Field::HasMany.with_options(admin_only: true),
-    covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -29,44 +24,48 @@ class PolicyDashboard < Administrate::BaseDashboard
   #
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
-  COLLECTION_ATTRIBUTES = [
-    :id,
-    :name,
-    :categories,
-    :effective_date,
+  COLLECTION_ATTRIBUTES = %i[
+    name
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = [
-    :covid_alert,
-    :name,
-    :id,
-    :description,
-    :effective_date,
-    :expiration_date,
-    :categories,
-    :accounts,
-    :created_at,
-    :updated_at,
+  SHOW_PAGE_ATTRIBUTES = %i[
+    id
+    name
+    people
+    person_id
+    slug
+    created_at
+    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = [
-    :name,
-    :slug,
-    :description,
-    :draft_description,
-    :effective_date,
-    :expiration_date,
-    :categories,
-    :accounts,
-    :covid_alert
+  FORM_ATTRIBUTES = %i[
+    name
+    people
+    person_id
+    slug
   ].freeze
 
-  def display_resource(policy)
-    "#{policy.name}"
+  # COLLECTION_FILTERS
+  # a hash that defines filters that can be used while searching via the search
+  # field of the dashboard.
+  #
+  # For example to add an option to search for open resources by typing "open:"
+  # in the search field:
+  #
+  #   COLLECTION_FILTERS = {
+  #     open: ->(resources) { resources.where(open: true) }
+  #   }.freeze
+  COLLECTION_FILTERS = {}.freeze
+
+  # Overwrite this method to customize how subjects are displayed
+  # across all pages of the admin dashboard.
+  #
+  def display_resource(subject_specialty)
+    subject_specialty.name
   end
 end

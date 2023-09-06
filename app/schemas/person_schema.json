@@ -127,17 +127,17 @@
               ],
               "pattern": "^(.*)$"
             },
-            "specialties": {
-              "$id": "#/properties/data/properties/attributes/properties/specialties",
+            "subjects": {
+              "$id": "#/properties/data/properties/attributes/properties/subjects",
               "type": "array",
               "title": "The Specialties Schema",
               "items": {
-                "$id": "#/properties/data/properties/attributes/properties/specialties/items",
+                "$id": "#/properties/data/properties/attributes/properties/subjects/items",
                 "type": "string",
                 "title": "The Items Schema",
                 "default": "",
                 "examples": [
-                  ""
+                  "Art"
                 ],
                 "pattern": "^(.*)$"
               }

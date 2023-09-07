@@ -789,6 +789,8 @@ en:
         temple_course_project: Is This for a Temple Course Project?
         additional_crew_name: Name of One Additional Crew Member
         additional_email: Crew Member Email
+        total_number_of_production_members: Total Number of Production Members
+        mobile_telephone_number_of_the_key_crew_member: Mobile Telephone Number of the Key Crew Member
 
       cac_internal:
         title: "Cultural Analytics Certificate Internal Application"

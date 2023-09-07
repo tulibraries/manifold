@@ -21,7 +21,7 @@ The form will be rendered as nested_from to parent relationship.
     <legend><%= t "helpers.label.#{f.object_name}.#{field.name}", default: field.name.titleize %></legend>
     <% field.nested_form.attributes.each do |attribute| -%>
       <div class="field-unit field-unit--<%= attribute.html_class %>">
-          <%= f.select(field.attribute_key, nil, {include_blank: true}, {multiple: true}.merge(field.html_attributes)) do %>
+          <%= f.select(field.attribute_key, nil, {include_blank: true}.merge(field.html_attributes)) do %>
             <%= options_for_select(field.associated_resource_options.sort, field.selected_options) %>
           <% end %>
       </div>

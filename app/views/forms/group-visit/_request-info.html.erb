@@ -1,4 +1,7 @@
-<%= f.input :description, as: :text, label: t("manifold.forms.group_visit.description"), required: true %>
+<%= f.input :reason_for_request, as: :select, 
+                                  collection: t("manifold.forms.group_visit.request_reasons").map{ |k,v| v }, 
+                                  label: t("manifold.forms.group_visit.reason_for_request"),
+                                  required: true %>
 <%= f.input :requested_date, as: :text, label: t("manifold.forms.group_visit.requested_date"), 
             required: true %>
 <%= f.input :attendees, as: :integer, label: t("manifold.forms.group_visit.attendees"), 

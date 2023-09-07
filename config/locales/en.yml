@@ -12,6 +12,7 @@ en:
         accounts: "Individual Owners"
       collection:
         accounts: "Individual Owners"
+        subject: Subjects
       event:
         suppress: Hide from display
       exhibition:

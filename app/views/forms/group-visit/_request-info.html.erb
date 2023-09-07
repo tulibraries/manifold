@@ -2,13 +2,13 @@
                                   collection: t("manifold.forms.group_visit.request_reasons").map{ |k,v| v }, 
                                   label: t("manifold.forms.group_visit.reason_for_request"),
                                   required: true %>
+<%= f.input :school_visit, as: :text, label: t("manifold.forms.group_visit.school_visit"), 
+            required: true %>
 <%= f.input :requested_date, as: :text, label: t("manifold.forms.group_visit.requested_date"), 
             required: true %>
 <%= f.input :attendees, as: :integer, label: t("manifold.forms.group_visit.attendees"), 
             required: true %>
 <%= f.input :minors, as: :radio_buttons, label: t("manifold.forms.group_visit.minors"), 
-            required: true %>
-<%= f.input :school_visit, as: :text, label: t("manifold.forms.group_visit.school_visit"), 
             required: true %>
 <%= f.input :referrer, label: t("manifold.forms.group_visit.referrer") %>
 <%= f.input :comments, as: :text, label: t("manifold.forms.group_visit.comments") %>

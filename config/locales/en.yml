@@ -238,6 +238,8 @@ en:
           exhibit_temple_connection_description: Temple Connection
           exhibit_policies_acknowledgement: Policies Acknowledgement
           format_preference: Format Preference
+          total_number_of_production_members: Total Number of Production Members
+          mobile_telephone_number_of_the_key_crew_member: Mobile Telephone Number of the Key Crew Member
             
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"

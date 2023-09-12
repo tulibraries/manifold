@@ -31,9 +31,6 @@ class Group < ApplicationRecord
   has_many :group_contact, dependent: :destroy
   has_many :chair_dept_heads, through: :group_contact, source: :person
 
-  has_many :service_group, dependent: :destroy
-  has_many :related_services, through: :service_group, source: :service
-
   scope :is_department, -> { where("group_type = ?", "Department") }
 
   def slug_candidates

@@ -87,16 +87,7 @@ class GroupDashboard < BaseDashboard
   # Overwrite this method to customize how groups are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(group)
-  #   "Group ##{group.id}"
-  # end
   def display_resource(group)
     "#{group.name}"
-  end
-
-  # permitted for has_many_attached
-  def permitted_attributes
-    # super + [documents: []]
-    super
   end
 end

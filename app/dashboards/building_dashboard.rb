@@ -21,7 +21,7 @@ class BuildingDashboard < BaseDashboard
     coordinates: Field::String.with_options(admin_only: true),
     google_id: Field::String.with_options(admin_only: true),
     hours: HoursField.with_options(admin_only: true),
-    phone_number: PhoneField,
+    phone_number: PhoneField.with_options(required: true),
     email: Field::Email,
     policies: Field::HasMany,
     external_link: Field::BelongsTo.with_options(order: "title"),

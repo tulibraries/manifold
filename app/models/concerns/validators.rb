@@ -10,14 +10,6 @@ module Validators
     end
   end
 
-  class PhoneNumberValidator < ActiveModel::EachValidator
-    def validate_each(record, attribute, value)
-      unless value =~ /\d{10}/i
-        record.errors.add attribute, (options[:message] || I18n.t("manifold.error.invalid_phone_format"))
-      end
-    end
-  end
-
   class GroupTypeValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       unless Rails.configuration.group_types.include?(value)

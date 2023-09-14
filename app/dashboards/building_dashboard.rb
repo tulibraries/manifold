@@ -21,7 +21,7 @@ class BuildingDashboard < BaseDashboard
     coordinates: Field::String.with_options(admin_only: true),
     google_id: Field::String.with_options(admin_only: true),
     hours: HoursField.with_options(admin_only: true),
-    phone_number: PhoneField.with_options(required: true),
+    phone_number: PhoneField,
     email: Field::Email,
     policies: Field::HasMany,
     external_link: Field::BelongsTo.with_options(order: "title"),
@@ -90,6 +90,6 @@ class BuildingDashboard < BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(building)
-    "#{building.name}"
+    building.name
   end
 end

@@ -7,6 +7,7 @@ manifold manages, orchestrates, and displays data about Temple University Librar
 
 - Ruby 2.7.2
 - Postgres >= 9.5
+- ImageMagick
 
 ##  Getting Started
 

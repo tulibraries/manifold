@@ -44,7 +44,7 @@ sudo npm install -g ajv-cli
 * Create database tables
 
 ```
-bundle exec rake db:migrate
+bundle exec rails db:migrate
  ```
 
 * Seed initial user from the command line. Note that the email address should be a TUAccess email address.
@@ -95,7 +95,7 @@ bundle exec rspec spec
 * Run the application
 
 ```
-bundle exec rails server
+bin/dev
 ```
 
 * On your browser, navigate to `http:localhost:3000`.
@@ -257,5 +257,5 @@ export MANIFOLD_DRAFTABLE=true
 or command line for developement:
 
 ```bash
-MANIFOLD_DRAFTABLE=true bundle exec rails server
+MANIFOLD_DRAFTABLE=true bin/dev
 ```

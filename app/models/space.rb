@@ -17,20 +17,17 @@ class Space < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  validates :name, presence: true
   has_rich_text :description
   has_rich_text :draft_description
   has_rich_text :covid_alert
   has_rich_text :accessibility
 
+  belongs_to :external_link, optional: true
+  belongs_to :building
   validates :building_id, presence: true
+  validates :name, presence: true
 
   auto_strip_attributes :email
-
-  before_validation :normalize_phone_number
-
-  belongs_to :building
-  belongs_to :external_link, optional: true
 
   has_ancestry
 

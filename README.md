@@ -37,8 +37,8 @@ bundle install
 
 ```
 sudo apt-get -y install npm
-sudo npm install -g ajv
-sudo npm install -g ajv-cli
+sudo npm install -g ajv@6.12.6
+sudo npm install -g ajv-cli@3.3.0
 ```
 
 * Create database tables

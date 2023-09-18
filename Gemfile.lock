@@ -284,7 +284,7 @@ GEM
       multi_json (~> 1.15)
       rack (>= 2.2, < 4)
       rdf (~> 3.3)
-    json-schema (4.0.0)
+    json-schema (4.1.1)
       addressable (>= 2.8)
     jwt (2.7.1)
     kaminari (1.2.2)

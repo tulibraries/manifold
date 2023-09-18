@@ -14,6 +14,7 @@ module Panopto
         @type = args.first[:type]
         @collection = args.first[:collection]
         @video_id = args.first[:video_id]
+        @query = args.first[:query]
         key = ENV["PANOPTO_API_USER"]
         code = ENV["PANOPTO_API_KEY"]
         auth = { username: key, password: code }
@@ -50,12 +51,11 @@ module Panopto
         video_call = panopto_api_call(["playlists", "sessions"], "98a7258a-f81f-48c1-8541-af1900e5a7af")
         videos = get_video_categories(video_call)
       when "collection"
-        # binding.pry
         videos = videos_list(@categories.fetch(@collection))
       when "show"
         video = video_show(@video_id)
       when "search"
-        videos = videos_list(@categories.fetch(@query))
+        videos = videos_search(@query)
       end
     end
 
@@ -154,35 +154,17 @@ module Panopto
         end
       end
 
-      # def videos_search
-      #   page_results = []
-      #   more = false
-      #   i = 0
-      #   if params[:q].blank?
-      #     return redirect_to(webpages_videos_all_path)
-      #   else
-      #     page_results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
-      #     if page_results.present?
-      #       @videos = page_results[:Results]
-      #       more = true if @videos.size == 50
-      #       while more
-      #         page_results = nil
-      #         i += 1
-      #         results = panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
-      #         page_results = results[:Results] if results.present? && results[:Results].size > 0 && results[:Results].size <= 50
-
-      #         if page_results.present?
-      #           @videos += page_results
-      #         end
-
-      #         more = (page_results.present? && page_results.size == 50) ? true : false
-      #       end
-      #       @categoryTitle = "your search for: <span style=\"color:#A41E35;\">\"#{params[:q]}\"</span> returned #{@videos.count} results"
-      #     else
-      #       @categoryTitle = "your search for: <span style=\"color:#A41E35;\">\"#{params[:q]}\"</span> returned 0 results"
-      #     end
-      #   end
-      # end
+      def videos_search(query)
+        if query.present?
+          page_results = panopto_api_call(["folders", "sessions", "search", query, nil], "e2753a7a-85c2-4d00-a241-aecf00393c25")
+          if page_results.present?
+            videos = page_results[:Results]
+          else
+            return redirect_to(webpages_videos_all_path)
+          end
+          @videos = [query, videos.size, videos]
+        end
+      end
 
       def stdout_and_log(message, level: :info)
         @log = Logger.new("log/video-api.log")

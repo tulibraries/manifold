@@ -1,0 +1,30 @@
+<div class="container-lg mt-3" id="videos-index">
+
+  <div class="row backlink">
+    <div class="col">
+      <%= link_to t("manifold.webpages.videos.breadcrumb"), webpages_videos_all_path %> 
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-lg-10 offset-lg-1 px-5">
+      <iframe src=<%= @video_src %> height="640px" width="100%" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+
+<div class="row">
+	<div class="col-lg-10 offset-lg-1 px-5">
+		<div id="featuredTitle" class="m-auto"><%= @video_name %></div>
+	</div>
+</div>
+
+  <% if @video_description.present? %>
+  <div class="row">
+    <div class="col video-description mt-3 mx-5">
+      <hr >
+      <%= sanitize @video_description.html_safe %>
+    </div>
+  </div>
+  <% end %>
+
+</div>

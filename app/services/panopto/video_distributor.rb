@@ -13,6 +13,7 @@ module Panopto
       begin
         @type = args.first[:type]
         @collection = args.first[:collection]
+        @video_id = args.first[:video_id]
         key = ENV["PANOPTO_API_USER"]
         code = ENV["PANOPTO_API_KEY"]
         auth = { username: key, password: code }
@@ -52,9 +53,9 @@ module Panopto
         # binding.pry
         videos = videos_list(@categories.fetch(@collection))
       when "show"
-        videos = videos_list(@categories.fetch(params[:id]))
+        video = video_show(@video_id)
       when "search"
-        videos = videos_list(@categories.fetch(params[:id]))
+        videos = videos_list(@categories.fetch(@query))
       end
     end
 
@@ -119,16 +120,12 @@ module Panopto
       end
 
       def videos_list(collection)
-        # video_call = panopto_api_call(["playlists", "sessions", nil, nil, 1], collection[2])
-
         page_results = []
         more = false
         i = 0
-        # @category = get_video_categories.select { |c| c[0] == params[:collection] }.first
 
         if collection.present?
           page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
-          # binding.pry
           @videos = page_results[:Results]
           more = true if @videos.size == 50
           while more
@@ -142,26 +139,20 @@ module Panopto
               @videos += page_results
             end
           end
-          @videos
+          [collection[1], @videos]
         else
           return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video list.")
         end
       end
 
-      # def videos_show
-      #   @displayMode = "show"
-      #   if params[:id].present?
-      #     @video = panopto_api_call(["sessions", nil], params[:id])
-      #     if @video.blank?
-      #       return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video. #{ @video[:Id] }")
-      #     end
-      #     if @video[:Id].nil?
-      #       return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
-      #     end
-      #   else
-      #     return redirect_to(webpages_videos_all_path, alert: "You must choose a video to stream.")
-      #   end
-      # end
+      def video_show(video)
+        @video = panopto_api_call(["sessions", nil], video)
+        if @video.blank? || @video[:Id].nil?
+          return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
+        else
+          @video
+        end
+      end
 
       # def videos_search
       #   page_results = []

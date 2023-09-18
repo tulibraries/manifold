@@ -19,12 +19,20 @@ class WebpagesController < ApplicationController
   end
 
   def videos_list
-    # binding.pry
     if params[:collection].present?
       videos = Panopto::VideoDistributor.call(type: "collection", collection: params[:collection])
-      render(Panopto::PastEventsComponent.new(videos:))
+      render(Panopto::PastEventsCollectionComponent.new(videos:))
     else
       videos_all
+    end
+  end
+
+  def video_show
+    if params[:id].present?
+      video = Panopto::VideoDistributor.call(type: "show", video_id: params[:id])
+      render(Panopto::PastEventsVideoComponent.new(video:))
+    else
+      return redirect_to(webpages_videos_all_path, alert: "You must choose a video to stream.")
     end
   end
 

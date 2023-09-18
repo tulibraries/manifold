@@ -11,9 +11,8 @@
     "esbuild": "^0.16.7",
     "esbuild-rails": "^1.0.3",
     "font-awesome": "^4.7.0",
+    "jquery": "^3.7.1",
     "sass": "^1.56.2",
-    "selectize": "^0.12.6",
-    "selectize.js": "^0.12.12",
     "stimulus-use": "^0.51.1",
     "trix": "^2.0.4"
   },

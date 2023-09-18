@@ -12,6 +12,7 @@ module Panopto
     def initialize(*args)
       begin
         @type = args.first[:type]
+        @collection = args.first[:collection]
         key = ENV["PANOPTO_API_USER"]
         code = ENV["PANOPTO_API_KEY"]
         auth = { username: key, password: code }
@@ -25,11 +26,6 @@ module Panopto
     end
   
     def call
-      # binding.pry
-      #videos_all 
-      #panopto_api_call(type, category[2])
-      #["playlists", "sessions"], ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"]
-
       #vidoes_list
       #page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
 
@@ -39,10 +35,26 @@ module Panopto
       #videos_search
       #panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
 
+
+      @categories = {"recent" => ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
+        "beyond-the-page" => ["beyond-the-page", "Beyond the Page", "eba32425-d6bf-4e9c-983f-af1f0128b62b"],
+        "beyond-the-notes" => ["beyond-the-notes", "Beyond the Notes", "e01cdfba-bc19-4f27-bdc6-af1c00f52773"],
+        "blockson" => ["blockson", "Charles L. Blockson Afro-American Collection", "1aab1d3f-4626-43fd-924d-af1c00f290d5"],
+        "research-awards" => ["research-awards", "Livingstone Undergraduate Research Awards", "ad6a8ada-242e-4ddd-8115-af1c00fc3621"],
+        "lcdss" => ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
+        "scrc" => ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"]}
+
       case @type
       when "all"
         video_call = panopto_api_call(["playlists", "sessions"], "98a7258a-f81f-48c1-8541-af1900e5a7af")
         videos = get_video_categories(video_call)
+      when "collection"
+        # binding.pry
+        videos = videos_list(@categories.fetch(@collection))
+      when "show"
+        videos = videos_list(@categories.fetch(params[:id]))
+      when "search"
+        videos = videos_list(@categories.fetch(params[:id]))
       end
     end
 
@@ -64,13 +76,6 @@ module Panopto
       end
 
       def get_video_categories(videos)
-        categories = ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
-        ["beyond-the-page", "Beyond the Page", "eba32425-d6bf-4e9c-983f-af1f0128b62b"],
-        ["beyond-the-notes", "Beyond the Notes", "e01cdfba-bc19-4f27-bdc6-af1c00f52773"],
-        ["blockson", "Charles L. Blockson Afro-American Collection", "1aab1d3f-4626-43fd-924d-af1c00f290d5"],
-        ["research-awards", "Livingstone Undergraduate Research Awards", "ad6a8ada-242e-4ddd-8115-af1c00fc3621"],
-        ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
-        ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"]
 
         recent = [] 
         beyond_page = [] 
@@ -80,8 +85,8 @@ module Panopto
         lcdss = [] 
         scrc = []
 
-        categories.each do |category|
-          get_videos = panopto_api_call(["playlists", "sessions"], category[2])
+        @categories.each do |category|
+          get_videos = panopto_api_call(["playlists", "sessions"], category[1][2])
           get_videos[:Results].each do |video|
             case category[0]
             when "recent"
@@ -113,36 +118,35 @@ module Panopto
                             }
       end
 
-      def featured_video(recent)
-        featured_video = [recent.first[:Id], recent.first[:Name]] if recent.present?
+      def videos_list(collection)
+        # video_call = panopto_api_call(["playlists", "sessions", nil, nil, 1], collection[2])
+
+        page_results = []
+        more = false
+        i = 0
+        # @category = get_video_categories.select { |c| c[0] == params[:collection] }.first
+
+        if collection.present?
+          page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
+          # binding.pry
+          @videos = page_results[:Results]
+          more = true if @videos.size == 50
+          while more
+            page_results = nil
+            i += 1
+            results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
+            page_results = results[:Results] if results.present? && results[:Results].size > 0 && results[:Results].size <= 50
+
+            if page_results.present?
+              more = (page_results.size == 50) ? true : false
+              @videos += page_results
+            end
+          end
+          @videos
+        else
+          return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video list.")
+        end
       end
-
-      # def videos_list
-      #   page_results = []
-      #   more = false
-      #   i = 0
-      #   @category = get_video_categories.select { |c| c[0] == params[:collection] }.first
-
-      #   if @category.present?
-      #     page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
-      #     @videos = page_results[:Results]
-      #     more = true if @videos.size == 50
-      #     while more
-      #       page_results = nil
-      #       i += 1
-      #       results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
-      #       page_results = results[:Results] if results.present? && results[:Results].size > 0 && results[:Results].size <= 50
-
-      #       if page_results.present?
-      #         @videos += page_results
-      #       end
-
-      #       more = (page_results.present? && page_results.size == 50) ? true : false
-      #     end
-      #   else
-      #     return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video list.")
-      #   end
-      # end
 
       # def videos_show
       #   @displayMode = "show"

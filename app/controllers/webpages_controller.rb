@@ -14,8 +14,18 @@ class WebpagesController < ApplicationController
   end
 
   def videos_all
-    videos = Panopto:: VideoDistributor.call(type: "all")
+    videos = Panopto::VideoDistributor.call(type: "all")
     render(Panopto::PastEventsComponent.new(videos:))
+  end
+
+  def videos_list
+    # binding.pry
+    if params[:collection].present?
+      videos = Panopto::VideoDistributor.call(type: "collection", collection: params[:collection])
+      render(Panopto::PastEventsComponent.new(videos:))
+    else
+      videos_all
+    end
   end
 
   def home

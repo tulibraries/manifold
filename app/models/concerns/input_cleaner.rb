@@ -3,9 +3,6 @@
 module InputCleaner
   extend ActiveSupport::Concern
 
-  def normalize_phone_number
-    phone_number.gsub!(/\D/, "") if phone_number.present?
-  end
   def burpArray
     self.subject.reject! { |s| s.empty? } unless subject.nil?
   end

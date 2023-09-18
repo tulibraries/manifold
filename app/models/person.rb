@@ -14,11 +14,9 @@ class Person < ApplicationRecord
 
   validates :first_name, :last_name, :job_title, presence: true
   validates :email_address, presence: true, email: true
-  validates :phone_number, phone_number: true
+  validates :phone_number, presence: true
 
   auto_strip_attributes :email_address
-
-  before_validation :normalize_phone_number
 
   has_many :member, dependent: :destroy
   has_many :groups, through: :member, source: :group

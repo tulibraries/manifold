@@ -5,8 +5,9 @@ manifold manages, orchestrates, and displays data about Temple University Librar
 
 ## System Requirements
 
-- Ruby 2.7.2
+- Ruby, see Gemfile for latest version
 - Postgres >= 9.5
+- ImageMagick
 
 ##  Getting Started
 
@@ -37,14 +38,14 @@ bundle install
 
 ```
 sudo apt-get -y install npm
-sudo npm install -g ajv
-sudo npm install -g ajv-cli
+sudo npm install -g ajv@6.12.6
+sudo npm install -g ajv-cli@3.3.0
 ```
 
 * Create database tables
 
 ```
-bundle exec rake db:migrate
+bundle exec rails db:migrate
  ```
 
 * Seed initial user from the command line. Note that the email address should be a TUAccess email address.
@@ -95,7 +96,7 @@ bundle exec rspec spec
 * Run the application
 
 ```
-bundle exec rails server
+bin/dev
 ```
 
 * On your browser, navigate to `http:localhost:3000`.
@@ -257,5 +258,5 @@ export MANIFOLD_DRAFTABLE=true
 or command line for developement:
 
 ```bash
-MANIFOLD_DRAFTABLE=true bundle exec rails server
+MANIFOLD_DRAFTABLE=true bin/dev
 ```

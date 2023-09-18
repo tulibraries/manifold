@@ -13,9 +13,8 @@ class Building < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  before_validation :normalize_phone_number
   validates :name, :address1, :address2, :coordinates, :google_id, presence: true
-  validates :phone_number, presence: true, phone_number: true
+  validates :phone_number, presence: true
 
   belongs_to :external_link, optional: true
   has_many :spaces, dependent: :destroy

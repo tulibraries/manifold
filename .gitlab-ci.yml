@@ -5,9 +5,13 @@ include:
       - "build_docker.yaml"
       - "security_scan.yaml"
       - "kubectl_commands.yaml"
+      - "sast_scanning.yaml"
 
 variables:
   IMAGE: "tulibraries/manifold"
+  HARBOR: "harbor.k8s.temple.edu"
+  HELM_EXPERIMENTAL_OCI: "1"
+  SAST_EXCLUDED_PATHS: "spec, test, tests, tmp"
 
 .export_variables: &export_variables
   - source .env
@@ -27,25 +31,20 @@ lint:
   extends: .lint_docker
   variables:
     DF: ".docker/app/Dockerfile"
+  except:
+    - tags
 
 build:
   stage: build
   extends: .build_image
-  image: harbor.k8s.temple.edu/gitlab-ci/docker:20-dind
   variables:
     DF: ".docker/app/Dockerfile --build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY --no-cache"
-  services:
-    - name: harbor.k8s.temple.edu/gitlab-ci/docker:20-dind
-      command: ["--tls=false"]
   except:
     - tags
 
 scan:
   stage: scan
-  extends: .scanimage_high
-  allow_failure: false
-  variables:
-    THRESHOLD: 10
+  extends: .scanimage_extended
   except:
     - tags
 
@@ -55,17 +54,17 @@ tag:
   except:
     - tags
 
-qa_deploy:
-  variables: 
-    IMAGE: harbor.k8s.temple.edu/tulibraries/manifold
-    RANCHER: rancher-np
-    CLUSTER: dev-library
-  stage: deploy
-  extends: .helm_setup
-  only:
-    - main
-  script:
-    - *export_variables
-    - helm repo add tulibraries https://$HARBOR/chartrepo/tulibraries
-    - helm pull tulibraries/manifold --untar
-    - helm upgrade manifold ./manifold --history-max=5 --namespace=manifold-qa --set image.repository=$IMAGE:$VERSION
+# TODO: Add this once we have deployed the helm chart to harbor
+# qa_deploy:
+#   variables: 
+#     IMAGE: $HARBOR/$IMAGE
+#     RANCHER: rancher-np
+#     CLUSTER: dev-library1
+#   stage: deploy
+#   extends: .helm_setup
+#   only:
+#     - main
+#   script:
+#     - *export_variables
+#     - helm pull oci://$HARBOR/tulibraries/manifold-charts/manifold --version "0.1.*" --untar
+#     - helm upgrade manifold oci://$HARBOR/tulibraries/manifold-charts/manifold --version "0.1.*" --history-max=5 --namespace=manifold-qa --values manifold/values.yaml --set image.repository=$IMAGE:$VERSION

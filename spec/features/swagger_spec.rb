@@ -6,7 +6,7 @@ RSpec.feature "Swager", type: :feature do
 
   before(:all) do
 
-    FactoryBot.create(:person)
+    FactoryBot.create(:service)
 
   end
   context "Swagger Spec File" do

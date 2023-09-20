@@ -22,6 +22,7 @@ RSpec.shared_examples "serializable" do
       args = %W[validate -s app/schemas/#{factory_model.class.to_s.underscore.downcase}_schema.json -d #{serialized.path}]
 
       expect(system("ajv", *args)).to be
+      expect(response).to have_http_status(:success)
     end
   end
 

@@ -14,6 +14,7 @@ RSpec.describe ServicesController, type: :controller do
     it "returns json when requested" do
       get :index, format: :json
       expect(response.header["Content-Type"]).to include "json"
+      expect(response).to have_http_status(:success)
     end
   end
 

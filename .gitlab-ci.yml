@@ -54,16 +54,16 @@ tag:
   except:
     - tags
 
- qa_deploy:
-   variables:
-     IMAGE: $HARBOR/$IMAGE
-     RANCHER: rancher-np
-     CLUSTER: dev-library1
-   stage: deploy
-   extends: .helm_setup
-   only:
-     - main
-   script:
-     - *export_variables
-     - helm pull oci://$HARBOR/tulibraries/manifold-charts/manifold --version "0.1.*" --untar
-     - helm upgrade manifold oci://$HARBOR/tulibraries/manifold-charts/manifold --version "0.1.*" --history-max=5 --namespace=manifold-qa --values manifold/values.yaml --set image.repository=$IMAGE:$VERSION
+qa_deploy:
+  variables:
+    IMAGE: $HARBOR/$IMAGE
+    RANCHER: rancher-np
+    CLUSTER: dev-library1
+  stage: deploy
+  extends: .helm_setup
+  only:
+    - main
+  script:
+    - *export_variables
+    - helm pull oci://$HARBOR/tulibraries/manifold-charts/manifold --version "0.1.*" --untar
+    - helm upgrade manifold oci://$HARBOR/tulibraries/manifold-charts/manifold --version "0.1.*" --history-max=5 --namespace=manifold-qa --values manifold/values.yaml --set image.repository=$IMAGE:$VERSION

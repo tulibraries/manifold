@@ -31,10 +31,6 @@ RSpec.describe Building, type: :model do
         building.phone_number = "2155551212"
         expect { building.save! }.to_not raise_error
       end
-      example "invalid phone number" do
-        building.phone_number = "215555121"
-        expect { building.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_phone_format')}/)
-      end
       example "invalid phone number - blank " do
         building.phone_number = ""
         expect { building.save! }.to raise_error(/#{I18n.t('manifold.error.invalid_phone_format')}/)

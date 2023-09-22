@@ -12,6 +12,7 @@ en:
         accounts: "Individual Owners"
       collection:
         accounts: "Individual Owners"
+        subject: Subjects
       event:
         suppress: Hide from display
       exhibition:
@@ -237,6 +238,8 @@ en:
           exhibit_temple_connection_description: Temple Connection
           exhibit_policies_acknowledgement: Policies Acknowledgement
           format_preference: Format Preference
+          total_number_of_production_members: Total Number of Production Members
+          mobile_telephone_number_of_the_key_crew_member: Mobile Telephone Number of the Key Crew Member
             
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
@@ -257,7 +260,7 @@ en:
         building: "Charles Library"
     error:
       content_type_invalid_image: "has an invalid content type. JPG, PNG, or GIF only."
-      content_type_invalid_pdf: "has an invalid content type. PDF files only."
+      content_type_invalid_pdf: "has an invalid content type. PDF files only." 
       file_size_out_of_range_file: "size %{file_size} is larger than 5MB limit."
       file_size_out_of_range_image: "size %{file_size} is larger than 700KB limit."
       limit_out_of_range: "total number is out of range"
@@ -281,7 +284,7 @@ en:
       access_denied: "Account modification - Access denied"
       modification_denied: "%{class} modification - Access denied"
       invalid_email: "is not an email address."
-      invalid_phone_format: "is not a valid format. It should be xxx-xxx-xxxx."
+      invalid_phone_format: "Phone number can't be blank"
       invalid_group_type: "is not a valid group type"
       invalid_url: "is not a valid url"
       invalid_document_type: "is not a valid file type"
@@ -646,6 +649,7 @@ en:
                                 window to be returned after being recalled.</div>
         subsitute_edition: Subsititute another edition of same book if necessary?
         cancellation_date: Cancellation Date
+
       purchase_request:
         title: Purchase Request
         material_type: Type of Material
@@ -666,6 +670,7 @@ en:
           three: Streaming video/audio
           four: No preference
           five: other...
+
       missing_book:
         title: Missing Book Search Request
         affiliation_options:
@@ -675,6 +680,7 @@ en:
           four: Undergraduate
           five: Post Doc
           six: Other...
+
       ir:
         title: Incident Report
         incident_types:
@@ -710,12 +716,14 @@ en:
         other_action_taken: Other Action Taken
         police_report_number: Police Report Number
         supervisor_notified: Supervisor Notified
+
       ask_scrc:
         title: "Special Collections Research Center: Ask a Question"
         comments_label: "What is your Question?"
         comments_hint: >-
                       Be sure to include names, locations, and dates that particularly pertinent to your research. 
                       Please list manuscript collections or print materials in which you are or may be interested.
+
       proxy_account:
         title: "Proxy Account"
         faculty_admin_name: Faculty/Administrator Name
@@ -749,6 +757,7 @@ en:
                         The goal of all library user education is to develop competency in locating, accessing, and 
                         using information. What would you like your students to be able to do or understand by the end 
                         of this library session? Describe the assignment to which this instruction is relevant.
+
       scrc_instruction:
         title: "SCRC Instruction Session/Visit Request"
         course_title: Course Title
@@ -783,6 +792,8 @@ en:
         temple_course_project: Is This for a Temple Course Project?
         additional_crew_name: Name of One Additional Crew Member
         additional_email: Crew Member Email
+        total_number_of_production_members: Total Number of Production Members
+        mobile_telephone_number_of_the_key_crew_member: Mobile Telephone Number of the Key Crew Member
 
       cac_internal:
         title: "Cultural Analytics Certificate Internal Application"
@@ -870,13 +881,20 @@ en:
       group_visit:
         intro_html: Tours of Charles Library will not be provided during the fall 2020 semester.
         title: "Group Visit Request"
-        description: Describe reason for this request
+        reason_for_request: Select the reason for this request
         requested_date: Requested date and time window (e.g., morning, afternoon)
         attendees: Number of people in group
         minors: Are there minors in this group?
-        school_visit: If this is a school visit, please provide name of school, grade level, and age range of students
+        school_visit: What School/Program? (include course name and number if applicable)
         referrer: Referred to us by (if applicable)
         comments: Provide any additional information about this request
+        request_reasons:
+          one: Temple Undergraduate Group
+          two: Temple Graduate Group
+          three: Other School Visit
+          four: Alumni/Donor Visit
+          five: Professional Development Visit
+          six: General Interest
 
       hidden_title_text: To change the title of this resource, please <a href=mailto:"tul-web-support@temple.edu">contact an administrator</a>.
 

@@ -133,6 +133,9 @@ Lint/RequireParentheses:
 Rails:
   Enabled: true
 
+Rails/FindEach:
+  Enabled: false
+
 Rails/OutputSafety:
   Enabled: false
 

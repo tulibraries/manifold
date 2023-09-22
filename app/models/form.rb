@@ -154,6 +154,7 @@ class Form < MailForm::Base
   attribute :exhibit_policies_acknowledgement
   attribute :format_preference
   attribute :format_preference_other
+  attribute :reason_for_request
 
   # Some forms don't supply an email and name, so they we're failing
   def default_from_name

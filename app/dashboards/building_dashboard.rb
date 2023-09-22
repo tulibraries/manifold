@@ -90,6 +90,6 @@ class BuildingDashboard < BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(building)
-    "#{building.name}"
+    building.name
   end
 end

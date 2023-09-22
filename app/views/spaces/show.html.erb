@@ -28,7 +28,7 @@
       <div class="details">
         <ul class="list-unstyled space-contact">
           <li><%= image_tag "small_location.png", class: "location decorative", alt: "" %><%= link_to @space.building.label, building_path(@space.building), class: "location" %></li>
-          <li><%= image_tag "small_phone.png", class: "location decorative", alt: "" %><%= @space.phone_number ? phone_formatted(@space.phone_number) : phone_formatted(@space.building.phone_number) %></li>
+          <li><%= image_tag "small_phone.png", class: "location decorative", alt: "" %><%= get_phone(@space) %></li>
           <% unless @space.email.nil? && @space.building.email.nil? %>
           <li>
             <%= image_tag "small_email.png", class: "location decorative", alt: "" %>

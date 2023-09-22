@@ -30,7 +30,7 @@
     <div class="row ps-3 ps-lg-0">
       <% if @person.libguides_account.present? || @person.springshare_id.present? %>
       <div class="person-actions">
-        <%= link_to t("manifold.people.show.guides_link", name: @person.first_name), 
+        <%= link_to t("manifold.people.show.guides_link", name: @person.name), 
                           "https://guides.temple.edu/prf.php?account_id=#{@person.libguides_account}", 
                           class: "libguides-link", 
                           target: "_new" if @person.libguides_account.present? %>

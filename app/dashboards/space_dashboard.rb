@@ -8,7 +8,7 @@ class SpaceDashboard < BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    building: Field::BelongsTo,
+    building: Field::BelongsTo.with_options(required: true),
     slug: Field::String,
     occupant: Field::HasMany,
     persons: Field::HasMany,
@@ -87,10 +87,5 @@ class SpaceDashboard < BaseDashboard
   #
   def display_resource(space)
     "#{space.name}"
-  end
-
-
-  def permitted_attributes
-    super + [:draft_description, :publish, :accessibility]
   end
 end

@@ -5,7 +5,8 @@
 	<% end %>
 </div>
 <div class="field-unit__field">
-  <%= f.telephone_field field.attribute, placeholder: 'xxx-xxx-xxxx', value: number_to_phone(field.data) %>
+
+  <%= f.telephone_field field.attribute, field.html_attributes.merge({minlength: "10", placeholder: 'xxx-xxx-xxxx', value: (phone_formatted(field.data) if field.data.present?)}) %>
 	<% if field.resource.class.to_s == "Space" %>
 	 <p><%= t("manifold.default.fields.phone") %></p>
 	<% end %>

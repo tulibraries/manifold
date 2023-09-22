@@ -2,9 +2,9 @@
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby "3.1.3"
+ruby "3.1.4" unless ENV["K8"] == "yes"
 
-gem "rails", "~> 7.0.6"
+gem "rails", "~> 7.0.8"
 gem "action-draft"
 gem "active_storage_validations"
 gem "activestorage-validator"
@@ -53,7 +53,7 @@ gem "orderly"
 gem "paper_trail", git: "https://github.com/paper-trail-gem/paper_trail"
 gem "pg"
 gem "pg_search"
-gem "puma", "~> 6.3.1"
+gem "puma", "~> 6.4.0"
 gem "rswag-api"
 gem "rswag-ui"
 gem "simple_form"

@@ -13,10 +13,11 @@ RAILS_MASTER_KEY ?= $(MANIFOLD_MASTER_KEY)
 MANIFOLD_DB_HOST ?= host.docker.internal
 MANIFOLD_DB_NAME ?= manifold
 MANIFOLD_DB_USER ?= manifold
+RAILS_ENV ?= production
 
 CI ?= false
 
-DEFAULT_RUN_ARGS ?= -e "EXECJS_RUNTIME=Disabled" \
+DEFAULT_RUN_ENVS ?= -e "EXECJS_RUNTIME=Disabled" \
 		-e "K8=yes" \
 		-e "RAILS_ENV=production" \
 		-e "RAILS_MASTER_KEY=$(RAILS_MASTER_KEY)" \
@@ -26,11 +27,13 @@ DEFAULT_RUN_ARGS ?= -e "EXECJS_RUNTIME=Disabled" \
 		-e "MANIFOLD_DB_PASSWORD=$(MANIFOLD_DB_PASSWORD)" \
 		-e "MANIFOLD_DB_USER=$(MANIFOLD_DB_USER)" \
 		-e "RAILS_LOG_TO_STDOUT=yes" \
+		-e "RAILS_ENV"=$(RAILS_ENV) \
 		--rm -it
 
 build:
 	@docker build --build-arg RAILS_MASTER_KEY=$(RAILS_MASTER_KEY) \
 		--build-arg BASE_IMAGE=$(BASE_IMAGE) \
+		--build-arg RAILS_ENV=$(RAILS_ENV) \
 		--platform $(PLATFORM) \
 		--progress plain \
 		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
@@ -41,7 +44,7 @@ build:
 run:
 	@docker run --name=manifold -p 127.0.0.1:3000:3000/tcp \
 		--platform $(PLATFORM) \
-		$(DEFAULT_RUN_ARGS) \
+		$(DEFAULT_RUN_ENVS) \
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
 lint:
@@ -65,11 +68,11 @@ db-init:
 scan:
 	@if [ $(CLEAR_CACHES) == yes ]; \
 		then \
-			trivy image -c $(HARBOR)/$(IMAGE):$(VERSION); \
+			trivy image -c $(HARBOR)/$(IMAGE):$(VERSION) --scanners vuln; \
 		fi
 	@if [ $(CI) == false ]; \
 		then \
-			trivy image $(HARBOR)/$(IMAGE):$(VERSION); \
+			trivy image $(HARBOR)/$(IMAGE):$(VERSION) --scanners vuln; \
 		fi
 
 deploy: scan lint

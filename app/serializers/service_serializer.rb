@@ -5,5 +5,5 @@ class ServiceSerializer < ApplicationSerializer
   include DescriptionSerializable
   include AccessDescriptionSerializable
 
-  attributes :title, :intended_audience
+  attributes :title, :description, :access_description, :intended_audience
 end

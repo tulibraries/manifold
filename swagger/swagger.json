@@ -943,6 +943,13 @@
                             "example": "This is the description of the service",
                             "pattern": "^(.*)$"
                           },
+                          "access_description": {
+                            "type": "string",
+                            "title": "The Description Schema",
+                            "default": "",
+                            "example": "This is another description of the service",
+                            "pattern": "^(.*)$"
+                          },
                           "intended_audience": {
                             "type": "array",
                             "items": {

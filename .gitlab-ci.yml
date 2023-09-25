@@ -56,7 +56,7 @@ tag:
 
 qa_deploy:
   variables:
-    IMAGE: $HARBOR/$IMAGE
+    IMAGE: $HARBOR/tulibraries/manifold
     RANCHER: rancher-np
     CLUSTER: dev-library1
   stage: deploy

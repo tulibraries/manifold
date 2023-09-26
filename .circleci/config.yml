@@ -79,12 +79,6 @@ jobs:
             RAILS_ENV=test bundle exec rake db:setup
 
       - run:
-          name: Install node packages required for tests
-          command: | 
-            sudo npm install -g ajv@6.12.6
-            sudo npm install -g ajv-cli@3.3.0
-
-      - run:
           name: Install ImageMagick
           command: |
             sudo apt-get update

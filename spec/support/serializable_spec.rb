@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "json-schema"
 
 RSpec.shared_examples "serializable" do
   imageClasses = ["person", "event"]
@@ -19,9 +20,8 @@ RSpec.shared_examples "serializable" do
     Tempfile.open(["serialized_#{factory_model.class.to_s.underscore.downcase}-", ".json"]) do |serialized|
       serialized.write(response.body)
       serialized.close
-      args = %W[validate -s app/schemas/#{factory_model.class.to_s.underscore.downcase}_schema.json -d #{serialized.path}]
 
-      expect(system("ajv", *args)).to be
+      expect(JSON::Validator.validate("app/schemas/#{factory_model.class.to_s.underscore.downcase}_schema.json", serialized.path)).to be
     end
   end
 

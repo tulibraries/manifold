@@ -106,5 +106,5 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = ENV["MANIFOLD_FQDN"]
   Rails.application.routes.default_url_options[:protocol] = "https"
 
-  config.skylight.probes -= ["middleware"]
+  # config.skylight.probes -= ["middleware"]
 end

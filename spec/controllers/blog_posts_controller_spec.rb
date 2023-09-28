@@ -13,7 +13,7 @@ RSpec.describe BlogPostsController, type: :controller do
 
     it "redirects if no tag param" do
       get :index
-      response.should redirect_to "/news"
+      expect(response).to redirect_to "/news"
     end
   end
 end

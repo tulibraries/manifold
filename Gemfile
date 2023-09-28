@@ -88,6 +88,11 @@ group :development do
   gem "web-console", ">= 3.3.0"
 end
 
+group :production do
+  gem "dalli"
+  gem "connection_pool"
+end
+
 group :test do
   gem "capybara", ">= 2.15"
   gem "factory_bot_rails"

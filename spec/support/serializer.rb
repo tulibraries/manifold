@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require "json-schema"
 
 RSpec.shared_examples "serializer" do
   let(:model) { described_class.to_s.split("Serializer").first.underscore.downcase.singularize.to_sym } # the class that includes the concern
@@ -11,8 +12,7 @@ RSpec.shared_examples "serializer" do
     Tempfile.open(["serialized_#{model}", ".json"]) do |tempfile|
       tempfile.write(serialized.to_json)
       tempfile.close
-      args = %W[validate -s app/schemas/#{model}_schema.json -d #{tempfile.path}]
-      expect(system("ajv", *args)).to be
+      expect(JSON::Validator.validate!("app/schemas/#{model}_schema.json", tempfile.path)).to be
     end
   end
 

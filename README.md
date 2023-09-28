@@ -34,14 +34,6 @@ cd manifold
 bundle install
 ```
 
-* Install JSON validation tool
-
-```
-sudo apt-get -y install npm
-sudo npm install -g ajv@6.12.6
-sudo npm install -g ajv-cli@3.3.0
-```
-
 * Create database tables
 
 ```

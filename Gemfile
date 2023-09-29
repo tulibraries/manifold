@@ -58,7 +58,7 @@ gem "rswag-api"
 gem "rswag-ui"
 gem "simple_form"
 gem "sitemap_generator"
-(ENV["K8"] == "yes") ? (gem "skylight") : (gem "skylight", "4.3.2")
+(ENV["SKYLIGHT_ENV"] == "k8s-qa") ? (gem "skylight") : (gem "skylight", "4.3.2")
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "timecop"

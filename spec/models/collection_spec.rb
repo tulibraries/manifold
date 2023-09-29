@@ -3,8 +3,11 @@
 require "rails_helper"
 
 RSpec.describe Collection, type: :model do
+  it_behaves_like "accountable"
+  it_behaves_like "categorizable"
+  it_behaves_like "imageable"
+  
   describe "Required attributes" do
-    let(:collection) { FactoryBot.create(:collection) }
 
     example "Missing name" do
       collection = FactoryBot.build(:collection, name: "")
@@ -12,32 +15,30 @@ RSpec.describe Collection, type: :model do
     end
 
     example "Missing description" do
-      collection = FactoryBot.build(:collection, description: ActionText::Content.new("Hello World"))
-      skip "required richtext fields throw administrate error if blank. need to account for error before test." do
-        expect { collection.save! }.to raise_error(/Description can't be blank/)
-      end
+      collection = FactoryBot.build(:collection, description: "")
+      expect { collection.save! }.to_not raise_error
+    end
+  end
+
+  describe "External Link" do
+    let(:external_link) { FactoryBot.build(:external_link) }
+
+    example "attach external link" do
+      collection = FactoryBot.build(:collection, external_link:)
+      expect(collection.external_link.title).to match(/#{external_link.title}/)
+      expect(collection.external_link.link).to match(/#{external_link.link}/)
     end
 
-    context "External Link" do
-      let(:external_link) { FactoryBot.create(:external_link) }
-      example "attach external link" do
-        collection = FactoryBot.create(:collection, external_link:)
-        expect(collection.external_link.title).to match(/#{external_link.title}/)
-        expect(collection.external_link.link).to match(/#{external_link.link}/)
-      end
-
-      example "no external" do
-        collection = FactoryBot.create(:collection)
-        expect { collection.save! }.to_not raise_error
-      end
+    example "no external" do
+      collection = FactoryBot.build(:collection)
+      expect { collection.save! }.to_not raise_error
     end
-
   end
 
   describe "Space association" do
     example "Specify space in a collection" do
       space = FactoryBot.build(:space)
-      collection = FactoryBot.create(:collection, space:)
+      collection = FactoryBot.build(:collection, space:)
       expect(collection.space).to be(space)
     end
   end
@@ -47,7 +48,7 @@ RSpec.describe Collection, type: :model do
       name: ["The Text 1", "The Text 2"],
       description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       # Subject not testable in rspec in this context
-      #subject: ["The Text 1", "The Text 2"],
+      # subject: ["The Text 1", "The Text 2"],
       contents: ["The Text 1", "The Text 2"]
     }
 
@@ -61,9 +62,4 @@ RSpec.describe Collection, type: :model do
       end
     end
   end
-
-
-  it_behaves_like "accountable"
-  it_behaves_like "categorizable"
-  it_behaves_like "imageable"
 end

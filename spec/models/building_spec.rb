@@ -88,14 +88,19 @@ RSpec.describe Building, type: :model do
     let(:city) { "Philadelphia" }
     let(:state) { "PA" }
     let(:zip_code) { "19122" }
-    let(:building) { FactoryBot.create(:building, address2: "#{city}, #{state}, #{zip_code}") }
+    let(:building) { FactoryBot.create(:building, address2: "#{city}, #{state}, #{zip_code}", description: "building description", hours: "paley") }
 
     describe "Linked data hash" do
       subject { building.map_to_schema_dot_org }
 
-      it { is_expected.to include("name" => building[:name]) }
-      xit { is_expected.to include("description" => building[:description]) }
+      it { is_expected.to include("name" => building.name) }
+      it { is_expected.to include("description" => building.description.to_plain_text) }
       it { is_expected.to include("address") }
+      it { is_expected.to include("telephone" => building.phone_number) }
+      it { is_expected.to include("email" => building.email) }
+      it { is_expected.to include("hours" => building.hours) }
+      it { is_expected.to include("geo" => building.coordinates) }
+      it { is_expected.to include("googleId" => building.google_id) }
 
       describe "address" do
         subject { building.map_to_schema_dot_org["address"] }
@@ -106,13 +111,6 @@ RSpec.describe Building, type: :model do
         it { is_expected.to include("addressLocality" => a_string_including(state)) }
         it { is_expected.to include("addressLocality" => a_string_including(zip_code)) }
       end
-
-      it { is_expected.to include("telephone" => building[:phone_number]) }
-      it { is_expected.to include("email" => building[:email]) }
-      xit { is_expected.to include("hours" => building[:hours]) }
-      it { is_expected.to include("geo" => building[:coordinates]) }
-      it { is_expected.to include("googleId" => building[:google_id]) }
-
     end
   end
 

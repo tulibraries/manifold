@@ -8,6 +8,8 @@ USER root
 
 ARG RAILS_MASTER_KEY \
   RAILS_ENV=production
+  K8=yes
+
 
 RUN apk add -U --no-cache \
       bash=5.2.15-r5 \

@@ -6,7 +6,7 @@ RSpec.describe Collection, type: :model do
   it_behaves_like "accountable"
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
-  
+
   describe "Required attributes" do
 
     example "Missing name" do

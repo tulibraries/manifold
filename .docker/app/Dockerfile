@@ -7,7 +7,7 @@ COPY . .
 USER root
 
 ARG RAILS_MASTER_KEY \
-  RAILS_ENV=production
+  RAILS_ENV=production \
   K8=yes
 
 

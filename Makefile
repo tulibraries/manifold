@@ -27,6 +27,7 @@ DEFAULT_RUN_ENVS ?= -e "EXECJS_RUNTIME=Disabled" \
 		-e "MANIFOLD_DB_PASSWORD=$(MANIFOLD_DB_PASSWORD)" \
 		-e "MANIFOLD_DB_USER=$(MANIFOLD_DB_USER)" \
 		-e "RAILS_LOG_TO_STDOUT=yes" \
+		-e "EXECJS_RUNTIME=Disabled" \
 		-e "RAILS_ENV"=$(RAILS_ENV) \
 		--rm -it
 
@@ -55,7 +56,7 @@ lint:
 
 shell:
 	@docker run --rm -it \
-		$(DEFAULT_RUN_ARGS) \
+		$(DEFAULT_RUN_ENVS) \
 		--entrypoint=sh --user=root \
 		$(HARBOR)/$(IMAGE):$(VERSION)
 

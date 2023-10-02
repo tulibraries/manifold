@@ -10,7 +10,6 @@ FactoryBot.define do
     address2 { "Philadelphia, PA 19122" }
     coordinates { "test,coordinated" }
     google_id { "12345678910azby-kk" }
-    hours { "paley" }
     phone_number { "2155551212" }
     email { "csa@example.edu" }
 

@@ -162,7 +162,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
       it "adds a list item" do
         allow(category).to receive(:items).and_return([items])
-        expect(helper.get_items(category)).to include("Charles Samuel Addams Library")
+        expect(helper.get_items(category)).to include(items.label)
       end
     end
   end

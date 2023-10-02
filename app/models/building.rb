@@ -59,7 +59,6 @@ class Building < ApplicationRecord
       email:,
       geo: coordinates,
       googleId: google_id,
-      hours:
     }
   end
 

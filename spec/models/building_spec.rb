@@ -66,7 +66,6 @@ RSpec.describe Building, type: :model do
       # description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       address1: ["The Text 1", "The Text 2"],
       coordinates: ["The Text 1", "The Text 2"],
-      hours: ["The Text 1", "The Text 2"],
       phone_number: ["2155551212", "2155551234"],
       email: ["The Text 1", "The Text 2"],
       google_id: ["The Text 1", "The Text 2"],
@@ -98,7 +97,6 @@ RSpec.describe Building, type: :model do
       it { is_expected.to include("address") }
       it { is_expected.to include("telephone" => building.phone_number) }
       it { is_expected.to include("email" => building.email) }
-      it { is_expected.to include("hours" => building.hours) }
       it { is_expected.to include("geo" => building.coordinates) }
       it { is_expected.to include("googleId" => building.google_id) }
 

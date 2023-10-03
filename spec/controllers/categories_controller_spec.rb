@@ -20,5 +20,18 @@ RSpec.describe CategoriesController, type: :controller do
       get :show, params: { id: category.id }
       expect(response).to have_http_status(:ok)
     end
+
+    describe "GET #show with options" do
+      let(:category_with_image) { FactoryBot.create(:category, :with_image, slug: "explore-charles", name: "Explore Charles") }
+
+      it "returns explore-chares json" do
+        get :show, format: :json, params: { id: category_with_image.id }
+        expect(response).to have_http_status(:ok)
+      end
+
+      it "shows explore-charles images and captions" do
+        # TODO: Need to test that images and captions were set
+      end
+    end
   end
 end

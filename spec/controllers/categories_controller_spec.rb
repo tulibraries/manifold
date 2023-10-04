@@ -28,10 +28,6 @@ RSpec.describe CategoriesController, type: :controller do
         get :show, format: :json, params: { id: category_with_image.id }
         expect(response).to have_http_status(:ok)
       end
-
-      it "shows explore-charles images and captions" do
-        # TODO: Need to test that images and captions were set
-      end
     end
   end
 end

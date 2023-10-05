@@ -13,8 +13,13 @@ module Admin::Draftable
     end
     requested_resource = draftable_class.find(params[:id])
     resource_params = params[resource_name]
-
-    requested_resource.update(params[resource_name].to_unsafe_hash)
+    if resource_params[:images] && resource_params[:images].size > 0
+      # binding.pry
+      resource_params[:images].each do |image|
+        requested_resource.images.attach(image)
+      end
+    end
+    requested_resource.update(params[resource_name].except(:images).to_unsafe_hash)
     apply_draft(requested_resource, resource_params, resource_name) if resource_params[:publish] == "1"
     if requested_resource.save
       redirect_to "/admin/#{resource_name.to_s.pluralize}/#{requested_resource[:slug]}", notice: "#{resource_name.to_s.titleize} has updated successfully"

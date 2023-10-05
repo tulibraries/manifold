@@ -14,7 +14,6 @@ module Admin::Draftable
     requested_resource = draftable_class.find(params[:id])
     resource_params = params[resource_name]
     if resource_params[:images] && resource_params[:images].size > 0
-      # binding.pry
       resource_params[:images].each do |image|
         requested_resource.images.attach(image)
       end

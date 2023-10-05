@@ -11,10 +11,7 @@ class AccountDashboard < BaseDashboard
     id: Field::Number,
     name: Field::String,
     email: Field::String,
-    admin_group: Field::BelongsTo.with_options(
-      class_name: "AdminGroup",
-      foreign_key: "admin_group_id",
-    ),
+    admin_group: Field::BelongsTo,
     admin: Field::Boolean,
     alertability: Field::Boolean,
     encrypted_password: Field::String,

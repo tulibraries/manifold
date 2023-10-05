@@ -12,9 +12,7 @@ class GroupDashboard < BaseDashboard
     name: Field::String,
     slug: Field::String,
     description: DescriptionField,
-    chair_dept_heads: Field::HasMany.with_options(
-      class_name: "Person"
-    ),
+    chair_dept_heads: Field::HasMany,
     member: Field::HasMany,
     persons: Field::HasMany,
     space_group: Field::BelongsTo,
@@ -24,14 +22,8 @@ class GroupDashboard < BaseDashboard
       collection: Rails.configuration.group_types
       ),
     policies: Field::HasMany,
-    parent_group: Field::BelongsTo.with_options(
-      class_name: "Group",
-      foreign_key: "parent_group_id",
-    ),
-    file_uploads: Field::HasMany.with_options(
-      order: "name",
-      class_name: "FileUpload"
-    ),
+    parent_group: Field::BelongsTo,
+    file_uploads: Field::HasMany,
     webpages: Field::HasMany,
     categories: Field::HasMany,
     created_at: Field::DateTime,

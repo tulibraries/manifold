@@ -7,6 +7,7 @@ RSpec.feature "Dashboard::Exhibition", type: :feature do
     @admin = FactoryBot.create(:account, admin: true)
     @non_admin = FactoryBot.create(:account, admin: false)
     @exhibition = FactoryBot.create(:exhibition)
+    @exhibition_with_image = FactoryBot.create(:exhibition, :with_image)
     @models = ["exhibition"]
   end
 
@@ -43,6 +44,16 @@ RSpec.feature "Dashboard::Exhibition", type: :feature do
       expect(page).to_not have_xpath("//*[@id=\"exhibition_slug\"]")
       expect(page).to_not have_xpath("//*[@id=\"exhibition_title\"]")
     end
+    scenario "attaches images rather than replace" do
+      login_as(@non_admin, scope: :account)
+      @exhibition_with_image.images.attach(io:
+        File.open(Rails.root.join("spec/fixtures/dream.jpg")),
+        filename: "dream.jpg",
+        content_type: "image/jpeg")
+      @exhibition_with_image.save!
+      expect(@exhibition_with_image.images).to have_attributes(size: 2)
+    end
+
   end
 
 end

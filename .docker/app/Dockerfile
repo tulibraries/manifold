@@ -13,7 +13,7 @@ ARG RAILS_MASTER_KEY \
 RUN apk add -U --no-cache \
       bash=5.2.15-r5 \
       imagemagick=7.1.1.13-r0 \
-      libc6-compat=1.2.4-r1 \
+      libc6-compat=1.2.4-r2 \
       libxslt=1.1.38-r0 \
       postgresql14-client=14.9-r0 \
       shared-mime-info=2.2-r5 \

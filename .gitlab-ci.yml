@@ -58,7 +58,7 @@ qa_deploy:
   variables:
     IMAGE: $HARBOR/tulibraries/manifold
     RANCHER: rancher-np
-    CLUSTER: dev-library1
+    CLUSTER: dev-library0
   stage: deploy
   extends: .helm_setup
   only:

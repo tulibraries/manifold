@@ -59,12 +59,16 @@ RSpec.configure do |config|
     #     JavaScript-dependent specs.
 
     #     During testing, the app-under-test that the browser driver connects to
-    #     uses a different database connection to the database connection used by
+    #     uses a different database connection than the database connection used by
     #     the spec. The app's database connection would not be able to access
     #     uncommitted transaction data setup over the spec's database connection.
     #   MSG
     # end
     DatabaseCleaner.clean_with(:transaction)
+  end
+
+  config.after(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do

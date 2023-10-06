@@ -138,4 +138,32 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#get_items" do
+    context "category is nil" do
+      let(:category) { nil }
+
+      it "handles nil values gracefully" do
+        expect(helper.get_items(category)).to be("")
+      end
+    end
+
+    context "category has no items" do
+      let(:category) { FactoryBot.create(:category) }
+      let(:items) { nil }
+
+      it "handles no items gracefully" do
+        expect(helper.get_items(category)).to be("")
+      end
+    end
+
+    context "category.items is greater than 0" do
+      let(:category) { FactoryBot.create(:category, :only_name) }
+      let(:items) { FactoryBot.create(:building) }
+
+      it "adds a list item" do
+        allow(category).to receive(:items).and_return([items])
+        expect(helper.get_items(category)).to include(items.label)
+      end
+    end
+  end
 end

@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby "3.1.4"
+ruby "3.1.4" unless ENV["K8"] == "yes"
 
 gem "rails", "~> 7.0.8"
 gem "action-draft"
@@ -53,12 +53,12 @@ gem "orderly"
 gem "paper_trail", git: "https://github.com/paper-trail-gem/paper_trail"
 gem "pg"
 gem "pg_search"
-gem "puma", "~> 6.3.1"
+gem "puma", "~> 6.4.0"
 gem "rswag-api"
 gem "rswag-ui"
 gem "simple_form"
 gem "sitemap_generator"
-gem "skylight", "4.3.2"
+(ENV["K8"] == "yes") ? (gem "skylight") : (gem "skylight", "4.3.2")
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "timecop"

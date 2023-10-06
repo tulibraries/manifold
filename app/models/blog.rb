@@ -12,6 +12,8 @@ class Blog < ApplicationRecord
   validates :title, presence: true
   validates :base_url, presence: true, url: true
 
+  attribute :feed_path, :string, default: "/feed"
+
   def slug_candidates
     [
       :title,
@@ -21,10 +23,6 @@ class Blog < ApplicationRecord
 
   def should_generate_new_friendly_id?
     title_changed? || slug.blank?
-  end
-
-  def feed_path
-    attribute(:feed_path) || "/feed"
   end
 
   def label

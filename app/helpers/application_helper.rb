@@ -103,7 +103,7 @@ module ApplicationHelper
   end
 
   def get_items(category)
-    if category.items.count > 0
+    if  category&.items && category.items.count > 0
       list = "<h1 class=\"menu-category mr-4 pb-3\">#{link_to category.name, category}"
       list += "<span>#{category.description}</span>"
       list += "</h1>"

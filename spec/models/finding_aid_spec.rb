@@ -41,7 +41,7 @@ RSpec.describe FindingAid, type: :model do
     end
     it "has collection_id but no subject" do
       finding_aid = FactoryBot.build(:finding_aid, collections: [FactoryBot.create(:collection)], subject: [""])
-      expect { finding_aid.save! }.not_to raise_error(/Values for either Collections or Subjects need to be selected./)
+      expect { finding_aid.save! }.not_to raise_error
     end
     it "has neither subject nor collection_id" do
       finding_aid = FactoryBot.build(:finding_aid, subject: [""], collections: [])

@@ -47,7 +47,7 @@
 
             </div>
             <div class="person-actions ml-md-4">
-                <%= link_to "View Profile", person, class: "view-profile ml-3" %>
+                <%= link_to "View Profile", person, class: "view-profile ml-3", target: "_top" %>
 
               <% unless person.springshare_id.blank? %>
                   <%= link_to t("manifold.people.show.appointment_link"), 

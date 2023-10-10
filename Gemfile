@@ -64,7 +64,6 @@ gem "stimulus-rails"
 gem "timecop"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "view_component"
 gem "yaml_db"
 
 group :development, :test do

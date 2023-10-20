@@ -3,13 +3,24 @@
 require "rails_helper"
 
 RSpec.describe Panopto::PastEventsComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  let(:videos) { Panopto::VideoDistributor.call(type: "all") }
+
+  describe "loads videos" do
+    it "takes data successfully" do
+      lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)
+      component = described_class.new(videos:)
+      expect(
+        component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
+      ).to be
+    end
+    it "takes data successfully" do
+      lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)
+      component = described_class.new(videos:)
+      expect(
+        component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
+      ).to match("Recent Videos")
+    end
+  end
+
 end

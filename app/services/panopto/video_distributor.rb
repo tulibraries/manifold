@@ -20,7 +20,6 @@ module Panopto
         auth = { username: key, password: code }
         params = { "scope" => "api", "grant_type" => "client_credentials" }
         response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
-        stdout_and_log("response: #{response}")
         @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
       rescue => e
         e.message
@@ -28,16 +27,6 @@ module Panopto
     end
   
     def call
-      #vidoes_list
-      #page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], @category[2])
-
-      #videos_show
-      #panopto_api_call(["sessions", nil], params[:id])
-
-      #videos_search
-      #panopto_api_call(["folders", "sessions", "search", params[:q], i], "e2753a7a-85c2-4d00-a241-aecf00393c25")
-
-
       @categories = {"recent" => ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
         "beyond-the-page" => ["beyond-the-page", "Beyond the Page", "eba32425-d6bf-4e9c-983f-af1f0128b62b"],
         "beyond-the-notes" => ["beyond-the-notes", "Beyond the Notes", "e01cdfba-bc19-4f27-bdc6-af1c00f52773"],
@@ -59,7 +48,7 @@ module Panopto
       end
     end
 
-    # private
+    private
 
       def panopto_api_call(type, panopto_id)
         begin
@@ -127,6 +116,7 @@ module Panopto
         if collection.present?
           page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
           @videos = page_results[:Results]
+
           more = true if @videos.size == 50
           while more
             page_results = nil
@@ -162,6 +152,7 @@ module Panopto
           else
             return redirect_to(webpages_videos_all_path)
           end
+          binding.pry
           @videos = [query, videos.size, videos]
         end
       end

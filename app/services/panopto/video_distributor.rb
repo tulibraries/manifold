@@ -138,7 +138,7 @@ module Panopto
       def video_show(video)
         @video = panopto_api_call(["sessions", nil], video)
         if @video.blank? || @video[:Id].nil?
-          return redirect_to(webpages_videos_all_path, alert: "Unable to retrieve video.")
+          return redirect_to("/watchpastprograms", alert: "Unable to retrieve video.")
         else
           @video
         end
@@ -152,17 +152,10 @@ module Panopto
           else
             return redirect_to(webpages_videos_all_path)
           end
-          binding.pry
           @videos = [query, videos.size, videos]
         end
       end
 
-      def stdout_and_log(message, level: :info)
-        @log = Logger.new("log/video-api.log")
-        @stdout = Logger.new(STDOUT)
-        @log.send(level, message)
-        @stdout.send(level, message)
-      end
   end
 
 end

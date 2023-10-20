@@ -6,6 +6,7 @@ RSpec.feature "People", type: :feature do
 
   describe "Specialist" do
     before(:all) do
+      Subject.delete_all
       @person1 = FactoryBot.create(:person, :with_subjects)
       @person2 = FactoryBot.create(:person)
     end

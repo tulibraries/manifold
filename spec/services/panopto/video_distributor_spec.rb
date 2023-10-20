@@ -20,6 +20,11 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       expect(video).to be
     end
 
+    # it "redirect on missing video" do
+    #   video = Panopto::VideoDistributor.new(type: "show", video_id: "7")
+    #   request.to redirect_to "/watchpastprogram"
+    # end
+
     it "gets videos_search" do
       videos = Panopto::VideoDistributor.new(type: "search", query: "concert")
       expect(videos).to be

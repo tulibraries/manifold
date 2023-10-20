@@ -31,8 +31,9 @@ RSpec.describe Panopto::PastEventsVideoComponent, type: :component do
       ).to match(video[:Name])
     end
     it "displays video not found" do
+      # PENDING "redirect_to is unrecognized"
       lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)
-      component = described_class.new(missing_video:)
+      component = described_class.new(video: missing_video)
       expect(
         component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
       ).to match("Unable to retrieve video.")

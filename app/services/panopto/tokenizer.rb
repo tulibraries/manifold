@@ -4,7 +4,7 @@ require "net/https"
 require "open-uri"
 require "json"
 
-class Tokenizer < ApplicationService
+class Panopto::Tokenizer < ApplicationService
   def initialize(*args)
     begin
       key = ENV["PANOPTO_API_USER"]

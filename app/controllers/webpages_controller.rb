@@ -43,7 +43,6 @@ class WebpagesController < ApplicationController
     else
       return redirect_to(webpages_videos_all_path, alert: "You must choose a term to search for.")
     end
-
   end
 
   def home

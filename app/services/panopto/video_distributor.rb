@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
-require 'net/https'
-require 'open-uri'
-require 'json'
+require "net/https"
+require "open-uri"
+require "json"
 
 
 module Panopto
-
   class VideoDistributor < ApplicationService
-
     def initialize(*args)
       begin
         @type = args.first[:type]
@@ -25,15 +23,15 @@ module Panopto
         e.message
       end
     end
-  
+
     def call
-      @categories = {"recent" => ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
+      @categories = { "recent" => ["recent", "Recent Videos", "98a7258a-f81f-48c1-8541-af1900e5a7af"],
         "beyond-the-page" => ["beyond-the-page", "Beyond the Page", "eba32425-d6bf-4e9c-983f-af1f0128b62b"],
         "beyond-the-notes" => ["beyond-the-notes", "Beyond the Notes", "e01cdfba-bc19-4f27-bdc6-af1c00f52773"],
         "blockson" => ["blockson", "Charles L. Blockson Afro-American Collection", "1aab1d3f-4626-43fd-924d-af1c00f290d5"],
         "research-awards" => ["research-awards", "Livingstone Undergraduate Research Awards", "ad6a8ada-242e-4ddd-8115-af1c00fc3621"],
         "lcdss" => ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
-        "scrc" => ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"]}
+        "scrc" => ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"] }
 
       case @type
       when "all"
@@ -66,13 +64,12 @@ module Panopto
       end
 
       def get_video_categories(videos)
-
-        recent = [] 
-        beyond_page = [] 
-        beyond_notes = [] 
-        blockson = [] 
-        awards = [] 
-        lcdss = [] 
+        recent = []
+        beyond_page = []
+        beyond_notes = []
+        blockson = []
+        awards = []
+        lcdss = []
         scrc = []
 
         @categories.each do |category|
@@ -94,17 +91,17 @@ module Panopto
             when "scrc"
               scrc << video
             end
-          end          
+          end
         end
-        
-        videos_by_category = { 
-                              :recent => {:slug => "recent", :label => "Recent Videos", :videos => recent.take(10)}, 
-                              :beyond_page => {:slug => "beyond-the-page", :label => "Beyond the Page", :videos => beyond_page.take(5)}, 
-                              :beyond_notes => {:slug => "beyond-the-notes", :label => "Beyond the Notes", :videos => beyond_notes.take(5)}, 
-                              :blockson => {:slug => "blockson", :label => "Charles L. Blockson Afro-American Collection", :videos => blockson.take(5)}, 
-                              :awards => {:slug => "awards", :label => "Livingstone Undergraduate Research Awards", :videos => awards.take(5)}, 
-                              :lcdss => {:slug => "lcdss", :label => "Loretta C. Duckworth Scholars Studio", :videos => lcdss.take(5)}, 
-                              :scrc => {:slug => "scrc", :label => "Special Collections Research Center", :videos => scrc.take(5)}
+
+        videos_by_category = {
+                              recent: { slug: "recent", label: "Recent Videos", videos: recent.take(10) },
+                              beyond_page: { slug: "beyond-the-page", label: "Beyond the Page", videos: beyond_page.take(5) },
+                              beyond_notes: { slug: "beyond-the-notes", label: "Beyond the Notes", videos: beyond_notes.take(5) },
+                              blockson: { slug: "blockson", label: "Charles L. Blockson Afro-American Collection", videos: blockson.take(5) },
+                              awards: { slug: "awards", label: "Livingstone Undergraduate Research Awards", videos: awards.take(5) },
+                              lcdss: { slug: "lcdss", label: "Loretta C. Duckworth Scholars Studio", videos: lcdss.take(5) },
+                              scrc: { slug: "scrc", label: "Special Collections Research Center", videos: scrc.take(5) }
                             }
       end
 
@@ -155,7 +152,5 @@ module Panopto
           @videos = [query, videos.size, videos]
         end
       end
-
   end
-
 end

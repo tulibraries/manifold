@@ -14,17 +14,27 @@ workflows:
          filters:
            branches:
              only:
-               - qa
+               - main
   stage_deploy:
     jobs:
       - stage_deploy:
           filters:
             branches:
-              only:
-                - main
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
   prod_deploy:
     jobs:
+      - request-prod-deploy:
+          type: approval
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
       - prod_deploy:
+          requires:
+            - request-prod-deploy
           filters:
             branches:
               ignore: /.*/

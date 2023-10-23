@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  coveralls: coveralls/coveralls@1.0.6
+  coveralls: coveralls/coveralls@2.2.1
 
 workflows:
   version: 2
@@ -14,17 +14,27 @@ workflows:
          filters:
            branches:
              only:
-               - qa
+               - main
   stage_deploy:
     jobs:
       - stage_deploy:
           filters:
             branches:
-              only:
-                - main
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
   prod_deploy:
     jobs:
+      - request-prod-deploy:
+          type: approval
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
       - prod_deploy:
+          requires:
+            - request-prod-deploy
           filters:
             branches:
               ignore: /.*/
@@ -106,7 +116,7 @@ jobs:
               bundle exec rspec
 
       - coveralls/upload:
-          path_to_lcov: ./coverage/lcov/app.lcov
+          coverage_file: ./coverage/lcov/app.lcov
 
   qa_deploy:
     docker:

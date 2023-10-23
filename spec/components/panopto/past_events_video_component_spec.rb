@@ -23,6 +23,7 @@ RSpec.describe Panopto::PastEventsVideoComponent, type: :component do
         component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
       ).to be
     end
+
     it "takes data successfully" do
       lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)
       component = described_class.new(video:)

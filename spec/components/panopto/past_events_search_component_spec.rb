@@ -9,7 +9,7 @@ RSpec.describe Panopto::PastEventsSearchComponent, type: :component do
     end
   end
 
-  let(:videos) { Panopto::VideoDistributor.call(type: "search", query: "livingstone") }
+  let!(:videos) { Panopto::VideoDistributor.call(type: "search", query: "livingstone") }
 
   describe "loads videos" do
 

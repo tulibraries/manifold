@@ -116,7 +116,7 @@ module Panopto
           page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
           @videos = page_results[:Results]
 
-          more = true if @videos.size == 50
+          more = true if @videos.present? && @videos.size == 50
           while more
             page_results = nil
             i += 1
@@ -140,7 +140,7 @@ module Panopto
         page_results = panopto_api_call(["folders", "sessions", "search", query, nil], "e2753a7a-85c2-4d00-a241-aecf00393c25")
         if page_results.present?
           videos = page_results[:Results]
-          @videos = [query, videos.size, videos]
+          @videos = [query, videos.size, videos] if videos.present?
         end
       end
   end

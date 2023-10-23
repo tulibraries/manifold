@@ -24,21 +24,19 @@ class WebpagesController < ApplicationController
       if videos.present?
         render(Panopto::PastEventsCollectionComponent.new(videos:))
       else
-        return redirect_to(webpages_videos_all_path, alert: "You must choose a video collection.")
+        return redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
       end
     else
-      return redirect_to(webpages_videos_all_path, alert: "You must choose a video collection.")
+      return redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
     end
   end
 
   def video_show
     if params[:id].present?
       video = Panopto::VideoDistributor.call(type: "show", video_id: params[:id])
-      if video[:Message] == "The request is invalid."
-        return redirect_to(webpages_videos_all_path, alert: "You must choose a video to stream.")
-      else
-        render(Panopto::PastEventsVideoComponent.new(video:))
-      end
+      return redirect_to(webpages_videos_all_path, notice: "You must choose a video to stream.")
+    else
+      render(Panopto::PastEventsVideoComponent.new(video:))
     end
   end
 
@@ -47,7 +45,7 @@ class WebpagesController < ApplicationController
       videos = Panopto::VideoDistributor.call(type: "search", query: params[:q])
       render(Panopto::PastEventsSearchComponent.new(videos:))
     else
-      return redirect_to(webpages_videos_all_path, alert: "You must choose a term to search for.")
+      return redirect_to(webpages_videos_all_path, notice: "You must choose a term to search for.")
     end
   end
 

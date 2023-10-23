@@ -20,7 +20,10 @@ RSpec.describe Panopto::PastEventsSearchComponent, type: :component do
         component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
       ).to be
     end
-    it "takes data successfully" do
+    it "returns results" do
+      expect(videos.size > 0).to be_truthy
+    end
+    it "takes returns relevant results" do
       lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)
       component = described_class.new(videos:)
       expect(

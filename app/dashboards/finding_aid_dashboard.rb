@@ -21,12 +21,8 @@ class FindingAidDashboard < Administrate::BaseDashboard
     content_link: Field::String,
     identifier: Field::String,
     path: Field::String.with_options(admin_only: true),
-    collections: Field::HasMany.with_options(
-      class_name: "Collection"
-    ),
-    person: Field::HasMany.with_options(
-      class_name: "Person"
-    ),
+    collections: Field::HasMany,
+    person: Field::HasMany,
     categories: Field::HasMany,
     covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,

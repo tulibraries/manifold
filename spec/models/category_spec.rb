@@ -60,8 +60,7 @@ RSpec.describe Category, type: :model do
     end
 
     context "when it doesn't have a description" do
-      it "should raise a validation error" do
-        skip "required richtext fields throw administrate error if blank. need to account for error before test."
+      it "should not raise a validation error" do
         category.description = nil
         expect { category.save! }.to_not raise_error
       end
@@ -75,12 +74,12 @@ RSpec.describe Category, type: :model do
       expect(category).to respond_to(:long_description)
     end
 
-    xit "matches long description" do
-      expect(category.long_description).to match("It's more about what the category is about")
+    it "matches long description" do
+      expect(category.long_description.body.to_plain_text).to match("It's more about what the category is about")
     end
 
     context "when it doesn't have a long description" do
-      xit "should raise a validation error" do
+      it "should not raise a validation error" do
         category.long_description = nil
         expect { category.save! }.to_not raise_error
       end
@@ -94,8 +93,8 @@ RSpec.describe Category, type: :model do
       expect(category).to respond_to(:get_help)
     end
 
-    xit "matches help text" do
-      expect(category.get_help).to match("It's what help is for")
+    it "matches help text" do
+      expect(category.get_help.body.to_plain_text).to include("Helping Hands Help the World")
     end
   end
 

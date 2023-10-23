@@ -7,12 +7,13 @@ COPY . .
 USER root
 
 ARG RAILS_MASTER_KEY \
-  RAILS_ENV=production
+  RAILS_ENV=production \
+  K8=yes
 
 RUN apk add -U --no-cache \
       bash=5.2.15-r5 \
       imagemagick=7.1.1.13-r0 \
-      libc6-compat=1.2.4-r1 \
+      libc6-compat=1.2.4-r2 \
       libxslt=1.1.38-r0 \
       postgresql14-client=14.9-r0 \
       shared-mime-info=2.2-r5 \
@@ -22,9 +23,10 @@ RUN apk add -U --no-cache \
       build-base=0.5-r3 \
       libxslt-dev=1.1.38-r0 \
       postgresql14-dev=14.9-r0 \
-      nodejs=18.17.1-r0 \
+      nodejs=18.18.2-r0 \
       yarn=1.22.19-r0 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
+    bundle update --conservative skylight && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \

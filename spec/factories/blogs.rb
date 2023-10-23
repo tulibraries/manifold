@@ -26,7 +26,5 @@ FactoryBot.define do
     factory :blog_fixture do
       feed_path { "files/blog_posts.rss" }
     end
-
   end
-
 end

@@ -23,7 +23,6 @@ class WebpagesController < ApplicationController
       auth = { username: key, password: code }
       params = { "scope" => "api", "grant_type" => "client_credentials" }
       response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
-      stdout_and_log("response: #{response}")
       @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
 
     rescue => e

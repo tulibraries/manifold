@@ -54,7 +54,7 @@ qa_deploy:
   stage: deploy
   extends: .helm_setup
   only:
-    - qa #Change this once we remove the qa branch
+    - main
   script:
     - *export_variables
     - helm pull oci://$HARBOR/tulibraries/manifold-charts/manifold --version "0.1.*" --untar

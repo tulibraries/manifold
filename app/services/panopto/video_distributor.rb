@@ -140,17 +140,12 @@ module Panopto
       end
 
       def videos_search(query)
-        if query.present?
-          page_results = panopto_api_call(["folders", "sessions", "search", query, nil], "e2753a7a-85c2-4d00-a241-aecf00393c25")
-          if page_results.present?
-            videos = page_results[:Results]
-          else
-            return redirect_to(webpages_videos_all_path)
-          end
+        page_results = panopto_api_call(["folders", "sessions", "search", query, nil], "e2753a7a-85c2-4d00-a241-aecf00393c25")
+        if page_results.present?
+          videos = page_results[:Results]
           @videos = [query, videos.size, videos]
         end
       end
-
-  end
-
+  
+  end     
 end

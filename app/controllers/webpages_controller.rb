@@ -34,9 +34,13 @@ class WebpagesController < ApplicationController
   def video_show
     if params[:id].present?
       video = Panopto::VideoDistributor.call(type: "show", video_id: params[:id])
-      return redirect_to(webpages_videos_all_path, notice: "You must choose a video to stream.")
+      if video.present? && video[:Message] != "The request is invalid."
+        render(Panopto::PastEventsVideoComponent.new(video:))
+      else
+        return redirect_to(webpages_videos_all_path, notice: "You must choose a valid video to stream.")
+      end
     else
-      render(Panopto::PastEventsVideoComponent.new(video:))
+      return redirect_to(webpages_videos_all_path, notice: "You must choose a video to stream.")
     end
   end
 
@@ -147,7 +151,6 @@ class WebpagesController < ApplicationController
   def list_item(category)
     cat_link(category, @webpage)
   end
-  helper_method :list_item
 
   def index
     serializable_index
@@ -162,6 +165,8 @@ class WebpagesController < ApplicationController
     @featured = @webpage.featured_item
     serializable_show
   end
+  
+  helper_method :list_item
 
   private
     def set_webpage

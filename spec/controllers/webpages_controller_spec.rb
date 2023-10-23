@@ -71,9 +71,11 @@ RSpec.describe WebpagesController, type: :controller do
     end
   end
 
-  describe "webpages#video_show" do
-    get :video_show(video: nil)
-    expect(response).to be_successful
+  describe "webpages#video_search" do
+    it "redirects page when video not found" do
+      get :videos_search, params: { query: "non-existant" }
+      expect(response).to have_http_status(302)
+    end
   end
 
   it_behaves_like "serializable"

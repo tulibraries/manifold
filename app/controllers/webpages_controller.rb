@@ -165,7 +165,7 @@ class WebpagesController < ApplicationController
     @featured = @webpage.featured_item
     serializable_show
   end
-  
+
   helper_method :list_item
 
   private

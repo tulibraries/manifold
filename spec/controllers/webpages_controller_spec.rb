@@ -71,6 +71,11 @@ RSpec.describe WebpagesController, type: :controller do
     end
   end
 
+  describe "webpages#video_show" do
+    get :video_show(video: nil)
+    expect(response).to be_successful
+  end
+
   it_behaves_like "serializable"
 
 end

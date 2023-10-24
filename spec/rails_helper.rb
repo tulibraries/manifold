@@ -210,6 +210,7 @@ RSpec.configure do |config|
   end
 
   VCR.configure do |c|
+    c.ignore_hosts "127.0.0.1"
     c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
     c.hook_into :webmock
     c.configure_rspec_metadata!
@@ -224,5 +225,9 @@ RSpec.configure do |config|
       with.test_framework :rspec
       with.library :rails
     end
+  end
+
+  config.before(:each, type: :system) do
+    driven_by :rack_test
   end
 end

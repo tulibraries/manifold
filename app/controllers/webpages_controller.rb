@@ -47,7 +47,9 @@ class WebpagesController < ApplicationController
   def videos_search
     if params[:q].present?
       videos = Panopto::VideoDistributor.call(type: "search", query: params[:q])
-      render(Panopto::PastEventsSearchComponent.new(videos:))
+      if videos.present?
+        render(Panopto::PastEventsSearchComponent.new(videos:))
+      end
     else
       return redirect_to(webpages_videos_all_path, notice: "You must choose a term to search for.")
     end

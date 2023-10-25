@@ -27,7 +27,7 @@ RSpec.describe Panopto::PastEventsSearchComponent, type: :component do
       lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)
       component = described_class.new(videos:)
       expect(
-        component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, videos))
+        component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
       ).to match("livingstone")
     end
   end

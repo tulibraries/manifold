@@ -29,7 +29,7 @@ RSpec.describe Panopto::PastEventsVideoComponent, type: :component do
       component = described_class.new(video:)
       expect(
         component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
-      ).to match(video[:Name])
+      ).to match(video[:Name].to_s)
     end
   end
 

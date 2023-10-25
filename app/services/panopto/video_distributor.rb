@@ -129,6 +129,8 @@ module Panopto
             end
           end
           [collection[1], @videos]
+        else
+          [nil, []]
         end
       end
 
@@ -138,9 +140,11 @@ module Panopto
 
       def videos_search(query)
         page_results = panopto_api_call(["folders", "sessions", "search", query, nil], "e2753a7a-85c2-4d00-a241-aecf00393c25")
-        if page_results.present?
+        if page_results[:Results].present?
           videos = page_results[:Results]
           @videos = [query, videos.size, videos] if videos.present?
+        else
+          @videos = [query, 0, page_results[:Results]]
         end
       end
   end

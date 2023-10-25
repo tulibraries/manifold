@@ -8,21 +8,21 @@
 
   <div class="row mt-5">
     <div class="col-lg-10 offset-lg-1 px-5">
-      <iframe src=<%= "https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=#{ @video[:Id] }&autoplay=false&offerviewer=false&showtitle=false&showbrand=false&captions=false&interactivity=none" %> height="640px" width="100%" allowfullscreen allow="autoplay"></iframe>
+      <iframe src=<%= @video_src %> height="640px" width="100%" allowfullscreen allow="autoplay"></iframe>
     </div>
   </div>
 
 <div class="row">
 	<div class="col-lg-10 offset-lg-1 px-5">
-		<div id="featuredTitle" class="m-auto"><%= @video[:Name] %></div>
+		<div id="featuredTitle" class="m-auto"><%= @video_name %></div>
 	</div>
 </div>
 
-  <% if @video[:Description].present? %>
+  <% if @video_description.present? %>
   <div class="row">
     <div class="col video-description mt-3 mx-5">
       <hr >
-      <%= sanitize @video[:Description].html_safe %>
+      <%= sanitize @video_description.html_safe %>
     </div>
   </div>
   <% end %>

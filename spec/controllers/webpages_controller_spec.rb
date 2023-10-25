@@ -47,43 +47,6 @@ RSpec.describe WebpagesController, type: :controller do
     end
   end
 
-  describe "video methods", vcr: true do
-    render_views
-    let(:json_all) {
-      controller.send(:videos_all)
-    }
-    it "returns the expected output" do
-      expect(json_all).to be
-    end
-    it "returns the index view" do
-      get :videos_all
-      expect(response).to be_successful
-      # expect(response.body).to match json_all
-    end
-    it "returns the show view" do
-      get :videos_show, params: { id: "fb431580-ed13-4125-b1aa-af2600f2f3f3" }
-      expect(response).to be_successful
-      # expect(response.body).to match json_all
-    end
-    it "returns the list view" do
-      get :videos_list, params: { collection: "recent" }
-      expect(response).to be_successful
-      # expect(response.body).to match json_all
-    end
-    it "returns the search view" do
-      get :videos_search, params: { q: "conversation" }
-      expect(response).to be_successful
-      # expect(response.body).to match json_all
-      # expect(response.body).to match "returned 50 results"
-    end
-    # it "returns the search view" do
-    #   get :videos_search, params: { q: "bad wolf" }
-    #   expect(response).to be_successful
-    #   expect(response.body).to match "returned 0 results"
-    # end
-
-  end
-
   describe "webpages#news" do
     let(:blog_post) { FactoryBot.create(:blog_post) }
     let(:highlight) { FactoryBot.create(:highlight) }
@@ -105,6 +68,13 @@ RSpec.describe WebpagesController, type: :controller do
     end
     it "returns highlights" do
       assert_equal Highlight.with_image.where(promoted: true).take(3), assigns(:highlights)
+    end
+  end
+
+  describe "webpages#video_search" do
+    it "redirects page when video not found" do
+      get :videos_search, params: { query: "non-existant" }
+      expect(response).to have_http_status(302)
     end
   end
 

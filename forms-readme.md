@@ -13,10 +13,10 @@ Note - The form name is denoted `<form_name>`
   ```
   def get_subject
     @forms = {
-      "requested-book" => ["Request Book", "cdoyle@temple.edu"],
-      "recall-book" => ["Request Recall of Books Already Checked Out",  "cdoyle@temple.edu"],
-      "purchase-request" => ["Purchase Request",  "cdoyle@temple.edu"],
-      "ask-scrc" => ["Special Collections Research Center: Ask a Question", "cdoyle@temple.edu"] }
+      "requested-book" => ["Request Book", "someone@temple.edu"],
+      "recall-book" => ["Request Recall of Books Already Checked Out",  "someone@temple.edu"],
+      "purchase-request" => ["Purchase Request",  "someone@temple.edu"],
+      "ask-scrc" => ["Special Collections Research Center: Ask a Question", "someone@temple.edu"] }
 
     @forms.fetch(form_type)
   end

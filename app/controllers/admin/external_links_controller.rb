@@ -55,12 +55,12 @@ module Admin
           link[1].each do |v|
             notice += "#{v}<br />"
           end
-          notice += "<br />"
         end
+        notice += "<br />"
+        redirect_to :admin_external_links, notice:
       else
         super
       end
-      redirect_to :admin_external_links, notice:
     end
   end
 end

@@ -15,6 +15,7 @@ FactoryBot.define do
       after :create do |webpage|
         external_link = FactoryBot.create(:external_link)
         webpage.assign_attributes(external_link:)
+        webpage.save
       end
     end
     trait :with_file do

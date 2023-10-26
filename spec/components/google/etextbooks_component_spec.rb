@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require 'vcr'
 
 RSpec.describe Google::EtextbooksComponent, type: :component do
-  before(:all) do
-    VCR.configure do |config|
-      config.allow_http_connections_when_no_cassette = true
+
+  let(:etexts) { 
+    VCR.use_cassette("etexts") do
+      Google::SheetsConnector.call
     end
-  end
-
-  let(:etexts) { Google::SheetsConnector.call }
-
+  }
   describe "loads data" do
     it "renders results" do
-      expect(etexts.values.length > 0).to be_truthy
+      expect(etexts.values.size > 0).to be_truthy
     end
     it "renders component view" do
       lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G?key=AIzaSyDqX9T8MN9MqzWwEMCwwr6MwDNjEX8p_yI
+    uri: https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G?key=<gsheets_key>
     body:
       encoding: UTF-8
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Thu, 26 Oct 2023 18:32:01 GMT
+      - Thu, 26 Oct 2023 20:06:42 GMT
       X-Goog-Api-Client:
       - gl-ruby/3.1.4 gdcl/1.26.0
       Content-Type:
@@ -33,7 +33,7 @@ http_interactions:
       Content-Encoding:
       - gzip
       Date:
-      - Thu, 26 Oct 2023 18:32:01 GMT
+      - Thu, 26 Oct 2023 20:06:42 GMT
       Server:
       - ESF
       Cache-Control:
@@ -46,8 +46,6 @@ http_interactions:
       - nosniff
       Alt-Svc:
       - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-      X-L2-Request-Path:
-      - l2-managed-6
       Transfer-Encoding:
       - chunked
     body:
@@ -8663,5 +8661,5 @@ http_interactions:
             ]
           ]
         }
-  recorded_at: Thu, 26 Oct 2023 18:32:01 GMT
+  recorded_at: Thu, 26 Oct 2023 20:06:42 GMT
 recorded_with: VCR 6.2.0

@@ -224,7 +224,7 @@ RSpec.configure do |config|
     c.configure_rspec_metadata!
     c.filter_sensitive_data("<key>") { ENV["PANOPTO_API_USER"] }
     c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
-    c.filter_sensitive_data("<key>") { ENV["GOOGLE_SHEETS_API_KEY"] }
+    c.filter_sensitive_data("<gsheets_key>") { ENV["GOOGLE_SHEETS_API_KEY"] }
   end
 
   config.include ActionText::SystemTestHelper, type: :system

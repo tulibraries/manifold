@@ -1,0 +1,34 @@
+<div class="container-lg mt-3">
+
+  <div class="row">
+    <div class="col">
+      <h1><%= t("manifold.webpages.etextbooks.title") %></h1>
+      <p><%= t("manifold.webpages.etextbooks.intro") %></p>
+    </div>
+  </div>
+  <table style="padding-left: 7px;">
+  <thead style="display: table-header-group">
+    <tr style="border: solid black 1px;">
+      <th scope="col" style="width:15%;padding-left:7px">Course</th>
+      <th scope="col" style="width:20%">Professor</th>
+      <th scope="col" style="width:65%">Title</th>
+    </tr>
+    <thead>
+    <tbody>
+    <% @etexts.each do |book| %>
+    <tr>
+      <td style="padding: 8px 7px">
+          <%= book[1] %> <%= book[2] %>, section: <%= book[3] %>
+      </td>
+      <td>
+          <%= book[4] %>, <%= book[5] %>
+      </td>
+      <td>
+          <%= catalog_link(book[0], book[6]) %>
+      </td>
+    </tr>
+    <% end if @etexts.present? %>
+    </tbody>
+  </table>
+
+</div>

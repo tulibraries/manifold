@@ -1176,6 +1176,9 @@ en:
         registration_status: "No Registration Required"
         space: "No Space Given"
         building: "Charles Library"
+      etextbooks:
+        title: Textbooks available as eBooks in the Library
+        intro: Below is a list of textbooks for the current semester that are available to students for free as library ebooks.
 
     redirects:
       moved_permanently: "has moved. Please update bookmarks and links."

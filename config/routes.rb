@@ -157,6 +157,7 @@ Rails.application.routes.draw do
     get "watchpastprograms/collections/:collection" => :videos_list, as: "webpages_videos_collection"
     get "watchpastprograms/search" => :videos_search, as: "webpages_videos_search"
     get "watchpastprograms/show" => :video_show, as: "webpages_video_show"
+    get "etextbooks" => :etextbooks, as: "etextbooks"
     get "/pages/:id" => :show
     get "/news" => :news, as: "news"
   end

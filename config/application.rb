@@ -42,10 +42,16 @@ module Manifold
     config.primo_articles_url = "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI"
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
+    
     config.hours_spreadsheet_id = "1IXyE2EgREGvxpVBz_qcDlQovQ-w3BJOgUCfwz8bBtqI"
     config.hours_worksheet = "Hours"
     config.hours_spreadsheet_header_cells = "Hours!A1:O1"
     config.hours_spreadsheet_date_cells = "Hours!A2:A"
+
+    config.etexts_spreadsheet_id = "1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU"
+    config.etexts_worksheet = "Sheet1"
+    config.etexts_spreadsheet_etext_cells = "Sheet1!A2:G"
+
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
     config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://events.temple.edu/feed/xml/events?department=2566")
     config.ensemble_api_user = ENV["ENSEMBLE_API_USER"]

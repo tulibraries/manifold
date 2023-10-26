@@ -8,10 +8,11 @@ require_relative "../config/environment"
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
 require "view_component/test_helpers"
+require "view_component/system_test_helpers"
+require "capybara/rspec"
 require "capybara/rails"
 require "action_text/system_test_helper"
 # require "paper_trail/frameworks/rspec"
-
 require "webmock/rspec"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -45,6 +46,7 @@ end
 
 RSpec.configure do |config|
   config.include ViewComponent::TestHelpers, type: :component
+  config.include ViewComponent::SystemTestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

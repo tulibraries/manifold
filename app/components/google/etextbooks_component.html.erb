@@ -24,7 +24,7 @@
           <%= book[4] %>, <%= book[5] %>
       </td>
       <td>
-          <%= catalog_link(book[0], book[6]) %>
+          <%= link_to(book[6], "https://librarysearch.temple.edu/catalog/#{book[0]}") %>
       </td>
     </tr>
     <% end if @etexts.present? %>

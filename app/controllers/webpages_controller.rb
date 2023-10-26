@@ -57,7 +57,7 @@ class WebpagesController < ApplicationController
 
   def etextbooks
     etexts = Google::SheetsConnector.call
-    if extexts.present?
+    if etexts.present?
       render(Google::EtextbooksComponent.new(etexts:))
     else
       redirect_to(root_path, notice: "The requested page is not available")

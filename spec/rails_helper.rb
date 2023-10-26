@@ -144,7 +144,7 @@ RSpec.configure do |config|
     stub_request(:put, "https://bucket.s3.region.amazonaws.com/sitemap.xml.gz").
       to_return(status: 200, body: "", headers: {})
 
-    stub_request(:get, "https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G?key=AIzaSyDqX9T8MN9MqzWwEMCwwr6MwDNjEX8p_yI").
+    stub_request(:get, "https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G").
         with(
           headers: {}
         ).
@@ -227,6 +227,7 @@ RSpec.configure do |config|
     c.configure_rspec_metadata!
     c.filter_sensitive_data("<key>") { ENV["PANOPTO_API_USER"] }
     c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
+    # c.filter_sensitive_data("<key>")
   end
 
   config.include ActionText::SystemTestHelper, type: :system

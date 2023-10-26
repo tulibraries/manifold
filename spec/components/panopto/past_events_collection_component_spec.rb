@@ -3,13 +3,12 @@
 require "rails_helper"
 
 RSpec.describe Panopto::PastEventsCollectionComponent, type: :component do
-  before(:all) do
-    VCR.configure do |config|
-      config.allow_http_connections_when_no_cassette = true
-    end
-  end
 
-  let(:videos) { Panopto::VideoDistributor.call(type: "collection", collection: "beyond-the-page") }
+  let(:videos) { 
+    VCR.use_cassette("video-collection") do
+      Panopto::VideoDistributor.call(type: "collection", collection: "beyond-the-page")
+    end
+  }
 
   describe "loads videos" do
     it "takes data successfully" do

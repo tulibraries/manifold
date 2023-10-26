@@ -3,13 +3,12 @@
 require "rails_helper"
 
 RSpec.describe Panopto::PastEventsSearchComponent, type: :component do
-  before(:all) do
-    VCR.configure do |config|
-      config.allow_http_connections_when_no_cassette = true
-    end
-  end
 
-  let!(:videos) { Panopto::VideoDistributor.call(type: "search", query: "livingstone") }
+  let(:videos) { 
+    VCR.use_cassette("video-search") do
+      Panopto::VideoDistributor.call(type: "search", query: "livingstone")
+    end
+  }
 
   describe "loads videos" do
 

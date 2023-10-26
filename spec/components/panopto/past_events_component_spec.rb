@@ -4,7 +4,11 @@ require "rails_helper"
 
 RSpec.describe Panopto::PastEventsComponent, type: :component do
 
-  let(:videos) { Panopto::VideoDistributor.call(type: "all") }
+  let(:videos) { 
+    VCR.use_cassette("videos-all") do
+      Panopto::VideoDistributor.call(type: "all")
+    end
+  }
 
   describe "loads videos" do
     it "takes data successfully" do

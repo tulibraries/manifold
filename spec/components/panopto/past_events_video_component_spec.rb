@@ -4,20 +4,20 @@ require "rails_helper"
 
 RSpec.describe Panopto::PastEventsVideoComponent, type: :component do
 
-  let(:videos) { 
+  let(:videos) {
     VCR.use_cassette("video-all") do
       Panopto::VideoDistributor.call(type: "all")
     end
   }
-  let(:video_stub) { 
-    videos[:recent][:videos].first 
+  let(:video_stub) {
+    videos[:recent][:videos].first
   }
-  let(:video) { 
+  let(:video) {
     VCR.use_cassette("video-show") do
       Panopto::VideoDistributor.call(type: "show", video_id: video_stub[:Id])
     end
   }
-  let(:missing_video) { 
+  let(:missing_video) {
     VCR.use_cassette("video-show") do
       Panopto::VideoDistributor.call(type: "show", video_id: 7)
     end

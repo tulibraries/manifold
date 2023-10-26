@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Panopto::PastEventsComponent, type: :component do
 
-  let(:videos) { 
+  let(:videos) {
     VCR.use_cassette("videos-all") do
       Panopto::VideoDistributor.call(type: "all")
     end

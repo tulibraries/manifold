@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Panopto::PastEventsSearchComponent, type: :component do
 
-  let(:videos) { 
+  let(:videos) {
     VCR.use_cassette("video-search") do
       Panopto::VideoDistributor.call(type: "search", query: "livingstone")
     end

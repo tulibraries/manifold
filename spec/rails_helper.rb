@@ -145,10 +145,7 @@ RSpec.configure do |config|
       to_return(status: 200, body: "", headers: {})
 
     stub_request(:get, "https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G").
-        with(
-          headers: {}
-        ).
-        to_return(status: 200)
+      to_return(status: 200)
 
     stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/").
          with(
@@ -227,7 +224,7 @@ RSpec.configure do |config|
     c.configure_rspec_metadata!
     c.filter_sensitive_data("<key>") { ENV["PANOPTO_API_USER"] }
     c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
-    # c.filter_sensitive_data("<key>")
+    c.filter_sensitive_data("<key>") {ENV["GOOGLE_SHEETS_API_KEY"]}
   end
 
   config.include ActionText::SystemTestHelper, type: :system

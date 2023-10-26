@@ -42,7 +42,7 @@ module Manifold
     config.primo_articles_url = "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI"
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
-    
+
     config.hours_spreadsheet_id = "1IXyE2EgREGvxpVBz_qcDlQovQ-w3BJOgUCfwz8bBtqI"
     config.hours_worksheet = "Hours"
     config.hours_spreadsheet_header_cells = "Hours!A1:O1"

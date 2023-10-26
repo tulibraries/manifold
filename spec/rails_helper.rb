@@ -146,7 +146,7 @@ RSpec.configure do |config|
 
     stub_request(:get, "https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G?key=AIzaSyDqX9T8MN9MqzWwEMCwwr6MwDNjEX8p_yI").
         with(
-          headers:{}
+          headers: {}
         ).
         to_return(status: 200)
 

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require 'vcr'
+require "vcr"
 
 RSpec.describe Google::EtextbooksComponent, type: :component do
 
-  let(:etexts) { 
+  let(:etexts) {
     VCR.use_cassette("etexts") do
       Google::SheetsConnector.call
     end

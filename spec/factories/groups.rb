@@ -28,9 +28,5 @@ FactoryBot.define do
     trait :no_chair_dept_heads do
       chair_dept_heads { [] }
     end
-
-    trait :no_space do
-      space {}
-    end
   end
 end

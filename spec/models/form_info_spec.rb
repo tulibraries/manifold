@@ -3,5 +3,18 @@
 require "rails_helper"
 
 RSpec.describe FormInfo, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "form_attributes" do
+    let(:form_info) { FactoryBot.build(:form_info) }
+
+    it "is valid with valid attribues" do
+      expect(form_info).to be_valid
+    end
+  end
+
+  describe "invalid form_attributes" do
+    let(:form_info) { FactoryBot.build(:form_info) }
+    it "is not valid without a recipient" do
+      expect(form_info).to be_valid
+    end
+  end
 end

@@ -15,6 +15,7 @@ FactoryBot.define do
         webpage.file_uploads << file
       end
     end
+
     trait :with_files do
       after :create do |webpage|
         file = FactoryBot.create(:file_upload)
@@ -22,6 +23,14 @@ FactoryBot.define do
         webpage.file_uploads << file
         webpage.file_uploads << file2
       end
+    end
+
+    trait :no_chair_dept_heads do
+      chair_dept_heads { [] }
+    end
+
+    trait :no_space do
+      space {}
     end
   end
 end

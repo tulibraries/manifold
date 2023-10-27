@@ -156,7 +156,7 @@ class Form < MailForm::Base
   attribute :format_preference_other
   attribute :reason_for_request
 
-  # Some forms don't supply an email and name, so they we're failing
+  # Some forms don't supply an email and name, so they were failing
   def default_from_name
     name ? name : "Temple University Libraries"
   end
@@ -166,7 +166,7 @@ class Form < MailForm::Base
   end
 
   # Declare the e-mail headers. It accepts anything the mail method
-  # in ActionMailer accepts.
+  # in ActionMailer accepts. This overrides the headers from the mail_form gem.
   def headers
     {
       subject: title,

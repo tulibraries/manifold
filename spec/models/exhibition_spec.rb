@@ -3,8 +3,6 @@
 require "rails_helper"
 
 RSpec.describe Exhibition, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-
   describe "version all fields" do
     fields = {
       title: ["The Text 1", "The Text 2"],

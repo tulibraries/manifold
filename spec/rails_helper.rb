@@ -144,8 +144,8 @@ RSpec.configure do |config|
     stub_request(:put, "https://bucket.s3.region.amazonaws.com/sitemap.xml.gz").
       to_return(status: 200, body: "", headers: {})
 
-    stub_request(:get, "https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G?key=<gsheets_key>").
-      to_return(status: 200)
+    stub_request(:get, "https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G").
+      to_return(status: 200, body: "", headers: {})
 
     stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/").
          with(

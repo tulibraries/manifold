@@ -142,7 +142,7 @@ RSpec.configure do |config|
       to_return(status: 200, body: File.open("#{fixture_path}/blog_posts.rss") , headers: {})
 
     stub_request(:put, "https://bucket.s3.region.amazonaws.com/sitemap.xml.gz").
-      to_return(status: 200, body: "", headers: {})
+      to_return(status: 200, body: File.open("#{fixture_path}/vcr_cassettes/etexts.yml"), headers: {})
 
     stub_request(:get, "https://sheets.googleapis.com/v4/spreadsheets/1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU/values/Sheet1!A2:G").
       to_return(status: 200)

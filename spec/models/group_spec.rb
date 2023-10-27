@@ -71,22 +71,18 @@ RSpec.describe Group, type: :model do
     end
   end
 
-
   describe "field validators" do
-    let(:group) { FactoryBot.build(:group) }
+    context "chair department head validation" do
+      let(:group) { FactoryBot.build(:group, :no_chair_dept_heads) }
 
-    context "Space reference" do
-      example "valid space ID" do
-        expect { group.save! }.to_not raise_error
-      end
-      example "No space" do
-        skip "this is now optional"
-        group = FactoryBot.build(:group, chair_dept_heads: [chair_person])
-        expect { group.save! }.to raise_error(/Spaces can't be blank/)
+      it "cannot be blank" do
+        expect { group.save! }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Chair dept heads can't be blank")
       end
     end
 
     context "Group Type Validation" do
+      let(:group) { FactoryBot.build(:group) }
+
       Rails.configuration.group_types.each do |group_type|
         example "valid group type #{group_type}" do
           group.group_type = group_type

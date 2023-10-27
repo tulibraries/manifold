@@ -12,13 +12,6 @@ RSpec.describe Service, type: :model do
       expect { service.save! }.to raise_error(/Title can't be blank/)
     end
 
-    example "Missing description" do
-      service = FactoryBot.build(:service, description: "")
-      skip "required richtext fields throw administrate error if blank. need to account for error before test." do
-        expect { service.save! }.to raise_error(/Description can't be blank/)
-      end
-    end
-
     example "Missing intended audience" do
       service = FactoryBot.build(:service, intended_audience: [""])
       expect { service.save! }.to raise_error(/Intended audience can't be blank/)
@@ -40,9 +33,6 @@ RSpec.describe Service, type: :model do
   end
 
   describe "associated class" do
-    context "Policy" do
-      skip "TBD"
-    end
     context "External Link" do
       example "attach external link" do
         service = FactoryBot.create(:service, external_link:)
@@ -74,6 +64,14 @@ RSpec.describe Service, type: :model do
         service.save!
         expect(service.versions.last.changeset[k]).to match_array(v)
       end
+    end
+  end
+
+  describe "#label" do
+    service = FactoryBot.create(:service)
+
+    it "removes empty string" do
+      expect(service.label).to eq(service.title)
     end
   end
 

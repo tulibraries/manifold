@@ -2,6 +2,6 @@
 
 class Google::EtextbooksComponent < ViewComponent::Base
   def initialize(etexts:)
-    @etexts = etexts.values
+    @etexts = etexts&.values
   end
 end

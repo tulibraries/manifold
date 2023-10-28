@@ -25,8 +25,7 @@ class Group < ApplicationRecord
   has_many :member, dependent: :destroy
   has_many :persons, -> { order "last_name ASC" }, through: :member, source: :person, inverse_of: false
 
-  has_one :space_group, dependent: :destroy
-  has_one :space, through: :space_group, source: :space
+  belongs_to :space, optional: true
 
   has_many :group_contact, dependent: :destroy
   has_many :chair_dept_heads, through: :group_contact, source: :person

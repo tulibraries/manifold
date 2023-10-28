@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_23_172214) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_28_120207) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -364,7 +364,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_172214) do
     t.boolean "add_to_footer"
     t.integer "parent_group_id"
     t.string "slug"
+    t.bigint "space_id"
     t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
+    t.index ["space_id"], name: "index_groups_on_space_id"
   end
 
   create_table "highlights", force: :cascade do |t|
@@ -574,6 +576,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_172214) do
   add_foreign_key "categories", "external_links"
   add_foreign_key "categories", "menu_groups"
   add_foreign_key "collections", "external_links"
+  add_foreign_key "groups", "spaces"
   add_foreign_key "occupants", "buildings"
   add_foreign_key "people", "buildings"
   add_foreign_key "spaces", "external_links"

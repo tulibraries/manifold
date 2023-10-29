@@ -33,13 +33,6 @@ RSpec.describe Policy, type: :model do
       policy = FactoryBot.build(:policy, name: "")
       expect { policy.save! }.to raise_error(/Name can't be blank/)
     end
-
-    example "Missing description" do
-      policy = FactoryBot.build(:policy, description: ActionText::Content.new("Hello World"))
-      skip "required richtext fields throw administrate error if blank. need to account for error before test." do
-        expect { policy.save! }.to raise_error(/Description can't be blank/)
-      end
-    end
   end
 
   describe "version all fields" do

@@ -1,0 +1,112 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://temple.hosted.panopto.com/Panopto/oauth2/connect/token
+    body:
+      encoding: UTF-8
+      string: scope=api&grant_type=client_credentials
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic YWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Okhid2M2WWVseWdXcC9SSUpyeU9aT0JLcVFMNW1rVjVaTFRnUHl6RytYcjg9
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 26 Oct 2023 18:20:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '905'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-store, no-cache, max-age=0, private
+      Pragma:
+      - no-cache
+      Server:
+      - Microsoft-IIS/10.0
+      Strict-Transport-Security:
+      - max-age=31536000
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Origin:
+      - https://temple.hosted.panopto.com
+      P3p:
+      - CP="Some Browsers Require This In Order to Set Third Party Cookies"
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjk4MzQ4MDQyLCJuYmYiOjE2OTgzNDQ0NDIsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.eHnz_dgWWG3zhoV-cp5w8ccaePybYtHAvaVf8_B0jpZ6qYmJCI-i6ech6zMmP5EBxJ2lucRB1ea4f5TMwWnnI5YwZ1k5tqUpaUQ-V4epf01e5OzBbFfod0l5EGpAcL4jH1eojEJPS-KJIIObd50OSXngE2ovpPMlENGgN0sF9vthRMtrHUmKhXQKCQYdGIzj2-ljhKbGk1Uv1QDn6iaYraGeMuEsirvPfdi9rDPxo6H5ce0vawcv7uApMuLrwmTx6_fOXfI_EQCjQMeXoUbew3UCO99vdEbCICPRYdCtuFp4fD7tzGdCVUkOa26K0dKpDccGlM_2OCuREh52ODTFpQ","expires_in":3600,"token_type":"Bearer"}'
+  recorded_at: Thu, 26 Oct 2023 18:20:42 GMT
+- request:
+    method: get
+    uri: https://temple.hosted.panopto.com/Panopto/api/v1/sessions/0c88baab-6157-4ecd-b50d-b0a6010ea02e/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjk4MzQ4MDQyLCJuYmYiOjE2OTgzNDQ0NDIsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.eHnz_dgWWG3zhoV-cp5w8ccaePybYtHAvaVf8_B0jpZ6qYmJCI-i6ech6zMmP5EBxJ2lucRB1ea4f5TMwWnnI5YwZ1k5tqUpaUQ-V4epf01e5OzBbFfod0l5EGpAcL4jH1eojEJPS-KJIIObd50OSXngE2ovpPMlENGgN0sF9vthRMtrHUmKhXQKCQYdGIzj2-ljhKbGk1Uv1QDn6iaYraGeMuEsirvPfdi9rDPxo6H5ce0vawcv7uApMuLrwmTx6_fOXfI_EQCjQMeXoUbew3UCO99vdEbCICPRYdCtuFp4fD7tzGdCVUkOa26K0dKpDccGlM_2OCuREh52ODTFpQ
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 26 Oct 2023 18:20:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2053'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Origin:
+      - https://temple.hosted.panopto.com
+      Api-Supported-Versions:
+      - '1'
+      Set-Cookie:
+      - csrfToken=A%2bcBzYd1XA%2fHashkxd%2fsRpJ3zu4rLlH2K7LVUnlUljigE07jOAJEiVSST%2bGiLo%2bF0l1LLtcWVtR%2fynYx1aYEk3GDPZ9YJUUReqIoLRD6Ga9VJ7l92LWbDqWDfituXic3A3f%2bR6V0K6ZJcy%2fEShvK%2bhG7kLojpJgZO9LFKQvSiBZ600tnL1GAbfXyMdE7dtFromrHr5Tjn21XhcIIleLG%2fA%3d%3d;
+        path=/; secure; SameSite=None
+      - sandboxCookie=13342818042.8088; path=/; secure; SameSite=None
+      P3p:
+      - CP="Some Browsers Require This In Order to Set Third Party Cookies"
+    body:
+      encoding: UTF-8
+      string: '{"Description":"Episode 14: Thai folding book manuscript on curing
+        diseases, 19th century CE\nHosted by Daniel Cappello\nRelease date: October
+        16, 2023 \n \nAbout this episode of A Look at a Book \n \nAbout the host:\nDaniel
+        Cappello (he/him) is an MFA student in Sculpture at the Tyler School of Art
+        and Architecture, Temple University.\n\nLink: \nThai folding book manuscripts
+        (ca. 19th century CE)\nhttps://librarysearch.temple.edu/catalog/991020700349703811\n\n*To
+        consult these items (or any Special Collection Research Center materials)
+        in-person in the SCRC reading room in Charles Library, please visit our website:
+        library.temple.edu/scrc to learn more and to create a SCRC Researcher Account
+        or contact us directly at scrc@temple.edu.","StartTime":null,"Duration":1467.605,"MostRecentViewPosition":null,"CreatedBy":{"Id":"9034880a-e21e-43bd-b653-ad8601289eb0","Username":"unified\\tue81531@temple.edu"},"Urls":{"ViewerUrl":"https://temple.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0c88baab-6157-4ecd-b50d-b0a6010ea02e","EmbedUrl":"https://temple.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=0c88baab-6157-4ecd-b50d-b0a6010ea02e&v=1","ShareSettingsUrl":"https://temple.hosted.panopto.com/Panopto/Pages/Sessions/List.aspx?id=0c88baab-6157-4ecd-b50d-b0a6010ea02e&modalPage=SessionShare","DownloadUrl":"https://temple.hosted.panopto.com/Panopto/Podcast/Download/0c88baab-6157-4ecd-b50d-b0a6010ea02e.mp4?mediaTargetType=videoPodcast","CaptionDownloadUrl":null,"EditorUrl":"https://temple.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0c88baab-6157-4ecd-b50d-b0a6010ea02e&edit=true","ThumbnailUrl":"https://d2y36twrtb17ty.cloudfront.net/sessions/dd75e45b-e8ff-42c2-8c48-b0a6010ea024/bc7f27e9-6290-4696-b8a5-b0a601143ab6_et/thumbs/slide0.jpg"},"Folder":"e2753a7a-85c2-4d00-a241-aecf00393c25","FolderDetails":{"Id":"e2753a7a-85c2-4d00-a241-aecf00393c25","Name":"Library-Programs"},"PercentCompleted":null,"Id":"0c88baab-6157-4ecd-b50d-b0a6010ea02e","Name":"A
+        Look At A Book: Thai folding book manuscript on curing diseases, 19th century
+        CE"}'
+  recorded_at: Thu, 26 Oct 2023 18:20:42 GMT
+recorded_with: VCR 6.2.0

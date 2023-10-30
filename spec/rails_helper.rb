@@ -8,10 +8,11 @@ require_relative "../config/environment"
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
 require "view_component/test_helpers"
+require "view_component/system_test_helpers"
+require "capybara/rspec"
 require "capybara/rails"
 require "action_text/system_test_helper"
 # require "paper_trail/frameworks/rspec"
-
 require "webmock/rspec"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -45,6 +46,7 @@ end
 
 RSpec.configure do |config|
   config.include ViewComponent::TestHelpers, type: :component
+  config.include ViewComponent::SystemTestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -142,6 +144,8 @@ RSpec.configure do |config|
     stub_request(:put, "https://bucket.s3.region.amazonaws.com/sitemap.xml.gz").
       to_return(status: 200, body: "", headers: {})
 
+
+
     stub_request(:get, "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/").
          with(
            headers: {
@@ -219,6 +223,7 @@ RSpec.configure do |config|
     c.configure_rspec_metadata!
     c.filter_sensitive_data("<key>") { ENV["PANOPTO_API_USER"] }
     c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
+    c.filter_sensitive_data("<gsheets_key>") { ENV["GOOGLE_SHEETS_API_KEY"] }
   end
 
   config.include ActionText::SystemTestHelper, type: :system

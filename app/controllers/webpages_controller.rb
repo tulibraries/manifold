@@ -55,6 +55,15 @@ class WebpagesController < ApplicationController
     end
   end
 
+  def etextbooks
+    etexts = Google::SheetsConnector.call
+    if etexts.present?
+      render(Google::EtextbooksComponent.new(etexts:))
+    else
+      redirect_to(root_path, notice: "The requested page is not available")
+    end
+  end
+
   def home
     @todays_hours = LibraryHour.todays_hours_at("charles")
     @highlights = Highlight.with_image.where(promoted: true).take(3)

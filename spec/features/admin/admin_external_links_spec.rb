@@ -2,9 +2,8 @@
 
 require "rails_helper"
 
-RSpec.describe "Admin::ExternalLinks", type: :system do
+RSpec.describe "Admin::ExternalLinks", type: :feature do
   before do
-    driven_by(:rack_test)
     admin = FactoryBot.create(:account, admin: true)
     visit new_account_session_path
 

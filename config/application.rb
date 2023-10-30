@@ -51,7 +51,7 @@ module Manifold
     config.ensemble_api_user = ENV["ENSEMBLE_API_USER"]
     config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]
 
-    config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "true"
+    config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "false"
     config.sync_timeout = ENV.fetch("MANIFOLD_SYNC_TIMEOUT", "180").to_i
   end
 end

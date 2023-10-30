@@ -179,8 +179,4 @@ class WebpagesController < ApplicationController
       end
       @categories = @webpage.categories unless @webpage.nil?
     end
-
-    def permitted_attributes
-      super + [:draft_description, :publish] + [fileabilities_attributes: [:weight, :id]] + [:file_upload_ids]
-    end
 end

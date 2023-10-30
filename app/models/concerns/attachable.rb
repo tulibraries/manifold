@@ -6,7 +6,7 @@ module Attachable
   extend ActiveSupport::Concern
   included do
     has_many :fileabilities, as: :attachable, dependent: :destroy
-    has_many :file_uploads, through: :fileabilities, dependent: :destroy
+    has_many :file_uploads, through: :fileabilities
 
     accepts_nested_attributes_for :fileabilities
   end

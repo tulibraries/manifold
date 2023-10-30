@@ -34,6 +34,7 @@ module Admin
 
       if fileabilities.present?
 
+
         models = [webpages, services, groups]
         links = {}
 
@@ -56,11 +57,15 @@ module Admin
             notice += "#{v}<br />"
           end
           notice += "<br />"
+          redirect_to :admin_file_uploads, notice:
         end
       else
         super
       end
-      redirect_to :admin_file_uploads, notice:
+    end
+
+    def permitted_attributes
+      super + [fileabilties_attributes: [:weight, :id]] + [file_upload_ids]
     end
   end
 end

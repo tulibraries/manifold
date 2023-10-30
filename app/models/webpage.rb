@@ -9,6 +9,7 @@ class Webpage < ApplicationRecord
   include Validators
   extend FriendlyId
   include SchemaDotOrgable
+  accepts_nested_attributes_for :fileabilities
 
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged

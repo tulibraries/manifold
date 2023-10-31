@@ -13,7 +13,7 @@ class Building < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  validates :name, :address1, :address2, :coordinates, :google_id, presence: true
+  validates :name, :address1, :coordinates, :google_id, presence: true
   validates :phone_number, presence: true
 
   belongs_to :external_link, optional: true

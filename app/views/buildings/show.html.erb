@@ -26,8 +26,8 @@
         </div>          
       <% end %>
 
-      <ul class="list-unstyled building-contact">
-        <li class="lib_location"><span><%= @building.address1 %> <%= @building.address2 %></span></li>
+      <ul class="list-unstyled building-contact"> 
+        <li class="lib_location"><span><%= formatted_address(@building) %></span></li>
         <li class="lib_phone"><span><%= phone_formatted(@building.phone_number) %></span></li>
         <li class="lib_email"><span><%= mail_to @building.email %></span></li>
       </ul>

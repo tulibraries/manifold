@@ -13,7 +13,7 @@ class Building < ApplicationRecord
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
-  validates :name, :address1, :coordinates, :google_id, presence: true
+  validates :name, :address1, :city, :state, :zipcode, :coordinates, :google_id, presence: true
   validates :phone_number, presence: true
 
   belongs_to :external_link, optional: true
@@ -49,11 +49,9 @@ class Building < ApplicationRecord
       address: {
         "@type" => "https://schema.org/PostalAddress",
         streetAddress: address1,
-        addressLocality: address2,
-        # streetAddress: address,
-        # addressLocality: city,
-        # addressRegion: state,
-        # postalCode: zipcode
+        addressLocality: city,
+        addressRegion: state,
+        postalCode: zipcode
       },
       telephone: phone_number,
       email:,

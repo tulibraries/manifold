@@ -8,6 +8,9 @@ RSpec.describe Building, type: :model do
     required_fields = [
      "name",
      "address1",
+     "city",
+     "state",
+     "zipcode",
      "coordinates",
      "google_id",
     ]
@@ -96,12 +99,11 @@ RSpec.describe Building, type: :model do
 
       describe "address" do
         subject { building.map_to_schema_dot_org["address"] }
-
         it { is_expected.to include("@type" => "https://schema.org/PostalAddress") }
-        it { is_expected.to include("streetAddress" => building.address1) }
         it { is_expected.to include("addressLocality" => building.city) }
         it { is_expected.to include("addressRegion" => building.state) }
         it { is_expected.to include("postalCode" => building.zipcode) }
+        it { is_expected.to include("streetAddress" => building.address1) }
       end
     end
   end

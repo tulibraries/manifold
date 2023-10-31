@@ -4,8 +4,6 @@ require "rails_helper"
 
 RSpec.describe Admin::WebpagesController, type: :controller do
 
-  let(:valid_session) { {} }
-
   before(:all) do
     @account = FactoryBot.create(:account)
   end
@@ -26,7 +24,6 @@ RSpec.describe Admin::WebpagesController, type: :controller do
     it "saves with file removed" do
       @webpage.update!(file_uploads: [])
       get :edit, params: { id: @webpage.to_param }
-
       expect(response).to be_successful
     end
   end

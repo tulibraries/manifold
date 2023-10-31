@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sheets.googleapis.com/v4/spreadsheets/1IXyE2EgREGvxpVBz_qcDlQovQ-w3BJOgUCfwz8bBtqI/values/TESTING!A2:A?key=AIzaSyDqX9T8MN9MqzWwEMCwwr6MwDNjEX8p_yI
+    uri: https://sheets.googleapis.com/v4/spreadsheets/1IXyE2EgREGvxpVBz_qcDlQovQ-w3BJOgUCfwz8bBtqI/values/TESTING!A2:A?key=<gsheets_key>
     body:
       encoding: UTF-8
       string: ''

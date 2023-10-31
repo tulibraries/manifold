@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Authorization:
-      - Basic YWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Okhid2M2WWVseWdXcC9SSUpyeU9aT0JLcVFMNW1rVjVaTFRnUHl6RytYcjg9
+      - Basic <base64_key_code>
   response:
     status:
       code: 200

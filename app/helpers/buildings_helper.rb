@@ -9,4 +9,7 @@ module BuildingsHelper
       phone_number
     end
   end
+  def formatted_address(building)
+    "#{building.address1} #{building.city} #{building.state} #{building.zipcode}"
+  end
 end

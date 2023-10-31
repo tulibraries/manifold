@@ -17,4 +17,12 @@ RSpec.describe BuildingsHelper, type: :helper do
     end
   end
 
+  describe "city state zipcode" do
+    context "all fields present" do
+      let(:building) { FactoryBot.create(:building) }
+      it "takes all fields returns string" do
+        expect(helper.formatted_address(building)).to eql "#{building.address1} #{building.city} #{building.state} #{building.zipcode}"
+      end
+    end
+  end
 end

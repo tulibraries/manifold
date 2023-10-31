@@ -15,8 +15,9 @@ class GroupDashboard < BaseDashboard
     chair_dept_heads: Field::HasMany,
     member: Field::HasMany,
     persons: Field::HasMany,
-    space_group: Field::BelongsTo,
-    space: SpaceField,
+    space: Field::BelongsTo.with_options(
+      order: "name ASC"
+    ),
     external: Field::Boolean,
     group_type: Field::Select.with_options(
       collection: Rails.configuration.group_types

@@ -31,8 +31,7 @@ class Space < ApplicationRecord
 
   has_ancestry
 
-  has_many :space_group, dependent: :destroy
-  has_many :groups, through: :space_group, source: :group
+  has_many :groups, dependent: :nullify
 
   def slug_candidates
     [

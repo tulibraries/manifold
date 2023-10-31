@@ -63,9 +63,5 @@ module Admin
         super
       end
     end
-
-    def permitted_attributes
-      super + [fileabilties_attributes: [:weight, :id]] + [file_upload_ids]
-    end
   end
 end

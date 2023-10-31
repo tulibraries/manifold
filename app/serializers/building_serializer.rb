@@ -6,7 +6,7 @@ class BuildingSerializer < ApplicationSerializer
 
   set_type :building
 
-  attributes :name, :address1, :address2, :coordinates, :google_id, :phone_number
+  attributes :name, :address1, :city, :state, :zipcode, :coordinates, :google_id, :phone_number
 
   has_many :spaces
 end

@@ -16,7 +16,8 @@ class GroupDashboard < BaseDashboard
     member: Field::HasMany,
     persons: Field::HasMany,
     space: Field::BelongsTo.with_options(
-      order: "name ASC"
+      order: "name ASC",
+      include_blank: true,
     ),
     external: Field::Boolean,
     group_type: Field::Select.with_options(

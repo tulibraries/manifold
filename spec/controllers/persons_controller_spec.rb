@@ -23,6 +23,56 @@ RSpec.describe PersonsController, type: :controller do
       get :index, format: :json
       expect(response.header["Content-Type"]).to include "json"
     end
+
+    describe "set_filters" do
+
+      describe "Department Filter" do
+        let(:person2) { FactoryBot.create(:person) }
+        let(:department) { FactoryBot.create(:group, persons: [person2]) }
+        it "filters department present" do
+          get :index, format: :json, params: { department: department }
+          expect(assigns(:persons_list)).to include(person2)
+          expect(assigns(:persons_list)).not_to include(person)
+        end
+      end
+
+      describe "Specialty Filter" do
+        # TODO - Implement Specialy Filter.  As is, resutls in empty Person_Controller @persons_list array
+        before(:all) do
+          @specialty = FactoryBot.create(:subject)
+          @person2 = FactoryBot.create(:person, specialties: [@specialty])
+        end
+
+        xit "filters specialties" do
+          get :index, format: :json, params: { specialty: @specialty.name }
+          expect(assigns(:persons_list)).to include(@person2)
+          expect(assigns(:persons_list)).not_to include(person)
+        end
+      end
+
+      describe "Specialists Filter" do
+        before(:all) do
+          @specialty = FactoryBot.create(:subject)
+          @person2 = FactoryBot.create(:person, specialties: [@specialty])
+        end
+
+        it "filters specialist" do
+          get :index, format: :json, params: { specialists: @specialty }
+          expect(assigns(:persons_list)).to include(@person2)
+          expect(assigns(:persons_list)).not_to include(person)
+        end
+      end
+
+      describe "Search Filter" do
+        let(:person2) { FactoryBot.create(:person) }
+        it "filters department present" do
+          get :index, format: :json, params: { search: person2.name }
+          expect(assigns(:persons_list)).to include(person2)
+          expect(assigns(:persons_list)).not_to include(person)
+        end
+      end
+    end
+
   end
 
   describe "GET #show" do

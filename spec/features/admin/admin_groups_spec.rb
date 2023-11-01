@@ -65,7 +65,7 @@ RSpec.describe "Admin::Groups", type: :feature do
   end
 
   context "When deleting a space that is attached to a group" do
-    it "should not error out" do
+    it "should  error out" do
       group = FactoryBot.create(:group)
 
 
@@ -76,10 +76,14 @@ RSpec.describe "Admin::Groups", type: :feature do
       expect(page).to have_link(group.space.name)
 
       click_link "Destroy"
-      expect(page).not_to have_link(group.space.name)
+      expect(page).to have_link(group.space.name)
+
+      space = group.space
+      expect(page).to have_text("#{space.label} could not be deleted.")
+      expect(page).to have_link(group.label)
 
       visit admin_groups_path + "/#{ group.friendly_id }"
-      expect(page).not_to have_link(group.space.name)
+      expect(page).to have_link(group.space.name)
     end
   end
 

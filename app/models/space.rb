@@ -31,7 +31,7 @@ class Space < ApplicationRecord
 
   has_ancestry
 
-  has_many :groups, dependent: :nullify
+  has_many :groups, dependent: :restrict_with_exception
 
   def slug_candidates
     [
@@ -72,5 +72,27 @@ class Space < ApplicationRecord
 
   def label
     name
+  end
+
+  def cannot_destroy_message(exception)
+    notice = exception.message
+
+    if notice == "Cannot delete record because of dependent groups"
+      links = []
+      groups.each do |group|
+        links << "<a href=/admin/groups/#{slug}/edit>#{group.label}</a>"
+      end
+
+      notice = "<p class=text-start>#{label} could not be deleted. "
+      notice +=  "They are still attached to the following Groups:<br />"
+      notice +=  "Remove and/or replace them there and try again.</p>"
+
+      links.each do |link|
+        notice += "<p><strong>#{link}</strong></p>"
+      end
+      notice += "<br />"
+    end
+
+    notice
   end
 end

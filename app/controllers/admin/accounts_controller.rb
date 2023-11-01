@@ -13,23 +13,30 @@ module Admin
       scoped_resource.find(param)
     end
 
-    # To customize the behavior of this controller,
-    # you can overwrite any of the RESTful actions. For example:
-    #
-    # def index
-    #   super
-    #   @resources = Account.
-    #     page(params[:page]).
-    #     per(10)
-    # end
+    def destroy
+      account = requested_resource
+      form_infos = FormInfo.all.select { |fi|
+        fi.recipients.include?(account.email)
+      }
 
-    # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   Account.find_by!(slug: param)
-    # end
+      if form_infos
+        links = []
+        form_infos.each do |form_info|
+          links << "<a href=/admin/form_infos/#{form_info.slug}/edit>#{form_info.title}</a>"
+        end
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
+        notice = "<p class=text-start>Account could not be deleted. "
+        notice +=  "It is still attached to the following Form Infos.<br />"
+        notice +=  "Remove and/or replace recipient there and try again.</p>"
+        links.each do |link|
+          notice += "<p><strong>#{link}</strong></p>"
+        end
+        notice += "<br />"
+        redirect_to :admin_accounts, notice:
+      else
+        super
+      end
+    end
 
     rescue_from CanCan::AccessDenied do |exception|
       redirect_to admin_root_url, alert: t("manifold.error.access_denied")

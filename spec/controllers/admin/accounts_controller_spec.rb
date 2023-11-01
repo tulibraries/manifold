@@ -21,8 +21,8 @@ RSpec.describe Admin::AccountsController, type: :controller do
   describe "DELETE #destroy" do
     render_views true
     it "does not allow account to be deleted if attached to form_info model instance" do
-      sign_in(account) 
-      expect { delete :destroy, params: {id: account2.id} }.to_not change(Account, :count)
+      sign_in(account)
+      expect { delete :destroy, params: { id: account2.id } }.to_not change(Account, :count)
       expect { flash[:notice].to match form_info.slug }
     end
   end

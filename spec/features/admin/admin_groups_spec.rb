@@ -96,6 +96,8 @@ RSpec.describe "Admin::Groups", type: :feature do
 
       options = select_field.all("option").map(&:text)
       expect(options).to eq(options.sort)
+
+      expect(options.first).to be_blank
     end
   end
 end

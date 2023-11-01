@@ -8,7 +8,9 @@ RSpec.describe Building, type: :model do
     required_fields = [
      "name",
      "address1",
-     "address2",
+     "city",
+     "state",
+     "zipcode",
      "coordinates",
      "google_id",
     ]
@@ -63,13 +65,11 @@ RSpec.describe Building, type: :model do
   describe "version all fields" do
     fields = {
       name: ["The Text 1", "The Text 2"],
-      # description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
       address1: ["The Text 1", "The Text 2"],
       coordinates: ["The Text 1", "The Text 2"],
       phone_number: ["2155551212", "2155551234"],
       email: ["The Text 1", "The Text 2"],
-      google_id: ["The Text 1", "The Text 2"],
-      address2: ["The Text 1", "The Text 2"],
+      google_id: ["The Text 1", "The Text 2"]
     }
 
     fields.each do |k, v|
@@ -84,10 +84,7 @@ RSpec.describe Building, type: :model do
   end
 
   describe "Makes Linked Data hash" do
-    let(:city) { "Philadelphia" }
-    let(:state) { "PA" }
-    let(:zip_code) { "19122" }
-    let(:building) { FactoryBot.create(:building, address2: "#{city}, #{state}, #{zip_code}", description: "building description", hours: "paley") }
+    let(:building) { FactoryBot.create(:building, description: "building description", hours: "paley") }
 
     describe "Linked data hash" do
       subject { building.map_to_schema_dot_org }
@@ -102,12 +99,11 @@ RSpec.describe Building, type: :model do
 
       describe "address" do
         subject { building.map_to_schema_dot_org["address"] }
-
         it { is_expected.to include("@type" => "https://schema.org/PostalAddress") }
+        it { is_expected.to include("addressLocality" => building.city) }
+        it { is_expected.to include("addressRegion" => building.state) }
+        it { is_expected.to include("postalCode" => building.zipcode) }
         it { is_expected.to include("streetAddress" => building.address1) }
-        it { is_expected.to include("addressLocality" => a_string_including(city)) }
-        it { is_expected.to include("addressLocality" => a_string_including(state)) }
-        it { is_expected.to include("addressLocality" => a_string_including(zip_code)) }
       end
     end
   end

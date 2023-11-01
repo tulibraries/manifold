@@ -14,6 +14,7 @@ require "capybara/rails"
 require "action_text/system_test_helper"
 # require "paper_trail/frameworks/rspec"
 require "webmock/rspec"
+require "base64"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -217,12 +218,18 @@ RSpec.configure do |config|
           to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
   end
 
+
+  without_api_key = VCR.request_matchers.uri_without_param(:key)
+
   VCR.configure do |c|
     c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
     c.hook_into :webmock
     c.configure_rspec_metadata!
+    c.register_request_matcher(:without_api_key, &without_api_key)
     c.filter_sensitive_data("<key>") { ENV["PANOPTO_API_USER"] }
     c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
+    auth_string = ENV["PANOPTO_API_USER"].to_s + ":" + ENV["PANOPTO_API_KEY"].to_s
+    c.filter_sensitive_data("<base64_key_code>") { Base64.encode64(auth_string) }
     c.filter_sensitive_data("<gsheets_key>") { ENV["GOOGLE_SHEETS_API_KEY"] }
   end
 

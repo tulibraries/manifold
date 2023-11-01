@@ -50,7 +50,9 @@
 						"name",
 						"label",
 						"address1",
-						"address2",
+						"city",
+						"state",
+						"zipcode",
 						"phone_number",
 						"coordinates",
 						"google_id"
@@ -86,13 +88,33 @@
 							],
 							"pattern": "^(.*)$"
 						},
-						"address2": {
-							"$id": "#/properties/data/properties/attributes/properties/address2",
+						"city": {
+							"$id": "#/properties/data/properties/attributes/properties/city",
 							"type": "string",
-							"title": "The Address2 Schema",
+							"title": "The City Schema",
 							"default": "",
 							"examples": [
-								"Ambler, PA 19002"
+								"Ambler"
+							],
+							"pattern": "^(.*)$"
+						},
+						"state": {
+							"$id": "#/properties/data/properties/attributes/properties/state",
+							"type": "string",
+							"title": "The State Schema",
+							"default": "",
+							"examples": [
+								"PA"
+							],
+							"pattern": "^(.*)$"
+						},
+						"zipcode": {
+							"$id": "#/properties/data/properties/attributes/properties/zipcode",
+							"type": "string",
+							"title": "The Zipcode Schema",
+							"default": "",
+							"examples": [
+								"19002"
 							],
 							"pattern": "^(.*)$"
 						},

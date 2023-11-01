@@ -12,6 +12,7 @@ RSpec.feature "Dashboard::Space", type: :feature do
 
   after(:all) do
     Account.destroy_all
+    Group.destroy_all
     Space.destroy_all
   end
 

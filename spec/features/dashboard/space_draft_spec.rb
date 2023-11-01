@@ -11,6 +11,7 @@ RSpec.feature "Dashboard::SpaceDrafts", type: :feature do
 
   after(:all) do
     Account.destroy_all
+    Group.destroy_all
     Space.destroy_all
   end
 

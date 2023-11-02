@@ -169,10 +169,10 @@ RSpec.describe Webpage, type: :model do
     let(:webpage) { FactoryBot.build(:webpage) }
 
     it "includes the webpage title" do
-      expect(webpage.additional_schema_dot_org_attributes).to include(:name => webpage.title)
+      expect(webpage.additional_schema_dot_org_attributes).to include(name: webpage.title)
     end
   end
-  
+
 
   # Versioning needs to be added to the model before we can test for it
 

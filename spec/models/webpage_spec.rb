@@ -15,13 +15,6 @@ RSpec.describe Webpage, type: :model do
       page.title = ""
       expect { page.save! }.to raise_error(/Title can't be blank/)
     end
-
-    example "Missing description" do
-      page = FactoryBot.build(:webpage, description: ActionText::Content.new(""))
-      skip "required richtext field throw administrate error if blank. need to account for error before test." do
-         expect { page.save! }.to raise_error(/Description can't be blank/)
-       end
-    end
   end
 
   describe "Group association" do
@@ -155,6 +148,31 @@ RSpec.describe Webpage, type: :model do
       end
     end
   end
+
+  describe "#label" do
+    let(:webpage) { FactoryBot.build(:webpage) }
+
+    it "has a label with the title" do
+      expect(webpage.label).to eq(webpage.title)
+    end
+  end
+
+  describe "#schema_dot_org_type" do
+    let(:webpage) { FactoryBot.build(:webpage) }
+
+    it "has a type of webpage" do
+      expect(webpage.schema_dot_org_type).to eq("WebPage")
+    end
+  end
+
+  describe "#additional_schema_dot_org_attributes" do
+    let(:webpage) { FactoryBot.build(:webpage) }
+
+    it "includes the webpage title" do
+      expect(webpage.additional_schema_dot_org_attributes).to include(:name => webpage.title)
+    end
+  end
+  
 
   # Versioning needs to be added to the model before we can test for it
 

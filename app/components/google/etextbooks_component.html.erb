@@ -9,19 +9,17 @@
           <thead>
             <tr>
               <th scope="col">Course</th>
-              <th scope="col">Professor</th>
-              <th scope="col">Title</th>
+              <th scope="col">Instructor</th>
+              <th scope="col">Textbook Name</th>
             </tr>
           </thead>
           <tbody>
             <% @etexts.each do |book| %>
             <tr>
               <td>
-                  <%= book[1] %> <%= book[2] %>, section: <%= book[3] %>
+                  <%= book[1] %> <%= book[2].rjust(4, "0") %>-<%= book[3].rjust(3, "0") %>
               </td>
-              <td>
-                  <%= book[4] %>, <%= book[5] %>
-              </td>
+              <td><%= book[4] %></td>
               <td>
                   <%= link_to(book[6], "https://librarysearch.temple.edu/catalog/#{book[0]}") %>
               </td>

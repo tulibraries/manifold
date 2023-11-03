@@ -14,7 +14,7 @@
    <div class="row aids">
     <% @aids_list.each do |aid| %>
       <div class="col-12 aid">
-        <%= link_to aid.name.html_safe, finding_aid_path(aid), style: "color: black;", target: "_top" %>
+        <%= link_to aid.name&.html_safe, finding_aid_path(aid), style: "color: black;", target: "_top" %>
       </div> 
     <% end %> 
     </div>

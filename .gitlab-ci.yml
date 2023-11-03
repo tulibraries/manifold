@@ -58,4 +58,4 @@ qa_deploy:
   script:
     - *export_variables
     - helm pull oci://$HARBOR/tulibraries/manifold-charts/manifold --untar
-    - helm upgrade manifold oci://$HARBOR/tulibraries/manifold-charts/manifold --version "0.1.*" --history-max=5 --namespace=manifold-qa --values manifold/values.yaml --set image.repository=$IMAGE:$VERSION
+    - helm upgrade manifold oci://$HARBOR/tulibraries/manifold-charts/manifold --history-max=5 --namespace=manifold-qa --values manifold/values.yaml --set image.repository=$IMAGE:$VERSION

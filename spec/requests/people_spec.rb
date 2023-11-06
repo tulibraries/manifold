@@ -20,6 +20,7 @@ RSpec.describe "People", type: :request do
       get people_path + "?specialty=" + Subject.last.name
       expect(response).to render_template(:index)
       expect(response.body).to include(specialist.label)
+      expect(response.body).not_to include(person.label)
     end
 
     it "renders the show page" do

@@ -26,6 +26,9 @@ RSpec.describe PersonsController, type: :controller do
 
     describe "set_filters" do
 
+      # Uses JSON format because JS is used to filter HTML which
+      # yields false negative results
+
       describe "Department Filter" do
         let(:person2) { FactoryBot.create(:person) }
         let(:group) { FactoryBot.create(:group, persons: [person2]) }

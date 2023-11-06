@@ -13,6 +13,16 @@ RSpec.describe "People", type: :request do
       expect(response.body).to include(specialist.label)
     end
 
+    it "renders the specialists" do
+      # Tests persons controller specialty filter
+      person = FactoryBot.create(:person, :with_image)
+      specialist = FactoryBot.create(:person, :with_image, :with_subjects)
+      get people_path + "?specialty=" + Subject.last.name
+      expect(response).to render_template(:index)
+      expect(response.body).to include(specialist.label)
+      expect(response.body).not_to include(person.label)
+    end
+
     it "renders the show page" do
       person = FactoryBot.create(:person, :with_image)
       specialist = FactoryBot.create(:person, :with_image, :with_subjects)

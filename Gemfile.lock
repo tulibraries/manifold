@@ -204,7 +204,7 @@ GEM
     flatpickr_rails (1.1.0)
       railties (>= 3.0)
     formatador (1.1.0)
-    friendly_id (5.5.0)
+    friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     fuzzy_match (2.1.0)
     globalid (1.2.1)

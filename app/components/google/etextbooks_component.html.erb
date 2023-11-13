@@ -1,16 +1,16 @@
 <div class="container-lg">
   <div class="row page pt-3">
     <div class="col-12 col-lg-11 offset-lg-1">
-      <h1><%= t("manifold.webpages.etextbooks.title") %></h1>
-      <p><%= t("manifold.webpages.etextbooks.intro") %></p>
+      <h1><%= @intro.title %></h1>
+      <p><%= @intro.description %></p>
       <div class="table-responsive-sm">
         <table class="etextbooks table table-bordered table-hover">
-          <caption>Etextbooks</caption>
+          <caption><%= t("manifold.webpages.etextbooks.caption") %></caption>
           <thead>
             <tr>
-              <th scope="col">Course</th>
-              <th scope="col">Instructor</th>
-              <th scope="col">Textbook Name</th>
+              <th scope="col"><%= t("manifold.webpages.etextbooks.course_column") %></th>
+              <th scope="col"><%= t("manifold.webpages.etextbooks.instructor_column") %></th>
+              <th scope="col"><%= t("manifold.webpages.etextbooks.etext_column") %></th>
             </tr>
           </thead>
           <tbody>
@@ -21,7 +21,7 @@
               </td>
               <td><%= book[4] %></td>
               <td>
-                  <%= link_to(book[6], "https://librarysearch.temple.edu/catalog/#{book[0]}") %>
+                  <%= link_to(book[6], "#{@base_url}/#{book[0]}") %>
               </td>
             </tr>
             <% end if @etexts.present? %>

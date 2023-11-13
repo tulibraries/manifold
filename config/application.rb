@@ -34,8 +34,9 @@ module Manifold
 
     config.librarysearch_base_url = "https://#{ENV.fetch('LIBRARYSEARCH_DOMAIN', 'librarysearch.temple.edu')}"
     config.main_phone = "(215) 204-8212"
-    config.search_books = "#{config.librarysearch_base_url}/books"
     config.search_articles = "#{config.librarysearch_base_url}/articles"
+    config.search_books = "#{config.librarysearch_base_url}/books"
+    config.search_catalog = "#{config.librarysearch_base_url}/catalog"
     config.search_databases = "#{config.librarysearch_base_url}/databases"
     config.search_everything = "#{config.librarysearch_base_url}/everything"
     config.librarysearch_finding_aids_url = "#{config.librarysearch_base_url}/web_content?f%5Bweb_content_type_facet%5D%5B%5D=Finding+Aids"

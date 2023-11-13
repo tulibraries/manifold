@@ -10,7 +10,7 @@ RSpec.describe Google::EtextbooksComponent, type: :component do
       Google::SheetsConnector.call
     end
   }
-  let!(:intro) { FactoryBot.create(:snippet, slug: "past-event-videos-intro")}
+  let!(:intro) { FactoryBot.create(:snippet, slug: "past-event-videos-intro") }
 
   describe "loads data" do
     it "renders results" do

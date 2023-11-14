@@ -56,9 +56,10 @@ class WebpagesController < ApplicationController
   end
 
   def etextbooks
+    snippet = helpers.etextbooks_snippet
     etexts = Google::SheetsConnector.call
     if etexts.present?
-      render(Google::EtextbooksComponent.new(etexts:, slug: "#{t("manifold.webpages.etextbooks.slug")}"))
+      render(Google::EtextbooksComponent.new(etexts:, title: snippet[:title], description: snippet[:description]))
     else
       redirect_to(root_path, notice: "The requested page is not available")
     end

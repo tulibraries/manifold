@@ -50,4 +50,15 @@ module WebpagesHelper
     end
     new_tags
   end
+
+  def etextbooks_snippet
+    intro = Snippet.find_by(slug: t("manifold.webpages.etextbooks.slug"))
+    title = nil
+    description = nil
+    if intro.present?
+      title = intro.title
+      description = intro.description
+    end
+    { title:, description: }
+  end
 end

@@ -94,9 +94,9 @@ RSpec.describe WebpagesHelper, type: :helper do
   end
 
   describe "etextbooks_snippet" do
-    let!(:snippet) { FactoryBot.create(:snippet, slug: "past-event-videos-intro", title: "Hello", description: " there!") }
+    let!(:snippet) { FactoryBot.create(:snippet, slug: "etextbooks-snippet", title: " there!", description: ActionText::Content.new("Hello")) }
     it "returns hash with snippet values" do
-      expect(helper.etextbooks_snippet).to eq({title: snippet.title, description: snippet.description})
+      expect(helper.etextbooks_snippet).to eq( {description: snippet.description, title: snippet.title} )
     end
   end
 end

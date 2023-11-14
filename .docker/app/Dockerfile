@@ -26,7 +26,6 @@ RUN apk add -U --no-cache \
       nodejs=18.18.2-r0 \
       yarn=1.22.19-r0 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
-    bundle update --conservative skylight && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \

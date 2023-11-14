@@ -59,6 +59,6 @@ module WebpagesHelper
       title = intro.title
       description = intro.description
     end
-    {title: title, description: description}
+    { title:, description: }
   end
 end

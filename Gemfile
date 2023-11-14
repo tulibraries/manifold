@@ -59,7 +59,9 @@ gem "rswag-api"
 gem "rswag-ui"
 gem "simple_form"
 gem "sitemap_generator"
-(ENV["K8"] == "yes") ? (gem "skylight") : (gem "skylight", "4.3.2")
+if ENV["K8"] == "yes"
+  gem "skylight"
+end
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "timecop"

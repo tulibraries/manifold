@@ -92,4 +92,11 @@ RSpec.describe WebpagesHelper, type: :helper do
       expect(helper.get_tags(blog_post.categories)).to match_array(tags)
     end
   end
+
+  describe "etextbooks_snippet" do
+    let!(:snippet) { FactoryBot.create(:snippet, slug: "past-event-videos-intro", title: "Hello", description: " there!") }
+    it "returns hash with snippet values" do
+      expect(helper.etextbooks_snippet).to eq({title: snippet.title, description: snippet.description})
+    end
+  end
 end

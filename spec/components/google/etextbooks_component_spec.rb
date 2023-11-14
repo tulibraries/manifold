@@ -18,7 +18,7 @@ RSpec.describe Google::EtextbooksComponent, type: :component do
     end
     it "renders component view" do
       lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)
-      component = described_class.new(etexts:, slug: intro.slug)
+      component = described_class.new(etexts:, title: intro.title, description: intro.description)
       expect(
         component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
       ).to be

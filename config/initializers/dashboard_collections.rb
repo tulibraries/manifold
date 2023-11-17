@@ -9,6 +9,13 @@ module Tude
                           "Strategic Steering Team",
                           "Working Group"]
 
+    config.form_groupings = ["Temple Owned Materials",
+                              "Instructional Services",
+                              "Library Privileges",
+                              "Collection Development",
+                              "Administrative Services"
+                              ]
+
     config.page_layouts = ["None",
                             "Email",
                             "Tutorial",

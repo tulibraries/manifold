@@ -17,6 +17,10 @@ class FormInfoDashboard < Administrate::BaseDashboard
     ),
     intro: DescriptionField,
     title: Field::String,
+    grouping: Field::Select.with_options(
+      collection: Rails.configuration.form_groupings,
+      include_blank: true
+      ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -47,6 +51,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
     slug
     intro
     recipients
+    grouping
   ].freeze
 
   # COLLECTION_FILTERS

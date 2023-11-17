@@ -3,7 +3,7 @@
 class FormsController < ApplicationController
   def index
     form_groups = FormInfo.for_index.group_by(&:grouping)
-    @form_groups = Hash[form_groups.sort_by {|k, v| k == "Administrative Services" ? 1 : 0}]
+    @form_groups = Hash[form_groups.sort_by { |k, v| k == "Administrative Services" ? 1 : 0 }]
     respond_to do |format|
       format.html {}
       format.json do

@@ -17,4 +17,16 @@ RSpec.describe FormInfo, type: :model do
       expect(form_info).to_not be_valid
     end
   end
+
+  describe "for index scope" do
+    not_grouped = FormInfo.create!(title: "Not grouped", slug: "not-grouped", recipients: ["library@temple.edu"], grouping: nil)
+    grouped = FormInfo.create!(title: "Grouped", slug: "grouped", recipients: ["library@temple.edu"], grouping: "Administrative Services")
+
+    it "includes forms wth grouping" do
+      expect(FormInfo.for_index).to include(grouped)
+    end
+    it "does not include forms without grouping" do
+      expect(FormInfo.for_index).to_not include(not_grouped)
+    end
+  end
 end

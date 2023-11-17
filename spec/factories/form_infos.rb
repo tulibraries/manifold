@@ -5,6 +5,7 @@ FactoryBot.define do
     title { "Form Information" }
     slug { "form-information" }
     recipients { ["test@test.com"] }
+    grouping { nil }
 
     trait :no_recipient do
       recipients { [""] }

@@ -8,5 +8,5 @@ class FormInfo < ApplicationRecord
   has_rich_text :intro
   belongs_to :account, optional: true
   validates :recipients, presence: true, has_recipients: true
-  scope :for_index, -> { where.not(grouping: blank?) }
+  scope :for_index, -> { where.not(grouping: nil) }
 end

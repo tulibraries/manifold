@@ -653,7 +653,7 @@ DEPENDENCIES
   devise
   diffy
   dotenv-rails
-  factory_bot_rails
+  factory_bot_rails (~> 6.2.0)
   faker
   fast_jsonapi (~> 1.0)
   feedjira

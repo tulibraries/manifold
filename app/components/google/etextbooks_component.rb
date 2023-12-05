@@ -6,9 +6,9 @@ class Google::EtextbooksComponent < ViewComponent::Base
     @title = title
     @description = description
     @base_url = Rails.application.config.search_catalog
-    @sort_orders = {"course" => "asc", "professor" => "asc"}
+    @sort_orders = { "course" => "asc", "professor" => "asc" }
     column = column ? column : "course"
-    direction = direction ? direction : @sort_orders["#{column}"]    
+    direction = direction ? direction : @sort_orders["#{column}"]
     @etexts = sort!(etexts&.values, column, direction)
   end
 
@@ -19,11 +19,11 @@ class Google::EtextbooksComponent < ViewComponent::Base
         @sort_orders["#{column}"] = direction
       end
       if column == "course"
-        return etexts.sort_by{ |a,b,c,d,e| [b,c,d] } if @sort_orders["#{column}"] == "asc"
-        return etexts.sort_by{ |a,b,c,d,e| [b,c,d] }.reverse if @sort_orders["#{column}"] == "desc"
+        return etexts.sort_by { |a, b, c, d, e| [b, c, d] } if @sort_orders["#{column}"] == "asc"
+        return etexts.sort_by { |a, b, c, d, e| [b, c, d] }.reverse if @sort_orders["#{column}"] == "desc"
       else
-        return etexts.sort_by{ |a,b,c,d,e| [e] } if @sort_orders["#{column}"] == "asc"
-        return etexts.sort_by{ |a,b,c,d,e| [e] }.reverse if @sort_orders["#{column}"] == "desc"
+        return etexts.sort_by { |a, b, c, d, e| [e] } if @sort_orders["#{column}"] == "asc"
+        return etexts.sort_by { |a, b, c, d, e| [e] }.reverse if @sort_orders["#{column}"] == "desc"
       end
     end
 
@@ -35,12 +35,11 @@ class Google::EtextbooksComponent < ViewComponent::Base
       content_tag(:span, label, { id: column,
                                   data: {
                                     controller: "etexts-component",
-                                    action: "click->etexts-component#sort_column", 
-                                    column: column,
+                                    action: "click->etexts-component#sort_column",
+                                    column:,
                                     direction: @sort_orders["#{column}"],
                                     target: "etexts"
                                   },
-                                  style: "cursor:pointer;" } )
+                                  style: "cursor:pointer;" })
     end
-
 end

@@ -5,12 +5,12 @@
       <p><%= @description %></p>
       <div class="table-responsive-sm">
         <table class="etextbooks table table-bordered table-hover">
-          <caption>Etextbooks</caption>
+          <caption><%= t("manifold.webpages.etextbooks.caption") %></caption>
           <thead>
             <tr>
               <th scope="col"><%= sort_link(column: "course", label: "Course", direction: params[:direction]) %></th>
               <th scope="col"><%= sort_link(column: "professor", label: "Professor", direction: params[:direction]) %></th>
-              <th scope="col">Textbook Name</th>
+              <th scope="col"><%= t("manifold.webpages.etextbooks.etext_column") %></th>
             </tr>
           </thead>
           <tbody>

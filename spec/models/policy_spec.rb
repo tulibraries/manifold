@@ -17,15 +17,6 @@ RSpec.describe Policy, type: :model do
       building.policies << policy
       expect(building.policies).to include(policy)
     end
-
-    example "Creates a policy for a building and assign it to a space too" do
-      policy = FactoryBot.create(:policy)
-      building = FactoryBot.create(:building)
-      building.policies = [policy]
-      space = FactoryBot.create(:space, building:)
-      space.policies = [policy]
-      expect(space.policies).to include(policy)
-    end
   end
 
   describe "Required attributes" do

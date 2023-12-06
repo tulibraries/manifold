@@ -75,15 +75,6 @@ RSpec.describe Space, type: :model do
       end
     end
 
-    context "Policy reference" do
-      example "Add space policy" do
-        policy = FactoryBot.create(:policy)
-        space = FactoryBot.create(:space)
-        space.policies << policy
-        expect(space.policies).to include(policy)
-      end
-    end
-
     context "External Link" do
       let(:external_link) { FactoryBot.create(:external_link) }
       example "attach external link" do

@@ -7,7 +7,6 @@ class Space < ApplicationRecord
   include Categorizable
   include Draftable
   include HasHours
-  include HasPolicies
   include Imageable
   include InputCleaner
   include SetDates

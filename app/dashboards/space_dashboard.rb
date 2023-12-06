@@ -23,7 +23,6 @@ class SpaceDashboard < BaseDashboard
     image: PhotoField,
     phone_number: PhoneField,
     email: Field::Email,
-    policies: Field::HasMany,
     external_link: Field::BelongsTo.with_options(order: "title"),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -56,7 +55,6 @@ class SpaceDashboard < BaseDashboard
     :building,
     :phone_number,
     :email,
-    :policies,
     :categories,
     :accounts
   ].freeze
@@ -76,7 +74,6 @@ class SpaceDashboard < BaseDashboard
     :email,
     :hours,
     :phone_number,
-    :policies,
     :categories,
     :accounts,
     :covid_alert

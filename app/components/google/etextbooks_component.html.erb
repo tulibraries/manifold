@@ -8,8 +8,8 @@
           <caption><%= t("manifold.webpages.etextbooks.caption") %></caption>
           <thead>
             <tr>
-              <th scope="col"><%= t("manifold.webpages.etextbooks.course_column") %></th>
-              <th scope="col"><%= t("manifold.webpages.etextbooks.instructor_column") %></th>
+              <th scope="col"><%= sort_link(column: "course", label: "Course", direction: params[:direction]) %></th>
+              <th scope="col"><%= sort_link(column: "professor", label: "Professor", direction: params[:direction]) %></th>
               <th scope="col"><%= t("manifold.webpages.etextbooks.etext_column") %></th>
             </tr>
           </thead>
@@ -17,11 +17,11 @@
             <% @etexts.each do |book| %>
             <tr>
               <td>
-                  <%= book[1] %> <%= book[2].rjust(4, "0") %>-<%= book[3].rjust(3, "0") %>
+                <%= book[1] %> <%= book[2].rjust(4, "0") %>-<%= book[3].rjust(3, "0") %>
               </td>
               <td><%= book[4] %></td>
               <td>
-                  <%= link_to(book[6], "#{@base_url}/#{book[0]}") %>
+                <%= link_to(book[6], "#{@base_url}/#{book[0]}") %>
               </td>
             </tr>
             <% end if @etexts.present? %>

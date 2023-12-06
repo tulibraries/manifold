@@ -16,12 +16,29 @@ RSpec.describe Google::EtextbooksComponent, type: :component do
     it "renders results" do
       expect(etexts.values.size > 0).to be_truthy
     end
-    it "renders component view" do
-      lookup_context = ActionView::LookupContext.new(ActionController::Base.view_paths)
-      component = described_class.new(etexts:, title: intro.title, description: intro.description)
-      expect(
-        component.render_in(ActionView::Base.new(ActionView::LookupContext.new([]), {}, nil))
-      ).to be
+    it "renders ordered asc by course" do
+      render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "course", direction: "asc"))
+      expect(page.text).to match "AAAS 1253-701"
+      expect(page.text).to match "THTR 0907-001"
+      page.text.index("AAAS 1253-701").should < page.text.index("THTR 0907-001")
+    end
+    it "renders ordered desc by course" do
+      render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "course", direction: "desc"))
+      expect(page.text).to match "AAAS 1253-701"
+      expect(page.text).to match "THTR 0907-001"
+      page.text.index("THTR 0907-001").should < page.text.index("AAAS 1253-701")
+    end
+    it "renders ordered asc by prof" do
+      render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "professor", direction: "asc"))
+      expect(page.text).to match "Aaronson"
+      expect(page.text).to match "Wager"
+      page.text.index("Aaronson").should < page.text.index("Wager")
+    end
+    it "renders ordered desc by prof" do
+      render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "professor", direction: "desc"))
+      expect(page.text).to match "Aaronson"
+      expect(page.text).to match "Wager"
+      page.text.index("Wager").should < page.text.index("Aaronson")
     end
   end
 end

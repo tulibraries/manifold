@@ -23,7 +23,6 @@ class GroupDashboard < BaseDashboard
     group_type: Field::Select.with_options(
       collection: Rails.configuration.group_types
       ),
-    policies: Field::HasMany,
     parent_group: Field::BelongsTo,
     file_uploads: Field::HasMany,
     webpages: Field::HasMany,
@@ -54,7 +53,6 @@ class GroupDashboard < BaseDashboard
     :persons,
     :space,
     :external,
-    :policies,
     :categories,
     :file_uploads
   ].freeze
@@ -72,7 +70,6 @@ class GroupDashboard < BaseDashboard
     :chair_dept_heads,
     :persons,
     :space,
-    :policies,
     :categories,
     :webpages,
     :file_uploads

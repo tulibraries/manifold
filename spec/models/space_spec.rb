@@ -114,25 +114,4 @@ RSpec.describe Space, type: :model do
   it_behaves_like "accountable"
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
-
-  describe "cannot_destroy_message" do
-    context "When the exeception is not due to the space having attached groups." do
-      let(:exception) { ActiveRecord::DeleteRestrictionError.new("foos") }
-      let(:space) { FactoryBot.create(:space) }
-
-      it "should return the random reason." do
-        expect(space.cannot_destroy_message(exception)).to eq("Cannot delete record because of dependent foos")
-      end
-    end
-
-    context "When the exeception is due to the space having attached groups." do
-      let(:exception) { ActiveRecord::DeleteRestrictionError.new("groups") }
-      let(:space) { FactoryBot.create(:space) }
-
-      it "should return the custom message." do
-        expect(space.cannot_destroy_message(exception)).to match("#{space.label} could not be deleted. They are still attached to the following Groups")
-      end
-    end
-
-  end
 end

@@ -55,7 +55,6 @@ RSpec.configure do |config|
   config.include ViewComponent::SystemTestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
   config.include Devise::Test::IntegrationHelpers, type: :system
-  config.include Devise::TestHelpers, type: :system
   config.include Capybara::DSL
 
   config.before(:each, type: :system) do

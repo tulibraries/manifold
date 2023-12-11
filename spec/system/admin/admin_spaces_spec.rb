@@ -7,5 +7,5 @@ RSpec.describe "Admin::Spaces", type: :system do
     login_as(FactoryBot.create(:administrator))
   end
 
-  it_behaves_like "delete restricted", {:space => [:collection, :group, :event, :exhibition]}
+  it_behaves_like "delete restricted", { space: [:collection, :group, :event, :exhibition] }
 end

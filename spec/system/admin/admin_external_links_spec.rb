@@ -10,7 +10,7 @@ RSpec.describe "Admin::ExternalLinks", type: :system do
   context "When external link is not attached to anything" do
     it "deletes an external link" do
       external_link = FactoryBot.create(:external_link)
-      
+
       visit admin_external_links_path
       expect(page.all('tr[role="link"]').count).to eq(1)
 

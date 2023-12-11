@@ -36,7 +36,7 @@ RSpec.describe "Admin::Groups", type: :system do
 
       visit admin_groups_path + "/#{ group.friendly_id }/edit"
       expect(page).to have_text(group.name)
-      
+
       select space.name, from: "group_space_id"
 
       click_button "Update Group"

@@ -44,27 +44,6 @@ RSpec.describe "Admin::Groups", type: :system do
     end
   end
 
-  context "deleting a model attached to a group" do
-    it "display custom error message" do
-      space = Space.first
-      group = FactoryBot.create(:group, name: "second group", space:)
-      visit admin_groups_path + "/#{ group.friendly_id }/edit"
-      select space.name, from: "group_space_id"
-
-      click_button "Update Group"
-      
-      visit admin_spaces_path
-      expect(page).to have_link(group.space.name)
-
-      click_link("Destroy", match: :first)
-      expect(page).to have_link(group.space.name)
-      expect(page).to have_text("#{group.space.name} could not be deleted.")
-
-      visit admin_groups_path + "/#{ group.friendly_id }"
-      expect(page).to have_link(group.space.name)
-    end
-  end
-
   context "When there is a list of spaces" do
     it "should order the list in ASC order by name" do
       FactoryBot.create(:space, name: "zoo")

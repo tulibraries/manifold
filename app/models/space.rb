@@ -7,12 +7,14 @@ class Space < ApplicationRecord
   include Categorizable
   include Draftable
   include HasHours
+  include HasPolicies
   include Imageable
   include InputCleaner
   include SetDates
   include Validators
   include SchemaDotOrgable
   extend FriendlyId
+
   friendly_id :name, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 
@@ -31,6 +33,9 @@ class Space < ApplicationRecord
   has_ancestry
 
   has_many :groups, dependent: :restrict_with_exception
+  has_many :collections, dependent: :restrict_with_exception
+  has_many :events, dependent: :restrict_with_exception
+  has_many :exhibitions, dependent: :restrict_with_exception
 
   def slug_candidates
     [
@@ -75,23 +80,49 @@ class Space < ApplicationRecord
 
   def cannot_destroy_message(exception)
     notice = exception.message
+    model_name = self.class.name.downcase.pluralize
+    model_id = self.id
 
-    if notice == "Cannot delete record because of dependent groups"
+    buildings = Building.all.any?{ |b| b.spaces.any?{ |s| s.id == model_id }} ? 
+      Building.all.map{ |b| b if b.spaces.any?{ |s| s.id == model_id }}.compact :
+      nil
+
+    collections = Collection.all.any?{ |g| g.space_id == model_id } ? 
+      Collection.all.map{ |c| c if c.space_id == model_id }.compact :
+      nil
+
+    groups = Group.all.any?{ |g| g.space_id == model_id } ? 
+      Group.all.map{ |g| g if g.space_id == model_id }.compact :
+      nil
+
+    events = Event.all.any?{ |ev| ev.space_id == model_id } ? 
+      Event.all.map{ |ev| ev if ev.space_id == model_id }.compact.take(3) :
+      nil
+
+    exhibits = Exhibition.all.any?{ |ex| ex.space_id == model_id } ? 
+      Exhibition.all.map{ |ex| ex if ex.space_id == model_id }.compact.take(3) :
+      nil
+
+    if notice.include? "Cannot delete record because of dependent"
+      models = [buildings, collections, groups, events, exhibits].compact
       links = []
-      groups.each do |group|
-        links << "<a href=/admin/groups/#{slug}/edit>#{group.label}</a>"
+      models.each do |model|
+        model_name = model.first.class.name.downcase.pluralize
+        model.each do |model_instance|
+          links << "<a href=/admin/#{model_name}/#{model_instance.slug}>#{model_instance.label}</a>"
+        end
       end
 
-      notice = "<p class=text-start>#{label} could not be deleted. "
-      notice +=  "They are still attached to the following Groups:<br />"
-      notice +=  "Remove and/or replace them there and try again.</p>"
-
-      links.each do |link|
-        notice += "<p><strong>#{link}</strong></p>"
-      end
+      notice = "<p><strong>#{label}</strong> could not be deleted.<br />"
+      notice +=  "It is still attached to the following Object(s).</p>"
+        links.each do |link|
+          notice += "<p><strong>#{link}</strong></p>"
+        end
+      notice +=  "<br /><p>Please remove and/or replace it there and try again.</p>"
       notice += "<br />"
     end
 
     notice
   end
+
 end

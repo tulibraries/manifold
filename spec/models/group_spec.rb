@@ -64,7 +64,8 @@ RSpec.describe Group, type: :model do
   describe "has many spaces through" do
     context "Attach space" do
       example "Group space is the last space created" do
-        group = FactoryBot.create(:group)
+        space = FactoryBot.create(:space)
+        group = FactoryBot.create(:group, space:)
         expect { group.save! }.to_not raise_error
         expect(group.space).to eq(Space.last)
       end

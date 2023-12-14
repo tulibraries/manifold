@@ -14,10 +14,11 @@ FactoryBot.define do
     libguides_account { "1098-7654-3210" }
     buildings { [FactoryBot.create(:building)] }
     pronouns { "He/Him/His" }
-    # association [:subjects], factory: :subject
+
     trait :with_subjects do
       subjects { build_list :subject, 3 }
     end
+
     trait :with_image do
       after :create do |person|
         person.image.attach(io:

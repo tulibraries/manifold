@@ -7,7 +7,7 @@ FactoryBot.define do
     group_type { "Department" }
     persons { [ FactoryBot.create(:person) ] }
     chair_dept_heads { [ FactoryBot.create(:person) ] }
-    space { FactoryBot.create(:space) }
+    space {}
 
     trait :with_file do
       after :create do |webpage|

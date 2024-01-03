@@ -19,6 +19,10 @@ module Imageable
     custom_image(250, 350)
   end
 
+  def profile_image
+    custom_image(240, 240)
+  end
+
   def show_image()
     custom_image(271, 421)
   end
@@ -38,7 +42,7 @@ module Imageable
           image.variant(format: :png,
                         background: :transparent,
                         gravity: :center,
-                        resize_and_pad: [width,
+                        resize_to_fill: [width,
                                         height])
         end
       else

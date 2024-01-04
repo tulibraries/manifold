@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "People", type: :system do
+RSpec.describe "People", type: :system do
 
   describe "Specialist" do
     before(:all) do

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::FindingAid", type: :system do
+RSpec.describe "Dashboard::FindingAid", type: :system do
   before(:all) do
     @admin = FactoryBot.create(:account, admin: true)
     @finding_aid = FactoryBot.create(:finding_aid)

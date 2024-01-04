@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::WebPageDrafts", type: :system do
+RSpec.describe "Dashboard::WebPageDrafts", type: :system do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @webpage = FactoryBot.create(:webpage)

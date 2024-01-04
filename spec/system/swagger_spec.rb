@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Swager", type: :system do
+RSpec.describe "Swager", type: :system do
 
   before(:all) do
     FactoryBot.create(:person)

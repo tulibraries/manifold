@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::Exhibition", type: :system do
+RSpec.describe "Dashboard::Exhibition", type: :system do
   before(:all) do
     @admin = FactoryBot.create(:account, admin: true)
     @non_admin = FactoryBot.create(:account, admin: false)

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Webpages", type: :system do
+RSpec.describe "Webpages", type: :system do
   describe "Featured Items" do
     scenario "featured item with image" do
       featured_item = FactoryBot.create(:webpage, :with_file_and_image)

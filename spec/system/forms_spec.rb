@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Forms", type: :system do
+RSpec.describe "Forms", type: :system do
 
   describe "page groupings" do
     scenario "admin services appears last" do

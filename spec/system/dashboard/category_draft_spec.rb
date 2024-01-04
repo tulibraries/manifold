@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::CategoryDrafts", type: :system do
+RSpec.describe "Dashboard::CategoryDrafts", type: :system do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @category = FactoryBot.create(:category)

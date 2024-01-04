@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::Group", type: :system do
+RSpec.describe "Dashboard::Group", type: :system do
   before(:all) do
     @admin = FactoryBot.create(:account, admin: true)
     @group = FactoryBot.create(:group)

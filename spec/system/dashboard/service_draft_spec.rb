@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "ServiceDrafts", type: :system do
+RSpec.describe "ServiceDrafts", type: :system do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @service = FactoryBot.create(:service)

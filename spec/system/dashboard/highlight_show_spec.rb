@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::Highlight", type: :system do
+RSpec.describe "Dashboard::Highlight", type: :system do
   before(:all) do
     @admin = FactoryBot.create(:account, admin: true)
     @highlight = FactoryBot.create(:highlight)

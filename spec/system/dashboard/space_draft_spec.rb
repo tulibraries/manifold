@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::SpaceDrafts", type: :system do
+RSpec.describe "Dashboard::SpaceDrafts", type: :system do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @space = FactoryBot.create(:space)

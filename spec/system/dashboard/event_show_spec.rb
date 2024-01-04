@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::Event", type: :system do
+RSpec.describe "Dashboard::Event", type: :system do
   before(:all) do
     @admin = FactoryBot.create(:account, admin: true)
     @event = FactoryBot.create(:event)

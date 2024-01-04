@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::Person", type: :system do
+RSpec.describe "Dashboard::Person", type: :system do
   before(:all) do
     @admin = FactoryBot.create(:account, admin: true)
     @person = FactoryBot.create(:person)

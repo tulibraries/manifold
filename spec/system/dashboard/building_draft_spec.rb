@@ -2,16 +2,11 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::BuildingDrafts", type: :system do
+RSpec.describe "Dashboard::BuildingDrafts", type: :system do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @building = FactoryBot.create(:building)
     @models = ["building"]
-  end
-
-  after(:all) do
-    Account.destroy_all
-    Building.destroy_all
   end
 
   context "New Building Administrate Page" do

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Dashboard::CollectionDrafts", type: :system do
+RSpec.describe "Dashboard::CollectionDrafts", type: :system do
   before(:all) do
     @account = FactoryBot.create(:account, admin: true)
     @collection = FactoryBot.create(:collection)

@@ -68,12 +68,6 @@ RSpec.describe FuzzyFind::FinderService do
           job_title: "FooBarbarian")
       end
 
-      after(:all) do
-        Person.destroy_all
-        Building.destroy_all
-        Space.destroy_all
-      end
-
       context "with a similar name" do
         it "returns the expected person" do
           expect(described_class.call(
@@ -154,11 +148,6 @@ RSpec.describe FuzzyFind::FinderService do
         FactoryBot.create(:building, name: "McGaw Library")
         @law = FactoryBot.create(:building, name: "Law Library")
       end
-
-      after do
-        Building.destroy_all
-      end
-
 
       it "does not return Law Library when Paley is search term" do
         expect(described_class.call(

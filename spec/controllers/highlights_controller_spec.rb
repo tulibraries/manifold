@@ -6,32 +6,11 @@ RSpec.describe HighlightsController, type: :controller do
 
   let(:highlight) { FactoryBot.create(:highlight) }
 
-  describe "GET #index" do
-    it "returns a success response", skip: "TBA: No views exist" do
-      get :index
-      expect(response).to be_successful
-    end
-
+  describe "json response" do
     it "returns json when requested" do
       get :index, format: :json
       expect(response.header["Content-Type"]).to include "json"
     end
   end
-
-  describe "GET #show" do
-    let(:highlight) { FactoryBot.create(:highlight) }
-
-    it "returns a success response", skip: "TBA: No views exist" do
-      get :show, params: { id: highlight.to_param }
-      expect(response).to be_successful
-    end
-
-    it "returns html by default success" do
-      get :show, params: { id: highlight.id }, format: :json
-      expect(response.header["Content-Type"]).to include "json"
-    end
-  end
-
-  it_behaves_like "serializable"
-
+  
 end

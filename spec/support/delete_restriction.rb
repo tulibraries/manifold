@@ -26,13 +26,7 @@ RSpec.shared_examples "delete restricted" do |associations|
     end
     it "displays a custom error message" do
       visit "/admin/#{model_name.pluralize}"
-      binding.pry
-      page.find("a[data-url='/admin/#{model_name.pluralize}/#{factory_model.label.parameterize}']").first(:link, "Destroy").click
-      # model_rows.each_with_index do |mr, i|
-      #   if mr.text.include? "#{factory_model.label} "
-      #     find_link("Destroy").click
-      #   end
-      # end
+      page.find("tr[data-url='/admin/#{model_name.pluralize}/#{factory_model.label.parameterize}']").first(:link, "Destroy").click
       expect(page).to have_current_path("/admin/#{model_name.pluralize}")
       associated_models.each do |associated_model|
         expect(page).to have_link(associated_model.label)

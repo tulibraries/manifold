@@ -12,5 +12,5 @@ RSpec.describe HighlightsController, type: :controller do
       expect(response.header["Content-Type"]).to include "json"
     end
   end
-  
+
 end

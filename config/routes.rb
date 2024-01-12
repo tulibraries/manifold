@@ -95,7 +95,7 @@ Rails.application.routes.draw do
   resources :file_uploads, only: [:new, :create]
   resources :finding_aids, only: [:index, :show], path: "/finding-aids"
   resources :groups, only: [:index, :show]
-  resources :highlights, only: [:index, :show]
+  resources :highlights, only: [:index]
   resources :alerts_json, only: [:index], path: "/alerts.json"
   resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
   resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]

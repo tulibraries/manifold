@@ -85,12 +85,12 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
-    administrate (0.19.0)
-      actionpack (>= 5.0)
-      actionview (>= 5.0)
-      activerecord (>= 5.0)
-      jquery-rails (>= 4.0)
-      kaminari (>= 1.0)
+    administrate (0.20.0)
+      actionpack (>= 6.0, < 8.0)
+      actionview (>= 6.0, < 8.0)
+      activerecord (>= 6.0, < 8.0)
+      jquery-rails (~> 4.6.0)
+      kaminari (~> 1.2.2)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
     administrate-field-active_storage (1.0.1)
@@ -632,9 +632,12 @@ PLATFORMS
 
 DEPENDENCIES
   action-draft
+  actionpack (>= 5.0)
+  actionview (>= 5.0)
   active_storage_validations
+  activerecord (>= 5.0)
   activestorage-validator
-  administrate
+  administrate (~> 0.20.0)
   administrate-field-active_storage
   administrate-field-date_picker (~> 0.3.0)
   administrate-field-ordered_has_many
@@ -667,10 +670,11 @@ DEPENDENCIES
   httparty
   image_processing (~> 1.2)
   jbuilder
+  jquery-rails (>= 4.0)
   jsbundling-rails
   json-ld (>= 3.3.1)
   json-schema
-  kaminari
+  kaminari (>= 1.0)
   launchy
   listen (>= 3.0.5, < 3.9)
   lockbox

@@ -39,20 +39,22 @@ as well as a link to its edit page.
 
 <section class="main-content__body">
   <dl>
-    <% page.attributes.each do |attribute| %>
-      <dt class="attribute-label" id="<%= attribute.name %>">
-      <%= t(
-        "helpers.label.#{resource_name}.#{attribute.name}",
-        default: attribute.name.titleize,
-      ) unless attribute.attribute.to_s == "id" %>
+    <% page.attributes.each do |title, attributes| %>
+      <% attributes.each do |attribute| %>
+        <dt class="attribute-label" id="<%= attribute.name %>">
+        <%= t(
+          "helpers.label.#{resource_name}.#{attribute.name}",
+          default: attribute.name.titleize,
+        ) unless attribute.attribute.to_s == "id" %>
 
-      <%= t("Permalink") if attribute.attribute.to_s == "id" %>
-      </dt>
+        <%= t("Permalink") if attribute.attribute.to_s == "id" %>
+        </dt>
 
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
-        <%= render_field attribute, page: page unless attribute.attribute.to_s == "id" %>
-        <%= "/categories/#{attribute.to_s}" if attribute.attribute.to_s == "id" %>
-      </dd>
+        <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
+          <%= render_field attribute, page: page unless attribute.attribute.to_s == "id" %>
+          <%= "/categories/#{attribute.to_s}" if attribute.attribute.to_s == "id" %>
+        </dd>
+      <% end %>
     <% end %>
     <dt class="attribute-label" id="Entites">
       Entities

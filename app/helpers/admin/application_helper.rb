@@ -32,10 +32,12 @@ module Admin::ApplicationHelper
   end
 
   def is_draftable?(attributes)
-    attributes.each do |attribute|
-      return true if attribute.resource.respond_to?("draft_" + attribute.name)
+    attributes.each do |title, attributes|
+      attributes.each do |attribute|
+        return true if attribute.resource.respond_to?("draft_" + attribute.name)
+      end
+      return false
     end
-    return false
   end
 
   def phone_formatted(phone_number = "")

@@ -43,27 +43,29 @@ as well as a link to its edit page.
 
 <section class="main-content__body">
   <dl>
-    <% page.attributes.each do |attribute| %>
-      <dt class="attribute-label" id="<%= attribute.name %>">
-        <% unless attribute.attribute.to_s.downcase == "id" %>
-          <%= t(
-            "helpers.label.#{resource_name}.#{attribute.name}",
-            default: attribute.name.titleize,
-          ) %>
-        <% else %>
-          <%= t("Permalink") %>
-        <% end %>
-      </dt>
+    <% page.attributes.each do |title, attributes| %>
+      <% attributes.each do |attribute| %>
+        <dt class="attribute-label" id="<%= attribute.name %>">
+          <% unless attribute.attribute.to_s.downcase == "id" %>
+            <%= t(
+              "helpers.label.#{resource_name}.#{attribute.name}",
+              default: attribute.name.titleize,
+            ) %>
+          <% else %>
+            <%= t("Permalink") %>
+          <% end %>
+        </dt>
 
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
-        <% unless attribute.attribute.to_s.downcase == "id" %>
-          <%= render_field attribute, page: page %>
-        <% else %>
-          <%= "/#{attribute.resource.class.to_s.underscore.downcase.pluralize}/#{attribute.to_s}" unless attribute.resource.class.to_s == "Building" || attribute.resource.class.to_s == "Person" %>
-          <%= "/libraries/#{attribute.to_s}" if attribute.resource.class.to_s == "Building" %>
-          <%= "/people/#{attribute.to_s}" if attribute.resource.class.to_s == "Person" %>
-        <% end %>
-      </dd>
+        <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
+          <% unless attribute.attribute.to_s.downcase == "id" %>
+            <%= render_field attribute, page: page %>
+          <% else %>
+            <%= "/#{attribute.resource.class.to_s.underscore.downcase.pluralize}/#{attribute.to_s}" unless attribute.resource.class.to_s == "Building" || attribute.resource.class.to_s == "Person" %>
+            <%= "/libraries/#{attribute.to_s}" if attribute.resource.class.to_s == "Building" %>
+            <%= "/people/#{attribute.to_s}" if attribute.resource.class.to_s == "Person" %>
+          <% end %>
+        </dd>
+      <% end %>
     <% end %>
   </dl>
     <%= render "select_version", page: page %>

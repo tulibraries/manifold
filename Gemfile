@@ -107,3 +107,8 @@ group :test do
   gem "launchy"
   gem "shoulda-matchers", "~> 6.1"
 end
+
+group :production do
+  gem "dalli"
+  gem "connection_pool"
+end

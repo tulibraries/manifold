@@ -157,11 +157,14 @@ GEM
     choice (0.2.0)
     coderay (1.1.3)
     concurrent-ruby (1.2.3)
+    connection_pool (2.4.1)
     crack (0.4.5)
       rexml
     crass (1.0.6)
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
+    dalli (3.2.7)
+      base64
     database_cleaner (2.0.2)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.1.0)
@@ -655,7 +658,9 @@ DEPENDENCIES
   byebug
   cancancan (~> 3.5)
   capybara (>= 2.15)
+  connection_pool
   cssbundling-rails
+  dalli
   database_cleaner
   devise
   diffy

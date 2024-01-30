@@ -6,11 +6,11 @@ Rswag::Api.configure do |c|
   # This is used by the Swagger middleware to serve requests for API descriptions
   # NOTE: If you're using rswag-specs to generate Swagger, you'll need to ensure
   # that it's configured to generate files in the same folder
-  c.swagger_root = Rails.root.to_s + "/swagger"
+  c.openapi_root = Rails.root.to_s + "/swagger"
 
   c.swagger_filter = lambda { |swagger, env| swagger["host"] = env["HTTP_HOST"] }
 end
 
 Rswag::Ui.configure do |c|
-  c.swagger_endpoint "/swagger.json", "API V1 Docs"
+  c.openapi_endpoint "/swagger.json", "API V1 Docs"
 end

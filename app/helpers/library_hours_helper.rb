@@ -50,4 +50,16 @@ module LibraryHoursHelper
     end
     name
   end
+
+  def has_spaces?(spaces)
+    if spaces.first.second.empty?
+      return false
+    end
+    spaces.each do |space|
+      if defined?(space[1].first.location_id).nil?
+        return false
+      end
+    end
+    return true
+  end
 end

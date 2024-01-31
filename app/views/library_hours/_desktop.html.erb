@@ -21,7 +21,7 @@
       <% end %>
    </div>
 
-  <% unless location[:spaces].first.second.empty? %> <!-- hours for at least one space -->
+  <% if has_spaces?(location[:spaces]) %> <!-- hours for at least one space -->
    
    <% location[:spaces].each do |space| %>
 
@@ -54,12 +54,12 @@
         </div> <!-- hours-row -->
 
       <% end %>
-    <% else %> <!-- unless -->
+    <% else %> <!-- if has_spaces? -->
       <div class="row mt-3">
         <div class="col-9 offset-3 text-center">
           <h3><%= "#{t("manifold.webpages.hours.no_data")}" if location[:spaces].first.second.empty? %></h3>
         </div>
       </div> 
-    <% end %>
+  <% end %>
 
 <% end %>

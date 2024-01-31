@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <% unless location[:spaces].first.second.empty? %> <!-- hours for at least one space -->
+  <% if has_spaces?(location[:spaces]) %> <!-- hours for at least one space --> 
   <% location[:spaces].each_with_index do |space, spaceIndex| %>
 
       <div class="row hours-row <% unless spaceIndex == (location[:spaces].size - 1) %> bordered<% end %>">

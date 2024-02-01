@@ -97,7 +97,7 @@ Rails.application.routes.draw do
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index]
   resources :alerts_json, only: [:index], path: "/alerts.json"
-  resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
+  resources :library_hours, only: [:index], as: :hours, path: "/hours"
   resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
   resources :policies, only: [:index, :show]
   resources :services, only: [:index, :show], concerns: [:imageable]

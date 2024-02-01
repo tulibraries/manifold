@@ -57,7 +57,7 @@ class WebpagesController < ApplicationController
 
   def etextbooks
     snippet = helpers.etextbooks_snippet
-    etexts = Google::SheetsConnector.call
+    etexts = Google::SheetsConnector.call(feature: "etexts")
     if etexts.present?
       render(Google::EtextbooksComponent.new(etexts:, title: snippet[:title],
                                                       description: snippet[:description],

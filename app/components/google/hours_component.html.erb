@@ -23,11 +23,11 @@
 <div class="container hours">
 
   <div class="buildings d-none d-lg-block">
-    <% @buildings.each do |location| %>
+    <% @buildings.each do |building| %>
     <div class="row building-row">
       <div class="col-12 px-0">
         <h2 class="red">
-          <%= location_name(location[:slug]) %>
+          <%= location_name(building[:slug]) %>
         </h2>
       </div>
     </div>
@@ -43,39 +43,40 @@
           </div>
         <% end %>
     </div>
-      <% binding.pry %>
-    <% if has_spaces?(location[:spaces]) %> <!-- hours for at least one space -->
-      <% location[:spaces].each do |space| %>
-            <div class="row hours-row">
-              <div class="col-3 px-0"> 
-                <h3><%= location_link(space[1].first.location_id) %></h3>
-              </div>
-              <% space[1].sort_by(&:date).each_with_index do |time,index| %> 
-                <% if @monday.to_date+index == @today %>
-                  <div class="col today">
-                <% else %>
-                  <div class="col">
-                <% end %>
-                <% if time.hours.downcase == "closed" %>
-                  <span class="closed"><%= time.hours %></span>
-                <% else %>
-                  <%= time.hours %>
-                <% end %>
-                </div>
-              <% end %>
 
-                <% if space[1].first.location_id == "blockson" %>
-                <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
-                  <%= t("manifold.hours.blockson_note_html").html_safe if space[1].first.location_id == "blockson" %>
-                </div>
-                <% end %>
-            </div> <!-- hours-row -->
+    <% unless building[:spaces].empty? %> <!-- hours for at least one space -->
+      <% building[:spaces].each do |space| %>
+        <div class="row hours-row">
+          <div class="col-3 px-0"> 
+            <h3><%= location_link(space) %></h3>
+          </div>
+
+          <% building[:spaces].sort_by(&:date).each_with_index do |time,index| %> 
+            <% if @monday.to_date+index == @today %>
+              <div class="col today">
+            <% else %>
+              <div class="col">
+            <% end %>
+            <% if time.hours.downcase == "closed" %>
+              <span class="closed"><%= time.hours %></span>
+            <% else %>
+              <%= time.hours %>
+            <% end %>
+            </div>
+          <% end %>
+
+            <% if space == "blockson" %>
+            <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
+              <%= t("manifold.hours.blockson_note_html").html_safe if space == "blockson" %>
+            </div>
+            <% end %>
+        </div> <!-- hours-row -->
 
           <% end %>
         <% else %> <!-- if has_spaces? -->
           <div class="row mt-3">
             <div class="col-9 offset-3 text-center">
-              <h3><%= "#{t("manifold.webpages.hours.no_data")}" if location[:spaces].empty? %></h3>
+              <h3><%= "#{t("manifold.webpages.hours.no_data")}" if building[:spaces].empty? %></h3>
             </div>
           </div> 
       <% end %>

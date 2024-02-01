@@ -131,7 +131,7 @@ RSpec.describe Group, type: :model do
       #
 
       example "#{k} changes" do
-        skip("description not versionable") if k == :description
+        next if k == :description # Description not versionable
         group = FactoryBot.create(:group, k => v.first)
         group.update(k => v.last)
         group.save!

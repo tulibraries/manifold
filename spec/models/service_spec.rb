@@ -57,8 +57,8 @@ RSpec.describe Service, type: :model do
 
     fields.each do |k, v|
       example "#{k} changes" do
-        skip("description not versionable") if k == :description
-        skip("access_description not versionable") if k == :access_description
+        next if k == :description # Description not versionable
+        next if k == :access_description # Access_description not versionable
         service = FactoryBot.create(:service_static)
         service.update(k => v.last)
         service.save!

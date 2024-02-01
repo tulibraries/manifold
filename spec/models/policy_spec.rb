@@ -36,7 +36,7 @@ RSpec.describe Policy, type: :model do
 
     fields.each do |k, v|
       example "#{k} changes" do
-        skip("description not versionable") if k == :description
+        next if k == :description # Description not versionable
         policy = FactoryBot.create(:policy, k => v.first)
         policy.update(k => v.last)
         policy.save!

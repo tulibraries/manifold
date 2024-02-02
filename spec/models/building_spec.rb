@@ -74,7 +74,7 @@ RSpec.describe Building, type: :model do
 
     fields.each do |k, v|
       example "#{k} changes" do
-        skip("description not versionable") if k == :description
+        next if k == :description # Description not versionable
         building = FactoryBot.create(:building, k => v.first)
         building.update(k => v.last)
         building.save!

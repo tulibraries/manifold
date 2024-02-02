@@ -20,25 +20,25 @@ RSpec.describe Google::EtextbooksComponent, type: :component do
       page = render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "course", direction: "asc"))
       expect(page.text).to match "AAAS 1253-701"
       expect(page.text).to match "THTR 0907-001"
-      page.text.index("AAAS 1253-701").should < page.text.index("THTR 0907-001")
+      expect(page.text.index("AAAS 1253-701")).to be < page.text.index("THTR 0907-001")
     end
     it "renders ordered desc by course" do
       page = render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "course", direction: "desc"))
       expect(page.text).to match "AAAS 1253-701"
       expect(page.text).to match "THTR 0907-001"
-      page.text.index("THTR 0907-001").should < page.text.index("AAAS 1253-701")
+      expect(page.text.index("THTR 0907-001")).to be < page.text.index("AAAS 1253-701")
     end
     it "renders ordered asc by prof" do
       page = render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "professor", direction: "asc"))
       expect(page.text).to match "Aaronson"
       expect(page.text).to match "Wager"
-      page.text.index("Aaronson").should < page.text.index("Wager")
+      expect(page.text.index("Aaronson")).to be < page.text.index("Wager")
     end
     it "renders ordered desc by prof" do
       page = render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "professor", direction: "desc"))
       expect(page.text).to match "Aaronson"
       expect(page.text).to match "Wager"
-      page.text.index("Wager").should < page.text.index("Aaronson")
+      expect(page.text.index("Wager")).to be < page.text.index("Aaronson")
     end
   end
 end

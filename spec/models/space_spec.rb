@@ -101,8 +101,8 @@ RSpec.describe Space, type: :model do
 
     fields.each do |k, v|
       example "#{k} changes" do
-        skip("description not versionable") if k == :description
-        skip("accessibility not versionable") if k == :accessibility
+        next if k == :description # Description not versionable
+        next if k == :accessibility # Accessibility not versionable
         space = FactoryBot.create(:space, k => v.first)
         space.update(k => v.last)
         space.save!

@@ -18,7 +18,7 @@ RSpec.feature "TopMenu", type: :request do
         get root_path
         expect(response.body).to match(category_1.name)
         expect(response.body).to match(category_2.name)
-        response.body.index(category_2.name).should < response.body.index(category_1.name)
+        expect(response.body.index(category_2.name)).to be < response.body.index(category_1.name)
       end
     end
   end

@@ -2,9 +2,8 @@
 
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-unless ENV["K8"] == "yes"
-  ruby "3.1.4"
-end
+ruby "3.1.4"
+
 gem "rails", "~> 7.0.8"
 gem "action-draft"
 gem "active_storage_validations"
@@ -60,9 +59,6 @@ gem "rswag-api"
 gem "rswag-ui"
 gem "simple_form"
 gem "sitemap_generator"
-if ENV["K8"] == "yes"
-  gem "skylight"
-end
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "timecop"

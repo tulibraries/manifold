@@ -10,9 +10,9 @@ RSpec.describe "Ask SCRC Form", type: :request do
   let(:recipients) { the_info.recipients }
 
   let(:form_params) {
-    {
-      title:, recipients:, name: "Joe", email: "test@temple.edu", phone: "1234567890", affiliation: "Staff", comments: "test comment"
-    }
+    { form: {
+      title:, form_type:, recipients: "[\"recipient@temple.edu\"]", name: "Joe", email: "test@temple.edu", phone: "1234567890", affiliation: "Staff", comments: "test comment"
+    } }
   }
 
   it_behaves_like "email form"

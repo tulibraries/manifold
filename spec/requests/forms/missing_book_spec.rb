@@ -10,11 +10,11 @@ RSpec.describe "Missing Book Form", type: :request do
   let(:recipients) { the_info.recipients }
 
   let(:form_params) {
-    {
-      title:, recipients:, phone: "1234567890", tu_id: "test_id", department: "test dept",
+    { form: {
+      title:, form_type:, recipients: "[\"recipient@temple.edu\"]", phone: "1234567890", tu_id: "test_id", department: "test dept",
       affiliation: "Staff", author: "test author", missing_title: "test title",
       call_number: "test call number"
-    }
+    } }
   }
 
   it_behaves_like "email form"

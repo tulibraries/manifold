@@ -10,8 +10,9 @@ RSpec.describe "Purchase Request", type: :request do
   let(:recipients) { the_info.recipients }
 
   let(:form_params) {
-    {
-      title:, recipients:, name: "x",
+    { form: {
+      title:, recipients: "[\"recipient@temple.edu\"]", name: "x",
+      form_type:,
       email: "x@x.com",
       phone: "x",
       tu_id: "x",
@@ -26,7 +27,7 @@ RSpec.describe "Purchase Request", type: :request do
       format_preference: "x",
       source_of_information: "x",
       comments: "x"
-    }
+    } }
   }
 
   it_behaves_like "email form"

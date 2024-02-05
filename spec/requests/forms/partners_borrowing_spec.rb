@@ -10,10 +10,10 @@ RSpec.describe "Partners Borrowing Privileges Application/Renewal", type: :reque
   let(:recipients) { the_info.recipients }
 
   let(:form_params) {
-    {
-      title:, recipients:, name: "Ultra Man", email: "staff@temple.edu", tu_id: "1234567890",
+    { form: {
+      title:, form_type:, recipients: "[\"recipient@temple.edu\"]", name: "Ultra Man", email: "staff@temple.edu", tu_id: "1234567890",
       partner_name: "Gargantua Reptilius", partner_email: "gargo@hotmail.com"
-    }
+    } }
   }
 
   it_behaves_like "email form"

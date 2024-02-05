@@ -10,9 +10,9 @@ RSpec.describe "Charles Library Graduate Studio Locker Request", type: :request 
   let(:recipients) { the_info.recipients }
 
   let(:form_params) {
-    {
-      title:, recipients:, name: "yes", email: "no@maybe.com", phone: "none", tu_id: "test_id", affiliation: "Graduate"
-    }
+    { form: {
+      title:, form_type:, recipients: "[\"recipient@temple.edu\"]", name: "yes", email: "no@maybe.com", phone: "none", tu_id: "test_id", affiliation: "Graduate"
+    } }
   }
 
   it_behaves_like "email form"

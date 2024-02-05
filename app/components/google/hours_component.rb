@@ -3,47 +3,34 @@
 class Google::HoursComponent < ViewComponent::Base
   include ViewComponent::UseHelpers
   def initialize(hours:, date:)
-    @hours = hours&.values
-    @buildings = [
-      {
-        slug: "charles",
-        spaces: [
-                  "charles",
-                  "24-7",
-                  "asrs",
-                  "guest_computers",
-                  "scholars_studio",
-                  "service_zone",
-                  "scrc",
-                  "cafe",
-                  "exhibits"
-                ]
-      },
-      {
-        slug: "ambler",
-        spaces: ["ambler"]
-      },
-      {
-        slug: "blockson",
-        spaces: ["blockson"]
-      },
-      {
-        slug: "ginsburg",
-        spaces: ["ginsburg", "innovation"]
-      },
-      {
-        slug: "podiatry",
-        spaces: ["podiatry"]
-      },
-      {
-        slug: "online",
-        spaces: ["ask_a_librarian"]
-      }
-    ]
+    hours = hours&.values
+    @locations = build_hours(hours)
     set_dates(date)
   end
 
   private
+
+    def build_hours(hours)
+      locations = [
+                    {:charles => [{"charles" => nil}, {"24-7" => nil}, {"asrs" => nil}, {"guest_computers" => nil},
+                                  {"scholars_studio" => nil}, {"service_zone" => nil}, {"scrc" => nil}, 
+                                  {"cafe" => nil}, {"exhibits" => nil}]}, 
+                    {:ambler => [{"ambler" => nil}]}, 
+                    {:blockson => [{"blockson" => nil}]}, 
+                    {:ginsburg => [{"ginsburg" => nil}, {"innovation" => nil}]}, 
+                    {:podiatry => [{"podiatry"=> nil}]}, 
+                    {:online => [{"ask_a_librarian"=> nil}]}
+                   ]
+
+      hours.each do |date|
+        locations.each_with_index do |location, index|
+          location.values.flatten.each_with_index do |space, i|
+            space.transform_values! {|v| [date[0], date[i+1]] }
+          end 
+        end
+      end  
+      locations   
+    end
 
     def set_dates(date)
       @today = Time.zone.today
@@ -127,15 +114,6 @@ class Google::HoursComponent < ViewComponent::Base
         end
       end
       return true
-    end
-
-    def build_hours_data_structure(input)
-      input.map do |building|
-        building[:spaces].map! do |space|
-          { slug: space, hours: LibraryHour.where(location_id: space, date: @monday..@sunday) }
-        end
-        building
-      end
     end
 
 end

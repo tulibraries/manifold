@@ -10,6 +10,7 @@ class Google::EtextbooksComponent < ViewComponent::Base
     column = column ? column : "course"
     direction = direction ? direction : @sort_orders["#{column}"]
     @etexts = sort!(etexts&.values, column, direction)
+    binding.pry
   end
 
   private

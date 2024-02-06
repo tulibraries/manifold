@@ -7,11 +7,11 @@ RSpec.describe "Partners Borrowing Privileges Application/Renewal", type: :reque
   let(:form_type) { "partners-borrowing" }
   let(:the_info) { FactoryBot.create(:form_info, slug: form_type) }
   let(:title) { the_info.title }
-  let(:recipients) { the_info.recipients }
+  let(:recipients) { the_info.recipients.to_s }
 
   let(:form_params) {
     { form: {
-      title:, form_type:, recipients: "[\"recipient@temple.edu\"]", name: "Ultra Man", email: "staff@temple.edu", tu_id: "1234567890",
+      title:, form_type:, recipients:, name: "Ultra Man", email: "staff@temple.edu", tu_id: "1234567890",
       partner_name: "Gargantua Reptilius", partner_email: "gargo@hotmail.com"
     } }
   }

@@ -7,11 +7,11 @@ RSpec.describe "Library Staff and Registered Student Organization Table Request"
   let(:form_type) { "table-request" }
   let(:the_info) { FactoryBot.create(:form_info, slug: form_type) }
   let(:title) { the_info.title }
-  let(:recipients) { the_info.recipients }
+  let(:recipients) { the_info.recipients.to_s }
 
   let(:form_params) {
     { form: {
-      title:, form_type:, recipients: "[\"recipient@temple.edu\"]", name: "yes", email: "no@maybe.com", phone: "none", group: "Group name",
+      title:, form_type:, recipients:, name: "yes", email: "no@maybe.com", phone: "none", group: "Group name",
       easel: "false", comments: "Reason for table and description of distributed materials",
       preferred_date: "12/01/2000", preferred_time: "15:00"
     } }

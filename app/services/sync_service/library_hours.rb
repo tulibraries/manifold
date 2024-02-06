@@ -8,10 +8,11 @@ class SyncService::LibraryHours
     service.key = Rails.configuration.google_sheets_api_key
     spreadsheet_id = Rails.configuration.hours_spreadsheet_id
     worksheet = Rails.configuration.hours_worksheet
-    headers = Rails.configuration.hours_spreadsheet_header_cells
     date_coordinates = Rails.configuration.hours_spreadsheet_date_cells
     date_response = service.get_spreadsheet_values(spreadsheet_id, date_coordinates)
     dates = date_response.values.flatten
+
+    binding.pry
 
     locations = [
                   { coordinates: "#{worksheet}!B2:B", slug: "charles" },

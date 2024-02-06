@@ -21,7 +21,6 @@
 </div>
 
 <div class="container hours">
-
   <div class="buildings d-none d-lg-block">
     <% @locations.each do |location| %>
     <div class="row building-row">
@@ -34,25 +33,23 @@
     <div class="row"> <!-- dates header -->
       <div class="col-3"></div>
         <% 7.times do |date| %>
-        <% if @monday.to_date+date == @today %>
+        <% if @monday+date == @today %>
           <div class="col hours-dates today day-of-week text-center">
         <% else %>
           <div class="col hours-dates text-center">
         <% end %>
-            <%= (@monday.to_date+date).strftime("%a %d") %> 
+            <%= (@monday+date).strftime("%a %d") %> 
           </div>
         <% end %>
     </div>
-
-    <% unless location.values.empty? %> <!-- hours for at least one space -->
-      <% location.values.each_with_index do |space, index| %>
+    
+      <% location.values.each_with_index do |space| %>
         <div class="row hours-row">
           <div class="col-3 px-0"> 
-            <h3><%= location_link(space[0].keys.first) %></h3>
+            <h3><%= location_link(space[0].to_s) %></h3>
           </div>
-
-          <% space[0].values.each_with_index do |time,index| %>
-          <%# binding.pry %>
+          <% space[1].each_with_index do |time, index| %>
+    <% binding.pry %>
             <% if @monday.to_date+index == @today %>
               <div class="col today">
             <% else %>
@@ -66,22 +63,16 @@
             </div>
           <% end %>
 
-            <% if space[0].keys.first == "blockson" %>
+            <% if space[0] == :blockson %>
             <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
-              <%= t("manifold.hours.blockson_note_html").html_safe if space[0].keys.first == "blockson" %>
+              <%= t("manifold.hours.blockson_note_html").html_safe %>
             </div>
             <% end %>
         </div> <!-- hours-row -->
 
           <% end %>
-        <% else %> <!-- if has_spaces? -->
-          <div class="row mt-3">
-            <div class="col-9 offset-3 text-center">
-              <h3><%= "#{t("manifold.webpages.hours.no_data")}" if location.values.empty? %></h3>
-            </div>
-          </div> 
+
       <% end %>
-    <% end %>
   </div>
 
 

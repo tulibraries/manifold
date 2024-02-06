@@ -46,6 +46,7 @@ module Manifold
 
     config.hours_spreadsheet_id = "1IXyE2EgREGvxpVBz_qcDlQovQ-w3BJOgUCfwz8bBtqI"
     config.hours_spreadsheet_date_cells = "Hours!A2:R"
+    config.hours_worksheet = "Hours"
 
     config.etexts_spreadsheet_id = "1rWlXEp_EPYSyTHaUMkmTH1IyJqHSX9yXy8MR5sxNuvU"
     config.etexts_spreadsheet_etext_cells = "Sheet1!A2:G"

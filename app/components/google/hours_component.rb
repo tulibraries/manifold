@@ -11,26 +11,38 @@ class Google::HoursComponent < ViewComponent::Base
   private
 
     def build_hours(hours)
-      locations = [
-                    {:charles => [{"charles" => nil}, {"24-7" => nil}, {"asrs" => nil}, {"guest_computers" => nil},
-                                  {"scholars_studio" => nil}, {"service_zone" => nil}, {"scrc" => nil}, 
-                                  {"cafe" => nil}, {"exhibits" => nil}]}, 
-                    {:ambler => [{"ambler" => nil}]}, 
-                    {:blockson => [{"blockson" => nil}]}, 
-                    {:ginsburg => [{"ginsburg" => nil}, {"innovation" => nil}]}, 
-                    {:podiatry => [{"podiatry"=> nil}]}, 
-                    {:online => [{"ask_a_librarian"=> nil}]}
-                   ]
 
-      hours.each do |date|
-        locations.each_with_index do |location, index|
-          location.values.flatten.each_with_index do |space, i|
-            space.transform_values! {|v| [date[0], date[i+1]] }
-          end 
-        end
-      end  
-      locations   
+      date_range = hours.map{|h| h[0]}
+
+      spaces = [
+        {:charles => date_range.zip(hours.map{|h| h[1]})}, 
+        {:service_zone => date_range.zip(hours.map{|h| h[2]})}, 
+        {:cafe => date_range.zip(hours.map{|h| h[3]})}, 
+        {:scrc => date_range.zip(hours.map{|h| h[4]})}, 
+        {:scholars_studio => date_range.zip(hours.map{|h| h[5]})}, 
+        {:ask_a_librarian => date_range.zip(hours.map{|h| h[6]})}, 
+        {:asrs => date_range.zip(hours.map{|h| h[7]})}, 
+        {:guest_computers => date_range.zip(hours.map{|h| h[8]})}, 
+        {:blockson => date_range.zip(hours.map{|h| h[9]})}, 
+        {:ambler => date_range.zip(hours.map{|h| h[10]})}, 
+        {:ginsburg => date_range.zip(hours.map{|h| h[11]})}, 
+        {:podiatry => date_range.zip(hours.map{|h| h[12]})}, 
+        {:innovation => date_range.zip(hours.map{|h| h[13]})}, 
+        {:"24-7" => date_range.zip(hours.map{|h| h[14]})}, 
+        {:exhibits => date_range.zip(hours.map{|h| h[15]})}
+      ]
+      locations = [
+        {:charles => [spaces[0], spaces[1], spaces[2], spaces[3], spaces[4], spaces[6], spaces[7], spaces[13], spaces[14]]},
+        {:ambler => [spaces[9]]},
+        {:blockson => [spaces[8]]},
+        {:ginsburg => [spaces[10], spaces[12]]},
+        {:podiatry => [spaces[11]]},
+        {:online => [spaces[5]]}
+      ]
     end
+
+    # date_range.select{|date| date.keys.first == Time.zone.today.strftime("%A, %B %-d, %Y")}
+
 
     def set_dates(date)
       @today = Time.zone.today

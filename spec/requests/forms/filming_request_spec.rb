@@ -9,6 +9,7 @@ RSpec.describe "Guidelines for Requesting Permission to Use the Libraries for Fi
   let(:title) { the_info.title }
   let(:recipients) { the_info.recipients.to_s }
 
+
   let(:form_params) {
     { form: {
       title:, form_type:, recipients:, name: "1234567890", email: "test_id@temple.edu", affiliation: "junior", location_of_filming: "test dept",

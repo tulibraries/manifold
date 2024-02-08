@@ -7,33 +7,24 @@ RSpec.shared_examples "email form" do
     ActionMailer::Base.deliveries = []
   end
 
-  # let(:title) { params[:title] }
-  # let(:recipients) { params[:recipients] }
   let(:the_email) { ActionMailer::Base.deliveries.first }
-  let(:params) { {
-        form_type:,
-        title:,
-        recipients:,
-        name: "test",
-        email: "test@example.com"
-      }.merge(form_params || {})}
-
 
   describe "" do
     it "renders the form" do
-      get "/forms/#{form_type}", params: form_params
+      get("/forms/#{form_type}", params: form_params)
       expect(response).to render_template(:show)
-      expect(response.body).to include(params[:title])
+      expect(response.body).to include(form_params[:form][:title])
     end
 
     it "accepts information" do
-      skip("TODO: form_type not picked up in form model")
-      post(forms_path, params:)
-      expect(the_email.subject).to eq(params[:title])
-      expect(the_email.body.raw_source).to include(*form_params.values)
-      # Check that after the email has been delivered, the
-      # form persists to the db. Hard to do in isolation
-      expect(FormSubmission.take.form_type).to eq(params[:form_type])
+      post(forms_path, params: form_params)
+      expect(the_email.subject).to eq(form_params[:form][:title])
+      # Recipients and form_type not included in email body
+      form_params[:form].each do |key, value|
+        expect(the_email.body.raw_source).to include(value) unless [:recipients, :form_type].include? key
+      end
+      # Check that the form submission persists to the db.
+      expect(FormSubmission.take.form_type).to eq(form_params[:form][:form_type])
     end
   end
 end

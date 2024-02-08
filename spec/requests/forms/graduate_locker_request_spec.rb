@@ -7,12 +7,12 @@ RSpec.describe "Charles Library Graduate Studio Locker Request", type: :request 
   let(:form_type) { "graduate-locker-request" }
   let(:the_info) { FactoryBot.create(:form_info, slug: form_type) }
   let(:title) { the_info.title }
-  let(:recipients) { the_info.recipients }
+  let(:recipients) { the_info.recipients.to_s }
 
   let(:form_params) {
-    {
-      title:, recipients:, name: "yes", email: "no@maybe.com", phone: "none", tu_id: "test_id", affiliation: "Graduate"
-    }
+    { form: {
+      title:, form_type:, recipients:, name: "yes", email: "no@maybe.com", phone: "none", tu_id: "test_id", affiliation: "Graduate"
+    } }
   }
 
   it_behaves_like "email form"

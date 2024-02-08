@@ -7,11 +7,12 @@ RSpec.describe "Purchase Request", type: :request do
   let(:form_type) { "purchase-request" }
   let(:the_info) { FactoryBot.create(:form_info, slug: form_type) }
   let(:title) { the_info.title }
-  let(:recipients) { the_info.recipients }
+  let(:recipients) { the_info.recipients.to_s }
 
   let(:form_params) {
-    {
+    { form: {
       title:, recipients:, name: "x",
+      form_type:,
       email: "x@x.com",
       phone: "x",
       tu_id: "x",
@@ -26,7 +27,7 @@ RSpec.describe "Purchase Request", type: :request do
       format_preference: "x",
       source_of_information: "x",
       comments: "x"
-    }
+    } }
   }
 
   it_behaves_like "email form"

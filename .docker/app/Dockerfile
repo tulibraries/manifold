@@ -15,14 +15,14 @@ RUN apk add -U --no-cache \
       imagemagick=7.1.1.26-r0 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.39-r0 \
-      postgresql14-client=14.10-r0 \
+      postgresql14-client=14.11-r0 \
       shared-mime-info=2.4-r0 \
       tzdata=2024a-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
       git=2.43.0-r0 \
       build-base=0.5-r3 \
       libxslt-dev=1.1.39-r0 \
-      postgresql14-dev=14.10-r0 \
+      postgresql14-dev=14.11-r0 \
       nodejs=20.11.0-r0 \
       yarn=1.22.19-r0 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \

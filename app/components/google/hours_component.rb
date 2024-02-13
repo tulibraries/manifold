@@ -16,44 +16,41 @@ class Google::HoursComponent < ViewComponent::Base
 
       spaces = [
         {:charles => date_range.zip(hours.map{|h| h[1]})}, 
-        {:service_zone => date_range.zip(hours.map{|h| h[2]})}, 
-        {:cafe => date_range.zip(hours.map{|h| h[3]})}, 
-        {:scrc => date_range.zip(hours.map{|h| h[4]})}, 
-        {:scholars_studio => date_range.zip(hours.map{|h| h[5]})}, 
-        {:ask_a_librarian => date_range.zip(hours.map{|h| h[6]})}, 
-        {:asrs => date_range.zip(hours.map{|h| h[7]})}, 
-        {:guest_computers => date_range.zip(hours.map{|h| h[8]})}, 
-        {:blockson => date_range.zip(hours.map{|h| h[9]})}, 
+        {:"24-7" => date_range.zip(hours.map{|h| h[2]})},
+        {:asrs => date_range.zip(hours.map{|h| h[3]})}, 
+        {:guest_computers => date_range.zip(hours.map{|h| h[4]})},
+        {:scholars_studio => date_range.zip(hours.map{|h| h[5]})},
+        {:service_zone => date_range.zip(hours.map{|h| h[6]})},
+        {:scrc => date_range.zip(hours.map{|h| h[7]})},  
+        {:cafe => date_range.zip(hours.map{|h| h[8]})},   
+        {:exhibits => date_range.zip(hours.map{|h| h[9]})}, 
         {:ambler => date_range.zip(hours.map{|h| h[10]})}, 
-        {:ginsburg => date_range.zip(hours.map{|h| h[11]})}, 
-        {:podiatry => date_range.zip(hours.map{|h| h[12]})}, 
-        {:innovation => date_range.zip(hours.map{|h| h[13]})}, 
-        {:"24-7" => date_range.zip(hours.map{|h| h[14]})}, 
-        {:exhibits => date_range.zip(hours.map{|h| h[15]})}
+        {:blockson => date_range.zip(hours.map{|h| h[11]})}, 
+        {:ginsburg => date_range.zip(hours.map{|h| h[12]})}, 
+        {:innovation => date_range.zip(hours.map{|h| h[13]})},
+        {:podiatry => date_range.zip(hours.map{|h| h[14]})}, 
+        {:ask_a_librarian => date_range.zip(hours.map{|h| h[15]})}, 
       ]
       locations = [
-        {:charles => [spaces[0], spaces[1], spaces[2], spaces[3], spaces[4], spaces[6], spaces[7], spaces[13], spaces[14]]},
+        {:charles => [spaces[0], spaces[1], spaces[2], spaces[3], spaces[4], spaces[5], spaces[6], spaces[7], spaces[8]]},
         {:ambler => [spaces[9]]},
-        {:blockson => [spaces[8]]},
-        {:ginsburg => [spaces[10], spaces[12]]},
-        {:podiatry => [spaces[11]]},
-        {:online => [spaces[5]]}
+        {:blockson => [spaces[10]]},
+        {:ginsburg => [spaces[11], spaces[12]]},
+        {:podiatry => [spaces[13]]},
+        {:online => [spaces[14]]}
       ]
     end
-
-    # date_range.select{|date| date.keys.first == Time.zone.today.strftime("%A, %B %-d, %Y")}
-
 
     def set_dates(date)
       @today = Time.zone.today
       @date_picker_date = date ? date : @today
       begin
-        @date = date.nil? ? @today : Date.parse(date)
+        @date = date.present? ? Date.parse(date) : @today
       rescue ArgumentError
         @date = @today
       end
 
-      unless date.nil?
+      if date.present?
         @monday = @date.beginning_of_week
         @sunday = @date.end_of_week
         @next_week = @date.next_week
@@ -67,9 +64,8 @@ class Google::HoursComponent < ViewComponent::Base
     end
     
     def location_name(slug)
-      if slug == "online" || slug == "drop_in"
-        name = "Online" if slug == "online"
-        name = "Drop-in Research Help" if slug == "drop_in"
+      if slug == "online"
+        name = "Online"
       else
         location = Building.find_by(hours: slug)
         unless location.nil?
@@ -92,9 +88,8 @@ class Google::HoursComponent < ViewComponent::Base
     end
 
     def location_link(slug)
-      if slug == "online" || slug == "drop_in"
-        name = "Online" if slug == "online"
-        name = link_to("Drop-in Research Help", Service.find_by(hours: "ask_a_librarian")) if slug == "drop_in"
+      if slug == "online"
+        name = "Online"
       else
         location = Building.find_by(hours: slug)
         unless location.nil?
@@ -127,5 +122,12 @@ class Google::HoursComponent < ViewComponent::Base
       end
       return true
     end
+
+    def start_at(dates)
+      dates.index{|d| d[0] == @today.strftime("%A, %B %-d, %Y")}
+    end
+
+    def get_hours(location)
+      
 
 end

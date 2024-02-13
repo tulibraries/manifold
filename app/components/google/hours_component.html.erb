@@ -30,7 +30,7 @@
         </h2>
       </div>
     </div>
-    <div class="row"> <!-- dates header -->
+    <div class="row">
       <div class="col-3"></div>
         <% 7.times do |date| %>
         <% if @monday+date == @today %>
@@ -43,37 +43,34 @@
         <% end %>
     </div>
     
-      <% location.values.each_with_index do |space| %>
+      <% location.values.each do |spaces| %>
+        <% spaces.each_with_index do |time, index| %>
         <div class="row hours-row">
           <div class="col-3 px-0"> 
-            <h3><%= location_link(space[0].to_s) %></h3>
+            <h3><%= location_link(spaces[index].keys.first.to_s) %></h3>
           </div>
-          <% space[1].each_with_index do |time, index| %>
-    <% binding.pry %>
-            <% if @monday.to_date+index == @today %>
+          <% spaces[index].values.first.drop(start_at(time.values.first)).take(7).each_with_index do |hours, i| %>
+            <% if @monday.to_date+i == @today %>
               <div class="col today">
             <% else %>
               <div class="col">
             <% end %>
-            <% if time[1].downcase == "closed" %>
-              <span class="closed"><%= time[1] %></span>
+            <% if hours[1].downcase == "closed" %>
+                <span class="closed"><%= hours[1] %></span>
             <% else %>
-              <%= time[1] %>
+                <%= hours[1] %>
             <% end %>
-            </div>
+              </div>
           <% end %>
 
-            <% if space[0] == :blockson %>
-            <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
-              <%= t("manifold.hours.blockson_note_html").html_safe %>
-            </div>
-            <% end %>
-        </div> <!-- hours-row -->
-
-          <% end %>
-
+        <% if spaces.first.keys.first == :blockson %>
+          <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
+            <%= t("manifold.hours.blockson_note_html").html_safe %>
+          </div>
+        <% end %>
+        </div>
+        <% end %>
       <% end %>
+    <% end %>
   </div>
-
-
 </div>

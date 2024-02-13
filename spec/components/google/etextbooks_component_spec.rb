@@ -7,7 +7,7 @@ RSpec.describe Google::EtextbooksComponent, type: :component do
 
   let(:etexts) {
     VCR.use_cassette("etexts", match_requests_on: [:method, :without_api_key]) do
-      Google::SheetsConnector.call(feature: "hours")
+      Google::SheetsConnector.call(feature: "etexts")
     end
   }
   let!(:intro) { FactoryBot.create(:snippet, slug: "past-event-videos-intro") }

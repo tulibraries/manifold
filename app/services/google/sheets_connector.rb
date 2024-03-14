@@ -24,6 +24,19 @@ module Google
       rescue => e
         e.message
       end
+      feature = args.first[:feature]
+      scope = args.first[:scope]
+      case feature
+      when "etexts"
+        @spreadsheet_id = Rails.configuration.etexts_spreadsheet_id
+        @cells = Rails.configuration.etexts_spreadsheet_etext_cells
+      when "hours"
+        @spreadsheet_id = Rails.configuration.hours_spreadsheet_id
+        scope.present? ? 
+          @cells = get_location(scope)
+          :
+          @cells = Rails.configuration.hours_spreadsheet_date_cells
+      end
     end
 
     def call
@@ -33,9 +46,10 @@ module Google
     private
 
     def get_location(location)
+      today = config.hours_worksheet_range_info
       case location
       when "charles"
-        config.hours_worksheet_charles
+        range = config.hours_worksheet_charles
       when "24-7"
         config.hours_worksheet_24_7
       when "asrs"

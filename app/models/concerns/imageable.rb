@@ -29,11 +29,9 @@ module Imageable
 
   def custom_image(width, height)
     if image.blob.present?
-      if image.blob.metadata[:width] == nil
-        image.blob.analyze
-      end
-      if (image.blob.metadata[:width] != width) || (image.blob.metadata[:height] != height)
-        if image.blob.metadata[:width] > image.blob.metadata[:height]
+      image.analyze unless image.analyzed
+      if (image.metadata[:width] != width) || (image.metadata[:height] != height)
+        if image.metadata[:width] > image.metadata[:height]
           image.variant(format: :png,
                         background: :transparent,
                         gravity: "North",

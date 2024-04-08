@@ -51,6 +51,7 @@ SitemapGenerator::Sitemap.create do
 
   #indices
   add forms_path
+  add people_path
   add events_path
 
   #show pages

@@ -1,4 +1,7 @@
 Sitemap: http://library.temple.edu/sitemap.xml.gz
 
+User-agent: Googlebot
+Disallow: 
+
 User-agent: *
 Disallow: /

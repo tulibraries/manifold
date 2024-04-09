@@ -1033,7 +1033,7 @@ en:
           mailer_link: /hsl/mailing-list
           chat_label: Chat with Health Sciences Staff
           appointment_label: Make an Appointment with a Health Sciences Librarian
-          appointment_link: /people?department=health-sciences-library-staff&page=1&specialists=true
+          appointment_link: https://charlesstudy.temple.edu/appointments/online#s-lc-public-pt
           study_room: Reserve a Study Room
           not_study_room: Not a Study Room
         links:

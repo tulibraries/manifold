@@ -3,15 +3,15 @@
 module HasCategories
   extend ActiveSupport::Concern
 
-  def cat_link(cat, dog)
+  def cat_link(category, model_instance)
     links = []
-    cat.items(exclude: [:category]).each do |c|
-      unless c == dog
+    category.items(exclude: [:category]).each do |item|
+      unless item == model_instance
         link = "<li>"
       else
         link = '<li class="selected">'
       end
-      link += '<a href="' + get_link(c) + '">' + c.label + "</a></li>"
+      link += '<a href="' + get_link(item) + '">' + item.label + "</a></li>"
       links << link
     end
     links

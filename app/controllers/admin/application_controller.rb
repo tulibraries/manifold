@@ -19,6 +19,9 @@ module Admin
     helper_method :user_editable_field?
     helper_method :current_user, :signed_in?, :is_admin?
 
+    def resource_params
+      params.require(resource_name).permit(dashboard.permitted_attributes)
+    end
 
     def edit
       super

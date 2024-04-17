@@ -246,3 +246,13 @@ i.fa-search {
 .pointer {
   cursor: pointer;
 }
+
+.etextbooks th {
+  #course::after, #professor::after {
+    content: url("etextbooks-sort.png");
+    position: relative;
+    float: right;
+    right: 5px;
+    top: 1px;
+  }
+}

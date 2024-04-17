@@ -51,7 +51,7 @@
       <%= link_to t("manifold.header.hours"), hours_path %>
     </li>
     <li class="nav-right chat-nav" id="chat-nav">
-      <%= link_to t("manifold.header.chat"), "/chat", target: "_blank" %>
+      <%= link_to t("manifold.header.chat"), "/chat", target: "_blank", "aria-label": "opens new tab" %>
     </li>
     <li class="nav-right account-nav">
       <%= link_to t("manifold.header.my_account"), "#{librarysearch_url("users/account")}" %>

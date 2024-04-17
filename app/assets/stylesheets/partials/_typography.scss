@@ -1,34 +1,60 @@
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('fa-solid-900.ttf') format('truetype');
+.fa, .far, .fas {
+  font-family: "Font Awesome 5 Free";
 }
 
-@font-face {
-  font-family: 'Faustina';
-  src: url('Faustina-VariableFont_wght.ttf') format('truetype');
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: Faustina-Italic;
-  src: url('Faustina-Italic-VariableFont_wght.ttf') format('truetype');
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: Faustina-Bold;
-  src: url('Faustina-SemiBold.ttf') format('truetype');
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: 'Roboto';
-  src: url('Roboto-Regular.ttf') format('truetype');
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
 }
 
-@font-face {
-  font-family: 'Roboto Light';
-  src: url('Roboto-Light.ttf') format('truetype');
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
-@font-face {
-  font-family: 'Roboto Bold';
-  src: url('Roboto-Bold.ttf') format('truetype');
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.Faustina {
+  font-family: "Faustina", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Faustina-Italic {
+  font-family: "Faustina", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.Faustina-Bold {
+  font-family: "Faustina", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
 }

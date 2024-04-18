@@ -14,28 +14,28 @@
       <div class="row ctaRow px-lg-3">
         <div class="col-12 col-lg-3 pe-3">
           <div class="cta-white">
-            <%= link_to "/research-help", {class: "strong", id: "research-help"} do %>
+            <%= link_to "/research-help", {id: "research-help"} do %>
             <span><%= t("manifold.webpages.home.links.help.research") %></span>
             <% end %>
           </div>
         </div>
         <div class="col-12 col-lg-3 pe-3">
           <div class="cta-white">
-            <%= link_to "https://charlesstudy.temple.edu", {class: "strong", id: "study-space"} do %>
+            <%= link_to "https://charlesstudy.temple.edu", {id: "study-space"} do %>
             <span><%= t("manifold.webpages.home.links.help.reserve_study_space") %></span>
             <% end %>
           </div>
         </div>
         <div class="col-12 col-lg-3 pe-3">
           <div class="cta-white">
-            <%= link_to @cta3, {class: "strong", id: "printing-computing"} do %>
+            <%= link_to @cta3, {cid: "printing-computing"} do %>
             <span><%= t("manifold.webpages.home.links.help.printing_computing") %></span>
             <% end %>
           </div>
         </div>
         <div class="col-12 col-lg-3">
           <div class="cta-white">
-            <%= link_to @cta4, {class: "strong", id: "online-resources"} do %>
+            <%= link_to @cta4, {id: "online-resources"} do %>
             <span><%= t("manifold.webpages.home.links.help.explore_charles") %></span>
             <% end %>
           </div>

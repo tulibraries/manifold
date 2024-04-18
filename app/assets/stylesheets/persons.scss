@@ -52,7 +52,8 @@
   }
   #people-search, #m-people-search, #people-filters, #m-people-filters {
     input, select {
-      font-family: "Roboto Bold Light";
+      font-family: "Roboto";
+      font-weight: 400;
       display: inline-block !important;
       padding-left: 10px;
       height: 42px;
@@ -84,11 +85,12 @@
 }
 
 .staff-index {
-  font-family: "Roboto Bold Light";
+  font-family: "Roboto";
+  font-weight: 400;
   .label {
     display: block;
     font-family: Faustina-Bold;
-    font-weight: 900;
+    font-weight: 700;
   }
 	.person {
     clear: both;
@@ -133,7 +135,8 @@
 }
 
 .container-lg.person {  /* Person show page */
-  font-family: "Roboto Light";
+  font-family: "Roboto";
+  font-weight: 400;
 	margin-top: 35px;
   min-height: 52vh;
   img {
@@ -154,7 +157,7 @@
   .label {
     display: block;
     font-family: Faustina-Bold;
-    font-weight: 900;
+    font-weight: 700;
   }
   .contact-details {
     padding-top: 14px;

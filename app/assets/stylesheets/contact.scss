@@ -3,7 +3,8 @@
 .staff-directory-row {
   background-color: $lighter-grey;
   color: $royal-blue;
-  font-family: 'Roboto Light';
+  font-family: 'Roboto';
+  font-weight: 400;
   font-size: 1.25rem;
   a {
     color: $royal-blue !important;
@@ -60,12 +61,14 @@
       margin-top: 3rem;
       font-size: 2.75rem;
       line-height: 3.11rem;
-      font-family: "roboto light";
+      font-family: "roboto";
+      font-weight: 400;
     }
     .contact-link-text {
       margin-top: 1rem;
       font-size: 1rem;
-      font-family: "roboto light";
+      font-family: "roboto";
+      font-weight: 400;
     }
     a {
       color: $royal-blue;

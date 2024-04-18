@@ -1,34 +1,75 @@
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('fa-solid-900.ttf') format('truetype');
+.fa, .far, .fas {
+  font-family: "Font Awesome 5 Free";
 }
 
-@font-face {
-  font-family: 'Faustina';
-  src: url('Faustina-VariableFont_wght.ttf') format('truetype');
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: Faustina-Italic;
-  src: url('Faustina-Italic-VariableFont_wght.ttf') format('truetype');
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: Faustina-Bold;
-  src: url('Faustina-SemiBold.ttf') format('truetype');
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: 'Roboto';
-  src: url('Roboto-Regular.ttf') format('truetype');
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: 'Roboto Light';
-  src: url('Roboto-Light.ttf') format('truetype');
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
-@font-face {
-  font-family: 'Roboto Bold';
-  src: url('Roboto-Bold.ttf') format('truetype');
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }

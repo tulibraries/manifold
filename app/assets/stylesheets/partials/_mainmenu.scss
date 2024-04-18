@@ -15,9 +15,11 @@
     .navbar-light .navbar-nav .nav-link {
       color: $white;
       font-size:1.10rem;
-      font-family: "Roboto Bold"!important;
+      font-family: "Roboto"!important;
+      font-weight: 700;
       a {
-        font-family: "Roboto Bold"!important;
+        font-family: "Roboto"!important;
+        font-weight: 700;
       }
     }
     .nav-link, .nav-link:focus, .nav-link:hover {
@@ -95,7 +97,7 @@
       a {
         color: $white;
         font-size: 1.3rem;
-        font-weight: 600;
+        font-weight: 400;
       }
     }
     li.nav-right.hours-nav {

@@ -74,6 +74,9 @@
     text-decoration: none;
     white-space: nowrap;
     line-height: 3.25rem;
+    span {
+      font-weight: 400;
+    }
     @media screen and (max-width: 459px) {
       span {
         display: inline-block;

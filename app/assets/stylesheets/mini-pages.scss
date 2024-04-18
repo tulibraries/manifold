@@ -50,7 +50,8 @@
           display: block;
           padding: 10px 5px;
           color: $black;
-          font-family: "Roboto Light";
+          font-family: "roboto";
+          font-weight: 400;
           @media (max-width: 1039px) {
             font-size: 130%;
           }
@@ -67,7 +68,8 @@
     padding-right: 15px;
     margin-bottom: 35px;
     font-size: 1.15rem;
-    font-family: "Roboto Light";
+    font-family: "Roboto";
+    font-weight: 400;
     color: $royal-blue;
   }
 
@@ -92,7 +94,8 @@
           a {
             color: $black;
             font-size: 1.2rem;
-            font-family: "Roboto Light";
+            font-family: "roboto";
+            font-weight: 400;
           }
         }
       }

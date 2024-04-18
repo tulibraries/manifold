@@ -74,7 +74,8 @@
 			width: 100%; /* Firefox fix */
 		}
 		a {
-			font-family: "Roboto Bold"!important;
+      font-family: "Roboto"!important;
+      font-weight: 700;
 		}
 	}
 	.navbar {
@@ -103,7 +104,8 @@
 			background-image: none;
 		}
 		.navbar-brand {
-			font-family: "Roboto Bold";
+      font-family: "Roboto";
+      font-weight: 700;
 		}
 		.row {
 			margin-top: 2px;
@@ -172,7 +174,8 @@
 	    top: 3px;
 	    position: relative;
 	    display: inline;
-	    font-family: "Roboto Bold";
+      font-family: "Roboto";
+      font-weight: 700;
 		}
 	}
 }

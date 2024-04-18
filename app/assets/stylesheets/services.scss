@@ -5,7 +5,8 @@
 }
 
 .leftside-index {
-  font-family: "Roboto Light";
+  font-family: "Roboto";
+  font-weight: 400;
 	width: 85%;
 	@media (max-width: 950px) {
 		width: 100%;
@@ -35,7 +36,7 @@
 	li.selected {
 		a {
 			color: $seagreen;
-			font-weight: 900;
+			font-weight: 700;
 		}
 	}
 	li:nth-child(odd) {

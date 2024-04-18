@@ -103,7 +103,8 @@
       padding-left: 14px;
     }
     .event-date {
-      font-family: "Roboto Light";
+      font-family: "Roboto";
+      font-weight: 400;
       color: $royal-blue;
       margin-top: 21px;
     }
@@ -134,7 +135,8 @@
     border-radius: 4px;
   }
   .exhibit {
-    font-family: "Roboto Bold";
+    font-family: "Roboto";
+    font-weight: 700;
     padding: 21px;
     margin-bottom: 14px;
     border-bottom: solid $light-grey 1px;
@@ -146,12 +148,14 @@
       display: block;
     }
     span {
-      font-family: "Roboto Light";
       color: $royal-blue;
+      font-family: "Roboto";
+      font-weight: 400;
     }
     a.location {
       color: $royal-blue;
-      font-family: "Roboto Light";
+      font-family: "Roboto";
+      font-weight: 400;
     }
   }
 }
@@ -232,7 +236,7 @@
 .event-index {
   strong {
     display: inline-block;
-    font-weight: 900px;
+    font-weight: 700px;
     font-family: 'Faustina-Bold';
   }
   .online-notice {
@@ -243,8 +247,8 @@
     margin-bottom: 14px;
     padding: 10px 0;
     span {
-      font-weight: 600;
-      font-family:"Roboto Bold";
+      font-family: "Roboto";
+      font-weight: 700;
     }
     p {
       margin-bottom: 0;
@@ -256,7 +260,8 @@
   color: $royal-blue !important;
   border: solid $royal-blue 2px;
   font-size: 1.15rem;
-  font-family: "Roboto Light";
+  font-family: "Roboto";
+  font-weight: 400;
   min-height: 364px;
   max-height: 364px;
   overflow: hidden;

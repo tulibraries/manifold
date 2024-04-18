@@ -4,7 +4,8 @@
   background-color: $lighter-grey;
   width: 100%;
   color: $black;
-  font-family: "roboto light";
+  font-family: "roboto";
+  font-weight: 400;
   border-bottom: solid $new-gold 35px;
   .row {
     margin-left: 0;
@@ -36,11 +37,17 @@
         }
       }
     }
+    .footer-quicklinks {
+      a {
+        font-weight: 300;
+      }
+    }
     .address {
       line-height: 3rem;
+      font-weight: 300;
       .street-address {
         font-family: "roboto";
-        font-weight: 600;
+        font-weight: 500;
         line-height: 2rem;
         letter-spacing: 1.25px;
       }
@@ -53,7 +60,7 @@ a.donate {
   height: 3rem;
   background-color: $crystal-blue;
   color: $royal-blue !important;
-  font-family: "faustina bold";
+  font-family: "faustina";
   font-weight: 600;
   font-size: 20px;
   @media(max-width: 500px) {

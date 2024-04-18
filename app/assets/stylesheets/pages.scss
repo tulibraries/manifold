@@ -82,7 +82,8 @@
   }
   #librarySearch::placeholder { 
     font-style: normal;
-    font-family: 'Roboto Light';
+    font-family: 'Roboto';
+    font-weight: 400;
     color: $black;
     opacity: 1; 
   }
@@ -90,9 +91,10 @@
 
 #home {
   overflow: hidden;
-  a {
-    font-family: "Roboto";
-  }
+  // a {
+  //   font-family: "Roboto";
+  //   font-weight: 400;
+  // }
   .page-search-container {
     .fa.fa-search {
       display: inline-block;
@@ -154,7 +156,8 @@
       padding-left: 21px;
       display: inline-block;
       width: 76%;
-      font-family: "Roboto Light";
+      font-family: "Roboto";
+      font-weight: 300;
       color: rgba(0, 0, 0, 1.0) !important;
       border: solid $foamgreen 1px;
     }
@@ -261,7 +264,8 @@
     a {
       color: $royal-blue;
       font-size: 110%;
-      font-family: "Roboto Light";
+      font-family: "Roboto";
+      font-weight: 300;
     }
     img.icon {
       width: 35px;
@@ -269,8 +273,8 @@
       top: -3px;
     }
     .caption {
-      font-family: "faustina bold";
-      font-weight: 600;
+      font-family: "faustina";
+      font-weight: 700;
       color: $royal-blue;
       background-color: $crystal-blue;
       height:45px;
@@ -287,7 +291,8 @@
         margin-top: 17px;
       }
       a {
-        font-family: "faustina bold";
+        font-family: "faustina";
+        font-weight: 700;
         font-size: 1.25rem;
         padding-top: 8px;
         padding-right: 21px;
@@ -301,6 +306,7 @@
       a#collections-search {
         @media screen and (min-width: 0) and (max-width: 1190px) {
           padding-top: 0;
+          font-weight: 700;
         }
       }
     }
@@ -412,6 +418,7 @@
           max-height: 1000px;
         }
         .quicklinks-link {
+          padding-left: 4px;
           border-bottom: solid #ccc 1px;
           @media screen and (max-width: 1190px) {
             padding-left: 5%;
@@ -480,9 +487,10 @@
       background-color: $crystal-blue;
       color: $royal-blue;
       padding-right: 35px;
-      font-family: "faustina bold" !important;
+      font-family: "faustina" !important;
+      font-weight: 700;
       font-size: 135%;
-      font-weight: 900;
+      font-weight: 700;
     }
     .library-event {
       padding: 35px;
@@ -498,7 +506,8 @@
         padding-left: 14px;
         width: 100%;
         margin-top: 21px;
-        font-family: "Roboto Light";
+        font-family: "roboto";
+        font-weight: 400;
       }
     }
   }
@@ -537,11 +546,12 @@
           max-height: 100%;
         }
         p {
-          font-family: "roboto light"
+          font-family: "roboto";
+          font-weight: 300;
         }
         h2 {
           font-size: 130%;
-          font-weight: 100;
+          font-weight: 400;
           a {
             color: $white;
           }
@@ -559,9 +569,9 @@
     background-color: $crystal-blue;
     color: $royal-blue;
     padding-right: 35px;
-    font-family: "faustina bold" !important;
+    font-family: "faustina" !important;
     font-size: 135%;
-    font-weight: 900;
+    font-weight: 700;
   }
 }
 
@@ -624,7 +634,8 @@
   }
   a {
     color: $white;
-    font-family: "Roboto Light";
+    font-family: "Roboto";
+    font-weight: 400;
     font-size: 1.40rem;
   }
 }
@@ -659,7 +670,8 @@
     div {
       background-color: $lightest-grey;
       a {
-        font-family: "Roboto Light";
+        font-family: "roboto";
+        font-weight: 400;
         color: $royal-blue;
       }
     }

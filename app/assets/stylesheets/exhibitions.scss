@@ -13,21 +13,22 @@
 	}
 	.dates {
 		font-size: 1.3rem;
-		font-weight: 900;
+		font-weight: 700;
 		margin-bottom: 14px;
 	}
 	.event-location {
 		h3 {
 			font-size: 1.25rem;
-			font-weight: 900;
-			font-family: "Roboto Bold";
+      font-family: "Roboto";
+      font-weight: 700;
 		}
 		border: solid $seagreen 1px;
 	  border-radius: 7px;
 	  background-color: transparent;
 	  padding: 21px;
 	  margin-bottom: 14px;
-		font-family: "Roboto Bold";
+    font-family: "Roboto";
+    font-weight: 700;
 	  a {
 	  	color: $black;
 	  	text-decoration: underline;

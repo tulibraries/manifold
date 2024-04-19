@@ -60,19 +60,8 @@
 			font-weight: 700;
 		}
 	}
-	a[data-bs-toggle="collapse"]:after {
-		content: "\f105";
-	  font-family: "FontAwesome";
-	  font-size: larger;
-		float: right;
-		padding-right: 7px;
-	}
-	a[aria-expanded="true"]:after {
-		content: "\f107";
-	  font-family: "FontAwesome";
-	  font-size: larger;
-		float: right;
-		padding-right: 7px;
+	.finding-aids-subjects, .finding-aids-collections {
+		color: $white;
 	}		
 	.filter_reset {
 		margin-top: 21px;

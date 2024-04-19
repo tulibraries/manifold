@@ -28,7 +28,11 @@
       <% unless @event.registration_link.blank? %>
 
         <div class="col access-link">
-          <h2><%= link_to t("manifold.events.show.register"), strip_tags(@event.registration_link) %></h2>
+          <h2>
+            <%= link_to strip_tags(@event.registration_link) do %>
+                <%= t("manifold.events.show.register") %> <i class="fas fa-caret-right"></i>
+            <% end %>
+          </h2>
         </div>
 
       <% end %>

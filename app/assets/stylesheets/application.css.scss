@@ -39,7 +39,7 @@ $sizes: map-merge(
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
 @import "selectize.bootstrap5.scss";
-@import "font-awesome/css/font-awesome";
+@import '@fortawesome/fontawesome-free/css/all.css';
 
 @import "partials/_categories.scss";
 @import "partials/_filter-tags.scss";

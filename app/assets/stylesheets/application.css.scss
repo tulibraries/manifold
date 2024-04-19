@@ -40,6 +40,7 @@ $sizes: map-merge(
 @import "bootstrap-icons/font/bootstrap-icons";
 @import "selectize.bootstrap5.scss";
 @import '@fortawesome/fontawesome-free/css/all.css';
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 @import "partials/_categories.scss";
 @import "partials/_filter-tags.scss";

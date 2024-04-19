@@ -74,11 +74,6 @@
 .events {
   h2 {
     padding-top: 0;
-    a {
-      color: $black;
-      font-weight: 600;
-      text-decoration: underline;
-    }
   }
   .upcoming-header {
     background-color:$footer-gray;
@@ -136,7 +131,7 @@
   }
   .exhibit {
     font-family: "Roboto";
-    font-weight: 700;
+    font-weight: 500;
     padding: 21px;
     margin-bottom: 14px;
     border-bottom: solid $light-grey 1px;

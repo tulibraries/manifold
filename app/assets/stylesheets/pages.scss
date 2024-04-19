@@ -91,10 +91,6 @@
 
 #home {
   overflow: hidden;
-  // a {
-  //   font-family: "Roboto";
-  //   font-weight: 400;
-  // }
   .page-search-container {
     .fa.fa-search {
       display: inline-block;
@@ -577,19 +573,11 @@
 
 .access-link {
   a {
-    color: $royal-blue;
     background-color: $crystal-blue;
+    color: $royal-blue;
     font-family: faustina;
     padding: 7px 14px;
     display: inline-block;
-  }
-  a::after {
-    padding-left: 10px;
-    padding-top: 3px;
-    content: "\f0da";
-    font-family: FontAwesome;
-    position: relative;
-    top: 2px;
   }
   h2 {
     margin: 28px 0;

@@ -2,7 +2,7 @@
 
 
 .today {
-  font-weight: 600;
+  font-weight: 500;
   border-left: solid $red 1px;
   border-right: solid $red 1px;
   background-color: #efefef;
@@ -95,13 +95,13 @@
 }
 
 .hours-month-name {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 150%;
 }
 
 .mobile-hours {
   .today {
-    font-weight: 600;
+    font-weight: 500;
     border-left: solid $red 1px;
     border-right: solid $red 1px;
     background-color: $white;
@@ -184,7 +184,7 @@
   input[type="submit"] {
     background-color: $red;
     color: $white;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 4px;
     padding: 4px 14px;
     border: solid $red 1px;
@@ -193,7 +193,7 @@
 
 .space-show, .building-show {
   .today {
-    font-weight: 600;
+    font-weight: 500;
     border-bottom: solid $red 3px;
     border-left: 0;
     border-right: 0;
@@ -212,7 +212,7 @@
   .hours-dates {
     padding: 7px;
     border-bottom: solid $new-gold 3px;
-    font-weight: 700;
+    font-weight:  500;
   }
   .hours-times {
     .time {
@@ -255,7 +255,7 @@
     padding-left: 10px;
     padding-top: 3px;
     content: "\f0da";
-    font-family: FontAwesome;
+    font-family: "Font Awesome 6 Free";
     position: relative;
     top: 2px;
   }
@@ -299,7 +299,7 @@
   margin-bottom: 14px;
 }
 .hours-location, .hours-month-name {
-  font-weight: 600;
+  font-weight:  500;
   font-size: 120%;
 }
 .hours-month-name {
@@ -309,7 +309,7 @@
 
 .mobile-hours {
   .today {
-    font-weight: 600;
+    font-weight:  500;
     border-left: solid $red 1px;
     border-right: solid $red 1px;
     background-color: $white;
@@ -395,7 +395,7 @@
   input[type="submit"] {
     background-color: $red;
     color: $white;
-    font-weight: 600;
+    font-weight:  500;
     border-radius: 4px;
     padding: 4px 14px;
     border: solid $red 1px;

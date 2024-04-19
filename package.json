@@ -2,6 +2,7 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.2",
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.2.4",
     "@popperjs/core": "^2.11.6",
@@ -10,7 +11,6 @@
     "bootstrap-icons": "^1.10.2",
     "esbuild": "^0.16.7",
     "esbuild-rails": "^1.0.3",
-    "font-awesome": "^4.7.0",
     "jquery": "^3.7.1",
     "sass": "^1.56.2",
     "stimulus-use": "^0.51.1",

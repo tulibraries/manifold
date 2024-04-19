@@ -17,7 +17,7 @@ h1 {
   font-size: 220%;
   margin-bottom: 21px;
   font-family: "Faustina";
-  font-weight: 800;
+  font-weight: 600;
 }
 h2 {
   font-size: 160%;
@@ -31,7 +31,7 @@ h4,h5,h6 {
 
 strong, .strong {
   font-family: "Roboto";
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .flash {
@@ -104,7 +104,7 @@ form {
      font-size: 85%;
    }
  label {
-   font-weight: 600;
+   font-weight:  500;
    padding-right: 10px;
  }
 }
@@ -241,8 +241,6 @@ marquee {
   color: $red;
 }
 i.fa-search {
-  content: "\f002";
-  font-family: "FontAwesome";
   display: inline-block;
   position:relative;
 }

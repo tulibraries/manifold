@@ -321,7 +321,7 @@ GEM
     matrix (0.4.2)
     meta-tags (2.21.0)
       actionpack (>= 6.0.0, < 7.2)
-    method_source (1.0.0)
+    method_source (1.1.0)
     mimemagic (0.4.3)
       nokogiri (~> 1)
       rake
@@ -621,7 +621,7 @@ GEM
     uri (0.13.0)
     vcr (6.2.0)
     version_gem (1.1.4)
-    view_component (3.11.0)
+    view_component (3.12.1)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)

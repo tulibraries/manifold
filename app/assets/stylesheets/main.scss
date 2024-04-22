@@ -244,6 +244,25 @@ i.fa-search {
   display: inline-block;
   position:relative;
 }
+
+.svg-inline--fa.fa-magnifying-glass {
+  position: relative;
+  left: 36px;
+  top: 2px;
+}
+
+.event-filters .svg-inline--fa.fa-magnifying-glass {
+  position: relative;
+  left: 14px;
+  top: 32px;
+}
+
+.aid-index .svg-inline--fa.fa-magnifying-glass {
+  position: relative;
+  left: 16px;
+  top: 25px;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -256,4 +275,8 @@ i.fa-search {
     right: 5px;
     top: 1px;
   }
+}
+
+i {
+  font-family: FontAwesome;
 }

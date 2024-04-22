@@ -8,3 +8,4 @@ import Trix from "trix";
 import "@rails/actiontext"
 import "./src/selectize"
 import "./src/administrate-trix"
+import "@fortawesome/fontawesome-free/js/all.js"

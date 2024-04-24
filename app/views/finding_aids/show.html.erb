@@ -38,7 +38,7 @@
         <% end %>
 
         <h2><%= t("manifold.finding_aids.show.headings.description") %></h2>
-        <%= @finding_aid.description %>
+        <%= render partial: "description", cached: true %>
       </div>
 
     </div>

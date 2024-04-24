@@ -13,6 +13,7 @@
     "esbuild-rails": "^1.0.3",
     "jquery": "^3.7.1",
     "sass": "^1.56.2",
+    "selectize": "^0.12.6",
     "stimulus-use": "^0.51.1",
     "trix": "^2.0.4"
   },

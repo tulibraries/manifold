@@ -239,10 +239,31 @@ marquee {
 .red {
   color: $red;
 }
-i.fa-search {
+.search-icon {
   display: inline-block;
   position:relative;
+  background-image: url("search-icon.png");
+  background-repeat: no-repeat;
+  @media (max-width: 1199px) {
+    background-image: none;
+  }
 }
+.event-filters, .fa-search-form, #people-search {
+  .search-icon {
+    background-position: 9px 8px;
+  }
+}
+
+a.caret-right {
+  position: relative;
+  top: -8px;
+}
+
+a.caret-right::after {
+  padding-left: 14px;
+  content: url("caret-right.png");
+}
+
 .pointer {
   cursor: pointer;
 }

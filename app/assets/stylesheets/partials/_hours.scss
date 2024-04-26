@@ -251,14 +251,12 @@
       top: 2px;
     }
   }
-  .today_button::after {
-    padding-left: 10px;
-    padding-top: 3px;
-    content: "\f0da";
-    font-family: "Font Awesome 6 Free";
-    position: relative;
-    top: 2px;
-  }
+  // .today_button::after {
+  //   padding-left: 10px;
+  //   padding-top: 3px;
+  //   position: relative;
+  //   top: 2px;
+  // }
   
   .hours-row {
     margin-top: 14px;

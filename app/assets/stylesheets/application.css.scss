@@ -39,8 +39,6 @@ $sizes: map-merge(
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons";
 @import "selectize.bootstrap5.scss";
-@import '@fortawesome/fontawesome-free/css/all.min.css';
-$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 
 @import "partials/_categories.scss";
 @import "partials/_filter-tags.scss";

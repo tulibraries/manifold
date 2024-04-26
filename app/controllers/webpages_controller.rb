@@ -194,6 +194,6 @@ class WebpagesController < ApplicationController
     end
 
     def permitted_attributes
-      super + [:draft_description, :publish]
+      super + [:fileabilities_attributes, :draft_description, :publish]
     end
 end

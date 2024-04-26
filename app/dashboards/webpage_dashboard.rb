@@ -86,6 +86,10 @@ class WebpageDashboard < Administrate::BaseDashboard
   #   super + [documents: []]
   # end
 
+  def permitted_attributes
+    super + [fileabilities_attributes: [:weight, :id]] + [:draft_description, :publish]
+  end
+
   def display_resource(webpage)
     webpage.title
   end

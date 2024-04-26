@@ -19,15 +19,14 @@
       </div>
 
       <div class="row event-filters">
-        <div class="col-12 col-lg-6 text-center">
+        <div class="col-12 col-lg-6 mt-4 text-center">
           <%= form_with(url: past_events_search_path, method: :get, 
                         data: { turbo_frame: "events", 
                                 turbo_action: "advance" }, 
                         class: "d-inline-block mr-3 mt-0 w-100 text-start", 
                         id: "past-event-search") do %>
             <%= label_tag(:search, "search past events by name", :class=>"element-invisible") %>
-            <i class="fa fa-search"></i>
-            <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block", 
+            <%= text_field_tag(:search, nil, class: "form-control w-100 d-inline-block search-icon", 
                     placeholder: "search past events by name",
                     results: "0"
                     ) %>

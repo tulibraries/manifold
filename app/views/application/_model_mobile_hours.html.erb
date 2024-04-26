@@ -10,7 +10,7 @@
       <%= @monday.to_date.strftime("%B %d") %> - <%= (@monday.to_date+6).strftime("%B %d %Y") %>
     </div>
     <div>
-      <%= link_to t("manifold.default.application.building_hours.more_hours"), hours_path, class: "today_button"  %>
+      <%= link_to t("manifold.default.application.building_hours.more_hours"), hours_path, class: "today_button caret-right"  %>
     </div>
   </div>
 

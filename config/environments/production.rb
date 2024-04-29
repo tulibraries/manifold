@@ -60,8 +60,7 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-  ENV["K8"] == "yes" ? (config.cache_store = :mem_cache_store) : 
-  (config.cache_store = :file_store , "tmp/cache/finding-aids")
+  ENV["K8"] == "yes" ? (config.cache_store = :mem_cache_store) : (config.cache_store = :file_store , "tmp/cache/finding-aids")
 
 
   # Use a real queuing backend for Active Job (and separate queues per environment).

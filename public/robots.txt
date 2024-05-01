@@ -2,9 +2,3 @@ Sitemap: http://library.temple.edu/sitemap.xml.gz
 
 User-agent: *
 Disallow: /
-
-User-agent: googlebot
-Allow: /
-Disallow: /admin/
-Disallow: /finding-aids/
-crawl-delay: 120

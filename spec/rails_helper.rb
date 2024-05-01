@@ -112,7 +112,7 @@ RSpec.configure do |config|
     stub_request(:get, "https://sites.temple.edu/devopsing/feed").
       to_return(status: 200, body: File.open("#{fixture_path}/blog_posts.rss") , headers: {})
 
-    stub_request(:put, "https://bucket.s3.region.amazonaws.com/sitemap.xml.gz").
+    stub_request(:put, "https://bucket.s3.region.amazonaws.com/cache/sitemap.xml.gz").
       to_return(status: 200, body: "", headers: {})
 
 

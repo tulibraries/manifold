@@ -11,6 +11,6 @@ RSpec.describe "Running the sitemap generator rake task with our config" do
   }
   it "puts the sitemap to aws" do
     create_sitemap
-    expect(WebMock).to have_requested(:put, /.*\.amazonaws\.com\/sitemap\.xml\.gz/)
+    expect(WebMock).to have_requested(:put, /.*\.amazonaws\.com\/cache\/sitemap\.xml\.gz/)
   end
 end

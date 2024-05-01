@@ -4,6 +4,7 @@ require "aws-sdk-s3"
 
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = ActionDispatch::Http::URL.url_for(Rails.application.routes.default_url_options)
+SitemapGenerator::Sitemap.sitemaps_path = 'cache/'
 
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
   Rails.configuration.aws[:bucket],

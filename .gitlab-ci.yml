@@ -59,3 +59,32 @@ qa_deploy:
     - *export_variables
     - helm pull oci://$HARBOR/tulibraries/charts/manifold --untar
     - helm upgrade manifold oci://$HARBOR/tulibraries/charts/manifold --history-max=5 --namespace=manifold-qa --values manifold/values.yaml --set image.repository=$IMAGE:$VERSION
+
+tag_prod:
+  stage: tag
+  extends: .tag_image
+  variables:
+    TAG: prod
+  only:
+    - tags
+
+tag_release:
+  stage: tag
+  extends: .tag_image
+  variables:
+    TAG: $CI_COMMIT_TAG
+  only:
+    - tags
+
+prod_deploy:
+  variables:
+    IMAGE: harbor.k8s.temple.edu/tulibraries/manifold
+    RANCHER: rancher
+    CLUSTER: $PROD_CLUSTER
+  stage: deploy
+  extends: .helm_setup
+  only:
+    - tags
+  script:
+    - helm pull oci://$HARBOR/tulibraries/charts/manifold --version $HELM_VERSION_PROD --untar
+    - helm upgrade manifold oci://$HARBOR/tulibraries/charts/manifold --version $HELM_VERSION_PROD --history-max=5 --namespace=manifold-prod --values manifold/values-prod.yaml --set image.repository=$IMAGE:$CI_COMMIT_TAG

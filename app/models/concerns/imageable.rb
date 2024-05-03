@@ -28,26 +28,25 @@ module Imageable
   end
 
   def custom_image(width, height)
-    if image.blob.present?
-      if image.blob.metadata[:width] == nil
-        image.blob.analyze
-      end
-      if (image.blob.metadata[:width] != width) || (image.blob.metadata[:height] != height)
-        if image.blob.metadata[:width] > image.blob.metadata[:height]
-          image.variant(format: :png,
-                        background: :transparent,
-                        gravity: "North",
-                        resize_to_fit: [width, height])
-        else
-          image.variant(format: :png,
-                        background: :transparent,
-                        gravity: :center,
-                        resize_to_fill: [width,
-                                        height])
-        end
+    image.analyze unless image.analyzed
+
+    image_width = (image.metadata[:width].presence || 240)
+    image_height = image.metadata[:height].present? ? image.metadata[:width] : 240
+
+    if (image_width != width) || (image_height != height)
+      if image_width > image_height
+        image.variant(format: :png,
+                      background: :transparent,
+                      gravity: "North",
+                      resize_to_fit: [width, height])
       else
-        image
+        image.variant(format: :png,
+                      background: :transparent,
+                      gravity: :center,
+                      resize_to_fill: [width, height])
       end
+    else
+      image
     end
   end
 end

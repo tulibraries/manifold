@@ -30,9 +30,9 @@ module Imageable
   def custom_image(width, height)
     image.analyze unless image.analyzed
 
-    image_width = image.metadata[:width].present? ? image.metadata[:width] : 240
+    image_width = (image.metadata[:width].presence || 240)
     image_height = image.metadata[:height].present? ? image.metadata[:width] : 240
-  
+
     if (image_width != width) || (image_height != height)
       if image_width > image_height
         image.variant(format: :png,

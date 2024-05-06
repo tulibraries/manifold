@@ -31,7 +31,7 @@ module Imageable
     image.analyze unless image.analyzed
 
     image_width = (image.metadata[:width].presence || 240)
-    image_height = image.metadata[:height].present? ? image.metadata[:width] : 240
+    image_height = (image.metadata[:height].presence || 240)
 
     if (image_width != width) || (image_height != height)
       if image_width > image_height

@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-<%= @nonce %>' www.google-analytics.com ssl.google-analytics.com;img-src 'self' www.google-analytics.com ssl.google-analytics.com tulib-manifold-prod.s3.amazonaws.com data:; frame-src 'self';">
+
     <%= yield :head %>
 
     <%= display_meta_tags site: t("manifold.default.site_title") %>
@@ -15,14 +17,19 @@
     </style>
     
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+    
+  <% if @nonce.present? %>
+    <!-- Google tag (gtag.js) -->
+    <script nonce="<%= @nonce %>" async src="https://www.googletagmanager.com/gtag/js?id=GTM-5BNMS63"></script>
+    <script nonce="<%= @nonce %>">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5BNMS63');</script>
-    <!-- End Google Tag Manager -->
+      gtag('config', 'GTM-5BNMS63');
+    </script>
+  <% end %>
+
   </head>
 
   <body class="<%= yield (:body_class) %>" data-controller="jumble external-links<%= " failover" if @search_mode == "failover-" %>">

@@ -13,8 +13,6 @@ ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
 RUN apk add -U --no-cache \
       bash=5.2.21-r0 \
       imagemagick=7.1.1.26-r0 \
-      vips=8.15.0-r0 \
-      vips-dev=8.15.0-r0 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.39-r0 \
       postgresql14-client=14.11-r0 \
@@ -23,12 +21,11 @@ RUN apk add -U --no-cache \
     apk add -U --no-cache --virtual build-dependencies \
       git=2.43.0-r0 \
       build-base=0.5-r3 \
+      libjpeg-turbo-dev=3.0.1-r0 \
       libxslt-dev=1.1.39-r0 \
       postgresql14-dev=14.11-r0 \
       nodejs=20.12.1-r0 \
       yarn=1.22.19-r0 && \
-    apk add --update --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community \
-      vips-dev && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \

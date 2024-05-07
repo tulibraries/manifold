@@ -708,6 +708,7 @@ DEPENDENCIES
   mail_form
   meta-tags
   mimemagic (= 0.4.3)
+  mini_magick
   mutant-rspec
   nokogiri (= 1.16.4)
   okcomputer
@@ -732,7 +733,6 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  ruby-vips
   selenium-webdriver
   shoulda-matchers (~> 6.2)
   simple_form

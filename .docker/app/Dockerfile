@@ -12,6 +12,7 @@ ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
 
 RUN apk add -U --no-cache \
       bash=5.2.21-r0 \
+      imagemagick=7.1.1.26-r0 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.39-r0 \
       postgresql14-client=14.11-r0 \
@@ -23,9 +24,27 @@ RUN apk add -U --no-cache \
       libxslt-dev=1.1.39-r0 \
       postgresql14-dev=14.11-r0 \
       nodejs=20.12.1-r0 \
-      libvips-dev=8.15.0-r0 \
+      vips=8.15.0-r0 \
+      build-base \
+      autoconf \
+      automake \
+      libtool \
+      bc \
+      zlib-dev \
+      expat-dev \
+      jpeg-dev \
+      tiff-dev \
+      glib-dev \
+      libjpeg-turbo-dev \
+      libexif-dev \
+      lcms2-dev \
+      fftw-dev \
+      giflib-dev \
+      libpng-dev \
+      libwebp-dev \
+      orc-dev \
+      libgsf-dev \
       yarn=1.22.19-r0 && \
-
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \

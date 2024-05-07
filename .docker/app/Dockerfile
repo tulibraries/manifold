@@ -13,6 +13,7 @@ ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
 RUN apk add -U --no-cache \
       bash=5.2.21-r0 \
       imagemagick=7.1.1.26-r0 \
+      vips=8.15.0-r0 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.39-r0 \
       postgresql14-client=14.11-r0 \

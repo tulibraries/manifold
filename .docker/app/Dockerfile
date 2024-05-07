@@ -25,7 +25,7 @@ RUN apk add -U --no-cache \
       libxslt-dev=1.1.39-r0 \
       postgresql14-dev=14.11-r0 \
       nodejs=20.12.1-r0 \
-      vips=8.15.0-r0 \
+      vips-dev \
       build-base \
       autoconf \
       automake \

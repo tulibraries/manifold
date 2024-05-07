@@ -25,7 +25,6 @@ RUN apk add -U --no-cache \
       libxslt-dev=1.1.39-r0 \
       postgresql14-dev=14.11-r0 \
       nodejs=20.12.1-r0 \
-      vips-dev \
       build-base \
       autoconf \
       automake \
@@ -46,6 +45,8 @@ RUN apk add -U --no-cache \
       orc-dev \
       libgsf-dev \
       yarn=1.22.19-r0 && \
+    apk add --update --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/community --repository http://dl-3.alpinelinux.org/alpine/edge/main \
+      vips-dev && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \

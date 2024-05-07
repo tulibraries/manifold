@@ -25,6 +25,7 @@ RUN apk add -U --no-cache \
       nodejs=20.12.1-r0 \
       vips-dev=8.15.0-r0 \
       yarn=1.22.19-r0 && \
+
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \

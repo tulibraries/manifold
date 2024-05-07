@@ -89,10 +89,10 @@ jobs:
             RAILS_ENV=test bundle exec rake db:setup
 
       - run:
-          name: Install ImageMagick
+          name: Install Vips
           command: |
             sudo apt-get update
-            sudo apt-get -y install imagemagick
+            sudo apt-get -y install libvips
 
       - run:
           name: Ruby Lint

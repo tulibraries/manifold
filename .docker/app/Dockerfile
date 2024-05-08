@@ -25,9 +25,8 @@ RUN apk add -U --no-cache \
       imagemagick-dev=7.1.1.26-r0 \
       imagemagick-jpeg=7.1.1.26-r0 \
       imagemagick-libs=7.1.1.26-r0 \
-      libjpeg-turbo-dev=3.0.1-r0 \
       libxslt-dev=1.1.39-r0 \
-      musl=1.2.5-r0 \
+      musl=1.2.4_git20230717-r4 \
       postgresql14-dev=14.11-r0 \
       nodejs=20.12.1-r0 \
       yarn=1.22.19-r0 && \

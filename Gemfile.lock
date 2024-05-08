@@ -93,7 +93,7 @@ GEM
       kaminari (~> 1.2.2)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
-    administrate-field-active_storage (1.0.1)
+    administrate-field-active_storage (1.0.2)
       administrate (>= 0.2.2)
       rails (>= 7.0)
     administrate-field-date_picker (0.3.0)
@@ -319,7 +319,7 @@ GEM
     mail_form (1.10.1)
       actionmailer (>= 5.2)
       activemodel (>= 5.2)
-    marcel (1.0.2)
+    marcel (1.0.4)
     matrix (0.4.2)
     meta-tags (2.21.0)
       actionpack (>= 6.0.0, < 7.2)
@@ -345,16 +345,16 @@ GEM
     nenv (0.3.0)
     net-http (0.4.1)
       uri
-    net-imap (0.4.9.1)
+    net-imap (0.4.10)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0.1)
+    net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.0)
+    nio4r (2.7.1)
     nokogiri (1.16.4-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.4-arm-linux)

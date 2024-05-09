@@ -128,6 +128,6 @@ class Google::HoursComponent < ViewComponent::Base
     end
 
     def get_hours(location)
-      
+    end
 
 end

@@ -50,69 +50,69 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_dates
-    @today = Time.zone.today
-    @date = params[:date].nil? ? @today : Date.parse(params[:date])
+  # def set_dates
+  #   @today = Time.zone.today
+  #   @date = params[:date].nil? ? @today : Date.parse(params[:date])
 
-    unless params[:date].nil?
-      @monday = @date.beginning_of_week
-      @sunday = @date.end_of_week
-      @next_week = @date.next_week
-      @last_week = @date.prev_week
-    else
-      @monday = @today.beginning_of_week
-      @sunday = @today.end_of_week
-      @next_week = @today.next_week
-      @last_week = @today.prev_week
-    end
-  end
+  #   unless params[:date].nil?
+  #     @monday = @date.beginning_of_week
+  #     @sunday = @date.end_of_week
+  #     @next_week = @date.next_week
+  #     @last_week = @date.prev_week
+  #   else
+  #     @monday = @today.beginning_of_week
+  #     @sunday = @today.end_of_week
+  #     @next_week = @today.next_week
+  #     @last_week = @today.prev_week
+  #   end
+  # end
 
-  def set_location
-    if params[:controller] == "buildings"
-      location = Building.where(slug: params[:id])
-      @location = location.first.hours unless location.first.nil?
-    elsif params[:controller] == "spaces"
-      location = Space.where(slug: params[:id])
-      @location = location.first.hours unless location.first.nil?
-    elsif params[:controller] == "services"
-      location = Service.where(slug: params[:id])
-      @location = location.first.hours unless location.first.nil?
-    end
-  end
+  # def set_location
+  #   if params[:controller] == "buildings"
+  #     location = Building.where(slug: params[:id])
+  #     @location = location.first.hours unless location.first.nil?
+  #   elsif params[:controller] == "spaces"
+  #     location = Space.where(slug: params[:id])
+  #     @location = location.first.hours unless location.first.nil?
+  #   elsif params[:controller] == "services"
+  #     location = Service.where(slug: params[:id])
+  #     @location = location.first.hours unless location.first.nil?
+  #   end
+  # end
 
-  def locations
-    @locations = [
-      {
-        slug: "ambler",
-        spaces: ["ambler"]
-      },
-      {
-        slug: "blockson",
-        spaces: ["blockson"]
-      },
-      {
-        slug: "charles",
-        spaces: [
-                  "charles",
-                  "service_zone",
-                  "scrc",
-                  "scholars_studio",
-                  "ask_a_librarian",
-                  "asrs",
-                  "guest_computers",
-                  "cafe"
-                ]
-      },
-      {
-        slug: "ginsburg",
-        spaces: ["ginsburg", "innovation"]
-      },
-      {
-        slug: "podiatry",
-        spaces: ["podiatry"]
-      }
-    ]
-  end
+  # def locations
+  #   @locations = [
+  #     {
+  #       slug: "ambler",
+  #       spaces: ["ambler"]
+  #     },
+  #     {
+  #       slug: "blockson",
+  #       spaces: ["blockson"]
+  #     },
+  #     {
+  #       slug: "charles",
+  #       spaces: [
+  #                 "charles",
+  #                 "service_zone",
+  #                 "scrc",
+  #                 "scholars_studio",
+  #                 "ask_a_librarian",
+  #                 "asrs",
+  #                 "guest_computers",
+  #                 "cafe"
+  #               ]
+  #     },
+  #     {
+  #       slug: "ginsburg",
+  #       spaces: ["ginsburg", "innovation"]
+  #     },
+  #     {
+  #       slug: "podiatry",
+  #       spaces: ["podiatry"]
+  #     }
+  #   ]
+  # end
 
   def script_nonce
     if Rails.env.production?

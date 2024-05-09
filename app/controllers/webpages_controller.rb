@@ -69,7 +69,7 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    @todays_hours = LibraryHour.todays_hours_at("charles")
+    # @todays_hours = LibraryHour.todays_hours_at("charles")
     @highlights = Highlight.with_image.where(promoted: true).take(3)
     @featured_events = Event.where(featured: true).order(:start_time).take(3)
     @cta3 = Category.find_by(slug: "computers-printing-technology")

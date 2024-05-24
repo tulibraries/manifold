@@ -20,7 +20,7 @@ gem "base64", "0.2.0"
 gem "bootsnap", require: false
 gem "bootstrap"
 gem "browser"
-gem "cancancan", "~> 3.5"
+gem "cancancan", "~> 3.6"
 gem "cssbundling-rails"
 gem "database_cleaner"
 gem "devise"

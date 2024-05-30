@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/paper-trail-gem/paper_trail
-  revision: 47dbc2271c7055fde6f0fe7d3c8bf44f62cbef63
+  revision: 67a1ec2a4f0785297fd86b5bc281b4aa9be78fe0
   specs:
     paper_trail (15.1.0)
       activerecord (>= 6.1)
@@ -479,7 +479,7 @@ GEM
       declarative (< 0.1.0)
       trailblazer-option (>= 0.1.1, < 0.2.0)
       uber (< 0.2.0)
-    request_store (1.5.1)
+    request_store (1.7.0)
       rack (>= 1.4)
     responders (3.1.1)
       actionpack (>= 5.2)

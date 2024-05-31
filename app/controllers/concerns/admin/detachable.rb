@@ -5,7 +5,7 @@ module Admin::Detachable
 
   def detach
     klass = params[:controller].split("/").last.classify
-    entity = klass.constantize.find(params[:id])
+    entity = get_model(klass).find_by(slug: params[:id])
     type = params[:type]
 
     if klass == "FileUpload"    # some models now have more than one attachable type
@@ -26,5 +26,16 @@ module Admin::Detachable
     end
 
     redirect_to url_for(controller: params[:controller], action: :edit, id: params[:id], only_path: true)
+  end
+
+
+  private
+
+  def get_model(name)
+    models ||= ActiveRecord::Base.descendants.reduce({}) { |acc, model|
+      acc.merge({ model.name => model })
+    }
+
+    models[name]
   end
 end

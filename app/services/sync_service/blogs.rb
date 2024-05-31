@@ -40,7 +40,7 @@ class SyncService::Blogs
     blog_feed.xpath("//channel/item").map do |blog_post|
       blog_post_xml = blog_post.to_xml
       blog_post_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\">" + blog_post.to_xml + "</xml>"
-      blog_post_xml_hash = Digest::SHA1.hexdigest(blog_post_xml)
+      blog_post_xml_hash = Digest::SHA256.hexdigest(blog_post_xml)
       blog_post = Feedjira.parse(blog_post_xml).entries.first
       record_hash(blog_post, blog_post_xml_hash)
     end

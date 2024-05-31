@@ -86,7 +86,7 @@ RSpec.describe SyncService::Events, type: :service do
       end
 
       it "maps document's digest to content_has field" do
-        expect(subject["content_hash"]).to match(Digest::SHA1.hexdigest(@events.first[:xml]))
+        expect(subject["content_hash"]).to match(Digest::SHA256.hexdigest(@events.first[:xml]))
       end
     end
   end

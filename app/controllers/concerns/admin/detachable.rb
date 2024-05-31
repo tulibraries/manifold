@@ -31,11 +31,11 @@ module Admin::Detachable
 
   private
 
-  def get_model(name)
-    models ||= ActiveRecord::Base.descendants.reduce({}) { |acc, model|
-      acc.merge({ model.name => model })
-    }
+    def get_model(name)
+      models ||= ActiveRecord::Base.descendants.reduce({}) { |acc, model|
+        acc.merge({ model.name => model })
+      }
 
-    models[name]
-  end
+      models[name]
+    end
 end

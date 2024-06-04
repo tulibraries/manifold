@@ -27,10 +27,15 @@
 
     <div class="col-12 col-lg-9 px-4">
 
-      <div class="container-lg pb-2" id="">
+      <div class="container-lg pb-2">
         <div class="row">
           <div class="col mt-3 mt-lg-0">
           <%= t("manifold.finding_aids.intro_html") %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex row justify-content-center">
+            <%= link_to t("manifold.finding_aids.button_text"), t("manifold.finding_aids.button_link"), class: "d-block fs-5 mt-0 mb-3 archive-space-button" %>
           </div>
         </div>
         <div class="row fa-search-form mb-4">

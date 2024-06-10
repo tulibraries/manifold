@@ -500,24 +500,6 @@ en:
           related_subjects: Related Subjects
           collecting_areas: Collecting Areas
           description: Description
-      intro_html: >-
-                    <p>Finding aids are online guides to selected archival materials in the Charles L. Blockson Afro-American 
-                    Collection and the Special Collections Research Center. </p><p>The Charles L. Blockson Afro-American 
-                    Collection is one of the nation's leading research facilities for the study of the history and culture 
-                    of people of African descent. This collection of over 700,000 items has materials on the global black 
-                    experience in all formats: books, manuscripts, sheet music, pamphlets, journals, newspapers, broadsides, 
-                    posters, photographs, and rare ephemera. Its mission is to collect, preserve and disseminate the histories 
-                    of people of African descent in Africa and its diaspora. The collection holds materials with a special 
-                    emphasis on the experience of African Americans in Philadelphia and the Delaware Valley region. For more 
-                    information about the Blockson Collections, please visit our website, call us at 215-204-6632, or 
-                    <a mailto="blockson@temple.edu" class="inline">e-mail us</a> 
-                    at <blockson@temple.edu>.</p><p>The SCRC is the principal repository for and steward of the Libraries’ rare 
-                    books, manuscripts, archives and University records. While we are constantly striving to increase the 
-                    discoverability of our materials, these guides represent only a portion of our actual collections and holdings. 
-                    If you don't find what you are looking for, we encourage you to pay us a visit, call us at 215-204-8257, or 
-                    <a href="forms/ask-scrc" class="inline">e-mail us</a>.</p>
-                    <p>Click the button below to try the Beta version of our new finding aid repository. Not all finding aids 
-                    available are indexed, however the system offers new functionalities.</p>
       button_text: Try the new repository
       button_link: https://scrcarchivesspace.temple.edu/
       collection_heading: "Collecting Area"

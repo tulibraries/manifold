@@ -5,10 +5,8 @@ module Admin
     include Admin::Detachable
     def destroy
       person = requested_resource
-      groups = Group.all.select { |group|
-        group.chair_dept_heads.include?(person)
-      }
-      if groups
+      groups = Group.all.select { |group| group.chair_dept_heads.include?(person) }
+      if groups.present?
         links = []
         groups.each do |group|
           links << "<a href=/admin/groups/#{group.slug}/edit>#{group.label}</a>"

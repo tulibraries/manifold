@@ -133,8 +133,7 @@ RSpec.describe SyncService::Events, type: :service do
       expect(students_event).to be
     end
 
-    xit "it attaches images to records" do
-      # TODO: need to mock the images urls in the xml
+    it "it attaches images to records" do
       expect(students_event.image.attached?).to be true
     end
   end

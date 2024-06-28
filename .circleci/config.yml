@@ -8,39 +8,7 @@ workflows:
   run_tests:
     jobs:
       - run_tests
-  qa_deploy:
-   jobs:
-     - qa_deploy:
-         filters:
-           branches:
-             only:
-               - main
-  stage_deploy:
-    jobs:
-      - stage_deploy:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
-  prod_deploy:
-    jobs:
-      - request-prod-deploy:
-          type: approval
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
-      - prod_deploy:
-          requires:
-            - request-prod-deploy
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*$/
-
+  
 jobs:
   run_tests:
     docker:
@@ -51,7 +19,7 @@ jobs:
         environment:
           TZ: "America/New_York"
 
-      - image: cimg/postgres:14.5
+      - image: cimg/postgres:16.2
         environment:
           TZ: "America/New_York"
     resource_class: medium
@@ -117,51 +85,3 @@ jobs:
 
       - coveralls/upload:
           coverage_file: ./coverage/lcov/app.lcov
-
-  qa_deploy:
-    docker:
-      - image: cimg/python:3.9.10
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "96:52:81:94:2a:1f:32:82:cd:b5:2d:e3:e3:9e:9d:08"
-      - run:
-          command: bash .circleci/deploy-qa.sh
-
-  stage_deploy:
-    docker:
-      - image: cimg/python:3.9.10
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "96:52:81:94:2a:1f:32:82:cd:b5:2d:e3:e3:9e:9d:08"
-      - run:
-          command: bash .circleci/deploy-stage.sh
-
-  prod_deploy:
-    docker:
-      - image: cimg/python:3.9.10
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "96:52:81:94:2a:1f:32:82:cd:b5:2d:e3:e3:9e:9d:08"
-      - run:
-          command: bash .circleci/deploy-prod.sh

@@ -9,6 +9,8 @@ class FindingAidsController < ApplicationController
   include SerializableRespondTo
 
   def index
+    intro = Snippet.find_by(slug: "finding-aids-intro")
+    @finding_aids_intro = intro.presence ? intro.description : ""
   end
 
   def show

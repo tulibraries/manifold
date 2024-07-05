@@ -120,7 +120,7 @@ class SyncService::Events
   end
 
   def xml_hash(event)
-    Digest::SHA1.hexdigest(
+    Digest::SHA256.hexdigest(
       event.fetch(:xml) { raise StandardError.new("No Event XML supplied") }
     )
   end

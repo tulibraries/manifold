@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
   include ServerErrors
   before_action :failover, :script_nonce
   before_action :get_alert, :covid_alert

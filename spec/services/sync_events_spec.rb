@@ -86,7 +86,7 @@ RSpec.describe SyncService::Events, type: :service do
       end
 
       it "maps document's digest to content_has field" do
-        expect(subject["content_hash"]).to match(Digest::SHA1.hexdigest(@events.first[:xml]))
+        expect(subject["content_hash"]).to match(Digest::SHA256.hexdigest(@events.first[:xml]))
       end
     end
   end
@@ -133,8 +133,7 @@ RSpec.describe SyncService::Events, type: :service do
       expect(students_event).to be
     end
 
-    xit "it attaches images to records" do
-      # TODO: need to mock the images urls in the xml
+    it "it attaches images to records" do
       expect(students_event.image.attached?).to be true
     end
   end

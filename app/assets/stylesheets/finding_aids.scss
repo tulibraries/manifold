@@ -28,9 +28,18 @@
 /* Index Page */
 
 .aid-index {
+  a.archive-space-button {
+    background-color: $crystal-blue;
+    border: solid $royal-blue 1px;
+    border-radius: 7px;
+    text-align: center;
+    padding: 14px;
+    color: $royal-blue;
+    width: 25%;
+  }
   #fa-search { margin-top: -32px !important; }
   .fa-search { top: 24px; left: 17px; }
-  .fa-search-label { position: relative; top: 7px; left: 0; }
+  .fa-search-label { position: relative; top: 5px; left: 0; }
 	@media (max-width: 984px) {
 		margin-top: 14px;
 	}

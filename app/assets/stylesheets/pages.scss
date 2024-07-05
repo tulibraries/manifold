@@ -34,6 +34,9 @@
   form {
     width: 100%;
     margin:auto;
+    input[type="text"] {
+      vertical-align: top;
+    }
     input[type="submit"] {
       margin:0;
       padding-left: 0;
@@ -41,21 +44,12 @@
       max-height: 55px;
       width: 55px;
       position: relative;
-      top: 13px;
       background-color: $foamgreen;
       background-image: url('search.png');
       background-position: center center;
       background-repeat: no-repeat;
       background-size: 42px 42px;
       border: 0;
-    }
-    @-moz-document url-prefix() {
-      input[type="submit"]{
-        top: -5px;
-        @media (max-width: 1190px) {
-          top: 0;
-        }
-      }
     }
   }
 
@@ -116,7 +110,10 @@
       width: 65%;
       margin:auto;
       position:relative;
-      top: 35%;
+      top: 37%;
+      input[type="text"] {
+        vertical-align: top;
+      }
       input[type="submit"] {
         height: 60px;
         width: 60px;
@@ -127,10 +124,6 @@
         background-size: 42px 42px;
         border: solid $royal-blue 1px;
         position: relative;
-        top: 23px;
-        @media screen and (min-width: 0) and (max-width: 1190px) {
-          top: -6px;
-        }
       }
       @-moz-document url-prefix() {
         input[type="submit"]{

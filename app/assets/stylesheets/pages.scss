@@ -41,7 +41,7 @@
       max-height: 55px;
       width: 55px;
       position: relative;
-      top: 13px;
+      top: -9px;
       background-color: $foamgreen;
       background-image: url('search.png');
       background-position: center center;
@@ -127,9 +127,9 @@
         background-size: 42px 42px;
         border: solid $royal-blue 1px;
         position: relative;
-        top: 23px;
+        top: -2px;
         @media screen and (min-width: 0) and (max-width: 1190px) {
-          top: -6px;
+          top: -9px;
         }
       }
       @-moz-document url-prefix() {

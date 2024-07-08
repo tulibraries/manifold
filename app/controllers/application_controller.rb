@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :failover, :script_nonce
   before_action :get_alert, :covid_alert
   before_action :set_paper_trail_whodunnit
-  before_action :locations, :set_dates, :set_location
-  before_action :show_hours, :menu_items, unless: ->(c) { ["accounts/omniauth_callbacks", "devise/sessions"].include?(c.controller_path) }
+  before_action :menu_items, unless: ->(c) { ["accounts/omniauth_callbacks", "devise/sessions"].include?(c.controller_path) }
 
   rescue_from ActionController::Redirecting::UnsafeRedirectError do
     redirect_to root_url
@@ -40,80 +39,6 @@ class ApplicationController < ActionController::Base
   def covid_alert
     @covid_alert = Alert.where(published: true).where(for_header: true)
   end
-
-  def show_hours
-    @locations.each do |b|
-      if b[:slug] == @location
-        b[:spaces].map! do |space|
-          space = [b[:slug], LibraryHour.where(location_id: space, date: @monday..@sunday + 1)]
-        end
-      end
-    end
-  end
-
-  # def set_dates
-  #   @today = Time.zone.today
-  #   @date = params[:date].nil? ? @today : Date.parse(params[:date])
-
-  #   unless params[:date].nil?
-  #     @monday = @date.beginning_of_week
-  #     @sunday = @date.end_of_week
-  #     @next_week = @date.next_week
-  #     @last_week = @date.prev_week
-  #   else
-  #     @monday = @today.beginning_of_week
-  #     @sunday = @today.end_of_week
-  #     @next_week = @today.next_week
-  #     @last_week = @today.prev_week
-  #   end
-  # end
-
-  # def set_location
-  #   if params[:controller] == "buildings"
-  #     location = Building.where(slug: params[:id])
-  #     @location = location.first.hours unless location.first.nil?
-  #   elsif params[:controller] == "spaces"
-  #     location = Space.where(slug: params[:id])
-  #     @location = location.first.hours unless location.first.nil?
-  #   elsif params[:controller] == "services"
-  #     location = Service.where(slug: params[:id])
-  #     @location = location.first.hours unless location.first.nil?
-  #   end
-  # end
-
-  # def locations
-  #   @locations = [
-  #     {
-  #       slug: "ambler",
-  #       spaces: ["ambler"]
-  #     },
-  #     {
-  #       slug: "blockson",
-  #       spaces: ["blockson"]
-  #     },
-  #     {
-  #       slug: "charles",
-  #       spaces: [
-  #                 "charles",
-  #                 "service_zone",
-  #                 "scrc",
-  #                 "scholars_studio",
-  #                 "ask_a_librarian",
-  #                 "asrs",
-  #                 "guest_computers",
-  #                 "cafe"
-  #               ]
-  #     },
-  #     {
-  #       slug: "ginsburg",
-  #       spaces: ["ginsburg", "innovation"]
-  #     },
-  #     {
-  #       slug: "podiatry",
-  #       spaces: ["podiatry"]
-  #     }
-  #   ]
-  # end
 
   def script_nonce
     if Rails.env.production?

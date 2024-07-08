@@ -1,3 +1,2 @@
-<span class="d-block"><%= t("manifold.header.todays_hours") %></span>
-<span class="d-block"><%= t("manifold.header.todays_hours_text", hours: @todays_hours.hours) unless @todays_hours.nil? %></span>
+<span class="d-block"><%= t("manifold.header.todays_hours") %> | <%= render @hours %></span>
 <%= link_to t("manifold.header.all_hours"), hours_path %> >

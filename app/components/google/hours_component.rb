@@ -2,6 +2,7 @@
 
 class Google::HoursComponent < ViewComponent::Base
   include ViewComponent::UseHelpers
+
   def initialize(hours:, date:)
     hours = hours&.values
     @locations = build_hours(hours)

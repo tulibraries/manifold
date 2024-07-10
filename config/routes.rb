@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => "/"
   mount Rswag::Ui::Engine  => "api-docs"
 
+  get "link_exchange/*path", to: redirect { |params, request| "https://tulle.tul-infra.page/#{params[:path]}" }
+  get "link_exchange", to: redirect("https://tulle.tul-infra.page")
+
   concern :imageable do
     get "image/thumbnail", to: "images#thumbnail_image"
     get "image/medium",    to: "images#medium_image"

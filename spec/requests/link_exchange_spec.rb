@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "Link Exchanger routing", type: :request do
   context "routes for /link_exchange" do
-    let(:path) { "/link_exchange"}
+    let(:path) { "/link_exchange" }
 
     it "routes to tull.tul-infra.page" do
       get path
@@ -13,7 +13,7 @@ RSpec.describe "Link Exchanger routing", type: :request do
   end
 
   context "routes for /link_exchange/*" do
-    let(:path) { "/link_exchange/foo/bar"}
+    let(:path) { "/link_exchange/foo/bar" }
 
     it "routes to tull.tul-infra.page" do
       get path

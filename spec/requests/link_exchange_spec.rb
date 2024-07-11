@@ -20,4 +20,14 @@ RSpec.describe "Link Exchanger routing", type: :request do
       expect(response).to redirect_to("https://tulle.tul-infra.page/foo/bar")
     end
   end
+
+  context "routes for /r/* (Link Exchanger shortened links)" do
+    let(:path) { "/r/872952237291" }
+
+    it "routes to tull.tul-infra.page" do
+      get path
+      expect(response).to redirect_to("https://tulle.tul-infra.page/r/872952237291")
+    end
+  end
+
 end

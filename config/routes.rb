@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   mount Rswag::Api::Engine => "/"
   mount Rswag::Ui::Engine  => "api-docs"
 
+  # temporary Link Exchanger redirects 
+  get "r/*path", to: redirect { |params, request| "https://tulle.tul-infra.page/r/#{params[:path]}" }
   get "link_exchange/*path", to: redirect { |params, request| "https://tulle.tul-infra.page/#{params[:path]}" }
   get "link_exchange", to: redirect("https://tulle.tul-infra.page")
 

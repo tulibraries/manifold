@@ -1,77 +1,29 @@
 <div class="current-week model-hours">
 
   <div class="row">
-    <div class="col-4 pt-1 ps-2">
+    <div class="col-12 col-sm-4 pt-1 ps-2">
       <h2><%= t("manifold.default.application.building_hours.title") %></h2>
     </div>
-    <div class="col-lg-8 text-end">
+    <div class="col-sm-8 text-sm-end">
       <%= link_to t("manifold.default.application.building_hours.more_hours"), hours_path, class: "today_button caret-right"  %>
     </div>
   </div>
 
 </div>
 
-<div class="row hours-header">
-  <div class="col-12 mb-2 ps-2 mt-3">
-    <span class="month hours-location float-start">
-    <%= location_name(@model.slug) %>
-    </span>
-    <span class="month hours-month-name float-end">
-      <%= @today.to_date.strftime("%B") %>
-    </span>
+<%= render @building.weekly_hours if controller_name == "buildings" %>
+<%= render @space.weekly_hours if controller_name == "spaces" %>
+
+<% if controller_name == "spaces" && @model.image.attached?  %>
+  <div class="space-image mt-4">
+    <%= image_tag @model.custom_image(1096,730), class: "decorative w-100", alt: "" %>
   </div>
+<% end %>
 
-    <div class="col-12 mt-2">
-      <div class="row">
-      <% 7.times do |date| %>
-        <% if @monday.to_date+date == @today.to_date %>
-          <div class="col hours-dates today day-of-week ps-2 text-center">
-        <% else %>
-          <div class="col hours-dates ps-2 text-center">
-        <% end %>
-            <span><%= (@monday.to_date+date).strftime("%a %d") %></span>
-          </div>
-      <% end %>
-      </div>
-    </div>
+<% if controller_name == "buildings" && (@model.coordinates.present? || @model.google_id.present?) %>
+  <div class="building-map mt-4">
+    <%= render_map(@model.name, @model.coordinates, @model.google_id) %>
+  </div>
+<% end %>
 
-  </div> 
-
-
-  <div class="row mt-3 hours-times">
-
-
-
-      <% @model.get_hours.sort_by(&:date).each_with_index do |time,index| %> 
-
-        <% if @monday.to_date+index == @today.to_date %>
-          <div class="col time text-center today">
-          <% else %>
-          <div class="col time text-center">
-        <% end %>
-
-          <% if time.hours.downcase == "closed" %>
-            <span class="closed"><%= time.hours %></span>
-          <% else %>
-            <%= time.hours %>
-          <% end %>
-
-          </div>
-
-      <% end %> 
-
-
-  </div> 
-
-  <% if controller_name == "spaces" && @model.image.attached?  %>
-    <div class="space-image mt-4">
-      <%= image_tag @model.custom_image(1096,730), class: "decorative w-100", alt: "" %>
-    </div>
-  <% end %>
-
-  <% if controller_name == "buildings" && (@model.coordinates.present? || @model.google_id.present?) %>
-    <div class="building-map mt-4">
-      <%= render_map(@model.name, @model.coordinates, @model.google_id) %>
-    </div>
-  <% end %>
-</div> 
+</div>

@@ -7,20 +7,16 @@
   </div>
   <div class="hours-header">
     <div class="month hours-month-name">
-      <%= @monday.to_date.strftime("%B %d") %> - <%= (@monday.to_date+6).strftime("%B %d %Y") %>
+      <%= @weekly_hours.first[0].to_date.strftime("%B %d") %> - <%= @weekly_hours.last[0].strftime("%B %d %Y") %>
     </div>
     <div>
-      <%= link_to t("manifold.default.application.building_hours.more_hours"), hours_path, class: "today_button caret-right"  %>
+      <%= link_to t("manifold.default.application.building_hours.more_hours"), hours_path, class: "today_button caret-right" %>
     </div>
   </div>
 
   <div class="row hours-location"> <!-- location -->
-    <div class="col-12">
-      <h3><%= location_name(@location) %></h3>
-    </div>
     <div class="col-7">
-
-      <% 7.times do |i| %>
+      <% @weekly_hours.each do |i| %>
         <% if @monday.to_date+i == @today.to_date %>
           <div class="hours-dates today day-of-week">
         <% else %>
@@ -29,11 +25,9 @@
           <%= (@monday.to_date+i).strftime("%A, %B %d") %> 
         </div>
       <% end %>
-
     </div>
 
     <div class="col-5 text-start">
-
       <% @model.get_hours.sort_by(&:date).each_with_index do |time,index| %> <!-- hours -->
       <% if @monday.to_date+index == @today.to_date %>
           <div class="today day-of-week hours-dates">
@@ -47,7 +41,6 @@
         <% end %>
         </div>
       <% end %> <!-- hours -->
-
     </div>
   </div>
     

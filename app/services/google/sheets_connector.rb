@@ -5,9 +5,9 @@ require "google/apis/sheets_v4"
 module Google
   class SheetsConnector < ApplicationService
     def initialize(*args)
-      feature = args.first[:feature]
+      @feature = args.first[:feature]
       @scope = args.first[:scope]
-      case feature
+      case @feature
       when "etexts"
         @spreadsheet_id = Rails.configuration.etexts_spreadsheet_id
         @cells = Rails.configuration.etexts_spreadsheet_etext_cells
@@ -28,15 +28,15 @@ module Google
     end
 
     def call
-      if @scope.present?
-        response = @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A","#{@cells}"], major_dimension: "ROWS")
-        dates = response.value_ranges[0].values.flatten
-        times = response.value_ranges[1].values.flatten
-        dates.zip(times)
+      if @feature == "hours" 
+        if @scope.present?
+          response = @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A","#{@cells}"], major_dimension: "ROWS")
+        else
+          response = @service.get_spreadsheet_values(@spreadsheet_id, "TESTING!#{@cells}")
+        end
       else
-        response = @service.get_spreadsheet_values(@spreadsheet_id, "Hours!#{@cells}")
+        response = @service.get_spreadsheet_values(@spreadsheet_id, @cells)
       end
-
     end
 
     private
@@ -44,7 +44,7 @@ module Google
     def get_location(location)
       case location
       when "charles"
-        range = Rails.application.config.hours_worksheet_charles
+        Rails.application.config.hours_worksheet_charles
       when "24-7"
         Rails.application.config.hours_worksheet_24_7
       when "asrs"

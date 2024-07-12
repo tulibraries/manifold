@@ -4,8 +4,8 @@ class BuildingsController < ApplicationController
   include HasCategories
   include SetInstance
   include RedirectLogic
-  before_action :set_building, only: [:show]
   include SerializableRespondTo
+  before_action :set_building, only: [:show]
 
   def index
     serializable_index
@@ -15,6 +15,14 @@ class BuildingsController < ApplicationController
     @header_alert = @building.covid_alert
     @model = @building
     serializable_show
+    if @building.hours.present?
+      hours = Google::SheetsConnector.call(feature: "hours", scope: @building.hours)
+      if hours.present?
+        @weekly_hours = Google::WeeklyHours.new(hours: hours, location: @building)
+      else
+        @weekly_hours = ""
+      end
+    end
   end
 
   def list_item(category)

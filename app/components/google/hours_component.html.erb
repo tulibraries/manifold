@@ -26,7 +26,8 @@
     <div class="row building-row">
       <div class="col-12 px-0">
         <h2 class="red">
-          <%= location_name(location.keys.first.to_s) %>
+        <%# binding.pry %>
+          <%= location_name(location.first.to_s) %>
         </h2>
       </div>
     </div>
@@ -40,40 +41,38 @@
         <% end %>
             <%= (@monday+date).strftime("%a %d") %> 
           </div>
-        <% end %>
+        <% end %> 
     </div>
     
-      <% location.values.each do |spaces| %>
-        <% spaces.each_with_index do |time, index| %>
+      <% location.second.each do |space, hours| %>
+      <%# binding.pry if space == :exhibits %>
         <div class="row hours-row">
           <div class="col-3 px-0"> 
-            <h3><%= location_link(spaces[index].keys.first.to_s) %></h3>
+            <h3><%= location_link(space.to_s) %></h3>
           </div>
-          <% spaces[index].values.first
-                          .drop(start_at(time.values.first))
-                          .take(7)
-                          .each_with_index do |hours, i| %>
-            <% if @monday.to_date+i == @today %>
-              <div class="col today">
-            <% else %>
-              <div class="col">
-            <% end %>
-            <% if hours[1].downcase == "closed" %>
-                <span class="closed"><%= hours[1] %></span>
-            <% else %>
-                <%= hours[1] %>
-            <% end %>
-              </div>
+          <% hours.drop(start_at)
+                     .take(7)
+                     .each do |times| %>
+                      <% if times[0].to_date == @today.to_date %>
+                        <div class="col today">
+                      <% else %>
+                        <div class="col">
+                      <% end %>
+                        <% if times[1].present? && (times[1].downcase == "closed") %>
+                          <span class="closed"><%= times[1] %></span>
+                        <% else %>
+                          <%= times[1] %>
+                        <% end %>
+                      </div>
           <% end %>
 
-        <% if spaces.first.keys.first == :blockson %>
+        <% if space == :blockson %>
           <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
             <%= t("manifold.hours.blockson_note_html").html_safe %>
           </div>
         <% end %>
         </div>
         <% end %>
-      <% end %>
     <% end %>
   </div>
 </div>

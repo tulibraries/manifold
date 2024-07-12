@@ -1,0 +1,58 @@
+<div class="d-none d-sm-block">
+  <div class="col-12 mt-2">
+    <div class="row">
+    <% @weekly_hours.each do |date| %>
+      <% if date[0].to_date == @today.to_date %>
+        <div class="col hours-dates today day-of-week ps-2 text-center">
+      <% else %>
+        <div class="col hours-dates ps-2 text-center">
+      <% end %>
+          <span><%= date[0].to_date.strftime("%a %d") %></span>
+        </div>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="row mt-3 hours-times">
+    <% @weekly_hours.each do |time| %> 
+      <% if time[0].to_date == @today.to_date %>
+        <div class="col time text-center today">
+        <% else %>
+        <div class="col time text-center">
+      <% end %>
+        <% if time[1].downcase == "closed" %>
+          <span class="closed"><%= time[1] %></span>
+        <% else %>
+          <%= time[1] %>
+        <% end %>
+        </div>
+    <% end %> 
+  </div> 
+</div>
+
+<div class="d-block d-sm-none">
+  <div class="hours-header">
+    <div class="month hours-month-name">
+      <%= @weekly_hours.first[0].to_date.strftime("%B %d") %> - <%= @weekly_hours.last[0].to_date.strftime("%B %d %Y") %>
+    </div>
+  </div>
+
+  <div class="row hours-location"> <!-- location -->
+    <% @weekly_hours.each do |date| %>
+      <% if date[0].to_date == @today.to_date %>
+        <div class="hours-dates today day-of-week">
+      <% else %>
+        <div class="hours-dates">
+      <% end %>
+        <%= date[0].to_date.strftime("%A, %B %d") %> 
+        <br />
+        <% if date[1].downcase == "closed" %>
+          <span class="closed"><%= date[1] %></span>
+        <% else %>
+          <%= date[1] %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

@@ -3,7 +3,6 @@
 class Building < ApplicationRecord
   include Categorizable
   include Draftable
-  include HasHours
   include HasPolicies
   include InputCleaner
   include SetDates
@@ -62,5 +61,16 @@ class Building < ApplicationRecord
 
   def label
     name
+  end
+
+  def weekly_hours
+    if self.hours.present?
+      all_hours = Google::SheetsConnector.call(feature: "hours", scope: self.hours)
+      if all_hours.present?
+        @weekly_hours = Google::WeeklyHours.new(hours: all_hours)
+      else
+        @weekly_hours = ""
+      end
+    end
   end
 end

@@ -32,7 +32,7 @@ module Google
         if @scope.present?
           response = @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A","#{@cells}"], major_dimension: "ROWS")
         else
-          response = @service.get_spreadsheet_values(@spreadsheet_id, "TESTING!#{@cells}")
+          response = @service.get_spreadsheet_values(@spreadsheet_id, "HOURS!#{@cells}")
         end
       else
         response = @service.get_spreadsheet_values(@spreadsheet_id, @cells)

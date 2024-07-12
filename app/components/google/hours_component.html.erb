@@ -26,7 +26,6 @@
     <div class="row building-row">
       <div class="col-12 px-0">
         <h2 class="red">
-        <%# binding.pry %>
           <%= location_name(location.first.to_s) %>
         </h2>
       </div>
@@ -45,7 +44,6 @@
     </div>
     
       <% location.second.each do |space, hours| %>
-      <%# binding.pry if space == :exhibits %>
         <div class="row hours-row">
           <div class="col-3 px-0"> 
             <h3><%= location_link(space.to_s) %></h3>

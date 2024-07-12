@@ -29,7 +29,6 @@ Rails.application.routes.draw do
     resources :form_infos
     resources :groups
     resources :highlights
-    resources :library_hours
     resources :people
     resources :menu_groups
     resources :policies
@@ -41,12 +40,6 @@ Rails.application.routes.draw do
     resources :webpages
 
     resource :events do
-      member do
-        post :sync
-      end
-    end
-
-    resource :library_hours do
       member do
         post :sync
       end

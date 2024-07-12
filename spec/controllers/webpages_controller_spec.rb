@@ -70,7 +70,6 @@ RSpec.describe WebpagesController, type: :controller do
   end
 
   describe "GET #home" do
-    let!(:todays_hours) { FactoryBot.create(:library_hour) }
     let!(:highlights) { FactoryBot.create(:highlight, promoted: true) }
     let!(:featured_events) { nil }
     let!(:cta3) { FactoryBot.create(:category, slug: "computers-printing-technology") }

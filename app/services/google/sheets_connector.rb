@@ -30,9 +30,9 @@ module Google
     def call
       if @feature == "hours" 
         if @scope.present?
-          response = @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A","#{@cells}"], major_dimension: "ROWS")
+          response = @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A", "#{@cells}"], major_dimension: "ROWS")
         else
-          response = @service.get_spreadsheet_values(@spreadsheet_id, "HOURS!#{@cells}")
+          response = @service.get_spreadsheet_values(@spreadsheet_id, "#{@cells}")
         end
       else
         response = @service.get_spreadsheet_values(@spreadsheet_id, @cells)

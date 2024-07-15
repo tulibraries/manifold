@@ -82,7 +82,7 @@ class WebpagesController < ApplicationController
     @cta4 = Category.find_by(slug: "explore-charles")
   end
 
-  def hours 
+  def hours
   end
 
   def scrc

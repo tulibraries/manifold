@@ -14,6 +14,11 @@ RSpec.describe Google::SheetsConnector, type: :service do
       Google::SheetsConnector.call(feature: "hours", scope: "charles")
     end
   }
+  let(:weekly_hours) {
+    VCR.use_cassette("weekly_hours", match_requests_on: [:method, :without_api_key]) do
+      Google::SheetsConnector.call(feature: "hours", scope: "scrc")
+    end
+  }
   let(:etexts) {
     VCR.use_cassette("etexts", match_requests_on: [:method, :without_api_key]) do
       Google::SheetsConnector.call(feature: "etexts")

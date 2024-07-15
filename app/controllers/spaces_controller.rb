@@ -23,7 +23,7 @@ class SpacesController < ApplicationController
     if @space.hours.present?
       hours = Google::SheetsConnector.call(feature: "hours", scope: @space.hours)
       if hours.present?
-        @weekly_hours = Google::WeeklyHours.new(hours: hours, location: @space)
+        @weekly_hours = Google::WeeklyHours.new(hours:, location: @space)
       else
         @weekly_hours = ""
       end

@@ -18,7 +18,7 @@ class BuildingsController < ApplicationController
     if @building.hours.present?
       hours = Google::SheetsConnector.call(feature: "hours", scope: @building.hours)
       if hours.present?
-        @weekly_hours = Google::WeeklyHours.new(hours: hours, location: @building)
+        @weekly_hours = Google::WeeklyHours.new(hours:, location: @building)
       else
         @weekly_hours = ""
       end

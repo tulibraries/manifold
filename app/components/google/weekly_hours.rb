@@ -14,6 +14,6 @@ class Google::WeeklyHours < ViewComponent::Base
   private
 
     def weekly_hours(hours, index)
-      hours[index..(index+6)]
+      hours[index..(index + 6)]
     end
 end

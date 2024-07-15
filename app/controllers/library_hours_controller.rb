@@ -9,4 +9,4 @@ class LibraryHoursController < ApplicationController
       redirect_to(root_path, notice: "The requested page is not available")
     end
   end
-end 
+end

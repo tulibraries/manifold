@@ -13,7 +13,7 @@ module Google
         @cells = Rails.configuration.etexts_spreadsheet_etext_cells
       when "hours"
         @spreadsheet_id = Rails.configuration.hours_spreadsheet_id
-        @scope.present? ? 
+        @scope.present? ?
           @cells = get_location(@scope)
           :
           @cells = Rails.configuration.hours_spreadsheet_date_cells
@@ -28,7 +28,7 @@ module Google
     end
 
     def call
-      if @feature == "hours" 
+      if @feature == "hours"
         if @scope.present?
           response = @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A", "#{@cells}"], major_dimension: "ROWS")
         else
@@ -41,41 +41,41 @@ module Google
 
     private
 
-    def get_location(location)
-      case location
-      when "charles"
-        Rails.application.config.hours_worksheet_charles
-      when "24-7"
-        Rails.application.config.hours_worksheet_24_7
-      when "asrs"
-        Rails.application.config.hours_worksheet_asrs
-      when "guest_computers"
-        Rails.application.config.hours_worksheet_guest_computers
-      when "scholars_studio"
-        Rails.application.config.hours_worksheet_scholars_studio
-      when "service_zone"
-        Rails.application.config.hours_worksheet_service_zone
-      when "scrc"
-        Rails.application.config.hours_worksheet_scrc
-      when "cafe"
-        Rails.application.config.hours_worksheet_cafe
-      when "exhibits"
-        Rails.application.config.hours_worksheet_exhibits
-      when "ambler"
-        Rails.application.config.hours_worksheet_ambler
-      when "blockson"
-        Rails.application.config.hours_worksheet_blockson
-      when "ginsburg"
-        Rails.application.config.hours_worksheet_ginsburg
-      when "innovation"
-        Rails.application.config.hours_worksheet_innovation
-      when "podiatry"
-        Rails.application.config.hours_worksheet_podiatry
-      when "ask_a_librarian"
-        Rails.application.config.hours_worksheet_ask_a_librarian
-      when "success_center"
-        Rails.application.config.hours_worksheet_success_center
+      def get_location(location)
+        case location
+        when "charles"
+          Rails.application.config.hours_worksheet_charles
+        when "24-7"
+          Rails.application.config.hours_worksheet_24_7
+        when "asrs"
+          Rails.application.config.hours_worksheet_asrs
+        when "guest_computers"
+          Rails.application.config.hours_worksheet_guest_computers
+        when "scholars_studio"
+          Rails.application.config.hours_worksheet_scholars_studio
+        when "service_zone"
+          Rails.application.config.hours_worksheet_service_zone
+        when "scrc"
+          Rails.application.config.hours_worksheet_scrc
+        when "cafe"
+          Rails.application.config.hours_worksheet_cafe
+        when "exhibits"
+          Rails.application.config.hours_worksheet_exhibits
+        when "ambler"
+          Rails.application.config.hours_worksheet_ambler
+        when "blockson"
+          Rails.application.config.hours_worksheet_blockson
+        when "ginsburg"
+          Rails.application.config.hours_worksheet_ginsburg
+        when "innovation"
+          Rails.application.config.hours_worksheet_innovation
+        when "podiatry"
+          Rails.application.config.hours_worksheet_podiatry
+        when "ask_a_librarian"
+          Rails.application.config.hours_worksheet_ask_a_librarian
+        when "success_center"
+          Rails.application.config.hours_worksheet_success_center
+        end
       end
-    end
   end
 end

@@ -14,6 +14,11 @@ RSpec.describe Google::SheetsConnector, type: :service do
       Google::SheetsConnector.call(feature: "hours", scope: "charles")
     end
   }
+  let(:etexts) {
+    VCR.use_cassette("etexts", match_requests_on: [:method, :without_api_key]) do
+      Google::SheetsConnector.call(feature: "etexts")
+    end
+  }
 
   context "Retrieves hours data from API" do
     it "gets all hours" do
@@ -21,6 +26,12 @@ RSpec.describe Google::SheetsConnector, type: :service do
     end
     it "gets location specific hours" do
       expect(todays_hours.value_ranges[0].values.size).to be > 0
+    end
+  end
+
+  context "Retrieves etexts data from API" do
+    it "gets all etext data" do
+      expect(etexts.values.size).to be > 0
     end
   end
 

@@ -4,7 +4,6 @@ class Google::WeeklyHours < ViewComponent::Base
   include ViewComponent::UseHelpers
 
   def initialize(hours:, location: nil)
-    @model = location
     dates = hours.value_ranges[0].values.flatten
     times = hours.value_ranges[1].values.flatten
     @today = Time.zone.today.strftime("%A, %B %-d, %Y")

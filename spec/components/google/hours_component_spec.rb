@@ -17,13 +17,21 @@ RSpec.describe Google::HoursComponent, type: :component do
     end
   }
 
+  let(:weekly_hours) {
+    VCR.use_cassette("weekly_hours", match_requests_on: [:method, :without_api_key]) do
+      Google::SheetsConnector.call(feature: "hours", scope: "scrc")
+    end
+  }
+
   describe "loads data" do
     it "renders results for hours page" do
       expect(hours.values.size > 0).to be_truthy
     end
-    it "renders results for scoped pages" do
-      binding.pry
-      expect(todays_hours.values.size > 0).to be_truthy
+    it "renders daily results for scoped pages" do
+      expect(todays_hours.value_ranges[0].values.size > 0).to be_truthy
+    end
+    it "renders weekly results for scoped pages" do
+      expect(weekly_hours.value_ranges[0].values.size > 0).to be_truthy
     end
   end
 end

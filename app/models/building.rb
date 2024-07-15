@@ -5,7 +5,6 @@ class Building < ApplicationRecord
   include Draftable
   include HasPolicies
   include InputCleaner
-  include SetDates
   include SchemaDotOrgable
   include Validators
   extend FriendlyId

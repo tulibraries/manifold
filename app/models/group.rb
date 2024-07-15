@@ -5,7 +5,6 @@ class Group < ApplicationRecord
   include Attachable
   include Validators
   include InputCleaner
-  include SetDates
   include Categorizable
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]

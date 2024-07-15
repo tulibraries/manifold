@@ -9,7 +9,6 @@ class Space < ApplicationRecord
   include HasPolicies
   include Imageable
   include InputCleaner
-  include SetDates
   include Validators
   include SchemaDotOrgable
   extend FriendlyId

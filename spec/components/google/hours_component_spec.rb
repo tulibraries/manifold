@@ -11,15 +11,19 @@ RSpec.describe Google::HoursComponent, type: :component do
     end
   }
 
+  let(:todays_hours) {
+    VCR.use_cassette("todays_hours", match_requests_on: [:method, :without_api_key]) do
+      Google::SheetsConnector.call(feature: "hours", scope: "charles")
+    end
+  }
+
   describe "loads data" do
-    it "renders results" do
+    it "renders results for hours page" do
       expect(hours.values.size > 0).to be_truthy
     end
-    # it "renders ordered asc by course" do
-    #   page = render_inline(described_class.new(etexts:, title: intro.title, description: intro.description, column: "course", direction: "asc"))
-    #   expect(page.text).to match "AAAS 1253-701"
-    #   expect(page.text).to match "THTR 0907-001"
-    #   page.text.index("AAAS 1253-701").should < page.text.index("THTR 0907-001")
-    # end
+    it "renders results for scoped pages" do
+      binding.pry
+      expect(todays_hours.values.size > 0).to be_truthy
+    end
   end
 end

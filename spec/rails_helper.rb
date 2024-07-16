@@ -188,9 +188,6 @@ RSpec.configure do |config|
           to_return(status: 200, body: file_fixture("recent-videos.json").read, headers: {})
   end
 
-
-  # without_api_key = VCR.request_matchers.uri_without_param(:key)
-
   VCR.configure do |c|
     c.cassette_library_dir = "spec/fixtures/vcr_cassettes"
     c.filter_sensitive_data("<gsheets_key>") { ENV["GOOGLE_SHEETS_API_KEY"] }

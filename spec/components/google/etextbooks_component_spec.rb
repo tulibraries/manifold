@@ -6,7 +6,7 @@ require "vcr"
 RSpec.describe Google::EtextbooksComponent, type: :component do
 
   let(:etexts) {
-    VCR.use_cassette("etexts", match_requests_on: [:method, :without_api_key]) do
+    VCR.use_cassette("etexts") do
       Google::SheetsConnector.call(feature: "etexts")
     end
   }

@@ -63,7 +63,7 @@ RSpec.describe WebpagesController, type: :controller do
     let(:remote_learning) { FactoryBot.create(:webpage, slug: "online-support") }
     let(:webpage) { FactoryBot.create(:webpage, slug: "hsl-intro", categories: [category, category2]) }
     let(:hours) {
-      VCR.use_cassette("todays_hours", match_requests_on: [:method, :without_api_key]) do
+      VCR.use_cassette("todays_hours") do
         Google::SheetsConnector.call(feature: "hours", scope: "charles")
       end
     }

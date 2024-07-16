@@ -6,7 +6,7 @@ require "vcr"
 RSpec.describe Google::HoursComponent, type: :component do
 
   let(:hours) {
-    VCR.use_cassette("hours") do
+    VCR.use_cassette("hours", match_requests_on: [:method, :without_api_key]) do
       Google::SheetsConnector.call(feature: "hours")
     end
   }

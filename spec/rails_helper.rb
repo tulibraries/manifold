@@ -201,6 +201,7 @@ RSpec.configure do |config|
     auth_string = ENV["PANOPTO_API_USER"].to_s + ":" + ENV["PANOPTO_API_KEY"].to_s
     c.filter_sensitive_data("<base64_key_code>") { Base64.encode64(auth_string) }
     c.filter_sensitive_data("<gsheets_key>") { ENV["GOOGLE_SHEETS_API_KEY"] }
+    c.debug_logger = $stdout
   end
 
   config.include ActionText::SystemTestHelper, type: :system

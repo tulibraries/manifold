@@ -5,13 +5,13 @@ require "vcr"
 
 RSpec.describe Google::WeeklyHours, type: :component do
   let(:hours) {
-    VCR.use_cassette("hours", match_requests_on: [:method, :without_api_key]) do
+    VCR.use_cassette("hours") do
       Google::SheetsConnector.call(feature: "hours", scope: "scrc")
     end
   }
 
   let(:weekly_hours) {
-    VCR.use_cassette("weekly_hours", match_requests_on: [:method, :without_api_key]) do
+    VCR.use_cassette("weekly_hours") do
       Google::WeeklyHours.new(hours:, location: "scrc")
     end
   }

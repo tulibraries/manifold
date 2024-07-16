@@ -8,13 +8,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - unknown/0.0.0 google-apis-sheets_v4/0.32.0 Mac OS X/13.3.1 (gzip)
+      - unknown/0.0.0 google-apis-sheets_v4/0.32.0 Mac OS X/14.5 (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Fri, 12 Jul 2024 18:09:31 GMT
+      - Tue, 16 Jul 2024 12:41:09 GMT
       X-Goog-Api-Client:
       - gl-ruby/3.3.0 gdcl/1.32.0
       Content-Type:
@@ -33,7 +33,7 @@ http_interactions:
       Content-Encoding:
       - gzip
       Date:
-      - Fri, 12 Jul 2024 18:09:33 GMT
+      - Tue, 16 Jul 2024 12:41:09 GMT
       Server:
       - ESF
       Cache-Control:
@@ -2914,5 +2914,5 @@ http_interactions:
             }
           ]
         }
-  recorded_at: Fri, 12 Jul 2024 18:09:33 GMT
+  recorded_at: Tue, 16 Jul 2024 12:41:10 GMT
 recorded_with: VCR 6.2.0

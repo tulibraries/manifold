@@ -67,7 +67,7 @@ RSpec.describe "ApplicationFailover", type: :system do
       expect(page).to_not have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
 
-      VCR.use_cassette("hours_today") do
+      VCR.use_cassette("todays_hours") do
         visit(root_path)
       end
 

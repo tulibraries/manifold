@@ -193,7 +193,7 @@ RSpec.configure do |config|
     c.filter_sensitive_data("<gsheets_key>") { ENV["GOOGLE_SHEETS_API_KEY"] }
     c.default_cassette_options = {
       match_requests_on: [:method, VCR.request_matchers.uri_without_param(:key)],
-      record: :new_episodes, erb: true
+      erb: true
     }
     c.hook_into :webmock
     c.configure_rspec_metadata!

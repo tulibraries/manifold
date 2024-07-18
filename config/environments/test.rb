@@ -69,11 +69,6 @@ Rails.application.configure do
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
-  # Hours Sync Test Sheet - So we can retrive test hours into the vcr_cassette
-  config.hours_worksheet = "TESTING"
-  config.hours_spreadsheet_header_cells = "TESTING!A1:O1"
-  config.hours_spreadsheet_date_cells = "TESTING!A2:A"
-
   config.active_record.encryption.key_derivation_salt = "zQ6Q89VAOaJWYc8NrvEL6UHxZYrcIOim"
   config.active_record.encryption.deterministic_key = "AJsXfr2jM9eOmF4Q8nW7I9ZH2vhTjXH2"
   config.active_record.encryption.primary_key = "asj2kl2VsHSuoANX28kh8jRmsleGZw9r"

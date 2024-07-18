@@ -15,7 +15,11 @@ RSpec.feature "TopMenu", type: :request do
       it "lists weighted categories in order" do
         menu_group_category_1.menu_group_id = menu_group.id
         menu_group_category_2.menu_group_id = menu_group.id
-        get root_path
+
+        VCR.use_cassette("todays_hours") do
+          get root_path
+        end
+
         expect(response.body).to match(category_1.name)
         expect(response.body).to match(category_2.name)
         expect(response.body.index(category_2.name)).to be < response.body.index(category_1.name)

@@ -8,7 +8,6 @@ class Service < ApplicationRecord
   include Draftable
   include InputCleaner
   include HasPolicies
-  include SetDates
   include SchemaDotOrgable
 
   extend FriendlyId

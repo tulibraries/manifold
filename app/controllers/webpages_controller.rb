@@ -57,7 +57,7 @@ class WebpagesController < ApplicationController
 
   def etextbooks
     snippet = helpers.etextbooks_snippet
-    etexts = Google::SheetsConnector.call
+    etexts = Google::SheetsConnector.call(feature: "etexts")
     if etexts.present?
       render(Google::EtextbooksComponent.new(etexts:, title: snippet[:title],
                                                       description: snippet[:description],
@@ -69,11 +69,20 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    @todays_hours = LibraryHour.todays_hours_at("charles")
+    @charles_hours = Google::SheetsConnector.call(feature: "hours", scope: "charles")
+    if @charles_hours.present?
+      @hours = Google::TodaysHours.new(hours: @charles_hours)
+    else
+      @hours = ""
+    end
+
     @highlights = Highlight.with_image.where(promoted: true).take(3)
     @featured_events = Event.where(featured: true).order(:start_time).take(3)
     @cta3 = Category.find_by(slug: "computers-printing-technology")
     @cta4 = Category.find_by(slug: "explore-charles")
+  end
+
+  def hours
   end
 
   def scrc

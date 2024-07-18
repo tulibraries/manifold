@@ -1,0 +1,76 @@
+<div class="date-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-3">
+        <h1 class="page-title"><%= title t("manifold.webpages.hours.hours_title") %></h1>
+      </div>
+      <div class="col-12 col-lg-5 text-lg-center date-range">
+          <%= link_to "<-", {controller: :library_hours, action: "index", date: @last_week} %> 
+          <%= @monday.strftime("%b %d, %Y") unless @monday.nil? %> - <%= @sunday.strftime("%b %d, %Y") unless @sunday.nil? %>
+          <%= link_to "->", {controller: :library_hours, action: "index", date: @next_week} %>
+      </div>
+      <div class="col-12 col-lg-4 text-lg-end today-button-container date-picker">
+        <%= form_tag "/hours", method: "get" do %>
+          <%= date_field_tag "date", @date_picker_date, id: "date", name: "date", 
+                                      min: @today, max: 2.years.from_now %>
+          <%= submit_tag "Go" %>
+        <% end %>  
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container hours">
+  <div class="buildings d-none d-lg-block">
+    <% @locations.each do |location| %>
+    <div class="row building-row">
+      <div class="col-12 px-0">
+        <h2 class="red">
+          <%= location_name(location.first.to_s) %>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3"></div>
+        <% 7.times do |date| %>
+        <% if @monday+date == @today %>
+          <div class="col hours-dates today day-of-week text-center">
+        <% else %>
+          <div class="col hours-dates text-center">
+        <% end %>
+            <%= (@monday+date).strftime("%a %d") %> 
+          </div>
+        <% end %> 
+    </div>
+    
+      <% location.second.each do |space, hours| %>
+        <div class="row hours-row">
+          <div class="col-3 px-0"> 
+            <h3><%= location_link(space.to_s) %></h3>
+          </div>
+          <% hours.drop(start_at)
+                     .take(7)
+                     .each do |times| %>
+                      <% if times[0].to_date == @today.to_date %>
+                        <div class="col today">
+                      <% else %>
+                        <div class="col">
+                      <% end %>
+                        <% if times[1].present? && (times[1].downcase == "closed") %>
+                          <span class="closed"><%= times[1] %></span>
+                        <% else %>
+                          <%= times[1] %>
+                        <% end %>
+                      </div>
+          <% end %>
+
+        <% if space == :blockson %>
+          <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
+            <%= t("manifold.hours.blockson_note_html").html_safe %>
+          </div>
+        <% end %>
+        </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

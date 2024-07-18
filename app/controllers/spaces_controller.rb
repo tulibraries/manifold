@@ -20,6 +20,14 @@ class SpacesController < ApplicationController
     @categories = @space.categories
     @model = @space
     serializable_show
+    if @space.hours.present?
+      hours = Google::SheetsConnector.call(feature: "hours", scope: @space.hours)
+      if hours.present?
+        @weekly_hours = Google::WeeklyHours.new(hours:, location: @space)
+      else
+        @weekly_hours = ""
+      end
+    end
   end
 
   def list_item(category)

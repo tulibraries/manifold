@@ -35,16 +35,10 @@
       <%= @building.description if @building.description.present?  %>
 
       <% if @building.hours.present? %>
-        <div class="d-none d-md-block hours-widget mt-3">
+        <div class="d-block hours-widget mt-3">
           <%= render "/application/model_hours" %>
         </div>
-
-        <div class="d-block d-md-none mt-3">
-          <%= render "/application/model_mobile_hours" %>
-        </div>
       <% end %>
-
-
 
       <div class="col-12 col-lg-3 rightside-building">
       <% if @building.policies.present? %>

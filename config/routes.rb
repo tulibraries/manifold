@@ -34,7 +34,6 @@ Rails.application.routes.draw do
     resources :form_infos
     resources :groups
     resources :highlights
-    resources :library_hours
     resources :people
     resources :menu_groups
     resources :policies
@@ -46,12 +45,6 @@ Rails.application.routes.draw do
     resources :webpages
 
     resource :events do
-      member do
-        post :sync
-      end
-    end
-
-    resource :library_hours do
       member do
         post :sync
       end
@@ -102,7 +95,7 @@ Rails.application.routes.draw do
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index]
   resources :alerts_json, only: [:index], path: "/alerts.json"
-  resources :library_hours, only: [:index, :show], as: :hours, path: "/hours"
+  resources :library_hours, only: [:index], as: :hours, path: "/hours"
   resources :persons, only: [:index, :show], as: :people, path: "people", concerns: [:imageable]
   resources :policies, only: [:index, :show]
   resources :services, only: [:index, :show], concerns: [:imageable]

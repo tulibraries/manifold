@@ -1,0 +1,2918 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sheets.googleapis.com/v4/spreadsheets/1IXyE2EgREGvxpVBz_qcDlQovQ-w3BJOgUCfwz8bBtqI/values:batchGet?key=<gsheets_key>&majorDimension=ROWS&ranges=B2:B
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - unknown/0.0.0 google-apis-sheets_v4/0.32.0 Mac OS X/14.5 (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Tue, 16 Jul 2024 12:41:09 GMT
+      X-Goog-Api-Client:
+      - gl-ruby/3.3.0 gdcl/1.32.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Content-Encoding:
+      - gzip
+      Date:
+      - Tue, 16 Jul 2024 12:41:09 GMT
+      Server:
+      - ESF
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      X-L2-Request-Path:
+      - l2-managed-6
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "spreadsheetId": "1IXyE2EgREGvxpVBz_qcDlQovQ-w3BJOgUCfwz8bBtqI",
+          "valueRanges": [
+            {
+              "range": "Hours!A2:A1258",
+              "majorDimension": "ROWS",
+              "values": [
+                [
+                  "Wednesday, May 8, 2024"
+                ],
+                [
+                  "Thursday, May 9, 2024"
+                ],
+                [
+                  "Friday, May 10, 2024"
+                ],
+                [
+                  "Saturday, May 11, 2024"
+                ],
+                [
+                  "Sunday, May 12, 2024"
+                ],
+                [
+                  "Monday, May 13, 2024"
+                ],
+                [
+                  "Tuesday, May 14, 2024"
+                ],
+                [
+                  "Wednesday, May 15, 2024"
+                ],
+                [
+                  "Thursday, May 16, 2024"
+                ],
+                [
+                  "Friday, May 17, 2024"
+                ],
+                [
+                  "Saturday, May 18, 2024"
+                ],
+                [
+                  "Sunday, May 19, 2024"
+                ],
+                [
+                  "Monday, May 20, 2024"
+                ],
+                [
+                  "Tuesday, May 21, 2024"
+                ],
+                [
+                  "Wednesday, May 22, 2024"
+                ],
+                [
+                  "Thursday, May 23, 2024"
+                ],
+                [
+                  "Friday, May 24, 2024"
+                ],
+                [
+                  "Saturday, May 25, 2024"
+                ],
+                [
+                  "Sunday, May 26, 2024"
+                ],
+                [
+                  "Monday, May 27, 2024"
+                ],
+                [
+                  "Tuesday, May 28, 2024"
+                ],
+                [
+                  "Wednesday, May 29, 2024"
+                ],
+                [
+                  "Thursday, May 30, 2024"
+                ],
+                [
+                  "Friday, May 31, 2024"
+                ],
+                [
+                  "Saturday, June 1, 2024"
+                ],
+                [
+                  "Sunday, June 2, 2024"
+                ],
+                [
+                  "Monday, June 3, 2024"
+                ],
+                [
+                  "Tuesday, June 4, 2024"
+                ],
+                [
+                  "Wednesday, June 5, 2024"
+                ],
+                [
+                  "Thursday, June 6, 2024"
+                ],
+                [
+                  "Friday, June 7, 2024"
+                ],
+                [
+                  "Saturday, June 8, 2024"
+                ],
+                [
+                  "Sunday, June 9, 2024"
+                ],
+                [
+                  "Monday, June 10, 2024"
+                ],
+                [
+                  "Tuesday, June 11, 2024"
+                ],
+                [
+                  "Wednesday, June 12, 2024"
+                ],
+                [
+                  "Thursday, June 13, 2024"
+                ],
+                [
+                  "Friday, June 14, 2024"
+                ],
+                [
+                  "Saturday, June 15, 2024"
+                ],
+                [
+                  "Sunday, June 16, 2024"
+                ],
+                [
+                  "Monday, June 17, 2024"
+                ],
+                [
+                  "Tuesday, June 18, 2024"
+                ],
+                [
+                  "Wednesday, June 19, 2024"
+                ],
+                [
+                  "Thursday, June 20, 2024"
+                ],
+                [
+                  "Friday, June 21, 2024"
+                ],
+                [
+                  "Saturday, June 22, 2024"
+                ],
+                [
+                  "Sunday, June 23, 2024"
+                ],
+                [
+                  "Monday, June 24, 2024"
+                ],
+                [
+                  "Tuesday, June 25, 2024"
+                ],
+                [
+                  "Wednesday, June 26, 2024"
+                ],
+                [
+                  "Thursday, June 27, 2024"
+                ],
+                [
+                  "Friday, June 28, 2024"
+                ],
+                [
+                  "Saturday, June 29, 2024"
+                ],
+                [
+                  "Sunday, June 30, 2024"
+                ],
+                [
+                  "Monday, July 1, 2024"
+                ],
+                [
+                  "Tuesday, July 2, 2024"
+                ],
+                [
+                  "Wednesday, July 3, 2024"
+                ],
+                [
+                  "Thursday, July 4, 2024"
+                ],
+                [
+                  "Friday, July 5, 2024"
+                ],
+                [
+                  "Saturday, July 6, 2024"
+                ],
+                [
+                  "Sunday, July 7, 2024"
+                ],
+                [
+                  "Monday, July 8, 2024"
+                ],
+                [
+                  "Tuesday, July 9, 2024"
+                ],
+                [
+                  "Wednesday, July 10, 2024"
+                ],
+                [
+                  "Thursday, July 11, 2024"
+                ],
+                [
+                  "Friday, July 12, 2024"
+                ],
+                [
+                  "Saturday, July 13, 2024"
+                ],
+                [
+                  "Sunday, July 14, 2024"
+                ],
+                [
+                  "Monday, July 15, 2024"
+                ],
+                [
+                  "Tuesday, July 16, 2024"
+                ],
+                [
+                  "Wednesday, July 17, 2024"
+                ],
+                [
+                  "Thursday, July 18, 2024"
+                ],
+                [
+                  "Friday, July 19, 2024"
+                ],
+                [
+                  "Saturday, July 20, 2024"
+                ],
+                [
+                  "Sunday, July 21, 2024"
+                ],
+                [
+                  "Monday, July 22, 2024"
+                ],
+                [
+                  "Tuesday, July 23, 2024"
+                ],
+                [
+                  "Wednesday, July 24, 2024"
+                ],
+                [
+                  "Thursday, July 25, 2024"
+                ],
+                [
+                  "Friday, July 26, 2024"
+                ],
+                [
+                  "Saturday, July 27, 2024"
+                ],
+                [
+                  "Sunday, July 28, 2024"
+                ],
+                [
+                  "Monday, July 29, 2024"
+                ],
+                [
+                  "Tuesday, July 30, 2024"
+                ],
+                [
+                  "Wednesday, July 31, 2024"
+                ],
+                [
+                  "Thursday, August 1, 2024"
+                ],
+                [
+                  "Friday, August 2, 2024"
+                ],
+                [
+                  "Saturday, August 3, 2024"
+                ],
+                [
+                  "Sunday, August 4, 2024"
+                ],
+                [
+                  "Monday, August 5, 2024"
+                ],
+                [
+                  "Tuesday, August 6, 2024"
+                ],
+                [
+                  "Wednesday, August 7, 2024"
+                ],
+                [
+                  "Thursday, August 8, 2024"
+                ],
+                [
+                  "Friday, August 9, 2024"
+                ],
+                [
+                  "Saturday, August 10, 2024"
+                ],
+                [
+                  "Sunday, August 11, 2024"
+                ],
+                [
+                  "Monday, August 12, 2024"
+                ],
+                [
+                  "Tuesday, August 13, 2024"
+                ],
+                [
+                  "Wednesday, August 14, 2024"
+                ],
+                [
+                  "Thursday, August 15, 2024"
+                ],
+                [
+                  "Friday, August 16, 2024"
+                ],
+                [
+                  "Saturday, August 17, 2024"
+                ],
+                [
+                  "Sunday, August 18, 2024"
+                ],
+                [
+                  "Monday, August 19, 2024"
+                ],
+                [
+                  "Tuesday, August 20, 2024"
+                ],
+                [
+                  "Wednesday, August 21, 2024"
+                ],
+                [
+                  "Thursday, August 22, 2024"
+                ],
+                [
+                  "Friday, August 23, 2024"
+                ],
+                [
+                  "Saturday, August 24, 2024"
+                ],
+                [
+                  "Sunday, August 25, 2024"
+                ],
+                [
+                  "Monday, August 26, 2024"
+                ],
+                [
+                  "Tuesday, August 27, 2024"
+                ],
+                [
+                  "Wednesday, August 28, 2024"
+                ],
+                [
+                  "Thursday, August 29, 2024"
+                ],
+                [
+                  "Friday, August 30, 2024"
+                ],
+                [
+                  "Saturday, August 31, 2024"
+                ],
+                [
+                  "Sunday, September 1, 2024"
+                ],
+                [
+                  "Monday, September 2, 2024"
+                ],
+                [
+                  "Tuesday, September 3, 2024"
+                ],
+                [
+                  "Wednesday, September 4, 2024"
+                ],
+                [
+                  "Thursday, September 5, 2024"
+                ],
+                [
+                  "Friday, September 6, 2024"
+                ],
+                [
+                  "Saturday, September 7, 2024"
+                ],
+                [
+                  "Sunday, September 8, 2024"
+                ],
+                [
+                  "Monday, September 9, 2024"
+                ],
+                [
+                  "Tuesday, September 10, 2024"
+                ],
+                [
+                  "Wednesday, September 11, 2024"
+                ],
+                [
+                  "Thursday, September 12, 2024"
+                ],
+                [
+                  "Friday, September 13, 2024"
+                ],
+                [
+                  "Saturday, September 14, 2024"
+                ],
+                [
+                  "Sunday, September 15, 2024"
+                ],
+                [
+                  "Monday, September 16, 2024"
+                ],
+                [
+                  "Tuesday, September 17, 2024"
+                ],
+                [
+                  "Wednesday, September 18, 2024"
+                ],
+                [
+                  "Thursday, September 19, 2024"
+                ],
+                [
+                  "Friday, September 20, 2024"
+                ],
+                [
+                  "Saturday, September 21, 2024"
+                ],
+                [
+                  "Sunday, September 22, 2024"
+                ],
+                [
+                  "Monday, September 23, 2024"
+                ],
+                [
+                  "Tuesday, September 24, 2024"
+                ],
+                [
+                  "Wednesday, September 25, 2024"
+                ],
+                [
+                  "Thursday, September 26, 2024"
+                ],
+                [
+                  "Friday, September 27, 2024"
+                ],
+                [
+                  "Saturday, September 28, 2024"
+                ],
+                [
+                  "Sunday, September 29, 2024"
+                ],
+                [
+                  "Monday, September 30, 2024"
+                ],
+                [
+                  "Tuesday, October 1, 2024"
+                ],
+                [
+                  "Wednesday, October 2, 2024"
+                ],
+                [
+                  "Thursday, October 3, 2024"
+                ],
+                [
+                  "Friday, October 4, 2024"
+                ],
+                [
+                  "Saturday, October 5, 2024"
+                ],
+                [
+                  "Sunday, October 6, 2024"
+                ],
+                [
+                  "Monday, October 7, 2024"
+                ],
+                [
+                  "Tuesday, October 8, 2024"
+                ],
+                [
+                  "Wednesday, October 9, 2024"
+                ],
+                [
+                  "Thursday, October 10, 2024"
+                ],
+                [
+                  "Friday, October 11, 2024"
+                ],
+                [
+                  "Saturday, October 12, 2024"
+                ],
+                [
+                  "Sunday, October 13, 2024"
+                ],
+                [
+                  "Monday, October 14, 2024"
+                ],
+                [
+                  "Tuesday, October 15, 2024"
+                ],
+                [
+                  "Wednesday, October 16, 2024"
+                ],
+                [
+                  "Thursday, October 17, 2024"
+                ],
+                [
+                  "Friday, October 18, 2024"
+                ],
+                [
+                  "Saturday, October 19, 2024"
+                ],
+                [
+                  "Sunday, October 20, 2024"
+                ],
+                [
+                  "Monday, October 21, 2024"
+                ],
+                [
+                  "Tuesday, October 22, 2024"
+                ],
+                [
+                  "Wednesday, October 23, 2024"
+                ],
+                [
+                  "Thursday, October 24, 2024"
+                ],
+                [
+                  "Friday, October 25, 2024"
+                ],
+                [
+                  "Saturday, October 26, 2024"
+                ],
+                [
+                  "Sunday, October 27, 2024"
+                ],
+                [
+                  "Monday, October 28, 2024"
+                ],
+                [
+                  "Tuesday, October 29, 2024"
+                ],
+                [
+                  "Wednesday, October 30, 2024"
+                ],
+                [
+                  "Thursday, October 31, 2024"
+                ],
+                [
+                  "Friday, November 1, 2024"
+                ],
+                [
+                  "Saturday, November 2, 2024"
+                ],
+                [
+                  "Sunday, November 3, 2024"
+                ],
+                [
+                  "Monday, November 4, 2024"
+                ],
+                [
+                  "Tuesday, November 5, 2024"
+                ],
+                [
+                  "Wednesday, November 6, 2024"
+                ],
+                [
+                  "Thursday, November 7, 2024"
+                ],
+                [
+                  "Friday, November 8, 2024"
+                ],
+                [
+                  "Saturday, November 9, 2024"
+                ],
+                [
+                  "Sunday, November 10, 2024"
+                ],
+                [
+                  "Monday, November 11, 2024"
+                ],
+                [
+                  "Tuesday, November 12, 2024"
+                ],
+                [
+                  "Wednesday, November 13, 2024"
+                ],
+                [
+                  "Thursday, November 14, 2024"
+                ],
+                [
+                  "Friday, November 15, 2024"
+                ],
+                [
+                  "Saturday, November 16, 2024"
+                ],
+                [
+                  "Sunday, November 17, 2024"
+                ],
+                [
+                  "Monday, November 18, 2024"
+                ],
+                [
+                  "Tuesday, November 19, 2024"
+                ],
+                [
+                  "Wednesday, November 20, 2024"
+                ],
+                [
+                  "Thursday, November 21, 2024"
+                ],
+                [
+                  "Friday, November 22, 2024"
+                ],
+                [
+                  "Saturday, November 23, 2024"
+                ],
+                [
+                  "Sunday, November 24, 2024"
+                ],
+                [
+                  "Monday, November 25, 2024"
+                ],
+                [
+                  "Tuesday, November 26, 2024"
+                ],
+                [
+                  "Wednesday, November 27, 2024"
+                ],
+                [
+                  "Thursday, November 28, 2024"
+                ],
+                [
+                  "Friday, November 29, 2024"
+                ],
+                [
+                  "Saturday, November 30, 2024"
+                ],
+                [
+                  "Sunday, December 1, 2024"
+                ],
+                [
+                  "Monday, December 2, 2024"
+                ],
+                [
+                  "Tuesday, December 3, 2024"
+                ],
+                [
+                  "Wednesday, December 4, 2024"
+                ],
+                [
+                  "Thursday, December 5, 2024"
+                ],
+                [
+                  "Friday, December 6, 2024"
+                ],
+                [
+                  "Saturday, December 7, 2024"
+                ],
+                [
+                  "Sunday, December 8, 2024"
+                ],
+                [
+                  "Monday, December 9, 2024"
+                ],
+                [
+                  "Tuesday, December 10, 2024"
+                ],
+                [
+                  "Wednesday, December 11, 2024"
+                ],
+                [
+                  "Thursday, December 12, 2024"
+                ],
+                [
+                  "Friday, December 13, 2024"
+                ],
+                [
+                  "Saturday, December 14, 2024"
+                ],
+                [
+                  "Sunday, December 15, 2024"
+                ],
+                [
+                  "Monday, December 16, 2024"
+                ],
+                [
+                  "Tuesday, December 17, 2024"
+                ],
+                [
+                  "Wednesday, December 18, 2024"
+                ],
+                [
+                  "Thursday, December 19, 2024"
+                ],
+                [
+                  "Friday, December 20, 2024"
+                ],
+                [
+                  "Saturday, December 21, 2024"
+                ],
+                [
+                  "Sunday, December 22, 2024"
+                ],
+                [
+                  "Monday, December 23, 2024"
+                ],
+                [
+                  "Tuesday, December 24, 2024"
+                ],
+                [
+                  "Wednesday, December 25, 2024"
+                ],
+                [
+                  "Thursday, December 26, 2024"
+                ],
+                [
+                  "Friday, December 27, 2024"
+                ],
+                [
+                  "Saturday, December 28, 2024"
+                ],
+                [
+                  "Sunday, December 29, 2024"
+                ],
+                [
+                  "Monday, December 30, 2024"
+                ],
+                [
+                  "Tuesday, December 31, 2024"
+                ],
+                [
+                  "Wednesday, January 1, 2025"
+                ],
+                [
+                  "Thursday, January 2, 2025"
+                ],
+                [
+                  "Friday, January 3, 2025"
+                ],
+                [
+                  "Saturday, January 4, 2025"
+                ],
+                [
+                  "Sunday, January 5, 2025"
+                ],
+                [
+                  "Monday, January 6, 2025"
+                ],
+                [
+                  "Tuesday, January 7, 2025"
+                ],
+                [
+                  "Wednesday, January 8, 2025"
+                ],
+                [
+                  "Thursday, January 9, 2025"
+                ],
+                [
+                  "Friday, January 10, 2025"
+                ],
+                [
+                  "Saturday, January 11, 2025"
+                ],
+                [
+                  "Sunday, January 12, 2025"
+                ],
+                [
+                  "Monday, January 13, 2025"
+                ],
+                [
+                  "Tuesday, January 14, 2025"
+                ],
+                [
+                  "Wednesday, January 15, 2025"
+                ],
+                [
+                  "Thursday, January 16, 2025"
+                ],
+                [
+                  "Friday, January 17, 2025"
+                ],
+                [
+                  "Saturday, January 18, 2025"
+                ],
+                [
+                  "Sunday, January 19, 2025"
+                ],
+                [
+                  "Monday, January 20, 2025"
+                ],
+                [
+                  "Tuesday, January 21, 2025"
+                ],
+                [
+                  "Wednesday, January 22, 2025"
+                ],
+                [
+                  "Thursday, January 23, 2025"
+                ],
+                [
+                  "Friday, January 24, 2025"
+                ],
+                [
+                  "Saturday, January 25, 2025"
+                ],
+                [
+                  "Sunday, January 26, 2025"
+                ],
+                [
+                  "Monday, January 27, 2025"
+                ],
+                [
+                  "Tuesday, January 28, 2025"
+                ],
+                [
+                  "Wednesday, January 29, 2025"
+                ],
+                [
+                  "Thursday, January 30, 2025"
+                ],
+                [
+                  "Friday, January 31, 2025"
+                ],
+                [
+                  "Saturday, February 1, 2025"
+                ],
+                [
+                  "Sunday, February 2, 2025"
+                ],
+                [
+                  "Monday, February 3, 2025"
+                ],
+                [
+                  "Tuesday, February 4, 2025"
+                ],
+                [
+                  "Wednesday, February 5, 2025"
+                ],
+                [
+                  "Thursday, February 6, 2025"
+                ],
+                [
+                  "Friday, February 7, 2025"
+                ],
+                [
+                  "Saturday, February 8, 2025"
+                ],
+                [
+                  "Sunday, February 9, 2025"
+                ],
+                [
+                  "Monday, February 10, 2025"
+                ],
+                [
+                  "Tuesday, February 11, 2025"
+                ],
+                [
+                  "Wednesday, February 12, 2025"
+                ],
+                [
+                  "Thursday, February 13, 2025"
+                ],
+                [
+                  "Friday, February 14, 2025"
+                ],
+                [
+                  "Saturday, February 15, 2025"
+                ],
+                [
+                  "Sunday, February 16, 2025"
+                ],
+                [
+                  "Monday, February 17, 2025"
+                ],
+                [
+                  "Tuesday, February 18, 2025"
+                ],
+                [
+                  "Wednesday, February 19, 2025"
+                ],
+                [
+                  "Thursday, February 20, 2025"
+                ],
+                [
+                  "Friday, February 21, 2025"
+                ],
+                [
+                  "Saturday, February 22, 2025"
+                ],
+                [
+                  "Sunday, February 23, 2025"
+                ],
+                [
+                  "Monday, February 24, 2025"
+                ],
+                [
+                  "Tuesday, February 25, 2025"
+                ],
+                [
+                  "Wednesday, February 26, 2025"
+                ],
+                [
+                  "Thursday, February 27, 2025"
+                ],
+                [
+                  "Friday, February 28, 2025"
+                ],
+                [
+                  "Saturday, March 1, 2025"
+                ],
+                [
+                  "Sunday, March 2, 2025"
+                ],
+                [
+                  "Monday, March 3, 2025"
+                ],
+                [
+                  "Tuesday, March 4, 2025"
+                ],
+                [
+                  "Wednesday, March 5, 2025"
+                ],
+                [
+                  "Thursday, March 6, 2025"
+                ],
+                [
+                  "Friday, March 7, 2025"
+                ],
+                [
+                  "Saturday, March 8, 2025"
+                ],
+                [
+                  "Sunday, March 9, 2025"
+                ],
+                [
+                  "Monday, March 10, 2025"
+                ],
+                [
+                  "Tuesday, March 11, 2025"
+                ],
+                [
+                  "Wednesday, March 12, 2025"
+                ],
+                [
+                  "Thursday, March 13, 2025"
+                ],
+                [
+                  "Friday, March 14, 2025"
+                ],
+                [
+                  "Saturday, March 15, 2025"
+                ],
+                [
+                  "Sunday, March 16, 2025"
+                ],
+                [
+                  "Monday, March 17, 2025"
+                ],
+                [
+                  "Tuesday, March 18, 2025"
+                ],
+                [
+                  "Wednesday, March 19, 2025"
+                ],
+                [
+                  "Thursday, March 20, 2025"
+                ],
+                [
+                  "Friday, March 21, 2025"
+                ],
+                [
+                  "Saturday, March 22, 2025"
+                ],
+                [
+                  "Sunday, March 23, 2025"
+                ],
+                [
+                  "Monday, March 24, 2025"
+                ],
+                [
+                  "Tuesday, March 25, 2025"
+                ],
+                [
+                  "Wednesday, March 26, 2025"
+                ],
+                [
+                  "Thursday, March 27, 2025"
+                ],
+                [
+                  "Friday, March 28, 2025"
+                ],
+                [
+                  "Saturday, March 29, 2025"
+                ],
+                [
+                  "Sunday, March 30, 2025"
+                ],
+                [
+                  "Monday, March 31, 2025"
+                ],
+                [
+                  "Tuesday, April 1, 2025"
+                ],
+                [
+                  "Wednesday, April 2, 2025"
+                ],
+                [
+                  "Thursday, April 3, 2025"
+                ],
+                [
+                  "Friday, April 4, 2025"
+                ],
+                [
+                  "Saturday, April 5, 2025"
+                ],
+                [
+                  "Sunday, April 6, 2025"
+                ],
+                [
+                  "Monday, April 7, 2025"
+                ],
+                [
+                  "Tuesday, April 8, 2025"
+                ],
+                [
+                  "Wednesday, April 9, 2025"
+                ],
+                [
+                  "Thursday, April 10, 2025"
+                ],
+                [
+                  "Friday, April 11, 2025"
+                ],
+                [
+                  "Saturday, April 12, 2025"
+                ],
+                [
+                  "Sunday, April 13, 2025"
+                ],
+                [
+                  "Monday, April 14, 2025"
+                ],
+                [
+                  "Tuesday, April 15, 2025"
+                ],
+                [
+                  "Wednesday, April 16, 2025"
+                ],
+                [
+                  "Thursday, April 17, 2025"
+                ],
+                [
+                  "Friday, April 18, 2025"
+                ],
+                [
+                  "Saturday, April 19, 2025"
+                ],
+                [
+                  "Sunday, April 20, 2025"
+                ],
+                [
+                  "Monday, April 21, 2025"
+                ],
+                [
+                  "Tuesday, April 22, 2025"
+                ],
+                [
+                  "Wednesday, April 23, 2025"
+                ],
+                [
+                  "Thursday, April 24, 2025"
+                ],
+                [
+                  "Friday, April 25, 2025"
+                ],
+                [
+                  "Saturday, April 26, 2025"
+                ],
+                [
+                  "Sunday, April 27, 2025"
+                ],
+                [
+                  "Monday, April 28, 2025"
+                ],
+                [
+                  "Tuesday, April 29, 2025"
+                ],
+                [
+                  "Wednesday, April 30, 2025"
+                ],
+                [
+                  "Thursday, May 1, 2025"
+                ],
+                [
+                  "Friday, May 2, 2025"
+                ],
+                [
+                  "Saturday, May 3, 2025"
+                ],
+                [
+                  "Sunday, May 4, 2025"
+                ],
+                [
+                  "Monday, May 5, 2025"
+                ],
+                [
+                  "Tuesday, May 6, 2025"
+                ],
+                [
+                  "Wednesday, May 7, 2025"
+                ],
+                [
+                  "Thursday, May 8, 2025"
+                ],
+                [
+                  "Friday, May 9, 2025"
+                ],
+                [
+                  "Saturday, May 10, 2025"
+                ],
+                [
+                  "Sunday, May 11, 2025"
+                ],
+                [
+                  "Monday, May 12, 2025"
+                ],
+                [
+                  "Tuesday, May 13, 2025"
+                ],
+                [
+                  "Wednesday, May 14, 2025"
+                ],
+                [
+                  "Thursday, May 15, 2025"
+                ],
+                [
+                  "Friday, May 16, 2025"
+                ],
+                [
+                  "Saturday, May 17, 2025"
+                ],
+                [
+                  "Sunday, May 18, 2025"
+                ],
+                [
+                  "Monday, May 19, 2025"
+                ],
+                [
+                  "Tuesday, May 20, 2025"
+                ],
+                [
+                  "Wednesday, May 21, 2025"
+                ],
+                [
+                  "Thursday, May 22, 2025"
+                ],
+                [
+                  "Friday, May 23, 2025"
+                ],
+                [
+                  "Saturday, May 24, 2025"
+                ],
+                [
+                  "Sunday, May 25, 2025"
+                ],
+                [
+                  "Monday, May 26, 2025"
+                ],
+                [
+                  "Tuesday, May 27, 2025"
+                ],
+                [
+                  "Wednesday, May 28, 2025"
+                ],
+                [
+                  "Thursday, May 29, 2025"
+                ],
+                [
+                  "Friday, May 30, 2025"
+                ],
+                [
+                  "Saturday, May 31, 2025"
+                ],
+                [
+                  "Sunday, June 1, 2025"
+                ],
+                [
+                  "Monday, June 2, 2025"
+                ],
+                [
+                  "Tuesday, June 3, 2025"
+                ],
+                [
+                  "Wednesday, June 4, 2025"
+                ],
+                [
+                  "Thursday, June 5, 2025"
+                ],
+                [
+                  "Friday, June 6, 2025"
+                ],
+                [
+                  "Saturday, June 7, 2025"
+                ],
+                [
+                  "Sunday, June 8, 2025"
+                ],
+                [
+                  "Monday, June 9, 2025"
+                ],
+                [
+                  "Tuesday, June 10, 2025"
+                ],
+                [
+                  "Wednesday, June 11, 2025"
+                ],
+                [
+                  "Thursday, June 12, 2025"
+                ],
+                [
+                  "Friday, June 13, 2025"
+                ],
+                [
+                  "Saturday, June 14, 2025"
+                ],
+                [
+                  "Sunday, June 15, 2025"
+                ],
+                [
+                  "Monday, June 16, 2025"
+                ],
+                [
+                  "Tuesday, June 17, 2025"
+                ],
+                [
+                  "Wednesday, June 18, 2025"
+                ],
+                [
+                  "Thursday, June 19, 2025"
+                ],
+                [
+                  "Friday, June 20, 2025"
+                ],
+                [
+                  "Saturday, June 21, 2025"
+                ],
+                [
+                  "Sunday, June 22, 2025"
+                ],
+                [
+                  "Monday, June 23, 2025"
+                ],
+                [
+                  "Tuesday, June 24, 2025"
+                ],
+                [
+                  "Wednesday, June 25, 2025"
+                ],
+                [
+                  "Thursday, June 26, 2025"
+                ],
+                [
+                  "Friday, June 27, 2025"
+                ],
+                [
+                  "Saturday, June 28, 2025"
+                ],
+                [
+                  "Sunday, June 29, 2025"
+                ],
+                [
+                  "Monday, June 30, 2025"
+                ],
+                [
+                  "Tuesday, July 1, 2025"
+                ],
+                [
+                  "Wednesday, July 2, 2025"
+                ],
+                [
+                  "Thursday, July 3, 2025"
+                ],
+                [
+                  "Friday, July 4, 2025"
+                ],
+                [
+                  "Saturday, July 5, 2025"
+                ],
+                [
+                  "Sunday, July 6, 2025"
+                ],
+                [
+                  "Monday, July 7, 2025"
+                ],
+                [
+                  "Tuesday, July 8, 2025"
+                ],
+                [
+                  "Wednesday, July 9, 2025"
+                ],
+                [
+                  "Thursday, July 10, 2025"
+                ],
+                [
+                  "Friday, July 11, 2025"
+                ],
+                [
+                  "Saturday, July 12, 2025"
+                ],
+                [
+                  "Sunday, July 13, 2025"
+                ],
+                [
+                  "Monday, July 14, 2025"
+                ],
+                [
+                  "Tuesday, July 15, 2025"
+                ],
+                [
+                  "Wednesday, July 16, 2025"
+                ],
+                [
+                  "Thursday, July 17, 2025"
+                ],
+                [
+                  "Friday, July 18, 2025"
+                ],
+                [
+                  "Saturday, July 19, 2025"
+                ],
+                [
+                  "Sunday, July 20, 2025"
+                ],
+                [
+                  "Monday, July 21, 2025"
+                ],
+                [
+                  "Tuesday, July 22, 2025"
+                ],
+                [
+                  "Wednesday, July 23, 2025"
+                ],
+                [
+                  "Thursday, July 24, 2025"
+                ],
+                [
+                  "Friday, July 25, 2025"
+                ],
+                [
+                  "Saturday, July 26, 2025"
+                ],
+                [
+                  "Sunday, July 27, 2025"
+                ],
+                [
+                  "Monday, July 28, 2025"
+                ],
+                [
+                  "Tuesday, July 29, 2025"
+                ],
+                [
+                  "Wednesday, July 30, 2025"
+                ],
+                [
+                  "Thursday, July 31, 2025"
+                ],
+                [
+                  "Friday, August 1, 2025"
+                ],
+                [
+                  "Saturday, August 2, 2025"
+                ],
+                [
+                  "Sunday, August 3, 2025"
+                ],
+                [
+                  "Monday, August 4, 2025"
+                ],
+                [
+                  "Tuesday, August 5, 2025"
+                ],
+                [
+                  "Wednesday, August 6, 2025"
+                ],
+                [
+                  "Thursday, August 7, 2025"
+                ],
+                [
+                  "Friday, August 8, 2025"
+                ],
+                [
+                  "Saturday, August 9, 2025"
+                ],
+                [
+                  "Sunday, August 10, 2025"
+                ],
+                [
+                  "Monday, August 11, 2025"
+                ],
+                [
+                  "Tuesday, August 12, 2025"
+                ],
+                [
+                  "Wednesday, August 13, 2025"
+                ],
+                [
+                  "Thursday, August 14, 2025"
+                ],
+                [
+                  "Friday, August 15, 2025"
+                ],
+                [
+                  "Saturday, August 16, 2025"
+                ],
+                [
+                  "Sunday, August 17, 2025"
+                ],
+                [
+                  "Monday, August 18, 2025"
+                ],
+                [
+                  "Tuesday, August 19, 2025"
+                ],
+                [
+                  "Wednesday, August 20, 2025"
+                ],
+                [
+                  "Thursday, August 21, 2025"
+                ],
+                [
+                  "Friday, August 22, 2025"
+                ],
+                [
+                  "Saturday, August 23, 2025"
+                ],
+                [
+                  "Sunday, August 24, 2025"
+                ]
+              ]
+            },
+            {
+              "range": "Hours!B2:B1258",
+              "majorDimension": "ROWS",
+              "values": [
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 8:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "12:00 pm - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 2:00 am"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "9:00 am - 5:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 6:00 pm"
+                ],
+                [
+                  "8:00 am - 5:00 pm"
+                ],
+                [
+                  "CLOSED"
+                ],
+                [
+                  "CLOSED"
+                ]
+              ]
+            }
+          ]
+        }
+  recorded_at: Tue, 16 Jul 2024 12:41:10 GMT
+recorded_with: VCR 6.2.0

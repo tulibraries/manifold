@@ -22,7 +22,11 @@ RSpec.describe "ApplicationFailover", type: :system do
       check("application_failover[turn_on]")
       expect(page).to have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
-      visit(root_path)
+
+      VCR.use_cassette("todays_hours") do
+        visit(root_path)
+      end
+
       expect(find("form#failover-desktop-search-form")["action"]).to_not match(I18n.t("manifold.default.search_url"))
       expect(find("form#failover-desktop-search-form")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
     end
@@ -32,7 +36,11 @@ RSpec.describe "ApplicationFailover", type: :system do
       check("application_failover[turn_on]")
       expect(page).to have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
-      visit(hours_path)
+
+      VCR.use_cassette("hours") do
+        visit(hours_path)
+      end
+
       expect(find("form#failover-global-search")["action"]).to_not match(I18n.t("manifold.default.search_url"))
       expect(find("form#failover-global-search")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
     end
@@ -42,7 +50,11 @@ RSpec.describe "ApplicationFailover", type: :system do
       check("application_failover[turn_on]")
       expect(page).to have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
-      visit(hours_path)
+
+      VCR.use_cassette("hours") do
+        visit(hours_path)
+      end
+
       expect(find("form#failover-global-mobile-search-form")["action"]).to_not match(I18n.t("manifold.default.search_url"))
       expect(find("form#failover-global-mobile-search-form")["action"]).to match(I18n.t("manifold.default.alternate_search_url"))
     end
@@ -54,7 +66,11 @@ RSpec.describe "ApplicationFailover", type: :system do
       visit("/admin/application_failovers/#{@failover.id}/edit")
       expect(page).to_not have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
-      visit(root_path)
+
+      VCR.use_cassette("todays_hours") do
+        visit(root_path)
+      end
+
       expect(find("form#desktop-search-form")["action"]).to match(I18n.t("manifold.default.search_url"))
       expect(find("form#desktop-search-form")["action"]).to_not match(I18n.t("manifold.default.alternate_search_url"))
     end
@@ -63,7 +79,11 @@ RSpec.describe "ApplicationFailover", type: :system do
       visit("/admin/application_failovers/#{@failover.id}/edit")
       expect(page).to_not have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
-      visit(hours_path)
+
+      VCR.use_cassette("hours") do
+        visit(hours_path)
+      end
+
       expect(find("form#global-search")["action"]).to match(I18n.t("manifold.default.search_url"))
       expect(find("form#global-search")["action"]).to_not match(I18n.t("manifold.default.alternate_search_url"))
     end
@@ -72,7 +92,11 @@ RSpec.describe "ApplicationFailover", type: :system do
       visit("/admin/application_failovers/#{@failover.id}/edit")
       expect(page).to_not have_checked_field("application_failover[turn_on]")
       click_button("Update Application failover")
-      visit(hours_path)
+
+      VCR.use_cassette("hours") do
+        visit(hours_path)
+      end
+
       expect(find("form#mobile-search-form")["action"]).to match(I18n.t("manifold.default.search_url"))
       expect(find("form#mobile-search-form")["action"]).to_not match(I18n.t("manifold.default.alternate_search_url"))
     end

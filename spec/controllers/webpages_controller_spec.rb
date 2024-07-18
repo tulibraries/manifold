@@ -62,6 +62,11 @@ RSpec.describe WebpagesController, type: :controller do
     let(:study_room) { FactoryBot.create(:external_link, slug: "hsl-study-rooms") }
     let(:remote_learning) { FactoryBot.create(:webpage, slug: "online-support") }
     let(:webpage) { FactoryBot.create(:webpage, slug: "hsl-intro", categories: [category, category2]) }
+    let(:hours) {
+      VCR.use_cassette("todays_hours") do
+        Google::SheetsConnector.call(feature: "hours", scope: "charles")
+      end
+    }
 
     it "returns a success response" do
       get :hsl
@@ -70,15 +75,16 @@ RSpec.describe WebpagesController, type: :controller do
   end
 
   describe "GET #home" do
-    let!(:todays_hours) { FactoryBot.create(:library_hour) }
     let!(:highlights) { FactoryBot.create(:highlight, promoted: true) }
     let!(:featured_events) { nil }
     let!(:cta3) { FactoryBot.create(:category, slug: "computers-printing-technology") }
     let!(:cta4) { FactoryBot.create(:category, slug: "explore-charles") }
 
     it "returns a success response" do
-      get :home
-      expect(response).to be_successful
+      VCR.use_cassette("todays_hours") do
+        get :home
+        expect(response).to be_successful
+      end
     end
   end
 

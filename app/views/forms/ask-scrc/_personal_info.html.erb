@@ -1,9 +1,0 @@
-<%= f.input :name, label: t("manifolds.forms.fields.name"), required: true %>
-<%= f.input :email, as: :email, label: t("manifolds.forms.fields.email"), required: true %>
-<%= f.input :phone, as: :tel, label: t("manifold.forms.fields.phone_number"), required: true %>
-<%= f.input :affiliation, as: :radio_buttons, 
-            label: t("manifold.forms.fields.temple_affiliation_label"), 
-            collection: t("manifold.forms.fields.temple_affiliation_array")
-                        .merge(t("manifold.forms.fields.non_temple_affiliation_array"))
-                        .map{ |k,v| v }, 
-            required: true %>

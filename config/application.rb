@@ -45,8 +45,9 @@ module Manifold
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]
 
     config.hours_spreadsheet_id = "1IXyE2EgREGvxpVBz_qcDlQovQ-w3BJOgUCfwz8bBtqI"
-    config.hours_spreadsheet_date_cells = "A2:Q"
-    config.hours_worksheet = "Hours"
+    # config.hours_spreadsheet_id = "1eJV8KLurTHW5e0Nb5Zvtk03R8PIGljBM0GqO8bU_1a4"
+    config.hours_spreadsheet_date_cells = "A2:R"
+    config.hours_worksheet = "TESTING"
     config.hours_today = "today!A2:A2"
     config.hours_worksheet_date_column = "A2:A"
     config.hours_worksheet_charles = "B2:B"

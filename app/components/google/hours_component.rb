@@ -29,7 +29,7 @@ class Google::HoursComponent < ViewComponent::Base
         podiatry: @date_range.zip(hours.map { |h| h[13] }),
         innovation: @date_range.zip(hours.map { |h| h[14] }),
         "24-7": @date_range.zip(hours.map { |h| h[15] }),
-        exhibits: @date_range.zip(hours.map { |h| h[16] })
+        exhibits: @date_range.zip(hours.map { |h| h[17] })
       }
       locations = {
         charles: { charles: spaces[:charles],

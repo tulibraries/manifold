@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_16_200354) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_24_152952) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -381,15 +381,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_200354) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "link_label"
     t.string "slug"
-  end
-
-  create_table "library_hours", force: :cascade do |t|
-    t.string "location"
-    t.datetime "date", precision: nil
-    t.string "hours"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "location_id"
   end
 
   create_table "members", force: :cascade do |t|

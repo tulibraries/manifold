@@ -21,6 +21,8 @@ RUN apk add -U --no-cache \
     apk add -U --no-cache --virtual build-dependencies \
       git=2.45.2-r0 \
       build-base=0.5-r3 \
+      libjpeg=9e-r1 \
+      jpeg-dev=9e-r1 \
       libjpeg-turbo-dev=3.0.3-r0 \
       libxslt-dev=1.1.39-r1 \
       postgresql16-dev=16.3-r0 \

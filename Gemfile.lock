@@ -389,6 +389,7 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
+    observer (0.1.2)
     okcomputer (1.18.5)
     omniauth (2.1.2)
       hashie (>= 3.4.6)
@@ -418,6 +419,7 @@ GEM
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
+    pkg-config (1.5.6)
     popper_js (2.11.8)
     populate (0.0.2)
       activerecord (>= 3.1.0)
@@ -500,6 +502,9 @@ GEM
     retriable (3.1.2)
     rexml (3.3.2)
       strscan
+    rmagick (6.0.1)
+      observer (~> 0.1)
+      pkg-config (~> 1.4)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -742,6 +747,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-erd
   rexml (~> 3.3.2)
+  rmagick
   rspec-activemodel-mocks
   rspec-rails
   rswag-api

@@ -56,6 +56,7 @@ gem "puma", "~> 6.4.2"
 gem "rexml", "~> 3.3.2"
 gem "rswag-api"
 gem "rswag-ui"
+gem "rmagick"
 gem "simple_form"
 gem "sitemap_generator"
 gem "sprockets-rails"
@@ -72,10 +73,6 @@ group :development, :test do
   gem "json-schema"
   gem "pry-rails"
   gem "pry-byebug"
-  gem "rubocop", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-rspec", require: false
-  gem "vcr"
 end
 
 group :development do
@@ -83,6 +80,9 @@ group :development do
   gem "faker"
   gem "populate"
   gem "rails-erd"
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
   gem "spring"
   gem "spring-watcher-listen", "~> 2.1.0"
   gem "web-console", ">= 3.3.0"
@@ -103,6 +103,7 @@ group :test do
   gem "webmock"
   gem "launchy"
   gem "shoulda-matchers", "~> 6.2"
+  gem "vcr"
 end
 
 group :production do

@@ -80,6 +80,5 @@ module Manifold
 
     # temporary Link Exchanger redirects
     config.link_exchange = config_for(:link_exchange)
-
   end
 end

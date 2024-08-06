@@ -77,5 +77,9 @@ module Manifold
 
     config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "true"
     config.sync_timeout = ENV.fetch("MANIFOLD_SYNC_TIMEOUT", "180").to_i
+
+    # temporary Link Exchanger redirects
+    config.link_exchange = config_for(:link_exchange)
+
   end
 end

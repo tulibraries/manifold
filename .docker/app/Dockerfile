@@ -13,6 +13,10 @@ ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
 RUN apk add -U --no-cache \
       bash=5.2.26-r0 \
       imagemagick=7.1.1.32-r2 \
+      imagemagick-jpeg=7.1.1.32-r2 \
+      imagemagick-libs=7.1.1.32-r2 \
+      libjpeg-turbo=3.0.3-r0 \
+      musl=1.2.5-r0 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.39-r1 \
       postgresql16-client=16.3-r0 \
@@ -24,7 +28,6 @@ RUN apk add -U --no-cache \
       libjpeg=9e-r1 \
       jpeg-dev=9e-r1 \
       libjpeg-turbo-dev=3.0.3-r0 \
-      imagemagick-jpeg=7.1.1.32-r2 \
       libxslt-dev=1.1.39-r1 \
       postgresql16-dev=16.3-r0 \
       nodejs=20.15.1-r0 \

@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe FindingAidsController, type: :controller do
+RSpec.describe FindingAidsController, type: :controller, skip: "[TODO] Remove - Redirecting /finding-aids"  do
 
   let(:finding_aid) { FactoryBot.create(:finding_aid) }
 

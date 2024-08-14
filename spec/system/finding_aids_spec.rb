@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "FindingAids", type: :system do
+RSpec.describe "FindingAids", type: :system, skip: "[TODO] Remove - Redirecting /finding-aids" do
   context "Finding Aids Home Page" do
     before(:all) do
       @account = FactoryBot.create(:account, admin: true)

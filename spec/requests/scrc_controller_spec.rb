@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe ScrcController, type: :request do
 
-  describe "request for a path that is a finding aid" do
+  describe "request for a path that is a finding aid", skip: "[TODO] Remove - Redirecting /finding-aids" do
     let(:finding_aid) { FactoryBot.create(:finding_aid) }
     it "redirects to the finding aid controller" do
       get "/scrc/#{finding_aid.path}"
@@ -12,7 +12,7 @@ RSpec.describe ScrcController, type: :request do
     end
   end
 
-  describe "request for a path that is a redirect" do
+  describe "request for a path that is a redirect", skip: "[TODO] Remove - Redirecting /finding-aids" do
     let(:redirect) { FactoryBot.create(:entity_redirect) }
     it "redirects to the the expected redirect" do
       get redirect.legacy_path

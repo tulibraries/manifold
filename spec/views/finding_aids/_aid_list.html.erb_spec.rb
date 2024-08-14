@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe "app/views/finding_aids/_aid_list.html.erb", type: :view do
+RSpec.describe "app/views/finding_aids/_aid_list.html.erb", type: :view, skip: "[TODO] Remove - Redirecting /finding-aids" do
 
   context "A finding aid without a name is present (not allowed anymore)" do
     it "does not error out" do

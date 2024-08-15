@@ -500,7 +500,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     retriable (3.1.2)
-    rexml (3.3.4)
+    rexml (3.3.5)
       strscan
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
@@ -743,7 +743,7 @@ DEPENDENCIES
   rails (~> 7.0.8.1)
   rails-controller-testing
   rails-erd
-  rexml (~> 3.3.4)
+  rexml (~> 3.3.5)
   rspec-activemodel-mocks
   rspec-rails
   rswag-api

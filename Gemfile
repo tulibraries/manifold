@@ -102,7 +102,7 @@ group :test do
   gem "simplecov-lcov"
   gem "webmock"
   gem "launchy"
-  gem "shoulda-matchers", "~> 6.3"
+  gem "shoulda-matchers", "~> 6.4"
 end
 
 group :production do

@@ -2,7 +2,10 @@
 
 class ErrorsController < ApplicationController
   def not_found
-    render status: :not_found
+    respond_to do |format|
+      format.html { render "not_found", status: :not_found }
+      format.all { render plain: t("manifold.error.not_found_text_html") , status: :not_found }
+    end
   end
 
   def internal_server_error

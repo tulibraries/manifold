@@ -73,4 +73,49 @@
         <% end %>
     <% end %>
   </div>
+
+  <div class="mobile-buildings d-block d-lg-none">
+    <% @locations.each do |location| %>
+
+    <div class="row building-row">
+      <div class="col-12">
+        <h2 class="red">
+          <%= location_name(location.first.to_s) %>
+        </h2>
+      </div>
+    </div>
+
+    <% location.second.each do |space, hours| %>
+    <div class="row hours-row">
+      <div class="col-12"> 
+        <h3><%= location_link(space.to_s) %></h3>
+      </div>
+      <% hours.drop(start_at)
+                  .take(7)
+                  .each_with_index do |times, index| %>
+                    <% if times[0].to_date == @today.to_date %>
+                      <div class="col-12 today">
+                    <% else %>
+                      <div class="col-12">
+                    <% end %>
+                      <div class="row hours-fix">
+                        <div class="col-4"><%= (@monday+index).strftime("%a, %b %d") %></div>
+                      <% if times[1].present? && (times[1].downcase == "closed") %>
+                        <div class="col-8"><span class="closed"><%= times[1] %></span></div>
+                      <% else %>
+                        <div class="col-8"><%= times[1] %></div>
+                      <% end %>
+                    </div>
+                  </div>
+      <% end %>
+
+    <% if space == :blockson %>
+      <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
+        <%= t("manifold.hours.blockson_note_html").html_safe %>
+      </div>
+    <% end %>
+        </div>
+        <% end %>
+    <% end %>
+  </div>
 </div>

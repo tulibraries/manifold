@@ -111,7 +111,6 @@ Rails.application.routes.draw do
   end
 
   controller :finding_aids do
-    get "finding_aids" => :index
     get "finding_aids/:id" => :show
     get "finding-aids/:id" => :show
     get "finding_aids.json", to: redirect("assets/cache/finding_aids.json")

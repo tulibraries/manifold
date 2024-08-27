@@ -979,6 +979,7 @@ en:
         text: Text
         search_faqs_html: Search<br />FAQs
         special_collections_html: Special<br />Collections
+        special_collections_link: https://answers.library.temple.edu/form?queue_id=835
         feedback_html: Give Us Your<br />Feedback
         chat_label: Chat Us 24/7
         chat_id: libchat_62e4dcbf0881db4f1514b077fbfd45b7

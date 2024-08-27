@@ -67,7 +67,6 @@
     color: $black;
     border: solid $foamgreen 1px;
     position: relative;
-    top: -8px;
     @-moz-document url-prefix() {
       @media (max-width: 1190px) {
         top: 5px;

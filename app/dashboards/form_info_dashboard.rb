@@ -21,6 +21,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
       collection: Rails.configuration.form_groupings,
       include_blank: true
       ),
+    enabled: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -32,6 +33,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     title
+    enabled
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,6 +41,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     title
     recipients
+    enabled
     created_at
     updated_at
   ].freeze
@@ -52,6 +55,7 @@ class FormInfoDashboard < Administrate::BaseDashboard
     intro
     recipients
     grouping
+    enabled
   ].freeze
 
   # COLLECTION_FILTERS

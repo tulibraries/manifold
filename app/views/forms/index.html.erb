@@ -37,7 +37,7 @@
       <ul class="list-unstyled ml-3">
         <% group[1].each do |form| %>
         <li>
-          <%= link_to form.title, form_path(form.slug) %>
+          <%= link_to form.title, form_path(form.slug) if form.enabled %>
         </li>
         <% end %>
       </ul>

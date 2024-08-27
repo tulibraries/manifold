@@ -18,6 +18,20 @@ RSpec.describe FormInfo, type: :model do
     end
   end
 
+  describe "enable form" do
+    let(:form_info) { FactoryBot.build(:form_info) }
+    it "is is enabled by default" do
+      expect(form_info.enabled).to be
+    end
+  end
+
+  describe "disaable form" do
+    let(:form_info) { FactoryBot.build(:form_info, :disabled) }
+    it "is is enabled by default" do
+      expect(form_info.enabled).to_not be
+    end
+  end
+
   describe "for index scope" do
     not_grouped = FormInfo.create!(title: "Not grouped", slug: "not-grouped", recipients: ["library@temple.edu"], grouping: nil)
     grouped = FormInfo.create!(title: "Grouped", slug: "grouped", recipients: ["library@temple.edu"], grouping: "Administrative Services")

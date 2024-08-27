@@ -18,11 +18,15 @@ class FormsController < ApplicationController
     if existing_forms.include? params[:id]
       @type = params[:id]
       info = FormInfo.find_by(slug: @type)
-      if info.present?
-        @title = info.title
-        @intro = info.intro
-        @recipients = info.recipients
-      end
+      if info.enabled 
+        if info.present?
+          @title = info.title
+          @intro = info.intro
+          @recipients = info.recipients
+        end
+      else
+        render "errors/not_found", status: :not_found
+      end  
     else
       render "errors/not_found", status: :not_found
     end

@@ -6,9 +6,14 @@ FactoryBot.define do
     slug { "form-information" }
     recipients { ["test@test.com"] }
     grouping { nil }
+    enabled { true }
 
     trait :no_recipient do
       recipients { [""] }
+    end
+
+    trait :disabled do
+      enabled{ false }
     end
   end
 end

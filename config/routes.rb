@@ -91,7 +91,7 @@ Rails.application.routes.draw do
   resources :external_link, only: [:show]
   resources :forms, only: [:index, :new, :create, :show]
   resources :file_uploads, only: [:new, :create]
-  resources :finding_aids, only: [:show], path: "/finding-aids"
+  resources :finding_aids, only: [:show]
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index]
   resources :alerts_json, only: [:index], path: "/alerts.json"
@@ -104,10 +104,6 @@ Rails.application.routes.draw do
 
   controller :blog_posts do
     get "blogposts/tags/:tag" => :index, as: "blog_post_tags"
-  end
-
-  controller :collections do
-    get "finding-aids/:id" => :finding_aids
   end
 
   controller :finding_aids do

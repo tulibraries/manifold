@@ -40,6 +40,7 @@ en:
         accounts: "Individual Owners"
   manifold:  
     default:
+      finding_aids_new_home: https://scrcarchivesspace.temple.edu
       search_url: https://librarysearch.temple.edu
       alternate_search_url: https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search
       print_page: Print This Page
@@ -963,6 +964,7 @@ en:
           events_type: blockson
           tours: 360&deg; Virtual Exhibits
           view_all: View All
+          finding_aids_link: https://scrcarchivesspace.temple.edu/repositories/resources?q[]=%2A&op[]=&field[]=title&from_year[]=&to_year[]=&limit=resource&sort=title_sort%20asc&filter_fields[]=repository&filter_values[]=%2Frepositories%2F6
 
       contact:
         page_title: Contact Us
@@ -1091,6 +1093,7 @@ en:
           events_type: Digital Scholarship 
           blog_label: Research Blog
           view_all_label: View All
+          finding_aids_link: https://scrcarchivesspace.temple.edu/
 
       scop:
         page_title: Center for Scholarly Communication & Open Publishing

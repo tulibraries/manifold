@@ -38,6 +38,13 @@ RSpec.describe RedirectsController, type: :request do
     end
   end
 
+  describe "GET a collection of finding-aids" do
+    it "redirects to a 3rd party host" do
+      get("/finding-aids?collection=777")
+      expect(response).to redirect_to(I18n.t("manifold.default.finding_aids_new_home"))
+    end
+  end
+
   describe "GET redirect with no message specified" do
     let(:redirect) { FactoryBot.create(:static_redirect, no_message: true) }
     it "redirects with no message displayed" do

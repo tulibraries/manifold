@@ -1055,6 +1055,7 @@ en:
         locations:
           reading_room: SCRC Reading Room
           finding_aids: Search Finding Aids
+          finding_aids_link: https://scrcarchivesspace.temple.edu/
           materials: Digitized Materials
           materials_link: https://digital.library.temple.edu/
         contact:

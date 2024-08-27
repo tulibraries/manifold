@@ -70,10 +70,12 @@
     font-size: 1.15rem;
     font-family: "Roboto";
     font-weight: 400;
-    color: $royal-blue;
+    color: $black;
   }
 
   .links-container {
+    border-top: solid $lighter-grey 2px;
+    padding-top: 49px;
     div.col-12 {
       @media (max-width: 1039px) {
       padding-left: 0;
@@ -82,7 +84,8 @@
     }
     .links {
       margin-bottom: 28px;
-      padding-left: 28px;
+      padding-left: 0;
+      padding-right: 14px;
       @media (max-width: 1039px) {
         margin: 0;
       }
@@ -108,28 +111,6 @@
         }
       }
     }
-  }
-
-  li.all-events {
-    margin-top: 14px;
-    margin-left: 14px;
-    @media (max-width: 1039px) {
-      margin-left: 0;
-    }
-  }
-  h2.hsl-links-title a {
-    color: $seagreen!important;
-  }
-}
-
-.minipage {
-  .links-container {
-    border-top: solid $lighter-grey 2px;
-    padding-top: 49px;
-    .links {
-      padding-left: 0;
-      padding-right: 14px;
-    }
     .links:nth-child(odd) {
       border-right: solid $lighter-grey 2px;
       padding-right: 42px;
@@ -143,6 +124,17 @@
     .links:last-of-type {
       border-right: 0;
     }
+  }
+
+  li.all-events {
+    margin-top: 14px;
+    margin-left: 14px;
+    @media (max-width: 1039px) {
+      margin-left: 0;
+    }
+  }
+  h2.hsl-links-title a {
+    color: $seagreen!important;
   }
 }
 

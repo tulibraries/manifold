@@ -23,11 +23,17 @@ module RedirectLogic
         if instance
           return
         else
-          raise ActionController::RoutingError.new("Not Found")
+          if legacy_path.include? "finding_aids?collection"
+            redirect_to(url_for(t('manifold.default.finding_aids_new_home')), allow_other_host: true)
+          else
+            raise ActionController::RoutingError.new("Not Found")
+          end
         end
       else
         raise ActionController::RoutingError.new("Not Found")
       end
+
+
     end
   end
 

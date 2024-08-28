@@ -1,9 +1,0 @@
-<h2 class="finding-aids-subjects">
-  <%= t("manifold.finding_aids.subjects_heading") %>
-</h2>
-
-<ul class="list-unstyled navbar-collapse collapse show" id="subjects">
-	<% subject_links(@subjects).each do |link| %>
-		<%= link.html_safe %>
-	<% end %>
-</ul>

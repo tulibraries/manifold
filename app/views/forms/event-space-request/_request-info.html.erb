@@ -24,7 +24,12 @@
               collection: t("manifold.forms.event_space_request.setup_style_collection").map{ |k,v| v }, 
               required: :true %>
   <%= f.input :other, as: :text, label: t("manifold.forms.event_space_request.other") %>
-  <%= f.input :av_support, as: :text, label: t("manifold.forms.event_space_request.av_support") %>
+  <%= f.input :av_support, as: :check_boxes, 
+              label: t("manifold.forms.event_space_request.av_support"),
+              collection: t("manifold.forms.event_space_request.av_support_collection").map{ |k,v| v }, 
+              required: :false %>
+  <%= f.input :catering, as: :boolean, required: false, class: "inline", 
+              label: t("manifold.forms.event_space_request.catering") %>
   <%= f.input :comments, as: :text, label: t("manifold.forms.event_space_request.comments"), 
               style: "display: inline-block;width: 14px" %>
 

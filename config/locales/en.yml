@@ -633,6 +633,7 @@ en:
         acknowledgement_html: >-
                           Check to confirm that you have read and understood the 
                           <a href="/policies/charles-library-exhibit-policies">Charles Library exhibit policies</a>
+
       recall_book:
         title: Request Recall of Books Already Checked Out
         temple_affiliation_options:
@@ -818,48 +819,49 @@ en:
                       how the tools of Cultural Analytics can contribute to their realization."
 
       event_space_request:
-        title: "Charles Library Event Space Request"
-        date_legend: "Event Dates/Times"
-        date: "Date of Event"
-        start_time: "Event Start Time"
-        end_time: "End Time"
-        info_legend: "Event Information"
-        space_label: "Event Space"
+        title: Charles Library Event Space Request
+        date_legend: Event Dates/Times
+        date: Date of Event
+        start_time: Event Start Time
+        end_time: End Time
+        info_legend: Event Information
+        space_label: Event Space
         space_collection: 
-          one: "2nd Floor Multipurpose Room"
+          one: 2nd Floor Multipurpose Room
           two: "3rd Floor Reading Room *"
-          three: "4th Floor Multipurpose Room"
+          three: 4th Floor Multipurpose Room
           four: "Atrium *"
-          five: "Event Space"
-          six: "any available/not sure"
+          five: Event Space
+          six: any available/not sure
         space_hint: "* Special use, non-peak times only"
-        event_title: "Event Title"
-        attendees: "Estimated Number of Attendees"
-        setup_legend: "Room Set-Up"
-        setup_style_label: "Setup Style"
+        multi_select: Click and select all that apply
+        event_title: Event Title
+        attendees: Estimated Number of Attendees
+        setup_legend: Room Set-Up
+        setup_style_label: Setup Style
         setup_style_collection: 
-          one: "Banquet - 72” round tables (6-8 chairs each)"
-          two: "Classroom - Rows of tables and chairs"
-          three: "Lecture - Rows of chairs, 8-11 per row"
-          four: "Reception - 36” round high top tables"
-          five: "Conference - Square of tables"
-          six: "Round Table Discussion - U-Shape of tables"
-          seven: "Other"
-        other: "Additional Setup Requirements"
-        av_support: "Specific A/V Support Needed, if any"
+          one: Banquet - 72” round tables (6-8 chairs each)
+          two: Classroom - Rows of tables and chairs
+          three: Lecture - Rows of chairs, 8-11 per row
+          four: Reception - 36” round high top tables
+          five: Conference - Square of tables
+          six: Round Table Discussion - U-Shape of tables
+          seven: Other
+        other: Additional Setup Requirements
+        av_support: Specific A/V Support Needed, if any
         av_support_collection: 
-          one: "Computer"
-          two: "Projector/Screen"
-          three: "Microphone(s)"
-          four: "Camera"
-          five: "Zoom"
-        catering: "Catering"
-        comments: "Additional Information"
-        your_info_legend: "Your Information"
-        span: "Requestor/Event Leader/Coordinator/Student Group"
-        span_2: "Sponsoring Budget Unit Head"
-        foapal: "FOAPAL"
-        foapal_hint: "in case of damages or additional cleaning costs"
+          one: Computer
+          two: Projector/Screen
+          three: Microphone(s)
+          four: Camera
+          five: Zoom
+        catering: Catering
+        comments: Additional Information
+        your_info_legend: Your Information
+        span: Requestor/Event Leader/Coordinator/Student Group
+        span_2: Sponsoring Budget Unit Head
+        foapal: FOAPAL
+        foapal_hint: in case of damages or additional cleaning costs
         policy_check_html: >-
                           I agree to <a href="/policies/23" class="inline">
                           Temple University Libraries's policies and guidelines</a>

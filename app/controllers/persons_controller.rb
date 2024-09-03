@@ -72,6 +72,7 @@ class PersonsController < ApplicationController
       @filtered_persons = Person.is_specialist
     elsif (params[:specialists].present? && params[:specialists] == "true") && params[:department].present?
       @filtered_persons = Person.in_department(params[:department]).is_specialist
+      @specialist_search = true
     elsif params[:specialty].present?
       @filtered_persons = Person.with_specialty(params[:specialty])
     elsif params[:department]

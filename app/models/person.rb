@@ -55,7 +55,6 @@ class Person < ApplicationRecord
     includes(:buildings).where(buildings: { "slug" => building_id }) if building_id.present?
   }
 
-
   def name
     "#{first_name} #{last_name}"
   end

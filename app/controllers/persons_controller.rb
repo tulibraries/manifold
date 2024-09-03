@@ -68,8 +68,11 @@ class PersonsController < ApplicationController
   def get_persons
     if params[:search].present?
       @filtered_persons = Person.search(params[:search])
-    elsif params[:specialists].present? && params[:specialists] == "true"
+    elsif (params[:specialists].present? && params[:specialists] == "true") && params[:department].nil?
       @filtered_persons = Person.is_specialist
+    elsif (params[:specialists].present? && params[:specialists] == "true") && params[:department].present?
+      @filtered_persons = Person.in_department(params[:department]).is_specialist
+      @specialist_search = true
     elsif params[:specialty].present?
       @filtered_persons = Person.with_specialty(params[:specialty])
     elsif params[:department]
@@ -81,7 +84,12 @@ class PersonsController < ApplicationController
   end
 
   def specialists_print
-    @persons_list = Person.is_specialist
+    dept = params[:dept]
+    if dept.present?
+      @persons_list = Person.in_department(dept).is_specialist
+    else
+      @persons_list = Person.is_specialist
+    end
   end
 
   private

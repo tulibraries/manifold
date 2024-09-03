@@ -925,14 +925,17 @@ en:
                         <span style="display:inline-block;white-space:nowrap;">Charles Library Main Phone: </span>
                         <span style="display:inline-block;white-space:nowrap;font-weight:900;font-family:'roboto bold'">215-204-8212</span>
       fcn_link: Frequently Called Numbers
-      no_results: No people found. Try another search.
+      no_results: No people found. Clear current filters or try another search.
+      no_specialists: There are no subject specialists in this department.
       filters:
         department: Department
         location: Location
         staff_type: Staff Type
         specialties: Subject Specialty
-        limited_to_specialists: Limited to Subject Specialists
         limit_to_specialists: Limit to Subject Specialists Only
+        limited_to_specialists: Limited to Subject Specialists
+        see_all_specialists: See All Subject Specialists
+        specialists_print: [Print this view]
         mobile_options: Filter options
       show:
         subjects: Subjects

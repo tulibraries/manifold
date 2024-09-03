@@ -8,7 +8,7 @@ RSpec.describe "People", type: :request do
   let(:person) { FactoryBot.create(:person, :with_image) }
   let(:person2) { FactoryBot.create(:person, :with_image) }
   let(:group) { FactoryBot.create(:group, persons: [person2]) }
-  let!(:specialist) { FactoryBot.create(:person, :with_image, :with_subjects) }
+  let!(:specialist) { FactoryBot.create(:person, :with_image, :with_subjects, :in_department) }
 
   describe "People Views" do
     it "renders the index page" do
@@ -19,6 +19,12 @@ RSpec.describe "People", type: :request do
 
     it "renders the specialists" do
       get people_path, params: { specialty: Subject.last.name }
+      expect(response.body).to include(specialist.label)
+      expect(response.body).not_to include(person.label)
+    end
+
+    it "renders the specialists within a dept" do
+      get people_path, params: { specialists: true, department: specialist.groups.first.slug }
       expect(response.body).to include(specialist.label)
       expect(response.body).not_to include(person.label)
     end
@@ -41,8 +47,15 @@ RSpec.describe "People", type: :request do
       expect(response.body).to include(person.label)
     end
 
-    it "renders the print page" do
+    it "renders the all-specialists print page" do
       get specialists_print_path
+      expect(response).to render_template(:specialists_print)
+      expect(response.body).to include(specialist.label)
+      expect(response.body).not_to include(person.label)
+    end
+
+    it "renders the departmental print page" do
+      get specialists_print_path(dept: specialist.groups.first.slug)
       expect(response).to render_template(:specialists_print)
       expect(response.body).to include(specialist.label)
       expect(response.body).not_to include(person.label)

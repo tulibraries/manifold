@@ -12,7 +12,13 @@
 <% else %> <!-- unless -->
   <div class="row">
     <div class="col-12 text-center">
-      <h3><%= t("manifold.people.no_results") %></h3>
+      <h3>
+        <% if @specialist_search == true %>
+          <%= t("manifold.people.no_specialists") %>
+        <% else %>
+          <%= t("manifold.people.no_results") %>
+        <% end %>
+      </h3>
     </div>
   </div>
 <% end %>

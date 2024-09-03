@@ -31,12 +31,7 @@
 
     <div class="row px-3 d-none d-lg-flex">
       <div class="col-12 mb-2 ms-3 ms-lg-0 filter-links">
-      <% if params[:specialists] %>
-        <%= link_to t("manifold.people.filters.limited_to_specialists"), people_path(specialists: true), class: "ps-3" %>
-        -- <%= link_to "[Print this view]", specialists_print_path, class: "ms-2", id: "specialist-print" %>
-      <% else %>
-        <p class="d-inline-block text-start ms-3 mb-0"><%= link_to t("manifold.people.filters.limit_to_specialists"), people_path(specialists: true) %></p>
-      <% end %>
+        <%= specialists_link %>  <%= print_specialists %>
         <p class="d-inline-block float-end mb-0 me-2"><%= link_to "Reset Staff List", people_path %></p>
       </div>
     </div>

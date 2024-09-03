@@ -19,6 +19,10 @@ FactoryBot.define do
       subjects { build_list :subject, 3 }
     end
 
+    trait :in_department do
+      groups { build_list :group, 1 }
+    end
+
     trait :with_image do
       after :create do |person|
         person.image.attach(io:

@@ -60,5 +60,15 @@ RSpec.describe "People", type: :request do
       expect(response.body).to include(specialist.label)
       expect(response.body).not_to include(person.label)
     end
+
+    it "renders no results message" do
+      get people_path, params: { search: "not a real search for a real person" }
+      expect(response.body).to match(I18n.t("manifold.people.no_results"))
+    end
+
+    it "renders no specialists message" do
+      get people_path, params: { specialists: true, department: group.slug }
+      expect(response.body).to include(I18n.t("manifold.people.no_specialists"))
+    end
   end
 end

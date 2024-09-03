@@ -23,9 +23,9 @@ module PersonsHelper
   def print_specialists
     if params[:specialists].present?
       if params[:department].present?
-        link_to "[Print this view]", specialists_print_path(dept: params[:department]), class: "ms-2", id: "specialist-print"
+        link_to t("manifold.people.filters.specialists_print"), specialists_print_path(dept: params[:department]), class: "ms-2", id: "specialist-print"
       else
-        link_to "[Print this view]", specialists_print_path, class: "ms-2", id: "specialist-print"
+        link_to t("manifold.people.filters.specialists_print"), specialists_print_path, class: "ms-2", id: "specialist-print"
       end
     end
   end

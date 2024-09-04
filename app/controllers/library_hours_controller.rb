@@ -2,11 +2,7 @@
 
 class LibraryHoursController < ApplicationController
   def index
-    begin
-      hours = Google::SheetsConnector.call(feature: "hours")
-    rescue Google::Apis::ClientError
-      hours = nil
-    end
+    hours = Google::SheetsConnector.call(feature: "hours")
   
     if hours.present?
       render(Google::HoursComponent.new(hours:, date: params[:date]))

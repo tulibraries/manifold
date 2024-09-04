@@ -24,6 +24,8 @@
               collection: t("manifold.forms.event_space_request.setup_style_collection").map{ |k,v| v }, 
               required: :true %>
 
+  <%= f.input :additional_setup_requirements, as: :text, label: t("manifold.forms.event_space_request.additional_setup_requirements") %>
+
   <span data-controller="selectize">
   <%= f.input :av_support, as: :select, 
               collection: t("manifold.forms.event_space_request.av_support_collection").map{ |k,v| v },
@@ -34,9 +36,6 @@
 
   <%= f.input :catering, as: :radio_buttons, required: false, 
               label: t("manifold.forms.event_space_request.catering") %>
-<br />
-  <%= f.input :comments, as: :text, label: t("manifold.forms.event_space_request.comments"), 
-              input_html: { style: "mt-4"} %>
 </fieldset>
 
 <fieldset class="mt-4">

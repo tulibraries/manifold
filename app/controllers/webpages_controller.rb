@@ -69,7 +69,12 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    @charles_hours = Google::SheetsConnector.call(feature: "hours", scope: "charles")
+    begin
+      @charles_hours = Google::SheetsConnector.call(feature: "hours", scope: "charles")
+    rescue Google::Apis::ClientError
+      @charles_hours = nil
+    end
+
     if @charles_hours.present?
       @hours = Google::TodaysHours.new(hours: @charles_hours)
     else

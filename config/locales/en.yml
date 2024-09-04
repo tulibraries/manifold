@@ -859,7 +859,8 @@ en:
         comments: Additional Information
         your_info_legend: Your Information
         span: Requestor/Event Leader/Coordinator/Student Group
-        span_2: Sponsoring Budget Unit Head
+        span_2: Day of Event Contact
+        department: Department/Organization
         foapal: FOAPAL
         foapal_hint: in case of damages or additional cleaning costs
         policy_check_html: >-

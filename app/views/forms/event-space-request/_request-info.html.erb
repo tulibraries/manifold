@@ -24,8 +24,6 @@
               collection: t("manifold.forms.event_space_request.setup_style_collection").map{ |k,v| v }, 
               required: :true %>
 
-  <%= f.input :other, as: :text, label: t("manifold.forms.event_space_request.other") %>
-
   <span data-controller="selectize">
   <%= f.input :av_support, as: :select, 
               collection: t("manifold.forms.event_space_request.av_support_collection").map{ |k,v| v },
@@ -47,13 +45,13 @@
   <%= f.input :name, label: t("manifold.forms.fields.name"), required: :true %>
   <%= f.input :email, label: t("manifold.forms.fields.email"), required: :true %>
   <%= f.input :phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
-  <%= f.input :department, label: t("manifold.forms.fields.department"), required: :true %>
+  <%= f.input :department, label: t("manifold.forms.event_space_request.department"), required: :true %>
+  <%= f.input :foapal, label: t("manifold.forms.fields.foapal"), required: :true, 
+              hint: t("manifold.forms.event_space_request.foapal_hint") %>
   <span class="d-block mt-4 fs-5"><%= t("manifold.forms.event_space_request.span_2") %></span>
   <%= f.input :financial_name, label: t("manifold.forms.fields.name"), required: :true %>
   <%= f.input :financial_email, label: t("manifold.forms.fields.email"), required: :true %>
   <%= f.input :financial_phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
-  <%= f.input :foapal, label: t("manifold.forms.fields.foapal"), required: :true, 
-              hint: t("manifold.forms.event_space_request.foapal_hint") %>
 </fieldset>
 
   <%= f.input :policy_check, as: :boolean, required: true, class: "inline", 

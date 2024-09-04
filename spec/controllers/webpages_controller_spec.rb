@@ -88,7 +88,7 @@ RSpec.describe WebpagesController, type: :controller do
     end
 
     it "handles errors from google api" do
-      VCR.use_cassette('google_api_error') do
+      VCR.use_cassette("google_api_error") do
         get :home
         expect(response).to be_successful
       end

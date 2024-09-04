@@ -28,14 +28,18 @@ module Google
     end
 
     def call
-      if @feature == "hours"
-        if @scope.present?
-          response = @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A", "#{@cells}"], major_dimension: "ROWS")
+      begin
+        if @feature == "hours"
+          if @scope.present?
+            response = @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A", "#{@cells}"], major_dimension: "ROWS")
+          else
+            response = @service.get_spreadsheet_values(@spreadsheet_id, "#{@cells}")
+          end
         else
-          response = @service.get_spreadsheet_values(@spreadsheet_id, "#{@cells}")
+          response = @service.get_spreadsheet_values(@spreadsheet_id, @cells)
         end
-      else
-        response = @service.get_spreadsheet_values(@spreadsheet_id, @cells)
+      rescue => e
+        nil
       end
     end
 

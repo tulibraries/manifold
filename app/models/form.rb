@@ -101,6 +101,7 @@ class Form < MailForm::Base
   attribute :foapal
   attribute :event_space
   attribute :event_title
+  attribute :additional_setup_requirements
   attribute :attendees
   attribute :date_of_event
   attribute :event_start

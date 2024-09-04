@@ -856,7 +856,7 @@ en:
           four: Camera
           five: Zoom
         catering: Catering
-        comments: Additional Information
+        additional_setup_requirements: Additional Setup Requirements
         your_info_legend: Your Information
         span: Requestor/Event Leader/Coordinator/Student Group
         span_2: Day of Event Contact

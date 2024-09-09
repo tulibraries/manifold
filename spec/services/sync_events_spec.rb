@@ -22,6 +22,7 @@ RSpec.describe SyncService::Events, type: :service do
       subject { @sync_events.record_hash(@events.first) }
 
       it "maps GUID to guid field" do
+        # binding.pry
         expect(subject["guid"]).to match(@events.first["GUID"])
       end
 
@@ -83,10 +84,6 @@ RSpec.describe SyncService::Events, type: :service do
 
       it "maps RegistrationStatus to registration_status field" do
         expect(subject["registration_status"]).to match(@events.first["RegistrationStatus"])
-      end
-
-      it "maps document's digest to content_has field" do
-        expect(subject["content_hash"]).to match(Digest::SHA256.hexdigest(@events.first[:xml]))
       end
     end
   end
@@ -208,21 +205,28 @@ RSpec.describe SyncService::Events, type: :service do
 
   context "trying to ingest the same record twice" do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
+    let(:updated_sync_event) { described_class.new(events_url: file_fixture("updated_single_event.xml").to_path) }
 
-    it "does not update the record" do
+    it "updates the record" do
       sync_event.sync
       first_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
       sync_event.sync
       second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
-      expect(first_time).to eql second_time
+      expect(first_time).to_not eql second_time
+    end
+
+    it "does not create a second record" do
+      Event.destroy_all
+      sync_event.sync
+      updated_sync_event.sync
+      expect(Event.count).to eq 1
+      expect(Event.first.title).to eq "No-nonsense Title"
     end
 
     it "does not throw an error trying to attach image twice" do
       sync_event.sync
       expect { sync_event.sync }.not_to raise_error
     end
-
-
   end
 
   context "when sync is forced" do
@@ -251,7 +255,7 @@ RSpec.describe SyncService::Events, type: :service do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
     let(:altered_event) { described_class.new(events_url: file_fixture("single_altered_event.xml").to_path) }
 
-    it "does not update the record" do
+    it "does update the record" do
       sync_event.sync
       original_rec_id = Event.find_by(title: "BLAH BLAH Foo foo").id
       altered_event.sync

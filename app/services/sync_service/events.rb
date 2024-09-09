@@ -16,21 +16,19 @@ class SyncService::Events
     @stdout = Logger.new(STDOUT)
     @eventsUrl = params.fetch(:events_url) || Rails.configuration.events_feed_url
     @force = params.fetch(:force, false)
-    # @eventsDoc = Nokogiri::XML(URI.open(@eventsUrl, { read_timeout: Rails.configuration.sync_timeout }))
-    # ruby 3.1.2 -- options hash no longer works: "no implicit conversion of Hash into String"
     @eventsDoc = Nokogiri::XML(URI.open(@eventsUrl))
     stdout_and_log("Syncing events from #{@eventsUrl}")
   end
 
   def sync
     @updated = @skipped = @errored = 0
-    read_events.each do |e|
+    read_events.each do |event|
       begin
-        @log.info(%Q(Syncing Event #{e["Title"]} on #{e["EventStartDate"]}))
-        record = record_hash(e)
+        @log.info(%Q(Syncing Event #{event["Title"]} on #{event["EventStartDate"]}))
+        record = record_hash(event)
         create_or_update_if_needed!(record)
       rescue Exception => err
-        stdout_and_log(%Q(Syncing Event #{e["Title"]} errored -  #{err.message} \n #{err.backtrace}))
+        stdout_and_log(%Q(Syncing Event #{event["Title"]} errored -  #{err.message} \n #{err.backtrace}))
         @errored += 1
       end
     end
@@ -45,6 +43,7 @@ class SyncService::Events
   end
 
   def record_hash(event)
+    # binding.pry
     {
       "guid"                => event.fetch("GUID") { raise MissingGuidException.new("No GUID found for event #{event}") },
       "title"               => event.fetch("Title", nil),
@@ -56,50 +55,62 @@ class SyncService::Events
       "registration_status" => event.fetch("RegistrationStatus", nil),
       "registration_link"   => event.fetch("ExternalRegistrationURL", nil),
       "event_url"           => event.fetch("OnlineEventHostUrl", nil),
+      "image"               => event.fetch("Image", nil),
       "start_time"          => start_time(event),
       "end_time"            => end_time(event),
-      "all_day"             => all_day(event),
-      "content_hash" => xml_hash(event)
+      "all_day"             => all_day(event)
     }
       .merge(contact(event))
       .merge(location(event))
-      .merge(event_image(event))
   end
 
-  def create_or_update_if_needed!(record_hash)
-    # If a record already exists with this content hash, then no update needed
-    if should_create_or_update(record_hash)
-      event = Event.find_by(content_hash: record_hash["content_hash"]) || Event.find_by(guid: record_hash["guid"])
-      if event
-        stdout_and_log(
-          %Q(Incoming event with title #{record_hash["title"]} matched to existing event (id = #{event.id} ) with title #{event.title}), level: :debug
-        )
-      else
-        event = Event.new
-      end
-      event.assign_attributes(record_hash.except("person", "building", "image", "path"))
-      event.person = record_hash["person"]
-      event.building = record_hash["building"]
-      event.tags = record_hash["tags"]
-      event.event_type = record_hash["event_type"]
-      event.event_url = record_hash["event_url"]
-      event.event_type += ", Online" unless event.event_url.nil?
-      unless (record_hash[:image].nil? || event.image.attached?)
-        event.image.attach(
-          io: record_hash[:image][:io],
-          filename: record_hash[:image][:filename]
-        )
-      end
-      if event.save!
-        stdout_and_log(%Q(Successfully saved record for #{record_hash["title"]}))
-        @updated += 1
-      else
-        stdout_and_log(%Q(Record not saved for #{record_hash["title"]}))
-        @updated += 1
+  def create_or_update_if_needed!(record)
+    event = Event.find_by(guid: record["guid"])
+    event = event ? event : Event.new
+    event.assign_attributes(record.except("person", "building", "image", "path"))
+    event.person = record["person"]
+    event.building = record["building"]
+    event.tags = record["tags"]
+    event.event_type = record["event_type"]
+    event.event_url = record["event_url"]
+    event.event_type += ", Online" if event.event_url.present?
+
+    if (record["image"].present?)
+      image_to_attach = event_image(record["image"])
+      event.image.attach(
+        io: image_to_attach[:image][:io],
+        filename: image_to_attach[:image][:filename]
+      )
+    else
+      event.image
+    end
+
+    if event.save!
+      stdout_and_log(%Q(Successfully saved record for #{record["title"]}))
+      @updated += 1
+    else
+      stdout_and_log(%Q(Record not saved for #{record["title"]}))
+      @updated += 1
+    end
+  end
+
+  def event_image(image_xml)
+    if image_xml
+      img = Nokogiri.XML(image_xml).xpath("//img")
+      image_path = img.attribute("src")&.value || ""
+      begin
+        {
+          image:{io: URI.open("#{image_path}"), 
+          filename: image_path.split("/thumbnail/")&.second&.split("?").first.gsub("%20", "_")},
+          alt_text: img.attribute("alt")&.value
+        }
+      rescue => e
+        stdout_and_log("Image retrieval failure for #{event["Title"]}: #{e.message}")
+        #TODO send message to admin controller about error
+        {}
       end
     else
-      stdout_and_log(%Q(Found match for content hash for #{record_hash["title"]}; skipped syncing.))
-      @skipped += 1
+      {} 
     end
   end
 
@@ -117,12 +128,6 @@ class SyncService::Events
 
   def all_day(event)
     event["EventStartTime"].include?("All day")
-  end
-
-  def xml_hash(event)
-    Digest::SHA256.hexdigest(
-      event.fetch(:xml) { raise StandardError.new("No Event XML supplied") }
-    )
   end
 
   def contact(event)
@@ -177,38 +182,6 @@ class SyncService::Events
       location_hash["external_space"] = room || nil
     end
     location_hash
-  end
-
-  def event_image(event)
-    image_xml = event.fetch("Image", nil)
-    if image_xml
-      img = Nokogiri.XML(image_xml).xpath("//img")
-      image_path = img.attribute("src")&.value || ""
-
-      {
-        image:
-          {
-            io: URI.open("#{image_path}"),
-            filename: image_path.split("/thumbnail/")&.second&.split("?").first.gsub("%20", "_")
-          },
-        alt_text: img.attribute("alt")&.value
-      }
-
-    else
-      {}
-    end
-  end
-
-  def already_exists?(record_hash)
-    Event.exists?(content_hash: record_hash["content_hash"])
-  end
-
-  def does_not_exist?(record_hash)
-    !already_exists?(record_hash)
-  end
-
-  def should_create_or_update(record_hash)
-    (does_not_exist?(record_hash) || @force)
   end
 
   def stdout_and_log(message, level: :info)

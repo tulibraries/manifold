@@ -100,8 +100,8 @@ class SyncService::Events
       image_path = img.attribute("src")&.value || ""
       begin
         {
-          image:{io: URI.open("#{image_path}"), 
-          filename: image_path.split("/thumbnail/")&.second&.split("?").first.gsub("%20", "_")},
+          image: { io: URI.open("#{image_path}"),
+          filename: image_path.split("/thumbnail/")&.second&.split("?").first.gsub("%20", "_") },
           alt_text: img.attribute("alt")&.value
         }
       rescue => e
@@ -110,7 +110,7 @@ class SyncService::Events
         {}
       end
     else
-      {} 
+      {}
     end
   end
 

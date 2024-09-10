@@ -3,6 +3,16 @@
 require "rails_helper"
 
 RSpec.describe SyncService::Events, type: :service do
+  module TestFileCachingHelper
+    def self.cache
+      return @file_cache if @file_cache
+      path = "tmp/test#{ENV['TEST_ENV_NUMBER']}/cache"
+      FileUtils::mkdir_p(path)
+      @file_cache = ActiveSupport::Cache.lookup_store(:file_store, path)
+      @file_cache
+    end
+  end
+  
   before(:all) do
     @sync_events = described_class.new(events_url: file_fixture("events.xml").to_path)
     @events = @sync_events.read_events
@@ -265,10 +275,10 @@ RSpec.describe SyncService::Events, type: :service do
 
   context "Error in field" do
     before (:each) { @starting_event_count = Event.count }
-    describe "no images specified" do
+    describe "no image specified" do
       let (:sync_events) { described_class.new(events_url: file_fixture("noimage-event.xml").to_path) }
 
-      it "should not raise error if an image is missing" do
+      it "should not raise error if image is missing" do
         expect { sync_events.sync }.to_not raise_error
       end
 
@@ -282,13 +292,21 @@ RSpec.describe SyncService::Events, type: :service do
       context "unit level" do
         let (:sync_events) { described_class.new(events_url: file_fixture("badimage-event.xml").to_path) }
 
-        it "should rescue not raise error if an image URL is bad" do
+        it "should 'rescue' not raise error if an image URL is bad" do
           expect { sync_events.sync }.to_not raise_error
         end
 
         it "should still add the event" do
           sync_events.sync
           expect(Event.count).to eq @starting_event_count + 1
+        end
+
+        it "should construct message to user" do
+          allow(Rails).to receive(:cache).and_return(TestFileCachingHelper.cache)
+          Rails.cache.clear
+          expect(Rails.cache.exist?('events_image_error')).to be(false)
+          sync_events.sync
+          expect(Rails.cache.exist?('events_image_error')).to be(true)
         end
       end
 

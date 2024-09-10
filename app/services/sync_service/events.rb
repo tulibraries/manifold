@@ -14,9 +14,10 @@ class SyncService::Events
   def initialize(params = {})
     @log = Logger.new("log/sync-event.log")
     @stdout = Logger.new(STDOUT)
-    @eventsUrl = params.fetch(:events_url) || "/Users/cdoyle/projects/manifold/spec/fixtures/files/badimage-event.xml"
+    @eventsUrl = params.fetch(:events_url) || Rails.configuration.events_feed_url
     @force = params.fetch(:force, false)
     @eventsDoc = Nokogiri::XML(URI.open(@eventsUrl))
+    @image_failures = []
     stdout_and_log("Syncing events from #{@eventsUrl}")
   end
 
@@ -32,7 +33,20 @@ class SyncService::Events
         @errored += 1
       end
     end
-    stdout_and_log("Syncing completed with #{@updated} updated, #{@skipped} skipped, and #{@errored} errored records.")
+    send_image_failures_to_cache
+    stdout_and_log("Syncing completed with #{@updated} updated, #{@skipped} skipped, and #{@errored} errored records -- with #{@image_failures.size} image failures.")
+  end
+
+  def send_image_failures_to_cache
+    result_string = "Image retrieval failure. Please check:<br><br>"
+    @image_failures.each do |event|
+      result_string += "#{event.title}<br>"
+    end
+    if @image_failures.size > 0
+      Rails.cache.write('events_image_error', 
+                        result_string, 
+                        expires_in: 1.hour)
+    end
   end
 
   def read_events
@@ -86,14 +100,14 @@ class SyncService::Events
   end
 
   def attach_image(record, event)
-    image_to_attach = event_image(record["image_xml"])
+    image_to_attach = event_image(record["image_xml"], event)
     event.image.attach(
       io: image_to_attach[:image][:io],
       filename: image_to_attach[:image][:filename]
     ) if image_to_attach.present?
   end
 
-  def event_image(image_xml)
+  def event_image(image_xml, event)
     if image_xml
       img = Nokogiri.XML(image_xml).xpath("//img")
       image_path = img.attribute("src")&.value || ""
@@ -105,7 +119,7 @@ class SyncService::Events
         }
       rescue => e
         stdout_and_log("Image retrieval failure: #{e.message}")
-        #TODO send message to admin controller about error
+        @image_failures << event
         {}
       end
     else

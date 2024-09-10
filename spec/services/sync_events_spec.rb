@@ -22,7 +22,6 @@ RSpec.describe SyncService::Events, type: :service do
       subject { @sync_events.record_hash(@events.first) }
 
       it "maps GUID to guid field" do
-        # binding.pry
         expect(subject["guid"]).to match(@events.first["GUID"])
       end
 
@@ -112,7 +111,7 @@ RSpec.describe SyncService::Events, type: :service do
     end
   end
 
-  context "write event to event table" do
+  context "Retention of synced events" do
     before(:each) do
       @sync_events.sync
     end
@@ -125,12 +124,12 @@ RSpec.describe SyncService::Events, type: :service do
       Event.find_by(title: "Data Transparency: Policies and Best Practices")
     }
 
-    it "syncs events to the table" do
+    it "writes to events db table" do
       expect(data_event).to be
       expect(students_event).to be
     end
 
-    it "it attaches images to records" do
+    it "it attaches images to events" do
       expect(students_event.image.attached?).to be true
     end
   end
@@ -207,6 +206,8 @@ RSpec.describe SyncService::Events, type: :service do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
     let(:updated_sync_event) { described_class.new(events_url: file_fixture("updated_single_event.xml").to_path) }
 
+      Event.destroy_all if Event.count >= 1
+
     it "updates the record" do
       sync_event.sync
       first_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
@@ -216,8 +217,6 @@ RSpec.describe SyncService::Events, type: :service do
     end
 
     it "does not create a second record" do
-      Event.destroy_all
-      sync_event.sync
       updated_sync_event.sync
       expect(Event.count).to eq 1
       expect(Event.first.title).to eq "No-nonsense Title"
@@ -279,17 +278,17 @@ RSpec.describe SyncService::Events, type: :service do
       end
     end
 
-    describe "erroneous images specified" do
+    describe "erroneous image specified" do
       context "unit level" do
         let (:sync_events) { described_class.new(events_url: file_fixture("badimage-event.xml").to_path) }
 
-        it "should not raise error if an image URL is bad" do
+        it "should rescue not raise error if an image URL is bad" do
           expect { sync_events.sync }.to_not raise_error
         end
 
-        it "should not add the event" do
+        it "should still add the event" do
           sync_events.sync
-          expect(Event.count).to eq @starting_event_count
+          expect(Event.count).to eq @starting_event_count + 1
         end
       end
 

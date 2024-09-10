@@ -14,7 +14,7 @@ class SyncService::Events
   def initialize(params = {})
     @log = Logger.new("log/sync-event.log")
     @stdout = Logger.new(STDOUT)
-    @eventsUrl = params.fetch(:events_url) || Rails.configuration.events_feed_url
+    @eventsUrl = params.fetch(:events_url) || "/Users/cdoyle/projects/manifold/spec/fixtures/files/badimage-event.xml"
     @force = params.fetch(:force, false)
     @eventsDoc = Nokogiri::XML(URI.open(@eventsUrl))
     stdout_and_log("Syncing events from #{@eventsUrl}")
@@ -43,7 +43,6 @@ class SyncService::Events
   end
 
   def record_hash(event)
-    # binding.pry
     {
       "guid"                => event.fetch("GUID") { raise MissingGuidException.new("No GUID found for event #{event}") },
       "title"               => event.fetch("Title", nil),
@@ -55,7 +54,7 @@ class SyncService::Events
       "registration_status" => event.fetch("RegistrationStatus", nil),
       "registration_link"   => event.fetch("ExternalRegistrationURL", nil),
       "event_url"           => event.fetch("OnlineEventHostUrl", nil),
-      "image"               => event.fetch("Image", nil),
+      "image_xml"           => event.fetch("Image", nil),
       "start_time"          => start_time(event),
       "end_time"            => end_time(event),
       "all_day"             => all_day(event)
@@ -67,7 +66,7 @@ class SyncService::Events
   def create_or_update_if_needed!(record)
     event = Event.find_by(guid: record["guid"])
     event = event ? event : Event.new
-    event.assign_attributes(record.except("person", "building", "image", "path"))
+    event.assign_attributes(record.except("person", "building", "image", "image_xml", "path"))
     event.person = record["person"]
     event.building = record["building"]
     event.tags = record["tags"]
@@ -75,15 +74,7 @@ class SyncService::Events
     event.event_url = record["event_url"]
     event.event_type += ", Online" if event.event_url.present?
 
-    if (record["image"].present?)
-      image_to_attach = event_image(record["image"])
-      event.image.attach(
-        io: image_to_attach[:image][:io],
-        filename: image_to_attach[:image][:filename]
-      )
-    else
-      event.image
-    end
+    record["image_xml"].present? ? attach_image(record, event) : event.image
 
     if event.save!
       stdout_and_log(%Q(Successfully saved record for #{record["title"]}))
@@ -92,6 +83,14 @@ class SyncService::Events
       stdout_and_log(%Q(Record not saved for #{record["title"]}))
       @updated += 1
     end
+  end
+
+  def attach_image(record, event)
+    image_to_attach = event_image(record["image_xml"])
+    event.image.attach(
+      io: image_to_attach[:image][:io],
+      filename: image_to_attach[:image][:filename]
+    ) if image_to_attach.present?
   end
 
   def event_image(image_xml)
@@ -105,7 +104,7 @@ class SyncService::Events
           alt_text: img.attribute("alt")&.value
         }
       rescue => e
-        stdout_and_log("Image retrieval failure for #{event["Title"]}: #{e.message}")
+        stdout_and_log("Image retrieval failure: #{e.message}")
         #TODO send message to admin controller about error
         {}
       end

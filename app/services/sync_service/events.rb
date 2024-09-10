@@ -43,8 +43,8 @@ class SyncService::Events
       result_string += "#{event.title}<br>"
     end
     if @image_failures.size > 0
-      Rails.cache.write('events_image_error', 
-                        result_string, 
+      Rails.cache.write("events_image_error",
+                        result_string,
                         expires_in: 1.hour)
     end
   end

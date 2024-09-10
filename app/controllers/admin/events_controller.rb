@@ -13,7 +13,7 @@ module Admin
 
     def sync
       SyncService::Events.call(force: true)
-      @message = Rails.cache.read('events_image_error')
+      @message = Rails.cache.read("events_image_error")
       flash[:notice] = @message ? @message : "Events synced"
       redirect_to admin_events_path
     end

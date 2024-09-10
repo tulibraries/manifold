@@ -12,7 +12,7 @@ RSpec.describe SyncService::Events, type: :service do
       @file_cache
     end
   end
-  
+
   before(:all) do
     @sync_events = described_class.new(events_url: file_fixture("events.xml").to_path)
     @events = @sync_events.read_events
@@ -216,7 +216,7 @@ RSpec.describe SyncService::Events, type: :service do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
     let(:updated_sync_event) { described_class.new(events_url: file_fixture("updated_single_event.xml").to_path) }
 
-      Event.destroy_all if Event.count >= 1
+    Event.destroy_all if Event.count >= 1
 
     it "updates the record" do
       sync_event.sync
@@ -304,9 +304,9 @@ RSpec.describe SyncService::Events, type: :service do
         it "should construct message to user" do
           allow(Rails).to receive(:cache).and_return(TestFileCachingHelper.cache)
           Rails.cache.clear
-          expect(Rails.cache.exist?('events_image_error')).to be(false)
+          expect(Rails.cache.exist?("events_image_error")).to be(false)
           sync_events.sync
-          expect(Rails.cache.exist?('events_image_error')).to be(true)
+          expect(Rails.cache.exist?("events_image_error")).to be(true)
         end
       end
 

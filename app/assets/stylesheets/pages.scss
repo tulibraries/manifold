@@ -50,6 +50,9 @@
       background-repeat: no-repeat;
       background-size: 42px 42px;
       border: 0;
+      @-moz-document url-prefix() {
+        top: 5px;
+      }
     }
   }
 
@@ -126,10 +129,7 @@
       }
       @-moz-document url-prefix() {
         input[type="submit"]{
-          top: -5px;
-          @media (max-width: 1190px) {
-            top: -5px!important;
-          }
+          top: -1px;
         }
       }
     }

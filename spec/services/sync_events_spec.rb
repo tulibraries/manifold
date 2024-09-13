@@ -3,6 +3,16 @@
 require "rails_helper"
 
 RSpec.describe SyncService::Events, type: :service do
+  module TestFileCachingHelper
+    def self.cache
+      return @file_cache if @file_cache
+      path = "tmp/test#{ENV['TEST_ENV_NUMBER']}/cache"
+      FileUtils::mkdir_p(path)
+      @file_cache = ActiveSupport::Cache.lookup_store(:file_store, path)
+      @file_cache
+    end
+  end
+
   before(:all) do
     @sync_events = described_class.new(events_url: file_fixture("events.xml").to_path)
     @events = @sync_events.read_events
@@ -84,10 +94,6 @@ RSpec.describe SyncService::Events, type: :service do
       it "maps RegistrationStatus to registration_status field" do
         expect(subject["registration_status"]).to match(@events.first["RegistrationStatus"])
       end
-
-      it "maps document's digest to content_has field" do
-        expect(subject["content_hash"]).to match(Digest::SHA256.hexdigest(@events.first[:xml]))
-      end
     end
   end
 
@@ -115,7 +121,7 @@ RSpec.describe SyncService::Events, type: :service do
     end
   end
 
-  context "write event to event table" do
+  context "Retention of synced events" do
     before(:each) do
       @sync_events.sync
     end
@@ -128,12 +134,12 @@ RSpec.describe SyncService::Events, type: :service do
       Event.find_by(title: "Data Transparency: Policies and Best Practices")
     }
 
-    it "syncs events to the table" do
+    it "writes to events db table" do
       expect(data_event).to be
       expect(students_event).to be
     end
 
-    it "it attaches images to records" do
+    it "it attaches images to events" do
       expect(students_event.image.attached?).to be true
     end
   end
@@ -208,21 +214,28 @@ RSpec.describe SyncService::Events, type: :service do
 
   context "trying to ingest the same record twice" do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
+    let(:updated_sync_event) { described_class.new(events_url: file_fixture("updated_single_event.xml").to_path) }
 
-    it "does not update the record" do
+    Event.destroy_all if Event.count >= 1
+
+    it "updates the record" do
       sync_event.sync
       first_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
       sync_event.sync
       second_time = Event.find_by(title: "BLAH BLAH Foo foo").updated_at
-      expect(first_time).to eql second_time
+      expect(first_time).to_not eql second_time
+    end
+
+    it "does not create a second record" do
+      updated_sync_event.sync
+      expect(Event.count).to eq 1
+      expect(Event.first.title).to eq "No-nonsense Title"
     end
 
     it "does not throw an error trying to attach image twice" do
       sync_event.sync
       expect { sync_event.sync }.not_to raise_error
     end
-
-
   end
 
   context "when sync is forced" do
@@ -251,7 +264,7 @@ RSpec.describe SyncService::Events, type: :service do
     let(:sync_event) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
     let(:altered_event) { described_class.new(events_url: file_fixture("single_altered_event.xml").to_path) }
 
-    it "does not update the record" do
+    it "does update the record" do
       sync_event.sync
       original_rec_id = Event.find_by(title: "BLAH BLAH Foo foo").id
       altered_event.sync
@@ -262,10 +275,10 @@ RSpec.describe SyncService::Events, type: :service do
 
   context "Error in field" do
     before (:each) { @starting_event_count = Event.count }
-    describe "no images specified" do
+    describe "no image specified" do
       let (:sync_events) { described_class.new(events_url: file_fixture("noimage-event.xml").to_path) }
 
-      it "should not raise error if an image is missing" do
+      it "should not raise error if image is missing" do
         expect { sync_events.sync }.to_not raise_error
       end
 
@@ -275,17 +288,25 @@ RSpec.describe SyncService::Events, type: :service do
       end
     end
 
-    describe "erroneous images specified" do
+    describe "erroneous image specified" do
       context "unit level" do
         let (:sync_events) { described_class.new(events_url: file_fixture("badimage-event.xml").to_path) }
 
-        it "should not raise error if an image URL is bad" do
+        it "should 'rescue' not raise error if an image URL is bad" do
           expect { sync_events.sync }.to_not raise_error
         end
 
-        it "should not add the event" do
+        it "should still add the event" do
           sync_events.sync
-          expect(Event.count).to eq @starting_event_count
+          expect(Event.count).to eq @starting_event_count + 1
+        end
+
+        it "should construct message to user" do
+          allow(Rails).to receive(:cache).and_return(TestFileCachingHelper.cache)
+          Rails.cache.clear
+          expect(Rails.cache.exist?("events_image_error")).to be(false)
+          sync_events.sync
+          expect(Rails.cache.exist?("events_image_error")).to be(true)
         end
       end
 

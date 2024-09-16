@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/paper-trail-gem/paper_trail
-  revision: a2bd02960a488a8fa902e7feeed2f379f8f517f3
+  revision: 82b73c9b36a5f85c394ee723eb2484f265221a1a
   specs:
     paper_trail (15.2.0)
       activerecord (>= 6.1)
@@ -268,7 +268,7 @@ GEM
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.14.5)
+    i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     image_processing (1.13.0)
       mini_magick (>= 4.9.5, < 5)

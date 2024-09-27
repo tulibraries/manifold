@@ -22,6 +22,59 @@ RSpec.describe Exhibition, type: :model do
     end
   end
 
+  describe "#additional_schema_dot_org_attributes" do
+    let(:building) { double(address1: "123 Main St", address2: "Suite 100") }
+    let(:space) { double(label: "Conference Room A", building: building) }
+    let(:start_date) { Date.new(2024, 1, 1) }
+    let(:end_date) { Date.new(2024, 12, 31) }
+
+    before do
+      allow(subject).to receive(:start_date).and_return(start_date)
+      allow(subject).to receive(:end_date).and_return(end_date)
+    end
+
+    context "when space is present" do
+
+      before do
+        allow(subject).to receive(:space).and_return(space)
+      end
+
+      it "returns the correct schema.org attributes" do
+        expected_output = {
+          startDate: start_date,
+          endDate: end_date,
+          location: {
+            "@type" => "Place",
+            name: space.label,
+            address: {
+              "@type" => "PostalAddress",
+              streetAddress: building.address1,
+              addressLocality: building.address2
+            }
+          }
+      }
+
+      expect(subject.additional_schema_dot_org_attributes).to eq(expected_output)
+      end
+    end
+
+    context "when space is nil" do
+      before do
+        allow(subject).to receive(:space).and_return(nil)
+      end
+
+      it "returns nil for location" do
+        expected_output = {
+          startDate: start_date,
+          endDate: end_date,
+          location: nil
+        }
+
+        expect(subject.additional_schema_dot_org_attributes).to eq(expected_output)
+      end
+    end
+  end
+
   it_behaves_like "categorizable"
   it_behaves_like "imageables"
 

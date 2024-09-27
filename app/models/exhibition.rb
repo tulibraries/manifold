@@ -48,7 +48,7 @@ class Exhibition < ApplicationRecord
     {
       startDate: start_date,
       endDate: end_date,
-      location: {
+      location: space.present? ? {
         "@type" => "Place",
         name: space.label,
         address: {
@@ -56,7 +56,7 @@ class Exhibition < ApplicationRecord
           streetAddress: space.building.address1,
           addressLocality: space.building.address2
         }
-      }
+      } : nil
     }
   end
 end

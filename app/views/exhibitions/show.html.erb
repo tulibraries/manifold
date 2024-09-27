@@ -44,15 +44,17 @@
     </div>
     <% end %>
 
-    <% unless @exhibition.space.nil? %>
     <div class="event-location">
-      <h3><%= t("manifold.exhibitions.show.location") %></h3>
-      <strong><%= link_to @exhibition.space.building.label, @exhibition.space.building %></strong><br />
-      <strong><%= link_to @exhibition.space.label, @exhibition.space %></strong><br />
-      <%= @exhibition.space.building.address1 %><br />
-      <%= @exhibition.space.building.address2 %>
+      <h3><%= t("manifold.exhibitions.show.location") if @exhibition.space.present? || @exhibition.online_url.present? %></h3>
+      <% if @exhibition.space.present? %>
+        <strong><%= link_to @exhibition.space.building.label, @exhibition.space.building %></strong><br />
+        <strong><%= link_to @exhibition.space.label, @exhibition.space %></strong><br />
+        <%= @exhibition.space.building.address1 %><br />
+        <%= @exhibition.space.building.address2 %>
+      <% end %>
+      <br />
+      <%= "Online: #{@exhibition.online_url}" if @exhibition.online_url.present? %>
     </div>
-    <% end %>
 
   </div>
 </div>

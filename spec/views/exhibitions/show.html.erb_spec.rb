@@ -17,12 +17,11 @@ RSpec.describe "exhibitions/show", type: :view do
     expect(rendered).to match /#{@exhibition.images.first.blob.filename}/
   end
 
-  xit "renders script for exhibition" do
+  it "renders script for exhibition" do
     @exhibition = FactoryBot.create(:exhibition, online_url: "https://library.temple.edu")
     render
-    binding.pry
     exhibition_ld = JSON.parse(Nokogiri::XML(rendered).xpath("//script").text)
-    expect(exhibition_ld["name"]).to match("Online")
+    expect(exhibition_ld["location"]["name"]).to match("Online")
   end
 
   it "displays online info" do

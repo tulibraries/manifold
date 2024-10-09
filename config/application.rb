@@ -76,6 +76,7 @@ module Manifold
     config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]
 
     config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "true"
+    config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time, ActiveSupport::TimeWithZone, ActiveSupport::TimeZone]
     config.sync_timeout = ENV.fetch("MANIFOLD_SYNC_TIMEOUT", "180").to_i
   end
 end

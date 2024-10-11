@@ -72,6 +72,10 @@ class Google::HoursComponent < ViewComponent::Base
     end
 
     def start_at
-      @date_range.index { |d| d == @monday.strftime("%A, %B %-d, %Y") }
+      if @date_range.include? @date.to_date.strftime("%A, %B %-d, %Y")
+        @date_range.index { |d| d == @monday.strftime("%A, %B %-d, %Y") }
+      else
+        return
+      end
     end
 end

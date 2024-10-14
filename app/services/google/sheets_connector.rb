@@ -23,7 +23,7 @@ module Google
         @service = Google::Apis::SheetsV4::SheetsService.new
         @service.key = Rails.configuration.google_sheets_api_key
         @service.request_options = Google::Apis::RequestOptions.default.merge(
-          retries: 3 
+          retries: 3
         )
       rescue => e
         e.message
@@ -31,15 +31,15 @@ module Google
     end
 
     def call
-        if @feature == "hours"
-          if @scope.present?
-            @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A", @cells], major_dimension: "ROWS")
-          else
-           @service.get_spreadsheet_values(@spreadsheet_id, @cells)
-          end
+      if @feature == "hours"
+        if @scope.present?
+          @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A", @cells], major_dimension: "ROWS")
         else
           @service.get_spreadsheet_values(@spreadsheet_id, @cells)
         end
+      else
+        @service.get_spreadsheet_values(@spreadsheet_id, @cells)
+      end
     end
 
     private

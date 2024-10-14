@@ -42,7 +42,7 @@
           </div>
         <% end %> 
     </div>
-    
+
       <% location.second.each do |space, hours| %>
         <div class="row hours-row">
           <div class="col-3 px-0"> 
@@ -62,7 +62,7 @@
                           <%= times[1] %>
                         <% end %>
                       </div>
-          <% end %>
+          <% end if start_at.present? %>
 
         <% if space == :blockson %>
           <div class="col-9 offset-3 p-3 text-start hours-note-desktop">
@@ -107,7 +107,7 @@
                       <% end %>
                     </div>
                   </div>
-      <% end %>
+     <% end if start_at.present? %>
 
     <% if space == :blockson %>
       <div class="col-9 offset-3 p-3 text-start hours-note-desktop">

@@ -89,21 +89,21 @@
 								"2018-01-01"
 							]
 						},
-						"promoted_to_events": {
-							"$id": "#/properties/data/properties/attributes/properties/promoted_to_events",
-							"type": "boolean",
-							"title": "The Promoted to Events State Schema",
-							"default": true ,
+						"online_url": {
+							"$id": "#/properties/data/properties/attributes/properties/online_url",
+							"type": "string",
+							"title": "The Online Address of the Virtual Exhibition",
+							"default": "https://library.temple.edu",
 							"examples": [
-								true,
-                false
+								"https://library.temple.edu",
+                "https://temple.edu"
 							]
 						},
 						"updated_at": {
 							"$id": "#/properties/data/properties/attributes/properties/updated_at",
 							"type": "string",
 							"title": "The time the exhibition record was updated",
- 							"format": "date-time",
+              "format": "date-time",
 							"default": "",
 							"examples": [
 								"2018-01-01T12:00:00"

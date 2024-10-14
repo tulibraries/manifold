@@ -41,22 +41,33 @@ class Exhibition < ApplicationRecord
   end
 
   def schema_dot_org_type
-    "ExhibitionEvent"
+    "Exhibition"
   end
 
   def additional_schema_dot_org_attributes
-    {
-      startDate: start_date,
-      endDate: end_date,
-      location: {
-        "@type" => "Place",
-        name: space.label,
-        address: {
-          "@type" => "PostalAddress",
-          streetAddress: space.building.address1,
-          addressLocality: space.building.address2
+    if self.space.present?
+      {
+        startDate: start_date,
+        endDate: end_date,
+        location: {
+          "@type" => "Place",
+          name: space.label,
+          address: {
+            "@type" => "PostalAddress",
+            streetAddress: space.building.address1,
+            addressLocality: space.building.address2
+          }
         }
       }
-    }
+    else
+      {
+        startDate: start_date,
+        endDate: end_date,
+        location: {
+          "@type" => "Place",
+          name: "Online"
+        }
+      }
+    end
   end
 end

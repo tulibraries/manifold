@@ -73,6 +73,7 @@ group :development, :test do
   gem "json-schema"
   gem "pry-rails"
   gem "pry-byebug"
+  gem "rb-readline"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false

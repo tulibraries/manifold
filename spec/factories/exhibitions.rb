@@ -6,6 +6,8 @@ FactoryBot.define do
     description { ActionText::Content.new("Hello World") }
     start_date { "2019-01-16" }
     end_date { "2019-01-16" }
+    promoted_to_events { false }
+    online_url { "" }
 
     trait :with_image do
       after :create do |exhibition|
@@ -15,6 +17,5 @@ FactoryBot.define do
           content_type: "image/jpeg")
       end
     end
-    promoted_to_events { false }
   end
 end

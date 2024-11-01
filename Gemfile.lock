@@ -635,8 +635,8 @@ GEM
     vcr (6.3.1)
       base64
     version_gem (1.1.4)
-    view_component (3.17.0)
-      activesupport (>= 5.2.0, < 8.0)
+    view_component (3.20.0)
+      activesupport (>= 5.2.0, < 8.1)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
     warden (1.2.9)

@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   mount Rswag::Ui::Engine  => "api-docs"
 
   # temporary Link Exchanger redirects
-  get "r/*path", to: redirect { |params, request| "https://tulle.tul-infra.page/r/#{params[:path]}" }
   get "link_exchange/*path", to: redirect { |params, request| "https://tulle.tul-infra.page/#{params[:path]}" }
   get "link_exchange", to: redirect("https://tulle.tul-infra.page")
+  link_exchange = Rails.configuration.link_exchange
+  link_exchange.each do |id, redirect_url|
+    get "r/#{id}", to: redirect(redirect_url)
+  end
 
   concern :imageable do
     get "image/thumbnail", to: "images#thumbnail_image"

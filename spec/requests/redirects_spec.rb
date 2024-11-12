@@ -34,7 +34,8 @@ RSpec.describe RedirectsController, type: :request do
 
   describe "GET a non defined redirect" do
     it "redirects to a 404" do
-      expect { get("/not-defined") }.to raise_error(ActionController::RoutingError)
+      get("/not-defined")
+      expect(response.status).to eq(404)
     end
   end
 

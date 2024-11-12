@@ -21,8 +21,8 @@ RSpec.describe "Collections", type: :request do
 
   describe "a request for /collection/integer when collection does not exist" do
     it "renders the collection" do
-      expect { get collection_path(collection.id + 1) }
-        .to raise_error(ActionController::RoutingError)
+      get collection_path(collection.id + 1)
+      expect(response.status).to eq(404)
     end
   end
 

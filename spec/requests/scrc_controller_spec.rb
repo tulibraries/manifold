@@ -22,7 +22,8 @@ RSpec.describe ScrcController, type: :request do
 
   describe "request for a path that a finding aid or redirect" do
     it "throws and Not Found error" do
-      expect { get "/scrc/nopesauce" }.to raise_error(ActionController::RoutingError)
+      get "/scrc/nopesauce"
+      expect(response.status).to eq(404)
     end
   end
 end

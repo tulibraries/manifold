@@ -20,15 +20,15 @@ RSpec.describe Service, type: :model do
 
   describe "multiple intended audiences" do
     example "select more than one" do
-    service = FactoryBot.create(:service,
-      intended_audience: [
-        Rails.configuration.audience_types.first,
-        Rails.configuration.audience_types.last])
-    expect(service.intended_audience).to include(Rails.configuration.audience_types.first)
-    expect(service.intended_audience).to include(Rails.configuration.audience_types.last)
-  end
-    example "audience doesn't exist" do
-      skip "behavior is TBD"
+      service = FactoryBot.create(:service,
+                                  intended_audience:
+                                    [
+                                      Rails.configuration.audience_types.first,
+                                      Rails.configuration.audience_types.last
+                                    ]
+                                  )
+      expect(service.intended_audience).to include(Rails.configuration.audience_types.first)
+      expect(service.intended_audience).to include(Rails.configuration.audience_types.last)
     end
   end
 

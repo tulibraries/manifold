@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class FormsController < ApplicationController
+  before_action :use_unsafe_params, only: [:persist_form!]
   def index
     form_groups = FormInfo.for_index.group_by(&:grouping)
     @form_groups = Hash[form_groups.sort_by { |k, v| k == "Administrative Services" ? 1 : 0 }]
@@ -45,7 +46,7 @@ class FormsController < ApplicationController
     recipients = params[:form].delete(:recipients)
     FormSubmission.create(
       form_type: type,
-      form_attributes: params["form"].except(:recipients)
+      form_attributes: use_unsafe_params
     )
   end
 
@@ -64,5 +65,9 @@ class FormsController < ApplicationController
           updated_at: DateTime.new(0)
         )
       end
+  end
+
+  def use_unsafe_params
+    request.parameters
   end
 end

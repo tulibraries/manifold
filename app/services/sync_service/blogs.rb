@@ -34,9 +34,7 @@ class SyncService::Blogs
   end
 
   def read_blog_posts
-    # blog_feed = Nokogiri::XML(URI.open(@feed_uri, { read_timeout: Rails.configuration.sync_timeout }))
-    # ruby 3.1.2 -- options hash no longer works: "no implicit conversion of Hash into String"
-    blog_feed = Nokogiri::XML(URI.open(@feed_uri))
+    blog_feed = Nokogiri::XML(URI.open(@feed_uri, read_timeout: Rails.configuration.sync_timeout))
     blog_feed.xpath("//channel/item").map do |blog_post|
       blog_post_xml = blog_post.to_xml
       blog_post_xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\">" + blog_post.to_xml + "</xml>"

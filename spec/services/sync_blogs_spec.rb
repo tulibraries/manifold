@@ -11,14 +11,14 @@ RSpec.describe SyncService::Blogs, type: :service do
 
   context "Aggregate blog feed" do
     it "Gets all of the blog posts in a feed" do
-      @blog_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_posts.rss", id: @blog.id)
+      @blog_feed = OpenStruct.new(feed_path: "#{fixture_paths[0]}/blog_posts.rss", id: @blog.id)
       @sync_blogs = described_class.new(blog: @blog_feed)
       posts = @sync_blogs.read_blog_posts
       expect(posts.count).to eq 3
     end
 
     it "Reads internal authors" do
-      @blog_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author.rss", id: @blog.id)
+      @blog_feed = OpenStruct.new(feed_path: "#{fixture_paths[0]}/blog_post_internal_author.rss", id: @blog.id)
       @sync_blogs = described_class.new(blog: @blog_feed)
       posts = @sync_blogs.read_blog_posts
       expect(posts.last["person"].first_name).to match(/^Zaphod$/)
@@ -28,7 +28,7 @@ RSpec.describe SyncService::Blogs, type: :service do
 
   context "write blog post to blog post table" do
     before(:all) do
-      @blog_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_posts.rss", id: @blog.id)
+      @blog_feed = OpenStruct.new(feed_path: "#{fixture_paths[0]}/blog_posts.rss", id: @blog.id)
       @sync_blogs = described_class.new(blog: @blog_feed)
       @sync_blogs.sync_blog_posts
     end
@@ -41,7 +41,7 @@ RSpec.describe SyncService::Blogs, type: :service do
 
   context "trying to ingest the same record twice" do
     before(:all) do
-      @blog_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author.rss", id: @blog.id)
+      @blog_feed = OpenStruct.new(feed_path: "#{fixture_paths[0]}/blog_post_internal_author.rss", id: @blog.id)
       @sync_blogs = described_class.new(blog: @blog_feed)
     end
 
@@ -56,9 +56,9 @@ RSpec.describe SyncService::Blogs, type: :service do
 
   context "trying to update the same record" do
     before(:all) do
-      @original_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author.rss", id: @blog.id)
+      @original_feed = OpenStruct.new(feed_path: "#{fixture_paths[0]}/blog_post_internal_author.rss", id: @blog.id)
       @original_sync = described_class.new(blog: @original_feed)
-      @modified_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author_modified.rss", id: @blog.id)
+      @modified_feed = OpenStruct.new(feed_path: "#{fixture_paths[0]}/blog_post_internal_author_modified.rss", id: @blog.id)
       @modified_sync = described_class.new(blog: @modified_feed)
     end
 
@@ -73,7 +73,7 @@ RSpec.describe SyncService::Blogs, type: :service do
 
   context "delete and restore post" do
     before(:all) do
-      @blog_feed = OpenStruct.new(feed_path: "#{fixture_path}/blog_post_internal_author.rss", id: @blog.id)
+      @blog_feed = OpenStruct.new(feed_path: "#{fixture_paths[0]}/blog_post_internal_author.rss", id: @blog.id)
       @sync_blogs = described_class.new(blog: @blog_feed)
     end
 
@@ -91,10 +91,10 @@ RSpec.describe SyncService::Blogs, type: :service do
   end
 
   context "sync timeout" do
-    let(:feed_path) { "#{fixture_path}/blog_post_internal_author.rss"  }
+    let(:feed_path) { "#{fixture_paths[0]}/blog_post_internal_author.rss"  }
 
-    xit "passes timeout to http request" do
-      skip("ruby 3.1.2 -- options hash no longer works: 'no implicit conversion of Hash into String'")
+    it "passes timeout to http request" do
+      # skip("ruby 3.1.2 -- options hash no longer works: 'no implicit conversion of Hash into String'")
       expect(URI).to receive(:open).with(feed_path, { read_timeout: Rails.configuration.sync_timeout })
       blog_feed = OpenStruct.new(feed_path:, id: @blog.id)
       sync_blogs = described_class.new(blog: blog_feed)

@@ -66,7 +66,7 @@ RSpec.configure do |config|
   end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = Rails.root.join("spec/fixtures")
+  config.fixture_paths = [Rails.root.join("spec/fixtures")]
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -102,7 +102,7 @@ RSpec.configure do |config|
     stub_request(:get, /.*events\.temple\.edu\/.*\.jpg.*/im)
       .to_return(
         status: 200,
-        body: File.open("#{fixture_path}/charles.jpg"), headers: {}
+        body: File.open("#{fixture_paths[0]}/charles.jpg"), headers: {}
       )
 
     stub_request(:get, "https://example.com/noimage.jpg").
@@ -110,7 +110,7 @@ RSpec.configure do |config|
 
 
     stub_request(:get, "https://sites.temple.edu/devopsing/feed").
-      to_return(status: 200, body: File.open("#{fixture_path}/blog_posts.rss") , headers: {})
+      to_return(status: 200, body: File.open("#{fixture_paths[0]}/blog_posts.rss") , headers: {})
 
     stub_request(:put, "https://bucket.s3.region.amazonaws.com/cache/sitemap.xml.gz").
       to_return(status: 200, body: "", headers: {})

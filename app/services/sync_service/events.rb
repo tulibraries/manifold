@@ -16,7 +16,7 @@ class SyncService::Events
     @stdout = Logger.new(STDOUT)
     @eventsUrl = params.fetch(:events_url) || Rails.configuration.events_feed_url
     @force = params.fetch(:force, false)
-    @eventsDoc = Nokogiri::XML(URI.open(@eventsUrl))
+    @eventsDoc = Nokogiri::XML(URI.open(@eventsUrl, read_timeout: Rails.configuration.sync_timeout))
     @image_failures = []
     stdout_and_log("Syncing events from #{@eventsUrl}")
   end

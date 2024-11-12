@@ -324,9 +324,8 @@ RSpec.describe SyncService::Events, type: :service do
   context "sync timeout" do
     let(:feed_url) { "https://example.com/events/feed.xml" }
 
-    xit "passes timeout to http request" do
-      skip("ruby 3.1.2 -- options hash no longer works: 'no implicit conversion of Hash into String'")
-      expect(URI).to receive(:open).with(feed_url, { read_timeout: Rails.configuration.sync_timeout })
+    it "passes timeout to http request" do
+      expect(URI).to receive(:open).with(feed_url, read_timeout: Rails.configuration.sync_timeout)
       sync_events = described_class.new(events_url: feed_url)
     end
   end

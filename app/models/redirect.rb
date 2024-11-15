@@ -24,7 +24,8 @@ class Redirect < ApplicationRecord
   def manifold_path_cleanup!
     if self.manifold_path.present?
       # make sure it is not a full url
-      unless self.manifold_path =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]
+      manifold_path = URI.parse(self.manifold_path)
+      unless manifold_path.kind_of? URI::HTTP
         unless self.manifold_path.starts_with?("/")
           self.manifold_path = self.manifold_path.prepend("/")
         end

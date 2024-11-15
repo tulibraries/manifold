@@ -26,7 +26,8 @@ class ExternalLink < ApplicationRecord
   def link_cleanup!
     if self.link.present?
       # if it is not a full url
-      unless self.link =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]
+      link_value = URI.parse(self.link)
+      unless link_value.kind_of? URI::HTTP
         # and it doesn't already start with /
         unless self.link.starts_with?("/")
           # prepend /

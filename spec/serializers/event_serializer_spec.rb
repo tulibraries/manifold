@@ -41,15 +41,15 @@ RSpec.describe EventSerializer do
 
       describe "image attribute" do
         it "returns an valid url" do
-          image_url = data[:attributes][:image]
-          expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
+          image_url = URI.parse(data[:attributes][:image])
+          expect(image_url.kind_of? URI::HTTP).to be_truthy
         end
       end
 
       describe "thumbnail_image attribute" do
         it "returns an valid url" do
-          image_url = data[:attributes][:thumbnail_image]
-          expect(image_url =~ URI::DEFAULT_PARSER.regexp[:ABS_URI]).to be_truthy
+          image_url = URI.parse(data[:attributes][:thumbnail_image])
+          expect(image_url.kind_of? URI::HTTP).to be_truthy
         end
       end
 

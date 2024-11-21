@@ -31,6 +31,10 @@ module Google
     end
 
     def call
+      # avoids exceeding rate limits
+      random_sleep_time = rand(1.0..2.0)
+      sleep(random_sleep_time)
+
       if @feature == "hours"
         if @scope.present?
           @service.batch_get_spreadsheet_values(@spreadsheet_id, ranges: ["A2:A", @cells], major_dimension: "ROWS")

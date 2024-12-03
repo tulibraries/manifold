@@ -1,1 +1,2 @@
 rexml
+rails-html-sanitizer

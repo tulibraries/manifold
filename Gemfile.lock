@@ -308,8 +308,9 @@ GEM
       rack (>= 2.2, < 4)
       rdf (~> 3.3)
       rexml (~> 3.2)
-    json-schema (5.1.0)
+    json-schema (5.1.1)
       addressable (~> 2.8)
+      bigdecimal (~> 3.1)
     jwt (2.9.3)
       base64
     kaminari (1.2.2)

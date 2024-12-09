@@ -11,27 +11,27 @@ ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
   K8=yes
 
 RUN apk add -U --no-cache \
-      bash=5.2.26-r0 \
-      imagemagick=7.1.1.32-r2 \
-      imagemagick-jpeg=7.1.1.32-r2 \
-      imagemagick-libs=7.1.1.32-r2 \
-      libjpeg-turbo=3.0.3-r0 \
-      musl=1.2.5-r0 \
+      bash=5.2.37-r0 \
+      imagemagick=7.1.1.41-r0 \
+      imagemagick-jpeg=7.1.1.41-r0 \
+      imagemagick-libs=7.1.1.41-r0 \
+      libjpeg-turbo=3.0.4-r0 \
+      musl=1.2.5-r8 \
       libc6-compat=1.1.0-r4 \
-      libxslt=1.1.39-r1 \
+      libxslt=1.1.42-r1 \
       postgresql16-client=16.6-r0 \
-      shared-mime-info=2.4-r0 \
-      tzdata=2024b-r0 && \
+      shared-mime-info=2.4-r1 \
+      tzdata=2024b-r1 && \
     apk add -U --no-cache --virtual build-dependencies \
-      git=2.45.2-r0 \
+      git=2.47.1-r0 \
       build-base=0.5-r3 \
-      libjpeg=9e-r1 \
-      jpeg-dev=9e-r1 \
-      libjpeg-turbo-dev=3.0.3-r0 \
-      libxslt-dev=1.1.39-r1 \
+      libjpeg=9f-r0 \
+      jpeg-dev=9f-r0 \
+      libjpeg-turbo-dev=3.0.4-r0 \
+      libxslt-dev=1.1.42-r1 \
       postgresql16-dev=16.6-r0 \
-      nodejs=20.15.1-r0 \
-      yarn=1.22.22-r0 && \
+      nodejs=22.11.0-r0 \
+      yarn=1.22.22-r1 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \

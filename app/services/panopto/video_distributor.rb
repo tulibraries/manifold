@@ -115,10 +115,11 @@ module Panopto
         if collection.present?
           page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
           @videos = page_results[:Results]
-          more = true if @videos.present? && @videos.size == 50
 
+          more = true if @videos.present? && @videos.size == 50
           while more
             page_results = nil
+            i += 1
             results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
             page_results = results[:Results] if results.present? && (results[:Results].size > 0 && results[:Results].size <= 50)
 
@@ -128,7 +129,6 @@ module Panopto
             else
               more = false
             end
-            i += 1
           end
           [collection[1], @videos]
         else

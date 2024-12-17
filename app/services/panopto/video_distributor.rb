@@ -101,7 +101,7 @@ module Panopto
                               beyond_page: { slug: "beyond-the-page", label: "Beyond the Page", videos: beyond_page.take(5) },
                               beyond_notes: { slug: "beyond-the-notes", label: "Beyond the Notes", videos: beyond_notes.take(5) },
                               blockson: { slug: "blockson", label: "Charles L. Blockson Afro-American Collection", videos: blockson.take(5) },
-                              awards: { slug: "awards", label: "Livingstone Undergraduate Research Awards", videos: awards.take(5) },
+                              awards: { slug: "research-awards", label: "Livingstone Undergraduate Research Awards", videos: awards.take(5) },
                               lcdss: { slug: "lcdss", label: "Loretta C. Duckworth Scholars Studio", videos: lcdss.take(5) },
                               scrc: { slug: "scrc", label: "Special Collections Research Center", videos: scrc.take(5) }
                             }
@@ -115,18 +115,20 @@ module Panopto
         if collection.present?
           page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
           @videos = page_results[:Results]
-
           more = true if @videos.present? && @videos.size == 50
+
           while more
             page_results = nil
-            i += 1
             results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
-            page_results = results[:Results] if results.present? && results[:Results].size > 0 && results[:Results].size <= 50
+            page_results = results[:Results] if results.present? && (results[:Results].size > 0 && results[:Results].size <= 50)
 
             if page_results.present?
               more = (page_results.size == 50) ? true : false
               @videos += page_results
+            else
+              more = false
             end
+            i += 1
           end
           [collection[1], @videos]
         else

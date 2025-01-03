@@ -15,7 +15,7 @@
     "sass": "^1.56.2",
     "selectize": "^0.12.6",
     "stimulus-use": "^0.51.1",
-    "trix": "^2.1.9"
+    "trix": "^2.1.12"
   },
   "scripts": {
     "build": "node esbuild.config.js",

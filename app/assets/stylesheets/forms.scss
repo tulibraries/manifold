@@ -88,3 +88,11 @@ fieldset {
 		font-weight: 500 !important;
 	}
 }
+
+.form-group.required.form_event_start, 
+.form-group.required.form_department {
+	label {
+		font-size: 110%;
+		font-weight: bold;
+	}
+}

@@ -26,12 +26,13 @@
 
   <%= f.input :additional_setup_requirements, as: :text, label: t("manifold.forms.event_space_request.additional_setup_requirements") %>
 
-<span data-controller="selectize">
-<%= f.input :av_support, as: :check_boxes,
+  <span data-controller="selectize">
+  <%= f.input :av_support, as: :select, 
               collection: t("manifold.forms.event_space_request.av_support_collection").map{ |k,v| v },
               label: t("manifold.forms.event_space_request.av_support"),
-              hint: t("manifold.forms.event_space_request.check_boxes") %>
-</span>
+              hint:  t("manifold.forms.event_space_request.multi_select"),
+              input_html: { multiple: true } %>
+  </span>
 
 </fieldset>
 

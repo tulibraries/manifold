@@ -29,17 +29,6 @@
       <%= f.input :title, as: :hidden, input_html: { value: "#{@title}" } %>
       <%= f.input :recipients, as: :hidden, input_html: { value: "#{@recipients}" } %>
 
-      <% unless ["event-space-request"].include? @type %> 
-        <div class="row">
-          <div class="col mx-3">
-            <fieldset class="fieldset-border mb-4">
-              <legend class="fieldset-legend"><%= t("manifold.forms.shared.your_info") %></legend>
-            <%= render "forms/#{@type}/personal_info", f: f %>
-            </fieldset>
-          </div>
-        </div>
-      <% end %>
-
       <% unless ["graduate-locker-request"].include? @type %>
         <div class="row">
           <div class="col mx-3">

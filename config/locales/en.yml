@@ -829,7 +829,7 @@ en:
         space_label: Event Space
         space_collection: 
           one: 2nd Floor Multipurpose Room
-          two: "3rd Floor Reading Room *"
+          two: "3rd Floor Conference Room *"
           three: 4th Floor Multipurpose Room
           four: "Atrium *"
           five: Event Space
@@ -857,6 +857,7 @@ en:
           four: Camera
           five: Zoom
         catering: Catering
+        no_label: ""
         additional_setup_requirements: Additional Setup Requirements
         your_info_legend: Your Information
         span: Requestor/Event Leader/Coordinator/Student Group

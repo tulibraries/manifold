@@ -1,0 +1,16 @@
+<fieldset class="mt-4">
+  <span class="fs-5"><%= t("manifold.forms.event_space_request.span") %></span>
+  <%= f.input :name, label: t("manifold.forms.fields.name"), required: :true %>
+  <%= f.input :email, label: t("manifold.forms.fields.email"), required: :true %>
+  <%= f.input :phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
+  <%= f.input :department, label: t("manifold.forms.event_space_request.department"), required: :true %>
+  <%= f.input :foapal, label: t("manifold.forms.fields.foapal"), required: :true, 
+              hint: t("manifold.forms.event_space_request.foapal_hint") %>
+  <span class="d-block mt-4 fs-5"><%= t("manifold.forms.event_space_request.span_2") %></span>
+  <%= f.input :financial_name, label: t("manifold.forms.fields.name"), required: :true %>
+  <%= f.input :financial_email, label: t("manifold.forms.fields.email"), required: :true %>
+  <%= f.input :financial_phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
+</fieldset>
+
+  <%= f.input :policy_check, as: :boolean, required: true, class: "inline", 
+              label: t("manifold.forms.event_space_request.policy_check_html") %>

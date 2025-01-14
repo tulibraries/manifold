@@ -59,13 +59,6 @@ fieldset.form-section {
 	}
 }
 
-.form-group.required.form_event_start, 
-.form-group.required.form_department {
-	label {
-		font-size: 125%;
-	}
-}
-
 .form-control-label {
   padding-top: 10px;
   padding-bottom: 10px;
@@ -87,5 +80,11 @@ fieldset {
 
 .fieldset-legend {
   width: auto;
-  padding: 0 21px;
+  padding-bottom: 28px;
+}
+
+.form_catering {
+	legend.col-form-label {
+		font-weight: 500 !important;
+	}
 }

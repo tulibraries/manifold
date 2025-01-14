@@ -89,3 +89,16 @@ fieldset {
   width: auto;
   padding: 0 21px;
 }
+
+.horizontal-check-boxes {
+	.form-check {
+		display: inline-block !important;
+		padding-right:1rem;
+		label {
+			font-weight: 500 !important;
+		}
+		input {
+			border: solid #aaa 1px !important;
+		}
+	}
+}

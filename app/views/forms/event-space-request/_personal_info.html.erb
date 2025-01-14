@@ -3,7 +3,9 @@
   <%= f.input :name, label: t("manifold.forms.fields.name"), required: :true %>
   <%= f.input :email, label: t("manifold.forms.fields.email"), required: :true %>
   <%= f.input :phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
-  <%= f.input :department, label: t("manifold.forms.event_space_request.department"), required: :true %>
+  <b style="font-weight: 700; font-size: 110%">
+    <%= f.input :department, label: t("manifold.forms.event_space_request.department"), required: :true %>
+  </b>
   <%= f.input :foapal, label: t("manifold.forms.fields.foapal"), required: :true, 
               hint: t("manifold.forms.event_space_request.foapal_hint") %>
   <span class="d-block mt-4 fs-5"><%= t("manifold.forms.event_space_request.span_2") %></span>

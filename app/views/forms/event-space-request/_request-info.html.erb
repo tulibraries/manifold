@@ -4,7 +4,9 @@
               order: [:month, :day, :year], html5: true, 
               label: t("manifold.forms.event_space_request.date"), 
               required: :true %>
-  <%= f.input :event_start, as: :time, html5: true, label: t("manifold.forms.event_space_request.start_time"), required: :true %>
+  <b style="font-weight: 700; font-size: 110%">
+    <%= f.input :event_start, as: :time, html5: true, label: t("manifold.forms.event_space_request.start_time"), required: :true %>
+  </b>
   <%= f.input :event_end, as: :time, html5: true, label: t("manifold.forms.event_space_request.end_time"), required: :true %>
 </fieldset>
 

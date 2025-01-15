@@ -80,5 +80,11 @@ fieldset {
 
 .fieldset-legend {
   width: auto;
-  padding: 0 21px;
+  padding-bottom: 28px;
+}
+
+.form_catering {
+	legend.col-form-label {
+		font-weight: 500 !important;
+	}
 }

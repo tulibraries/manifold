@@ -24,35 +24,18 @@
               collection: t("manifold.forms.event_space_request.setup_style_collection").map{ |k,v| v }, 
               required: :true %>
 
-  <%= f.input :additional_setup_requirements, as: :text, label: t("manifold.forms.event_space_request.additional_setup_requirements") %>
+  <%= f.input :additional_setup_requirements, as: :text, 
+              label: t("manifold.forms.event_space_request.additional_setup_requirements") %>
 
-  <span data-controller="selectize">
   <%= f.input :av_support, as: :select, 
               collection: t("manifold.forms.event_space_request.av_support_collection").map{ |k,v| v },
               label: t("manifold.forms.event_space_request.av_support"),
               hint:  t("manifold.forms.event_space_request.multi_select"),
-              input_html: { multiple: true } %>
-  </span>
+              input_html: { multiple: true },
+              required: true %>
 
   <%= f.input :catering, as: :radio_buttons, required: false, 
-              label: t("manifold.forms.event_space_request.catering") %>
+              label: t("manifold.forms.event_space_request.catering"),
+              required: true %>
 </fieldset>
-
-<fieldset class="mt-4">
-  <legend><%= t("manifold.forms.event_space_request.your_info_legend") %></legend>
-  <span class="fs-5"><%= t("manifold.forms.event_space_request.span") %></span>
-  <%= f.input :name, label: t("manifold.forms.fields.name"), required: :true %>
-  <%= f.input :email, label: t("manifold.forms.fields.email"), required: :true %>
-  <%= f.input :phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
-  <%= f.input :department, label: t("manifold.forms.event_space_request.department"), required: :true %>
-  <%= f.input :foapal, label: t("manifold.forms.fields.foapal"), required: :true, 
-              hint: t("manifold.forms.event_space_request.foapal_hint") %>
-  <span class="d-block mt-4 fs-5"><%= t("manifold.forms.event_space_request.span_2") %></span>
-  <%= f.input :financial_name, label: t("manifold.forms.fields.name"), required: :true %>
-  <%= f.input :financial_email, label: t("manifold.forms.fields.email"), required: :true %>
-  <%= f.input :financial_phone, label: t("manifold.forms.fields.phone_number"), required: :true %>
-</fieldset>
-
-  <%= f.input :policy_check, as: :boolean, required: true, class: "inline", 
-              label: t("manifold.forms.event_space_request.policy_check_html") %>
 

@@ -8,7 +8,7 @@
       array_values+="</ul>"
     %>
   <div>
-    <%= I18n.t("manifold.default.attributes.form.#{attribute}") %>:
+    <b><%= I18n.t("manifold.default.attributes.form.#{attribute}") %>:</b>
     <%= array_values.html_safe %>
   </div>
   <% else %>

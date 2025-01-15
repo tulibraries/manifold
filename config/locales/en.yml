@@ -240,7 +240,9 @@ en:
           format_preference: Format Preference
           total_number_of_production_members: Total Number of Production Members
           mobile_telephone_number_of_the_key_crew_member: Mobile Telephone Number of the Key Crew Member
-          reason_for_request: "Reason for request"
+          reason_for_request: Reason for request
+          additional_setup_requirements:  Additional Setup Requirements
+          catering: Catering
             
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
@@ -829,7 +831,7 @@ en:
         space_label: Event Space
         space_collection: 
           one: 2nd Floor Multipurpose Room
-          two: "3rd Floor Reading Room *"
+          two: "3rd Floor Conference Room *"
           three: 4th Floor Multipurpose Room
           four: "Atrium *"
           five: Event Space
@@ -851,11 +853,12 @@ en:
         other: Additional Setup Requirements
         av_support: Specific A/V Support Needed, if any
         av_support_collection: 
-          one: Computer
-          two: Projector/Screen
-          three: Microphone(s)
-          four: Camera
-          five: Zoom
+          one: None
+          two: Computer
+          three: Projector/Screen
+          four: Microphone(s)
+          five: Camera
+          six: Zoom
         catering: Catering
         additional_setup_requirements: Additional Setup Requirements
         your_info_legend: Your Information

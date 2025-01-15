@@ -23,7 +23,7 @@ RUN apk add -U --no-cache \
       shared-mime-info=2.4-r2 \
       tzdata=2024b-r1 && \
     apk add -U --no-cache --virtual build-dependencies \
-      git=2.47.1-r0 \
+      git=2.47.2-r0 \
       build-base=0.5-r3 \
       libjpeg=9f-r0 \
       jpeg-dev=9f-r0 \

@@ -11,3 +11,4 @@ module Attachable
     accepts_nested_attributes_for :fileabilities
   end
 end
+

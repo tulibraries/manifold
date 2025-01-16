@@ -57,16 +57,15 @@ and renders all form fields for a resource's editable attributes.
       </div>
 	</div>
 
-  <% if action_name == "edit" && is_draftable?(page.attributes) %>
-    <div class="field-unit field-unit--apply-draft %>" >
-      <div class="field-unit__label">
-        <%= f.label :publish, t("manifold.admin.actions.publish") %>
-      </div>
-      <div class="field-unit__field">
-        <%= f.check_box :publish %>
-      </div>
+  <div class="field-unit field-unit--apply-draft %>" >
+    <div class="field-unit__label">
+      <%= f.label :publish, t("manifold.admin.actions.publish") %>
     </div>
-  <% end -%>
+    <div class="field-unit__field">
+      <%= f.check_box :publish %>
+    </div>
+  </div>
+
   <div class="form-actions">
     <%= f.submit %>
   </div>

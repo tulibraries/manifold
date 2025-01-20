@@ -26,7 +26,7 @@ RSpec.describe "Link Exchanger routing", type: :request do
 
     it "routes to tull.tul-infra.page" do
       get path
-      expect(response).to redirect_to("https://tulle.tul-infra.page/r/872952237291")
+      expect(response).to redirect_to("https://librarysearch.temple.edu/catalog/991036727265203811")
     end
   end
 

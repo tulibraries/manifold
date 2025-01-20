@@ -25,7 +25,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
-    file_uploads: Field::HasMany,
+    file_uploads: Field::HasMany.with_options(admin_only: true),
     covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

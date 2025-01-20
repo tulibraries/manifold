@@ -41,8 +41,13 @@ and renders all form fields for a resource's editable attributes.
       <label>File Uploads</label>
     </div>
       <div class="field-unit__field fileabilities">
+<<<<<<< Updated upstream
         <%= f.fields_for :fileabilities, page.resource.fileabilities.sort_by(&:weight) do |fileabilities_form| %>
         <% if fileabilities_form.object.file_upload.present? %>
+=======
+        <%= f.fields_for :fileabilities, page.resource.fileabilities.sort_by(&:weight) do |file_uploads_form| %>
+        <% if file_uploads_form.object.file_upload.present? %> <!-- TODO: Annual Report has phantom fileupload, remove it -->
+>>>>>>> Stashed changes
           <div class="entity-weight-list">
             <span class="file-upload-name">
               <%= fileabilities_form.label fileabilities_form.object.file_upload.name %>
@@ -52,7 +57,7 @@ and renders all form fields for a resource's editable attributes.
             </span>
           </div>
           <% end %>
-        <% end -%>
+        <% end %>
       </div>
 	</div>
   <% end %>

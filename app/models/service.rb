@@ -3,9 +3,9 @@
 class Service < ApplicationRecord
   has_paper_trail
   include Accountable
-  # include Attachable
+  include Attachable
   include Categorizable
-  include Draftable
+  # include Draftable
   include InputCleaner
   include HasPolicies
   include SchemaDotOrgable

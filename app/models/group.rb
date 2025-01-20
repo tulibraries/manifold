@@ -2,7 +2,7 @@
 
 class Group < ApplicationRecord
   has_paper_trail
-  # include Attachable
+  include Attachable
   include Validators
   include InputCleaner
   include Categorizable

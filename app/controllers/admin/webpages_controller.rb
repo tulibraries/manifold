@@ -2,6 +2,6 @@
 
 module Admin
   class WebpagesController < Admin::ApplicationController
-    include Admin::Draftable
+    # include Admin::Draftable
   end
 end

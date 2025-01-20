@@ -70,8 +70,8 @@ class WebpageDashboard < Administrate::BaseDashboard
     :accounts,
     :layout,
     :external_link,
-    :file_uploads,
-    :covid_alert
+    :covid_alert,
+    :file_uploads
   ].freeze
 
   # Overwrite this method to customize how pages are displayed
@@ -86,12 +86,11 @@ class WebpageDashboard < Administrate::BaseDashboard
   #   super + [documents: []]
   # end
 
-  def permitted_attributes
-    super + [fileabilities_attributes: [:weight, :id]] + [:draft_description, :publish]
-    # params["webpage"]["fileabilities_attributes"]
-  end
-
   def display_resource(webpage)
     webpage.title
+  end
+
+  def permitted_attributes
+    super + [fileabilities_attributes: [:weight, :id]]
   end
 end

@@ -41,37 +41,24 @@ and renders all form fields for a resource's editable attributes.
       <label>File Uploads</label>
     </div>
       <div class="field-unit__field fileabilities">
-<<<<<<< Updated upstream
-        <%= f.fields_for :fileabilities, page.resource.fileabilities.sort_by(&:weight) do |fileabilities_form| %>
-        <% if fileabilities_form.object.file_upload.present? %>
-=======
         <%= f.fields_for :fileabilities, page.resource.fileabilities.sort_by(&:weight) do |file_uploads_form| %>
-        <% if file_uploads_form.object.file_upload.present? %> <!-- TODO: Annual Report has phantom fileupload, remove it -->
->>>>>>> Stashed changes
+        <% if file_uploads_form.object.file_upload.present? %>
           <div class="entity-weight-list">
             <span class="file-upload-name">
-              <%= fileabilities_form.label fileabilities_form.object.file_upload.name %>
+              <%= file_uploads_form.label file_uploads_form.object.file_upload.name %>
             </span>
             <span class="file-upload-weight">
-              <%= fileabilities_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
+              <%= file_uploads_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
             </span>
           </div>
           <% end %>
-        <% end %>
+        <% end -%>
       </div>
 	</div>
   <% end %>
 
-  <% if action_name == "edit" && is_draftable?(page.attributes) %>
-    <div class="field-unit field-unit--apply-draft %>" >
-      <div class="field-unit__label">
-        <%= f.label :publish, t("manifold.admin.actions.publish")%>
-      </div>
-      <div class="field-unit__field">
-        <%= f.check_box :publish%>
-      </div>
-    </div>
-  <% end -%>
+
+
   <div class="form-actions">
     <%= f.submit %>
   </div>

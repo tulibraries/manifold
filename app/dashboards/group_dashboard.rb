@@ -81,4 +81,8 @@ class GroupDashboard < BaseDashboard
   def display_resource(group)
     "#{group.name}"
   end
+
+  def permitted_attributes
+    super + [fileabilities_attributes: [:weight, :id]]
+  end
 end

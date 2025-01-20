@@ -11,11 +11,13 @@
     "esbuild": "^0.16.7",
     "esbuild-rails": "^1.0.3",
     "jquery": "^3.7.1",
-    "minimist": "^1.2.6",
     "sass": "^1.56.2",
     "selectize": "^0.12.6",
     "stimulus-use": "^0.51.1",
     "trix": "^2.1.12"
+  },
+  "resolutions": {
+    "minimist": "^1.2.6"
   },
   "scripts": {
     "build": "node esbuild.config.js",

@@ -5,7 +5,7 @@ class Service < ApplicationRecord
   include Accountable
   include Attachable
   include Categorizable
-  # include Draftable
+  include Draftable
   include InputCleaner
   include HasPolicies
   include SchemaDotOrgable

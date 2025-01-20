@@ -4,7 +4,7 @@ class Webpage < ApplicationRecord
   include Attachable
   include Accountable
   include Categorizable
-  # include Draftable
+  include Draftable
   include Validators
   extend FriendlyId
   include SchemaDotOrgable

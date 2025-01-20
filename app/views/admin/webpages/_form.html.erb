@@ -43,12 +43,17 @@ and renders all form fields for a resource's editable attributes.
       <div class="field-unit__field fileabilities">
         <%= f.fields_for :fileabilities, page.resource.fileabilities.sort_by(&:weight) do |file_uploads_form| %>
         <% if file_uploads_form.object.file_upload.present? %>
+          <%= file_uploads_form.hidden_field :id %>
           <div class="entity-weight-list">
             <span class="file-upload-name">
               <%= file_uploads_form.label file_uploads_form.object.file_upload.name %>
             </span>
             <span class="file-upload-weight">
               <%= file_uploads_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
+            </span>
+            <span class="file-upload-destroy">
+              <%= file_uploads_form.check_box :_destroy %>
+              <%= file_uploads_form.label :_destroy, "Remove" %>
             </span>
           </div>
           <% end %>

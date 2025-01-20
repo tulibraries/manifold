@@ -85,10 +85,14 @@ select[multiple] {
       width: 90%;
     }
     .file-upload-name {
-      width: 80%;
+      width: 60%;
       display: inline-block;
     }
     .file-upload-weight {
+      width: 10%;
+      display: inline-block;
+    }
+    .file-upload-destroy {
       width: 10%;
       display: inline-block;
     }

@@ -25,7 +25,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
-    file_uploads: Field::HasMany.with_options(admin_only: true),
+    file_uploads: Field::HasMany,
     covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -70,27 +70,16 @@ class WebpageDashboard < Administrate::BaseDashboard
     :accounts,
     :layout,
     :external_link,
-    :covid_alert,
-    :file_uploads
+    :file_uploads,
+    :covid_alert
   ].freeze
 
-  # Overwrite this method to customize how pages are displayed
-  # across all pages of the admin dashboard.
-  #
-  # def display_resource(page)
-  #   "Page ##{page.id}"
-  # end
 
-  # permitted for has_many_attached
-  # def permitted_attributes
-  #   super + [documents: []]
-  # end
+  def permitted_attributes
+    super + [[fileabilities_attributes: [:weight, :id, :_destroy]], :draft_description, :publish]
+  end
 
   def display_resource(webpage)
     webpage.title
-  end
-
-  def permitted_attributes
-    super + [fileabilities_attributes: [:weight, :id]]
   end
 end

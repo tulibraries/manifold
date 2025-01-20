@@ -25,6 +25,8 @@ RUN apk add -U --no-cache \
     apk add -U --no-cache --virtual build-dependencies \
       git=2.47.2-r0 \
       build-base=0.5-r3 \
+      yaml \
+      yaml-dev \
       libjpeg=9f-r0 \
       jpeg-dev=9f-r0 \
       libjpeg-turbo-dev=3.0.4-r0 \

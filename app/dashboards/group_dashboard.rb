@@ -83,6 +83,6 @@ class GroupDashboard < BaseDashboard
   end
 
   def permitted_attributes
-    super + [fileabilities_attributes: [:weight, :id]]
+    super + [fileabilities_attributes: [:weight, :id, :_destroy]]
   end
 end

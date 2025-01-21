@@ -52,12 +52,14 @@ and renders all form fields for a resource's editable attributes.
               <%= file_uploads_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
             </span>
             <span class="file-upload-destroy">
-              <%= file_uploads_form.check_box :_destroy %>
-              <%= file_uploads_form.label :_destroy, "Remove" %>
+              <label for="webpage_fileabilities_attributes_<%= file_uploads_form.options[:child_index] %>__destroy">
+                <%= file_uploads_form.check_box :_destroy %>
+                <span class="delete-icon"></span>
+              </label>
             </span>
           </div>
           <% end %>
-        <% end -%>
+        <% end %>
       </div>
 	</div>
   <% end %>

@@ -85,7 +85,7 @@ select[multiple] {
       width: 90%;
     }
     .file-upload-name {
-      width: 60%;
+      width: 80%;
       display: inline-block;
     }
     .file-upload-weight {
@@ -93,8 +93,26 @@ select[multiple] {
       display: inline-block;
     }
     .file-upload-destroy {
-      width: 10%;
+      width: 5%;
       display: inline-block;
+      text-align: right;
+      input {
+        display: none;
+      }
+      input:checked ~ span.delete-icon {
+        background-image: url("delete-selected.png");
+      }
+      span.delete-icon {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        top: 7px;
+        left: 10px;
+        height: 27px;
+        width: 24px;
+        background-image: url("delete.png");
+        transition: 0.5s
+      }
     }
   }
 }

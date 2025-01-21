@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Webpage < ApplicationRecord
-  include Accountable
   include Attachable
+  include Accountable
   include Categorizable
   include Draftable
   include Validators
@@ -14,7 +14,6 @@ class Webpage < ApplicationRecord
 
   has_rich_text :description
   has_rich_text :draft_description
-  # validates_presence_of :description # required rich text fields throw error in administrate if blank
   has_rich_text :covid_alert
 
   validates :title, presence: true

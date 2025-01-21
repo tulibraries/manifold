@@ -83,4 +83,8 @@ class ServiceDashboard < Administrate::BaseDashboard
   def display_resource(service)
     "#{service.title}"
   end
+
+  def permitted_attributes
+    super + [fileabilities_attributes: [:weight, :id, :_destroy]]
+  end
 end

@@ -74,20 +74,9 @@ class WebpageDashboard < Administrate::BaseDashboard
     :covid_alert
   ].freeze
 
-  # Overwrite this method to customize how pages are displayed
-  # across all pages of the admin dashboard.
-  #
-  # def display_resource(page)
-  #   "Page ##{page.id}"
-  # end
-
-  # permitted for has_many_attached
-  # def permitted_attributes
-  #   super + [documents: []]
-  # end
 
   def permitted_attributes
-    super + [fileabilities_attributes: [:weight, :id]] + [:draft_description, :publish]
+    super + [[fileabilities_attributes: [:weight, :id, :_destroy]], :draft_description, :publish]
   end
 
   def display_resource(webpage)

@@ -39,6 +39,17 @@
         </div>
       <% end %>
 
+      <% unless ["event-space-request"].include? @type %> 
+        <div class="row">
+          <div class="col mx-3">
+            <fieldset class="fieldset-border mb-4">
+              <legend class="fieldset-legend"><%= t("manifold.forms.shared.your_info") %></legend>
+            <%= render "forms/#{@type}/personal_info", f: f %>
+            </fieldset>
+          </div>
+        </div>
+      <% end %>
+
       <% if ["event-space-request"].include? @type %> 
         <div class="row">
           <div class="col mx-3">

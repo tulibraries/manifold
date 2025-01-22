@@ -26,16 +26,16 @@
       <ul class="mb-0 social-links">
         <%= link_to "/social-media" do %>
         <li class="instagram">
-          <%= image_tag('IG_red_round.png', alt: "instagram logo") %>
+          <%= image_tag('IG_red_round.png', alt: "instagram logo", loading: "lazy") %>
         </li>
         <li class="facebook">
-          <%= image_tag('FB_red_round.png', alt: "facebook logo") %>
+          <%= image_tag('FB_red_round.png', alt: "facebook logo", loading: "lazy") %>
         </li>
         <li class="twitter">
-          <%= image_tag('Twitter_red_round.png', alt: "twitter logo") %>
+          <%= image_tag('Twitter_red_round.png', alt: "twitter logo", loading: "lazy") %>
         </li>
         <li class="linked-in">
-          <%= image_tag('linked-in-red-round.png', alt: "linked-in logo") %>
+          <%= image_tag('linked-in-red-round.png', alt: "linked-in logo", loading: "lazy") %>
         </li>
         <% end %>
       </ul>
@@ -94,7 +94,8 @@
         <%= link_to (image_tag "gear.png",
                       style: "width: 35px", 
                       class: "decorative", 
-                      alt: ""), edit_url %>
+                      alt: "",
+                      loading: "lazy"), edit_url %>
       </div>
     </div>
 

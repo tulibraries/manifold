@@ -2,7 +2,11 @@
     <div class="col-12 col-md-6 col-lg-4 library-event">
 
 			<%= link_to event_path(event.id) do %>
-        <%= image_tag event.custom_image(330, 235), class: "d-block decorative", alt: ""  if event.image.attached? %>
+      <% if event.image.attached? %>
+        <%= image_tag event.custom_image(330, 235), class: "d-block decorative", alt: "",
+                      loading: "lazy"
+                       %>
+      <% end %>
         <span class="mt-3 d-block event-title">
           <%= event.title %>
         </span>

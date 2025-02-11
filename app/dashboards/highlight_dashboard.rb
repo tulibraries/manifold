@@ -23,6 +23,7 @@ class HighlightDashboard < Administrate::BaseDashboard
       ),
     tags: Field::String,
     promoted: Field::Boolean,
+    promote_to_dig_col: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -36,6 +37,7 @@ class HighlightDashboard < Administrate::BaseDashboard
     :id,
     :title,
     :promoted,
+    :promote_to_dig_col,
     :created_at
   ].freeze
 
@@ -65,6 +67,7 @@ class HighlightDashboard < Administrate::BaseDashboard
     :type_of_highlight,
     :tags,
     :promoted,
+    :promote_to_dig_col,
   ].freeze
 
   # Overwrite this method to customize how highlights are displayed

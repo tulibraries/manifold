@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_26_193739) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_10_162354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -382,6 +382,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_26_193739) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "link_label"
     t.string "slug"
+    t.boolean "promote_to_dig_col", default: false
   end
 
   create_table "members", force: :cascade do |t|

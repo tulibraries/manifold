@@ -8,3 +8,4 @@ import Trix from "trix";
 import "@rails/actiontext"
 import "selectize"
 import "./src/administrate-trix"
+import "./src/slideshow"

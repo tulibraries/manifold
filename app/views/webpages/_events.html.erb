@@ -1,26 +1,40 @@
-<% @featured_events.each do |event| %>
-    <div class="col-12 col-md-6 col-lg-4 library-event">
-
-			<%= link_to event_path(event.id) do %>
-      <% if event.image.attached? %>
-        <%= image_tag event.custom_image(330, 235), class: "d-block decorative", alt: "",
-                      loading: "lazy"
-                       %>
+  <div id="newsCarousel" class="carousel pt-3" data-bs-ride="carousel">
+    <div class="carousel-inner mx-3" role="listbox">
+      <% @featured_events.each_with_index do |event, i| %>
+        <div class="carousel-item<%= " active" if i == 0 %>">
+          <div class="card library-event" style="background-color: transparent">
+            <%= link_to event_path(event.id) do %>
+            <% if event.image.attached? %>
+              <div class="img-wrapper">
+                <%= image_tag event.custom_image(330, 235), class: "d-block decorative", alt: "", loading: "lazy" %>
+              </div>
+            <% end %>
+            <div class="card-body">
+              <span class="mt-3 d-block event-title card-title">
+                <%= event.title %>
+              </span>
+              <% end %>
+              <p class="card-text event-date">
+                <span class="d-block"><%= event.get_date %></span>
+                <%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %>
+              </p>
+            </div>
+          </div>
+        </div>
       <% end %>
-        <span class="mt-3 d-block event-title">
-          <%= event.title %>
-        </span>
-      <% end %>
-
-      
-      <p class="event-date">
-        <span class="d-block"><%= event.get_date %></span>
-        <%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %>
-      </p>
-
-    </div>
-  <% end %>
-
-  <div class="col-12 text-end px-0">
-    <%= link_to "View all events", events_path, class: "view-all-events" %>
+      </div>
+      <a class="carousel-control-prev bg-transparent w-aut" href="#newsCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next bg-transparent w-aut" href="#newsCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </a>
   </div>
+
+<div class="col-12 text-end px-0">
+  <%= link_to "View all events", events_path, class: "view-all-events" %>
+</div>
+
+

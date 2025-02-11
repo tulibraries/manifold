@@ -468,7 +468,7 @@
       margin-top: 14px;
     }
   }
-  .home-events-row {
+  .home-events-row, .home-digcol-row {
     margin-bottom: 21px;
     color: $white;
     a {
@@ -506,8 +506,9 @@
       }
     }
   }
+
   .home-news-row {
-    padding-bottom: 84px;
+    padding-bottom: 14px;
     color: $white;
     a {
       color: $white;
@@ -549,6 +550,21 @@
             color: $white;
           }
         }
+      }
+    }
+  }
+
+  .home-digcol-row {
+    padding-bottom: 84px;
+    p {
+      font-family: "roboto";
+      font-weight: 300;
+    }
+    h2 {
+      font-size: 100%;
+      font-weight: 400;
+      a {
+        color: $white;
       }
     }
   }

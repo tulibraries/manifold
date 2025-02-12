@@ -1,1 +1,2 @@
 rexml
+net-imap

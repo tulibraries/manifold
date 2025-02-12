@@ -20,6 +20,8 @@ en:
         promoted_to_events: "Publish/Unpublish"
       highlight:
         created_at: "Published at"
+        promoted: "Promote to Homepage Highlights"
+        promote_to_dig_col: "Promote to Digital Collections"
       policy:
         accounts: "Individual Owners"
         categories: "Categories (1st listing only)"
@@ -1023,6 +1025,7 @@ en:
             collections_search: Search our collections >
             events: Events & Exhibits
             news: Library News
+            digital_collections_link: https://digital.library.temple.edu/
             locations:
               charles: Charles Library
               hsl: Health Sciences Libraries

@@ -12,6 +12,7 @@ class Highlight < ApplicationRecord
   serialize :tags
 
   scope :with_image, -> { joins(:image_attachment) }
+  scope :for_digital_collections, -> { where(promote_to_dig_col: true) }
 
   def slug_candidates
     [

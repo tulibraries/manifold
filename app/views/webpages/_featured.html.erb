@@ -1,18 +1,35 @@
-<% @highlights.each do |item| %>
-<div class="col-12 col-md-6 col-lg-4 mb-3 highlights">
-  <div class="highlight text-center">
-    <%= link_to strip_tags(item.link) do %>
-      <%= image_tag item.image, class: "text-center", loading: "lazy" %>
-      <div class="highlight-caption text-start mt-3">
-      <h2><%= item.label.truncate(52) %></h2>
-      <p><%= strip_tags(item.blurb.truncate(120).html_safe) %></p>
+<div id="highlightsCarousel" class="home-news-row carousel pt-3">
+  <div class="carousel-inner mx-3" role="listbox">
+    <% @highlights.each_with_index do |highlight, i| %>
+    <div class="items carousel-item<%= " active" if i == 0 %>">
+      <div class="card text-center">
+        <%= link_to highlight.link do %>
+          <% if highlight.image.attached? %>
+          <div class="item pb-4">
+          <%= image_tag highlight.image, loading: "lazy" %>
+          </div>
+          <% end %>
+        <div class="card-body px-0">
+          <div class="item-caption text-start mt-0">
+            <h3><%= highlight.label.truncate(52) %></h3>
+        <% end %>
+            <p><%= strip_tags(highlight.blurb.truncate(120).html_safe) %></p>
+          </div>
+        </div>
       </div>
+    </div>
     <% end %>
-  </div>
+    </div>
+    <a class="carousel-control-prev bg-transparent w-aut" href="#highlightsCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next bg-transparent w-aut" href="#highlightsCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
 </div>
-<% end unless @highlights.nil? %>
 
-
-<div class="col-12 text-end px-0 mt-5">
-  <%= link_to "View library blogs", blogs_path, class: "view-all-blogs" %>
+<div class="col-12 text-end px-0">
+  <%= link_to "View library blogs", blogs_path, class: "view-all" %>
 </div>

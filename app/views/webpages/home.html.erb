@@ -139,17 +139,17 @@
   <div class="mt-5" id="news-events">
     <div class="news-container container-lg">
       <h2>Events</h2>
-      <div class="row home-events-row row-eq-height">
+      <div class="row home-events-row row-eq-height" data-controller="news-carousel">
       <%= render "events" if @featured_events.present? %>
       </div>
 
-      <h2 class="news">Library News</h2>
-      <div class="row home-news-row row-eq-height">
+      <h2>Library News</h2>
+      <div class="row home-news-row row-eq-height" data-controller="highlights-carousel">
         <%= render "featured" %>
       </div>
 
-      <h2 class="news">Highlights From Our Digital Collections</h2>
-      <div class="row home-digcol-row row-eq-height">
+      <h2>Highlights From Our Digital Collections</h2>
+      <div class="row home-digcol-row row-eq-height" data-controller="digcols-carousel">
         <%= render "dig-cols" %>
       </div>	
     </div>

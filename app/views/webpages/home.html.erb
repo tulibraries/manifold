@@ -76,6 +76,12 @@
               <span><%= t("manifold.webpages.home.links.main.journals") %></span>
             <% end %>
           </div>
+          <div class="square">
+            <%= link_to t("manifold.webpages.home.links.main.digital_collections_link"), id: "digital-collections" do %>
+              <%= image_tag('digital_collections.png', class: "icon decorative", alt: "") %> 
+              <span><%= t("manifold.webpages.home.links.main.digital") %></span>
+            <% end %>
+          </div>
           <div class="d-block d-lg-none caption bottom mr-xl-4">
             <%= link_to t("manifold.webpages.home.links.main.collections_search"), librarysearch_url, {id: "collections-search"} %>
           </div>

@@ -58,11 +58,11 @@ RSpec.describe EventHelper, type: :helper do
       expect(helper.events_title("past_search")).to include("Past")
     end
     it "displays current events title on past template" do
-      expect(helper.events_title("")).to include("Events & Exhibits")
+      expect(helper.events_title("")).to include("Events, Exhibits & Workshops")
       expect(helper.events_title("")).to_not include("Past")
     end
     it "displays current events title on past template" do
-      expect(helper.events_title("search")).to include("Events & Exhibits")
+      expect(helper.events_title("search")).to include("Events, Exhibits & Workshops")
       expect(helper.events_title("")).to_not include("Past")
     end
   end

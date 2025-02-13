@@ -1,0 +1,32 @@
+<%= render "mobile-menu-secondary" %>
+
+<div class="container-lg">
+	<div class="row page pt-3">
+
+		<% if @webpage.categories.present? %>
+			<div class="d-none d-md-block col-3 pt-3">
+				<%= render "categories_list" %>
+			</div>
+      <div class="col-12 col-md-9">
+        <div class="col-12">
+    <% end %>
+
+    <%= render "secondary_covid_alert" if @header_alert.present? %>
+
+		<h1><%= title @webpage.title %></h1>
+    <div class="text-start page-description">
+      <div><%= @webpage.description %></div>
+      <%= render @webpage.layout.parameterize %>
+    </div>
+
+    <%= render "external-links", items: @webpage.external_links %>
+
+    <%= render "file-uploads", items: @webpage.items %>
+  </div>
+
+  </div>
+</div>
+
+<script type="application/ld+json">
+  <%= json_ld(@webpage) %>
+</script> 

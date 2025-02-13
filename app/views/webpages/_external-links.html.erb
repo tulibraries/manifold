@@ -1,0 +1,17 @@
+<% if @webpage.external_links.present? %>
+  <div class="row non-featured-publications">
+    <% @webpage.external_links.each do |item| %>
+    <div class="col-12 col-md-12 col-lg-4 p-3 nfp-item text-center">
+      <div>
+      <%= link_to item.link, style: "padding=8 16" do %>
+        <%= image_tag item.image.variant(:gravity=>"Center", resize: "367X150^", crop: '367x150+0+0'), class: "block p-0" if item.image.attached? %>
+        <span class="d-inline-block mt-2"><%= item.label %></span>
+        <%= image_tag "new-tab.png", class: "pdf-icon pt-0" %>
+      <% end if item.image.attached? %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+
+

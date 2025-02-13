@@ -177,22 +177,21 @@
       text-transform: uppercase;
     }
   }
-
-  .home-digcol-row {
-    padding-bottom: 84px;
-  }
-
+  
   a.view-all {
     display: block;
     margin-left: 14px;
     margin-right: 14px;
     padding: 7px;
     background-color: $crystal-blue;
-    color: $royal-blue;
+    color: $royal-blue !important;
     padding-right: 35px;
     font-family: "faustina" !important;
     font-size: 135%;
     font-weight: 700;
+  }
+  .bottom-section {
+    padding-bottom: 84px;
   }
 }
 

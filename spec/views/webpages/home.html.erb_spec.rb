@@ -10,6 +10,9 @@ RSpec.describe "webpages/home", type: :view do
 
   it "has required ids for analytics tracking" do
     @webpage = FactoryBot.create(:webpage)
+    highlight = FactoryBot.create(:highlight, title: "Digcol with Image", promoted: true, promote_to_dig_col: true)
+    @highlights = [highlight]
+    @digcols = [highlight]
     render
     expect(rendered).to match /id="ambler"/
     expect(rendered).to match /id="law"/

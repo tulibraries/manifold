@@ -76,6 +76,12 @@
               <span><%= t("manifold.webpages.home.links.main.journals") %></span>
             <% end %>
           </div>
+          <div class="square">
+            <%= link_to t("manifold.webpages.home.links.main.digital_collections_link"), id: "digital-collections" do %>
+              <%= image_tag('digital_collections.png', class: "icon decorative", alt: "") %> 
+              <span><%= t("manifold.webpages.home.links.main.digital") %></span>
+            <% end %>
+          </div>
           <div class="d-block d-lg-none caption bottom mr-xl-4">
             <%= link_to t("manifold.webpages.home.links.main.collections_search"), librarysearch_url, {id: "collections-search"} %>
           </div>
@@ -137,19 +143,19 @@
   </div>
 
   <div class="mt-5" id="news-events">
-    <div class="container-lg px-5">
+    <div class="news-container container-lg">
       <h2>Events</h2>
-      <div class="row home-events-row row-eq-height">
-      <%= render "events" if @featured_events.present? %>
+      <div class="row home-events-row row-eq-height" data-controller="news-carousel">
+        <%= render "events" if @featured_events.present? %>
       </div>
 
-      <h2 class="news">Library News</h2>
-      <div class="row home-news-row row-eq-height">
+      <h2>Library News</h2>
+      <div class="row home-news-row row-eq-height" data-controller="highlights-carousel">
         <%= render "featured" %>
       </div>
 
-      <h2 class="news">Highlights From Our Digital Collections</h2>
-      <div class="row home-digcol-row row-eq-height">
+      <h2>Highlights From Our Digital Collections</h2>
+      <div class="row home-digcol-row row-eq-height" data-controller="digcols-carousel">
         <%= render "dig-cols" %>
       </div>	
     </div>

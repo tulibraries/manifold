@@ -1,0 +1,198 @@
+#newsCarousel, #highlightsCarousel, #digcolsCarousel {
+  .carousel-control-next  {
+    justify-content: flex-end !important;
+    padding-right: 3%;
+    margin-left: auto;
+  }
+  .carousel-control-prev {
+    justify-content: flex-start;
+  }
+  .carousel-inner {
+    padding: 1em;
+    padding-top: 0;
+    @media (min-width: 768px) {
+      display: flex;
+      .carousel-item {
+        margin-right: 0;
+        flex: 0 0 33.333333%;
+        display: block;
+      }
+    }
+    .card {
+      margin: 0 0.5em;
+      border: none;
+      background-color: transparent;
+      .img-wrapper {
+        height: 235px;
+        img {
+          max-height: 100%;
+        }
+      }
+      @media (max-width: 767px) {
+        .img-wrapper {
+          height: auto;
+          img {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+  .carousel-control-next-icon  {
+    justify-content: flex-end;
+    &:after {
+      content: ">";
+      font-size: 65px;
+      color: #fff;
+      opacity: 0.5;
+      position: relative;
+      top: -14px;
+    }
+    background-image: none;
+  }
+  .carousel-control-prev-icon {
+    justify-content: flex-start;
+    &:after {
+      content: "<";
+      font-size: 65px;
+      color: #fff;
+      opacity: 0.5;
+      position: relative;
+      top: -14px;
+    }
+    background-image: none;
+  }
+}
+#digcolsCarousel {
+  margin-bottom: 0!important;
+  .carousel-item {
+    padding-top: 14px;
+  }
+}
+#highlightsCarousel .carousel-control-next-icon  {
+  &:after {
+    color: #333!important;
+    @media (max-width: 767px) {
+      color: $white!important;
+    }
+  }
+}
+
+.news-container {
+  padding-right: 7px;
+  overflow-x: hidden;
+}
+
+#news-events {
+  background-color: $royal-blue;
+  color: $white;
+  @media screen and (min-width: 1599px) {
+    padding-bottom: 60px;
+  }
+  a {
+    color: $white;
+  }
+  h2 {
+    font-size:300%;
+    margin-bottom: 0;
+    padding-top: 21px;
+    font-family: "roboto";
+    text-transform: uppercase;
+    font-size: 1.75rem;
+    @media screen and (max-width: 1190px) {
+      margin-top: 14px;
+    }
+  }
+  .home-events-row, .home-digcol-row {
+    margin-bottom: 21px;
+    .library-event {
+      padding: 35px;
+      padding-bottom: 14px;
+      @media (max-width: 767px) {
+        width: 90%;
+        text-align: center;
+      }
+      @media (min-width: 768px) {
+        width: 100%;
+        text-align: left;
+      }
+      .event-title {
+        font-family: faustina !important;
+        font-size: 1.5rem;
+        line-height: 1.85rem;
+      }
+      .event-date {
+        border-left: solid $new-gold 4px;
+        color: $white;
+        padding-left: 14px;
+        width: 100%;
+        height: 50px;
+        margin-top: 21px;
+        font-family: "roboto";
+        font-weight: 400;
+      }
+    }
+  }
+
+  .home-news-row {
+    margin-bottom: 21px;
+    .items {
+      @media (max-width: 1040px) {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+      .item {
+        background-color: $lighter-grey;
+        margin-top: 21px;
+        padding-top: 21px;
+        img {
+          max-width: 90%;
+          max-height: 222px;
+          height: 222px;
+        }
+        @media (max-width: 767px) {
+          width: 90%;
+        }
+      }
+      .item-caption {
+        background-color: $royal-blue;
+        color: $white;
+        padding: 7px 14px;
+        max-height:107px;
+        @media (max-width: 1040px) {
+          height: auto;
+          max-height: 100%;
+        }
+        p {
+          font-family: "roboto";
+          font-weight: 300;
+        }
+        h3 {
+          font-size: 130%;
+          font-weight: 400;
+        }
+      }
+    }
+    #highlightsCarousel h3 {
+      text-transform: uppercase;
+    }
+  }
+
+  .home-digcol-row {
+    padding-bottom: 84px;
+  }
+
+  a.view-all {
+    display: block;
+    margin-left: 14px;
+    margin-right: 14px;
+    padding: 7px;
+    background-color: $crystal-blue;
+    color: $royal-blue;
+    padding-right: 35px;
+    font-family: "faustina" !important;
+    font-size: 135%;
+    font-weight: 700;
+  }
+}
+

@@ -81,9 +81,9 @@ class WebpagesController < ApplicationController
       @hours = ""
     end
 
-    @highlights = Highlight.with_image.where(promoted: true).take(3)
-    @digcols = Highlight.with_image.for_digital_collections.take(3)
-    @featured_events = Event.where(featured: true).order(:start_time).take(3)
+    @highlights = Highlight.with_image.where(promoted: true).take(6)
+    @featured_events = Event.where(featured: true).order(:start_time).take(6)
+    @digcols = Highlight.with_image.for_digital_collections.take(6)
     @cta3 = Category.find_by(slug: "computers-printing-technology")
     @cta4 = Category.find_by(slug: "explore-charles")
   end

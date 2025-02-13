@@ -447,7 +447,7 @@ en:
 
     events:
       mobile_menu:
-        heading: Events & Exhibits
+        heading: Events, Exhibits & Workshops
       tags:
         one: Beyond The Notes
         two: Blockson
@@ -463,7 +463,7 @@ en:
         twelve: Speaker
         thirteen: Workshop
       index:
-        page_title: Events & Exhibits
+        page_title: Events, Exhibits & Workshops
         current_exhibits_label: Current Exhibits
         past_exhibits_label: Past Exhibits
         past_events_label: Past Events
@@ -1022,9 +1022,11 @@ en:
             databases: Databases
             guides: Research Guides
             journals: Journal Finder
+            digital: Digital Collections
             collections_search: Search our collections >
-            events: Events & Exhibits
+            events: Events, Exhibits & Workshops
             news: Library News
+            browse_digital_collections: Browse our Digital Collections
             digital_collections_link: https://digital.library.temple.edu/
             locations:
               charles: Charles Library

@@ -62,10 +62,6 @@
     }
     background-image: none;
   }
-  .carousel-item {
-    // height: 420px;
-    // margin-right: 7px!important;
-  }
 }
 #digcolsCarousel {
   margin-bottom: 0!important;
@@ -89,13 +85,13 @@
 
 #news-events {
   background-color: $royal-blue;
+  color: $white;
   @media screen and (min-width: 1599px) {
     padding-bottom: 60px;
   }
   a {
     color: $white;
   }
-  color: $white;
   h2 {
     font-size:300%;
     margin-bottom: 0;
@@ -184,45 +180,10 @@
 
   .home-digcol-row {
     padding-bottom: 84px;
-  //   .card-body h3 {
-  //     font-family: faustina !important;
-  //     font-size: 1.5rem;
-  //     line-height: 1.85rem;
-  //   }
-  //   .library-event {
-  //     padding-bottom: 14px;
-  //     @media (max-width: 767px) {
-  //       width: 92%;
-  //       text-align: center;
-  //     }
-  //     @media (min-width: 768px) {
-  //       width: 100%;
-  //       text-align: left;
-  //     }
-  //   }
-  //   .item-caption {
-  //     background-color: $royal-blue;
-  //     color: $white;
-  //     padding: 7px 14px;
-  //     max-height:107px;
-  //     @media (max-width: 1040px) {
-  //       height: auto;
-  //       max-height: 100%;
-  //     }
-  //     p {
-  //       font-family: "roboto";
-  //       font-weight: 300;
-  //     }
-  //     h3 {
-  //       font-size: 130%;
-  //       font-weight: 400;
-  //     }
-  //   }
   }
 
   a.view-all {
     display: block;
-    // margin-top: 21px;
     margin-left: 14px;
     margin-right: 14px;
     padding: 7px;

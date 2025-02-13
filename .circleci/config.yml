@@ -85,3 +85,4 @@ jobs:
 
       - coveralls/upload:
           coverage_file: ./coverage/lcov/app.lcov
+          fail_on_error: false

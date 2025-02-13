@@ -7,7 +7,7 @@ export default class extends Controller {
     var multipleCardCarousel = document.querySelector(
       "#digcolsCarousel"
     );
-    if (window.matchMedia("(min-width: 768px)").matches) {
+    if (window.matchMedia("(min-width: 1200px)").matches) {
       
       var carousel = new bootstrap.Carousel(multipleCardCarousel, {
         "bs-pause": true,

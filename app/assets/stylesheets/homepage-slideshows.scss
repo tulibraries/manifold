@@ -24,8 +24,6 @@
       background-color: transparent;
       .img-wrapper {
         height: 235px;
-        display: flex;
-        align-items: center;
         img {
           max-height: 100%;
         }
@@ -65,7 +63,7 @@
     background-image: none;
   }
   .carousel-item {
-    height: 420px;
+    // height: 420px;
     // margin-right: 7px!important;
   }
 }
@@ -78,6 +76,9 @@
 #highlightsCarousel .carousel-control-next-icon  {
   &:after {
     color: #333!important;
+    @media (max-width: 767px) {
+      color: $white!important;
+    }
   }
 }
 
@@ -106,11 +107,19 @@
       margin-top: 14px;
     }
   }
-  .home-events-row {
+  .home-events-row, .home-digcol-row {
     margin-bottom: 21px;
     .library-event {
       padding: 35px;
       padding-bottom: 14px;
+      @media (max-width: 767px) {
+        width: 90%;
+        text-align: center;
+      }
+      @media (min-width: 768px) {
+        width: 100%;
+        text-align: left;
+      }
       .event-title {
         font-family: faustina !important;
         font-size: 1.5rem;
@@ -121,6 +130,7 @@
         color: $white;
         padding-left: 14px;
         width: 100%;
+        height: 50px;
         margin-top: 21px;
         font-family: "roboto";
         font-weight: 400;
@@ -143,6 +153,9 @@
           max-width: 90%;
           max-height: 222px;
           height: 222px;
+        }
+        @media (max-width: 767px) {
+          width: 90%;
         }
       }
       .item-caption {
@@ -171,11 +184,40 @@
 
   .home-digcol-row {
     padding-bottom: 84px;
-    .card-body h3 {
-      font-family: faustina !important;
-      font-size: 1.5rem;
-      line-height: 1.85rem;
-    }
+  //   .card-body h3 {
+  //     font-family: faustina !important;
+  //     font-size: 1.5rem;
+  //     line-height: 1.85rem;
+  //   }
+  //   .library-event {
+  //     padding-bottom: 14px;
+  //     @media (max-width: 767px) {
+  //       width: 92%;
+  //       text-align: center;
+  //     }
+  //     @media (min-width: 768px) {
+  //       width: 100%;
+  //       text-align: left;
+  //     }
+  //   }
+  //   .item-caption {
+  //     background-color: $royal-blue;
+  //     color: $white;
+  //     padding: 7px 14px;
+  //     max-height:107px;
+  //     @media (max-width: 1040px) {
+  //       height: auto;
+  //       max-height: 100%;
+  //     }
+  //     p {
+  //       font-family: "roboto";
+  //       font-weight: 300;
+  //     }
+  //     h3 {
+  //       font-size: 130%;
+  //       font-weight: 400;
+  //     }
+  //   }
   }
 
   a.view-all {

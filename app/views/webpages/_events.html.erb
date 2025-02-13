@@ -1,27 +1,31 @@
   <div id="newsCarousel" class="carousel">
     <div class="carousel-inner mx-3 pb-0" role="listbox">
-      <% @featured_events.each_with_index do |event, i| %>
-        <div class="carousel-item<%= " active" if i == 0 %>">
-          <div class="card library-event">
-            <%= link_to event_path(event.id) do %>
-            <% if event.image.attached? %>
-              <div class="img-wrapper">
-                <%= image_tag event.custom_image(330, 235), class: "d-block decorative", alt: "", loading: "lazy" %>
-              </div>
-            <% end %>
-            <div class="card-body px-0">
-              <h3 class="event-title card-title">
-                <%= event.title %>
-              </h3>
-              <% end %>
+
+    <% @featured_events.each_with_index do |event, i| %>
+    <div class="carousel-item<%= " active" if i == 0 %>">
+      <div class="card library-event">
+        <%= link_to event_path(event.id) do %>
+
+          <% if event.image.attached? %>
+          <div class="item pb-4">
+            <%= image_tag event.image, loading: "lazy" %>
+          </div>
+          <% end %>
+
+          <div class="card-body px-0">
+            <div class="item-caption text-start mt-0">
+              <h3><%= event.label.truncate(52) %></h3>
+        <% end %>
+
               <p class="card-text event-date">
-                <span class="d-block"><%= event.get_date %></span>
-                <%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %>
+              <span class="d-block"><%= event.get_date %></span>
+              <%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %>
               </p>
-            </div>
           </div>
         </div>
-      <% end %>
+      </div>
+    </div>
+    <% end %>
       </div>
       <a class="carousel-control-prev bg-transparent w-aut" href="#newsCarousel" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -32,9 +36,6 @@
           <span class="visually-hidden">Next</span>
       </a>
   </div>
-
-<div class="col-12 text-end px-0">
-  <%= link_to "View all events", events_path, class: "view-all" %>
-</div>
-
-
+        <div class="col-12 text-end px-0">
+          <%= link_to "View all events", events_path, class: "view-all" %>
+        </div>

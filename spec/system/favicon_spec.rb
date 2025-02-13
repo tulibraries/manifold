@@ -11,7 +11,7 @@ RSpec.describe "favicon", type: :system do
 
   describe "favicon" do
     scenario "is present" do
-      visit(root_path)
+      visit("/contact-us")
       expect(page).to have_selector('head link[rel="icon"]', visible: false)
     end
   end

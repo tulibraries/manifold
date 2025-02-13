@@ -18,14 +18,15 @@
         <% end %>
 
               <p class="card-text event-date">
-              <span class="d-block"><%= event.get_date %></span>
-              <%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %>
+                <span class="d-block"><%= event.get_date %></span>
+                <%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %>
               </p>
+
           </div>
         </div>
       </div>
     </div>
-    <% end %>
+    <% end if @featured_events.present? %>
       </div>
       <a class="carousel-control-prev bg-transparent w-aut" href="#newsCarousel" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

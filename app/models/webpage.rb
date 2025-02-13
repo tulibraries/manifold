@@ -18,7 +18,12 @@ class Webpage < ApplicationRecord
 
   validates :title, presence: true
   belongs_to :group, optional: true
-  belongs_to :external_link, optional: true
+
+  has_many :external_link_webpages, dependent: nil
+  has_many :external_links, through: :external_link_webpages
+
+  accepts_nested_attributes_for :external_links, allow_destroy: false
+
 
   def slug_candidates
     [

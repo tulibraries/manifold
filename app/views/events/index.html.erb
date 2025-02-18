@@ -51,6 +51,9 @@
       <div class="col-12">
         <%= workshops_link(params[:type])%>
       </div>
+      <div class="col-12">
+        <%= events_link(params[:type])%>
+      </div>
     </div>
   </div>
 
@@ -71,6 +74,12 @@
           <div class="row">
             <div class="col">
               <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.workshops") %> <%= close_button(action_name) %></h2>
+            </div>
+          </div>
+          <% else %>
+          <div class="row">
+            <div class="col">
+              <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.not_workshops") %> <%= close_button(action_name) %></h2>
             </div>
           </div>
           <% end %>

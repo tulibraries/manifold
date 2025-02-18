@@ -39,6 +39,18 @@ RSpec.describe EventHelper, type: :helper do
     end
   end
 
+  describe "events_link" do
+    it "returns events link when limiter not active" do
+      expect(helper.events_link(nil)).to match("Limit to events")
+    end
+    it "returns nothing when limiter active" do
+      expect(helper.events_link("event")).to_not be
+    end
+    it "returns all events link on search page" do
+      expect(helper.events_link("dss_events")).to match("View all events")
+    end
+  end
+
   describe "current_link" do
     it "displays current events link when in past events" do
       expect(helper.current_link("search")).to include("past-events")

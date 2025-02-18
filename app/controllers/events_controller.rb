@@ -17,7 +17,8 @@ class EventsController < ApplicationController
       @workshops = events.is_current.is_displayable.is_workshop
       return_events(@workshops)
     else
-      return_events(events)
+      @not_workshops = events.is_current.is_displayable.is_not_workshop
+      return_events(@not_workshops)
     end
     @exhibitions = Exhibition.is_current
                               .where(promoted_to_events: true)

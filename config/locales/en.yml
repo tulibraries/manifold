@@ -480,6 +480,8 @@ en:
         upcoming_events: Upcoming Events
         events: Events
         events_on: Events on
+        workshops: Workshops
+        not_workshops: Events
       headings:
         upcoming_workshops: Upcoming Workshops
         past_workshops: Past Workshops

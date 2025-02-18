@@ -39,6 +39,19 @@ module EventHelper
     end
   end
 
+  def events_link(type)
+    if type.blank?
+      action_name == "past" ?
+        (link_to "Limit to events", past_events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link d-block mt-4 mb-2 roboto-light")
+        :
+        (link_to "Limit to events", events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link d-block mt-4 mb-2 roboto-light")
+    else
+      if type == "dss_events" || type == "hsl_events"
+        link_to "View all events", events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link d-block mt-4 mb-2 roboto-light"
+      end
+    end
+  end
+
   def current_link(type)
     type == "past_search" ?
       (link_to "View current events & exhibits", events_path, class: "pe-4 current-events") :

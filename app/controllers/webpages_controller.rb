@@ -94,6 +94,10 @@ class WebpagesController < ApplicationController
   def annual_report
     @webpage = Webpage.find_by(slug: "annual-report")
     @categories = @webpage.categories
+    links = @webpage.external_links
+    pdfs = @webpage.items
+    @reports = links + pdfs.reverse
+    @featured = @webpage.featured_item
   end
 
   def scrc
@@ -198,7 +202,6 @@ class WebpagesController < ApplicationController
     redirect_to action: :annual_report if @webpage.slug == "annual-report"
     @categories = @webpage.categories
     @header_alert = @webpage.covid_alert
-    @featured = @webpage.featured_item
     serializable_show
   end
 

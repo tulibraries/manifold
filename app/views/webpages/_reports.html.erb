@@ -1,0 +1,25 @@
+<% if @reports.present? %>
+  <div class="row non-featured-publications">
+    <% @reports.each do |item| %>
+    <div class="col-12 col-md-12 col-lg-4 p-3 nfp-item text-center">
+      <div>
+        <% if item.is_a? ExternalLink %>
+          <%= link_to item.link do %>
+            <%= image_tag item.image.variant(:gravity=>"Center", resize: "367X150^", crop: '367x150+0+0'), class: "block p-0" if item.image.attached? %>
+            <span class="d-inline-block mt-2 pb-3"><%= item.label %></span>
+            <%= image_tag "new-tab.png", class: "pdf-icon pt-0" %>
+          <% end if item.image.attached? %>
+        <% else %>
+        <%= image_tag item.file_upload.image.variant(:gravity=>"Center", resize: "535x220^", crop: '535x220+0+0'), class: "block p-0" if item.file_upload.image.attached? %>
+        <%= link_to url_for(item.file_upload.file.attachment), disposition: "attachment", class: "d-block pt-2 pb-2 px-3 align-middle", title: t("manifold.webpages.view_pdf") do %>
+          <%= attachment_title(item.file_upload.name) %>
+          <%= image_tag "pdf-black.svg", class: "pdf-icon pt-0" %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+
+

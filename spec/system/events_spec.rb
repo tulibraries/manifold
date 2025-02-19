@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "Event", type: :system do
 
-  describe "Events initial page load" do
+  describe "Events index page" do
     scenario "Filter links appear on page" do
       visit(events_path)
       expect(page).to have_content("Limit to workshops")

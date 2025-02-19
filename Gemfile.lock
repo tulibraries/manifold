@@ -275,7 +275,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (1.1.2)
     hashie (5.0.0)
-    honeybadger (5.26.2)
+    honeybadger (5.26.4)
       logger
       ostruct
     htmlentities (4.3.4)
@@ -342,7 +342,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lockbox (2.0.1)
-    logger (1.6.5)
+    logger (1.6.6)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)

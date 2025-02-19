@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_13_193523) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_18_160634) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -274,6 +274,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_13_193523) do
     t.bigint "external_link_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "weight", default: 10
     t.index ["external_link_id"], name: "index_external_link_webpages_on_external_link_id"
     t.index ["webpage_id"], name: "index_external_link_webpages_on_webpage_id"
   end

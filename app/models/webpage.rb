@@ -48,24 +48,20 @@ class Webpage < ApplicationRecord
     }
   end
 
+  def featured_item
+    f = self.external_link_webpages.select { |f| (f.external_link.present? && f.weight == 1) }.sort_by { |f| f.external_link.updated_at }
+    f.first if f.present?
+  end
+
   def items
     self.fileabilities.select { |f| (f.file_upload.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.file_upload.name] }
   end
 
-  def pdfs
-    pdfs = self.fileabilities.select { |f| (f.file_upload.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.file_upload.name] }
-  end
-
   def online_links
-    links = self.external_link_webpages.select { |f| (f.external_link.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.external_link.title] }
+    self.external_link_webpages.select { |f| (f.external_link.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.external_link.title] }
   end
 
   def reports
-    self.online_links + self.pdfs
-  end
-
-  def featured_item
-    f = self.external_link_webpages.select { |f| (f.external_link.present? && f.weight == 1) }.sort_by { |f| f.external_link.updated_at }
-    f.first if f.present?
+    self.online_links + self.items
   end
 end

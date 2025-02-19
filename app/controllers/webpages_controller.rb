@@ -94,9 +94,6 @@ class WebpagesController < ApplicationController
   def annual_report
     @webpage = Webpage.find_by(slug: "annual-report")
     @categories = @webpage.categories
-    links = @webpage.external_links
-    pdfs = @webpage.items
-    @reports = links + pdfs.reverse
     @featured = @webpage.featured_item
   end
 

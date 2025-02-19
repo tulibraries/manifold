@@ -1,0 +1,46 @@
+<% if webpage.featured_item.present? %>
+  <div class="row d-flex align-items-center my-4 ps-0 pe-5 mx-2 featured-publication">
+  <% if @featured.external_link.image.attached? %>
+    <div class="col-12 col-lg-4 d-none d-lg-block featured-item ps-0">
+      <%= image_tag @featured.external_link.image.variant(:gravity=>"Center", resize: "350x180^", crop: '350x180+0+0'), class: "inline p-0" %>
+    </div>
+    <div class="col-12 col-lg-8 featured-publication-with">
+  <% else %>
+    <div class="col col-12 text-center featured-publication-without">
+  <% end %>
+      <span>
+        <%= image_tag "top-left-corner-sm.png" unless @featured.external_link.image.attached? %>
+        <%= link_to url_for(@featured.external_link.image), disposition: "attachment", class: "ps-0", title: t("manifold.webpages.view_pdf") do %>
+          <%= attachment_title(@featured.external_link.title) %>
+          <%= image_tag "new-tab.png", class: "pdf-icon pt-0" %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+<% end %>
+
+<% if webpage.reports.present? %>
+  <div class="row non-featured-publications">
+    <% webpage.reports.each do |item| %>
+    <div class="col-12 col-md-12 col-lg-4 p-3 nfp-item text-center">
+      <div>
+        <% if item.is_a? ExternalLink %>
+          <%= link_to item.link do %>
+            <%= image_tag item.image.variant(:gravity=>"Center", resize: "367X150^", crop: '367x150+0+0'), class: "block p-0" if item.image.attached? %>
+            <span class="d-inline-block mt-2 pb-3"><%= item.label %></span>
+            <%= image_tag "new-tab.png", class: "pdf-icon pt-0" %>
+          <% end if item.image.attached? %>
+        <% else %>
+        <%= image_tag item.file_upload.image.variant(:gravity=>"Center", resize: "535x220^", crop: '535x220+0+0'), class: "block p-0" if item.file_upload.image.attached? %>
+        <%= link_to url_for(item.file_upload.file.attachment), disposition: "attachment", class: "d-block pt-2 pb-2 px-3 align-middle", title: t("manifold.webpages.view_pdf") do %>
+          <%= attachment_title(item.file_upload.name) %>
+          <%= image_tag "pdf-black.svg", class: "pdf-icon pt-0" %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+
+

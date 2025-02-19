@@ -47,12 +47,14 @@ class Webpage < ApplicationRecord
     }
   end
 
-  def items
-    self.fileabilities.select { |f| (f.file_upload.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.file_upload.name] }
+  def reports
+    pdfs = self.fileabilities.select { |f| (f.file_upload.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.file_upload.name] }
+    links = self.external_link_webpages.select { |f| (f.external_link.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.file_upload.name] }
+    links + pdfs
   end
 
   def featured_item
-    # f = self.fileabilities.select { |f| (f.file_upload.present? && f.weight == 1) }.sort_by { |f| f.file_upload.updated_at }
-    # f.first if f.present?
+    f = self.external_link_webpages.select { |f| (f.external_link.present? && f.weight == 1) }.sort_by { |f| f.external_link.updated_at }
+    f.first if f.present?
   end
 end

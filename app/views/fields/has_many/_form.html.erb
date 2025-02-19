@@ -34,7 +34,7 @@
     <%= f.select(field.attribute_key, nil, {include_blank: true}, {multiple: true}.merge(field.html_attributes)) do %>
       <%= options_for_select(field.associated_resource_options.sort, field.selected_options) %>
     <% end %>
-    <p class="text-muted">Select from the above list of External Links.</p>
+    <p class="text-muted"><%= t("manifold.admin.help_text.online_reports") %></p>
   </div>
   <% end %>
 

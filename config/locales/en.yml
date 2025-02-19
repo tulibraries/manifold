@@ -383,9 +383,11 @@ en:
         file_uploads_html: >-
           On the list of file uploads below, please assign a weight to
           each. The weight will determine the order from lowest
-          to highest. For example, a file with a weight of <strong>1</strong> will
-          appear first in the list. A weight of <strong>2</strong> will appear next,
-          and so on.
+          to highest beginning with 2. For example, a file with a weight of 
+          <strong>2</strong> will appear first in the list of PDFs. A weight 
+          of <strong>3</strong> will appear next, and so on. A weight of 1 
+          is reserved for the current Featured Publication from the External 
+          Links list above.
         external_links_html: >-
           On the list of external links below, please assign a weight to
           each. The weight will determine the order from lowest
@@ -394,6 +396,7 @@ en:
           and so on. Additionally, a weight of <strong>1</strong> will appear
           as a featured item on top of and with a larger display than the 
           rest of the list. To skip this, start the weighting at <strong>2</strong>.
+        online_reports: Select from the above list of External Links.
 
     header:
       about: "About"

@@ -18,6 +18,14 @@ FactoryBot.define do
         webpage.save
       end
     end
+    # annual-reports
+    trait :with_external_links do
+      after :create do |webpage|
+        external_links = [FactoryBot.create(:external_link)]
+        webpage.assign_attributes(external_links:)
+        webpage.save
+      end
+    end
     trait :with_file do
       after :create do |webpage|
         file = FactoryBot.create(:file_upload)

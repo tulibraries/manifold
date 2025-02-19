@@ -24,6 +24,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     tutorial_path: Field::String,
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
+    external_link: Field::BelongsTo.with_options(order: "title"),
     external_links: Field::HasMany,
     file_uploads: Field::HasMany,
     covid_alert: DescriptionField.with_options(admin_only: true),
@@ -69,6 +70,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     :virtual_tour,
     :accounts,
     :layout,
+    :external_link,
     :external_links,
     :file_uploads,
     :covid_alert
@@ -76,7 +78,7 @@ class WebpageDashboard < Administrate::BaseDashboard
 
 
   def permitted_attributes
-    super + [[external_link_webpages_attributes: [:weight, :id]], [fileabilities_attributes: [:weight, :id]], :draft_description, :publish]
+    super + [[external_link_webpages_attributes: [:id, :url, :name, :weight, :_destroy]], [fileabilities_attributes: [:weight, :id, :_destroy]], :draft_description, :publish]
   end
 
   def display_resource(webpage)

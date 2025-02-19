@@ -41,7 +41,7 @@ as well as a link to its edit page.
   <dl>
     <% page.attributes.each do |title, attributes| %>
       <% attributes.each do |attribute| %>
-        <% if attribute.name == "external_links" %>
+        <% if attribute.name == "external_links" && attribute.data.any? %>
           <dt class="attribute-label" id="<%= attribute.name %>">
             External Links
           </dt>
@@ -63,7 +63,7 @@ as well as a link to its edit page.
                   <%= tag.td(link_to("Show", admin_external_link_path(item.external_link_id), class: "button")) %>
                 <% end if item.present? %>
               <% end %>
-              <% page.resource.external_link_webpages.each do |item| %>
+              <% page.resource.online_links.each do |item| %>
                 <%= tag.tr do %>
                   <%= tag.td(item.external_link.title, class: "item-label") %>
                   <%= tag.td(item.weight, class: "item-weight") %>
@@ -73,7 +73,7 @@ as well as a link to its edit page.
               </tbody>
             </table>
           </dd>
-        <% elsif attribute.name == "file_uploads" %>
+        <% elsif attribute.name == "file_uploads" && attribute.data.any? %>
           <dt class="attribute-label" id="<%= attribute.name %>">
             File Uploads
           </dt>
@@ -87,14 +87,6 @@ as well as a link to its edit page.
                 </tr>
               </thead>
               <tbody>
-              <% if page.resource.featured_item.present? %>
-                <% item = page.resource.featured_item %>
-                <%= tag.tr do %>
-                  <%= tag.td(item.file_upload.name, class: "item-label") %>
-                  <%= tag.td(item.weight, class: "item-weight") %>
-                  <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
-                <% end if item.file_upload.present? %>
-              <% end %>
               <% page.resource.items.each do |item| %>
                 <%= tag.tr do %>
                   <%= tag.td(item.file_upload.name, class: "item-label") %>

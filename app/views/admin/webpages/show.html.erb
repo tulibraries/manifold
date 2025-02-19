@@ -41,38 +41,70 @@ as well as a link to its edit page.
   <dl>
     <% page.attributes.each do |title, attributes| %>
       <% attributes.each do |attribute| %>
-        <% if attribute.name == "file_uploads" %>
+        <% if attribute.name == "external_links" %>
+          <dt class="attribute-label" id="<%= attribute.name %>">
+            External Links
+          </dt>
+          <dd class="attribute-data attribute-data--external_links">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Weight</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% if page.resource.featured_item.present? %>
+                <% item = page.resource.featured_item %>
+                <%= tag.tr do %>
+                  <%= tag.td(item.external_link.title, class: "item-label") %>
+                  <%= tag.td(item.weight, class: "item-weight") %>
+                  <%= tag.td(link_to("Show", admin_external_link_path(item.external_link_id), class: "button")) %>
+                <% end if item.present? %>
+              <% end %>
+              <% page.resource.external_link_webpages.each do |item| %>
+                <%= tag.tr do %>
+                  <%= tag.td(item.external_link.title, class: "item-label") %>
+                  <%= tag.td(item.weight, class: "item-weight") %>
+                  <%= tag.td(link_to("Show", admin_external_link_path(item.external_link_id), class: "button")) %>
+                <% end if item.present? %>
+              <% end %>
+              </tbody>
+            </table>
+          </dd>
+        <% elsif attribute.name == "file_uploads" %>
           <dt class="attribute-label" id="<%= attribute.name %>">
             File Uploads
           </dt>
-            <dd class="attribute-data attribute-data--file-uploads">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Weight</th>
-                    <th>Link</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <% if page.resource.featured_item.present? %>
-                  <% item = page.resource.featured_item %>
-                  <%= tag.tr do %>
-                    <%= tag.td(item.file_upload.name, class: "item-label") %>
-                    <%= tag.td(item.weight, class: "item-weight") %>
-                    <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
-                  <% end if item.file_upload.present? %>
-                <% end %>
-                <% page.resource.items.each do |item| %>
-                  <%= tag.tr do %>
-                    <%= tag.td(item.file_upload.name, class: "item-label") %>
-                    <%= tag.td(item.weight, class: "item-weight") %>
-                    <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
-                  <% end if item.file_upload.present? %>
-                <% end %>
-                </tbody>
-              </table>
-            </dd>
+          <dd class="attribute-data attribute-data--file-uploads">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Weight</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% if page.resource.featured_item.present? %>
+                <% item = page.resource.featured_item %>
+                <%= tag.tr do %>
+                  <%= tag.td(item.file_upload.name, class: "item-label") %>
+                  <%= tag.td(item.weight, class: "item-weight") %>
+                  <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
+                <% end if item.file_upload.present? %>
+              <% end %>
+              <% page.resource.items.each do |item| %>
+                <%= tag.tr do %>
+                  <%= tag.td(item.file_upload.name, class: "item-label") %>
+                  <%= tag.td(item.weight, class: "item-weight") %>
+                  <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
+                <% end if item.file_upload.present? %>
+              <% end %>
+              </tbody>
+            </table>
+          </dd>
         <% else %>
           <dt class="attribute-label" id="<%= attribute.name %>">
           <%= t(

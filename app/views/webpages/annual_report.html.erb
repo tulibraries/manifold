@@ -13,16 +13,16 @@
 
     <%= render "secondary_covid_alert" if @header_alert.present? %>
 
-		<h1><%= title @webpage.title %></h1>
-    <div class="text-start page-description">
-      <div><%= @webpage.description %></div>
-      <%= render @webpage.layout.parameterize %>
+        <h1><%= title @webpage.title %></h1>
+        <div class="text-start page-description">
+          <div><%= @webpage.description %></div>
+          <%= render @webpage.layout.parameterize %>
+        </div>
+
+    <%= render "reports", items: @reports %>
+
+      </div>
     </div>
-
-    <%= render "external-links", items: @webpage.external_links %>
-
-    <%= render "file-uploads", items: @webpage.items %>
-  </div>
 
   </div>
 </div>

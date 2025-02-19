@@ -52,9 +52,9 @@ class WebpageDashboard < Administrate::BaseDashboard
     :categories,
     :accounts,
     :covid_alert,
+    :external_links,
     :file_uploads
   ].freeze
-
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
@@ -76,7 +76,7 @@ class WebpageDashboard < Administrate::BaseDashboard
 
 
   def permitted_attributes
-    super + [[external_links_attributes: [:id, :url, :name, :_destroy]], [fileabilities_attributes: [:weight, :id, :_destroy]], :draft_description, :publish]
+    super + [[external_link_webpages_attributes: [:weight, :id]], [fileabilities_attributes: [:weight, :id]], :draft_description, :publish]
   end
 
   def display_resource(webpage)

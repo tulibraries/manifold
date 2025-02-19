@@ -22,7 +22,7 @@ class Webpage < ApplicationRecord
   has_many :external_link_webpages, dependent: nil
   has_many :external_links, through: :external_link_webpages
 
-  accepts_nested_attributes_for :external_links, allow_destroy: false
+  accepts_nested_attributes_for :external_link_webpages, allow_destroy: false
 
 
   def slug_candidates
@@ -52,7 +52,7 @@ class Webpage < ApplicationRecord
   end
 
   def featured_item
-    f = self.fileabilities.select { |f| (f.file_upload.present? && f.weight == 1) }.sort_by { |f| f.file_upload.updated_at }
-    f.first if f.present?
+    # f = self.fileabilities.select { |f| (f.file_upload.present? && f.weight == 1) }.sort_by { |f| f.file_upload.updated_at }
+    # f.first if f.present?
   end
 end

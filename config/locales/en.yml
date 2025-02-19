@@ -385,7 +385,15 @@ en:
           each. The weight will determine the order from lowest
           to highest. For example, a file with a weight of <strong>1</strong> will
           appear first in the list. A weight of <strong>2</strong> will appear next,
-          and so on.          
+          and so on.
+        external_links_html: >-
+          On the list of external links below, please assign a weight to
+          each. The weight will determine the order from lowest
+          to highest. For example, a link with a weight of <strong>1</strong> will
+          appear first in the list. A weight of <strong>2</strong> will appear next,
+          and so on. Additionally, a weight of <strong>1</strong> will appear
+          as a featured item on top of and with a larger display than the 
+          rest of the list. To skip this, start the weighting at <strong>2</strong>.
 
     header:
       about: "About"

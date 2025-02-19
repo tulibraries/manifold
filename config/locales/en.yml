@@ -481,7 +481,7 @@ en:
         events: Events
         events_on: Events on
         workshops: Workshops
-        not_workshops: Events
+        not_workshops: Non-Workshop Events
       headings:
         upcoming_workshops: Upcoming Workshops
         past_workshops: Past Workshops

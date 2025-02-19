@@ -29,12 +29,12 @@ module EventHelper
   def workshops_link(type)
     if type.blank?
       action_name == "past" ?
-        (link_to "Limit to workshops", past_events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 mb-2 roboto-light")
+        (link_to "Limit to workshops", past_events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link")
         :
-        (link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 mb-2 roboto-light")
+        (link_to "Limit to workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link")
     else
       if type == "dss_events" || type == "hsl_events"
-        link_to "View all workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link d-block mt-4 mb-2 roboto-light"
+        link_to "View all workshops", events_path(page: 1, type: "Workshop", anchor: "list"), class: "workshops-link"
       end
     end
   end
@@ -42,13 +42,23 @@ module EventHelper
   def events_link(type)
     if type.blank?
       action_name == "past" ?
-        (link_to "Limit to events", past_events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link d-block mt-4 mb-2 roboto-light")
+        (link_to "Limit to events", past_events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link")
         :
-        (link_to "Limit to events", events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link d-block mt-4 mb-2 roboto-light")
+        (link_to "Limit to events", events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link")
     else
       if type == "dss_events" || type == "hsl_events"
-        link_to "View all events", events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link d-block mt-4 mb-2 roboto-light"
+        link_to "View all events", events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link"
       end
+    end
+  end
+
+  def filters_link(type)
+    if type.blank?
+      workshops_link(type) + " | " + events_link(type)
+    elsif type == "Workshop"
+      events_link(nil)
+    elsif type == "Is Not Workshop"
+      workshops_link(nil)
     end
   end
 

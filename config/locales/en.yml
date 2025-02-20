@@ -463,7 +463,7 @@ en:
         twelve: Speaker
         thirteen: Workshop
       index:
-        page_title: Events, Exhibits & Workshops
+        page_title: Events & Exhibits
         current_exhibits_label: Current Exhibits
         past_exhibits_label: Past Exhibits
         past_events_label: Past Events
@@ -480,7 +480,7 @@ en:
         upcoming_events: Upcoming Events
         events: Events
         events_on: Events on
-        workshops: Workshops
+        workshops: Workshop Events
         not_workshops: Non-Workshop Events
       headings:
         upcoming_workshops: Upcoming Workshops

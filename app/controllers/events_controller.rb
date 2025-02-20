@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     if params[:type].present? && params[:type].downcase == "workshop"
       @workshops = events.is_current.is_displayable.is_workshop
       return_events(@workshops)
-    elsif params[:type].present? && params[:type].downcase == "is not workshop"
+    elsif params[:type].present? && params[:type].downcase == "non-workshop"
       @not_workshops = events.is_current.is_displayable.is_not_workshop
       return_events(@not_workshops)
     else

@@ -42,12 +42,12 @@ module EventHelper
   def events_link(type)
     if type.blank?
       action_name == "past" ?
-        (link_to "Limit to events", past_events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link")
+        (link_to "Non-Workshop Events", past_events_path(page: 1, type: "non-workshop", anchor: "list"), class: "not-workshops-link")
         :
-        (link_to "Limit to events", events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link")
+        (link_to "Non-Workshop Events", events_path(page: 1, type: "non-workshop", anchor: "list"), class: "not-workshops-link")
     else
       if type == "dss_events" || type == "hsl_events"
-        link_to "View all events", events_path(page: 1, type: "Is Not Workshop", anchor: "list"), class: "not-workshops-link"
+        link_to "View all events", events_path(page: 1, type: "non-workshop", anchor: "list"), class: "not-workshops-link"
       end
     end
   end
@@ -57,7 +57,7 @@ module EventHelper
       workshops_link(type) + " | " + events_link(type)
     elsif type == "Workshop"
       events_link(nil)
-    elsif type == "Is Not Workshop"
+    elsif type == "non-workshop"
       workshops_link(nil)
     end
   end

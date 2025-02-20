@@ -41,7 +41,7 @@ RSpec.describe EventHelper, type: :helper do
 
   describe "events_link" do
     it "returns events link when limiter not active" do
-      expect(helper.events_link(nil)).to match("Limit to events")
+      expect(helper.events_link(nil)).to match("Non-Workshop Events")
     end
     it "returns nothing when limiter active" do
       expect(helper.events_link("event")).to_not be

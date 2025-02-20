@@ -15,18 +15,32 @@ RSpec.describe "Event", type: :system do
   describe "Events index page" do
     scenario "Filter links appear on page" do
       visit(events_path)
-      expect(page).to have_content("Limit to workshops")
-      expect(page).to have_content("Non-Workshop Events")
+      within(".event-filter-link") do
+        expect(page).to have_content("Non-Workshop Events")
+        expect(page).to have_content("Limit to Workshops")
+      end
+      expect(page).to_not have_css(".workshops-label")
     end
     scenario "Limit to workshops enabled" do
-      visit events_path(type: "Workshop")
-      expect(page).to_not have_content("Limit to workshops")
-      expect(page).to have_content("Non-Workshop Events")
+      visit events_path(type: "workshop")
+      within(".event-filter-link") do
+        expect(page).to have_content("Non-Workshop Events")
+        expect(page).to_not have_content("Limit to Workshops")
+      end
+      within(".workshops-label") do
+        expect(page).to have_content("Workshop Events")
+        expect(page).to_not have_content("Non-Workshop Events")
+      end
     end
     scenario "Non-Workshop Events enabled" do
       visit events_path(type: "non-workshop")
-      expect(page).to have_content("Limit to workshops")
-      expect(page).to_not have_content("Non-Workshop Events")
+      within(".event-filter-link") do
+        expect(page).to have_content("Limit to Workshops")
+        expect(page).to_not have_content("Non-Workshop Events")
+      end
+      within(".workshops-label") do
+        expect(page).to have_content("Non-Workshop Events")
+      end
     end
   end
 

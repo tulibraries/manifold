@@ -5,10 +5,10 @@ require "rails_helper"
 RSpec.describe "Event", type: :system do
   before (:all) do
     workshop_event = FactoryBot.create(:event,
-      title: "Workshop", event_type: "Workshop",
+      title: "Gaming Workshop", event_type: "Workshop",
       start_time: Time.current + 7.hours, end_time: Time.current + 25.hours)
     non_workshop_event = FactoryBot.create(:event,
-      title: "Lecture", event_type: "Lecture",
+      title: "History Lecture", event_type: "Lecture",
       start_time: Time.current + 7.hours, end_time: Time.current + 25.hours)
   end
 
@@ -20,6 +20,10 @@ RSpec.describe "Event", type: :system do
         expect(page).to have_content("Limit to Workshops")
       end
       expect(page).to_not have_css(".workshops-label")
+      within("#current-events") do
+        expect(page).to have_content("Gaming Workshop")
+        expect(page).to have_content("History Lecture")
+      end
     end
     scenario "Limit to workshops enabled" do
       visit events_path(type: "workshop")
@@ -31,6 +35,10 @@ RSpec.describe "Event", type: :system do
         expect(page).to have_content("Workshop Events")
         expect(page).to_not have_content("Non-Workshop Events")
       end
+      within("#current-events") do
+        expect(page).to have_content("Gaming Workshop")
+        expect(page).to_not have_content("History Lecture")
+      end
     end
     scenario "Non-Workshop Events enabled" do
       visit events_path(type: "non-workshop")
@@ -40,6 +48,10 @@ RSpec.describe "Event", type: :system do
       end
       within(".workshops-label") do
         expect(page).to have_content("Non-Workshop Events")
+      end
+      within("#current-events") do
+        expect(page).to_not have_content("Gaming Workshop")
+        expect(page).to have_content("History Lecture")
       end
     end
   end

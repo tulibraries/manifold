@@ -51,7 +51,6 @@
       <div class="col-12">
         <span class="event-filter-link d-block mt-4 mb-2 roboto-light">
           <%= filters_link(params[:type]) %>
-          <%# workshops_link(params[:type])%><%# events_link(params[:type])%>
         </span>
       </div>
     </div>
@@ -82,7 +81,6 @@
             </div>
           </div>
           <% end %>
-        <%= turbo_frame_tag "events" do %>
           <% if params[:date].present? %>
           <div class="row">
             <div class="col">
@@ -91,6 +89,7 @@
             </div>
           </div>
           <% end %>
+        <%= turbo_frame_tag "events" do %>
 
           <%= render "events" %>
 

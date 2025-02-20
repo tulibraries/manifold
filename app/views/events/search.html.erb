@@ -55,11 +55,14 @@
           </div>
         </div>
 
-
         <%= turbo_frame_tag "events" do %>
 
-          <h2 class="mb-4 workshops-label d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
+          <% if action_name == "search" %>
+            <h2 class="mb-4 workshops-label d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
+          <% end %>
+
           <%= render "events" %>
+          
         <% end %>
 
       </div>

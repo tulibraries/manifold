@@ -31,7 +31,7 @@ module EventHelper
       action_name == "past" ?
         (link_to "Limit to Workshops", past_events_path(page: 1, type: "workshop", anchor: "list"), class: "workshops-link")
         :
-        (link_to "Limit to Workshops", events_path(page: 1, type: "Wwrkshop", anchor: "list"), class: "workshops-link")
+        (link_to "Limit to Workshops", events_path(page: 1, type: "workshop", anchor: "list"), class: "workshops-link")
     else
       if type == "dss_events" || type == "hsl_events"
         link_to "View all Workshops", events_path(page: 1, type: "workshop", anchor: "list"), class: "workshops-link"

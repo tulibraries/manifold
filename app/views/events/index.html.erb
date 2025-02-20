@@ -69,7 +69,6 @@
             </h2>
           </div>
         </div>
-        <%= turbo_frame_tag "events" do %>
           <% if @workshops.present? %>
           <div class="row">
             <div class="col">
@@ -83,6 +82,7 @@
             </div>
           </div>
           <% end %>
+        <%= turbo_frame_tag "events" do %>
           <% if params[:date].present? %>
           <div class="row">
             <div class="col">

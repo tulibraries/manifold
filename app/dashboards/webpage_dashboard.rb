@@ -25,6 +25,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
+    external_links: Field::HasMany,
     file_uploads: Field::HasMany,
     covid_alert: DescriptionField.with_options(admin_only: true),
     created_at: Field::DateTime,
@@ -52,9 +53,9 @@ class WebpageDashboard < Administrate::BaseDashboard
     :categories,
     :accounts,
     :covid_alert,
+    :external_links,
     :file_uploads
   ].freeze
-
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
@@ -70,13 +71,14 @@ class WebpageDashboard < Administrate::BaseDashboard
     :accounts,
     :layout,
     :external_link,
+    :external_links,
     :file_uploads,
     :covid_alert
   ].freeze
 
 
   def permitted_attributes
-    super + [[fileabilities_attributes: [:weight, :id, :_destroy]], :draft_description, :publish]
+    super + [[external_link_webpages_attributes: [:id, :url, :name, :weight, :_destroy]], [fileabilities_attributes: [:weight, :id, :_destroy]], :draft_description, :publish]
   end
 
   def display_resource(webpage)

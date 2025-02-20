@@ -20,6 +20,12 @@ class Webpage < ApplicationRecord
   belongs_to :group, optional: true
   belongs_to :external_link, optional: true
 
+  has_many :external_link_webpages, dependent: nil
+  has_many :external_links, through: :external_link_webpages
+
+  accepts_nested_attributes_for :external_link_webpages, allow_destroy: true
+
+
   def slug_candidates
     [
       :title,
@@ -42,12 +48,20 @@ class Webpage < ApplicationRecord
     }
   end
 
+  def featured_item
+    f = self.external_link_webpages.select { |f| (f.external_link.present? && f.weight == 1) }.sort_by { |f| f.external_link.updated_at }
+    f.first if f.present?
+  end
+
   def items
     self.fileabilities.select { |f| (f.file_upload.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.file_upload.name] }
   end
 
-  def featured_item
-    f = self.fileabilities.select { |f| (f.file_upload.present? && f.weight == 1) }.sort_by { |f| f.file_upload.updated_at }
-    f.first if f.present?
+  def online_links
+    self.external_link_webpages.select { |f| (f.external_link.present? && f.weight > 1) }.sort_by { |f| [f.weight, f.external_link.title] }
+  end
+
+  def reports
+    self.online_links + self.items
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_10_162354) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_13_193523) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -267,6 +267,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_10_162354) do
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
+  end
+
+  create_table "external_link_webpages", force: :cascade do |t|
+    t.bigint "webpage_id", null: false
+    t.bigint "external_link_id", null: false
+    t.integer "weight", default: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["external_link_id"], name: "index_external_link_webpages_on_external_link_id"
+    t.index ["webpage_id"], name: "index_external_link_webpages_on_webpage_id"
   end
 
   create_table "external_links", force: :cascade do |t|
@@ -570,6 +580,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_10_162354) do
   add_foreign_key "categories", "external_links"
   add_foreign_key "categories", "menu_groups"
   add_foreign_key "collections", "external_links"
+  add_foreign_key "external_link_webpages", "external_links"
+  add_foreign_key "external_link_webpages", "webpages"
   add_foreign_key "groups", "spaces"
   add_foreign_key "occupants", "buildings"
   add_foreign_key "people", "buildings"

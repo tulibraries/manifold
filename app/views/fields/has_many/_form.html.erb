@@ -1,3 +1,4 @@
+<% unless field.attribute == :external_links %>
 <div class="field-unit__label">
 	<% unless field.attribute == :categories || field.attribute == :accounts %>
     <% if field.attribute == :collections %><p class="h-two-half"></p><% end %>
@@ -22,3 +23,19 @@
     <p class="text-muted"><%= t("manifold.default.fields.has_many.categories") %></p>
   <% end %>
 </div>
+<% else %>
+
+  <% if field.resource.slug == "annual-report" %>
+  <div class="field-unit__label">
+    <%= f.label "Online Reports", for: "#{f.object_name}_#{field.attribute_key}" %>
+    <p style="height: 1rem;"></p>
+  </div>
+  <div class="field-unit__field field-unit--has-many" data-controller="selectize">
+    <%= f.select(field.attribute_key, nil, {include_blank: true}, {multiple: true}.merge(field.html_attributes)) do %>
+      <%= options_for_select(field.associated_resource_options.sort, field.selected_options) %>
+    <% end %>
+    <p class="text-muted"><%= t("manifold.admin.help_text.online_reports") %></p>
+  </div>
+  <% end %>
+
+<% end %>

@@ -52,7 +52,7 @@
   }
 }
 
-.file-uploads-text {
+.file-uploads-text, .external-links-text {
   width: 65%;
   margin: auto;
 }
@@ -64,7 +64,8 @@ select[multiple] {
 // categories
 
 .field-unit--categorizations, 
-.field-unit--file-uploads {
+.field-unit--file-uploads,
+.field-unit--external-links {
   align-items: baseline;
   .entity-weight-list {
     padding: 1.1em;
@@ -81,18 +82,18 @@ select[multiple] {
       display: inline-block;
       width: 8%;
     }
-    .fileabilities {
+    .fileabilities, .external-link-webpages {
       width: 90%;
     }
-    .file-upload-name {
+    .file-upload-name, .external-link-webpage-name {
       width: 80%;
       display: inline-block;
     }
-    .file-upload-weight {
+    .file-upload-weight, .external-link-webpage-weight {
       width: 10%;
       display: inline-block;
     }
-    .file-upload-destroy {
+    .file-upload-destroy, .external-link-webpage-destroy {
       width: 5%;
       display: inline-block;
       text-align: right;

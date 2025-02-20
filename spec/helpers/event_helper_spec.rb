@@ -29,13 +29,13 @@ RSpec.describe EventHelper, type: :helper do
 
   describe "workshops_link" do
     it "returns workshops link when limiter not active" do
-      expect(helper.workshops_link(nil)).to match("Limit to workshops")
+      expect(helper.workshops_link(nil)).to match("Limit to Workshops")
     end
     it "returns nothing when limiter active" do
       expect(helper.workshops_link("workshop")).to_not be
     end
     it "returns all workshops link on search page" do
-      expect(helper.workshops_link("dss_events")).to match("View all workshops")
+      expect(helper.workshops_link("dss_events")).to match("View all Workshops")
     end
   end
 
@@ -70,11 +70,11 @@ RSpec.describe EventHelper, type: :helper do
       expect(helper.events_title("past_search")).to include("Past")
     end
     it "displays current events title on past template" do
-      expect(helper.events_title("")).to include("Events, Exhibits & Workshops")
+      expect(helper.events_title("")).to include(t("manifold.events.index.page_title"))
       expect(helper.events_title("")).to_not include("Past")
     end
     it "displays current events title on past template" do
-      expect(helper.events_title("search")).to include("Events, Exhibits & Workshops")
+      expect(helper.events_title("search")).to include(t("manifold.events.index.page_title"))
       expect(helper.events_title("")).to_not include("Past")
     end
   end

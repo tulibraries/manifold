@@ -1,11 +1,11 @@
 #newsCarousel, #highlightsCarousel, #digcolsCarousel {
   .carousel-control-next  {
-    justify-content: flex-end !important;
-    padding-right: 3%;
     margin-left: auto;
+    width: 4%;
   }
   .carousel-control-prev {
     justify-content: flex-start;
+    width: 3%;
   }
   .carousel-inner {
     padding: .5em;

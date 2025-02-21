@@ -12,22 +12,21 @@ class EventsController < ApplicationController
   def index
     @snippet = Snippet.find_by(slug: "events-intro-snippet")
     events = Event.is_current.is_displayable
+    return_events(events)
     @featured_events = Event.is_current.is_displayable.where(featured: true).order(:start_time).take(3)
-    if params[:type].present? && params[:type].downcase == "workshop"
-      @workshops = events.is_current.is_displayable.is_workshop
-      return_events(@workshops)
-    elsif params[:type].present? && params[:type].downcase == "non-workshop"
-      @not_workshops = events.is_current.is_displayable.is_not_workshop
-      return_events(@not_workshops)
-    else
-      return_events(events)
-    end
     @exhibitions = Exhibition.is_current
                               .where(promoted_to_events: true)
                               .order(start_date: :desc, end_date: :desc)
                               .take(5)
     @mailing_list = ExternalLink.find_by(slug: "events-mailing-list")
     @intro = Webpage.find_by(slug: "events-intro")
+
+    if params[:type].present? && params[:type].downcase == "events-only"
+      events = Event.is_current.is_displayable.is_not_workshop
+      return_events(events)
+      render :search
+    end
+
 
     respond_to do |format|
       format.html
@@ -36,8 +35,14 @@ class EventsController < ApplicationController
   end
 
   def set_type
-    @types = ["dss_events", "hsl_events", "index", "past"]
+    @types = ["dss_events", "hsl_events", "index", "past", "workshops"]
     @type = action_name if @types.include? action_name
+  end
+
+  def workshops
+    events = Event.is_current.is_workshop.is_displayable
+    return_events(events)
+    render :search
   end
 
   def dss_events
@@ -60,14 +65,22 @@ class EventsController < ApplicationController
     end
   end
 
-  def past
-    past_events = Event.is_past.is_displayable
+  def past_events
+    @type = "past_events"
+    events = Event.is_past.is_displayable
+    return_events(events)
     workshops = Event.is_past.is_workshop.is_displayable
-    (params[:type].present? && params[:type].downcase == "workshop") ? return_events(workshops) : return_events(past_events)
     @exhibitions = Exhibition.is_past
                               .order(end_date: :desc, start_date: :desc)
                               .take(3)
     @intro = Webpage.find_by(slug: "events-intro")
+
+    if params[:type].present? && params[:type].downcase == "events-only"
+      events = Event.is_past.is_displayable.is_not_workshop
+      return_events(events)
+      render :search
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(past_events) }
@@ -75,10 +88,18 @@ class EventsController < ApplicationController
   end
 
   def past_search
+    @type = "past_search"
     @query = params[:search]
     events = Event.is_past.is_displayable.search(@query)
     return_events(events)
-    render "search"
+    render :search
+  end
+
+  def past_workshops
+    @type = "past_workshops"
+    events = Event.is_past.is_workshop.is_displayable
+    return_events(events)
+    render :search
   end
 
   def return_events(events)

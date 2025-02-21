@@ -1,0 +1,80 @@
+<%= render "mobile_menu" %>
+
+<div class="container-lg event-index">
+  <div class="container-lg">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="d-none d-lg-block">
+          <%= link_to t("manifold.events.index.page_title"), events_path, class: "blue" %>
+        </h1>
+      </div>
+    </div>
+
+    <div class="container-lg pb-3 mt-4" id="featured-events">
+      <div class="row">
+        <div class="col-12 text-center filter_links pt-4">
+          <a name="list"></a>
+          <%= current_link(action_name) %>
+          <hr />
+          <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline ps-4 faustina" %>
+        </div>
+      </div>
+
+      <div class="row event-filters">
+        <div class="col-12 col-lg-6 mt-4 text-center">
+          <%= render "form" %>
+        </div>
+
+        <div class="col-12 col-lg-6 text-center mt-4 ps-md-0">
+          <%= render "calendar" %>
+        </div>
+        <div class="col-12 mt-3 event-filter-link">
+          <%= filters_link(@type) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg">
+      <div class="row my-3">
+        <div class="col-12 col-lg-<%= (params[:date].present? || params[:search].present?) ? 12 : 9 %> events pt-3 px-lg-0 mb-3" id="past-events">
+          <div class="row">
+            <div class="col-12">  
+              <h2 class="p-3 mb-3 current-events list-label">
+                <span class="bl-red">
+                  <%= set_header(@type, params[:type]) %>
+                </span>
+              </h2>
+            </div>
+          </div>
+
+          <% if params[:date].present? %>
+            <h2 class="mb-4 filter-identifier">
+              <%= t("manifold.events.index.events_on") + " " + Date.parse(params[:date]).strftime("%m-%d-%Y") if params[:date].present? %> <%= close_button(action_name) %>
+            </h2>
+          <% end %>
+
+        <%= turbo_frame_tag "events" do %>
+          
+          <%= render "events" %>
+
+        <% end %>
+        </div>
+
+        <% unless params[:date].present? || params[:type].present? || params[:search].present? %>
+        <div class="col-12 col-lg-3 exhibits">
+          <div class="row">
+            <div class="col-12 pt-3 mb-3" id="events-exhibits">
+            <% unless @exhibitions.blank? %>
+              <h2 class="px-3 pt-3 mb-0 current-exhibits">
+                <span class="bl-red"><%= t("manifold.events.index.past_exhibits_label") %></span>
+              </h2>
+              <%= render "exhibitions" %>
+            <% end %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

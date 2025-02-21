@@ -117,8 +117,10 @@ Rails.application.routes.draw do
 
   controller :events do
     get "events/search" => :search, as: "events_search"
+    get "events/workshops" => :workshops, as: "workshops"
+    get "events/past" => :past_events, as: "past_events"
     get "events/past/search" => :past_search, as: "past_events_search"
-    get "events/past" => :past, as: "past_events"
+    get "events/past/workshops" => :past_workshops, as: "past_workshops"
     get "events/dss-events" => :dss_events, as: "dss_events"
     get "events/hsl-events" => :hsl_events, as: "hsl_events"
   end

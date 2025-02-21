@@ -477,11 +477,19 @@ en:
         page_title: Events, Exhibits & Workshops
         current_exhibits_label: Current Exhibits
         past_exhibits_label: Past Exhibits
-        past_events_label: Past Events
+        past_events_label: Past Events & Workshops
         mailing_list: Sign up for our mailing list
-        view_current_events: View current events & exhibits
-        view_past_events: View past events & exhibits
+        view_current_events: "View current events & exhibits"
+        view_past_events: "View past events & exhibits"
         view_past_events_videos: View video recordings from past events
+        view_events_link: View Events
+        view_all_events_link: View All Events
+        view_workshops_link: View Workshops
+        view_all_workshops_link: View All Workshops
+        view_past_events_link: View Past Events
+        view_all_past_events_link: View All Past Events
+        view_past_workshops_link: View Past Workshops
+        view_all_past_workshops_link: View All Past Workshops
         filters:
           none: "- none -"
         featured_events: Featured Events
@@ -491,13 +499,20 @@ en:
         upcoming_events: Upcoming Events
         events: Events
         events_on: Events on
+        workshops: Workshops
+        not_workshops: Events
       headings:
+        upcoming_events_workshops: Upcoming Events & Workshops
+        upcoming_events: Upcoming Event
         upcoming_workshops: Upcoming Workshops
+        past_workshops: Past Workshops
+        past_events_workshops: Past Events & Workshops
+        past_events: Past Events
         past_workshops: Past Workshops
         dsc: Upcoming Digital Scholarship Events
         hsl: Upcoming Health Sciences Events
-        index: Upcoming Events
-        past_events: Past Events
+        index: Upcoming Events & Workshops
+        events: Upcoming Events
       show:
         breadcrumb: All Events & Exhibits
         register: Register

@@ -35,9 +35,11 @@ module EventHelper
   end
 
   def filters_link(type)
-    (type.include? "past") ?
-      (past_workshops_link(type) + " | " + past_events_link(type)) :
+    if type.present? && type.include?("past")
+      (past_workshops_link(type) + " | " + past_events_link(type))
+    else
       (workshops_link(type) + " | " + events_link(type))
+    end
   end
 
   def workshops_link(type = "")

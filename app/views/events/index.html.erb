@@ -55,7 +55,7 @@
       <div class="col-12 <%= (@exhibitions.blank? || params[:date].present?) ? "col-lg-12" : "col-lg-9" %> events pt-3 mb-3 px-0" id="current-events">
         <div class="row">
           <div class="col-12">  
-            <h2 class="p-3 mb-3 current-events" id="upcoming-events">
+            <h2 class="p-3 mb-3 current-events list-label" id="upcoming-events">
               <span class="bl-red">
                 <%= set_header(@type, params[:type]) %>
               </span>
@@ -65,13 +65,13 @@
           <% if @workshops.present? %>
           <div class="row">
             <div class="col">
-              <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.workshops") %> <%= close_button(action_name) %></h2>
+              <h2 class="pt-2 mb-4 filter-identifier"><%= t("manifold.events.index.workshops") %> <%= close_button(action_name) %></h2>
             </div>
           </div>
           <% elsif @not_workshops.present? %>
           <div class="row">
             <div class="col">
-              <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.not_workshops") %> <%= close_button(action_name) %></h2>
+              <h2 class="pt-2 mb-4 filter-identifier"><%= t("manifold.events.index.not_workshops") %> <%= close_button(action_name) %></h2>
             </div>
           </div>
           <% end %>
@@ -79,7 +79,7 @@
           <div class="row">
             <div class="col">
               <a name="list" id="list"></a>
-              <h2 class="pt-2 mb-4 workshops-label"><%= t("manifold.events.index.events_on") + " #{display_date(params[:date])}" %> <%= close_button(action_name) %></h2>
+              <h2 class="pt-2 mb-4 filter-identifier"><%= t("manifold.events.index.events_on") + " #{display_date(params[:date])}" %> <%= close_button(action_name) %></h2>
             </div>
           </div>
           <% end %>

@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   include RedirectLogic
   before_action :set_type
   before_action :set_event, only: [:show]
-  before_action :init, only: [:index, :past]
+  before_action :init, only: [:index, :past_events]
   include EventFilters
 
 

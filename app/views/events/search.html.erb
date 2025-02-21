@@ -44,7 +44,7 @@
           <div class="col ps-4">
             <a name="list" id="list"></a>
             <% if @type.present? && action_name.exclude?("search") %>
-            <h2 class="mb-4 workshops-label d-inline-block w-100">
+            <h2 class="mb-4 filter-identifier list-label d-inline-block w-100">
               <%= set_header(@type, params[:type]) %> <%= close_button(action_name) %>
             </h2>
             <% end %>
@@ -54,7 +54,7 @@
         <%= turbo_frame_tag "events" do %>
 
           <% if action_name.include? "search" %>
-            <h2 class="mb-4 workshops-label d-inline-block w-100">
+            <h2 class="mb-4 filter-identifier d-inline-block w-100">
               Searched for: "<%= params[:search] %>" <%= close_button(action_name) %>
             </h2>
           <% end %>

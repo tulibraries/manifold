@@ -92,6 +92,9 @@
   a {
     color: $white;
   }
+  a.view-all {
+    border: solid $white 1px;
+  }
   h2 {
     font-size:300%;
     margin-bottom: 0;

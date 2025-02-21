@@ -3,7 +3,9 @@
 <div class="container-lg event-index">
   <div class="row">
     <div class="col-12">
-      <h1 class="d-none d-lg-block"><%= title t("manifold.events.index.page_title") %></h1>
+      <h1 class="d-none d-lg-block">
+        <%= link_to t("manifold.events.index.page_title"), events_path, class: "blue" %>
+      </h1>
     </div>
   </div>
   <div class="row">
@@ -38,19 +40,11 @@
       </div>
 
       <div class="col-12 col-lg-6 text-center mt-4 ps-md-0">
-        <div class="dropdown align-bottom">
-          <button class="btn btn-secondary dropdown-toggle ps-0 w-100 ps-3 text-start" type="button"
-          id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= t("manifold.events.index.calendar") %>
-          </button>
-          <div class="dropdown-menu ps-2 w-100 pb-3" aria-labelledby="dropdownMenuButton">
-            <%= render "dates" %>
-          </div>
-        </div>
+        <%= render "calendar" %>
       </div>
       <div class="col-12">
         <span class="event-filter-link d-block mt-4 mb-2 roboto-light">
-          <%= filters_link(params[:type]) %>
+          <%= filters_link(@type) %>
         </span>
       </div>
     </div>
@@ -58,12 +52,12 @@
 
   <div class="container-lg" id="results">
     <div class="row mt-3 mb-3">
-      <div class="col-12 <%= (@exhibitions.blank? || params[:date].present? || params[:type].present?) ? "col-lg-12" : "col-lg-9" %> events pt-3 mb-3 px-0" id="current-events">
+      <div class="col-12 <%= (@exhibitions.blank? || params[:date].present?) ? "col-lg-12" : "col-lg-9" %> events pt-3 mb-3 px-0" id="current-events">
         <div class="row">
           <div class="col-12">  
             <h2 class="p-3 mb-3 current-events" id="upcoming-events">
               <span class="bl-red">
-                <%= set_header(@type) %>
+                <%= set_header(@type, params[:type]) %>
               </span>
             </h2>
           </div>
@@ -89,6 +83,7 @@
             </div>
           </div>
           <% end %>
+
         <%= turbo_frame_tag "events" do %>
 
           <%= render "events" %>
@@ -96,7 +91,7 @@
         <% end %>
       </div>
 
-      <% unless @exhibitions.blank? || params[:date].present? || params[:type].present? %>
+      <% unless @exhibitions.blank? || params[:date].present? %>
       <div class="col-12 col-lg-3 exhibits">
         <div class="row">
           <div class="col-12 pt-3 mb-3" id="events-exhibits">

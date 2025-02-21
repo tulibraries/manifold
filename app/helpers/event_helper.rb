@@ -31,66 +31,51 @@ module EventHelper
       t("manifold.events.headings.upcoming_workshops")
     when "past_workshops"
       t("manifold.events.headings.past_workshops")
-    when "past_search"
-
     end
   end
 
   def filters_link(type)
-    (["past", "past_events", "past_search", "past_workshops"].include? type) ?
-    (past_workshops_link(type) + " | " + past_events_link(type)) :
-     (workshops_link(type) + " | " + events_link(type))
+    (type.include? "past") ?
+      (past_workshops_link(type) + " | " + past_events_link(type)) :
+      (workshops_link(type) + " | " + events_link(type))
   end
 
-  def workshops_link(type)
+  def workshops_link(type = "")
     if type == "dss_events" || type == "hsl_events"
-      link_to "View all Workshops", events_path(anchor: "list"), class: "workshops-link"
+      link_to t("manifold.events.index.view_all_workshops_link"), workshops_path(anchor: "list"), class: "workshops-link"
     else
-      link_to "View Workshops", workshops_path(anchor: "list"), class: "workshops-link"
+      link_to t("manifold.events.index.view_workshops_link"), workshops_path(anchor: "list"), class: "workshops-link"
     end
   end
 
   def past_workshops_link(type)
     if type == "dss_events" || type == "hsl_events"
-      link_to "View All Past Workshops", past_workshops_path(anchor: "list"), class: "workshops-link"
+      link_to t("manifold.events.index.view_all_past_workshops_link"), past_workshops_path(anchor: "list"), class: "workshops-link"
     else
-      link_to "View Past Workshops", past_workshops_path(anchor: "list"), class: "workshops-link"
+      link_to t("manifold.events.index.view_past_workshops_link"), past_workshops_path(anchor: "list"), class: "workshops-link"
     end
   end
 
-  def events_link(type)
+  def events_link(type = "")
     if type == "dss_events" || type == "hsl_events"
-      link_to "View All Events", events_path(type: "events-only", anchor: "list"), class: "not-workshops-link"
+      link_to t("manifold.events.index.view_all_events_link"), events_path(type: "events-only", anchor: "list"), class: "not-workshops-link"
     else
-      link_to "View Events", events_path(type: "events-only", anchor: "list"), class: "not-workshops-link"
+      link_to t("manifold.events.index.view_events_link"), events_path(type: "events-only", anchor: "list"), class: "not-workshops-link"
     end
   end
 
   def past_events_link(type)
     if type == "dss_events" || type == "hsl_events"
-      link_to "View All Past Events", past_events_path(type: "events-only", anchor: "list"), class: "not-workshops-link"
+      link_to t("manifold.events.index.view_all_past_events_link"), past_events_path(type: "events-only", anchor: "list"), class: "not-workshops-link"
     else
-      link_to "View Past Events", past_events_path(type: "events-only", anchor: "list"), class: "not-workshops-link"
+      link_to t("manifold.events.index.view_past_events_link"), past_events_path(type: "events-only", anchor: "list"), class: "not-workshops-link"
     end
   end
 
   def current_link(type)
     type.include?("past") ?
-      (link_to "View current events & exhibits", events_path(anchor: "list"), class: "pe-4 current-events") :
-      (link_to "View past events & exhibits", past_events_path, class: "pe-4 past-events")
-  end
-
-  def events_title(type)
-    case type
-    when "search"
-      t("manifold.events.index.page_title")
-    when "past"
-      "Past #{t("manifold.events.index.page_title")}"
-    when "past_search"
-      "Past #{t("manifold.events.index.page_title")}"
-    else
-      t("manifold.events.index.page_title")
-    end
+      (link_to t("manifold.events.index.view_current_events"), events_path(anchor: "list"), class: "pe-4 current-events") :
+      (link_to t("manifold.events.index.view_past_events"), past_events_path, class: "pe-4 past-events")
   end
 
   def close_button(type)

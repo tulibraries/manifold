@@ -5,10 +5,10 @@ require "rails_helper"
 RSpec.describe "Event", type: :system do
   before (:all) do
     workshop_event = FactoryBot.create(:event,
-      title: "Gaming Workshop", event_type: "Workshop",
+      title: "Gaming Workshop", event_type: "workshop",
       start_time: Time.current + 7.hours, end_time: Time.current + 25.hours)
     non_workshop_event = FactoryBot.create(:event,
-      title: "History Lecture", event_type: "Lecture",
+      title: "History Lecture", event_type: "lecture",
       start_time: Time.current + 7.hours, end_time: Time.current + 25.hours)
   end
 
@@ -16,8 +16,8 @@ RSpec.describe "Event", type: :system do
     scenario "Filter links appear on page" do
       visit(events_path)
       within(".event-filter-link") do
-        expect(page).to have_content("Non-Workshop Events")
-        expect(page).to have_content("Limit to Workshops")
+        expect(page).to have_content("View Events")
+        expect(page).to have_content("View Workshops")
       end
       expect(page).to_not have_css(".workshops-label")
       within("#current-events") do
@@ -28,12 +28,12 @@ RSpec.describe "Event", type: :system do
     scenario "Limit to workshops enabled" do
       visit events_path(type: "workshop")
       within(".event-filter-link") do
-        expect(page).to have_content("Non-Workshop Events")
-        expect(page).to_not have_content("Limit to Workshops")
+        expect(page).to have_content("View Events")
+        expect(page).to_not have_content("View Workshops")
       end
       within(".workshops-label") do
-        expect(page).to have_content("Workshop Events")
-        expect(page).to_not have_content("Non-Workshop Events")
+        expect(page).to have_content("Workshops")
+        expect(page).to_not have_content("View Events")
       end
       within("#current-events") do
         expect(page).to have_content("Gaming Workshop")
@@ -41,13 +41,13 @@ RSpec.describe "Event", type: :system do
       end
     end
     scenario "Non-Workshop Events enabled" do
-      visit events_path(type: "non-workshop")
+      visit events_path(type: "events-only")
       within(".event-filter-link") do
-        expect(page).to have_content("Limit to Workshops")
-        expect(page).to_not have_content("Non-Workshop Events")
+        expect(page).to have_content("View Workshops")
+        expect(page).to_not have_content("View Events")
       end
       within(".workshops-label") do
-        expect(page).to have_content("Non-Workshop Events")
+        expect(page).to have_content("View Events")
       end
       within("#current-events") do
         expect(page).to_not have_content("Gaming Workshop")

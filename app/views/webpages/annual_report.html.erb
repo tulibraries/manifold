@@ -1,0 +1,111 @@
+<%= render "mobile-menu-secondary" %>
+
+<div class="container-lg">
+	<div class="row page pt-3">
+
+		<% if @webpage.categories.present? %>
+
+			<div class="d-none d-md-block col-3 pt-3">
+				<%= render "categories_list" %>
+			</div>
+      <% if @webpage.external_link.present? %>
+        <div class="col-12 col-md-6">
+      <% else %>
+        <div class="col-12 col-md-9">
+      <% end %>
+
+    <% else %> <!-- no category list -->
+    
+      <% if @webpage.external_link.present? %>
+        <div class="col-12 col-md-9">
+      <% else %>
+        <div class="col-12">
+      <% end %>
+			
+		<% end %>
+
+        <%= render "secondary_covid_alert" if @header_alert.present? %>
+
+        <h1><%= title @webpage.title %></h1>
+
+        <div class="text-start page-description">
+          <div><%= @webpage.description %></div>
+          <%= render @webpage.layout.parameterize %>
+        </div>
+
+        <% if @webpage.featured_item.present? %>
+          <div class="row d-flex align-items-center my-4 ps-0 pe-5 mx-2 featured-publication">
+          <% if @featured.external_link.image.attached? %>
+            <div class="col-12 col-lg-4 d-none d-lg-block featured-item ps-0">
+              <%= image_tag @featured.external_link.image.variant(:gravity=>"Center", resize: "350x180^", crop: '350x180+0+0'), class: "inline p-0 featured-image" %>
+            </div>
+            <div class="col-12 col-lg-8 featured-publication-with">
+          <% else %>
+            <div class="col col-12 text-center featured-publication-without">
+          <% end %>
+              <span>
+                <%= image_tag "top-left-corner-sm.png" unless @featured.external_link.image.attached? %>
+                <%= link_to url_for(@featured.external_link.link), disposition: "attachment", class: "ps-0", title: t("manifold.webpages.view_pdf") do %>
+                  <%= attachment_title(@featured.external_link.title) %>
+                  <%= image_tag "new-tab.png", class: "pdf-icon pt-0" %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        <% end %>
+
+        <% if @webpage.reports.present? %>
+          <div class="row non-featured-publications">
+            <% @webpage.reports.each do |item| %>
+            <div class="col-12 col-md-12 col-lg-4 p-3 nfp-item text-center">
+              <div>
+                <% if item.is_a? ExternalLinkWebpage %>
+                  <% if item.external_link.image.attached? %>
+                    <%= link_to item.external_link.link do %>
+                      <%= image_tag item.external_link.image.variant(:gravity=>"Center", resize: "367X150^", crop: '367x150+0+0'), class: "block p-0" if item.external_link.image.attached? %>
+                      <span class="d-inline-block mt-2 pb-3">
+                        <%= item.external_link.title %>
+                      </span>
+                      <%= image_tag "new-tab.png", class: "pdf-icon pt-0" %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to item.external_link.link do %>
+                      <span class="d-inline-block mt-2 pb-3">
+                        <%= item.external_link.title %>
+                      </span>
+                      <%= image_tag "new-tab.png", class: "pdf-icon pt-0" %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag item.file_upload.image.variant(:gravity=>"Center", resize: "535x220^", crop: '535x220+0+0'), class: "block p-0" if item.file_upload.image.attached? %>
+                  <%= link_to url_for(item.file_upload.file.attachment), disposition: "attachment", class: "d-block pt-2 pb-2 px-3 align-middle", title: t("manifold.webpages.view_pdf") do %>
+                    <%= attachment_title(item.file_upload.name) %>
+                    <%= image_tag "pdf-black.svg", class: "pdf-icon pt-0" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+    <% unless ["Virtual Tour", "Tutorial"].include?(@webpage.layout)  %>
+      <div class="col-12 col-md-3">
+
+        <% if @webpage.external_link.present? %>
+          <div class="access-link">
+            <h2><%= link_to @webpage.external_link.title, @webpage.external_link.link %></h2>
+          </div>
+        <% end %>
+
+      </div>
+    <% end %>
+
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json">
+  <%= json_ld(@webpage) %>
+</script> 

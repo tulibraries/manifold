@@ -124,9 +124,6 @@ RSpec.describe Webpage, type: :model do
           @with_uploads.file_uploads << @file2
           @with_uploads.fileabilities.second.update("weight" => 1)
         end
-        it "puts item into featured variable" do
-          expect(@with_uploads.featured_item.file_upload_id).to eql @file2.id
-        end
         it "removes item from items array" do
           expect(@with_uploads.items.map(&:file_upload_id)).to_not eql [@file2.id]
           expect(@with_uploads.items.map(&:file_upload_id)).to eql [@file1.id]

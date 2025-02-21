@@ -4,7 +4,9 @@
   <div class="container-lg">
     <div class="row">
       <div class="col-12">
-      <h1 class="d-none d-lg-block"><%= events_title(action_name) %></h1>
+        <h1 class="d-none d-lg-block">
+          <%= link_to t("manifold.events.index.page_title"), events_path, class: "blue" %>
+        </h1>
       </div>
     </div>
   </div>
@@ -20,23 +22,17 @@
     </div>
     <div class="row event-filters">
       <a name="list"></a>
-      <div class="col-12 col-lg-6 text-center">
+      <div class="col-12 col-lg-6 mt-4 text-center">
         <%= render "form" %>
       </div>
 
       <div class="col-12 col-lg-6 text-center mt-4 ps-md-0">
-        <div class="dropdown align-bottom">
-          <button class="btn btn-secondary dropdown-toggle ps-0 w-100 ps-3 text-start" type="button"
-          id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= t("manifold.events.index.calendar") %>
-          </button>
-          <div class="dropdown-menu ps-2 w-100 pb-3" aria-labelledby="dropdownMenuButton">
-            <%= render "dates" %>
-          </div>
-        </div>
+        <%= render "calendar" %>
       </div>
       <div class="col-12">
-        <%= workshops_link(action_name) %>
+        <span class="event-filter-link d-block mt-4 mb-2 roboto-light">
+          <%= filters_link(@type) %>
+        </span>
       </div>
     </div>
   </div>
@@ -47,19 +43,24 @@
         <div class="row">
           <div class="col ps-4">
             <a name="list" id="list"></a>
-            <% if @type.present? %>
-            <h2 class="mb-4 workshops-label d-inline-block w-100">
-              <%= set_header(@type) %> <%= close_button(action_name) %>
+            <% if @type.present? && action_name.exclude?("search") %>
+            <h2 class="mb-4 filter-identifier list-label d-inline-block w-100">
+              <%= set_header(@type, params[:type]) %> <%= close_button(action_name) %>
             </h2>
             <% end %>
           </div>
         </div>
 
-
         <%= turbo_frame_tag "events" do %>
 
-          <h2 class="mb-4 workshops-label d-inline-block w-100">Searched for: "<%= params[:search] %>" <%= close_button(action_name) %></h2>
+          <% if action_name.include? "search" %>
+            <h2 class="mb-4 filter-identifier d-inline-block w-100">
+              Searched for: "<%= params[:search] %>" <%= close_button(action_name) %>
+            </h2>
+          <% end %>
+        
           <%= render "events" %>
+
         <% end %>
 
       </div>

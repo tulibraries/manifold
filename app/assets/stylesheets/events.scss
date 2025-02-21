@@ -321,11 +321,12 @@
     border-radius: 0;
     border: solid $royal-blue 1px;
   }
-  .workshops-link {
+  .event-filter-link, .workshops-link, .not-workshops-link {
     font-size: 1.3rem;
   }
 }
-.workshops-label {
+
+.filter-identifier {
   background-color: $royal-blue;
   color: $white;
   padding: 12px 10px 10px 14px !important;

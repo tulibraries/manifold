@@ -4,6 +4,7 @@ class ExternalLink < ApplicationRecord
   has_paper_trail
   include Validators
   include Categorizable
+  include Imageable
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
@@ -11,6 +12,9 @@ class ExternalLink < ApplicationRecord
   before_save :link_cleanup!
 
   validates :title, :link, presence: true
+
+  has_many :external_link_webpages, dependent: nil
+  has_many :webpages, through: :external_link_webpages
 
   def slug_candidates
     [

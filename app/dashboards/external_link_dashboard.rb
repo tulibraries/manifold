@@ -14,6 +14,7 @@ class ExternalLinkDashboard < BaseDashboard
     slug: Field::String,
     title: Field::String,
     link: Field::String,
+    image: PhotoField,
     categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -36,6 +37,7 @@ class ExternalLinkDashboard < BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :title,
     :link,
+    :image,
     :categories,
     :created_at,
     :updated_at,
@@ -49,6 +51,7 @@ class ExternalLinkDashboard < BaseDashboard
     :slug,
     :link,
     :categories,
+    :image
   ].freeze
 
   # Overwrite this method to customize how external links are displayed

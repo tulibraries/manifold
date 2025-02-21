@@ -5,20 +5,15 @@ class EventsController < ApplicationController
   include RedirectLogic
   before_action :set_type
   before_action :set_event, only: [:show]
-  before_action :init, only: [:index, :past]
+  before_action :init, only: [:index, :past_events]
   include EventFilters
 
 
   def index
     @snippet = Snippet.find_by(slug: "events-intro-snippet")
     events = Event.is_current.is_displayable
+    return_events(events)
     @featured_events = Event.is_current.is_displayable.where(featured: true).order(:start_time).take(3)
-    if params[:type].present? && params[:type].downcase == "workshop"
-      @workshops = events.is_current.is_displayable.is_workshop
-      return_events(@workshops)
-    else
-      return_events(events)
-    end
     @exhibitions = Exhibition.is_current
                               .where(promoted_to_events: true)
                               .order(start_date: :desc, end_date: :desc)
@@ -26,27 +21,24 @@ class EventsController < ApplicationController
     @mailing_list = ExternalLink.find_by(slug: "events-mailing-list")
     @intro = Webpage.find_by(slug: "events-intro")
 
+    if params[:type].present? && params[:type].downcase == "events-only"
+      events = Event.is_current.is_displayable.is_not_workshop
+      return_events(events)
+      render :search
+    end
+
+
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(events) }
     end
   end
 
-  def set_type
-    @types = ["dss_events", "hsl_events", "index", "past"]
-    @type = action_name if @types.include? action_name
-  end
-
-  def dss_events
-    @dss_events = Event.is_current.is_dss_event.is_displayable
-    return_events(@dss_events)
-    render :search
-  end
-
-  def hsl_events
-    @hsl_events = Event.is_current.is_hsl_event.is_displayable
-    return_events(@hsl_events)
-    render :search
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: EventSerializer.new(@event) }
+    end
   end
 
   def search
@@ -57,25 +49,47 @@ class EventsController < ApplicationController
     end
   end
 
-  def past
-    past_events = Event.is_past.is_displayable
+  def past_search
+    @type = "past_search"
+    @query = params[:search]
+    events = Event.is_past.is_displayable.search(@query)
+    return_events(events)
+    render :search
+  end
+
+  def past_events
+    @type = "past_events"
+    events = Event.is_past.is_displayable
+    return_events(events)
     workshops = Event.is_past.is_workshop.is_displayable
-    (params[:type].present? && params[:type].downcase == "workshop") ? return_events(workshops) : return_events(past_events)
     @exhibitions = Exhibition.is_past
                               .order(end_date: :desc, start_date: :desc)
                               .take(3)
     @intro = Webpage.find_by(slug: "events-intro")
+
+    if params[:type].present? && params[:type].downcase == "events-only"
+      events = Event.is_past.is_displayable.is_not_workshop
+      return_events(events)
+      render :search
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: EventSerializer.new(past_events) }
     end
   end
 
-  def past_search
-    @query = params[:search]
-    events = Event.is_past.is_displayable.search(@query)
+  def workshops
+    events = Event.is_current.is_workshop.is_displayable
     return_events(events)
-    render "search"
+    render :search
+  end
+
+  def past_workshops
+    @type = "past_workshops"
+    events = Event.is_past.is_workshop.is_displayable
+    return_events(events)
+    render :search
   end
 
   def return_events(events)
@@ -95,11 +109,16 @@ class EventsController < ApplicationController
     end
   end
 
-  def show
-    respond_to do |format|
-      format.html
-      format.json { render json: EventSerializer.new(@event) }
-    end
+  def dss_events
+    @dss_events = Event.is_current.is_dss_event.is_displayable
+    return_events(@dss_events)
+    render :search
+  end
+
+  def hsl_events
+    @hsl_events = Event.is_current.is_hsl_event.is_displayable
+    return_events(@hsl_events)
+    render :search
   end
 
   private
@@ -111,5 +130,10 @@ class EventsController < ApplicationController
       @event = find_instance
       @event_url = @event.event_url unless @event.nil?
       return redirect_or_404(@event)
+    end
+
+    def set_type
+      @types = ["dss_events", "hsl_events", "index", "past", "workshops"]
+      @type = action_name if @types.include? action_name
     end
 end

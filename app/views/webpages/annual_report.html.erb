@@ -4,14 +4,27 @@
 	<div class="row page pt-3">
 
 		<% if @webpage.categories.present? %>
+
 			<div class="d-none d-md-block col-3 pt-3">
 				<%= render "categories_list" %>
 			</div>
-      <div class="col-12 col-md-9">
-        <div class="col-12">
-    <% end %>
+      <% if @webpage.external_link.present? %>
+        <div class="col-12 col-md-6">
+      <% else %>
+        <div class="col-12 col-md-9">
+      <% end %>
 
-    <%= render "secondary_covid_alert" if @header_alert.present? %>
+    <% else %> <!-- no category list -->
+    
+      <% if @webpage.external_link.present? %>
+        <div class="col-12 col-md-9">
+      <% else %>
+        <div class="col-12">
+      <% end %>
+			
+		<% end %>
+
+        <%= render "secondary_covid_alert" if @header_alert.present? %>
 
         <h1><%= title @webpage.title %></h1>
 
@@ -75,13 +88,21 @@
             <% end %>
           </div>
         <% end %>
+      </div>
 
+    <% unless ["Virtual Tour", "Tutorial"].include?(@webpage.layout)  %>
+      <div class="col-12 col-md-3">
 
-
+        <% if @webpage.external_link.present? %>
+          <div class="access-link">
+            <h2><%= link_to @webpage.external_link.title, @webpage.external_link.link %></h2>
+          </div>
+        <% end %>
 
       </div>
-    </div>
+    <% end %>
 
+    </div>
   </div>
 </div>
 

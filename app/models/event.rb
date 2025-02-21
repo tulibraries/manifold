@@ -21,8 +21,10 @@ class Event < ApplicationRecord
   scope :is_past, -> { where("end_time < ?", Date.current).order(start_time: :desc) }
   scope :is_current, -> { where("end_time >= ?", Date.current).order(:start_time) }
   scope :is_type_workshop, -> { where("lower(event_type) LIKE ?", "%workshop%") }
+  scope :is_tagged_workshop, -> { where("lower(tags) LIKE ?", "%workshop%") }
   scope :is_workshop, -> { is_type_workshop.or(is_tagged_workshop) }
   scope :is_not_type_workshop, -> { where.not("lower(event_type) LIKE ?", "%workshop%") }
+  scope :is_not_tagged_workshop, -> { where.not("lower(tags) LIKE ?", "%workshop%").or(where(tags: nil)) }
   scope :is_not_workshop, -> { is_not_type_workshop.and(is_not_tagged_workshop) }
   scope :is_dss_event, -> { where("lower(tags) LIKE ?", "%digital scholarship%") }
   scope :is_hsl_event, -> { where("lower(tags) LIKE ?", "%health sciences%") }

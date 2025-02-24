@@ -150,14 +150,17 @@
       </div>
 
       <h2>Library News</h2>
-      <div class="row home-news-row row-eq-height" data-controller="highlights-carousel">
+      <div class="row home-news-row row-eq-height<%= " bottom-section" unless @digcols.any? %>" data-controller="highlights-carousel">
         <%= render "featured" %>
       </div>
 
+      <% if @digcols.any? %>
       <h2>Highlights From Our Digital Collections</h2>
       <div class="row home-digcol-row row-eq-height" data-controller="digcols-carousel">
         <%= render "dig-cols" %>
       </div>	
+      <% end %>
+      
     </div>
   </div>
   

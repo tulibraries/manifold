@@ -29,12 +29,12 @@
 
 .aid-index {
   a.archive-space-button {
-    background-color: $crystal-blue;
-    border: solid $royal-blue 1px;
+    background-color: $royal-blue;
+    // border: solid $royal-blue 1px;
     border-radius: 7px;
     text-align: center;
     padding: 14px;
-    color: $royal-blue;
+    color: $white;
     width: 25%;
   }
   #fa-search { margin-top: -32px !important; }

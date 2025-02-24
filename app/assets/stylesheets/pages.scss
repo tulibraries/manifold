@@ -263,8 +263,8 @@
     .caption {
       font-family: "faustina";
       font-weight: 700;
-      color: $royal-blue;
-      background-color: $crystal-blue;
+      color: $white;
+      background-color: $royal-blue;
       height:45px;
       text-align: center;
       font-size: 1.25rem;
@@ -285,8 +285,9 @@
         padding-top: 8px;
         padding-right: 21px;
         float: right;
+        color: $white;
         @media screen and (min-width: 0) and (max-width: 1190px) {
-          color: $royal-blue;
+          color: $white;
           float: none;
           text-align: left;
         }
@@ -303,7 +304,7 @@
       background-color: transparent;
       span {
         display: inline-block;
-        background-color: $crystal-blue;
+        background-color: $royal-blue;
         width: 100%;
         padding-right: 21px;
         padding-top: 7px;
@@ -326,7 +327,7 @@
     .catalog-search {
       .square  {
         height: 16.5%;
-        padding-top: 4%;
+        padding-top: 2%;
         padding-left: 1rem;
         a {
           font-size: 160%;
@@ -359,7 +360,7 @@
       .events .caption {
         margin-top: 0;
         padding-top: 7px;
-        color: $royal-blue;
+        color: $white;
         box-shadow: 0px 2px 5px $light-grey;
         font-size: 1.35rem;
         @media screen and (min-width: 0) and (max-width: 1190px) {
@@ -430,7 +431,7 @@
       }
       div:last-of-type {
         @media screen and (max-width: 1190px) {
-          background-color: $crystal-blue !important;
+          background-color: $royal-blue !important;
         }
       }
       div.h-10 {
@@ -453,8 +454,8 @@
 
 .access-link {
   a {
-    background-color: $crystal-blue;
-    color: $royal-blue;
+    background-color: $royal-blue;
+    color: $white;
     font-family: faustina;
     padding: 7px 14px;
     display: inline-block;

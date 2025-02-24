@@ -21,8 +21,8 @@
     margin-right: 7px;
     margin-top: 0;
     text-decoration: none;
-    color: $black !important;
-    border: solid $black 1px;
+    color: $white !important;
+    border: solid $white 1px;
     padding: 4px 8px 4px 8px;
     font-size: 1rem;
   }
@@ -277,9 +277,6 @@
   }
 }
 #featured-events {
-  background-color:#eee;
-  border-top: solid $new-gold 9px;
-  border-bottom: solid $new-gold 14px;
   img.events-default {
     height: 180px;
     width: 180px;
@@ -328,8 +325,10 @@
     font-size: 1.3rem;
   }
 }
+
 .filter-identifier {
-  background-color: $crystal-blue;
+  background-color: $royal-blue;
+  color: $white;
   padding: 12px 10px 10px 14px !important;
 }
 

@@ -86,6 +86,9 @@
   a {
     color: $white;
   }
+  a.view-all {
+    border: solid $white 1px;
+  }
   h2 {
     font-size:300%;
     margin-bottom: 0;
@@ -116,7 +119,7 @@
         line-height: 1.85rem;
       }
       .event-date {
-        border-left: solid $new-gold 4px;
+        border-left: solid $white 4px;
         color: $white;
         padding-left: 14px;
         width: 100%;
@@ -177,8 +180,8 @@
     margin-left: 14px;
     margin-right: 14px;
     padding: 7px;
-    background-color: $crystal-blue;
-    color: $royal-blue !important;
+    background-color: $royal-blue;
+    color: $white !important;
     padding-right: 35px;
     font-family: "faustina" !important;
     font-size: 135%;

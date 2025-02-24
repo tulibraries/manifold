@@ -28,6 +28,14 @@ RSpec.describe "Highlight", type: :system do
         expect(page).to_not have_content(@highlight_without_image.title)
       end
     end
+
+    scenario "no highlights promoted" do
+      Highlight.delete_all
+      visit(root_path)
+      within("#news-events") do
+        expect(page).to_not have_content(I18n.t("manifold.webpages.home.main.digital_collections_title"))
+      end
+    end
   end
 
 end

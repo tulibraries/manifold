@@ -1051,7 +1051,9 @@ en:
             digital: Digital Collections
             collections_search: Search our collections >
             events: Events, Exhibits & Workshops
-            news: Library News
+            events_title: Events
+            news_title: Library News
+            digital_collections_title: Highlights From Our Digital Collections
             browse_digital_collections: Browse our Digital Collections
             digital_collections_link: https://digital.library.temple.edu/
             locations:

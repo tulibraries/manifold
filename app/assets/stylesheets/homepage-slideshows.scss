@@ -2,10 +2,17 @@
   .carousel-control-next  {
     margin-left: auto;
     width: 4%;
+    @media (max-width: 767px) {
+      right: 5px;
+      width: auto;
+    }
   }
   .carousel-control-prev {
     justify-content: flex-start;
     width: 3%;
+    @media (max-width: 767px) {
+      width: auto;
+    }
   }
   .carousel-inner {
     padding: .5em;

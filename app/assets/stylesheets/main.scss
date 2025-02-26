@@ -35,13 +35,13 @@ strong, .strong {
 }
 
 .flash {
-  background-color: $royal-blue;
+  background-color: $crystal-blue;
   padding:10px;
   width: 100%;
   text-align: center;
   margin-bottom: 0;
   border-bottom: solid $new-gold 7px;
-  color: $white;
+  color: $royal-blue;
   font-family: "Roboto";
   .error {
     color: $red;
@@ -135,7 +135,7 @@ marquee {
 
 .covid-alert {
   font-family: 'Roboto';
-  background-color: $new-gold;
+  background-color: #e5edf8;
   color: $royal-blue;
   font-size: 1.35rem;
   padding: 21px 0 14px 0;

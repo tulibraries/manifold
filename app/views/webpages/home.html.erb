@@ -144,18 +144,18 @@
 
   <div class="mt-5" id="news-events">
     <div class="news-container container-lg">
-      <h2><%= t("manifold.webpages.home.main.events_title") %></h2>
+      <h2><%= t("manifold.webpages.home.links.main.events_title") %></h2>
       <div class="row home-events-row row-eq-height" data-controller="news-carousel">
         <%= render "events" if @featured_events.present? %>
       </div>
 
-      <h2><%= t("manifold.webpages.home.main.news_title") %></h2>
+      <h2><%= t("manifold.webpages.home.links.main.news_title") %></h2>
       <div class="row home-news-row row-eq-height<%= " bottom-section" unless @digcols.any? %>" data-controller="highlights-carousel">
         <%= render "featured" %>
       </div>
 
       <% if @digcols.any? %>
-      <h2><%= t("manifold.webpages.home.main.digital_collections_title") %></h2>
+      <h2><%= t("manifold.webpages.home.links.main.digital_collections_title") %></h2>
       <div class="row home-digcol-row row-eq-height" data-controller="digcols-carousel">
         <%= render "dig-cols" %>
       </div>	

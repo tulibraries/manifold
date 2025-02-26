@@ -33,7 +33,7 @@ RSpec.describe "Highlight", type: :system do
       Highlight.delete_all
       visit(root_path)
       within("#news-events") do
-        expect(page).to_not have_content(I18n.t("manifold.webpages.home.main.digital_collections_title"))
+        expect(page).to_not have_content(I18n.t("manifold.webpages.home.links.main.digital_collections_title"))
       end
     end
   end

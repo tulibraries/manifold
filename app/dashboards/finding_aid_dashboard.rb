@@ -10,6 +10,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    holdover: Field::Boolean,
     id: Field::Number,
     name: Field::String,
     description: DescriptionField,
@@ -65,6 +66,7 @@ class FindingAidDashboard < Administrate::BaseDashboard
     :name,
     :slug,
     :identifier,
+    :holdover,
     :path,
     :draft_description,
     :description,

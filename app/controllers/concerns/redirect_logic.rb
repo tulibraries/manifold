@@ -21,7 +21,7 @@ module RedirectLogic
     else
       if Rails.application.routes.recognize_path(legacy_path)
         if instance
-          if instance.holdover.present?
+          if instance.respond_to? :holdover
             if instance.holdover == true
               return
             else

@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :finding_aid do
     name { "finding aid" }
+    holdover { false }
     description { ActionText::Content.new("Hello World") }
     subject { ["history"] }
     content_link { "content_link" }

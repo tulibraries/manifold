@@ -21,7 +21,15 @@ module RedirectLogic
     else
       if Rails.application.routes.recognize_path(legacy_path)
         if instance
-          return
+          if instance.respond_to? :holdover
+            if instance.holdover == true
+              return
+            else
+              redirect_to(url_for(t("manifold.default.finding_aids_new_home")), allow_other_host: true)
+            end
+          else
+            return
+          end
         else
           if legacy_path.include? "aids?collection"
             redirect_to(url_for(t("manifold.default.finding_aids_new_home")), allow_other_host: true)

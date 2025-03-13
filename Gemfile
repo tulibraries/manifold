@@ -97,6 +97,7 @@ group :test do
   gem "mutant-rspec"
   gem "orderly"
   gem "rails-controller-testing"
+  gem "resolv-replace"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails"
   gem "selenium-webdriver"

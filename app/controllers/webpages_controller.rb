@@ -71,7 +71,7 @@ class WebpagesController < ApplicationController
   def home
     begin
       @charles_hours = Google::SheetsConnector.call(feature: "hours", scope: "charles")
-    rescue Google::Apis::ClientError
+    rescue
       @charles_hours = nil
     end
 

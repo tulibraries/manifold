@@ -14,13 +14,14 @@ class BuildingsController < ApplicationController
   def show
     @header_alert = @building.covid_alert
     @model = @building
+    @weekly_hours = ""
     serializable_show
     if @building.hours.present?
-      hours = Google::SheetsConnector.call(feature: "hours", scope: @building.hours)
-      if hours.present?
-        @weekly_hours = Google::WeeklyHours.new(hours:, location: @building)
-      else
-        @weekly_hours = ""
+      begin
+        hours = Google::SheetsConnector.call(feature: "hours", scope: @building.hours)
+        @weekly_hours = Google::WeeklyHours.new(hours:, location: @building) if hours.present?
+      rescue
+        @weekly_hours == ""
       end
     end
   end

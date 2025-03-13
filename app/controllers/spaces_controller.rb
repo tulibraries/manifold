@@ -19,13 +19,14 @@ class SpacesController < ApplicationController
     @header_alert = @space.covid_alert
     @categories = @space.categories
     @model = @space
+    @weekly_hours = ""
     serializable_show
     if @space.hours.present?
-      hours = Google::SheetsConnector.call(feature: "hours", scope: @space.hours)
-      if hours.present?
-        @weekly_hours = Google::WeeklyHours.new(hours:, location: @space)
-      else
-        @weekly_hours = ""
+      begin
+        hours = Google::SheetsConnector.call(feature: "hours", scope: @space.hours)
+        @weekly_hours = Google::WeeklyHours.new(hours:, location: @space) if hours.present?
+      rescue
+        @weekly_hours == ""
       end
     end
   end

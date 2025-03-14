@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Google::TodaysHours < ViewComponent::Base
+  attr_reader :hours
   def initialize(hours:)
     dates = hours.value_ranges[0].values.flatten
     times = hours.value_ranges[1].values.flatten

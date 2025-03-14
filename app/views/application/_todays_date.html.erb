@@ -1,4 +1,4 @@
-<% if @hours.present? %>
-  <span class="d-block"><%= t("manifold.header.todays_hours") %> | <%= render @hours %></span>
+<% if @todays_hours.present? %>
+  <span class="d-block"><%= "#{t("manifold.header.todays_hours")} | #{ @todays_hours }" %></span>
 <% end %>
 <%= link_to t("manifold.header.all_hours"), hours_path %> >

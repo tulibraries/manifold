@@ -69,18 +69,8 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    begin
-      @charles_hours = Google::SheetsConnector.call(feature: "hours", scope: "charles")
-    rescue Google::Apis::ClientError
-      @charles_hours = nil
-    end
-
-    if @charles_hours.present?
-      @hours = Google::TodaysHours.new(hours: @charles_hours)
-    else
-      @hours = ""
-    end
-
+    file_path = Rails.root.join("public/cache/todays_hours")
+    @todays_hours = File.read(file_path)
     @highlights = Highlight.with_image.where(promoted: true).take(6)
     @featured_events = Event.where(featured: true).order(:start_time).take(6)
     @digcols = Highlight.with_image.for_digital_collections.take(6)

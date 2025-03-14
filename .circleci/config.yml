@@ -74,6 +74,10 @@ jobs:
           command: printf "n\nn\n"  | bundle exec rails action_text:install && git clean -f db
 
       - run:
+          name: Get Todays Hours
+          command: printf "n\nn\n"  | bundle exec rails sync:todays_hours
+
+      - run:
           name: Precompile assets
           command: |
             bundle exec rails assets:precompile

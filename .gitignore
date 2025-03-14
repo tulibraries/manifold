@@ -34,12 +34,14 @@
 # /public/assets
 /public/sitemap.xml.gz
 /public/epub
+/public/finding_aids.json
+/public/todays_hours
+
 .byebug_history
 tags
 .tags*
 gem.tags
 /spec/examples.txt
-/public/finding_aids.json
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

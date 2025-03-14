@@ -35,7 +35,7 @@
 /public/sitemap.xml.gz
 /public/epub
 /public/finding_aids.json
-/public/todays_hours
+# /public/todays_hours
 
 .byebug_history
 tags

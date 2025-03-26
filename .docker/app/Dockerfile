@@ -21,7 +21,7 @@ RUN apk add -U --no-cache \
       libxslt=1.1.42-r2 \
       postgresql16-client=16.8-r0 \
       shared-mime-info=2.4-r2 \
-      tzdata=2025a-r0 && \
+      tzdata=2025b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
       git=2.47.2-r0 \
       build-base=0.5-r3 \

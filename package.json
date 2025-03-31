@@ -20,7 +20,7 @@
     "minimist": "^1.2.6"
   },
   "scripts": {
-    "build": "node esbuild.config.js",
+    "build": "node esbuild.config.mjs",
     "build:css": "sass ./app/assets/stylesheets/application.css.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build:admin": "sass ./app/assets/stylesheets/administrate/application.scss:./app/assets/builds/administrate/application.css --no-source-map --load-path=node_modules"
   }

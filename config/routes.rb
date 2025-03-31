@@ -60,13 +60,13 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :buildings, :categories, :collections, :events, :exhibitions, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
+    resource :buildings, :categories, :collections, :events, :exhibitions, :external_links, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
       member do
         get ":id/detach" => :detach
       end
     end
 
-    resource :buildings, :categories, :collections, :events, :exhibitions, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
+    resource :buildings, :categories, :collections, :events, :exhibitions, :external_links, :file_uploads, :groups, :highlights, :webpages, :people, :spaces do
       member do
         post "detach" => :detach
       end
@@ -113,6 +113,7 @@ Rails.application.routes.draw do
     get "finding_aids/:id" => :show
     get "finding-aids/:id" => :show
     get "finding_aids.json", to: redirect("assets/cache/finding_aids.json")
+    get "finding-aids.json", to: redirect("assets/cache/finding_aids.json")
   end
 
   controller :events do

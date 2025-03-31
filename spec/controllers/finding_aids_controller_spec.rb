@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe FindingAidsController, type: :controller do
 
-  let(:finding_aid) { FactoryBot.create(:finding_aid) }
+  let(:finding_aid) { FactoryBot.create(:finding_aid, holdover: true) }
 
   describe "GET #show" do
     it "returns a success response" do

@@ -5,7 +5,7 @@
   font-weight: 500;
   border-left: solid $red 1px;
   border-right: solid $red 1px;
-  background-color: #efefef;
+  background-color: $lighter-grey;
   padding: 7px;
 }
   .bordered {
@@ -50,6 +50,7 @@
     border-radius: 7px;
     text-decoration: none!important;
     display: inline-block;
+    color: $white !important;
     margin-top: 1rem;
     @media (max-width: 1039px) {
       top: 2px;
@@ -238,10 +239,10 @@
   }
   .today_button {
     padding: 4px 10px;
-    background-color: $crystal-blue;
+    background-color: $royal-blue;
     text-decoration: none!important;
     display: inline-block;
-    color: $royal-blue !important;
+    color: $white !important;
     font-family: faustina;
     font-size: 1.25rem;
     border: 0;
@@ -251,12 +252,6 @@
       top: 2px;
     }
   }
-  // .today_button::after {
-  //   padding-left: 10px;
-  //   padding-top: 3px;
-  //   position: relative;
-  //   top: 2px;
-  // }
   
   .hours-row {
     margin-top: 14px;

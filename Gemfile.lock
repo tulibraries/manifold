@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/paper-trail-gem/paper_trail
-  revision: 94e9c0daa28c5a60441f5e173f3e6b1d2c555918
+  revision: 4eb9f0b74ad8815b86686c8f56cfab89b98058c4
   specs:
     paper_trail (16.0.0)
       activerecord (>= 6.1)
@@ -342,7 +342,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lockbox (2.0.1)
-    logger (1.6.6)
+    logger (1.7.0)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)

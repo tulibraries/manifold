@@ -34,14 +34,22 @@ class WebpagesController < ApplicationController
   def video_show
     if params[:id].present?
       video = Panopto::VideoDistributor.call(type: "show", video_id: params[:id])
-      if video.present? && video[:Message] != "The request is invalid."
-        render(Panopto::PastEventsVideoComponent.new(video:))
+      if video != true
+        if video.present? && video[:Message] != "The request is invalid."
+          render(Panopto::PastEventsVideoComponent.new(video:))
+        else
+          video_error
+        end
       else
-        return redirect_to(webpages_videos_all_path, notice: "You must choose a valid video to stream.")
+        video_error
       end
     else
-      return redirect_to(webpages_videos_all_path, notice: "You must choose a video to stream.")
+      video_error
     end
+  end
+
+  def video_error
+    return redirect_to(webpages_videos_all_path, notice: "You must choose a video to stream.")
   end
 
   def videos_search

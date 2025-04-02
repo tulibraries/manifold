@@ -152,6 +152,13 @@ RSpec.describe WebpagesController, type: :controller do
     end
   end
 
+  describe "webpages#show error" do
+    it "redirects page when video not found" do
+      get :video_show, params: { id: "68db0f32-b443-4dbe-%20be2c-bdb3f68e2003" }
+      expect(response).to have_http_status(302)
+    end
+  end
+
   it_behaves_like "serializable"
 
 end

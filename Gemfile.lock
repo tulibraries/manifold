@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/paper-trail-gem/paper_trail
-  revision: 3cc736e11445f6cae164612473f2473fd99b8d2d
+  revision: e1a4cde2af3a332b0d6d35686a560a287e0a4247
   specs:
     paper_trail (16.0.0)
-      activerecord (>= 6.1)
+      activerecord (>= 7.1)
       request_store (~> 1.4)
 
 GEM

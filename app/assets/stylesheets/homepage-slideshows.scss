@@ -177,11 +177,14 @@
         }
       }
     }
-    #highlightsCarousel h3 {
+  }
+
+  #highlightsCarousel, #newsCarousel, #digcolsCarousel {
+    h3 {
       text-transform: uppercase;
     }
   }
-  
+
   a.view-all {
     display: block;
     margin-left: 14px;

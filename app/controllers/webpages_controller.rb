@@ -78,7 +78,6 @@ class WebpagesController < ApplicationController
 
   def home
     file_path = Rails.root.join("public/cache/todays_hours")
-    @todays_hours = File.exist?(file_path) ? File.read(file_path) : nil
     @todays_hours = File.read(file_path)
     @highlights = Highlight.with_image.where(promoted: true).take(6)
     @featured_events = Event.where(featured: true).order(:start_time).take(6)

@@ -15,15 +15,13 @@
           <div class="card-body px-0">
             <div class="item-caption text-start mt-0">
               <h3><%= event.label.truncate(52) %></h3>
-        <% end %>
-
               <p class="card-text event-date">
                 <span class="d-block"><%= event.get_date %></span>
                 <%= event.set_start_time %> <%= "to #{event.set_end_time}" unless event.end_time == event.start_time %>
               </p>
-
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
     <% end if @featured_events.present? %>

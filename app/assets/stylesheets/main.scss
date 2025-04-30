@@ -60,6 +60,13 @@ a:not(.dropdown-item) {
 a.inline {
   text-decoration: underline;
 }
+
+.trix-content {
+  a {
+    text-decoration: underline !important;
+  }
+}
+
 .back-button {
   color: $red;
 }

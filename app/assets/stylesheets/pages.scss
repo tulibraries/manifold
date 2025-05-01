@@ -280,12 +280,13 @@
       }
       a {
         font-family: "faustina";
-        font-weight: 700;
+        font-weight: 500;
         font-size: 1.25rem;
         padding-top: 8px;
         padding-right: 21px;
         float: right;
         color: $white;
+        letter-spacing: 0.015rem;
         @media screen and (min-width: 0) and (max-width: 1190px) {
           float: none;
           text-align: left;
@@ -309,6 +310,8 @@
         padding-top: 7px;
         height: 45px;
         vertical-align: middle;
+        font-weight: 500;
+        letter-spacing: 0.015rem;
       }
     }
 
@@ -362,6 +365,8 @@
         color: $white;
         box-shadow: 0px 2px 5px $light-grey;
         font-size: 1.35rem;
+        font-weight: 500;
+        letter-spacing: 0.015rem;
         @media screen and (min-width: 0) and (max-width: 1190px) {
           box-shadow: none;
           display: inline-block;

@@ -54,8 +54,8 @@
   </div>
 
   <div id="skip-link">
-    <%= link_to t("manifold.default.content_skip"), "#skiplink_ada", class: "element-invisible", tabindex: "1" %><br />
-    <%= link_to t("manifold.default.search_skip"), "#", class: "element-invisible", onclick: "document.getElementById('search-block').focus();", tabindex: "2" %>
+    <%= link_to t("manifold.default.content_skip"), "#skiplink_ada", class: "element-invisible", tabindex: "0" %><br />
+    <%= link_to t("manifold.default.search_skip"), "#", class: "element-invisible", onclick: "document.getElementById('search-block').focus();", tabindex: "0" %>
   </div>
 
     <% flash.each do |key, value| %>

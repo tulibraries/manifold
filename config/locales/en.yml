@@ -448,6 +448,35 @@ en:
 
     categories:
       under_construction: "Page under construction, please check back soon or use the menu on the left to navigate the pages in this section."
+      charles_slide_alt_texts:
+        0: "1st Floor"
+        1: "2nd Floor"
+        2: "3rd Floor"
+        3: "4th Floor"
+        4: "Stacks"
+        5: "Lobby"
+        6: "Exterior"
+        7: "Main staircase"
+        8: "Exterior Front entrance"
+        9: "View of oculus"
+        10: "Oculus seating area"
+        11: "Street view of Exterior"
+        12: "Exterior Evening"
+        13: "Event space room"
+        14: "study area of tables by glass walls with outside views"
+        15: "green roof"
+        16: "Duckworth Scholars center study area"
+        17: "main staircase down into lobbby"
+        18: "maker space 3d printing"
+        19: "study area at top of oculus"
+        20: "one stop assistance desk"
+        21: "second floor quiet study area"
+        22: "third floor quiet study area"
+        23: "third floor quiet study / current periodicals"
+        24: "Special collections reading room"
+        25: "quiet study area"
+        26: "ground floor leisure reading area"
+        27: "quiet study cubicles"
 
     collections:
       show:
@@ -988,10 +1017,14 @@ en:
     webpages:
       about:
         page_title: About
+      
       attachments:
         pdf_files: PDF File(s)
+      
       tutorials_link: https://alt.library.temple.edu/tutorials/
+      
       featured_publication: Featured Publication
+      
       view_pdf: This link opens a PDF document
 
       blockson:
@@ -1066,6 +1099,7 @@ en:
               scop: Center for Scholarly Communication & Open Publishing
               ambler: Ambler Campus Library
               all: See all libraries and centers >
+      
       hsl:
         page_title: Health Sciences Libraries
         locations:
@@ -1097,6 +1131,7 @@ en:
           events_label: Workshops & Events
           events_type: Health Sciences
           view_all: View all
+      
       research:
         page_title: Research Services
 
@@ -1163,6 +1198,7 @@ en:
           open_journals_link: https://tuljournals.temple.edu/
           view_all: View All
         contact: Staff Directory
+      
       videos:
         page_title: Past Program and Event Videos
         breadcrumb: < Watch Past Programs & Events
@@ -1185,8 +1221,10 @@ en:
           research-awards: See All Research Award Videos
           lcdss: See All Scholars Studio Videos
           scrc: See All Special Collections Videos
+      
       visit:
         page_title: Visit & Study
+      
       wpvi:
         page_title: WPVI News Footage Collection
         intro_html: >-
@@ -1203,10 +1241,12 @@ en:
                       <li><strong>Subseries 2.2, Public Affairs and Programming</strong>, consists of 927 low-resolution WMV files including recordings of the programs Visions, Prime Time, Philly After Midnight, Sunday Live and AM Live.</li>
                       <li><strong>Subseries 2.3, Savers</strong>, includes 1,069 low-resolution WMV files of “saver” compilations.</li>
                     </ol>
+      
       hours:
         hours_title: Library Hours
         no_data: No data for current date range
         this_week: Go to this week
+      
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
         charles_library: "Charles Library"
@@ -1224,6 +1264,7 @@ en:
         registration_status: "No Registration Required"
         space: "No Space Given"
         building: "Charles Library"
+      
       etextbooks:
         title: Textbooks available as eBooks in the Library
         intro: Below is a list of textbooks for the current semester that are available to students for free as library ebooks.

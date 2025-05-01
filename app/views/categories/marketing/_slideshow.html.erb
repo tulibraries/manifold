@@ -13,9 +13,10 @@
       <% @images.each_with_index do |image, index| %>  
         <div class="carousel-item text-center<% if index == 0 %> active<% end %>" role="option">
           <% if [0, 1, 2, 3].include?(index) %>
-            <%= link_to image_tag("charles/"+image, class: 'img-fluid'), asset_path("charles/"+image), target: "_blank" %>
+            <%= link_to image_tag("charles/"+image, class: 'img-fluid', alt: img_alts[index]), 
+                                    asset_path("charles/"+image), target: "_blank" %>
           <% else %>
-            <%= image_tag("charles/"+image, class: 'img-fluid') %>
+            <%= image_tag("charles/"+image, class: 'img-fluid', alt: img_alts[index]) %>
           <% end %>
         </div>
         <% end %>

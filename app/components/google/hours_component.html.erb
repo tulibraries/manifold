@@ -10,7 +10,7 @@
           <%= link_to "->", {controller: :library_hours, action: "index", date: @next_week} %>
       </div>
       <div class="col-12 col-lg-4 text-lg-end today-button-container date-picker">
-        <%= form_tag "/hours", method: "get" do %>
+        <%= form_tag "/hours", "aria-label": "date picker", method: "get" do %>
           <%= date_field_tag "date", @date_picker_date, id: "date", name: "date", 
                                       min: @today, max: 2.years.from_now %>
           <%= submit_tag "Go" %>

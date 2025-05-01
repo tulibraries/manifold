@@ -23,22 +23,11 @@
       <%= link_to(t("manifold.footer.donate_link"), "/support-the-libraries", class: "donate") %>
   </div>
   <div class="col-12 col-sm-6 text-sm-end">
-      <ul class="mb-0 social-links">
+      <div class="mb-0 social-links">
         <%= link_to "/social-media" do %>
-        <li class="instagram">
-          <%= image_tag('IG_red_round.png', alt: "instagram logo", loading: "lazy") %>
-        </li>
-        <li class="facebook">
-          <%= image_tag('FB_red_round.png', alt: "facebook logo", loading: "lazy") %>
-        </li>
-        <li class="twitter">
-          <%= image_tag('Twitter_red_round.png', alt: "twitter logo", loading: "lazy") %>
-        </li>
-        <li class="linked-in">
-          <%= image_tag('linked-in-red-round.png', alt: "linked-in logo", loading: "lazy") %>
-        </li>
+          <%= image_tag('social-media-icons.png', {alt: "instagram facebook twitter and linked-in logos", loading: "lazy", width: "552px"}) %>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
 

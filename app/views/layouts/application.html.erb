@@ -43,6 +43,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+<header>
   <div class="row d-none d-print-flex">
     <div class="col-6">
       <h1>Temple University Libraries</h1>
@@ -53,8 +54,8 @@
   </div>
 
   <div id="skip-link">
-    <%= link_to t("manifold.default.content_skip"), "#skiplink_ada", class: "element-invisible", tabindex: "1" %><br />
-    <%= link_to t("manifold.default.search_skip"), "#", class: "element-invisible", onclick: "document.getElementById('search-block').focus();", tabindex: "2" %>
+    <%= link_to t("manifold.default.content_skip"), "#skiplink_ada", class: "element-invisible", tabindex: "0" %><br />
+    <%= link_to t("manifold.default.search_skip"), "#", class: "element-invisible", onclick: "document.getElementById('search-block').focus();", tabindex: "0" %>
   </div>
 
     <% flash.each do |key, value| %>
@@ -70,7 +71,7 @@
     <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a> 
     
     <div class="lcs_slide_out">
-      <%= link_to t("manifold.default.chat"), "/sidebar", target: "_blank", "aria-label": "opens new tab" %>
+      <%= link_to t("manifold.default.chat"), "/chat", target: "_blank", "aria-label": "opens new tab" %>
     </div>
 
     <%= yield %>

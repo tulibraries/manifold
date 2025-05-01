@@ -5,7 +5,7 @@
 		<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
 		<div class="row video-container">
 			<div class="col-lg-8 offset-lg-2">
-  	    <iframe src=<%= @featured_src %> height="640px" width="100%" allowfullscreen allow="autoplay"></iframe>
+  	    <iframe aria-label="featured video" src=<%= @featured_src %> height="640px" width="100%" allowfullscreen allow="autoplay"></iframe>
 			</div>
 		</div>
   </div>
@@ -47,7 +47,7 @@
     <% value[:videos].each do |video| %>
     <div class="col-12 col-sm-6 col-lg-3 mb-3 text-center video-block">
       <%= link_to webpages_video_show_path(id: video[:Id]) do %>
-        <%= image_tag video[:Urls][:ThumbnailUrl]%>
+        <%= image_tag video[:Urls][:ThumbnailUrl], alt: "" %>
         <p class="mt-2"><%= video[:Name].truncate(64) %></p>
       <% end %>
     </div>

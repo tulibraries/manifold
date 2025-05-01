@@ -68,8 +68,14 @@ a.donate {
 }
 .social {
   background-color: $lighter-grey;
-  ul.social-links {
+  .social-links {
     margin-top: 7px;
+    img {
+      width: 280px;
+      height: 53px;
+      max-width: 280px;
+      max-height: 53px;
+    }
     a:hover {
       text-decoration: none;
     }
@@ -78,36 +84,6 @@ a.donate {
     }
     padding-left: 0;
     padding-bottom: 10px;
-    li {
-      display: inline-block;
-      position: relative;
-      top: 7px;
-      padding: 6px 14px;
-      img {
-        width: 42px;
-        height: 42px;
-        max-width: 42px;
-        max-height: 42px;
-      }
-    }
-  }
-  li.facebook {
-    display: inline-block;
-  }
-  li.instagram {
-    display: inline-block;
-    @media (max-width: 1040px) {
-      padding-left: 0;
-      img {
-        margin-left:0;
-      }
-    }
-  }
-  li.twitter {
-    display: inline-block;
-  }
-  li.linked-in {
-    display: inline-block;
   }
 }
 

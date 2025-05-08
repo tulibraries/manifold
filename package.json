@@ -14,7 +14,7 @@
     "sass": "^1.56.2",
     "selectize": "^0.12.6",
     "stimulus-use": "^0.51.1",
-    "trix": "^2.1.12"
+    "trix": "^2.1.15"
   },
   "resolutions": {
     "minimist": "^1.2.6"

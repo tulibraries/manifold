@@ -19,7 +19,7 @@ RUN apk add -U --no-cache \
       musl=1.2.5-r9 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.42-r2 \
-      postgresql16-client=16.8-r0 \
+      postgresql16-client=16.9-r0 \
       shared-mime-info=2.4-r2 \
       tzdata=2025b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
@@ -31,7 +31,7 @@ RUN apk add -U --no-cache \
       jpeg-dev=9f-r0 \
       libjpeg-turbo-dev=3.0.4-r0 \
       libxslt-dev=1.1.42-r2 \
-      postgresql16-dev=16.8-r0 \
+      postgresql16-dev=16.9-r0 \
       nodejs=22.13.1-r0 \
       yarn=1.22.22-r1 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \

@@ -89,6 +89,7 @@ class SyncService::Events
     event.event_type += ", Online" if event.event_url.present?
 
     record["image_xml"].present? ? attach_image(record, event) : event.image
+    event.alt_text = record["image_xml"].present? ? event.image.metadata[:alt_text] : nil
 
     if event.save!
       stdout_and_log(%Q(Successfully saved record for #{record["title"]}))
@@ -103,7 +104,8 @@ class SyncService::Events
     image_to_attach = event_image(record["image_xml"], event)
     event.image.attach(
       io: image_to_attach[:image][:io],
-      filename: image_to_attach[:image][:filename]
+      filename: image_to_attach[:image][:filename],
+      metadata: { alt_text: image_to_attach[:metadata][:alt_text] }
     ) if image_to_attach.present?
   end
 
@@ -111,11 +113,12 @@ class SyncService::Events
     if image_xml
       img = Nokogiri.XML(image_xml).xpath("//img")
       image_path = img.attribute("src")&.value || ""
+      alt_text = img.attribute("alt")&.value || ""
       begin
         {
           image: { io: URI.open("#{image_path}"),
           filename: image_path.split("/thumbnail/")&.second&.split("?").first.gsub("%20", "_") },
-          alt_text: img.attribute("alt")&.value
+          metadata: { alt_text: (alt_text.presence || "") }
         }
       rescue => e
         stdout_and_log("Image retrieval failure: #{e.message}")

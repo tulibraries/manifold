@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  def image_alt_text(model)
+    if model.class.name == "Event"
+      model.alt_text.presence || nil
+    else
+      model.image_alt_text.presence || nil
+    end
+  end
+
   def get_season
     today = Time.zone.today
     case today.month

@@ -1,12 +1,12 @@
 <div id="highlightsCarousel" class="home-news-row carousel pt-3">
-  <div class="carousel-inner ms-4" role="listbox">
+  <div class="carousel-inner ms-4" role="listbox" aria-label="News & Highlights">
     <% @highlights.each_with_index do |highlight, i| %>
     <div class="items carousel-item<%= " active" if i == 0 %>">
       <div class="card text-center">
         <%= link_to highlight.link do %>
           <% if highlight.image.attached? %>
           <div class="item pb-4">
-          <%= image_tag highlight.image, loading: "lazy" %>
+          <%= image_tag highlight.image, alt: image_alt_text(highlight), loading: "lazy" %>
           </div>
           <% end %>
         <div class="card-body px-0">

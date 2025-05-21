@@ -1,5 +1,26 @@
   <div id="newsCarousel" class="carousel">
-    <div class="carousel-inner mx-3 pb-0" role="listbox">
+    <div class="carousel-inner mx-3 pb-0" role="listbox" aria-label="Featured Events">
+      <div class="carousel-item active">
+        <div class="card library-event">
+          <%= link_to event_path(@featured_events.first.id) do %>
+            <% if @featured_events.first.image.attached? %>
+            <div class="item pb-4">
+              <%= image_tag @featured_events.first.image, alt: @featured_events.first.alt_text, loading: "lazy" %>
+            </div>
+            <% end %>
+
+            <div class="card-body px-0">
+              <div class="item-caption text-start mt-0">
+                <h3><%= @featured_events.first.label.truncate(52) %></h3>
+                <p class="card-text event-date">
+                  <span class="d-block"><%= @featured_events.first.get_date %></span>
+                  <%= @featured_events.first.set_start_time %> <%= "to #{@featured_events.first.set_end_time}" unless @featured_events.first.end_time == @featured_events.first.start_time %>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
     <% @featured_events.each_with_index do |event, i| %>
     <div class="carousel-item<%= " active" if i == 0 %>">
@@ -8,7 +29,7 @@
 
           <% if event.image.attached? %>
           <div class="item pb-4">
-            <%= image_tag event.image, loading: "lazy" %>
+            <%= image_tag event.image, alt: image_alt_text(event), loading: "lazy" %>
           </div>
           <% end %>
 

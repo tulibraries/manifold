@@ -15,6 +15,7 @@ class ExternalLinkDashboard < BaseDashboard
     title: Field::String,
     link: Field::String,
     image: PhotoField,
+    image_alt_text: Field::String,
     categories: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -51,13 +52,14 @@ class ExternalLinkDashboard < BaseDashboard
     :slug,
     :link,
     :categories,
-    :image
+    :image,
+    :image_alt_text
   ].freeze
 
   # Overwrite this method to customize how external links are displayed
   # across all pages of the admin dashboard.
   #
   def display_resource(external_link)
-    "#{external_link.title}"
+    external_link.title
   end
 end

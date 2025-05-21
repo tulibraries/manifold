@@ -14,7 +14,8 @@ class FileUploadDashboard < BaseDashboard
     slug: Field::String,
     name: Field::String,
     file: FileField,
-    image: PhotoField
+    image: PhotoField,
+    image_alt_text: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -42,7 +43,8 @@ class FileUploadDashboard < BaseDashboard
     :name,
     :slug,
     :file,
-    :image
+    :image,
+    :image_alt_text
   ].freeze
 
   # Overwrite this method to customize how external links are displayed

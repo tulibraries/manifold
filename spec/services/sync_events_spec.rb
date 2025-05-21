@@ -288,6 +288,22 @@ RSpec.describe SyncService::Events, type: :service do
       end
     end
 
+    describe "image specified" do
+      context " and sets alt text" do
+        let (:sync_events) { described_class.new(events_url: file_fixture("single_event.xml").to_path) }
+
+        it "should add the event" do
+          sync_events.sync
+          expect(Event.count).to eq @starting_event_count + 1
+        end
+
+        it "should add alt text from metadata to model's alt_text field" do
+          sync_events.sync
+          expect(Event.last.alt_text).to match("data powered by you October 1-5, 2018")
+        end
+      end
+    end
+
     describe "erroneous image specified" do
       context "unit level" do
         let (:sync_events) { described_class.new(events_url: file_fixture("badimage-event.xml").to_path) }

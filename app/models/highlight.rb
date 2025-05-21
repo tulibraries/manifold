@@ -15,10 +15,6 @@ class Highlight < ApplicationRecord
   scope :with_image_and_alt_text, -> { with_image.where.not(image_alt_text: nil) }
   scope :for_digital_collections, -> { where(promote_to_dig_col: true) }
 
-  def should_generate_new_friendly_id?
-    title_changed? || super
-  end
-
   def slug_candidates
     [
       :title,

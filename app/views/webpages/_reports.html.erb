@@ -10,7 +10,7 @@
     <div class="col col-12 text-center featured-publication-without">
   <% end %>
       <span>
-        <%= image_tag "top-left-corner-sm.png", alt: "", unless @featured.external_link.image.attached? %>
+        <%= image_tag "top-left-corner-sm.png", alt: "" unless @featured.external_link.image.attached? %>
         <%= link_to url_for(@featured.external_link.link), disposition: "attachment", class: "ps-0", title: t("manifold.webpages.view_pdf") do %>
           <%= attachment_title(@featured.external_link.title) %>
           <%= image_tag "new-tab.png", class: "pdf-icon pt-0", "aria-label": "opens in new tab" %>

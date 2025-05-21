@@ -12,6 +12,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     image: PhotoField,
+    image_alt_text: Field::String,
     slug: Field::String,
     title: Field::String,
     blurb: Field::Text,
@@ -59,6 +60,7 @@ class HighlightDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :image,
+    :image_alt_text,
     :title,
     :slug,
     :blurb,

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_20_212422) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_21_135706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -285,6 +285,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_20_212422) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
+    t.string "image_alt_text"
   end
 
   create_table "file_uploads", force: :cascade do |t|
@@ -293,6 +294,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_20_212422) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
+    t.string "image_alt_text"
   end
 
   create_table "fileabilities", force: :cascade do |t|

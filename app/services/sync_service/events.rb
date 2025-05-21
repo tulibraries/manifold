@@ -89,7 +89,7 @@ class SyncService::Events
     event.event_type += ", Online" if event.event_url.present?
 
     record["image_xml"].present? ? attach_image(record, event) : event.image
-    event.alt_text = record["image_xml"].present? ? event.image.metadata[:alt_text] : nil
+    event.alt_text = (record["image_xml"].present? && event.image.metadata.present?) ? event.image.metadata[:alt_text] : nil
 
     if event.save!
       stdout_and_log(%Q(Successfully saved record for #{record["title"]}))

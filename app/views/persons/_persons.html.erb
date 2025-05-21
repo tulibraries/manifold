@@ -1,9 +1,9 @@
     <div class="row person mx-0">
       <div class="col-12 col-lg-3 text-lg-center ps-md-5 mb-2">
         <% if person.image.attached?  %>
-        <%= image_tag person.profile_image, class: "decorative", alt: "" %>
+        <%= image_tag person.profile_image, class: "decorative", alt: "image of: #{person.name}" %>
         <% else %>
-        <%= image_tag "T.png", style: 'width: 300px;', class: "decorative", alt: "" %>
+        <%= image_tag "T.png", style: 'width: 300px;', class: "decorative", alt: "image of: #{person.name}" %>
         <% end %>
       </div>
       <div class="col-12 col-lg-9">
@@ -47,12 +47,13 @@
 
             </div>
             <div class="person-actions ml-md-4">
-                <%= link_to "View Profile", person, class: "view-profile ml-3", target: "_top" %>
+                <%= link_to "View Profile", person, class: "view-profile ml-3", "aria-label": "view profile for #{person.name}", target: "_top" %>
 
               <% unless person.springshare_id.blank? %>
                   <%= link_to t("manifold.people.show.appointment_link"), 
                                 "https://api3.libcal.com/appointments-widget.php?u=#{person.springshare_id}&iid=1621&t=Make%20an%20Appointment", 
                                 class: "springshare-id ml-3 ml-md-4", 
+                                "aria-label": "make an appointment with #{person.name}",
                                 target: "_new"
                                 %>
 

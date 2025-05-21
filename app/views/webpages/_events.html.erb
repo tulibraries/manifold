@@ -1,6 +1,6 @@
   <div id="newsCarousel" class="carousel">
-    <div class="carousel-inner mx-3 pb-0" role="listbox" aria-label="Featured Events">
-      <div class="carousel-item active">
+    <div class="carousel-inner mx-3 pb-0" role="tablist" aria-label="Featured Events">
+      <div class="carousel-item active" role="tab">
         <div class="card library-event">
           <%= link_to event_path(@featured_events.first.id) do %>
             <% if @featured_events.first.image.attached? %>
@@ -23,7 +23,7 @@
       </div>
 
     <% @featured_events.each_with_index do |event, i| %>
-    <div class="carousel-item<%= " active" if i == 0 %>">
+    <div class="carousel-item<%= " active" if i == 0 %>" role="tab">
       <div class="card library-event">
         <%= link_to event_path(event.id) do %>
 

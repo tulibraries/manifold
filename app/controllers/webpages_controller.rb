@@ -98,7 +98,7 @@ class WebpagesController < ApplicationController
   def scrc
     @visit_links = Category.find_by(slug: "scrc-study").items
     @collection_links = Category.find_by(slug: "scrc-collections").items
-    @webpage = Webpage.find_by(slug: "scrc-intro")
+    @webpage = Webpage.find_by(slug: "scrc")
     @intro = Snippet.find_by(slug: "scrc-homepage-intro")
   end
 

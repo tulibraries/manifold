@@ -9,9 +9,9 @@
         </div>
       <% end %>
       </div>
-      <div class="carousel-inner" aria-label="carousel" role="listbox" id="slide-image">
+      <div class="carousel-inner" aria-label="carousel" role="tablist" id="slide-image">
       <% @images.each_with_index do |image, index| %>  
-        <div class="carousel-item text-center<% if index == 0 %> active<% end %>" role="option">
+        <div class="carousel-item text-center<% if index == 0 %> active<% end %>" role="tab">
           <% if [0, 1, 2, 3].include?(index) %>
             <%= link_to image_tag("charles/"+image, class: 'img-fluid', alt: img_alts[index]), 
                                     asset_path("charles/"+image), target: "_blank" %>

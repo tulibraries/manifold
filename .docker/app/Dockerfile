@@ -12,7 +12,7 @@ ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
 
 RUN apk add -U --no-cache \
       bash=5.2.37-r0 \
-      imagemagick=7.1.1.41-r0 \
+      imagemagick=7.1.1.44-r0 \
       imagemagick-jpeg=7.1.1.44-r0 \
       imagemagick-libs=7.1.1.44-r0 \
       libjpeg-turbo=3.1.0-r0 \

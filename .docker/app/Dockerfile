@@ -23,7 +23,7 @@ RUN apk add -U --no-cache \
       shared-mime-info=2.4-r6 \
       tzdata=2025b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
-      git=2.47.2-r0 \
+      git=2.49.0-r0 \
       build-base=0.5-r3 \
       yaml=0.2.5-r2 \
       yaml-dev=0.2.5-r2 \
@@ -32,7 +32,7 @@ RUN apk add -U --no-cache \
       libjpeg-turbo-dev=3.1.0-r0 \
       libxslt-dev=1.1.43-r3 \
       postgresql16-dev=16.9-r0 \
-      nodejs=22.15.1-r0 \
+      nodejs=22.16.0-r2 \
       yarn=1.22.22-r1 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \

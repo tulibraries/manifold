@@ -1,29 +1,33 @@
-version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:16
+    restart: always
     environment:
-      POSTGRES_HOST: db
-      POSTGRES_USER: manifold
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: manifold_development
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-  web:
-    build: .
-    environment:
-      MANIFOLD_DB_HOST: db
-      GOOGLE_OAUTH_CLIENT_ID: $GOOGLE_OAUTH_CLIENT_ID
-      GOOGLE_OAUTH_SECRET: $GOOGLE_OAUTH_SECRET
-      S3_ACCESS_KEY: $S3_BUCKET
-      S3_BUCKET: $S3_BUCKET
-      S3_REGION: $S3_REGION
-      S3_SECRET_ACCESS_KEY: $S3_SECRET_ACCESS_KEY
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/manifold
-    depends_on:
-      - db
+      POSTGRES_USER: maninfold
 
+  test_app:
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+      args:
+        BASE_IMAGE: $LOCAL_BASE_IMAGE
+        RAILS_ENV: "test"
+
+    ports:
+      - "3000"
+    environment:
+      RAILS_ENV: "test"
+      TUPRESS_DB_HOST: db
+      TUPRESS_DB_NAME: manifold-test
+      TUPRESS_DB_PASSWORD: password
+      TUPRESS_DB_USER: manifold
+    
+    depends_on:
+      db:
+        condition: service_started
+
+    entrypoint:
+      - "tail"
+      - "-f"
+      - /dev/null

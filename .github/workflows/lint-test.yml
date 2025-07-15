@@ -1,0 +1,71 @@
+name: Lint & Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    branches: [ main ]
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    env:
+      TZ: America/New_York
+      RAILS_ENV: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Remove .dockerignore
+        run: rm .dockerignore
+
+      - name: Extract BASE_IMAGE
+        run: |
+          BASE=$(grep '^ARG BASE_IMAGE' .docker/app/Dockerfile \
+            | sed -E 's/.*="([^"]+)".*/\1/' \
+            | sed 's#harbor\.k8s\.temple\.edu/library/##' \
+            | tr '[:upper:]' '[:lower:]')
+          echo "LOCAL_BASE_IMAGE=$BASE" >> $GITHUB_ENV
+
+      - name: Run docker compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "docker-compose.yaml"
+        env:
+          LOCAL_BASE_IMAGE: ${{ env.LOCAL_BASE_IMAGE }}
+
+      - name: Bring up services with docker-compose
+        run: |
+          docker compose -p manifold -f docker-compose.yaml up -d
+          sleep 30
+
+      - name: Run RuboCop linter
+        run: |
+          docker compose -p manifold -f docker-compose.yaml \
+            exec --user root test_app \
+            bundle exec rubocop -c .rubocop.yml
+
+      - name: Run DB setup + migrations
+        run: |
+          docker compose -p manifold -f docker-compose.yaml \
+            exec --user root test_app bundle exec rails db:setup
+          docker compose -p manifold -f docker-compose.yaml \
+            exec --user root test_app bundle exec rails db:migrate
+
+      - name: Run RSpec suite
+        run: |
+          docker compose -p manifold -f docker-compose.yaml \
+            exec --user root test_app bundle exec rake spec
+          docker cp manifold-test_app-1:/app/coverage/lcov/app.lcov ./app.lcov
+
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./app.lcov

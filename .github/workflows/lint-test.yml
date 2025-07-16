@@ -1,10 +1,5 @@
 name: "Lint and Test"
 
-env: &db_creds
-  POSTGRES_USER: manifold
-  POSTGRES_PASSWORD: password
-  POSTGRES_DB: manifold-test 
-
 on:
   push:
     branches: [ main ]
@@ -48,7 +43,10 @@ jobs:
     services:
       db:
         image: postgres:16
-        env: *db_creds
+        env:
+          POSTGRES_USER: manifold
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: manifold-test 
         ports:
           - 5432:5432
         options: >-
@@ -57,9 +55,8 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     env:
-      <<: *db_creds 
       RAILS_ENV: test
-      DATABASE_URL: postgres://${{ env.POSTGRES_USER }}:${{ env.POSTGRES_PASSWORD }}@localhost:5432/manifold-test
+      DATABASE_URL: postgres://manifold:password@localhost:5432/manifold-test
 
     steps:
       - name: Checkout code

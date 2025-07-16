@@ -6,7 +6,7 @@ class AddRichTextFieldToModels < ActiveRecord::Migration[6.0]
   unless table_exists?(:action_text_rich_texts)
     create_table :action_text_rich_texts do |t|
       t.string     :name, null: false
-      t.text       :body, size: :long
+      t.text       :body
       t.references :record, null: false, polymorphic: true, index: false
 
       t.timestamps

@@ -1,4 +1,9 @@
-name: Lint & Test
+name: "Lint and Test"
+
+env: &db_creds
+  POSTGRES_USER: manifold
+  POSTGRES_PASSWORD: password
+  POSTGRES_DB: manifold-test 
 
 on:
   push:
@@ -13,59 +18,76 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint_and_test:
+  lint:
     runs-on: ubuntu-latest
-    env:
-      TZ: America/New_York
-      RAILS_ENV: test
+    strategy:
+      fail-fast: true
+      matrix:
+        ruby: [ "3.4.3" ]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Remove .dockerignore
-        run: rm .dockerignore
-
-      - name: Extract BASE_IMAGE
-        run: |
-          BASE=$(grep '^ARG BASE_IMAGE' .docker/app/Dockerfile \
-            | sed -E 's/.*="([^"]+)".*/\1/' \
-            | sed 's#harbor\.k8s\.temple\.edu/library/##' \
-            | tr '[:upper:]' '[:lower:]')
-          echo "LOCAL_BASE_IMAGE=$BASE" >> $GITHUB_ENV
-
-      - name: Run docker compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          compose-file: "docker-compose.yaml"
-        env:
-          LOCAL_BASE_IMAGE: ${{ env.LOCAL_BASE_IMAGE }}
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
 
-      - name: Bring up services with docker-compose
-        run: |
-          docker compose -p manifold -f docker-compose.yaml up -d
-          sleep 30
+      - name: Run RuboCop
+        run: bundle exec rubocop
+      
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+          ruby: ["3.4.3"]
+    services:
+      db:
+        image: postgres:16
+        env: *db_creds
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      <<: *db_creds 
+      RAILS_ENV: test
+      DATABASE_URL: postgres://${{ env.POSTGRES_USER }}:${{ env.POSTGRES_PASSWORD }}@localhost:5432/manifold-test
 
-      - name: Run RuboCop linter
-        run: |
-          docker compose -p manifold -f docker-compose.yaml \
-            exec --user root test_app \
-            bundle exec rubocop -c .rubocop.yml
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Run DB setup + migrations
+      - name: Install ImageMagick (for MiniMagick/variants)
         run: |
-          docker compose -p manifold -f docker-compose.yaml \
-            exec --user root test_app bundle exec rails db:setup
-          docker compose -p manifold -f docker-compose.yaml \
-            exec --user root test_app bundle exec rails db:migrate
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
 
-      - name: Run RSpec suite
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Precompile Rails assets
         run: |
-          docker compose -p manifold -f docker-compose.yaml \
-            exec --user root test_app bundle exec rake spec
-          docker cp manifold-test_app-1:/app/coverage/lcov/app.lcov ./app.lcov
+          RAILS_ENV=test bundle exec rails assets:precompile
+
+      - name: Prepare test database
+        run: bundle exec rails db:migrate
+
+      - name: Run rspec tests
+        run: bundle exec rspec spec
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./app.lcov
+          path-to-lcov: ./coverage/lcov/app.lcov

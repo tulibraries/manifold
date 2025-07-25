@@ -66,7 +66,7 @@ jobs:
         with:
           username: manifold
           password: password
-          database: manifold-test
+          database: manifold_test
 
       - name: Prepare test database
         run: bundle exec rails db:schema:load

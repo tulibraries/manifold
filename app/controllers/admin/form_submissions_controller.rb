@@ -34,7 +34,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
 
       CSV.generate(headers: true) do |csv|
         # Create header row with all possible form fields
-        header_row = ["ID", "Submitted At", "Name", "Email", "TU ID", "Phone", "Department", "Affiliation", "Address"]
+        header_row = ["ID", "Submitted At", "Name", "Email", "TU ID", "Phone", "Department", "Affiliation", "Address", "Outside Vendor Fees", "Duplication Limits", "Copyright Acknowledgment"]
 
         # Add request fields (up to 10 requests with 4 fields each)
         (0..9).each do |i|
@@ -63,7 +63,10 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
               attributes["phone"],
               attributes["department"],
               attributes["affiliation"],
-              attributes["address"]&.gsub(/\n/, " | ") # Replace line breaks with pipe for CSV
+              attributes["address"]&.gsub(/\n/, " | "), # Replace line breaks with pipe for CSV
+              attributes["outside_vendor_fees"] == "1" || attributes["outside_vendor_fees"] == true ? "Yes" : "No",
+              attributes["duplication_limits"] == "1" || attributes["duplication_limits"] == true ? "Yes" : "No",
+              attributes["copyright_acknowledgment"] == "1" || attributes["copyright_acknowledgment"] == true ? "Yes" : "No"
             ]
 
             # Add request fields (4 fields per request)

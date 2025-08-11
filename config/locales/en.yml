@@ -22,6 +22,15 @@ en:
           title: "AV Request Submissions"
   helpers:
     label:
+      form:
+        outside_vendor_fees: "Outside Vendor Fees"
+        duplication_limits: "Duplication Limits"
+        copyright_acknowledgment: "Copyright Acknowledgment"
+    description:
+      form:
+        outside_vendor_fees: "Additional fees will apply for orders that require an outside vendor. Fees are estimated. Estimated reformatting fees will be provided via email post consultation and prior to processing or shipment to vendor."
+        duplication_limits: "While we make every attempt to accommodate duplication requests, making copies is inherently stressful to the originals. For this reason, we've established limits to balance researchers' needs with our obligation to preserve these resources. Depending on the condition, size, and quantity of materials requested, the SCRC reserves the right to refuse a copying order if, in its judgment: Fulfillment of the order would damage the item; Entail the use of excessive staff time and resources; Require reproduction of a major part of a book or archives collection (we will not reproduce more than 20 percent of any book, manuscript, or collection)."
+        copyright_acknowledgment: "The copyright law of the United States (Title 17, United States Code) governs the making of photocopies or other reproductions of copyrighted material. Under certain conditions specified in the law, libraries and archives are authorized to furnish a photocopy or other reproduction. One of these specific conditions is that the photocopy or reproduction is not to be \"used for any purpose other than private study, scholarship, or research.\" If a user makes a request for, or later uses, a photocopy or reproduction for purposes in excess of \"fair use,\" that use may be liable for copyright infringement. This institution reserves the right to refuse to accept a copying order if, in its judgment, fulfillment of the order would involve violation of copyright law. (more information about copyright issues)"
       account:
         alertability: "Can Administrate Alerts"
       building:
@@ -599,6 +608,7 @@ en:
       shared:
         your_info: Your Information
         request_info: Request Information -- Please do not abbreviate
+        acknowledgements: Acknowledgements
         submit: Send Request
       index: 
         title: Request Forms

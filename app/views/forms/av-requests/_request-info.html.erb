@@ -1,6 +1,4 @@
-<div id="request-groups-container">
-  <!-- First request group (always visible) -->
-  <div class="request-group" data-index="0">
+<div class="request-group" data-index="0">
     <h4 class="request-group-title">Request 1</h4>
     <div class="row">
       <div class="col-md-6">
@@ -177,3 +175,38 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+<!-- Acknowledgements Section -->
+<div class="mt-4">
+  <h3 class="mb-3"><%= t("manifold.forms.shared.acknowledgements") %></h3>
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :outside_vendor_fees, 
+          as: :boolean,
+          label: t('helpers.label.form.outside_vendor_fees'),
+          required: true,
+          wrapper_html: { class: "mb-3" },
+          hint: t('helpers.description.form.outside_vendor_fees') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :duplication_limits, 
+          as: :boolean,
+          label: t('helpers.label.form.duplication_limits'),
+          required: true,
+          wrapper_html: { class: "mb-3" },
+          hint: t('helpers.description.form.duplication_limits') %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :copyright_acknowledgment, 
+          as: :boolean,
+          label: t('helpers.label.form.copyright_acknowledgment'),
+          required: true,
+          wrapper_html: { class: "mb-3" },
+          hint: t('helpers.description.form.copyright_acknowledgment') %>
+    </div>
+  </div>
+</div>

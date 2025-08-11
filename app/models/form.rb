@@ -4,6 +4,9 @@ class Form < MailForm::Base
   attribute :name
   attribute :email
   attribute :address
+  attribute :outside_vendor_fees, :boolean
+  attribute :duplication_limits, :boolean
+  attribute :copyright_acknowledgment, :boolean
   attribute :comments
   attribute :form_type
   attribute :recipients

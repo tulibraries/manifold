@@ -88,3 +88,148 @@ fieldset {
 		font-weight: 500 !important;
 	}
 }
+
+/* ========================================
+ * AV Requests Form Admin Show Page Styles
+ * ======================================== */
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 2rem 0 1rem 0;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.attribute-list {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.attribute-list__key {
+  font-weight: 600;
+  color: #555;
+  margin: 0;
+}
+
+.attribute-list__value {
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #e9ecef;
+  margin: 2rem 0;
+}
+
+.requests-list {
+  margin: 1rem 0;
+}
+
+.request-item {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.request-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #495057;
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.request-content {
+  color: #333;
+  line-height: 1.5;
+}
+
+.request-field-group .row {
+  margin-bottom: 1rem;
+}
+
+.request-field-group .row:last-child {
+  margin-bottom: 0;
+}
+
+.field-value {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.no-requests {
+  color: #6c757d;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.error-message {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.error-message h2 {
+  color: #721c24;
+  margin-top: 0;
+}
+
+.main-content__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.main-content__header-actions {
+  margin-left: auto;
+}
+
+/* ========================================
+ * AV Requests Admin Index Page Styles
+ * ======================================== */
+
+.button--export {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.button--export:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.table__row--clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.table__row--clickable:hover {
+  background-color: #f8f9fa;
+}
+
+.table__row--clickable:hover .cell {
+  background-color: transparent;
+}

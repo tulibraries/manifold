@@ -65,7 +65,18 @@
           Not provided
         <% end %>
       </dd>
+            
+      <dt class="attribute-list__key">TU ID</dt>
+      <dd class="attribute-list__value"><%= attributes['tu_id'] %></dd>
       
+      <dt class="attribute-list__key">Department</dt>
+      <dd class="attribute-list__value"><%= attributes['department'] %></dd>
+      
+      <% if attributes['affiliation_other'].present? %>
+        <dt class="attribute-list__key">Other Affiliation</dt>
+        <dd class="attribute-list__value"><%= attributes['affiliation_other'] %></dd>
+      <% end %>
+
       <dt class="attribute-list__key">Outside Vendor Fees</dt>
       <dd class="attribute-list__value">
         <span class="badge badge-success">✓ Acknowledged</span>
@@ -80,17 +91,6 @@
       <dd class="attribute-list__value">
         <span class="badge badge-success">✓ Acknowledged</span>
       </dd>
-      
-      <dt class="attribute-list__key">TU ID</dt>
-      <dd class="attribute-list__value"><%= attributes['tu_id'] %></dd>
-      
-      <dt class="attribute-list__key">Department</dt>
-      <dd class="attribute-list__value"><%= attributes['department'] %></dd>
-      
-      <% if attributes['affiliation_other'].present? %>
-        <dt class="attribute-list__key">Other Affiliation</dt>
-        <dd class="attribute-list__value"><%= attributes['affiliation_other'] %></dd>
-      <% end %>
     </div>
 
     <hr class="divider">
@@ -169,35 +169,6 @@
       <% end %>
     </div>
 
-    <hr class="divider">
-
-    <!-- Additional Information -->
-    <% # Exclude system fields and form fields we've already displayed %>
-    <% excluded_fields = ['name', 'email', 'tu_id', 'phone', 'department', 'affiliation', 'affiliation_other', 'form_type', 'title', 'recipients'] %>
-    <% request_fields = [] %>
-    <% (0..9).each do |i| %>
-      <% if i == 0 %>
-        <% request_fields += ['collection_title', 'identifier', 'notes', 'format'] %>
-      <% else %>
-        <% suffix = i.to_s.rjust(2, '0') %>
-        <% request_fields += ["collection_title_#{suffix}", "identifier_#{suffix}", "notes_#{suffix}", "format_#{suffix}"] %>
-      <% end %>
-    <% end %>
-    <% system_fields = ['authenticity_token', 'controller', 'action'] %>
-    <% additional_fields = attributes.except(*(excluded_fields + request_fields + system_fields)) %>
-    
-    <% if additional_fields.any? %>
-      <h2 class="section-title">Additional Information</h2>
-      <div class="attribute-list">
-        <% additional_fields.each do |key, value| %>
-          <% if value.present? %>
-            <dt class="attribute-list__key"><%= key.humanize %></dt>
-            <dd class="attribute-list__value"><%= simple_format(value) %></dd>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-
   <% rescue => e %>
     <div class="error-message">
       <h2>Error Loading Submission Details</h2>
@@ -217,118 +188,3 @@
     </div>
   <% end %>
 </section>
-
-<style>
-  .section-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #333;
-    margin: 2rem 0 1rem 0;
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 0.5rem;
-  }
-  
-  .attribute-list {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 1rem 2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .attribute-list__key {
-    font-weight: 600;
-    color: #555;
-    margin: 0;
-  }
-  
-  .attribute-list__value {
-    margin: 0;
-    word-wrap: break-word;
-  }
-  
-  .divider {
-    border: 0;
-    height: 1px;
-    background: #e9ecef;
-    margin: 2rem 0;
-  }
-  
-  .requests-list {
-    margin: 1rem 0;
-  }
-  
-  .request-item {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 6px;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .request-number {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #495057;
-    margin: 0 0 0.5rem 0;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #dee2e6;
-  }
-  
-  .request-content {
-    color: #333;
-    line-height: 1.5;
-  }
-  
-  .request-field-group .row {
-    margin-bottom: 1rem;
-  }
-  
-  .request-field-group .row:last-child {
-    margin-bottom: 0;
-  }
-  
-  .field-value {
-    margin-top: 0.25rem;
-    padding: 0.5rem;
-    background: #ffffff;
-    border: 1px solid #dee2e6;
-    border-radius: 4px;
-    min-height: 2.5rem;
-    display: flex;
-    align-items: center;
-  }
-  
-  .no-requests {
-    color: #6c757d;
-    font-style: italic;
-    text-align: center;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 6px;
-  }
-  
-  .error-message {
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
-    padding: 1.5rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-  }
-  
-  .error-message h2 {
-    color: #721c24;
-    margin-top: 0;
-  }
-  
-  .main-content__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  
-  .main-content__header-actions {
-    margin-left: auto;
-  }
-</style>

@@ -6,6 +6,16 @@ class Form < MailForm::Base
   attribute :comments
   attribute :form_type
   attribute :recipients
+  attribute :request_title
+  attribute :request_title_01
+  attribute :request_title_02
+  attribute :request_title_03
+  attribute :request_title_04
+  attribute :request_title_05
+  attribute :request_title_06
+  attribute :request_title_07
+  attribute :request_title_08
+  attribute :request_title_09
   attribute :tu_id
   attribute :phone
   attribute :department

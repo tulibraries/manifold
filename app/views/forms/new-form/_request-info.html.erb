@@ -1,0 +1,72 @@
+<div id="request-titles-container">
+  <div class="request-title-field" data-index="0">
+    <%= f.input :request_title, label: "Request Title", required: true, wrapper_html: { class: "mb-3" } %>
+  </div>
+  
+  <% (1..9).each do |i| %>
+    <div class="request-title-field" data-index="<%= i %>" style="display: none;">
+      <%= f.input "request_title_#{i.to_s.rjust(2, '0')}".to_sym, label: "Request Title #{i + 1}", wrapper_html: { class: "mb-3" } %>
+    </div>
+  <% end %>
+</div>
+
+<div class="request-actions mt-3">
+  <button type="button" id="add-request-btn" class="btn btn-secondary me-2">Add a new request</button>
+  <button type="button" id="remove-request-btn" class="btn btn-outline-secondary" style="display: none;">Remove last request</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let currentRequestCount = 1;
+  const maxRequests = 10;
+  
+  const addBtn = document.getElementById('add-request-btn');
+  const removeBtn = document.getElementById('remove-request-btn');
+  const container = document.getElementById('request-titles-container');
+  
+  addBtn.addEventListener('click', function() {
+    if (currentRequestCount < maxRequests) {
+      const nextField = container.querySelector(`[data-index="${currentRequestCount}"]`);
+      if (nextField) {
+        nextField.style.display = 'block';
+        currentRequestCount++;
+        
+        // Show remove button if we have more than 1 field
+        if (currentRequestCount > 1) {
+          removeBtn.style.display = 'inline-block';
+        }
+        
+        // Hide add button if we've reached the max
+        if (currentRequestCount >= maxRequests) {
+          addBtn.style.display = 'none';
+        }
+      }
+    }
+  });
+  
+  removeBtn.addEventListener('click', function() {
+    if (currentRequestCount > 1) {
+      currentRequestCount--;
+      const fieldToHide = container.querySelector(`[data-index="${currentRequestCount}"]`);
+      if (fieldToHide) {
+        fieldToHide.style.display = 'none';
+        // Clear the input value when hiding
+        const input = fieldToHide.querySelector('input, textarea, select');
+        if (input) {
+          input.value = '';
+        }
+      }
+      
+      // Hide remove button if we're back to 1 field
+      if (currentRequestCount <= 1) {
+        removeBtn.style.display = 'none';
+      }
+      
+      // Show add button if we're below max
+      if (currentRequestCount < maxRequests) {
+        addBtn.style.display = 'inline-block';
+      }
+    }
+  });
+});
+</script>

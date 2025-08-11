@@ -10,6 +10,16 @@
 #
 # require Rails.root.join("db/account_seeds.rb") if File.exists?("db/account_seeds.rb")
 
+# Create FormInfo for new form
+unless FormInfo.exists?(slug: "new-form")
+  FormInfo.create!(
+    title: "New Form",
+    slug: "new-form",
+    grouping: "Administrative Services",
+    intro: "Use this form to submit multiple requests at once."
+  )
+end
+
 Subject.create!(name: "Advertising & Marketing")
 Subject.create!(name: "Africology & African-American Studies")
 Subject.create!(name: "American Studies")

@@ -14,6 +14,7 @@ as defined by the routes in the `admin/` namespace
   <%= link_to(t('manifold.default.signout'), destroy_account_session_path, method: :delete,
               class: "navigation__link navigation__link--signout") %>        
   <hr/>
+  
   <% Administrate::Namespace.new(namespace).resources_with_index_route.each do |resource| %>
     <%= link_to(
       display_resource_name(resource),

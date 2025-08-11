@@ -1,4 +1,4 @@
-<% content_for(:title) { "New Form Submissions" } %>
+<% content_for(:title) { "AV Request Submissions" } %>
 
 <header class="main-content__header">
   <h1 class="main-content__page-title">
@@ -68,8 +68,18 @@
                   <% attributes = raw_attributes['form'] || raw_attributes %>
                   <% request_count = 0 %>
                   <% (0..9).each do |i| %>
-                    <% field_name = i == 0 ? 'request_title' : "request_title_#{i.to_s.rjust(2, '0')}" %>
-                    <% if attributes[field_name].present? %>
+                    <% 
+                      collection_field = i == 0 ? 'collection_title' : "collection_title_#{i.to_s.rjust(2, '0')}"
+                      identifier_field = i == 0 ? 'identifier' : "identifier_#{i.to_s.rjust(2, '0')}"
+                      notes_field = i == 0 ? 'notes' : "notes_#{i.to_s.rjust(2, '0')}"
+                      format_field = i == 0 ? 'format' : "format_#{i.to_s.rjust(2, '0')}"
+                      
+                      has_data = attributes[collection_field].present? || 
+                                 attributes[identifier_field].present? || 
+                                 attributes[notes_field].present? || 
+                                 attributes[format_field].present?
+                    %>
+                    <% if has_data %>
                       <% request_count += 1 %>
                     <% end %>
                   <% end %>

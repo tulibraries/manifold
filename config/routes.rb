@@ -35,6 +35,11 @@ Rails.application.routes.draw do
     resources :finding_aids
     resources :file_uploads
     resources :form_infos
+    resources :form_submissions, only: [:index, :show] do
+      collection do
+        get :export_csv
+      end
+    end
     resources :groups
     resources :highlights
     resources :people

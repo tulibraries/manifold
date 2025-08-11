@@ -1,0 +1,351 @@
+<% content_for(:title, @title) %>
+
+<div class="container-lg form">
+  <div class="row">
+    <div class="col-12 col-lg-10 offset-lg-1">
+
+      <div class="row">
+        <div class="col back-button">
+          < <%= link_to "View all batch forms", batch_requests_path, class: "inline" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h1><%= content_for(:title) %></h1>
+          <p class="lead">Create up to 10 <%= @form_info.title.downcase %>s at once</p>
+        </div>
+      </div>
+
+      <% if @form_info.intro.present? %>
+        <div class="row">
+          <div class="col mb-3">
+            <div class="alert alert-info">
+              <%= @form_info.intro %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      
+      <%= form_with model: nil, url: batch_requests_path, local: true, html: { id: 'batch-request-form', class: 'batch-form' } do |f| %>
+        <%= f.hidden_field :form_type, value: @batch_request_type %>
+        
+        <div class="batch-forms-container">
+          <div class="form-actions-header">
+            <button type="button" id="add-request" class="btn btn-success btn-sm">
+              + Add New Request
+            </button>
+            <button type="button" id="remove-request" class="btn btn-warning btn-sm">
+              - Remove Last Request
+            </button>
+            <span class="badge badge-info" id="form-counter">1 of 10 forms</span>
+          </div>
+          
+          <% @forms.each_with_index do |form, index| %>
+            <div class="batch-form-item" id="form-<%= index %>" data-index="<%= index %>" style="<%= 'display: none;' if index > 0 %>">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title">Request #<%= index + 1 %></h5>
+                  <% if index > 0 %>
+                    <button type="button" class="btn btn-danger btn-sm remove-single-form" data-index="<%= index %>">
+                      Remove This Request
+                    </button>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <%= f.fields_for "forms[#{index}]", form do |form_fields| %>
+                    
+                    <% if ['purchase-request'].include?(@batch_request_type) %>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :name, placeholder: "Name", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-6">
+                          <%= form_fields.email_field :email, placeholder: "Email", class: "form-control", required: true %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :tu_id, placeholder: "TU ID", class: "form-control" %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :phone, placeholder: "Phone", class: "form-control" %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :department, placeholder: "Department", class: "form-control" %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :author, placeholder: "Author", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :book_title, placeholder: "Title", class: "form-control", required: true %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :year, placeholder: "Year", class: "form-control" %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :publisher, placeholder: "Publisher", class: "form-control" %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :isbn, placeholder: "ISBN", class: "form-control" %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-12">
+                          <%= form_fields.text_area :reason_for_purchase, placeholder: "Reason for purchase", class: "form-control", rows: 3 %>
+                        </div>
+                      </div>
+                      
+                    <% elsif ['missing-book'].include?(@batch_request_type) %>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :name, placeholder: "Name", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-6">
+                          <%= form_fields.email_field :email, placeholder: "Email", class: "form-control", required: true %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :author, placeholder: "Author", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :missing_title, placeholder: "Title", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :call_number, placeholder: "Call Number", class: "form-control", required: true %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-12">
+                          <%= form_fields.text_area :comments, placeholder: "Comments", class: "form-control", rows: 3 %>
+                        </div>
+                      </div>
+                      
+                    <% elsif ['recall-book'].include?(@batch_request_type) %>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :name, placeholder: "Name", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-6">
+                          <%= form_fields.email_field :email, placeholder: "Email", class: "form-control", required: true %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :author, placeholder: "Author", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :recall_title, placeholder: "Title", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :call_number, placeholder: "Call Number", class: "form-control" %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-12">
+                          <%= form_fields.text_area :comments, placeholder: "Comments", class: "form-control", rows: 3 %>
+                        </div>
+                      </div>
+                      
+                    <% elsif ['library-instruction'].include?(@batch_request_type) %>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :name, placeholder: "Name", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-6">
+                          <%= form_fields.email_field :email, placeholder: "Email", class: "form-control", required: true %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :course_title, placeholder: "Course Title", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :course_code, placeholder: "Course Code", class: "form-control", required: true %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :class_time, placeholder: "Class Time", class: "form-control" %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.text_field :class_days, placeholder: "Class Days", class: "form-control" %>
+                        </div>
+                        <div class="col-md-4">
+                          <%= form_fields.number_field :number_of_students, placeholder: "Number of Students", class: "form-control" %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-12">
+                          <%= form_fields.text_area :comments, placeholder: "Additional details", class: "form-control", rows: 3 %>
+                        </div>
+                      </div>
+                      
+                    <% else %>
+                      <!-- Generic form fields for other types -->
+                      <div class="row">
+                        <div class="col-md-6">
+                          <%= form_fields.text_field :name, placeholder: "Name", class: "form-control", required: true %>
+                        </div>
+                        <div class="col-md-6">
+                          <%= form_fields.email_field :email, placeholder: "Email", class: "form-control", required: true %>
+                        </div>
+                      </div>
+                      
+                      <div class="row mt-3">
+                        <div class="col-md-12">
+                          <%= form_fields.text_area :comments, placeholder: "Request details", class: "form-control", rows: 4 %>
+                        </div>
+                      </div>
+                    <% end %>
+                    
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="form-actions mt-4">
+          <%= f.submit "Submit All Requests", class: "btn btn-primary btn-lg" %>
+          <%= link_to "Cancel", batch_requests_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= stylesheet_link_tag 'admin/batch_requests', 'data-turbo-track': 'reload' %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let visibleForms = 1;
+  const maxForms = 10;
+  
+  const addButton = document.getElementById('add-request');
+  const removeButton = document.getElementById('remove-request');
+  const counter = document.getElementById('form-counter');
+  
+  function updateCounter() {
+    counter.textContent = `${visibleForms} of ${maxForms} forms`;
+    addButton.style.display = visibleForms >= maxForms ? 'none' : 'inline-block';
+    removeButton.style.display = visibleForms <= 1 ? 'none' : 'inline-block';
+  }
+  
+  function showForm(index) {
+    const form = document.getElementById(`form-${index}`);
+    if (form) {
+      form.style.display = 'block';
+    }
+  }
+  
+  function hideForm(index) {
+    const form = document.getElementById(`form-${index}`);
+    if (form) {
+      form.style.display = 'none';
+      // Clear form fields
+      const inputs = form.querySelectorAll('input, textarea, select');
+      inputs.forEach(input => {
+        if (input.type !== 'hidden') {
+          input.value = '';
+        }
+      });
+    }
+  }
+  
+  addButton.addEventListener('click', function() {
+    if (visibleForms < maxForms) {
+      showForm(visibleForms);
+      visibleForms++;
+      updateCounter();
+    }
+  });
+  
+  removeButton.addEventListener('click', function() {
+    if (visibleForms > 1) {
+      visibleForms--;
+      hideForm(visibleForms);
+      updateCounter();
+    }
+  });
+  
+  // Handle individual form removal
+  document.querySelectorAll('.remove-single-form').forEach(button => {
+    button.addEventListener('click', function() {
+      const index = parseInt(this.dataset.index);
+      hideForm(index);
+      
+      // Rearrange visible forms
+      let newVisibleForms = 0;
+      for (let i = 0; i < maxForms; i++) {
+        const form = document.getElementById(`form-${i}`);
+        if (form && form.style.display !== 'none') {
+          const inputs = form.querySelectorAll('input, textarea, select');
+          let hasData = false;
+          inputs.forEach(input => {
+            if (input.type !== 'hidden' && input.value.trim() !== '') {
+              hasData = true;
+            }
+          });
+          
+          if (hasData || newVisibleForms === 0) {
+            newVisibleForms++;
+          } else {
+            hideForm(i);
+          }
+        }
+      }
+      
+      visibleForms = Math.max(1, newVisibleForms);
+      updateCounter();
+    });
+  });
+  
+  updateCounter();
+  
+  // Form validation
+  document.getElementById('batch-request-form').addEventListener('submit', function(e) {
+    let hasAtLeastOneFilledForm = false;
+    
+    for (let i = 0; i < visibleForms; i++) {
+      const form = document.getElementById(`form-${i}`);
+      if (form && form.style.display !== 'none') {
+        const inputs = form.querySelectorAll('input[required], textarea[required]');
+        let formHasData = false;
+        
+        inputs.forEach(input => {
+          if (input.value.trim() !== '') {
+            formHasData = true;
+          }
+        });
+        
+        if (formHasData) {
+          hasAtLeastOneFilledForm = true;
+          break;
+        }
+      }
+    }
+    
+    if (!hasAtLeastOneFilledForm) {
+      e.preventDefault();
+      alert('Please fill out at least one complete form before submitting.');
+    }
+  });
+});
+</script>

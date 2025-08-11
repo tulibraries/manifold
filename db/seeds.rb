@@ -10,13 +10,14 @@
 #
 # require Rails.root.join("db/account_seeds.rb") if File.exists?("db/account_seeds.rb")
 
-# Create FormInfo for new form
-unless FormInfo.exists?(slug: "new-form")
+# Create FormInfo for AV duplication request form
+unless FormInfo.exists?(slug: "av-requests")
   FormInfo.create!(
-    title: "New Form",
-    slug: "new-form",
+    title: "AV Duplication Request Form",
+    slug: "av-requests",
     grouping: "Administrative Services",
-    intro: "Use this form to submit multiple requests at once."
+    intro: "Use this form to submit multiple AV duplication requests at once.",
+    recipients: "placeholder@temple.edu"  # Not used since form saves to database only
   )
 end
 

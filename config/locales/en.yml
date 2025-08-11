@@ -1,4 +1,25 @@
 en:
+  activerecord:
+    models:
+      form_submission:
+        one: "AV Request"
+        other: "AV Requests"
+  administrate:
+    controller:
+      index:
+        title: "AV Request Submissions"
+      form_submissions:
+        index:
+          title: "AV Request Submissions"
+    actions:
+      index: "AV Request Submissions"
+    page_title:
+      index: "AV Request Submissions"
+  rails:
+    admin:
+      form_submissions:
+        index:
+          title: "AV Request Submissions"
   helpers:
     label:
       account:
@@ -1276,4 +1297,4 @@ en:
 
     redirects:
       moved_permanently: "has moved. Please update bookmarks and links."
-      
+

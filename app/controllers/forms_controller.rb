@@ -32,11 +32,11 @@ class FormsController < ApplicationController
   def create
     @form = Form.new(params[:form])
     @form.request = request
-    
+
     form_type = params[:form][:form_type]
-    
-    # Handle new-form type differently - save to database instead of sending email
-    if form_type == "new-form"
+
+    # Handle av-requests type differently - save to database instead of sending email
+    if form_type == "av-requests"
       if save_to_database_only
         redirect_to forms_path(success: "true")
       else
@@ -86,12 +86,12 @@ class FormsController < ApplicationController
   def save_to_database_only
     begin
       type = params[:form][:form_type]
-      # For new-form, we don't need recipients since we're not sending emails
+      # For av-requests, we don't need recipients since we're not sending emails
       # Use the same unsafe params method that persist_form! uses
       form_params = use_unsafe_params[:form]
       FormSubmission.create!(
         form_type: type,
-        form_attributes: form_params.except('form_type', 'recipients')
+        form_attributes: form_params.except("form_type", "recipients")
       )
       true
     rescue => e

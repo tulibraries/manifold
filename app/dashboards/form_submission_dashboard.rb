@@ -23,19 +23,14 @@ class FormSubmissionDashboard < Administrate::BaseDashboard
   # By default, it's every attribute in ATTRIBUTE_TYPES, plus any custom
   # fields that are defined on the dashboard.
   COLLECTION_ATTRIBUTES = %i[
-    id
-    form_type
     created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    id
-    form_type
     form_attributes
     created_at
-    updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -55,8 +50,8 @@ class FormSubmissionDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overrides the default scope to only show new-form submissions
+  # Overrides the default scope to only show av-requests submissions
   def scoped_resource
-    resource_class.where(form_type: 'new-form')
+    resource_class.where(form_type: "av-requests")
   end
 end

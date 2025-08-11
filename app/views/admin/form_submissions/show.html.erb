@@ -1,4 +1,4 @@
-<% content_for(:title) { "Form Submission ##{@form_submission.id}" } %>
+<% content_for(:title) { "AV Request ##{@form_submission.id}" } %>
 
 <header class="main-content__header">
   <h1 class="main-content__page-title">
@@ -17,13 +17,7 @@
     <% attributes = raw_attributes['form'] || raw_attributes %>
     
     <!-- Submission Details -->
-    <div class="attribute-list">
-      <dt class="attribute-list__key">Submission ID</dt>
-      <dd class="attribute-list__value">#<%= @form_submission.id %></dd>
-      
-      <dt class="attribute-list__key">Form Type</dt>
-      <dd class="attribute-list__value"><%= @form_submission.form_type %></dd>
-      
+    <div class="attribute-list">      
       <dt class="attribute-list__key">Submitted At</dt>
       <dd class="attribute-list__value"><%= @form_submission.created_at.strftime('%B %d, %Y at %l:%M %p') %></dd>
     </div>
@@ -34,7 +28,7 @@
     <h2 class="section-title">Personal Information</h2>
     <div class="attribute-list">
       <dt class="attribute-list__key">Name</dt>
-      <dd class="attribute-list__value"><%= attributes['name'] || 'Not provided' %></dd>
+      <dd class="attribute-list__value"><%= attributes['name'] %></dd>
       
       <dt class="attribute-list__key">Email</dt>
       <dd class="attribute-list__value">
@@ -45,17 +39,38 @@
         <% end %>
       </dd>
       
-      <dt class="attribute-list__key">TU ID</dt>
-      <dd class="attribute-list__value"><%= attributes['tu_id'] || 'Not provided' %></dd>
-      
       <dt class="attribute-list__key">Phone</dt>
       <dd class="attribute-list__value"><%= attributes['phone'] || 'Not provided' %></dd>
       
-      <dt class="attribute-list__key">Department</dt>
-      <dd class="attribute-list__value"><%= attributes['department'] || 'Not provided' %></dd>
+      <dt class="attribute-list__key">Temple Affiliation</dt>
+      <dd class="attribute-list__value">
+        <% if attributes['affiliation'].present? %>
+          <% 
+            affiliation_labels = {
+              'temple' => 'Temple University Affiliates',
+              'non-temple' => 'Non-Temple Affiliates'
+            }
+          %>
+          <%= affiliation_labels[attributes['affiliation']] || attributes['affiliation'] %>
+        <% else %>
+          Not provided
+        <% end %>
+      </dd>
       
-      <dt class="attribute-list__key">Affiliation</dt>
-      <dd class="attribute-list__value"><%= attributes['affiliation'] || 'Not provided' %></dd>
+      <dt class="attribute-list__key">Address</dt>
+      <dd class="attribute-list__value">
+        <% if attributes['address'].present? %>
+          <%= simple_format(attributes['address']) %>
+        <% else %>
+          Not provided
+        <% end %>
+      </dd>
+      
+      <dt class="attribute-list__key">TU ID</dt>
+      <dd class="attribute-list__value"><%= attributes['tu_id'] %></dd>
+      
+      <dt class="attribute-list__key">Department</dt>
+      <dd class="attribute-list__value"><%= attributes['department'] %></dd>
       
       <% if attributes['affiliation_other'].present? %>
         <dt class="attribute-list__key">Other Affiliation</dt>
@@ -70,13 +85,65 @@
     <div class="requests-list">
       <% request_count = 0 %>
       <% (0..9).each do |i| %>
-        <% field_name = i == 0 ? 'request_title' : "request_title_#{i.to_s.rjust(2, '0')}" %>
-        <% if attributes[field_name].present? %>
+        <% 
+          # Determine field suffixes for this request group
+          collection_field = i == 0 ? 'collection_title' : "collection_title_#{i.to_s.rjust(2, '0')}"
+          identifier_field = i == 0 ? 'identifier' : "identifier_#{i.to_s.rjust(2, '0')}"
+          notes_field = i == 0 ? 'notes' : "notes_#{i.to_s.rjust(2, '0')}"
+          format_field = i == 0 ? 'format' : "format_#{i.to_s.rjust(2, '0')}"
+          
+          # Check if this request group has required data
+          has_data = attributes[collection_field].present? && 
+                      attributes[identifier_field].present? &&  
+                      attributes[format_field].present?
+        %>
+        
+        <% if has_data %>
           <% request_count += 1 %>
           <div class="request-item">
             <h3 class="request-number">Request <%= request_count %></h3>
             <div class="request-content">
-              <%= simple_format(attributes[field_name]) %>
+              <div class="request-field-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <strong>Collection Title:</strong>
+                    <div class="field-value"><%= attributes[collection_field] %></div>
+                  </div>
+                  <div class="col-md-6">
+                    <strong>Identifier/File Name/Description:</strong>
+                    <div class="field-value"><%= attributes[identifier_field] %></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <strong>Notes:</strong>
+                    <div class="field-value">
+                      <% if attributes[notes_field].present? %>
+                        <%= simple_format(attributes[notes_field]) %>
+                      <% else %>
+                        Not provided
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <strong>Format:</strong>
+                    <div class="field-value">
+                      <% if attributes[format_field].present? %>
+                        <% 
+                          format_labels = {
+                            'film' => 'Film: $30 per minute',
+                            'video' => 'Video: $50 per tape',
+                            'audio' => 'Audio: $50 per tape/reel'
+                          }
+                        %>
+                        <%= format_labels[attributes[format_field]] || attributes[format_field] %>
+                      <% else %>
+                        Not provided
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         <% end %>
@@ -92,7 +159,15 @@
     <!-- Additional Information -->
     <% # Exclude system fields and form fields we've already displayed %>
     <% excluded_fields = ['name', 'email', 'tu_id', 'phone', 'department', 'affiliation', 'affiliation_other', 'form_type', 'title', 'recipients'] %>
-    <% request_fields = (0..9).map { |i| i == 0 ? 'request_title' : "request_title_#{i.to_s.rjust(2, '0')}" } %>
+    <% request_fields = [] %>
+    <% (0..9).each do |i| %>
+      <% if i == 0 %>
+        <% request_fields += ['collection_title', 'identifier', 'notes', 'format'] %>
+      <% else %>
+        <% suffix = i.to_s.rjust(2, '0') %>
+        <% request_fields += ["collection_title_#{suffix}", "identifier_#{suffix}", "notes_#{suffix}", "format_#{suffix}"] %>
+      <% end %>
+    <% end %>
     <% system_fields = ['authenticity_token', 'controller', 'action'] %>
     <% additional_fields = attributes.except(*(excluded_fields + request_fields + system_fields)) %>
     
@@ -187,6 +262,25 @@
   .request-content {
     color: #333;
     line-height: 1.5;
+  }
+  
+  .request-field-group .row {
+    margin-bottom: 1rem;
+  }
+  
+  .request-field-group .row:last-child {
+    margin-bottom: 0;
+  }
+  
+  .field-value {
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
   }
   
   .no-requests {

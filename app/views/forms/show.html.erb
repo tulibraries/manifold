@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <% if @intro.present? %>
+      <% if @intro.present? && @type != "av-requests" %>
       <div class="row">
         <div class="col mb-3">
           <%= render "intro" %>
@@ -48,6 +48,14 @@
               <%= render "forms/#{@type}/request-info", f: f %>
           </div>
         </div>
+      <% end %>
+
+      <% if @intro.present? && @type == "av-requests" %>
+      <div class="row">
+        <div class="col mb-3">
+          <%= render "intro" %>
+        </div>
+      </div>
       <% end %>
 
       <% if ["event-space-request"].include? @type %> 

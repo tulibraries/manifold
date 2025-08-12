@@ -71,12 +71,10 @@
                     <% 
                       collection_field = i == 0 ? 'collection_title' : "collection_title_#{i.to_s.rjust(2, '0')}"
                       identifier_field = i == 0 ? 'identifier' : "identifier_#{i.to_s.rjust(2, '0')}"
-                      notes_field = i == 0 ? 'notes' : "notes_#{i.to_s.rjust(2, '0')}"
                       format_field = i == 0 ? 'format' : "format_#{i.to_s.rjust(2, '0')}"
                       
-                      has_data = attributes[collection_field].present? || 
-                                 attributes[identifier_field].present? || 
-                                 attributes[notes_field].present? || 
+                      has_data = attributes[collection_field].present? && 
+                                 attributes[identifier_field].present? && 
                                  attributes[format_field].present?
                     %>
                     <% if has_data %>
@@ -100,6 +98,13 @@
           No new form submissions found.
         </p>
       </div>
+    </div>
+  <% end %>
+  
+  <!-- Pagination -->
+  <% if @form_submissions.respond_to?(:current_page) %>
+    <div class="pagination-wrapper">
+      <%= paginate @form_submissions, theme: 'twitter-bootstrap-4' %>
     </div>
   <% end %>
 </section>

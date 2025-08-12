@@ -11,10 +11,9 @@
 </header>
 
 <section class="main-content__body">
-  <% begin %>
-    <% raw_attributes = @form_submission.form_attributes %>
-    <% # Handle nested form structure - extract from 'form' key if present %>
-    <% attributes = raw_attributes['form'] || raw_attributes %>
+  <% raw_attributes = @form_submission.form_attributes %>
+  <% # Handle nested form structure - extract from 'form' key if present %>
+  <% attributes = raw_attributes['form'] || raw_attributes %>
     
     <!-- Submission Details -->
     <div class="attribute-list">      
@@ -39,6 +38,15 @@
         <% end %>
       </dd>
       
+      <dt class="attribute-list__key">Address</dt>
+      <dd class="attribute-list__value">
+        <% if attributes['address'].present? %>
+          <%= simple_format(attributes['address']) %>
+        <% else %>
+          Not provided
+        <% end %>
+      </dd>
+      
       <dt class="attribute-list__key">Phone</dt>
       <dd class="attribute-list__value"><%= attributes['phone'] || 'Not provided' %></dd>
       
@@ -56,40 +64,32 @@
           Not provided
         <% end %>
       </dd>
-      
-      <dt class="attribute-list__key">Address</dt>
-      <dd class="attribute-list__value">
-        <% if attributes['address'].present? %>
-          <%= simple_format(attributes['address']) %>
-        <% else %>
-          Not provided
-        <% end %>
-      </dd>
-            
-      <dt class="attribute-list__key">TU ID</dt>
-      <dd class="attribute-list__value"><%= attributes['tu_id'] %></dd>
-      
-      <dt class="attribute-list__key">Department</dt>
-      <dd class="attribute-list__value"><%= attributes['department'] %></dd>
-      
-      <% if attributes['affiliation_other'].present? %>
-        <dt class="attribute-list__key">Other Affiliation</dt>
-        <dd class="attribute-list__value"><%= attributes['affiliation_other'] %></dd>
-      <% end %>
 
       <dt class="attribute-list__key">Outside Vendor Fees</dt>
       <dd class="attribute-list__value">
-        <span class="badge badge-success">✓ Acknowledged</span>
+        <% if raw_attributes['outside_vendor_fees'] == '1' || raw_attributes['outside_vendor_fees'] == true %>
+          <span class="badge badge-success">✓ Acknowledged</span>
+        <% else %>
+          <span class="badge badge-secondary">Not acknowledged</span>
+        <% end %>
       </dd>
       
       <dt class="attribute-list__key">Duplication Limits</dt>
       <dd class="attribute-list__value">
-        <span class="badge badge-success">✓ Acknowledged</span>
+        <% if raw_attributes['duplication_limits'] == '1' || raw_attributes['duplication_limits'] == true %>
+          <span class="badge badge-success">✓ Acknowledged</span>
+        <% else %>
+          <span class="badge badge-secondary">Not acknowledged</span>
+        <% end %>
       </dd>
       
       <dt class="attribute-list__key">Copyright Acknowledgment</dt>
       <dd class="attribute-list__value">
-        <span class="badge badge-success">✓ Acknowledged</span>
+        <% if raw_attributes['copyright_acknowledgment'] == '1' || raw_attributes['copyright_acknowledgment'] == true %>
+          <span class="badge badge-success">✓ Acknowledged</span>
+        <% else %>
+          <span class="badge badge-secondary">Not acknowledged</span>
+        <% end %>
       </dd>
     </div>
 
@@ -168,23 +168,4 @@
         <p class="no-requests">No requests specified.</p>
       <% end %>
     </div>
-
-  <% rescue => e %>
-    <div class="error-message">
-      <h2>Error Loading Submission Details</h2>
-      <p>There was an error decrypting the form data for this submission.</p>
-      <p><strong>Error:</strong> <%= e.message %></p>
-      
-      <div class="attribute-list">
-        <dt class="attribute-list__key">Submission ID</dt>
-        <dd class="attribute-list__value">#<%= @form_submission.id %></dd>
-        
-        <dt class="attribute-list__key">Form Type</dt>
-        <dd class="attribute-list__value"><%= @form_submission.form_type %></dd>
-        
-        <dt class="attribute-list__key">Submitted At</dt>
-        <dd class="attribute-list__value"><%= @form_submission.created_at.strftime('%B %d, %Y at %l:%M %p') %></dd>
-      </div>
-    </div>
-  <% end %>
 </section>

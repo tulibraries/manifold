@@ -4,7 +4,8 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
   def index
     @form_submissions = FormSubmission.where(form_type: "av-requests")
                                       .order(created_at: :desc)
-                                      .limit(50)
+                                      .page(params[:page])
+                                      .per(10) # Show 10 submissions per page
     @page_title = "AV Request Submissions"
   end
 

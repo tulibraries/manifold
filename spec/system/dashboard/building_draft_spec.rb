@@ -70,7 +70,7 @@ RSpec.describe "Dashboard::BuildingDrafts", type: :system do
       click_button("Create Building")
       expect(page).to have_content(building.name)
       expect(page).to have_content(building.description.body.html_safe)
-      
+
       # Verify the building was actually saved to the database with correct values
       created_building = Building.find_by(name: building.name)
       expect(created_building).to be_present

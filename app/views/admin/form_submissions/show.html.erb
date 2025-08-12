@@ -67,7 +67,8 @@
 
       <dt class="attribute-list__key">Outside Vendor Fees</dt>
       <dd class="attribute-list__value">
-        <% if raw_attributes['outside_vendor_fees'] == '1' || raw_attributes['outside_vendor_fees'] == true %>
+        <% vendor_fees_value = raw_attributes['outside_vendor_fees'] %>
+        <% if ['1', '1.0', 1, true, 'true', 'on'].include?(vendor_fees_value) %>
           <span class="badge badge-success">✓ Acknowledged</span>
         <% else %>
           <span class="badge badge-secondary">Not acknowledged</span>
@@ -76,7 +77,8 @@
       
       <dt class="attribute-list__key">Duplication Limits</dt>
       <dd class="attribute-list__value">
-        <% if raw_attributes['duplication_limits'] == '1' || raw_attributes['duplication_limits'] == true %>
+        <% duplication_limits_value = raw_attributes['duplication_limits'] %>
+        <% if ['1', '1.0', 1, true, 'true', 'on'].include?(duplication_limits_value) %>
           <span class="badge badge-success">✓ Acknowledged</span>
         <% else %>
           <span class="badge badge-secondary">Not acknowledged</span>
@@ -85,7 +87,8 @@
       
       <dt class="attribute-list__key">Copyright Acknowledgment</dt>
       <dd class="attribute-list__value">
-        <% if raw_attributes['copyright_acknowledgment'] == '1' || raw_attributes['copyright_acknowledgment'] == true %>
+        <% copyright_value = raw_attributes['copyright_acknowledgment'] %>
+        <% if ['1', '1.0', 1, true, 'true', 'on'].include?(copyright_value) %>
           <span class="badge badge-success">✓ Acknowledged</span>
         <% else %>
           <span class="badge badge-secondary">Not acknowledged</span>

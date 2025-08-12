@@ -5,7 +5,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
     @form_submissions = FormSubmission.where(form_type: "av-requests")
                                       .order(created_at: :desc)
                                       .page(params[:page])
-                                      .per(10) # Show 10 submissions per page
+                                      .per(20) # Show 20 submissions per page
     @page_title = "AV Request Submissions"
   end
 
@@ -35,7 +35,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
 
       CSV.generate(headers: true) do |csv|
         # Create header row with all possible form fields
-        header_row = ["ID", "Submitted At", "Name", "Email", "TU ID", "Phone", "Department", "Affiliation", "Address", "Outside Vendor Fees", "Duplication Limits", "Copyright Acknowledgment"]
+        header_row = ["ID", "Submitted At", "Name", "Email", "Phone", "Affiliation", "Address", "Outside Vendor Fees", "Duplication Limits", "Copyright Acknowledgment"]
 
         # Add request fields (up to 10 requests with 4 fields each)
         (0..9).each do |i|
@@ -60,9 +60,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
               submission.created_at.strftime("%Y-%m-%d %H:%M:%S"),
               attributes["name"],
               attributes["email"],
-              attributes["tu_id"],
               attributes["phone"],
-              attributes["department"],
               attributes["affiliation"],
               attributes["address"]&.gsub(/\n/, " | "), # Replace line breaks with pipe for CSV
               attributes["outside_vendor_fees"] == "1" || attributes["outside_vendor_fees"] == true ? "Yes" : "No",

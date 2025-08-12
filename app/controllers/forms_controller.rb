@@ -89,6 +89,26 @@ class FormsController < ApplicationController
       # For av-requests, we don't need recipients since we're not sending emails
       # Use the same unsafe params method that persist_form! uses
       form_params = use_unsafe_params[:form]
+      
+      # Validate required acknowledgments for av-requests
+      if type == "av-requests"
+        required_acknowledgments = ['outside_vendor_fees', 'duplication_limits', 'copyright_acknowledgment']
+        missing_acknowledgments = []
+        
+        required_acknowledgments.each do |field|
+          value = form_params[field]
+          # Check if the value represents a checked checkbox
+          unless ['1', '1.0', 1, true, 'true', 'on'].include?(value)
+            missing_acknowledgments << field.humanize
+          end
+        end
+        
+        if missing_acknowledgments.any?
+          Rails.logger.error "Missing required acknowledgments: #{missing_acknowledgments.join(', ')}"
+          return false
+        end
+      end
+      
       FormSubmission.create!(
         form_type: type,
         form_attributes: form_params.except("form_type", "recipients")

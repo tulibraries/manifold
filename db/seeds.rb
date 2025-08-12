@@ -15,7 +15,7 @@ unless FormInfo.exists?(slug: "av-requests")
   FormInfo.create!(
     title: "AV Duplication Request Form",
     slug: "av-requests",
-    grouping: "Administrative Services",
+    grouping: "",
     recipients: ["placeholder@temple.edu"],  # Not used since form saves to database only
     intro: "<h3 class='mt-4'>Payment</h3>
 <ul>

@@ -193,6 +193,49 @@
 
 /* Pagination styles removed - using default site styling */
 
+/* AV Requests Form Styles */
+.request-group {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.request-group-title {
+  color: #495057;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.request-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid #dee2e6;
+}
+
+#add-request-btn,
+[data-av-requests-target="addBtn"] {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: white !important;
+  
+  &:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+    color: white !important;
+  }
+}
+
+.request-group:first-child .request-group-title {
+  color: #28a745;
+}
+/* End AV Requests Form Styles */
+
 .application-failover-text {
   padding: 42px;
   h2 {

@@ -1,182 +1,83 @@
-<div id="request-groups-container">
-<div class="request-group" data-index="0">
-    <h4 class="request-group-title">Request 1</h4>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :collection_title, label: "Collection Title", required: true, wrapper_html: { class: "mb-3" } %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :identifier, label: "Identifier/File Name/Description", required: true, wrapper_html: { class: "mb-3" } %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :notes, label: "Notes", as: :text, input_html: { rows: 3 }, wrapper_html: { class: "mb-3" } %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :format, label: "Format", as: :select, 
-            collection: [
-              ['Film: $30 per minute', 'film'],
-              ['Video: $50 per tape', 'video'],
-              ['Audio: $50 per tape/reel', 'audio']
-            ],
-            include_blank: "Select format...",
-            required: true,
-            wrapper_html: { class: "mb-3" } %>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Additional request groups (hidden by default) -->
-  <% (1..9).each do |i| %>
-    <div class="request-group" data-index="<%= i %>" style="display: none;">
-      <h4 class="request-group-title">Request <%= i + 1 %></h4>
+<div data-controller="av-requests">
+  <div id="request-groups-container" data-av-requests-target="container">
+    <div class="request-group" data-index="0">
+      <h4 class="request-group-title">Request 1</h4>
       <div class="row">
         <div class="col-md-6">
-          <%= f.input "collection_title_#{i.to_s.rjust(2, '0')}".to_sym, 
-              label: "Collection Title", 
-              wrapper_html: { class: "mb-3" } %>
+          <%= f.input :collection_title, label: "Collection Title", required: true, wrapper_html: { class: "mb-3" } %>
         </div>
         <div class="col-md-6">
-          <%= f.input "identifier_#{i.to_s.rjust(2, '0')}".to_sym, 
-              label: "Identifier/File Name/Description", 
-              wrapper_html: { class: "mb-3" } %>
+          <%= f.input :identifier, label: "Identifier/File Name/Description", required: true, wrapper_html: { class: "mb-3" } %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <%= f.input "notes_#{i.to_s.rjust(2, '0')}".to_sym, 
-              label: "Notes", 
-              as: :text, 
-              input_html: { rows: 3 }, 
-              wrapper_html: { class: "mb-3" } %>
+          <%= f.input :notes, label: "Notes", as: :text, input_html: { rows: 3 }, wrapper_html: { class: "mb-3" } %>
         </div>
         <div class="col-md-6">
-          <%= f.input "format_#{i.to_s.rjust(2, '0')}".to_sym, 
-              label: "Format", 
-              as: :select,
+          <%= f.input :format, label: "Format", as: :select, 
               collection: [
                 ['Film: $30 per minute', 'film'],
                 ['Video: $50 per tape', 'video'],
                 ['Audio: $50 per tape/reel', 'audio']
               ],
               include_blank: "Select format...",
+              required: true,
               wrapper_html: { class: "mb-3" } %>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
-</div>
+    
+    <!-- Additional request groups (hidden by default) -->
+    <% (1..9).each do |i| %>
+      <div class="request-group" data-index="<%= i %>" style="display: none;">
+        <h4 class="request-group-title">Request <%= i + 1 %></h4>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input "collection_title_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Collection Title", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input "identifier_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Identifier/File Name/Description", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input "notes_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Notes", 
+                as: :text, 
+                input_html: { rows: 3 }, 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input "format_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Format", 
+                as: :select,
+                collection: [
+                  ['Film: $30 per minute', 'film'],
+                  ['Video: $50 per tape', 'video'],
+                  ['Audio: $50 per tape/reel', 'audio']
+                ],
+                include_blank: "Select format...",
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-<div class="request-actions mt-4">
-  <button type="button" id="add-request-btn" class="btn btn-secondary me-2">
-    <i class="fas fa-plus"></i> Add a new request
-  </button>
-  <button type="button" id="remove-request-btn" class="btn btn-outline-secondary" style="display: none;">
-    <i class="fas fa-minus"></i> Remove last request
-  </button>
+  <div class="request-actions mt-4">
+    <button type="button" data-av-requests-target="addBtn" data-action="click->av-requests#addRequest" class="btn btn-success me-2" onclick="console.log('Button clicked directly')">
+      <i class="fas fa-plus"></i> Add a new request
+    </button>
+    <button type="button" data-av-requests-target="removeBtn" data-action="click->av-requests#removeRequest" class="btn btn-outline-secondary" style="display: none;">
+      <i class="fas fa-minus"></i> Remove last request
+    </button>
+  </div>
 </div>
-
-<style>
-  .request-group {
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .request-group-title {
-    color: #495057;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #dee2e6;
-  }
-  
-  .request-actions {
-    display: flex;
-    gap: 0.5rem;
-    padding: 1rem 0;
-    border-top: 1px solid #dee2e6;
-  }
-  
-  #add-request-btn {
-    background-color: #28a745;
-    border-color: #28a745;
-  }
-  
-  #add-request-btn:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
-  }
-  
-  .request-group:first-child .request-group-title {
-    color: #28a745;
-  }
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  let currentRequestCount = 1;
-  const maxRequests = 10;
-  
-  const addBtn = document.getElementById('add-request-btn');
-  const removeBtn = document.getElementById('remove-request-btn');
-  const container = document.getElementById('request-groups-container');
-  
-  addBtn.addEventListener('click', function() {
-    if (currentRequestCount < maxRequests) {
-      const nextGroup = container.querySelector(`[data-index="${currentRequestCount}"]`);
-      if (nextGroup) {
-        nextGroup.style.display = 'block';
-        currentRequestCount++;
-        
-        // Show remove button if we have more than 1 group
-        if (currentRequestCount > 1) {
-          removeBtn.style.display = 'inline-block';
-        }
-        
-        // Hide add button if we've reached the max
-        if (currentRequestCount >= maxRequests) {
-          addBtn.style.display = 'none';
-        }
-        
-        // Scroll to the new group
-        nextGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-  });
-  
-  removeBtn.addEventListener('click', function() {
-    if (currentRequestCount > 1) {
-      currentRequestCount--;
-      const groupToHide = container.querySelector(`[data-index="${currentRequestCount}"]`);
-      if (groupToHide) {
-        groupToHide.style.display = 'none';
-        
-        // Clear all input values in the hidden group
-        const inputs = groupToHide.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-          input.value = '';
-        });
-      }
-      
-      // Hide remove button if we're back to 1 group
-      if (currentRequestCount <= 1) {
-        removeBtn.style.display = 'none';
-      }
-      
-      // Show add button if we're below max
-      if (currentRequestCount < maxRequests) {
-        addBtn.style.display = 'inline-block';
-      }
-    }
-  });
-});
-</script>
 
 <!-- Acknowledgements Section -->
 <div class="mt-4">

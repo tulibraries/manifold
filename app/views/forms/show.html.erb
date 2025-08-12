@@ -1,5 +1,25 @@
-<div class="container-lg form">
+<div class="container-lg form mt-0 pt-0">
   <% unless @type.nil? || @type == "all" %>
+
+  <% if params[:success] == "av_requests" %>
+  <div class="row">
+    <div class="col-12 flash notice mb-3">
+      <%= t("manifold.forms.submissions.av_requests_success_message") %>
+    </div>
+  </div>
+  <% elsif params[:success] == "true" %>
+  <div class="row">
+    <div class="col-12 flash notice mb-3">
+      <%= t("manifold.forms.submissions.success_message") %>
+    </div>
+  </div>
+  <% elsif params[:success] == "false" %>
+  <div class="row">
+    <div class="col-12 flash error mb-3">
+      <%= t("manifold.forms.submissions.failure_message") %>
+    </div>
+  </div>
+  <% end %>
 
   <div class="row">
     <div class="col-12 col-lg-9 offset-lg-1">

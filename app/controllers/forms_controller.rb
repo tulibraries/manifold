@@ -38,9 +38,9 @@ class FormsController < ApplicationController
     # Handle av-requests type differently - save to database instead of sending email
     if form_type == "av-requests"
       if save_to_database_only
-        redirect_to forms_path(success: "true")
+        redirect_to form_path("av-requests", success: "av_requests")
       else
-        redirect_to forms_path(success: "false")
+        redirect_to form_path("av-requests", success: "false")
       end
     else
       # For all other form types, use the existing email delivery system

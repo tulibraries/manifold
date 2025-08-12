@@ -12,6 +12,7 @@ FactoryBot.define do
     zipcode { "19122" }
     coordinates { "test,coordinated" }
     google_id { "12345678910azby-kk" }
+    hours { "" }
     phone_number { "2155551212" }
     email { "csa@example.edu" }
 

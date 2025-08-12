@@ -41,7 +41,7 @@ en:
       building:
         address1: "Street Address"
         address2: "City, State Zip"
-        hours: "Hours Identifier"
+        hours: "Hours"
       category:
         categories: "Parent Category"
         accounts: "Individual Owners"

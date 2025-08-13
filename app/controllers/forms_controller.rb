@@ -33,11 +33,23 @@ class FormsController < ApplicationController
     @form = Form.new(params[:form])
     @form.request = request
 
-    if @form.deliver
-      persist_form!
-      redirect_to forms_path(success: "true")
+    form_type = params[:form][:form_type]
+
+    # Handle av-requests type differently - save to database instead of sending email
+    if form_type == "av-requests"
+      if save_to_database_only
+        redirect_to form_path("av-requests", success: "av_requests")
+      else
+        redirect_to form_path("av-requests", success: "false")
+      end
     else
-      redirect_to forms_path(success: "false")
+      # For all other form types, use the existing email delivery system
+      if @form.deliver
+        persist_form!
+        redirect_to forms_path(success: "true")
+      else
+        redirect_to forms_path(success: "false")
+      end
     end
   end
 
@@ -69,5 +81,42 @@ class FormsController < ApplicationController
 
   def use_unsafe_params
     request.parameters
+  end
+
+  def save_to_database_only
+    begin
+      type = params[:form][:form_type]
+      # For av-requests, we don't need recipients since we're not sending emails
+      # Use the same unsafe params method that persist_form! uses
+      form_params = use_unsafe_params[:form]
+
+      # Validate required acknowledgments for av-requests
+      if type == "av-requests"
+        required_acknowledgments = ["outside_vendor_fees", "duplication_limits", "copyright_acknowledgment"]
+        missing_acknowledgments = []
+
+        required_acknowledgments.each do |field|
+          value = form_params[field]
+          # Check if the value represents a checked checkbox
+          unless ["1", "1.0", 1, true, "true", "on"].include?(value)
+            missing_acknowledgments << field.humanize
+          end
+        end
+
+        if missing_acknowledgments.any?
+          Rails.logger.error "Missing required acknowledgments: #{missing_acknowledgments.join(', ')}"
+          return false
+        end
+      end
+
+      FormSubmission.create!(
+        form_type: type,
+        form_attributes: form_params.except("form_type", "recipients")
+      )
+      true
+    rescue => e
+      Rails.logger.error "Failed to save form to database: #{e.message}"
+      false
+    end
   end
 end

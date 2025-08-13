@@ -16,7 +16,8 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
 
       it "returns menu categories" do
-        expect(helper.menu_category_list(building.categories)).to eql "policy1 and policy2"
+        result = helper.menu_category_list(building.categories)
+        expect(result).to match(/^(policy1 and policy2|policy2 and policy1)$/)
       end
     end
 

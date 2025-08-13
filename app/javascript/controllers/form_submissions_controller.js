@@ -104,6 +104,30 @@ export default class extends Controller {
       }
     }
     
+    // Check required acknowledgement checkboxes
+    const acknowledgementCheckboxes = this.element.closest('form').querySelectorAll('input[name*="duplication_limits"], input[name*="copyright_acknowledgment"]')
+    const uncheckedAcknowledgements = []
+    
+    acknowledgementCheckboxes.forEach(checkbox => {
+      if (!checkbox.checked) {
+        const label = checkbox.closest('.form-group').querySelector('label').textContent.trim()
+        uncheckedAcknowledgements.push(label)
+      }
+    })
+    
+    if (uncheckedAcknowledgements.length > 0) {
+      event.preventDefault()
+      alert(`Please check the following required acknowledgements: ${uncheckedAcknowledgements.join(', ')}.`)
+      
+      // Scroll to acknowledgements section
+      const acknowledgementsSection = this.element.closest('form').querySelector('h3')
+      if (acknowledgementsSection && acknowledgementsSection.textContent.includes('Acknowledgements')) {
+        acknowledgementsSection.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+      
+      return false
+    }
+    
     return true
   }
 }

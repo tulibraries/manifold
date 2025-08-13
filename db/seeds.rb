@@ -35,12 +35,13 @@ unless FormInfo.exists?(slug: "copy-requests")
     slug: "copy-requests",
     grouping: "",
     recipients: ["placeholder@temple.edu"],  # Not used since form saves to database only
-    intro: "<h3 class='mt-4'>Pricing Information</h3>
+    intro: "<h3 class='mt-4'>Payment</h3>
 <ul>
-<li>TIFF (600 DPI): $5 per image</li>
-<li>PDF: $0.50 per page</li>
-<li>Photocopy: $0.50 per page plus postage</li>
-</ul>
-<p><strong>Postage Information:</strong> Up to 100 pages: $5.00; Over 100 pages, USPS rate</p>"
+<li>#{I18n.t('helpers.description.form.payment_intro')}</li>
+<li>#{I18n.t('helpers.description.form.payment_methods')}</li>
+<li>#{I18n.t('helpers.description.form.payment_check')}</li>
+<li>#{I18n.t('helpers.description.form.payment_credit_card')}</li>
+<li>#{I18n.t('helpers.description.form.payment_delivery')}</li>
+</ul>"
   )
 end

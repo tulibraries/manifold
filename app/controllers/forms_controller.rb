@@ -147,6 +147,23 @@ class FormsController < ApplicationController
             end
           end
         end
+
+        # Validate required acknowledgments for copy-requests
+        required_acknowledgments = ["duplication_limits", "copyright_acknowledgment"]
+        missing_acknowledgments = []
+
+        required_acknowledgments.each do |field|
+          value = form_params[field]
+          # Check if the value represents a checked checkbox
+          unless ["1", "1.0", 1, true, "true", "on"].include?(value)
+            missing_acknowledgments << field.humanize
+          end
+        end
+
+        if missing_acknowledgments.any?
+          Rails.logger.error "Missing required acknowledgments for copy request: #{missing_acknowledgments.join(', ')}"
+          return false
+        end
       end
 
       FormSubmission.create!(

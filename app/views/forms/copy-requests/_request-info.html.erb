@@ -22,35 +22,18 @@
         <div class="col-md-6">
           <%= f.input :estimated_pages, label: "Estimated Number of Pages", as: :integer, required: true, wrapper_html: { class: "mb-3" } %>
         </div>
-      </div>
-      
-      <!-- Pricing Options for Request 1 -->
-      <div class="mt-3 mb-4">
-        <h5>Pricing Options <span class="text-danger">*</span></h5>
-        <p class="text-muted small">Select one or more options (at least one is required):</p>
-        
-        <div class="form-check mb-2">
-          <%= f.input :pricing_tiff, as: :boolean, boolean_style: :inline, 
-              label: "TIFF (600 DPI): $5 per image",
-              wrapper_html: { class: "mb-2" },
-              input_html: { class: "pricing-option", data: { request: "0" } } %>
-        </div>
-        
-        <div class="form-check mb-2">
-          <%= f.input :pricing_pdf, as: :boolean, boolean_style: :inline,
-              label: "PDF: $0.50 per page",
-              wrapper_html: { class: "mb-2" },
-              input_html: { class: "pricing-option", data: { request: "0" } } %>
-        </div>
-        
-        <div class="form-check mb-2">
-          <%= f.input :pricing_photocopy, as: :boolean, boolean_style: :inline,
-              label: "Photocopy: $0.50 per page plus postage",
-              wrapper_html: { class: "mb-2" },
-              input_html: { class: "pricing-option", data: { request: "0" } } %>
-          <small class="form-text text-muted ms-4">
-            Up to 100 pages: $5.00; Over 100 pages, USPS rate
-          </small>
+        <div class="col-md-6">
+          <%= f.input :format, 
+              label: "Format", 
+              as: :select,
+              collection: [
+                ['TIFF (600 DPI): $5 per image', 'tiff'],
+                ['PDF: $0.50 per page', 'pdf'],
+                ['Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)', 'photocopy']
+              ],
+              include_blank: "Select format...",
+              required: true,
+              wrapper_html: { class: "mb-3" } %>
         </div>
       </div>
     </div>
@@ -90,35 +73,17 @@
                 as: :integer,
                 wrapper_html: { class: "mb-3" } %>
           </div>
-        </div>
-        
-        <!-- Pricing Options for Request <%= i + 1 %> -->
-        <div class="mt-3 mb-4">
-          <h5>Pricing Options <span class="text-danger">*</span></h5>
-          <p class="text-muted small">Select one or more options (at least one is required):</p>
-          
-          <div class="form-check mb-2">
-            <%= f.input "pricing_tiff_#{i.to_s.rjust(2, '0')}".to_sym, as: :boolean, boolean_style: :inline, 
-                label: "TIFF (600 DPI): $5 per image",
-                wrapper_html: { class: "mb-2" },
-                input_html: { class: "pricing-option", data: { request: i } } %>
-          </div>
-          
-          <div class="form-check mb-2">
-            <%= f.input "pricing_pdf_#{i.to_s.rjust(2, '0')}".to_sym, as: :boolean, boolean_style: :inline,
-                label: "PDF: $0.50 per page",
-                wrapper_html: { class: "mb-2" },
-                input_html: { class: "pricing-option", data: { request: i } } %>
-          </div>
-          
-          <div class="form-check mb-2">
-            <%= f.input "pricing_photocopy_#{i.to_s.rjust(2, '0')}".to_sym, as: :boolean, boolean_style: :inline,
-                label: "Photocopy: $0.50 per page plus postage",
-                wrapper_html: { class: "mb-2" },
-                input_html: { class: "pricing-option", data: { request: i } } %>
-            <small class="form-text text-muted ms-4">
-              Up to 100 pages: $5.00; Over 100 pages, USPS rate
-            </small>
+          <div class="col-md-6">
+            <%= f.input "format_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Format", 
+                as: :select,
+                collection: [
+                  ['TIFF (600 DPI): $5 per image', 'tiff'],
+                  ['PDF: $0.50 per page', 'pdf'],
+                  ['Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)', 'photocopy']
+                ],
+                include_blank: "Select format...",
+                wrapper_html: { class: "mb-3" } %>
           </div>
         </div>
       </div>
@@ -132,5 +97,31 @@
     <button type="button" data-form-submissions-target="removeBtn" data-action="click->form-submissions#removeRequest" class="btn btn-outline-secondary" style="display: none;">
       <i class="fas fa-minus"></i> Remove last request
     </button>
+  </div>
+</div>
+
+<!-- Acknowledgements Section -->
+<div class="mt-5">
+  <h3 class="mb-3">Acknowledgements</h3>
+  <p>Due to the fragile and rare nature of the materials held by the SCRC, all duplication is performed by staff members.</p>
+  
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :duplication_limits, 
+          as: :boolean,
+          required: true,
+          wrapper_html: { class: "mt-2" },
+          hint: raw(t('helpers.description.form.duplication_limits')) %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :copyright_acknowledgment, 
+          as: :boolean,
+          required: true,
+          wrapper_html: { class: "mt-2" },
+          hint: raw(t('helpers.description.form.copyright_acknowledgment')) %>
+    </div>
   </div>
 </div>

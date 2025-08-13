@@ -67,7 +67,7 @@ gem "stimulus-rails"
 gem "timecop"
 gem "turbo-rails"
 gem "tzinfo-data"
-gem "view_component"
+gem "view_component", "~> 3.23.2"
 gem "yaml_db"
 
 group :development, :test do

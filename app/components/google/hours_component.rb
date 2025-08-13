@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Google::HoursComponent < ViewComponent::Base
+  include ViewComponent::UseHelpers
   include LibraryHoursHelper
 
   def initialize(hours:, date:)

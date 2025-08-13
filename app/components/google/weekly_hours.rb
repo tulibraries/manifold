@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Google::WeeklyHours < ViewComponent::Base
+  include ViewComponent::UseHelpers
+
   def initialize(hours:, location: nil)
     dates = hours.value_ranges[0].values.flatten
     times = hours.value_ranges[1].values.flatten

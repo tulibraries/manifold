@@ -3,6 +3,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+ruby "3.4.3"
+
 gem "rails", "~> 7.2"
 gem "action-draft"
 gem "active_storage_validations"

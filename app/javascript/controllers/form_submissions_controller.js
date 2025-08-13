@@ -13,11 +13,6 @@ export default class extends Controller {
     console.log(`Form Submissions controller connected for ${this.formTypeValue} form`)
     
     this.currentRequestCount = 1
-    
-    // Add form validation if this is a copy-requests form
-    if (this.formTypeValue === 'copy-requests') {
-      this.element.closest('form').addEventListener('submit', this.validatePricingOptions.bind(this))
-    }
   }
 
   addRequest() {
@@ -77,57 +72,5 @@ export default class extends Controller {
         this.addBtnTarget.style.display = 'inline-block'
       }
     }
-  }
-  
-  // Validation method for copy-requests forms only
-  validatePricingOptions(event) {
-    if (this.formTypeValue !== 'copy-requests') {
-      return true
-    }
-    
-    // Check each visible request group for at least one selected pricing option
-    const visibleGroups = this.containerTarget.querySelectorAll('.request-group[style*="display: block"], .request-group:not([style*="display: none"])')
-    
-    for (let i = 0; i < visibleGroups.length; i++) {
-      const group = visibleGroups[i]
-      const requestIndex = group.dataset.index
-      const pricingOptions = group.querySelectorAll('.pricing-option:checked')
-      
-      if (pricingOptions.length === 0) {
-        event.preventDefault()
-        alert(`Please select at least one pricing option for Request ${parseInt(requestIndex) + 1}.`)
-        
-        // Scroll to the problematic request group
-        group.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        
-        return false
-      }
-    }
-    
-    // Check required acknowledgement checkboxes
-    const acknowledgementCheckboxes = this.element.closest('form').querySelectorAll('input[name*="duplication_limits"], input[name*="copyright_acknowledgment"]')
-    const uncheckedAcknowledgements = []
-    
-    acknowledgementCheckboxes.forEach(checkbox => {
-      if (!checkbox.checked) {
-        const label = checkbox.closest('.form-group').querySelector('label').textContent.trim()
-        uncheckedAcknowledgements.push(label)
-      }
-    })
-    
-    if (uncheckedAcknowledgements.length > 0) {
-      event.preventDefault()
-      alert(`Please check the following required acknowledgements: ${uncheckedAcknowledgements.join(', ')}.`)
-      
-      // Scroll to acknowledgements section
-      const acknowledgementsSection = this.element.closest('form').querySelector('h3')
-      if (acknowledgementsSection && acknowledgementsSection.textContent.includes('Acknowledgements')) {
-        acknowledgementsSection.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }
-      
-      return false
-    }
-    
-    return true
   }
 }

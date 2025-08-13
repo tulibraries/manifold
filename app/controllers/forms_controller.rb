@@ -114,56 +114,8 @@ class FormsController < ApplicationController
           return false
         end
       elsif type == "copy-requests"
-        # Validate that each request has at least one pricing option selected
-        # First check the main request (no suffix)
-        main_pricing_options = ["pricing_tiff", "pricing_pdf", "pricing_photocopy"]
-        main_selected = main_pricing_options.any? { |field|
-          value = form_params[field]
-          ["1", "1.0", 1, true, "true", "on"].include?(value)
-        }
-
-        unless main_selected
-          Rails.logger.error "No pricing options selected for main copy request"
-          return false
-        end
-
-        # Check additional requests (01-09)
-        (1..9).each do |i|
-          index = i.to_s.rjust(2, "0")
-          # Check if this request has any data (collection_title is required)
-          collection_field = "collection_title_#{index}"
-
-          if form_params[collection_field].present?
-            # This request has data, so it needs pricing options
-            pricing_fields = ["pricing_tiff_#{index}", "pricing_pdf_#{index}", "pricing_photocopy_#{index}"]
-            has_pricing = pricing_fields.any? { |field|
-              value = form_params[field]
-              ["1", "1.0", 1, true, "true", "on"].include?(value)
-            }
-
-            unless has_pricing
-              Rails.logger.error "No pricing options selected for copy request #{i + 1}"
-              return false
-            end
-          end
-        end
-
-        # Validate required acknowledgments for copy-requests
-        required_acknowledgments = ["duplication_limits", "copyright_acknowledgment"]
-        missing_acknowledgments = []
-
-        required_acknowledgments.each do |field|
-          value = form_params[field]
-          # Check if the value represents a checked checkbox
-          unless ["1", "1.0", 1, true, "true", "on"].include?(value)
-            missing_acknowledgments << field.humanize
-          end
-        end
-
-        if missing_acknowledgments.any?
-          Rails.logger.error "Missing required acknowledgments for copy request: #{missing_acknowledgments.join(', ')}"
-          return false
-        end
+        # No additional validation needed for copy-requests
+        # Format field validation is handled by Rails' built-in required validation
       end
 
       FormSubmission.create!(

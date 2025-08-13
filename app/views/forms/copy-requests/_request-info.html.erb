@@ -1,4 +1,4 @@
-<div data-controller="form-submissions" data-form-submissions-form-type-value="av-requests">
+<div data-controller="form-submissions" data-form-submissions-form-type-value="copy-requests">
   <div id="request-groups-container" data-form-submissions-target="container">
     <div class="request-group" data-index="0">
       <h4 class="request-group-title">Request 1</h4>
@@ -7,19 +7,29 @@
           <%= f.input :collection_title, label: "Collection Title", required: true, wrapper_html: { class: "mb-3" } %>
         </div>
         <div class="col-md-6">
-          <%= f.input :identifier, label: "Identifier/File Name/Description", required: true, wrapper_html: { class: "mb-3" } %>
+          <%= f.input :box, label: "Box", required: true, wrapper_html: { class: "mb-3" } %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :notes, label: "Notes", as: :text, input_html: { rows: 3 }, wrapper_html: { class: "mb-3" } %>
+          <%= f.input :folder, label: "Folder", required: true, wrapper_html: { class: "mb-3" } %>
         </div>
         <div class="col-md-6">
-          <%= f.input :format, label: "Format", as: :select, 
+          <%= f.input :identifier, label: "Title/Identifier/File Name/Description", required: true, wrapper_html: { class: "mb-3" } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :estimated_pages, label: "Estimated Number of Pages", as: :integer, required: true, wrapper_html: { class: "mb-3" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :format, 
+              label: "Format", 
+              as: :select,
               collection: [
-                ['Film: $30 per minute', 'film'],
-                ['Video: $50 per tape', 'video'],
-                ['Audio: $50 per tape/reel', 'audio']
+                ['TIFF (600 DPI): $5 per image', 'tiff'],
+                ['PDF: $0.50 per page', 'pdf'],
+                ['Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)', 'photocopy']
               ],
               include_blank: "Select format...",
               required: true,
@@ -39,17 +49,28 @@
                 wrapper_html: { class: "mb-3" } %>
           </div>
           <div class="col-md-6">
-            <%= f.input "identifier_#{i.to_s.rjust(2, '0')}".to_sym, 
-                label: "Identifier/File Name/Description", 
+            <%= f.input "box_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Box", 
                 wrapper_html: { class: "mb-3" } %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <%= f.input "notes_#{i.to_s.rjust(2, '0')}".to_sym, 
-                label: "Notes", 
-                as: :text, 
-                input_html: { rows: 3 }, 
+            <%= f.input "folder_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Folder", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input "identifier_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Title/Identifier/File Name/Description", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input "estimated_pages_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Estimated Number of Pages", 
+                as: :integer,
                 wrapper_html: { class: "mb-3" } %>
           </div>
           <div class="col-md-6">
@@ -57,9 +78,9 @@
                 label: "Format", 
                 as: :select,
                 collection: [
-                  ['Film: $30 per minute', 'film'],
-                  ['Video: $50 per tape', 'video'],
-                  ['Audio: $50 per tape/reel', 'audio']
+                  ['TIFF (600 DPI): $5 per image', 'tiff'],
+                  ['PDF: $0.50 per page', 'pdf'],
+                  ['Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)', 'photocopy']
                 ],
                 include_blank: "Select format...",
                 wrapper_html: { class: "mb-3" } %>
@@ -68,7 +89,7 @@
       </div>
     <% end %>
   </div>
-
+  
   <div class="request-actions mt-4">
     <button type="button" data-form-submissions-target="addBtn" data-action="click->form-submissions#addRequest" class="btn btn-success me-2">
       <i class="fas fa-plus"></i> Add a new request
@@ -80,35 +101,26 @@
 </div>
 
 <!-- Acknowledgements Section -->
-<div class="mt-4">
-  <h3 class="mb-3"><%= t("manifold.forms.shared.acknowledgements") %></h3>
-  <div class="row">
-    <div class="col-12">
-      <%= f.input :outside_vendor_fees, 
-          as: :boolean,
-          label: t('helpers.label.form.outside_vendor_fees'),
-          required: true,
-          wrapper_html: { class: "mb-2" },
-          hint: raw(t('helpers.description.form.outside_vendor_fees')) %>
-    </div>
-  </div>
+<div class="mt-5">
+  <h3 class="mb-3">Acknowledgements</h3>
+  <p>Due to the fragile and rare nature of the materials held by the SCRC, all duplication is performed by staff members.</p>
+  
   <div class="row">
     <div class="col-12">
       <%= f.input :duplication_limits, 
           as: :boolean,
-          label: t('helpers.label.form.duplication_limits'),
           required: true,
-          wrapper_html: { class: "mb-2" },
+          wrapper_html: { class: "mt-2" },
           hint: raw(t('helpers.description.form.duplication_limits')) %>
     </div>
   </div>
+  
   <div class="row">
     <div class="col-12">
       <%= f.input :copyright_acknowledgment, 
           as: :boolean,
-          label: t('helpers.label.form.copyright_acknowledgment'),
           required: true,
-          wrapper_html: { class: "mb-2" },
+          wrapper_html: { class: "mt-2" },
           hint: raw(t('helpers.description.form.copyright_acknowledgment')) %>
     </div>
   </div>

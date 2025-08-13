@@ -37,7 +37,10 @@ Rails.application.routes.draw do
     resources :form_infos
     resources :form_submissions, only: [:index, :show] do
       collection do
-        get :export_csv
+        get :av_requests
+        get :copy_requests
+        get :export_av_requests_csv
+        get :export_copy_requests_csv
       end
     end
     resources :groups

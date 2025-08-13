@@ -34,7 +34,7 @@ en:
         payment_credit_card: "If you wish to pay by credit card, there is a $15 minimum charge. To complete a credit card transaction, please call us at 215-204-8257, during business hours, Monday through Friday, from 8:30 am to 5:30 pm. Please do not leave credit card information on a voicemail or in an email."
         payment_delivery: "Files will be delivered upon receipt of payment"
         outside_vendor_fees: "Additional fees will apply for orders that require an outside vendor. Fees are estimated. Estimated reformatting fees will be provided via email post consultation and prior to processing or shipment to vendor."
-        duplication_limits: "While we make every attempt to accommodate duplication requests, making copies is inherently stressful to the originals. For this reason, we've established limits to balance researchers' needs with our obligation to preserve these resources. Depending on the condition, size, and quantity of materials requested, the SCRC reserves the right to refuse a copying order if, in its judgment: Fulfillment of the order would damage the item; Entail the use of excessive staff time and resources; Require reproduction of a major part of a book or archives collection (we will not reproduce more than 20 percent of any book, manuscript, or collection)."
+        duplication_limits: "While we make every attempt to accommodate duplication requests, making copies is inherently stressful to the originals. For this reason, we've established limits to balance researchers' needs with our obligation to preserve these resources. Depending on the condition, size, and quantity of materials requested, the SCRC reserves the right to refuse a copying order if, in its judgment:<ul><li>Fulfillment of the order would damage the item</li><li>Entail the use of excessive staff time and resources</li><li>Require reproduction of a major part of a book or archives collection (we will not reproduce more than 20 percent of any book, manuscript, or collection)</li></ul>"
         copyright_acknowledgment: "The copyright law of the United States (Title 17, United States Code) governs the making of photocopies or other reproductions of copyrighted material. Under certain conditions specified in the law, libraries and archives are authorized to furnish a photocopy or other reproduction. One of these specific conditions is that the photocopy or reproduction is not to be \"used for any purpose other than private study, scholarship, or research.\" If a user makes a request for, or later uses, a photocopy or reproduction for purposes in excess of \"fair use,\" that use may be liable for copyright infringement. This institution reserves the right to refuse to accept a copying order if, in its judgment, fulfillment of the order would involve violation of copyright law. (more information about copyright issues)"
       account:
         alertability: "Can Administrate Alerts"
@@ -610,6 +610,7 @@ en:
       submissions:
         success_message: Thank you for your message. We will contact you soon!
         av_requests_success_message: Thank you for submitting your duplication request. Submit another request.
+        copy_requests_success_message: Thank you for submitting your copy request. Submit another request.
         failure_message: Cannot send message.
       shared:
         your_info: Your Information

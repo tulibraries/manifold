@@ -35,12 +35,18 @@ class FormsController < ApplicationController
 
     form_type = params[:form][:form_type]
 
-    # Handle av-requests type differently - save to database instead of sending email
+    # Handle av-requests and copy-requests types - save to database instead of sending email
     if form_type == "av-requests"
       if save_to_database_only
         redirect_to form_path("av-requests", success: "av_requests")
       else
         redirect_to form_path("av-requests", success: "false")
+      end
+    elsif form_type == "copy-requests"
+      if save_to_database_only
+        redirect_to form_path("copy-requests", success: "copy_requests")
+      else
+        redirect_to form_path("copy-requests", success: "false")
       end
     else
       # For all other form types, use the existing email delivery system
@@ -107,6 +113,9 @@ class FormsController < ApplicationController
           Rails.logger.error "Missing required acknowledgments: #{missing_acknowledgments.join(', ')}"
           return false
         end
+      elsif type == "copy-requests"
+        # No additional validation needed for copy-requests
+        # Format field validation is handled by Rails' built-in required validation
       end
 
       FormSubmission.create!(

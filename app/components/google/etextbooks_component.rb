@@ -2,6 +2,7 @@
 
 class Google::EtextbooksComponent < ViewComponent::Base
   include ViewComponent::UseHelpers
+
   def initialize(etexts:, title:, description:, column:, direction:)
     @title = title
     @description = description

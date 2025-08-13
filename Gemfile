@@ -3,6 +3,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+ruby "3.4.3"
+
 gem "rails", "~> 7.2"
 gem "action-draft"
 gem "active_storage_validations"
@@ -64,13 +66,13 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "timecop"
 gem "turbo-rails"
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "view_component"
+gem "tzinfo-data"
+gem "view_component", "~> 3.23.2"
 gem "yaml_db"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "byebug"
   gem "json-schema"
   gem "pry-rails"
   gem "pry-byebug"

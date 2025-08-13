@@ -18,16 +18,16 @@ RSpec.shared_examples "email form" do
 
     it "accepts information" do
       post(forms_path, params: form_params)
-      if form_type != "av-requests"
+      if ["av-requests", "copy-requests"].include? form_type
+        expect(response).to have_http_status(302)
+        follow_redirect!
+        expect(response).to have_http_status(200)
+      else
         expect(the_email.subject).to eq(form_params[:form][:title])
         # Recipients and form_type not included in email body
         form_params[:form].each do |key, value|
           expect(the_email.body.raw_source).to include(value) unless [:recipients, :form_type].include? key
         end
-      else
-        expect(response).to have_http_status(302)
-        follow_redirect!
-        expect(response).to have_http_status(200)
       end
       # Check that the form submission persists to the db.
       expect(FormSubmission.take.form_type).to eq(form_params[:form][:form_type])

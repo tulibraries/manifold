@@ -212,6 +212,42 @@ class Form < MailForm::Base
   attribute :format_preference_other
   attribute :reason_for_request
 
+  # Copy-requests specific fields
+  attribute :box
+  attribute :folder
+  attribute :estimated_pages, :integer
+  attribute :pricing_tiff, :boolean
+  attribute :pricing_pdf, :boolean
+  attribute :pricing_photocopy, :boolean
+
+  # Copy-requests repeatable fields (up to 10 requests)
+  (1..9).each do |i|
+    index = i.to_s.rjust(2, "0")
+    attribute :"box_#{index}"
+    attribute :"folder_#{index}"
+    attribute :"estimated_pages_#{index}", :integer
+    attribute :"pricing_tiff_#{index}", :boolean
+    attribute :"pricing_pdf_#{index}", :boolean
+    attribute :"pricing_photocopy_#{index}", :boolean
+  end
+
+  # AV-requests specific fields
+  attribute :request_title
+  attribute :collection_title
+  attribute :identifier
+  attribute :notes
+  attribute :format
+
+  # av-requests repeatable fields (up to 10 requests)
+  (1..9).each do |i|
+    index = i.to_s.rjust(2, "0")
+    attribute :"request_title_#{index}"
+    attribute :"collection_title_#{index}"
+    attribute :"identifier_#{index}"
+    attribute :"notes_#{index}"
+    attribute :"format_#{index}"
+  end
+
   # Some forms don't supply an email and name, so they were failing
   def default_from_name
     name ? name : "Temple University Libraries"

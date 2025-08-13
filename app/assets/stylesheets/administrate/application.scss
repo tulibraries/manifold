@@ -33,6 +33,81 @@
 @import "richtext";
 
 /* ========================================
+ * Form Submissions Dashboard Styles
+ * ======================================== */
+
+.form-submissions-dashboard {
+  margin-top: 2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.dashboard-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 2rem;
+  text-align: center;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.dashboard-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dashboard-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.dashboard-card__text {
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dashboard-card__button {
+  margin: 0.5rem 0;
+  min-width: 200px;
+}
+
+.dashboard-card__link {
+  margin: 0;
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .dashboard-card {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+}
+
+/* ========================================
  * AV Requests Form Admin Show Page Styles
  * ======================================== */
 

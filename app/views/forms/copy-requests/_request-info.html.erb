@@ -1,0 +1,136 @@
+<div data-controller="form-submissions" data-form-submissions-form-type-value="copy-requests">
+  <div id="request-groups-container" data-form-submissions-target="container">
+    <div class="request-group" data-index="0">
+      <h4 class="request-group-title">Request 1</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :collection_title, label: "Collection Title", required: true, wrapper_html: { class: "mb-3" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :box, label: "Box", required: true, wrapper_html: { class: "mb-3" } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :folder, label: "Folder", required: true, wrapper_html: { class: "mb-3" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :identifier, label: "Title/Identifier/File Name/Description", required: true, wrapper_html: { class: "mb-3" } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :estimated_pages, label: "Estimated Number of Pages", as: :integer, required: true, wrapper_html: { class: "mb-3" } %>
+        </div>
+      </div>
+      
+      <!-- Pricing Options for Request 1 -->
+      <div class="mt-3 mb-4">
+        <h5>Pricing Options <span class="text-danger">*</span></h5>
+        <p class="text-muted small">Select one or more options (at least one is required):</p>
+        
+        <div class="form-check mb-2">
+          <%= f.input :pricing_tiff, as: :boolean, boolean_style: :inline, 
+              label: "TIFF (600 DPI): $5 per image",
+              wrapper_html: { class: "mb-2" },
+              input_html: { class: "pricing-option", data: { request: "0" } } %>
+        </div>
+        
+        <div class="form-check mb-2">
+          <%= f.input :pricing_pdf, as: :boolean, boolean_style: :inline,
+              label: "PDF: $0.50 per page",
+              wrapper_html: { class: "mb-2" },
+              input_html: { class: "pricing-option", data: { request: "0" } } %>
+        </div>
+        
+        <div class="form-check mb-2">
+          <%= f.input :pricing_photocopy, as: :boolean, boolean_style: :inline,
+              label: "Photocopy: $0.50 per page plus postage",
+              wrapper_html: { class: "mb-2" },
+              input_html: { class: "pricing-option", data: { request: "0" } } %>
+          <small class="form-text text-muted ms-4">
+            Up to 100 pages: $5.00; Over 100 pages, USPS rate
+          </small>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Additional request groups (hidden by default) -->
+    <% (1..9).each do |i| %>
+      <div class="request-group" data-index="<%= i %>" style="display: none;">
+        <h4 class="request-group-title">Request <%= i + 1 %></h4>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input "collection_title_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Collection Title", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input "box_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Box", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input "folder_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Folder", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input "identifier_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Title/Identifier/File Name/Description", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input "estimated_pages_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Estimated Number of Pages", 
+                as: :integer,
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+        </div>
+        
+        <!-- Pricing Options for Request <%= i + 1 %> -->
+        <div class="mt-3 mb-4">
+          <h5>Pricing Options <span class="text-danger">*</span></h5>
+          <p class="text-muted small">Select one or more options (at least one is required):</p>
+          
+          <div class="form-check mb-2">
+            <%= f.input "pricing_tiff_#{i.to_s.rjust(2, '0')}".to_sym, as: :boolean, boolean_style: :inline, 
+                label: "TIFF (600 DPI): $5 per image",
+                wrapper_html: { class: "mb-2" },
+                input_html: { class: "pricing-option", data: { request: i } } %>
+          </div>
+          
+          <div class="form-check mb-2">
+            <%= f.input "pricing_pdf_#{i.to_s.rjust(2, '0')}".to_sym, as: :boolean, boolean_style: :inline,
+                label: "PDF: $0.50 per page",
+                wrapper_html: { class: "mb-2" },
+                input_html: { class: "pricing-option", data: { request: i } } %>
+          </div>
+          
+          <div class="form-check mb-2">
+            <%= f.input "pricing_photocopy_#{i.to_s.rjust(2, '0')}".to_sym, as: :boolean, boolean_style: :inline,
+                label: "Photocopy: $0.50 per page plus postage",
+                wrapper_html: { class: "mb-2" },
+                input_html: { class: "pricing-option", data: { request: i } } %>
+            <small class="form-text text-muted ms-4">
+              Up to 100 pages: $5.00; Over 100 pages, USPS rate
+            </small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="request-actions mt-4">
+    <button type="button" data-form-submissions-target="addBtn" data-action="click->form-submissions#addRequest" class="btn btn-success me-2">
+      <i class="fas fa-plus"></i> Add a new request
+    </button>
+    <button type="button" data-form-submissions-target="removeBtn" data-action="click->form-submissions#removeRequest" class="btn btn-outline-secondary" style="display: none;">
+      <i class="fas fa-minus"></i> Remove last request
+    </button>
+  </div>
+</div>

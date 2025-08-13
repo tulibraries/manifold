@@ -610,6 +610,7 @@ en:
       submissions:
         success_message: Thank you for your message. We will contact you soon!
         av_requests_success_message: Thank you for submitting your duplication request. Submit another request.
+        copy_requests_success_message: Thank you for submitting your copy request. Submit another request.
         failure_message: Cannot send message.
       shared:
         your_info: Your Information

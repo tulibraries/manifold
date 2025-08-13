@@ -10,56 +10,6 @@ class Form < MailForm::Base
   attribute :comments
   attribute :form_type
   attribute :recipients
-  attribute :request_title
-  attribute :collection_title
-  attribute :identifier
-  attribute :notes
-  attribute :format
-  attribute :request_title_01
-  attribute :collection_title_01
-  attribute :identifier_01
-  attribute :notes_01
-  attribute :format_01
-  attribute :request_title_02
-  attribute :collection_title_02
-  attribute :identifier_02
-  attribute :notes_02
-  attribute :format_02
-  attribute :request_title_03
-  attribute :collection_title_03
-  attribute :identifier_03
-  attribute :notes_03
-  attribute :format_03
-  attribute :request_title_04
-  attribute :collection_title_04
-  attribute :identifier_04
-  attribute :notes_04
-  attribute :format_04
-  attribute :request_title_05
-  attribute :collection_title_05
-  attribute :identifier_05
-  attribute :notes_05
-  attribute :format_05
-  attribute :request_title_06
-  attribute :collection_title_06
-  attribute :identifier_06
-  attribute :notes_06
-  attribute :format_06
-  attribute :request_title_07
-  attribute :collection_title_07
-  attribute :identifier_07
-  attribute :notes_07
-  attribute :format_07
-  attribute :request_title_08
-  attribute :collection_title_08
-  attribute :identifier_08
-  attribute :notes_08
-  attribute :format_08
-  attribute :request_title_09
-  attribute :collection_title_09
-  attribute :identifier_09
-  attribute :notes_09
-  attribute :format_09
   attribute :tu_id
   attribute :phone
   attribute :department
@@ -211,6 +161,42 @@ class Form < MailForm::Base
   attribute :format_preference
   attribute :format_preference_other
   attribute :reason_for_request
+
+  # Copy-requests specific fields
+  attribute :box
+  attribute :folder
+  attribute :estimated_pages, :integer
+  attribute :pricing_tiff, :boolean
+  attribute :pricing_pdf, :boolean
+  attribute :pricing_photocopy, :boolean
+
+  # Copy-requests repeatable fields (up to 10 requests)
+  (1..9).each do |i|
+    index = i.to_s.rjust(2, "0")
+    attribute :"box_#{index}"
+    attribute :"folder_#{index}"
+    attribute :"estimated_pages_#{index}", :integer
+    attribute :"pricing_tiff_#{index}", :boolean
+    attribute :"pricing_pdf_#{index}", :boolean
+    attribute :"pricing_photocopy_#{index}", :boolean
+  end
+
+  # AV-requests specific fields
+  attribute :request_title
+  attribute :collection_title
+  attribute :identifier
+  attribute :notes
+  attribute :format
+
+  # av-requests repeatable fields (up to 10 requests)
+  (1..9).each do |i|
+    index = i.to_s.rjust(2, "0")
+    attribute :"request_title_#{index}"
+    attribute :"collection_title_#{index}"
+    attribute :"identifier_#{index}"
+    attribute :"notes_#{index}"
+    attribute :"format_#{index}"
+  end
 
   # Some forms don't supply an email and name, so they were failing
   def default_from_name

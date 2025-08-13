@@ -27,3 +27,20 @@ unless FormInfo.exists?(slug: "av-requests")
 </ul>"
   )
 end
+
+# Create FormInfo for Copy request form
+unless FormInfo.exists?(slug: "copy-requests")
+  FormInfo.create!(
+    title: "Copy Request Form",
+    slug: "copy-requests",
+    grouping: "",
+    recipients: ["placeholder@temple.edu"],  # Not used since form saves to database only
+    intro: "<h3 class='mt-4'>Pricing Information</h3>
+<ul>
+<li>TIFF (600 DPI): $5 per image</li>
+<li>PDF: $0.50 per page</li>
+<li>Photocopy: $0.50 per page plus postage</li>
+</ul>
+<p><strong>Postage Information:</strong> Up to 100 pages: $5.00; Over 100 pages, USPS rate</p>"
+  )
+end

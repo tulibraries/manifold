@@ -1,5 +1,5 @@
-<div data-controller="av-requests">
-  <div id="request-groups-container" data-av-requests-target="container">
+<div data-controller="form-submissions" data-form-submissions-form-type-value="av-requests">
+  <div id="request-groups-container" data-form-submissions-target="container">
     <div class="request-group" data-index="0">
       <h4 class="request-group-title">Request 1</h4>
       <div class="row">
@@ -70,10 +70,10 @@
   </div>
 
   <div class="request-actions mt-4">
-    <button type="button" data-av-requests-target="addBtn" data-action="click->av-requests#addRequest" class="btn btn-success me-2" onclick="console.log('Button clicked directly')">
+    <button type="button" data-form-submissions-target="addBtn" data-action="click->form-submissions#addRequest" class="btn btn-success me-2">
       <i class="fas fa-plus"></i> Add a new request
     </button>
-    <button type="button" data-av-requests-target="removeBtn" data-action="click->av-requests#removeRequest" class="btn btn-outline-secondary" style="display: none;">
+    <button type="button" data-form-submissions-target="removeBtn" data-action="click->form-submissions#removeRequest" class="btn btn-outline-secondary" style="display: none;">
       <i class="fas fa-minus"></i> Remove last request
     </button>
   </div>

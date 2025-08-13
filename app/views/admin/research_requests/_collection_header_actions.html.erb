@@ -1,0 +1,9 @@
+<%#
+This partial is used to customize the header actions for the research requests index page.
+It adds a CSV export button to the default Administrate index view.
+%>
+
+<%= link_to "Export CSV", 
+    export_csv_admin_research_requests_path(format: :csv), 
+    class: "button button--primary",
+    title: "Download all research requests as CSV" %>

@@ -35,12 +35,18 @@ class FormsController < ApplicationController
 
     form_type = params[:form][:form_type]
 
-    # Handle av-requests type differently - save to database instead of sending email
+    # Handle av-requests and copy-requests types - save to database instead of sending email
     if form_type == "av-requests"
       if save_to_database_only
         redirect_to form_path("av-requests", success: "av_requests")
       else
         redirect_to form_path("av-requests", success: "false")
+      end
+    elsif form_type == "copy-requests"
+      if save_to_database_only
+        redirect_to form_path("copy-requests", success: "copy_requests")
+      else
+        redirect_to form_path("copy-requests", success: "false")
       end
     else
       # For all other form types, use the existing email delivery system
@@ -106,6 +112,40 @@ class FormsController < ApplicationController
         if missing_acknowledgments.any?
           Rails.logger.error "Missing required acknowledgments: #{missing_acknowledgments.join(', ')}"
           return false
+        end
+      elsif type == "copy-requests"
+        # Validate that each request has at least one pricing option selected
+        # First check the main request (no suffix)
+        main_pricing_options = ["pricing_tiff", "pricing_pdf", "pricing_photocopy"]
+        main_selected = main_pricing_options.any? { |field|
+          value = form_params[field]
+          ["1", "1.0", 1, true, "true", "on"].include?(value)
+        }
+
+        unless main_selected
+          Rails.logger.error "No pricing options selected for main copy request"
+          return false
+        end
+
+        # Check additional requests (01-09)
+        (1..9).each do |i|
+          index = i.to_s.rjust(2, "0")
+          # Check if this request has any data (collection_title is required)
+          collection_field = "collection_title_#{index}"
+
+          if form_params[collection_field].present?
+            # This request has data, so it needs pricing options
+            pricing_fields = ["pricing_tiff_#{index}", "pricing_pdf_#{index}", "pricing_photocopy_#{index}"]
+            has_pricing = pricing_fields.any? { |field|
+              value = form_params[field]
+              ["1", "1.0", 1, true, "true", "on"].include?(value)
+            }
+
+            unless has_pricing
+              Rails.logger.error "No pricing options selected for copy request #{i + 1}"
+              return false
+            end
+          end
         end
       end
 

@@ -7,6 +7,12 @@
       <%= t("manifold.forms.submissions.av_requests_success_message") %>
     </div>
   </div>
+  <% elsif params[:success] == "copy_requests" %>
+  <div class="row">
+    <div class="col-12 flash notice mb-3">
+      <%= t("manifold.forms.submissions.copy_requests_success_message") %>
+    </div>
+  </div>
   <% elsif params[:success] == "true" %>
   <div class="row">
     <div class="col-12 flash notice mb-3">
@@ -36,7 +42,7 @@
         </div>
       </div>
 
-      <% if @intro.present? && @type != "av-requests" %>
+      <% if @intro.present? && @type != "av-requests" && @type != "copy-requests" %>
       <div class="row">
         <div class="col mb-3">
           <%= render "intro" %>
@@ -47,7 +53,7 @@
       <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
       <%= f.input :title, as: :hidden, input_html: { value: "#{@title}" } %>
-      <%= f.input :recipients, as: :hidden, input_html: { value: "#{@recipients}" } unless @type == "av-requests" %>
+      <%= f.input :recipients, as: :hidden, input_html: { value: "#{@recipients}" } unless @type == "av-requests" || @type == "copy-requests" %>
 
       <% unless ["event-space-request"].include? @type %> 
         <div class="row">
@@ -70,7 +76,7 @@
         </div>
       <% end %>
 
-      <% if @intro.present? && @type == "av-requests" %>
+      <% if @intro.present? && (@type == "av-requests" || @type == "copy-requests") %>
       <div class="row">
         <div class="col mb-3">
           <%= render "intro" %>

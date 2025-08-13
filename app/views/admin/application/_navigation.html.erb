@@ -18,27 +18,13 @@ as defined by the routes in the `admin/` namespace
   
   <% 
     all_resources = Administrate::Namespace.new(namespace).resources_with_index_route.sort
-    all_resources.map! { |item| item == "form_submissions" ? "av_requests" : item }
-    all_resources.sort!
   %>
   
   <% all_resources.each do |resource| %>
-    <% 
-      # Generate display name based on resource string
-      case resource
-      when 'av_requests'
-    %>
-        <%= link_to(
-          "AV Requests",
-          resource_index_route("form_submissions"),
-          class: "navigation__link navigation__link--#{nav_link_state("form_submissions")}"
-        ) if existing_action?(model_from_resource("form_submissions"), :index) && authorized_action?(model_from_resource("form_submissions"), :index) %>
-    <% else %>
-        <%= link_to(
-          resource.humanize.titleize,
-          resource_index_route(resource),
-          class: "navigation__link navigation__link--#{nav_link_state(resource)}"
-        ) if existing_action?(model_from_resource(resource), :index) && authorized_action?(model_from_resource(resource), :index) %>
-    <% end %>
+    <%= link_to(
+      resource.humanize.titleize,
+      resource_index_route(resource),
+      class: "navigation__link navigation__link--#{nav_link_state(resource)}"
+    ) if existing_action?(model_from_resource(resource), :index) && authorized_action?(model_from_resource(resource), :index) %>
   <% end %>
 </nav>

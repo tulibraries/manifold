@@ -14,7 +14,7 @@
             required: true %>
 <%= f.input :id_acknowledgment, as: :boolean, label: t("manifold.forms.group_visit.id_acknowledgment"), 
             required: true %>
-<%= f.input :referrer, label: t("manifold.forms.group_visit.referrer") %>
+<%= f.input :referrer, label: t("manifold.forms.group_visit.referrer"), wrapper_html: { class: "mt-3" } %>
 <%= f.input :comments, as: :text, label: t("manifold.forms.group_visit.comments") %>
 
 

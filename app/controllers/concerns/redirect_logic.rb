@@ -23,7 +23,7 @@ module RedirectLogic
       end
     else
       # Check if this is a finding aids related URL and redirect to new home
-      if legacy_path.include?("finding-aids") || legacy_path.include?("finding_aids")
+      if legacy_path.include?("finding-aid") || legacy_path.include?("finding_aid")
         redirect_to(url_for(t("manifold.default.finding_aids_new_home")), allow_other_host: true)
       else
         raise ActionController::RoutingError.new("Not Found")

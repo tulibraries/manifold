@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ruby: [ "3.4.3" ]
+        ruby: [ "3.4" ]
 
     steps:
       - name: Checkout code
@@ -40,7 +40,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-          ruby: ["3.4.3"]
+          ruby: ["3.4"]
 
     steps:
       - name: Checkout code
@@ -75,7 +75,8 @@ jobs:
         run: bundle exec rspec spec
 
       - name: Upload coverage to Coveralls
-        uses: coverallsapp/github-action@v1
+        uses: coverallsapp/github-action@v2
+        continue-on-error: true
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./coverage/lcov/app.lcov

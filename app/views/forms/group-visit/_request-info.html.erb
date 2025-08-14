@@ -10,5 +10,11 @@
             required: true %>
 <%= f.input :minors, as: :radio_buttons, label: t("manifold.forms.group_visit.minors"), 
             required: true %>
+<%= f.input :asrs_only, as: :boolean, label: t("manifold.forms.group_visit.asrs_only"), 
+            required: true %>
+<%= f.input :id_acknowledgment, as: :boolean, label: t("manifold.forms.group_visit.id_acknowledgment"), 
+            required: true %>
 <%= f.input :referrer, label: t("manifold.forms.group_visit.referrer") %>
 <%= f.input :comments, as: :text, label: t("manifold.forms.group_visit.comments") %>
+
+

@@ -131,11 +131,6 @@ Rails.application.routes.draw do
     get "libraries/ambler" => :show, as: "buildings_ambler"
   end
 
-  controller :scrc do
-    get "scrc/*path" => :show
-    get "collections/scrc/*path" => :show
-  end
-
   controller :persons do
     get "people/specialists/print" => :specialists_print, as: "specialists_print"
     get "people" => :index, as: "person_search"

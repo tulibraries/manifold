@@ -4,6 +4,9 @@ module RedirectLogic
   extend ActiveSupport::Concern
 
   def redirect_or_404(instance = nil)
+    # If we have a valid instance, just return and let the request proceed
+    return if instance.present?
+    
     redirect = Redirect.find_by(legacy_path:)
     if redirect
       unless redirect.no_message
@@ -19,29 +22,12 @@ module RedirectLogic
                     )
       end
     else
-      if Rails.application.routes.recognize_path(legacy_path)
-        if instance
-          if instance.respond_to? :holdover
-            if instance.holdover == true
-              return
-            else
-              redirect_to(url_for(t("manifold.default.finding_aids_new_home")), allow_other_host: true)
-            end
-          else
-            return
-          end
-        else
-          if legacy_path.include? "aids?collection"
-            redirect_to(url_for(t("manifold.default.finding_aids_new_home")), allow_other_host: true)
-          else
-            raise ActionController::RoutingError.new("Not Found")
-          end
-        end
+      # Check if this is a finding aids related URL and redirect to new home
+      if legacy_path.include?("finding-aids") || legacy_path.include?("finding_aids")
+        redirect_to(url_for(t("manifold.default.finding_aids_new_home")), allow_other_host: true)
       else
         raise ActionController::RoutingError.new("Not Found")
       end
-
-
     end
   end
 

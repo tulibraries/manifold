@@ -6,7 +6,7 @@ module Admin::Draftable
   def update
     klass = params[:controller].split("/").last.classify
     resource_name = klass.underscore
-    draftable_classes = [Building, Category, Collection, Event, Exhibition, FindingAid, Group, Policy, Service, Space, Webpage]
+    draftable_classes = [Building, Category, Collection, Event, Exhibition, Group, Policy, Service, Space, Webpage]
     draftable_class = draftable_classes.find { |x| x.name == klass }
     if draftable_class.nil?
       raise "Unable to find the draftable class."

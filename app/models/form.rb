@@ -212,7 +212,7 @@ class Form < MailForm::Base
   attribute :format_preference_other
   attribute :reason_for_request
   attribute :asrs_only
-  attribute :valid_id_acknowledgement
+  attribute :id_acknowledgment
   # Copy-requests specific fields
   attribute :box
   attribute :folder

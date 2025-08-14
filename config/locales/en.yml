@@ -1189,6 +1189,7 @@ en:
           info_redirect: /scrc/info
           form_id: ask-scrc
         links:
+          copy-request-form: Request Copies
           visit_label: Visit & Study
           visit_link: /scrc/study
           emphases_label: Collecting Emphases

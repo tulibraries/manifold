@@ -16,6 +16,11 @@
     <div class="col-12 col-lg-3 pe-14 left-links">
       <ul class="list-unstyled locations">
         <li>
+          <%= link_to t("manifold.webpages.scrc.links.copy-request-form"), 
+                    copy_requests_form_path,
+                    id:"scrc_copy_request_button" %>
+        </li>
+        <li>
           <%= link_to t("manifold.webpages.scrc.locations.reading_room"), 
                     scrc_reading_room_path,
                     id:"scrc_reading_room_button" %>

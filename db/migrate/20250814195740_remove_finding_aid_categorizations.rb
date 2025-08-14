@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class RemoveFindingAidCategorizations < ActiveRecord::Migration[7.2]
   def up
-    Categorization.where(categorizable_type: 'FindingAid').delete_all
+    Categorization.where(categorizable_type: "FindingAid").delete_all
   end
 
   def down

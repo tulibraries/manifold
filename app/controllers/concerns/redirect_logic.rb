@@ -6,7 +6,7 @@ module RedirectLogic
   def redirect_or_404(instance = nil)
     # If we have a valid instance, just return and let the request proceed
     return if instance.present?
-    
+
     redirect = Redirect.find_by(legacy_path:)
     if redirect
       unless redirect.no_message

@@ -51,11 +51,17 @@ class Category < ApplicationRecord
     end
 
     grouped.map do |type, objs|
-      ids = objs.map(&:categorizable_id)
-      weights = objs.map(&:weight)
-      type.constantize.find(ids)
-        .each_with_index { |obj, index| obj.category_weight = weights[index]  }
-    end.reduce([], :concat)
+      begin
+        ids = objs.map(&:categorizable_id)
+        weights = objs.map(&:weight)
+        type.constantize.find(ids)
+          .each_with_index { |obj, index| obj.category_weight = weights[index]  }
+      rescue NameError => e
+        # Skip types that no longer exist (like FindingAid)
+        Rails.logger.warn "Skipping categorizable_type '#{type}' - constant not found: #{e.message}"
+        []
+      end
+    end.compact.reduce([], :concat)
       .sort_by { |categorized| [categorized&.category_weight, categorized&.label] }
   end
 

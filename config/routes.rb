@@ -124,7 +124,7 @@ Rails.application.routes.draw do
     get "finding-aids.json", to: redirect("assets/cache/finding_aids.json")
   end
 
-  get '/forms/copy-requests', to: 'forms#show', defaults: { form_type: 'copy-requests' }, as: 'copy_requests_form'
+  get "/forms/copy-requests", to: "forms#show", defaults: { form_type: "copy-requests" }, as: "copy_requests_form"
 
   controller :events do
     get "events/search" => :search, as: "events_search"

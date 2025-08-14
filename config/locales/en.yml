@@ -1000,6 +1000,8 @@ en:
           four: Alumni/Donor Visit
           five: Professional Development Visit
           six: General Interest
+        asrs_only: Is this request for the ASRS (Automated Storage and Retrieval System) only?
+        id_acknowledgment: I acknowledge that all members of my group will need to present a valid Temple ID or government-issued photo ID to access the ASRS.
 
       hidden_title_text: To change the title of this resource, please <a href=mailto:"tul-web-support@temple.edu">contact an administrator</a>.
 

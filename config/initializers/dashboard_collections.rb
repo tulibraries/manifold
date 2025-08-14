@@ -22,32 +22,6 @@ module Tude
                             "Virtual Tour"
                           ]
 
-    config.finding_aid_subjects = ["African Americans",
-                                    "Agriculture",
-                                    "Arts and Entertainment",
-                                    "Benevolent Societies",
-                                    "Business And Economic Development",
-                                    "Community Affairs",
-                                    "Congregations",
-                                    "Crime and the Legal System",
-                                    "Culture",
-                                    "Education",
-                                    "Health",
-                                    "Housing",
-                                    "Immigrant-Ethnic Communities",
-                                    "Labor",
-                                    "Miscellaneous",
-                                    "News Media",
-                                    "Planning",
-                                    "Politics and Protest",
-                                    "Rabbis",
-                                    "Senior Citizens",
-                                    "Social Services",
-                                    "Sports and Recreation",
-                                    "Transportation",
-                                    "Travel",
-                                    "Women"]
-
     config.policy_categories = ["Access Guidelines",
                                 "Borrowers",
                                 "Collection Development & Management Guidelines",

@@ -15,8 +15,6 @@ RSpec.shared_examples "serializable" do
     let(:factory_model) { FactoryBot.create(model, :with_image) }
   end
 
-  let(:factory_model) { FactoryBot.create(model, holdover: true) } if instance == "finding_aid"
-
   it "returns valid json" do
     get :show, format: :json, params: { id: factory_model.id }
     Tempfile.open(["serialized_#{factory_model.class.to_s.underscore.downcase}-", ".json"]) do |serialized|

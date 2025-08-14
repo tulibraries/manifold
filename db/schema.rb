@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_21_135706) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_14_162835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -190,15 +190,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_21_135706) do
     t.index ["category_id"], name: "index_categorizations_on_category_id"
   end
 
-  create_table "collection_aids", force: :cascade do |t|
-    t.integer "collection_id"
-    t.integer "finding_aid_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["collection_id"], name: "index_collection_aids_on_collection_id"
-    t.index ["finding_aid_id"], name: "index_collection_aids_on_finding_aid_id"
-  end
-
   create_table "collections", force: :cascade do |t|
     t.string "name"
     t.text "subject"
@@ -306,30 +297,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_21_135706) do
     t.integer "weight", default: 10
     t.index ["file_upload_id", "attachable_id", "attachable_type"], name: "polymorphic_fileability", unique: true
     t.index ["file_upload_id"], name: "index_fileabilities_on_file_upload_id"
-  end
-
-  create_table "finding_aid_responsibilities", force: :cascade do |t|
-    t.integer "finding_aid_id"
-    t.integer "person_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["finding_aid_id"], name: "index_finding_aid_responsibilities_on_finding_aid_id"
-    t.index ["person_id"], name: "index_finding_aid_responsibilities_on_person_id"
-  end
-
-  create_table "finding_aids", force: :cascade do |t|
-    t.string "name"
-    t.text "subject"
-    t.string "content_link"
-    t.string "identifier"
-    t.integer "collection_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "drupal_id"
-    t.string "path"
-    t.string "slug"
-    t.boolean "holdover", default: false
-    t.index ["collection_id"], name: "index_finding_aids_on_collection_id"
   end
 
   create_table "form_infos", force: :cascade do |t|

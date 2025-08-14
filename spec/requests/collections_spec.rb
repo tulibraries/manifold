@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.describe "Collections", type: :request do
   let(:collection) { FactoryBot.create(:collection) }
-  let(:findind_aid) { FactoryBot.create(:finding_aid, collection: :collection) }
 
   describe "a request for /collection/integer when collection exists" do
     it "renders the collection" do

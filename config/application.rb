@@ -39,7 +39,6 @@ module Manifold
     config.search_catalog = "#{config.librarysearch_base_url}/catalog"
     config.search_databases = "#{config.librarysearch_base_url}/databases"
     config.search_everything = "#{config.librarysearch_base_url}/everything"
-    config.librarysearch_finding_aids_url = "#{config.librarysearch_base_url}/web_content?f%5Bweb_content_type_facet%5D%5B%5D=Finding+Aids"
     config.primo_articles_url = "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI"
 
     config.google_sheets_api_key = ENV["GOOGLE_SHEETS_API_KEY"]

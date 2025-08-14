@@ -32,7 +32,6 @@ Rails.application.routes.draw do
     resources :events
     resources :exhibitions
     resources :external_links
-    resources :finding_aids
     resources :file_uploads
     resources :form_infos
     resources :form_submissions, only: [:index, :show] do
@@ -102,7 +101,6 @@ Rails.application.routes.draw do
   resources :external_link, only: [:show]
   resources :forms, only: [:index, :new, :create, :show]
   resources :file_uploads, only: [:new, :create]
-  resources :finding_aids, only: [:show]
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index]
   resources :alerts_json, only: [:index], path: "/alerts.json"
@@ -115,13 +113,6 @@ Rails.application.routes.draw do
 
   controller :blog_posts do
     get "blogposts/tags/:tag" => :index, as: "blog_post_tags"
-  end
-
-  controller :finding_aids do
-    get "finding_aids/:id" => :show
-    get "finding-aids/:id" => :show
-    get "finding_aids.json", to: redirect("assets/cache/finding_aids.json")
-    get "finding-aids.json", to: redirect("assets/cache/finding_aids.json")
   end
 
   get "/forms/copy-requests", to: "forms#show", defaults: { form_type: "copy-requests" }, as: "copy_requests_form"

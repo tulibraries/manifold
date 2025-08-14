@@ -280,6 +280,8 @@ en:
           reason_for_request: Reason for request
           additional_setup_requirements:  Additional Setup Requirements
           catering: Catering
+          asrs_only: ASRS only?
+          id_acknowledgment: Vaild ID Acknowledgement
             
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"

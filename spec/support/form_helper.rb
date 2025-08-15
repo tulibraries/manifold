@@ -22,6 +22,7 @@ RSpec.shared_examples "email form" do
         expect(response).to have_http_status(302)
         follow_redirect!
         expect(response).to have_http_status(200)
+        expect(response.body).to include("duplication request")
       end
 
       expect(the_email.subject).to eq(form_params[:form][:title])

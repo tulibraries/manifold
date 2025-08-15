@@ -23,6 +23,10 @@ export default class extends Controller {
       
       if (nextGroup) {
         nextGroup.style.display = 'block'
+        
+        // Set required attributes for visible fields based on form type
+        this.setRequiredFieldsForGroup(nextGroup, true)
+        
         this.currentRequestCount++
         
         // Show remove button if we have more than 1 group
@@ -52,6 +56,9 @@ export default class extends Controller {
       if (groupToHide) {
         groupToHide.style.display = 'none'
         
+        // Remove required attributes from fields when hiding
+        this.setRequiredFieldsForGroup(groupToHide, false)
+        
         // Clear all input values in the hidden group
         const inputs = groupToHide.querySelectorAll('input, textarea, select')
         inputs.forEach(input => {
@@ -71,6 +78,25 @@ export default class extends Controller {
       if (this.currentRequestCount < this.maxRequestsValue) {
         this.addBtnTarget.style.display = 'inline-block'
       }
+    }
+  }
+  
+  // Helper method to set required fields based on form type and visibility
+  setRequiredFieldsForGroup(group, isVisible) {
+    if (this.formTypeValue === 'av-requests') {
+      // For av-requests: format field should be required when visible
+      const formatSelect = group.querySelector('select[name*="format_"]')
+      if (formatSelect) {
+        formatSelect.required = isVisible
+      }
+    } else if (this.formTypeValue === 'copy-requests') {
+      // For copy-requests: format field should be required when visible
+      const formatSelect = group.querySelector('select[name*="format_"]')
+      if (formatSelect) {
+        formatSelect.required = isVisible
+      }
+      // Note: box, folder, and estimated_pages are not required in hidden sections
+      // but could be made required here if needed by the business logic
     }
   }
 }

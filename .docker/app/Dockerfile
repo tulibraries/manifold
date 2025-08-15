@@ -42,7 +42,6 @@ RUN apk add -U --no-cache \
     if [ "${RAILS_ENV}" = "production" ]; then rm -rf node_modules; fi && \
     if [ "${RAILS_ENV}" = "production" ]; then rm -rf tmp/*; fi && \
     if [ "${RAILS_ENV}" = "production" ]; then apk del build-dependencies; fi && \
-    rails sync:todays_hours && \
     rm -rf /var/cache/apk/ && \
     rm -rf /usr/local/share/.cache/yarn && \
     chown nobody -R /app/tmp && \

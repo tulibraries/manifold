@@ -4,7 +4,7 @@
       <h4 class="request-group-title">Request 1</h4>
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :collection_title, label: "Collection Title", required: true, wrapper_html: { class: "mb-3" } %>
+          <%= f.input :collection_title, label: "Collection Title", wrapper_html: { class: "mb-3" } %>
         </div>
         <div class="col-md-6">
           <%= f.input :box, label: "Box", required: true, wrapper_html: { class: "mb-3" } %>
@@ -15,7 +15,7 @@
           <%= f.input :folder, label: "Folder", required: true, wrapper_html: { class: "mb-3" } %>
         </div>
         <div class="col-md-6">
-          <%= f.input :identifier, label: "Title/Identifier/File Name/Description", required: true, wrapper_html: { class: "mb-3" } %>
+          <%= f.input :identifier, label: "Title/Identifier/File Name/Description", wrapper_html: { class: "mb-3" } %>
         </div>
       </div>
       <div class="row">
@@ -83,7 +83,8 @@
                   ['Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)', 'photocopy']
                 ],
                 include_blank: "Select format...",
-                wrapper_html: { class: "mb-3" } %>
+                wrapper_html: { class: "mb-3" },
+                required: true %>
           </div>
         </div>
       </div>

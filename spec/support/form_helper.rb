@@ -29,7 +29,7 @@ RSpec.shared_examples "email form" do
       form_params[:form].each do |key, value|
         expect(the_email.body.raw_source).to include(value) unless [:recipients, :form_type].include? key
       end
-      
+
       # Check that the form submission persists to the db.
       expect(FormSubmission.take.form_type).to eq(form_params[:form][:form_type])
     end

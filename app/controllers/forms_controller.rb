@@ -5,7 +5,7 @@ class FormsController < ApplicationController
   def index
     form_groups = FormInfo.for_index.group_by(&:grouping)
     # Remove 'No Grouping' from form_groups
-    form_groups.delete('No Grouping')
+    form_groups.delete("No Grouping")
     @form_groups = Hash[form_groups.sort_by { |k, v| k == "Administrative Services" ? 1 : 0 }]
     respond_to do |format|
       format.html {}
@@ -85,5 +85,4 @@ class FormsController < ApplicationController
   def use_unsafe_params
     request.parameters
   end
-
 end

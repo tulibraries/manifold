@@ -13,9 +13,6 @@
   <% if field.attribute == :categories %><p class="h-three"></p><% end %>
 </div>
 <div class="field-unit__field field-unit--has-many" data-controller="selectize">
-  <% if field.resource.class.to_s == "FindingAid" && field.attribute == :collections %>
-    <p class="red"><%= t("manifold.default.fields.has_many.finding_aid").html_safe %></p>
-  <% end %>
   <%= f.select(field.attribute_key, nil, {include_blank: true}, {multiple: true}.merge(field.html_attributes)) do %>
     <%= options_for_select(field.associated_resource_options.sort, field.selected_options) %>
   <% end %>

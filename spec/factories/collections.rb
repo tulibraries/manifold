@@ -11,7 +11,6 @@ FactoryBot.define do
     categories { [] }
 
     association :space
-    finding_aids { [] }
 
     trait :with_image do
       after :create do |collection|

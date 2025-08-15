@@ -59,9 +59,6 @@ SitemapGenerator::Sitemap.create do
   Collection.find_each do |collection|
     add collection_path(collection), lastmod: collection.updated_at
   end
-  FindingAid.find_each do |finding_aid|
-    add finding_aid_path(finding_aid), lastmod: finding_aid.updated_at
-  end
   Exhibition.find_each do |exhibition|
     add exhibition_path(exhibition), lastmod: exhibition.updated_at
   end

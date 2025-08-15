@@ -13,6 +13,15 @@ export default class extends Controller {
     console.log(`Form Submissions controller connected for ${this.formTypeValue} form`)
     
     this.currentRequestCount = 1
+    
+    // Add form submission validation
+    this.setupFormValidation()
+    
+    // Don't set required attributes for the first group - it uses HTML validation
+    // Only manage JS validation for groups 2-10 (data-index 1-9)
+    
+    // Add red asterisks to required field labels (skip first group)
+    this.updateRequiredLabels()
   }
 
   addRequest() {
@@ -26,6 +35,9 @@ export default class extends Controller {
         
         // Set required attributes for visible fields based on form type
         this.setRequiredFieldsForGroup(nextGroup, true)
+        
+        // Update required labels for the new group
+        this.updateRequiredLabels()
         
         this.currentRequestCount++
         
@@ -59,6 +71,9 @@ export default class extends Controller {
         // Remove required attributes from fields when hiding
         this.setRequiredFieldsForGroup(groupToHide, false)
         
+        // Update required labels after hiding group
+        this.updateRequiredLabels()
+        
         // Clear all input values in the hidden group
         const inputs = groupToHide.querySelectorAll('input, textarea, select')
         inputs.forEach(input => {
@@ -90,13 +105,198 @@ export default class extends Controller {
         formatSelect.required = isVisible
       }
     } else if (this.formTypeValue === 'copy-requests') {
-      // For copy-requests: format field should be required when visible
+      // For copy-requests: format, box, folder, and estimated_pages should be required when visible
       const formatSelect = group.querySelector('select[name*="format_"]')
+      const boxInput = group.querySelector('input[name*="box"]')
+      const folderInput = group.querySelector('input[name*="folder"]')
+      const estimatedPagesInput = group.querySelector('input[name*="estimated_pages"]')
+      
       if (formatSelect) {
         formatSelect.required = isVisible
       }
-      // Note: box, folder, and estimated_pages are not required in hidden sections
-      // but could be made required here if needed by the business logic
+      if (boxInput) {
+        boxInput.required = isVisible
+      }
+      if (folderInput) {
+        folderInput.required = isVisible
+      }
+      if (estimatedPagesInput) {
+        estimatedPagesInput.required = isVisible
+      }
     }
+  }
+  
+  // Setup form submission validation
+  setupFormValidation() {
+    const form = this.element.closest('form')
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        if (!this.validateForm()) {
+          event.preventDefault()
+          this.highlightInvalidFields()
+          this.scrollToFirstError()
+        }
+      })
+      
+      // Add real-time validation to clear errors when fields are filled
+      this.setupRealTimeValidation()
+    }
+  }
+  
+  // Setup real-time validation to clear errors as user types
+  setupRealTimeValidation() {
+    this.containerTarget.addEventListener('input', (event) => {
+      const field = event.target
+      if (field.required && field.classList.contains('is-invalid')) {
+        if (field.value && field.value.trim() !== '') {
+          // Clear error styling for this field
+          field.classList.remove('is-invalid')
+          field.style.borderColor = ''
+          field.style.boxShadow = ''
+          
+          // Reset label color
+          const wrapper = field.closest('.mb-3, .form-group')
+          if (wrapper) {
+            const label = wrapper.querySelector('label')
+            if (label) {
+              label.style.color = ''
+            }
+          }
+        }
+      }
+    })
+    
+    this.containerTarget.addEventListener('change', (event) => {
+      const field = event.target
+      if (field.required && field.classList.contains('is-invalid')) {
+        if (field.value && field.value.trim() !== '') {
+          // Clear error styling for this field
+          field.classList.remove('is-invalid')
+          field.style.borderColor = ''
+          field.style.boxShadow = ''
+          
+          // Reset label color
+          const wrapper = field.closest('.mb-3, .form-group')
+          if (wrapper) {
+            const label = wrapper.querySelector('label')
+            if (label) {
+              label.style.color = ''
+            }
+          }
+        }
+      }
+    })
+  }
+  
+  // Validate all visible required fields (HTML handles first group, JS handles groups 2-10)
+  validateForm() {
+    // Let HTML validation handle the first group (data-index="0")
+    // Only check JS-managed groups (data-index 1-9)
+    const jsValidatedGroups = this.containerTarget.querySelectorAll('.request-group:not([style*="display: none"]):not([data-index="0"])')
+    let isValid = true
+    
+    jsValidatedGroups.forEach(group => {
+      const requiredFields = group.querySelectorAll('[required]')
+      requiredFields.forEach(field => {
+        if (!field.value || field.value.trim() === '') {
+          isValid = false
+        }
+      })
+    })
+    
+    return isValid
+  }
+  
+  // Highlight invalid fields with red border and error styling (skip first group - HTML handles it)
+  highlightInvalidFields() {
+    // Clear previous error styles for JS-managed groups only
+    this.clearErrorStyles()
+    
+    // Only highlight JS-managed groups (data-index 1-9), let HTML handle first group
+    const jsValidatedGroups = this.containerTarget.querySelectorAll('.request-group:not([style*="display: none"]):not([data-index="0"])')
+    
+    jsValidatedGroups.forEach(group => {
+      const requiredFields = group.querySelectorAll('[required]')
+      requiredFields.forEach(field => {
+        if (!field.value || field.value.trim() === '') {
+          // Add error styling to the field
+          field.classList.add('is-invalid')
+          field.style.borderColor = '#dc3545'
+          field.style.boxShadow = '0 0 0 0.2rem rgba(220, 53, 69, 0.25)'
+          
+          // Find and highlight the label
+          const wrapper = field.closest('.mb-3, .form-group')
+          if (wrapper) {
+            const label = wrapper.querySelector('label')
+            if (label) {
+              label.style.color = '#dc3545'
+            }
+          }
+        }
+      })
+    })
+  }
+  
+  // Clear all error styling (only for JS-managed groups)
+  clearErrorStyles() {
+    const jsValidatedGroups = this.containerTarget.querySelectorAll('.request-group:not([data-index="0"])')
+    jsValidatedGroups.forEach(group => {
+      const allFields = group.querySelectorAll('input, select, textarea')
+      allFields.forEach(field => {
+        field.classList.remove('is-invalid')
+        field.style.borderColor = ''
+        field.style.boxShadow = ''
+        
+        // Reset label colors
+        const wrapper = field.closest('.mb-3, .form-group')
+        if (wrapper) {
+          const label = wrapper.querySelector('label')
+          if (label) {
+            label.style.color = ''
+          }
+        }
+      })
+    })
+  }
+  
+  // Scroll to the first error field
+  scrollToFirstError() {
+    const firstErrorField = this.containerTarget.querySelector('.is-invalid')
+    if (firstErrorField) {
+      firstErrorField.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      })
+      firstErrorField.focus()
+    }
+  }
+  
+  // Add red asterisks to required field labels (skip first group which uses HTML validation)
+  updateRequiredLabels() {
+    // Remove existing JS-added asterisks first
+    this.containerTarget.querySelectorAll('.required-asterisk').forEach(asterisk => {
+      asterisk.remove()
+    })
+    
+    // Add asterisks to currently visible required fields (skip data-index="0")
+    const visibleGroups = this.containerTarget.querySelectorAll('.request-group:not([style*="display: none"]):not([data-index="0"])')
+    
+    visibleGroups.forEach(group => {
+      const requiredFields = group.querySelectorAll('[required]')
+      requiredFields.forEach(field => {
+        const wrapper = field.closest('.mb-3, .form-group')
+        if (wrapper) {
+          const label = wrapper.querySelector('label')
+          if (label && !label.querySelector('.required-asterisk')) {
+            const asterisk = document.createElement('span')
+            asterisk.textContent = ' *'
+            asterisk.className = 'required-asterisk'
+            asterisk.style.color = '#dc3545'
+            asterisk.style.fontWeight = 'bold'
+            label.appendChild(asterisk)
+          }
+        }
+      })
+    })
   }
 }

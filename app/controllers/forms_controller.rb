@@ -58,7 +58,7 @@ class FormsController < ApplicationController
 
   def persist_form!
     type = params[:form].delete(:form_type)
-    recipients = params[:form].delete(:recipients)
+    params[:form].delete(:recipients) # Remove recipients from params before storing
     FormSubmission.create(
       form_type: type,
       form_attributes: use_unsafe_params

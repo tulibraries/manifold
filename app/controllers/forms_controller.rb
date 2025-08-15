@@ -4,6 +4,8 @@ class FormsController < ApplicationController
   before_action :use_unsafe_params, only: [:persist_form!]
   def index
     form_groups = FormInfo.for_index.group_by(&:grouping)
+    # Remove 'No Grouping' from form_groups
+    form_groups.delete('No Grouping')
     @form_groups = Hash[form_groups.sort_by { |k, v| k == "Administrative Services" ? 1 : 0 }]
     respond_to do |format|
       format.html {}
@@ -32,26 +34,21 @@ class FormsController < ApplicationController
   def create
     @form = Form.new(params[:form])
     @form.request = request
-
     form_type = params[:form][:form_type]
+    info = FormInfo.find_by(slug: form_type)
+    @form.recipients = info.recipients.reject(&:empty?).to_json if info.present?
 
-    # Handle av-requests and copy-requests types - save to database instead of sending email
-    if form_type == "av-requests"
-      if save_to_database_only
-        redirect_to form_path("av-requests", success: "av_requests")
+    email_sent = @form.deliver
+    persist_form!
+
+    if form_type == "av-requests" || form_type == "copy-requests"
+      if email_sent
+        redirect_to form_path(form_type, success: form_type)
       else
-        redirect_to form_path("av-requests", success: "false")
-      end
-    elsif form_type == "copy-requests"
-      if save_to_database_only
-        redirect_to form_path("copy-requests", success: "copy_requests")
-      else
-        redirect_to form_path("copy-requests", success: "false")
+        redirect_to form_path(form_type, success: "false")
       end
     else
-      # For all other form types, use the existing email delivery system
-      if @form.deliver
-        persist_form!
+      if email_sent
         redirect_to forms_path(success: "true")
       else
         redirect_to forms_path(success: "false")
@@ -89,43 +86,4 @@ class FormsController < ApplicationController
     request.parameters
   end
 
-  def save_to_database_only
-    begin
-      type = params[:form][:form_type]
-      # For av-requests, we don't need recipients since we're not sending emails
-      # Use the same unsafe params method that persist_form! uses
-      form_params = use_unsafe_params[:form]
-
-      # Validate required acknowledgments for av-requests
-      if type == "av-requests"
-        required_acknowledgments = ["outside_vendor_fees", "duplication_limits", "copyright_acknowledgment"]
-        missing_acknowledgments = []
-
-        required_acknowledgments.each do |field|
-          value = form_params[field]
-          # Check if the value represents a checked checkbox
-          unless ["1", "1.0", 1, true, "true", "on"].include?(value)
-            missing_acknowledgments << field.humanize
-          end
-        end
-
-        if missing_acknowledgments.any?
-          Rails.logger.error "Missing required acknowledgments: #{missing_acknowledgments.join(', ')}"
-          return false
-        end
-      elsif type == "copy-requests"
-        # No additional validation needed for copy-requests
-        # Format field validation is handled by Rails' built-in required validation
-      end
-
-      FormSubmission.create!(
-        form_type: type,
-        form_attributes: form_params.except("form_type", "recipients")
-      )
-      true
-    rescue => e
-      Rails.logger.error "Failed to save form to database: #{e.message}"
-      false
-    end
-  end
 end

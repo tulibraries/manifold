@@ -15,8 +15,8 @@ unless FormInfo.exists?(slug: "av-requests")
   FormInfo.create!(
     title: "AV Duplication Request Form",
     slug: "av-requests",
-    grouping: "",
-    recipients: ["placeholder@temple.edu"],  # Not used since form saves to database only
+    grouping: "No Grouping",
+    recipients: ["scrc@temple.edu"],
     intro: "<h3 class='mt-4'>Payment</h3>
 <ul>
 <li>#{I18n.t('helpers.description.form.payment_intro')}</li>
@@ -31,10 +31,10 @@ end
 # Create FormInfo for Copy request form
 unless FormInfo.exists?(slug: "copy-requests")
   FormInfo.create!(
-    title: "Copy Request Form",
+    title: "Request Copies",
     slug: "copy-requests",
-    grouping: "",
-    recipients: ["placeholder@temple.edu"],  # Not used since form saves to database only
+    grouping: "No Grouping",
+    recipients: ["scrc@temple.edu"],
     intro: "<h3 class='mt-4'>Payment</h3>
 <ul>
 <li>#{I18n.t('helpers.description.form.payment_intro')}</li>

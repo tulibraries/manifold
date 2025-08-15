@@ -132,10 +132,19 @@ en:
           main_menu: Main Menu
       attributes:
         form:
+          form_type: ""
           name: "Name"
           email: "Email"
           comments: "Comments"
-          form_type: ""
+          collection_title: "Collection Title"
+          copyright_acknowledgment: "Copyright Acknowledgement"
+          duplication_limits: "Duplication Limits"
+          identifier: "Identifier"
+          outside_vendor_fees: "Outside Vendor Fees"
+          format: "Format"
+          box: "Box Number"
+          folder: "Folder Number"
+          estimated_pages: "Estimated Pages"
           tu_id: "Temple TUid"
           phone: "Phone Number"
           department: "Department"

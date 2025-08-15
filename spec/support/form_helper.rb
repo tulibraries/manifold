@@ -22,13 +22,15 @@ RSpec.shared_examples "email form" do
         expect(response).to have_http_status(302)
         follow_redirect!
         expect(response).to have_http_status(200)
-      else
-        expect(the_email.subject).to eq(form_params[:form][:title])
-        # Recipients and form_type not included in email body
-        form_params[:form].each do |key, value|
-          expect(the_email.body.raw_source).to include(value) unless [:recipients, :form_type].include? key
-        end
+        expect(response.body).to include("duplication request")
       end
+
+      expect(the_email.subject).to eq(form_params[:form][:title])
+      # Recipients and form_type not included in email body
+      form_params[:form].each do |key, value|
+        expect(the_email.body.raw_source).to include(value) unless [:recipients, :form_type].include? key
+      end
+
       # Check that the form submission persists to the db.
       expect(FormSubmission.take.form_type).to eq(form_params[:form][:form_type])
     end

@@ -1,13 +1,13 @@
 <div class="container-lg form mt-0 pt-0">
   <% unless @type.nil? || @type == "all" %>
 
-  <% if params[:success] == "av_requests" %>
+  <% if params[:success] == "av-requests" %>
   <div class="row">
     <div class="col-12 flash notice mb-3">
       <%= t("manifold.forms.submissions.av_requests_success_message") %>
     </div>
   </div>
-  <% elsif params[:success] == "copy_requests" %>
+  <% elsif params[:success] == "copy-requests" %>
   <div class="row">
     <div class="col-12 flash notice mb-3">
       <%= t("manifold.forms.submissions.copy_requests_success_message") %>

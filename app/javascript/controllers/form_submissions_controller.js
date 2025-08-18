@@ -105,23 +105,10 @@ export default class extends Controller {
         formatSelect.required = isVisible
       }
     } else if (this.formTypeValue === 'copy-requests') {
-      // For copy-requests: format, box, folder, and estimated_pages should be required when visible
+      // For copy-requests: only format field should be required when visible
       const formatSelect = group.querySelector('select[name*="format_"]')
-      const boxInput = group.querySelector('input[name*="box"]')
-      const folderInput = group.querySelector('input[name*="folder"]')
-      const estimatedPagesInput = group.querySelector('input[name*="estimated_pages"]')
-      
       if (formatSelect) {
         formatSelect.required = isVisible
-      }
-      if (boxInput) {
-        boxInput.required = isVisible
-      }
-      if (folderInput) {
-        folderInput.required = isVisible
-      }
-      if (estimatedPagesInput) {
-        estimatedPagesInput.required = isVisible
       }
     }
   }

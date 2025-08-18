@@ -19,8 +19,8 @@ RSpec.describe FormInfo, type: :model do
   end
 
   describe "for index scope" do
-    not_grouped = FormInfo.create!(title: "Not grouped", slug: "not-grouped", recipients: ["library@temple.edu"], grouping: nil)
-    grouped = FormInfo.create!(title: "Grouped", slug: "grouped", recipients: ["library@temple.edu"], grouping: "Administrative Services")
+    not_grouped = FactoryBot.create(:form_info, title: "Not grouped", slug: "not-grouped", recipients: ["library@temple.edu"])
+    grouped = FactoryBot.create(:form_info, title: "Grouped", slug: "grouped", recipients: ["library@temple.edu"], grouping: "Administrative Services")
 
     it "includes forms wth grouping" do
       expect(FormInfo.for_index).to include(grouped)

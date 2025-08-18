@@ -19,7 +19,7 @@ RUN apk add -U --no-cache \
       musl=1.2.5-r10 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.43-r3 \
-      postgresql16-client=16.9-r0 \
+      postgresql16-client=16.10-r0 \
       shared-mime-info=2.4-r6 \
       tzdata=2025b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \

@@ -19,7 +19,7 @@ RSpec.describe FormInfo, type: :model do
   end
 
   describe "for index scope" do
-    not_grouped = FormInfo.create!(title: "Not grouped", slug: "not-grouped", recipients: ["library@temple.edu"], grouping: nil)
+    not_grouped = FormInfo.create!(title: "Not grouped", slug: "not-grouped", recipients: ["library@temple.edu"], grouping: "Not Grouped")
     grouped = FormInfo.create!(title: "Grouped", slug: "grouped", recipients: ["library@temple.edu"], grouping: "Administrative Services")
 
     it "includes forms wth grouping" do

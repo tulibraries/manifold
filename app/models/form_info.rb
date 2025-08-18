@@ -9,5 +9,5 @@ class FormInfo < ApplicationRecord
   belongs_to :account, optional: true
   validates :recipients, presence: true, has_recipients: true
   validates :grouping, presence: true
-  scope :for_index, -> { where.not(grouping: "No Grouping") }
+  scope :for_index, -> { where.not(grouping: [nil, "No Grouping"]) }
 end

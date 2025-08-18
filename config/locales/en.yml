@@ -120,6 +120,8 @@ en:
           phone: "Phone Number"
           department: "Department"
           affiliation: "Temple Affiliation"
+          phone_number: "Phone Number"
+          temple_affiliation: "Temple Affiliation"
           affiliation_other: "Affiliation Other"
           material_type: "Material Type"
           material_type_other: "Material Type Other"
@@ -262,8 +264,7 @@ en:
           catering: Catering
           asrs_only: ASRS only?
           copyright_acknowledgment: "Copyright Acknowledgement"
-          id_acknowledgment: Vaild ID Acknowledgement
-          duplication_limits: "Duplication Limits"
+          id_acknowledgment: Valid ID Acknowledgement
           duplication_limits: "Duplication Limits"
           outside_vendor_fees: "Outside Vendor Fees"
           # AV Copy request form
@@ -307,8 +308,37 @@ en:
           identifier_10: "Identifier 10"
           notes_10: "Notes 10"
           format_10: "Format 10"
-          phone_number: "Phone Number"
-          temple_affiliation: "Temple Affiliation"
+          # Copy request form unique fields
+          box_01: "Box Number 01"
+          folder_01: "Folder Number 01"
+          estimated_pages_01: "Estimated Pages 01"
+          box_02: "Box Number 02"
+          folder_02: "Folder Number 02"
+          estimated_pages_02: "Estimated Pages 02"
+          box_03: "Box Number 03"
+          folder_03: "Folder Number 03"
+          estimated_pages_03: "Estimated Pages 03"
+          box_04: "Box Number 04"
+          folder_04: "Folder Number 04"
+          estimated_pages_04: "Estimated Pages 04"
+          box_05: "Box Number 05"
+          folder_05: "Folder Number 05"
+          estimated_pages_05: "Estimated Pages 05"
+          box_06: "Box Number 06"
+          folder_06: "Folder Number 06"
+          estimated_pages_06: "Estimated Pages 06"
+          box_07: "Box Number 07"
+          folder_07: "Folder Number 07"
+          estimated_pages_07: "Estimated Pages 07"
+          box_08: "Box Number 08"
+          folder_08: "Folder Number 08"
+          estimated_pages_08: "Estimated Pages 08"
+          box_09: "Box Number 09"
+          folder_09: "Folder Number 09"
+          estimated_pages_09: "Estimated Pages 09"
+          box_10: "Box Number 10"
+          folder_10: "Folder Number 10"
+          estimated_pages_10: "Estimated Pages 10"
             
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"

@@ -31,7 +31,7 @@ RUN apk add -U --no-cache \
       jpeg-dev=9f-r0 \
       libjpeg-turbo-dev=3.1.0-r0 \
       libxslt-dev=1.1.43-r3 \
-      postgresql16-dev=16.9-r0 \
+      postgresql16-dev=16.10-r0 \
       nodejs=22.16.0-r2 \
       yarn=1.22.22-r1 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \

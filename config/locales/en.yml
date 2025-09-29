@@ -1255,6 +1255,10 @@ en:
           visit_link: /scrc/study
           emphases_label: Collecting Emphases
           emphases_link: /scrc-collections
+          instruction_label: Instruction and Class Visits
+          researcher_account: SCRC Researcher Account 
+          researcher_account_link: https://temple.aeon.atlas-sys.com/logon
+          plan_visit: Plan Your Visit
 
       tudsc:
         page_title: Loretta C. Duckworth Scholars Studio

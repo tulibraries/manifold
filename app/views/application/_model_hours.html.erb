@@ -12,7 +12,7 @@
 </div>
 
 <%= render @building.weekly_hours if controller_name == "buildings" %>
-<%= render @space.weekly_hours if controller_name == "spaces" %>
+<%= render @space.weekly_hours if ["spaces", "webpages"].include? controller_name %>
 
 <% if controller_name == "spaces" && @model.image.attached?  %>
   <div class="space-image mt-4">

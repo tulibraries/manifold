@@ -117,6 +117,8 @@ Rails.application.routes.draw do
 
   get "/forms/copy-requests", to: "forms#show", defaults: { form_type: "copy-requests" }, as: "copy_requests_form"
 
+  get "/scrc/planyourvisit", to: "webpages#scrc_planyourvisit", as: "scrc_planyourvisit"
+
   controller :events do
     get "events/search" => :search, as: "events_search"
     get "events/workshops" => :workshops, as: "workshops"

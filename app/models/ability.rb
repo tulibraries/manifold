@@ -5,29 +5,22 @@ class Ability
 
   def initialize(account)
     if account.present?
-      # Check if this is a FormSubmission-only user (student workers)
-      is_form_submission_only = account.admin_group&.managed_entities == ["FormSubmission"]
+      @is_form_submission_only = account.admin_group&.managed_entities == ["FormSubmission"]
 
-      if is_form_submission_only
-        # FormSubmission-only users are completely locked down to only FormSubmissions
+      if @is_form_submission_only
         can :manage, FormSubmission
       else
-        # All other authenticated users can read everything
-        can :read, :all
+        can [:read, :index, :show], :all
       end
 
       if account.admin?
-        # Admins can manage everything
         can :manage, :all
       else
-        # Check if this is a FormSubmission-only user (student workers)
-        is_form_submission_only = account.admin_group&.managed_entities == ["FormSubmission"]
-
-        unless is_form_submission_only
+        unless @is_form_submission_only
           # FormSubmission-only users already handled above
           # All other authenticated users get base permissions
-          # These entities are openly manageable by any authenticated user
-          can :manage, [Building, Space, Person, Group, Service, Collection, Policy, Category]
+          # These entities are openly manageable by any authenticated user (NOT AdminGroup-managed)
+          can :manage, [Space, Group, Service, Collection, Category]
 
           # AdminGroup users get ADDITIONAL permissions for their managed entities
           # This is ADDITIVE - they keep base permissions AND get extra ones
@@ -44,8 +37,8 @@ class Ability
           end
         end
 
-        # Additional permissions for alertors
-        if account.alertability?
+        # Additional permissions for alertors (if alertability method exists)
+        if account.respond_to?(:alertability?) && account.alertability?
           can :update, Alert
         end
       end

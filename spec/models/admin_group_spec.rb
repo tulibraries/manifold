@@ -59,6 +59,13 @@ RSpec.describe AdminGroup, type: :model do
         expect(saved_admin_group.managed_entities).to eql(["Blog", "Person"])
       end
     end
+    context "FormSubmission managed entity" do
+      it "can be assigned to an admin group" do
+        admin_group.managed_entities << "FormSubmission"
+        admin_group.save!
+        expect(saved_admin_group.managed_entities).to include("FormSubmission")
+      end
+    end
 
     context "a mix of valid and invalid entities" do
       it "raises a validation error" do

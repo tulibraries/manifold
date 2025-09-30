@@ -11,7 +11,15 @@ end
 
 RSpec.shared_examples "renderable_dashboard" do
   let(:factory_model) { FactoryBot.create(model_name.to_sym) }
-  let(:account) { FactoryBot.create(:account) }
+  # Use admin account for AdminGroup-managed entities, regular account for base entities
+  let(:account) {
+    admingroup_managed_entities = %w[Blog Event Exhibition Redirect Webpage]
+    if admingroup_managed_entities.include?(described_class.to_s)
+      FactoryBot.create(:account, admin: true)
+    else
+      FactoryBot.create(:account)
+    end
+  }
   let(:index_path) { send("admin_#{model_name.pluralize}_path") }
   let(:show_path) { send("admin_#{model_name}_path", factory_model) }
   let(:new_path) { send("new_admin_#{model_name}_path") }

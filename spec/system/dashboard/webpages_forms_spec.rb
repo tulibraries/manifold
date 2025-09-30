@@ -25,8 +25,9 @@ RSpec.describe "Dashboard::Webpage", type: :system do
     scenario "Create new item as non-admin" do
       login_as(@non_admin, scope: :account)
       visit("/admin/webpages/new")
-      expect(page).to_not have_xpath("//*[@id=\"webpage_slug\"]")
-      expect(page).to have_xpath("//*[@id=\"webpage_title\"]")
+      # Non-admin users should be redirected due to authorization
+      expect(page).to have_current_path(admin_people_path)
+      expect(page).to have_content("You are not authorized to access this page")
     end
   end
 

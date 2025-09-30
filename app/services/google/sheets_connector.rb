@@ -49,7 +49,7 @@ module Google
     private
 
       def get_location(location)
-        case location
+        case location&.downcase
         when "charles"
           Rails.application.config.hours_worksheet_charles
         when "24-7"

@@ -8,7 +8,7 @@ class AdminGroup < ApplicationRecord
   validate :valid_managed_entity_types
   validate :managed_entities_uniqueness
 
-  has_many :members, class_name: "Account", dependent: :destroy
+  has_many :members, class_name: "Account", dependent: :nullify
 
   private
 
@@ -34,21 +34,15 @@ class AdminGroup < ApplicationRecord
       %w{
         Blog
         Building
-        Category
-        Collection
         Event
         Exhibition
         ExternalLink
         FormSubmission
-        Group
         Highlight
-        LibraryHour
         MenuGroup
         Person
         Policy
         Redirect
-        Service
-        Space
       }
     end
 

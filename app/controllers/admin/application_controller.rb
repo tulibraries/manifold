@@ -9,7 +9,11 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_account!
+    before_action :check_admin_access!
     before_action :set_paper_trail_whodunnit
+
+    # Add CanCan authorization checks for CRUD actions
+    before_action :authorize_resource!, except: [:root]
     before_action :use_version, only: [:edit]
     before_action :non_editable_titles, only: [:edit]
     before_action :populate_drafts, only: [:edit]
@@ -18,6 +22,21 @@ module Admin
     helper_method :admin_only?
     helper_method :user_editable_field?
     helper_method :current_user, :signed_in?, :is_admin?
+    helper_method :authorized_action?
+
+
+    # Skip the admin access check for the root action since it handles its own redirect logic
+    skip_before_action :check_admin_access!, only: [:root]
+
+    def root
+      # Redirect Form Submission-only users to their landing page
+      if current_account.admin_group&.managed_entities == ["FormSubmission"]
+        redirect_to admin_form_submissions_path
+      else
+        # Default behavior - redirect to people index for all other users
+        redirect_to admin_people_path
+      end
+    end
 
     def resource_params
       params.require(resource_name).permit(dashboard.permitted_attributes)
@@ -43,6 +62,54 @@ module Admin
       !admin_only?(attribute) || account.admin
     end
 
+    def check_admin_access!
+      # Basic check - ensure user is authenticated
+      # All authenticated users can access admin interface (with appropriate restrictions)
+      # The detailed authorization is handled by authorize_resource!
+      unless current_account
+        redirect_to root_path, alert: "You must be logged in to access the admin area."
+        return false
+      end
+
+      return true
+    end
+
+    def authorize_resource!
+      resource_type = controller_name.classify.constantize rescue nil
+      return unless resource_type
+
+      case action_name
+      when "index", "show"
+        authorize! :read, resource_type
+      when "new", "create"
+        authorize! :create, resource_type
+      when "edit", "update"
+        if params[:id].present?
+          resource = resource_type.find(params[:id])
+          authorize! :update, resource
+        else
+          authorize! :update, resource_type
+        end
+      when "destroy"
+        if params[:id].present?
+          resource = resource_type.find(params[:id])
+          authorize! :destroy, resource
+        else
+          authorize! :destroy, resource_type
+        end
+      else
+        authorize! :manage, resource_type
+      end
+    rescue CanCan::AccessDenied => exception
+      # Redirect FormSubmission-only users to their allowed area
+      if current_account.admin_group&.managed_entities == ["FormSubmission"]
+        redirect_to admin_form_submissions_path, alert: exception.message
+      else
+        # Redirect other users to people index which all authenticated users can access
+        redirect_to admin_people_path, alert: exception.message
+      end
+    end
+
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
@@ -53,6 +120,21 @@ module Admin
 
     def is_admin?
       signed_in? ? current_user.admin : false
+    end
+
+    def authorized_action?(resource_class, action)
+      case action
+      when :index, :show
+        can?(:read, resource_class)
+      when :new, :create
+        can?(:create, resource_class)
+      when :edit, :update
+        can?(:update, resource_class)
+      when :destroy
+        can?(:destroy, resource_class)
+      else
+        can?(:manage, resource_class)
+      end
     end
 
     def use_version

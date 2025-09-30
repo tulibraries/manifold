@@ -6,17 +6,16 @@ class AdminGroup < ApplicationRecord
 
   attr_json :managed_entities, :string, array: true, default: []
   validate :valid_managed_entity_types
-  validate :manged_entities_uniqueness
+  validate :managed_entities_uniqueness
 
   has_many :members, class_name: "Account", dependent: :destroy
 
-
   private
 
-    def manged_entities_uniqueness
+    def managed_entities_uniqueness
       managed = managed_entities.select { |me| entity_already_managed?(me) }
       if managed.any?
-        errors.add(:manged_entities, "Some Entity Types are already managed: #{managed.join(', ')}")
+        errors.add(:managed_entities, "Some Entity Types are already managed: #{managed.join(', ')}")
       end
     end
 
@@ -27,24 +26,29 @@ class AdminGroup < ApplicationRecord
     def valid_managed_entity_types
       unknown_types = managed_entities - manageable_entity_types
       unless unknown_types.empty?
-        errors.add(:manged_entities, "Some provided Entity Types are not valid : #{unknown_types.join(', ')}")
+        errors.add(:managed_entities, "Some provided Entity Types are not valid : #{unknown_types.join(', ')}")
       end
     end
 
     def self.manageable_entity_types
-      %w{ Blog
-          Building
-          Event
-          Exhibition
-          ExternalLink
-          FindingAid
-          Group
-          Highlight
-          LibraryHour
-          MenuGroup
-          Person
-          Policy
-          Redirect
+      %w{
+        Blog
+        Building
+        Category
+        Collection
+        Event
+        Exhibition
+        ExternalLink
+        FormSubmission
+        Group
+        Highlight
+        LibraryHour
+        MenuGroup
+        Person
+        Policy
+        Redirect
+        Service
+        Space
       }
     end
 

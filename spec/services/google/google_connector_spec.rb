@@ -32,6 +32,12 @@ RSpec.describe Google::SheetsConnector, type: :service do
     it "gets location specific hours" do
       expect(todays_hours.value_ranges[0].values.size).to be > 0
     end
+    it "handles uppercase location parameters" do
+      VCR.use_cassette("todays_hours") do
+        uppercase_hours = Google::SheetsConnector.call(feature: "hours", scope: "CHARLES")
+        expect(uppercase_hours.value_ranges[0].values.size).to be > 0
+      end
+    end
   end
 
   context "Retrieves etexts data from API" do

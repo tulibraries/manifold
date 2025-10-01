@@ -14,7 +14,7 @@ RSpec.describe Admin::EventsController, type: :controller do
   let(:valid_session) { {} }
 
   before(:all) do
-    @account = FactoryBot.create(:account)
+    @account = FactoryBot.create(:account, admin: true)
   end
 
   describe "GET #edit" do

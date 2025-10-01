@@ -4,10 +4,22 @@ require "rails_helper"
 
 RSpec.describe "Dashboard::Building", type: :system do
   before(:all) do
+    # Clean up existing AdminGroups to avoid conflicts
+    AdminGroup.destroy_all
+
     @admin = FactoryBot.create(:account, admin: true)
-    @non_admin = FactoryBot.create(:account, admin: false)
+    @admin_group = FactoryBot.create(:admin_group,
+      name: "Building Test Admin Group",
+      managed_entities: ["Building"])
+    @non_admin = FactoryBot.create(:account, admin: false, admin_group: @admin_group)
     @building = FactoryBot.create(:building)
     @models = ["building"]
+  end
+
+  after(:all) do
+    Account.destroy_all
+    AdminGroup.destroy_all
+    Building.destroy_all
   end
 
   context "New Building Administrate Page" do

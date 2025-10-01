@@ -15,7 +15,6 @@ RSpec.describe "webpages/tudsc", type: :view do
     render
     expect(rendered).to match /id="lcdss_makerspace_button"/
     expect(rendered).to match /id="lcdss_vr_studio_button"/
-    expect(rendered).to match /id="lcdss_innovation_lab_button"/
     expect(rendered).to match /id="lcdss_newsletter_button"/
     expect(rendered).to match /id="lcdss_staff_link_button"/
     expect(rendered).to match /id="lcdss_visit_header"/

@@ -16,10 +16,10 @@ require "action_text/system_test_helper"
 require "webmock/rspec"
 require "base64"
 
-
-Capybara.app_host = "http://localhost:3000"
+# prevent dev server conflicts
+Capybara.app_host = "http://localhost:3001"
 Capybara.server_host = "localhost"
-Capybara.server_port = "3000"
+Capybara.server_port = "3001"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 

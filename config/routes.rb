@@ -79,7 +79,7 @@ Rails.application.routes.draw do
       end
     end
 
-    root to: "people#index"
+    root to: "application#root"
 
   end
 

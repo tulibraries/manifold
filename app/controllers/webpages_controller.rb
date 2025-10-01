@@ -102,6 +102,10 @@ class WebpagesController < ApplicationController
     @intro = Snippet.find_by(slug: "scrc-homepage-intro")
   end
 
+  def scrc_planyourvisit
+    @space = Space.find_by(slug: "scrc-reading-room")
+  end
+
   def blockson
     @webpage = Webpage.find_by(slug: "blockson-intro")
     @visit_links = Category.find_by(slug: "blockson-study").items

@@ -201,10 +201,11 @@ RSpec.configure do |config|
     c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
     auth_string = ENV["PANOPTO_API_USER"].to_s + ":" + ENV["PANOPTO_API_KEY"].to_s
     c.filter_sensitive_data("<base64_key_code>") { Base64.encode64(auth_string) }
-    # Ignore localhost and 127.0.0.1 requests (test server and WebDriver requests)
+
+    # Ignore Selenium WebDriver and Capybara server requests
     c.ignore_request do |request|
-      host = URI(request.uri).host
-      host == "localhost" || host == "127.0.0.1"
+      # Ignore requests to localhost (Capybara server)
+      URI(request.uri).host == "127.0.0.1" || URI(request.uri).host == "localhost"
     end
   end
 

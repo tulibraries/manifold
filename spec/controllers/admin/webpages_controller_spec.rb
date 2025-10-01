@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe Admin::WebpagesController, type: :controller do
 
   before(:all) do
-    @account = FactoryBot.create(:account)
+    @account = FactoryBot.create(:account, admin: true)
   end
 
   describe "GET #edit" do

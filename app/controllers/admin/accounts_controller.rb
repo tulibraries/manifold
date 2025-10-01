@@ -19,7 +19,7 @@ module Admin
         fi.recipients.include?(account.email)
       }
 
-      if form_infos
+      if form_infos.any?
         links = []
         form_infos.each do |form_info|
           links << "<a href=/admin/form_infos/#{form_info.slug}/edit>#{form_info.title}</a>"

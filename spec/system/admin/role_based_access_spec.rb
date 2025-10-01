@@ -109,7 +109,7 @@ RSpec.describe "Role-based Admin Access", type: :system do
       expect(page.status_code).to eq(200)
     end
 
-    it "can access buildings admin (original behavior restored)" do
+    it "can access buildings admin (read-only - cannot manage)" do
       login_as(regular_user, scope: :account)
       visit admin_buildings_path
 
@@ -121,9 +121,11 @@ RSpec.describe "Role-based Admin Access", type: :system do
       login_as(regular_user, scope: :account)
       visit admin_root_path
 
+      expect(page).to have_link("Spaces")
+      expect(page).to have_link("Groups")
+      expect(page).to have_link("Services")
       expect(page).to have_link("Form Submissions")
       expect(page).to have_link("Buildings")
-      expect(page).to have_link("Spaces")
     end
   end
 end

@@ -7,23 +7,20 @@ RSpec.describe Ability, type: :model do
     let(:account) { FactoryBot.create(:account) }
     let(:ability) { Ability.new(account) }
     example "can read everything" do
-      expect(ability.can?(:read, Building)).to be(true)
-      expect(ability.can?(:read, Space)).to be(true)
-      expect(ability.can?(:read, Group)).to be(true)
-      expect(ability.can?(:read, Person)).to be(true)
-      expect(ability.can?(:read, Alert)).to be(true)
-      expect(ability.can?(:read, Service)).to be(true)
-      expect(ability.can?(:read, Collection)).to be(true)
       expect(ability.can?(:read, :all)).to be(true)
     end
-    example "can manage base entities" do
-      expect(ability.can?(:manage, Building)).to be(true)
+    example "can manage base entities (not AdminGroup-managed)" do
       expect(ability.can?(:manage, Space)).to be(true)
-      expect(ability.can?(:manage, Person)).to be(true)
       expect(ability.can?(:manage, Group)).to be(true)
       expect(ability.can?(:manage, Service)).to be(true)
       expect(ability.can?(:manage, Collection)).to be(true)
-      expect(ability.can?(:manage, Policy)).to be(true)
+      expect(ability.can?(:manage, Category)).to be(true)
+    end
+
+    example "cannot manage AdminGroup-managed entities (requires AdminGroup membership)" do
+      expect(ability.can?(:manage, FormSubmission)).to be(false)
+      expect(ability.can?(:manage, Event)).to be(false)
+      expect(ability.can?(:manage, Blog)).to be(false)
     end
     example "cannot manage admin-only entities" do
       expect(ability.can?(:manage, AdminGroup)).to be(false)
@@ -52,7 +49,7 @@ RSpec.describe Ability, type: :model do
     end
   end
 
-  describe "admin group ability - Form Submission only (RESTRICTIVE - Student Workers)" do
+  describe "admin group ability - Form Submission only (RESTRICTIVE)" do
     let(:admin_group) { FactoryBot.create(:admin_group, managed_entities: ["FormSubmission"]) }
     let(:account) { FactoryBot.create(:account, admin: false, admin_group: admin_group) }
     let(:ability) { Ability.new(account) }
@@ -97,21 +94,15 @@ RSpec.describe Ability, type: :model do
     end
 
     example "can STILL manage base entities (additive permissions)" do
-      expect(ability.can?(:manage, Building)).to be(true)
-      expect(ability.can?(:manage, Person)).to be(true)
       expect(ability.can?(:manage, Space)).to be(true)
+      expect(ability.can?(:manage, Group)).to be(true)
+      expect(ability.can?(:manage, Service)).to be(true)
     end
 
-    example "cannot manage admin-only entities" do
-      expect(ability.can?(:manage, AdminGroup)).to be(false)
-      expect(ability.can?(:manage, Account)).to be(false)
-      expect(ability.can?(:manage, :all)).to be(false)
-    end
-
-    example "can read everything" do
-      expect(ability.can?(:read, FormSubmission)).to be(true)
-      expect(ability.can?(:read, Event)).to be(true)
-      expect(ability.can?(:read, :all)).to be(true)
+    example "cannot manage other AdminGroup-managed entities (only gets their assigned entities)" do
+      expect(ability.can?(:manage, FormSubmission)).to be(false)
+      expect(ability.can?(:manage, Exhibition)).to be(false)
+      expect(ability.can?(:manage, Highlight)).to be(false)
     end
   end
 
@@ -119,10 +110,16 @@ RSpec.describe Ability, type: :model do
     let(:account) { FactoryBot.create(:account, admin: false, admin_group: nil) }
     let(:ability) { Ability.new(account) }
 
-    example "can manage base entities" do
-      expect(ability.can?(:manage, Building)).to be(true)
-      expect(ability.can?(:manage, Person)).to be(true)
+    example "can manage base entities (not AdminGroup-managed)" do
       expect(ability.can?(:manage, Space)).to be(true)
+      expect(ability.can?(:manage, Group)).to be(true)
+      expect(ability.can?(:manage, Service)).to be(true)
+    end
+
+    example "cannot manage AdminGroup-managed entities (requires AdminGroup membership)" do
+      expect(ability.can?(:manage, FormSubmission)).to be(false)
+      expect(ability.can?(:manage, Event)).to be(false)
+      expect(ability.can?(:manage, Blog)).to be(false)
     end
 
     example "cannot manage entities that require admin groups" do
@@ -166,10 +163,16 @@ RSpec.describe Ability, type: :model do
       expect(ability.can?(:manage, Blog)).to be(false)
     end
 
-    example "can still manage base entities that are not AdminGroup-managed" do
-      expect(ability.can?(:manage, Building)).to be(true)
-      expect(ability.can?(:manage, Person)).to be(true)
+    example "can manage base entities (all users can manage these)" do
       expect(ability.can?(:manage, Space)).to be(true)
+      expect(ability.can?(:manage, Group)).to be(true)
+      expect(ability.can?(:manage, Service)).to be(true)
+    end
+
+    example "cannot manage AdminGroup-managed entities (requires AdminGroup membership)" do
+      expect(ability.can?(:manage, FormSubmission)).to be(false)
+      expect(ability.can?(:manage, Event)).to be(false)
+      expect(ability.can?(:manage, Blog)).to be(false)
     end
 
     example "can read AdminGroup-managed entities (read access is open)" do
@@ -194,9 +197,15 @@ RSpec.describe Ability, type: :model do
     end
 
     example "can STILL manage base entities (additive permissions)" do
-      expect(ability.can?(:manage, Building)).to be(true)
-      expect(ability.can?(:manage, Person)).to be(true)
       expect(ability.can?(:manage, Space)).to be(true)
+      expect(ability.can?(:manage, Group)).to be(true)
+      expect(ability.can?(:manage, Service)).to be(true)
+    end
+
+    example "cannot manage other AdminGroup-managed entities (except FormSubmissions - special case)" do
+      expect(ability.can?(:manage, Event)).to be(false)
+      expect(ability.can?(:manage, Blog)).to be(false)
+      expect(ability.can?(:manage, ExternalLink)).to be(false)
     end
 
     example "cannot manage admin-only entities" do

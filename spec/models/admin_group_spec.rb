@@ -40,9 +40,9 @@ RSpec.describe AdminGroup, type: :model do
     let(:saved_admin_group) { AdminGroup.find(admin_group.id) }
     context "a single valid entity" do
       it "can be persisted" do
-        admin_group.managed_entities << "Group"
+        admin_group.managed_entities << "Blog"
         admin_group.save!
-        expect(saved_admin_group.managed_entities).to eql(["Group"])
+        expect(saved_admin_group.managed_entities).to eql(["Blog"])
       end
     end
     context "a single invalid entity" do

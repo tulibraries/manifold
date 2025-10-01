@@ -12,7 +12,8 @@ as defined by the routes in the `admin/` namespace
   <%= link_to( "Homepage", root_path,
               class: "navigation__link navigation__link" ) %>
   <hr />
-  <%= link_to(t('manifold.default.signout'), destroy_account_session_path, method: :delete,
+  <%= link_to(t('manifold.default.signout'), destroy_account_session_path, 
+              data: { turbo_method: :delete },
               class: "navigation__link navigation__link--signout") %>        
   <hr/>
   

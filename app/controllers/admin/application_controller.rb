@@ -12,7 +12,7 @@ module Admin
     before_action :check_admin_access!
     before_action :set_paper_trail_whodunnit
 
-    # Add CanCan authorization checks for CRUD actions
+    # Override Administrate's built-in authorization
     before_action :authorize_resource!, except: [:root]
     before_action :use_version, only: [:edit]
     before_action :non_editable_titles, only: [:edit]
@@ -33,7 +33,7 @@ module Admin
       if current_account.admin_group&.managed_entities == ["FormSubmission"]
         redirect_to admin_form_submissions_path
       else
-        # Default behavior - redirect to people index for all other users
+        # Default behavior - redirect to people index (users can read/index people)
         redirect_to admin_people_path
       end
     end
@@ -103,11 +103,34 @@ module Admin
     rescue CanCan::AccessDenied => exception
       # Redirect FormSubmission-only users to their allowed area
       if current_account.admin_group&.managed_entities == ["FormSubmission"]
-        redirect_to admin_form_submissions_path, alert: exception.message
+        redirect_to admin_form_submissions_path, alert: "You are not authorized to access this page"
       else
         # Redirect other users to people index which all authenticated users can access
         redirect_to admin_people_path, alert: exception.message
       end
+    end
+
+    # Override Administrate's authorize_resource method (for navigation and view helpers)
+    def authorize_resource(resource)
+      resource_class = resource.is_a?(Class) ? resource : resource.class
+
+      case action_name
+      when "index", "show"
+        authorize! :read, resource_class
+      when "new", "create"
+        authorize! :create, resource_class
+      when "edit", "update"
+        authorize! :update, resource_class
+      when "destroy"
+        authorize! :destroy, resource_class
+      else
+        authorize! :manage, resource_class
+      end
+
+      return resource
+    rescue CanCan::AccessDenied => exception
+      # This method is used by navigation helpers, so we don't redirect here
+      raise exception
     end
 
     def current_user
@@ -125,15 +148,15 @@ module Admin
     def authorized_action?(resource_class, action)
       case action
       when :index, :show
-        can?(:read, resource_class)
+        can?(:read, :all) || can?(:read, resource_class)
       when :new, :create
-        can?(:create, resource_class)
+        can?(:create, :all) || can?(:manage, :all) || can?(:create, resource_class)
       when :edit, :update
-        can?(:update, resource_class)
+        can?(:update, :all) || can?(:manage, :all) || can?(:update, resource_class)
       when :destroy
-        can?(:destroy, resource_class)
+        can?(:destroy, :all) || can?(:manage, :all) || can?(:destroy, resource_class)
       else
-        can?(:manage, resource_class)
+        can?(:manage, :all) || can?(:manage, resource_class)
       end
     end
 

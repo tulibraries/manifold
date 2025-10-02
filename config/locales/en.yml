@@ -668,8 +668,8 @@ en:
     forms:
       submissions:
         success_message: Thank you for your message. We will contact you soon!
-        av_requests_success_message: Thank you for submitting your duplication request. Submit another request.
-        copy_requests_success_message: Thank you for submitting your copy request. Submit another request.
+        av_requests_success_message: Thank you for submitting your duplication request. You can submit another request below.
+        copy_requests_success_message: Thank you for submitting your duplication request. You can submit another request below.
         failure_message: Cannot send message.
       shared:
         your_info: Your Information

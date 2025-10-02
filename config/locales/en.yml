@@ -1251,6 +1251,7 @@ en:
           form_id: ask-scrc
         links:
           copy-request-form: Request Copies
+          av-request-form: AV Requests
           visit_label: Visit & Study
           visit_link: /scrc/study
           emphases_label: Collecting Emphases

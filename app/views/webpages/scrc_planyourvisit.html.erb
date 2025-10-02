@@ -1,5 +1,7 @@
 <% content_for :body_class, "minipage scrc" %>
 
+<div class="banner-image scrc-visit"></div>
+
 <div class="container-lg space-show">
   <div class="row">
     <div class="col">
@@ -23,7 +25,7 @@
       </ul>
     </div>
     <div class="col-12 text-center">
-      <p>The Albert M. Greenfield SCRC Reading Room’s hours can be verified prior to your visit by viewing the <%= link_to "library hours page", hours_path %>, or the box at the bottom of this page. </p>
+      <p>The Albert M. Greenfield <%= link_to "SCRC", webpages_scrc_path %> Reading Room’s hours can be verified prior to your visit by viewing the <%= link_to "library hours page", hours_path %>, or the box at the bottom of this page. </p>
     </div>
   </div>
 
@@ -39,9 +41,9 @@
           </h2>
           <div id="requestCollapse" class="accordion-collapse collapse" aria-labelledby="requestHeading" data-bs-parent="#planYourVisitAccordion">
             <div class="accordion-body">
-              <p>You must be a registered user to request and use materials. The one-time registration process includes the creation of an SCRC Researcher Account. Registration is not required by patrons wishing to view exhibits or consult our reference collection.</p>
+              <p>You must be a registered user to request and use materials. The one-time registration process includes the <%= link_to "creation of an SCRC Researcher Account", t("manifold.webpages.scrc.links.researcher_account_link") %>. Registration is not required by patrons wishing to view exhibits or consult our reference collection.</p>
               
-              <p>Request materials using our online tools: Library Search and Finding Aids.</p>
+              <p>Request materials using our online tools: <%= link_to "Library Search", t("manifold.webpages.scrc.contact.search_redirect") %> and <%= link_to "Finding Aids", t("manifold.webpages.scrc.locations.finding_aids_link") %>.</p>
               
               <p>Please keep in mind that some of our materials are housed off-site and require at least two business days advanced notice.</p>
               
@@ -49,9 +51,9 @@
               <ul>
                 <li>Enter your search terms to search SCRC's finding aids.</li>
                 <li>To request an item from your search results, click "Request This" in the finding aid. This will take you to the login portal where you can review your requests.</li>
-                <li>Use the checkbox to select the items you would like to view and select a date. Requests will not be processed until you press the Submit Information button below.</li>
+                <li>Use the checkbox to select the items you would like to view and select a date. <strong>Requests will not be processed until you press the Submit Information button below.</strong></li>
                 <li>Submit a new request for each box.</li>
-                <li>Check the status of your request in your SCRC Researcher Account. Materials are available when the status says, "Item on hold in reading room."</li>
+                <li>Check the status of your request in your <%= link_to "SCRC Researcher Account", t("manifold.webpages.scrc.links.researcher_account_link") %>. Materials are available when the status says, "Item on hold in reading room."</li>
               </ul>
             </div>
           </div>
@@ -119,7 +121,7 @@
           </h2>
           <div id="languageCollapse" class="accordion-collapse collapse" aria-labelledby="languageHeading" data-bs-parent="#planYourVisitAccordion">
             <div class="accordion-body">
-              <p>If you encounter language in SCRC finding aids, catalog records, digitized collections, blog posts, exhibitions, or elsewhere that you find offensive or harmful, or if you have questions about the statement below or about our work, we welcome your feedback. Please email us at <a href="mailto:scrc@temple.edu">scrc@temple.edu</a> or call the SCRC reference desk at <a href="tel:215-204-8257">215-204-8257</a>.</p>
+              <p>If you encounter language in <%= link_to "SCRC", webpages_scrc_path %> finding aids, catalog records, digitized collections, blog posts, exhibitions, or elsewhere that you find offensive or harmful, or if you have questions about the statement below or about our work, we welcome your feedback. Please email us at <a href="mailto:scrc@temple.edu">scrc@temple.edu</a> or call the SCRC reference desk at <a href="tel:215-204-8257">215-204-8257</a>.</p>
               
               <p>When processing (arranging, organizing, and describing) archival collections, and cataloging rare books, SCRC staff must make choices about what language to use when describing not just the books, papers, and records, but the people and organizations who created or who are represented in them. We recognize that many of our materials are created by and/or represent marginalized groups of people, and we believe it is our responsibility not only to describe those people and organizations accurately and respectfully, but to do so in a way that will not be harmful or offensive.</p>
               

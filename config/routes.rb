@@ -116,6 +116,7 @@ Rails.application.routes.draw do
   end
 
   get "/forms/copy-requests", to: "forms#show", defaults: { form_type: "copy-requests" }, as: "copy_requests_form"
+  get "/forms/av-requests", to: "forms#show", defaults: { form_type: "av-requests" }, as: "av_requests_form"
 
   get "/scrc/planyourvisit", to: "webpages#scrc_planyourvisit", as: "scrc_planyourvisit"
 

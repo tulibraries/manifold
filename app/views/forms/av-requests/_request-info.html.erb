@@ -1,0 +1,115 @@
+<div data-controller="form-submissions" data-form-submissions-form-type-value="av-requests">
+  <div id="request-groups-container" data-form-submissions-target="container">
+    <div class="request-group" data-index="0">
+      <h4 class="request-group-title">Request 1</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :collection_title, label: "Collection Title", wrapper_html: { class: "mb-3" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :identifier, label: "Identifier/File Name/Description", wrapper_html: { class: "mb-3" } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :notes, label: "Notes", as: :text, input_html: { rows: 3 }, wrapper_html: { class: "mb-3" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :format, label: "Format", as: :select, 
+              collection: [
+                ['Film: $30 per minute', 'film'],
+                ['Video: $50 per tape', 'video'],
+                ['Audio: $50 per tape/reel', 'audio']
+              ],
+              include_blank: "Select format...",
+              required: true,
+              wrapper_html: { class: "mb-3" } %>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Additional request groups (hidden by default) -->
+    <% (1..9).each do |i| %>
+      <div class="request-group" data-index="<%= i %>" style="display: none;">
+        <h4 class="request-group-title">Request <%= i + 1 %></h4>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input "collection_title_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Collection Title", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input "identifier_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Identifier/File Name/Description", 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input "notes_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Notes", 
+                as: :text, 
+                input_html: { rows: 3 }, 
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input "format_#{i.to_s.rjust(2, '0')}".to_sym, 
+                label: "Format", 
+                as: :select,
+                collection: [
+                  ['Film: $30 per minute', 'film'],
+                  ['Video: $50 per tape', 'video'],
+                  ['Audio: $50 per tape/reel', 'audio']
+                ],
+                include_blank: "Select format...",
+                wrapper_html: { class: "mb-3" } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="request-actions mt-4">
+    <button type="button" data-form-submissions-target="addBtn" data-action="click->form-submissions#addRequest" class="btn btn-success me-2">
+      <i class="fas fa-plus"></i> Add a new request
+    </button>
+    <button type="button" data-form-submissions-target="removeBtn" data-action="click->form-submissions#removeRequest" class="btn btn-outline-secondary" style="display: none;">
+      <i class="fas fa-minus"></i> Remove last request
+    </button>
+  </div>
+</div>
+
+<!-- Acknowledgements Section -->
+<div class="mt-4">
+  <h3 class="mb-3"><%= t("manifold.forms.shared.acknowledgements") %></h3>
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :outside_vendor_fees, 
+          as: :boolean,
+          label: t('helpers.label.form.outside_vendor_fees'),
+          required: true,
+          wrapper_html: { class: "mb-2" },
+          hint: raw(t('helpers.description.form.outside_vendor_fees')) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :duplication_limits, 
+          as: :boolean,
+          label: t('helpers.label.form.duplication_limits'),
+          required: true,
+          wrapper_html: { class: "mb-2" },
+          hint: raw(t('helpers.description.form.duplication_limits')) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= f.input :copyright_acknowledgment, 
+          as: :boolean,
+          label: t('helpers.label.form.copyright_acknowledgment'),
+          required: true,
+          wrapper_html: { class: "mb-2" },
+          hint: raw(t('helpers.description.form.copyright_acknowledgment')) %>
+    </div>
+  </div>
+</div>

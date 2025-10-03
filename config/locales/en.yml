@@ -1,12 +1,26 @@
 en:
   helpers:
     label:
+      form:
+        outside_vendor_fees: "Outside Vendor Fees"
+        duplication_limits: "Duplication Limits"
+        copyright_acknowledgment: "Copyright Acknowledgment"
+    description:
+      form:
+        payment_intro: "We will invoice you with final pricing."
+        payment_methods: "We accept payment by cash, check, or credit card (for orders of $15 or more)"
+        payment_check: "Please make checks payable to \"Temple University\" and write SCRC in the memo line."
+        payment_credit_card: "If you wish to pay by credit card, there is a $15 minimum charge. To complete a credit card transaction, please call us at 215-204-8257, during business hours, Monday through Friday, from 8:30 am to 5:30 pm. Please do not leave credit card information on a voicemail or in an email."
+        payment_delivery: "Files will be delivered upon receipt of payment"
+        outside_vendor_fees: "Additional fees will apply for orders that require an outside vendor. Fees are estimated. Estimated reformatting fees will be provided via email post consultation and prior to processing or shipment to vendor."
+        duplication_limits: "While we make every attempt to accommodate duplication requests, making copies is inherently stressful to the originals. For this reason, we've established limits to balance researchers' needs with our obligation to preserve these resources. Depending on the condition, size, and quantity of materials requested, the SCRC reserves the right to refuse a copying order if, in its judgment:<ul><li>Fulfillment of the order would damage the item</li><li>Entail the use of excessive staff time and resources</li><li>Require reproduction of a major part of a book or archives collection (we will not reproduce more than 20 percent of any book, manuscript, or collection)</li></ul>"
+        copyright_acknowledgment: "The copyright law of the United States (Title 17, United States Code) governs the making of photocopies or other reproductions of copyrighted material. Under certain conditions specified in the law, libraries and archives are authorized to furnish a photocopy or other reproduction. One of these specific conditions is that the photocopy or reproduction is not to be \"used for any purpose other than private study, scholarship, or research.\" If a user makes a request for, or later uses, a photocopy or reproduction for purposes in excess of \"fair use,\" that use may be liable for copyright infringement. This institution reserves the right to refuse to accept a copying order if, in its judgment, fulfillment of the order would involve violation of copyright law. (more information about copyright issues)"
       account:
         alertability: "Can Administrate Alerts"
       building:
         address1: "Street Address"
         address2: "City, State Zip"
-        hours: "Hours Identifier"
+        hours: "Hours"
       category:
         categories: "Parent Category"
         accounts: "Individual Owners"
@@ -97,14 +111,17 @@ en:
           main_menu: Main Menu
       attributes:
         form:
+          form_type: ""
           name: "Name"
           email: "Email"
           comments: "Comments"
-          form_type: ""
+          address: Address
           tu_id: "Temple TUid"
           phone: "Phone Number"
           department: "Department"
           affiliation: "Temple Affiliation"
+          phone_number: "Phone Number"
+          temple_affiliation: "Temple Affiliation"
           affiliation_other: "Affiliation Other"
           material_type: "Material Type"
           material_type_other: "Material Type Other"
@@ -245,6 +262,83 @@ en:
           reason_for_request: Reason for request
           additional_setup_requirements:  Additional Setup Requirements
           catering: Catering
+          asrs_only: ASRS only?
+          copyright_acknowledgment: "Copyright Acknowledgement"
+          id_acknowledgment: Valid ID Acknowledgement
+          duplication_limits: "Duplication Limits"
+          outside_vendor_fees: "Outside Vendor Fees"
+          # AV Copy request form
+          collection_title: "Collection Title 01"
+          identifier: "Identifier 01"
+          notes: "Notes 01"
+          format: "Format 01"
+          collection_title_01: "Collection Title 02"
+          identifier_01: "Identifier 02"
+          notes_01: "Notes 02"
+          format_01: "Format 02"
+          collection_title_02: "Collection Title 03"
+          identifier_02: "Identifier 03"
+          notes_02: "Notes 03"
+          format_02: "Format 03"
+          collection_title_03: "Collection Title 04"
+          identifier_03: "Identifier 04"
+          notes_03: "Notes 04"
+          format_03: "Format 04"
+          collection_title_04: "Collection Title 05"
+          identifier_04: "Identifier 05"
+          notes_04: "Notes 05"
+          format_04: "Format 05"
+          collection_title_05: "Collection Title 65"
+          identifier_05: "Identifier 06"
+          notes_05: "Notes 06"
+          format_05: "Format 06"
+          collection_title_06: "Collection Title 07"
+          identifier_06: "Identifier 07"
+          notes_06: "Notes 07"
+          format_06: "Format 07"
+          collection_title_07: "Collection Title 08"
+          identifier_07: "Identifier 08"
+          notes_07: "Notes 08"
+          format_07: "Format 08"
+          collection_title_08: "Collection Title 09"
+          identifier_08: "Identifier 089"
+          notes_08: "Notes 09"
+          format_08: "Format 09"
+          collection_title_09: "Collection Title 10"
+          identifier_09: "Identifier 10"
+          notes_09: "Notes 10"
+          format_09: "Format 10"
+          # Copy request form unique fields
+          box: "Box Number 01"
+          folder: "Folder Number 01"
+          estimated_pages: "Estimated Pages 01"
+          box_01: "Box Number 02"
+          folder_01: "Folder Number 02"
+          estimated_pages_01: "Estimated Pages 02"
+          box_02: "Box Number 03"
+          folder_02: "Folder Number 03"
+          estimated_pages_02: "Estimated Pages 03"
+          box_03: "Box Number 04"
+          folder_03: "Folder Number 04"
+          estimated_pages_03: "Estimated Pages 04"
+          box_04: "Box Number 05"
+          folder_04: "Folder Number 05"
+          estimated_pages_04: "Estimated Pages 05"
+          box_05: "Box Number 06"
+          folder_05: "Folder Number 06"
+          estimated_pages_05: "Estimated Pages 06"
+          box_06: "Box Number 07"
+          folder_06: "Folder Number 07"
+          estimated_pages_06: "Estimated Pages 07"
+          box_07: "Box Number 08"
+          folder_07: "Folder Number 08"
+          estimated_pages_07: "Estimated Pages 08"
+          box_08: "Box Number 09"
+          folder_08: "Folder Number 09"
+          estimated_pages_08: "Estimated Pages 09"
+          box_09: "Box Number 10"
+          folder_09: "Folder Number 10"
+          estimated_pages_09: "Estimated Pages 10"
             
       event:
         sullivan_hall: "Sullivan Hall - Blockson Collection"
@@ -574,10 +668,13 @@ en:
     forms:
       submissions:
         success_message: Thank you for your message. We will contact you soon!
+        av_requests_success_message: Thank you for submitting your duplication request. You can submit another request below.
+        copy_requests_success_message: Thank you for submitting your duplication request. You can submit another request below.
         failure_message: Cannot send message.
       shared:
         your_info: Your Information
         request_info: Request Information -- Please do not abbreviate
+        acknowledgements: Acknowledgements
         submit: Send Request
       index: 
         title: Request Forms
@@ -960,6 +1057,8 @@ en:
           four: Alumni/Donor Visit
           five: Professional Development Visit
           six: General Interest
+        asrs_only: Is this request for the ASRS (Automated Storage and Retrieval System) only?
+        id_acknowledgment: I acknowledge that all members of my group will need to present a valid Temple ID or government-issued photo ID to access the ASRS.
 
       hidden_title_text: To change the title of this resource, please <a href=mailto:"tul-web-support@temple.edu">contact an administrator</a>.
 
@@ -1141,7 +1240,7 @@ en:
           reading_room: SCRC Reading Room
           finding_aids: Search Finding Aids
           finding_aids_link: https://scrcarchivesspace.temple.edu/
-          materials: Digitized Materials
+          materials: Digitized Collections
           materials_link: https://digital.library.temple.edu/
         contact:
           contact_label: Contact Us
@@ -1151,10 +1250,16 @@ en:
           info_redirect: /scrc/info
           form_id: ask-scrc
         links:
+          copy-request-form: Request Copies
+          av-request-form: AV Requests
           visit_label: Visit & Study
           visit_link: /scrc/study
           emphases_label: Collecting Emphases
           emphases_link: /scrc-collections
+          instruction_label: Instruction and Class Visits
+          researcher_account: SCRC Researcher Account 
+          researcher_account_link: https://temple.aeon.atlas-sys.com/logon
+          plan_visit: Plan Your Visit
 
       tudsc:
         page_title: Loretta C. Duckworth Scholars Studio
@@ -1276,4 +1381,4 @@ en:
 
     redirects:
       moved_permanently: "has moved. Please update bookmarks and links."
-      
+

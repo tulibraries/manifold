@@ -9,7 +9,8 @@ module Tude
                           "Strategic Steering Team",
                           "Working Group"]
 
-    config.form_groupings = ["Temple Owned Materials",
+    config.form_groupings = [ "No Grouping",
+                              "Temple Owned Materials",
                               "Instructional Services",
                               "Library Privileges",
                               "Collection Development",

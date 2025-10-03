@@ -16,10 +16,10 @@ require "action_text/system_test_helper"
 require "webmock/rspec"
 require "base64"
 
-
-Capybara.app_host = "http://localhost:3000"
+# prevent dev server conflicts
+Capybara.app_host = "http://localhost:3001"
 Capybara.server_host = "localhost"
-Capybara.server_port = "3000"
+Capybara.server_port = "3001"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -201,6 +201,12 @@ RSpec.configure do |config|
     c.filter_sensitive_data("<code>") { ENV["PANOPTO_API_KEY"] }
     auth_string = ENV["PANOPTO_API_USER"].to_s + ":" + ENV["PANOPTO_API_KEY"].to_s
     c.filter_sensitive_data("<base64_key_code>") { Base64.encode64(auth_string) }
+
+    # Ignore Selenium WebDriver and Capybara server requests
+    c.ignore_request do |request|
+      # Ignore requests to localhost (Capybara server)
+      URI(request.uri).host == "127.0.0.1" || URI(request.uri).host == "localhost"
+    end
   end
 
   config.include ActionText::SystemTestHelper, type: :system

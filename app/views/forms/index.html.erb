@@ -36,9 +36,9 @@
       <h2 class="bl-red mt-5"><%= group[0] %></h2>
       <ul class="list-unstyled ml-3">
         <% group[1].each do |form| %>
-        <li>
-          <%= link_to form.title, form_path(form.slug) %>
-        </li>
+          <li>
+            <%= link_to form.title, form_path(form.slug) %>
+          </li>
         <% end %>
       </ul>
     <% end %>

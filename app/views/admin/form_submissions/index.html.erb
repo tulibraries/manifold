@@ -1,0 +1,39 @@
+<% content_for(:title) { @page_title } %>
+
+<header class="main-content__header">
+  <h1 class="main-content__page-title">
+    <%= @page_title %>
+  </h1>
+</header>
+
+<section class="main-content__body">
+  <div class="form-submissions-dashboard">
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <div class="dashboard-card__body">
+          <h3 class="dashboard-card__title">AV Requests</h3>
+          <p class="dashboard-card__text">Download and manage audio/visual digitization requests</p>
+          <%= link_to "Download AV Requests CSV", 
+              export_av_requests_csv_admin_form_submissions_path(format: :csv), 
+              class: "button button--primary dashboard-card__button" %>
+          <%= link_to "View AV Requests Collection", 
+              av_requests_admin_form_submissions_path, 
+              class: "button button--secondary dashboard-card__link" %>
+        </div>
+      </div>
+      
+      <div class="dashboard-card">
+        <div class="dashboard-card__body">
+          <h3 class="dashboard-card__title">Copy Requests</h3>
+          <p class="dashboard-card__text">Download and manage photocopy/scanning requests</p>
+          <%= link_to "Download Copy Requests CSV", 
+              export_copy_requests_csv_admin_form_submissions_path(format: :csv), 
+              class: "button button--primary dashboard-card__button" %>
+          <%= link_to "View Copy Requests Collection", 
+              copy_requests_admin_form_submissions_path, 
+              class: "button button--secondary dashboard-card__link" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

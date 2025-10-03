@@ -14,13 +14,14 @@ RSpec.describe "webpages/scrc", type: :view do
     @visit_links = [FactoryBot.create(:category)]
     @collection_links = [FactoryBot.create(:category)]
     render
-    expect(rendered).to match /id="scrc_reading_room_button"/
     expect(rendered).to match /id="scrc_finding_aids_button"/
+    expect(rendered).to match /id="scrc_plan_visit_button"/
     expect(rendered).to match /id="scrc_materials_button"/
-    expect(rendered).to match /id="scrc_contact_button"/
     expect(rendered).to match /id="scrc_search_button"/
-    expect(rendered).to match /id="scrc_info_button"/
-    expect(rendered).to match /id="scrc_visit_header"/
+    expect(rendered).to match /id="scrc_copy_request_button"/
+    expect(rendered).to match /id="scrc_av_request_button"/
+    expect(rendered).to match /id="scrc_instruction_button"/
+    expect(rendered).to match /id="scrc_researcher_button"/
     expect(rendered).to match /id="scrc_emphases_header"/
   end
 end

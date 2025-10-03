@@ -2,15 +2,16 @@ name: "Lint and Test"
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    types: [ opened, synchronize, reopened ]
-    branches: [ main ]
+    branches-ignore:
+      - main
   workflow_dispatch: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+env:
+  RAILS_ENV: test
 
 jobs:
   lint:
@@ -18,7 +19,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ruby: [ "3.4.3" ]
+        ruby: [ "3.4" ]
 
     steps:
       - name: Checkout code
@@ -55,24 +56,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-          ruby: ["3.4.3"]
-    services:
-      db:
-        image: postgres:16
-        env:
-          POSTGRES_USER: manifold
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: manifold-test 
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    env:
-      RAILS_ENV: test
-      DATABASE_URL: postgres://manifold:password@localhost:5432/manifold-test
+          ruby: ["3.4"]
 
     steps:
       - name: Checkout code
@@ -91,16 +75,24 @@ jobs:
 
       - name: Precompile Rails assets
         run: |
-          RAILS_ENV=test bundle exec rails assets:precompile
+          bundle exec rails assets:precompile
+    
+      - name: Setup Postgres
+        uses: ikalnytskyi/action-setup-postgres@v7
+        with:
+          username: manifold
+          password: password
+          database: manifold_test
 
       - name: Prepare test database
-        run: bundle exec rails db:migrate
+        run: bundle exec rails db:schema:load
 
       - name: Run rspec tests
         run: bundle exec rspec spec
 
       - name: Upload coverage to Coveralls
-        uses: coverallsapp/github-action@v1
+        uses: coverallsapp/github-action@v2
+        continue-on-error: true
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./coverage/lcov/app.lcov
@@ -120,4 +112,3 @@ jobs:
             Workflow: ${{ github.workflow }}
             Job: ${{ github.job }}
             Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-

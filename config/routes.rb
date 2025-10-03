@@ -32,9 +32,16 @@ Rails.application.routes.draw do
     resources :events
     resources :exhibitions
     resources :external_links
-    resources :finding_aids
     resources :file_uploads
     resources :form_infos
+    resources :form_submissions, only: [:index, :show] do
+      collection do
+        get :av_requests
+        get :copy_requests
+        get :export_av_requests_csv
+        get :export_copy_requests_csv
+      end
+    end
     resources :groups
     resources :highlights
     resources :people
@@ -72,7 +79,7 @@ Rails.application.routes.draw do
       end
     end
 
-    root to: "people#index"
+    root to: "application#root"
 
   end
 
@@ -94,7 +101,6 @@ Rails.application.routes.draw do
   resources :external_link, only: [:show]
   resources :forms, only: [:index, :new, :create, :show]
   resources :file_uploads, only: [:new, :create]
-  resources :finding_aids, only: [:show]
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index]
   resources :alerts_json, only: [:index], path: "/alerts.json"
@@ -109,12 +115,10 @@ Rails.application.routes.draw do
     get "blogposts/tags/:tag" => :index, as: "blog_post_tags"
   end
 
-  controller :finding_aids do
-    get "finding_aids/:id" => :show
-    get "finding-aids/:id" => :show
-    get "finding_aids.json", to: redirect("assets/cache/finding_aids.json")
-    get "finding-aids.json", to: redirect("assets/cache/finding_aids.json")
-  end
+  get "/forms/copy-requests", to: "forms#show", defaults: { form_type: "copy-requests" }, as: "copy_requests_form"
+  get "/forms/av-requests", to: "forms#show", defaults: { form_type: "av-requests" }, as: "av_requests_form"
+
+  get "/scrc/planyourvisit", to: "webpages#scrc_planyourvisit", as: "scrc_planyourvisit"
 
   controller :events do
     get "events/search" => :search, as: "events_search"
@@ -128,11 +132,6 @@ Rails.application.routes.draw do
 
   controller :buildings do
     get "libraries/ambler" => :show, as: "buildings_ambler"
-  end
-
-  controller :scrc do
-    get "scrc/*path" => :show
-    get "collections/scrc/*path" => :show
   end
 
   controller :persons do

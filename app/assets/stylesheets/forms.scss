@@ -88,3 +88,23 @@ fieldset {
 		font-weight: 500 !important;
 	}
 }
+
+// Request group title styling for repeatable form sections
+h4.request-group-title {
+	background-color: #f8f9fa; // Light gray background
+	padding: 12px 16px;
+	margin: 24px 0 16px 0;
+	border-radius: 6px;
+	border-left: 4px solid $seagreen;
+	font-weight: 600;
+	font-size: 1.1rem;
+	color: #495057;
+	
+	// Add subtle shadow for depth
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	
+	// First request title has less top margin
+	&:first-of-type {
+		margin-top: 16px;
+	}
+}

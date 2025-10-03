@@ -1,11 +1,37 @@
-<div class="container-lg form">
+<div class="container-lg form mt-0 pt-0">
   <% unless @type.nil? || @type == "all" %>
+
+  <% if params[:success] == "av-requests" %>
+  <div class="row">
+    <div class="col-12 flash notice mb-3">
+      <%= t("manifold.forms.submissions.av_requests_success_message") %>
+    </div>
+  </div>
+  <% elsif params[:success] == "copy-requests" %>
+  <div class="row">
+    <div class="col-12 flash notice mb-3">
+      <%= t("manifold.forms.submissions.copy_requests_success_message") %>
+    </div>
+  </div>
+  <% elsif params[:success] == "true" %>
+  <div class="row">
+    <div class="col-12 flash notice mb-3">
+      <%= t("manifold.forms.submissions.success_message") %>
+    </div>
+  </div>
+  <% elsif params[:success] == "false" %>
+  <div class="row">
+    <div class="col-12 flash error mb-3">
+      <%= t("manifold.forms.submissions.failure_message") %>
+    </div>
+  </div>
+  <% end %>
 
   <div class="row">
     <div class="col-12 col-lg-9 offset-lg-1">
 
       <div class="row">
-        <div class="col back-button">
+        <div class="col back-button mt-2">
           < <%= link_to "View all forms", forms_path, class: "inline" %>
         </div>
       </div>
@@ -16,7 +42,7 @@
         </div>
       </div>
 
-      <% if @intro.present? %>
+      <% if @intro.present? && @type != "av-requests" && @type != "copy-requests" %>
       <div class="row">
         <div class="col mb-3">
           <%= render "intro" %>
@@ -27,7 +53,7 @@
       <%= simple_form_for @form, html: {class: "form-horizontal", enctype: "multipart" } do |f| %>
       <%= f.input :form_type, as: :hidden, input_html: { value: "#{@type}" } %>
       <%= f.input :title, as: :hidden, input_html: { value: "#{@title}" } %>
-      <%= f.input :recipients, as: :hidden, input_html: { value: "#{@recipients}" } %>
+      <%= f.input :recipients, as: :hidden, input_html: { value: "#{@recipients}" } unless @type == "av-requests" || @type == "copy-requests" %>
 
       <% unless ["event-space-request"].include? @type %> 
         <div class="row">
@@ -48,6 +74,14 @@
               <%= render "forms/#{@type}/request-info", f: f %>
           </div>
         </div>
+      <% end %>
+
+      <% if @intro.present? && (@type == "av-requests" || @type == "copy-requests") %>
+      <div class="row">
+        <div class="col mb-3">
+          <%= render "intro" %>
+        </div>
+      </div>
       <% end %>
 
       <% if ["event-space-request"].include? @type %> 

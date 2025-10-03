@@ -1,0 +1,96 @@
+<% content_for(:title) { "Research Request Submissions" } %>
+
+<header class="main-content__header">
+  <h1 class="main-content__page-title">
+    <%= content_for(:title) %>
+  </h1>
+  
+  <div class="main-content__header-actions">
+    <%= link_to "Export CSV", export_csv_admin_research_requests_path(format: :csv), 
+        class: "button button--export",
+        title: "Download all submissions as CSV for Excel" %>
+  </div>
+</header>
+
+<section class="main-content__body main-content__body--flush">
+  <% if @form_submissions.any? %>
+    <div class="table">
+      <table class="table__table">
+        <thead>
+          <tr class="table__row table__row--header">
+            <th class="table__header cell cell--header">Submitted</th>
+            <th class="table__header cell cell--header">Name</th>
+            <th class="table__header cell cell--header">Email</th>
+            <th class="table__header cell cell--header">Requests</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @form_submissions.each do |submission| %>
+            <tr class="table__row table__row--clickable" onclick="window.location='<%= admin_research_request_path(submission) %>'">
+              <td class="cell cell--date-time">
+                <%= submission.created_at.strftime('%m/%d/%Y %l:%M %p') %>
+              </td>
+              <td class="cell">
+                <% begin %>
+                  <% raw_attributes = submission.form_attributes %>
+                  <% attributes = raw_attributes['form'] || raw_attributes %>
+                  <%= attributes['name'] || 'N/A' %>
+                <% rescue %>
+                  <em>Error decrypting</em>
+                <% end %>
+              </td>
+              <td class="cell">
+                <% begin %>
+                  <% raw_attributes = submission.form_attributes %>
+                  <% attributes = raw_attributes['form'] || raw_attributes %>
+                  <%= attributes['email'] || 'N/A' %>
+                <% rescue %>
+                  <em>Error decrypting</em>
+                <% end %>
+              </td>
+              <td class="cell">
+                <% begin %>
+                  <% raw_attributes = submission.form_attributes %>
+                  <% attributes = raw_attributes['form'] || raw_attributes %>
+                  <% request_count = 0 %>
+                  <% (0..9).each do |i| %>
+                    <% 
+                      collection_field = i == 0 ? 'collection_title' : "collection_title_#{i.to_s.rjust(2, '0')}"
+                      identifier_field = i == 0 ? 'identifier' : "identifier_#{i.to_s.rjust(2, '0')}"
+                      format_field = i == 0 ? 'format' : "format_#{i.to_s.rjust(2, '0')}"
+                      
+                      has_data = attributes[collection_field].present? && 
+                                 attributes[identifier_field].present? && 
+                                 attributes[format_field].present?
+                    %>
+                    <% if has_data %>
+                      <% request_count += 1 %>
+                    <% end %>
+                  <% end %>
+                  <%= pluralize(request_count, 'request') %>
+                <% rescue %>
+                  <em>Error decrypting</em>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="table">
+      <div class="table__empty-state">
+        <p class="table__empty-text">
+          No research request submissions found.
+        </p>
+      </div>
+    </div>
+  <% end %>
+  
+  <!-- Pagination -->
+  <% if @form_submissions.respond_to?(:current_page) %>
+    <div class="pagination-wrapper">
+      <%= paginate @form_submissions %>
+    </div>
+  <% end %>
+</section>

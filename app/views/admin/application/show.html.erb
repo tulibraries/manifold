@@ -32,7 +32,7 @@ as well as a link to its edit page.
   </div>
   <% if Rails.application.routes.url_helpers.method_defined?(page.resource.class.name.underscore + "_path") %>
   <div>
-    <% unless ["ExternalLink", "FindingAid"].include? page.resource.class.name  %>
+    <% unless ["ExternalLink"].include? page.resource.class.name  %>
       <%= link_to(t("manifold.admin.actions.show_website"), url_for(page.resource.class)+"/"+page.resource.id.to_s, class: "button green")  %>
     <% else %>
       <% if page.resource.class.name == "ExternalLink" %>

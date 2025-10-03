@@ -32,6 +32,285 @@
 
 @import "richtext";
 
+/* ========================================
+ * Form Submissions Dashboard Styles
+ * ======================================== */
+
+.form-submissions-dashboard {
+  margin-top: 2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.dashboard-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 2rem;
+  text-align: center;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.dashboard-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dashboard-card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.dashboard-card__text {
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.dashboard-card__button {
+  margin: 0.5rem 0;
+  min-width: 200px;
+}
+
+.dashboard-card__link {
+  margin: 0;
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .dashboard-card {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+}
+
+/* ========================================
+ * AV Requests Form Admin Show Page Styles
+ * ======================================== */
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 2rem 0 1rem 0;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.attribute-list {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.attribute-list__key {
+  font-weight: 600;
+  color: #555;
+  margin: 0;
+}
+
+.attribute-list__value {
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #e9ecef;
+  margin: 2rem 0;
+}
+
+.requests-list {
+  margin: 1rem 0;
+}
+
+.request-item {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.request-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #495057;
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.request-content {
+  color: #333;
+  line-height: 1.5;
+}
+
+.request-field-group .row {
+  margin-bottom: 1rem;
+}
+
+.request-field-group .row:last-child {
+  margin-bottom: 0;
+}
+
+.field-value {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.no-requests {
+  color: #6c757d;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.error-message {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.error-message h2 {
+  color: #721c24;
+  margin-top: 0;
+}
+
+/* ========================================
+ * AV Requests Admin Index Page Styles
+ * ======================================== */
+
+.button--export {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.button--export:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.table__row--clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.table__row--clickable:hover {
+  background-color: #f8f9fa;
+}
+
+.table__row--clickable:hover .cell {
+  background-color: transparent;
+}
+
+/* Badge styles for acknowledgment status */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.badge-success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.badge-secondary {
+  color: #6c757d;
+  background-color: #e9ecef;
+  border: 1px solid #dee2e6;
+}
+
+/* Pagination styles removed - using default site styling */
+
+/* AV Requests Form Styles */
+.request-group {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.request-group-title {
+  color: #495057;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.request-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid #dee2e6;
+}
+
+#add-request-btn,
+[data-av-requests-target="addBtn"] {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: white !important;
+  
+  &:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+    color: white !important;
+  }
+}
+
+.request-group:first-child .request-group-title {
+  color: #28a745;
+}
+/* End AV Requests Form Styles */
+
 .application-failover-text {
   padding: 42px;
   h2 {

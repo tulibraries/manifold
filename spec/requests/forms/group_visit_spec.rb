@@ -12,7 +12,7 @@ RSpec.describe "Group Visit Request", type: :request do
   let(:form_params) {
     { form: {
       title:, form_type:, recipients:, name: "yes", email: "no@maybe.com", phone: "none", reason_for_request: "test_id", requested_date: "Graduate",
-      attendees: "7", minors: "true", school_visit: "Umbrella Academy", referrer: "Mr Moto", comments: "none"
+      attendees: "7", minors: "true", school_visit: "Umbrella Academy", referrer: "Mr Moto", comments: "none", asrs_only: "true", id_acknowledgment: "true"
     } }
   }
 

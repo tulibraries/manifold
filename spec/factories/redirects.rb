@@ -36,11 +36,6 @@ FactoryBot.define do
     manifold_path { "/blockson_collection" }
   end
 
-  factory :finding_aid_redirect, class: Redirect do
-    legacy_path { "/finding_aids/9" }
-    manifold_path { "/blockson_collection" }
-  end
-
   factory :group_redirect, class: Redirect do
     legacy_path { "/groups/9" }
     manifold_path { "/blockson_collection" }

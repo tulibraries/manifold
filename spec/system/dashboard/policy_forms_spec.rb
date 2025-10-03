@@ -4,14 +4,21 @@ require "rails_helper"
 
 RSpec.describe "Dashboard::Policy", type: :system do
   before(:all) do
+    # Clean up existing AdminGroups to avoid conflicts
+    AdminGroup.destroy_all
+
     @admin = FactoryBot.create(:account, admin: true)
-    @non_admin = FactoryBot.create(:account, admin: false)
+    @admin_group = FactoryBot.create(:admin_group,
+      name: "Policy Forms Test Admin Group",
+      managed_entities: ["Policy"])
+    @non_admin = FactoryBot.create(:account, admin: false, admin_group: @admin_group)
     @policy = FactoryBot.create(:policy)
     @models = ["policy"]
   end
 
   after(:all) do
     Account.destroy_all
+    AdminGroup.destroy_all
     Policy.destroy_all
   end
 

@@ -16,19 +16,14 @@
     <div class="col-12 col-lg-3 pe-14 left-links">
       <ul class="list-unstyled locations">
         <li>
-          <%= link_to t("manifold.webpages.scrc.locations.reading_room"), 
-                    scrc_reading_room_path,
-                    id:"scrc_reading_room_button" %>
+          <%= link_to t("manifold.webpages.scrc.links.plan_visit"), 
+                    scrc_planyourvisit_path,
+                    id: "scrc_plan_visit_button" %>
         </li>
         <li>
           <%= link_to t("manifold.webpages.scrc.locations.finding_aids"), 
                     t("manifold.webpages.scrc.locations.finding_aids_link"),
-                    id:"scrc_finding_aids_button" %>
-        </li>
-        <li>
-        <%= link_to t("manifold.webpages.scrc.locations.materials"), 
-                    t("manifold.webpages.scrc.locations.materials_link"),
-                    id:"scrc_materials_button" %>
+                    id: "scrc_finding_aids_button" %>
         </li>
         <li>
           <%= link_to t("manifold.webpages.scrc.contact.search_label"), 
@@ -36,14 +31,29 @@
                       id: "scrc_search_button" %>
         </li>
         <li>
-          <%= link_to t("manifold.webpages.scrc.contact.contact_label"), 
-                      t("manifold.webpages.scrc.contact.form_id"),
-                      id: "scrc_contact_button" %>
+        <%= link_to t("manifold.webpages.scrc.locations.materials"), 
+                    t("manifold.webpages.scrc.locations.materials_link"),
+                    id: "scrc_materials_button" %>
         </li>
         <li>
-          <%= link_to t("manifold.webpages.scrc.contact.info_label"), 
-                      t("manifold.webpages.scrc.contact.info_redirect"),
-                      id: "scrc_info_button" %>
+        <%= link_to t("manifold.webpages.scrc.links.instruction_label"), 
+                    service_path("instruction-class-visits"),
+                    id: "scrc_instruction_button" %>
+        </li>
+        <li>
+          <%= link_to t("manifold.webpages.scrc.links.copy-request-form"), 
+                    copy_requests_form_path,
+                    id: "scrc_copy_request_button" %>
+        </li>
+        <li>
+          <%= link_to t("manifold.webpages.scrc.links.av-request-form"), 
+                    av_requests_form_path,
+                    id: "scrc_av_request_button" %>
+        </li>
+        <li>
+          <%= link_to t("manifold.webpages.scrc.links.researcher_account"), 
+                      t("manifold.webpages.scrc.links.researcher_account_link"),
+                      id: "scrc_researcher_button" %>
         </li>
       </ul>
     </div>
@@ -54,23 +64,7 @@
   </div>
     
   <div class="row links-container">
-    <div class="col-12 col-lg-5 offset-lg-1 ps-md-4 links">
-      <h2>
-        <%= link_to t("manifold.webpages.scrc.links.visit_label"), 
-                    t("manifold.webpages.scrc.links.visit_link"),
-                    id: "scrc_visit_header" %>
-      </h2>
-      <ul class="list-unstyled">
-        <% @visit_links.each do |link| %>
-          <li>
-            <%= link_to link.label, 
-                        link,
-                        id: "scrc_visit_link_#{link.label.parameterize}" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-12 col-lg-5 links">
+    <div class="col-12 offset-lg-1 ps-md-4 links">
       <h2>
         <%= link_to t("manifold.webpages.scrc.links.emphases_label"), 
                     t("manifold.webpages.scrc.links.emphases_link"),

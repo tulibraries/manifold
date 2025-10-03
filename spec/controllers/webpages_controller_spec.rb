@@ -161,4 +161,27 @@ RSpec.describe WebpagesController, type: :controller do
 
   it_behaves_like "serializable"
 
+  describe "GET #scrc_planyourvisit" do
+    let(:space) { FactoryBot.create(:space, slug: "scrc-reading-room") }
+
+    before do
+      allow(Space).to receive(:find_by).with(slug: "scrc-reading-room").and_return(space)
+    end
+
+    it "returns http success" do
+      get :scrc_planyourvisit
+      expect(response).to have_http_status(:success)
+    end
+
+    it "assigns @space" do
+      get :scrc_planyourvisit
+      expect(assigns(:space)).to eq(space)
+    end
+
+    it "renders the scrc_planyourvisit template" do
+      get :scrc_planyourvisit
+      expect(response).to render_template("webpages/scrc_planyourvisit")
+    end
+  end
+
 end

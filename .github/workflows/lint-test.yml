@@ -17,7 +17,6 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
       matrix:
         ruby: [ "3.4" ]
 
@@ -33,12 +32,27 @@ jobs:
 
       - name: Run RuboCop
         run: bundle exec rubocop
+
+      - name: Send Slack Notification on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_USERNAME: GitHub Actions
+          SLACK_COLOR: "#FF0000"
+          SLACK_TITLE: "Lint Job Failed"
+          SLACK_MESSAGE: |
+            Repo: ${{ github.repository }}
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+            Workflow: ${{ github.workflow }}
+            Job: ${{ github.job }}
+            Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
       
   test:
     needs: lint
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: true
       matrix:
           ruby: ["3.4"]
 
@@ -80,4 +94,19 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./coverage/lcov/app.lcov
-          
+
+      - name: Send Slack Notification on Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_USERNAME: GitHub Actions
+          SLACK_COLOR: "#FF0000"
+          SLACK_TITLE: "Lint Job Failed"
+          SLACK_MESSAGE: |
+            Repo: ${{ github.repository }}
+            Branch: ${{ github.ref }}
+            Commit: ${{ github.sha }}
+            Workflow: ${{ github.workflow }}
+            Job: ${{ github.job }}
+            Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}

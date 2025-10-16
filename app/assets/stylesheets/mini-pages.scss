@@ -147,3 +147,13 @@
     padding-top: 0;
   }
 }
+
+#planYourVisitAccordion {
+  .accordion-item, .accordion-body {
+    color: $royal-blue;
+  }
+  h2.accordion-header button {
+    font-size: 1.35rem;
+    color: $royal-blue;
+  }
+}

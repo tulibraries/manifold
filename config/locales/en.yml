@@ -1251,7 +1251,8 @@ en:
           form_id: ask-scrc
         links:
           copy-request-form: Request Copies
-          av-request-form: AV Requests
+          av_request_policy: AV Requests
+          av_request_policy_link: https://library.temple.edu/policies/av-requests
           visit_label: Visit & Study
           visit_link: /scrc/study
           emphases_label: Collecting Emphases

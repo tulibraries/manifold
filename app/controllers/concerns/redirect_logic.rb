@@ -5,7 +5,9 @@ module RedirectLogic
 
   def redirect_or_404(instance = nil)
     # If we have a valid instance, just return and let the request proceed
-    return if instance.present?
+    if instance.present? && instance.slug != "events-exhibits-workshops"
+      return
+    end
 
     redirect = Redirect.find_by(legacy_path:)
     if redirect

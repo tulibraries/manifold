@@ -8,7 +8,7 @@
                                     href: "##{menu}-#{item.category.name.parameterize}-items", role: "tab", 
                                     "aria-controls": "home"} %>
       <% else %>
-        <%= link_to item.category.name, item.category, class: "p-2 ps-3" %>
+        <%= link_to item.category.name, item.category.link, class: "p-2 ps-3" %>
       <% end %>
   <% end %>
   </div>

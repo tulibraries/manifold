@@ -12,6 +12,7 @@ module Manifold
   class Application < Rails::Application
     config.time_zone = "Eastern Time (US & Canada)"
     config.load_defaults 7.0
+    config.active_job.queue_adapter = :solid_queue
     config.active_storage.variant_processor = :mini_magick
     config.exceptions_app = self.routes
     config.action_view.sanitized_allowed_tags = ["div", "p", "h1", "h2", "h3", "h4", "h5", "h6",

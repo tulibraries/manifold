@@ -261,11 +261,25 @@ class Form < MailForm::Base
   # Declare the e-mail headers. It accepts anything the mail method
   # in ActionMailer accepts. This overrides the headers from the mail_form gem.
   def headers
+    parsed_recipients = parse_recipients
+
     {
       subject: title,
-      to: JSON.parse(recipients),
+      to: parsed_recipients,
       cc: email,
       from: %("#{ default_from_name }" <#{ default_from_email }>)
     }
+  end
+
+  private
+
+  def parse_recipients
+    return [default_from_email] if recipients.blank?
+
+    parsed = JSON.parse(recipients)
+    Array(parsed).compact.presence || [default_from_email]
+  rescue JSON::ParserError => e
+    Rails.logger.warn "Failed to parse form recipients JSON: #{e.message}"
+    [default_from_email]
   end
 end

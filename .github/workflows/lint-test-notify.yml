@@ -1,0 +1,18 @@
+name: "Lint/Test Failure Notification"
+
+on:
+  workflow_run:
+    workflows:
+      - "Lint and Test"
+    types:
+      - completed
+
+jobs:
+  notify_on_failure:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    uses: tulibraries/.github/.github/workflows/slack-notify.yml@main
+    with:
+      repo: ${{ github.repository }}
+      run_id: ${{ github.event.workflow_run.id }}
+      workflow: ${{ github.event.workflow_run.name }}
+    secrets: inherit

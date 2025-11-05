@@ -37,9 +37,16 @@ class FormsController < ApplicationController
     form_type = params[:form][:form_type]
     info = FormInfo.find_by(slug: form_type)
     @form.recipients = info.recipients.reject(&:empty?).to_json if info.present?
+    excel_form_data = if params[:form]&.respond_to?(:to_unsafe_h)
+      params[:form].to_unsafe_h.deep_dup
+    else
+      {}
+    end
+    excel_form_data["form_type"] = form_type if form_type
 
     email_sent = @form.deliver
     persist_form!
+    queue_excel_update(excel_form_data)
 
     if form_type == "av-requests" || form_type == "copy-requests"
       if email_sent
@@ -82,7 +89,33 @@ class FormsController < ApplicationController
       end
   end
 
+  def queue_excel_update(form_data)
+    credentials = Rails.application.credentials.microsoft
+    unless credentials && credentials[:spreadsheet_file_id].present?
+      Rails.logger.info "Skipping Excel update: Microsoft credentials missing"
+      return
+    end
+
+    Rails.logger.info "Queueing ExcelUpdateJob for form_type=#{form_data['form_type']}"
+
+    ExcelUpdateJob.perform_later(
+      form_data,
+      credentials[:spreadsheet_file_id],
+      worksheet_name_for(form_data),
+    )
+  end
+
   def use_unsafe_params
     request.parameters
+  end
+
+  def worksheet_name_for(form_data)
+    form_type = form_data["form_type"] || form_data[:form_type]
+    case form_type
+    when "copy-requests"
+      "CopyRequests"
+    else
+      "AV-Requests"
+    end
   end
 end

@@ -90,18 +90,23 @@ class FormsController < ApplicationController
   end
 
   def queue_excel_update(form_data)
-    credentials = Rails.application.credentials.microsoft
-    unless credentials && credentials[:spreadsheet_file_id].present?
-      Rails.logger.info "Skipping Excel update: Microsoft credentials missing"
+    form_type = form_data["form_type"] || form_data[:form_type]
+    config = excel_form_destination_config(form_type)
+    sheet_id = config[:spreadsheet_file_id]
+
+    unless sheet_id.present?
+      Rails.logger.info "Skipping Excel update: spreadsheet_file_id missing for form_type=#{form_type.inspect}"
       return
     end
 
-    Rails.logger.info "Queueing ExcelUpdateJob for form_type=#{form_data['form_type']}"
+    worksheet = config[:worksheet_name] || worksheet_name_for(form_data)
+
+    Rails.logger.info "Queueing ExcelUpdateJob for form_type=#{form_data['form_type']} to worksheet=#{worksheet}"
 
     ExcelUpdateJob.perform_later(
       form_data,
-      credentials[:spreadsheet_file_id],
-      worksheet_name_for(form_data),
+      sheet_id,
+      worksheet,
     )
   end
 
@@ -117,5 +122,27 @@ class FormsController < ApplicationController
     else
       "AV-Requests"
     end
+  end
+
+  # Looks up destination details for a form. Credentials should have structure:
+  # microsoft:
+  #   forms:
+  #     scrc_requests:
+  #       spreadsheet_file_id: "..."
+  def excel_form_destination_config(form_type)
+    credentials = Rails.application.credentials.microsoft || {}
+    forms_config = credentials[:forms] || {}
+
+    key = case form_type
+    when "av-requests", "copy-requests"
+      :scrc_requests
+    else
+      form_type&.to_sym
+    end
+
+    config = forms_config[key] || {}
+    config = config.to_h if config.respond_to?(:to_h)
+    config = config.deep_symbolize_keys if config.respond_to?(:deep_symbolize_keys)
+    config || {}
   end
 end

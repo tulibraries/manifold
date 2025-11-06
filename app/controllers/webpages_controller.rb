@@ -103,6 +103,7 @@ class WebpagesController < ApplicationController
   end
 
   def scrc_planyourvisit
+    @categories = [Category.find_by(slug: "scrc-study")]
     @space = Space.find_by(slug: "scrc-reading-room")
   end
 

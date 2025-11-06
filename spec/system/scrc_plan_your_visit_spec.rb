@@ -4,6 +4,7 @@ require "rails_helper"
 
 RSpec.describe "SCRC Plan Your Visit Page", type: :system do
   let(:space) { FactoryBot.create(:space, slug: "scrc-reading-room") }
+  let!(:category) { FactoryBot.create(:category, slug: "scrc-study") }
 
   before do
     allow(Space).to receive(:find_by).with(slug: "scrc-reading-room").and_return(space)
@@ -31,6 +32,15 @@ RSpec.describe "SCRC Plan Your Visit Page", type: :system do
       expect(page).to have_content("Handling Materials in the Reading Room")
       expect(page).to have_content("Data Collection and Use")
       expect(page).to have_content("SCRC Statement on Potentially Harmful Language")
+    end
+  end
+
+  describe "category menu" do
+    scenario "displays main sections" do
+      visit "/scrc/planyourvisit"
+
+      expect(page).to have_content(category.name)
+      expect(page).to have_link(href: "/categories/#{category.slug}")
     end
   end
 

@@ -2,168 +2,170 @@
 
 <div class="banner-image scrc-visit"></div>
 
-	<div class="container-lg space-show">
-		<% unless @categories.blank? %>
-			<div class="col-3 d-none d-md-none d-lg-block">
-				<%= render "categories_list" %>
-			</div>
-
-			<div class="col-12 col-md-9 col-lg-6">
-		<% else %>
-			<div class="col-12 col-md-9 col-lg-9">
-		<% end %>
-		<div class="row">
-			<div class="col">
-				<h1 class="page-title">
-					<%= title "Plan Your Visit to the Albert M. Greenfield SCRC Reading Room" %>
-				</h1>
-			</div>
-    </div>
-	</div>
-
+<div class="container-lg space-show">
   <div class="row">
-    <div class="col-12">
-      <ul class="list-unstyled space-contact">
-        <li><%= image_tag "small_location.png", class: "location decorative", alt: "" %><%= link_to @space.building.label, building_path(@space.building), class: "location" %></li>
-        <li><%= image_tag "small_phone.png", class: "location decorative", alt: "" %><%= get_phone(@space) %></li>
-        <% unless @space.email.nil? && @space.building.email.nil? %>
-        <li>
-          <%= image_tag "small_email.png", class: "location decorative", alt: "" %>
-          <%= mail_to @space.email ? @space.email : @space.building.email %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-12 text-center">
-      <p>The Albert M. Greenfield <%= link_to "SCRC", webpages_scrc_path %> Reading Room’s hours can be verified prior to your visit by viewing the <%= link_to "library hours page", hours_path %>, or the box at the bottom of this page. </p>
-    </div>
-  </div>
+    <% unless @categories.blank? %>
+      <div class="col-3 d-none d-md-none d-lg-block">
+        <%= render "categories_list" %>
+      </div>
 
-  <div class="row">
-    <div class="col-12">
-      <div class="accordion" id="planYourVisitAccordion">
-        
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="requestHeading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#requestCollapse" aria-expanded="false" aria-controls="requestCollapse">
-              Request Materials
-            </button>
-          </h2>
-          <div id="requestCollapse" class="accordion-collapse collapse" aria-labelledby="requestHeading" data-bs-parent="#planYourVisitAccordion">
-            <div class="accordion-body">
-              <p>You must be a registered user to request and use materials. The one-time registration process includes the <%= link_to "creation of an SCRC Researcher Account", t("manifold.webpages.scrc.links.researcher_account_link") %>. Registration is not required by patrons wishing to view exhibits or consult our reference collection.</p>
-              
-              <p>Request materials using our online tools: <%= link_to "Library Search", t("manifold.webpages.scrc.contact.search_redirect") %> and <%= link_to "Finding Aids", t("manifold.webpages.scrc.locations.finding_aids_link") %>.</p>
-              
-              <p>Please keep in mind that some of our materials are housed off-site and require at least two business days advanced notice.</p>
-              
-              <h5>How to request materials from our finding aids</h5>
-              <ul>
-                <li>Enter your search terms to search SCRC's finding aids.</li>
-                <li>To request an item from your search results, click "Request This" in the finding aid. This will take you to the login portal where you can review your requests.</li>
-                <li>Use the checkbox to select the items you would like to view and select a date. <strong>Requests will not be processed until you press the Submit Information button below.</strong></li>
-                <li>Submit a new request for each box.</li>
-                <li>Check the status of your request in your <%= link_to "SCRC Researcher Account", t("manifold.webpages.scrc.links.researcher_account_link") %>. Materials are available when the status says, "Item on hold in reading room."</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <div class="col">
+    <% else %>
+      <div class="col-12 col-md-9 col-lg-9">
+    <% end %>
 
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="handlingHeading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#handlingCollapse" aria-expanded="false" aria-controls="handlingCollapse">
-              Handling Materials in the Reading Room
-            </button>
-          </h2>
-          <div id="handlingCollapse" class="accordion-collapse collapse" aria-labelledby="handlingHeading" data-bs-parent="#planYourVisitAccordion">
-            <div class="accordion-body">
-              <ul>
-                <li>Please silence phones and take all phone conversations outside of the reading room.</li>
-                <li>All personal belongings must be left in the lockers or on the coat rack.</li>
-                <li>The reading room is monitored by security cameras.</li>
-                <li>Hands should be clean and dry.</li>
-                <li>Do not bend, press down or otherwise manipulate or rearrange materials.</li>
-                <li>Do not take notes on top of archival materials.</li>
-                <li>Keep materials flat on the table or in the stand/cradle provided.</li>
-                <li>Do not remove items from their plastic sleeves.</li>
-                <li>Food and beverages are not allowed in the reading room.</li>
-                <li>Use only pencils.</li>
-                <li>Remove one folder at a time.</li>
-                <li>Maintain the existing sequence of records; if materials within the folder appear to be out of order, please alert a staff member rather than rearranging the folder contents.</li>
-                <li>Handle materials by their edges and avoid touching the surface as much as possible.</li>
-                <li>Turn off the flash and sound on camera.</li>
-                <li>Do not use lights, camera stands or scanners.</li>
-                <li>The SCRC reserves the right to deny permission to photograph collection materials at its sole discretion.</li>
-                <li>Please return all material to the reference staff.</li>
-                <li>Material may be placed on hold for up to two weeks.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="dataHeading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dataCollapse" aria-expanded="false" aria-controls="dataCollapse">
-              Data Collection and Use
-            </button>
-          </h2>
-          <div id="dataCollapse" class="accordion-collapse collapse" aria-labelledby="dataHeading" data-bs-parent="#planYourVisitAccordion">
-            <div class="accordion-body">
-              <p>The SCRC respects the rights and privacy of our researchers and their registration and use records in accordance with the following state laws, institutional policies, and professional standards:</p>
-              
-              <ul>
-                <li>Pennsylvania Law for the Confidentiality of Library Records</li>
-                <li>Temple University Classification and Handling of Protected Data</li>
-                <li>Society of American Archivists Code of Ethics</li>
-                <li>ALA Policy on Confidentiality of Library Records</li>
-              </ul>
-              
-              <p>Temple University Libraries understands researcher records to include all records with identifying information about researchers. Information collected in conjunction with the use of SCRC materials may be retained indefinitely and will not be shared unless required by law.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="languageHeading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#languageCollapse" aria-expanded="false" aria-controls="languageCollapse">
-              SCRC Statement on Potentially Harmful Language in Archival Description and Cataloging
-            </button>
-          </h2>
-          <div id="languageCollapse" class="accordion-collapse collapse" aria-labelledby="languageHeading" data-bs-parent="#planYourVisitAccordion">
-            <div class="accordion-body">
-              <p>If you encounter language in <%= link_to "SCRC", webpages_scrc_path %> finding aids, catalog records, digitized collections, blog posts, exhibitions, or elsewhere that you find offensive or harmful, or if you have questions about the statement below or about our work, we welcome your feedback. Please email us at <a href="mailto:scrc@temple.edu">scrc@temple.edu</a> or call the SCRC reference desk at <a href="tel:215-204-8257">215-204-8257</a>.</p>
-              
-              <p>When processing (arranging, organizing, and describing) archival collections, and cataloging rare books, SCRC staff must make choices about what language to use when describing not just the books, papers, and records, but the people and organizations who created or who are represented in them. We recognize that many of our materials are created by and/or represent marginalized groups of people, and we believe it is our responsibility not only to describe those people and organizations accurately and respectfully, but to do so in a way that will not be harmful or offensive.</p>
-              
-              <p>However, many of our finding aids (descriptions and inventories of collections) and library catalog records, which were created years or decades ago, may well include harmful language. SCRC is dedicated to revising and updating our descriptive language, but with hundreds of finding aids and thousands of library catalog records, this is ongoing and will take time.</p>
-              
-              <p>For all these reasons, potentially harmful language may appear. SCRC staff are dedicated to balancing efficient and timely processing and cataloging, as well as preservation of original context, with an awareness of the importance of language and its effect on users of our materials and those represented within them. We recognize that we may not always make the right decision and welcome feedback from all sources so that we can learn and adjust our practices.</p>
-              
-              <p>When processing new archival collections, SCRC archivists follow guidelines to reduce the appearance of language that may be hurtful or harmful to some. These guidelines include the following actions:</p>
-              
-              <ul>
-                <li>Actively weighing whether the efficiency or preservation of context from re-using or not remediating problematic and potentially offensive description is worth the affect it may have on users encountering that description.</li>
-                <li>Clearly indicating (through use of quotation marks, notes, or other explanation) what language comes from an external source or is legacy/older description, and which was written by SCRC staff.</li>
-                <li>Researching how the community describes itself and its own histories, finding other institutions that have grappled with similar collections, and/or discussing the issue directly with the people or organizations who created or are described by the materials.</li>
-              </ul>
-
-              <p class="mt-4 mb-1">SCRC 2018.04</p>
-              <p>Last Updated: 10/10/2018</p>
-            </div>
-          </div>
-        </div>
-
+    <div class="row">
+      <div class="col">
+        <h1 class="unstyled">
+          <%= title "Plan Your Visit to the Albert M. Greenfield SCRC Reading Room" %>
+        </h1>
       </div>
     </div>
-  </div>
 
-  <% if @space.hours.present? %>
-    <div class="d-none d-md-block col-12 hours-widget">
-      <%= render "/application/model_hours" %>
+    <div class="row">
+      <div class="col-12">
+        <ul class="list-unstyled space-contact">
+          <li><%= image_tag "small_location.png", class: "location decorative", alt: "" %><%= link_to @space.building.label, building_path(@space.building), class: "location" %></li>
+          <li><%= image_tag "small_phone.png", class: "location decorative", alt: "" %><%= get_phone(@space) %></li>
+          <% unless @space.email.nil? && @space.building.email.nil? %>
+          <li>
+            <%= image_tag "small_email.png", class: "location decorative", alt: "" %>
+            <%= mail_to @space.email ? @space.email : @space.building.email %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-12 text-center">
+        <p>The Albert M. Greenfield <%= link_to "SCRC", webpages_scrc_path %> Reading Room’s hours can be verified prior to your visit by viewing the <%= link_to "library hours page", hours_path %>, or the box at the bottom of this page. </p>
+      </div>
     </div>
-  <% elsif @space.image.attached? %>
-    <div class="space-image mt-4">
-      <%= image_tag @space.custom_image(1000,600), class: "decorative", alt: "" %>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="accordion" id="planYourVisitAccordion">
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="requestHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#requestCollapse" aria-expanded="false" aria-controls="requestCollapse">
+                Request Materials
+              </button>
+            </h2>
+            <div id="requestCollapse" class="accordion-collapse collapse" aria-labelledby="requestHeading" data-bs-parent="#planYourVisitAccordion">
+              <div class="accordion-body">
+                <p>You must be a registered user to request and use materials. The one-time registration process includes the <%= link_to "creation of an SCRC Researcher Account", t("manifold.webpages.scrc.links.researcher_account_link") %>. Registration is not required by patrons wishing to view exhibits or consult our reference collection.</p>
+                
+                <p>Request materials using our online tools: <%= link_to "Library Search", t("manifold.webpages.scrc.contact.search_redirect") %> and <%= link_to "Finding Aids", t("manifold.webpages.scrc.locations.finding_aids_link") %>.</p>
+                
+                <p>Please keep in mind that some of our materials are housed off-site and require at least two business days advanced notice.</p>
+                
+                <h5>How to request materials from our finding aids</h5>
+                <ul>
+                  <li>Enter your search terms to search SCRC's finding aids.</li>
+                  <li>To request an item from your search results, click "Request This" in the finding aid. This will take you to the login portal where you can review your requests.</li>
+                  <li>Use the checkbox to select the items you would like to view and select a date. <strong>Requests will not be processed until you press the Submit Information button below.</strong></li>
+                  <li>Submit a new request for each box.</li>
+                  <li>Check the status of your request in your <%= link_to "SCRC Researcher Account", t("manifold.webpages.scrc.links.researcher_account_link") %>. Materials are available when the status says, "Item on hold in reading room."</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="handlingHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#handlingCollapse" aria-expanded="false" aria-controls="handlingCollapse">
+                Handling Materials in the Reading Room
+              </button>
+            </h2>
+            <div id="handlingCollapse" class="accordion-collapse collapse" aria-labelledby="handlingHeading" data-bs-parent="#planYourVisitAccordion">
+              <div class="accordion-body">
+                <ul>
+                  <li>Please silence phones and take all phone conversations outside of the reading room.</li>
+                  <li>All personal belongings must be left in the lockers or on the coat rack.</li>
+                  <li>The reading room is monitored by security cameras.</li>
+                  <li>Hands should be clean and dry.</li>
+                  <li>Do not bend, press down or otherwise manipulate or rearrange materials.</li>
+                  <li>Do not take notes on top of archival materials.</li>
+                  <li>Keep materials flat on the table or in the stand/cradle provided.</li>
+                  <li>Do not remove items from their plastic sleeves.</li>
+                  <li>Food and beverages are not allowed in the reading room.</li>
+                  <li>Use only pencils.</li>
+                  <li>Remove one folder at a time.</li>
+                  <li>Maintain the existing sequence of records; if materials within the folder appear to be out of order, please alert a staff member rather than rearranging the folder contents.</li>
+                  <li>Handle materials by their edges and avoid touching the surface as much as possible.</li>
+                  <li>Turn off the flash and sound on camera.</li>
+                  <li>Do not use lights, camera stands or scanners.</li>
+                  <li>The SCRC reserves the right to deny permission to photograph collection materials at its sole discretion.</li>
+                  <li>Please return all material to the reference staff.</li>
+                  <li>Material may be placed on hold for up to two weeks.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="dataHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dataCollapse" aria-expanded="false" aria-controls="dataCollapse">
+                Data Collection and Use
+              </button>
+            </h2>
+            <div id="dataCollapse" class="accordion-collapse collapse" aria-labelledby="dataHeading" data-bs-parent="#planYourVisitAccordion">
+              <div class="accordion-body">
+                <p>The SCRC respects the rights and privacy of our researchers and their registration and use records in accordance with the following state laws, institutional policies, and professional standards:</p>
+                
+                <ul>
+                  <li>Pennsylvania Law for the Confidentiality of Library Records</li>
+                  <li>Temple University Classification and Handling of Protected Data</li>
+                  <li>Society of American Archivists Code of Ethics</li>
+                  <li>ALA Policy on Confidentiality of Library Records</li>
+                </ul>
+                
+                <p>Temple University Libraries understands researcher records to include all records with identifying information about researchers. Information collected in conjunction with the use of SCRC materials may be retained indefinitely and will not be shared unless required by law.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="languageHeading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#languageCollapse" aria-expanded="false" aria-controls="languageCollapse">
+                SCRC Statement on Potentially Harmful Language in Archival Description and Cataloging
+              </button>
+            </h2>
+            <div id="languageCollapse" class="accordion-collapse collapse" aria-labelledby="languageHeading" data-bs-parent="#planYourVisitAccordion">
+              <div class="accordion-body">
+                <p>If you encounter language in <%= link_to "SCRC", webpages_scrc_path %> finding aids, catalog records, digitized collections, blog posts, exhibitions, or elsewhere that you find offensive or harmful, or if you have questions about the statement below or about our work, we welcome your feedback. Please email us at <a href="mailto:scrc@temple.edu">scrc@temple.edu</a> or call the SCRC reference desk at <a href="tel:215-204-8257">215-204-8257</a>.</p>
+                
+                <p>When processing (arranging, organizing, and describing) archival collections, and cataloging rare books, SCRC staff must make choices about what language to use when describing not just the books, papers, and records, but the people and organizations who created or who are represented in them. We recognize that many of our materials are created by and/or represent marginalized groups of people, and we believe it is our responsibility not only to describe those people and organizations accurately and respectfully, but to do so in a way that will not be harmful or offensive.</p>
+                
+                <p>However, many of our finding aids (descriptions and inventories of collections) and library catalog records, which were created years or decades ago, may well include harmful language. SCRC is dedicated to revising and updating our descriptive language, but with hundreds of finding aids and thousands of library catalog records, this is ongoing and will take time.</p>
+                
+                <p>For all these reasons, potentially harmful language may appear. SCRC staff are dedicated to balancing efficient and timely processing and cataloging, as well as preservation of original context, with an awareness of the importance of language and its effect on users of our materials and those represented within them. We recognize that we may not always make the right decision and welcome feedback from all sources so that we can learn and adjust our practices.</p>
+                
+                <p>When processing new archival collections, SCRC archivists follow guidelines to reduce the appearance of language that may be hurtful or harmful to some. These guidelines include the following actions:</p>
+                
+                <ul>
+                  <li>Actively weighing whether the efficiency or preservation of context from re-using or not remediating problematic and potentially offensive description is worth the affect it may have on users encountering that description.</li>
+                  <li>Clearly indicating (through use of quotation marks, notes, or other explanation) what language comes from an external source or is legacy/older description, and which was written by SCRC staff.</li>
+                  <li>Researching how the community describes itself and its own histories, finding other institutions that have grappled with similar collections, and/or discussing the issue directly with the people or organizations who created or are described by the materials.</li>
+                </ul>
+
+                <p class="mt-4 mb-1">SCRC 2018.04</p>
+                <p>Last Updated: 10/10/2018</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
-  <% end %>
+
+    <% if @space.hours.present? %>
+      <div class="d-none d-md-block col-12 hours-widget">
+        <%= render "/application/model_hours" %>
+      </div>
+    <% elsif @space.image.attached? %>
+      <div class="space-image mt-4">
+        <%= image_tag @space.custom_image(1000,600), class: "decorative", alt: "" %>
+      </div>
+    <% end %>
+  </div>
 </div>

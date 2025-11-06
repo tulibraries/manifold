@@ -113,7 +113,7 @@ class FormsController < ApplicationController
     form_type = form_data["form_type"] || form_data[:form_type]
     case form_type
     when "copy-requests"
-      "CopyRequests"
+      "Copy-Requests"
     else
       "AV-Requests"
     end

@@ -24,43 +24,33 @@ class ExcelUpdateJob < ApplicationJob
 
   private
 
-  def headers_for(worksheet_name)
-    case worksheet_name
-    when "CopyRequests"
-      [
-        "Name",
-        "Email",
-        "Phone",
-        "Affiliation",
-        "Address",
-        "Collection Title",
-        "Box",
-        "Folder",
-        "Identifier / Description",
-        "Estimated Pages",
-        "Format",
-        "Additional Requests",
-        "Duplication Limits",
-        "Copyright Acknowledgment",
-        "Submitted At",
-      ]
-    else
-      [
-        "Name",
-        "Email",
-        "Phone",
-        "Affiliation",
-        "Address",
-        "Collection Title",
-        "Identifier / Description",
-        "Notes",
-        "Format",
-        "Additional Requests",
-        "Outside Vendor Fees",
-        "Duplication Limits",
-        "Copyright Acknowledgment",
-        "Submitted At",
-      ]
+    def headers_for(worksheet_name)
+      case worksheet_name
+      when "Copy-Requests"
+        [
+          "Name",
+          "Email",
+          "Phone",
+          "Affiliation",
+          "Address",
+          "Requests",
+          "Duplication Limits",
+          "Copyright Acknowledgment",
+          "Submitted At",
+        ]
+      else
+        [
+          "Name",
+          "Email",
+          "Phone",
+          "Affiliation",
+          "Address",
+          "Requests",
+          "Outside Vendor Fees",
+          "Duplication Limits",
+          "Copyright Acknowledgment",
+          "Submitted At",
+        ]
+      end
     end
-  end
 end

@@ -37,11 +37,7 @@ RSpec.describe MicrosoftExcelService do
           "555-0000",
           "Temple University Affiliates",
           "123 Library Ln",
-          "Main Collection",
-          "Box 1",
-          "Handle with care",
-          "Film",
-          "Request 2: Collection: Second Collection | Identifier: Box 2 | Notes: Notes for request 2 | Format: Audio",
+          "Request 1: Collection: Main Collection | Identifier: Box 1 | Notes: Handle with care | Format: Film\nRequest 2: Collection: Second Collection | Identifier: Box 2 | Notes: Notes for request 2 | Format: Audio",
           "Yes",
           "Yes",
           "No",
@@ -73,7 +69,7 @@ RSpec.describe MicrosoftExcelService do
         "copyright_acknowledgment" => false,
       }
 
-      row = service.send(:format_form_data, form_data, "CopyRequests")
+      row = service.send(:format_form_data, form_data, "Copy-Requests")
 
       expect(row).to eq(
         [
@@ -82,13 +78,7 @@ RSpec.describe MicrosoftExcelService do
           "555-1111",
           "Non-Temple Affiliates",
           "456 Archive Rd",
-          "Copy Collection",
-          "Box A",
-          "Folder 1",
-          "Item 123",
-          "25",
-          "PDF: $0.50 per page",
-          "Request 2: Collection: Extra Collection | Box: Box B | Folder: Folder 2 | Identifier: Item 456 | Estimated Pages: 50 | Format: Photocopy: $0.50 per page plus postage",
+          "Request 1: Collection: Copy Collection | Box: Box A | Folder: Folder 1 | Identifier: Item 123 | Estimated Pages: 25 | Format: PDF: $0.50 per page\nRequest 2: Collection: Extra Collection | Box: Box B | Folder: Folder 2 | Identifier: Item 456 | Estimated Pages: 50 | Format: Photocopy: $0.50 per page plus postage",
           "Yes",
           "No",
           "2024-01-01 12:00:00",

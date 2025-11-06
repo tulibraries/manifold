@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_01_000000) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_15_231828) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -390,38 +390,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_01_000000) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "navigation_list_assignments", force: :cascade do |t|
-    t.bigint "navigation_list_id", null: false
-    t.string "navigable_type", null: false
-    t.bigint "navigable_id", null: false
-    t.integer "weight", default: 10, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["navigable_type", "navigable_id", "navigation_list_id"], name: "index_navigation_list_assignments_unique", unique: true
-    t.index ["navigation_list_id"], name: "index_navigation_list_assignments_on_navigation_list_id"
-  end
-
-  create_table "navigation_list_entries", force: :cascade do |t|
-    t.bigint "navigation_list_id", null: false
-    t.string "item_type", null: false
-    t.bigint "item_id", null: false
-    t.integer "weight", default: 10, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_type", "item_id"], name: "index_navigation_list_entries_on_item_type_and_item_id"
-    t.index ["navigation_list_id", "weight"], name: "index_navigation_list_entries_on_navigation_list_id_and_weight"
-    t.index ["navigation_list_id"], name: "index_navigation_list_entries_on_navigation_list_id"
-  end
-
-  create_table "navigation_lists", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_navigation_lists_on_slug", unique: true
-  end
-
   create_table "occupants", force: :cascade do |t|
     t.integer "person_id"
     t.datetime "created_at", precision: nil, null: false
@@ -707,8 +675,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_01_000000) do
   add_foreign_key "external_link_webpages", "external_links"
   add_foreign_key "external_link_webpages", "webpages"
   add_foreign_key "groups", "spaces"
-  add_foreign_key "navigation_list_assignments", "navigation_lists"
-  add_foreign_key "navigation_list_entries", "navigation_lists"
   add_foreign_key "occupants", "buildings"
   add_foreign_key "people", "buildings"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

@@ -41,3 +41,4 @@ services:
       - .:/manifold
     depends_on:
       - db
+    restart: on-failure

@@ -1,30 +1,8 @@
 # frozen_string_literal: true
 
-require "microsoft_graph"
-require "httparty"
-require "cgi"
-
 class MicrosoftExcelService
-  include HTTParty
-  base_uri "https://graph.microsoft.com/v1.0"
-
-  def initialize
-    credentials = Rails.application.credentials.microsoft
-    @tenant_id = credentials[:tenant_id]
-    @client_id = credentials[:client_id]
-    @client_secret = credentials[:client_secret]
-    @drive_id = credentials[:drive_id]
-    @site_id = credentials[:site_id]
-    @site_hostname = credentials[:site_hostname]
-    @site_path = credentials[:site_path]&.sub(%r{^/+}, "")
-
-    validate_site_configuration!
-
-    @access_token = access_token
-    @headers = {
-      "Authorization" => "Bearer #{@access_token}",
-      "Content-Type" => "application/json",
-    }
+  def initialize(client: MicrosoftGraph::Client.new)
+    @client = client
   end
 
   def append_form_data_to_excel(file_id, worksheet_name, form_data, headers)
@@ -39,9 +17,8 @@ class MicrosoftExcelService
 
     Rails.logger.info "Appending to Excel: #{range_address}"
 
-    response = self.class.patch(
-      workbook_endpoint(file_id, "worksheets/#{encode_segment(worksheet_name)}/range(address='#{range_address}')"),
-      headers: @headers,
+    response = @client.patch(
+      @client.workbook_endpoint(file_id, "worksheets/#{@client.encode_segment(worksheet_name)}/range(address='#{range_address}')"),
       body: { values: [row_data] }.to_json,
     )
 
@@ -59,64 +36,18 @@ class MicrosoftExcelService
 
     range_address = build_range_address(1, headers.length)
 
-    self.class.patch(
-      workbook_endpoint(file_id, "worksheets/#{encode_segment(worksheet_name)}/range(address='#{range_address}')"),
-      headers: @headers,
+    @client.patch(
+      @client.workbook_endpoint(file_id, "worksheets/#{@client.encode_segment(worksheet_name)}/range(address='#{range_address}')"),
       body: { values: [headers] }.to_json,
     )
   end
 
   private
 
-    def access_token
-      auth_url = "https://login.microsoftonline.com/#{@tenant_id}/oauth2/v2.0/token"
-      response = HTTParty.post(
-        auth_url,
-        body: {
-          grant_type: "client_credentials",
-          client_id: @client_id,
-          client_secret: @client_secret,
-          scope: "https://graph.microsoft.com/.default",
-        },
-        headers: { "Content-Type" => "application/x-www-form-urlencoded" },
-      )
-
-      return JSON.parse(response.body)["access_token"] if response.success?
-
-      raise "Failed to get access token: #{response.body}"
-    end
-
-    def validate_site_configuration!
-      return if @drive_id.present?
-      return if @site_id.present?
-      return if @site_hostname.present? && @site_path.present?
-
-      raise "SharePoint site configuration missing. Provide :drive_id or :site_id, or both :site_hostname and :site_path in credentials."
-    end
-
-    def workbook_endpoint(file_id, resource_path)
-      "#{workbook_item_path(file_id)}/workbook/#{resource_path}"
-    end
-
-    def workbook_item_path(file_id)
-      if @drive_id.present?
-        "/drives/#{@drive_id}/items/#{file_id}"
-      elsif @site_id.present?
-        "/sites/#{@site_id}/drive/items/#{file_id}"
-      else
-        "/sites/#{@site_hostname}:/#{@site_path}:/drive/items/#{file_id}"
-      end
-    end
-
-    def encode_segment(value)
-      CGI.escape(value.to_s)
-    end
-
     def get_used_range(file_id, worksheet_name)
       Rails.logger.debug "Fetching used range for file #{file_id}, worksheet #{worksheet_name}"
-      response = self.class.get(
-        workbook_endpoint(file_id, "worksheets/#{encode_segment(worksheet_name)}/usedRange"),
-        headers: @headers,
+      response = @client.get(
+        @client.workbook_endpoint(file_id, "worksheets/#{@client.encode_segment(worksheet_name)}/usedRange"),
       )
 
       response.success? ? JSON.parse(response.body) : nil
@@ -127,9 +58,8 @@ class MicrosoftExcelService
 
     def get_range_values(file_id, worksheet_name, range_address)
       Rails.logger.debug "Fetching range #{range_address} for file #{file_id}, worksheet #{worksheet_name}"
-      response = self.class.get(
-        workbook_endpoint(file_id, "worksheets/#{encode_segment(worksheet_name)}/range(address='#{range_address}')"),
-        headers: @headers,
+      response = @client.get(
+        @client.workbook_endpoint(file_id, "worksheets/#{@client.encode_segment(worksheet_name)}/range(address='#{range_address}')"),
       )
 
       response.success? ? JSON.parse(response.body) : nil

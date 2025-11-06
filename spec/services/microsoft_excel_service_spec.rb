@@ -95,23 +95,33 @@ RSpec.describe MicrosoftExcelService do
 
   describe "#workbook_item_path" do
     it "prefers drive_id when present" do
-      service.instance_variable_set(:@drive_id, "drive123")
-      expect(service.send(:workbook_item_path, "file456")).to eq("/drives/drive123/items/file456")
+      client = MicrosoftGraph::Client.allocate
+      client.instance_variable_set(:@drive_id, "drive123")
+      client.instance_variable_set(:@site_id, nil)
+      client.instance_variable_set(:@site_hostname, nil)
+      client.instance_variable_set(:@site_path, nil)
+
+      expect(client.send(:workbook_item_path, "file456")).to eq("/drives/drive123/items/file456")
     end
 
     it "falls back to site_id" do
-      service.instance_variable_set(:@drive_id, nil)
-      service.instance_variable_set(:@site_id, "site789")
-      expect(service.send(:workbook_item_path, "file456")).to eq("/sites/site789/drive/items/file456")
+      client = MicrosoftGraph::Client.allocate
+      client.instance_variable_set(:@drive_id, nil)
+      client.instance_variable_set(:@site_id, "site789")
+      client.instance_variable_set(:@site_hostname, nil)
+      client.instance_variable_set(:@site_path, nil)
+
+      expect(client.send(:workbook_item_path, "file456")).to eq("/sites/site789/drive/items/file456")
     end
 
     it "builds path from hostname and site path" do
-      service.instance_variable_set(:@drive_id, nil)
-      service.instance_variable_set(:@site_id, nil)
-      service.instance_variable_set(:@site_hostname, "contoso.sharepoint.com")
-      service.instance_variable_set(:@site_path, "sites/LibraryTeam")
+      client = MicrosoftGraph::Client.allocate
+      client.instance_variable_set(:@drive_id, nil)
+      client.instance_variable_set(:@site_id, nil)
+      client.instance_variable_set(:@site_hostname, "contoso.sharepoint.com")
+      client.instance_variable_set(:@site_path, "sites/LibraryTeam")
 
-      expect(service.send(:workbook_item_path, "file456")).to eq("/sites/contoso.sharepoint.com:/sites/LibraryTeam:/drive/items/file456")
+      expect(client.send(:workbook_item_path, "file456")).to eq("/sites/contoso.sharepoint.com:/sites/LibraryTeam:/drive/items/file456")
     end
   end
 end

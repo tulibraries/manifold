@@ -161,7 +161,6 @@ class WebpagesController < ApplicationController
 
   def visit
     @categories = Category.find_by(slug: "visit").items.select { |item| item.class == Category }
-    @categories
   end
 
   def blogs

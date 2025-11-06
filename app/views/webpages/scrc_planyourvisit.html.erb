@@ -2,14 +2,24 @@
 
 <div class="banner-image scrc-visit"></div>
 
-<div class="container-lg space-show">
-  <div class="row">
-    <div class="col">
-      <h1 class="page-title">
-        <%= title "Plan Your Visit to the Albert M. Greenfield SCRC Reading Room" %>
-      </h1>
+	<div class="container-lg space-show">
+		<% unless @categories.blank? %>
+			<div class="col-3 d-none d-md-none d-lg-block">
+				<%= render "categories_list" %>
+			</div>
+
+			<div class="col-12 col-md-9 col-lg-6">
+		<% else %>
+			<div class="col-12 col-md-9 col-lg-9">
+		<% end %>
+		<div class="row">
+			<div class="col">
+				<h1 class="page-title">
+					<%= title "Plan Your Visit to the Albert M. Greenfield SCRC Reading Room" %>
+				</h1>
+			</div>
     </div>
-  </div>
+	</div>
 
   <div class="row">
     <div class="col-12">

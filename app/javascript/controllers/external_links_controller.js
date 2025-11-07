@@ -2,11 +2,16 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    var c = document.getElementsByTagName("a");
-    var a = 0;
-    for(a; a < c.length; a++) {
-      var b = c[a];
-      b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank")
-    }
+    const links = document.querySelectorAll("a[href]");
+
+    links.forEach((link) => {
+      const isExternalHost = link.hostname && link.hostname !== location.hostname;
+      const isLibrarySearch = link.href.includes("librarysearch.temple.edu");
+
+      if (isExternalHost || isLibrarySearch) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+    });
   }
 }

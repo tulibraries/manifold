@@ -107,32 +107,37 @@
       <% request_count = 0 %>
       <% (0..9).each do |i| %>
         <% 
-          # Determine field suffixes for this request group
-          collection_field = i == 0 ? 'collection_title' : "collection_title_#{i.to_s.rjust(2, '0')}"
-          
-          # Check if this request group has required data
-          if @form_submission.form_type == 'av-requests'
-            identifier_field = i == 0 ? 'identifier' : "identifier_#{i.to_s.rjust(2, '0')}"
-            notes_field = i == 0 ? 'notes' : "notes_#{i.to_s.rjust(2, '0')}"
-            format_field = i == 0 ? 'format' : "format_#{i.to_s.rjust(2, '0')}"
-            
-            has_data = attributes[collection_field].present? && 
-                       attributes[identifier_field].present? &&  
-                       attributes[format_field].present?
+          collection_field = i.zero? ? "collection_title" : "collection_title_#{i.to_s.rjust(2, '0')}"
+
+          if @form_submission.form_type == "av-requests"
+            identifier_field = i.zero? ? "identifier" : "identifier_#{i.to_s.rjust(2, '0')}"
+            notes_field = i.zero? ? "notes" : "notes_#{i.to_s.rjust(2, '0')}"
+            format_field = i.zero? ? "format" : "format_#{i.to_s.rjust(2, '0')}"
+
+            request_values = [
+              attributes[collection_field],
+              attributes[identifier_field],
+              attributes[notes_field],
+              attributes[format_field],
+            ]
           else
-            # Copy requests
-            box_field = i == 0 ? 'box' : "box_#{i.to_s.rjust(2, '0')}"
-            folder_field = i == 0 ? 'folder' : "folder_#{i.to_s.rjust(2, '0')}"
-            identifier_field = i == 0 ? 'identifier' : "identifier_#{i.to_s.rjust(2, '0')}"
-            pages_field = i == 0 ? 'estimated_pages' : "estimated_pages_#{i.to_s.rjust(2, '0')}"
-            format_field = i == 0 ? 'format' : "format_#{i.to_s.rjust(2, '0')}"
-            
-            has_data = attributes[collection_field].present? && 
-                       attributes[box_field].present? &&
-                       attributes[folder_field].present? &&
-                       attributes[identifier_field].present? &&  
-                       attributes[format_field].present?
+            box_field = i.zero? ? "box" : "box_#{i.to_s.rjust(2, '0')}"
+            folder_field = i.zero? ? "folder" : "folder_#{i.to_s.rjust(2, '0')}"
+            identifier_field = i.zero? ? "identifier" : "identifier_#{i.to_s.rjust(2, '0')}"
+            pages_field = i.zero? ? "estimated_pages" : "estimated_pages_#{i.to_s.rjust(2, '0')}"
+            format_field = i.zero? ? "format" : "format_#{i.to_s.rjust(2, '0')}"
+
+            request_values = [
+              attributes[collection_field],
+              attributes[box_field],
+              attributes[folder_field],
+              attributes[identifier_field],
+              attributes[pages_field],
+              attributes[format_field],
+            ]
           end
+
+          has_data = request_values.any?(&:present?)
         %>
         
         <% if has_data %>
@@ -183,7 +188,7 @@
                   <dd class="attribute-list__value"><%= attributes[identifier_field] %></dd>
                   
                   <dt class="attribute-list__key">Estimated Pages</dt>
-                  <dd class="attribute-list__value"><%= attributes[pages_field] || 'Not provided' %></dd>
+                  <dd class="attribute-list__value"><%= attributes[pages_field] %></dd>
                   
                   <dt class="attribute-list__key">Format</dt>
                   <dd class="attribute-list__value">

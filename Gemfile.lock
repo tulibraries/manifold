@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/paper-trail-gem/paper_trail
-  revision: 073cc308c44c294bc2396d4fbe678242bc603933
+  revision: 0c511ed46c0845253bc6b7c85015742465f8c3b2
   specs:
-    paper_trail (16.0.0)
+    paper_trail (17.0.0)
       activerecord (>= 7.1)
       request_store (~> 1.4)
 

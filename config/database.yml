@@ -18,3 +18,7 @@ test:
 production:
   <<: *default
   database: manifold
+
+queue:
+  <<: *default
+  database: manifold

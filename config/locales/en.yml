@@ -1245,7 +1245,7 @@ en:
         contact:
           contact_label: Contact Us
           search_label: SCRC Catalog Search
-          search_redirect: /scrc/search
+          search_redirect: https://librarysearch.temple.edu/catalog?f%5Blibrary_facet%5D%5B%5D=Special+Collections+Research+Center
           info_label: Hours & Info
           info_redirect: /scrc/info
           form_id: ask-scrc

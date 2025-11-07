@@ -11,8 +11,10 @@ class MicrosoftExcelService
     Rails.logger.debug "Excel update form data keys: #{form_data.respond_to?(:keys) ? form_data.keys : []}"
     Rails.logger.debug "Excel row data preview: #{row_data.inspect}"
     used_range = get_used_range(file_id, worksheet_name)
-    next_row = used_range ? used_range["rowCount"].to_i + 1 : 1
-    Rails.logger.info "Appending row #{next_row} (used range rowCount=#{used_range&.dig('rowCount') || 0})"
+    next_row = calculate_next_row(used_range)
+    Rails.logger.info(
+      "Appending row #{next_row} (used range rowIndex=#{used_range&.dig('rowIndex') || 0}, rowCount=#{used_range&.dig('rowCount') || 0})",
+    )
     range_address = build_range_address(next_row, headers.length)
 
     Rails.logger.info "Appending to Excel: #{range_address}"
@@ -69,6 +71,17 @@ class MicrosoftExcelService
       start_col = "A"
       end_col = (column_count - 1 + "A".ord).chr
       "#{start_col}#{row_number}:#{end_col}#{row_number}"
+    end
+
+    def calculate_next_row(used_range)
+      return 1 unless used_range
+
+      row_index = used_range["rowIndex"].to_i
+      row_count = used_range["rowCount"].to_i
+
+      return 1 if row_count.zero?
+
+      row_index + row_count + 1
     end
 
     def format_form_data(form_data, worksheet_name)

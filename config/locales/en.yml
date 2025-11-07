@@ -1203,9 +1203,9 @@ en:
         page_title: Health Sciences Libraries
         locations:
           remote_learning: Remote Learning Support
-          ginsburg_label: Ginsburg Health Sciences Library
+          ginsburg_label: About the Ginsburg Library
           ginsburg_link: /hsl/ginsburg
-          krausz_label: Krausz Library of Podiatric Medicine
+          krausz_label: About the Krausz Library
           krausz_link: /hsl/podiatry
         contact:
           mailer_label: Mailing List

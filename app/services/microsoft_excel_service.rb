@@ -49,7 +49,7 @@ class MicrosoftExcelService
     def get_used_range(file_id, worksheet_name)
       Rails.logger.debug "Fetching used range for file #{file_id}, worksheet #{worksheet_name}"
       response = @client.get(
-        @client.workbook_endpoint(file_id, "worksheets/#{@client.encode_segment(worksheet_name)}/usedRange"),
+        @client.workbook_endpoint(file_id, "worksheets/#{@client.encode_segment(worksheet_name)}/usedRange(valuesOnly=true)"),
       )
 
       response.success? ? JSON.parse(response.body) : nil
@@ -77,11 +77,15 @@ class MicrosoftExcelService
       return 1 unless used_range
 
       row_index = used_range["rowIndex"].to_i
-      row_count = used_range["rowCount"].to_i
+      values = used_range["values"] || []
 
-      return 1 if row_count.zero?
+      last_data_offset = values.rindex do |row|
+        Array(row).any? { |cell| cell.present? && cell.to_s.strip != "" }
+      end
 
-      row_index + row_count + 1
+      return row_index + 1 if last_data_offset.nil?
+
+      row_index + last_data_offset + 2
     end
 
     def format_form_data(form_data, worksheet_name)

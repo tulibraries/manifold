@@ -273,13 +273,13 @@ class Form < MailForm::Base
 
   private
 
-  def parse_recipients
-    return [default_from_email] if recipients.blank?
+    def parse_recipients
+      return [default_from_email] if recipients.blank?
 
-    parsed = JSON.parse(recipients)
-    Array(parsed).compact.presence || [default_from_email]
-  rescue JSON::ParserError => e
-    Rails.logger.warn "Failed to parse form recipients JSON: #{e.message}"
-    [default_from_email]
-  end
+      parsed = JSON.parse(recipients)
+      Array(parsed).compact.presence || [default_from_email]
+    rescue JSON::ParserError => e
+      Rails.logger.warn "Failed to parse form recipients JSON: #{e.message}"
+      [default_from_email]
+    end
 end

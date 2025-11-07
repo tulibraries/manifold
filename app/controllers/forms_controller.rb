@@ -94,7 +94,7 @@ class FormsController < ApplicationController
     config = excel_form_destination_config(form_type)
     sheet_id = config[:spreadsheet_file_id]
 
-    unless sheet_id.present?
+    if sheet_id.blank?
       Rails.logger.info "Skipping Excel update: spreadsheet_file_id missing for form_type=#{form_type.inspect}"
       return
     end
@@ -134,10 +134,10 @@ class FormsController < ApplicationController
     forms_config = credentials[:forms] || {}
 
     key = case form_type
-    when "av-requests", "copy-requests"
-      :scrc_requests
+          when "av-requests", "copy-requests"
+            :scrc_requests
     else
-      form_type&.to_sym
+            form_type&.to_sym
     end
 
     config = forms_config[key] || {}

@@ -49,47 +49,46 @@ module MicrosoftGraph
 
     private
 
-    def merge_options(options)
-      { headers: headers }.deep_merge(options)
-    end
-
-    def access_token
-      @access_token ||= begin
-        auth_url = "https://login.microsoftonline.com/#{@tenant_id}/oauth2/v2.0/token"
-        response = self.class.post(
-          auth_url,
-          body: {
-            grant_type: "client_credentials",
-            client_id: @client_id,
-            client_secret: @client_secret,
-            scope: "https://graph.microsoft.com/.default",
-          },
-          headers: { "Content-Type" => "application/x-www-form-urlencoded" },
-        )
-
-        raise "Failed to get access token: #{response.body}" unless response.success?
-
-        JSON.parse(response.body)["access_token"]
+      def merge_options(options)
+        { headers: headers }.deep_merge(options)
       end
-    end
 
-    def workbook_item_path(file_id)
-      if @drive_id.present?
-        "/drives/#{@drive_id}/items/#{file_id}"
-      elsif @site_id.present?
-        "/sites/#{@site_id}/drive/items/#{file_id}"
-      else
-        "/sites/#{@site_hostname}:/#{@site_path}:/drive/items/#{file_id}"
+      def access_token
+        @access_token ||= begin
+          auth_url = "https://login.microsoftonline.com/#{@tenant_id}/oauth2/v2.0/token"
+          response = self.class.post(
+            auth_url,
+            body: {
+              grant_type: "client_credentials",
+              client_id: @client_id,
+              client_secret: @client_secret,
+              scope: "https://graph.microsoft.com/.default",
+            },
+            headers: { "Content-Type" => "application/x-www-form-urlencoded" },
+          )
+
+          raise "Failed to get access token: #{response.body}" unless response.success?
+
+          JSON.parse(response.body)["access_token"]
+        end
       end
-    end
 
-    def validate_site_configuration!
-      return if @drive_id.present?
-      return if @site_id.present?
-      return if @site_hostname.present? && @site_path.present?
+      def workbook_item_path(file_id)
+        if @drive_id.present?
+          "/drives/#{@drive_id}/items/#{file_id}"
+        elsif @site_id.present?
+          "/sites/#{@site_id}/drive/items/#{file_id}"
+        else
+          "/sites/#{@site_hostname}:/#{@site_path}:/drive/items/#{file_id}"
+        end
+      end
 
-      raise "SharePoint site configuration missing. Provide :drive_id or :site_id, or both :site_hostname and :site_path in credentials."
-    end
+      def validate_site_configuration!
+        return if @drive_id.present?
+        return if @site_id.present?
+        return if @site_hostname.present? && @site_path.present?
+
+        raise "SharePoint site configuration missing. Provide :drive_id or :site_id, or both :site_hostname and :site_path in credentials."
+      end
   end
 end
-

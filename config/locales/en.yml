@@ -1252,7 +1252,7 @@ en:
         links:
           copy-request-form: Request Copies
           av_request_policy: AV Requests
-          av_request_policy_link: https://library.temple.edu/policies/av-requests
+          av_request_policy_link: /policies/av-requests
           visit_label: Visit & Study
           visit_link: /scrc/study
           emphases_label: Collecting Emphases

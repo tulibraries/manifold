@@ -744,7 +744,7 @@ GEM
       diff-lcs (~> 1.6)
       parser (>= 3.3.0)
       prism (>= 1.5.1)
-    uri (1.0.4)
+    uri (1.1.1)
     useragent (0.16.11)
     uuidtools (3.0.0)
     vcr (6.3.1)

@@ -431,7 +431,7 @@ en:
                                     </tr>
                                     </tbody>
                                     </table>
-                                    <p><strong><a class="inline" href="https://ezb.relaisd2d.com/?LS=TEMPLE">EZborrow</a></strong> or<strong> <a class="inline" href="http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/paley/logon.html">ILLiad</a></strong><br>
+                                    <p><strong><a class="inline" href="/ezborrow">EZborrow</a></strong> or<strong> <a class="inline" href="http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/paley/logon.html">ILLiad</a></strong><br>
                                     Use these interlibrary lending services to request items unavailable at Temple’s libraries. Use EZborrow to search and request books from over 60 Pennsylvania academic libraries. Books are received in 3-5 business days. Use ILLiad to borrow books and other materials from libraries across North America.</p>
                                     <p><strong><span class="heading"><a class="inline" href="https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=TULI&amp;sortby=rank">Library Search</a></span></strong><br>
                                     Search the books, media, articles through our backup search.</p>
@@ -708,7 +708,7 @@ en:
                       <a class="inline" href="#{librarysearch_url}/users/account">log in to the Library Search</a>, locate 
                       the item's record in the Library Search, and click on the <strong>Request</strong> button.
         not_held: Temple doesn't have it?
-        not_held_one_html: The best place to request books that Temple doesn't own is through <a class="inline" href="https://ezb.relaisd2d.com/?LS=TEMPLE">EZborrow</a>.
+        not_held_one_html: The best place to request books that Temple doesn't own is through <a class="inline" href="/ezborrow">EZborrow</a>.
         not_held_two_html: For books not available through EZborrow, <em>as well as journal articles</em>, use <a class="inline" href="https://temple.illiad.oclc.org/illiad/charles/logon.html">ILLiad</a>, our new service for requesting hard to find materials.
       fields:
         boolean: 

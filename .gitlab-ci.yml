@@ -79,7 +79,7 @@ tag_release:
 prod_deploy:
   variables:
     IMAGE: harbor.k8s.temple.edu/tulibraries/manifold
-    RANCHER: rancher
+    RANCHER: prod-rancher
     CLUSTER: $PROD_CLUSTER
   stage: deploy
   extends: .helm_setup

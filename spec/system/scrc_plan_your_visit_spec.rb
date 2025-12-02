@@ -123,14 +123,12 @@ RSpec.describe "SCRC Plan Your Visit Page", type: :system do
 
       # Open first section and wait for it to expand
       request_button.click
-      sleep 1
-      expect(request_section["class"]).to include("show")
+      expect(page).to have_css("#requestCollapse.show", wait: 5)
 
       # Open second section - first should close
       handling_button.click
-      sleep 1
-      expect(handling_section["class"]).to include("show")
-      expect(request_section["class"]).not_to include("show")
+      expect(page).to have_css("#handlingCollapse.show", wait: 5)
+      expect(page).to have_no_css("#requestCollapse.show", wait: 5)
     end
 
     it "accordion content is accessible when expanded" do
@@ -142,12 +140,11 @@ RSpec.describe "SCRC Plan Your Visit Page", type: :system do
       request_section = find("#requestCollapse")
 
       # Initially, content should not be visible (collapsed)
-      expect(request_section["class"]).not_to include("show")
+      expect(page).to have_no_css("#requestCollapse.show", wait: 5)
 
       # Expand section
       request_button.click
-      sleep 1
-      expect(request_section["class"]).to include("show")
+      expect(page).to have_css("#requestCollapse.show", wait: 5)
 
       # Content should now be visible
       expect(page).to have_text("You must be a registered user to request", wait: 5)

@@ -44,7 +44,12 @@ class FormsController < ApplicationController
     end
     excel_form_data["form_type"] = form_type if form_type
 
-    email_sent = @form.deliver
+    email_sent = false
+    begin
+      email_sent = @form.deliver
+    rescue Net::ReadTimeout => e
+      Rails.logger.warn("Form delivery timed out: #{e.class} - #{e.message}")
+    end
     persist_form!
     queue_excel_update(excel_form_data)
 

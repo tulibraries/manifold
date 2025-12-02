@@ -100,7 +100,7 @@ Rails.application.routes.draw do
   resources :exhibitions, only: [:index, :show], concerns: [:imageable]
   resources :external_link, only: [:show]
   resources :forms, only: [:index, :new, :create, :show]
-  resources :file_uploads, only: [:new, :create]
+  resources :file_uploads, only: [:new, :create, :show]
   resources :groups, only: [:index, :show]
   resources :highlights, only: [:index]
   resources :alerts_json, only: [:index], path: "/alerts.json"

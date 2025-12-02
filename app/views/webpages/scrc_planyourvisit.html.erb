@@ -164,7 +164,17 @@
             </h2>
             <div id="collectionPolicyCollapse" class="accordion-collapse collapse" aria-labelledby="collectionPolicyHeading" data-bs-parent="#planYourVisitAccordion">
               <div class="accordion-body">
-                <p><strong>Below is a consolidated version of the policy – you can <%= link_to "download the policy in its entirety.", file_upload_path("scrc-collection-policy-2025", inline: true), target: "_blank", rel: "noopener" %></strong></p>
+                <p><strong>Below is a consolidated version of the policy – you can
+                  <%= link_to file_upload_path("scrc-collection-policy-2025", inline: true),
+                              target: "_blank",
+                              rel: "noopener",
+                              "aria-label": "download the policy in its entirety (PDF); opens in new tab",
+                              class: "d-inline-flex align-items-center gap-1" do %>
+                    download the policy in its entirety.
+                    <%= image_tag "pdf-black.svg", class: "pdf-icon pt-0", alt: "PDF file" %>
+                    <%= image_tag "new-tab.png", class: "pdf-icon pt-0", alt: "opens in new tab" %>
+                  <% end %>
+                </strong></p>
                 <p><strong>COLLECTION DEVELOPMENT MANAGEMENT POLICY</strong><br />Temple Libraries – Special Collections Research Center</p>
 
                 <h5 class="mt-3">1. Institution Description</h5>

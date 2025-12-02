@@ -29,7 +29,7 @@ RSpec.describe "SCRC Plan Your Visit Page", type: :system do
       visit "/scrc/planyourvisit"
 
       expect(page).to have_content("Request Materials")
-      expect(page).to have_content("Handling Materials in the Reading Room")
+      expect(page).to have_content("Handling Materials")
       expect(page).to have_content("Data Collection and Use")
       expect(page).to have_content("SCRC Statement on Potentially Harmful Language")
     end

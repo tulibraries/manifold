@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe "FileUploads", type: :request do
-  let!(:file_upload) { FactoryBot.create(:file_upload, name: "SCRC Collection Policy 2025") }
+  let!(:file_upload) { FactoryBot.create(:file_upload) }
 
   it "redirects to an attachment download by default" do
     get file_upload_path(file_upload)

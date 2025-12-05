@@ -11,28 +11,28 @@ ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
   K8=yes
 
 RUN apk add -U --no-cache \
-      bash=5.2.37-r0 \
+      bash=5.3.3-r1 \
       imagemagick=7.1.2.8-r0 \
       imagemagick-jpeg=7.1.2.8-r0 \
       imagemagick-libs=7.1.2.8-r0 \
-      libjpeg-turbo=3.1.0-r0 \
-      musl=1.2.5-r10 \
+      libjpeg-turbo=3.1.2-r0 \
+      musl=1.2.5-r21 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.43-r3 \
       postgresql16-client=16.11-r0 \
       shared-mime-info=2.4-r6 \
       tzdata=2025b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
-      git=2.49.1-r0 \
+      git=2.52.0-r0 \
       build-base=0.5-r3 \
       yaml=0.2.5-r2 \
       yaml-dev=0.2.5-r2 \
       libjpeg=9f-r0 \
       jpeg-dev=9f-r0 \
-      libjpeg-turbo-dev=3.1.0-r0 \
+      libjpeg-turbo-dev=3.1.2-r0 \
       libxslt-dev=1.1.43-r3 \
       postgresql16-dev=16.11-r0 \
-      nodejs=22.16.0-r2 \
+      nodejs=24.11.1-r0 \
       yarn=1.22.22-r1 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \

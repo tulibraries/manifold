@@ -14,7 +14,7 @@ RSpec.describe Ability, type: :model do
       expect(ability.can?(:manage, Group)).to be(true)
       expect(ability.can?(:manage, Service)).to be(true)
       expect(ability.can?(:manage, Collection)).to be(true)
-      expect(ability.can?(:manage, Category)).to be(true)
+      expect(ability.can?(:manage, Category)).to be(false)
     end
 
     example "cannot manage AdminGroup-managed entities (requires AdminGroup membership)" do

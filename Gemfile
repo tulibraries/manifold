@@ -114,5 +114,5 @@ end
 
 group :production do
   gem "dalli"
-  gem "connection_pool"
+  gem "connection_pool", "~> 2.4"
 end

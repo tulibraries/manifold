@@ -820,7 +820,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 3.6)
   capybara (>= 2.15)
-  connection_pool (~> 3.0)
+  connection_pool
   cssbundling-rails
   dalli
   database_cleaner

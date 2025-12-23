@@ -7,8 +7,7 @@ COPY . .
 USER root
 
 ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
-  RAILS_ENV=production \
-  K8=yes
+  RAILS_ENV=production
 
 RUN apk add -U --no-cache \
       bash=5.3.3-r1 \
@@ -38,7 +37,7 @@ RUN apk add -U --no-cache \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
-    K8=no SECRET_KEY_BASE=dummy bundle exec rails assets:precompile && \
+    SECRET_KEY_BASE=dummy bundle exec rails assets:precompile && \
     if [ "${RAILS_ENV}" = "production" ]; then rm -rf node_modules; fi && \
     if [ "${RAILS_ENV}" = "production" ]; then rm -rf tmp/*; fi && \
     if [ "${RAILS_ENV}" = "production" ]; then apk del build-dependencies; fi && \

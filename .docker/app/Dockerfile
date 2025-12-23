@@ -7,8 +7,7 @@ COPY . .
 USER root
 
 ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
-  RAILS_ENV=production \
-  K8=yes
+  RAILS_ENV=production
 
 RUN apk add -U --no-cache \
       bash=5.3.3-r1 \

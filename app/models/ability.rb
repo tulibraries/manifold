@@ -5,17 +5,20 @@ class Ability
 
   def initialize(account)
     if account.present?
-      @is_form_submission_only = account.admin_group&.managed_entities == ["FormSubmission"]
-
-      if @is_form_submission_only
-        can :manage, FormSubmission
-      else
-        can [:read, :index, :show], :all
-      end
-
       if account.admin?
         can :manage, :all
+      elsif account.student?
+        can :read, Webpage, student_access_accounts: { id: account.id }
+        can :update, Webpage, student_access_accounts: { id: account.id }
       else
+        @is_form_submission_only = account.admin_group&.managed_entities == ["FormSubmission"]
+
+        if @is_form_submission_only
+          can :manage, FormSubmission
+        else
+          can [:read, :index, :show], :all
+        end
+
         unless @is_form_submission_only
           # FormSubmission-only users already handled above
           # All other authenticated users get base permissions

@@ -30,7 +30,9 @@ module Admin
 
     def root
       # Redirect Form Submission-only users to their landing page
-      if current_account.admin_group&.managed_entities == ["FormSubmission"]
+      if current_account.student?
+        redirect_to admin_webpages_path
+      elsif current_account.admin_group&.managed_entities == ["FormSubmission"]
         redirect_to admin_form_submissions_path
       else
         # Default behavior - redirect to people index (users can read/index people)
@@ -59,7 +61,7 @@ module Admin
     end
 
     def user_editable_field?(account, attribute)
-      !admin_only?(attribute) || account.admin
+      !admin_only?(attribute) || account.admin?
     end
 
     def check_admin_access!
@@ -102,7 +104,9 @@ module Admin
       end
     rescue CanCan::AccessDenied => exception
       # Redirect FormSubmission-only users to their allowed area
-      if current_account.admin_group&.managed_entities == ["FormSubmission"]
+      if current_account.student?
+        redirect_to admin_webpages_path, alert: exception.message
+      elsif current_account.admin_group&.managed_entities == ["FormSubmission"]
         redirect_to admin_form_submissions_path, alert: "You are not authorized to access this page"
       else
         # Redirect other users to people index which all authenticated users can access
@@ -142,7 +146,7 @@ module Admin
     end
 
     def is_admin?
-      signed_in? ? current_user.admin : false
+      signed_in? ? current_user.admin? : false
     end
 
     def authorized_action?(resource_class, action)

@@ -170,7 +170,7 @@ GEM
     choice (0.2.0)
     coderay (1.1.3)
     concurrent-ruby (1.3.6)
-    connection_pool (3.0.2)
+    connection_pool (2.5.5)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -819,7 +819,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 3.6)
   capybara (>= 2.15)
-  connection_pool (~> 3.0)
+  connection_pool (~> 2.5)
   cssbundling-rails
   dalli
   database_cleaner

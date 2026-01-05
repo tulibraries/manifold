@@ -51,7 +51,7 @@ class Webpage < ApplicationRecord
 
   def featured_item
     f = self.external_link_webpages.select { |f| (f.external_link.present? && f.weight == 1) }.sort_by { |f| f.external_link.updated_at }
-    f.first if f.present?
+    (f.presence&.first)
   end
 
   def items

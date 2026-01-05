@@ -7,7 +7,7 @@ RSpec.describe Admin::BlogsController, type: :controller do
   # Verify edit page for non-versioned model
 
   before(:each) do
-    account = FactoryBot.create(:account, admin: true)
+    account = FactoryBot.create(:account, role: "admin")
     sign_in(account)
   end
 

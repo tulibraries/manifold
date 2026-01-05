@@ -20,7 +20,7 @@ RSpec.shared_examples "renderable_dashboard" do
       FactoryBot.create(:account)
     else
       # For AdminGroup-managed entities, use admin account for full access
-      FactoryBot.create(:account, admin: true)
+      FactoryBot.create(:account, role: "admin")
     end
   }
   let(:index_path) { send("admin_#{model_name.pluralize}_path") }

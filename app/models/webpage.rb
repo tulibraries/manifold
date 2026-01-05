@@ -5,6 +5,7 @@ class Webpage < ApplicationRecord
   include Accountable
   include Categorizable
   include Draftable
+  include StudentAccessible
   include Validators
   extend FriendlyId
   include SchemaDotOrgable

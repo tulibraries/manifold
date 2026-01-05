@@ -24,6 +24,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     tutorial_path: Field::String,
     categories: Field::HasMany,
     accounts: Field::HasMany.with_options(admin_only: true),
+    student_access_accounts: StudentAccessAccountsField.with_options(admin_only: true),
     external_link: Field::BelongsTo.with_options(order: "title"),
     external_links: Field::HasMany,
     file_uploads: Field::HasMany,
@@ -52,6 +53,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     :description,
     :categories,
     :accounts,
+    :student_access_accounts,
     :covid_alert,
     :external_links,
     :file_uploads
@@ -69,6 +71,7 @@ class WebpageDashboard < Administrate::BaseDashboard
     :tutorial_path,
     :virtual_tour,
     :accounts,
+    :student_access_accounts,
     :layout,
     :external_link,
     :external_links,

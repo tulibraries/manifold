@@ -3,12 +3,12 @@
 require "rails_helper"
 
 RSpec.describe "Role-based Admin Access", type: :system do
-  let(:admin) { FactoryBot.create(:account, admin: true) }
+  let(:admin) { FactoryBot.create(:account, role: "admin") }
   let(:form_admin_group) { FactoryBot.create(:admin_group, managed_entities: ["FormSubmission"]) }
-  let(:form_admin) { FactoryBot.create(:account, admin: false, admin_group: form_admin_group) }
+  let(:form_admin) { FactoryBot.create(:account, role: "regular", admin_group: form_admin_group) }
   let(:other_admin_group) { FactoryBot.create(:admin_group, managed_entities: ["Building", "Person"]) }
-  let(:other_admin) { FactoryBot.create(:account, admin: false, admin_group: other_admin_group) }
-  let(:regular_user) { FactoryBot.create(:account, admin: false) }
+  let(:other_admin) { FactoryBot.create(:account, role: "regular", admin_group: other_admin_group) }
+  let(:regular_user) { FactoryBot.create(:account, role: "regular") }
 
   after do
     Account.destroy_all

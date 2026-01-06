@@ -5,8 +5,8 @@ require "rails_helper"
 RSpec.describe Admin::AccountsController, type: :controller do
   # Verify edit page for non-versioned model
 
-  let(:account) { FactoryBot.create(:account, admin: true) }
-  let(:account2) { FactoryBot.create(:account, admin: true) }
+  let(:account) { FactoryBot.create(:account, role: "admin") }
+  let(:account2) { FactoryBot.create(:account, role: "admin") }
   let!(:form_info) { FactoryBot.create(:form_info, recipients: [account2.email]) }
 
   describe "GET #edit" do

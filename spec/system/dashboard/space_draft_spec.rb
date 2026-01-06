@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "Dashboard::SpaceDrafts", type: :system do
   before(:all) do
-    @account = FactoryBot.create(:account, admin: true)
+    @account = FactoryBot.create(:account, role: "admin")
     @space = FactoryBot.create(:space)
     @models = ["space"]
   end

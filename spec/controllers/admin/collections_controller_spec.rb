@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Admin::CollectionsController, type: :controller do
-  let(:account) { FactoryBot.create(:account, admin: true) }
+  let(:account) { FactoryBot.create(:account, role: "admin") }
   let!(:collection) { FactoryBot.create(:collection) }
 
   describe "DELETE #destroy" do

@@ -13,10 +13,13 @@ class Account < ApplicationRecord
 
   validates :name, presence: true
 
+  enum :role, { regular: "regular", student: "student", admin: "admin" }
+
   belongs_to :admin_group, optional: true
 
   has_many :account_form_infos, dependent: nil
   has_many :form_infos, through: :account_form_infos
+  has_many :student_accesses, dependent: :destroy
 
 
   def self.from_omniauth(access_token)

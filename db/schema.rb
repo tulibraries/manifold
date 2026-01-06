@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_15_231828) do
+ActiveRecord::Schema[7.2].define(version: 2026_01_05_143306) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,10 +37,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_15_231828) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.boolean "admin", default: false
     t.boolean "alertability"
     t.bigint "admin_group_id"
     t.string "name"
+    t.string "role", default: "regular", null: false
     t.index ["admin_group_id"], name: "index_accounts_on_admin_group_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
@@ -626,6 +626,17 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_15_231828) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "student_accesses", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.string "student_accessible_type", null: false
+    t.bigint "student_accessible_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "student_accessible_type", "student_accessible_id"], name: "index_student_accesses_unique", unique: true
+    t.index ["account_id"], name: "index_student_accesses_on_account_id"
+    t.index ["student_accessible_type", "student_accessible_id"], name: "index_student_accesses_on_student_accessible"
+  end
+
   create_table "subject_specialties", force: :cascade do |t|
     t.integer "person_id"
     t.integer "subject_id"
@@ -684,5 +695,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_15_231828) do
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "spaces", "external_links"
+  add_foreign_key "student_accesses", "accounts"
   add_foreign_key "webpages", "external_links"
 end

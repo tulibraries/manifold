@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "Dashboard::Webpage", type: :system do
   before(:all) do
-    @admin = FactoryBot.create(:account, admin: true)
+    @admin = FactoryBot.create(:account, role: "admin")
     @webpage = FactoryBot.create(:webpage)
   end
 

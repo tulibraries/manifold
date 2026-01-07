@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "Dashboard::Collection", type: :system do
   before(:all) do
-    @admin = FactoryBot.create(:account, admin: true)
+    @admin = FactoryBot.create(:account, role: "admin")
     @collection = FactoryBot.create(:collection)
   end
 

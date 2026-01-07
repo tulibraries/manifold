@@ -9,7 +9,7 @@ RSpec.shared_examples "delete restricted" do |associations|
   let!(:factory_model) { FactoryBot.create(model) }
   let(:exception) { ActiveRecord::DeleteRestrictionError.new(model_name) }
   let!(:associated_models) { [] }
-  let(:account) { FactoryBot.create(:account, admin: true) }
+  let(:account) { FactoryBot.create(:account, role: "admin") }
   let(:undeletables) { :event }
 
   before do

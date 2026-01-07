@@ -4,8 +4,8 @@ require "rails_helper"
 
 RSpec.describe "Dashboard::Exhibition", type: :system do
   before(:all) do
-    @admin = FactoryBot.create(:account, admin: true)
-    @non_admin = FactoryBot.create(:account, admin: false)
+    @admin = FactoryBot.create(:account, role: "admin")
+    @non_admin = FactoryBot.create(:account, role: "regular")
     @exhibition = FactoryBot.create(:exhibition)
     @exhibition_with_image = FactoryBot.create(:exhibition, :with_image)
     @models = ["exhibition"]

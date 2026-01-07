@@ -13,25 +13,21 @@
   <% end %>
 </div>
 <div class="field-unit__field">
-  <% if resource_name == :event && field.attribute == :guid %>
-    <%= f.text_field field.attribute, disabled: true %>
-  <% else %>
-    <%= f.text_field field.attribute, field.html_attributes %>
-    <% if is_admin? %>
-      <% if resource_name == :form_info %>
-        <% if field.attribute == :slug %>
-          <p><%= t("manifold.default.fields.string.no_edit_slug").html_safe %></p>
-        <% end %>
-      <% else %>
-        <% if field.attribute == :slug %>
-          <p><%= t("manifold.default.fields.string.slugs").html_safe %></p>
-        <% end %>
-        <% if (field.attribute == :name || field.attribute == :title) %>
-          <p><%= t("manifold.default.fields.string.renaming") %></p>
-        <% end %>
-        <% if field.attribute == :tutorial_path %>
-          <p><%= t("manifold.default.fields.string.tutorial_path") %></p>
-        <% end %>
+  <%= f.text_field field.attribute, field.html_attributes %>
+  <% if is_admin? %>
+    <% if resource_name == :form_info %>
+      <% if field.attribute == :slug %>
+        <p><%= t("manifold.default.fields.string.no_edit_slug").html_safe %></p>
+      <% end %>
+    <% else %>
+      <% if field.attribute == :slug %>
+        <p><%= t("manifold.default.fields.string.slugs").html_safe %></p>
+      <% end %>
+      <% if (field.attribute == :name || field.attribute == :title) %>
+        <p><%= t("manifold.default.fields.string.renaming") %></p>
+      <% end %>
+      <% if field.attribute == :tutorial_path %>
+        <p><%= t("manifold.default.fields.string.tutorial_path") %></p>
       <% end %>
     <% end %>
   <% end %>

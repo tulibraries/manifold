@@ -7,11 +7,11 @@ RSpec.describe "Dashboard::Building", type: :system do
     # Clean up existing AdminGroups to avoid conflicts
     AdminGroup.destroy_all
 
-    @admin = FactoryBot.create(:account, admin: true)
+    @admin = FactoryBot.create(:account, role: "admin")
     @admin_group = FactoryBot.create(:admin_group,
       name: "Building Forms Test Admin Group",
       managed_entities: ["Building"])
-    @non_admin = FactoryBot.create(:account, admin: false, admin_group: @admin_group)
+    @non_admin = FactoryBot.create(:account, role: "regular", admin_group: @admin_group)
     @building = FactoryBot.create(:building)
     @models = ["building"]
   end

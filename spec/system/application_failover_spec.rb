@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "ApplicationFailover", type: :system do
   before(:all) do
-    @admin = FactoryBot.create(:account, admin: true)
+    @admin = FactoryBot.create(:account, role: "admin")
     @failover = FactoryBot.create(:application_failover)
     @cta3 = FactoryBot.create(:category, slug: "computers-printing-technology")
     @cta4 = FactoryBot.create(:category, slug: "explore-charles")

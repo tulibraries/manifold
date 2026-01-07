@@ -28,6 +28,39 @@ RSpec.describe Ability, type: :model do
       expect(ability.can?(:update, Alert)).to be(false)
       expect(ability.can?(:manage, :all)).to be(false)
     end
+
+    example "cannot update webpages even with student access assignment" do
+      webpage = FactoryBot.create(:webpage)
+      webpage.student_access_accounts << account
+      expect(ability.can?(:update, webpage)).to be(false)
+    end
+  end
+
+  describe "student role ability" do
+    let(:account) { FactoryBot.create(:account, role: "student") }
+    let(:ability) { Ability.new(account) }
+    let(:webpage) { FactoryBot.create(:webpage, title: "Assigned Webpage") }
+    let(:other_webpage) { FactoryBot.create(:webpage, title: "Unassigned Webpage") }
+
+    before do
+      webpage.student_access_accounts << account
+    end
+
+    example "can read and update assigned webpages" do
+      expect(ability.can?(:read, webpage)).to be(true)
+      expect(ability.can?(:update, webpage)).to be(true)
+    end
+
+    example "cannot update unassigned webpages" do
+      expect(ability.can?(:update, other_webpage)).to be(false)
+    end
+
+    example "cannot access other entities" do
+      expect(ability.can?(:read, Person)).to be(false)
+      expect(ability.can?(:read, :all)).to be(false)
+      expect(ability.can?(:manage, Space)).to be(false)
+      expect(ability.can?(:manage, :all)).to be(false)
+    end
   end
 
   describe "alert ability" do
@@ -42,7 +75,7 @@ RSpec.describe Ability, type: :model do
   end
 
   describe "admin ability" do
-    let(:account) { FactoryBot.create(:account, admin: true) }
+    let(:account) { FactoryBot.create(:account, role: "admin") }
     let(:ability) { Ability.new(account) }
     example "ability" do
       expect(ability.can?(:manage, :all)).to be((true))
@@ -51,7 +84,7 @@ RSpec.describe Ability, type: :model do
 
   describe "admin group ability - Form Submission only (RESTRICTIVE)" do
     let(:admin_group) { FactoryBot.create(:admin_group, managed_entities: ["FormSubmission"]) }
-    let(:account) { FactoryBot.create(:account, admin: false, admin_group: admin_group) }
+    let(:account) { FactoryBot.create(:account, role: "regular", admin_group: admin_group) }
     let(:ability) { Ability.new(account) }
 
     example "can manage FormSubmission (their only allowed entity)" do
@@ -85,7 +118,7 @@ RSpec.describe Ability, type: :model do
 
   describe "admin group ability - Mixed entities (ADDITIVE)" do
     let(:admin_group) { FactoryBot.create(:admin_group, managed_entities: ["Event", "Blog"]) }
-    let(:account) { FactoryBot.create(:account, admin: false, admin_group: admin_group) }
+    let(:account) { FactoryBot.create(:account, role: "regular", admin_group: admin_group) }
     let(:ability) { Ability.new(account) }
 
     example "can manage assigned entities from admin group" do
@@ -107,7 +140,7 @@ RSpec.describe Ability, type: :model do
   end
 
   describe "admin group ability - No admin group (regular user)" do
-    let(:account) { FactoryBot.create(:account, admin: false, admin_group: nil) }
+    let(:account) { FactoryBot.create(:account, role: "regular", admin_group: nil) }
     let(:ability) { Ability.new(account) }
 
     example "can manage base entities (not AdminGroup-managed)" do
@@ -148,7 +181,7 @@ RSpec.describe Ability, type: :model do
     let!(:media_admin_group) { FactoryBot.create(:admin_group, managed_entities: ["Event", "Blog"]) }
 
     # Regular user with no admin group
-    let(:regular_user) { FactoryBot.create(:account, admin: false, admin_group: nil) }
+    let(:regular_user) { FactoryBot.create(:account, role: "regular", admin_group: nil) }
     let(:ability) { Ability.new(regular_user) }
 
     example "cannot manage FormSubmission (managed by FormSubmission admin group)" do
@@ -184,7 +217,7 @@ RSpec.describe Ability, type: :model do
 
   describe "Special Collections admin group - Special case for FormSubmissions" do
     let(:admin_group) { FactoryBot.create(:admin_group, name: "Special Collections", managed_entities: ["Exhibition", "Highlight"]) }
-    let(:account) { FactoryBot.create(:account, admin: false, admin_group: admin_group) }
+    let(:account) { FactoryBot.create(:account, role: "regular", admin_group: admin_group) }
     let(:ability) { Ability.new(account) }
 
     example "can manage their assigned entities" do
@@ -223,7 +256,7 @@ RSpec.describe Ability, type: :model do
 
   describe "Other admin groups cannot access FormSubmissions" do
     let(:admin_group) { FactoryBot.create(:admin_group, name: "Library Communication", managed_entities: ["Event", "Blog"]) }
-    let(:account) { FactoryBot.create(:account, admin: false, admin_group: admin_group) }
+    let(:account) { FactoryBot.create(:account, role: "regular", admin_group: admin_group) }
     let(:ability) { Ability.new(account) }
 
     example "can manage their assigned entities" do

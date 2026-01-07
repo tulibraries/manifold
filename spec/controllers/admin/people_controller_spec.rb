@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Admin::PeopleController, type: :controller do
-  let(:account) { FactoryBot.create(:account, admin: true) }
+  let(:account) { FactoryBot.create(:account, role: "admin") }
   let!(:group) { FactoryBot.create(:group) }
   let(:person) { group.chair_dept_heads.first }
 

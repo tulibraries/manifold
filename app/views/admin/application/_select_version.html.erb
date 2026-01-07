@@ -23,7 +23,7 @@
                   t("manifold.admin.actions.revert"),
                   [:edit, namespace, page.resource, version: version.id],
                   class: "button"
-                ) if existing_action?(page.resource.class, :edit) && authorized_action?(page.resource.class, :edit)  %>
+                ) if existing_action?(page.resource.class, :edit) && authorized_action?(page.resource, :edit)  %>
               <% end %>
             <% end %>
           <% end %>

@@ -17,6 +17,7 @@ en:
         copyright_acknowledgment: "The copyright law of the United States (Title 17, United States Code) governs the making of photocopies or other reproductions of copyrighted material. Under certain conditions specified in the law, libraries and archives are authorized to furnish a photocopy or other reproduction. One of these specific conditions is that the photocopy or reproduction is not to be \"used for any purpose other than private study, scholarship, or research.\" If a user makes a request for, or later uses, a photocopy or reproduction for purposes in excess of \"fair use,\" that use may be liable for copyright infringement. This institution reserves the right to refuse to accept a copying order if, in its judgment, fulfillment of the order would involve violation of copyright law. (more information about copyright issues)"
       account:
         alertability: "Can Administrate Alerts"
+        role: "Role"
       building:
         address1: "Street Address"
         address2: "City, State Zip"
@@ -54,6 +55,7 @@ en:
         hours: "Hours Identifier"
       webpage:
         accounts: "Individual Owners"
+        student_access_accounts: "Student Access"
   manifold:  
     default:
       finding_aids_new_home: https://scrcarchivesspace.temple.edu
@@ -1382,4 +1384,3 @@ en:
 
     redirects:
       moved_permanently: "has moved. Please update bookmarks and links."
-

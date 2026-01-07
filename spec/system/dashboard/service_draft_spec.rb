@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "ServiceDrafts", type: :system do
   before(:all) do
-    @account = FactoryBot.create(:account, admin: true)
+    @account = FactoryBot.create(:account, role: "admin")
     @service = FactoryBot.create(:service)
     @models = ["service"]
   end

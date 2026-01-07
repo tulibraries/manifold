@@ -1,9 +1,9 @@
 <div class="field-unit__label">
 	<% case field.attribute %>
   <% when :promoted_to_events %>
-    <%= f.label t("helpers.description.exhibition.promoted_to_events") %>
+    <%= f.label t("helpers.label.exhibition.promoted_to_events") %>
   <% when :suppress %>
-    <%= f.label t("helpers.description.event.suppress") %>
+    <%= f.label t("helpers.label.event.suppress") %>
   <% else %>
     <%= f.label field.attribute %>
   <% end %>

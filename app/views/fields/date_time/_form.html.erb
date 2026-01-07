@@ -2,8 +2,17 @@
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
-  <%= f.text_field field.attribute %>
-  <% if field.resource.class.to_s.downcase == "event" && [:start_time, :end_time].include?(field.attribute) %>
-    <p class="field-unit__hint">MM/DD/YYYY HH:MM AM/PM, e.g. 03/21/2025 2:30 PM</p>
+  <% if field.resource.class.to_s.downcase == "event" %>
+    <%= case field.attribute
+        when :start_time
+          f.text_field field.attribute, disabled: true
+        when :end_time
+          f.text_field field.attribute, disabled: true
+        else
+          f.text_field field.attribute
+        end
+    %>
+  <% else %>
+    <%= f.text_field field.attribute %>
   <% end %>
 </div>

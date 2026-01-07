@@ -70,7 +70,7 @@ module Manifold
     config.etexts_spreadsheet_etext_cells = "Sheet1!A2:G"
 
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
-    config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://events.temple.edu/feed/xml/events?department=2566")
+    config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://now.temple.edu/v2/feed/xml/events?department=54196")
     config.ensemble_api_user = ENV["ENSEMBLE_API_USER"]
 
     config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]

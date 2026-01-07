@@ -363,7 +363,7 @@ en:
       content_type_invalid_image: "has an invalid content type. JPG, PNG, or GIF only."
       content_type_invalid_pdf: "has an invalid content type. PDF files only." 
       file_size_out_of_range_file: "size %{file_size} is larger than 5MB limit."
-      file_size_out_of_range_image: "size %{file_size} is larger than 700KB limit."
+      file_size_out_of_range_image: "size %{file_size} is larger than 2MB limit."
       limit_out_of_range: "total number is out of range"
       image_metadata_missing: "is not a valid image"
       dimension_min_inclusion: "must be greater than or equal to %{width} x %{height} pixel."

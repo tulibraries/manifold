@@ -22,12 +22,12 @@ RSpec.shared_examples "imageable" do
     end
   end
 
-  context "when image filesize > 700kb" do
-    file_path = Rails.root.join("spec/fixtures/orecchiette.jpg")
+  context "when image filesize > 2MB" do
+    file_path = Rails.root.join("spec/fixtures/toobig.jpg")
     file = Rack::Test::UploadedFile.new(file_path, "image/jpeg")
     it "raises error when filesize is too large" do
       plus_model.image.attach(file)
-      expect(plus_model.errors.full_messages).to include(/is larger than 700KB limit./)
+      expect(plus_model.errors.full_messages).to include(/larger than 2MB limit./)
     end
   end
 

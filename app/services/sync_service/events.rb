@@ -117,7 +117,7 @@ class SyncService::Events
       begin
         {
           image: { io: URI.open("#{image_path}"),
-          filename: image_path.split("/thumbnail/")&.second&.split("?").first.gsub("%20", "_") },
+          filename: File.basename(URI.parse(image_path).path).gsub("%20", "_") },
           metadata: { alt_text: (alt_text.presence || "") }
         }
       rescue => e

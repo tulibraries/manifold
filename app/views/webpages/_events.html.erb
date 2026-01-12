@@ -6,7 +6,7 @@
           <%= link_to event_path(event.id) do %>
             <% if event.image.attached? %>
             <div class="item pb-4">
-              <%= image_tag event.image, alt: image_alt_text(event), loading: "lazy" %>
+              <%= image_tag event.show_image, alt: image_alt_text(event), loading: "lazy" %>
             </div>
             <% end %>
             <div class="card-body px-0">

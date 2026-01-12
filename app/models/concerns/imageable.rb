@@ -24,7 +24,11 @@ module Imageable
   end
 
   def show_image()
-    custom_image(271, 421)
+    custom_image(421, 271)
+  end
+
+  def featured_image()
+    custom_image(200, 140)
   end
 
   def custom_image(width, height)
@@ -38,7 +42,7 @@ module Imageable
         image.variant(format: :png,
                       background: :transparent,
                       gravity: "North",
-                      resize_to_fit: [width, height])
+                      resize_to_fill: [width, height])
       else
         image.variant(format: :png,
                       background: :transparent,

@@ -4,7 +4,7 @@
     <div class="row mb-4 pe-2">
       <div class="col-12 col-lg-4 mb-3">
       <% if event.image.attached? %>
-        <%= link_to (image_tag event.show_image, class: "decorative", alt: ""), event_path(event.id), target: "_top" %>
+        <%= link_to (image_tag event.index_image, class: "decorative", alt: ""), event_path(event.id), target: "_top" %>
       <% else %>
         <%= image_tag 'T.png', class: "decorative", alt: "" %>
       <% end %>

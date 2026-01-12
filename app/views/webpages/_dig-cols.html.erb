@@ -1,5 +1,5 @@
-<div id="digcolsCarousel" class="home-digcol-row carousel pt-3">
-  <div class="carousel-inner mx-3 pt-2" role="tablist" aria-label="Digital Collection Highlights">
+<div id="digcolsCarousel" class="carousel">
+  <div class="carousel-inner mx-3 pb-0" role="tablist" aria-label="Digital Collection Highlights">
     <% @digcols.each_with_index do |digcol, i| %>
     <div class="carousel-item<%= " active" if i == 0 %>" role="tab">
       <div class="card library-event">
@@ -7,18 +7,14 @@
 
         <% if digcol.image.attached? %>
         <div class="item pb-4">
-          <div class="img-wrapper">
-          <%= image_tag digcol.image, loading: "lazy" if digcol.image.attached? %>
-          </div>
+          <%= image_tag digcol.show_image, alt: image_alt_text(digcol), loading: "lazy" %>
         </div>
         <% end %>
 
         <div class="card-body px-0">
           <div class="item-caption text-start mt-0">
             <h3><%= digcol.label.truncate(52) %></h3>
-            <p class="card-text">
-              <p style="color: white;"><%= strip_tags(digcol.blurb.truncate(120).html_safe) %></p>
-            </p>
+            <p class="card-text"><%= strip_tags(digcol.blurb.truncate(120).html_safe) %></p>
           </div>
         </div>
         <% end %>

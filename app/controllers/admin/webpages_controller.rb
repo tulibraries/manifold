@@ -32,7 +32,8 @@ module Admin
         permitted.delete(:fileabilities_attributes)
       end
       permitted
-      
+    end
+
     def scoped_resource
       resource = super
       return resource unless current_account&.student?

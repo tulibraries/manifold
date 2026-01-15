@@ -132,18 +132,18 @@ class SyncService::Events
 
   def start_time(event)
     unless all_day(event)
-      Time.zone.parse(event.values_at("EventStartDate", "EventStartTime").join(" ")).to_s
+      Time.zone.at(event["TimestampStart"].to_i).to_s
     end
   end
 
   def end_time(event)
     unless all_day(event)
-      Time.zone.parse(event.values_at("EventEndDate", "EventEndTime").join(" ")).to_s
+      Time.zone.at(event["TimestampEnd"].to_i).to_s
     end
   end
 
   def all_day(event)
-    event["EventStartTime"].include?("All day")
+    event["EventStartTime"].to_s.include?("All day")
   end
 
   def contact(event)

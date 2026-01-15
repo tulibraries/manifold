@@ -145,6 +145,14 @@ RSpec.describe SyncService::Events, type: :service do
       expect(data_event.end_time).to eq(Time.zone.at(feed_event["TimestampEnd"].to_i))
     end
 
+    it "formats start and end times for display from feed timestamps" do
+      feed_event = @events.find { |event| event["Title"] == data_event.title }
+      expected_start = Time.zone.at(feed_event["TimestampStart"].to_i).strftime("%l:%M %P")
+      expected_end = Time.zone.at(feed_event["TimestampEnd"].to_i).strftime("%l:%M %P")
+      expect(data_event.set_start_time).to eq(expected_start)
+      expect(data_event.set_end_time).to eq(expected_end)
+    end
+
     it "it attaches images to events" do
       expect(students_event.image.attached?).to be true
     end

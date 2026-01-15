@@ -43,12 +43,12 @@ RSpec.describe SyncService::Events, type: :service do
         expect(subject["description"]).to match(@events.first["Description"])
       end
 
-      it "maps EventStartDate and EventStartTime to start_time field" do
-        expect(Time.zone.parse(subject["start_time"])).to eq(Time.zone.parse(@events.first["EventStartDate"] + " " + @events.first["EventStartTime"]))
+      it "maps TimestampStart to start_time field" do
+        expect(Time.zone.parse(subject["start_time"])).to eq(Time.zone.at(@events.first["TimestampStart"].to_i))
       end
 
-      it "maps EventEndDate and EventEndTime to start_time field" do
-        expect(Time.zone.parse(subject["end_time"])).to eq(Time.zone.parse(@events.first["EventEndDate"] + " " + @events.first["EventEndTime"]))
+      it "maps TimestampEnd to end_time field" do
+        expect(Time.zone.parse(subject["end_time"])).to eq(Time.zone.at(@events.first["TimestampEnd"].to_i))
       end
 
       it "maps AllDay to all_day field" do
@@ -137,6 +137,12 @@ RSpec.describe SyncService::Events, type: :service do
     it "writes to events db table" do
       expect(data_event).to be
       expect(students_event).to be
+    end
+
+    it "persists TimestampStart and TimestampEnd from the feed" do
+      feed_event = @events.find { |event| event["Title"] == data_event.title }
+      expect(data_event.start_time).to eq(Time.zone.at(feed_event["TimestampStart"].to_i))
+      expect(data_event.end_time).to eq(Time.zone.at(feed_event["TimestampEnd"].to_i))
     end
 
     it "it attaches images to events" do

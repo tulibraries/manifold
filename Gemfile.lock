@@ -599,8 +599,8 @@ GEM
       uber (< 0.2.0)
     request_store (1.7.0)
       rack (>= 1.4)
-    resolv (0.6.2)
-    resolv-replace (0.1.1)
+    resolv (0.7.0)
+    resolv-replace (0.2.0)
       resolv
     responders (3.1.1)
       actionpack (>= 5.2)

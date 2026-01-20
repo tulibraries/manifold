@@ -292,7 +292,7 @@ GEM
       logger
       ostruct
     htmlentities (4.3.4)
-    httparty (0.24.0)
+    httparty (0.24.2)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -404,7 +404,7 @@ GEM
       prism (~> 1.5)
     msgpack (1.8.0)
     multi_json (1.18.0)
-    multi_xml (0.8.0)
+    multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
     mutant (0.14.1)
       diff-lcs (~> 1.3)

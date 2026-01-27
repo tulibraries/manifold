@@ -17,19 +17,10 @@
 
 <div id="site-footer">
   <div class="container-lg">
-    <div class="row social justify-content-between px-2 px-lg-4 mb-4">
-      
-      <div class="col-12 col-sm-6 mt-4">
-      <%= link_to(t("manifold.footer.donate_link"), "/support-the-libraries", class: "donate") %>
-  </div>
-  <div class="col-12 col-sm-6 text-sm-end">
-      <div class="mb-0 social-links">
-        <%= link_to "/social-media" do %>
-          <%= image_tag('social-media-icons.png', {alt: "instagram facebook twitter and linked-in logos", loading: "lazy", width: "552px"}) %>
-        <% end %>
-      </div>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start w-100 pt-4 footer-cta">
+      <%= link_to "Support the Libraries", "/support-the-libraries", class: "donate" %>
+      <%= link_to "Connect With Us on Social Media", "/social-media", class: "social-button" %>
     </div>
-  </div>
 
     <div class="row tu-links">
       <div class="col-12 col-lg-8 px-0">

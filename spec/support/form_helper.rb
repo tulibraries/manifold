@@ -26,6 +26,8 @@ RSpec.shared_examples "email form" do
       end
 
       expect(the_email.subject).to eq(form_params[:form][:title])
+      expect(the_email.from).to eq(["templelibraries@gmail.com"])
+      expect(the_email.reply_to).to eq([form_params[:form][:email]])
       # Recipients and form_type not included in email body
       form_params[:form].each do |key, value|
         expect(the_email.body.raw_source).to include(value) unless [:recipients, :form_type].include? key

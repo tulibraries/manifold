@@ -250,12 +250,13 @@ class Form < MailForm::Base
   end
 
   # Some forms don't supply an email and name, so they were failing
+  # Keep From aligned with authenticated Gmail account.
   def default_from_name
-    name ? name : "Temple University Libraries"
+    "Temple University Libraries"
   end
 
   def default_from_email
-    email ? email : "templelibraries@gmail.com"
+    "templelibraries@gmail.com"
   end
 
   # Declare the e-mail headers. It accepts anything the mail method
@@ -263,12 +264,16 @@ class Form < MailForm::Base
   def headers
     parsed_recipients = parse_recipients
 
-    {
+    headers = {
       subject: title,
       to: parsed_recipients,
-      cc: email,
       from: %("#{ default_from_name }" <#{ default_from_email }>)
     }
+    if email.present?
+      headers[:reply_to] = name.present? ? %("#{name}" <#{email}>) : email
+      headers[:cc] = email
+    end
+    headers
   end
 
   private

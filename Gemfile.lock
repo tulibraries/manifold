@@ -113,8 +113,9 @@ GEM
       administrate
       rails (>= 5.0)
     administrate-field-scoped_has_many (0.2.0)
-    ancestry (4.3.3)
+    ancestry (5.0.0)
       activerecord (>= 5.2.6)
+      logger
     ast (2.4.3)
     attr_json (2.6.0)
       activerecord (>= 6.0.0, < 8.2)

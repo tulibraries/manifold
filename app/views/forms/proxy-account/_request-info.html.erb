@@ -1,10 +1,3 @@
-<%= f.input :faculty_admin_name, label: t("manifold.forms.proxy_account.faculty_admin_name"), required: true %>
-<%= f.input :faculty_admin_email, label: t("manifold.forms.proxy_account.faculty_admin_email"), as: :email, required: true %>
-<%= f.input :faculty_admin_tuid, label: t("manifold.forms.proxy_account.faculty_admin_tuid"), required: true %>
 <%= f.input :proxy_name, label: t("manifold.forms.proxy_account.proxy_name"), required: true %>
 <%= f.input :proxy_tuid, label: t("manifold.forms.proxy_account.proxy_tuid"), required: true %>
-<%= f.input :proxy_account_expiration, as: :date, 
-                            start_year: Date.today.year, end_year: Date.today.year+3, order: [:month, :day, :year], 
-                            label: t("manifold.forms.proxy_account.proxy_account_expiration"), 
-                            html5: true, 
-                            required: :true %>
+<%= f.input :proxy_email, label: t("manifold.forms.proxy_account.proxy_email"), required: true %>

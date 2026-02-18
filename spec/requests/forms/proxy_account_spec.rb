@@ -11,9 +11,8 @@ RSpec.describe "Proxy Account", type: :request do
 
   let(:form_params) {
     { form: {
-      title:, form_type:, recipients:, faculty_admin_name: "Faculty/Administrator Name", faculty_admin_email: "Faculty/Administrator Email",
-      faculty_admin_tuid: "Faculty/Administrator TUid number", proxy_name: "Proxy Name",
-      proxy_tuid: "Proxy TUid number", proxy_account_expiration: "12/01/2042"
+      title:, form_type:, recipients:, name: "proxy", email: "to_proxy@temple.edu", tu_id: "999999999",
+      proxy_name: "Proxy Name", proxy_tuid: "Proxy TUid number", proxy_account_email: "proxy@temple.edu"
     } }
   }
 

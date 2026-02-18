@@ -165,6 +165,7 @@ en:
           other: "specified other"
           proxy_name: "Proxy Name"
           proxy_tuid: "Proxy TUid number"
+          proxy_email: "Proxy Email Address"
           proxy_account_expiration: "Proxy Account Expiration Date"
           minors: "Minors in the class"
           preferred_date: "Preferred Date"

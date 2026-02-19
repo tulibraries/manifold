@@ -290,7 +290,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (1.2.1)
     hashie (5.0.0)
-    honeybadger (6.3.1)
+    honeybadger (6.4.0)
       logger
       ostruct
     htmlentities (4.3.4)
@@ -840,7 +840,7 @@ DEPENDENCIES
   fuzzy_match
   google-apis-sheets_v4
   guard-rspec
-  honeybadger (~> 6.3)
+  honeybadger (~> 6.4)
   httparty
   image_processing (~> 1.14)
   jbuilder

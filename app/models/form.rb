@@ -117,7 +117,8 @@ class Form < MailForm::Base
   attribute :faculty_admin_tuid
   attribute :proxy_name
   attribute :proxy_tuid
-  attribute :proxy_account_expiration
+  attribute :proxy_email
+  attribute :proxy_account_email
   attribute :class_time
   attribute :class_days
   attribute :number_of_students

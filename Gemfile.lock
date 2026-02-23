@@ -180,7 +180,7 @@ GEM
     cssbundling-rails (1.4.3)
       railties (>= 6.0.0)
     csv (3.3.5)
-    dalli (5.0.0)
+    dalli (5.0.1)
       logger
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)

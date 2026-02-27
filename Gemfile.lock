@@ -150,7 +150,7 @@ GEM
       msgpack (~> 1.2)
     bootstrap (5.3.5)
       popper_js (>= 2.11.8, < 3)
-    brakeman (8.0.2)
+    brakeman (8.0.3)
       racc
     browser (6.2.0)
     builder (3.3.0)

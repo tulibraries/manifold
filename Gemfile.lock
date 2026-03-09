@@ -113,7 +113,7 @@ GEM
       administrate
       rails (>= 5.0)
     administrate-field-scoped_has_many (0.2.0)
-    ancestry (5.0.0)
+    ancestry (5.1.0)
       activerecord (>= 5.2.6)
       logger
     ast (2.4.3)
@@ -407,7 +407,8 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.1)
+    minitest (6.0.2)
+      drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.8.0)
     multi_json (1.19.1)

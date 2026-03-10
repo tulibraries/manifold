@@ -53,7 +53,7 @@ RSpec.describe Highlight, type: :model do
 
       expect(featured_image.variation.transformations).to include(
         format: :png,
-        background: "white",
+        background: "#F7F7F7",
         gravity: "Center",
         resize_to_fit: [420, 270],
         extent: "420x270"

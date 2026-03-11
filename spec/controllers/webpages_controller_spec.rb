@@ -8,6 +8,8 @@ require "vcr"
 RSpec.describe WebpagesController, type: :controller do
 
   let(:webpage) { FactoryBot.create(:webpage) }
+  let(:application_bundle_pattern) { %r{src="[^"]*/application(?:-[^"/]+)?\.js} }
+  let(:homepage_bundle_pattern) { %r{src="[^"]*/homepage(?:-[^"/]+)?\.js} }
 
   describe "GET #index" do
     it "returns json when requested" do
@@ -61,7 +63,7 @@ RSpec.describe WebpagesController, type: :controller do
     let!(:research_links) { FactoryBot.create(:category, slug: "hsl-research").items }
     let!(:visit_links) { FactoryBot.create(:category, slug: "hsl-study").items }
     let!(:event_links) { nil }
-    let(:study_room) { FactoryBot.create(:external_link, slug: "hsl-study-rooms") }
+    let!(:study_room) { FactoryBot.create(:external_link, title: "HSL Study Rooms") }
     let(:remote_learning) { FactoryBot.create(:webpage, slug: "online-support") }
     let(:webpage) { FactoryBot.create(:webpage, slug: "hsl-intro", categories: [category, category2]) }
     let(:hours) {
@@ -78,8 +80,8 @@ RSpec.describe WebpagesController, type: :controller do
     it "uses the default application bundle" do
       get :hsl
 
-      expect(response.body).to include("application.js")
-      expect(response.body).not_to include("homepage.js")
+      expect(response.body).to match(application_bundle_pattern)
+      expect(response.body).not_to match(homepage_bundle_pattern)
     end
   end
 
@@ -110,8 +112,8 @@ RSpec.describe WebpagesController, type: :controller do
         get :home
       end
 
-      expect(response.body).to include("homepage.js")
-      expect(response.body).not_to include("application.js")
+      expect(response.body).to match(homepage_bundle_pattern)
+      expect(response.body).not_to match(application_bundle_pattern)
     end
   end
 

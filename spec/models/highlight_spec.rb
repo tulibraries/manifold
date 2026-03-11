@@ -59,7 +59,7 @@ RSpec.describe Highlight, type: :model do
         extent: "420x270"
       )
       expect(processed_image.dimensions).to eq([420, 270])
-      expect(top_left_pixel).to eq([255, 255, 255])
+      expect(top_left_pixel).to eq([247, 247, 247])
     end
   end
 

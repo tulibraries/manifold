@@ -8,6 +8,8 @@ require "vcr"
 RSpec.describe WebpagesController, type: :controller do
 
   let(:webpage) { FactoryBot.create(:webpage) }
+  let(:application_bundle_pattern) { %r{src="[^"]*/application(?:-[^"/]+)?\.js} }
+  let(:homepage_bundle_pattern) { %r{src="[^"]*/homepage(?:-[^"/]+)?\.js} }
 
   describe "GET #index" do
     it "returns json when requested" do
@@ -55,11 +57,13 @@ RSpec.describe WebpagesController, type: :controller do
   end
 
   describe "GET #hsl" do
+    render_views
+
     let!(:resource_links) { FactoryBot.create(:category, slug: "hsl-resources").items }
     let!(:research_links) { FactoryBot.create(:category, slug: "hsl-research").items }
     let!(:visit_links) { FactoryBot.create(:category, slug: "hsl-study").items }
     let!(:event_links) { nil }
-    let(:study_room) { FactoryBot.create(:external_link, slug: "hsl-study-rooms") }
+    let!(:study_room) { FactoryBot.create(:external_link, title: "HSL Study Rooms") }
     let(:remote_learning) { FactoryBot.create(:webpage, slug: "online-support") }
     let(:webpage) { FactoryBot.create(:webpage, slug: "hsl-intro", categories: [category, category2]) }
     let(:hours) {
@@ -72,9 +76,18 @@ RSpec.describe WebpagesController, type: :controller do
       get :hsl
       expect(response).to be_successful
     end
+
+    it "uses the default application bundle" do
+      get :hsl
+
+      expect(response.body).to match(application_bundle_pattern)
+      expect(response.body).not_to match(homepage_bundle_pattern)
+    end
   end
 
   describe "GET #home" do
+    render_views
+
     let!(:highlights) { FactoryBot.create(:highlight, promoted: true) }
     let!(:featured_events) { nil }
     let!(:cta3) { FactoryBot.create(:category, slug: "computers-printing-technology") }
@@ -92,6 +105,15 @@ RSpec.describe WebpagesController, type: :controller do
         get :home
         expect(response).to be_successful
       end
+    end
+
+    it "uses the homepage bundle" do
+      VCR.use_cassette("todays_hours") do
+        get :home
+      end
+
+      expect(response.body).to match(homepage_bundle_pattern)
+      expect(response.body).not_to match(application_bundle_pattern)
     end
   end
 

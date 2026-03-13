@@ -20,7 +20,8 @@
           
     <%= favicon_link_tag asset_path('temple-logo-t-box.svg'), :rel => 'icon', :type =>  'image/svg' %>
 
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+    <% javascript_bundle = @javascript_bundle.presence || "application" %>
+    <%= javascript_include_tag javascript_bundle, 'data-turbo-track': 'reload', defer: true %>
     
   <% if @nonce.present? %>
     <!-- Google tag (gtag.js) -->

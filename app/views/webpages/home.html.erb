@@ -48,37 +48,37 @@
         <div class="col-12 col-lg-3 px-0 ps-xl-3 pe-0 mb-4 mb-lg-0 catalog-search">
           <div class="square">
             <%= link_to "#{librarysearch_url}/catalog", id: "books-media" do %>
-              <%= image_tag('books_blue.png', class: "icon decorative", alt: "") %> 
+              <%= image_tag('books_blue.png', class: "icon decorative", alt: "books-media-icon") %> 
               <span><%= t("manifold.webpages.home.links.main.books") %></span>
             <% end %>
           </div>
           <div class="square">
             <%= link_to "#{librarysearch_url}/articles", id: "articles" do %>
-              <%= image_tag('articles_blue.png', class: "icon decorative", alt: "") %> 
+              <%= image_tag('articles_blue.png', class: "icon decorative", alt: "articles-icon") %> 
               <span><%= t("manifold.webpages.home.links.main.articles") %></span>
             <% end %>
           </div>
           <div class="square">
             <%= link_to "/databases", id: "databases" do %>
-              <%= image_tag('databases_blue.png', class: "icon decorative", alt: "") %> 
+              <%= image_tag('databases_blue.png', class: "icon decorative", alt: "databases-icon") %> 
               <span><%= t("manifold.webpages.home.links.main.databases") %></span>
             <% end %>
           </div>
           <div class="square">
             <%= link_to "/research-guides", id: "research-guides" do %>
-              <%= image_tag('research_blue.png', class: "icon decorative", alt: "") %> 
+              <%= image_tag('research_blue.png', class: "icon decorative", alt: "research-guides-icon") %> 
               <span><%= t("manifold.webpages.home.links.main.guides") %></span>
             <% end %>
           </div>
           <div class="square bb-0">
             <%= link_to "/journal-finder", id: "journal-finder" do %>
-              <%= image_tag('journal_blue.png', class: "icon decorative", alt: "") %> 
+              <%= image_tag('journal_blue.png', class: "icon decorative", alt: "journals-icon") %> 
               <span><%= t("manifold.webpages.home.links.main.journals") %></span>
             <% end %>
           </div>
           <div class="square">
             <%= link_to t("manifold.webpages.home.links.main.digital_collections_link"), id: "digital-collections" do %>
-              <%= image_tag('digital_collections.png', class: "icon decorative", alt: "") %> 
+              <%= image_tag('digital_collections.png', class: "icon decorative", alt: "digital-collections-icon") %> 
               <span><%= t("manifold.webpages.home.links.main.digital") %></span>
             <% end %>
           </div>
@@ -89,8 +89,8 @@
         <div class="col-12 col-lg-6 px-0 px-lg-3 px-xl-5 center-column">
           <div class="events">
           <%= link_to events_path, id: "events" do %>
-            <%= image_tag('homepage-events.jpg', class: "d-none d-lg-block w-100 decorative", alt: "") %>
-            <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "") %>
+            <%= image_tag('homepage-events.jpg', class: "d-none d-lg-block w-100 decorative", alt: "audience in events space", width: "704px", height: "200px") %>
+            <%= image_tag('art.png', class: "d-inline d-lg-none decorative", alt: "events-icon") %>
             <span class="d-inline d-lg-none"><%= t("manifold.webpages.home.links.main.events") %></span>
             <div class="caption d-none d-lg-block" id="eventscaption">
               <p role="caption"><%= t("manifold.webpages.home.links.main.events") %></p>

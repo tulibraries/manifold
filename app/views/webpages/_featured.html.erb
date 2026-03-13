@@ -6,7 +6,7 @@
         <%= link_to highlight.link do %>
           <% if highlight.image.attached? %>
           <div class="item pb-4">
-          <%= image_tag highlight.image, alt: image_alt_text(highlight), loading: "lazy" %>
+          <%= image_tag highlight.featured_image, alt: image_alt_text(highlight), loading: "lazy", height: "270", width: "420" %>
           </div>
           <% end %>
         <div class="card-body px-0">

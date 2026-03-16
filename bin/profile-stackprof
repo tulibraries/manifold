@@ -1,0 +1,144 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  bin/profile-stackprof runner 'Ruby expression'
+  bin/profile-stackprof request /path [/another-path ...]
+
+Environment variables:
+  STACKPROF_MODE         Profiling mode: wall, cpu, object (default: wall)
+  STACKPROF_INTERVAL     Sampling interval (default: 1000)
+  STACKPROF_OUTPUT_DIR   Output directory (default: tmp/stackprof)
+  STACKPROF_OUTPUT       Exact dump path to write
+  STACKPROF_LABEL        Optional label for the run
+  STACKPROF_RAW          Set to 0 to disable raw stack capture (default: 1)
+  STACKPROF_LIMIT        Number of frames to show in the text summary (default: 20)
+  STACKPROF_HTTP_METHOD  Request method for request mode (default: GET)
+
+Examples:
+  bin/profile-stackprof runner 'Category.find_by!(slug: "quick-links").items'
+  STACKPROF_MODE=cpu bin/profile-stackprof runner 'Category.find(1).items'
+  bin/profile-stackprof request /
+  bin/profile-stackprof request / /support-the-libraries
+EOF
+}
+
+if [[ $# -eq 0 ]]; then
+  usage
+  exit 1
+fi
+
+subcommand=$1
+shift
+
+case "$subcommand" in
+  -h|--help|help)
+    usage
+    exit 0
+    ;;
+  runner|request)
+    ;;
+  *)
+    echo "Unknown subcommand: $subcommand" >&2
+    usage
+    exit 1
+    ;;
+esac
+
+if [[ $# -lt 1 ]]; then
+  usage
+  exit 1
+fi
+
+if [[ -z "${RAILS_MASTER_KEY:-}" && -f config/master.key ]]; then
+  export RAILS_MASTER_KEY
+  RAILS_MASTER_KEY=$(tr -d '\n' < config/master.key)
+fi
+
+output_dir=${STACKPROF_OUTPUT_DIR:-"tmp/stackprof"}
+mkdir -p "$output_dir"
+
+timestamp=$(date -u +"%Y%m%d-%H%M%S")
+default_label=${STACKPROF_LABEL:-$subcommand}
+profile_file=${STACKPROF_OUTPUT:-"${output_dir}/${default_label}-${timestamp}.dump"}
+mode=${STACKPROF_MODE:-wall}
+interval=${STACKPROF_INTERVAL:-1000}
+raw=${STACKPROF_RAW:-1}
+limit=${STACKPROF_LIMIT:-20}
+
+case "$subcommand" in
+  runner)
+    export STACKPROF_RUNNER_EXPR="$1"
+    export STACKPROF_LABEL="${STACKPROF_LABEL:-runner}"
+    ruby_code=$(cat <<'RUBY'
+require "stackprof"
+
+profile_options = {
+  mode: ENV.fetch("STACKPROF_MODE").to_sym,
+  out: ENV.fetch("STACKPROF_OUTPUT"),
+  interval: Integer(ENV.fetch("STACKPROF_INTERVAL"))
+}
+profile_options[:raw] = true if ENV.fetch("STACKPROF_RAW", "1") == "1"
+
+expression = ENV.fetch("STACKPROF_RUNNER_EXPR")
+label = ENV.fetch("STACKPROF_LABEL", expression)
+
+puts "Profiling #{label} -> #{ENV.fetch("STACKPROF_OUTPUT")}"
+
+StackProf.run(**profile_options) do
+  TOPLEVEL_BINDING.eval(expression, "stackprof-runner", 1)
+end
+RUBY
+)
+    ;;
+  request)
+    export STACKPROF_LABEL="${STACKPROF_LABEL:-request}"
+    export STACKPROF_REQUEST_PATHS
+    STACKPROF_REQUEST_PATHS=$(printf "%s\n" "$@")
+    ruby_code=$(cat <<'RUBY'
+require "stackprof"
+require "rack/mock"
+
+profile_options = {
+  mode: ENV.fetch("STACKPROF_MODE").to_sym,
+  out: ENV.fetch("STACKPROF_OUTPUT"),
+  interval: Integer(ENV.fetch("STACKPROF_INTERVAL"))
+}
+profile_options[:raw] = true if ENV.fetch("STACKPROF_RAW", "1") == "1"
+
+method = ENV.fetch("STACKPROF_HTTP_METHOD", "GET").upcase
+paths = ENV.fetch("STACKPROF_REQUEST_PATHS").split("\n").reject(&:empty?)
+request = Rack::MockRequest.new(Rails.application)
+statuses = []
+
+puts "Profiling #{method} #{paths.join(", ")} -> #{ENV.fetch("STACKPROF_OUTPUT")}"
+
+StackProf.run(**profile_options) do
+  paths.each do |path|
+    response = request.request(method, path, "HTTP_HOST" => "localhost")
+    statuses << "#{path}=#{response.status}"
+  end
+end
+
+puts "Responses: #{statuses.join(", ")}"
+RUBY
+)
+    ;;
+esac
+
+export STACKPROF_MODE="$mode"
+export STACKPROF_INTERVAL="$interval"
+export STACKPROF_OUTPUT="$profile_file"
+export STACKPROF_RAW="$raw"
+
+bin/rails runner "$ruby_code"
+
+echo
+echo "Text summary:"
+bundle exec stackprof "$profile_file" --text --limit "$limit"
+echo
+echo "Next steps:"
+echo "  bundle exec stackprof \"$profile_file\" --method 'Category#items'"
+echo "  bundle exec stackprof \"$profile_file\" --d3-flamegraph > \"${profile_file%.dump}.html\""

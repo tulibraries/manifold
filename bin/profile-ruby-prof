@@ -1,0 +1,217 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  bin/profile-ruby-prof runner 'Ruby expression'
+  bin/profile-ruby-prof request /path [/another-path ...]
+
+Environment variables:
+  RUBY_PROF_MODE         Profiling mode: wall, process, allocations (default: wall)
+  RUBY_PROF_PRINTER      Report printer: flat, graph, graph_html, call_stack, flamegraph, multi (default: flat)
+  RUBY_PROF_OUTPUT_DIR   Output directory (default: tmp/ruby-prof)
+  RUBY_PROF_OUTPUT       Exact output path or basename to write
+  RUBY_PROF_LABEL        Optional label for the run
+  RUBY_PROF_PRELUDE      Ruby to run before profiling starts
+  RUBY_PROF_MIN_PERCENT  Minimum percent for report output (default: 1)
+  RUBY_PROF_HTTP_METHOD  Request method for request mode (default: GET)
+
+Examples:
+  bin/profile-ruby-prof runner 'MenuGroup.includes(menu_group_categories: :category).find_by!(slug: "about-page").menu_group_categories.first.category.items'
+  RUBY_PROF_PRELUDE='category = Category.find(1)' bin/profile-ruby-prof runner 'category.items'
+  RUBY_PROF_PRINTER=graph_html bin/profile-ruby-prof runner 'Category.find(1).items'
+  bin/profile-ruby-prof request /
+  RUBY_PROF_PRINTER=multi bin/profile-ruby-prof request / /support-the-libraries
+EOF
+}
+
+if [[ $# -eq 0 ]]; then
+  usage
+  exit 1
+fi
+
+subcommand=$1
+shift
+
+case "$subcommand" in
+  -h|--help|help)
+    usage
+    exit 0
+    ;;
+  runner|request)
+    ;;
+  *)
+    echo "Unknown subcommand: $subcommand" >&2
+    usage
+    exit 1
+    ;;
+esac
+
+if [[ $# -lt 1 ]]; then
+  usage
+  exit 1
+fi
+
+if [[ -z "${RAILS_MASTER_KEY:-}" && -f config/master.key ]]; then
+  export RAILS_MASTER_KEY
+  RAILS_MASTER_KEY=$(tr -d '\n' < config/master.key)
+fi
+
+output_dir=${RUBY_PROF_OUTPUT_DIR:-"tmp/ruby-prof"}
+mkdir -p "$output_dir"
+
+timestamp=$(date -u +"%Y%m%d-%H%M%S")
+default_label=${RUBY_PROF_LABEL:-$subcommand}
+printer=${RUBY_PROF_PRINTER:-flat}
+min_percent=${RUBY_PROF_MIN_PERCENT:-1}
+base_output=${RUBY_PROF_OUTPUT:-"${output_dir}/${default_label}-${timestamp}"}
+
+case "$subcommand" in
+  runner)
+    export RUBY_PROF_RUNNER_EXPR="$1"
+    export RUBY_PROF_LABEL="${RUBY_PROF_LABEL:-runner}"
+    ruby_code=$(cat <<'RUBY'
+require "ruby-prof"
+
+MODE_MAP = {
+  "wall" => RubyProf::WALL_TIME,
+  "process" => RubyProf::PROCESS_TIME,
+  "allocations" => RubyProf::ALLOCATIONS
+}.freeze
+
+PRINTER_MAP = {
+  "flat" => RubyProf::FlatPrinter,
+  "graph" => RubyProf::GraphPrinter,
+  "graph_html" => RubyProf::GraphHtmlPrinter,
+  "call_stack" => RubyProf::CallStackPrinter,
+  "flamegraph" => RubyProf::FlameGraphPrinter,
+  "multi" => RubyProf::MultiPrinter
+}.freeze
+
+mode_name = ENV.fetch("RUBY_PROF_MODE", "wall")
+measure_mode = MODE_MAP.fetch(mode_name)
+printer_name = ENV.fetch("RUBY_PROF_PRINTER", "flat")
+printer_class = PRINTER_MAP.fetch(printer_name)
+base_output = ENV.fetch("RUBY_PROF_OUTPUT")
+min_percent = Float(ENV.fetch("RUBY_PROF_MIN_PERCENT", "1"))
+expression = ENV.fetch("RUBY_PROF_RUNNER_EXPR")
+label = ENV.fetch("RUBY_PROF_LABEL", expression)
+prelude = ENV["RUBY_PROF_PRELUDE"]
+
+def output_path(base_output, printer_name)
+  case printer_name
+  when "graph_html", "call_stack", "flamegraph"
+    "#{base_output}.html"
+  when "multi"
+    base_output
+  else
+    "#{base_output}.txt"
+  end
+end
+
+puts "Profiling #{label} -> #{output_path(base_output, printer_name)}"
+
+TOPLEVEL_BINDING.eval(prelude, "ruby-prof-prelude", 1) if prelude && !prelude.empty?
+
+result = RubyProf::Profile.profile(measure_mode: measure_mode) do
+  TOPLEVEL_BINDING.eval(expression, "ruby-prof-runner", 1)
+end
+
+if printer_name == "multi"
+  RubyProf::MultiPrinter.new(result).print(path: File.dirname(base_output), profile: File.basename(base_output), min_percent: min_percent)
+else
+  File.open(output_path(base_output, printer_name), "wb") do |file|
+    printer_class.new(result).print(file, min_percent: min_percent)
+  end
+end
+RUBY
+)
+    ;;
+  request)
+    export RUBY_PROF_LABEL="${RUBY_PROF_LABEL:-request}"
+    export RUBY_PROF_REQUEST_PATHS
+    RUBY_PROF_REQUEST_PATHS=$(printf "%s\n" "$@")
+    ruby_code=$(cat <<'RUBY'
+require "ruby-prof"
+require "rack/mock"
+
+MODE_MAP = {
+  "wall" => RubyProf::WALL_TIME,
+  "process" => RubyProf::PROCESS_TIME,
+  "allocations" => RubyProf::ALLOCATIONS
+}.freeze
+
+PRINTER_MAP = {
+  "flat" => RubyProf::FlatPrinter,
+  "graph" => RubyProf::GraphPrinter,
+  "graph_html" => RubyProf::GraphHtmlPrinter,
+  "call_stack" => RubyProf::CallStackPrinter,
+  "flamegraph" => RubyProf::FlameGraphPrinter,
+  "multi" => RubyProf::MultiPrinter
+}.freeze
+
+mode_name = ENV.fetch("RUBY_PROF_MODE", "wall")
+measure_mode = MODE_MAP.fetch(mode_name)
+printer_name = ENV.fetch("RUBY_PROF_PRINTER", "flat")
+printer_class = PRINTER_MAP.fetch(printer_name)
+base_output = ENV.fetch("RUBY_PROF_OUTPUT")
+min_percent = Float(ENV.fetch("RUBY_PROF_MIN_PERCENT", "1"))
+method = ENV.fetch("RUBY_PROF_HTTP_METHOD", "GET").upcase
+paths = ENV.fetch("RUBY_PROF_REQUEST_PATHS").split("\n").reject(&:empty?)
+request = Rack::MockRequest.new(Rails.application)
+statuses = []
+
+def output_path(base_output, printer_name)
+  case printer_name
+  when "graph_html", "call_stack", "flamegraph"
+    "#{base_output}.html"
+  when "multi"
+    base_output
+  else
+    "#{base_output}.txt"
+  end
+end
+
+puts "Profiling #{method} #{paths.join(", ")} -> #{output_path(base_output, printer_name)}"
+
+result = RubyProf::Profile.profile(measure_mode: measure_mode) do
+  paths.each do |path|
+    response = request.request(method, path, "HTTP_HOST" => "localhost")
+    statuses << "#{path}=#{response.status}"
+  end
+end
+
+if printer_name == "multi"
+  RubyProf::MultiPrinter.new(result).print(path: File.dirname(base_output), profile: File.basename(base_output), min_percent: min_percent)
+else
+  File.open(output_path(base_output, printer_name), "wb") do |file|
+    printer_class.new(result).print(file, min_percent: min_percent)
+  end
+end
+
+puts "Responses: #{statuses.join(", ")}"
+RUBY
+)
+    ;;
+esac
+
+export RUBY_PROF_OUTPUT="$base_output"
+export RUBY_PROF_PRINTER="$printer"
+export RUBY_PROF_MIN_PERCENT="$min_percent"
+export RUBY_PROF_MODE="${RUBY_PROF_MODE:-wall}"
+
+bin/rails runner "$ruby_code"
+
+echo
+case "$printer" in
+  multi)
+    echo "Reports written under: $base_output*"
+    ;;
+  graph_html|call_stack|flamegraph)
+    echo "Report written to: ${base_output}.html"
+    ;;
+  *)
+    echo "Report written to: ${base_output}.txt"
+    ;;
+esac

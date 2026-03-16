@@ -76,13 +76,17 @@ gem "yaml_db"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug"
+  gem "flamegraph"
   gem "json-schema"
   gem "pry-rails"
   gem "pry-byebug"
+  gem "rack-mini-profiler"
   gem "rb-readline"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+  gem "ruby-prof"
+  gem "stackprof"
   gem "vcr"
 end
 

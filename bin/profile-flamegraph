@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  bin/profile-flamegraph runner 'Ruby expression'
+  bin/profile-flamegraph request /path [/another-path ...]
+
+Environment variables:
+  FLAMEGRAPH_OUTPUT_DIR   Output directory (default: tmp/flamegraph)
+  FLAMEGRAPH_OUTPUT       Exact HTML output path to write
+  FLAMEGRAPH_LABEL        Optional label for the run
+  FLAMEGRAPH_PRELUDE      Ruby to run before profiling starts
+  FLAMEGRAPH_HTTP_METHOD  Request method for request mode (default: GET)
+
+Examples:
+  bin/profile-flamegraph runner 'MenuGroup.includes(menu_group_categories: :category).find_by!(slug: "about-page").menu_group_categories.first.category.items'
+  FLAMEGRAPH_PRELUDE='category = Category.find(3)' bin/profile-flamegraph runner 'category.items'
+  bin/profile-flamegraph request /
+EOF
+}
+
+if [[ $# -eq 0 ]]; then
+  usage
+  exit 1
+fi
+
+subcommand=$1
+shift
+
+case "$subcommand" in
+  -h|--help|help)
+    usage
+    exit 0
+    ;;
+  runner|request)
+    ;;
+  *)
+    echo "Unknown subcommand: $subcommand" >&2
+    usage
+    exit 1
+    ;;
+esac
+
+if [[ $# -lt 1 ]]; then
+  usage
+  exit 1
+fi
+
+if [[ -z "${RAILS_MASTER_KEY:-}" && -f config/master.key ]]; then
+  export RAILS_MASTER_KEY
+  RAILS_MASTER_KEY=$(tr -d '\n' < config/master.key)
+fi
+
+output_dir=${FLAMEGRAPH_OUTPUT_DIR:-"tmp/flamegraph"}
+mkdir -p "$output_dir"
+
+timestamp=$(date -u +"%Y%m%d-%H%M%S")
+default_label=${FLAMEGRAPH_LABEL:-$subcommand}
+output_file=${FLAMEGRAPH_OUTPUT:-"${output_dir}/${default_label}-${timestamp}.html"}
+
+case "$subcommand" in
+  runner)
+    export FLAMEGRAPH_RUNNER_EXPR="$1"
+    ruby_code=$(cat <<'RUBY'
+require "flamegraph"
+
+expression = ENV.fetch("FLAMEGRAPH_RUNNER_EXPR")
+prelude = ENV["FLAMEGRAPH_PRELUDE"]
+output = ENV.fetch("FLAMEGRAPH_OUTPUT")
+label = ENV.fetch("FLAMEGRAPH_LABEL", expression)
+
+TOPLEVEL_BINDING.eval(prelude, "flamegraph-prelude", 1) if prelude && !prelude.empty?
+
+puts "Profiling #{label} -> #{output}"
+
+Flamegraph.generate(output) do
+  TOPLEVEL_BINDING.eval(expression, "flamegraph-runner", 1)
+end
+RUBY
+)
+    ;;
+  request)
+    export FLAMEGRAPH_REQUEST_PATHS
+    FLAMEGRAPH_REQUEST_PATHS=$(printf "%s\n" "$@")
+    ruby_code=$(cat <<'RUBY'
+require "flamegraph"
+require "rack/mock"
+
+method = ENV.fetch("FLAMEGRAPH_HTTP_METHOD", "GET").upcase
+paths = ENV.fetch("FLAMEGRAPH_REQUEST_PATHS").split("\n").reject(&:empty?)
+output = ENV.fetch("FLAMEGRAPH_OUTPUT")
+request = Rack::MockRequest.new(Rails.application)
+statuses = []
+
+puts "Profiling #{method} #{paths.join(", ")} -> #{output}"
+
+Flamegraph.generate(output) do
+  paths.each do |path|
+    response = request.request(method, path, "HTTP_HOST" => "localhost")
+    statuses << "#{path}=#{response.status}"
+  end
+end
+
+puts "Responses: #{statuses.join(", ")}"
+RUBY
+)
+    ;;
+esac
+
+export FLAMEGRAPH_OUTPUT="$output_file"
+export FLAMEGRAPH_LABEL="${FLAMEGRAPH_LABEL:-$subcommand}"
+
+bin/rails runner "$ruby_code"
+
+echo
+echo "Report written to: $output_file"

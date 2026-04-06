@@ -30,6 +30,16 @@ module Imageable
     custom_image(421, 271)
   end
 
+  def fit_image(width, height)
+    ensure_image_analyzed
+
+    return image if image_matches_dimensions?(width, height)
+
+    image.variant(format: :png,
+                  background: :transparent,
+                  resize_to_fit: [width, height])
+  end
+
   def featured_image()
     padded_image(FEATURED_IMAGE_WIDTH, FEATURED_IMAGE_HEIGHT)
   end

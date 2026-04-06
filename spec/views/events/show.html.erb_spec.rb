@@ -6,6 +6,7 @@ RSpec.describe "events/show", type: :view do
 
   it "displays the sample event image" do
     @event = FactoryBot.create(:event, :with_image)
+    expect(@event).to receive(:fit_image).with(600, 600).and_call_original
     render
     expect(rendered).to match /#{@event.image.attachment.blob.filename.to_s}/
   end

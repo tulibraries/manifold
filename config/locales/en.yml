@@ -5,6 +5,8 @@ en:
         outside_vendor_fees: "Outside Vendor Fees"
         duplication_limits: "Duplication Limits"
         copyright_acknowledgment: "Copyright Acknowledgment"
+      event:
+        suppress: Suppress
     description:
       form:
         payment_intro: "We will invoice you with final pricing."

@@ -38,20 +38,6 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "title normalization" do
-    it "decodes percent-escaped titles for display" do
-      event = FactoryBot.create(:event, title: "Zines%20and%20%27Za")
-
-      expect(event.title).to eq("Zines and 'Za")
-    end
-
-    it "decodes html entities for display" do
-      event = FactoryBot.create(:event, title: "Refugees &amp; Resettlement")
-
-      expect(event.title).to eq("Refugees & Resettlement")
-    end
-  end
-
   describe "set times" do
     let(:start_time) { Time.zone.parse "7/4/18 10:00 am" }
     let(:start_date) { Time.zone.parse "7/4/18" }

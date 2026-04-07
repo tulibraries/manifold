@@ -59,7 +59,7 @@ class SyncService::Events
   def record_hash(event)
     {
       "guid"                => event.fetch("GUID") { raise MissingGuidException.new("No GUID found for event #{event}") },
-      "title"               => event.fetch("Title", nil),
+      "title"               => event_title(event),
       "description"         => event.fetch("Description", nil),
       "tags"                => event.fetch("Tags", nil),
       "path"                => event.fetch("Path", nil),
@@ -144,6 +144,11 @@ class SyncService::Events
 
   def all_day(event)
     event["EventStartTime"].to_s.include?("All day")
+  end
+
+  def event_title(event)
+    title = CGI.unescape(event.fetch("Title", "").to_s)
+    Nokogiri::HTML4.fragment(title).text.tr("\u00A0", " ")
   end
 
   def contact(event)

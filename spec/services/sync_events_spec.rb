@@ -39,6 +39,24 @@ RSpec.describe SyncService::Events, type: :service do
         expect(subject["title"]).to match(@events.first["Title"])
       end
 
+      it "decodes percent-escaped titles" do
+        event = @events.first.merge("Title" => "Zines%20and%20%27Za")
+
+        expect(@sync_events.record_hash(event)["title"]).to eq("Zines and 'Za")
+      end
+
+      it "decodes html entities from the title" do
+        event = @events.first.merge("Title" => "Refugees &amp; Resettlement")
+
+        expect(@sync_events.record_hash(event)["title"]).to eq("Refugees & Resettlement")
+      end
+
+      it "normalizes non-breaking spaces from the title" do
+        event = @events.first.merge("Title" => "Refugees&nbsp;and&nbsp;Resettlement")
+
+        expect(@sync_events.record_hash(event)["title"]).to eq("Refugees and Resettlement")
+      end
+
       it "maps Description to description field" do
         expect(subject["description"]).to match(@events.first["Description"])
       end

@@ -11,7 +11,6 @@ class Event < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
 
   paginates_per 12
-  before_validation :normalize_title
   belongs_to :building, optional: true
   belongs_to :space, optional: true
   belongs_to :person, optional: true
@@ -130,12 +129,4 @@ class Event < ApplicationRecord
       Event.where("lower(title) LIKE ? or lower(tags) LIKE ?", "%#{q}%".downcase, "%#{q}%".downcase).order(:start_time)
     end
   end
-
-  private
-
-    def normalize_title
-      return if title.blank?
-
-      self.title = CGI.unescapeHTML(URI::DEFAULT_PARSER.unescape(title))
-    end
 end

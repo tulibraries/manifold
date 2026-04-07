@@ -39,6 +39,15 @@ RSpec.describe SyncService::Events, type: :service do
         expect(subject["title"]).to match(@events.first["Title"])
       end
 
+      it "decodes html entities from the xml title" do
+        event = @events.first.merge(
+          "Title" => "Refugees &amp; Resettlement",
+          "xml" => "<Event><Title>Refugees &amp; Resettlement</Title></Event>"
+        )
+
+        expect(@sync_events.record_hash(event)["title"]).to eq("Refugees & Resettlement")
+      end
+
       it "maps Description to description field" do
         expect(subject["description"]).to match(@events.first["Description"])
       end

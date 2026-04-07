@@ -59,7 +59,7 @@ class SyncService::Events
   def record_hash(event)
     {
       "guid"                => event.fetch("GUID") { raise MissingGuidException.new("No GUID found for event #{event}") },
-      "title"               => event.fetch("Title", nil),
+      "title"               => event_title(event),
       "description"         => event.fetch("Description", nil),
       "tags"                => event.fetch("Tags", nil),
       "path"                => event.fetch("Path", nil),
@@ -146,6 +146,10 @@ class SyncService::Events
     event["EventStartTime"].to_s.include?("All day")
   end
 
+  def event_title(event)
+    event_xml_node(event)&.at_xpath("//Title")&.text&.tr("\u00A0", " ") || event.fetch("Title", nil)
+  end
+
   def contact(event)
     contact_name = event.fetch("ContactName")
     contact_person = FuzzyFind::Person.find(contact_name.to_s)
@@ -203,5 +207,11 @@ class SyncService::Events
   def stdout_and_log(message, level: :info)
     @log.send(level, message)
     # @stdout.send(level, message)
+  end
+
+  def event_xml_node(event)
+    return unless event["xml"].present?
+
+    Nokogiri::XML(event["xml"])
   end
 end

@@ -147,7 +147,8 @@ class SyncService::Events
   end
 
   def event_title(event)
-    Nokogiri::HTML4.fragment(event.fetch("Title", "").to_s).text.tr("\u00A0", " ")
+    title = CGI.unescape(event.fetch("Title", "").to_s)
+    Nokogiri::HTML4.fragment(title).text.tr("\u00A0", " ")
   end
 
   def contact(event)

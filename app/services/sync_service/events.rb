@@ -210,7 +210,7 @@ class SyncService::Events
   end
 
   def event_xml_node(event)
-    return unless event["xml"].present?
+    return if event["xml"].blank?
 
     Nokogiri::XML(event["xml"])
   end

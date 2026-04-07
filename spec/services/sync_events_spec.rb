@@ -39,22 +39,16 @@ RSpec.describe SyncService::Events, type: :service do
         expect(subject["title"]).to match(@events.first["Title"])
       end
 
-      it "decodes html entities from the xml title node" do
-        event = @events.first.merge(
-          "Title" => "Refugees &amp; Resettlement",
-          "xml" => "<Event><Title>Refugees &amp; Resettlement</Title></Event>"
-        )
+      it "decodes html entities from the title" do
+        event = @events.first.merge("Title" => "Refugees &amp; Resettlement")
 
         expect(@sync_events.record_hash(event)["title"]).to eq("Refugees & Resettlement")
       end
 
-      it "decodes html entities from the fallback title value when xml title lookup fails" do
-        event = @events.first.merge(
-          "Title" => "Refugees &amp; Resettlement",
-          "xml" => "<Event><Description>Fallback title path</Description></Event>"
-        )
+      it "normalizes non-breaking spaces from the title" do
+        event = @events.first.merge("Title" => "Refugees&nbsp;and&nbsp;Resettlement")
 
-        expect(@sync_events.record_hash(event)["title"]).to eq("Refugees & Resettlement")
+        expect(@sync_events.record_hash(event)["title"]).to eq("Refugees and Resettlement")
       end
 
       it "maps Description to description field" do

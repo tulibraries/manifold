@@ -147,11 +147,7 @@ class SyncService::Events
   end
 
   def event_title(event)
-    if (node = event_xml_node(event)&.at_xpath("//Title"))
-      node.text.tr("\u00A0", " ")
-    elsif (title = event.fetch("Title", nil))
-      CGI.unescapeHTML(title).tr("\u00A0", " ")
-    end
+    Nokogiri::HTML4.fragment(event.fetch("Title", "").to_s).text.tr("\u00A0", " ")
   end
 
   def contact(event)
@@ -211,11 +207,5 @@ class SyncService::Events
   def stdout_and_log(message, level: :info)
     @log.send(level, message)
     # @stdout.send(level, message)
-  end
-
-  def event_xml_node(event)
-    return if event["xml"].blank?
-
-    Nokogiri::XML(event["xml"])
   end
 end

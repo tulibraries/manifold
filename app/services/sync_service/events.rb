@@ -147,7 +147,11 @@ class SyncService::Events
   end
 
   def event_title(event)
-    event_xml_node(event)&.at_xpath("//Title")&.text&.tr("\u00A0", " ") || event.fetch("Title", nil)
+    if (node = event_xml_node(event)&.at_xpath("//Title"))
+      node.text.tr("\u00A0", " ")
+    elsif (title = event.fetch("Title", nil))
+      CGI.unescapeHTML(title).tr("\u00A0", " ")
+    end
   end
 
   def contact(event)

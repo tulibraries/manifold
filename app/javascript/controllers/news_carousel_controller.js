@@ -7,43 +7,41 @@ export default class extends Controller {
     var multipleCardCarousel = document.querySelector(
       "#newsCarousel"
     );
-    if (window.matchMedia("(min-width: 768px)").matches) {
+    var carousel = new bootstrap.Carousel(multipleCardCarousel, {
+      "bs-pause": true,
+      "bs-wrap": true,
+      "bs-interval": false
+    });
 
-      var carousel = new bootstrap.Carousel(multipleCardCarousel, {
-        "bs-pause": true,
-        "bs-wrap": true,
-        "bs-interval": false
-      });
+    carousel.pause();
 
-      carousel.pause();
+    var carouselWidth = $("#newsCarousel .carousel-inner")[0].scrollWidth;
+    var cardWidth = $("#newsCarousel .carousel-item").width();
+    var scrollPosition = 0;
 
-      var carouselWidth = $("#newsCarousel .carousel-inner")[0].scrollWidth;
-      var cardWidth = $("#newsCarousel .carousel-item").width();
-      var scrollPosition = 0;
+    $("#newsCarousel .carousel-control-next").on("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (scrollPosition < carouselWidth - cardWidth * 4) {
+        scrollPosition += cardWidth;
+        $("#newsCarousel .carousel-inner").animate(
+          { scrollLeft: scrollPosition },
+          600
+        );
+      }
+    });
 
-      $("#newsCarousel .carousel-control-next").on("click", function () {
-        if (scrollPosition < carouselWidth - cardWidth * 4) {
-          scrollPosition += cardWidth;
-          $("#newsCarousel .carousel-inner").animate(
-            { scrollLeft: scrollPosition },
-            600
-          );
-        }
-      });
-
-      $("#newsCarousel .carousel-control-prev").on("click", function () {
-        if (scrollPosition > 0) {
-          scrollPosition -= cardWidth;
-          $("#newsCarousel .carousel-inner").animate(
-            { scrollLeft: scrollPosition },
-            600
-          );
-        }
-      });
-
-    } else {
-      $(multipleCardCarousel).addClass("slide");
-    }
+    $("#newsCarousel .carousel-control-prev").on("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (scrollPosition > 0) {
+        scrollPosition -= cardWidth;
+        $("#newsCarousel .carousel-inner").animate(
+          { scrollLeft: scrollPosition },
+          600
+        );
+      }
+    });
 
   }
 }

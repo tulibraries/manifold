@@ -16,32 +16,31 @@ export default class extends Controller {
 
     carousel.pause();
 
-    var carouselWidth = $("#digcolsCarousel .carousel-inner")[0].scrollWidth;
+    var carouselInner = $("#digcolsCarousel .carousel-inner")[0];
     var cardWidth = $("#digcolsCarousel .carousel-item").width();
-    var scrollPosition = 0;
+
+    function maxScroll() {
+      return Math.max(0, carouselInner.scrollWidth - carouselInner.clientWidth);
+    }
 
     $("#digcolsCarousel .carousel-control-next").on("click", function (event) {
       event.preventDefault();
       event.stopPropagation();
-      if (scrollPosition < carouselWidth - cardWidth * 4) {
-        scrollPosition += cardWidth;
-        $("#digcolsCarousel .carousel-inner").animate(
-          { scrollLeft: scrollPosition },
-          600
-        );
-      }
+      var nextPosition = Math.min(carouselInner.scrollLeft + cardWidth, maxScroll());
+      $("#digcolsCarousel .carousel-inner").animate(
+        { scrollLeft: nextPosition },
+        600
+      );
     });
 
     $("#digcolsCarousel .carousel-control-prev").on("click", function (event) {
       event.preventDefault();
       event.stopPropagation();
-      if (scrollPosition > 0) {
-        scrollPosition -= cardWidth;
-        $("#digcolsCarousel .carousel-inner").animate(
-          { scrollLeft: scrollPosition },
-          600
-        );
-      }
+      var nextPosition = Math.max(carouselInner.scrollLeft - cardWidth, 0);
+      $("#digcolsCarousel .carousel-inner").animate(
+        { scrollLeft: nextPosition },
+        600
+      );
     });
 
   }

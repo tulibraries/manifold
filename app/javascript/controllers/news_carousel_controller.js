@@ -15,32 +15,31 @@ export default class extends Controller {
 
     carousel.pause();
 
-    var carouselWidth = $("#newsCarousel .carousel-inner")[0].scrollWidth;
+    var carouselInner = $("#newsCarousel .carousel-inner")[0];
     var cardWidth = $("#newsCarousel .carousel-item").width();
-    var scrollPosition = 0;
+
+    function maxScroll() {
+      return Math.max(0, carouselInner.scrollWidth - carouselInner.clientWidth);
+    }
 
     $("#newsCarousel .carousel-control-next").on("click", function (event) {
       event.preventDefault();
       event.stopPropagation();
-      if (scrollPosition < carouselWidth - cardWidth * 4) {
-        scrollPosition += cardWidth;
-        $("#newsCarousel .carousel-inner").animate(
-          { scrollLeft: scrollPosition },
-          600
-        );
-      }
+      var nextPosition = Math.min(carouselInner.scrollLeft + cardWidth, maxScroll());
+      $("#newsCarousel .carousel-inner").animate(
+        { scrollLeft: nextPosition },
+        600
+      );
     });
 
     $("#newsCarousel .carousel-control-prev").on("click", function (event) {
       event.preventDefault();
       event.stopPropagation();
-      if (scrollPosition > 0) {
-        scrollPosition -= cardWidth;
-        $("#newsCarousel .carousel-inner").animate(
-          { scrollLeft: scrollPosition },
-          600
-        );
-      }
+      var nextPosition = Math.max(carouselInner.scrollLeft - cardWidth, 0);
+      $("#newsCarousel .carousel-inner").animate(
+        { scrollLeft: nextPosition },
+        600
+      );
     });
 
   }

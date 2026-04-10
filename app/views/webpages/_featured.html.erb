@@ -1,11 +1,11 @@
-<div id="highlightsCarousel" class="home-news-row carousel pt-3">
-  <div class="carousel-inner ms-4" role="tablist" aria-label="News & Highlights">
+<div id="highlightsCarousel" class="carousel pt-3">
+  <div class="carousel-inner mx-3 pb-0" role="tablist" aria-label="News & Highlights">
     <% @highlights.each_with_index do |highlight, i| %>
-    <div class="items carousel-item<%= " active" if i == 0 %>" role="tab">
-      <div class="card text-center">
+    <div class="carousel-item<%= " active" if i == 0 %>" role="tab">
+      <div class="card library-event">
         <%= link_to highlight.link do %>
           <% if highlight.image.attached? %>
-          <div class="item pb-4">
+          <div class="item">
           <%= image_tag highlight.featured_image, alt: image_alt_text(highlight), loading: "lazy", height: "270", width: "420" %>
           </div>
           <% end %>
@@ -19,15 +19,15 @@
       </div>
     </div>
     <% end if @highlights.present? %>
-    </div>
-    <a class="carousel-control-prev bg-transparent w-aut" href="#highlightsCarousel" role="button" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </a>
-    <a class="carousel-control-next bg-transparent w-aut" href="#highlightsCarousel" role="button" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </a>
+  </div>
+  <a class="carousel-control-prev bg-transparent w-aut" href="#highlightsCarousel" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next bg-transparent w-aut" href="#highlightsCarousel" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
 </div>
 
 <div class="col-12 text-end px-0">

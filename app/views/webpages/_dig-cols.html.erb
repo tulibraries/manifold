@@ -6,7 +6,7 @@
         <%= link_to digcol.link do %>
 
         <% if digcol.image.attached? %>
-        <div class="item pb-4">
+        <div class="item">
           <%= image_tag digcol.show_image, alt: image_alt_text(digcol), loading: "lazy", height: "270px", width: "420px" %>
         </div>
         <% end %>

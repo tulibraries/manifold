@@ -19,12 +19,15 @@
     margin-left: 7px;
     width: 94%;
     padding-top: 0;
+    display: flex;
+    .carousel-item {
+      margin-right: 0;
+      flex: 0 0 100%;
+      display: block;
+    }
     @media (min-width: 768px) {
-      display: flex;
       .carousel-item {
-        margin-right: 0;
         flex: 0 0 33.333333%;
-        display: block;
       }
     }
     .card {

@@ -1,0 +1,16 @@
+pin "application"
+pin "jquery", to: "https://esm.sh/jquery@3.7.1"
+pin "bootstrap", to: "https://esm.sh/bootstrap@5.3.5?bundle"
+pin "selectize", to: "https://esm.sh/selectize@0.12.6?bundle&deps=jquery@3.7.1"
+
+pin "@hotwired/turbo-rails", to: "turbo.min.js"
+pin "@hotwired/stimulus", to: "stimulus.min.js"
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
+pin "@rails/actiontext", to: "actiontext.esm.js"
+pin "trix", to: "vendor/trix.js"
+pin "stimulus-use", to: "vendor/stimulus-use.js"
+
+pin "controllers", to: "controllers/index.js"
+pin "administrate-trix", to: "src/administrate-trix.js"
+pin "legacy-libs", to: "src/legacy-libs.js"
+pin_all_from "app/javascript/controllers", under: "controllers"

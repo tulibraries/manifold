@@ -1,3 +1,5 @@
+import Trix from "trix"
+
 // administrate trix
 
 Trix.config.textAttributes.center = {
@@ -43,7 +45,7 @@ Trix.config.blockAttributes.heading3 = { tagName: 'h3' };
     }
   
     function buildHorizontalRule() {
-      return new Attachment({ content: "<hr>", contentType: "vnd.rubyonrails.horizontal-rule.html" })
+      return new Trix.Attachment({ content: "<hr>", contentType: "vnd.rubyonrails.horizontal-rule.html" })
     }
   })
   

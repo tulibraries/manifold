@@ -3,7 +3,6 @@
   "private": "true",
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.2",
     "jquery": "^3.7.1",
     "sass": "^1.56.2",
     "selectize": "^0.12.6",

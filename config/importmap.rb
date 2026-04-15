@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 pin "application"
 pin "homepage"
 pin "jquery", to: "https://esm.sh/jquery@3.7.1"

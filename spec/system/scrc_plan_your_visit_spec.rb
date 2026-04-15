@@ -90,61 +90,54 @@ RSpec.describe "SCRC Plan Your Visit Page", type: :system do
       expect(page).to have_css("#planYourVisitAccordion", wait: 10)
 
       request_button = find("button[data-bs-target='#requestCollapse']")
-      request_section = find("#requestCollapse")
 
       # Initially should be collapsed
-      expect(request_section["class"]).to include("collapse")
-      expect(request_section["class"]).not_to include("show")
+      expect(page).to have_css("#requestCollapse.collapse:not(.show)")
+      expect(request_button[:'aria-expanded']).to eq("false")
 
       request_button.click
 
-      sleep 1 # Give time for Bootstrap animation
-      expect(request_section["class"]).to include("show")
-      expect(request_section["class"]).to include("collapse")
+      expect(page).to have_css("#requestCollapse.show", wait: 5)
+      expect(request_button[:'aria-expanded']).to eq("true")
 
       request_button.click
 
-      sleep 1
-      expect(request_section["class"]).not_to include("show")
-      expect(request_section["class"]).to include("collapse")
+      expect(page).to have_no_css("#requestCollapse.show", wait: 5)
+      expect(request_button[:'aria-expanded']).to eq("false")
     end
 
     it "only one accordion section can be open at a time" do
       visit "/scrc/planyourvisit"
 
-      # Wait for page to load
-      sleep 1
-
       request_button = find("button[data-bs-target='#requestCollapse']")
       handling_button = find("button[data-bs-target='#handlingCollapse']")
-
-      request_section = find("#requestCollapse")
-      handling_section = find("#handlingCollapse")
 
       # Open first section and wait for it to expand
       request_button.click
       expect(page).to have_css("#requestCollapse.show", wait: 5)
+      expect(request_button[:'aria-expanded']).to eq("true")
 
       # Open second section - first should close
       handling_button.click
       expect(page).to have_css("#handlingCollapse.show", wait: 5)
+      expect(handling_button[:'aria-expanded']).to eq("true")
       expect(page).to have_no_css("#requestCollapse.show", wait: 5)
+      expect(request_button[:'aria-expanded']).to eq("false")
     end
 
     it "accordion content is accessible when expanded" do
       visit "/scrc/planyourvisit"
 
-      sleep 1
-
       request_button = find("button[data-bs-target='#requestCollapse']")
-      request_section = find("#requestCollapse")
 
       # Initially, content should not be visible (collapsed)
       expect(page).to have_no_css("#requestCollapse.show", wait: 5)
+      expect(request_button[:'aria-expanded']).to eq("false")
 
       # Expand section
       request_button.click
       expect(page).to have_css("#requestCollapse.show", wait: 5)
+      expect(request_button[:'aria-expanded']).to eq("true")
 
       # Content should now be visible
       expect(page).to have_text("You must be a registered user to request", wait: 5)

@@ -12,11 +12,11 @@ RSpec.describe "Admin::ExternalLinks", type: :system do
       external_link = FactoryBot.create(:external_link)
 
       visit admin_external_links_path
-      expect(page.all('tr[role="link"]').count).to eq(1)
+      expect(page.all("tr.js-table-row").count).to eq(1)
 
       click_link("Destroy", match: :first)
       expect(page).to have_content("External link was successfully destroyed.")
-      expect(page.all('tr[role="link"]').count).to eq(0)
+      expect(page.all("tr.js-table-row").count).to eq(0)
     end
   end
 
@@ -25,11 +25,11 @@ RSpec.describe "Admin::ExternalLinks", type: :system do
       web_page = FactoryBot.create(:webpage, :with_external_link)
 
       visit admin_external_links_path
-      expect(page.all('tr[role="link"]').count).to eq(1)
+      expect(page.all("tr.js-table-row").count).to eq(1)
 
       click_link("Destroy", match: :first)
       expect(page).to have_content("External Link could not be deleted.")
-      expect(page.all('tr[role="link"]').count).to eq(1)
+      expect(page.all("tr.js-table-row").count).to eq(1)
     end
   end
 end

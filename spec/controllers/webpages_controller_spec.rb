@@ -8,8 +8,8 @@ require "vcr"
 RSpec.describe WebpagesController, type: :controller do
 
   let(:webpage) { FactoryBot.create(:webpage) }
-  let(:application_bundle_pattern) { %r{src="[^"]*/application(?:-[^"/]+)?\.js} }
-  let(:homepage_bundle_pattern) { %r{src="[^"]*/homepage(?:-[^"/]+)?\.js} }
+  let(:application_bundle_pattern) { /<script type="module">import "application"<\/script>/ }
+  let(:homepage_bundle_pattern) { /<script type="module">import "homepage"<\/script>/ }
 
   describe "GET #index" do
     it "returns json when requested" do
@@ -77,7 +77,7 @@ RSpec.describe WebpagesController, type: :controller do
       expect(response).to be_successful
     end
 
-    it "uses the default application bundle" do
+    it "does not include the homepage entrypoint" do
       get :hsl
 
       expect(response.body).to match(application_bundle_pattern)
@@ -107,13 +107,13 @@ RSpec.describe WebpagesController, type: :controller do
       end
     end
 
-    it "uses the homepage bundle" do
+    it "includes the homepage entrypoint" do
       VCR.use_cassette("todays_hours") do
         get :home
       end
 
+      expect(response.body).to match(application_bundle_pattern)
       expect(response.body).to match(homepage_bundle_pattern)
-      expect(response.body).not_to match(application_bundle_pattern)
     end
   end
 

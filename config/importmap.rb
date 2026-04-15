@@ -2,9 +2,9 @@
 
 pin "application"
 pin "homepage"
-pin "jquery", to: "https://esm.sh/jquery@3.7.1"
-pin "bootstrap", to: "https://esm.sh/bootstrap@5.3.5?bundle"
-pin "selectize", to: "https://esm.sh/selectize@0.12.6?bundle&deps=jquery@3.7.1"
+pin "jquery", to: "jquery.js"
+pin "bootstrap", to: "bootstrap.js"
+pin "selectize", to: "selectize.js"
 
 pin "@hotwired/turbo-rails", to: "turbo.min.js"
 pin "@hotwired/stimulus", to: "stimulus.min.js"

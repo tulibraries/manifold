@@ -21,6 +21,10 @@
     <%= favicon_link_tag asset_path('temple-logo-t-box.svg'), :rel => 'icon', :type =>  'image/svg' %>
 
     <%= javascript_importmap_tags "application" %>
+    <% if controller_name == "webpages" && action_name == "home" %>
+      <%= javascript_importmap_module_preload_tags(Rails.application.importmap, entry_point: "homepage") %>
+      <%= javascript_import_module_tag "homepage" %>
+    <% end %>
     
   <% if @nonce.present? %>
     <!-- Google tag (gtag.js) -->

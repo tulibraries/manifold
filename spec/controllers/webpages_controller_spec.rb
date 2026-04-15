@@ -107,12 +107,12 @@ RSpec.describe WebpagesController, type: :controller do
       end
     end
 
-    it "includes the homepage entrypoint" do
+    it "includes only the homepage entrypoint" do
       VCR.use_cassette("todays_hours") do
         get :home
       end
 
-      expect(response.body).to match(application_bundle_pattern)
+      expect(response.body).not_to match(application_bundle_pattern)
       expect(response.body).to match(homepage_bundle_pattern)
     end
   end

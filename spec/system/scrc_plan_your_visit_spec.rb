@@ -22,14 +22,71 @@ RSpec.describe "SCRC Plan Your Visit Page", type: :system do
     { error: "#{e.class}: #{e.message}" }
   end
 
+  def accordion_debug_state_after(delay_ms)
+    page.evaluate_async_script(<<~JS, delay_ms)
+      const delay = arguments[0];
+      const done = arguments[arguments.length - 1];
+
+      setTimeout(() => {
+        const button = document.querySelector("button[data-bs-target='#requestCollapse']");
+        const section = document.querySelector("#requestCollapse");
+        const rect = button ? button.getBoundingClientRect() : null;
+        const centerX = rect ? rect.left + (rect.width / 2) : null;
+        const centerY = rect ? rect.top + (rect.height / 2) : null;
+        const topElement = centerX !== null && centerY !== null ? document.elementFromPoint(centerX, centerY) : null;
+
+        done({
+          delay_ms: delay,
+          button_aria_expanded: button ? button.getAttribute("aria-expanded") : null,
+          button_classes: button ? button.className : null,
+          button_text: button ? button.textContent.trim() : null,
+          button_rect: rect ? {
+            top: rect.top,
+            left: rect.left,
+            width: rect.width,
+            height: rect.height
+          } : null,
+          top_element_tag: topElement ? topElement.tagName : null,
+          top_element_classes: topElement ? topElement.className : null,
+          section_classes: section ? section.className : null
+        });
+      }, delay);
+    JS
+  rescue StandardError => e
+    { error: "#{e.class}: #{e.message}", delay_ms: delay_ms }
+  end
+
   def expect_request_panel_expanding_or_open
     expect(page).to have_css("button[data-bs-target='#requestCollapse'][aria-expanded='true']", wait: 5)
     expect(page).to have_css("#requestCollapse.collapsing, #requestCollapse.show", wait: 5)
+  rescue RSpec::Expectations::ExpectationNotMetError
+    warn "SCRC accordion failure debug immediate: #{accordion_debug_state_after(0)}"
+    warn "SCRC accordion failure debug 250ms: #{accordion_debug_state_after(250)}"
+    warn "SCRC accordion failure debug 1000ms: #{accordion_debug_state_after(1000)}"
+    raise
   end
 
   def expect_handling_panel_expanding_or_open
     expect(page).to have_css("button[data-bs-target='#handlingCollapse'][aria-expanded='true']", wait: 5)
     expect(page).to have_css("#handlingCollapse.collapsing, #handlingCollapse.show", wait: 5)
+  rescue RSpec::Expectations::ExpectationNotMetError
+    warn "SCRC handling failure debug immediate: #{page.evaluate_async_script(<<~JS, 0)}"
+      const delay = arguments[0];
+      const done = arguments[arguments.length - 1];
+
+      setTimeout(() => {
+        const button = document.querySelector("button[data-bs-target='#handlingCollapse']");
+        const section = document.querySelector("#handlingCollapse");
+
+        done({
+          delay_ms: delay,
+          button_aria_expanded: button ? button.getAttribute("aria-expanded") : null,
+          button_classes: button ? button.className : null,
+          section_classes: section ? section.className : null
+        });
+      }, delay);
+    JS
+    raise
   end
 
   let(:space) { FactoryBot.create(:space, slug: "scrc-reading-room") }
@@ -124,9 +181,12 @@ RSpec.describe "SCRC Plan Your Visit Page", type: :system do
       expect(page).to have_css("#requestCollapse.collapse:not(.show)")
       expect(request_button[:'aria-expanded']).to eq("false")
 
+      puts "SCRC accordion debug before request click: #{accordion_debug_state_after(0)}"
       request_button.click
 
-      puts "SCRC accordion debug after request click: #{accordion_debug_state}"
+      puts "SCRC accordion debug immediately after request click: #{accordion_debug_state_after(0)}"
+      puts "SCRC accordion debug 250ms after request click: #{accordion_debug_state_after(250)}"
+      puts "SCRC accordion debug 1000ms after request click: #{accordion_debug_state_after(1000)}"
       expect_request_panel_expanding_or_open
       expect(request_button[:'aria-expanded']).to eq("true")
 

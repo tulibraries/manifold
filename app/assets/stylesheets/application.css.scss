@@ -36,8 +36,7 @@ $sizes: map-merge(
   $sizes
 );
 
-@import "bootstrap/scss/bootstrap";
-@import "bootstrap-icons/font/bootstrap-icons";
+@import "bootstrap";
 @import "selectize.bootstrap5.scss";
 
 @import "partials/_categories.scss";

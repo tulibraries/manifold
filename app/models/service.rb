@@ -17,7 +17,7 @@ class Service < ApplicationRecord
   before_validation :remove_empty_audience
   validates :title, :intended_audience, presence: true
 
-  serialize :intended_audience
+  serialize :intended_audience, coder: YAML
 
   belongs_to :external_link, optional: true
 

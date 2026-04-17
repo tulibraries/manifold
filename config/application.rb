@@ -11,7 +11,8 @@ Bundler.require(*Rails.groups)
 module Manifold
   class Application < Rails::Application
     config.time_zone = "Eastern Time (US & Canada)"
-    config.load_defaults 7.0
+    config.load_defaults 8.1
+    config.autoload_lib(ignore: %w[assets tasks templates])
     config.active_job.queue_adapter = :solid_queue
     config.active_storage.variant_processor = :mini_magick
     config.exceptions_app = self.routes
@@ -28,10 +29,10 @@ module Manifold
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
 
     config.librarysearch_base_url = "https://#{ENV.fetch('LIBRARYSEARCH_DOMAIN', 'librarysearch.temple.edu')}"
     config.main_phone = "(215) 204-8212"

@@ -8,8 +8,8 @@ require "vcr"
 RSpec.describe WebpagesController, type: :controller do
 
   let(:webpage) { FactoryBot.create(:webpage) }
-  let(:application_bundle_pattern) { %r{src="[^"]*/application(?:-[^"/]+)?\.js} }
-  let(:homepage_bundle_pattern) { %r{src="[^"]*/homepage(?:-[^"/]+)?\.js} }
+  let(:application_bundle_pattern) { /<script type="module">import "application"<\/script>/ }
+  let(:homepage_bundle_pattern) { /<script type="module">import "homepage"<\/script>/ }
 
   describe "GET #index" do
     it "returns json when requested" do
@@ -77,7 +77,7 @@ RSpec.describe WebpagesController, type: :controller do
       expect(response).to be_successful
     end
 
-    it "uses the default application bundle" do
+    it "does not include the homepage entrypoint" do
       get :hsl
 
       expect(response.body).to match(application_bundle_pattern)
@@ -107,13 +107,13 @@ RSpec.describe WebpagesController, type: :controller do
       end
     end
 
-    it "uses the homepage bundle" do
+    it "includes only the homepage entrypoint" do
       VCR.use_cassette("todays_hours") do
         get :home
       end
 
-      expect(response.body).to match(homepage_bundle_pattern)
       expect(response.body).not_to match(application_bundle_pattern)
+      expect(response.body).to match(homepage_bundle_pattern)
     end
   end
 
@@ -184,7 +184,10 @@ RSpec.describe WebpagesController, type: :controller do
   it_behaves_like "serializable"
 
   describe "GET #scrc_planyourvisit" do
+    render_views
+
     let(:space) { FactoryBot.create(:space, slug: "scrc-reading-room") }
+    let!(:category) { FactoryBot.create(:category, slug: "scrc-study") }
 
     before do
       allow(Space).to receive(:find_by).with(slug: "scrc-reading-room").and_return(space)
@@ -203,6 +206,41 @@ RSpec.describe WebpagesController, type: :controller do
     it "renders the scrc_planyourvisit template" do
       get :scrc_planyourvisit
       expect(response).to render_template("webpages/scrc_planyourvisit")
+    end
+
+    it "displays the page title" do
+      get :scrc_planyourvisit
+
+      expect(response.body).to include("Plan Your Visit")
+    end
+
+    it "displays the main sections" do
+      get :scrc_planyourvisit
+
+      expect(response.body).to include("Request Materials")
+      expect(response.body).to include("Handling Materials")
+      expect(response.body).to include("Data Collection and Use")
+      expect(response.body).to include("SCRC Statement on Potentially Harmful Language")
+    end
+
+    it "displays the category menu link" do
+      get :scrc_planyourvisit
+
+      expect(response.body).to include(category.name)
+      expect(response.body).to include("/categories/#{category.slug}")
+    end
+
+    it "renders the accordion structure and data attributes" do
+      get :scrc_planyourvisit
+
+      expect(response.body).to include('class="accordion"')
+      expect(response.body).to include('class="accordion-item"')
+      expect(response.body).to include('class="accordion-button collapsed"')
+      expect(response.body).to include('class="accordion-collapse collapse"')
+      expect(response.body).to include('data-bs-toggle="collapse"')
+      expect(response.body).to include('data-bs-target="#requestCollapse"')
+      expect(response.body).to include('data-bs-target="#handlingCollapse"')
+      expect(response.body).to include('data-bs-target="#dataCollapse"')
     end
   end
 

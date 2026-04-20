@@ -1,7 +1,7 @@
 import "@hotwired/turbo-rails"
-import "legacy-libs"
+import "src/common-libs"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 import { application } from "controllers/application"
-import "controllers"
 
+eagerLoadControllersFrom("controllers/common", application)
 eagerLoadControllersFrom("controllers/homepage", application)

@@ -1,3 +1,2 @@
-import "src/jquery"
-import "bootstrap"
+import "src/common-libs"
 import "selectize"

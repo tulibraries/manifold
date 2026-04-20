@@ -9,7 +9,7 @@ class Highlight < ApplicationRecord
 
   validates :title, presence: true
 
-  serialize :tags
+  serialize :tags, coder: YAML
 
   scope :with_image, -> { joins(:image_attachment) }
   scope :with_image_and_alt_text, -> { with_image.where.not(image_alt_text: nil) }

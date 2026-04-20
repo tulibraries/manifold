@@ -1,6 +1,5 @@
-import { application } from "./application"
+import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
+import { application } from "controllers/application"
 
-import controllers from "./**/*_controller.js"
-controllers.forEach((controller) => {
-  application.register(controller.name, controller.module.default)
-})
+eagerLoadControllersFrom("controllers/common", application)
+eagerLoadControllersFrom("controllers/application", application)

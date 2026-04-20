@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['professor', 'course']
+  static targets = ["professor", "course"]
 
   sort_column(event) {
     let column = event.currentTarget.dataset.column
@@ -9,16 +9,13 @@ export default class extends Controller {
     if (direction == "asc") {
       if (column == "course") {
         window.location.href = "/etextbooks?column=course&direction=desc"
-      }
-      else {
+      } else {
         window.location.href = "/etextbooks?column=professor&direction=desc"
       }
-    }
-    else if (direction == "desc") {
+    } else if (direction == "desc") {
       if (column == "course") {
         window.location.href = "/etextbooks?column=course&direction=asc"
-      }
-      else {
+      } else {
         window.location.href = "/etextbooks?column=professor&direction=asc"
       }
     }

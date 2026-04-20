@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+asset_digest_file="tmp/cache/test-assets.digest"
+mkdir -p "$(dirname "$asset_digest_file")"
+
+compute_asset_digest() {
+  local paths=(
+    app/javascript
+    config/importmap.rb
+    app/assets/stylesheets
+    app/assets/config
+    app/assets/images
+    app/assets/fonts
+    vendor/javascript
+    package.json
+    yarn.lock
+  )
+
+  local existing_paths=()
+  for path in "${paths[@]}"; do
+    [ -e "$path" ] && existing_paths+=("$path")
+  done
+
+  if [ ${#existing_paths[@]} -eq 0 ]; then
+    echo "none"
+    return
+  fi
+
+  find "${existing_paths[@]}" -type f -print0 2>/dev/null \
+    | LC_ALL=C sort -z \
+    | xargs -0 shasum \
+    | shasum \
+    | awk '{print $1}'
+}
+
+ensure_test_assets_built() {
+  local new_digest old_digest=""
+  new_digest=$(compute_asset_digest)
+  if [ -f "$asset_digest_file" ]; then
+    old_digest=$(cat "$asset_digest_file")
+  fi
+
+  if [ "$new_digest" != "$old_digest" ]; then
+    echo "Assets changed; running bin/rails dartsass:build..."
+    bin/rails dartsass:build
+    echo "$new_digest" > "$asset_digest_file"
+  else
+    echo "Assets unchanged; skipping dartsass build."
+  fi
+}
+
+ensure_test_assets_built
+
+if [ -x "bin/bundle" ]; then
+  exec bin/bundle exec rspec "$@"
+else
+  exec bundle exec rspec "$@"
+fi

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Admin::ApplicationHelper
+  include Administrate::ApplicationHelper
+
   def changed_fields(changed)
     exclude_keys = ["id", "created_at", "updated_at"]
     changed.delete_if { |k, v| exclude_keys.include?(k) }
@@ -14,7 +16,9 @@ module Admin::ApplicationHelper
 
   def render_show_field(field, locals = {})
     locals.merge!(field:)
-    render locals:, partial: field.to_partial_path
+    if (prefix = find_partial_prefix(field))
+      render locals:, partial: "#{prefix}/#{field.page}"
+    end
   end
 
   def fieldname_in_draft(resource, field)
@@ -24,7 +28,9 @@ module Admin::ApplicationHelper
   def render_draft_field(field, locals = {})
     locals.merge!(field:)
     locals.merge!(draft_field: locals[:f].object.send(draft_name(field)))
-    render locals:, partial: "#{field.to_partial_path}_draft"
+    if (prefix = find_partial_prefix(field))
+      render locals:, partial: "#{prefix}/#{field.page}_draft"
+    end
   end
 
   def draft_name(field)

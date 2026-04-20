@@ -16,7 +16,7 @@ class Event < ApplicationRecord
   belongs_to :person, optional: true
 
   has_rich_text :description
-  serialize :tags
+  serialize :tags, coder: YAML
 
   scope :is_past, -> { where("end_time < ?", Date.current).order(start_time: :desc) }
   scope :is_current, -> { where("end_time >= ?", Date.current).order(:start_time) }

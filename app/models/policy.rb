@@ -18,7 +18,7 @@ class Policy < ApplicationRecord
   has_rich_text :covid_alert
 
   validates :name, presence: true
-  serialize :category
+  serialize :category, coder: YAML
 
   def slug_candidates
     [

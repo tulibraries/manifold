@@ -8,8 +8,8 @@
     <%= display_meta_tags site: t("manifold.default.site_title") %>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', 'print/application', media: 'print', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "print/application", media: "print", "data-turbo-track": "reload" %>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,8 +20,8 @@
           
     <%= favicon_link_tag asset_path('temple-logo-t-box.svg'), :rel => 'icon', :type =>  'image/svg' %>
 
-    <% javascript_bundle = @javascript_bundle.presence || "application" %>
-    <%= javascript_include_tag javascript_bundle, 'data-turbo-track': 'reload', defer: true %>
+    <% javascript_entrypoint = controller_name == "webpages" && action_name == "home" ? "homepage" : "application" %>
+    <%= javascript_importmap_tags javascript_entrypoint %>
     
   <% if @nonce.present? %>
     <!-- Google tag (gtag.js) -->

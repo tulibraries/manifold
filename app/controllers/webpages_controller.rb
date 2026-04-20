@@ -77,7 +77,6 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    @javascript_bundle = "homepage"
     file_path = Rails.root.join("public/cache/todays_hours")
     @todays_hours = File.exist?(file_path) ? File.read(file_path) : nil
     @highlights = Highlight.with_image.where(promoted: true).take(6)

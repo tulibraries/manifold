@@ -21,7 +21,7 @@ class Collection < ApplicationRecord
   has_rich_text :description
   has_rich_text :draft_description
 
-  serialize :subject
+  serialize :subject, coder: YAML
 
   before_validation :burpArray
 

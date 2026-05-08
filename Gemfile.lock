@@ -398,6 +398,9 @@ GEM
       microsoft_kiota_authentication_oauth (~> 0.8.0)
       microsoft_kiota_faraday (>= 0.12, < 0.15)
       microsoft_kiota_serialization_json (~> 0.9.0)
+    microsoft_graph_mailer (0.1.0)
+      mail (~> 2.7)
+      oauth2 (>= 1.4.4, < 3)
     microsoft_kiota_abstractions (0.14.4)
       iso8601 (~> 0.13.0)
       stduritemplate (~> 0.0.39)
@@ -876,6 +879,7 @@ DEPENDENCIES
   mail_form
   meta-tags
   microsoft_graph
+  microsoft_graph_mailer
   mimemagic (= 0.4.3)
   mini_magick
   mutant-rspec

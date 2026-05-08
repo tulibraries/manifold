@@ -82,5 +82,7 @@ module Manifold
 
     # temporary Link Exchanger redirects
     config.link_exchange = config_for(:link_exchange)
+
+    config.graph_mailer = config_for(:graph_mailer).with_indifferent_access
   end
 end

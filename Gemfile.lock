@@ -305,7 +305,7 @@ GEM
     hashdiff (1.2.1)
     hashie (5.1.0)
       logger
-    honeybadger (6.5.6)
+    honeybadger (6.6.0)
       logger
       ostruct
     htmlentities (4.3.4)
@@ -865,7 +865,7 @@ DEPENDENCIES
   fuzzy_match
   google-apis-sheets_v4
   guard-rspec
-  honeybadger (~> 6.5)
+  honeybadger (~> 6.6)
   httparty
   image_processing (~> 1.14)
   importmap-rails

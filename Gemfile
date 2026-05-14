@@ -72,7 +72,6 @@ gem "timecop"
 gem "turbo-rails"
 gem "tzinfo-data"
 gem "uri", ">= 1.0.4"
-gem "view_component", "~> 3.24.0"
 gem "yaml_db"
 
 group :development, :test do

@@ -8,7 +8,7 @@
 
 	<div class="row mt-3">
 		<div class="col">
-			<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
+			<h1 class="page-title"><%= helpers.title t("manifold.webpages.videos.page_title") %></h1>
     </div>
   </div>
 
@@ -16,7 +16,7 @@
 	<div class="col text-center">
 		<div id="videosearchbar">
     <form action="/watchpastprograms/search" method="GET">
-        <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
+        <label class="sr-only" for="videosearchterm"><%= helpers.title t("manifold.webpages.videos.all.search_label") %></label>
         <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
         <input type="submit" id="videosearchbutton" value="Search">
     </form>

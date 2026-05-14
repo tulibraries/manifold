@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Google::EtextbooksComponent < ViewComponent::Base
-  include ViewComponent::UseHelpers
-
   def initialize(etexts:, title:, description:, column:, direction:)
     @title = title
     @description = description
@@ -33,14 +31,14 @@ class Google::EtextbooksComponent < ViewComponent::Base
         @sort_orders["#{column}"] = direction
       end if direction.present?
 
-      content_tag(:span, label, { id: column,
-                                  data: {
-                                    controller: "etexts-component",
-                                    action: "click->etexts-component#sort_column",
-                                    column:,
-                                    direction: @sort_orders["#{column}"],
-                                    target: "etexts"
-                                  },
-                                  style: "cursor:pointer;" })
+      helpers.content_tag(:span, label, { id: column,
+                                          data: {
+                                            controller: "etexts-component",
+                                            action: "click->etexts-component#sort_column",
+                                            column:,
+                                            direction: @sort_orders["#{column}"],
+                                            target: "etexts"
+                                          },
+                                          style: "cursor:pointer;" })
     end
 end

@@ -789,6 +789,10 @@ GEM
     uuidtools (2.2.0)
     vcr (6.4.0)
     version_gem (1.1.9)
+    view_component (4.9.0)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
+      concurrent-ruby (~> 1)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.3.0)
@@ -927,6 +931,7 @@ DEPENDENCIES
   tzinfo-data
   uri (>= 1.0.4)
   vcr
+  view_component (~> 4.9.0)
   web-console (>= 3.3.0)
   webmock
   yaml_db

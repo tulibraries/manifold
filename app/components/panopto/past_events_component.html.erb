@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="col">
-		<h1 class="page-title"><%= title t("manifold.webpages.videos.page_title") %></h1>
+		<h1 class="page-title"><%= helpers.title t("manifold.webpages.videos.page_title") %></h1>
 		<div class="row video-container">
 			<div class="col-lg-8 offset-lg-2">
   	    <iframe aria-label="featured video" src=<%= @featured_src %> height="640px" width="100%" allowfullscreen allow="autoplay"></iframe>
@@ -21,7 +21,7 @@
 	<div class="col text-center mb-3">
 		<div id="videosearchbar">
       <form action="/watchpastprograms/search" method="GET">
-        <label class="sr-only" for="videosearchterm"><%= title t("manifold.webpages.videos.all.search_label") %></label>
+        <label class="sr-only" for="videosearchterm"><%= helpers.title t("manifold.webpages.videos.all.search_label") %></label>
         <input type="text" id="videosearchterm" name="q" maxlength="128" value="">
         <input type="submit" id="videosearchbutton" value="Search">
       </form>
@@ -38,7 +38,7 @@
 		</div>
 		<div class="col-sm-4">
 			<span class="morevideos">
-        <%= link_to (title t("manifold.webpages.videos.all.#{ value[:slug] }")), webpages_videos_collection_path(value[:slug]) %>
+        <%= link_to (helpers.title t("manifold.webpages.videos.all.#{value[:slug]}")), webpages_videos_collection_path(value[:slug]) %>
 			</span>
 		</div>
   </div>

@@ -1,5 +1,4 @@
-ARG BASE_IMAGE=harbor.k8s.temple.edu/library/ruby:3.4-alpine
-FROM ${BASE_IMAGE}
+FROM harbor.k8s.temple.edu/library/ruby:3.4-alpine
 
 WORKDIR /app
 

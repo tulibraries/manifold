@@ -304,7 +304,7 @@ GEM
     hashdiff (1.2.1)
     hashie (5.1.0)
       logger
-    honeybadger (6.6.0)
+    honeybadger (6.6.1)
       logger
       ostruct
     htmlentities (4.4.2)

@@ -26,7 +26,7 @@ RSpec.shared_examples "email form" do
       end
 
       expect(the_email.subject).to eq(form_params[:form][:title])
-      expect(the_email.from).to eq(["templelibraries@gmail.com"])
+      expect(the_email.from).to eq([Mail::Address.new(ActionMailer::Base.default_params[:from]).address])
       if form_params[:form][:email].present?
         expect(the_email.reply_to).to eq([form_params[:form][:email]])
       else

@@ -82,10 +82,10 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   config.action_mailer.default_options = {
-    from: "librarymessages@temple.edu",
+    from: '"Temple University Press" <librarymessages@temple.edu>'
   }
 
-  config.action_mailer.delivery_method = :microsoft_graph_mailer
+  config.action_mailer.delivery_method = :test
 
 end
 

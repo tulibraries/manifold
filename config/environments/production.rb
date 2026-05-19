@@ -93,7 +93,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_options = {
-    from: "librarymessages@temple.edu",
+    from: '"Temple University Press" <librarymessages@temple.edu>'
   }
 
   config.action_mailer.delivery_method = :microsoft_graph_mailer

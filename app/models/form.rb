@@ -250,14 +250,9 @@ class Form < MailForm::Base
     attribute :"format_#{index}"
   end
 
-  # Some forms don't supply an email and name, so they were failing
-  # Keep From aligned with authenticated Gmail account.
-  def default_from_name
-    "Temple University Libraries"
-  end
 
   def default_from_email
-    "templelibraries@gmail.com"
+    ActionMailer::Base.default_params[:from]
   end
 
   # Declare the e-mail headers. It accepts anything the mail method
@@ -268,7 +263,7 @@ class Form < MailForm::Base
     headers = {
       subject: title,
       to: parsed_recipients,
-      from: %("#{ default_from_name }" <#{ default_from_email }>)
+      from: default_from_email
     }
     if email.present?
       headers[:reply_to] = name.present? ? %("#{name}" <#{email}>) : email

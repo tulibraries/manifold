@@ -544,7 +544,7 @@ GEM
       date
       stringio
     public_suffix (7.0.5)
-    puma (8.0.1)
+    puma (8.0.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
@@ -899,7 +899,7 @@ DEPENDENCIES
   propshaft
   pry-byebug
   pry-rails
-  puma (~> 8.0.1)
+  puma (~> 8.0.2)
   rack (>= 3.2.5, < 4)
   rack-mini-profiler
   rack-session (>= 2.1.2)

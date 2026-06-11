@@ -124,7 +124,7 @@ class FormsController < ApplicationController
 
   def load_form_configuration(form_type)
     info = FormInfo.find_by(slug: form_type)
-    return unless info.present?
+    return if info.blank?
 
     @title = info.title
     @intro = info.intro

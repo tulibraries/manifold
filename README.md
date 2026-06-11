@@ -11,15 +11,22 @@ manifold manages, orchestrates, and displays data about Temple University Librar
 
 ##  Getting Started
 
-* Set up environment variables:
+* Set up local environment variables:
 
 ```
 export GOOGLE_OAUTH_CLIENT_ID="Google client ID goes here"
 export GOOGLE_OAUTH_SECRET="Google OAuth secret goes here"
+export TURNSTILE_ENABLED="true"
+export TURNSTILE_SITEKEY="1x00000000000000000000AA"
+export TURNSTILE_SECRET_KEY="1x0000000000000000000000000000000AA"
 ```
 
 Add these same lines to your `.bash_profile` or `.bashrc` file, depending on
 how you've setup your Bash shell.
+
+Cloudflare Turnstile is only enabled on `/forms/:id` pages when
+[config/turnstile.yml](config/turnstile.yml)
+resolves `enabled: true` and valid `sitekey` / `secret_key` values.
 
 * Clone the repository and navigate to the souce code directory
 

@@ -20,12 +20,7 @@ class FormsController < ApplicationController
     @form = Form.new
     if existing_forms.include? params[:id]
       @type = params[:id]
-      info = FormInfo.find_by(slug: @type)
-      if info.present?
-        @title = info.title
-        @intro = info.intro
-        @recipients = info.recipients
-      end
+      load_form_configuration(@type)
     else
       render "errors/not_found", status: :not_found
     end
@@ -35,8 +30,16 @@ class FormsController < ApplicationController
     @form = Form.new(params[:form])
     @form.request = request
     form_type = params[:form][:form_type]
-    info = FormInfo.find_by(slug: form_type)
-    @form.recipients = info.recipients.reject(&:empty?).to_json if info.present?
+    @type = form_type
+    load_form_configuration(form_type)
+    @form.recipients = @recipients.reject(&:empty?).to_json if @recipients.present?
+
+    unless turnstile_valid?
+      flash.now[:error] = t("manifold.forms.submissions.turnstile_failure_message")
+      render :show, status: :unprocessable_entity
+      return
+    end
+
     excel_form_data = if params[:form]&.respond_to?(:to_unsafe_h)
       params[:form].to_unsafe_h.deep_dup
     else
@@ -117,6 +120,24 @@ class FormsController < ApplicationController
 
   def use_unsafe_params
     request.parameters
+  end
+
+  def load_form_configuration(form_type)
+    info = FormInfo.find_by(slug: form_type)
+    return unless info.present?
+
+    @title = info.title
+    @intro = info.intro
+    @recipients = info.recipients
+  end
+
+  def turnstile_valid?
+    return true unless Cloudflare::TurnstileVerifier.configured?
+
+    Cloudflare::TurnstileVerifier.verify(
+      token: params["cf-turnstile-response"],
+      remote_ip: request.remote_ip
+    )
   end
 
   def worksheet_name_for(form_data)

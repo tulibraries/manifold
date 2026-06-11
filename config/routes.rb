@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   mount Rswag::Api::Engine => "/"
   mount Rswag::Ui::Engine  => "api-docs"
-  mount Flipflop::Engine   => "/flipflop"
+  authenticate :account, ->(account) { account.admin? } do
+    mount Flipflop::Engine => "/flipflop"
+  end
 
   # temporary Link Exchanger redirects
   get "link_exchange/*path", to: redirect { |params, request| "https://tulle.tul-infra.page/#{params[:path]}" }

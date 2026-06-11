@@ -29,41 +29,66 @@ RSpec.describe "Cloudflare Turnstile on forms", type: :request do
     }
   end
 
-  before do
-    allow(Cloudflare::TurnstileVerifier).to receive(:configured?).and_return(true)
-    allow(Cloudflare::TurnstileVerifier).to receive(:site_key).and_return("site-key")
+  context "when the cloudflare_turnstile feature flag is enabled" do
+    before do
+      allow(Flipflop).to receive(:cloudflare_turnstile?).and_return(true)
+      allow(Cloudflare::TurnstileVerifier).to receive(:site_key).and_return("site-key")
+      allow(Cloudflare::TurnstileVerifier).to receive(:secret_key).and_return("secret-key")
+    end
+
+    it "renders the widget on form pages" do
+      get("/forms/#{form_type}")
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include("cf-turnstile")
+      expect(response.body).to include("site-key")
+      expect(response.body).to include("challenges.cloudflare.com/turnstile/v0/api.js")
+    end
+
+    it "rejects submissions when verification fails" do
+      expect(Cloudflare::TurnstileVerifier).to receive(:verify).with(
+        token: "turnstile-token",
+        remote_ip: anything
+      ).and_return(false)
+
+      expect do
+        post(forms_path, params: form_params)
+      end.not_to change(FormSubmission, :count)
+
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response.body).to include("Please confirm you are human and try again.")
+    end
+
+    it "accepts submissions when verification succeeds" do
+      allow(Cloudflare::TurnstileVerifier).to receive(:verify).and_return(true)
+
+      expect do
+        post(forms_path, params: form_params)
+      end.to change(FormSubmission, :count).by(1)
+
+      expect(response).to have_http_status(:redirect)
+    end
   end
 
-  it "renders the widget only on form pages when configured" do
-    get("/forms/#{form_type}")
+  context "when the cloudflare_turnstile feature flag is disabled" do
+    before do
+      allow(Flipflop).to receive(:cloudflare_turnstile?).and_return(false)
+    end
 
-    expect(response).to have_http_status(:ok)
-    expect(response.body).to include("cf-turnstile")
-    expect(response.body).to include("site-key")
-    expect(response.body).to include("challenges.cloudflare.com/turnstile/v0/api.js")
-  end
+    it "does not render the widget on form pages" do
+      get("/forms/#{form_type}")
 
-  it "rejects submissions when verification fails" do
-    expect(Cloudflare::TurnstileVerifier).to receive(:verify).with(
-      token: "turnstile-token",
-      remote_ip: anything
-    ).and_return(false)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).not_to include("cf-turnstile")
+      expect(response.body).not_to include("challenges.cloudflare.com/turnstile/v0/api.js")
+    end
 
-    expect do
-      post(forms_path, params: form_params)
-    end.not_to change(FormSubmission, :count)
+    it "accepts submissions without a turnstile token" do
+      expect do
+        post(forms_path, params: form_params)
+      end.to change(FormSubmission, :count).by(1)
 
-    expect(response).to have_http_status(:unprocessable_entity)
-    expect(response.body).to include("Please confirm you are human and try again.")
-  end
-
-  it "accepts submissions when verification succeeds" do
-    allow(Cloudflare::TurnstileVerifier).to receive(:verify).and_return(true)
-
-    expect do
-      post(forms_path, params: form_params)
-    end.to change(FormSubmission, :count).by(1)
-
-    expect(response).to have_http_status(:redirect)
+      expect(response).to have_http_status(:redirect)
+    end
   end
 end

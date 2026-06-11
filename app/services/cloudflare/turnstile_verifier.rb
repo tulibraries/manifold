@@ -11,7 +11,7 @@ module Cloudflare
     end
 
     def self.enabled?
-      config[:enabled]
+      Flipflop.cloudflare_turnstile?
     end
 
     def self.configured?

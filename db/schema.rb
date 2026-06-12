@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_01_05_143306) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_12_000001) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "accountabilities", force: :cascade do |t|
-    t.string "accountable_type"
-    t.bigint "accountable_id"
     t.bigint "account_id"
+    t.bigint "accountable_id"
+    t.string "accountable_type"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["account_id", "accountable_id", "accountable_type"], name: "polymorphic_accountability", unique: true
@@ -25,164 +25,164 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_05_143306) do
   end
 
   create_table "accounts", force: :cascade do |t|
+    t.bigint "admin_group_id"
+    t.boolean "alertability"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "current_sign_in_at", precision: nil
+    t.string "current_sign_in_ip"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at", precision: nil
     t.datetime "last_sign_in_at", precision: nil
-    t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.boolean "alertability"
-    t.bigint "admin_group_id"
     t.string "name"
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "reset_password_sent_at", precision: nil
+    t.string "reset_password_token"
     t.string "role", default: "regular", null: false
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["admin_group_id"], name: "index_accounts_on_admin_group_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
     t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
     t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.integer "record_id", null: false
     t.integer "blob_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "name", null: false
+    t.integer "record_id", null: false
+    t.string "record_type", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
     t.bigint "byte_size", null: false
     t.string "checksum"
+    t.string "content_type"
     t.datetime "created_at", precision: nil, null: false
+    t.string "filename", null: false
+    t.string "key", null: false
+    t.text "metadata"
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
     t.bigint "blob_id", null: false
-    t.string "variation_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "admin_groups", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
     t.jsonb "json_attributes"
+    t.string "name"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["json_attributes"], name: "index_admin_groups_on_json_attributes", using: :gin
   end
 
   create_table "alerts", force: :cascade do |t|
-    t.string "scroll_text"
+    t.datetime "created_at", precision: nil, null: false
+    t.boolean "for_header"
     t.string "link"
     t.boolean "published"
-    t.datetime "created_at", precision: nil, null: false
+    t.string "scroll_text"
     t.datetime "updated_at", precision: nil, null: false
-    t.boolean "for_header"
     t.index ["published"], name: "index_alerts_on_published"
   end
 
   create_table "alerts_jsons", force: :cascade do |t|
-    t.text "message"
     t.datetime "created_at", null: false
+    t.text "message"
     t.datetime "updated_at", null: false
   end
 
   create_table "application_failovers", force: :cascade do |t|
-    t.boolean "turn_on", default: false
     t.datetime "created_at", null: false
+    t.boolean "turn_on", default: false
     t.datetime "updated_at", null: false
   end
 
   create_table "blog_posts", force: :cascade do |t|
-    t.string "title"
+    t.integer "blog_id"
+    t.text "categories"
     t.text "content"
+    t.string "content_hash"
+    t.datetime "created_at", precision: nil, null: false
+    t.string "external_author_name"
     t.string "path"
+    t.integer "person_id"
     t.string "post_guid"
     t.datetime "publication_date", precision: nil
-    t.text "categories"
-    t.string "external_author_name"
-    t.integer "person_id"
-    t.integer "blog_id"
-    t.datetime "created_at", precision: nil, null: false
+    t.string "title"
     t.datetime "updated_at", precision: nil, null: false
-    t.string "content_hash"
     t.index ["blog_id"], name: "index_blog_posts_on_blog_id"
     t.index ["person_id"], name: "index_blog_posts_on_person_id"
   end
 
   create_table "blogs", force: :cascade do |t|
-    t.string "title"
     t.string "base_url"
+    t.datetime "created_at", precision: nil, null: false
     t.string "feed_path"
     t.datetime "last_sync_date", precision: nil
     t.boolean "public_status", default: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
+    t.string "title"
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "buildings", force: :cascade do |t|
-    t.string "name"
-    t.string "address1"
-    t.string "temple_building_code"
-    t.string "coordinates"
-    t.string "hours"
-    t.string "phone_number"
-    t.string "campus"
-    t.string "email"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "google_id"
-    t.string "address2"
     t.boolean "add_to_footer"
-    t.integer "external_link_id"
-    t.string "slug"
+    t.string "address1"
+    t.string "address2"
+    t.string "campus"
     t.string "city"
+    t.string "coordinates"
+    t.datetime "created_at", precision: nil, null: false
+    t.string "email"
+    t.integer "external_link_id"
+    t.string "google_id"
+    t.string "hours"
+    t.string "name"
+    t.string "phone_number"
+    t.string "slug"
     t.string "state"
+    t.string "temple_building_code"
+    t.datetime "updated_at", precision: nil, null: false
     t.string "zipcode"
     t.index ["external_link_id"], name: "index_buildings_on_external_link_id"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "custom_url"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.string "custom_url"
     t.string "description"
-    t.string "slug"
     t.bigint "external_link_id"
     t.bigint "menu_group_id"
+    t.string "name"
+    t.string "slug"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["external_link_id"], name: "index_categories_on_external_link_id"
     t.index ["menu_group_id"], name: "index_categories_on_menu_group_id"
   end
 
   create_table "categorizations", force: :cascade do |t|
-    t.integer "category_id"
-    t.string "categorizable_type"
     t.integer "categorizable_id"
+    t.string "categorizable_type"
+    t.integer "category_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "weight", default: 10
@@ -191,322 +191,329 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_05_143306) do
   end
 
   create_table "collections", force: :cascade do |t|
-    t.string "name"
-    t.text "subject"
-    t.text "contents"
-    t.integer "building_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
     t.boolean "add_to_footer"
-    t.integer "space_id"
+    t.integer "building_id"
+    t.text "contents"
+    t.datetime "created_at", precision: nil, null: false
     t.bigint "external_link_id"
+    t.string "name"
     t.string "slug"
+    t.integer "space_id"
+    t.text "subject"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["building_id"], name: "index_collections_on_building_id"
     t.index ["external_link_id"], name: "index_collections_on_external_link_id"
     t.index ["space_id"], name: "index_collections_on_space_id"
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.datetime "start_time", precision: nil
-    t.datetime "end_time", precision: nil
+    t.boolean "all_day", default: false
+    t.string "alt_text"
     t.integer "building_id"
-    t.integer "space_id"
-    t.string "external_building"
-    t.string "external_space"
-    t.string "external_address"
-    t.string "external_city"
-    t.string "external_state"
-    t.string "external_zip"
-    t.integer "person_id"
-    t.string "external_contact_name"
-    t.string "external_contact_email"
-    t.string "external_contact_phone"
     t.boolean "cancelled"
-    t.boolean "registration_status"
-    t.string "registration_link"
     t.string "content_hash"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "alt_text"
+    t.datetime "end_time", precision: nil
     t.string "ensemble_identifier"
-    t.text "tags"
-    t.boolean "all_day", default: false
     t.string "event_type"
-    t.string "slug"
-    t.string "guid"
     t.string "event_url"
+    t.string "external_address"
+    t.string "external_building"
+    t.string "external_city"
+    t.string "external_contact_email"
+    t.string "external_contact_name"
+    t.string "external_contact_phone"
+    t.string "external_space"
+    t.string "external_state"
+    t.string "external_zip"
     t.boolean "featured"
+    t.string "guid"
+    t.integer "person_id"
+    t.string "registration_link"
+    t.boolean "registration_status"
+    t.string "slug"
+    t.integer "space_id"
+    t.datetime "start_time", precision: nil
     t.boolean "suppress", default: false
+    t.text "tags"
+    t.string "title"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"
   end
 
   create_table "exhibitions", force: :cascade do |t|
-    t.string "title"
-    t.date "start_date"
-    t.date "end_date"
-    t.integer "group_id"
-    t.integer "space_id"
     t.integer "collection_id"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.date "end_date"
+    t.integer "group_id"
+    t.string "online_url"
     t.boolean "promoted_to_events"
     t.string "slug"
-    t.string "online_url"
+    t.integer "space_id"
+    t.date "start_date"
+    t.string "title"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
   end
 
   create_table "external_link_webpages", force: :cascade do |t|
-    t.bigint "webpage_id", null: false
-    t.bigint "external_link_id", null: false
-    t.integer "weight", default: 10
     t.datetime "created_at", null: false
+    t.bigint "external_link_id", null: false
     t.datetime "updated_at", null: false
+    t.bigint "webpage_id", null: false
+    t.integer "weight", default: 10
     t.index ["external_link_id"], name: "index_external_link_webpages_on_external_link_id"
     t.index ["webpage_id"], name: "index_external_link_webpages_on_webpage_id"
   end
 
   create_table "external_links", force: :cascade do |t|
-    t.string "title"
-    t.string "link"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "slug"
     t.string "image_alt_text"
+    t.string "link"
+    t.string "slug"
+    t.string "title"
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "file_uploads", force: :cascade do |t|
-    t.string "name"
     t.string "attachable_type"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "slug"
     t.string "image_alt_text"
+    t.string "name"
+    t.string "slug"
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "fileabilities", force: :cascade do |t|
-    t.string "attachable_type"
     t.bigint "attachable_id"
-    t.bigint "file_upload_id"
+    t.string "attachable_type"
     t.datetime "created_at", precision: nil, null: false
+    t.bigint "file_upload_id"
     t.datetime "updated_at", precision: nil, null: false
     t.integer "weight", default: 10
     t.index ["file_upload_id", "attachable_id", "attachable_type"], name: "polymorphic_fileability", unique: true
     t.index ["file_upload_id"], name: "index_fileabilities_on_file_upload_id"
   end
 
+  create_table "flipflop_features", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.boolean "enabled", default: false, null: false
+    t.string "key", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "form_infos", force: :cascade do |t|
-    t.string "title"
+    t.datetime "created_at", null: false
+    t.string "grouping"
     t.text "recipients", default: [], array: true
     t.string "slug"
-    t.datetime "created_at", null: false
+    t.string "title"
     t.datetime "updated_at", null: false
-    t.string "grouping"
   end
 
   create_table "form_submissions", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
     t.text "form_attributes_ciphertext"
     t.string "form_type"
-    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
+    t.datetime "created_at", precision: nil
+    t.string "scope"
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
-    t.string "scope"
-    t.datetime "created_at", precision: nil
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "group_contacts", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
     t.integer "group_id"
     t.integer "person_id"
-    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["group_id"], name: "index_group_contacts_on_group_id"
     t.index ["person_id"], name: "index_group_contacts_on_person_id"
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "name"
-    t.string "phone_number"
-    t.string "email_address"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "group_type"
-    t.boolean "external"
     t.boolean "add_to_footer"
+    t.datetime "created_at", precision: nil, null: false
+    t.string "email_address"
+    t.boolean "external"
+    t.string "group_type"
+    t.string "name"
     t.integer "parent_group_id"
+    t.string "phone_number"
     t.string "slug"
     t.bigint "space_id"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["parent_group_id"], name: "index_groups_on_parent_group_id"
     t.index ["space_id"], name: "index_groups_on_space_id"
   end
 
   create_table "highlights", force: :cascade do |t|
-    t.string "title"
     t.text "blurb"
-    t.string "link"
-    t.string "type_of_highlight"
-    t.string "tags"
-    t.boolean "promoted"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "link_label"
-    t.string "slug"
-    t.boolean "promote_to_dig_col", default: false
     t.string "image_alt_text"
+    t.string "link"
+    t.string "link_label"
+    t.boolean "promote_to_dig_col", default: false
+    t.boolean "promoted"
+    t.string "slug"
+    t.string "tags"
+    t.string "title"
+    t.string "type_of_highlight"
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "members", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
     t.integer "group_id"
     t.integer "person_id"
-    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["group_id"], name: "index_members_on_group_id"
     t.index ["person_id"], name: "index_members_on_person_id"
   end
 
   create_table "menu_group_categories", force: :cascade do |t|
-    t.integer "menu_group_id"
     t.integer "category_id"
     t.datetime "created_at", null: false
+    t.integer "menu_group_id"
     t.datetime "updated_at", null: false
     t.integer "weight", default: 10
   end
 
   create_table "menu_groups", force: :cascade do |t|
-    t.string "title"
-    t.string "slug"
     t.datetime "created_at", null: false
+    t.string "slug"
+    t.string "title"
     t.datetime "updated_at", null: false
   end
 
   create_table "occupants", force: :cascade do |t|
-    t.integer "person_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
     t.bigint "building_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.integer "person_id"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["building_id"], name: "index_occupants_on_building_id"
     t.index ["person_id"], name: "index_occupants_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
-    t.string "email_address"
-    t.string "chat_handle"
-    t.string "job_title"
-    t.string "research_identifier"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "personal_site"
-    t.string "springshare_id"
-    t.string "specialties"
-    t.string "libguides_account"
-    t.string "slug"
-    t.string "pronouns"
     t.bigint "building_id"
+    t.string "chat_handle"
+    t.datetime "created_at", precision: nil, null: false
+    t.string "email_address"
+    t.string "first_name"
+    t.string "job_title"
+    t.string "last_name"
+    t.string "libguides_account"
+    t.string "personal_site"
+    t.string "phone_number"
+    t.string "pronouns"
+    t.string "research_identifier"
+    t.string "slug"
+    t.string "specialties"
+    t.string "springshare_id"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["building_id"], name: "index_people_on_building_id"
   end
 
   create_table "policies", force: :cascade do |t|
-    t.string "name"
+    t.string "category"
+    t.datetime "created_at", precision: nil, null: false
     t.date "effective_date"
     t.date "expiration_date"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "category"
+    t.string "name"
     t.string "slug"
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "policy_applications", force: :cascade do |t|
-    t.string "policyable_type"
-    t.integer "policyable_id"
-    t.integer "policy_id"
     t.datetime "created_at", precision: nil, null: false
+    t.integer "policy_id"
+    t.integer "policyable_id"
+    t.string "policyable_type"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["policy_id"], name: "index_policy_applications_on_policy_id"
     t.index ["policyable_type", "policyable_id", "policy_id"], name: "index_uniqueness_policy_application", unique: true
   end
 
   create_table "redirects", force: :cascade do |t|
+    t.datetime "created_at", precision: nil, null: false
     t.string "legacy_path"
     t.string "manifold_path"
-    t.string "redirectable_type"
-    t.bigint "redirectable_id"
     t.boolean "no_message"
-    t.datetime "created_at", precision: nil, null: false
+    t.bigint "redirectable_id"
+    t.string "redirectable_type"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["legacy_path"], name: "index_redirects_on_legacy_path", unique: true
     t.index ["redirectable_type", "redirectable_id"], name: "index_redirects_on_redirectable_type_and_redirectable_id"
   end
 
   create_table "services", force: :cascade do |t|
-    t.string "title"
-    t.text "service_policies"
-    t.text "intended_audience"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "hours"
     t.integer "external_link_id"
+    t.string "hours"
+    t.text "intended_audience"
+    t.text "service_policies"
     t.string "slug"
+    t.string "title"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["external_link_id"], name: "index_services_on_external_link_id"
   end
 
   create_table "snippets", force: :cascade do |t|
-    t.string "title"
-    t.string "slug"
     t.datetime "created_at", null: false
+    t.string "slug"
+    t.string "title"
     t.datetime "updated_at", null: false
   end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.string "queue_name", null: false
-    t.integer "priority", default: 0, null: false
     t.string "concurrency_key", null: false
-    t.datetime "expires_at", null: false
     t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.bigint "job_id", null: false
+    t.integer "priority", default: 0, null: false
+    t.string "queue_name", null: false
     t.index ["concurrency_key", "priority", "job_id"], name: "index_solid_queue_blocked_executions_for_release"
     t.index ["expires_at", "concurrency_key"], name: "index_solid_queue_blocked_executions_for_maintenance"
     t.index ["job_id"], name: "index_solid_queue_blocked_executions_on_job_id", unique: true
   end
 
   create_table "solid_queue_claimed_executions", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.bigint "job_id", null: false
     t.bigint "process_id"
-    t.datetime "created_at", null: false
     t.index ["job_id"], name: "index_solid_queue_claimed_executions_on_job_id", unique: true
     t.index ["process_id", "job_id"], name: "index_solid_queue_claimed_executions_on_process_id_and_job_id"
   end
 
   create_table "solid_queue_failed_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.text "error"
     t.datetime "created_at", null: false
+    t.text "error"
+    t.bigint "job_id", null: false
     t.index ["job_id"], name: "index_solid_queue_failed_executions_on_job_id", unique: true
   end
 
   create_table "solid_queue_jobs", force: :cascade do |t|
-    t.string "queue_name", null: false
-    t.string "class_name", null: false
-    t.text "arguments"
-    t.integer "priority", default: 0, null: false
     t.string "active_job_id"
-    t.datetime "scheduled_at"
-    t.datetime "finished_at"
+    t.text "arguments"
+    t.string "class_name", null: false
     t.string "concurrency_key"
     t.datetime "created_at", null: false
+    t.datetime "finished_at"
+    t.integer "priority", default: 0, null: false
+    t.string "queue_name", null: false
+    t.datetime "scheduled_at"
     t.datetime "updated_at", null: false
     t.index ["active_job_id"], name: "index_solid_queue_jobs_on_active_job_id"
     t.index ["class_name"], name: "index_solid_queue_jobs_on_class_name"
@@ -516,121 +523,121 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_05_143306) do
   end
 
   create_table "solid_queue_pauses", force: :cascade do |t|
-    t.string "queue_name", null: false
     t.datetime "created_at", null: false
+    t.string "queue_name", null: false
     t.index ["queue_name"], name: "index_solid_queue_pauses_on_queue_name", unique: true
   end
 
   create_table "solid_queue_processes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "hostname"
     t.string "kind", null: false
     t.datetime "last_heartbeat_at", null: false
-    t.bigint "supervisor_id"
-    t.integer "pid", null: false
-    t.string "hostname"
     t.text "metadata"
-    t.datetime "created_at", null: false
     t.string "name", null: false
+    t.integer "pid", null: false
+    t.bigint "supervisor_id"
     t.index ["last_heartbeat_at"], name: "index_solid_queue_processes_on_last_heartbeat_at"
     t.index ["name", "supervisor_id"], name: "index_solid_queue_processes_on_name_and_supervisor_id", unique: true
     t.index ["supervisor_id"], name: "index_solid_queue_processes_on_supervisor_id"
   end
 
   create_table "solid_queue_ready_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.string "queue_name", null: false
-    t.integer "priority", default: 0, null: false
     t.datetime "created_at", null: false
+    t.bigint "job_id", null: false
+    t.integer "priority", default: 0, null: false
+    t.string "queue_name", null: false
     t.index ["job_id"], name: "index_solid_queue_ready_executions_on_job_id", unique: true
     t.index ["priority", "job_id"], name: "index_solid_queue_poll_all"
     t.index ["queue_name", "priority", "job_id"], name: "index_solid_queue_poll_by_queue"
   end
 
   create_table "solid_queue_recurring_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.string "task_key", null: false
-    t.datetime "run_at", null: false
     t.datetime "created_at", null: false
+    t.bigint "job_id", null: false
+    t.datetime "run_at", null: false
+    t.string "task_key", null: false
     t.index ["job_id"], name: "index_solid_queue_recurring_executions_on_job_id", unique: true
     t.index ["task_key", "run_at"], name: "index_solid_queue_recurring_executions_on_task_key_and_run_at", unique: true
   end
 
   create_table "solid_queue_recurring_tasks", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "schedule", null: false
-    t.string "command", limit: 2048
-    t.string "class_name"
     t.text "arguments"
-    t.string "queue_name"
-    t.integer "priority", default: 0
-    t.boolean "static", default: true, null: false
-    t.text "description"
+    t.string "class_name"
+    t.string "command", limit: 2048
     t.datetime "created_at", null: false
+    t.text "description"
+    t.string "key", null: false
+    t.integer "priority", default: 0
+    t.string "queue_name"
+    t.string "schedule", null: false
+    t.boolean "static", default: true, null: false
     t.datetime "updated_at", null: false
     t.index ["key"], name: "index_solid_queue_recurring_tasks_on_key", unique: true
     t.index ["static"], name: "index_solid_queue_recurring_tasks_on_static"
   end
 
   create_table "solid_queue_scheduled_executions", force: :cascade do |t|
-    t.bigint "job_id", null: false
-    t.string "queue_name", null: false
-    t.integer "priority", default: 0, null: false
-    t.datetime "scheduled_at", null: false
     t.datetime "created_at", null: false
+    t.bigint "job_id", null: false
+    t.integer "priority", default: 0, null: false
+    t.string "queue_name", null: false
+    t.datetime "scheduled_at", null: false
     t.index ["job_id"], name: "index_solid_queue_scheduled_executions_on_job_id", unique: true
     t.index ["scheduled_at", "priority", "job_id"], name: "index_solid_queue_dispatch_all"
   end
 
   create_table "solid_queue_semaphores", force: :cascade do |t|
-    t.string "key", null: false
-    t.integer "value", default: 1, null: false
-    t.datetime "expires_at", null: false
     t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.string "key", null: false
     t.datetime "updated_at", null: false
+    t.integer "value", default: 1, null: false
     t.index ["expires_at"], name: "index_solid_queue_semaphores_on_expires_at"
     t.index ["key", "value"], name: "index_solid_queue_semaphores_on_key_and_value"
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
   create_table "space_groups", force: :cascade do |t|
-    t.integer "space_id"
-    t.integer "group_id"
     t.datetime "created_at", precision: nil, null: false
+    t.integer "group_id"
+    t.integer "space_id"
     t.datetime "updated_at", precision: nil, null: false
     t.index ["group_id"], name: "index_space_groups_on_group_id"
     t.index ["space_id"], name: "index_space_groups_on_space_id"
   end
 
   create_table "spaces", force: :cascade do |t|
-    t.string "name"
-    t.string "hours"
-    t.string "phone_number"
-    t.string "image"
-    t.string "email"
+    t.string "ancestry"
     t.integer "building_id"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "ancestry"
+    t.string "email"
     t.bigint "external_link_id"
+    t.string "hours"
+    t.string "image"
+    t.string "name"
+    t.string "phone_number"
     t.string "slug"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["ancestry"], name: "index_spaces_on_ancestry"
     t.index ["building_id"], name: "index_spaces_on_building_id"
     t.index ["external_link_id"], name: "index_spaces_on_external_link_id"
   end
 
   create_table "streaming_videos", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "panoptoid"
     t.string "category"
     t.datetime "created_at", null: false
+    t.text "description"
+    t.string "panoptoid"
+    t.string "title"
     t.datetime "updated_at", null: false
   end
 
   create_table "student_accesses", force: :cascade do |t|
     t.bigint "account_id", null: false
-    t.string "student_accessible_type", null: false
-    t.bigint "student_accessible_id", null: false
     t.datetime "created_at", null: false
+    t.bigint "student_accessible_id", null: false
+    t.string "student_accessible_type", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id", "student_accessible_type", "student_accessible_id"], name: "index_student_accesses_unique", unique: true
     t.index ["account_id"], name: "index_student_accesses_on_account_id"
@@ -638,41 +645,41 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_05_143306) do
   end
 
   create_table "subject_specialties", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.integer "person_id"
     t.integer "subject_id"
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "subjects", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.string "name"
     t.string "slug"
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_subjects_on_name", unique: true
   end
 
   create_table "versions", force: :cascade do |t|
-    t.string "item_type", null: false
-    t.integer "item_id", null: false
-    t.string "event", null: false
-    t.string "whodunnit"
-    t.text "object"
     t.datetime "created_at", precision: nil
+    t.string "event", null: false
+    t.integer "item_id", null: false
+    t.string "item_type", null: false
+    t.text "object"
     t.text "object_changes"
+    t.string "whodunnit"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   create_table "webpages", force: :cascade do |t|
-    t.string "title"
-    t.string "layout"
-    t.integer "group_id"
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "slug"
     t.bigint "external_link_id"
-    t.string "virtual_tour"
+    t.integer "group_id"
+    t.string "layout"
+    t.string "slug"
+    t.string "title"
     t.string "tutorial_path"
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "virtual_tour"
     t.index ["external_link_id"], name: "index_webpages_on_external_link_id"
     t.index ["group_id"], name: "index_webpages_on_group_id"
   end

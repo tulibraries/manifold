@@ -19,7 +19,7 @@ module Cloudflare
     end
 
     def self.site_key
-      config[:sitekey]
+      config[:site_key]
     end
 
     def self.secret_key

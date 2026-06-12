@@ -676,6 +676,7 @@ en:
         av_requests_success_message: Thank you for submitting your duplication request. You can submit another request below.
         copy_requests_success_message: Thank you for submitting your duplication request. You can submit another request below.
         failure_message: Cannot send message.
+        turnstile_failure_message: Please confirm you are human and try again.
       shared:
         your_info: Your Information
         request_info: Request Information -- Please do not abbreviate

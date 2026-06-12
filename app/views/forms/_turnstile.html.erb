@@ -1,0 +1,11 @@
+<% if Cloudflare::TurnstileVerifier.configured? %>
+  <% content_for :head do %>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <% end %>
+
+  <div class="row mt-4">
+    <div class="col mx-3">
+      <div class="cf-turnstile" data-sitekey="<%= Cloudflare::TurnstileVerifier.site_key %>"></div>
+    </div>
+  </div>
+<% end %>

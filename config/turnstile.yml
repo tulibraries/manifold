@@ -1,0 +1,3 @@
+shared:
+  sitekey: <%= ENV["TURNSTILE_SITEKEY"] %>
+  secret_key: <%= ENV["TURNSTILE_SECRET_KEY"] %>

@@ -19,6 +19,12 @@ require "base64"
 # Let Capybara choose an open port so local dev servers don't break system specs.
 Capybara.server_host = "127.0.0.1"
 
+require "capybara/cuprite"
+Capybara.register_driver(:cuprite) do |app|
+  Capybara::Cuprite::Driver.new(app, window_size: [1200, 800], headless: true)
+end
+Capybara.javascript_driver = :cuprite
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 include Warden::Test::Helpers
@@ -60,7 +66,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system, js: true) do
-    driven_by :selenium_chrome_headless
+    driven_by :cuprite
   end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

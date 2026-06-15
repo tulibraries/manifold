@@ -112,7 +112,7 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails"
-  gem "selenium-webdriver"
+  gem "cuprite"
   gem "simplecov"
   gem "simplecov-lcov"
   gem "webmock"

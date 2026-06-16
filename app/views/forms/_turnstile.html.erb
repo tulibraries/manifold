@@ -1,13 +1,11 @@
 <% if Cloudflare::TurnstileVerifier.configured? %>
   <% content_for :head do %>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <% end %>
 
   <div class="row mt-4">
     <div class="col mx-3">
-      <div data-controller="turnstile" data-turnstile-site-key-value="<%= Cloudflare::TurnstileVerifier.site_key %>">
-        <div data-turnstile-target="container"></div>
-      </div>
+      <div class="cf-turnstile" data-sitekey="<%= Cloudflare::TurnstileVerifier.site_key %>"></div>
     </div>
   </div>
 <% end %>

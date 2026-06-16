@@ -42,9 +42,9 @@ RSpec.describe "Cloudflare Turnstile on forms", type: :request do
 
       expect(response).to have_http_status(:ok)
       expect(response.body).to include('data-turbo="false"')
-      expect(response.body).to include('data-controller="turnstile"')
-      expect(response.body).to include('data-turnstile-site-key-value="site-key"')
-      expect(response.body).to include("challenges.cloudflare.com/turnstile/v0/api.js?render=explicit")
+      expect(response.body).to include("cf-turnstile")
+      expect(response.body).to include("site-key")
+      expect(response.body).to include("challenges.cloudflare.com/turnstile/v0/api.js")
     end
 
     it "rejects submissions when verification fails" do
@@ -58,7 +58,7 @@ RSpec.describe "Cloudflare Turnstile on forms", type: :request do
       end.not_to change(FormSubmission, :count)
 
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(response.body).to include('data-controller="turnstile"')
+      expect(response.body).to include("cf-turnstile")
       expect(response.body).to include("We couldn&#39;t verify that you&#39;re human. Please refresh the page and try again.")
     end
 

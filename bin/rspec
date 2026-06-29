@@ -13,8 +13,6 @@ compute_asset_digest() {
     app/assets/images
     app/assets/fonts
     vendor/javascript
-    package.json
-    yarn.lock
   )
 
   local existing_paths=()

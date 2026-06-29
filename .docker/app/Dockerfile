@@ -31,18 +31,13 @@ RUN apk add -U --no-cache \
       libjpeg-turbo-dev=3.1.3-r0 \
       libxslt-dev=1.1.43-r3 \
       postgresql17-dev=17.10-r0 \
-      nodejs=24.17.0-r0 \
-      yarn=1.22.22-r1 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \
-    find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
     SECRET_KEY_BASE=dummy bundle exec rails assets:precompile && \
-    if [ "${RAILS_ENV}" = "production" ]; then rm -rf node_modules; fi && \
     if [ "${RAILS_ENV}" = "production" ]; then rm -rf tmp/*; fi && \
     if [ "${RAILS_ENV}" = "production" ]; then apk del build-dependencies; fi && \
     rm -rf /var/cache/apk/ && \
-    rm -rf /usr/local/share/.cache/yarn  && \
     mkdir -p /secure-tmp && chmod 700 /secure-tmp && \
     mkdir -p /secure-tmp/log && chmod 700 /secure-tmp/log
 

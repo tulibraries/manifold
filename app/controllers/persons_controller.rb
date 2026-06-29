@@ -18,17 +18,17 @@ class PersonsController < ApplicationController
     @subjects = get_specialty_filter_values(all)
     @departments = get_department_filter_values(all)
 
-    if params[:department].present?
-      d = Group.friendly.find(params[:department])
+    if (params[:department] || params[:m_department]).present?
+      d = Group.friendly.find(params[:department] || params[:m_department])
       if d.present?
         key = "Department"
         value = d.label
       end
     end
 
-    if params[:specialty].present?
+    if (params[:specialty] || params[:m_subject]).present?
       key = "Specialty"
-      value = params[:specialty]
+      value = params[:specialty] || params[:m_subject]
     end
 
     if params[:search].present?
@@ -66,17 +66,20 @@ class PersonsController < ApplicationController
   end
 
   def get_persons
+    department = params[:department] || params[:m_department]
+    specialty = params[:specialty] || params[:m_subject]
+
     if params[:search].present?
       @filtered_persons = Person.search(params[:search])
-    elsif (params[:specialists].present? && params[:specialists] == "true") && params[:department].nil?
+    elsif (params[:specialists].present? && params[:specialists] == "true") && department.nil?
       @filtered_persons = Person.is_specialist
-    elsif (params[:specialists].present? && params[:specialists] == "true") && params[:department].present?
-      @filtered_persons = Person.in_department(params[:department]).is_specialist
+    elsif (params[:specialists].present? && params[:specialists] == "true") && department.present?
+      @filtered_persons = Person.in_department(department).is_specialist
       @specialist_search = true
-    elsif params[:specialty].present?
-      @filtered_persons = Person.with_specialty(params[:specialty])
-    elsif params[:department]
-      @filtered_persons = Person.in_department(params[:department])
+    elsif specialty.present?
+      @filtered_persons = Person.with_specialty(specialty)
+    elsif department
+      @filtered_persons = Person.in_department(department)
     else
       @filtered_persons = Person.all
     end

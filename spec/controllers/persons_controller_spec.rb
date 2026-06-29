@@ -24,6 +24,35 @@ RSpec.describe PersonsController, type: :controller do
       expect(response.header["Content-Type"]).to include "json"
     end
 
+    context "filtering by department" do
+      let(:group) { FactoryBot.create(:group) }
+
+      it "filters via desktop department param" do
+        get :index, params: { department: group.slug }
+        expect(assigns(:filtered_persons)).to include(*group.persons)
+      end
+
+      it "filters via mobile m_department param" do
+        get :index, params: { m_department: group.slug }
+        expect(assigns(:filtered_persons)).to include(*group.persons)
+      end
+    end
+
+    context "filtering by specialty" do
+      let(:subject) { FactoryBot.create(:subject) }
+      let!(:person_with_subject) { FactoryBot.create(:person, subjects: [subject]) }
+
+      it "filters via desktop specialty param" do
+        get :index, params: { specialty: subject.name }
+        expect(assigns(:filtered_persons)).to include(person_with_subject)
+      end
+
+      it "filters via mobile m_subject param" do
+        get :index, params: { m_subject: subject.name }
+        expect(assigns(:filtered_persons)).to include(person_with_subject)
+      end
+    end
+
   end
 
   describe "GET #show" do

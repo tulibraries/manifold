@@ -30,7 +30,7 @@ RUN apk add -U --no-cache \
       jpeg-dev=9f-r0 \
       libjpeg-turbo-dev=3.1.3-r0 \
       libxslt-dev=1.1.43-r3 \
-      postgresql17-dev=17.10-r0 \
+      postgresql17-dev=17.10-r0 && \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \

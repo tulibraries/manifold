@@ -95,6 +95,21 @@ RSpec.describe MicrosoftExcelService do
     end
   end
 
+  describe "#access_token" do
+    it "posts to the Microsoft login URL without raising HTTParty::UnsafeURIError" do
+      client = MicrosoftGraph::Client.allocate
+      client.instance_variable_set(:@tenant_id, "tenant123")
+      client.instance_variable_set(:@client_id, "client123")
+      client.instance_variable_set(:@client_secret, "secret123")
+
+      stub_request(:post, "https://login.microsoftonline.com/tenant123/oauth2/v2.0/token")
+        .to_return(status: 200, body: { access_token: "test_token" }.to_json)
+
+      expect { client.send(:access_token) }.not_to raise_error
+      expect(client.send(:access_token)).to eq("test_token")
+    end
+  end
+
   describe "#workbook_item_path" do
     it "prefers drive_id when present" do
       client = MicrosoftGraph::Client.allocate

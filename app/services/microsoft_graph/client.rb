@@ -56,7 +56,7 @@ module MicrosoftGraph
       def access_token
         @access_token ||= begin
           auth_url = "https://login.microsoftonline.com/#{@tenant_id}/oauth2/v2.0/token"
-          response = self.class.post(
+          response = HTTParty.post(
             auth_url,
             body: {
               grant_type: "client_credentials",

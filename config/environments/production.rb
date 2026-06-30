@@ -98,6 +98,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :microsoft_graph_mailer
 
-  Rails.application.routes.default_url_options[:host] = ENV["MANIFOLD_FQDN"]
-  Rails.application.routes.default_url_options[:protocol] = "https"
+  if (manifold_fqdn = ENV["MANIFOLD_FQDN"].presence)
+    Rails.application.routes.default_url_options[:host] = manifold_fqdn
+    Rails.application.routes.default_url_options[:protocol] = "https"
+  end
 end

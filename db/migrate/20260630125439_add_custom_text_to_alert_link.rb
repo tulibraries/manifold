@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddCustomTextToAlertLink < ActiveRecord::Migration[8.1]
   def change
     add_column :alerts, :link_text, :string

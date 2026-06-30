@@ -13,6 +13,7 @@ class AlertDashboard < Administrate::BaseDashboard
     id: Field::Number,
     scroll_text: Field::String,
     link: Field::String,
+    link_text: Field::String,
     description:  DescriptionField,
     published: Field::Boolean,
     for_header: Field::Boolean,
@@ -30,6 +31,7 @@ class AlertDashboard < Administrate::BaseDashboard
     :for_header,
     :scroll_text,
     :link,
+    :link_text,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,6 +39,7 @@ class AlertDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :scroll_text,
     :link,
+    :link_text,
     :description,
     :published,
     :for_header,
@@ -50,6 +53,7 @@ class AlertDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :scroll_text,
     :link,
+    :link_text,
     :description,
     :published,
     :for_header,

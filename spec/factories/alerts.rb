@@ -4,6 +4,7 @@ FactoryBot.define do
   factory :alert do
     scroll_text { "This is an alert" }
     link { "http://library.temple.edu" }
+    link_text { "" }
     description { ActionText::Content.new("Hello World") }
     published { true }
 

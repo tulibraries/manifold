@@ -7,7 +7,7 @@
     <% if [:slug].include? field.attribute %>
       <p class="h-one-half"></p>
     <% end %>
-    <% if [:title, :name].include? field.attribute %>
+    <% if [:title, :name, :link].include? field.attribute %>
       <p class="h-one-half"></p>
     <% end %>
   <% end %>
@@ -31,6 +31,9 @@
         <% end %>
         <% if field.attribute == :tutorial_path %>
           <p><%= t("manifold.default.fields.string.tutorial_path") %></p>
+        <% end %>
+        <% if field.attribute == :link %>
+          <p><%= t("manifold.default.fields.string.link") %></p>
         <% end %>
       <% end %>
     <% end %>

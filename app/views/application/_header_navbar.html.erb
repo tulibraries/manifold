@@ -44,7 +44,11 @@
         <p class="mb-0">
         <% @alert.each do |alert| %>
           <% unless alert.link.blank? %>
-            <%= alert.scroll_text %> <%= link_to t("manifold.default.application.header_navbar.scroll_text"), alert.link %>
+            <% if alert.link_text.present? %>
+              <%= alert.scroll_text %> <%= link_to alert.link_text, alert.link %>
+            <% else %>
+              <%= alert.scroll_text %> <%= link_to t("manifold.default.application.header_navbar.scroll_text"), alert.link %>
+            <% end %>
           <% else %>
             <%= alert.scroll_text %>
           <% end %>

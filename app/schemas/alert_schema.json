@@ -47,6 +47,7 @@
 					"required": [
 						            "scroll_text",
                         "link",
+												"link_text",
                         "published",
 						            "description"
 					],
@@ -71,6 +72,16 @@
 							],
 							"pattern": "^(.*)$"
                         },
+						"link_text": {
+							"$id": "#/properties/data/properties/attributes/properties/link_text",
+							"type": "string",
+							"title": "The Label Schema",
+							"default": "",
+							"examples": [
+								"The Library Collection"
+							],
+							"pattern": "^(.*)$"
+                        },
 						"published": {
 							"$id": "#/properties/data/properties/attributes/properties/published",
 							"type": "boolean",
@@ -87,8 +98,7 @@
 							"default": "",
 							"examples": [
 								"This is the description of the collection"
-							],
-							"pattern": "^(.*)$"
+							]
 						}
 					}
 				},

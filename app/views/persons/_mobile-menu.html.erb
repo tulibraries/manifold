@@ -14,17 +14,19 @@
       <div class="navbar-nav"> 
            <div class="filters row pb-3 px-0 mb-4">
             <div class="col-12 d-inline-block mt-0">
-            <%= form_tag(person_search_path, method: "POST", class: "d-inline-block mr-3 mt-0", id: "m-people-search") do %>
-              <%= label_tag(:search, "search staff directory by name or title", :class=>"element-invisible") %>
-              <%= text_field_tag(:search, nil, class: "form-control d-inline-block search-icon", 
-                        placeholder: "search staff directory by name or title",
-                        results: "0"
-                        ) %>
+            <%= form_with(url: people_path, method: :get,
+                          data: { controller: "search-form",
+                                  action: "input->search-form#search",
+                                  turbo_frame: "people",
+                                  turbo_action: "advance" },
+                          id: "m-people-search") do |form| %>
+              <%= form.label :search, "search staff directory by name or title", class: "element-invisible" %>
+              <%= form.text_field :search, placeholder: "search staff directory by name or title", class: "form-control d-inline-block search-icon" %>
             <% end %>
 
             <%= form_with url: people_path, method: "GET", id: "m-people-filters", class: "d-inline-block" do |f| %>
-              <%= f.select :m_department, @departments, include_blank: "filter by department" if @departments.present? %>
-              <%= f.select :m_subject, @subjects, include_blank: "filter by specialty" if @subjects.present? %>
+              <%= f.select :m_department, @departments, { include_blank: "filter by department" }, data: { action: "change->people#departments" } if @departments.present? %>
+              <%= f.select :m_subject, @subjects, { include_blank: "filter by specialty" }, data: { action: "change->people#specialties" } if @subjects.present? %>
             <% end %>
             </div>
             <div class="col-12 mt-3 mb-0 ml-3 filter-links">

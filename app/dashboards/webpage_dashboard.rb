@@ -82,8 +82,8 @@ class WebpageDashboard < Administrate::BaseDashboard
 
   def permitted_attributes
     super + [
-      [external_link_webpages_attributes: [:id, :url, :name, :weight, :featured, :_destroy]],
-      [fileabilities_attributes: [:weight, :id, :featured, :_destroy]],
+      { external_link_webpages_attributes: [:id, :url, :name, :weight, :featured, :_destroy] },
+      { fileabilities_attributes: [:weight, :id, :featured, :_destroy] },
       :featured_item_key,
       :draft_description,
       :publish

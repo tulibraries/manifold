@@ -365,12 +365,18 @@ select[multiple] {
       width: 90%;
     }
     .file-upload-name, .external-link-webpage-name {
-      width: 80%;
+      width: 70%;
       display: inline-block;
     }
     .file-upload-weight, .external-link-webpage-weight {
       width: 10%;
       display: inline-block;
+    }
+    .file-upload-featured, .external-link-webpage-featured {
+      width: 10%;
+      display: inline-block;
+      white-space: nowrap;
+      text-align: center;
     }
     .file-upload-destroy, .external-link-webpage-destroy {
       width: 5%;

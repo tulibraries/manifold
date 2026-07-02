@@ -9,46 +9,23 @@ module Admin
       return permitted unless action_name == "update"
       return permitted unless requested_resource
 
-<<<<<<< Updated upstream
-      filter_join_attributes!(
+      sync_join_attributes!(
         permitted: permitted,
         ids_key: :file_upload_ids,
         attributes_key: :fileabilities_attributes,
         association_name: :fileabilities,
+        associated_id_key: :file_upload_id,
         selected_id_for: ->(record) { record.file_upload_id }
       )
 
-      filter_join_attributes!(
+      sync_join_attributes!(
         permitted: permitted,
         ids_key: :external_link_ids,
         attributes_key: :external_link_webpages_attributes,
         association_name: :external_link_webpages,
+        associated_id_key: :external_link_id,
         selected_id_for: ->(record) { record.external_link_id }
       )
-=======
-      if params[:webpage]&.key?(:file_upload_ids)
-        selected_ids = Array(permitted[:file_upload_ids]).reject(&:blank?).map(&:to_i)
-        attributes = (permitted[:fileabilities_attributes] || {}).to_h
-        filtered_attributes = {}
-
-        attributes.each do |key, attrs|
-          attrs = attrs.to_h
-          id = attrs[:id] || attrs["id"]
-
-          if id.present?
-            fileability = requested_resource.fileabilities.find_by(id: id.to_i)
-            next if fileability && !selected_ids.include?(fileability.file_upload_id)
-          end
-
-          filtered_attributes[key] = attrs
-        end
-
-        if filtered_attributes.any?
-          permitted[:fileabilities_attributes] = filtered_attributes
-        else
-          permitted.delete(:fileabilities_attributes)
-        end
-      end
 
       selected_key = permitted.delete(:featured_item_key).presence
 
@@ -64,8 +41,7 @@ module Admin
         end
       end
 
->>>>>>> Stashed changes
-      permitted
+      ActionController::Parameters.new(permitted.to_unsafe_h).permit!
     end
 
     def scoped_resource
@@ -79,23 +55,57 @@ module Admin
 
     private
 
-      def filter_join_attributes!(permitted:, ids_key:, attributes_key:, association_name:, selected_id_for:)
+      def sync_join_attributes!(permitted:, ids_key:, attributes_key:, association_name:, associated_id_key:, selected_id_for:)
         return unless params[:webpage]&.key?(ids_key)
 
-        selected_ids = Array(permitted[ids_key]).reject(&:blank?).map(&:to_i)
-        attributes = (permitted[attributes_key] || {}).to_h
-        filtered_attributes = {}
-
-        attributes.each do |key, attrs|
-          attrs = attrs.to_h
-          id = attrs[:id] || attrs["id"]
-
-          if id.present?
-            join_record = requested_resource.public_send(association_name).find_by(id: id.to_i)
-            next if join_record && !selected_ids.include?(selected_id_for.call(join_record))
+        selected_ids = Array(permitted.delete(ids_key)).reject(&:blank?).map(&:to_i)
+        attributes_param = permitted[attributes_key]
+        attributes =
+          if attributes_param.respond_to?(:to_unsafe_h)
+            attributes_param.to_unsafe_h
+          else
+            attributes_param || {}
           end
 
-          filtered_attributes[key] = attrs
+        existing_records = requested_resource.public_send(association_name).index_by(&:id)
+        attributes_by_record_id = {}
+
+        attributes.each_value do |attrs|
+          attrs =
+            if attrs.respond_to?(:to_unsafe_h)
+              attrs.to_unsafe_h
+            else
+              attrs
+            end
+
+          id = attrs[:id] || attrs["id"]
+          attributes_by_record_id[id.to_i] = attrs if id.present?
+        end
+
+        filtered_attributes = {}
+        next_index = 0
+
+        existing_records.each_value do |join_record|
+          attrs = (attributes_by_record_id[join_record.id] || { "id" => join_record.id.to_s }).dup
+
+          if selected_ids.include?(selected_id_for.call(join_record))
+            filtered_attributes[next_index.to_s] = attrs
+          else
+            filtered_attributes[next_index.to_s] = attrs.merge("_destroy" => "1")
+          end
+
+          next_index += 1
+        end
+
+        existing_selected_ids = existing_records.values.map { |record| selected_id_for.call(record) }
+        new_selected_ids = selected_ids - existing_selected_ids
+
+        new_selected_ids.each do |selected_id|
+          filtered_attributes[next_index.to_s] = {
+            associated_id_key.to_s => selected_id,
+            "weight" => 10
+          }
+          next_index += 1
         end
 
         if filtered_attributes.any?

@@ -161,11 +161,9 @@ Rails.application.routes.draw do
     get "etextbooks" => :etextbooks, as: "etextbooks"
     get "/pages/:id" => :show
     get "/news" => :news, as: "news"
-    get "annual-report" => :annual_report, as: "annual_report"
   end
 
   get "/scrc-reading-room" => redirect("spaces/scrc-reading-room"), as: "scrc_reading_room"
-  # get "/webpages/annual-report" => redirect("/annual-report"), as: "annual_report"
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all

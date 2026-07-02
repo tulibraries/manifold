@@ -122,13 +122,120 @@ RSpec.describe Webpage, type: :model do
           @with_uploads = FactoryBot.create(:webpage, file_uploads: [@file1])
           @with_uploads.fileabilities.first.update("weight" => 2)
           @with_uploads.file_uploads << @file2
-          @with_uploads.fileabilities.second.update("weight" => 1)
+          @with_uploads.fileabilities.second.update(featured: true)
         end
         it "removes item from items array" do
           expect(@with_uploads.items.map(&:file_upload_id)).to_not eql [@file2.id]
           expect(@with_uploads.items.map(&:file_upload_id)).to eql [@file1.id]
         end
+
+        it "returns the featured file upload" do
+          expect(@with_uploads.featured_item.file_upload_id).to eq(@file2.id)
+        end
       end
+    end
+  end
+
+  describe "#featured_item" do
+    context "when an external_link_webpage is featured" do
+      before do
+        @featured_link = FactoryBot.create(:external_link, title: "Featured")
+        @other_link = FactoryBot.create(:external_link, title: "Other")
+        @webpage = FactoryBot.create(:webpage, external_links: [@featured_link, @other_link])
+        @webpage.external_link_webpages.find_by(external_link: @featured_link).update!(featured: true)
+      end
+
+      it "returns the featured external_link_webpage" do
+        expect(@webpage.featured_item.external_link).to eq(@featured_link)
+      end
+    end
+
+    context "when nothing is featured" do
+      it "returns nil" do
+        webpage = FactoryBot.create(:webpage, :with_file)
+        expect(webpage.featured_item).to be_nil
+      end
+    end
+  end
+
+  describe "#file_items" do
+    it "excludes the featured fileability" do
+      file1 = FactoryBot.create(:file_upload, name: "A")
+      file2 = FactoryBot.create(:file_upload, name: "B")
+      webpage = FactoryBot.create(:webpage, file_uploads: [file1, file2])
+      webpage.fileabilities.find_by(file_upload: file2).update!(featured: true)
+
+      expect(webpage.file_items.map(&:file_upload)).to contain_exactly(file1)
+    end
+
+    it "includes all fileabilities when none are featured" do
+      file1 = FactoryBot.create(:file_upload, name: "A")
+      file2 = FactoryBot.create(:file_upload, name: "B")
+      webpage = FactoryBot.create(:webpage, file_uploads: [file1, file2])
+
+      expect(webpage.file_items.map(&:file_upload)).to contain_exactly(file1, file2)
+    end
+  end
+
+  describe "#online_links" do
+    it "excludes the featured external_link_webpage" do
+      featured_link = FactoryBot.create(:external_link, title: "Featured")
+      other_link = FactoryBot.create(:external_link, title: "Other")
+      webpage = FactoryBot.create(:webpage, external_links: [featured_link, other_link])
+      webpage.external_link_webpages.find_by(external_link: featured_link).update!(featured: true)
+
+      expect(webpage.online_links.map(&:external_link)).to contain_exactly(other_link)
+    end
+
+    it "includes all external link webpages when none are featured" do
+      link1 = FactoryBot.create(:external_link, title: "A")
+      link2 = FactoryBot.create(:external_link, title: "B")
+      webpage = FactoryBot.create(:webpage, external_links: [link1, link2])
+
+      expect(webpage.online_links.map(&:external_link)).to contain_exactly(link1, link2)
+    end
+  end
+
+  describe "#items" do
+    it "combines file_items and online_links" do
+      file = FactoryBot.create(:file_upload, name: "Report")
+      link = FactoryBot.create(:external_link, title: "Link")
+      webpage = FactoryBot.create(:webpage, file_uploads: [file], external_links: [link])
+
+      expect(webpage.items.length).to eq(2)
+      expect(webpage.items).to include(
+        an_object_satisfying { |i| i.is_a?(Fileability) },
+        an_object_satisfying { |i| i.is_a?(ExternalLinkWebpage) }
+      )
+    end
+
+    it "excludes featured items from both types" do
+      file1 = FactoryBot.create(:file_upload, name: "Featured File")
+      file2 = FactoryBot.create(:file_upload, name: "Other File")
+      link1 = FactoryBot.create(:external_link, title: "Featured Link")
+      link2 = FactoryBot.create(:external_link, title: "Other Link")
+      webpage = FactoryBot.create(:webpage, file_uploads: [file1, file2], external_links: [link1, link2])
+      webpage.fileabilities.find_by(file_upload: file1).update!(featured: true)
+
+      expect(webpage.items.map { |i| i.try(:file_upload) || i.try(:external_link) })
+        .to contain_exactly(file2, link1, link2)
+    end
+
+    it "orders by weight regardless of item type" do
+      file = FactoryBot.create(:file_upload, name: "File")
+      link = FactoryBot.create(:external_link, title: "Link")
+      webpage = FactoryBot.create(:webpage, file_uploads: [file], external_links: [link])
+      webpage.fileabilities.first.update!(weight: 1)
+      webpage.external_link_webpages.first.update!(weight: 2)
+
+      expect(webpage.items.first).to be_a(Fileability)
+      expect(webpage.items.last).to be_a(ExternalLinkWebpage)
+
+      webpage.fileabilities.first.update!(weight: 2)
+      webpage.external_link_webpages.first.update!(weight: 1)
+
+      expect(webpage.items.first).to be_a(ExternalLinkWebpage)
+      expect(webpage.items.last).to be_a(Fileability)
     end
   end
 

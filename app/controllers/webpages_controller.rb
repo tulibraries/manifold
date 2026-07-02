@@ -89,12 +89,6 @@ class WebpagesController < ApplicationController
   def hours
   end
 
-  def annual_report
-    @webpage = Webpage.find_by(slug: "annual-report")
-    @categories = @webpage.categories
-    @featured = @webpage.featured_item
-  end
-
   def scrc
     @visit_links = Category.find_by(slug: "scrc-study").items
     @collection_links = Category.find_by(slug: "scrc-collections").items
@@ -199,9 +193,9 @@ class WebpagesController < ApplicationController
   end
 
   def show
-    redirect_to action: :annual_report if @webpage.slug == "annual-report"
     @categories = @webpage.categories
     @header_alert = @webpage.covid_alert
+    @featured = @webpage.featured_item
     serializable_show
   end
 

@@ -32,6 +32,7 @@
 /yarn-error.log
 
 # /public/assets
+/public/cache/*
 /public/sitemap.xml.gz
 /public/epub
 /public/todays_hours

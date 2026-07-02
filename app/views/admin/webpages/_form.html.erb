@@ -33,15 +33,19 @@ and renders all form fields for a resource's editable attributes.
 
   <hr />
 
-  <% if page.resource.slug == "annual-report" %>
   <div class="external-links-text">
     <p><%= t("manifold.admin.help_text.external_links_html") %></p>
   </div>
   <div class="field-unit field-unit--external-links">
     <div class="field-unit__label">
-      <label>External Links</label>
+      <label>Online Reports</label>
     </div>
       <div class="field-unit__field external_link_webpages">
+      <div class="entity-weight-list">
+        <span class="external-link-webpage-name"><strong>Name</strong></span>
+        <span class="external-link-webpage-weight"><strong>Weight</strong></span>
+        <span class="external-link-webpage-featured"><strong>Featured</strong></span>
+      </div>
       <%= f.fields_for :external_link_webpages, page.resource.external_link_webpages.sort_by(&:weight) do |external_links_form| %>
         <%= external_links_form.hidden_field :id %>
         <div class="entity-weight-list">
@@ -51,17 +55,17 @@ and renders all form fields for a resource's editable attributes.
           <span class="external-link-webpage-weight">
             <%= external_links_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
           </span>
-          <span class="external-link-webpage-destroy">
-            <label for="webpage_external_link_webpages_attributes_<%= external_links_form.options[:child_index] %>__destroy">
-              <%= external_links_form.check_box :_destroy %>
-              <span class="delete-icon"></span>
-            </label>
+          <span class="external-link-webpage-featured">
+          <%= radio_button_tag(
+            "webpage[featured_item_key]",
+            "ExternalLinkWebpage:#{external_links_form.object.id}",
+            external_links_form.object.featured?
+          ) %>
           </span>
         </div>
       <% end %>
     </div>
   </div>
-  <% end %>
 
   <hr />
 
@@ -73,6 +77,11 @@ and renders all form fields for a resource's editable attributes.
       <label>File Uploads</label>
     </div>
       <div class="field-unit__field fileabilities">
+        <div class="entity-weight-list">
+          <span class="file-upload-name"><strong>Name</strong></span>
+          <span class="file-upload-weight"><strong>Weight</strong></span>
+          <span class="file-upload-featured"><strong>Featured</strong></span>
+        </div>
         <%= f.fields_for :fileabilities, page.resource.fileabilities.sort_by(&:weight) do |file_uploads_form| %>
         <% if file_uploads_form.object.file_upload.present? %>
           <%= file_uploads_form.hidden_field :id %>
@@ -82,6 +91,13 @@ and renders all form fields for a resource's editable attributes.
             </span>
             <span class="file-upload-weight">
               <%= file_uploads_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
+            </span>
+            <span class="file-upload-featured">
+            <%= radio_button_tag(
+              "webpage[featured_item_key]",
+              "Fileability:#{file_uploads_form.object.id}",
+              file_uploads_form.object.featured?
+            ) %>
             </span>
           </div>
           <% end %>

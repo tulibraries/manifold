@@ -55,5 +55,32 @@ RSpec.describe Admin::WebpagesController, type: :controller do
       expect(webpage.file_uploads).to contain_exactly(keep.file_upload)
       expect(Fileability.exists?(remove.id)).to be(false)
     end
+
+    it "removes external link join rows for unselected external links" do
+      webpage = FactoryBot.create(:webpage, slug: "annual-report")
+      keep_link = FactoryBot.create(:external_link, title: "Keep Link")
+      remove_link = FactoryBot.create(:external_link, title: "Remove Link")
+      webpage.update!(external_links: [keep_link, remove_link])
+
+      join_rows = webpage.external_link_webpages.order(:id).to_a
+      keep = join_rows.find { |row| row.external_link_id == keep_link.id }
+      remove = join_rows.find { |row| row.external_link_id == remove_link.id }
+
+      patch :update, params: {
+        id: webpage.to_param,
+        webpage: {
+          title: webpage.title,
+          external_link_ids: [keep_link.id.to_s],
+          external_link_webpages_attributes: {
+            "0" => { id: keep.id, weight: keep.weight },
+            "1" => { id: remove.id, weight: remove.weight }
+          }
+        }
+      }
+
+      webpage.reload
+      expect(webpage.external_links).to contain_exactly(keep_link)
+      expect(ExternalLinkWebpage.exists?(remove.id)).to be(false)
+    end
   end
 end

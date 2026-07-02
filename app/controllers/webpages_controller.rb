@@ -89,12 +89,6 @@ class WebpagesController < ApplicationController
   def hours
   end
 
-  def annual_report
-    @webpage = Webpage.find_by(slug: "annual-report")
-    @categories = @webpage.categories
-    @featured = @webpage.featured_item
-  end
-
   def scrc
     @visit_links = Category.find_by(slug: "scrc-study").items
     @collection_links = Category.find_by(slug: "scrc-collections").items

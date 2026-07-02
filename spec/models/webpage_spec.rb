@@ -220,6 +220,23 @@ RSpec.describe Webpage, type: :model do
       expect(webpage.items.map { |i| i.try(:file_upload) || i.try(:external_link) })
         .to contain_exactly(file2, link1, link2)
     end
+
+    it "orders by weight regardless of item type" do
+      file = FactoryBot.create(:file_upload, name: "File")
+      link = FactoryBot.create(:external_link, title: "Link")
+      webpage = FactoryBot.create(:webpage, file_uploads: [file], external_links: [link])
+      webpage.fileabilities.first.update!(weight: 1)
+      webpage.external_link_webpages.first.update!(weight: 2)
+
+      expect(webpage.items.first).to be_a(Fileability)
+      expect(webpage.items.last).to be_a(ExternalLinkWebpage)
+
+      webpage.fileabilities.first.update!(weight: 2)
+      webpage.external_link_webpages.first.update!(weight: 1)
+
+      expect(webpage.items.first).to be_a(ExternalLinkWebpage)
+      expect(webpage.items.last).to be_a(Fileability)
+    end
   end
 
   describe "Associated Class" do

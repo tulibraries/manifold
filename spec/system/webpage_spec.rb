@@ -29,14 +29,4 @@ RSpec.describe "Webpages", type: :system do
     end
   end
 
-  describe "order of lists" do
-    scenario "links come before files on same page" do
-      webpage3 = FactoryBot.create(:webpage, :with_links_and_files, slug: "annual-report")
-      webpage3.external_link_webpages.first.update("weight" => 10)
-      visit("/annual-report")
-      within(".non-featured-publications") do
-        expect(webpage3.external_links.first.title).to appear_before(webpage3.file_uploads.first.label, only_text: true)
-      end
-    end
-  end
 end

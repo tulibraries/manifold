@@ -199,9 +199,9 @@ class WebpagesController < ApplicationController
   end
 
   def show
-    redirect_to action: :annual_report if @webpage.slug == "annual-report"
     @categories = @webpage.categories
     @header_alert = @webpage.covid_alert
+    @featured = @webpage.featured_item
     serializable_show
   end
 

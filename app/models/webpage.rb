@@ -56,7 +56,7 @@ class Webpage < ApplicationRecord
     fileabilities.find { |item| item.file_upload.present? && item.featured? }
   end
 
-  def items
+  def file_items
     fileabilities
       .select { |item| item.file_upload.present? && !item.featured? }
       .sort_by { |item| [item.weight, item.file_upload.name] }
@@ -68,7 +68,20 @@ class Webpage < ApplicationRecord
       .sort_by { |item| [item.weight, item.external_link.title] }
   end
 
+  def items
+    (online_links + file_items).sort_by do |item|
+      name =
+        if item.is_a?(ExternalLinkWebpage)
+          item.external_link.title
+        else
+          item.file_upload.name
+        end
+
+      [item.weight, name]
+    end
+  end
+
   def reports
-    self.online_links + self.items
+    items
   end
 end

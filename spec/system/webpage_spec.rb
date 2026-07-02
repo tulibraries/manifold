@@ -7,8 +7,8 @@ RSpec.describe "Webpages", type: :system do
   describe "Featured Items" do
     scenario "featured item with image" do
       webpage = FactoryBot.create(:webpage, :with_external_links, slug: "annual-report")
-      webpage.external_link_webpages.first.update("weight" => 1)
-      webpage.external_link_webpages.second.update("weight" => 10)
+      webpage.external_link_webpages.first.update(featured: true)
+      webpage.external_link_webpages.second.update(featured: false)
       visit(webpage_path(webpage))
       expect(page).to have_css("div[class*='featured-publication']")
       within(".featured-publication") do
@@ -19,8 +19,8 @@ RSpec.describe "Webpages", type: :system do
 
     scenario "featured item without image" do
       webpage2 = FactoryBot.create(:webpage, :with_external_links, slug: "annual-report")
-      webpage2.external_link_webpages.first.update("weight" => 10)
-      webpage2.external_link_webpages.second.update("weight" => 1)
+      webpage2.external_link_webpages.first.update(featured: false)
+      webpage2.external_link_webpages.second.update(featured: true)
       visit(webpage_path(webpage2))
       expect(page).to have_css("div[class*='featured-publication']")
       within(".featured-publication") do

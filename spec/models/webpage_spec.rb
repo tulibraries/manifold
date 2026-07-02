@@ -122,11 +122,15 @@ RSpec.describe Webpage, type: :model do
           @with_uploads = FactoryBot.create(:webpage, file_uploads: [@file1])
           @with_uploads.fileabilities.first.update("weight" => 2)
           @with_uploads.file_uploads << @file2
-          @with_uploads.fileabilities.second.update("weight" => 1)
+          @with_uploads.fileabilities.second.update(featured: true)
         end
         it "removes item from items array" do
           expect(@with_uploads.items.map(&:file_upload_id)).to_not eql [@file2.id]
           expect(@with_uploads.items.map(&:file_upload_id)).to eql [@file1.id]
+        end
+
+        it "returns the featured file upload" do
+          expect(@with_uploads.featured_item.file_upload_id).to eq(@file2.id)
         end
       end
     end

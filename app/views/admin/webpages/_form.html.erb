@@ -57,6 +57,13 @@ and renders all form fields for a resource's editable attributes.
               <span class="delete-icon"></span>
             </label>
           </span>
+          <span class="external-link-webpage-featured">
+          <%= radio_button_tag(
+            "webpage[featured_item_key]",
+            "ExternalLinkWebpage:#{external_links_form.object.id}",
+            external_links_form.object.featured?
+          ) %>
+          </span>
         </div>
       <% end %>
     </div>
@@ -82,6 +89,13 @@ and renders all form fields for a resource's editable attributes.
             </span>
             <span class="file-upload-weight">
               <%= file_uploads_form.number_field(:weight, {required: 'required', in: (1..10).reverse_each} ) %>
+            </span>
+            <span class="file-upload-featured">
+            <%= radio_button_tag(
+              "webpage[featured_item_key]",
+              "Fileability:#{file_uploads_form.object.id}",
+              file_uploads_form.object.featured?
+            ) %>
             </span>
           </div>
           <% end %>

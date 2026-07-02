@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_30_125439) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_01_153434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -264,6 +264,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_30_125439) do
   create_table "external_link_webpages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "external_link_id", null: false
+    t.boolean "featured", default: false
     t.datetime "updated_at", null: false
     t.bigint "webpage_id", null: false
     t.integer "weight", default: 10
@@ -293,6 +294,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_30_125439) do
     t.bigint "attachable_id"
     t.string "attachable_type"
     t.datetime "created_at", precision: nil, null: false
+    t.boolean "featured", default: false
     t.bigint "file_upload_id"
     t.datetime "updated_at", precision: nil, null: false
     t.integer "weight", default: 10

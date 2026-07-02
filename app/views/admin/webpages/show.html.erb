@@ -55,7 +55,7 @@ as well as a link to its edit page.
                 </tr>
               </thead>
               <tbody>
-              <% if page.resource.featured_item.present? %>
+              <% if page.resource.featured_item.present? && page.resource.featured_item.is_a?(ExternalLinkWebpage) %>
                 <% item = page.resource.featured_item %>
                 <%= tag.tr do %>
                   <%= tag.td(item.external_link.title, class: "item-label") %>
@@ -87,7 +87,15 @@ as well as a link to its edit page.
                 </tr>
               </thead>
               <tbody>
-              <% page.resource.items.each do |item| %>
+              <% if page.resource.featured_item.present? && page.resource.featured_item.is_a?(Fileability) %>
+                <% item = page.resource.featured_item %>
+                <%= tag.tr do %>
+                  <%= tag.td(item.file_upload.name, class: "item-label") %>
+                  <%= tag.td(item.weight, class: "item-weight") %>
+                  <%= tag.td(link_to("Show", admin_file_upload_path(item.file_upload), class: "button")) %>
+                <% end if item.file_upload.present? %>
+              <% end %>
+              <% page.resource.file_items.each do |item| %>
                 <%= tag.tr do %>
                   <%= tag.td(item.file_upload.name, class: "item-label") %>
                   <%= tag.td(item.weight, class: "item-weight") %>

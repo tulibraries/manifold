@@ -175,6 +175,22 @@ RSpec.describe EventsController, type: :controller do
       get :show, format: :json, params: { id: past_event.id }
       expect(response.header["Content-Type"]).to include "json"
     end
+
+    it "renders a join-online link for an online event with no registration" do
+      online_event = FactoryBot.create(:event, registration_link: nil, event_url: "https://temple.zoom.us/j/123456")
+      get :show, params: { id: online_event.id }
+
+      expect(response.body).to include("https://temple.zoom.us/j/123456")
+      expect(response.body).to include(I18n.t("manifold.events.show.join_online"))
+    end
+
+    it "hides the join-online link when the event also has a registration link" do
+      online_event = FactoryBot.create(:event, registration_link: "https://register.example", event_url: "https://temple.zoom.us/j/123456")
+      get :show, params: { id: online_event.id }
+
+      expect(response.body).to include(I18n.t("manifold.events.show.register"))
+      expect(response.body).not_to include(I18n.t("manifold.events.show.join_online"))
+    end
   end
 
   it_behaves_like "serializable"

@@ -636,6 +636,7 @@ en:
       show:
         breadcrumb: All Events & Exhibits
         register: Register
+        join_online: Join online
 
     exhibitions:
       show:

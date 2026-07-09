@@ -158,9 +158,9 @@ class SyncService::Events
       { "person" => contact_person }
     else
       {
-        "external_contact_name"  => contact_name || nil,
-        "external_contact_email" => event.fetch("ContactEmail") { nil },
-        "external_contact_phone" => event.fetch("ContactPhone") { nil }
+        "contact_name"  => contact_name || nil,
+        "contact_email" => event.fetch("ContactEmail") { nil },
+        "contact_phone" => event.fetch("ContactPhone") { nil }
       }
     end
   end
@@ -180,17 +180,17 @@ class SyncService::Events
       location_hash["building"] = building
     else
       if event["LocationUnaffiliated"].present?
-        location_hash["external_building"] = event.fetch("LocationUnaffiliated") { nil }
-        location_hash["external_address"] = event.fetch("AddressUnaffiliated") { nil }
-        location_hash["external_city"] = event.fetch("CityUnaffiliated") { nil }
-        location_hash["external_state"] = event.fetch("StateUnaffiliated") { nil }
-        location_hash["external_zip"] = event.fetch("ZipUnaffiliated") { nil }
+        location_hash["location_name"] = event.fetch("LocationUnaffiliated") { nil }
+        location_hash["address"] = event.fetch("AddressUnaffiliated") { nil }
+        location_hash["city"] = event.fetch("CityUnaffiliated") { nil }
+        location_hash["state"] = event.fetch("StateUnaffiliated") { nil }
+        location_hash["zip"] = event.fetch("ZipUnaffiliated") { nil }
       else
-        location_hash["external_building"] = event.fetch("Location") { nil }
-        location_hash["external_address"] = event.fetch("Address") { nil }
-        location_hash["external_city"] = event.fetch("City") { nil }
-        location_hash["external_state"] = event.fetch("State") { nil }
-        location_hash["external_zip"] = event.fetch("Zip") { nil }
+        location_hash["location_name"] = event.fetch("Location") { nil }
+        location_hash["address"] = event.fetch("Address") { nil }
+        location_hash["city"] = event.fetch("City") { nil }
+        location_hash["state"] = event.fetch("State") { nil }
+        location_hash["zip"] = event.fetch("Zip") { nil }
       end
     end
 
@@ -200,7 +200,7 @@ class SyncService::Events
     if space
       location_hash["space"] = space
     else
-      location_hash["external_space"] = room || nil
+      location_hash["location_space"] = room || nil
     end
     location_hash
   end

@@ -224,6 +224,41 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "workshop / event filters" do
+    it "treats a LibCal 'Workshop' category as a workshop (additive)" do
+      event = FactoryBot.create(:event, event_type: "", tags: "", libcal_categories: "Workshop")
+
+      expect(Event.is_workshop).to include(event)
+      expect(Event.is_not_workshop).not_to include(event)
+    end
+
+    it "still treats a legacy tagged workshop as a workshop" do
+      event = FactoryBot.create(:event, event_type: "", tags: "Workshop", libcal_categories: nil)
+
+      expect(Event.is_workshop).to include(event)
+    end
+
+    it "does not treat a non-workshop LibCal event as a workshop" do
+      event = FactoryBot.create(:event, event_type: "", tags: "", libcal_categories: "Event")
+
+      expect(Event.is_workshop).not_to include(event)
+      expect(Event.is_not_workshop).to include(event)
+    end
+
+    it "includes a non-workshop event with a NULL event_type in is_not_workshop" do
+      event = FactoryBot.create(:event, event_type: nil, tags: nil, libcal_categories: nil)
+
+      expect(Event.is_workshop).not_to include(event)
+      expect(Event.is_not_workshop).to include(event)
+    end
+
+    it "routes a LibCal 'Digital Scholarship' category into is_dss_event" do
+      event = FactoryBot.create(:event, tags: "", libcal_categories: "Digital Scholarship")
+
+      expect(Event.is_dss_event).to include(event)
+    end
+  end
+
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
   it_behaves_like "SchemaDotOrgable"

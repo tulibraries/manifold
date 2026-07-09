@@ -36,19 +36,6 @@
 
       <% end %>
 
-      <%# Registration takes precedence: when an event requires registration the join
-          link is delivered after registering, so only show "Join online" for
-          online events that have no registration link. %>
-      <% if @event.event_url.present? && @event.registration_link.blank? %>
-
-        <div class="col access-link">
-          <h2>
-            <%= link_to t("manifold.events.show.join_online", default: "Join online"), @event.event_url, class: "caret-right", target: "_blank", rel: "noopener" %>
-          </h2>
-        </div>
-
-      <% end %>
-
       <%= render_event_location(@event) %>
 
     </div>

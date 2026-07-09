@@ -73,36 +73,36 @@ RSpec.describe SyncService::Events, type: :service do
         expect(subject["all_day"]).to_not be
       end
 
-      it "maps Location to external_building field" do
-        expect(subject["external_building"]).to match(@events.first["Location"])
+      it "maps Location to location_name field" do
+        expect(subject["location_name"]).to match(@events.first["Location"])
       end
 
-      it "maps Address to external_building field" do
-        expect(subject["external_address"]).to match(@events.first["Address"])
+      it "maps Address to address field" do
+        expect(subject["address"]).to match(@events.first["Address"])
       end
 
-      it "maps City to external_building field" do
-        expect(subject["external_city"]).to match(@events.first["City"])
+      it "maps City to city field" do
+        expect(subject["city"]).to match(@events.first["City"])
       end
 
-      it "maps State to external_state field" do
-        expect(subject["external_state"]).to match(@events.first["State"])
+      it "maps State to state field" do
+        expect(subject["state"]).to match(@events.first["State"])
       end
 
-      it "maps Zip to external_zip field" do
-        expect(subject["external_zip"]).to match(@events.first["Zip"])
+      it "maps Zip to zip field" do
+        expect(subject["zip"]).to match(@events.first["Zip"])
       end
 
-      it "maps ContactName to external_contact_name field" do
-        expect(subject["external_contact_name"]).to match(@events.first["ContactName"])
+      it "maps ContactName to contact_name field" do
+        expect(subject["contact_name"]).to match(@events.first["ContactName"])
       end
 
-      it "maps ContactEmail to external_contact_email field" do
-        expect(subject["external_contact_email"]).to match(@events.first["ContactEmail"])
+      it "maps ContactEmail to contact_email field" do
+        expect(subject["contact_email"]).to match(@events.first["ContactEmail"])
       end
 
-      it "maps ContactPhone to external_contact_phone field" do
-        expect(subject["external_contact_phone"]).to match(@events.first["ContactPhone"])
+      it "maps ContactPhone to contact_phone field" do
+        expect(subject["contact_phone"]).to match(@events.first["ContactPhone"])
       end
 
       it "maps Canceled to cancelled field" do
@@ -115,27 +115,27 @@ RSpec.describe SyncService::Events, type: :service do
     end
   end
 
-  context "maps non-Temple affiliated Locations to external_building field" do
+  context "maps non-Temple affiliated Locations to location_name field" do
     subject { @sync_events.record_hash(@events.second) }
 
-    it "maps Location to external_building field" do
-      expect(subject["external_building"]).to match(@events.second["LocationUnaffiliated"])
+    it "maps Location to location_name field" do
+      expect(subject["location_name"]).to match(@events.second["LocationUnaffiliated"])
     end
 
-    it "maps Address to external_building field" do
-      expect(subject["external_address"]).to match(@events.second["AddressUnaffiliated"])
+    it "maps Address to address field" do
+      expect(subject["address"]).to match(@events.second["AddressUnaffiliated"])
     end
 
-    it "maps City to external_building field" do
-      expect(subject["external_city"]).to match(@events.second["CityUnaffiliated"])
+    it "maps City to city field" do
+      expect(subject["city"]).to match(@events.second["CityUnaffiliated"])
     end
 
-    it "maps State to external_state field" do
-      expect(subject["external_state"]).to match(@events.second["StateUnaffiliated"])
+    it "maps State to state field" do
+      expect(subject["state"]).to match(@events.second["StateUnaffiliated"])
     end
 
-    it "maps Zip to external_zip field" do
-      expect(subject["external_zip"]).to match(@events.second["ZipUnaffiliated"])
+    it "maps Zip to zip field" do
+      expect(subject["zip"]).to match(@events.second["ZipUnaffiliated"])
     end
   end
 
@@ -194,7 +194,7 @@ RSpec.describe SyncService::Events, type: :service do
         internal_events.sync
         event = Event.find_by(person_id: @person.id)
         expect(event.person_id).to eq @person.id
-        expect(event.external_contact_name).to eq nil
+        expect(event[:contact_name]).to be_nil
       end
       it "doesn't have a person reference" do
         allow(::FuzzyFind::Person).to receive(:find).with(kind_of(String)).and_return(nil)
@@ -214,7 +214,7 @@ RSpec.describe SyncService::Events, type: :service do
         event = Event.find_by(building_id: @building.id)
         expect(event.building_id).to eq @building.id
         expect(event.building.name).to eq @building.name
-        expect(event.external_building).to eq nil
+        expect(event[:location_name]).to be_nil
       end
       it "doesn't have a building reference" do
         allow(::FuzzyFind::Building).to receive(:find)
@@ -233,7 +233,7 @@ RSpec.describe SyncService::Events, type: :service do
         event = Event.find_by(space_id: @space.id)
         expect(event.space_id).to eq @space.id
         expect(event.space.name).to eq @space.name
-        expect(event.external_space).to eq nil
+        expect(event[:location_space]).to be_nil
       end
       it "doesn't have a space reference" do
         allow(::FuzzyFind::Space).to receive(:find).with(kind_of(String), anything).and_return(nil)

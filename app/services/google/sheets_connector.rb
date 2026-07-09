@@ -44,9 +44,22 @@ module Google
       else
         @service.get_spreadsheet_values(@spreadsheet_id, @cells)
       end
+    rescue StandardError => e
+      raise unless sheets_network_error?(e)
+
+      Rails.logger.warn("Google Sheets request failed: #{e.class}: #{e.message}")
+      nil
     end
 
     private
+
+      def sheets_network_error?(error)
+        error.is_a?(Google::Apis::TransmissionError) ||
+          error.is_a?(SocketError) ||
+          error.is_a?(Errno::EHOSTUNREACH) ||
+          error.cause.is_a?(SocketError) ||
+          error.cause.is_a?(Errno::EHOSTUNREACH)
+      end
 
       def get_location(location)
         case location&.downcase

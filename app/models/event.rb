@@ -50,17 +50,55 @@ class Event < ApplicationRecord
   end
 
   def building_name
-    building ? building.name : external_building
+    internal_building ? internal_building.name : self[:location_name]
+  end
+
+  def location_name
+    building_name
   end
 
   def building_address1
-    building ? building.address1 : external_address
+    internal_building ? internal_building.address1 : self[:address]
   end
 
   def building_address2
-    building ? building.address2 : "#{external_city}, #{external_state} #{external_zip}"
+    internal_building ? internal_building.address2 : [self[:city], self[:state], self[:zip]].filter_map(&:presence).join(", ").presence
   end
 
+  def location_address_lines
+    [building_address1, building_address2].filter_map(&:presence)
+  end
+
+  def google_maps_query
+    [location_name, self[:address], self[:city], self[:state], self[:zip]]
+      .filter_map(&:presence)
+      .join(", ")
+      .presence
+  end
+
+  def location_space
+    space ? space.name : self[:location_space]
+  end
+
+  def contact_name
+    person ? "#{person.first_name} #{person.last_name}" : self[:contact_name]
+  end
+
+  def contact_email
+    person ? person.email_address : self[:contact_email]
+  end
+
+  def contact_phone
+    person ? person.phone_number : self[:contact_phone]
+  end
+
+  def has_internal_building?
+    internal_building.present?
+  end
+
+  def internal_building
+    building
+  end
   def get_date
     start_time.strftime("%^a, %^b %d, %Y ").titleize unless start_time.nil?
   end

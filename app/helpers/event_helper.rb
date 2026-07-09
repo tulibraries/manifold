@@ -3,6 +3,45 @@
 require "json/ld"
 
 module EventHelper
+  def render_event_location(event)
+    location_link = event_location_link(event)
+    return if location_link.blank?
+
+    lines = [
+      event.location_space,
+      *event.location_address_lines
+    ].filter_map(&:presence)
+
+    content_tag(:div, class: "col event-location") do
+      safe_join(
+        [
+          content_tag(:h3, location_link, class: "event-location-name"),
+          content_tag(:p) do
+            safe_join(
+              lines.flat_map do |line|
+                [line, tag.br]
+              end
+            )
+          end
+        ]
+      )
+    end
+  end
+
+  def event_location_link(event, **options)
+    return if event.building_name.blank?
+
+    href = if event.has_internal_building?
+      building_path(event.internal_building)
+           elsif event.google_maps_query.present?
+             "https://www.google.com/maps/search/?api=1&query=#{ERB::Util.url_encode(event.google_maps_query)}"
+    end
+
+    return event.building_name if href.blank?
+
+    link_to(event.building_name, href, options)
+  end
+
   def get_bldg_name(bldg_name)
     unless bldg_name.nil?
       t("manifold.default.event.#{bldg_name.parameterize.underscore}", default: bldg_name)

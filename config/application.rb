@@ -74,7 +74,7 @@ module Manifold
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
     config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://now.temple.edu/v2/feed/xml/events?department=54196")
     config.libcal_events_url = "https://charlesstudy.temple.edu/1.1/events"
-    config.libcal_events_ids = [6197, 18498, 13592, 21267]
+    config.libcal_events_ids = [6197, 18498, 13592]
     libcal_lookup_config = YAML.load_file(Rails.root.join("config/libcal_location_lookup.yml"))
     config.libcal_location_lookup = libcal_lookup_config.fetch("shared", {})
     config.libcal_events_lookback_months = 3

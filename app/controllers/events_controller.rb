@@ -128,6 +128,9 @@ class EventsController < ApplicationController
 
     def set_event
       @event = find_instance
+      # Suppressed events are hidden from the public site entirely, not just from
+      # listings, so treat them as absent (redirect_or_404 will 404 / redirect).
+      @event = nil if @event&.suppress
       @event_url = @event.event_url unless @event.nil?
       return redirect_or_404(@event)
     end

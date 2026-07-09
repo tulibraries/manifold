@@ -176,6 +176,11 @@ RSpec.describe EventsController, type: :controller do
       expect(response.header["Content-Type"]).to include "json"
     end
 
+    it "treats a suppressed event as not found" do
+      expect { get :show, params: { id: suppressed_event.id } }
+        .to raise_error(ActionController::RoutingError)
+    end
+
     it "renders a join-online link for an online event with no registration" do
       online_event = FactoryBot.create(:event, registration_link: nil, event_url: "https://temple.zoom.us/j/123456")
       get :show, params: { id: online_event.id }

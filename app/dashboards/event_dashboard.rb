@@ -66,6 +66,8 @@ class EventDashboard < BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :title,
     :id,
+    :featured,
+    :suppress,
     :description,
     :event_type,
     :tags,
@@ -101,38 +103,8 @@ class EventDashboard < BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :title,
-    :image,
-    :alt_text,
-    :slug,
-    :description,
-    :event_type,
     :featured,
-    :tags,
-    :start_time,
-    :end_time,
-    :all_day,
-    :building,
-    :space,
-    :external_building,
-    :external_space,
-    :external_address,
-    :external_city,
-    :external_state,
-    :external_zip,
-    :person,
-    :external_contact_name,
-    :external_contact_email,
-    :external_contact_phone,
-    :cancelled,
-    :registration_status,
-    :registration_link,
-    :event_url,
-    :content_hash,
-    :ensemble_identifier,
-    :guid,
     :suppress,
-    # :categories # TODO: make work with url_for in category pages and main menu category.items
   ].freeze
 
   # Overwrite this method to customize how events are displayed

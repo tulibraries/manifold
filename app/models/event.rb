@@ -96,41 +96,29 @@ class Event < ApplicationRecord
     building
   end
   def get_date
-    start_time.strftime("%^a, %^b %d, %Y ").titleize unless start_time.nil?
+    display_time = start_time || end_time
+    display_time&.strftime("%^a, %^b %d, %Y ")&.titleize
   end
 
   def set_start_time
-    case start_time
-    when all_day
-      "(All day)"
-    when nil
-      ""
-    else
-      start_time.strftime("%l:%M %P")
-    end
+    return "(All day)" if all_day
+    return "" if start_time.nil?
+
+    start_time.strftime("%l:%M %P")
   end
 
   def set_end_time
-    case end_time
-    when all_day
-      "(All day)"
-    when nil
-      ""
-    else
-      end_time.strftime("%l:%M %P")
-    end
+    return "" if all_day || end_time.nil? || end_time == start_time
+
+    end_time.strftime("%l:%M %P")
   end
 
   def set_times
-    unless all_day
-      unless end_time.nil? || end_time == start_time
-        start_time.strftime("%l:%M %P") + " - " + end_time.strftime("%l:%M %P")
-      else
-        start_time.strftime("%l:%M %P")
-      end
-    else
-      "(All day)"
-    end
+    return "(All day)" if all_day
+    return "" if start_time.nil?
+    return "#{start_time.strftime("%l:%M %P")} - #{end_time.strftime("%l:%M %P")}" if end_time.present? && end_time != start_time
+
+    start_time.strftime("%l:%M %P")
   end
 
   def label

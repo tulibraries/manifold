@@ -5,6 +5,7 @@ require "open-uri"
 require "resolv-replace"
 require "logger"
 require "net/http"
+require "open3"
 require "tempfile"
 require "digest"
 
@@ -513,22 +514,20 @@ class SyncService::LibcalEvents
     end
 
     def download_image_over_ipv4(image_url, event)
+      raise "Refusing to download non-HTTP image URL: #{image_url}" unless image_url.to_s.match?(%r{\Ahttps?://}i)
+
       file = Tempfile.new(["libcal-event-image-#{event.guid}-", File.extname(URI.parse(image_url).path)])
       file.binmode
 
-      command = [
-        "curl",
-        "-4",
-        "--fail",
-        "--silent",
-        "--show-error",
-        "--location",
-        image_url
-      ]
+      # Force IPv4 (the image CDN's IPv6 is unreliable). Uses Open3 with array args
+      # and a "--" terminator so the URL can never be interpreted as a curl option.
+      image_data, error, status = Open3.capture3(
+        "curl", "-4", "--fail", "--silent", "--show-error", "--location", "--", image_url,
+        binmode: true
+      )
+      raise "curl failed for #{image_url}: #{error}" unless status.success?
 
-      success = system(*command, out: file)
-      raise "curl exited with status #{$?.exitstatus} for #{image_url}" unless success
-
+      file.write(image_data)
       file.rewind
       file
     end

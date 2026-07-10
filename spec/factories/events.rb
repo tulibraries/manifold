@@ -9,16 +9,16 @@ FactoryBot.define do
     end_time { "2018-09-24 11:32:13" }
     building { nil }
     space { nil }
-    external_building { "Off-site building" }
-    external_space { "Off-site space" }
-    external_address { "123 Main St" }
-    external_city { "Anytown" }
-    external_state { "PA" }
-    external_zip { "19122" }
+    location_name { "Off-site building" }
+    location_space { "Off-site space" }
+    address { "123 Main St" }
+    city { "Anytown" }
+    state { "PA" }
+    zip { "19122" }
     person { nil }
-    external_contact_name { "Dirk Gently" }
-    external_contact_email { "dirk@example.com" }
-    external_contact_phone { "2155551212" }
+    contact_name { "Dirk Gently" }
+    contact_email { "dirk@example.com" }
+    contact_phone { "2155551212" }
     cancelled { false }
     registration_status { false }
     registration_link { "MyString" }

@@ -27,6 +27,36 @@ RSpec.describe EventHelper, type: :helper do
     end
   end
 
+  describe "event_location_link" do
+    it "links to the associated building's page" do
+      building = FactoryBot.create(:building, name: "Charles L. Blockson Afro-American Collection")
+      event = FactoryBot.create(:event, building:)
+
+      expect(helper.event_location_link(event)).to include(building_path(building))
+    end
+
+    it "does not link to a building when only location_name matches a building name" do
+      building = FactoryBot.create(:building, name: "Charles L. Blockson Afro-American Collection")
+      event = FactoryBot.create(:event, building: nil, location_name: building.name)
+
+      expect(helper.event_location_link(event)).not_to include(building_path(building))
+    end
+
+    it "falls back to google maps when no internal building matches" do
+      event = FactoryBot.create(
+        :event,
+        building: nil,
+        location_name: "Off-site building",
+        address: "123 Main St",
+        city: "Anytown",
+        state: "PA",
+        zip: "19122"
+      )
+
+      expect(helper.event_location_link(event)).to include("google.com/maps/search")
+    end
+  end
+
   describe "workshops_link/past_workshops_link" do
     it "returns all workshops link on canned-search pages" do
       expect(helper.workshops_link("dss_events")).to match(t("manifold.events.index.view_all_workshops_link"))

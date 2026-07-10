@@ -175,6 +175,11 @@ RSpec.describe EventsController, type: :controller do
       get :show, format: :json, params: { id: past_event.id }
       expect(response.header["Content-Type"]).to include "json"
     end
+
+    it "treats a suppressed event as not found" do
+      expect { get :show, params: { id: suppressed_event.id } }
+        .to raise_error(ActionController::RoutingError)
+    end
   end
 
   it_behaves_like "serializable"

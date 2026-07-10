@@ -20,14 +20,10 @@ class Event < ApplicationRecord
 
   scope :is_past, -> { where("end_time < ?", Date.current).order(start_time: :desc) }
   scope :is_current, -> { where("end_time >= ?", Date.current).order(:start_time) }
-  scope :is_type_workshop, -> { where("lower(event_type) LIKE ?", "%workshop%") }
-  scope :is_tagged_workshop, -> { where("lower(tags) LIKE ?", "%workshop%") }
-  scope :is_workshop, -> { is_type_workshop.or(is_tagged_workshop) }
-  scope :is_not_type_workshop, -> { where.not("lower(event_type) LIKE ?", "%workshop%") }
-  scope :is_not_tagged_workshop, -> { where.not("lower(tags) LIKE ?", "%workshop%").or(where(tags: nil)) }
-  scope :is_not_workshop, -> { is_not_type_workshop.and(is_not_tagged_workshop) }
-  scope :is_dss_event, -> { where("lower(tags) LIKE ?", "%digital scholarship%") }
-  scope :is_hsl_event, -> { where("lower(tags) LIKE ?", "%health sciences%") }
+  scope :is_workshop, -> { where("lower(event_type) LIKE :w OR lower(tags) LIKE :w OR lower(libcal_categories) LIKE :w", w: "%workshop%") }
+  scope :is_not_workshop, -> { where.not(id: is_workshop) }
+  scope :is_dss_event, -> { where("lower(tags) LIKE ? OR lower(libcal_categories) LIKE ?", "%digital scholarship%", "%digital scholarship%") }
+  scope :is_hsl_event, -> { where("lower(tags) LIKE ? OR lower(libcal_categories) LIKE ?", "%health sciences%", "%health sciences%") }
   scope :is_displayable, -> { where("suppress = ?", false) }
 
   def to_param  # overridden for tests
@@ -50,53 +46,79 @@ class Event < ApplicationRecord
   end
 
   def building_name
-    building ? building.name : external_building
+    internal_building ? internal_building.name : self[:location_name]
+  end
+
+  def location_name
+    building_name
   end
 
   def building_address1
-    building ? building.address1 : external_address
+    internal_building ? internal_building.address1 : self[:address]
   end
 
   def building_address2
-    building ? building.address2 : "#{external_city}, #{external_state} #{external_zip}"
+    internal_building ? internal_building.address2 : [self[:city], self[:state], self[:zip]].filter_map(&:presence).join(", ").presence
   end
 
+  def location_address_lines
+    [building_address1, building_address2].filter_map(&:presence)
+  end
+
+  def google_maps_query
+    [location_name, self[:address], self[:city], self[:state], self[:zip]]
+      .filter_map(&:presence)
+      .join(", ")
+      .presence
+  end
+
+  def location_space
+    space ? space.name : self[:location_space]
+  end
+
+  def contact_name
+    person ? "#{person.first_name} #{person.last_name}" : self[:contact_name]
+  end
+
+  def contact_email
+    person ? person.email_address : self[:contact_email]
+  end
+
+  def contact_phone
+    person ? person.phone_number : self[:contact_phone]
+  end
+
+  def has_internal_building?
+    internal_building.present?
+  end
+
+  def internal_building
+    building
+  end
   def get_date
-    start_time.strftime("%^a, %^b %d, %Y ").titleize unless start_time.nil?
+    display_time = start_time || end_time
+    display_time&.strftime("%^a, %^b %d, %Y ")&.titleize
   end
 
   def set_start_time
-    case start_time
-    when all_day
-      "(All day)"
-    when nil
-      ""
-    else
-      start_time.strftime("%l:%M %P")
-    end
+    return "(All day)" if all_day
+    return "" if start_time.nil?
+
+    start_time.strftime("%l:%M %P")
   end
 
   def set_end_time
-    case end_time
-    when all_day
-      "(All day)"
-    when nil
-      ""
-    else
-      end_time.strftime("%l:%M %P")
-    end
+    return "" if all_day || end_time.nil? || end_time == start_time
+
+    end_time.strftime("%l:%M %P")
   end
 
   def set_times
-    unless all_day
-      unless end_time.nil? || end_time == start_time
-        start_time.strftime("%l:%M %P") + " - " + end_time.strftime("%l:%M %P")
-      else
-        start_time.strftime("%l:%M %P")
-      end
-    else
-      "(All day)"
-    end
+    return "(All day)" if all_day
+    return "" if start_time.nil?
+    return "#{start_time.strftime("%l:%M %P")} - #{end_time.strftime("%l:%M %P")}" if end_time.present? && end_time != start_time
+
+    start_time.strftime("%l:%M %P")
   end
 
   def label

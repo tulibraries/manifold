@@ -3,6 +3,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "yaml"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -71,9 +72,17 @@ module Manifold
     config.etexts_spreadsheet_etext_cells = "Sheet1!A2:G"
 
     config.google_maps_api_key = ENV["GOOGLE_MAPS_API_KEY"]
-    config.events_feed_url = ENV.fetch("EVENTS_FEED_URL", "https://now.temple.edu/v2/feed/xml/events?department=54196")
-    config.ensemble_api_user = ENV["ENSEMBLE_API_USER"]
+    config.libcal_events_url = "https://charlesstudy.temple.edu/1.1/events"
+    config.libcal_events_ids = [6197, 18498, 13592]
+    libcal_lookup_config = YAML.load_file(Rails.root.join("config/libcal_location_lookup.yml"))
+    config.libcal_location_lookup = libcal_lookup_config.fetch("shared", {})
+    config.libcal_events_lookback_months = 3
+    config.libcal_events_lookahead_months = 9
+    config.libcal_token_url = ENV.fetch("LIBCAL_TOKEN_URL", "https://charlesstudy.temple.edu/1.1/oauth/token")
+    config.libcal_client_id = ENV["LIBCAL_CLIENT_ID"]
+    config.libcal_client_secret = ENV["LIBCAL_CLIENT_SECRET"]
 
+    config.ensemble_api_user = ENV["ENSEMBLE_API_USER"]
     config.ensemble_api_key = ENV["ENSEMBLE_API_KEY"]
 
     config.draftable = ENV.fetch("MANIFOLD_DRAFTABLE", "false") == "true"

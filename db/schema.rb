@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_01_153434) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_08_180000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -208,37 +208,38 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_01_153434) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.string "address"
     t.boolean "all_day", default: false
     t.string "alt_text"
     t.integer "building_id"
     t.boolean "cancelled"
+    t.string "city"
+    t.string "contact_email"
+    t.string "contact_name"
+    t.string "contact_phone"
     t.string "content_hash"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "end_time", precision: nil
     t.string "ensemble_identifier"
     t.string "event_type"
     t.string "event_url"
-    t.string "external_address"
-    t.string "external_building"
-    t.string "external_city"
-    t.string "external_contact_email"
-    t.string "external_contact_name"
-    t.string "external_contact_phone"
-    t.string "external_space"
-    t.string "external_state"
-    t.string "external_zip"
     t.boolean "featured"
     t.string "guid"
+    t.text "libcal_categories"
+    t.string "location_name"
+    t.string "location_space"
     t.integer "person_id"
     t.string "registration_link"
     t.boolean "registration_status"
     t.string "slug"
     t.integer "space_id"
     t.datetime "start_time", precision: nil
+    t.string "state"
     t.boolean "suppress", default: false
     t.text "tags"
     t.string "title"
     t.datetime "updated_at", precision: nil, null: false
+    t.string "zip"
     t.index ["building_id"], name: "index_events_on_building_id"
     t.index ["person_id"], name: "index_events_on_person_id"
     t.index ["space_id"], name: "index_events_on_space_id"

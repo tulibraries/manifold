@@ -43,18 +43,17 @@ RSpec.describe Admin::EventsController, type: :controller do
     end
   end
 
-  describe "GET #sync" do
-    let (:event) { FactoryBot.create(:event) }
+  describe "POST #sync" do
     before do
       sign_in(@account)
-      # Stub out the sync service so we don't actually make
-      # http requests for XML. We jut want to test that
-      # we are calling the service integration correctly
-      allow(::SyncService::Events).to receive(:call)
+      # Stub out the sync service so we don't actually make http requests to
+      # LibCal. We just want to test that we call the service integration correctly.
+      allow(::SyncService::LibcalEvents).to receive(:call)
     end
-    it "renders edit form" do
+    it "triggers the LibCal sync and redirects to the admin index" do
       post :sync
-      expect(::SyncService::Events).to have_received(:call).with(force: true)
+      expect(::SyncService::LibcalEvents).to have_received(:call)
+      expect(response).to redirect_to(admin_events_path)
     end
   end
 end

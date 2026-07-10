@@ -13,6 +13,7 @@ RSpec.describe "ApplicationFailover", type: :system do
   after(:all) do
     Account.destroy_all
     ApplicationFailover.destroy_all
+    Category.destroy_all
   end
 
   context "librarysearch experiencing outage" do

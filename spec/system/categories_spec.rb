@@ -8,6 +8,10 @@ RSpec.describe "Categories", type: :system do
     @explore_charles = FactoryBot.create(:category, slug: "explore-charles")
   end
 
+  after(:all) do
+    Category.destroy_all
+  end
+
   describe "explore charles category" do
     scenario "first slide maches alt text set in config" do
       visit category_path(@explore_charles)

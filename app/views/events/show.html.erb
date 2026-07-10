@@ -36,28 +36,7 @@
 
       <% end %>
 
-
-      <% unless @event.building.nil? %>
-        <div class="col event-location">
-            <h3 class="event-space"><%= link_to @event.building.name, building_path(@event.building) %></h3>
-            <p>
-              <% unless @event.space.nil? %>
-                <%= @event.space.name %><br />
-              <% end %>
-              <%= @event.building.address1 %><br />
-              <%= @event.building.address2 %>
-            </p>
-          <% else %>
-          <p>
-            <strong><%= @event.external_building %></strong><br />
-            <% unless @event.external_address.blank? %>
-              <%= @event.external_address %><br />
-              <%= @event.external_city %>, <%= @event.external_state %> <%= @event.external_zip %>
-            <% end %>
-          </p>
-        </div>
-      <% end %>
-
+      <%= render_event_location(@event) %>
 
     </div>
   </div>

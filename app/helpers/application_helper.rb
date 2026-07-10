@@ -76,6 +76,13 @@ module ApplicationHelper
     raw(entity.map_to_schema_dot_org.to_json)
   end
 
+  def render_weekly_hours(model)
+    return if model.blank?
+
+    component = model.weekly_hours
+    render(component) if component.present?
+  end
+
   def edit_url
     path = request.env["PATH_INFO"]
     controller = path.split("/").slice(1)

@@ -128,6 +128,7 @@ class EventsController < ApplicationController
 
     def set_event
       @event = find_instance
+      @event = nil if @event&.suppress
       @event_url = @event.event_url unless @event.nil?
       return redirect_or_404(@event)
     end

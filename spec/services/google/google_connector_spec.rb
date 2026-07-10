@@ -46,4 +46,25 @@ RSpec.describe Google::SheetsConnector, type: :service do
     end
   end
 
+  context "network error handling" do
+    let(:connector) { Google::SheetsConnector.new(feature: "etexts") }
+
+    before { allow(connector).to receive(:sleep) }
+
+    it "returns nil and logs a warning on a network error" do
+      service = connector.instance_variable_get(:@service)
+      allow(service).to receive(:get_spreadsheet_values).and_raise(SocketError.new("getaddrinfo failed"))
+
+      expect(Rails.logger).to receive(:warn).with(/Google Sheets request failed/)
+      expect(connector.call).to be_nil
+    end
+
+    it "re-raises errors that are not network errors" do
+      service = connector.instance_variable_get(:@service)
+      allow(service).to receive(:get_spreadsheet_values).and_raise(ArgumentError.new("boom"))
+
+      expect { connector.call }.to raise_error(ArgumentError)
+    end
+  end
+
 end

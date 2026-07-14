@@ -30,25 +30,47 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
     Rails.configuration.libcal_token_url = original_token_url
   end
 
-  describe "oversized images" do
-    let(:image_body) { [{ "id" => 555, "title" => "Big Image Event", "featured_image" => "https://example.com/huge.png" }].to_json }
+  describe "event images" do
+    let(:image_url) { "https://example.com/event.png" }
+    let(:image_body) { [{ "id" => 555, "title" => "Image Event", "featured_image" => image_url }].to_json }
+    # A one-pixel PNG, so ActiveStorage has real image bytes to analyze.
+    let(:png) { Base64.decode64("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==") }
 
-    it "saves the event without the image instead of dropping the whole record" do
-      service = described_class.new(response_body: image_body)
+    before do
+      # The IPv4 adapter resolves the host itself, and WebMock does not intercept DNS.
+      allow(Addrinfo).to receive(:getaddrinfo)
+        .with("example.com", nil, Socket::AF_INET, :STREAM)
+        .and_return([Addrinfo.tcp("93.184.216.34", 443)])
+    end
 
-      oversized = Tempfile.new(["huge", ".png"])
-      oversized.binmode
-      oversized.write("x" * (I18n.t("manifold.default.image_file_size_limit").kilobyte + 1))
-      oversized.rewind
-      allow(service).to receive(:download_image_over_ipv4).and_return(oversized)
+    it "downloads the image over IPv4 and attaches it" do
+      stub_request(:get, image_url).to_return(status: 200, body: png, headers: { "Content-Type" => "image/png" })
 
-      expect { service.sync }.to change(Event, :count).by(1)
+      described_class.call(response_body: image_body)
+
+      event = Event.find_by(guid: "555")
+      expect(event.image).to be_attached
+    end
+
+    it "saves the event without the image when the download fails" do
+      stub_request(:get, image_url).to_return(status: 404)
+
+      expect { described_class.call(response_body: image_body) }.to change(Event, :count).by(1)
 
       event = Event.find_by(guid: "555")
       expect(event).to be_present
       expect(event.image).not_to be_attached
-    ensure
-      oversized&.close!
+    end
+
+    it "saves the event without the image instead of dropping the whole record when oversized" do
+      oversized = "x" * (I18n.t("manifold.default.image_file_size_limit").kilobyte + 1)
+      stub_request(:get, image_url).to_return(status: 200, body: oversized, headers: { "Content-Type" => "image/png" })
+
+      expect { described_class.call(response_body: image_body) }.to change(Event, :count).by(1)
+
+      event = Event.find_by(guid: "555")
+      expect(event).to be_present
+      expect(event.image).not_to be_attached
     end
   end
 

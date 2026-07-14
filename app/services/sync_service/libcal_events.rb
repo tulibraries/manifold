@@ -5,7 +5,7 @@ require "open-uri"
 require "resolv-replace"
 require "logger"
 require "net/http"
-require "open3"
+require "socket"
 require "tempfile"
 require "digest"
 
@@ -14,6 +14,20 @@ class SyncService::LibcalEvents
   class UnexpectedResponseShapeException < StandardError; end
   class MissingAccessTokenConfigurationException < StandardError; end
   class MissingEventIdException < StandardError; end
+  class ImageDownloadException < StandardError; end
+
+  # The image CDN advertises AAAA records we cannot route to, so connect over the
+  # A record while leaving the Host header and TLS SNI/cert check on the hostname.
+  class Ipv4ConnectionAdapter < HTTParty::ConnectionAdapter
+    def connection
+      http = super
+      ipv4 = Addrinfo.getaddrinfo(uri.host, nil, Socket::AF_INET, :STREAM).first&.ip_address
+      raise ImageDownloadException, "No IPv4 address for #{uri.host}" if ipv4.blank?
+
+      http.ipaddr = ipv4
+      http
+    end
+  end
 
   def self.call(events_url: nil, events_urls: nil, event_ids: nil, access_token: nil, force: false, response_body: nil)
     new(events_url:, events_urls:, event_ids:, access_token:, force:, response_body:).sync
@@ -514,20 +528,25 @@ class SyncService::LibcalEvents
     end
 
     def download_image_over_ipv4(image_url, event)
-      raise "Refusing to download non-HTTP image URL: #{image_url}" unless image_url.to_s.match?(%r{\Ahttps?://}i)
+      unless image_url.to_s.match?(%r{\Ahttps?://}i)
+        raise ImageDownloadException, "Refusing to download non-HTTP image URL: #{image_url}"
+      end
+
+      response = HTTParty.get(
+        image_url,
+        connection_adapter: Ipv4ConnectionAdapter,
+        follow_redirects: true,
+        open_timeout: 10,
+        read_timeout: 30
+      )
+
+      unless response.success?
+        raise ImageDownloadException, "Image request for #{image_url} returned #{response.code}"
+      end
 
       file = Tempfile.new(["libcal-event-image-#{event.guid}-", File.extname(URI.parse(image_url).path)])
       file.binmode
-
-      # Force IPv4 (the image CDN's IPv6 is unreliable). Uses Open3 with array args
-      # and a "--" terminator so the URL can never be interpreted as a curl option.
-      image_data, error, status = Open3.capture3(
-        "curl", "-4", "--fail", "--silent", "--show-error", "--location", "--", image_url,
-        binmode: true
-      )
-      raise "curl failed for #{image_url}: #{error}" unless status.success?
-
-      file.write(image_data)
+      file.write(response.body)
       file.rewind
       file
     end

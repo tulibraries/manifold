@@ -72,6 +72,16 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       expect(event).to be_present
       expect(event.image).not_to be_attached
     end
+
+    it "caches the failed event titles for the admin flash" do
+      stub_request(:get, image_url).to_return(status: 404)
+
+      expect(Rails.cache).to receive(:write).with(
+        "events_image_error", ["Image Event"], hash_including(:expires_in)
+      )
+
+      described_class.call(response_body: image_body)
+    end
   end
 
   describe "remote request date window" do

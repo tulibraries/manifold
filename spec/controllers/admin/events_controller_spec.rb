@@ -54,6 +54,20 @@ RSpec.describe Admin::EventsController, type: :controller do
       post :sync
       expect(::SyncService::LibcalEvents).to have_received(:call)
       expect(response).to redirect_to(admin_events_path)
+      expect(flash[:notice]).to eq("Events synced")
+    end
+
+    it "summarizes image failures without overflowing the 4kb session cookie" do
+      # The test env uses a null cache store, so stub the read the sync action does.
+      titles = Array.new(40) { |i| "A Fairly Long Event Title That Eats Cookie Bytes #{i}" }
+      allow(Rails.cache).to receive(:read).with("events_image_error").and_return(titles)
+
+      post :sync
+
+      expect(response).to redirect_to(admin_events_path)
+      expect(flash[:notice]).to include("40 images could not be retrieved")
+      expect(flash[:notice]).to include("and 35 more")
+      expect(flash[:notice].bytesize).to be < 1_000
     end
   end
 end

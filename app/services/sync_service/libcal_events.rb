@@ -129,16 +129,11 @@ class SyncService::LibcalEvents
   end
 
   def send_image_failures_to_cache
-    result_string = "LibCal image retrieval failure. Please check:<br><br>"
-    @image_failures.each do |event|
-      result_string += "#{event.title}<br>"
-    end
+    return if @image_failures.empty?
 
-    if @image_failures.size > 0
-      Rails.cache.write("events_image_error",
-                        result_string,
-                        expires_in: 1.hour)
-    end
+    Rails.cache.write("events_image_error",
+                      @image_failures.map(&:title),
+                      expires_in: 1.hour)
   end
 
   private

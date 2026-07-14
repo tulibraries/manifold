@@ -43,6 +43,23 @@ RSpec.describe Admin::EventsController, type: :controller do
     end
   end
 
+  describe "GET #index" do
+    before { sign_in(@account) }
+
+    render_views true
+
+    it "labels each event with the system that created it" do
+      FactoryBot.create(:event, title: "Legacy Event", guid: "389131")
+      FactoryBot.create(:event, title: "LibCal Event", guid: "16528907")
+
+      get :index
+
+      # "Temple" alone would match the site chrome, so assert on the rendered cells.
+      expect(response.body).to match(%r{cell-data--event-source-field">.{0,200}?>\s*Temple\s*<}m)
+      expect(response.body).to match(%r{cell-data--event-source-field">.{0,200}?>\s*LibCal\s*<}m)
+    end
+  end
+
   describe "POST #sync" do
     before do
       sign_in(@account)

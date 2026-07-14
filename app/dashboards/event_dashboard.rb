@@ -41,6 +41,7 @@ class EventDashboard < BaseDashboard
     ensemble_identifier: Field::String,
     categories: Field::HasMany,
     guid: Field::String,
+    source: EventSourceField,
     featured: Field::Boolean,
     suppress: Field::Boolean,
     created_at: Field::DateTime,
@@ -54,6 +55,7 @@ class EventDashboard < BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :title,
+    :source,
     :featured,
     :event_type,
     :start_time,
@@ -94,6 +96,7 @@ class EventDashboard < BaseDashboard
     :content_hash,
     :ensemble_identifier,
     :guid,
+    :source,
     :categories,
     :created_at,
     :updated_at,

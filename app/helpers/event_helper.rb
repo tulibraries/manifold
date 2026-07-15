@@ -3,6 +3,24 @@
 require "json/ld"
 
 module EventHelper
+  def render_event_image(event, variant: :show)
+    if variant == :index
+      html_class = nil
+      sized_image = -> { event.index_image }
+      linked = true
+    else
+      html_class = "img-fluid event-show-image"
+      sized_image = -> { event.fit_image(600, 600) }
+      linked = false
+    end
+
+    return image_tag("T.png", alt: "Temple T Logo") unless event.image.attached?
+
+    alt_text = event.alt_text.presence || "Event image for #{event.title}"
+    image = image_tag(sized_image.call, class: html_class, alt: alt_text)
+    linked ? link_to(image, event_path(event.id), target: "_top") : image
+  end
+
   def render_event_location(event)
     location_link = event_location_link(event)
     return if location_link.blank?

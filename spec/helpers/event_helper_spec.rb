@@ -155,4 +155,39 @@ RSpec.describe EventHelper, type: :helper do
       expect(helper.filters_link("past")).to include(t("manifold.events.index.view_past_events_link"))
     end
   end
+
+  describe "render_event_image" do
+    it "uses the feed-supplied alt text on an attached image" do
+      event = FactoryBot.create(:event, :with_image, alt_text: "A descriptive caption")
+      expect(helper.render_event_image(event)).to include('alt="A descriptive caption"')
+    end
+
+    it "falls back to a title-based alt when an attached image has no feed alt text" do
+      event = FactoryBot.create(:event, :with_image, title: "Poetry Reading", alt_text: nil)
+      expect(helper.render_event_image(event)).to include('alt="Event image for Poetry Reading"')
+    end
+
+    it "renders the Temple T placeholder with a descriptive alt when no image is attached" do
+      event = FactoryBot.create(:event, alt_text: "Ignored without an image")
+      html = helper.render_event_image(event)
+      expect(html).to match(%r{assets/T})
+      expect(html).to include('alt="Temple T Logo"')
+    end
+
+    context "index variant" do
+      it "links the attached image to the event and carries the alt text" do
+        event = FactoryBot.create(:event, :with_image, alt_text: "Thumbnail caption")
+        html = helper.render_event_image(event, variant: :index)
+        expect(html).to include('alt="Thumbnail caption"')
+        expect(html).to include(%Q(href="#{event_path(event.id)}"))
+      end
+
+      it "falls back to the Temple T placeholder when no image is attached" do
+        event = FactoryBot.create(:event)
+        html = helper.render_event_image(event, variant: :index)
+        expect(html).to match(%r{assets/T})
+        expect(html).to include('alt="Temple T Logo"')
+      end
+    end
+  end
 end

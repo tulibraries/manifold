@@ -3,11 +3,7 @@
   <div class="col-12 col-md-4 col-lg-6 event">
     <div class="row mb-4 pe-2">
       <div class="col-12 col-lg-4 mb-3">
-      <% if event.image.attached? %>
-        <%= link_to (image_tag event.index_image, class: "decorative", alt: ""), event_path(event.id), target: "_top" %>
-      <% else %>
-        <%= image_tag 'T.png', class: "decorative", alt: "" %>
-      <% end %>
+        <%= render_event_image(event, variant: :index) %>
       </div>
       <div class="col-12 col-lg-8">
         <%= link_to event.title.truncate(42), event_path(event.id), class: "event-title", target: "_top" %>

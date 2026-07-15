@@ -72,42 +72,6 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "version all fields" do
-    fields = {
-      title: ["The Text 1", "The Text 2"],
-      description: [ActionText::Content.new("Hello World"), ActionText::Content.new("Goodbye, Cruel World")],
-      start_time: [Time.zone.parse("2018/9/24 11:00"), Time.zone.parse("2018/9/24 11:30")],
-      end_time: [Time.zone.parse("2018/9/24 12:00"), Time.zone.parse("2018/9/24 12:30")],
-      location_name: ["The Text 1", "The Text 2"],
-      location_space: ["The Text 1", "The Text 2"],
-      address: ["The Text 1", "The Text 2"],
-      city: ["The Text 1", "The Text 2"],
-      state: ["The Text 1", "The Text 2"],
-      zip: ["The Text 1", "The Text 2"],
-      contact_name: ["The Text 1", "The Text 2"],
-      contact_email: ["The Text 1", "The Text 2"],
-      contact_phone: ["The Text 1", "The Text 2"],
-      cancelled: [false, true],
-      registration_status: [true, false],
-      registration_link: ["https://example.com/reg1", "https://example.com/reg2"],
-      content_hash: ["The Text 1", "The Text 2"],
-      alt_text: ["The Text 1", "The Text 2"],
-      ensemble_identifier: ["The Text 1", "The Text 2"],
-      tags: ["tag1, tag2", "tag3, tag4"],
-      all_day: [false, true]
-    }
-
-    fields.each do |k, v|
-      example "#{k} changes" do
-        next if k == :description # Description is not versionable
-        event = FactoryBot.create(:event, k => v.first)
-        event.update(k => v.last)
-        event.save!
-        expect(event.versions.last.changeset[k]).to match_array(v)
-      end
-    end
-  end
-
   describe "mapping to schema.org" do
     let(:event) { FactoryBot.create(:event) }
 

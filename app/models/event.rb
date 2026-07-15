@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
-  has_paper_trail
   include Categorizable
   include Imageable
   include InputCleaner

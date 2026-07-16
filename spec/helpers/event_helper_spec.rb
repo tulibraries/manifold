@@ -189,5 +189,29 @@ RSpec.describe EventHelper, type: :helper do
         expect(html).to include('alt="Temple T Logo"')
       end
     end
+
+    context "featured variant" do
+      it "links the attached image to the event and carries the alt text" do
+        event = FactoryBot.create(:event, :with_image, alt_text: "Featured caption")
+        html = helper.render_event_image(event, variant: :featured)
+        expect(html).to include('alt="Featured caption"')
+        expect(html).to include(%Q(href="#{event_path(event.id)}"))
+        expect(html).not_to include("target=")
+      end
+
+      it "falls back to a title-based alt when an attached image has no feed alt text" do
+        event = FactoryBot.create(:event, :with_image, title: "Poetry Reading", alt_text: nil)
+        html = helper.render_event_image(event, variant: :featured)
+        expect(html).to include('alt="Event image for Poetry Reading"')
+      end
+
+      it "renders the Temple T placeholder with its styling class when no image is attached" do
+        event = FactoryBot.create(:event)
+        html = helper.render_event_image(event, variant: :featured)
+        expect(html).to match(%r{assets/T})
+        expect(html).to include('class="events-default"')
+        expect(html).to include('alt="Temple T Logo"')
+      end
+    end
   end
 end

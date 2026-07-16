@@ -1,13 +1,7 @@
 <% @featured_events.each do |event| %>
 <div class="col-12 col-md-4 px-4 pb-4">
   <div class="py-2 px-3 featured-event">
-    <% if event.image.attached? %>
-      <%= link_to (image_tag event.custom_image(180, 180),
-                  class: "decorative", alt: ""),
-                  event_path(event.id) %>
-    <% else %>
-      <%= image_tag 'T.png', class: "decorative events-default", alt: "" %>
-    <% end %>
+    <%= render_event_image(event, variant: :featured) %>
 
     <%= link_to event.title.truncate(42), event_path(event.id), class: "d-block event-title pb-2" %>
     

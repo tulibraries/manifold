@@ -1,24 +1,32 @@
 # frozen_string_literal: true
 
-require "json/ld"
-
 module EventHelper
   def render_event_image(event, variant: :show)
-    if variant == :index
+    case variant
+    when :index
       html_class = nil
+      placeholder_class = nil
       sized_image = -> { event.index_image }
-      linked = true
+      link_options = { target: "_top" }
+    when :featured
+      html_class = nil
+      placeholder_class = "events-default"
+      sized_image = -> { event.custom_image(180, 180) }
+      link_options = {}
     else
       html_class = "img-fluid event-show-image"
+      placeholder_class = nil
       sized_image = -> { event.fit_image(600, 600) }
-      linked = false
+      link_options = nil
     end
 
-    return image_tag("T.png", alt: "Temple T Logo") unless event.image.attached?
+    unless event.image.attached?
+      return image_tag("T.png", class: placeholder_class, alt: "Temple T Logo")
+    end
 
     alt_text = event.alt_text.presence || "Event image for #{event.title}"
     image = image_tag(sized_image.call, class: html_class, alt: alt_text)
-    linked ? link_to(image, event_path(event.id), target: "_top") : image
+    link_options ? link_to(image, event_path(event.id), **link_options) : image
   end
 
   def render_event_location(event)

@@ -1,2 +1,3 @@
 net-imap
-view_component
+loofah
+rails-html-sanitizer

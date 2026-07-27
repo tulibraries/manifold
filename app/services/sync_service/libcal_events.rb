@@ -247,6 +247,7 @@ class SyncService::LibcalEvents
 
     # LibCal's events endpoint caps the `days` query param at 365.
     LIBCAL_MAX_DAYS = 365
+    LIBCAL_MAX_LIMIT = 500
 
     def source_query_params(id)
       start_date = libcal_start_date
@@ -255,7 +256,8 @@ class SyncService::LibcalEvents
       [
         ["cal_id", id],
         ["date", start_date.iso8601],
-        ["days", days]
+        ["days", days],
+        ["limit", LIBCAL_MAX_LIMIT]
       ]
     end
 

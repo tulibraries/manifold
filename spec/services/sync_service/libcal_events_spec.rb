@@ -45,6 +45,7 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
 
     it "downloads the image over IPv4 and attaches it" do
       stub_request(:get, image_url).to_return(status: 200, body: png, headers: { "Content-Type" => "image/png" })
+      expect(PreprocessEventImageVariantsJob).to receive(:perform_later).with(instance_of(Event))
 
       described_class.call(response_body: image_body)
 

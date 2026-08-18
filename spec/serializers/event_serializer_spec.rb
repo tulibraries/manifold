@@ -40,16 +40,20 @@ RSpec.describe EventSerializer do
       end
 
       describe "image attribute" do
-        it "returns an valid url" do
-          image_url = URI.parse(data[:attributes][:image])
-          expect(image_url.kind_of? URI::HTTP).to be_truthy
+        it "returns a proxy-backed path" do
+          image_path = data[:attributes][:image]
+          expect(image_path).to start_with("/")
+          expect(image_path).to include("/rails/active_storage/representations/proxy/")
+          expect(image_path).not_to include("/events/#{event.to_param}/image/large")
         end
       end
 
       describe "thumbnail_image attribute" do
-        it "returns an valid url" do
-          image_url = URI.parse(data[:attributes][:thumbnail_image])
-          expect(image_url.kind_of? URI::HTTP).to be_truthy
+        it "returns a proxy-backed path" do
+          image_path = data[:attributes][:thumbnail_image]
+          expect(image_path).to start_with("/")
+          expect(image_path).to include("/rails/active_storage/representations/proxy/")
+          expect(image_path).not_to include("/events/#{event.to_param}/image/thumbnail")
         end
       end
 

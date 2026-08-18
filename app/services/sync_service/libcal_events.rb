@@ -116,10 +116,11 @@ class SyncService::LibcalEvents
     event.event_url = record["event_url"]
     event.event_type = [record["event_type"].presence, ("Online" if record["event_url"].present?)].compact.join(", ").presence
 
-    attach_image(record, event) if record["image_url"].present?
+    image_attached = attach_image(record, event) if record["image_url"].present?
     event.alt_text = record["image_alt_text"] if record["image_alt_text"].present?
 
     if event.save!
+      PreprocessEventImageVariantsJob.perform_later(event) if image_attached
       stdout_and_log(%Q(Successfully saved LibCal record for #{record["title"]}))
       @updated += 1
     else
@@ -486,13 +487,13 @@ class SyncService::LibcalEvents
 
     def attach_image(record, event)
       image_to_attach = remote_image(record["image_url"], record["image_alt_text"], event)
-      return if image_to_attach.blank?
+      return false if image_to_attach.blank?
 
       io = image_to_attach[:image][:io]
       if io.size >= image_size_limit_bytes
         stdout_and_log("LibCal image for #{event.title.inspect} is #{io.size} bytes, over the #{image_size_limit_bytes}-byte limit; saving event without image")
         @image_failures << event
-        return
+        return false
       end
 
       event.image.attach(
@@ -500,6 +501,7 @@ class SyncService::LibcalEvents
         filename: image_to_attach[:image][:filename],
         metadata: { alt_text: image_to_attach[:metadata][:alt_text] }
       )
+      true
     end
 
     def image_size_limit_bytes

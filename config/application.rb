@@ -16,6 +16,7 @@ module Manifold
     config.autoload_lib(ignore: %w[assets tasks templates])
     config.active_job.queue_adapter = :solid_queue
     config.active_storage.variant_processor = :mini_magick
+    config.active_storage.resolve_model_to_route = :rails_storage_proxy
     config.exceptions_app = self.routes
     config.action_view.sanitized_allowed_tags = ["div", "p", "h1", "h2", "h3", "h4", "h5", "h6",
         "ul", "ol", "li", "dl", "dt", "dd", "address", "hr", "pre", "blockquote", "center",

@@ -157,6 +157,14 @@ RSpec.describe EventHelper, type: :helper do
   end
 
   describe "render_event_image" do
+    it "renders attached images through the Active Storage proxy route" do
+      event = FactoryBot.create(:event, :with_image, alt_text: "Proxy caption")
+      html = helper.render_event_image(event)
+
+      expect(html).to include("/rails/active_storage/representations/proxy/")
+      expect(html).not_to include("/rails/active_storage/representations/redirect/")
+    end
+
     it "uses the feed-supplied alt text on an attached image" do
       event = FactoryBot.create(:event, :with_image, alt_text: "A descriptive caption")
       expect(helper.render_event_image(event)).to include('alt="A descriptive caption"')

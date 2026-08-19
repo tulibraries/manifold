@@ -2,15 +2,7 @@
 
 # Generates the event image derivatives up front, during the LibCal sync, so the
 # first visitor to a page does not pay for the transformation.
-#
-# It also repairs derivatives whose bookkeeping and storage disagree. With
-# +ActiveStorage.track_variants+ enabled, ActiveStorage::VariantWithRecord#processed?
-# is just `record.present?` — it never asks the service whether the derivative is
-# actually there. So a derivative whose object is missing from the bucket (an
-# upload that failed after the row was committed, a lifecycle rule that expired
-# the object) is considered done forever, and every request for it 404s with no
-# way to recover. Verifying against the service and dropping the stale record is
-# what lets it regenerate.
+
 class PreprocessEventImageVariantsJob < ApplicationJob
   queue_as :default
 

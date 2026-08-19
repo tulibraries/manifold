@@ -4,7 +4,7 @@ require "rails_helper"
 require "uri"
 
 RSpec.describe EventSerializer do
-  let(:event) { FactoryBot.create(:event, :with_image) }
+  let(:event) { FactoryBot.create(:event, :with_processed_image) }
   let(:serialized) { described_class.new(event) }
 
   it "doesn't raise an error when instantiated" do
@@ -33,7 +33,7 @@ RSpec.describe EventSerializer do
     end
 
     describe "event with image" do
-      let (:event) { FactoryBot.create(:event, :with_image) }
+      let (:event) { FactoryBot.create(:event, :with_processed_image) }
 
       it "has the image and thumbnail attributes" do
         expect(data[:attributes].keys).to include(:image, :thumbnail_image)
@@ -43,7 +43,7 @@ RSpec.describe EventSerializer do
         it "returns a proxy-backed path" do
           image_path = data[:attributes][:image]
           expect(image_path).to start_with("/")
-          expect(image_path).to include("/rails/active_storage/representations/proxy/")
+          expect(image_path).to include("/rails/active_storage/blobs/proxy/")
           expect(image_path).not_to include("/events/#{event.to_param}/image/large")
         end
       end
@@ -52,7 +52,7 @@ RSpec.describe EventSerializer do
         it "returns a proxy-backed path" do
           image_path = data[:attributes][:thumbnail_image]
           expect(image_path).to start_with("/")
-          expect(image_path).to include("/rails/active_storage/representations/proxy/")
+          expect(image_path).to include("/rails/active_storage/blobs/proxy/")
           expect(image_path).not_to include("/events/#{event.to_param}/image/thumbnail")
         end
       end

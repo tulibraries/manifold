@@ -29,6 +29,15 @@ class Event < ApplicationRecord
     id
   end
 
+  def rendered_image
+    return unless image.attached?
+
+    variant = yield
+    return variant unless variant.is_a?(ActiveStorage::VariantWithRecord)
+
+    variant.image&.blob
+  end
+
   def slug_candidates
     [
       :title,

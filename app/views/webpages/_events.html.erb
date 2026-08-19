@@ -4,11 +4,14 @@
       <div class="carousel-item<%= " active" if i == 0 %>" role="tab">
         <div class="card library-event">
           <%= link_to event_path(event.id) do %>
-            <% if event.image.attached? %>
+            <% event_image = event.rendered_image { event.show_image } %>
             <div class="item pb-4">
-              <%= image_tag event.show_image, alt: image_alt_text(event), loading: "lazy", height: "270px", width: "420px" %>
+              <% if event_image %>
+                <%= image_tag event_image, alt: image_alt_text(event), loading: "lazy", height: "270px", width: "420px" %>
+              <% else %>
+                <%= image_tag "T.png", alt: "Temple T Logo", loading: "lazy" %>
+              <% end %>
             </div>
-            <% end %>
             <div class="card-body px-0">
               <div class="item-caption text-start mt-0">
                 <h3><%= event.label.truncate(52) %></h3>

@@ -158,20 +158,20 @@ RSpec.describe EventHelper, type: :helper do
 
   describe "render_event_image" do
     it "renders attached images through the Active Storage proxy route" do
-      event = FactoryBot.create(:event, :with_image, alt_text: "Proxy caption")
+      event = FactoryBot.create(:event, :with_processed_image, alt_text: "Proxy caption")
       html = helper.render_event_image(event)
 
-      expect(html).to include("/rails/active_storage/representations/proxy/")
-      expect(html).not_to include("/rails/active_storage/representations/redirect/")
+      expect(html).to include("/rails/active_storage/blobs/proxy/")
+      expect(html).not_to include("/rails/active_storage/representations/")
     end
 
     it "uses the feed-supplied alt text on an attached image" do
-      event = FactoryBot.create(:event, :with_image, alt_text: "A descriptive caption")
+      event = FactoryBot.create(:event, :with_processed_image, alt_text: "A descriptive caption")
       expect(helper.render_event_image(event)).to include('alt="A descriptive caption"')
     end
 
     it "falls back to a title-based alt when an attached image has no feed alt text" do
-      event = FactoryBot.create(:event, :with_image, title: "Poetry Reading", alt_text: nil)
+      event = FactoryBot.create(:event, :with_processed_image, title: "Poetry Reading", alt_text: nil)
       expect(helper.render_event_image(event)).to include('alt="Event image for Poetry Reading"')
     end
 
@@ -184,7 +184,7 @@ RSpec.describe EventHelper, type: :helper do
 
     context "index variant" do
       it "links the attached image to the event and carries the alt text" do
-        event = FactoryBot.create(:event, :with_image, alt_text: "Thumbnail caption")
+        event = FactoryBot.create(:event, :with_processed_image, alt_text: "Thumbnail caption")
         html = helper.render_event_image(event, variant: :index)
         expect(html).to include('alt="Thumbnail caption"')
         expect(html).to include(%Q(href="#{event_path(event.id)}"))
@@ -200,7 +200,7 @@ RSpec.describe EventHelper, type: :helper do
 
     context "featured variant" do
       it "links the attached image to the event and carries the alt text" do
-        event = FactoryBot.create(:event, :with_image, alt_text: "Featured caption")
+        event = FactoryBot.create(:event, :with_processed_image, alt_text: "Featured caption")
         html = helper.render_event_image(event, variant: :featured)
         expect(html).to include('alt="Featured caption"')
         expect(html).to include(%Q(href="#{event_path(event.id)}"))
@@ -208,7 +208,7 @@ RSpec.describe EventHelper, type: :helper do
       end
 
       it "falls back to a title-based alt when an attached image has no feed alt text" do
-        event = FactoryBot.create(:event, :with_image, title: "Poetry Reading", alt_text: nil)
+        event = FactoryBot.create(:event, :with_processed_image, title: "Poetry Reading", alt_text: nil)
         html = helper.render_event_image(event, variant: :featured)
         expect(html).to include('alt="Event image for Poetry Reading"')
       end

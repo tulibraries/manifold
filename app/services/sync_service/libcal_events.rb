@@ -120,7 +120,7 @@ class SyncService::LibcalEvents
     event.alt_text = record["image_alt_text"] if record["image_alt_text"].present?
 
     if event.save!
-      PreprocessEventImageVariantsJob.perform_later(event) if image_attached
+      PreprocessEventImageVariantsJob.perform_now(event) if image_attached
       stdout_and_log(%Q(Successfully saved LibCal record for #{record["title"]}))
       @updated += 1
     else

@@ -14,9 +14,6 @@
 class PreprocessEventImageVariantsJob < ApplicationJob
   queue_as :default
 
-  # Derivatives used by the event index, show, and search result templates,
-  # as [method, *args] pairs so a variant can be rebuilt from scratch after a
-  # stale record is destroyed.
   DERIVATIVES = [
     [:thumb_image],
     [:index_image],
@@ -43,8 +40,6 @@ class PreprocessEventImageVariantsJob < ApplicationJob
       return if stored?(variant)
 
       variant.destroy
-      # The destroyed record is memoized on the old variant object, so rebuild
-      # from the model to get one that will actually process.
       rebuilt = build_variant(event, method, args)
       rebuilt&.processed
     rescue StandardError => e
@@ -54,9 +49,6 @@ class PreprocessEventImageVariantsJob < ApplicationJob
       )
     end
 
-    # Imageable#custom_image and #fit_image return the attachment itself when the
-    # original already matches the requested dimensions; there is nothing to
-    # process in that case.
     def build_variant(event, method, args)
       variant = event.public_send(method, *args)
       variant if VARIANT_CLASSES.any? { |klass| variant.is_a?(klass) }

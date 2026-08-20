@@ -116,11 +116,11 @@ class SyncService::LibcalEvents
     event.event_url = record["event_url"]
     event.event_type = [record["event_type"].presence, ("Online" if record["event_url"].present?)].compact.join(", ").presence
 
-    image_attached = attach_image(record, event) if record["image_url"].present?
+    attach_image(record, event) if record["image_url"].present?
     event.alt_text = record["image_alt_text"] if record["image_alt_text"].present?
 
     if event.save!
-      PreprocessEventImageVariantsJob.perform_now(event) if image_attached
+      PreprocessEventImageVariantsJob.perform_now(event) if event.image.attached?
       stdout_and_log(%Q(Successfully saved LibCal record for #{record["title"]}))
       @updated += 1
     else
@@ -130,11 +130,13 @@ class SyncService::LibcalEvents
   end
 
   def send_image_failures_to_cache
-    return if @image_failures.empty?
+    # Cleared rather than left alone, so a clean run doesn't leave the previous
+    # run's failures to be reported as its own.
+    return Rails.cache.delete("events_image_error") if @image_failures.empty?
 
     Rails.cache.write("events_image_error",
                       @image_failures.map(&:title),
-                      expires_in: 1.hour)
+                      expires_in: 1.day)
   end
 
   private

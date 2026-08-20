@@ -58,28 +58,82 @@ RSpec.describe Admin::EventsController, type: :controller do
   describe "POST #sync" do
     before do
       sign_in(@account)
-      # Stub out the sync service so we don't actually make http requests to
-      # LibCal. We just want to test that we call the service integration correctly.
-      allow(::SyncService::LibcalEvents).to receive(:call)
+      # A full feed sync runs far longer than a request can live, so the action
+      # only enqueues it.
+      allow(SyncLibcalEventsJob).to receive(:perform_later)
     end
-    it "triggers the LibCal sync and redirects to the admin index" do
+
+    it "enqueues the LibCal sync and redirects to the admin index" do
       post :sync
-      expect(::SyncService::LibcalEvents).to have_received(:call)
+
+      expect(SyncLibcalEventsJob).to have_received(:perform_later)
       expect(response).to redirect_to(admin_events_path)
+    end
+  end
+
+  describe "GET #index sync reporting" do
+    render_views true
+
+    before do
+      sign_in(@account)
+      # The test env uses a null cache store, so stub the reads the action does.
+      allow(Rails.cache).to receive(:read).and_call_original
+      allow(Rails.cache).to receive(:read)
+        .with(SyncLibcalEventsJob::FINISHED_CACHE_KEY).and_return(SyncLibcalEventsJob::SUCCEEDED)
+    end
+
+    it "reports a finished sync on the next index load" do
+      allow(Rails.cache).to receive(:read).with("events_image_error").and_return(nil)
+
+      get :index
+
       expect(flash[:notice]).to eq("Events synced")
     end
 
     it "summarizes image failures without overflowing the 4kb session cookie" do
-      # The test env uses a null cache store, so stub the read the sync action does.
       titles = Array.new(40) { |i| "A Fairly Long Event Title That Eats Cookie Bytes #{i}" }
       allow(Rails.cache).to receive(:read).with("events_image_error").and_return(titles)
 
-      post :sync
+      get :index
 
-      expect(response).to redirect_to(admin_events_path)
       expect(flash[:notice]).to include("40 images could not be retrieved")
       expect(flash[:notice]).to include("and 35 more")
       expect(flash[:notice].bytesize).to be < 1_000
+    end
+
+    it "reports a failed sync instead of claiming success" do
+      allow(Rails.cache).to receive(:read)
+        .with(SyncLibcalEventsJob::FINISHED_CACHE_KEY).and_return(SyncLibcalEventsJob::FAILED)
+
+      get :index
+
+      expect(flash[:notice]).to be_nil
+      expect(flash[:error]).to include("Events sync failed")
+      expect(response.body).not_to include("http-equiv=\"refresh\"")
+    end
+
+    it "stays quiet when no sync has finished" do
+      allow(Rails.cache).to receive(:read)
+        .with(SyncLibcalEventsJob::FINISHED_CACHE_KEY).and_return(nil)
+      allow(Rails.cache).to receive(:read)
+        .with(SyncLibcalEventsJob::RUNNING_CACHE_KEY).and_return(nil)
+
+      get :index
+
+      expect(flash[:notice]).to be_nil
+      expect(response.body).not_to include("http-equiv=\"refresh\"")
+    end
+
+    it "reloads itself while a sync is still running" do
+      allow(Rails.cache).to receive(:read)
+        .with(SyncLibcalEventsJob::FINISHED_CACHE_KEY).and_return(nil)
+      allow(Rails.cache).to receive(:read)
+        .with(SyncLibcalEventsJob::RUNNING_CACHE_KEY).and_return(true)
+
+      get :index
+
+      expect(flash[:notice]).to eq("Events sync in progress. This page will update when it finishes.")
+      expect(response.body).to include("http-equiv=\"refresh\"")
     end
   end
 end

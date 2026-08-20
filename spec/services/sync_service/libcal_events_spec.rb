@@ -63,6 +63,17 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       expect(event.image).not_to be_attached
     end
 
+    it "processes derivatives for the retained image when the download fails" do
+      existing = FactoryBot.create(:event, :with_image, guid: "555")
+      stub_request(:get, image_url).to_return(status: 404)
+
+      expect(PreprocessEventImageVariantsJob).to receive(:perform_now).with(instance_of(Event))
+
+      described_class.call(response_body: image_body)
+
+      expect(existing.reload.image).to be_attached
+    end
+
     it "saves the event without the image instead of dropping the whole record when oversized" do
       oversized = "x" * (I18n.t("manifold.default.image_file_size_limit").kilobyte + 1)
       stub_request(:get, image_url).to_return(status: 200, body: oversized, headers: { "Content-Type" => "image/png" })

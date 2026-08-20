@@ -11,6 +11,8 @@
     <%= render "stylesheet" %>
     <%= javascript_importmap_tags "application" %>
 
+    <%= tag.meta("http-equiv": "refresh", content: 10) if @sync_in_progress %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag if defined?(csp_meta_tag) %>
   </head>

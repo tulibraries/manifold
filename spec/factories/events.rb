@@ -37,5 +37,13 @@ FactoryBot.define do
           content_type: "image/jpeg")
       end
     end
+
+    trait :with_processed_image do
+      with_image
+
+      after :create do |event|
+        PreprocessEventImageVariantsJob.perform_now(event)
+      end
+    end
   end
 end

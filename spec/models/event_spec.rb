@@ -223,6 +223,29 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "#rendered_image" do
+    it "is nil when no image is attached" do
+      event = FactoryBot.create(:event)
+
+      expect(event.rendered_image { event.show_image }).to be_nil
+    end
+
+    it "is nil when the derivative has not been generated yet" do
+      event = FactoryBot.create(:event, :with_image)
+
+      expect(event.rendered_image { event.show_image }).to be_nil
+    end
+
+    it "is the derivative's blob once the variant has been processed" do
+      event = FactoryBot.create(:event, :with_processed_image)
+
+      rendered = event.rendered_image { event.show_image }
+
+      expect(rendered).to be_an(ActiveStorage::Blob)
+      expect(rendered.key).to eq event.show_image.key
+    end
+  end
+
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
   it_behaves_like "SchemaDotOrgable"

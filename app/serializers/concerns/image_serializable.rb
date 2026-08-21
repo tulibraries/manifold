@@ -5,11 +5,11 @@ module ImageSerializable
 
   included do
     attribute :image, if: Proc.new { |the_object| the_object.image.attached? } do |the_object|
-      helpers.send("#{the_object.class.to_s.underscore}_image_large_url", the_object.to_param)
+      helpers.polymorphic_path(the_object.show_image)
     end
 
     attribute :thumbnail_image, if: Proc.new { |the_object| the_object.image.attached? } do |the_object|
-      helpers.send("#{the_object.class.to_s.underscore}_image_thumbnail_url", the_object.to_param)
+      helpers.polymorphic_path(the_object.thumb_image)
     end
   end
 end

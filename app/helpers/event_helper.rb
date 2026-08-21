@@ -20,12 +20,14 @@ module EventHelper
       link_options = nil
     end
 
-    unless event.image.attached?
+    source = event.rendered_image(&sized_image)
+
+    unless source
       return image_tag("T.png", class: placeholder_class, alt: "Temple T Logo")
     end
 
     alt_text = event.alt_text.presence || "Event image for #{event.title}"
-    image = image_tag(sized_image.call, class: html_class, alt: alt_text)
+    image = image_tag(source, class: html_class, alt: alt_text)
     link_options ? link_to(image, event_path(event.id), **link_options) : image
   end
 

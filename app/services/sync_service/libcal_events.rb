@@ -120,6 +120,7 @@ class SyncService::LibcalEvents
     event.alt_text = record["image_alt_text"] if record["image_alt_text"].present?
 
     if event.save!
+      PreprocessEventImageVariantsJob.perform_now(event) if event.image.attached?
       stdout_and_log(%Q(Successfully saved LibCal record for #{record["title"]}))
       @updated += 1
     else
@@ -129,11 +130,13 @@ class SyncService::LibcalEvents
   end
 
   def send_image_failures_to_cache
-    return if @image_failures.empty?
+    # Cleared rather than left alone, so a clean run doesn't leave the previous
+    # run's failures to be reported as its own.
+    return Rails.cache.delete("events_image_error") if @image_failures.empty?
 
     Rails.cache.write("events_image_error",
                       @image_failures.map(&:title),
-                      expires_in: 1.hour)
+                      expires_in: 1.day)
   end
 
   private
@@ -486,20 +489,31 @@ class SyncService::LibcalEvents
 
     def attach_image(record, event)
       image_to_attach = remote_image(record["image_url"], record["image_alt_text"], event)
-      return if image_to_attach.blank?
+      return false if image_to_attach.blank?
 
       io = image_to_attach[:image][:io]
       if io.size >= image_size_limit_bytes
         stdout_and_log("LibCal image for #{event.title.inspect} is #{io.size} bytes, over the #{image_size_limit_bytes}-byte limit; saving event without image")
         @image_failures << event
-        return
+        return false
       end
+
+      return false if image_unchanged?(event, io)
 
       event.image.attach(
         io:,
         filename: image_to_attach[:image][:filename],
         metadata: { alt_text: image_to_attach[:metadata][:alt_text] }
       )
+      true
+    end
+
+    def image_unchanged?(event, io)
+      return false unless event.image.attached?
+
+      checksum = Digest::MD5.base64digest(io.read)
+      io.rewind
+      checksum == event.image.blob.checksum
     end
 
     def image_size_limit_bytes

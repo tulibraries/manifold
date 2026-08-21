@@ -7,7 +7,7 @@ module Imageable
   FEATURED_IMAGE_HEIGHT = 270
 
   included do
-    has_one_attached :image, dependent: :destroy
+    has_one_attached :image, dependent: :purge_later
     validates :image, content_type: { in: ["image/png", "image/jpeg", "image/gif"],
                                       message: I18n.t("manifold.error.content_type_invalid_image") },
                       size: { less_than: I18n.t("manifold.default.image_file_size_limit").kilobyte ,

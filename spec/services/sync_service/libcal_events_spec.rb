@@ -74,6 +74,39 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       expect(existing.reload.image).to be_attached
     end
 
+    it "keeps the existing blob when the downloaded image is unchanged" do
+      existing = FactoryBot.create(:event, guid: "555")
+      existing.image.attach(io: StringIO.new(png), filename: "event.png", content_type: "image/png")
+      original_blob_id = existing.image.blob.id
+      stub_request(:get, image_url).to_return(status: 200, body: png, headers: { "Content-Type" => "image/png" })
+
+      described_class.call(response_body: image_body)
+
+      expect(existing.reload.image.blob.id).to eq(original_blob_id)
+    end
+
+    # The derivative check has to run on every sync, not only when something was
+    # attached -- otherwise a derivative deleted from storage is never repaired.
+    it "still processes derivatives when the downloaded image is unchanged" do
+      existing = FactoryBot.create(:event, guid: "555")
+      existing.image.attach(io: StringIO.new(png), filename: "event.png", content_type: "image/png")
+      stub_request(:get, image_url).to_return(status: 200, body: png, headers: { "Content-Type" => "image/png" })
+
+      expect(PreprocessEventImageVariantsJob).to receive(:perform_now).with(instance_of(Event))
+
+      described_class.call(response_body: image_body)
+    end
+
+    it "replaces the blob when the downloaded image differs" do
+      existing = FactoryBot.create(:event, :with_image, guid: "555")
+      original_blob_id = existing.image.blob.id
+      stub_request(:get, image_url).to_return(status: 200, body: png, headers: { "Content-Type" => "image/png" })
+
+      described_class.call(response_body: image_body)
+
+      expect(existing.reload.image.blob.id).not_to eq(original_blob_id)
+    end
+
     it "saves the event without the image instead of dropping the whole record when oversized" do
       oversized = "x" * (I18n.t("manifold.default.image_file_size_limit").kilobyte + 1)
       stub_request(:get, image_url).to_return(status: 200, body: oversized, headers: { "Content-Type" => "image/png" })

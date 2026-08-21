@@ -498,12 +498,22 @@ class SyncService::LibcalEvents
         return false
       end
 
+      return false if image_unchanged?(event, io)
+
       event.image.attach(
         io:,
         filename: image_to_attach[:image][:filename],
         metadata: { alt_text: image_to_attach[:metadata][:alt_text] }
       )
       true
+    end
+
+    def image_unchanged?(event, io)
+      return false unless event.image.attached?
+
+      checksum = Digest::MD5.base64digest(io.read)
+      io.rewind
+      checksum == event.image.blob.checksum
     end
 
     def image_size_limit_bytes

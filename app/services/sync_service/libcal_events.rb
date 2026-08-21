@@ -498,10 +498,6 @@ class SyncService::LibcalEvents
         return false
       end
 
-      # LibCal serves the same bytes run after run. Re-attaching would replace the
-      # blob, orphan the variant records hanging off the old one, and force every
-      # derivative to be rebuilt -- which is where the sync spends nearly all of its
-      # time and memory. Keeping the blob keeps the derivatives, and their URLs, intact.
       return false if image_unchanged?(event, io)
 
       event.image.attach(
@@ -512,8 +508,6 @@ class SyncService::LibcalEvents
       true
     end
 
-    # Compared against the stored blob the way Active Storage computes its own
-    # checksum, so an unchanged download matches without re-uploading to compare.
     def image_unchanged?(event, io)
       return false unless event.image.attached?
 

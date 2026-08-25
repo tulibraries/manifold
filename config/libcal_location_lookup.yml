@@ -80,6 +80,13 @@ shared:
     state: "PA"
     zip: "19122"
     space: "Room 210"
+  "Charles Library Room 381":
+    building: "Charles Library"
+    address: "1210 Polett Walk"
+    city: "Philadelphia"
+    state: "PA"
+    zip: "19122"
+    space: "Room 381"
   "Charles Library Room 401":
     building: "Charles Library"
     address: "1210 Polett Walk"
@@ -162,6 +169,12 @@ shared:
     city: "Philadelphia"
     state: "PA"
     zip: "19140"
+  "Mitten Hall":
+    building: "Mitten Hall"
+    address: "1913 N Broad St"
+    city: "Philadelphia"
+    state: "PA"
+    zip: "19122"
   "Podiatry Library":
     building: "Krausz Library of Podiatric Medicine"
     address: "8th and Race Streets"

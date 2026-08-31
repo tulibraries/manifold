@@ -30,9 +30,23 @@ RSpec.describe "Homepage carousel", type: :system, js: true do
 
     click_carousel_control("#newsCarousel", ".carousel-control-next")
     expect(event_titles).to eq(featured_events.map(&:title).rotate)
+    expect(page).to have_css("#newsCarousel .carousel-status", text: "Showing item 2 of 4.")
 
     click_carousel_control("#newsCarousel", ".carousel-control-prev")
     expect(event_titles).to eq(featured_events.map(&:title))
+    expect(page).to have_css("#newsCarousel .carousel-status", text: "Showing item 1 of 4.")
+  end
+
+  it "exposes carousel semantics and disables controls when there is no overflow" do
+    expect(page).to have_css("#newsCarousel[role='region'][aria-roledescription='carousel']")
+    expect(page).to have_css("#newsCarouselItems[role='list'] .carousel-item[role='listitem']", count: 4)
+    expect(page).to have_css("#newsCarousel button[aria-controls='newsCarouselItems']", count: 2)
+    expect(page).to have_css("#highlightsCarousel[role='region'][aria-roledescription='carousel']")
+    expect(page).to have_css("#highlightsCarousel button[aria-controls='highlightsCarouselItems']", count: 2)
+    expect(page).to have_css("#highlightsCarousel .carousel-control-next[disabled]")
+    expect(page).to have_css("#highlightsCarousel .carousel-control-prev[disabled]")
+    expect(page).to have_css("#digcolsCarousel .carousel-control-next[disabled]")
+    expect(page).to have_css("#digcolsCarousel .carousel-control-prev[disabled]")
   end
 
   it "does not jump to the top when a carousel has no overflow" do

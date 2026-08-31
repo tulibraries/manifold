@@ -11,7 +11,7 @@ module EventHelper
     when :featured
       html_class = nil
       placeholder_class = "events-default"
-      sized_image = -> { event.custom_image(180, 180) }
+      sized_image = -> { event.featured_image }
       link_options = {}
     else
       html_class = "img-fluid event-show-image"

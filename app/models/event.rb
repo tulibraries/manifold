@@ -25,6 +25,27 @@ class Event < ApplicationRecord
   scope :is_hsl_event, -> { where("lower(tags) LIKE ? OR lower(libcal_categories) LIKE ?", "%health sciences%", "%health sciences%") }
   scope :is_displayable, -> { where("suppress = ?", false) }
 
+  EVENT_IMAGE_WIDTH = 420
+  EVENT_IMAGE_HEIGHT = 252
+
+  # These derivatives are used everywhere except the event show page, which
+  # deliberately continues to use fit_image(600, 600).
+  def thumb_image
+    padded_event_image(160)
+  end
+
+  def index_image
+    padded_event_image(250)
+  end
+
+  def featured_image
+    padded_event_image(180)
+  end
+
+  def show_image
+    padded_event_image(EVENT_IMAGE_WIDTH, EVENT_IMAGE_HEIGHT)
+  end
+
   def to_param  # overridden for tests
     id
   end
@@ -159,4 +180,20 @@ class Event < ApplicationRecord
       Event.where("lower(title) LIKE ? or lower(tags) LIKE ?", "%#{q}%".downcase, "%#{q}%".downcase).order(:start_time)
     end
   end
+
+  private
+
+    def padded_event_image(width, height = (width * 3.0 / 5).round)
+      ensure_image_analyzed
+
+      return image if image_matches_dimensions?(width, height)
+
+      image.variant(
+        format: :png,
+        background: :transparent,
+        gravity: "Center",
+        resize_to_fit: [width, height],
+        extent: "#{width}x#{height}"
+      )
+    end
 end

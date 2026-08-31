@@ -11,28 +11,38 @@ export default class extends Controller {
       return
     }
 
+    this.isAnimating = false
+    this.carouselInner.scrollLeft = 0
+
     this.handleNext = (event) => {
       event.preventDefault()
       event.stopPropagation()
 
-      const nextPosition = Math.min(
-        this.carouselInner.scrollLeft + this.card.offsetWidth,
-        this.maxScroll()
-      )
+      if (!this.canScroll() || this.isAnimating) return
 
-      $(this.carouselInner).animate({ scrollLeft: nextPosition }, 600)
+      this.isAnimating = true
+      const nextPosition = this.card.offsetWidth
+
+      $(this.carouselInner).animate({ scrollLeft: nextPosition }, 600, () => {
+        this.carouselInner.append(this.carouselInner.firstElementChild)
+        this.carouselInner.scrollLeft = 0
+        this.isAnimating = false
+      })
     }
 
     this.handlePrev = (event) => {
       event.preventDefault()
       event.stopPropagation()
 
-      const nextPosition = Math.max(
-        this.carouselInner.scrollLeft - this.card.offsetWidth,
-        0
-      )
+      if (!this.canScroll() || this.isAnimating) return
 
-      $(this.carouselInner).animate({ scrollLeft: nextPosition }, 600)
+      this.isAnimating = true
+      this.carouselInner.prepend(this.carouselInner.lastElementChild)
+      this.carouselInner.scrollLeft = this.card.offsetWidth
+
+      $(this.carouselInner).animate({ scrollLeft: 0 }, 600, () => {
+        this.isAnimating = false
+      })
     }
 
     $(this.nextButton).on("click", this.handleNext)
@@ -40,6 +50,12 @@ export default class extends Controller {
   }
 
   disconnect() {
+    if (!this.carouselInner) return
+
+    $(this.carouselInner).stop(true)
+    this.carouselInner.scrollLeft = 0
+    this.isAnimating = false
+
     if (this.nextButton && this.handleNext) {
       $(this.nextButton).off("click", this.handleNext)
     }
@@ -49,7 +65,7 @@ export default class extends Controller {
     }
   }
 
-  maxScroll() {
-    return Math.max(0, this.carouselInner.scrollWidth - this.carouselInner.clientWidth)
+  canScroll() {
+    return this.carouselInner.scrollWidth > this.carouselInner.clientWidth
   }
 }

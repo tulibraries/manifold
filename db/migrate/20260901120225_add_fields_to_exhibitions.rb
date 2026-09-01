@@ -2,7 +2,9 @@
 
 class AddFieldsToExhibitions < ActiveRecord::Migration[8.1]
   def change
-    add_column :exhibitions, :alt_text, :string
-    change_column_default :exhibitions, :promoted_to_events, from: nil, to: false
+    change_table :exhibitions, bulk: true do |t|
+      t.string :alt_text
+      t.change_default :promoted_to_events, from: nil, to: false
+    end
   end
 end

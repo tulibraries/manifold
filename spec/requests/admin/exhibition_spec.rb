@@ -6,5 +6,6 @@ RSpec.describe Exhibition, type: :request do
 
   it_behaves_like "renderable_dashboard"
   it_behaves_like "detachable"
+  it_behaves_like "detachable with gallery"
 
 end

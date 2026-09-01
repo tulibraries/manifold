@@ -17,7 +17,9 @@ module Admin::Detachable
         flash[:notice] = "Image detached"
       end if params[:type]
     else
-      if entity.respond_to?(:images) && entity.images.size > 0
+      if type == "image"
+        entity.image.purge
+      elsif params[:attachment_id].present? && entity.respond_to?(:images)
         entity.images.find(params[:attachment_id]).purge
       else
         entity.image.purge

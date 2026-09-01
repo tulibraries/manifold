@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_08_180000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_01_120225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -246,12 +246,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_08_180000) do
   end
 
   create_table "exhibitions", force: :cascade do |t|
+    t.string "alt_text"
     t.integer "collection_id"
     t.datetime "created_at", precision: nil, null: false
     t.date "end_date"
     t.integer "group_id"
     t.string "online_url"
-    t.boolean "promoted_to_events"
+    t.boolean "promoted_to_events", default: false
     t.string "slug"
     t.integer "space_id"
     t.date "start_date"

@@ -7,7 +7,7 @@
             <% event_image = event.rendered_image { event.show_image } %>
             <div class="item pb-4">
               <% if event_image %>
-                <%= image_tag event_image, alt: image_alt_text(event), loading: "lazy", height: "270px", width: "420px" %>
+                <%= image_tag event_image, alt: image_alt_text(event), loading: "lazy", height: "252px", width: "420px" %>
               <% else %>
                 <%= image_tag "T.png", alt: "Temple T Logo", loading: "lazy" %>
               <% end %>

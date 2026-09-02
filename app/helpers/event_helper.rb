@@ -1,36 +1,6 @@
 # frozen_string_literal: true
 
 module EventHelper
-  def render_event_image(event, variant: :show)
-    case variant
-    when :index
-      html_class = nil
-      placeholder_class = nil
-      sized_image = -> { event.index_image }
-      link_options = { target: "_top" }
-    when :featured
-      html_class = nil
-      placeholder_class = "events-default"
-      sized_image = -> { event.featured_image }
-      link_options = {}
-    else
-      html_class = "img-fluid event-show-image"
-      placeholder_class = nil
-      sized_image = -> { event.fit_image(600, 600) }
-      link_options = nil
-    end
-
-    source = event.rendered_image(&sized_image)
-
-    unless source
-      return image_tag("T.png", class: placeholder_class, alt: "Temple T Logo")
-    end
-
-    alt_text = event.alt_text.presence || "Event image for #{event.title}"
-    image = image_tag(source, class: html_class, alt: alt_text)
-    link_options ? link_to(image, event_path(event.id), **link_options) : image
-  end
-
   def render_event_location(event)
     location_link = event_location_link(event)
     return if location_link.blank?

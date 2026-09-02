@@ -18,6 +18,14 @@ FactoryBot.define do
       end
     end
 
+    trait :with_processed_image do
+      with_image
+
+      after :create do |exhibition|
+        PreprocessEventImageVariantsJob.perform_now(exhibition)
+      end
+    end
+
     trait :with_images do
       after :create do |exhibition|
         exhibition.images.attach(io:

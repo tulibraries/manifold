@@ -24,6 +24,12 @@
         </div>
       <% end %>
 
+      <% if @exhibition.image.attached? %>
+        <div class="exhibition-featured-image">
+          <%= render_image(@exhibition) %>
+        </div>
+      <% end %>
+
       <div class=""><%= @exhibition.description %></div>
 
       <% if @exhibition.images.any? %>

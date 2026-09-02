@@ -7,7 +7,7 @@ RSpec.describe "Dashboard::Exhibition", type: :system do
     @admin = FactoryBot.create(:account, role: "admin")
     @non_admin = FactoryBot.create(:account, role: "regular")
     @exhibition = FactoryBot.create(:exhibition)
-    @exhibition_with_image = FactoryBot.create(:exhibition, :with_image)
+    @exhibition_with_image = FactoryBot.create(:exhibition, :with_images)
     @models = ["exhibition"]
   end
 

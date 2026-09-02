@@ -57,13 +57,13 @@ module Imageable
 
   private
 
-    def padded_image(width, height)
+    def padded_image(width, height, background: "#F7F7F7")
       ensure_image_analyzed
 
       return image if image_matches_dimensions?(width, height)
 
       image.variant(format: :png,
-                    background: "#F7F7F7",
+                    background:,
                     gravity: "Center",
                     resize_to_fit: [width, height],
                     extent: "#{width}x#{height}")

@@ -246,30 +246,8 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "event card image variants" do
-    let(:event) { FactoryBot.create(:event, :with_image) }
-
-    it "uses transparent padding to produce 5:3 derivatives" do
-      expect_variant(event, :thumb_image, 160, 96)
-      expect_variant(event, :index_image, 250, 150)
-      expect_variant(event, :featured_image, 180, 108)
-      expect_variant(event, :show_image, 420, 252)
-    end
-  end
-
   it_behaves_like "categorizable"
   it_behaves_like "imageable"
+  it_behaves_like "event imageable"
   it_behaves_like "SchemaDotOrgable"
-
-  def expect_variant(event, method, width, height)
-    expect(event.image).to receive(:variant).with(
-      format: :png,
-      background: :transparent,
-      gravity: "Center",
-      resize_to_fit: [width, height],
-      extent: "#{width}x#{height}"
-    )
-
-    event.public_send(method)
-  end
 end

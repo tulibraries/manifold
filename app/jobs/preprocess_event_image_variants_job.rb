@@ -10,7 +10,7 @@ class PreprocessEventImageVariantsJob < ApplicationJob
     [:thumb_image],
     [:index_image],
     [:show_image],
-    [:custom_image, 180, 180],
+    [:featured_image],
     [:fit_image, 600, 600]
   ].freeze
 

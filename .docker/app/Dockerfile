@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-USER root
+USER 0
 
 ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
   RAILS_ENV=production

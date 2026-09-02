@@ -15,7 +15,7 @@ RSpec.describe PreprocessEventImageVariantsJob, type: :job do
       described_class.perform_now(event)
 
       keys = [event.thumb_image, event.index_image, event.show_image,
-              event.custom_image(180, 180), event.fit_image(600, 600)].map(&:key)
+              event.featured_image, event.fit_image(600, 600)].map(&:key)
 
       expect(keys).to all(be_present)
       expect(keys).to all(satisfy { |key| service.exist?(key) })

@@ -7,6 +7,8 @@ class Exhibition < ApplicationRecord
   include Draftable
   include SchemaDotOrgable
   extend FriendlyId
+  include EventImageable
+
   friendly_id :title, use: [:slugged, :finders]
   friendly_id :slug_candidates, use: :slugged
 

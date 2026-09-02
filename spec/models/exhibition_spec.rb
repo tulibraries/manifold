@@ -23,6 +23,13 @@ RSpec.describe Exhibition, type: :model do
   end
 
   it_behaves_like "categorizable"
+  it_behaves_like "imageable"
   it_behaves_like "imageables"
+  it_behaves_like "event imageable"
 
+  it "persists featured image alt text" do
+    exhibition = FactoryBot.create(:exhibition, alt_text: "An open illustrated book")
+
+    expect(exhibition.reload.alt_text).to eq("An open illustrated book")
+  end
 end

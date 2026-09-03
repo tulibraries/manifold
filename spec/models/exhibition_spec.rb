@@ -32,4 +32,31 @@ RSpec.describe Exhibition, type: :model do
 
     expect(exhibition.reload.alt_text).to eq("An open illustrated book")
   end
+
+  describe "image variant preprocessing" do
+    before do
+      @queued = 0
+      allow(PreprocessEventImageVariantsJob).to receive(:perform_later) { @queued += 1 }
+    end
+
+    it "queues derivative generation when an image is attached" do
+      exhibition = FactoryBot.create(:exhibition)
+
+      expect {
+        exhibition.image.attach(
+          io: File.open(Rails.root.join("spec/fixtures/charles.jpg")),
+          filename: "charles.jpg",
+          content_type: "image/jpeg"
+        )
+      }.to change { @queued }.by(1)
+    end
+
+    it "does not queue derivative generation when other attributes change" do
+      exhibition = FactoryBot.create(:exhibition, :with_image)
+
+      expect {
+        exhibition.update!(title: "A New Title")
+      }.not_to change { @queued }
+    end
+  end
 end

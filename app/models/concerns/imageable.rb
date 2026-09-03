@@ -44,6 +44,15 @@ module Imageable
     padded_image(FEATURED_IMAGE_WIDTH, FEATURED_IMAGE_HEIGHT)
   end
 
+  def rendered_image
+    return unless image.attached?
+
+    variant = yield
+    return variant unless variant.is_a?(ActiveStorage::VariantWithRecord)
+
+    variant.image&.blob
+  end
+
   def custom_image(width, height)
     ensure_image_analyzed
 

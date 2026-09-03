@@ -30,6 +30,11 @@ class Exhibition < ApplicationRecord
   validates :images, content_type: ["image/png", "image/jpeg", "image/gif"],
                       size: { less_than: 3.megabytes , message: "is too large" }
 
+  # Exhibition images are attached by hand in Administrate, so unlike events
+  # there is no sync to preprocess their derivatives. Without this, the first
+  # page view has no derivative to link to and falls back to the Temple T.
+  before_save :note_image_attachment_change
+  after_commit :preprocess_image_variants, on: [:create, :update]
 
   def slug_candidates
     [
@@ -72,4 +77,18 @@ class Exhibition < ApplicationRecord
       }
     end
   end
+
+  private
+
+    def note_image_attachment_change
+      @image_attachment_changed = attachment_changes.key?("image")
+      true
+    end
+
+    def preprocess_image_variants
+      return unless @image_attachment_changed
+
+      @image_attachment_changed = nil
+      PreprocessEventImageVariantsJob.perform_later(self) if image.attached?
+    end
 end

@@ -26,16 +26,7 @@ class Event < ApplicationRecord
   scope :is_displayable, -> { where("suppress = ?", false) }
 
   def to_param  # overridden for tests
-    id
-  end
-
-  def rendered_image
-    return unless image.attached?
-
-    variant = yield
-    return variant unless variant.is_a?(ActiveStorage::VariantWithRecord)
-
-    variant.image&.blob
+    id.to_s
   end
 
   def slug_candidates

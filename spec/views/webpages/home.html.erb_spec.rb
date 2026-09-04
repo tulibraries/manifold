@@ -34,4 +34,17 @@ RSpec.describe "webpages/home", type: :view do
     expect(rendered).to match /id="charles-library"/
     expect(rendered).to match /id="scop"/
   end
+
+  it "uses the shared carousel controller for each homepage carousel" do
+    @webpage = FactoryBot.create(:webpage)
+    highlight = FactoryBot.create(:highlight, :with_image, promote_to_dig_col: true)
+    @highlights = []
+    @digcols = [highlight]
+
+    render
+
+    expect(rendered).to have_css(".home-events-row[data-controller='carousel']")
+    expect(rendered).to have_css(".home-news-row[data-controller='carousel']")
+    expect(rendered).to have_css(".home-digcol-row[data-controller='carousel']")
+  end
 end

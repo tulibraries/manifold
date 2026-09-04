@@ -1,7 +1,7 @@
-  <div id="newsCarousel" class="carousel">
-    <div class="carousel-inner mx-3 pb-0" role="tablist" aria-label="Featured Events">
+  <div id="newsCarousel" class="carousel" role="region" aria-roledescription="carousel" aria-label="Featured Events">
+    <div id="newsCarouselItems" class="carousel-inner mx-3 pb-0" role="list">
     <% @featured_events.each_with_index do |event, i| %>
-      <div class="carousel-item<%= " active" if i == 0 %>" role="tab">
+      <div class="carousel-item<%= " active" if i == 0 %>" role="listitem">
         <div class="card library-event">
           <%= link_to event_path(event.id) do %>
             <% event_image = event.rendered_image { event.show_image } %>
@@ -26,14 +26,15 @@
       </div>
     <% end if @featured_events.present? %>
     </div>
-    <a class="carousel-control-prev bg-transparent w-aut" href="#" role="button">
+    <p class="visually-hidden carousel-status" role="status"></p>
+    <button class="carousel-control-prev bg-transparent w-aut" type="button" aria-controls="newsCarouselItems">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
-    </a>
-    <a class="carousel-control-next bg-transparent w-aut" href="#" role="button">
+    </button>
+    <button class="carousel-control-next bg-transparent w-aut" type="button" aria-controls="newsCarouselItems">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
-    </a>
+    </button>
   </div>
   <div class="col-12 text-end px-0">
     <%= link_to "View all events", events_path, class: "view-all" %>

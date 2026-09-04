@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_01_120225) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_04_130617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -251,6 +251,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_01_120225) do
     t.datetime "created_at", precision: nil, null: false
     t.date "end_date"
     t.integer "group_id"
+    t.boolean "highlighted", default: false, null: false
     t.string "online_url"
     t.boolean "promoted_to_events", default: false
     t.string "slug"
@@ -260,6 +261,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_01_120225) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["collection_id"], name: "index_exhibitions_on_collection_id"
     t.index ["group_id"], name: "index_exhibitions_on_group_id"
+    t.index ["highlighted"], name: "index_exhibitions_on_single_highlighted", unique: true, where: "highlighted"
     t.index ["space_id"], name: "index_exhibitions_on_space_id"
   end
 

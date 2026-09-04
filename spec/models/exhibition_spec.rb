@@ -33,6 +33,32 @@ RSpec.describe Exhibition, type: :model do
     expect(exhibition.reload.alt_text).to eq("An open illustrated book")
   end
 
+  describe "highlighting" do
+    it "defaults to not highlighted" do
+      expect(FactoryBot.create(:exhibition).highlighted).to be(false)
+    end
+
+    it "allows only one highlighted exhibition" do
+      FactoryBot.create(:exhibition, highlighted: true)
+      exhibition = FactoryBot.build(:exhibition, highlighted: true)
+
+      expect(exhibition).not_to be_valid
+      expect(exhibition.errors[:base]).to include("Only one exhibition can be highlighted at a time")
+    end
+
+  end
+
+  describe "event-list display" do
+    it "provides an event-compatible date and time display" do
+      exhibition = FactoryBot.build(:exhibition,
+                                    start_date: Date.new(2026, 9, 1),
+                                    end_date: Date.new(2026, 9, 3))
+
+      expect(exhibition.get_date).to eq("Tue, Sep 01, 2026 - Thu, Sep 03, 2026")
+      expect(exhibition.set_start_time).to eq("")
+    end
+  end
+
   describe "image variant preprocessing" do
     before do
       @queued = 0

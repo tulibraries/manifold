@@ -21,9 +21,11 @@ class Exhibition < ApplicationRecord
   has_rich_text :covid_alert
 
   validates :start_date, :end_date, presence: true
+  validate :only_one_highlighted_exhibition, if: :highlighted?
 
   scope :is_past, -> { where("end_date < ?", Date.current) }
   scope :is_current, -> { where("end_date >= ?", Date.current) }
+  scope :promoted, -> { where(promoted_to_events: true) }
 
   has_many_attached :images
 
@@ -45,6 +47,18 @@ class Exhibition < ApplicationRecord
 
   def label
     title
+  end
+
+  def get_date
+    return if start_date.blank?
+
+    return start_date.strftime("%^a, %^b %d, %Y").titleize if start_date == end_date
+
+    "#{start_date.strftime("%^a, %^b %d, %Y").titleize} - #{end_date.strftime("%^a, %^b %d, %Y").titleize}"
+  end
+
+  def set_start_time
+    ""
   end
 
   def schema_dot_org_type
@@ -79,6 +93,12 @@ class Exhibition < ApplicationRecord
   end
 
   private
+
+    def only_one_highlighted_exhibition
+      return unless self.class.where(highlighted: true).where.not(id:).exists?
+
+      errors.add(:base, "Only one exhibition can be highlighted at a time")
+    end
 
     def note_image_attachment_change
       @image_attachment_changed = attachment_changes.key?("image")

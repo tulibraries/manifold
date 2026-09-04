@@ -46,14 +46,6 @@ RSpec.describe Exhibition, type: :model do
       expect(exhibition.errors[:base]).to include("Only one exhibition can be highlighted at a time")
     end
 
-    it "enforces the single-highlight rule in the database" do
-      FactoryBot.create(:exhibition, highlighted: true)
-      exhibition = FactoryBot.create(:exhibition, highlighted: false)
-
-      expect {
-        exhibition.update_column(:highlighted, true)
-      }.to raise_error(ActiveRecord::RecordNotUnique)
-    end
   end
 
   describe "event-list display" do

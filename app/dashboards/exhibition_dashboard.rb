@@ -23,6 +23,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     start_date: Field::DateTime,
     end_date: Field::DateTime,
     promoted_to_events: Field::Boolean,
+    highlighted: Field::Boolean,
     categories: Field::HasMany,
     covid_alert: DescriptionField.with_options(admin_only: true),
     online_url: Field::String,
@@ -41,6 +42,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :space,
     :start_date,
     :end_date,
+    :highlighted,
     :promoted_to_events,
   ].freeze
 
@@ -73,6 +75,7 @@ class ExhibitionDashboard < Administrate::BaseDashboard
     :images,
     :start_date,
     :end_date,
+    :highlighted,
     :promoted_to_events,
     :online_url,
     :space,

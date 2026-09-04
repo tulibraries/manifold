@@ -612,7 +612,7 @@ en:
         view_all_past_workshops_link: View All Past Workshops
         filters:
           none: "- none -"
-        featured_events: Featured Events
+        featured_events: Featured Events, Exhibits & Workshops
         event_types: Event Types
         no_event_types: No events found.
         calendar: Calendar
@@ -622,7 +622,7 @@ en:
         workshops: Workshops
         not_workshops: Events
       headings:
-        upcoming_events_workshops: Upcoming Events & Workshops
+        upcoming_events_workshops: Upcoming Events, Exhibits & Workshops
         upcoming_events: Upcoming Event
         upcoming_workshops: Upcoming Workshops
         past_workshops: Past Workshops

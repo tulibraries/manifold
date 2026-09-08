@@ -1,7 +1,7 @@
-<div id="digcolsCarousel" class="carousel">
-  <div class="carousel-inner mx-3 pb-0" role="tablist" aria-label="Digital Collection Highlights">
+<div id="digcolsCarousel" class="carousel" role="region" aria-roledescription="carousel" aria-label="Digital Collection Highlights">
+  <div id="digcolsCarouselItems" class="carousel-inner mx-3 pb-0" role="list">
     <% @digcols.each_with_index do |digcol, i| %>
-    <div class="carousel-item<%= " active" if i == 0 %>" role="tab">
+    <div class="carousel-item<%= " active" if i == 0 %>" role="listitem">
       <div class="card library-event">
         <%= link_to digcol.link do %>
 
@@ -24,14 +24,15 @@
           
 
     </div>
-    <a class="carousel-control-prev bg-transparent w-aut" href="#" role="button">
+    <p class="visually-hidden carousel-status" role="status"></p>
+    <button class="carousel-control-prev bg-transparent w-aut" type="button" aria-controls="digcolsCarouselItems">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
-    </a>
-    <a class="carousel-control-next bg-transparent w-aut" href="#" role="button">
+    </button>
+    <button class="carousel-control-next bg-transparent w-aut" type="button" aria-controls="digcolsCarouselItems">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
-    </a>
+    </button>
 </div>
 
   <div class="col-12 text-end px-0 bottom-section">

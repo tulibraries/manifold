@@ -39,6 +39,13 @@ RSpec.describe ImageHelper, type: :helper do
 
       expect(html).to include('alt="Thumbnail caption"')
       expect(html).to include(%Q(href="#{event_path(event.id)}"))
+      expect(html).to include('target="_top"')
+    end
+
+    it "uses title-based fallback alt text for an event index image" do
+      event = FactoryBot.create(:event, :with_processed_image, title: "Poetry Reading", alt_text: nil)
+
+      expect(helper.render_image(event, variant: :index)).to include('alt="Event image for Poetry Reading"')
     end
 
     it "renders the index placeholder when an event has no image" do
@@ -50,7 +57,7 @@ RSpec.describe ImageHelper, type: :helper do
       expect(html).to include(%Q(href="#{event_path(event.id)}"))
     end
 
-    it "renders an exhibition's featured image and links to the exhibition" do
+    it "renders an exhibition's index image and links to the exhibition" do
       exhibition = FactoryBot.create(:exhibition, :with_processed_image, title: "Book Arts", alt_text: "Open illustrated book")
 
       html = helper.render_image(exhibition, variant: :index)

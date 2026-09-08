@@ -57,8 +57,6 @@ class Exhibition < ApplicationRecord
     "#{start_date.strftime("%^a, %^b %d, %Y").titleize} - #{end_date.strftime("%^a, %^b %d, %Y").titleize}"
   end
 
-  # Date shown in the overlay on an events-index card. Exhibitions run for
-  # months, so unlike events the year is always kept and the day name dropped.
   def card_date
     return if start_date.blank?
 
@@ -67,8 +65,6 @@ class Exhibition < ApplicationRecord
     [start_date, end_date].map { |date| date.strftime("%^b %-d, %Y") }.join(" - ")
   end
 
-  # Location line on an events-index card. Exhibitions have no location fields,
-  # only an optional space; one held online has a join URL instead.
   def card_location
     space&.label.presence || ("Online" if online_url.present?)
   end

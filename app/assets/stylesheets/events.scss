@@ -94,9 +94,6 @@
   .event {
     padding-top: 10px;
     img {
-      // The derivative is already padded to 5:3 by EventImageable, so filling
-      // the card width keeps every card's image the same height. object-fit
-      // guards the placeholder logo, which has no such ratio.
       width: 100%;
       height: auto;
       aspect-ratio: 5 / 3;

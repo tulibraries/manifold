@@ -47,4 +47,35 @@ RSpec.describe "webpages/home", type: :view do
     expect(rendered).to have_css(".home-news-row[data-controller='carousel']")
     expect(rendered).to have_css(".home-digcol-row[data-controller='carousel']")
   end
+
+  describe "the featured events carousel" do
+    before(:each) do
+      @webpage = FactoryBot.create(:webpage)
+      @highlights = []
+      @digcols = []
+    end
+
+    it "overlays the card date and lists the location above the title" do
+      @featured_events = [FactoryBot.create(:event,
+                                            title: "Fall Open House",
+                                            location_name: "Charles Library",
+                                            location_space: "Atrium")]
+
+      render
+
+      expect(rendered).to have_css(".library-event .event-image .event-date",
+                                   text: @featured_events.first.card_date)
+      expect(rendered).to have_css(".library-event .event-card-location", text: "Charles Library, Atrium")
+      expect(rendered).to have_css(".library-event .event-title", text: "Fall Open House")
+    end
+
+    it "omits the location when the event is located nowhere" do
+      @featured_events = [FactoryBot.create(:event, location_name: nil, location_space: nil, event_url: nil)]
+
+      render
+
+      expect(rendered).to have_css(".library-event .event-date")
+      expect(rendered).to have_no_css(".library-event .event-card-location")
+    end
+  end
 end

@@ -3,25 +3,16 @@
     <% @featured_events.each_with_index do |event, i| %>
       <div class="carousel-item<%= " active" if i == 0 %>" role="listitem">
         <div class="card library-event">
-          <%= link_to event_path(event.id) do %>
-            <% event_image = event.rendered_image { event.show_image } %>
-            <div class="item pb-4">
-              <% if event_image %>
-                <%= image_tag event_image, alt: image_alt_text(event), loading: "lazy", height: "252px", width: "420px" %>
-              <% else %>
-                <%= image_tag "T.png", alt: "Temple T Logo", loading: "lazy" %>
-              <% end %>
-            </div>
-            <div class="card-body px-0">
-              <div class="item-caption text-start mt-0">
-                <h3><%= event.label.truncate(52) %></h3>
-                <p class="card-text event-date">
-                  <span class="d-block"><%= event.get_date %></span>
-                  <%= event.set_times %>
-                </p>
-              </div>
-            </div>
+          <div class="event-image">
+            <%= render_image(event, variant: :index) %>
+            <p class="event-date"><%= event.card_date %></p>
+          </div>
+          <% if (location = event.card_location).present? %>
+            <%= content_tag(:p, location, class: "event-card-location") %>
           <% end %>
+          <h3 class="event-heading">
+            <%= link_to event.title.truncate(64), event, class: "event-title", target: "_top" %>
+          </h3>
         </div>
       </div>
     <% end if @featured_events.present? %>

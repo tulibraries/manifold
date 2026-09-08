@@ -124,7 +124,7 @@
         text-align: left;
       }
       .event-title {
-        font-family: faustina !important;
+        font-family: "roboto" !important;
         font-size: 1.5rem;
         line-height: 1.85rem;
       }
@@ -137,6 +137,51 @@
         margin-top: 21px;
         font-family: "roboto";
         font-weight: 400;
+      }
+    }
+  }
+
+  .home-events-row {
+    .library-event {
+      img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 5 / 3;
+        object-fit: contain;
+        background-color: $white;
+        border: solid $white 4px;
+        box-sizing: border-box;
+        display: block;
+      }
+      .event-image {
+        margin-bottom: 14px;
+        position: relative;
+      }
+      .event-date {
+        background-color: $white;
+        border-left: 0;
+        bottom: 0;
+        color: $royal-blue;
+        font-family: "roboto";
+        font-weight: 400;
+        height: auto;
+        left: 0;
+        margin: 0;
+        padding: 7px 14px;
+        position: absolute;
+        white-space: nowrap;
+        width: auto;
+      }
+      .event-card-location {
+        color: $white;
+        font-family: "roboto";
+        margin: 0 0 7px;
+      }
+      .event-heading {
+        margin: 0;
+      }
+      .event-title {
+        display: block;
       }
     }
   }
@@ -219,16 +264,6 @@
       h3 {
         font-size: 130%;
         font-weight: 400;
-      }
-    }
-  }
-
-  .home-events-row {
-    .library-event {
-      @media (max-width: 1199px) {
-        .item img {
-          height: auto;
-        }
       }
     }
   }

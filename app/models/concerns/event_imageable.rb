@@ -25,10 +25,6 @@ module EventImageable
     event_image(EVENT_INDEX_IMAGE_WIDTH)
   end
 
-  def featured_image
-    event_image(180)
-  end
-
   def show_image
     event_image(EVENT_IMAGE_WIDTH, EVENT_IMAGE_HEIGHT)
   end

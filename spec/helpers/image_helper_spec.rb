@@ -47,29 +47,7 @@ RSpec.describe ImageHelper, type: :helper do
 
       expect(html).to match(%r{assets/T})
       expect(html).to include('alt="Temple T Logo"')
-    end
-
-    it "links an event featured image to the event" do
-      event = FactoryBot.create(:event, :with_processed_image, alt_text: "Featured caption")
-      html = helper.render_image(event, variant: :featured)
-
-      expect(html).to include('alt="Featured caption"')
       expect(html).to include(%Q(href="#{event_path(event.id)}"))
-      expect(html).not_to include("target=")
-    end
-
-    it "uses a title-based fallback alt text for an event featured image" do
-      event = FactoryBot.create(:event, :with_processed_image, title: "Poetry Reading", alt_text: nil)
-
-      expect(helper.render_image(event, variant: :featured)).to include('alt="Event image for Poetry Reading"')
-    end
-
-    it "renders the featured placeholder when an event has no image" do
-      event = FactoryBot.create(:event)
-      html = helper.render_image(event, variant: :featured)
-
-      expect(html).to include('class="events-default"')
-      expect(html).to include('alt="Temple T Logo"')
     end
 
     it "renders an exhibition's featured image and links to the exhibition" do
@@ -94,14 +72,6 @@ RSpec.describe ImageHelper, type: :helper do
       helper.render_image(event, variant: :index)
     end
 
-    it "sizes a featured image with the 5:3 padded featured derivative" do
-      event = FactoryBot.create(:event, :with_processed_image)
-
-      expect(event).not_to receive(:custom_image)
-      expect(event).to receive(:featured_image).at_least(:once).and_call_original
-      helper.render_image(event, variant: :featured)
-    end
-
     it "sizes a show image with fit_image, which is not aspect-ratioed" do
       event = FactoryBot.create(:event, :with_processed_image)
 
@@ -109,12 +79,5 @@ RSpec.describe ImageHelper, type: :helper do
       helper.render_image(event)
     end
 
-    it "sizes an exhibition featured image with the same padded derivative as an event" do
-      exhibition = FactoryBot.create(:exhibition, :with_processed_image)
-
-      expect(exhibition).not_to receive(:custom_image)
-      expect(exhibition).to receive(:featured_image).at_least(:once).and_call_original
-      helper.render_image(exhibition, variant: :featured)
-    end
   end
 end

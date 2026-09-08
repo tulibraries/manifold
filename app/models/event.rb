@@ -99,6 +99,27 @@ class Event < ApplicationRecord
     display_time&.strftime("%^a, %^b %d, %Y ")&.titleize
   end
 
+  # Date shown in the overlay on an events-index card. The year is dropped for
+  # this year's events, since the listing is dominated by them. Deliberately not
+  # get_date, whose titleize would break the all-caps overlay in the one branch
+  # that carries a year, leaving two casings side by side in the same grid.
+  def card_date
+    display_time = start_time || end_time
+    return if display_time.nil?
+
+    return display_time.strftime("%^a - %^b %-d") if display_time.year == Date.current.year
+
+    display_time.strftime("%^a - %^b %-d, %Y")
+  end
+
+  # Location line on an events-index card. The LibCal sync stores an online
+  # event's join URL as event_url, so that, rather than the "Online" token it
+  # also appends to the comma-separated event_type, is the signal here.
+  def card_location
+    [location_name, location_space].filter_map(&:presence).join(", ").presence ||
+      ("Online" if event_url.present?)
+  end
+
   def set_start_time
     return "(All day)" if all_day
     return "" if start_time.nil?

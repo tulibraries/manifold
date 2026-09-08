@@ -3,9 +3,11 @@
   <div class="featured-event">
     <div class="event-image">
       <%= render_image(event, variant: :index) %>
-      <p class="event-date"><%= event_card_date(event) %></p>
+      <p class="event-date"><%= event.card_date %></p>
     </div>
-    <%= content_tag(:p, event_card_location(event), class: "event-card-location") if event_card_location(event).present? %>
+    <% if (location = event.card_location).present? %>
+      <%= content_tag(:p, location, class: "event-card-location") %>
+    <% end %>
     <%= link_to event.title.truncate(64), event, class: "event-title", target: "_top" %>
   </div>
 </div>

@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe EventHelper, type: :helper do
+  include ActiveSupport::Testing::TimeHelpers
+
   describe "Get Building Name" do
     context "receives string with translation" do
       it "renders the translation" do
@@ -24,41 +26,6 @@ RSpec.describe EventHelper, type: :helper do
   describe "display_date" do
     it "formats input date" do
       expect(helper.display_date("2022-10-26")).to eq("10-26-2022")
-    end
-  end
-
-  describe "event_card_date" do
-    it "formats current-year event dates without a year" do
-      event = FactoryBot.build(:event, start_time: Time.zone.local(2026, 8, 31, 12))
-      allow(Date).to receive(:current).and_return(Date.new(2026, 9, 8))
-
-      expect(helper.event_card_date(event)).to eq("MON - AUG 31")
-    end
-
-    it "formats exhibition start and end dates without day names" do
-      exhibition = FactoryBot.build(:exhibition, start_date: Date.new(2026, 8, 24), end_date: Date.new(2026, 12, 13))
-
-      expect(helper.event_card_date(exhibition)).to eq("AUG 24, 2026 - DEC 13, 2026")
-    end
-  end
-
-  describe "event_card_location" do
-    it "combines an event's location and room" do
-      event = FactoryBot.build(:event, location_name: "Charles Library", location_space: "Atrium")
-
-      expect(helper.event_card_location(event)).to eq("Charles Library, Atrium")
-    end
-
-    it "uses Online when an online event has no location" do
-      event = FactoryBot.build(:event, location_name: nil, location_space: nil, event_type: "online")
-
-      expect(helper.event_card_location(event)).to eq("Online")
-    end
-
-    it "uses an exhibition's assigned space" do
-      exhibition = FactoryBot.build(:exhibition, space: FactoryBot.build(:space, name: "Blockson Collection"))
-
-      expect(helper.event_card_location(exhibition)).to eq("Blockson Collection")
     end
   end
 

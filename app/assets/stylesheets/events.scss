@@ -101,7 +101,7 @@
       height: auto;
       aspect-ratio: 5 / 3;
       object-fit: contain;
-      background-color: #e9ecef;
+      background-color: $events-grey;
     }
     .event-image {
       position: relative;
@@ -114,7 +114,7 @@
       font-family: "Roboto";
       font-weight: 400;
       color: $royal-blue;
-      background-color: #e9ecef;
+      background-color: $events-grey;
       bottom: 0;
       left: 0;
       margin: 0;
@@ -282,13 +282,13 @@
     height: auto;
     aspect-ratio: 5 / 3;
     object-fit: contain;
-    background-color: #e9ecef;
+    background-color: $events-grey;
   }
   .event-image {
     position: relative;
   }
   .event-date {
-    background-color: #e9ecef;
+    background-color: $events-grey;
     bottom: 0;
     color: $royal-blue;
     font-family: "Roboto";
@@ -313,14 +313,6 @@
     margin-top: 14px;
   }
 }
-#featured-events {
-  img.events-default {
-    height: 180px;
-    width: 180px;
-  }
-}
-
-
 .filter_links {
   a {
     font-family: faustina;

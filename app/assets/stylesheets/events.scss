@@ -92,10 +92,19 @@
   margin-left: 0;
   margin-right: 0;
   .event {
-    border: solid $lighter-grey 1px;
     padding-top: 10px;
     img {
-      padding-left: 14px;
+      // The derivative is already padded to 5:3 by EventImageable, so filling
+      // the card width keeps every card's image the same height. object-fit
+      // guards the placeholder logo, which has no such ratio.
+      width: 100%;
+      height: auto;
+      aspect-ratio: 5 / 3;
+      object-fit: contain;
+      background-color: #e9ecef;
+    }
+    .event-image {
+      position: relative;
     }
     row {
       padding: 4px;
@@ -105,13 +114,24 @@
       font-family: "Roboto";
       font-weight: 400;
       color: $royal-blue;
-      margin-top: 21px;
+      background-color: #e9ecef;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      padding: 7px 14px;
+      position: absolute;
+      white-space: nowrap;
+    }
+    .event-card-location {
+      color: $royal-blue;
+      font-family: "Roboto";
+      margin: 14px 0;
     }
     .event-title {
       display: block;
-      margin-top: 0;
-      font-size: 1.35rem;
-      line-height: 1.25rem;
+      margin-top: 14px;
+      font-size: 1.75rem;
+      line-height: 2.25rem;
       color: $royal-blue !important;
       font-family: faustina !important;
     }
@@ -256,28 +276,41 @@
 }
 
 .featured-event {
-  color: $royal-blue !important;
-  border: solid $royal-blue 2px;
-  font-size: 1.15rem;
-  font-family: "Roboto";
-  font-weight: 400;
-  min-height: 364px;
-  max-height: 364px;
-  overflow: hidden;
-  a {
-    color: $royal-blue !important;
+  padding-top: 10px;
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 3;
+    object-fit: contain;
+    background-color: #e9ecef;
+  }
+  .event-image {
+    position: relative;
+  }
+  .event-date {
+    background-color: #e9ecef;
+    bottom: 0;
+    color: $royal-blue;
+    font-family: "Roboto";
+    font-weight: 400;
+    left: 0;
+    margin: 0;
+    padding: 7px 14px;
+    position: absolute;
+    white-space: nowrap;
+  }
+  .event-card-location {
+    color: $royal-blue;
+    font-family: "Roboto";
+    margin: 14px 0;
   }
   .event-title {
-    font-size: 1.35rem!important;
-    margin-top: .25rem;
-    line-height: 1.5rem;
-    font-family: "Roboto";
-  }
-  .featured-dates {
-    font-size: 1rem;
-  }
-  .featured-description {
-    font-size: 1rem;
+    color: $royal-blue !important;
+    display: block;
+    font-family: faustina !important;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    margin-top: 14px;
   }
 }
 #featured-events {

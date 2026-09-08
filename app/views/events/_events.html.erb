@@ -1,19 +1,19 @@
 <div class="row events">
 <% @events_list.each do |listing| %>
   <% event = listing.respond_to?(:source) ? listing.source : listing %>
-  <div class="col-12 col-md-4 col-lg-6 event">
+  <div class="col-12 col-md-6 col-lg-4 event">
     <div class="row mb-4 pe-2">
-      <div class="col-12 col-lg-4 mb-3">
-        <%= render_image(event, variant: :index) %>
+      <div class="col-12">
+        <div class="event-image">
+          <%= render_image(event, variant: :index) %>
+          <p class="event-date">
+            <%= event_card_date(event) %>
+          </p>
+        </div>
       </div>
-      <div class="col-12 col-lg-8">
-        <%= link_to event.title.truncate(42), event, class: "event-title", target: "_top" %>
-        <p class="mt-4 event-date bl-blue">
-          <%= event.get_date %><br /><%= event.set_start_time %>
-        </p>
-        <p class="d-none d-xl-flex blue mb-0 pt-2 roboto-light">
-          <%= event.description.to_plain_text.truncate(121) %>
-        </p>
+      <div class="col-12">
+        <%= content_tag(:p, event_card_location(event), class: "event-card-location") if event_card_location(event).present? %>
+        <%= link_to event.title.truncate(64), event, class: "event-title", target: "_top" %>
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@ RSpec.shared_examples "event imageable" do
 
   {
     thumb_image: [160, 96],
-    index_image: [250, 150],
+    index_image: [360, 216],
     featured_image: [180, 108],
     show_image: [420, 252],
   }.each do |method, (width, height)|

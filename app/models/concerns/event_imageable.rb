@@ -11,13 +11,18 @@ module EventImageable
   EVENT_ASPECT_RATIO = 3.0 / 5
   EVENT_IMAGE_WIDTH = 420
   EVENT_IMAGE_HEIGHT = 252
+  EVENT_INDEX_IMAGE_WIDTH = 360
 
   def thumb_image
     event_image(160)
   end
 
+  # Index cards stretch the image to the full card width (~326px at the widest
+  # breakpoint), so the derivative is generated wide enough to scale down into
+  # that slot rather than be blown up from 250px. Kept distinct from
+  # show_image's width so the two remain separate derivatives.
   def index_image
-    event_image(250)
+    event_image(EVENT_INDEX_IMAGE_WIDTH)
   end
 
   def featured_image

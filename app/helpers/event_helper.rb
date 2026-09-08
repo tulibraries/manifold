@@ -1,6 +1,23 @@
 # frozen_string_literal: true
 
 module EventHelper
+  def event_card_date(event)
+    if event.is_a?(Exhibition)
+      return [event.start_date, event.end_date].map { |date| date.strftime("%^b %-d, %Y") }.join(" - ")
+    end
+
+    return event.get_date unless event.start_time&.year == Date.current.year
+
+    event.start_time.strftime("%^a - %^b %-d")
+  end
+
+  def event_card_location(event)
+    return event.space&.label unless event.respond_to?(:location_name)
+
+    [event.location_name, event.location_space].filter_map(&:presence).join(", ").presence ||
+      ("Online" if event.event_type.to_s.casecmp?("online"))
+  end
+
   def render_event_location(event)
     location_link = event_location_link(event)
     return if location_link.blank?

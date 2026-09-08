@@ -99,6 +99,20 @@ class Event < ApplicationRecord
     display_time&.strftime("%^a, %^b %d, %Y ")&.titleize
   end
 
+  def card_date
+    display_time = start_time || end_time
+    return if display_time.nil?
+
+    return display_time.strftime("%^a - %^b %-d") if display_time.year == Date.current.year
+
+    display_time.strftime("%^a - %^b %-d, %Y")
+  end
+
+  def card_location
+    [location_name, location_space].filter_map(&:presence).join(", ").presence ||
+      ("Online" if event_url.present?)
+  end
+
   def set_start_time
     return "(All day)" if all_day
     return "" if start_time.nil?

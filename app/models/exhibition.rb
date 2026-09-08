@@ -57,6 +57,18 @@ class Exhibition < ApplicationRecord
     "#{start_date.strftime("%^a, %^b %d, %Y").titleize} - #{end_date.strftime("%^a, %^b %d, %Y").titleize}"
   end
 
+  def card_date
+    return if start_date.blank?
+
+    return start_date.strftime("%^b %-d, %Y") if start_date == end_date
+
+    [start_date, end_date].map { |date| date.strftime("%^b %-d, %Y") }.join(" - ")
+  end
+
+  def card_location
+    space&.label.presence || ("Online" if online_url.present?)
+  end
+
   def set_start_time
     ""
   end

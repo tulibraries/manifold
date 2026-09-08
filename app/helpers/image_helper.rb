@@ -2,32 +2,16 @@
 
 module ImageHelper
   def render_image(resource, variant: :show)
-    case variant
-    when :index
-      html_class = nil
-      placeholder_class = nil
-      sized_image = -> { resource.index_image }
-      link_options = { target: "_top" }
-    when :featured
-      html_class = nil
-      placeholder_class = "events-default"
-      sized_image = -> { resource.featured_image }
-      link_options = {}
+    index = variant == :index
+    source = resource.rendered_image { index ? resource.index_image : resource.fit_image(600, 600) }
+
+    image = if source
+      alt_text = resource.alt_text.presence || "#{resource.model_name.human} image for #{resource.title}"
+      image_tag(source, class: ("img-fluid event-show-image" unless index), alt: alt_text)
     else
-      html_class = "img-fluid event-show-image"
-      placeholder_class = nil
-      sized_image = -> { resource.fit_image(600, 600) }
-      link_options = nil
+      image_tag("T.png", alt: "Temple T Logo")
     end
 
-    source = resource.rendered_image(&sized_image)
-
-    unless source
-      return image_tag("T.png", class: placeholder_class, alt: "Temple T Logo")
-    end
-
-    alt_text = resource.alt_text.presence || "#{resource.model_name.human} image for #{resource.title}"
-    image = image_tag(source, class: html_class, alt: alt_text)
-    link_options ? link_to(image, polymorphic_path(resource), **link_options) : image
+    index ? link_to(image, polymorphic_path(resource), target: "_top") : image
   end
 end

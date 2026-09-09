@@ -1214,6 +1214,8 @@ en:
           study_room: Reserve a Study Room
           not_study_room: Not a Study Room
         links:
+          slab_label: Health Sciences Student Library Advisory Committee
+          slab_link: /webpages/Health-Sciences-Student-Library-Advisory-Committee
           journal_finder_label: Journal Finder
           journal_finder_link: /journal-finder
           support_label: Support the Health Sciences Libraries

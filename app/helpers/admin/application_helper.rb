@@ -11,7 +11,7 @@ module Admin::ApplicationHelper
       "<h2>#{f.first}</h2>" +
         Diffy::Diff.new(f.last.first, f.last.last, include_plus_and_minus_in_html: true).to_s(:html)
     end
-    changed_map.join("<br/>").html_safe
+    safe_join(changed_map, tag.br)
   end
 
   def render_show_field(field, locals = {})

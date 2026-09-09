@@ -1,15 +1,15 @@
-require: rubocop-rails
+plugins: rubocop-rails
 
 AllCops:
-  TargetRubyVersion: 3.3
+  TargetRubyVersion: 4.0
   # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
   # to ignore them, so only the ones explicitly set in this file are enabled.
   DisabledByDefault: true
   Exclude:
-    - 'node_modules/**/*'
-    - '**/templates/**/*'
-    - '**/vendor/**/*'
-    - 'bin/*'
+    - "node_modules/**/*"
+    - "**/templates/**/*"
+    - "**/vendor/**/*"
+    - "bin/*"
 
 # Prefer &&/|| over and/or.
 Style/AndOr:
@@ -81,8 +81,7 @@ Style/FrozenStringLiteralComment:
   Enabled: true
   EnforcedStyle: always
   Exclude:
-    - 'app/models/traject_indexer.rb'
-    - 'db/schema.rb'
+    - "db/schema.rb"
 
 # Use `foo {}` not `foo{}`.
 Layout/SpaceBeforeBlockBraces:
@@ -134,10 +133,10 @@ Rails:
   Enabled: true
 
 Rails/FindEach:
-  Enabled: false
+  Enabled: true
 
 Rails/OutputSafety:
-  Enabled: false
+  Enabled: true
 
 Rails/HttpPositionalArguments:
-  Enabled: false
+  Enabled: true

@@ -73,7 +73,12 @@ module ApplicationHelper
   end
 
   def json_ld(entity)
-    raw(entity.map_to_schema_dot_org.to_json)
+    json = ERB::Util.json_escape(entity.map_to_schema_dot_org.to_json)
+
+    # JSON-LD must remain valid JSON inside a script element.
+    # rubocop:disable Rails/OutputSafety
+    json.html_safe
+    # rubocop:enable Rails/OutputSafety
   end
 
   def render_weekly_hours(model)

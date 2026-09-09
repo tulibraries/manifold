@@ -69,7 +69,7 @@ RSpec.describe "Dashboard::BuildingDrafts", type: :system do
       fill_in("Email", with: building.email)
       click_button("Create Building")
       expect(page).to have_content(building.name)
-      expect(page).to have_content(building.description.body.html_safe)
+      expect(page).to have_content(building.description.body.to_plain_text)
 
       # Verify the building was actually saved to the database with correct values
       created_building = Building.find_by(name: building.name)

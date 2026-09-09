@@ -67,7 +67,7 @@ RSpec.describe "Dashboard::CategoryDrafts", type: :system do
       find(:xpath, "//\*[@id=\"category_long_description_trix_input_category\"]", visible: false).set(category.long_description.body.to_trix_html)
       click_button("Create Category")
       expect(page).to have_content(category.name)
-      expect(page).to have_content(category.long_description.body.html_safe)
+      expect(page).to have_content(category.long_description.body.to_plain_text)
     end
   end
 end

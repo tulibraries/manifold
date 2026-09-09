@@ -99,6 +99,8 @@
       aspect-ratio: 5 / 3;
       object-fit: contain;
       background-color: $events-grey;
+      border: solid $events-grey 10px;
+      box-sizing: border-box;
     }
     .event-image {
       position: relative;
@@ -109,9 +111,9 @@
     }
     .event-date {
       font-family: "Roboto";
-      font-weight: 400;
-      color: $royal-blue;
-      background-color: $events-grey;
+      font-weight: 700;
+      color: $white;
+      background-color: $royal-blue;
       bottom: 0;
       left: 0;
       margin: 0;
@@ -122,11 +124,12 @@
     .event-card-location {
       color: $royal-blue;
       font-family: "Roboto";
-      margin: 14px 0;
+      line-height: 1.5rem;
+      margin: 14px 0 0 0;
+      min-height: 1.5rem;
     }
     .event-title {
       display: block;
-      margin-top: 14px;
       font-size: 1.75rem;
       line-height: 2.25rem;
       color: $royal-blue !important;
@@ -280,16 +283,18 @@
     aspect-ratio: 5 / 3;
     object-fit: contain;
     background-color: $events-grey;
+    border: solid $events-grey 10px;
+    box-sizing: border-box;
   }
   .event-image {
     position: relative;
   }
   .event-date {
-    background-color: $events-grey;
+    background-color: $royal-blue;
     bottom: 0;
-    color: $royal-blue;
+    color: $white;
     font-family: "Roboto";
-    font-weight: 400;
+    font-weight: 700;
     left: 0;
     margin: 0;
     padding: 7px 14px;
@@ -299,7 +304,7 @@
   .event-card-location {
     color: $royal-blue;
     font-family: "Roboto";
-    margin: 14px 0;
+    margin: 14px 0 0 0;
   }
   .event-title {
     color: $royal-blue !important;
@@ -307,7 +312,6 @@
     font-family: faustina !important;
     font-size: 1.75rem;
     line-height: 2.25rem;
-    margin-top: 14px;
   }
 }
 .filter_links {

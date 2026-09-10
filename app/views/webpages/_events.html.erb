@@ -8,9 +8,9 @@
             <p class="event-date"><%= event.card_date %></p>
           </div>
           <% if (location = event.card_location).present? %>
-            <%= content_tag(:p, location, class: "event-card-location") %>
+            <%= content_tag(:p, location, class: "event-card-location text-start") %>
           <% end %>
-          <h3 class="event-heading">
+          <h3 class="event-heading text-start">
             <%= link_to event.title.truncate(64), event, class: "event-title", target: "_top" %>
           </h3>
         </div>

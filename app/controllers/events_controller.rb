@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
     exhibition = Exhibition.is_current.find_by(highlighted: true)
     num_featured_events = exhibition ? 2 : 3
-    featured_events = Event.is_current.is_displayable.where(featured: true).order(:start_time).take(num_featured_events)
+    featured_events = Event.is_current.is_displayable.where(featured: true).take(num_featured_events)
     @featured_events = [exhibition, *featured_events].compact
 
     @mailing_list = ExternalLink.find_by(slug: "events-mailing-list")

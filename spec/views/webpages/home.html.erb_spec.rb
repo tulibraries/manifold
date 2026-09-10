@@ -69,6 +69,24 @@ RSpec.describe "webpages/home", type: :view do
       expect(rendered).to have_css(".library-event .event-title", text: "Fall Open House")
     end
 
+    it "renders a highlighted exhibition as a card alongside the events" do
+      exhibition = FactoryBot.create(:exhibition,
+                                     title: "Highlighted Exhibition",
+                                     start_date: Date.current,
+                                     end_date: Date.current + 1,
+                                     highlighted: true)
+      event = FactoryBot.create(:event, title: "Fall Open House", featured: true)
+      @featured_events = [exhibition, event]
+
+      render
+
+      cards = Capybara.string(rendered).all("#newsCarouselItems .carousel-item")
+      expect(cards.first).to have_css(".event-title", text: "Highlighted Exhibition")
+      expect(cards.first).to have_css(".event-date", text: exhibition.card_date)
+      expect(cards.first[:class]).to include("active")
+      expect(cards.last).to have_css(".event-title", text: "Fall Open House")
+    end
+
     it "omits the location when the event is located nowhere" do
       @featured_events = [FactoryBot.create(:event, location_name: nil, location_space: nil, event_url: nil)]
 

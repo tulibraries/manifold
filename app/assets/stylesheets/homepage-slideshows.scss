@@ -117,7 +117,6 @@
       padding-bottom: 14px;
       @media (max-width: 767px) {
         width: 90%;
-        text-align: center;
       }
       @media (min-width: 768px) {
         width: 100%;
@@ -125,7 +124,6 @@
       }
       .event-title {
         font-family: "roboto" !important;
-        font-size: 1.5rem;
         line-height: 1.85rem;
       }
       .event-date {
@@ -158,12 +156,12 @@
         position: relative;
       }
       .event-date {
-        background-color: $white;
+        background-color: $events-grey;
         border-left: 0;
         bottom: 0;
         color: $royal-blue;
         font-family: "roboto";
-        font-weight: 400;
+        font-weight: 700;
         height: auto;
         left: 0;
         margin: 0;
@@ -220,7 +218,6 @@
       }
       @media (max-width: 767px) {
         width: 90%;
-        text-align: center;
       }
       @media (min-width: 768px) {
         width: 100%;

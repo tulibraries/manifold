@@ -6,8 +6,7 @@ COPY . .
 
 USER 0
 
-ARG RAILS_MASTER_KEY=$MANIFOLD_MASTER_KEY \
-  RAILS_ENV=production
+ARG RAILS_ENV=production
 
 RUN apk add -U --no-cache \
       bash=5.3.9-r1 \
@@ -34,7 +33,7 @@ RUN apk add -U --no-cache \
     if [ "${RAILS_ENV}" = "production" ]; then bundle config set --local without "development test"; fi && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \
-    SECRET_KEY_BASE=dummy bundle exec rails assets:precompile && \
+    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile && \
     if [ "${RAILS_ENV}" = "production" ]; then rm -rf tmp/*; fi && \
     if [ "${RAILS_ENV}" = "production" ]; then apk del build-dependencies; fi && \
     rm -rf /var/cache/apk/ && \

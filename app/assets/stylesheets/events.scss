@@ -6,6 +6,12 @@
   .event-show-image {
     max-width: 90%;
   }
+  
+  .event-data {
+    a.caret-right::after {
+      content: url("caret-right-white.png");
+    }
+  }
 }
 .event-index {
   .intro {    

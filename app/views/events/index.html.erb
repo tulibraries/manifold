@@ -17,7 +17,7 @@
   </div>
 
   <div class="container-lg" id="featured-events">
-    <div class="col-12 pt-3 pb-2">
+    <div class="col-12 mt-4 pt-3 pb-2">
   <% if @featured_events.present? %>
       <h2 class="bl-red fs-3"><%= t("manifold.events.index.featured_events") %></h2>
   <% end %>
@@ -25,11 +25,11 @@
     <div class="row mb-0 px-3 justify-content-evenly ">
       <%= render "featured" if @featured_events.present? %>
     </div>
-    <div class="col-12 text-center filter_links mb-3">
+    <div class="col-12 text-center filter_links mt-4 mb-3">
       <a name="list" id="list"></a>
-      <%= link_to t("manifold.events.index.view_past_events"), past_events_path, class: "d-block d-lg-inline pe-4 faustina" %>
+      <%= link_to t("manifold.events.index.view_past_events"), past_events_path, class: "d-block d-lg-inline pe-4" %>
       <hr />
-      <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline ps-4 faustina" %>
+      <%= link_to t("manifold.events.index.view_past_events_videos"), webpages_videos_all_path, class: "d-block d-lg-inline ps-4" %>
     </div>
   </div>
 

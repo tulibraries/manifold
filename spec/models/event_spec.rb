@@ -38,6 +38,67 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "#card_date" do
+    it "drops the year for a current-year event" do
+      event = FactoryBot.build(:event, start_time: Time.zone.local(2026, 8, 31, 12))
+
+      travel_to(Date.new(2026, 9, 8)) do
+        expect(event.card_date).to eq("MON - AUG 31")
+      end
+    end
+
+    it "keeps the year, and the caps, for an event in another year" do
+      event = FactoryBot.build(:event, start_time: Time.zone.local(2027, 8, 31, 12))
+
+      travel_to(Date.new(2026, 9, 8)) do
+        expect(event.card_date).to eq("TUE - AUG 31, 2027")
+      end
+    end
+
+    it "falls back to the end time when there is no start time" do
+      event = FactoryBot.build(:event, start_time: nil, end_time: Time.zone.local(2026, 8, 31, 14))
+
+      travel_to(Date.new(2026, 9, 8)) do
+        expect(event.card_date).to eq("MON - AUG 31")
+      end
+    end
+
+    it "is nil when the event has no dates at all" do
+      event = FactoryBot.build(:event, start_time: nil, end_time: nil)
+
+      expect(event.card_date).to be_nil
+    end
+  end
+
+  describe "#card_location" do
+    it "combines the location and room" do
+      event = FactoryBot.build(:event, location_name: "Charles Library", location_space: "Atrium")
+
+      expect(event.card_location).to eq("Charles Library, Atrium")
+    end
+
+    it "uses Online when a located-nowhere event has a join URL" do
+      event = FactoryBot.build(:event, location_name: nil, location_space: nil,
+                                       event_url: "https://example.com/join")
+
+      expect(event.card_location).to eq("Online")
+    end
+
+    it "uses Online when the synced event_type carries other categories too" do
+      event = FactoryBot.build(:event, location_name: nil, location_space: nil,
+                                       event_type: "Workshop, Online",
+                                       event_url: "https://example.com/join")
+
+      expect(event.card_location).to eq("Online")
+    end
+
+    it "is nil when there is neither a location nor a join URL" do
+      event = FactoryBot.build(:event, location_name: nil, location_space: nil, event_url: nil)
+
+      expect(event.card_location).to be_nil
+    end
+  end
+
   describe "set times" do
     let(:start_time) { Time.zone.parse "7/4/18 10:00 am" }
     let(:start_date) { Time.zone.parse "7/4/18" }

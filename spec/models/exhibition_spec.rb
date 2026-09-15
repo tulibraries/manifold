@@ -59,6 +59,40 @@ RSpec.describe Exhibition, type: :model do
     end
   end
 
+  describe "#card_date" do
+    it "renders a range without day names" do
+      exhibition = FactoryBot.build(:exhibition, start_date: Date.new(2026, 8, 24), end_date: Date.new(2026, 12, 13))
+
+      expect(exhibition.card_date).to eq("AUG 24, 2026 - DEC 13, 2026")
+    end
+
+    it "renders a single-day exhibition once" do
+      exhibition = FactoryBot.build(:exhibition, start_date: Date.new(2026, 8, 24), end_date: Date.new(2026, 8, 24))
+
+      expect(exhibition.card_date).to eq("AUG 24, 2026")
+    end
+  end
+
+  describe "#card_location" do
+    it "uses the assigned space" do
+      exhibition = FactoryBot.build(:exhibition, space: FactoryBot.build(:space, name: "Blockson Collection"))
+
+      expect(exhibition.card_location).to eq("Blockson Collection")
+    end
+
+    it "uses Online for a space-less exhibition with an online URL" do
+      exhibition = FactoryBot.build(:exhibition, space: nil, online_url: "https://example.com/exhibition")
+
+      expect(exhibition.card_location).to eq("Online")
+    end
+
+    it "is nil without a space or an online URL" do
+      exhibition = FactoryBot.build(:exhibition, space: nil, online_url: nil)
+
+      expect(exhibition.card_location).to be_nil
+    end
+  end
+
   describe "image variant preprocessing" do
     before do
       @queued = 0

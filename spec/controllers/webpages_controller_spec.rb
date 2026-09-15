@@ -115,6 +115,125 @@ RSpec.describe WebpagesController, type: :controller do
       expect(response.body).not_to match(application_bundle_pattern)
       expect(response.body).to match(homepage_bundle_pattern)
     end
+
+    context "the featured events carousel" do
+      let(:events) do
+        3.times.map do |index|
+          FactoryBot.create(:event,
+                            title: "Featured Event #{index}",
+                            featured: true,
+                            start_time: Date.current + index + 1,
+                            end_time: Date.current + index + 2)
+        end
+      end
+
+      it "places the highlighted exhibition ahead of the featured events" do
+        exhibition = FactoryBot.create(:exhibition,
+                                       title: "Highlighted Exhibition",
+                                       start_date: Date.current,
+                                       end_date: Date.current + 1,
+                                       highlighted: true)
+        featured_events = events
+
+        VCR.use_cassette("todays_hours") do
+          get :home
+        end
+
+        expect(assigns(:featured_events)).to eq([exhibition, *featured_events])
+      end
+
+      it "lists only the featured events when no exhibition is highlighted" do
+        featured_events = events
+
+        VCR.use_cassette("todays_hours") do
+          get :home
+        end
+
+        expect(assigns(:featured_events)).to eq(featured_events)
+      end
+
+      it "omits an exhibition that is highlighted but has already ended" do
+        FactoryBot.create(:exhibition,
+                          title: "Past Highlighted Exhibition",
+                          start_date: Date.current - 8,
+                          end_date: Date.current - 1,
+                          highlighted: true)
+        featured_events = events
+
+        VCR.use_cassette("todays_hours") do
+          get :home
+        end
+
+        expect(assigns(:featured_events)).to eq(featured_events)
+      end
+
+      it "orders the featured events by start time" do
+        later = FactoryBot.create(:event,
+                                  title: "Later Featured Event",
+                                  featured: true,
+                                  start_time: Date.current + 8,
+                                  end_time: Date.current + 9)
+        sooner = FactoryBot.create(:event,
+                                   title: "Sooner Featured Event",
+                                   featured: true,
+                                   start_time: Date.current + 1,
+                                   end_time: Date.current + 2)
+
+        VCR.use_cassette("todays_hours") do
+          get :home
+        end
+
+        expect(assigns(:featured_events)).to eq([sooner, later])
+      end
+
+      it "omits featured events that have already ended" do
+        FactoryBot.create(:event,
+                          title: "Past Featured Event",
+                          featured: true,
+                          start_time: Date.current - 8,
+                          end_time: Date.current - 1)
+        featured_events = events
+
+        VCR.use_cassette("todays_hours") do
+          get :home
+        end
+
+        expect(assigns(:featured_events)).to eq(featured_events)
+      end
+
+      it "omits suppressed featured events" do
+        FactoryBot.create(:event,
+                          title: "Suppressed Featured Event",
+                          featured: true,
+                          suppress: true,
+                          start_time: Date.current + 1,
+                          end_time: Date.current + 2)
+        featured_events = events
+
+        VCR.use_cassette("todays_hours") do
+          get :home
+        end
+
+        expect(assigns(:featured_events)).to eq(featured_events)
+      end
+
+      it "renders the highlighted exhibition as the first card in the carousel" do
+        exhibition = FactoryBot.create(:exhibition,
+                                       title: "Highlighted Exhibition",
+                                       start_date: Date.current,
+                                       end_date: Date.current + 1,
+                                       highlighted: true)
+        events
+
+        VCR.use_cassette("todays_hours") do
+          get :home
+        end
+
+        expect(response.body).to have_css("#newsCarouselItems .carousel-item:first-child.active .event-title",
+                                          text: exhibition.title)
+        expect(response.body).to have_css("#newsCarouselItems .carousel-item", count: 4)
+      end
+    end
   end
 
   describe "GET #scrc" do

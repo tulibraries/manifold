@@ -24,6 +24,7 @@ RSpec.describe "webpages/hsl", type: :view do
     expect(rendered).to match /id="hsl_appointment_link_button"/
     expect(rendered).to match /id="hsl_email_link_button"/
     expect(rendered).to match /id="hsl_journal_finder_button"/
+    expect(rendered).to match /id="hsl_slab_button"/
     expect(rendered).to match /id="hsl_support_button"/
     expect(rendered).to match /id="hsl_visit_header"/
     expect(rendered).to match /id="hsl_resources_header"/

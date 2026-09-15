@@ -4,7 +4,7 @@ namespace :data_migration do
   desc "Migrate space_id from SpaceGroup to Group"
 
   task migrate_space_id: :environment do
-    SpaceGroup.all.each do |space_group|
+    SpaceGroup.all.find_each do |space_group|
       group = Group.find_by(id: space_group.group_id)
       space = Space.find_by(id: space_group.space_id)
 

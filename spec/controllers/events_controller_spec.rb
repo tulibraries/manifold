@@ -135,6 +135,29 @@ RSpec.describe EventsController, type: :controller do
       expect(assigns(:featured_events)).to eq(featured_events)
     end
 
+    it "takes the three soonest featured events in start time order" do
+      third = FactoryBot.create(:event, title: "Third Featured Event",
+                                        featured: true,
+                                        start_time: Date.current + 3,
+                                        end_time: Date.current + 4)
+      first = FactoryBot.create(:event, title: "First Featured Event",
+                                        featured: true,
+                                        start_time: Date.current + 1,
+                                        end_time: Date.current + 2)
+      FactoryBot.create(:event, title: "Fourth Featured Event",
+                                featured: true,
+                                start_time: Date.current + 7,
+                                end_time: Date.current + 8)
+      second = FactoryBot.create(:event, title: "Second Featured Event",
+                                         featured: true,
+                                         start_time: Date.current + 2,
+                                         end_time: Date.current + 3)
+
+      get :index
+
+      expect(assigns(:featured_events)).to eq([first, second, third])
+    end
+
     it "includes exhibitions that span a selected date" do
       exhibition = FactoryBot.create(:exhibition,
                                      title: "Date-Spanning Exhibition",

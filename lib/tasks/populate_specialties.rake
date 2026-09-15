@@ -5,7 +5,7 @@ namespace :db do # ~> NoMethodError: undefined method `namespace' for main:Objec
     task specialties: [:environment] do
       @log = Logger.new("log/specialties.log")
       @stdout = Logger.new(STDOUT)
-      Person.where.not(specialties: nil).each do |p|
+      Person.where.not(specialties: nil).find_each do |p|
         # stdout_and_log("#{p.label}")
         s = p.specialties
         s = s.gsub("--- []", "")

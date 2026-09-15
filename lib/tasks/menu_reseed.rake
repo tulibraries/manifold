@@ -36,7 +36,7 @@ namespace :reseed do
       "Grants, Fellowships & Competitions",
       "Library Workshops"]
 
-    MenuGroup.all.each do |menu|
+    MenuGroup.all.find_each do |menu|
       case menu.slug
       when "about-page"
         assign_categories(menu, @about_page)

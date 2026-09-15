@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe EventHelper, type: :helper do
+  include ActiveSupport::Testing::TimeHelpers
+
   describe "Get Building Name" do
     context "receives string with translation" do
       it "renders the translation" do

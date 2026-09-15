@@ -795,7 +795,7 @@ en:
           one: Faculty
           two: Staff
         request_disclaimer_html: >-
-                                <div style="font-style:italic;margin-bottom: 2rem;">Recalled books are given a two week 
+                                <div style="font-style:italic;margin-bottom: 2rem;">Recalled books are given a one week 
                                 window to be returned after being recalled.</div>
         subsitute_edition: Subsititute another edition of same book if necessary?
         cancellation_date: Cancellation Date
@@ -1056,7 +1056,7 @@ en:
           five: Professional Development Visit
           six: General Interest
         asrs_only: Is this request for the ASRS (Automated Storage and Retrieval System) only?
-        id_acknowledgment: I acknowledge that all members of my group will need to present a valid Temple ID or government-issued photo ID to access the ASRS.
+        id_acknowledgment: I acknowledge that all members of my group will need to present a valid Temple ID or government-issued photo ID to access the library.
 
       hidden_title_text: To change the title of this resource, please <a href=mailto:"tul-web-support@temple.edu">contact an administrator</a>.
 

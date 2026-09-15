@@ -492,7 +492,7 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0, >= 2.0.7)
       version_gem (~> 1.1, >= 1.1.14)
-    okcomputer (1.19.2)
+    okcomputer (1.20.0)
       benchmark
     omniauth (2.1.4)
       hashie (>= 3.4.6)

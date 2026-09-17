@@ -4,11 +4,15 @@ module VcrSanitizer
   module_function
 
   def call(interaction)
-    interaction.request.headers.delete("Authorization")
-    interaction.request.headers.delete("Cookie")
-    interaction.request.headers.delete("X-API-Key")
-    interaction.request.headers.delete("Api-Key")
-    interaction.response.headers.delete("Set-Cookie")
+    sensitive_request_headers = %w[authorization cookie x-api-key api-key]
+
+    interaction.request.headers.delete_if do |key, _|
+      sensitive_request_headers.include?(key.downcase)
+    end
+
+    interaction.response.headers.delete_if do |key, _|
+      key.casecmp?("set-cookie")
+    end
 
     body = interaction.response.body
 

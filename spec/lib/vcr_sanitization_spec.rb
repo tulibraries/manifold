@@ -17,10 +17,10 @@ RSpec.describe VcrSanitizer do
     instance_double(
       VCR::Request,
       headers: {
-        "Authorization" => ["Bearer secret-jwt"],
-        "Cookie" => ["session=secret-cookie"],
-        "X-API-Key" => ["secret-api-key"],
-        "Api-Key" => ["secret-api-key-alt"],
+        "authorization" => ["Bearer secret-jwt"],
+        "COOKIE" => ["session=secret-cookie"],
+        "x-api-KEY" => ["secret-api-key"],
+        "API-key" => ["secret-api-key-alt"],
         "Accept" => ["application/json"]
       }
     )
@@ -30,7 +30,7 @@ RSpec.describe VcrSanitizer do
     instance_double(
       VCR::Response,
       headers: {
-        "Set-Cookie" => ["session=secret-response-cookie"],
+        "set-cookie" => ["session=secret-response-cookie"],
         "Content-Type" => ["application/json"]
       },
       body: <<~JSON.chomp
@@ -42,11 +42,13 @@ RSpec.describe VcrSanitizer do
   it "removes sensitive authentication data" do
     sanitize
 
-    expect(request.headers).not_to have_key("Authorization")
-    expect(request.headers).not_to have_key("Cookie")
-    expect(request.headers).not_to have_key("X-API-Key")
-    expect(request.headers).not_to have_key("Api-Key")
-    expect(response.headers).not_to have_key("Set-Cookie")
+    sensitive_request_headers = %w[authorization cookie x-api-key api-key]
+
+    expect(request.headers.keys.map(&:downcase))
+      .not_to include(*sensitive_request_headers)
+
+    expect(response.headers.keys.map(&:downcase))
+      .not_to include("set-cookie")
 
     expect(response.body).to eq(
       '{"access_token":"<redacted>","refresh_token":"<redacted>","api_key":"<redacted>"}'

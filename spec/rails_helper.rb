@@ -207,6 +207,10 @@ RSpec.configure do |config|
     auth_string = ENV["PANOPTO_API_USER"].to_s + ":" + ENV["PANOPTO_API_KEY"].to_s
     c.filter_sensitive_data("<base64_key_code>") { Base64.encode64(auth_string) }
 
+    c.before_record do |interaction|
+      VcrSanitizer.call(interaction)
+    end
+
     # Ignore Selenium WebDriver and Capybara server requests
     c.ignore_request do |request|
       # Ignore requests to localhost (Capybara server)

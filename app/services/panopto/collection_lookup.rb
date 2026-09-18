@@ -14,7 +14,7 @@ module Panopto
         collection: @collection
       )
 
-      videos if videos.present?
+      videos.presence
     end
   end
 end

@@ -18,9 +18,9 @@ module Webpages
 
     private
 
-    def todays_hours
-      file_path = Rails.root.join("public/cache/todays_hours")
-      File.exist?(file_path) ? File.read(file_path) : nil
-    end
+      def todays_hours
+        file_path = Rails.root.join("public/cache/todays_hours")
+        File.exist?(file_path) ? File.read(file_path) : nil
+      end
   end
 end

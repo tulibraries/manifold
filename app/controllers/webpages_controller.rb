@@ -14,15 +14,12 @@ class WebpagesController < ApplicationController
   end
 
   def videos_list
-    if params[:collection].present?
-      videos = Panopto::VideoDistributor.call(type: "collection", collection: params[:collection])
-      if videos.present?
-        render(Panopto::PastEventsCollectionComponent.new(videos:))
-      else
-        return redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
-      end
+    videos = Panopto::CollectionLookup.call(params[:collection])
+
+    if videos.present?
+      render(Panopto::PastEventsCollectionComponent.new(videos:))
     else
-      return redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
+      redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
     end
   end
 

@@ -77,15 +77,14 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    file_path = Rails.root.join("public/cache/todays_hours")
-    @todays_hours = File.exist?(file_path) ? File.read(file_path) : nil
-    @highlights = Highlight.with_image.where(promoted: true)
-    exhibition = Exhibition.is_current.find_by(highlighted: true)
-    featured_events = Event.is_current.is_displayable.where(featured: true)
-    @featured_events = [exhibition, *featured_events].compact
-    @digcols = Highlight.with_image.for_digital_collections
-    @cta3 = Category.find_by(slug: "computers-printing-technology")
-    @cta4 = Category.find_by(slug: "explore-charles")
+    home_page = Webpages::HomePage.call
+
+    @todays_hours = home_page[:todays_hours]
+    @highlights = home_page[:highlights]
+    @featured_events = home_page[:featured_events]
+    @digcols = home_page[:digcols]
+    @cta3 = home_page[:cta3]
+    @cta4 = home_page[:cta4]
   end
 
   def hours

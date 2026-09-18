@@ -30,17 +30,52 @@ RSpec.describe WebpagesController, type: :controller do
   describe "GET #tudsc" do
     let!(:visit_links) { FactoryBot.create(:category, slug: "lcdss-study") }
     let!(:research_links) { FactoryBot.create(:category, slug: "lcdss-research") }
-    let!(:event_links) { nil }
-    let(:blog) { FactoryBot.create(:blog, slug: "lcdss-blog") }
+    let!(:blog) { FactoryBot.create(:blog, title: "LCDSS Blog") }
     let(:blog_post) { FactoryBot.create(:blog_post) }
     let(:webpage) { FactoryBot.create(:webpage, slug: "lcdss-intro") }
 
     it "returns a success response" do
-      blog.slug = "lcdss-blog"
       blog.blog_posts << blog_post
-      blog.save
       get :tudsc
       expect(response).to be_successful
+    end
+
+    it "includes current digital scholarship events matched by tags or LibCal categories" do
+      tagged_event = FactoryBot.create(:event,
+                                       tags: "Digital Scholarship",
+                                       start_time: Date.current + 2,
+                                       end_time: Date.current + 3)
+      categorized_event = FactoryBot.create(:event,
+                                            tags: "Workshop",
+                                            libcal_categories: "Digital Scholarship",
+                                            start_time: Date.current + 1,
+                                            end_time: Date.current + 2)
+      FactoryBot.create(:event,
+                        tags: "Workshop",
+                        libcal_categories: "Research",
+                        start_time: Date.current + 1,
+                        end_time: Date.current + 2)
+      FactoryBot.create(:event,
+                        libcal_categories: "Digital Scholarship",
+                        start_time: Date.current - 2,
+                        end_time: Date.current - 1)
+
+      get :tudsc
+
+      expect(assigns(:event_links)).to eq([categorized_event, tagged_event])
+    end
+
+    it "returns only the five earliest current digital scholarship events" do
+      events = 6.downto(1).map do |days_from_now|
+        FactoryBot.create(:event,
+                          libcal_categories: "Digital Scholarship",
+                          start_time: Date.current + days_from_now,
+                          end_time: Date.current + days_from_now + 1)
+      end
+
+      get :tudsc
+
+      expect(assigns(:event_links)).to eq(events.reverse.first(5))
     end
   end
 

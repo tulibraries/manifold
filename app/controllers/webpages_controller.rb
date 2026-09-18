@@ -3,14 +3,9 @@
 class WebpagesController < ApplicationController
   include HasCategories
   include SerializableRespondTo
-  before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
 
   def wpvi
-  end
-
-  def get_highlights
-    @highlights = Highlight.where(promoted: true).take(4)
   end
 
   def videos_all
@@ -19,30 +14,20 @@ class WebpagesController < ApplicationController
   end
 
   def videos_list
-    if params[:collection].present?
-      videos = Panopto::VideoDistributor.call(type: "collection", collection: params[:collection])
-      if videos.present?
-        render(Panopto::PastEventsCollectionComponent.new(videos:))
-      else
-        return redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
-      end
+    videos = Panopto::CollectionLookup.call(params[:collection])
+
+    if videos.present?
+      render(Panopto::PastEventsCollectionComponent.new(videos:))
     else
-      return redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
+      redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
     end
   end
 
   def video_show
-    if params[:id].present?
-      video = Panopto::VideoDistributor.call(type: "show", video_id: params[:id])
-      if video != true
-        if video.present? && video[:Message] != "The request is invalid."
-          render(Panopto::PastEventsVideoComponent.new(video:))
-        else
-          video_error
-        end
-      else
-        video_error
-      end
+    video = Panopto::VideoLookup.call(params[:id])
+
+    if video.present?
+      render(Panopto::PastEventsVideoComponent.new(video:))
     else
       video_error
     end
@@ -53,13 +38,12 @@ class WebpagesController < ApplicationController
   end
 
   def videos_search
-    if params[:q].present?
-      videos = Panopto::VideoDistributor.call(type: "search", query: params[:q])
-      if videos.present?
-        render(Panopto::PastEventsSearchComponent.new(videos:))
-      end
-    else
-      return redirect_to(webpages_videos_all_path, notice: "You must choose a term to search for.")
+    videos = Panopto::VideoSearch.call(params[:q])
+
+    if videos.present?
+      render(Panopto::PastEventsSearchComponent.new(videos:))
+    elsif params[:q].blank?
+      redirect_to(webpages_videos_all_path, notice: "You must choose a term to search for.")
     end
   end
 
@@ -77,15 +61,14 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    file_path = Rails.root.join("public/cache/todays_hours")
-    @todays_hours = File.exist?(file_path) ? File.read(file_path) : nil
-    @highlights = Highlight.with_image.where(promoted: true)
-    exhibition = Exhibition.is_current.find_by(highlighted: true)
-    featured_events = Event.is_current.is_displayable.where(featured: true)
-    @featured_events = [exhibition, *featured_events].compact
-    @digcols = Highlight.with_image.for_digital_collections
-    @cta3 = Category.find_by(slug: "computers-printing-technology")
-    @cta4 = Category.find_by(slug: "explore-charles")
+    home_page = Webpages::HomePage.call
+
+    @todays_hours = home_page[:todays_hours]
+    @highlights = home_page[:highlights]
+    @featured_events = home_page[:featured_events]
+    @digcols = home_page[:digcols]
+    @cta3 = home_page[:cta3]
+    @cta4 = home_page[:cta4]
   end
 
   def hours
@@ -152,35 +135,35 @@ class WebpagesController < ApplicationController
   end
 
   def about
-    @categories = Category.find_by(slug: "about-page").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("about-page")
   end
 
   def visit
-    @categories = Category.find_by(slug: "visit").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("visit")
   end
 
   def blogs
-    @categories = Category.find_by(slug: "news").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("news")
   end
 
   def publications
-    @categories = Category.find_by(slug: "publications").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("publications")
   end
 
   def support
-    @categories = Category.find_by(slug: "giving").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("giving")
   end
 
   def grants
-    @categories = Category.find_by(slug: "grants").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("grants")
   end
 
   def policies
-    @categories = Category.find_by(slug: "policies").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("policies")
   end
 
   def research
-    @categories = Category.find_by(slug: "research-services").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("research-services")
   end
 
   def list_item(category)

@@ -152,35 +152,35 @@ class WebpagesController < ApplicationController
   end
 
   def about
-    @categories = Category.find_by(slug: "about-page").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("about-page")
   end
 
   def visit
-    @categories = Category.find_by(slug: "visit").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("visit")
   end
 
   def blogs
-    @categories = Category.find_by(slug: "news").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("news")
   end
 
   def publications
-    @categories = Category.find_by(slug: "publications").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("publications")
   end
 
   def support
-    @categories = Category.find_by(slug: "giving").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("giving")
   end
 
   def grants
-    @categories = Category.find_by(slug: "grants").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("grants")
   end
 
   def policies
-    @categories = Category.find_by(slug: "policies").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("policies")
   end
 
   def research
-    @categories = Category.find_by(slug: "research-services").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("research-services")
   end
 
   def list_item(category)

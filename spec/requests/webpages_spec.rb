@@ -190,6 +190,32 @@ RSpec.describe "Webpages", type: :request do
   end
 
   describe "GET /watchpastprograms/search" do
+    it "renders search results when videos are returned" do
+      videos = [
+        "livingstone",
+        1,
+        [
+          {
+            Id: "video-123",
+            Name: "Livingstone Research Awards",
+            Urls: {
+              ThumbnailUrl: "https://example.com/thumbnail.jpg"
+            }
+          }
+        ]
+      ]
+
+      allow(Panopto::VideoDistributor)
+        .to receive(:call)
+        .with(type: "search", query: "livingstone")
+        .and_return(videos)
+
+      get webpages_videos_search_path(q: "livingstone")
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("livingstone")
+    end
+
     it "redirects when no search term is provided" do
       get webpages_videos_search_path
 
@@ -198,6 +224,35 @@ RSpec.describe "Webpages", type: :request do
   end
 
   describe "GET /watchpastprograms/show" do
+    it "renders a video when a valid video is returned" do
+      video = {
+        Id: "video-123",
+        Name: "Example Video",
+        Description: "Example description"
+      }
+
+      allow(Panopto::VideoDistributor)
+        .to receive(:call)
+        .with(type: "show", video_id: "video-123")
+        .and_return(video)
+
+      get webpages_video_show_path(id: "video-123")
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include("Example Video")
+    end
+
+    it "redirects when Panopto returns an invalid request" do
+      allow(Panopto::VideoDistributor)
+        .to receive(:call)
+        .with(type: "show", video_id: "invalid")
+        .and_return(Message: "The request is invalid.")
+
+      get webpages_video_show_path(id: "invalid")
+
+      expect(response).to redirect_to(webpages_videos_all_path)
+    end
+
     it "redirects when no video id is provided" do
       get webpages_video_show_path
 

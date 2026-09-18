@@ -3,14 +3,9 @@
 class WebpagesController < ApplicationController
   include HasCategories
   include SerializableRespondTo
-  before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
 
   def wpvi
-  end
-
-  def get_highlights
-    @highlights = Highlight.where(promoted: true).take(4)
   end
 
   def videos_all

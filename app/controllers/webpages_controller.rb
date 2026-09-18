@@ -27,17 +27,10 @@ class WebpagesController < ApplicationController
   end
 
   def video_show
-    if params[:id].present?
-      video = Panopto::VideoDistributor.call(type: "show", video_id: params[:id])
-      if video != true
-        if video.present? && video[:Message] != "The request is invalid."
-          render(Panopto::PastEventsVideoComponent.new(video:))
-        else
-          video_error
-        end
-      else
-        video_error
-      end
+    video = Panopto::VideoLookup.call(params[:id])
+
+    if video.present?
+      render(Panopto::PastEventsVideoComponent.new(video:))
     else
       video_error
     end

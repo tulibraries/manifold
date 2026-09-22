@@ -1,0 +1,63 @@
+{
+  "events": [
+    {
+      "id": 4101,
+      "title": "Intro to Data Visualization",
+      "allday": false,
+      "start": "2026-10-05T14:00:00-04:00",
+      "end": "2026-10-05T15:30:00-04:00",
+      "description": "<p>Learn the basics of charting your data.</p>",
+      "url": {
+        "public": "https://libcal.example.edu/event/4101",
+        "admin": "https://libcal.example.edu/admin/event/4101"
+      },
+      "location": { "id": 12, "type": 1, "name": "Anderson 1221" },
+      "presenter": "Pat Example",
+      "registration": true,
+      "owner": { "id": 7, "name": "Library Events", "email": "libevents@temple.edu" },
+      "calendar": { "id": 6197, "name": "Library Workshops" },
+      "category": [
+        { "id": 1, "name": "Workshop" },
+        { "id": 2, "name": "Digital Scholarship" },
+        { "id": 1, "name": "Workshop" }
+      ]
+    },
+    {
+      "id": "4102",
+      "title": "Research Consultations Online",
+      "allday": false,
+      "start": "2026-10-06T10:00:00-04:00",
+      "end": "2026-10-06T11:00:00-04:00",
+      "description": "<p>Drop in with your questions.</p>",
+      "url": {
+        "public": "https://libcal.example.edu/event/4102",
+        "admin": "https://libcal.example.edu/admin/event/4102"
+      },
+      "location": { "id": 0, "type": 0, "name": "" },
+      "online_join_url": "https://zoom.example.com/j/123456789",
+      "presenter": "",
+      "registration": false,
+      "owner": { "id": 8, "name": "Research Services", "email": "research@temple.edu" },
+      "calendar": { "id": 18498, "name": "Research Services" },
+      "category": []
+    },
+    {
+      "id": 4103,
+      "title": "Library Closed for Holiday",
+      "allday": true,
+      "start": "2026-11-26T00:00:00-05:00",
+      "end": "2026-11-26T23:59:00-05:00",
+      "description": "",
+      "url": {
+        "public": "https://libcal.example.edu/event/4103",
+        "admin": "https://libcal.example.edu/admin/event/4103"
+      },
+      "location": { "id": 0, "type": 0, "name": "Temple Performing Arts Center" },
+      "presenter": "",
+      "registration": false,
+      "owner": { "id": 7, "name": "Library Events", "email": "libevents@temple.edu" },
+      "calendar": { "id": 13592, "name": "Library Hours" },
+      "category": [{ "id": 9, "name": "Closure" }]
+    }
+  ]
+}

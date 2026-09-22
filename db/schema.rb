@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_04_130617) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_22_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -212,11 +212,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_04_130617) do
     t.boolean "all_day", default: false
     t.string "alt_text"
     t.integer "building_id"
-    t.boolean "cancelled"
     t.string "city"
     t.string "contact_email"
     t.string "contact_name"
-    t.string "contact_phone"
     t.string "content_hash"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "end_time", precision: nil
@@ -230,7 +228,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_04_130617) do
     t.string "location_space"
     t.integer "person_id"
     t.string "registration_link"
-    t.boolean "registration_status"
     t.string "slug"
     t.integer "space_id"
     t.datetime "start_time", precision: nil

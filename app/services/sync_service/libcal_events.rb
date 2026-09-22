@@ -401,13 +401,12 @@ class SyncService::LibcalEvents
     end
 
     def registration_status(raw_event)
-      ActiveModel::Type::Boolean.new.cast(value(raw_event, "registration")) || registration_payload(raw_event).present?
+      ActiveModel::Type::Boolean.new.cast(value(raw_event, "registration")) || false
     end
 
+    # LibCal has no separate registration URL; registration happens on the event page.
     def registration_link(raw_event)
-      registration_value(raw_event, "url") ||
-        registration_value(raw_event, "link") ||
-        (public_url(raw_event) if registration_status(raw_event))
+      public_url(raw_event) if registration_status(raw_event)
     end
 
     def start_time(raw_event)
@@ -440,19 +439,11 @@ class SyncService::LibcalEvents
     end
 
     def public_url(raw_event)
-      url_value(raw_event, "public") || value(raw_event, "url")
+      url_value(raw_event, "public")
     end
 
     def value(raw_event, key)
       raw_event[key]
-    end
-
-    def registration_payload(raw_event)
-      value(raw_event, "registration").presence if value(raw_event, "registration").is_a?(Hash)
-    end
-
-    def registration_value(raw_event, key)
-      registration_payload(raw_event)&.dig(key)
     end
 
     def url_value(raw_event, key)

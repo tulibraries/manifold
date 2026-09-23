@@ -69,6 +69,8 @@ class SyncService::LibcalEvents
     end.uniq { |event| event["id"].to_s }
   end
 
+  # LibCal is the source of truth for every field it sends, so blank values are
+  # kept (not compacted away) and clear whatever was stored before.
   def record_hash(raw_event)
     normalized_event = normalize_event(raw_event)
 
@@ -77,22 +79,15 @@ class SyncService::LibcalEvents
       "title" => title(normalized_event),
       "description" => normalized_event.fetch("description", nil),
       "libcal_categories" => libcal_categories(normalized_event),
-      "event_type" => event_type(normalized_event),
-      "cancelled" => cancelled(normalized_event),
-      "registration_status" => registration_status(normalized_event),
       "registration_link" => registration_link(normalized_event),
       "event_url" => normalized_event.fetch("online_join_url", nil),
       "start_time" => start_time(normalized_event),
       "end_time" => end_time(normalized_event),
       "all_day" => all_day(normalized_event),
-      "contact_name" => presenter_name(normalized_event),
-      "contact_email" => contact_email(normalized_event),
-      "contact_phone" => contact_phone(normalized_event),
       "location_name" => location_name(normalized_event),
       "image_url" => normalized_event.fetch("featured_image", nil),
       "image_alt_text" => normalized_event.fetch("featured_image_alt_text", nil)
-    }.compact
-     .merge(contact(normalized_event))
+    }.merge(contact(normalized_event))
      .merge(location(normalized_event))
   end
 
@@ -100,7 +95,7 @@ class SyncService::LibcalEvents
     record = record_hash(raw_event)
     event = Event.find_by(guid: record["guid"]) || Event.new
 
-    event.assign_attributes(record.except("person", "building", "image_url", "image_alt_text", "event_type", "event_url"))
+    event.assign_attributes(record.except("person", "building", "image_url", "image_alt_text", "event_url"))
     event.person = record["person"]
     event.building = record["building"]
     # Assign location fields explicitly (not just via assign_attributes) so that a
@@ -114,10 +109,16 @@ class SyncService::LibcalEvents
     event.zip = record["zip"]
     event.libcal_categories = record["libcal_categories"]
     event.event_url = record["event_url"]
-    event.event_type = [record["event_type"].presence, ("Online" if record["event_url"].present?)].compact.join(", ").presence
+    event.event_type = ("Online" if record["event_url"].present?)
 
-    attach_image(record, event) if record["image_url"].present?
-    event.alt_text = record["image_alt_text"] if record["image_alt_text"].present?
+    if record["image_url"].present?
+      attach_image(record, event)
+    else
+      # Enqueued rather than immediate: the delete is a network round trip per
+      # event, and variant derivatives are purged through the queue regardless.
+      event.image.purge_later
+    end
+    event.alt_text = record["image_alt_text"]
 
     if event.save!
       PreprocessEventImageVariantsJob.perform_now(event) if event.image.attached?
@@ -285,21 +286,19 @@ class SyncService::LibcalEvents
         .reject(&:blank?)
     end
 
+    # Always returns every key, so a matched Person clears a stale text name and vice versa.
+    # LibCal only gives an email for the owner, so it is stored only when the owner is
+    # also the contact -- otherwise the name and email would belong to different people.
     def contact(raw_event)
       contact_name = presenter_name(raw_event)
-      return {} if contact_name.blank? && contact_email(raw_event).blank? && contact_phone(raw_event).blank?
+      contact_person = FuzzyFind::Person.find(contact_name) if contact_name.present?
+      contact_email = owner_email(raw_event) if presenter(raw_event).blank?
 
-      contact_person = FuzzyFind::Person.find(contact_name.to_s) if contact_name.present?
-
-      if contact_person
-        { "person" => contact_person }
-      else
-        {
-          "contact_name" => contact_name,
-          "contact_email" => contact_email(raw_event),
-          "contact_phone" => contact_phone(raw_event)
-        }.compact
-      end
+      {
+        "person" => contact_person,
+        "contact_name" => (contact_name unless contact_person),
+        "contact_email" => (contact_email unless contact_person)
+      }
     end
 
     def location(raw_event)
@@ -387,27 +386,13 @@ class SyncService::LibcalEvents
       names.join(", ").presence
     end
 
-    def event_type(raw_event)
-      names = Array.wrap(value(raw_event, "event_type"))
-                   .flatten
-                   .filter_map { |entry| extract_name(entry) }
-                   .uniq
-
-      names.join(", ").presence
-    end
-
-    def cancelled(raw_event)
-      ActiveModel::Type::Boolean.new.cast(value(raw_event, "cancelled"))
-    end
-
     def registration_status(raw_event)
-      ActiveModel::Type::Boolean.new.cast(value(raw_event, "registration")) || registration_payload(raw_event).present?
+      ActiveModel::Type::Boolean.new.cast(value(raw_event, "registration")) || false
     end
 
+    # LibCal has no separate registration URL; registration happens on the event page.
     def registration_link(raw_event)
-      registration_value(raw_event, "url") ||
-        registration_value(raw_event, "link") ||
-        (public_url(raw_event) if registration_status(raw_event))
+      public_url(raw_event) if registration_status(raw_event)
     end
 
     def start_time(raw_event)
@@ -423,16 +408,16 @@ class SyncService::LibcalEvents
     end
 
     def presenter_name(raw_event)
-      value(raw_event, "presenter") ||
-        extract_name(value(raw_event, "owner"))
+      presenter(raw_event) || extract_name(value(raw_event, "owner"))
     end
 
-    def contact_email(raw_event)
-      value(raw_event, "contact_email")
+    def presenter(raw_event)
+      value(raw_event, "presenter").to_s.strip.presence
     end
 
-    def contact_phone(raw_event)
-      value(raw_event, "contact_phone")
+    def owner_email(raw_event)
+      owner = value(raw_event, "owner")
+      owner["email"].to_s.strip.presence if owner.is_a?(Hash)
     end
 
     def location_name(raw_event)
@@ -440,19 +425,11 @@ class SyncService::LibcalEvents
     end
 
     def public_url(raw_event)
-      url_value(raw_event, "public") || value(raw_event, "url")
+      url_value(raw_event, "public")
     end
 
     def value(raw_event, key)
       raw_event[key]
-    end
-
-    def registration_payload(raw_event)
-      value(raw_event, "registration").presence if value(raw_event, "registration").is_a?(Hash)
-    end
-
-    def registration_value(raw_event, key)
-      registration_payload(raw_event)&.dig(key)
     end
 
     def url_value(raw_event, key)
@@ -462,22 +439,15 @@ class SyncService::LibcalEvents
     end
 
     def category_names(raw_event)
-      Array.wrap(value(raw_event, "categories") || value(raw_event, "category"))
+      Array.wrap(value(raw_event, "category"))
         .flatten
         .filter_map { |entry| extract_name(entry) }
         .uniq
     end
 
+    # LibCal sends category, location, and owner as { "id", "name", ... } hashes.
     def extract_name(entry)
-      extracted =
-        case entry
-        when Hash
-          entry["name"] || entry["title"] || entry["category"] || entry["label"]
-        else
-          entry
-        end
-
-      extracted.to_s.strip.presence
+      entry["name"].to_s.strip.presence if entry.is_a?(Hash)
     end
 
 

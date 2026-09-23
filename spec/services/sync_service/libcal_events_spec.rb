@@ -117,6 +117,17 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       expect(existing.alt_text).to be_nil
     end
 
+    it "defers the blob deletion to the queue instead of purging inline" do
+      existing = FactoryBot.create(:event, :with_image, guid: "555")
+      blob_id = existing.image.blob.id
+      imageless_body = [{ "id" => 555, "title" => "Image Event" }].to_json
+
+      described_class.call(response_body: imageless_body)
+
+      expect(existing.reload.image).not_to be_attached
+      expect(ActiveStorage::Blob.exists?(blob_id)).to be(true)
+    end
+
     it "saves the event without the image instead of dropping the whole record when oversized" do
       oversized = "x" * (I18n.t("manifold.default.image_file_size_limit").kilobyte + 1)
       stub_request(:get, image_url).to_return(status: 200, body: oversized, headers: { "Content-Type" => "image/png" })
@@ -174,6 +185,23 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
 
       expect(event.building).to be_nil
       expect(event[:location_name]).to eq("Temple Performing Arts Center")
+    end
+  end
+
+  describe "clearing a removed field" do
+    it "clears a stored value when LibCal stops sending it" do
+      registered = [{ "id" => 9200, "title" => "Workshop", "registration" => true,
+                      "url" => { "public" => "https://libcal.example.com/event/9200" } }].to_json
+      described_class.call(response_body: registered)
+
+      event = Event.find_by(guid: "9200")
+      expect(event.registration_link).to eq("https://libcal.example.com/event/9200")
+
+      unregistered = [{ "id" => 9200, "title" => "Workshop", "registration" => false,
+                        "url" => { "public" => "https://libcal.example.com/event/9200" } }].to_json
+      described_class.call(response_body: unregistered)
+
+      expect(event.reload.registration_link).to be_nil
     end
   end
 

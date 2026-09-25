@@ -100,12 +100,14 @@ class WebpagesController < ApplicationController
   end
 
   def tudsc
-    @webpage = Webpage.find_by(slug: "lcdss-intro")
-    @visit_links =  Category.find_by(slug: "lcdss-study").items || nil
-    @research_links = Category.find_by(slug: "lcdss-research").items || nil
-    @event_links = Event.is_current.where("lower(tags) LIKE ?", "%digital scholarship%").order(:start_time).take(5)
-    @blog = Blog.find_by(slug: "lcdss-blog")
-    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
+    lcdss_page = Webpages::LcdssPage.call
+
+    @webpage = lcdss_page[:webpage]
+    @visit_links = lcdss_page[:visit_links]
+    @research_links = lcdss_page[:research_links]
+    @event_links = lcdss_page[:event_links]
+    @blog = lcdss_page[:blog]
+    @blog_posts = lcdss_page[:blog_posts]
   end
 
   def scop

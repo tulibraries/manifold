@@ -136,9 +136,11 @@ class WebpagesController < ApplicationController
   end
 
   def news
-    @blogs = Blog.all
-    @blogposts = BlogPost.all.order(:created_at).reverse.take(3)
-    @highlights = Highlight.with_image.where(promoted: true).take(3)
+    news_page = Webpages::NewsPage.call
+
+    @blogs = news_page[:blogs]
+    @blogposts = news_page[:blogposts]
+    @highlights = news_page[:highlights]
   end
 
   def about

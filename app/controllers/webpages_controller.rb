@@ -89,12 +89,14 @@ class WebpagesController < ApplicationController
   end
 
   def blockson
-    @webpage = Webpage.find_by(slug: "blockson-intro")
-    @visit_links = Category.find_by(slug: "blockson-study").items
-    @research_links = Category.find_by(slug: "blockson-research").items
-    @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
-    @tours = Category.find_by(name: "360&deg; Virtual Exhibits")
-    @tour_links = @tours.items if @tours.present?
+    blockson_page = Webpages::BlocksonPage.call
+
+    @webpage = blockson_page[:webpage]
+    @visit_links = blockson_page[:visit_links]
+    @research_links = blockson_page[:research_links]
+    @events = blockson_page[:events]
+    @tours = blockson_page[:tours]
+    @tour_links = blockson_page[:tour_links]
   end
 
   def tudsc

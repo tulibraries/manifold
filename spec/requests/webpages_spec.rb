@@ -92,26 +92,68 @@ RSpec.describe "Webpages", type: :request do
   describe "GET /scrc" do
     let!(:visit_links) { FactoryBot.create(:category, slug: "scrc-study") }
     let!(:collection_links) { FactoryBot.create(:category, slug: "scrc-collections") }
+    let!(:collection_link) do
+      FactoryBot.create(:category, name: "SCRC Collection Link")
+    end
     let!(:webpage) { FactoryBot.create(:webpage, slug: "scrc") }
-    let!(:intro) { FactoryBot.create(:snippet, slug: "scrc-homepage-intro") }
+    let!(:intro) do
+      FactoryBot.create(
+        :snippet,
+        slug: "scrc-homepage-intro",
+        description: ActionText::Content.new("SCRC introduction")
+      )
+    end
 
-    it "returns a successful response" do
+    before do
+      Categorization.create!(
+        category: collection_links,
+        categorizable: collection_link
+      )
+    end
+
+    it "renders prepared page content" do
       get webpages_scrc_path
 
       expect(response).to have_http_status(:success)
+      expect(response.body).to include("SCRC introduction")
+      expect(response.body).to include(collection_link.name)
     end
   end
 
   describe "GET /blockson" do
-    let!(:webpage) { FactoryBot.create(:webpage, slug: "blockson-intro") }
+    let!(:webpage) do
+      FactoryBot.create(
+        :webpage,
+        slug: "blockson-intro",
+        description: ActionText::Content.new("Blockson introduction")
+      )
+    end
+
     let!(:visit_links) { FactoryBot.create(:category, slug: "blockson-study") }
     let!(:research_links) { FactoryBot.create(:category, slug: "blockson-research") }
+    let!(:visit_link) { FactoryBot.create(:category, name: "Blockson Visit Link") }
+    let!(:research_link) { FactoryBot.create(:category, name: "Blockson Research Link") }
     let!(:tours) { FactoryBot.create(:category, name: "360&deg; Virtual Exhibits") }
 
-    it "returns a successful response" do
+    before do
+      Categorization.create!(
+        category: visit_links,
+        categorizable: visit_link
+      )
+
+      Categorization.create!(
+        category: research_links,
+        categorizable: research_link
+      )
+    end
+
+    it "renders prepared page content" do
       get webpages_blockson_path
 
       expect(response).to have_http_status(:success)
+      expect(response.body).to include("Blockson introduction")
+      expect(response.body).to include(visit_link.name)
+      expect(response.body).to include(research_link.name)
     end
   end
 
@@ -119,13 +161,27 @@ RSpec.describe "Webpages", type: :request do
     let!(:visit_links) { FactoryBot.create(:category, slug: "lcdss-study") }
     let!(:research_links) { FactoryBot.create(:category, slug: "lcdss-research") }
     let!(:blog) { FactoryBot.create(:blog, title: "LCDSS Blog") }
-    let!(:blog_post) { FactoryBot.create(:blog_post, blog:) }
-    let!(:webpage) { FactoryBot.create(:webpage, slug: "lcdss-intro") }
+    let!(:blog_post) do
+      FactoryBot.create(
+        :blog_post,
+        blog:,
+        title: "LCDSS Blog Post"
+      )
+    end
+    let!(:webpage) do
+      FactoryBot.create(
+        :webpage,
+        slug: "lcdss-intro",
+        description: ActionText::Content.new("LCDSS introduction")
+      )
+    end
 
-    it "returns a successful response" do
+    it "renders prepared page content" do
       get webpages_lcdss_path
 
       expect(response).to have_http_status(:success)
+      expect(response.body).to include("LCDSS introduction")
+      expect(response.body).to include(blog_post.title)
     end
   end
 
@@ -138,6 +194,14 @@ RSpec.describe "Webpages", type: :request do
       )
     end
 
+    let!(:blog_post) do
+      FactoryBot.create(
+        :blog_post,
+        blog:,
+        title: "SCOP Blog Post"
+      )
+    end
+
     let!(:publishing_services) do
       FactoryBot.create(:category, slug: "publishing-services")
     end
@@ -147,13 +211,19 @@ RSpec.describe "Webpages", type: :request do
     end
 
     let!(:webpage) do
-      FactoryBot.create(:webpage, slug: "scop-intro")
+      FactoryBot.create(
+        :webpage,
+        slug: "scop-intro",
+        description: ActionText::Content.new("SCOP introduction")
+      )
     end
 
-    it "returns a successful response" do
+    it "renders prepared page content" do
       get webpages_scop_path
 
       expect(response).to have_http_status(:success)
+      expect(response.body).to include("SCOP introduction")
+      expect(response.body).to include(blog_post.title)
     end
   end
 
@@ -161,6 +231,8 @@ RSpec.describe "Webpages", type: :request do
     let!(:resource_links) { FactoryBot.create(:category, slug: "hsl-resources") }
     let!(:research_links) { FactoryBot.create(:category, slug: "hsl-research") }
     let!(:visit_links) { FactoryBot.create(:category, slug: "hsl-study") }
+    let!(:resource_link) { FactoryBot.create(:category, name: "HSL Resource Link") }
+
     let!(:study_room) do
       FactoryBot.create(
         :external_link,
@@ -168,14 +240,24 @@ RSpec.describe "Webpages", type: :request do
         title: "HSL Study Rooms"
       )
     end
+
     let!(:remote_learning) do
       FactoryBot.create(:webpage, slug: "online-support")
     end
 
-    it "returns a successful response" do
+    before do
+      Categorization.create!(
+        category: resource_links,
+        categorizable: resource_link
+      )
+    end
+
+    it "renders prepared page content" do
       get webpages_hsl_path
 
       expect(response).to have_http_status(:success)
+      expect(response.body).to include(resource_link.name)
+      expect(response.body).to include(study_room.link)
     end
   end
 
@@ -340,13 +422,27 @@ RSpec.describe "Webpages", type: :request do
   end
 
   describe "GET /news" do
-    let!(:blog) { FactoryBot.create(:blog) }
-    let!(:blog_post) { FactoryBot.create(:blog_post, blog:) }
+    let!(:blog) do
+      FactoryBot.create(
+        :blog,
+        title: "News Test Blog"
+      )
+    end
 
-    it "returns a successful response" do
+    let!(:blog_post) do
+      FactoryBot.create(
+        :blog_post,
+        blog:,
+        title: "Recent News Post"
+      )
+    end
+
+    it "renders prepared page content" do
       get news_path
 
       expect(response).to have_http_status(:success)
+      expect(response.body).to include(blog.title)
+      expect(response.body).to include(blog_post.title)
     end
   end
 end

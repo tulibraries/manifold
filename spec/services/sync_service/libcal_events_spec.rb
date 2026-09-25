@@ -4,6 +4,7 @@ require "rails_helper"
 
 RSpec.describe SyncService::LibcalEvents, type: :service do
   define_negated_matcher :not_change, :change
+  define_negated_matcher :a_string_excluding, :a_string_including
 
   let(:remote_source) { "https://charlesstudy.temple.edu/1.1/events?cal_id=6197" }
   let(:response_body) { [{ "id" => 123, "title" => "Test Event" }].to_json }
@@ -14,8 +15,6 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
   end
   let(:unauthorized_error) { OpenURI::HTTPError.new("401 Unauthorized", unauthorized_io) }
 
-  # Stubbed rather than assigned so real credentials in a developer's env can't
-  # leak in, and RSpec resets them after each example.
   def stub_libcal_config(**settings)
     allow(Rails.configuration).to receive_messages(**settings)
   end
@@ -83,8 +82,6 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       expect(existing.reload.image.blob.id).to eq(original_blob_id)
     end
 
-    # The derivative check has to run on every sync, not only when something was
-    # attached -- otherwise a derivative deleted from storage is never repaired.
     it "still processes derivatives when the downloaded image is unchanged" do
       existing = FactoryBot.create(:event, guid: "555")
       existing.image.attach(io: StringIO.new(png), filename: "event.png", content_type: "image/png")
@@ -105,8 +102,6 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       expect(existing.reload.image.blob.id).not_to eq(original_blob_id)
     end
 
-    # LibCal is the source of truth: an image removed there is removed here, so
-    # the record is never left with a stale blob and no alt text to describe it.
     it "purges the image and clears alt text when LibCal drops featured_image" do
       existing = FactoryBot.create(:event, :with_image, guid: "555")
       imageless_body = [{ "id" => 555, "title" => "Image Event" }].to_json
@@ -147,6 +142,47 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       )
 
       described_class.call(response_body: image_body)
+    end
+
+    describe "Honeybadger reporting" do
+      before { allow(Honeybadger).to receive(:notify) }
+
+      it "logs and reports a failed download with the event and image url" do
+        log = stub_logger
+        stub_request(:get, image_url).to_return(status: 404)
+
+        described_class.call(response_body: image_body)
+
+        expect(log).to have_received(:info).with("LibCal image retrieval failure: Image request for #{image_url} returned 404")
+        expect(Honeybadger).to have_received(:notify).with(
+          an_instance_of(described_class::ImageDownloadException).and(having_attributes(message: /returned 404/)),
+          context: { libcal_event_id: "555", libcal_event_title: "Image Event", image_url: }
+        )
+      end
+
+      it "reports an oversized image" do
+        oversized = "x" * (I18n.t("manifold.default.image_file_size_limit").kilobyte + 1)
+        stub_request(:get, image_url).to_return(status: 200, body: oversized, headers: { "Content-Type" => "image/png" })
+
+        described_class.call(response_body: image_body)
+
+        expect(Honeybadger).to have_received(:notify).with(
+          an_instance_of(described_class::ImageDownloadException).and(having_attributes(message: /over the \d+-byte limit/)),
+          context: hash_including(libcal_event_id: "555")
+        )
+      end
+
+      it "filters a credential in the image url from the report" do
+        signed_url = "https://example.com/event.png?cal_id=1&token=secret"
+        stub_request(:get, signed_url).to_return(status: 404)
+
+        described_class.call(response_body: [{ "id" => 555, "title" => "Image Event", "featured_image" => signed_url }].to_json)
+
+        expect(Honeybadger).to have_received(:notify).with(
+          having_attributes(message: a_string_excluding("secret")),
+          context: hash_including(image_url: "https://example.com/event.png?cal_id=1&token=[FILTERED]")
+        )
+      end
     end
   end
 
@@ -630,6 +666,7 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
     end
 
     it "continues past an event whose save raises" do
+      log = stub_logger
       allow_any_instance_of(Event).to receive(:save!).and_wrap_original do |original, *args|
         raise ActiveRecord::RecordNotSaved, "boom" if original.receiver.guid == "7301"
 
@@ -639,6 +676,8 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       described_class.call(response_body: [{ "id" => 7301, "title" => "Fails" }, { "id" => 7304, "title" => "Saves" }].to_json)
 
       expect(Event.where(guid: %w[7301 7304]).pluck(:guid)).to eq(["7304"])
+      expect(log).to have_received(:info).with(a_string_including("completed with 1 updated and 1 errored records"))
+      expect(log).not_to have_received(:info).with("Successfully saved LibCal record for Fails")
     end
   end
 
@@ -720,6 +759,52 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
 
       expect(Event.find_by(guid: "7402").image).not_to be_attached
       expect(Rails.cache.read("events_image_error")).to eq(["IPv6 Only"])
+    end
+  end
+
+  describe "Honeybadger reporting" do
+    before { allow(Honeybadger).to receive(:notify) }
+
+    it "reports a per-event failure with the event id and title" do
+      described_class.call(response_body: [{ "title" => "No Id" }].to_json)
+
+      expect(Honeybadger).to have_received(:notify).with(
+        instance_of(described_class::MissingEventIdException),
+        context: hash_including(libcal_event_id: nil, libcal_event_title: "No Id", libcal_sources: "provided response body")
+      )
+    end
+
+    it "reports a run-aborting failure with credentials stripped from the source, then re-raises" do
+      source = "https://charlesstudy.temple.edu/1.1/events?cal_id=6197&access_token=leaked"
+      stub_request(:get, source).to_return(status: 500)
+
+      expect { described_class.call(events_url: source, access_token: "token") }.to raise_error(OpenURI::HTTPError)
+
+      expect(Honeybadger).to have_received(:notify).with(
+        instance_of(OpenURI::HTTPError),
+        context: { libcal_sources: "https://charlesstudy.temple.edu/1.1/events?cal_id=6197&access_token=[FILTERED]" }
+      )
+    end
+
+    # The same exception object is re-raised to SyncLibcalEventsJob, whose
+    # Honeybadger ActiveJob plugin reports it a second time -- so the raised
+    # object itself must already be clean, not just the first notification.
+    it "redacts a malformed source's token from the error log line and the re-raised exception" do
+      messages = []
+      allow(Logger).to receive(:new).and_return(instance_double(Logger).tap do |log|
+        allow(log).to receive(:info) { |message| messages << message }
+      end)
+      source = "https://charlesstudy.temple.edu:port/1.1/events?cal_id=6197&access%5Ftoken=secret"
+
+      raised = nil
+      expect { described_class.call(events_url: source, access_token: "token") }
+        .to raise_error(URI::InvalidURIError) { |err| raised = err }
+
+      abort_line = messages.find { |message| message.include?("LibCal sync aborted") }
+      expect(abort_line).to include("access%5Ftoken=[FILTERED]")
+      expect(abort_line).not_to include("secret")
+      expect(raised.detailed_message(highlight: false)).not_to include("secret")
+      expect(Honeybadger).to have_received(:notify).with(raised, context: hash_including(:libcal_sources))
     end
   end
 end

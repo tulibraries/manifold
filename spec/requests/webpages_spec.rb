@@ -23,6 +23,72 @@ RSpec.describe "Webpages", type: :request do
     end
   end
 
+  describe "GET /about" do
+    let!(:parent) { FactoryBot.create(:category, slug: "about-page") }
+    let!(:child_category) do
+      FactoryBot.create(:category, name: "About Child Category")
+    end
+
+    before do
+      Categorization.create!(
+        category: parent,
+        categorizable: child_category
+      )
+    end
+
+    it "renders category content" do
+      get webpages_about_path
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include(child_category.name)
+    end
+  end
+
+  describe "GET /visit-study" do
+    let!(:parent) { FactoryBot.create(:category, slug: "visit") }
+    let!(:child_category) do
+      FactoryBot.create(:category, name: "Visit Child Category")
+    end
+
+    before do
+      Categorization.create!(
+        category: parent,
+        categorizable: child_category
+      )
+    end
+
+    it "renders category content" do
+      get webpages_visit_path
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include(child_category.name)
+    end
+  end
+
+  describe "GET /research-services" do
+    let!(:parent) do
+      FactoryBot.create(:category, slug: "research-services")
+    end
+
+    let!(:child_category) do
+      FactoryBot.create(:category, name: "Research Child Category")
+    end
+
+    before do
+      Categorization.create!(
+        category: parent,
+        categorizable: child_category
+      )
+    end
+
+    it "renders category content" do
+      get webpages_research_path
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include(child_category.name)
+    end
+  end
+
   describe "GET /scrc" do
     let!(:visit_links) { FactoryBot.create(:category, slug: "scrc-study") }
     let!(:collection_links) { FactoryBot.create(:category, slug: "scrc-collections") }

@@ -16,7 +16,7 @@ class SyncService::LibcalEvents
     @events_urls = event_source_resolver.resolve(params)
     @access_token = params[:access_token].presence
     @response_body = params[:response_body]
-    stdout_and_log("Syncing LibCal events from #{source_label}")
+    error_reporter.log("Syncing LibCal events from #{source_label}")
   end
 
   def sync

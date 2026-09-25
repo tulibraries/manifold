@@ -807,4 +807,18 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
       expect(Honeybadger).to have_received(:notify).with(raised, context: hash_including(:libcal_sources))
     end
   end
+
+  describe "run log" do
+    it "redacts credentials from the sources named in the opening line" do
+      messages = []
+      allow(Logger).to receive(:new).and_return(instance_double(Logger).tap do |log|
+        allow(log).to receive(:info) { |message| messages << message }
+      end)
+      source = "https://user:pw@charlesstudy.temple.edu/1.1/events?cal_id=6197&access_token=leaked"
+
+      described_class.new(events_url: source, access_token: "token")
+
+      expect(messages.first).to eq("Syncing LibCal events from https://charlesstudy.temple.edu/1.1/events?cal_id=6197&access_token=[FILTERED]")
+    end
+  end
 end

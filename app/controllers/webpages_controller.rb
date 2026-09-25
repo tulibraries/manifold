@@ -111,18 +111,17 @@ class WebpagesController < ApplicationController
   end
 
   def scop
-    @webpage = Webpage.find_by(slug: "scop-intro")
-    @description = @webpage.description if @webpage.present?
-    @pub_services = Category.find_by(slug: "publishing-services")
-    @pub_services_links = @pub_services.items if @pub_services.present?
-    @scholar_share = Category.find_by(slug: "tuscholarshare")
-    @scholar_share_links = @scholar_share.items if @scholar_share.present?
-    @event_links = Event.where(tags: "SCOP")
-                        .where(end_time: Time.zone.now..Float::INFINITY)
-                        .order(:start_time)
-                        .take(5)
-    @blog = Blog.find_by(slug: "scholarly-communications-at-temple")
-    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5) if @blog.present?
+    scop_page = Webpages::ScopPage.call
+
+    @webpage = scop_page[:webpage]
+    @description = scop_page[:description]
+    @pub_services = scop_page[:pub_services]
+    @pub_services_links = scop_page[:pub_services_links]
+    @scholar_share = scop_page[:scholar_share]
+    @scholar_share_links = scop_page[:scholar_share_links]
+    @event_links = scop_page[:event_links]
+    @blog = scop_page[:blog]
+    @blog_posts = scop_page[:blog_posts]
   end
 
   def hsl

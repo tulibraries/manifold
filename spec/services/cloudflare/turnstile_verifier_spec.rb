@@ -184,24 +184,33 @@ RSpec.describe Cloudflare::TurnstileVerifier do
     end
 
     context "with Cloudflare's dummy test keys" do
-      # The response Cloudflare documents for the dummy keys: action is always
-      # "test", never the action the widget sent, and there is no metadata.
+      # What siteverify actually returns for the dummy keys, confirmed against a
+      # live local submission: hostname example.com even when the page is served
+      # from localhost, and no action key at all. Cloudflare's testing docs show
+      # hostname "localhost" and action "test", which is covered separately below.
       # https://developers.cloudflare.com/turnstile/troubleshooting/testing/
-      let(:hostnames) { "localhost" }
+      let(:hostnames) { "example.com" }
       let(:siteverify_result) do
         {
           "success" => true,
           "challenge_ts" => "2022-02-28T15:14:30.096Z",
-          "hostname" => "localhost",
+          "hostname" => "example.com",
           "error-codes" => [],
-          "action" => "test",
           "cdata" => "test-data"
         }
       end
 
       before { config[:secret_key] = described_class::TEST_SECRET_KEYS.first }
 
-      it "accepts the documented test response outside production" do
+      it "accepts the response the test keys actually return" do
+        expect(verify).to be(true)
+      end
+
+      it "accepts the response Cloudflare documents for the test keys" do
+        siteverify_result["hostname"] = "localhost"
+        siteverify_result["action"] = "test"
+        config[:hostnames] = "localhost"
+
         expect(verify).to be(true)
       end
 

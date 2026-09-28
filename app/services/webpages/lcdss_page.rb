@@ -19,9 +19,9 @@ module Webpages
 
       def event_links
         Event.is_current
-             .where("lower(tags) LIKE ?", "%digital scholarship%")
-             .order(:start_time)
-             .take(5)
+            .is_dss_event
+            .order(:start_time)
+            .take(5)
       end
   end
 end

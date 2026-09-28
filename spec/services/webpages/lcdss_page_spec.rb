@@ -92,10 +92,19 @@ RSpec.describe Webpages::LcdssPage do
         end_time: 2.days.from_now
       )
 
+      libcal_event = FactoryBot.create(
+        :event,
+        title: "LCDSS LibCal Event",
+        tags: "other",
+        libcal_categories: "Digital Scholarship",
+        start_time: 30.minutes.from_now,
+        end_time: 1.hour.from_now
+      )
+
       result = described_class.call
 
       expect(result[:event_links]).to eq(
-        [events[1], events[3], events[5], events[4], events[2]]
+        [libcal_event, events[1], events[3], events[5], events[4]]
       )
     end
   end

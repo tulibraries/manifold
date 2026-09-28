@@ -18,9 +18,9 @@ manifold manages, orchestrates, and displays data about Temple University Librar
 ```
 export GOOGLE_OAUTH_CLIENT_ID="Google client ID goes here"
 export GOOGLE_OAUTH_SECRET="Google OAuth secret goes here"
-export TURNSTILE_ENABLED="true"
 export TURNSTILE_SITE_KEY="1x00000000000000000000AA"
 export TURNSTILE_SECRET_KEY="1x0000000000000000000000000000000AA"
+export TURNSTILE_HOSTNAMES="example.com"
 ```
 
 Add these same lines to your `.bash_profile` or `.bashrc` file, depending on
@@ -28,7 +28,12 @@ how you've setup your Bash shell.
 
 Cloudflare Turnstile is only enabled on `/forms/:id` pages when
 [config/turnstile.yml](config/turnstile.yml)
-resolves valid `site_key` / `secret_key` values and the Flipflop feature is enabled.
+resolves valid `site_key` / `secret_key` / `hostnames` values and the Flipflop feature is enabled.
+When the feature is enabled but any of those values is missing, form submissions are rejected.
+`TURNSTILE_HOSTNAMES` lists the frontend hostnames siteverify must report for this deployment
+(Cloudflare's test keys always report `example.com`). Never include `localhost` in production.
+Deployed values: `library.temple.edu` in production and `manifold-qa.k8s.temple.edu` in QA.
+Each hostname must also be listed in the Turnstile widget's domains in the Cloudflare dashboard.
 
 * Clone the repository and navigate to the souce code directory
 

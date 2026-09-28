@@ -35,6 +35,7 @@ RSpec.describe "Cloudflare Turnstile on forms", type: :request do
       allow(Cloudflare::TurnstileVerifier).to receive(:configured?).and_return(true)
       allow(Cloudflare::TurnstileVerifier).to receive(:site_key).and_return("site-key")
       allow(Cloudflare::TurnstileVerifier).to receive(:secret_key).and_return("secret-key")
+      allow(Cloudflare::TurnstileVerifier).to receive(:expected_hostnames).and_return(["library.temple.edu"])
     end
 
     it "renders the widget on form pages" do
@@ -44,13 +45,15 @@ RSpec.describe "Cloudflare Turnstile on forms", type: :request do
       expect(response.body).to include('data-turbo="false"')
       expect(response.body).to include("cf-turnstile")
       expect(response.body).to include("site-key")
+      expect(response.body).to include(%(data-action="#{form_type}"))
       expect(response.body).to include("challenges.cloudflare.com/turnstile/v0/api.js")
     end
 
     it "rejects submissions when verification fails" do
       expect(Cloudflare::TurnstileVerifier).to receive(:verify).with(
         token: "turnstile-token",
-        remote_ip: anything
+        remote_ip: anything,
+        action: form_type
       ).and_return(false)
 
       expect do
@@ -71,6 +74,44 @@ RSpec.describe "Cloudflare Turnstile on forms", type: :request do
 
       expect(response).to have_http_status(:redirect)
     end
+  end
+
+  context "when the feature flag is enabled but Turnstile is not configured" do
+    before do
+      allow(Flipflop).to receive(:cloudflare_turnstile?).and_return(true)
+      allow(Cloudflare::TurnstileVerifier).to receive(:secret_key).and_return(nil)
+    end
+
+    it "rejects submissions without calling siteverify" do
+      expect do
+        post(forms_path, params: form_params)
+      end.not_to change(FormSubmission, :count)
+
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(WebMock).not_to have_requested(:post, Cloudflare::TurnstileVerifier::VERIFY_URI.to_s)
+    end
+  end
+
+  context "when the feature flag is enabled in the database" do
+    before do
+      Flipflop::Feature.create!(key: "cloudflare_turnstile", enabled: true)
+      allow(Cloudflare::TurnstileVerifier).to receive(:verify).and_return(false)
+    end
+
+    it "cannot be switched off by a client cookie" do
+      expect do
+        post(forms_path, params: form_params, headers: { "Cookie" => "cloudflare_turnstile=0" })
+      end.not_to change(FormSubmission, :count)
+
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(Cloudflare::TurnstileVerifier).to have_received(:verify)
+    end
+  end
+
+  it "masks the Turnstile token in logs and error reports" do
+    filter = ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
+
+    expect(filter.filter(form_params)["cf-turnstile-response"]).to eq("[FILTERED]")
   end
 
   context "when the cloudflare_turnstile feature flag is disabled" do

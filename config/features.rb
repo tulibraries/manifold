@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Flipflop.configure do
-  strategy :cookie
+  # No cookie strategy: an unsigned client cookie would let any visitor
+  # switch cloudflare_turnstile off for their own requests.
   strategy :active_record
   strategy :default
 

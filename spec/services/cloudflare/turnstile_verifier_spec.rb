@@ -184,16 +184,41 @@ RSpec.describe Cloudflare::TurnstileVerifier do
     end
 
     context "with Cloudflare's dummy test keys" do
+      # The response Cloudflare documents for the dummy keys: action is always
+      # "test", never the action the widget sent, and there is no metadata.
+      # https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+      let(:hostnames) { "localhost" }
       let(:siteverify_result) do
-        { "success" => true, "hostname" => "library.temple.edu", "metadata" => { "result_with_testing_key" => true } }
+        {
+          "success" => true,
+          "challenge_ts" => "2022-02-28T15:14:30.096Z",
+          "hostname" => "localhost",
+          "error-codes" => [],
+          "action" => "test",
+          "cdata" => "test-data"
+        }
       end
 
-      it "accepts the missing action outside production" do
+      before { config[:secret_key] = described_class::TEST_SECRET_KEYS.first }
+
+      it "accepts the documented test response outside production" do
         expect(verify).to be(true)
       end
 
-      it "still requires the action in production" do
+      it "still requires a matching action in production" do
         allow(Rails.env).to receive(:production?).and_return(true)
+
+        expect(verify).to be(false)
+      end
+
+      it "still rejects an unapproved hostname" do
+        config[:hostnames] = "library.temple.edu"
+
+        expect(verify).to be(false)
+      end
+
+      it "rejects the same response when a real secret key is configured" do
+        config[:secret_key] = "secret-key"
 
         expect(verify).to be(false)
       end

@@ -14,6 +14,13 @@ module Cloudflare
     # not at the visitor. Visitor-caused codes (invalid-input-response,
     # timeout-or-duplicate) are logged only, so bot traffic does not page us.
     SERVER_ERROR_CODES = %w[missing-input-secret invalid-input-secret internal-error].freeze
+    # Cloudflare's documented dummy secret keys, used for local development.
+    # https://developers.cloudflare.com/turnstile/troubleshooting/testing/
+    TEST_SECRET_KEYS = %w[
+      1x0000000000000000000000000000000AA
+      2x0000000000000000000000000000000AA
+      3x0000000000000000000000000000000AA
+    ].freeze
 
     def self.config
       Rails.configuration.turnstile.with_indifferent_access
@@ -80,7 +87,7 @@ module Cloudflare
     def self.accepted?(result, action)
       result["success"] == true &&
         expected_hostnames.include?(result["hostname"]) &&
-        (result["action"] == action || testing_key_result?(result))
+        (result["action"] == action || test_secret_key?)
     end
 
     # A valid token rejected for hostname or action, or a secret/Cloudflare
@@ -95,10 +102,11 @@ module Cloudflare
       Honeybadger.notify(message, error_class: "Cloudflare::TurnstileVerifier", context:)
     end
 
-    # Cloudflare's dummy test keys return no action. Allow that outside
-    # production only, so local development works with the test keys.
-    def self.testing_key_result?(result)
-      !Rails.env.production? && result.dig("metadata", "result_with_testing_key") == true
+    # Cloudflare's dummy keys always report action "test", whatever the widget
+    # sent, so the action check cannot pass locally. Skip it for those keys
+    # outside production; production still requires a matching action.
+    def self.test_secret_key?
+      !Rails.env.production? && TEST_SECRET_KEYS.include?(secret_key.to_s)
     end
 
     def self.siteverify(token:, remote_ip:)
@@ -117,6 +125,6 @@ module Cloudflare
       JSON.parse(response.body)
     end
 
-    private_class_method :accepted?, :server_side_rejection?, :report, :testing_key_result?, :siteverify
+    private_class_method :accepted?, :server_side_rejection?, :report, :test_secret_key?, :siteverify
   end
 end

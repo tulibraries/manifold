@@ -3,7 +3,12 @@
 require "uri"
 
 class SyncService::Libcal::ErrorReporter
-  SENSITIVE_PARAM_NAMES = %w[accesstoken token apikey key secret password clientid clientsecret].freeze
+  # Names are normalized by sensitive_name?, including encoded names and hyphens.
+  SENSITIVE_PARAM_NAMES = %w[
+    accesstoken token apikey key secret password clientid clientsecret
+    signature credential awsaccesskeyid xamzsignature xamzcredential xamzsecuritytoken
+    keypairid policy
+  ].freeze
 
   USERINFO = %r{://[^/?#@\s"'<>]*@}
   PARAM = /(?<=[?&;\s"']|\A)([^=&#;?\s"'<>]+)=([^&#;\s"'<>]*)/

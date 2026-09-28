@@ -183,6 +183,27 @@ RSpec.describe SyncService::LibcalEvents, type: :service do
           context: hash_including(image_url: "https://example.com/event.png?cal_id=1&token=[FILTERED]")
         )
       end
+
+      it "redacts a failed signed image URL in logs, the exception, and Honeybadger context" do
+        log = stub_logger
+        query = "X-Amz-Signature=aws-signature&X-Amz-Credential=aws-credential&X-Amz-Security-Token=session-secret&Signature=cdn-signature"
+        signed_url = "#{image_url}?width=640&#{query}"
+        redacted_url = "#{image_url}?width=640&X-Amz-Signature=[FILTERED]&X-Amz-Credential=[FILTERED]&X-Amz-Security-Token=[FILTERED]&Signature=[FILTERED]"
+        stub_request(:get, signed_url).to_return(status: 403)
+
+        body = [{ "id" => 555, "title" => "Image Event", "featured_image" => signed_url }].to_json
+        expect { described_class.call(response_body: body) }.to change(Event, :count).by(1)
+
+        expect(log).to have_received(:info).with("LibCal image retrieval failure: Image request for #{redacted_url} returned 403")
+        expect(Honeybadger).to have_received(:notify).with(
+          an_instance_of(described_class::ImageDownloadException).and(
+            having_attributes(message: "Image request for #{redacted_url} returned 403")
+          ),
+          context: { libcal_event_id: "555", libcal_event_title: "Image Event", image_url: redacted_url }
+        )
+        expect(Rails.cache.read("events_image_error")).to eq(["Image Event"])
+        expect(WebMock).to have_requested(:get, signed_url).once
+      end
     end
   end
 

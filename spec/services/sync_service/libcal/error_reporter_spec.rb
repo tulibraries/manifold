@@ -61,6 +61,20 @@ RSpec.describe SyncService::Libcal::ErrorReporter, type: :service do
         .to eq("https://example.com/events?cal%ZZid=1&access_token=[FILTERED]")
     end
 
+    it "filters signed URL signatures and credentials, including encoded parameter names" do
+      names = %w[
+        Signature Credential AWSAccessKeyId X-Amz-Signature X-Amz-Credential X-Amz-Security-Token
+        Key-Pair-Id Policy x%2Damz%2Dsignature X%252DAmz%252DCredential
+      ]
+
+      names.each do |name|
+        source = "https://example.com/event.png?width=640&#{name}=signed-secret&Expires=123"
+
+        expect(reporter.redact_sources([source]))
+          .to eq("https://example.com/event.png?width=640&#{name}=[FILTERED]&Expires=123")
+      end
+    end
+
     it "does not filter params that merely contain a sensitive name" do
       source = "https://example.com/events?monkey=1&token_type=bearer"
 
@@ -189,7 +203,7 @@ RSpec.describe SyncService::Libcal::ErrorReporter, type: :service do
     it "redacts free-form messages such as image download failures" do
       reporter.log("LibCal image retrieval failure: https://cdn.example.com/a.png?Signature=x&token=secret")
 
-      expect(logged).to eq(["LibCal image retrieval failure: https://cdn.example.com/a.png?Signature=x&token=[FILTERED]"])
+      expect(logged).to eq(["LibCal image retrieval failure: https://cdn.example.com/a.png?Signature=[FILTERED]&token=[FILTERED]"])
     end
   end
 end

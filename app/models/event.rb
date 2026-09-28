@@ -84,7 +84,7 @@ class Event < ApplicationRecord
   end
 
   def contact_phone
-    person ? person.phone_number : self[:contact_phone]
+    person&.phone_number
   end
 
   def has_internal_building?
@@ -144,7 +144,6 @@ class Event < ApplicationRecord
 
   def additional_schema_dot_org_attributes
     {
-      eventStatus: ("http://schema.org/EventCancelled" if cancelled),
       startDate: start_time,
       endDate: end_time,
       location: {

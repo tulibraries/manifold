@@ -359,8 +359,6 @@ en:
         external_zip: "19122"
         contact_name: "No Contact Given"
         contact_email: "No Contact Email Given"
-        contact_phone: "No Contact Phone Number"
-        registration_status: "No Registration Required"
         space: "No Space Given"
         building: "Charles Library"
     error:
@@ -1366,8 +1364,6 @@ en:
         external_zip: "19122"
         contact_name: "No Contact Given"
         contact_email: "No Contact Email Given"
-        contact_phone: "No Contact Phone Number"
-        registration_status: "No Registration Required"
         space: "No Space Given"
         building: "Charles Library"
       

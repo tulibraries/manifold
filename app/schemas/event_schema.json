@@ -87,24 +87,6 @@
               ],
               "pattern": "^(.*)$"
             },
-            "cancelled": {
-              "$id": "#/properties/data/properties/attributes/properties/cancelled",
-              "type": "boolean",
-              "title": "The Cancelled Schema",
-              "default": false,
-              "examples": [
-                false
-              ]
-            },
-            "registration_status": {
-              "$id": "#/properties/data/properties/attributes/properties/registration_status",
-              "type": "boolean",
-              "title": "The Registration_status Schema",
-              "default": false,
-              "examples": [
-                true
-              ]
-            },
             "registration_link": {
               "$id": "#/properties/data/properties/attributes/properties/registration_link",
               "type": "string",

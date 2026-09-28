@@ -13,8 +13,6 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
-      Authorization:
-      - Basic <base64_key_code>
   response:
     status:
       code: 200
@@ -44,7 +42,7 @@ http_interactions:
       - CP="Some Browsers Require This In Order to Set Third Party Cookies"
     body:
       encoding: UTF-8
-      string: '{"access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjk4MzQ3NTgzLCJuYmYiOjE2OTgzNDM5ODMsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.HLyifxqIeMypDkmb389hDijcdGozGE_cZokmWVJjfMtRRkrEzxiIglaMxQlYEBHXfEudHse8cuRzHVbXdSG1nwXLLvocJtcigVS5Qs2DdIgTAfgNuu3lmXg0nCJ7z5OAwSAfjDRmp7NO9hd2zIvU__4U5hkODmf5IXUZeRYb-TjG9vdBVACnUj04mHq77umuHH71mthcQaHb4-7KvGn6qIp8WzbzJlOykiwGdEJ4tRaBWZDG4qRWfVSR0ivDfQwTatZKbQkbmhhP0CMjWPyR2mBPv_jCNjPVf7RXF8gvoWWSlrNxjcFFiMex80KM3pabCKvz7CZ_TAByK4riR_FB5g","expires_in":3600,"token_type":"Bearer"}'
+      string: '{"access_token":"<redacted>","expires_in":3600,"token_type":"Bearer"}'
   recorded_at: Thu, 26 Oct 2023 18:13:03 GMT
 - request:
     method: get
@@ -53,8 +51,6 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjk4MzQ3NTgzLCJuYmYiOjE2OTgzNDM5ODMsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.HLyifxqIeMypDkmb389hDijcdGozGE_cZokmWVJjfMtRRkrEzxiIglaMxQlYEBHXfEudHse8cuRzHVbXdSG1nwXLLvocJtcigVS5Qs2DdIgTAfgNuu3lmXg0nCJ7z5OAwSAfjDRmp7NO9hd2zIvU__4U5hkODmf5IXUZeRYb-TjG9vdBVACnUj04mHq77umuHH71mthcQaHb4-7KvGn6qIp8WzbzJlOykiwGdEJ4tRaBWZDG4qRWfVSR0ivDfQwTatZKbQkbmhhP0CMjWPyR2mBPv_jCNjPVf7RXF8gvoWWSlrNxjcFFiMex80KM3pabCKvz7CZ_TAByK4riR_FB5g
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -88,10 +84,6 @@ http_interactions:
       - https://temple.hosted.panopto.com
       Api-Supported-Versions:
       - '1'
-      Set-Cookie:
-      - csrfToken=A%2bcBzYd1XA%2fHashkxd%2fsRpJ3zu4rLlH2K7LVUnlUljigE07jOAJEiVSST%2bGiLo%2bFFEjYkxFQj5TlzdKiT%2fIW72jbSQeASNGWf8nYbTyVhwEYgxJPP2EpPjhmTv7NcZ%2fgdIoQ%2b%2ftEFFDyTkDUEI6BBjs%2bLr8jJwBMv10cG6jujvRbxzqP1YOM4GhxsH7wyY4c5Rd2aajkVYyUrO59J7qOpw%3d%3d;
-        path=/; secure; SameSite=None
-      - sandboxCookie=13342817584.43; path=/; secure; SameSite=None
       P3p:
       - CP="Some Browsers Require This In Order to Set Third Party Cookies"
     body:
@@ -106,8 +98,6 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjk4MzQ3NTgzLCJuYmYiOjE2OTgzNDM5ODMsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.HLyifxqIeMypDkmb389hDijcdGozGE_cZokmWVJjfMtRRkrEzxiIglaMxQlYEBHXfEudHse8cuRzHVbXdSG1nwXLLvocJtcigVS5Qs2DdIgTAfgNuu3lmXg0nCJ7z5OAwSAfjDRmp7NO9hd2zIvU__4U5hkODmf5IXUZeRYb-TjG9vdBVACnUj04mHq77umuHH71mthcQaHb4-7KvGn6qIp8WzbzJlOykiwGdEJ4tRaBWZDG4qRWfVSR0ivDfQwTatZKbQkbmhhP0CMjWPyR2mBPv_jCNjPVf7RXF8gvoWWSlrNxjcFFiMex80KM3pabCKvz7CZ_TAByK4riR_FB5g
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -141,10 +131,6 @@ http_interactions:
       - https://temple.hosted.panopto.com
       Api-Supported-Versions:
       - '1'
-      Set-Cookie:
-      - csrfToken=A%2bcBzYd1XA%2fHashkxd%2fsRpJ3zu4rLlH2K7LVUnlUljigE07jOAJEiVSST%2bGiLo%2bFxYKJEmy7meF6qT7eaahw7%2fXYwTcVl70h4adyW17gFhLrqRz5mxgHeEHqL%2bHBKhUSPPDrpZxauRSRwd4J8jQTEsZaTH6pnS60AjmCPf0Oh%2bueZs7cub9Rv2SdlfhzK0lz%2bujDw01nK8LowRSGjyfkJQ%3d%3d;
-        path=/; secure; SameSite=None
-      - sandboxCookie=13342817585.3946; path=/; secure; SameSite=None
       P3p:
       - CP="Some Browsers Require This In Order to Set Third Party Cookies"
     body:
@@ -159,8 +145,6 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjk4MzQ3NTgzLCJuYmYiOjE2OTgzNDM5ODMsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.HLyifxqIeMypDkmb389hDijcdGozGE_cZokmWVJjfMtRRkrEzxiIglaMxQlYEBHXfEudHse8cuRzHVbXdSG1nwXLLvocJtcigVS5Qs2DdIgTAfgNuu3lmXg0nCJ7z5OAwSAfjDRmp7NO9hd2zIvU__4U5hkODmf5IXUZeRYb-TjG9vdBVACnUj04mHq77umuHH71mthcQaHb4-7KvGn6qIp8WzbzJlOykiwGdEJ4tRaBWZDG4qRWfVSR0ivDfQwTatZKbQkbmhhP0CMjWPyR2mBPv_jCNjPVf7RXF8gvoWWSlrNxjcFFiMex80KM3pabCKvz7CZ_TAByK4riR_FB5g
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -194,10 +178,6 @@ http_interactions:
       - https://temple.hosted.panopto.com
       Api-Supported-Versions:
       - '1'
-      Set-Cookie:
-      - csrfToken=A%2bcBzYd1XA%2fHashkxd%2fsRpJ3zu4rLlH2K7LVUnlUljigE07jOAJEiVSST%2bGiLo%2bFOwNXzXv35dYgC7dDgBiIj%2fs6c88kQ5T7TF27FvReAxALBHReApH4Qw6%2fz%2fnN7yrrShbktRQ4pwtfnIL8eaRKOoB75N%2fqjBeQ3rCLoWOWBAsNmTcaUW%2bn69NbCZkZctKUZpCBXg%2bYuhNnruTY4tTlYw%3d%3d;
-        path=/; secure; SameSite=None
-      - sandboxCookie=13342817586.3109; path=/; secure; SameSite=None
       P3p:
       - CP="Some Browsers Require This In Order to Set Third Party Cookies"
     body:
@@ -212,8 +192,6 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjk4MzQ3NTgzLCJuYmYiOjE2OTgzNDM5ODMsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.HLyifxqIeMypDkmb389hDijcdGozGE_cZokmWVJjfMtRRkrEzxiIglaMxQlYEBHXfEudHse8cuRzHVbXdSG1nwXLLvocJtcigVS5Qs2DdIgTAfgNuu3lmXg0nCJ7z5OAwSAfjDRmp7NO9hd2zIvU__4U5hkODmf5IXUZeRYb-TjG9vdBVACnUj04mHq77umuHH71mthcQaHb4-7KvGn6qIp8WzbzJlOykiwGdEJ4tRaBWZDG4qRWfVSR0ivDfQwTatZKbQkbmhhP0CMjWPyR2mBPv_jCNjPVf7RXF8gvoWWSlrNxjcFFiMex80KM3pabCKvz7CZ_TAByK4riR_FB5g
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -247,10 +225,6 @@ http_interactions:
       - https://temple.hosted.panopto.com
       Api-Supported-Versions:
       - '1'
-      Set-Cookie:
-      - csrfToken=A%2bcBzYd1XA%2fHashkxd%2fsRpJ3zu4rLlH2K7LVUnlUljigE07jOAJEiVSST%2bGiLo%2bF3CcYoiX2rAY8btLvIoU3aND8VFZND8GePkqL3Vs7mM0z57USsO94pj142garfdP4gKR78l5dsqrLHjuamPFhExrlU6P4TJ9J%2fivXk%2fz0fJGFXo%2bae3YisN5wT81%2bW9FzfxMMhexPGLOnHm0MJGbbIg%3d%3d;
-        path=/; secure; SameSite=None
-      - sandboxCookie=13342817587.1806; path=/; secure; SameSite=None
       P3p:
       - CP="Some Browsers Require This In Order to Set Third Party Cookies"
     body:
@@ -265,8 +239,6 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      Authorization:
-      - Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyIsImtpZCI6InhYTGt6ejUybGNhWGhZWjR2QVl1bXRYNmQxdyJ9.eyJpc3MiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIiLCJhdWQiOiJodHRwczovL3RlbXBsZS5ob3N0ZWQucGFub3B0by5jb20vUGFub3B0by9vYXV0aDIvcmVzb3VyY2VzIiwiZXhwIjoxNjk4MzQ3NTgzLCJuYmYiOjE2OTgzNDM5ODMsImNsaWVudF9pZCI6ImFhZGQzN2EyLTJhMmItNGVmNi05ZDJhLWFmMjcwMTM1NTBjOSIsIm5hbWUiOiJjbGllbnRfYWFkZDM3YTItMmEyYi00ZWY2LTlkMmEtYWYyNzAxMzU1MGM5Iiwic2NvcGUiOiJhcGkifQ.HLyifxqIeMypDkmb389hDijcdGozGE_cZokmWVJjfMtRRkrEzxiIglaMxQlYEBHXfEudHse8cuRzHVbXdSG1nwXLLvocJtcigVS5Qs2DdIgTAfgNuu3lmXg0nCJ7z5OAwSAfjDRmp7NO9hd2zIvU__4U5hkODmf5IXUZeRYb-TjG9vdBVACnUj04mHq77umuHH71mthcQaHb4-7KvGn6qIp8WzbzJlOykiwGdEJ4tRaBWZDG4qRWfVSR0ivDfQwTatZKbQkbmhhP0CMjWPyR2mBPv_jCNjPVf7RXF8gvoWWSlrNxjcFFiMex80KM3pabCKvz7CZ_TAByK4riR_FB5g
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -300,10 +272,6 @@ http_interactions:
       - https://temple.hosted.panopto.com
       Api-Supported-Versions:
       - '1'
-      Set-Cookie:
-      - csrfToken=A%2bcBzYd1XA%2fHashkxd%2fsRpJ3zu4rLlH2K7LVUnlUljigE07jOAJEiVSST%2bGiLo%2bFa2P4P46UoImzdMiiz3QjccCGn1CfV19xr%2bznfSiOZd%2bxFc1cyggmNO4w6oPjxx6ybd%2bsgBjpoFNITR45ADWYS%2fqdLUftf6uRTqkdmmV912kkCZdSZ6tl6qQ15azFSq6lDgRvKw6OmxKCr%2fBTM7TArQ%3d%3d;
-        path=/; secure; SameSite=None
-      - sandboxCookie=13342817587.6335; path=/; secure; SameSite=None
       P3p:
       - CP="Some Browsers Require This In Order to Set Third Party Cookies"
     body:

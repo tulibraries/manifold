@@ -18,9 +18,6 @@ FactoryBot.define do
     person { nil }
     contact_name { "Dirk Gently" }
     contact_email { "dirk@example.com" }
-    contact_phone { "2155551212" }
-    cancelled { false }
-    registration_status { false }
     registration_link { "MyString" }
     content_hash { "MyString" }
     ensemble_identifier { "MyString" }

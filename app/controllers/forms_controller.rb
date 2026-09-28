@@ -2,6 +2,7 @@
 
 class FormsController < ApplicationController
   before_action :use_unsafe_params, only: [:persist_form!]
+  before_action :set_form_type, only: [:show, :create]
   def index
     form_groups = FormInfo.for_index.group_by(&:grouping)
     # Remove 'No Grouping' from form_groups
@@ -18,19 +19,13 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.new
-    if existing_forms.include? params[:id]
-      @type = params[:id]
-      load_form_configuration(@type)
-    else
-      render "errors/not_found", status: :not_found
-    end
+    load_form_configuration(@type)
   end
 
   def create
     @form = Form.new(params[:form])
     @form.request = request
-    form_type = params[:form][:form_type]
-    @type = form_type
+    form_type = @type
     load_form_configuration(form_type)
     @form.recipients = @recipients.reject(&:empty?).to_json if @recipients.present?
 
@@ -80,14 +75,8 @@ class FormsController < ApplicationController
     )
   end
 
-  def existing_forms
-    Dir.glob(Rails.root.join("app/views/forms/*/"))
-      .map { |template_path| template_path.split("/").last }
-      .reject { |template_name| template_name == "shared" }
-  end
-
   def form_objects_for_json
-    existing_forms.map do |form|
+    Form::TYPES.map do |form|
         OpenStruct.new(
           id: form,
           label: t("manifold.forms.#{form.underscore}.title"),
@@ -120,6 +109,15 @@ class FormsController < ApplicationController
 
   def use_unsafe_params
     request.parameters
+  end
+
+  # Only allow form types from Form::TYPES, so request params
+  # cannot select arbitrary partials in show.html.erb.
+  def set_form_type
+    form_type = action_name == "create" ? params.dig(:form, :form_type) : params[:id]
+    @type = Form::TYPES.find { |type| type == form_type }
+
+    render "errors/not_found", status: :not_found if @type.nil?
   end
 
   def load_form_configuration(form_type)

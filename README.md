@@ -3,6 +3,8 @@
 
 manifold manages, orchestrates, and displays data about Temple University Libraries.
 
+[![Coverage Status](https://coveralls.io/repos/github/tulibraries/manifold/badge.svg?branch=main)](https://coveralls.io/github/tulibraries/manifold?branch=main)
+
 ## System Requirements
 
 - Ruby, see Gemfile for latest version

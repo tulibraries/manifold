@@ -7,7 +7,7 @@ class EventSerializer < ApplicationSerializer
 
   set_type :event
 
-  attributes :title, :start_time, :end_time, :cancelled, :registration_status,
+  attributes :title, :start_time, :end_time,
              :registration_link, :alt_text, :ensemble_identifier, :tags, :all_day
 
   attribute :image, if: Proc.new { |event| event.rendered_image { event.show_image }.present? } do |event|
@@ -34,10 +34,10 @@ class EventSerializer < ApplicationSerializer
   end
 
   attribute :contact_email do |event|
-    event.contact_email
+    event.contact_email.to_s
   end
 
   attribute :contact_phone do |event|
-    event.contact_phone
+    event.contact_phone.to_s
   end
 end

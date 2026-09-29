@@ -130,11 +130,12 @@ class FormsController < ApplicationController
   end
 
   def turnstile_valid?
-    return true unless Cloudflare::TurnstileVerifier.configured?
+    return true unless Cloudflare::TurnstileVerifier.enabled?
 
     Cloudflare::TurnstileVerifier.verify(
       token: params["cf-turnstile-response"],
-      remote_ip: request.remote_ip
+      remote_ip: request.remote_ip,
+      action: @type
     )
   end
 

@@ -5,19 +5,80 @@ require "ostruct"
 
 RSpec.describe Panopto::VideoDistributor, type: :service do
   context "Retrieves video data from API" do
-    it "gets videos_all" do
-      videos = Panopto::VideoDistributor.new(type: "all")
-      expect(videos).to be
+    it "returns videos grouped by category" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      videos_response = double(
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(videos_response)
+
+      result = described_class.call(type: "all")
+
+      expect(result.keys).to eq(
+        %i[
+          recent
+          beyond_page
+          beyond_notes
+          blockson
+          awards
+          lcdss
+          scrc
+        ]
+      )
+
+      expect(result[:recent]).to eq(
+        slug: "recent",
+        label: "Recent Videos",
+        videos: [
+          { Id: "video-123", Name: "Example Video" }
+        ]
+      )
+
+      expect(result[:scrc]).to eq(
+        slug: "scrc",
+        label: "Special Collections Research Center",
+        videos: [
+          { Id: "video-123", Name: "Example Video" }
+        ]
+      )
     end
 
-    it "gets videos_list" do
-      videos = Panopto::VideoDistributor.new(type: "collection", collection: "recent")
-      expect(videos).to be
-    end
+    it "returns video data for a successful show request" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
 
-    it "gets video_show" do
-      video = Panopto::VideoDistributor.new(type: "show", video_id: "87710ba5-25eb-4f3e-ae83-b06c013e2687")
-      expect(video).to be
+      video_response = double(
+        body: '{"Id":"video-123","Name":"Example Video"}'
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(video_response)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to eq(
+        Id: "video-123",
+        Name: "Example Video"
+      )
     end
 
     # it "redirect on missing video" do
@@ -25,10 +86,216 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
     #   request.to redirect_to "/watchpastprogram"
     # end
 
-    it "gets videos_search" do
-      videos = Panopto::VideoDistributor.new(type: "search", query: "concert")
-      expect(videos).to be
+    it "returns search results" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      search_response = double(
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(search_response)
+
+      result = described_class.call(
+        type: "search",
+        query: "concert"
+      )
+
+      expect(result).to eq(
+        [
+          "concert",
+          1,
+          [{ Id: "video-123", Name: "Example Video" }]
+        ]
+      )
+    end
+
+    it "returns an empty search result when Panopto returns no matches" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      search_response = double(
+        body: '{"Results":[]}'
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(search_response)
+
+      result = described_class.call(
+        type: "search",
+        query: "no matches"
+      )
+
+      expect(result).to eq(
+        ["no matches", 0, []]
+      )
+    end
+    it "returns videos for a collection" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      collection_response = double(
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(collection_response)
+
+      result = described_class.call(
+        type: "collection",
+        collection: "recent"
+      )
+
+      expect(result).to eq(
+        [
+          "Recent Videos",
+          [{ Id: "video-123", Name: "Example Video" }]
+        ]
+      )
+    end
+
+    it "requests a second page when the first collection page has 50 videos" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      first_page = {
+        Results: 50.times.map do |i|
+          { Id: "video-#{i}", Name: "Video #{i}" }
+        end
+      }
+
+      second_page = {
+        Results: [
+          { Id: "video-50", Name: "Video 50" }
+        ]
+      }
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(
+          double(body: first_page.to_json),
+          double(body: second_page.to_json)
+        )
+
+      result = described_class.call(
+        type: "collection",
+        collection: "recent"
+      )
+
+      expect(result.first).to eq("Recent Videos")
+      expect(result.last.size).to eq(51)
+      expect(result.last.last).to eq(
+        Id: "video-50",
+        Name: "Video 50"
+      )
+    end
+
+    it "raises NoMethodError when a later collection page request fails" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      first_page = {
+        Results: 50.times.map do |i|
+          { Id: "video-#{i}", Name: "Video #{i}" }
+        end
+      }
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      call_count = 0
+
+      allow(HTTParty).to receive(:get) do
+        call_count += 1
+
+        if call_count == 1
+          double(body: first_page.to_json)
+        else
+          raise StandardError, "connection failed"
+        end
+      end
+
+      expect {
+        described_class.call(
+          type: "collection",
+          collection: "recent"
+        )
+      }.to raise_error(NoMethodError)
+    end
+
+    it "continues initialization when authentication fails" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_raise(StandardError, "authentication failed")
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(
+          double(
+            body: '{"Id":"video-123","Name":"Example Video"}'
+          )
+        )
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to eq(
+        Id: "video-123",
+        Name: "Example Video"
+      )
+    end
+
+    it "returns the logger result when the API response contains invalid JSON" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      invalid_response = double(
+        body: "not-json"
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(invalid_response)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to be(true)
     end
   end
-
 end

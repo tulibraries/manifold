@@ -1,3 +1,5 @@
 shared:
   site_key: <%= ENV["TURNSTILE_SITE_KEY"] %>
   secret_key: <%= ENV["TURNSTILE_SECRET_KEY"] %>
+  # Comma-separated frontend hostnames allowed by siteverify for this deployment.
+  hostnames: <%= ENV["TURNSTILE_HOSTNAMES"] %>

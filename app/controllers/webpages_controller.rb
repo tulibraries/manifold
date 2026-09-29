@@ -3,14 +3,9 @@
 class WebpagesController < ApplicationController
   include HasCategories
   include SerializableRespondTo
-  before_action :get_highlights, only: [:home]
   before_action :set_webpage, only: [:show]
 
   def wpvi
-  end
-
-  def get_highlights
-    @highlights = Highlight.where(promoted: true).take(4)
   end
 
   def videos_all
@@ -19,30 +14,20 @@ class WebpagesController < ApplicationController
   end
 
   def videos_list
-    if params[:collection].present?
-      videos = Panopto::VideoDistributor.call(type: "collection", collection: params[:collection])
-      if videos.present?
-        render(Panopto::PastEventsCollectionComponent.new(videos:))
-      else
-        return redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
-      end
+    videos = Panopto::CollectionLookup.call(params[:collection])
+
+    if videos.present?
+      render(Panopto::PastEventsCollectionComponent.new(videos:))
     else
-      return redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
+      redirect_to(webpages_videos_all_path, notice: "You must choose a video collection.")
     end
   end
 
   def video_show
-    if params[:id].present?
-      video = Panopto::VideoDistributor.call(type: "show", video_id: params[:id])
-      if video != true
-        if video.present? && video[:Message] != "The request is invalid."
-          render(Panopto::PastEventsVideoComponent.new(video:))
-        else
-          video_error
-        end
-      else
-        video_error
-      end
+    video = Panopto::VideoLookup.call(params[:id])
+
+    if video.present?
+      render(Panopto::PastEventsVideoComponent.new(video:))
     else
       video_error
     end
@@ -53,13 +38,12 @@ class WebpagesController < ApplicationController
   end
 
   def videos_search
-    if params[:q].present?
-      videos = Panopto::VideoDistributor.call(type: "search", query: params[:q])
-      if videos.present?
-        render(Panopto::PastEventsSearchComponent.new(videos:))
-      end
-    else
-      return redirect_to(webpages_videos_all_path, notice: "You must choose a term to search for.")
+    videos = Panopto::VideoSearch.call(params[:q])
+
+    if videos.present?
+      render(Panopto::PastEventsSearchComponent.new(videos:))
+    elsif params[:q].blank?
+      redirect_to(webpages_videos_all_path, notice: "You must choose a term to search for.")
     end
   end
 
@@ -77,25 +61,26 @@ class WebpagesController < ApplicationController
   end
 
   def home
-    file_path = Rails.root.join("public/cache/todays_hours")
-    @todays_hours = File.exist?(file_path) ? File.read(file_path) : nil
-    @highlights = Highlight.with_image.where(promoted: true)
-    exhibition = Exhibition.is_current.find_by(highlighted: true)
-    featured_events = Event.is_current.is_displayable.where(featured: true)
-    @featured_events = [exhibition, *featured_events].compact
-    @digcols = Highlight.with_image.for_digital_collections
-    @cta3 = Category.find_by(slug: "computers-printing-technology")
-    @cta4 = Category.find_by(slug: "explore-charles")
+    home_page = Webpages::HomePage.call
+
+    @todays_hours = home_page[:todays_hours]
+    @highlights = home_page[:highlights]
+    @featured_events = home_page[:featured_events]
+    @digcols = home_page[:digcols]
+    @cta3 = home_page[:cta3]
+    @cta4 = home_page[:cta4]
   end
 
   def hours
   end
 
   def scrc
-    @visit_links = Category.find_by(slug: "scrc-study").items
-    @collection_links = Category.find_by(slug: "scrc-collections").items
-    @webpage = Webpage.find_by(slug: "scrc")
-    @intro = Snippet.find_by(slug: "scrc-homepage-intro")
+    scrc_page = Webpages::ScrcPage.call
+
+    @visit_links = scrc_page[:visit_links]
+    @collection_links = scrc_page[:collection_links]
+    @webpage = scrc_page[:webpage]
+    @intro = scrc_page[:intro]
   end
 
   def scrc_planyourvisit
@@ -104,83 +89,90 @@ class WebpagesController < ApplicationController
   end
 
   def blockson
-    @webpage = Webpage.find_by(slug: "blockson-intro")
-    @visit_links = Category.find_by(slug: "blockson-study").items
-    @research_links = Category.find_by(slug: "blockson-research").items
-    @events = Event.where(["tags LIKE ? and end_time >= ?", "blockson", Time.zone.now]).order(:start_time).take(4)
-    @tours = Category.find_by(name: "360&deg; Virtual Exhibits")
-    @tour_links = @tours.items if @tours.present?
+    blockson_page = Webpages::BlocksonPage.call
+
+    @webpage = blockson_page[:webpage]
+    @visit_links = blockson_page[:visit_links]
+    @research_links = blockson_page[:research_links]
+    @events = blockson_page[:events]
+    @tours = blockson_page[:tours]
+    @tour_links = blockson_page[:tour_links]
   end
 
   def tudsc
-    @webpage = Webpage.find_by(slug: "lcdss-intro")
-    @visit_links =  Category.find_by(slug: "lcdss-study").items || nil
-    @research_links = Category.find_by(slug: "lcdss-research").items || nil
-    @event_links = Event.is_current.is_dss_event.order(:start_time).take(5)
-    @blog = Blog.find_by(slug: "lcdss-blog")
-    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5)
+    lcdss_page = Webpages::LcdssPage.call
+
+    @webpage = lcdss_page[:webpage]
+    @visit_links = lcdss_page[:visit_links]
+    @research_links = lcdss_page[:research_links]
+    @event_links = lcdss_page[:event_links]
+    @blog = lcdss_page[:blog]
+    @blog_posts = lcdss_page[:blog_posts]
   end
 
   def scop
-    @webpage = Webpage.find_by(slug: "scop-intro")
-    @description = @webpage.description if @webpage.present?
-    @pub_services = Category.find_by(slug: "publishing-services")
-    @pub_services_links = @pub_services.items if @pub_services.present?
-    @scholar_share = Category.find_by(slug: "tuscholarshare")
-    @scholar_share_links = @scholar_share.items if @scholar_share.present?
-    @event_links = Event.where(tags: "SCOP")
-                        .where(end_time: Time.zone.now..Float::INFINITY)
-                        .order(:start_time)
-                        .take(5)
-    @blog = Blog.find_by(slug: "scholarly-communications-at-temple")
-    @blog_posts = @blog.blog_posts.sort_by { |post| post.publication_date }.reverse.take(5) if @blog.present?
+    scop_page = Webpages::ScopPage.call
+
+    @webpage = scop_page[:webpage]
+    @description = scop_page[:description]
+    @pub_services = scop_page[:pub_services]
+    @pub_services_links = scop_page[:pub_services_links]
+    @scholar_share = scop_page[:scholar_share]
+    @scholar_share_links = scop_page[:scholar_share_links]
+    @event_links = scop_page[:event_links]
+    @blog = scop_page[:blog]
+    @blog_posts = scop_page[:blog_posts]
   end
 
   def hsl
-    @resource_links = Category.find_by(slug: "hsl-resources").items
-    @research_links = Category.find_by(slug: "hsl-research").items
-    @visit_links = Category.find_by(slug: "hsl-study").items
-    @event_links = Event.is_current.is_hsl_event.take(5)
-    @study_room = ExternalLink.find_by(slug: "hsl-study-rooms")
-    @remote_learning = Webpage.find_by(slug: "online-support")
+    hsl_page = Webpages::HslPage.call
+
+    @resource_links = hsl_page[:resource_links]
+    @research_links = hsl_page[:research_links]
+    @visit_links = hsl_page[:visit_links]
+    @event_links = hsl_page[:event_links]
+    @study_room = hsl_page[:study_room]
+    @remote_learning = hsl_page[:remote_learning]
   end
 
   def news
-    @blogs = Blog.all
-    @blogposts = BlogPost.all.order(:created_at).reverse.take(3)
-    @highlights = Highlight.with_image.where(promoted: true).take(3)
+    news_page = Webpages::NewsPage.call
+
+    @blogs = news_page[:blogs]
+    @blogposts = news_page[:blogposts]
+    @highlights = news_page[:highlights]
   end
 
   def about
-    @categories = Category.find_by(slug: "about-page").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("about-page")
   end
 
   def visit
-    @categories = Category.find_by(slug: "visit").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("visit")
   end
 
   def blogs
-    @categories = Category.find_by(slug: "news").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("news")
   end
 
   def publications
-    @categories = Category.find_by(slug: "publications").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("publications")
   end
 
   def support
-    @categories = Category.find_by(slug: "giving").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("giving")
   end
 
   def grants
-    @categories = Category.find_by(slug: "grants").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("grants")
   end
 
   def policies
-    @categories = Category.find_by(slug: "policies").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("policies")
   end
 
   def research
-    @categories = Category.find_by(slug: "research-services").items.select { |item| item.class == Category }
+    @categories = Webpages::CategoryPage.call("research-services")
   end
 
   def list_item(category)

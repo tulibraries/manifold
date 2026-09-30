@@ -60,8 +60,9 @@ module Panopto
           api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
           request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
           JSON.parse(request.body, symbolize_names: true) if request.body.size > 0
-        rescue => e
+        rescue StandardError => e
           Rails.logger.debug e
+          nil
         end
       end
 
@@ -76,6 +77,9 @@ module Panopto
 
         @categories.each do |category|
           get_videos = panopto_api_call(["playlists", "sessions"], category[1][2])
+
+          next unless get_videos
+
           get_videos[:Results].each do |video|
             case category[0]
             when "recent"
@@ -113,16 +117,30 @@ module Panopto
         i = 0
 
         if collection.present?
-          page_results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
+          page_results = panopto_api_call(
+            ["playlists", "sessions", nil, nil, i],
+            collection[2]
+          )
+
+          return [collection[1], []] unless page_results
+
           @videos = page_results[:Results]
 
           more = true if @videos.present? && @videos.size == 50
           while more
             page_results = nil
             i += 1
-            results = panopto_api_call(["playlists", "sessions", nil, nil, i], collection[2])
-            page_results = results[:Results] if results.present? && (results[:Results].size > 0 && results[:Results].size <= 50)
+            results = panopto_api_call(
+              ["playlists", "sessions", nil, nil, i],
+              collection[2]
+            )
 
+            return [collection[1], []] unless results
+
+            page_results =
+              results[:Results] if results.present? &&
+                                  (results[:Results].size > 0 &&
+                                    results[:Results].size <= 50)
             if page_results.present?
               more = (page_results.size == 50) ? true : false
               @videos += page_results
@@ -142,6 +160,9 @@ module Panopto
 
       def videos_search(query)
         page_results = panopto_api_call(["folders", "sessions", "search", query, nil], "e2753a7a-85c2-4d00-a241-aecf00393c25")
+
+        return [query, 0, []] unless page_results
+
         if page_results[:Results].present?
           videos = page_results[:Results]
           @videos = [query, videos.size, videos] if videos.present?

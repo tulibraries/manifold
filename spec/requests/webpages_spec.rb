@@ -335,6 +335,41 @@ RSpec.describe "Webpages", type: :request do
 
       expect(response).to redirect_to(webpages_videos_all_path)
     end
+
+    it "displays an error message when a later collection page request fails" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      first_page = {
+        Results: 50.times.map do |i|
+          { Id: "video-#{i}", Name: "Video #{i}" }
+        end
+      }
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      call_count = 0
+
+      allow(HTTParty).to receive(:get) do
+        call_count += 1
+
+        if call_count == 1
+          double(body: first_page.to_json)
+        else
+          raise StandardError, "connection failed"
+        end
+      end
+
+      get webpages_videos_collection_path(collection: "recent")
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include(
+        I18n.t("manifold.webpages.videos.collection.retrieval_failed")
+      )
+    end
   end
 
   describe "GET /watchpastprograms/search" do

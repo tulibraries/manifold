@@ -122,7 +122,7 @@ module Panopto
             collection[2]
           )
 
-          return [collection[1], []] unless page_results
+          return [collection[1], [], :retrieval_failed] unless page_results
 
           @videos = page_results[:Results]
 
@@ -135,7 +135,7 @@ module Panopto
               collection[2]
             )
 
-            return [collection[1], []] unless results
+            return [collection[1], [], :retrieval_failed] unless results
 
             page_results =
               results[:Results] if results.present? &&

@@ -1306,6 +1306,8 @@ en:
       videos:
         page_title: Past Program and Event Videos
         breadcrumb: < Watch Past Programs & Events
+        collection:
+          retrieval_failed: We couldn’t load this collection. Please try again.
         categories:
           recent: Recent Videos
           beyond-the-page: Beyond the Page

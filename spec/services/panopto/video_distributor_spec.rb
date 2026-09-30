@@ -234,7 +234,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       expect(result).to eq(
-        ["Recent Videos", []]
+        ["Recent Videos", [], :retrieval_failed]
       )
     end
 
@@ -328,7 +328,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       expect(result).to eq(
-        ["Recent Videos", []]
+        ["Recent Videos", [], :retrieval_failed]
       )
     end
 

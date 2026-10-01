@@ -356,6 +356,85 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
+    it "continues when the authentication response does not contain an access token" do
+      auth_response = double(
+        body: '{"error":"invalid_client"}'
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(
+          double(
+            body: '{"Id":"video-123","Name":"Example Video"}'
+          )
+        )
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to eq(
+        Id: "video-123",
+        Name: "Example Video"
+      )
+    end
+
+    it "sends a bearer request without a token when authentication fails" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_raise(StandardError, "authentication failed")
+
+      allow(HTTParty)
+        .to receive(:get)
+        .with(
+          "https://temple.hosted.panopto.com/Panopto/api/v1/sessions/video-123/",
+          headers: { "Authorization" => "Bearer " }
+        )
+        .and_return(
+          double(
+            body: '{"Id":"video-123","Name":"Example Video"}'
+          )
+        )
+
+      described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+    end
+
+    it "returns the API error response when an authenticated request is unauthorized" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      unauthorized_response = double(
+        body: '{"Message":"Unauthorized"}',
+        code: 403
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(unauthorized_response)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to eq(
+        Message: "Unauthorized"
+      )
+    end
+
     it "returns nil when the API response contains invalid JSON" do
       auth_response = double(
         body: '{"access_token":"test-token"}'

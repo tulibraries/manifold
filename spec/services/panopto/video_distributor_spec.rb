@@ -53,6 +53,40 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
+    it "returns an empty category when one category API request fails" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      videos_response = double(
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty).to receive(:get) do |url, **_options|
+        if url.include?("eba32425-d6bf-4e9c-983f-af1f0128b62b")
+          raise StandardError, "connection failed"
+        end
+
+        videos_response
+      end
+
+      result = described_class.call(type: "all")
+
+      expect(result[:recent][:videos]).to eq(
+        [{ Id: "video-123", Name: "Example Video" }]
+      )
+
+      expect(result[:beyond_page][:videos]).to eq([])
+
+      expect(result[:scrc][:videos]).to eq(
+        [{ Id: "video-123", Name: "Example Video" }]
+      )
+    end
+
     it "returns video data for a successful show request" do
       auth_response = double(
         body: '{"access_token":"test-token"}'
@@ -143,6 +177,67 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         ["no matches", 0, []]
       )
     end
+
+    it "returns an empty search result when the API request fails" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_raise(StandardError, "connection failed")
+
+      result = described_class.call(
+        type: "search",
+        query: "concert"
+      )
+
+      expect(result).to eq(
+        ["concert", 0, []]
+      )
+    end
+
+    it "returns an empty collection when a later page request fails" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      first_page = {
+        Results: 50.times.map do |i|
+          { Id: "video-#{i}", Name: "Video #{i}" }
+        end
+      }
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      call_count = 0
+
+      allow(HTTParty).to receive(:get) do
+        call_count += 1
+
+        if call_count == 1
+          double(body: first_page.to_json)
+        else
+          raise StandardError, "connection failed"
+        end
+      end
+
+      result = described_class.call(
+        type: "collection",
+        collection: "recent"
+      )
+
+      expect(result).to eq(
+        ["Recent Videos", [], :retrieval_failed]
+      )
+    end
+
     it "returns videos for a collection" do
       auth_response = double(
         body: '{"access_token":"test-token"}'
@@ -214,39 +309,27 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
-    it "raises NoMethodError when a later collection page request fails" do
+    it "returns an empty collection when the initial page request fails" do
       auth_response = double(
         body: '{"access_token":"test-token"}'
       )
-
-      first_page = {
-        Results: 50.times.map do |i|
-          { Id: "video-#{i}", Name: "Video #{i}" }
-        end
-      }
 
       allow(HTTParty)
         .to receive(:post)
         .and_return(auth_response)
 
-      call_count = 0
+      allow(HTTParty)
+        .to receive(:get)
+        .and_raise(StandardError, "connection failed")
 
-      allow(HTTParty).to receive(:get) do
-        call_count += 1
+      result = described_class.call(
+        type: "collection",
+        collection: "recent"
+      )
 
-        if call_count == 1
-          double(body: first_page.to_json)
-        else
-          raise StandardError, "connection failed"
-        end
-      end
-
-      expect {
-        described_class.call(
-          type: "collection",
-          collection: "recent"
-        )
-      }.to raise_error(NoMethodError)
+      expect(result).to eq(
+        ["Recent Videos", [], :retrieval_failed]
+      )
     end
 
     it "continues initialization when authentication fails" do
@@ -273,7 +356,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
-    it "returns the logger result when the API response contains invalid JSON" do
+    it "returns nil when the API response contains invalid JSON" do
       auth_response = double(
         body: '{"access_token":"test-token"}'
       )
@@ -290,12 +373,16 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:get)
         .and_return(invalid_response)
 
+      allow(Rails.logger)
+        .to receive(:debug)
+        .and_return(true)
+
       result = described_class.call(
         type: "show",
         video_id: "video-123"
       )
 
-      expect(result).to be(true)
+      expect(result).to be_nil
     end
   end
 end

@@ -311,6 +311,24 @@ RSpec.describe "Webpages", type: :request do
     end
   end
 
+  describe "GET /watchpastprograms" do
+    it "redirects when Panopto authentication fails without making an API request" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_raise(StandardError, "authentication failed")
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      get webpages_videos_all_path
+
+      expect(response).to redirect_to(root_path)
+      expect(flash[:notice]).to eq(
+        "Past programs are temporarily unavailable."
+      )
+    end
+  end
+
   describe "GET /watchpastprograms/collections/:collection" do
     it "renders a collection when videos are returned" do
       videos = [{ Title: "Example Video" }]

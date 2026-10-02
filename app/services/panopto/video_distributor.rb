@@ -32,6 +32,8 @@ module Panopto
         "lcdss" => ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
         "scrc" => ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"] }
 
+      return authentication_failure_result if @access_token.blank?
+
       case @type
       when "all"
         video_call = panopto_api_call(["playlists", "sessions"], "98a7258a-f81f-48c1-8541-af1900e5a7af")
@@ -168,6 +170,20 @@ module Panopto
           @videos = [query, videos.size, videos] if videos.present?
         else
           @videos = [query, 0, page_results[:Results]]
+        end
+      end
+
+      def authentication_failure_result
+        case @type
+        when "search"
+          [@query, 0, []]
+        when "collection"
+          return unless @categories.key?(@collection)
+
+          category = @categories.fetch(@collection)
+          [category[1], [], :retrieval_failed]
+        else
+          nil
         end
       end
   end

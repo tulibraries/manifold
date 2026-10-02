@@ -332,18 +332,85 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
-    it "continues initialization when authentication fails" do
+    it "returns nil when authentication raises an error" do
       allow(HTTParty)
         .to receive(:post)
         .and_raise(StandardError, "authentication failed")
 
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to be_nil
+    end
+
+    it "returns nil when authentication does not return an access token" do
+      auth_response = double(
+        body: '{"error":"invalid_client"}'
+      )
+
       allow(HTTParty)
-        .to receive(:get)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to be_nil
+    end
+
+    it "does not make an API request when authentication fails" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_raise(StandardError, "authentication failed")
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+    end
+
+    it "does not make an API request when authentication returns no access token" do
+      allow(HTTParty)
+        .to receive(:post)
         .and_return(
           double(
-            body: '{"Id":"video-123","Name":"Example Video"}'
+            body: '{"error":"invalid_client"}'
           )
         )
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+    end
+
+    it "returns the API error response when an authenticated request is unauthorized" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      unauthorized_response = double(
+        body: '{"Message":"Unauthorized"}',
+        code: 403
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(unauthorized_response)
 
       result = described_class.call(
         type: "show",
@@ -351,9 +418,93 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       expect(result).to eq(
-        Id: "video-123",
-        Name: "Example Video"
+        Message: "Unauthorized"
       )
+    end
+
+    it "returns nil when the authentication response contains invalid JSON" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(
+          double(body: "not-json")
+        )
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to be_nil
+    end
+
+    it "returns nil when the authentication response body is empty" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(
+          double(body: "")
+        )
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to be_nil
+    end
+
+    it "returns an empty search result when authentication fails" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_raise(StandardError, "authentication failed")
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      result = described_class.call(
+        type: "search",
+        query: "livingstone"
+      )
+
+      expect(result).to eq(
+        ["livingstone", 0, []]
+      )
+    end
+
+    it "returns a retrieval failure for a collection when authentication fails" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_raise(StandardError, "authentication failed")
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      result = described_class.call(
+        type: "collection",
+        collection: "recent"
+      )
+
+      expect(result).to eq(
+        ["Recent Videos", [], :retrieval_failed]
+      )
+    end
+
+    it "does not make API requests for all videos when authentication fails" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_raise(StandardError, "authentication failed")
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      result = described_class.call(type: "all")
+
+      expect(result).to be_nil
     end
 
     it "returns nil when the API response contains invalid JSON" do

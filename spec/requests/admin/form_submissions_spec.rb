@@ -184,6 +184,22 @@ RSpec.describe "Admin Form Submissions", type: :request do
       )
     end
 
+    let!(:nested_av_submission) do
+      FactoryBot.create(
+        :form_submission,
+        form_type: "av-requests",
+        form_attributes: {
+          "form" => {
+            "name" => "Nested AV User",
+            "collection_title" => "Nested Collection",
+            "identifier" => "Nested Item",
+            "notes" => "Nested notes",
+            "format" => "video",
+          },
+        },
+      )
+    end
+
     let!(:copy_submission) do
       FactoryBot.create(
         :form_submission,
@@ -237,6 +253,17 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response.body).to include("Audio: $50 per tape/reel")
 
         expect(response.body).not_to include("Estimated Pages")
+      end
+
+      it "shows an AV request with nested form attributes" do
+        get admin_form_submission_path(nested_av_submission)
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("Nested AV User")
+        expect(response.body).to include("Nested Collection")
+        expect(response.body).to include("Nested Item")
+        expect(response.body).to include("Nested notes")
+        expect(response.body).to include("Video: $50 per tape")
       end
 
       it "shows a Copy request submission when form_type is specified" do
@@ -346,19 +373,31 @@ RSpec.describe "Admin Form Submissions", type: :request do
 
         expect(response.body).not_to include("Copy Request User")
 
-        expect(csv.headers).to include(
+        expected_headers = [
+          "ID",
+          "Submitted At",
+          "Name",
+          "Email",
+          "Phone",
+          "Affiliation",
+          "Address",
           "Outside Vendor Fees",
-          "Request 1 - Collection Title",
-          "Request 1 - Identifier/File Name/Description",
-          "Request 1 - Notes",
-          "Request 1 - Format",
-          "Request 2 - Collection Title",
-          "Request 2 - Identifier/File Name/Description",
-          "Request 2 - Notes",
-          "Request 2 - Format",
-        )
+          "Duplication Limits",
+          "Copyright Acknowledgment",
+        ]
 
-        expect(csv.headers).not_to include("Request 1 - Box")
+        (1..10).each do |request_num|
+          expected_headers.concat(
+            [
+              "Request #{request_num} - Collection Title",
+              "Request #{request_num} - Identifier/File Name/Description",
+              "Request #{request_num} - Notes",
+              "Request #{request_num} - Format",
+            ],
+          )
+        end
+
+        expect(csv.headers).to eq(expected_headers)
 
         row = csv.first
 
@@ -373,6 +412,32 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(row["Request 2 - Identifier/File Name/Description"]).to eq("Item 2")
         expect(row["Request 2 - Notes"]).to eq("Second AV request")
         expect(row["Request 2 - Format"]).to eq("Audio: $50 per tape/reel")
+      end
+
+      it "exports nested form attributes" do
+        nested_submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: {
+            "form" => {
+              "name" => "Nested CSV User",
+              "email" => "nested@example.com",
+              "collection_title" => "Nested CSV Collection",
+              "identifier" => "Nested CSV Item",
+              "format" => "audio",
+            },
+          },
+        )
+
+        get export_av_requests_csv_admin_form_submissions_path(format: :csv)
+
+        csv = CSV.parse(response.body, headers: true)
+        row = csv.find { |candidate| candidate["ID"] == nested_submission.id.to_s }
+
+        expect(row["Name"]).to eq("Nested CSV User")
+        expect(row["Request 1 - Collection Title"]).to eq("Nested CSV Collection")
+        expect(row["Request 1 - Identifier/File Name/Description"]).to eq("Nested CSV Item")
+        expect(row["Request 1 - Format"]).to eq("Audio: $50 per tape/reel")
       end
 
       it "includes an error row when a submission cannot be processed" do
@@ -471,22 +536,32 @@ RSpec.describe "Admin Form Submissions", type: :request do
 
         expect(response.body).not_to include("AV Request User")
 
-        expect(csv.headers).to include(
-          "Request 1 - Collection Title",
-          "Request 1 - Box",
-          "Request 1 - Folder",
-          "Request 1 - Title/Identifier/File Name/Description",
-          "Request 1 - Estimated Number of Pages",
-          "Request 1 - Format",
-          "Request 2 - Collection Title",
-          "Request 2 - Box",
-          "Request 2 - Folder",
-          "Request 2 - Title/Identifier/File Name/Description",
-          "Request 2 - Estimated Number of Pages",
-          "Request 2 - Format",
-        )
+        expected_headers = [
+          "ID",
+          "Submitted At",
+          "Name",
+          "Email",
+          "Phone",
+          "Affiliation",
+          "Address",
+          "Duplication Limits",
+          "Copyright Acknowledgment",
+        ]
 
-        expect(csv.headers).not_to include("Outside Vendor Fees")
+        (1..10).each do |request_num|
+          expected_headers.concat(
+            [
+              "Request #{request_num} - Collection Title",
+              "Request #{request_num} - Box",
+              "Request #{request_num} - Folder",
+              "Request #{request_num} - Title/Identifier/File Name/Description",
+              "Request #{request_num} - Estimated Number of Pages",
+              "Request #{request_num} - Format",
+            ],
+          )
+        end
+
+        expect(csv.headers).to eq(expected_headers)
 
         row = csv.first
 

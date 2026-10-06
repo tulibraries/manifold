@@ -161,6 +161,18 @@ RSpec.describe Form::RequestDefinition do
         described_class.format_label("av-requests", "unknown"),
       ).to eq("unknown")
     end
+
+    it "preserves the longer Copy form label for photocopy" do
+      expect(
+        described_class.format_label(
+          "copy-requests",
+          "photocopy",
+          surface: :form,
+        ),
+      ).to eq(
+        "Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)",
+      )
+    end
   end
 
   describe ".attribute_fields_for_all_request_types" do

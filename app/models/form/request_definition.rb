@@ -127,6 +127,7 @@ class Form::RequestDefinition
         },
         "photocopy" => {
           default: "Photocopy: $0.50 per page plus postage",
+          form: "Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)",
           excel: "Photocopy: $0.50 per page plus postage",
         },
       },

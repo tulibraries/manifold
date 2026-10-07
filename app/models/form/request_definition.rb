@@ -55,15 +55,15 @@ class Form::RequestDefinition
 
       format_labels: {
         "film" => {
-          csv: "Film: $30 per minute",
+          default: "Film: $30 per minute",
           excel: "Film",
         },
         "video" => {
-          csv: "Video: $50 per tape",
+          default: "Video: $50 per tape",
           excel: "Video",
         },
         "audio" => {
-          csv: "Audio: $50 per tape/reel",
+          default: "Audio: $50 per tape/reel",
           excel: "Audio",
         },
       },
@@ -135,15 +135,16 @@ class Form::RequestDefinition
 
       format_labels: {
         "tiff" => {
-          csv: "TIFF (600 DPI): $5 per image",
+          default: "TIFF (600 DPI): $5 per image",
           excel: "TIFF (600 DPI): $5 per image",
         },
         "pdf" => {
-          csv: "PDF: $0.50 per page",
+          default: "PDF: $0.50 per page",
           excel: "PDF: $0.50 per page",
         },
         "photocopy" => {
-          csv: "Photocopy: $0.50 per page plus postage",
+          default: "Photocopy: $0.50 per page plus postage",
+          form: "Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)",
           excel: "Photocopy: $0.50 per page plus postage",
         },
       },
@@ -204,16 +205,7 @@ class Form::RequestDefinition
       labels = definition_for(form_type).fetch(:format_labels).fetch(value.to_s, nil)
       return value if labels.nil?
 
-      return labels.fetch(surface) if %i[csv excel].include?(surface)
-
-      key =
-        if surface == :form && form_type == "copy-requests" && value.to_s == "photocopy"
-          :photocopy_form
-        else
-          value
-        end
-
-      I18n.t("#{i18n_key(form_type)}.formats.#{key}")
+      labels[surface] || labels.fetch(:default)
     end
 
     def attribute_fields_for_all_request_types

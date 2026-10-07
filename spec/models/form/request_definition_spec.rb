@@ -205,24 +205,6 @@ RSpec.describe Form::RequestDefinition do
         "Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)",
       )
     end
-
-    it "preserves CSV format labels independently of localization" do
-      expect(
-        described_class.format_label(
-          "av-requests",
-          "film",
-          surface: :csv,
-        ),
-      ).to eq("Film: $30 per minute")
-
-      expect(
-        described_class.format_label(
-          "copy-requests",
-          "photocopy",
-          surface: :csv,
-        ),
-      ).to eq("Photocopy: $0.50 per page plus postage")
-    end
   end
 
   describe ".attribute_fields_for_all_request_types" do

@@ -682,10 +682,6 @@ en:
             identifier: Identifier/File Name/Description
             notes: Notes
             format: Format
-          formats:
-            film: "Film: $30 per minute"
-            video: "Video: $50 per tape"
-            audio: "Audio: $50 per tape/reel"
         copy_requests:
           display_name: Copy Request
           collection_title: Copy Request Submissions
@@ -698,11 +694,6 @@ en:
             estimated_pages: Estimated Number of Pages
             estimated_pages_admin: Estimated Pages
             format: Format
-          formats:
-            tiff: "TIFF (600 DPI): $5 per image"
-            pdf: "PDF: $0.50 per page"
-            photocopy: "Photocopy: $0.50 per page plus postage"
-            photocopy_form: "Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)"
       index: 
         title: Request Forms
         intro: Use of these forms is intended for and restricted to members of the Temple University Community

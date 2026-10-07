@@ -106,7 +106,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
                 key = Form::RequestDefinition.field_key(field, slot)
                 value = attributes[key]
 
-                value = Form::RequestDefinition.format_label("av-requests", value, surface: :csv) if field == :format && value.present?
+                value = Form::RequestDefinition.format_label("av-requests", value) if field == :format && value.present?
 
                 row << value
               end
@@ -168,7 +168,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
                 key = Form::RequestDefinition.field_key(field, slot)
                 value = attributes[key]
 
-                value = Form::RequestDefinition.format_label("copy-requests", value, surface: :csv) if field == :format && value.present?
+                value = Form::RequestDefinition.format_label("copy-requests", value) if field == :format && value.present?
 
                 row << value
               end

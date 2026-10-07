@@ -11,7 +11,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
                                       .order(created_at: :desc)
                                       .page(params[:page])
                                       .per(20)
-    @page_title = "AV Request Submissions"
+    @page_title = Form::RequestDefinition.collection_title("av-requests")
     render "collection"
   end
 
@@ -20,7 +20,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
                                       .order(created_at: :desc)
                                       .page(params[:page])
                                       .per(20)
-    @page_title = "Copy Request Submissions"
+    @page_title = Form::RequestDefinition.collection_title("copy-requests")
     render "collection"
   end
 
@@ -53,7 +53,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
   def show
     form_type = params[:form_type] || "av-requests"
     @form_submission = FormSubmission.where(form_type: form_type).find(params[:id])
-    @page_title = form_type == "av-requests" ? "AV Request Details" : "Copy Request Details"
+    @page_title = Form::RequestDefinition.detail_title(form_type)
   rescue ActiveRecord::RecordNotFound
     redirect_to admin_form_submissions_path, alert: "Form submission not found or not accessible."
   end

@@ -5,6 +5,10 @@ class Form::RequestDefinition
 
   DEFINITIONS = {
     "av-requests" => {
+      display_name: "AV Request",
+      collection_title: "AV Request Submissions",
+      detail_title: "AV Request Details",
+
       request_fields: %i[
         collection_title
         identifier
@@ -131,6 +135,10 @@ class Form::RequestDefinition
           excel: "Photocopy: $0.50 per page plus postage",
         },
       },
+
+      display_name: "Copy Request",
+      collection_title: "Copy Request Submissions",
+      detail_title: "Copy Request Details",
     },
   }.freeze
 
@@ -178,6 +186,18 @@ class Form::RequestDefinition
         .values
         .flat_map { |definition| definition.fetch(:attribute_fields) }
         .uniq
+    end
+
+    def display_name(form_type)
+      definition_for(form_type).fetch(:display_name)
+    end
+
+    def collection_title(form_type)
+      definition_for(form_type).fetch(:collection_title)
+    end
+
+    def detail_title(form_type)
+      definition_for(form_type).fetch(:detail_title)
     end
   end
 end

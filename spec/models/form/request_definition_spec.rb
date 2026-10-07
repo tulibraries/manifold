@@ -194,4 +194,25 @@ RSpec.describe Form::RequestDefinition do
       )
     end
   end
+
+  describe ".display_name" do
+    it "returns the display name for each request type" do
+      expect(described_class.display_name("av-requests")).to eq("AV Request")
+      expect(described_class.display_name("copy-requests")).to eq("Copy Request")
+    end
+  end
+
+  describe ".collection_title" do
+    it "returns the collection title for each request type" do
+      expect(described_class.collection_title("av-requests")).to eq("AV Request Submissions")
+      expect(described_class.collection_title("copy-requests")).to eq("Copy Request Submissions")
+    end
+  end
+
+  describe ".detail_title" do
+    it "returns the detail title for each request type" do
+      expect(described_class.detail_title("av-requests")).to eq("AV Request Details")
+      expect(described_class.detail_title("copy-requests")).to eq("Copy Request Details")
+    end
+  end
 end

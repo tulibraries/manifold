@@ -1,11 +1,12 @@
-<% form_type_display = @form_submission.form_type == 'av-requests' ? 'AV Request' : 'Copy Request' %>
+<% form_type = @form_submission.form_type %>
+<% form_type_display = Form::RequestDefinition.display_name(form_type) %>
 <% content_for(:title) { "#{form_type_display} ##{@form_submission.id}" } %>
 
 <header class="main-content__header">
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
-  
+
   <div class="main-content__header-actions">
     <%= link_to "← Back to List", admin_form_submissions_path, class: "button" %>
   </div>
@@ -15,9 +16,9 @@
   <% raw_attributes = @form_submission.form_attributes %>
   <% # Handle nested form structure - extract from 'form' key if present %>
   <% attributes = raw_attributes['form'] || raw_attributes %>
-    
+
     <!-- Submission Details -->
-    <dl class="attribute-list">      
+    <dl class="attribute-list">
       <dt class="attribute-list__key">Submitted At</dt>
       <dd class="attribute-list__value"><%= @form_submission.created_at.strftime('%B %d, %Y at %l:%M %p') %></dd>
     </dl>
@@ -29,7 +30,7 @@
     <dl class="attribute-list">
       <dt class="attribute-list__key">Name</dt>
       <dd class="attribute-list__value"><%= attributes['name'] %></dd>
-      
+
       <dt class="attribute-list__key">Email</dt>
       <dd class="attribute-list__value">
         <% if attributes['email'].present? %>
@@ -38,7 +39,7 @@
           Not provided
         <% end %>
       </dd>
-      
+
       <dt class="attribute-list__key">Address</dt>
       <dd class="attribute-list__value">
         <% if attributes['address'].present? %>
@@ -47,14 +48,14 @@
           Not provided
         <% end %>
       </dd>
-      
+
       <dt class="attribute-list__key">Phone</dt>
       <dd class="attribute-list__value"><%= attributes['phone'] || 'Not provided' %></dd>
-      
+
       <dt class="attribute-list__key">Temple Affiliation</dt>
       <dd class="attribute-list__value">
         <% if attributes['affiliation'].present? %>
-          <% 
+          <%
             affiliation_labels = {
               'temple' => 'Temple University Affiliates',
               'non-temple' => 'Non-Temple Affiliates'
@@ -77,7 +78,7 @@
           <% end %>
         </dd>
       <% end %>
-      
+
       <dt class="attribute-list__key">Duplication Limits</dt>
       <dd class="attribute-list__value">
         <% duplication_limits_value = raw_attributes['duplication_limits'] || (raw_attributes['form'] && raw_attributes['form']['duplication_limits']) %>
@@ -87,7 +88,7 @@
           <span class="badge badge-secondary">Not acknowledged</span>
         <% end %>
       </dd>
-      
+
       <dt class="attribute-list__key">Copyright Acknowledgment</dt>
       <dd class="attribute-list__value">
         <% copyright_value = raw_attributes['copyright_acknowledgment'] || (raw_attributes['form'] && raw_attributes['form']['copyright_acknowledgment']) %>
@@ -105,102 +106,103 @@
     <h2 class="section-title">Request Information</h2>
     <div class="requests-list">
       <% request_count = 0 %>
-      <% (0..9).each do |i| %>
-        <% 
-          collection_field = i.zero? ? "collection_title" : "collection_title_#{i.to_s.rjust(2, '0')}"
+      <% request_fields = Form::RequestDefinition.request_fields(form_type) %>
 
-          if @form_submission.form_type == "av-requests"
-            identifier_field = i.zero? ? "identifier" : "identifier_#{i.to_s.rjust(2, '0')}"
-            notes_field = i.zero? ? "notes" : "notes_#{i.to_s.rjust(2, '0')}"
-            format_field = i.zero? ? "format" : "format_#{i.to_s.rjust(2, '0')}"
-
-            request_values = [
-              attributes[collection_field],
-              attributes[identifier_field],
-              attributes[notes_field],
-              attributes[format_field],
-            ]
-          else
-            box_field = i.zero? ? "box" : "box_#{i.to_s.rjust(2, '0')}"
-            folder_field = i.zero? ? "folder" : "folder_#{i.to_s.rjust(2, '0')}"
-            identifier_field = i.zero? ? "identifier" : "identifier_#{i.to_s.rjust(2, '0')}"
-            pages_field = i.zero? ? "estimated_pages" : "estimated_pages_#{i.to_s.rjust(2, '0')}"
-            format_field = i.zero? ? "format" : "format_#{i.to_s.rjust(2, '0')}"
-
-            request_values = [
-              attributes[collection_field],
-              attributes[box_field],
-              attributes[folder_field],
-              attributes[identifier_field],
-              attributes[pages_field],
-              attributes[format_field],
-            ]
+      <% Form::RequestDefinition.slots.each do |slot| %>
+        <%
+          request_keys = request_fields.index_with do |field|
+            Form::RequestDefinition.field_key(field, slot)
           end
 
+          request_values = request_keys.values.map { |key| attributes[key] }
           has_data = request_values.any?(&:present?)
         %>
-        
+
         <% if has_data %>
           <% request_count += 1 %>
           <div class="request-item">
             <h3 class="request-number">Request <%= request_count %></h3>
             <div class="request-content">
               <dl class="attribute-list">
-                <dt class="attribute-list__key">Collection Title</dt>
-                <dd class="attribute-list__value"><%= attributes[collection_field] %></dd>
-                
-                <% if @form_submission.form_type == 'av-requests' %>
-                  <dt class="attribute-list__key">Identifier/File Name/Description</dt>
-                  <dd class="attribute-list__value"><%= attributes[identifier_field] %></dd>
-                  
-                  <dt class="attribute-list__key">Notes</dt>
+                <dt class="attribute-list__key">
+                  <%= Form::RequestDefinition.field_label(form_type, :collection_title, surface: :admin) %>
+                </dt>
+                <dd class="attribute-list__value">
+                  <%= attributes[request_keys[:collection_title]] %>
+                </dd>
+
+                <% if form_type == "av-requests" %>
+                  <dt class="attribute-list__key">
+                    <%= Form::RequestDefinition.field_label(form_type, :identifier, surface: :admin) %>
+                  </dt>
                   <dd class="attribute-list__value">
-                    <% if attributes[notes_field].present? %>
-                      <%= simple_format(attributes[notes_field]) %>
+                    <%= attributes[request_keys[:identifier]] %>
+                  </dd>
+
+                  <dt class="attribute-list__key">
+                    <%= Form::RequestDefinition.field_label(form_type, :notes, surface: :admin) %>
+                  </dt>
+                  <dd class="attribute-list__value">
+                    <% if attributes[request_keys[:notes]].present? %>
+                      <%= simple_format(attributes[request_keys[:notes]]) %>
                     <% else %>
                       Not provided
                     <% end %>
                   </dd>
-                  
-                  <dt class="attribute-list__key">Format</dt>
+
+                  <dt class="attribute-list__key">
+                    <%= Form::RequestDefinition.field_label(form_type, :format, surface: :admin) %>
+                  </dt>
                   <dd class="attribute-list__value">
-                    <% if attributes[format_field].present? %>
-                      <% 
-                        format_labels = {
-                          'film' => 'Film: $30 per minute',
-                          'video' => 'Video: $50 per tape',
-                          'audio' => 'Audio: $50 per tape/reel'
-                        }
-                      %>
-                      <%= format_labels[attributes[format_field]] || attributes[format_field] %>
+                    <% if attributes[request_keys[:format]].present? %>
+                      <%= Form::RequestDefinition.format_label(
+                        form_type,
+                        attributes[request_keys[:format]],
+                        surface: :admin,
+                      ) %>
                     <% else %>
                       Not provided
                     <% end %>
                   </dd>
                 <% else %>
-                  <dt class="attribute-list__key">Box</dt>
-                  <dd class="attribute-list__value"><%= attributes[box_field] %></dd>
-                  
-                  <dt class="attribute-list__key">Folder</dt>
-                  <dd class="attribute-list__value"><%= attributes[folder_field] %></dd>
-                  
-                  <dt class="attribute-list__key">Title/Identifier/File Name/Description</dt>
-                  <dd class="attribute-list__value"><%= attributes[identifier_field] %></dd>
-                  
-                  <dt class="attribute-list__key">Estimated Pages</dt>
-                  <dd class="attribute-list__value"><%= attributes[pages_field] %></dd>
-                  
-                  <dt class="attribute-list__key">Format</dt>
+                  <dt class="attribute-list__key">
+                    <%= Form::RequestDefinition.field_label(form_type, :box, surface: :admin) %>
+                  </dt>
                   <dd class="attribute-list__value">
-                    <% if attributes[format_field].present? %>
-                      <% 
-                        format_labels = {
-                          'tiff' => 'TIFF (600 DPI): $5 per image',
-                          'pdf' => 'PDF: $0.50 per page',
-                          'photocopy' => 'Photocopy: $0.50 per page plus postage'
-                        }
-                      %>
-                      <%= format_labels[attributes[format_field]] || attributes[format_field] %>
+                    <%= attributes[request_keys[:box]] %>
+                  </dd>
+
+                  <dt class="attribute-list__key">
+                    <%= Form::RequestDefinition.field_label(form_type, :folder, surface: :admin) %>
+                  </dt>
+                  <dd class="attribute-list__value">
+                    <%= attributes[request_keys[:folder]] %>
+                  </dd>
+
+                  <dt class="attribute-list__key">
+                    <%= Form::RequestDefinition.field_label(form_type, :identifier, surface: :admin) %>
+                  </dt>
+                  <dd class="attribute-list__value">
+                    <%= attributes[request_keys[:identifier]] %>
+                  </dd>
+
+                  <dt class="attribute-list__key">
+                    <%= Form::RequestDefinition.field_label(form_type, :estimated_pages, surface: :admin) %>
+                  </dt>
+                  <dd class="attribute-list__value">
+                    <%= attributes[request_keys[:estimated_pages]] %>
+                  </dd>
+
+                  <dt class="attribute-list__key">
+                    <%= Form::RequestDefinition.field_label(form_type, :format, surface: :admin) %>
+                  </dt>
+                  <dd class="attribute-list__value">
+                    <% if attributes[request_keys[:format]].present? %>
+                      <%= Form::RequestDefinition.format_label(
+                        form_type,
+                        attributes[request_keys[:format]],
+                        surface: :admin,
+                      ) %>
                     <% else %>
                       Not provided
                     <% end %>
@@ -211,7 +213,7 @@
           </div>
         <% end %>
       <% end %>
-      
+
       <% if request_count == 0 %>
         <p class="no-requests">No requests specified.</p>
       <% end %>

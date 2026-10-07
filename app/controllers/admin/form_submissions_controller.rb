@@ -74,7 +74,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
           request_num = slot + 1
 
           request_fields.each do |field|
-            label = Form::RequestDefinition.field_label("av-requests", field)
+            label = Form::RequestDefinition.field_label("av-requests", field, surface: :csv)
             header_row << "Request #{request_num} - #{label}"
           end
         end
@@ -106,7 +106,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
                 key = Form::RequestDefinition.field_key(field, slot)
                 value = attributes[key]
 
-                value = Form::RequestDefinition.format_label("av-requests", value) if field == :format && value.present?
+                value = Form::RequestDefinition.format_label("av-requests", value, surface: :csv) if field == :format && value.present?
 
                 row << value
               end
@@ -136,7 +136,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
           request_num = slot + 1
 
           request_fields.each do |field|
-            label = Form::RequestDefinition.field_label("copy-requests", field)
+            label = Form::RequestDefinition.field_label("copy-requests", field, surface: :csv)
             header_row << "Request #{request_num} - #{label}"
           end
         end
@@ -168,7 +168,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
                 key = Form::RequestDefinition.field_key(field, slot)
                 value = attributes[key]
 
-                value = Form::RequestDefinition.format_label("copy-requests", value) if field == :format && value.present?
+                value = Form::RequestDefinition.format_label("copy-requests", value, surface: :csv) if field == :format && value.present?
 
                 row << value
               end

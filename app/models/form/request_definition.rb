@@ -5,9 +5,7 @@ class Form::RequestDefinition
 
   DEFINITIONS = {
     "av-requests" => {
-      display_name: "AV Request",
-      collection_title: "AV Request Submissions",
-      detail_title: "AV Request Details",
+      i18n_key: "manifold.forms.request_definitions.av_requests",
 
       request_fields: %i[
         collection_title
@@ -38,51 +36,41 @@ class Form::RequestDefinition
 
       field_labels: {
         collection_title: {
-          default: "Collection Title",
+          csv: "Collection Title",
           excel: "Collection",
         },
         identifier: {
-          default: "Identifier/File Name/Description",
+          csv: "Identifier/File Name/Description",
           excel: "Identifier",
         },
         notes: {
-          default: "Notes",
+          csv: "Notes",
           excel: "Notes",
         },
         format: {
-          default: "Format",
+          csv: "Format",
           excel: "Format",
         },
       },
 
       format_labels: {
         "film" => {
-          default: "Film: $30 per minute",
+          csv: "Film: $30 per minute",
           excel: "Film",
         },
         "video" => {
-          default: "Video: $50 per tape",
+          csv: "Video: $50 per tape",
           excel: "Video",
         },
         "audio" => {
-          default: "Audio: $50 per tape/reel",
+          csv: "Audio: $50 per tape/reel",
           excel: "Audio",
         },
       },
     },
 
     "copy-requests" => {
-      attribute_fields: %i[
-        collection_title
-        box
-        folder
-        identifier
-        estimated_pages
-        format
-        pricing_tiff
-        pricing_pdf
-        pricing_photocopy
-      ],
+      i18n_key: "manifold.forms.request_definitions.copy_requests",
 
       request_fields: %i[
         collection_title
@@ -101,6 +89,18 @@ class Form::RequestDefinition
         format
       ],
 
+      attribute_fields: %i[
+        collection_title
+        box
+        folder
+        identifier
+        estimated_pages
+        format
+        pricing_tiff
+        pricing_pdf
+        pricing_photocopy
+      ],
+
       acknowledgements: %i[
         duplication_limits
         copyright_acknowledgment
@@ -108,51 +108,45 @@ class Form::RequestDefinition
 
       field_labels: {
         collection_title: {
-          default: "Collection Title",
+          csv: "Collection Title",
           excel: "Collection",
         },
         box: {
-          default: "Box",
+          csv: "Box",
           excel: "Box",
         },
         folder: {
-          default: "Folder",
+          csv: "Folder",
           excel: "Folder",
         },
         identifier: {
-          default: "Title/Identifier/File Name/Description",
+          csv: "Title/Identifier/File Name/Description",
           excel: "Identifier",
         },
         estimated_pages: {
-          default: "Estimated Number of Pages",
-          admin: "Estimated Pages",
+          csv: "Estimated Number of Pages",
           excel: "Estimated Pages",
         },
         format: {
-          default: "Format",
+          csv: "Format",
           excel: "Format",
         },
       },
 
       format_labels: {
         "tiff" => {
-          default: "TIFF (600 DPI): $5 per image",
+          csv: "TIFF (600 DPI): $5 per image",
           excel: "TIFF (600 DPI): $5 per image",
         },
         "pdf" => {
-          default: "PDF: $0.50 per page",
+          csv: "PDF: $0.50 per page",
           excel: "PDF: $0.50 per page",
         },
         "photocopy" => {
-          default: "Photocopy: $0.50 per page plus postage",
-          form: "Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)",
+          csv: "Photocopy: $0.50 per page plus postage",
           excel: "Photocopy: $0.50 per page plus postage",
         },
       },
-
-      display_name: "Copy Request",
-      collection_title: "Copy Request Submissions",
-      detail_title: "Copy Request Details",
     },
   }.freeze
 
@@ -177,6 +171,10 @@ class Form::RequestDefinition
       definition_for(form_type).fetch(:acknowledgements)
     end
 
+    def i18n_key(form_type)
+      definition_for(form_type).fetch(:i18n_key)
+    end
+
     def slots
       0...SLOT_COUNT
     end
@@ -189,14 +187,33 @@ class Form::RequestDefinition
 
     def field_label(form_type, field, surface: :default)
       labels = definition_for(form_type).fetch(:field_labels).fetch(field)
-      labels[surface] || labels.fetch(:default)
+
+      return labels.fetch(surface) if %i[csv excel].include?(surface)
+
+      key =
+        if surface == :admin && field == :estimated_pages
+          :estimated_pages_admin
+        else
+          field
+        end
+
+      I18n.t("#{i18n_key(form_type)}.fields.#{key}")
     end
 
     def format_label(form_type, value, surface: :default)
       labels = definition_for(form_type).fetch(:format_labels).fetch(value.to_s, nil)
       return value if labels.nil?
 
-      labels[surface] || labels.fetch(:default)
+      return labels.fetch(surface) if %i[csv excel].include?(surface)
+
+      key =
+        if surface == :form && form_type == "copy-requests" && value.to_s == "photocopy"
+          :photocopy_form
+        else
+          value
+        end
+
+      I18n.t("#{i18n_key(form_type)}.formats.#{key}")
     end
 
     def attribute_fields_for_all_request_types
@@ -207,15 +224,15 @@ class Form::RequestDefinition
     end
 
     def display_name(form_type)
-      definition_for(form_type).fetch(:display_name)
+      I18n.t("#{i18n_key(form_type)}.display_name")
     end
 
     def collection_title(form_type)
-      definition_for(form_type).fetch(:collection_title)
+      I18n.t("#{i18n_key(form_type)}.collection_title")
     end
 
     def detail_title(form_type)
-      definition_for(form_type).fetch(:detail_title)
+      I18n.t("#{i18n_key(form_type)}.detail_title")
     end
   end
 end

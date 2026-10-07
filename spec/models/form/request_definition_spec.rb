@@ -17,6 +17,20 @@ RSpec.describe Form::RequestDefinition do
     end
   end
 
+  describe ".count_fields" do
+    it "preserves the AV fields required for collection request counting" do
+      expect(described_class.count_fields("av-requests")).to eq(
+        %i[collection_title identifier format],
+      )
+    end
+
+    it "preserves the Copy fields required for collection request counting" do
+      expect(described_class.count_fields("copy-requests")).to eq(
+        %i[collection_title box folder identifier format],
+      )
+    end
+  end
+
   describe ".attribute_fields" do
     it "preserves AV request attributes including request_title" do
       expect(described_class.attribute_fields("av-requests")).to eq(

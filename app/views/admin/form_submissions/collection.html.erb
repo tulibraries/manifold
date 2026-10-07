@@ -4,19 +4,19 @@
   <h1 class="main-content__page-title">
     <%= @page_title %>
   </h1>
-  
+
   <div class="main-content__header-actions">
     <% if params[:action] == 'av_requests' %>
-      <%= link_to "Export CSV", export_av_requests_csv_admin_form_submissions_path(format: :csv), 
+      <%= link_to "Export CSV", export_av_requests_csv_admin_form_submissions_path(format: :csv),
           class: "button button--export",
           title: "Download all AV requests as CSV for Excel" %>
     <% elsif params[:action] == 'copy_requests' %>
-      <%= link_to "Export CSV", export_copy_requests_csv_admin_form_submissions_path(format: :csv), 
+      <%= link_to "Export CSV", export_copy_requests_csv_admin_form_submissions_path(format: :csv),
           class: "button button--export",
           title: "Download all copy requests as CSV for Excel" %>
     <% end %>
-    
-    <%= link_to "← Back to Form Submissions", admin_form_submissions_path, 
+
+    <%= link_to "← Back to Form Submissions", admin_form_submissions_path,
         class: "button button--secondary" %>
   </div>
 </header>
@@ -62,27 +62,13 @@
                   <% raw_attributes = submission.form_attributes %>
                   <% attributes = raw_attributes['form'] || raw_attributes %>
                   <% request_count = 0 %>
-                  <% (0..9).each do |i| %>
-                    <% 
-                      collection_field = i == 0 ? 'collection_title' : "collection_title_#{i.to_s.rjust(2, '0')}"
-                      
-                      if submission.form_type == 'av-requests'
-                        identifier_field = i == 0 ? 'identifier' : "identifier_#{i.to_s.rjust(2, '0')}"
-                        format_field = i == 0 ? 'format' : "format_#{i.to_s.rjust(2, '0')}"
-                        has_data = attributes[collection_field].present? && 
-                                   attributes[identifier_field].present? && 
-                                   attributes[format_field].present?
-                      else
-                        # Copy requests
-                        box_field = i == 0 ? 'box' : "box_#{i.to_s.rjust(2, '0')}"
-                        folder_field = i == 0 ? 'folder' : "folder_#{i.to_s.rjust(2, '0')}"
-                        identifier_field = i == 0 ? 'identifier' : "identifier_#{i.to_s.rjust(2, '0')}"
-                        format_field = i == 0 ? 'format' : "format_#{i.to_s.rjust(2, '0')}"
-                        has_data = attributes[collection_field].present? && 
-                                   attributes[box_field].present? && 
-                                   attributes[folder_field].present? && 
-                                   attributes[identifier_field].present? && 
-                                   attributes[format_field].present?
+                  <% count_fields = Form::RequestDefinition.count_fields(submission.form_type) %>
+
+                  <% Form::RequestDefinition.slots.each do |slot| %>
+                    <%
+                      has_data = count_fields.all? do |field|
+                        key = Form::RequestDefinition.field_key(field, slot)
+                        attributes[key].present?
                       end
                     %>
                     <% if has_data %>
@@ -109,7 +95,7 @@
       </div>
     </div>
   <% end %>
-  
+
   <% if @form_submissions.respond_to?(:current_page) %>
     <div class="pagination-wrapper">
       <%= paginate @form_submissions %>

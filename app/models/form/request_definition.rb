@@ -16,6 +16,12 @@ class Form::RequestDefinition
         format
       ],
 
+      count_fields: %i[
+        collection_title
+        identifier
+        format
+      ],
+
       attribute_fields: %i[
         request_title
         collection_title
@@ -87,6 +93,14 @@ class Form::RequestDefinition
         format
       ],
 
+      count_fields: %i[
+        collection_title
+        box
+        folder
+        identifier
+        format
+      ],
+
       acknowledgements: %i[
         duplication_limits
         copyright_acknowledgment
@@ -149,6 +163,10 @@ class Form::RequestDefinition
 
     def request_fields(form_type)
       definition_for(form_type).fetch(:request_fields)
+    end
+
+    def count_fields(form_type)
+      definition_for(form_type).fetch(:count_fields)
     end
 
     def attribute_fields(form_type)

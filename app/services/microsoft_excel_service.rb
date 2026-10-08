@@ -179,7 +179,11 @@ class MicrosoftExcelService
     end
 
     def fetch_value(form_data, key)
-      form_data[key] || form_data[key.to_s]
+      [key, key.to_s, key.to_sym].uniq.each do |candidate|
+        return form_data[candidate] if form_data.key?(candidate)
+      end
+
+      nil
     end
 
     def affiliation_label(code)

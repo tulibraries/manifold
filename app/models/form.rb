@@ -31,6 +31,14 @@ class Form < MailForm::Base
   attribute :comments
   attribute :form_type
   attribute :recipients
+
+  # AV request fields are registered here to preserve notification ordering.
+  Form::RequestDefinition.slots.each do |slot|
+    Form::RequestDefinition.attribute_fields("av-requests").each do |field|
+      attribute Form::RequestDefinition.field_key(field, slot).to_sym
+    end
+  end
+
   attribute :tu_id
   attribute :phone
   attribute :department
@@ -186,8 +194,14 @@ class Form < MailForm::Base
   attribute :asrs_only
   attribute :id_acknowledgment
 
-  Form::RequestDefinition.attribute_fields_for_all_request_types.each do |field|
-    Form::RequestDefinition.slots.each do |slot|
+  # Copy-specific fields follow the other form attributes.
+  # Shared AV/Copy fields retain their earlier registration positions.
+  copy_only_fields =
+    Form::RequestDefinition.attribute_fields("copy-requests") -
+    Form::RequestDefinition.attribute_fields("av-requests")
+
+  Form::RequestDefinition.slots.each do |slot|
+    copy_only_fields.each do |field|
       attribute Form::RequestDefinition.field_key(field, slot).to_sym
     end
   end

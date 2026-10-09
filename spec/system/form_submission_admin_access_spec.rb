@@ -3,10 +3,6 @@
 require "rails_helper"
 
 RSpec.describe "Form Submission Admin Access", type: :system do
-  before do
-    driven_by(:cuprite)
-  end
-
   let!(:form_submission_admin_group) do
     FactoryBot.create(:admin_group,
       name: "Form Submissions Admin",

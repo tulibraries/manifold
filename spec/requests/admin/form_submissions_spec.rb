@@ -458,6 +458,40 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response.media_type).to eq("text/csv")
         expect(response.body).to include("Error decrypting data")
       end
+
+      it "continues exporting submissions after a processing error" do
+        valid_submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: { "name" => "Valid CSV User" },
+        )
+
+        relation = instance_double(
+          ActiveRecord::Relation,
+          order: [av_submission, valid_submission],
+        )
+
+        allow(FormSubmission)
+          .to receive(:where)
+          .with(form_type: "av-requests")
+          .and_return(relation)
+
+        allow(av_submission)
+          .to receive(:form_attributes)
+          .and_raise(StandardError, "boom")
+
+        get export_av_requests_csv_admin_form_submissions_path(format: :csv)
+
+        expect(response).to have_http_status(:ok)
+
+        csv = CSV.parse(response.body, headers: true)
+
+        expect(csv.size).to eq(2)
+        expect(csv[0]["ID"]).to eq(av_submission.id.to_s)
+        expect(csv[0]["Name"]).to eq("Error decrypting data")
+        expect(csv[1]["ID"]).to eq(valid_submission.id.to_s)
+        expect(csv[1]["Name"]).to eq("Valid CSV User")
+      end
     end
 
     context "when authenticated without Form Submission manage access" do

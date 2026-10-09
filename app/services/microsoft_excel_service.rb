@@ -117,14 +117,7 @@ class MicrosoftExcelService
         fetch_value(form_data, :address),
         summarize_requests(
           form_data,
-          base_fields: %i[collection_title identifier notes format],
-          field_labels: {
-            collection_title: "Collection",
-            identifier: "Identifier",
-            notes: "Notes",
-            format: "Format",
-          },
-          format_labeler: method(:av_format_label),
+          form_type: "av-requests",
         ),
         boolean_label(fetch_value(form_data, :outside_vendor_fees)),
         boolean_label(fetch_value(form_data, :duplication_limits)),
@@ -142,16 +135,7 @@ class MicrosoftExcelService
         fetch_value(form_data, :address),
         summarize_requests(
           form_data,
-          base_fields: %i[collection_title box folder identifier estimated_pages format],
-          field_labels: {
-            collection_title: "Collection",
-            box: "Box",
-            folder: "Folder",
-            identifier: "Identifier",
-            estimated_pages: "Estimated Pages",
-            format: "Format",
-          },
-          format_labeler: method(:copy_format_label),
+          form_type: "copy-requests",
         ),
         boolean_label(fetch_value(form_data, :duplication_limits)),
         boolean_label(fetch_value(form_data, :copyright_acknowledgment)),
@@ -159,53 +143,53 @@ class MicrosoftExcelService
       ]
     end
 
-    def summarize_requests(form_data, base_fields:, field_labels:, format_labeler:)
-      (0..9).map do |index|
-        request_parts = base_fields.each_with_object([]) do |field, parts|
-          key = index.zero? ? field : "#{field}_#{index.to_s.rjust(2, '0')}"
+    def summarize_requests(form_data, form_type:)
+      fields = Form::RequestDefinition.request_fields(form_type)
+
+      Form::RequestDefinition.slots.map do |slot|
+        request_parts = fields.each_with_object([]) do |field, parts|
+          key = Form::RequestDefinition.field_key(field, slot)
           value = fetch_value(form_data, key)
           next if value.blank?
 
-          label = field_labels.fetch(field)
-          formatted_value = if field == :format && format_labeler
-            format_labeler.call(value)
-          else
-            value
-          end
+          label = Form::RequestDefinition.field_label(
+            form_type,
+            field,
+            surface: :excel,
+          )
+
+          formatted_value =
+            if field == :format
+              Form::RequestDefinition.format_label(
+                form_type,
+                value,
+                surface: :excel,
+              )
+            else
+              value
+            end
 
           parts << "#{label}: #{formatted_value}"
         end
 
         next if request_parts.empty?
 
-        "Request #{index + 1}: #{request_parts.join(' | ')}"
+        "Request #{slot + 1}: #{request_parts.join(' | ')}"
       end.compact.join("\n")
     end
 
     def fetch_value(form_data, key)
-      form_data[key] || form_data[key.to_s]
+      [key, key.to_s, key.to_sym].uniq.each do |candidate|
+        return form_data[candidate] if form_data.key?(candidate)
+      end
+
+      nil
     end
 
     def affiliation_label(code)
       {
         "temple" => "Temple University Affiliates",
         "non-temple" => "Non-Temple Affiliates",
-      }[code.to_s] || code
-    end
-
-    def av_format_label(code)
-      {
-        "film" => "Film",
-        "video" => "Video",
-        "audio" => "Audio",
-      }[code.to_s] || code
-    end
-
-    def copy_format_label(code)
-      {
-        "tiff" => "TIFF (600 DPI): $5 per image",
-        "pdf" => "PDF: $0.50 per page",
-        "photocopy" => "Photocopy: $0.50 per page plus postage",
       }[code.to_s] || code
     end
 

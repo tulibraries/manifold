@@ -11,7 +11,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
                                       .order(created_at: :desc)
                                       .page(params[:page])
                                       .per(20)
-    @page_title = "AV Request Submissions"
+    @page_title = Form::RequestDefinition.collection_title("av-requests")
     render "collection"
   end
 
@@ -20,7 +20,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
                                       .order(created_at: :desc)
                                       .page(params[:page])
                                       .per(20)
-    @page_title = "Copy Request Submissions"
+    @page_title = Form::RequestDefinition.collection_title("copy-requests")
     render "collection"
   end
 
@@ -53,7 +53,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
   def show
     form_type = params[:form_type] || "av-requests"
     @form_submission = FormSubmission.where(form_type: form_type).find(params[:id])
-    @page_title = form_type == "av-requests" ? "AV Request Details" : "Copy Request Details"
+    @page_title = Form::RequestDefinition.detail_title(form_type)
   rescue ActiveRecord::RecordNotFound
     redirect_to admin_form_submissions_path, alert: "Form submission not found or not accessible."
   end
@@ -68,12 +68,15 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
         header_row = ["ID", "Submitted At", "Name", "Email", "Phone", "Affiliation", "Address", "Outside Vendor Fees", "Duplication Limits", "Copyright Acknowledgment"]
 
         # Add request fields (up to 10 requests with 4 fields each)
-        (0..9).each do |i|
-          request_num = i + 1
-          header_row << "Request #{request_num} - Collection Title"
-          header_row << "Request #{request_num} - Identifier/File Name/Description"
-          header_row << "Request #{request_num} - Notes"
-          header_row << "Request #{request_num} - Format"
+        request_fields = Form::RequestDefinition.request_fields("av-requests")
+
+        Form::RequestDefinition.slots.each do |slot|
+          request_num = slot + 1
+
+          request_fields.each do |field|
+            label = Form::RequestDefinition.field_label("av-requests", field, surface: :csv)
+            header_row << "Request #{request_num} - #{label}"
+          end
         end
 
         csv << header_row
@@ -98,27 +101,15 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
             ]
 
             # Add request fields (4 fields per request)
-            (0..9).each do |i|
-              collection_field = i == 0 ? "collection_title" : "collection_title_#{i.to_s.rjust(2, '0')}"
-              identifier_field = i == 0 ? "identifier" : "identifier_#{i.to_s.rjust(2, '0')}"
-              notes_field = i == 0 ? "notes" : "notes_#{i.to_s.rjust(2, '0')}"
-              format_field = i == 0 ? "format" : "format_#{i.to_s.rjust(2, '0')}"
+            Form::RequestDefinition.slots.each do |slot|
+              request_fields.each do |field|
+                key = Form::RequestDefinition.field_key(field, slot)
+                value = attributes[key]
 
-              # Add the format labels for better readability
-              format_value = attributes[format_field]
-              if format_value.present?
-                format_labels = {
-                  "film" => "Film: $30 per minute",
-                  "video" => "Video: $50 per tape",
-                  "audio" => "Audio: $50 per tape/reel"
-                }
-                format_value = format_labels[format_value] || format_value
+                value = Form::RequestDefinition.format_label("av-requests", value) if field == :format && value.present?
+
+                row << value
               end
-
-              row << attributes[collection_field]
-              row << attributes[identifier_field]
-              row << attributes[notes_field]
-              row << format_value
             end
 
             csv << row
@@ -138,15 +129,16 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
         # Create header row for Copy requests
         header_row = ["ID", "Submitted At", "Name", "Email", "Phone", "Affiliation", "Address", "Duplication Limits", "Copyright Acknowledgment"]
 
-        # Add request fields (up to 10 requests with 5 fields each)
-        (0..9).each do |i|
-          request_num = i + 1
-          header_row << "Request #{request_num} - Collection Title"
-          header_row << "Request #{request_num} - Box"
-          header_row << "Request #{request_num} - Folder"
-          header_row << "Request #{request_num} - Title/Identifier/File Name/Description"
-          header_row << "Request #{request_num} - Estimated Number of Pages"
-          header_row << "Request #{request_num} - Format"
+        # Add request fields (up to 10 requests with 6 fields each)
+        request_fields = Form::RequestDefinition.request_fields("copy-requests")
+
+        Form::RequestDefinition.slots.each do |slot|
+          request_num = slot + 1
+
+          request_fields.each do |field|
+            label = Form::RequestDefinition.field_label("copy-requests", field, surface: :csv)
+            header_row << "Request #{request_num} - #{label}"
+          end
         end
 
         csv << header_row
@@ -170,32 +162,16 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
               attributes["copyright_acknowledgment"] == "1" || attributes["copyright_acknowledgment"] == true ? "Yes" : "No"
             ]
 
-            # Add request fields (6 fields per request for copy requests)
-            (0..9).each do |i|
-              collection_field = i == 0 ? "collection_title" : "collection_title_#{i.to_s.rjust(2, '0')}"
-              box_field = i == 0 ? "box" : "box_#{i.to_s.rjust(2, '0')}"
-              folder_field = i == 0 ? "folder" : "folder_#{i.to_s.rjust(2, '0')}"
-              identifier_field = i == 0 ? "identifier" : "identifier_#{i.to_s.rjust(2, '0')}"
-              pages_field = i == 0 ? "estimated_pages" : "estimated_pages_#{i.to_s.rjust(2, '0')}"
-              format_field = i == 0 ? "format" : "format_#{i.to_s.rjust(2, '0')}"
+            # Add request fields (6 fields per request)
+            Form::RequestDefinition.slots.each do |slot|
+              request_fields.each do |field|
+                key = Form::RequestDefinition.field_key(field, slot)
+                value = attributes[key]
 
-              # Add the format labels for better readability
-              format_value = attributes[format_field]
-              if format_value.present?
-                format_labels = {
-                  "tiff" => "TIFF (600 DPI): $5 per image",
-                  "pdf" => "PDF: $0.50 per page",
-                  "photocopy" => "Photocopy: $0.50 per page plus postage"
-                }
-                format_value = format_labels[format_value] || format_value
+                value = Form::RequestDefinition.format_label("copy-requests", value) if field == :format && value.present?
+
+                row << value
               end
-
-              row << attributes[collection_field]
-              row << attributes[box_field]
-              row << attributes[folder_field]
-              row << attributes[identifier_field]
-              row << attributes[pages_field]
-              row << format_value
             end
 
             csv << row

@@ -1,35 +1,48 @@
+<% form_type = "copy-requests" %>
+
 <div data-controller="form-submissions" data-form-submissions-form-type-value="copy-requests">
   <div id="request-groups-container" data-form-submissions-target="container">
     <div class="request-group" data-index="0">
       <h4 class="request-group-title">Request 1</h4>
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :collection_title, label: "Collection Title", wrapper_html: { class: "mb-3" } %>
+          <%= f.input :collection_title,
+              label: Form::RequestDefinition.field_label(form_type, :collection_title),
+              wrapper_html: { class: "mb-3" } %>
         </div>
         <div class="col-md-6">
-          <%= f.input :box, label: "Box", wrapper_html: { class: "mb-3" } %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <%= f.input :folder, label: "Folder", wrapper_html: { class: "mb-3" } %>
-        </div>
-        <div class="col-md-6">
-          <%= f.input :identifier, label: "Title/Identifier/File Name/Description", wrapper_html: { class: "mb-3" } %>
+          <%= f.input :box,
+              label: Form::RequestDefinition.field_label(form_type, :box),
+              wrapper_html: { class: "mb-3" } %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :estimated_pages, label: "Estimated Number of Pages", as: :integer, wrapper_html: { class: "mb-3" } %>
+          <%= f.input :folder,
+              label: Form::RequestDefinition.field_label(form_type, :folder),
+              wrapper_html: { class: "mb-3" } %>
         </div>
         <div class="col-md-6">
-          <%= f.input :format, 
-              label: "Format", 
+          <%= f.input :identifier,
+              label: Form::RequestDefinition.field_label(form_type, :identifier),
+              wrapper_html: { class: "mb-3" } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :estimated_pages,
+              label: Form::RequestDefinition.field_label(form_type, :estimated_pages),
+              as: :integer,
+              wrapper_html: { class: "mb-3" } %>
+        </div>
+        <div class="col-md-6">
+          <%= f.input :format,
+              label: Form::RequestDefinition.field_label(form_type, :format),
               as: :select,
               collection: [
-                ['TIFF (600 DPI): $5 per image', 'tiff'],
-                ['PDF: $0.50 per page', 'pdf'],
-                ['Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)', 'photocopy']
+                [Form::RequestDefinition.format_label(form_type, "tiff"), "tiff"],
+                [Form::RequestDefinition.format_label(form_type, "pdf"), "pdf"],
+                [Form::RequestDefinition.format_label(form_type, "photocopy", surface: :form), "photocopy"]
               ],
               include_blank: "Select format...",
               required: true,
@@ -37,50 +50,50 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Additional request groups (hidden by default) -->
-    <% (1..9).each do |i| %>
-      <div class="request-group" data-index="<%= i %>" style="display: none;">
-        <h4 class="request-group-title">Request <%= i + 1 %></h4>
+    <% Form::RequestDefinition.slots.drop(1).each do |slot| %>
+      <div class="request-group" data-index="<%= slot %>" style="display: none;">
+        <h4 class="request-group-title">Request <%= slot + 1 %></h4>
         <div class="row">
           <div class="col-md-6">
-            <%= f.input "collection_title_#{i.to_s.rjust(2, '0')}".to_sym, 
-                label: "Collection Title", 
+            <%= f.input Form::RequestDefinition.field_key(:collection_title, slot).to_sym,
+                label: Form::RequestDefinition.field_label(form_type, :collection_title),
                 wrapper_html: { class: "mb-3" } %>
           </div>
           <div class="col-md-6">
-            <%= f.input "box_#{i.to_s.rjust(2, '0')}".to_sym, 
-                label: "Box", 
+            <%= f.input Form::RequestDefinition.field_key(:box, slot).to_sym,
+                label: Form::RequestDefinition.field_label(form_type, :box),
                 wrapper_html: { class: "mb-3" } %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <%= f.input "folder_#{i.to_s.rjust(2, '0')}".to_sym, 
-                label: "Folder", 
+            <%= f.input Form::RequestDefinition.field_key(:folder, slot).to_sym,
+                label: Form::RequestDefinition.field_label(form_type, :folder),
                 wrapper_html: { class: "mb-3" } %>
           </div>
           <div class="col-md-6">
-            <%= f.input "identifier_#{i.to_s.rjust(2, '0')}".to_sym, 
-                label: "Title/Identifier/File Name/Description", 
+            <%= f.input Form::RequestDefinition.field_key(:identifier, slot).to_sym,
+                label: Form::RequestDefinition.field_label(form_type, :identifier),
                 wrapper_html: { class: "mb-3" } %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
-            <%= f.input "estimated_pages_#{i.to_s.rjust(2, '0')}".to_sym, 
-                label: "Estimated Number of Pages", 
+            <%= f.input Form::RequestDefinition.field_key(:estimated_pages, slot).to_sym,
+                label: Form::RequestDefinition.field_label(form_type, :estimated_pages),
                 as: :integer,
                 wrapper_html: { class: "mb-3" } %>
           </div>
           <div class="col-md-6">
-            <%= f.input "format_#{i.to_s.rjust(2, '0')}".to_sym, 
-                label: "Format", 
+            <%= f.input Form::RequestDefinition.field_key(:format, slot).to_sym,
+                label: Form::RequestDefinition.field_label(form_type, :format),
                 as: :select,
                 collection: [
-                  ['TIFF (600 DPI): $5 per image', 'tiff'],
-                  ['PDF: $0.50 per page', 'pdf'],
-                  ['Photocopy: $0.50 per page plus postage (Up to 100 pages: $5.00; Over 100 pages, USPS rate)', 'photocopy']
+                  [Form::RequestDefinition.format_label(form_type, "tiff"), "tiff"],
+                  [Form::RequestDefinition.format_label(form_type, "pdf"), "pdf"],
+                  [Form::RequestDefinition.format_label(form_type, "photocopy", surface: :form), "photocopy"]
                 ],
                 include_blank: "Select format...",
                 wrapper_html: { class: "mb-3" } %>
@@ -89,7 +102,7 @@
       </div>
     <% end %>
   </div>
-  
+
   <div class="request-actions mt-4">
     <button type="button" data-form-submissions-target="addBtn" data-action="click->form-submissions#addRequest" class="btn btn-success me-2">
       <i class="fas fa-plus"></i> Add a new request
@@ -104,20 +117,20 @@
 <div class="mt-5">
   <h3 class="mb-3">Acknowledgements</h3>
   <p>Due to the fragile and rare nature of the materials held by the SCRC, all duplication is performed by staff members.</p>
-  
+
   <div class="row">
     <div class="col-12">
-      <%= f.input :duplication_limits, 
+      <%= f.input :duplication_limits,
           as: :boolean,
           required: true,
           wrapper_html: { class: "mt-2" },
           hint: raw(t('helpers.description.form.duplication_limits')) %>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-12">
-      <%= f.input :copyright_acknowledgment, 
+      <%= f.input :copyright_acknowledgment,
           as: :boolean,
           required: true,
           wrapper_html: { class: "mt-2" },

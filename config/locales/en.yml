@@ -672,6 +672,28 @@ en:
         request_info: Request Information -- Please do not abbreviate
         acknowledgements: Acknowledgements
         submit: Send Request
+      request_definitions:
+        av_requests:
+          display_name: AV Request
+          collection_title: AV Request Submissions
+          detail_title: AV Request Details
+          fields:
+            collection_title: Collection Title
+            identifier: Identifier/File Name/Description
+            notes: Notes
+            format: Format
+        copy_requests:
+          display_name: Copy Request
+          collection_title: Copy Request Submissions
+          detail_title: Copy Request Details
+          fields:
+            collection_title: Collection Title
+            box: Box
+            folder: Folder
+            identifier: Title/Identifier/File Name/Description
+            estimated_pages: Estimated Number of Pages
+            estimated_pages_admin: Estimated Pages
+            format: Format
       index: 
         title: Request Forms
         intro: Use of these forms is intended for and restricted to members of the Temple University Community

@@ -29,7 +29,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
 
     respond_to do |format|
       format.csv do
-        csv_data = generate_av_requests_csv(@form_submissions)
+        csv_data = FormSubmissionCsvExportService.call(@form_submissions, form_type: "av-requests")
         send_data csv_data,
                   filename: "av_requests_#{Date.current.strftime('%Y%m%d')}.csv",
                   type: "text/csv"
@@ -42,7 +42,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
 
     respond_to do |format|
       format.csv do
-        csv_data = generate_copy_requests_csv(@form_submissions)
+        csv_data = FormSubmissionCsvExportService.call(@form_submissions, form_type: "copy-requests")
         send_data csv_data,
                   filename: "copy_requests_#{Date.current.strftime('%Y%m%d')}.csv",
                   type: "text/csv"
@@ -57,130 +57,4 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to admin_form_submissions_path, alert: "Form submission not found or not accessible."
   end
-
-  private
-
-    def generate_av_requests_csv(submissions)
-      require "csv"
-
-      CSV.generate(headers: true) do |csv|
-        # Create header row for AV requests
-        header_row = ["ID", "Submitted At", "Name", "Email", "Phone", "Affiliation", "Address", "Outside Vendor Fees", "Duplication Limits", "Copyright Acknowledgment"]
-
-        # Add request fields (up to 10 requests with 4 fields each)
-        request_fields = Form::RequestDefinition.request_fields("av-requests")
-
-        Form::RequestDefinition.slots.each do |slot|
-          request_num = slot + 1
-
-          request_fields.each do |field|
-            label = Form::RequestDefinition.field_label("av-requests", field, surface: :csv)
-            header_row << "Request #{request_num} - #{label}"
-          end
-        end
-
-        csv << header_row
-        # Add data rows for AV requests
-        submissions.each do |submission|
-          begin
-            # Decrypt the form attributes and handle nested structure
-            raw_attributes = submission.form_attributes || {}
-            attributes = raw_attributes["form"] || raw_attributes
-
-            row = [
-              submission.id,
-              submission.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-              attributes["name"],
-              attributes["email"],
-              attributes["phone"],
-              attributes["affiliation"],
-              attributes["address"]&.gsub(/\n/, " | "), # Replace line breaks with pipe for CSV
-              attributes["outside_vendor_fees"] == "1" || attributes["outside_vendor_fees"] == true ? "Yes" : "No",
-              attributes["duplication_limits"] == "1" || attributes["duplication_limits"] == true ? "Yes" : "No",
-              attributes["copyright_acknowledgment"] == "1" || attributes["copyright_acknowledgment"] == true ? "Yes" : "No"
-            ]
-
-            # Add request fields (4 fields per request)
-            Form::RequestDefinition.slots.each do |slot|
-              request_fields.each do |field|
-                key = Form::RequestDefinition.field_key(field, slot)
-                value = attributes[key]
-
-                value = Form::RequestDefinition.format_label("av-requests", value) if field == :format && value.present?
-
-                row << value
-              end
-            end
-
-            csv << row
-          rescue => e
-            Rails.logger.error "Error processing AV request submission #{submission.id}: #{e.message}"
-            # Add a row with just the basic info if decryption fails
-            csv << [submission.id, submission.created_at.strftime("%Y-%m-%d %H:%M:%S"), "Error decrypting data"]
-          end
-        end
-      end
-    end
-
-    def generate_copy_requests_csv(submissions)
-      require "csv"
-
-      CSV.generate(headers: true) do |csv|
-        # Create header row for Copy requests
-        header_row = ["ID", "Submitted At", "Name", "Email", "Phone", "Affiliation", "Address", "Duplication Limits", "Copyright Acknowledgment"]
-
-        # Add request fields (up to 10 requests with 6 fields each)
-        request_fields = Form::RequestDefinition.request_fields("copy-requests")
-
-        Form::RequestDefinition.slots.each do |slot|
-          request_num = slot + 1
-
-          request_fields.each do |field|
-            label = Form::RequestDefinition.field_label("copy-requests", field, surface: :csv)
-            header_row << "Request #{request_num} - #{label}"
-          end
-        end
-
-        csv << header_row
-
-        # Add data rows for Copy requests
-        submissions.each do |submission|
-          begin
-            # Decrypt the form attributes and handle nested structure
-            raw_attributes = submission.form_attributes || {}
-            attributes = raw_attributes["form"] || raw_attributes
-
-            row = [
-              submission.id,
-              submission.created_at.strftime("%Y-%m-%d %H:%M:%S"),
-              attributes["name"],
-              attributes["email"],
-              attributes["phone"],
-              attributes["affiliation"],
-              attributes["address"]&.gsub(/\n/, " | "), # Replace line breaks with pipe for CSV
-              attributes["duplication_limits"] == "1" || attributes["duplication_limits"] == true ? "Yes" : "No",
-              attributes["copyright_acknowledgment"] == "1" || attributes["copyright_acknowledgment"] == true ? "Yes" : "No"
-            ]
-
-            # Add request fields (6 fields per request)
-            Form::RequestDefinition.slots.each do |slot|
-              request_fields.each do |field|
-                key = Form::RequestDefinition.field_key(field, slot)
-                value = attributes[key]
-
-                value = Form::RequestDefinition.format_label("copy-requests", value) if field == :format && value.present?
-
-                row << value
-              end
-            end
-
-            csv << row
-          rescue => e
-            Rails.logger.error "Error processing copy request submission #{submission.id}: #{e.message}"
-            # Add a row with just the basic info if decryption fails
-            csv << [submission.id, submission.created_at.strftime("%Y-%m-%d %H:%M:%S"), "Error decrypting data"]
-          end
-        end
-      end
-    end
 end

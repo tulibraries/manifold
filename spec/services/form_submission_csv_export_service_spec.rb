@@ -29,41 +29,41 @@ RSpec.describe FormSubmissionCsvExportService do
       end
 
       it "continues processing submissions after a failure" do
-  timestamp = Time.zone.local(2026, 10, 9, 12, 0, 0)
+        timestamp = Time.zone.local(2026, 10, 9, 12, 0, 0)
 
-  failed_submission = instance_double(
-    FormSubmission,
-    id: 1,
-    created_at: timestamp,
-  )
+        failed_submission = instance_double(
+          FormSubmission,
+          id: 1,
+          created_at: timestamp,
+        )
 
-  valid_submission = instance_double(
-    FormSubmission,
-    id: 2,
-    created_at: timestamp,
-    form_attributes: { "name" => "Valid CSV User" },
-  )
+        valid_submission = instance_double(
+          FormSubmission,
+          id: 2,
+          created_at: timestamp,
+          form_attributes: { "name" => "Valid CSV User" },
+        )
 
-  allow(failed_submission).to receive(:form_attributes)
-    .and_raise(StandardError, "Decryption failed")
+        allow(failed_submission).to receive(:form_attributes)
+          .and_raise(StandardError, "Decryption failed")
 
-  allow(Rails.logger).to receive(:error)
+        allow(Rails.logger).to receive(:error)
 
-  csv_data = described_class.call(
-    [failed_submission, valid_submission],
-    form_type: "av-requests",
-  )
+        csv_data = described_class.call(
+          [failed_submission, valid_submission],
+          form_type: "av-requests",
+        )
 
-  csv = CSV.parse(csv_data, headers: true)
+        csv = CSV.parse(csv_data, headers: true)
 
-  expect(csv.size).to eq(2)
-  expect(csv[0]["Name"]).to eq("Error decrypting data")
-  expect(csv[1]["Name"]).to eq("Valid CSV User")
+        expect(csv.size).to eq(2)
+        expect(csv[0]["Name"]).to eq("Error decrypting data")
+        expect(csv[1]["Name"]).to eq("Valid CSV User")
 
-  expect(Rails.logger).to have_received(:error).with(
-    "Error processing AV request submission 1: Decryption failed",
-  )
-end
+        expect(Rails.logger).to have_received(:error).with(
+          "Error processing AV request submission 1: Decryption failed",
+        )
+      end
     end
 
     context "with Copy requests" do

@@ -15,7 +15,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
   end
 
   def export_av_requests_csv
-    @form_submissions = FormSubmission.where(form_type: "av-requests").order(created_at: :desc)
+    @form_submissions = submissions_for("av-requests").order(created_at: :desc)
 
     respond_to do |format|
       format.csv do
@@ -28,7 +28,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
   end
 
   def export_copy_requests_csv
-    @form_submissions = FormSubmission.where(form_type: "copy-requests").order(created_at: :desc)
+    @form_submissions = submissions_for("copy-requests").order(created_at: :desc)
 
     respond_to do |format|
       format.csv do
@@ -42,7 +42,7 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
 
   def show
     form_type = params[:form_type] || "av-requests"
-    @form_submission = FormSubmission.where(form_type: form_type).find(params[:id])
+    @form_submission = submissions_for(form_type).find(params[:id])
     @page_title = Form::RequestDefinition.detail_title(form_type)
   rescue ActiveRecord::RecordNotFound
     redirect_to admin_form_submissions_path, alert: "Form submission not found or not accessible."
@@ -50,11 +50,15 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
 
   private
 
+  def submissions_for(form_type)
+    FormSubmission.where(form_type: form_type)
+  end
+
   def render_collection(form_type)
-    @form_submissions = FormSubmission.where(form_type: form_type)
-                                      .order(created_at: :desc)
-                                      .page(params[:page])
-                                      .per(20)
+    @form_submissions = submissions_for(form_type)
+                        .order(created_at: :desc)
+                        .page(params[:page])
+                        .per(20)
     @page_title = Form::RequestDefinition.collection_title(form_type)
     render "collection"
   end

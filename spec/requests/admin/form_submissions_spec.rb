@@ -295,6 +295,67 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response.body).not_to include("Outside Vendor Fees")
       end
 
+      it "displays a partially populated AV request" do
+        submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: {
+            "collection_title" => "Partial AV Collection",
+          },
+        )
+
+        get admin_form_submission_path(submission)
+
+        expect(response).to have_http_status(:ok)
+
+        request_items = Nokogiri::HTML(response.body).css(".request-item")
+
+        expect(request_items.size).to eq(1)
+        expect(request_items.first.text).to include("Request 1")
+        expect(request_items.first.text).to include("Partial AV Collection")
+        expect(request_items.first.text).to include("Not provided")
+        expect(response.body).not_to include("No requests specified.")
+      end
+
+      it "numbers populated request slots consecutively" do
+        submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: {
+            "collection_title" => "First Collection",
+            "collection_title_02" => "Third Slot Collection",
+          },
+        )
+
+        get admin_form_submission_path(submission)
+
+        expect(response).to have_http_status(:ok)
+
+        request_items = Nokogiri::HTML(response.body).css(".request-item")
+
+        expect(request_items.size).to eq(2)
+        expect(request_items[0].at_css(".request-number").text.strip).to eq("Request 1")
+        expect(request_items[1].at_css(".request-number").text.strip).to eq("Request 2")
+        expect(request_items[0].text).to include("First Collection")
+        expect(request_items[1].text).to include("Third Slot Collection")
+      end
+
+      it "displays an empty state when no request fields are populated" do
+        submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: {
+            "name" => "Empty Request User",
+          },
+        )
+
+        get admin_form_submission_path(submission)
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("No requests specified.")
+        expect(Nokogiri::HTML(response.body).css(".request-item")).to be_empty
+      end
+
       it "redirects when the submission does not match the requested form type" do
         get admin_form_submission_path(
           copy_submission,

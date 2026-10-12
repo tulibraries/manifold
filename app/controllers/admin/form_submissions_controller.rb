@@ -7,21 +7,11 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
   end
 
   def av_requests
-    @form_submissions = FormSubmission.where(form_type: "av-requests")
-                                      .order(created_at: :desc)
-                                      .page(params[:page])
-                                      .per(20)
-    @page_title = Form::RequestDefinition.collection_title("av-requests")
-    render "collection"
+    render_collection("av-requests")
   end
 
   def copy_requests
-    @form_submissions = FormSubmission.where(form_type: "copy-requests")
-                                      .order(created_at: :desc)
-                                      .page(params[:page])
-                                      .per(20)
-    @page_title = Form::RequestDefinition.collection_title("copy-requests")
-    render "collection"
+    render_collection("copy-requests")
   end
 
   def export_av_requests_csv
@@ -56,5 +46,16 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
     @page_title = Form::RequestDefinition.detail_title(form_type)
   rescue ActiveRecord::RecordNotFound
     redirect_to admin_form_submissions_path, alert: "Form submission not found or not accessible."
+  end
+
+  private
+
+  def render_collection(form_type)
+    @form_submissions = FormSubmission.where(form_type: form_type)
+                                      .order(created_at: :desc)
+                                      .page(params[:page])
+                                      .per(20)
+    @page_title = Form::RequestDefinition.collection_title(form_type)
+    render "collection"
   end
 end

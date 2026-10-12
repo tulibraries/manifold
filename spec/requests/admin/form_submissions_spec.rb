@@ -519,6 +519,7 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response.media_type).to eq("text/csv")
         expect(response.body).to include("Error decrypting data")
       end
+
     end
 
     context "when authenticated without Form Submission manage access" do

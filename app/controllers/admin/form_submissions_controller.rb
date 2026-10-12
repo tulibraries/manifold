@@ -32,29 +32,29 @@ class Admin::FormSubmissionsController < Admin::ApplicationController
 
   private
 
-  def submissions_for(form_type)
-    FormSubmission.where(form_type: form_type)
-  end
+    def submissions_for(form_type)
+      FormSubmission.where(form_type: form_type)
+    end
 
-  def render_collection(form_type)
-    @form_submissions = submissions_for(form_type)
-                        .order(created_at: :desc)
-                        .page(params[:page])
-                        .per(20)
-    @page_title = Form::RequestDefinition.collection_title(form_type)
-    render "collection"
-  end
+    def render_collection(form_type)
+      @form_submissions = submissions_for(form_type)
+                          .order(created_at: :desc)
+                          .page(params[:page])
+                          .per(20)
+      @page_title = Form::RequestDefinition.collection_title(form_type)
+      render "collection"
+    end
 
-  def export_requests_csv(form_type, filename_prefix)
-    @form_submissions = submissions_for(form_type).order(created_at: :desc)
+    def export_requests_csv(form_type, filename_prefix)
+      @form_submissions = submissions_for(form_type).order(created_at: :desc)
 
-    respond_to do |format|
-      format.csv do
-        csv_data = FormSubmissionCsvExportService.call(@form_submissions, form_type: form_type)
-        send_data csv_data,
-                  filename: "#{filename_prefix}_#{Date.current.strftime('%Y%m%d')}.csv",
-                  type: "text/csv"
+      respond_to do |format|
+        format.csv do
+          csv_data = FormSubmissionCsvExportService.call(@form_submissions, form_type: form_type)
+          send_data csv_data,
+                    filename: "#{filename_prefix}_#{Date.current.strftime('%Y%m%d')}.csv",
+                    type: "text/csv"
+        end
       end
     end
-  end
 end

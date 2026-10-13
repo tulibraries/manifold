@@ -70,37 +70,40 @@ RSpec.describe Webpages::HslPage do
     end
 
     it "returns the first five current HSL events" do
-      events = [6, 1, 5, 2, 4, 3].map do |days|
+      # Pin to an evening Eastern time, after midnight UTC, so the day boundary is exercised.
+      travel_to(Time.zone.local(2026, 10, 11, 21, 35)) do
+        events = [6, 1, 5, 2, 4, 3].map do |days|
+          FactoryBot.create(
+            :event,
+            title: "HSL Event #{days}",
+            tags: "health sciences",
+            start_time: days.days.from_now,
+            end_time: (days + 1).days.from_now
+          )
+        end
+
         FactoryBot.create(
           :event,
-          title: "HSL Event #{days}",
+          title: "Other Event",
+          tags: "other",
+          start_time: 1.day.from_now,
+          end_time: 2.days.from_now
+        )
+
+        FactoryBot.create(
+          :event,
+          title: "Past HSL Event",
           tags: "health sciences",
-          start_time: days.days.from_now,
-          end_time: (days + 1).days.from_now
+          start_time: 2.days.ago,
+          end_time: 1.day.ago
+        )
+
+        result = described_class.call
+
+        expect(result[:event_links]).to eq(
+          [events[1], events[3], events[5], events[4], events[2]]
         )
       end
-
-      FactoryBot.create(
-        :event,
-        title: "Other Event",
-        tags: "other",
-        start_time: 1.day.from_now,
-        end_time: 2.days.from_now
-      )
-
-      FactoryBot.create(
-        :event,
-        title: "Past HSL Event",
-        tags: "health sciences",
-        start_time: 2.days.ago,
-        end_time: 1.day.ago
-      )
-
-      result = described_class.call
-
-      expect(result[:event_links]).to eq(
-        [events[1], events[3], events[5], events[4], events[2]]
-      )
     end
   end
 end

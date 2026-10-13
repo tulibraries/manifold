@@ -83,6 +83,73 @@ RSpec.describe "Admin Form Submissions", type: :request do
 
         expect(response.body).to include("1 request")
       end
+
+      it "lists AV submissions in descending creation order" do
+        FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: { "name" => "Older AV User" },
+          created_at: 2.days.ago,
+        )
+
+        FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: { "name" => "Newer AV User" },
+          created_at: 1.day.ago,
+        )
+
+        av_submission.update!(created_at: 3.days.ago)
+
+        get av_requests_admin_form_submissions_path
+
+        expect(response).to have_http_status(:ok)
+
+        names = Nokogiri::HTML(response.body)
+                        .css("tbody .table__row--clickable")
+                        .map { |row| row.css("td")[1].text.strip }
+
+        expect(names).to eq([
+          "Newer AV User",
+          "Older AV User",
+          "AV Request User",
+        ])
+      end
+
+      it "paginates AV submissions at 20 per page" do
+        av_submission.update!(created_at: 30.days.ago)
+
+        20.times do |index|
+          FactoryBot.create(
+            :form_submission,
+            form_type: "av-requests",
+            form_attributes: { "name" => "AV User #{index}" },
+            created_at: (20 - index).days.ago,
+          )
+        end
+
+        get av_requests_admin_form_submissions_path
+
+        expect(response).to have_http_status(:ok)
+
+        first_page_names = Nokogiri::HTML(response.body)
+                                   .css("tbody .table__row--clickable")
+                                   .map { |row| row.css("td")[1].text.strip }
+
+        expect(first_page_names.size).to eq(20)
+        expect(first_page_names).not_to include("AV Request User")
+        expect(first_page_names).not_to include("Copy Request User")
+
+        get av_requests_admin_form_submissions_path(page: 2)
+
+        expect(response).to have_http_status(:ok)
+
+        second_page_names = Nokogiri::HTML(response.body)
+                                    .css("tbody .table__row--clickable")
+                                    .map { |row| row.css("td")[1].text.strip }
+
+        expect(second_page_names).to eq(["AV Request User"])
+      end
     end
 
     context "when authenticated without Form Submission manage access" do
@@ -140,6 +207,73 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response.body).to include("Copy Request User")
         expect(response.body).to include("1 request")
         expect(response.body).to_not include("AV Request User")
+      end
+
+      it "lists Copy submissions in descending creation order" do
+        FactoryBot.create(
+          :form_submission,
+          form_type: "copy-requests",
+          form_attributes: { "name" => "Older Copy User" },
+          created_at: 2.days.ago,
+        )
+
+        FactoryBot.create(
+          :form_submission,
+          form_type: "copy-requests",
+          form_attributes: { "name" => "Newer Copy User" },
+          created_at: 1.day.ago,
+        )
+
+        copy_submission.update!(created_at: 3.days.ago)
+
+        get copy_requests_admin_form_submissions_path
+
+        expect(response).to have_http_status(:ok)
+
+        names = Nokogiri::HTML(response.body)
+                        .css("tbody .table__row--clickable")
+                        .map { |row| row.css("td")[1].text.strip }
+
+        expect(names).to eq([
+          "Newer Copy User",
+          "Older Copy User",
+          "Copy Request User",
+        ])
+      end
+
+      it "paginates Copy submissions at 20 per page" do
+        copy_submission.update!(created_at: 30.days.ago)
+
+        20.times do |index|
+          FactoryBot.create(
+            :form_submission,
+            form_type: "copy-requests",
+            form_attributes: { "name" => "Copy User #{index}" },
+            created_at: (20 - index).days.ago,
+          )
+        end
+
+        get copy_requests_admin_form_submissions_path
+
+        expect(response).to have_http_status(:ok)
+
+        first_page_names = Nokogiri::HTML(response.body)
+                                   .css("tbody .table__row--clickable")
+                                   .map { |row| row.css("td")[1].text.strip }
+
+        expect(first_page_names.size).to eq(20)
+        expect(first_page_names).not_to include("Copy Request User")
+        expect(first_page_names).not_to include("AV Request User")
+
+        get copy_requests_admin_form_submissions_path(page: 2)
+
+        expect(response).to have_http_status(:ok)
+
+        second_page_names = Nokogiri::HTML(response.body)
+                                    .css("tbody .table__row--clickable")
+                                    .map { |row| row.css("td")[1].text.strip }
+
+        expect(second_page_names).to eq(["Copy Request User"])
       end
     end
 
@@ -421,7 +555,10 @@ RSpec.describe "Admin Form Submissions", type: :request do
 
         expect(response).to have_http_status(:ok)
         expect(response.media_type).to eq("text/csv")
-        expect(response.headers["Content-Disposition"]).to include("av_requests_")
+        expected_filename = "av_requests_#{Date.current.strftime('%Y%m%d')}.csv"
+        expect(response.headers["Content-Disposition"]).to include(
+          "filename=\"#{expected_filename}\""
+        )
 
         csv = CSV.parse(response.body, headers: true)
 
@@ -582,7 +719,10 @@ RSpec.describe "Admin Form Submissions", type: :request do
 
         expect(response).to have_http_status(:ok)
         expect(response.media_type).to eq("text/csv")
-        expect(response.headers["Content-Disposition"]).to include("copy_requests_")
+        expected_filename = "copy_requests_#{Date.current.strftime('%Y%m%d')}.csv"
+        expect(response.headers["Content-Disposition"]).to include(
+          "filename=\"#{expected_filename}\""
+        )
 
         csv = CSV.parse(response.body, headers: true)
 

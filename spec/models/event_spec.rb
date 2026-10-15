@@ -249,6 +249,25 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "current / past scopes" do
+    # 9:35pm Eastern is after midnight UTC, so a UTC day boundary would misclassify these.
+    around { |example| travel_to(Time.zone.local(2026, 10, 11, 21, 35)) { example.run } }
+
+    it "treats an event that ended yesterday evening as past" do
+      event = FactoryBot.create(:event, start_time: Time.zone.local(2026, 10, 10, 20, 0), end_time: Time.zone.local(2026, 10, 10, 21, 0))
+
+      expect(Event.is_current).not_to include(event)
+      expect(Event.is_past).to include(event)
+    end
+
+    it "treats an event that ended earlier today as current" do
+      event = FactoryBot.create(:event, start_time: Time.zone.local(2026, 10, 11, 9, 0), end_time: Time.zone.local(2026, 10, 11, 10, 0))
+
+      expect(Event.is_current).to include(event)
+      expect(Event.is_past).not_to include(event)
+    end
+  end
+
   describe "workshop / event filters" do
     it "treats a LibCal 'Workshop' category as a workshop (additive)" do
       event = FactoryBot.create(:event, event_type: "", tags: "", libcal_categories: "Workshop")

@@ -17,8 +17,8 @@ class Event < ApplicationRecord
   has_rich_text :description
   serialize :tags, coder: YAML
 
-  scope :is_past, -> { where("end_time < ?", Date.current).order(start_time: :desc) }
-  scope :is_current, -> { where("end_time >= ?", Date.current).order(:start_time) }
+  scope :is_past, -> { where(end_time: ...Time.current.beginning_of_day).order(start_time: :desc) }
+  scope :is_current, -> { where(end_time: Time.current.beginning_of_day..).order(:start_time) }
   scope :is_workshop, -> { where("lower(event_type) LIKE :w OR lower(tags) LIKE :w OR lower(libcal_categories) LIKE :w", w: "%workshop%") }
   scope :is_not_workshop, -> { where.not(id: is_workshop) }
   scope :is_dss_event, -> { where("lower(tags) LIKE ? OR lower(libcal_categories) LIKE ?", "%digital scholarship%", "%digital scholarship%") }

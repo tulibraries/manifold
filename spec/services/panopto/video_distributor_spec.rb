@@ -222,6 +222,61 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
+    it "returns nil when all category API requests fail" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_raise(StandardError, "connection failed")
+
+      result = described_class.call(type: "all")
+
+      expect(result).to be_nil
+    end
+
+    it "returns empty categories when all API requests succeed with no videos" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      videos_response = double(
+        body: '{"Results":[]}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(videos_response)
+
+      result = described_class.call(type: "all")
+
+      expect(result.keys).to eq(
+        %i[
+          recent
+          beyond_page
+          beyond_notes
+          blockson
+          awards
+          lcdss
+          scrc
+        ]
+      )
+
+      expect(result.values.all? { |category| category[:videos].empty? }).to be(true)
+    end
+
     it "returns video data for a successful show request" do
       auth_response = double(
         body: '{"access_token":"test-token"}',

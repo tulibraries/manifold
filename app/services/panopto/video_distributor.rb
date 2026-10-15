@@ -102,11 +102,14 @@ module Panopto
         awards = []
         lcdss = []
         scrc = []
+        successful_requests = 0
 
         @categories.each do |category|
           get_videos = panopto_api_call(["playlists", "sessions"], category[1][2])
 
           next unless get_videos
+
+          successful_requests += 1
 
           get_videos[:Results].each do |video|
             case category[0]
@@ -127,6 +130,8 @@ module Panopto
             end
           end
         end
+
+        return nil if successful_requests.zero?
 
         videos_by_category = {
                               recent: { slug: "recent", label: "Recent Videos", videos: recent.take(10) },

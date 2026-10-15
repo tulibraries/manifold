@@ -327,6 +327,28 @@ RSpec.describe "Webpages", type: :request do
         "Past programs are temporarily unavailable."
       )
     end
+
+    it "redirects when all Panopto category requests fail" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_raise(StandardError, "connection failed")
+
+      get webpages_videos_all_path
+
+      expect(response).to redirect_to(root_path)
+      expect(flash[:notice]).to eq(
+        "Past programs are temporarily unavailable."
+      )
+    end
   end
 
   describe "GET /watchpastprograms/collections/:collection" do

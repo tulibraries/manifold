@@ -4,6 +4,43 @@ require "rails_helper"
 require "ostruct"
 
 RSpec.describe Panopto::VideoDistributor, type: :service do
+  describe "#initialize" do
+    it "does not authenticate when constructing the service" do
+      expect(HTTParty).not_to receive(:post)
+
+      described_class.new(
+        type: "show",
+        video_id: "video-123"
+      )
+    end
+  end
+
+  describe "#call" do
+    it "authenticates when executing the service" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}'
+      )
+
+      expect(HTTParty)
+        .to receive(:post)
+        .once
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(
+          double(body: '{"Id":"video-123"}')
+        )
+
+      service = described_class.new(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      service.call
+    end
+  end
+
   context "Retrieves video data from API" do
     it "returns videos grouped by category" do
       auth_response = double(

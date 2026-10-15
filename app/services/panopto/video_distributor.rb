@@ -7,20 +7,10 @@ require "json"
 module Panopto
   class VideoDistributor < ApplicationService
     def initialize(*args)
-      begin
-        @type = args.first[:type]
-        @collection = args.first[:collection]
-        @video_id = args.first[:video_id]
-        @query = args.first[:query]
-        key = ENV["PANOPTO_API_USER"]
-        code = ENV["PANOPTO_API_KEY"]
-        auth = { username: key, password: code }
-        params = { "scope" => "api", "grant_type" => "client_credentials" }
-        response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
-        @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
-      rescue => e
-        e.message
-      end
+      @type = args.first[:type]
+      @collection = args.first[:collection]
+      @video_id = args.first[:video_id]
+      @query = args.first[:query]
     end
 
     def call
@@ -32,6 +22,7 @@ module Panopto
         "lcdss" => ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
         "scrc" => ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"] }
 
+      authenticate
       return authentication_failure_result if @access_token.blank?
 
       case @type
@@ -51,6 +42,23 @@ module Panopto
     end
 
     private
+
+      def authenticate
+        key = ENV["PANOPTO_API_USER"]
+        code = ENV["PANOPTO_API_KEY"]
+        auth = { username: key, password: code }
+        params = { "scope" => "api", "grant_type" => "client_credentials" }
+
+        response = HTTParty.post(
+          "https://temple.hosted.panopto.com/Panopto/oauth2/connect/token",
+          body: params,
+          basic_auth: auth
+        )
+
+        @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
+      rescue StandardError
+        @access_token = nil
+      end
 
       def panopto_api_call(type, panopto_id)
         begin

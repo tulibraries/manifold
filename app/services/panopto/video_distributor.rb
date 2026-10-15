@@ -55,7 +55,10 @@ module Panopto
           basic_auth: auth
         )
 
-        return unless response.code.to_i.between?(200, 299)
+        unless response.code.to_i.between?(200, 299)
+          Rails.logger.warn("Panopto authentication failed: HTTP #{response.code}")
+          return
+        end
 
         @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
       rescue StandardError => e
@@ -71,8 +74,13 @@ module Panopto
           api_query += "?id=#{ panopto_id }&searchQuery=#{ type[3] }" if type[3].present?
           api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
           api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
+
           request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
-          return nil unless request.code.to_i.between?(200, 299)
+
+          unless request.code.to_i.between?(200, 299)
+            Rails.logger.warn("Panopto API request failed: HTTP #{request.code}")
+            return nil
+          end
 
           JSON.parse(request.body, symbolize_names: true) if request.body.size > 0
         rescue StandardError => e

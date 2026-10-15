@@ -432,6 +432,10 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:post)
         .and_return(auth_response)
 
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto authentication failed: HTTP 401")
+
       expect(HTTParty)
         .not_to receive(:get)
 
@@ -494,6 +498,10 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       allow(HTTParty)
         .to receive(:get)
         .and_return(unauthorized_response)
+
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto API request failed: HTTP 403")
 
       result = described_class.call(
         type: "show",

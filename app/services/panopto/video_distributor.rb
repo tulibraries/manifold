@@ -55,6 +55,8 @@ module Panopto
           basic_auth: auth
         )
 
+        return unless response.code.to_i.between?(200, 299)
+
         @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
       rescue StandardError
         @access_token = nil

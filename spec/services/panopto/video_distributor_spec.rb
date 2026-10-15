@@ -18,7 +18,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
   describe "#call" do
     it "authenticates when executing the service" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       expect(HTTParty)
@@ -44,7 +45,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
   context "Retrieves video data from API" do
     it "returns videos grouped by category" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       videos_response = double(
@@ -92,7 +94,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty category when one category API request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       videos_response = double(
@@ -126,7 +129,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns video data for a successful show request" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       video_response = double(
@@ -159,7 +163,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns search results" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       search_response = double(
@@ -190,7 +195,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty search result when Panopto returns no matches" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       search_response = double(
@@ -217,7 +223,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty search result when the API request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -240,7 +247,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty collection when a later page request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       first_page = {
@@ -277,7 +285,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns videos for a collection" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       collection_response = double(
@@ -307,7 +316,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "requests a second page when the first collection page has 50 videos" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       first_page = {
@@ -348,7 +358,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty collection when the initial page request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -384,12 +395,34 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns nil when authentication does not return an access token" do
       auth_response = double(
-        body: '{"error":"invalid_client"}'
+        body: '{"error":"invalid_client"}',
+        code: 200
       )
 
       allow(HTTParty)
         .to receive(:post)
         .and_return(auth_response)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to be_nil
+    end
+
+    it "rejects an unsuccessful authentication response containing an access token" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 401
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      expect(HTTParty)
+        .not_to receive(:get)
 
       result = described_class.call(
         type: "show",
@@ -418,7 +451,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:post)
         .and_return(
           double(
-            body: '{"error":"invalid_client"}'
+            body: '{"error":"invalid_client"}',
+            code: 200
           )
         )
 
@@ -433,7 +467,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns the API error response when an authenticated request is unauthorized" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       unauthorized_response = double(
@@ -463,7 +498,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       allow(HTTParty)
         .to receive(:post)
         .and_return(
-          double(body: "not-json")
+          double(body: "not-json", code: 200)
         )
 
       expect(HTTParty)
@@ -481,7 +516,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       allow(HTTParty)
         .to receive(:post)
         .and_return(
-          double(body: "")
+          double(body: "", code: 200)
         )
 
       expect(HTTParty)
@@ -546,7 +581,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns nil when the API response contains invalid JSON" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       invalid_response = double(

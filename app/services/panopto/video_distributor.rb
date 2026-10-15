@@ -68,12 +68,7 @@ module Panopto
 
       def panopto_api_call(type, panopto_id)
         begin
-          api_query = "https://temple.hosted.panopto.com/Panopto/api/v1/#{ type[0] }/#{ panopto_id }/"
-          api_query += "#{ type[1] }/" if type[1].present?
-          api_query += "#{ type[2] }" if type[2].present?
-          api_query += "?id=#{ panopto_id }&searchQuery=#{ type[3] }" if type[3].present?
-          api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
-          api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
+          api_query = panopto_api_url(type, panopto_id)
 
           request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
 
@@ -87,6 +82,16 @@ module Panopto
           Rails.logger.warn("Panopto API request failed: #{e.class}")
           nil
         end
+      end
+
+      def panopto_api_url(type, panopto_id)
+        api_query = "https://temple.hosted.panopto.com/Panopto/api/v1/#{ type[0] }/#{ panopto_id }/"
+        api_query += "#{ type[1] }/" if type[1].present?
+        api_query += "#{ type[2] }" if type[2].present?
+        api_query += "?id=#{ panopto_id }&searchQuery=#{ type[3] }" if type[3].present?
+        api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
+        api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
+        api_query
       end
 
       def get_video_categories(videos)

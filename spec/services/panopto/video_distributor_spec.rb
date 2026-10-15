@@ -40,6 +40,99 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
       service.call
     end
+
+    it "requests a video using the existing session URL" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      video_response = double(
+        body: '{"Id":"video-123"}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      expect(HTTParty)
+        .to receive(:get)
+        .with(
+          "https://temple.hosted.panopto.com/Panopto/api/v1/sessions/video-123/",
+          headers: { "Authorization" => "Bearer test-token" }
+        )
+        .and_return(video_response)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to eq(Id: "video-123")
+    end
+
+    it "requests collection videos using the existing playlist URL" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      collection_response = double(
+        body: '{"Results":[]}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      expect(HTTParty)
+        .to receive(:get)
+        .with(
+          "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/?pageNumber=0",
+          headers: { "Authorization" => "Bearer test-token" }
+        )
+        .and_return(collection_response)
+
+      result = described_class.call(
+        type: "collection",
+        collection: "recent"
+      )
+
+      expect(result).to eq(["Recent Videos", []])
+    end
+
+    it "requests search results using the existing folder URL" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      search_response = double(
+        body: '{"Results":[]}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      expect(HTTParty)
+        .to receive(:get)
+        .with(
+          "https://temple.hosted.panopto.com/Panopto/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/sessions/search?id=e2753a7a-85c2-4d00-a241-aecf00393c25&searchQuery=concert",
+          headers: { "Authorization" => "Bearer test-token" }
+        )
+        .and_return(search_response)
+
+      result = described_class.call(
+        type: "search",
+        query: "concert"
+      )
+
+      expect(result).to eq(["concert", 0, []])
+    end
   end
 
   context "Retrieves video data from API" do
@@ -342,12 +435,20 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:post)
         .and_return(auth_response)
 
-      allow(HTTParty)
+      playlist_url = "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/"
+      headers = { "Authorization" => "Bearer test-token" }
+
+      expect(HTTParty)
         .to receive(:get)
-        .and_return(
-          double(body: first_page.to_json, code: 200),
-          double(body: second_page.to_json, code: 200)
-        )
+        .with("#{playlist_url}?pageNumber=0", headers: headers)
+        .ordered
+        .and_return(double(body: first_page.to_json, code: 200))
+
+      expect(HTTParty)
+        .to receive(:get)
+        .with("#{playlist_url}?pageNumber=1", headers: headers)
+        .ordered
+        .and_return(double(body: second_page.to_json, code: 200))
 
       result = described_class.call(
         type: "collection",

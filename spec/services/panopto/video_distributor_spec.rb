@@ -30,7 +30,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       allow(HTTParty)
         .to receive(:get)
         .and_return(
-          double(body: '{"Id":"video-123"}')
+          double(body: '{"Id":"video-123"}', code: 200)
         )
 
       service = described_class.new(
@@ -50,7 +50,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       videos_response = double(
-        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -99,7 +100,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       videos_response = double(
-        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -134,7 +136,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       video_response = double(
-        body: '{"Id":"video-123","Name":"Example Video"}'
+        body: '{"Id":"video-123","Name":"Example Video"}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -167,8 +170,9 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         code: 200
       )
 
-      search_response = double(
-        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+      videos_response = double(
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -177,7 +181,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
       allow(HTTParty)
         .to receive(:get)
-        .and_return(search_response)
+        .and_return(videos_response)
 
       result = described_class.call(
         type: "search",
@@ -200,7 +204,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       search_response = double(
-        body: '{"Results":[]}'
+        body: '{"Results":[]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -267,7 +272,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         call_count += 1
 
         if call_count == 1
-          double(body: first_page.to_json)
+          double(body: first_page.to_json, code: 200)
         else
           raise StandardError, "connection failed"
         end
@@ -290,7 +295,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       collection_response = double(
-        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -339,8 +345,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       allow(HTTParty)
         .to receive(:get)
         .and_return(
-          double(body: first_page.to_json),
-          double(body: second_page.to_json)
+          double(body: first_page.to_json, code: 200),
+          double(body: second_page.to_json, code: 200)
         )
 
       result = described_class.call(
@@ -465,7 +471,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
-    it "returns the API error response when an authenticated request is unauthorized" do
+    it "returns nil when an authenticated API request is unauthorized" do
       auth_response = double(
         body: '{"access_token":"test-token"}',
         code: 200
@@ -489,9 +495,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         video_id: "video-123"
       )
 
-      expect(result).to eq(
-        Message: "Unauthorized"
-      )
+      expect(result).to be_nil
     end
 
     it "returns nil when the authentication response contains invalid JSON" do
@@ -586,7 +590,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       invalid_response = double(
-        body: "not-json"
+        body: "not-json",
+        code: 200
       )
 
       allow(HTTParty)

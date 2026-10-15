@@ -71,6 +71,8 @@ module Panopto
           api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
           api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
           request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
+          return nil unless request.code.to_i.between?(200, 299)
+
           JSON.parse(request.body, symbolize_names: true) if request.body.size > 0
         rescue StandardError => e
           Rails.logger.debug e

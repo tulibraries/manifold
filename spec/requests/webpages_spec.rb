@@ -356,7 +356,8 @@ RSpec.describe "Webpages", type: :request do
 
     it "displays an error message when a later collection page request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       first_page = {
@@ -375,7 +376,7 @@ RSpec.describe "Webpages", type: :request do
         call_count += 1
 
         if call_count == 1
-          double(body: first_page.to_json)
+          double(body: first_page.to_json, code: 200)
         else
           raise StandardError, "connection failed"
         end

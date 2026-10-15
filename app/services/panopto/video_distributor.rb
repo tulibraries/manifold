@@ -58,7 +58,8 @@ module Panopto
         return unless response.code.to_i.between?(200, 299)
 
         @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
-      rescue StandardError
+      rescue StandardError => e
+        Rails.logger.warn("Panopto authentication failed: #{e.class}")
         @access_token = nil
       end
 
@@ -75,7 +76,7 @@ module Panopto
 
           JSON.parse(request.body, symbolize_names: true) if request.body.size > 0
         rescue StandardError => e
-          Rails.logger.debug e
+          Rails.logger.warn("Panopto API request failed: #{e.class}")
           nil
         end
       end

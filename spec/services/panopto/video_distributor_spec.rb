@@ -391,6 +391,11 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:post)
         .and_raise(StandardError, "authentication failed")
 
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto authentication failed: StandardError")
+        .and_return(true)
+
       result = described_class.call(
         type: "show",
         video_id: "video-123"
@@ -602,8 +607,9 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:get)
         .and_return(invalid_response)
 
-      allow(Rails.logger)
-        .to receive(:debug)
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto API request failed: JSON::ParserError")
         .and_return(true)
 
       result = described_class.call(

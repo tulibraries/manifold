@@ -73,13 +73,13 @@ module Panopto
           request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
 
           unless request.code.to_i.between?(200, 299)
-            Rails.logger.warn("Panopto API request failed: HTTP #{request.code}")
+            Rails.logger.warn("Panopto API request failed (#{@type}): HTTP #{request.code}")
             return nil
           end
 
           JSON.parse(request.body, symbolize_names: true) if request.body.size > 0
         rescue StandardError => e
-          Rails.logger.warn("Panopto API request failed: #{e.class}")
+          Rails.logger.warn("Panopto API request failed (#{@type}): #{e.class}")
           nil
         end
       end

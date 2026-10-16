@@ -388,6 +388,10 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:get)
         .and_raise(StandardError, "connection failed")
 
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto API request failed (search): StandardError")
+
       result = described_class.call(
         type: "search",
         query: "concert"
@@ -532,6 +536,10 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:get)
         .and_raise(StandardError, "connection failed")
 
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto API request failed (collection): StandardError")
+
       result = described_class.call(
         type: "collection",
         collection: "recent"
@@ -657,7 +665,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
       expect(Rails.logger)
         .to receive(:warn)
-        .with("Panopto API request failed: HTTP 403")
+        .with("Panopto API request failed (show): HTTP 403")
 
       result = described_class.call(
         type: "show",
@@ -773,7 +781,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
       expect(Rails.logger)
         .to receive(:warn)
-        .with("Panopto API request failed: JSON::ParserError")
+        .with("Panopto API request failed (show): JSON::ParserError")
         .and_return(true)
 
       result = described_class.call(

@@ -52,6 +52,11 @@ class WebpagesController < ApplicationController
       render(Panopto::PastEventsSearchComponent.new(videos:))
     elsif params[:q].blank?
       redirect_to(webpages_videos_all_path, notice: "You must choose a term to search for.")
+    else
+      redirect_to(
+        webpages_videos_all_path,
+        alert: I18n.t("manifold.webpages.videos.search.retrieval_failed")
+      )
     end
   end
 

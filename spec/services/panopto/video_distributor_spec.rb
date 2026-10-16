@@ -374,7 +374,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
-    it "returns an empty search result when the API request fails" do
+    it "returns a retrieval failure when the search API request fails" do
       auth_response = double(
         body: '{"access_token":"test-token"}',
         code: 200
@@ -398,7 +398,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       expect(result).to eq(
-        ["concert", 0, []]
+        ["concert", 0, [], :retrieval_failed]
       )
     end
 
@@ -711,7 +711,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       expect(result).to be_nil
     end
 
-    it "returns an empty search result when authentication fails" do
+    it "returns a retrieval failure when search authentication fails" do
       allow(HTTParty)
         .to receive(:post)
         .and_raise(StandardError, "authentication failed")
@@ -725,7 +725,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
 
       expect(result).to eq(
-        ["livingstone", 0, []]
+        ["livingstone", 0, [], :retrieval_failed]
       )
     end
 

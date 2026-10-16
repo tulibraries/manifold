@@ -454,6 +454,20 @@ RSpec.describe "Webpages", type: :request do
       )
     end
 
+    it "redirects with an error when search retrieval fails" do
+      allow(Panopto::VideoDistributor)
+        .to receive(:call)
+        .with(type: "search", query: "livingstone")
+        .and_return(["livingstone", 0, [], :retrieval_failed])
+
+      get webpages_videos_search_path(q: "livingstone")
+
+      expect(response).to redirect_to(webpages_videos_all_path)
+      expect(flash[:alert]).to eq(
+        I18n.t("manifold.webpages.videos.search.retrieval_failed")
+      )
+    end
+
     it "redirects when no search term is provided" do
       get webpages_videos_search_path
 

@@ -194,7 +194,7 @@ module Panopto
       def videos_search(query)
         page_results = panopto_api_call(["folders", "sessions", "search", query, nil], "e2753a7a-85c2-4d00-a241-aecf00393c25")
 
-        return [query, 0, []] unless page_results
+        return [query, 0, [], :retrieval_failed] unless page_results
 
         if page_results[:Results].present?
           videos = page_results[:Results]
@@ -207,7 +207,7 @@ module Panopto
       def authentication_failure_result
         case @type
         when "search"
-          [@query, 0, []]
+          [@query, 0, [], :retrieval_failed]
         when "collection"
           return unless @categories.key?(@collection)
 

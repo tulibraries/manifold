@@ -4,14 +4,147 @@ require "rails_helper"
 require "ostruct"
 
 RSpec.describe Panopto::VideoDistributor, type: :service do
+  describe "#initialize" do
+    it "does not authenticate when constructing the service" do
+      expect(HTTParty).not_to receive(:post)
+
+      described_class.new(
+        type: "show",
+        video_id: "video-123"
+      )
+    end
+  end
+
+  describe "#call" do
+    it "authenticates when executing the service" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      expect(HTTParty)
+        .to receive(:post)
+        .once
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(
+          double(body: '{"Id":"video-123"}', code: 200)
+        )
+
+      service = described_class.new(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      service.call
+    end
+
+    it "requests a video using the existing session URL" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      video_response = double(
+        body: '{"Id":"video-123"}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      expect(HTTParty)
+        .to receive(:get)
+        .with(
+          "https://temple.hosted.panopto.com/Panopto/api/v1/sessions/video-123/",
+          headers: { "Authorization" => "Bearer test-token" }
+        )
+        .and_return(video_response)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to eq(Id: "video-123")
+    end
+
+    it "requests collection videos using the existing playlist URL" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      collection_response = double(
+        body: '{"Results":[]}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      expect(HTTParty)
+        .to receive(:get)
+        .with(
+          "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/?pageNumber=0",
+          headers: { "Authorization" => "Bearer test-token" }
+        )
+        .and_return(collection_response)
+
+      result = described_class.call(
+        type: "collection",
+        collection: "recent"
+      )
+
+      expect(result).to eq(["Recent Videos", []])
+    end
+
+    it "requests search results using the existing folder URL" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      search_response = double(
+        body: '{"Results":[]}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      expect(HTTParty)
+        .to receive(:get)
+        .with(
+          "https://temple.hosted.panopto.com/Panopto/api/v1/folders/e2753a7a-85c2-4d00-a241-aecf00393c25/sessions/search?id=e2753a7a-85c2-4d00-a241-aecf00393c25&searchQuery=concert",
+          headers: { "Authorization" => "Bearer test-token" }
+        )
+        .and_return(search_response)
+
+      result = described_class.call(
+        type: "search",
+        query: "concert"
+      )
+
+      expect(result).to eq(["concert", 0, []])
+    end
+  end
+
   context "Retrieves video data from API" do
     it "returns videos grouped by category" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       videos_response = double(
-        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -55,11 +188,13 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty category when one category API request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       videos_response = double(
-        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -87,13 +222,70 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
+    it "returns nil when all category API requests fail" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_raise(StandardError, "connection failed")
+
+      result = described_class.call(type: "all")
+
+      expect(result).to be_nil
+    end
+
+    it "returns empty categories when all API requests succeed with no videos" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      videos_response = double(
+        body: '{"Results":[]}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_return(videos_response)
+
+      result = described_class.call(type: "all")
+
+      expect(result.keys).to eq(
+        %i[
+          recent
+          beyond_page
+          beyond_notes
+          blockson
+          awards
+          lcdss
+          scrc
+        ]
+      )
+
+      expect(result.values.all? { |category| category[:videos].empty? }).to be(true)
+    end
+
     it "returns video data for a successful show request" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       video_response = double(
-        body: '{"Id":"video-123","Name":"Example Video"}'
+        body: '{"Id":"video-123","Name":"Example Video"}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -122,11 +314,13 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns search results" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
-      search_response = double(
-        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+      videos_response = double(
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -135,7 +329,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
       allow(HTTParty)
         .to receive(:get)
-        .and_return(search_response)
+        .and_return(videos_response)
 
       result = described_class.call(
         type: "search",
@@ -153,11 +347,13 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty search result when Panopto returns no matches" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       search_response = double(
-        body: '{"Results":[]}'
+        body: '{"Results":[]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -180,7 +376,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty search result when the API request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -190,6 +387,10 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       allow(HTTParty)
         .to receive(:get)
         .and_raise(StandardError, "connection failed")
+
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto API request failed (search): StandardError")
 
       result = described_class.call(
         type: "search",
@@ -203,7 +404,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty collection when a later page request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       first_page = {
@@ -222,7 +424,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         call_count += 1
 
         if call_count == 1
-          double(body: first_page.to_json)
+          double(body: first_page.to_json, code: 200)
         else
           raise StandardError, "connection failed"
         end
@@ -240,11 +442,13 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns videos for a collection" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       collection_response = double(
-        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}'
+        body: '{"Results":[{"Id":"video-123","Name":"Example Video"}]}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -270,7 +474,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "requests a second page when the first collection page has 50 videos" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       first_page = {
@@ -289,12 +494,20 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:post)
         .and_return(auth_response)
 
-      allow(HTTParty)
+      playlist_url = "https://temple.hosted.panopto.com/Panopto/api/v1/playlists/98a7258a-f81f-48c1-8541-af1900e5a7af/sessions/"
+      headers = { "Authorization" => "Bearer test-token" }
+
+      expect(HTTParty)
         .to receive(:get)
-        .and_return(
-          double(body: first_page.to_json),
-          double(body: second_page.to_json)
-        )
+        .with("#{playlist_url}?pageNumber=0", headers: headers)
+        .ordered
+        .and_return(double(body: first_page.to_json, code: 200))
+
+      expect(HTTParty)
+        .to receive(:get)
+        .with("#{playlist_url}?pageNumber=1", headers: headers)
+        .ordered
+        .and_return(double(body: second_page.to_json, code: 200))
 
       result = described_class.call(
         type: "collection",
@@ -311,7 +524,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns an empty collection when the initial page request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       allow(HTTParty)
@@ -321,6 +535,10 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       allow(HTTParty)
         .to receive(:get)
         .and_raise(StandardError, "connection failed")
+
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto API request failed (collection): StandardError")
 
       result = described_class.call(
         type: "collection",
@@ -337,6 +555,11 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:post)
         .and_raise(StandardError, "authentication failed")
 
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto authentication failed: StandardError")
+        .and_return(true)
+
       result = described_class.call(
         type: "show",
         video_id: "video-123"
@@ -347,12 +570,38 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns nil when authentication does not return an access token" do
       auth_response = double(
-        body: '{"error":"invalid_client"}'
+        body: '{"error":"invalid_client"}',
+        code: 200
       )
 
       allow(HTTParty)
         .to receive(:post)
         .and_return(auth_response)
+
+      result = described_class.call(
+        type: "show",
+        video_id: "video-123"
+      )
+
+      expect(result).to be_nil
+    end
+
+    it "rejects an unsuccessful authentication response containing an access token" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 401
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto authentication failed: HTTP 401")
+
+      expect(HTTParty)
+        .not_to receive(:get)
 
       result = described_class.call(
         type: "show",
@@ -381,7 +630,8 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:post)
         .and_return(
           double(
-            body: '{"error":"invalid_client"}'
+            body: '{"error":"invalid_client"}',
+            code: 200
           )
         )
 
@@ -394,9 +644,10 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       )
     end
 
-    it "returns the API error response when an authenticated request is unauthorized" do
+    it "returns nil when an authenticated API request is unauthorized" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       unauthorized_response = double(
@@ -412,21 +663,23 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:get)
         .and_return(unauthorized_response)
 
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto API request failed (show): HTTP 403")
+
       result = described_class.call(
         type: "show",
         video_id: "video-123"
       )
 
-      expect(result).to eq(
-        Message: "Unauthorized"
-      )
+      expect(result).to be_nil
     end
 
     it "returns nil when the authentication response contains invalid JSON" do
       allow(HTTParty)
         .to receive(:post)
         .and_return(
-          double(body: "not-json")
+          double(body: "not-json", code: 200)
         )
 
       expect(HTTParty)
@@ -444,7 +697,7 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
       allow(HTTParty)
         .to receive(:post)
         .and_return(
-          double(body: "")
+          double(body: "", code: 200)
         )
 
       expect(HTTParty)
@@ -509,11 +762,13 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
 
     it "returns nil when the API response contains invalid JSON" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       invalid_response = double(
-        body: "not-json"
+        body: "not-json",
+        code: 200
       )
 
       allow(HTTParty)
@@ -524,8 +779,9 @@ RSpec.describe Panopto::VideoDistributor, type: :service do
         .to receive(:get)
         .and_return(invalid_response)
 
-      allow(Rails.logger)
-        .to receive(:debug)
+      expect(Rails.logger)
+        .to receive(:warn)
+        .with("Panopto API request failed (show): JSON::ParserError")
         .and_return(true)
 
       result = described_class.call(

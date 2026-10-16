@@ -7,20 +7,10 @@ require "json"
 module Panopto
   class VideoDistributor < ApplicationService
     def initialize(*args)
-      begin
-        @type = args.first[:type]
-        @collection = args.first[:collection]
-        @video_id = args.first[:video_id]
-        @query = args.first[:query]
-        key = ENV["PANOPTO_API_USER"]
-        code = ENV["PANOPTO_API_KEY"]
-        auth = { username: key, password: code }
-        params = { "scope" => "api", "grant_type" => "client_credentials" }
-        response = HTTParty.post("https://temple.hosted.panopto.com/Panopto/oauth2/connect/token", body: params, basic_auth: auth)
-        @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
-      rescue => e
-        e.message
-      end
+      @type = args.first[:type]
+      @collection = args.first[:collection]
+      @video_id = args.first[:video_id]
+      @query = args.first[:query]
     end
 
     def call
@@ -32,6 +22,7 @@ module Panopto
         "lcdss" => ["lcdss", "Loretta C. Duckworth Scholars Studio", "d320fce9-a51c-4e6f-b85a-af1901046d79"],
         "scrc" => ["scrc", "Special Collections Research Center", "980a89be-5d85-43e2-b171-af1c00fdd352"] }
 
+      authenticate
       return authentication_failure_result if @access_token.blank?
 
       case @type
@@ -52,20 +43,55 @@ module Panopto
 
     private
 
+      def authenticate
+        key = ENV["PANOPTO_API_USER"]
+        code = ENV["PANOPTO_API_KEY"]
+        auth = { username: key, password: code }
+        params = { "scope" => "api", "grant_type" => "client_credentials" }
+
+        response = HTTParty.post(
+          "https://temple.hosted.panopto.com/Panopto/oauth2/connect/token",
+          body: params,
+          basic_auth: auth
+        )
+
+        unless response.code.to_i.between?(200, 299)
+          Rails.logger.warn("Panopto authentication failed: HTTP #{response.code}")
+          return
+        end
+
+        @access_token = JSON.parse(response.body, symbolize_names: true)[:access_token] if response.body.present?
+      rescue StandardError => e
+        Rails.logger.warn("Panopto authentication failed: #{e.class}")
+        @access_token = nil
+      end
+
       def panopto_api_call(type, panopto_id)
         begin
-          api_query = "https://temple.hosted.panopto.com/Panopto/api/v1/#{ type[0] }/#{ panopto_id }/"
-          api_query += "#{ type[1] }/" if type[1].present?
-          api_query += "#{ type[2] }" if type[2].present?
-          api_query += "?id=#{ panopto_id }&searchQuery=#{ type[3] }" if type[3].present?
-          api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
-          api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
+          api_query = panopto_api_url(type, panopto_id)
+
           request = HTTParty.get(api_query, headers: { "Authorization" => "Bearer #{ @access_token }" })
+
+          unless request.code.to_i.between?(200, 299)
+            Rails.logger.warn("Panopto API request failed (#{@type}): HTTP #{request.code}")
+            return nil
+          end
+
           JSON.parse(request.body, symbolize_names: true) if request.body.size > 0
         rescue StandardError => e
-          Rails.logger.debug e
+          Rails.logger.warn("Panopto API request failed (#{@type}): #{e.class}")
           nil
         end
+      end
+
+      def panopto_api_url(type, panopto_id)
+        api_query = "https://temple.hosted.panopto.com/Panopto/api/v1/#{ type[0] }/#{ panopto_id }/"
+        api_query += "#{ type[1] }/" if type[1].present?
+        api_query += "#{ type[2] }" if type[2].present?
+        api_query += "?id=#{ panopto_id }&searchQuery=#{ type[3] }" if type[3].present?
+        api_query += "&pageNumber=#{ type[4] }" if type[3].present? && type[4].present?
+        api_query += "?pageNumber=#{ type[4] }" if type[3].nil? && type[4].present?
+        api_query
       end
 
       def get_video_categories(videos)
@@ -76,11 +102,14 @@ module Panopto
         awards = []
         lcdss = []
         scrc = []
+        successful_requests = 0
 
         @categories.each do |category|
           get_videos = panopto_api_call(["playlists", "sessions"], category[1][2])
 
           next unless get_videos
+
+          successful_requests += 1
 
           get_videos[:Results].each do |video|
             case category[0]
@@ -101,6 +130,8 @@ module Panopto
             end
           end
         end
+
+        return nil if successful_requests.zero?
 
         videos_by_category = {
                               recent: { slug: "recent", label: "Recent Videos", videos: recent.take(10) },

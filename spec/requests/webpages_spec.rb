@@ -327,6 +327,28 @@ RSpec.describe "Webpages", type: :request do
         "Past programs are temporarily unavailable."
       )
     end
+
+    it "redirects when all Panopto category requests fail" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_raise(StandardError, "connection failed")
+
+      get webpages_videos_all_path
+
+      expect(response).to redirect_to(root_path)
+      expect(flash[:notice]).to eq(
+        "Past programs are temporarily unavailable."
+      )
+    end
   end
 
   describe "GET /watchpastprograms/collections/:collection" do
@@ -356,7 +378,8 @@ RSpec.describe "Webpages", type: :request do
 
     it "displays an error message when a later collection page request fails" do
       auth_response = double(
-        body: '{"access_token":"test-token"}'
+        body: '{"access_token":"test-token"}',
+        code: 200
       )
 
       first_page = {
@@ -375,7 +398,7 @@ RSpec.describe "Webpages", type: :request do
         call_count += 1
 
         if call_count == 1
-          double(body: first_page.to_json)
+          double(body: first_page.to_json, code: 200)
         else
           raise StandardError, "connection failed"
         end

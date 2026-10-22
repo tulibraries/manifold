@@ -21,7 +21,7 @@ gem "base64", "0.3.0"
 gem "bootsnap", require: false
 gem "bootstrap"
 gem "browser"
-gem "cancancan", "~> 3.6"
+gem "cancancan", "~> 3.7"
 gem "dartsass-rails"
 gem "database_cleaner"
 gem "devise"

@@ -318,7 +318,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashdiff (1.2.1)
-    hashie (5.1.0)
+    hashie (5.2.0)
       logger
     honeybadger (6.9.3)
       logger
@@ -495,11 +495,11 @@ GEM
       version_gem (~> 1.1, >= 1.1.14)
     okcomputer (1.20.0)
       benchmark
-    omniauth (2.1.4)
-      hashie (>= 3.4.6)
+    omniauth (2.3.1)
+      hashie (>= 3.5.2)
       logger
-      rack (>= 2.2.3)
-      rack-protection
+      rack (>= 2.2.8)
+      rack-protection (>= 2.2.0)
     omniauth-google-oauth2 (1.2.3)
       jwt (>= 2.9.2, < 4)
       oauth2 (~> 2.0)
@@ -884,7 +884,7 @@ DEPENDENCIES
   nokogiri (>= 1.16)
   oauth2
   okcomputer
-  omniauth (~> 2.1.4)
+  omniauth (~> 2.3.1)
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   orderly

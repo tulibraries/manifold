@@ -3,6 +3,8 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://cookiechimp.com/widget/a2ZtgNB.js"></script>
+
     <%= yield :head %>
 
     <%= display_meta_tags site: t("manifold.default.site_title") %>
@@ -10,19 +12,19 @@
 
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "print/application", media: "print", "data-turbo-track": "reload" %>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <%= preload_link_tag("https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap",
         as: "style") %>
     <link href="https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
           rel="stylesheet">
-          
+
     <%= favicon_link_tag asset_path('temple-logo-t-box.svg'), :rel => 'icon', :type =>  'image/svg' %>
 
     <% javascript_entrypoint = controller_name == "webpages" && action_name == "home" ? "homepage" : "application" %>
     <%= javascript_importmap_tags javascript_entrypoint %>
-    
+
   <% if @nonce.present? %>
     <!-- Google tag (gtag.js) -->
     <script nonce="<%= @nonce %>" async src="https://www.googletagmanager.com/gtag/js?id=GTM-5BNMS63"></script>
@@ -69,8 +71,8 @@
   <%= render "header_navbar" %>
 
   <div id="content" role="main">
-    <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a> 
-    
+    <a href="#" name="skiplink_ada" id="skiplink_ada" aria-label="skip link"></a>
+
     <div class="lcs_slide_out">
       <%= link_to t("manifold.default.chat"), "/chat", target: "_blank", "aria-label": "opens new tab" %>
     </div>

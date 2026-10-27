@@ -1,0 +1,15 @@
+# Use the defaults, we're just adding exclusions
+[extend]
+useDefault = true
+
+# Exclude test folders, node_modules, and lines beginning with #
+[allowlist]
+paths = [
+  '''^node_modules/''',
+  '''(^|/)(test|spec)/''',
+  '''^config/environments/test\.rb$'''
+]
+regexTarget = "line"
+regexes = [
+  '''^\s*#'''
+]

@@ -10,7 +10,15 @@ class WebpagesController < ApplicationController
 
   def videos_all
     videos = Panopto::VideoDistributor.call(type: "all")
-    render(Panopto::PastEventsComponent.new(videos:))
+
+    if videos.present?
+      render(Panopto::PastEventsComponent.new(videos:))
+    else
+      redirect_to(
+        root_path,
+        notice: "Past programs are temporarily unavailable."
+      )
+    end
   end
 
   def videos_list
@@ -40,10 +48,15 @@ class WebpagesController < ApplicationController
   def videos_search
     videos = Panopto::VideoSearch.call(params[:q])
 
-    if videos.present?
+    if videos.present? && videos[3] != :retrieval_failed
       render(Panopto::PastEventsSearchComponent.new(videos:))
     elsif params[:q].blank?
       redirect_to(webpages_videos_all_path, notice: "You must choose a term to search for.")
+    else
+      redirect_to(
+        webpages_videos_all_path,
+        alert: I18n.t("manifold.webpages.videos.search.retrieval_failed")
+      )
     end
   end
 

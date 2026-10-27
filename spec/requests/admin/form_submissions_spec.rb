@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "csv"
 
 RSpec.describe "Admin Form Submissions", type: :request do
   let(:form_submissions_admin) do
@@ -49,7 +50,14 @@ RSpec.describe "Admin Form Submissions", type: :request do
       FactoryBot.create(
         :form_submission,
         form_type: "av-requests",
-        form_attributes: { "name" => "AV Request User" }
+        form_attributes: {
+          "name" => "AV Request User",
+          "collection_title" => "Complete AV Collection",
+          "identifier" => "AV Item 1",
+          "format" => "film",
+          "collection_title_01" => "Incomplete AV Collection",
+          "identifier_01" => "AV Item 2",
+        },
       )
     end
 
@@ -72,6 +80,75 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response).to have_http_status(:ok)
         expect(response.body).to include("AV Request User")
         expect(response.body).to_not include("Copy Request User")
+
+        expect(response.body).to include("1 request")
+      end
+
+      it "lists AV submissions in descending creation order" do
+        FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: { "name" => "Older AV User" },
+          created_at: 2.days.ago,
+        )
+
+        FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: { "name" => "Newer AV User" },
+          created_at: 1.day.ago,
+        )
+
+        av_submission.update!(created_at: 3.days.ago)
+
+        get av_requests_admin_form_submissions_path
+
+        expect(response).to have_http_status(:ok)
+
+        names = Nokogiri::HTML(response.body)
+                        .css("tbody .table__row--clickable")
+                        .map { |row| row.css("td")[1].text.strip }
+
+        expect(names).to eq([
+          "Newer AV User",
+          "Older AV User",
+          "AV Request User",
+        ])
+      end
+
+      it "paginates AV submissions at 20 per page" do
+        av_submission.update!(created_at: 30.days.ago)
+
+        20.times do |index|
+          FactoryBot.create(
+            :form_submission,
+            form_type: "av-requests",
+            form_attributes: { "name" => "AV User #{index}" },
+            created_at: (20 - index).days.ago,
+          )
+        end
+
+        get av_requests_admin_form_submissions_path
+
+        expect(response).to have_http_status(:ok)
+
+        first_page_names = Nokogiri::HTML(response.body)
+                                   .css("tbody .table__row--clickable")
+                                   .map { |row| row.css("td")[1].text.strip }
+
+        expect(first_page_names.size).to eq(20)
+        expect(first_page_names).not_to include("AV Request User")
+        expect(first_page_names).not_to include("Copy Request User")
+
+        get av_requests_admin_form_submissions_path(page: 2)
+
+        expect(response).to have_http_status(:ok)
+
+        second_page_names = Nokogiri::HTML(response.body)
+                                    .css("tbody .table__row--clickable")
+                                    .map { |row| row.css("td")[1].text.strip }
+
+        expect(second_page_names).to eq(["AV Request User"])
       end
     end
 
@@ -103,7 +180,18 @@ RSpec.describe "Admin Form Submissions", type: :request do
       FactoryBot.create(
         :form_submission,
         form_type: "copy-requests",
-        form_attributes: { "name" => "Copy Request User" }
+        form_attributes: {
+          "name" => "Copy Request User",
+          "collection_title" => "Complete Copy Collection",
+          "box" => "Box 1",
+          "folder" => "Folder 1",
+          "identifier" => "Copy Item 1",
+          "format" => "pdf",
+          "collection_title_01" => "Incomplete Copy Collection",
+          "box_01" => "Box 2",
+          "folder_01" => "Folder 2",
+          "identifier_01" => "Copy Item 2",
+        },
       )
     end
 
@@ -117,7 +205,75 @@ RSpec.describe "Admin Form Submissions", type: :request do
 
         expect(response).to have_http_status(:ok)
         expect(response.body).to include("Copy Request User")
+        expect(response.body).to include("1 request")
         expect(response.body).to_not include("AV Request User")
+      end
+
+      it "lists Copy submissions in descending creation order" do
+        FactoryBot.create(
+          :form_submission,
+          form_type: "copy-requests",
+          form_attributes: { "name" => "Older Copy User" },
+          created_at: 2.days.ago,
+        )
+
+        FactoryBot.create(
+          :form_submission,
+          form_type: "copy-requests",
+          form_attributes: { "name" => "Newer Copy User" },
+          created_at: 1.day.ago,
+        )
+
+        copy_submission.update!(created_at: 3.days.ago)
+
+        get copy_requests_admin_form_submissions_path
+
+        expect(response).to have_http_status(:ok)
+
+        names = Nokogiri::HTML(response.body)
+                        .css("tbody .table__row--clickable")
+                        .map { |row| row.css("td")[1].text.strip }
+
+        expect(names).to eq([
+          "Newer Copy User",
+          "Older Copy User",
+          "Copy Request User",
+        ])
+      end
+
+      it "paginates Copy submissions at 20 per page" do
+        copy_submission.update!(created_at: 30.days.ago)
+
+        20.times do |index|
+          FactoryBot.create(
+            :form_submission,
+            form_type: "copy-requests",
+            form_attributes: { "name" => "Copy User #{index}" },
+            created_at: (20 - index).days.ago,
+          )
+        end
+
+        get copy_requests_admin_form_submissions_path
+
+        expect(response).to have_http_status(:ok)
+
+        first_page_names = Nokogiri::HTML(response.body)
+                                   .css("tbody .table__row--clickable")
+                                   .map { |row| row.css("td")[1].text.strip }
+
+        expect(first_page_names.size).to eq(20)
+        expect(first_page_names).not_to include("Copy Request User")
+        expect(first_page_names).not_to include("AV Request User")
+
+        get copy_requests_admin_form_submissions_path(page: 2)
+
+        expect(response).to have_http_status(:ok)
+
+        second_page_names = Nokogiri::HTML(response.body)
+                                    .css("tbody .table__row--clickable")
+                                    .map { |row| row.css("td")[1].text.strip }
+
+        expect(second_page_names).to eq(["Copy Request User"])
       end
     end
 
@@ -141,7 +297,40 @@ RSpec.describe "Admin Form Submissions", type: :request do
       FactoryBot.create(
         :form_submission,
         form_type: "av-requests",
-        form_attributes: { "name" => "AV Request User" }
+        form_attributes: {
+          "name" => "AV Request User",
+          "email" => "av@example.com",
+          "address" => "123 Main St\nPhiladelphia, PA",
+          "phone" => "555-1000",
+          "affiliation" => "temple",
+          "outside_vendor_fees" => "1",
+          "duplication_limits" => "1",
+          "copyright_acknowledgment" => "1",
+          "collection_title" => "AV Collection",
+          "identifier" => "AV Item 1",
+          "notes" => "Handle with care",
+          "format" => "film",
+          "collection_title_01" => "Second AV Collection",
+          "identifier_01" => "AV Item 2",
+          "notes_01" => "Second request notes",
+          "format_01" => "audio",
+        },
+      )
+    end
+
+    let!(:nested_av_submission) do
+      FactoryBot.create(
+        :form_submission,
+        form_type: "av-requests",
+        form_attributes: {
+          "form" => {
+            "name" => "Nested AV User",
+            "collection_title" => "Nested Collection",
+            "identifier" => "Nested Item",
+            "notes" => "Nested notes",
+            "format" => "video",
+          },
+        },
       )
     end
 
@@ -149,7 +338,27 @@ RSpec.describe "Admin Form Submissions", type: :request do
       FactoryBot.create(
         :form_submission,
         form_type: "copy-requests",
-        form_attributes: { "name" => "Copy Request User" }
+        form_attributes: {
+          "name" => "Copy Request User",
+          "email" => "copy@example.com",
+          "address" => "456 Broad St\nPhiladelphia, PA",
+          "phone" => "555-2000",
+          "affiliation" => "non-temple",
+          "duplication_limits" => "1",
+          "copyright_acknowledgment" => "1",
+          "collection_title" => "Copy Collection",
+          "box" => "Box 2",
+          "folder" => "Folder 3",
+          "identifier" => "Document 4",
+          "estimated_pages" => "12",
+          "format" => "pdf",
+          "collection_title_01" => "Second Copy Collection",
+          "box_01" => "Box 4",
+          "folder_01" => "Folder 5",
+          "identifier_01" => "Document 6",
+          "estimated_pages_01" => "24",
+          "format_01" => "photocopy",
+        },
       )
     end
 
@@ -164,17 +373,121 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response).to have_http_status(:ok)
         expect(response.body).to include("AV Request User")
         expect(response.body).to include("AV Request ##{av_submission.id}")
+
+        expect(response.body).to include("Outside Vendor Fees")
+        expect(response.body).to include("AV Collection")
+        expect(response.body).to include("AV Item 1")
+        expect(response.body).to include("Handle with care")
+        expect(response.body).to include("Film: $30 per minute")
+
+        expect(response.body).to include("Request 2")
+        expect(response.body).to include("Second AV Collection")
+        expect(response.body).to include("AV Item 2")
+        expect(response.body).to include("Second request notes")
+        expect(response.body).to include("Audio: $50 per tape/reel")
+
+        expect(response.body).not_to include("Estimated Pages")
+      end
+
+      it "shows an AV request with nested form attributes" do
+        get admin_form_submission_path(nested_av_submission)
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("Nested AV User")
+        expect(response.body).to include("Nested Collection")
+        expect(response.body).to include("Nested Item")
+        expect(response.body).to include("Nested notes")
+        expect(response.body).to include("Video: $50 per tape")
       end
 
       it "shows a Copy request submission when form_type is specified" do
         get admin_form_submission_path(
           copy_submission,
-          form_type: "copy-requests"
+          form_type: "copy-requests",
         )
 
         expect(response).to have_http_status(:ok)
         expect(response.body).to include("Copy Request User")
         expect(response.body).to include("Copy Request ##{copy_submission.id}")
+
+        expect(response.body).to include("Copy Collection")
+        expect(response.body).to include("Box 2")
+        expect(response.body).to include("Folder 3")
+        expect(response.body).to include("Document 4")
+        expect(response.body).to include("Estimated Pages")
+        expect(response.body).to include("12")
+        expect(response.body).to include("PDF: $0.50 per page")
+
+        expect(response.body).to include("Request 2")
+        expect(response.body).to include("Second Copy Collection")
+        expect(response.body).to include("Box 4")
+        expect(response.body).to include("Folder 5")
+        expect(response.body).to include("Document 6")
+        expect(response.body).to include("24")
+        expect(response.body).to include("Photocopy: $0.50 per page plus postage")
+
+        expect(response.body).not_to include("Outside Vendor Fees")
+      end
+
+      it "displays a partially populated AV request" do
+        submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: {
+            "collection_title" => "Partial AV Collection",
+          },
+        )
+
+        get admin_form_submission_path(submission)
+
+        expect(response).to have_http_status(:ok)
+
+        request_items = Nokogiri::HTML(response.body).css(".request-item")
+
+        expect(request_items.size).to eq(1)
+        expect(request_items.first.text).to include("Request 1")
+        expect(request_items.first.text).to include("Partial AV Collection")
+        expect(request_items.first.text).to include("Not provided")
+        expect(response.body).not_to include("No requests specified.")
+      end
+
+      it "numbers populated request slots consecutively" do
+        submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: {
+            "collection_title" => "First Collection",
+            "collection_title_02" => "Third Slot Collection",
+          },
+        )
+
+        get admin_form_submission_path(submission)
+
+        expect(response).to have_http_status(:ok)
+
+        request_items = Nokogiri::HTML(response.body).css(".request-item")
+
+        expect(request_items.size).to eq(2)
+        expect(request_items[0].at_css(".request-number").text.strip).to eq("Request 1")
+        expect(request_items[1].at_css(".request-number").text.strip).to eq("Request 2")
+        expect(request_items[0].text).to include("First Collection")
+        expect(request_items[1].text).to include("Third Slot Collection")
+      end
+
+      it "displays an empty state when no request fields are populated" do
+        submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: {
+            "name" => "Empty Request User",
+          },
+        )
+
+        get admin_form_submission_path(submission)
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("No requests specified.")
+        expect(Nokogiri::HTML(response.body).css(".request-item")).to be_empty
       end
 
       it "redirects when the submission does not match the requested form type" do
@@ -215,7 +528,11 @@ RSpec.describe "Admin Form Submissions", type: :request do
           "collection_title" => "Collection A",
           "identifier" => "Item 1",
           "notes" => "Test notes",
-          "format" => "film"
+          "format" => "film",
+          "collection_title_01" => "Collection A2",
+          "identifier_01" => "Item 2",
+          "notes_01" => "Second AV request",
+          "format_01" => "audio",
         }
       )
     end
@@ -238,7 +555,12 @@ RSpec.describe "Admin Form Submissions", type: :request do
 
         expect(response).to have_http_status(:ok)
         expect(response.media_type).to eq("text/csv")
-        expect(response.headers["Content-Disposition"]).to include("av_requests_")
+        expected_filename = "av_requests_#{Date.current.strftime('%Y%m%d')}.csv"
+        expect(response.headers["Content-Disposition"]).to include(
+          "filename=\"#{expected_filename}\""
+        )
+
+        csv = CSV.parse(response.body, headers: true)
 
         expect(response.body).to include("AV Request User")
         expect(response.body).to include("av@example.com")
@@ -248,6 +570,72 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response.body).to include("Film: $30 per minute")
 
         expect(response.body).not_to include("Copy Request User")
+
+        expected_headers = [
+          "ID",
+          "Submitted At",
+          "Name",
+          "Email",
+          "Phone",
+          "Affiliation",
+          "Address",
+          "Outside Vendor Fees",
+          "Duplication Limits",
+          "Copyright Acknowledgment",
+        ]
+
+        (1..10).each do |request_num|
+          expected_headers.concat(
+            [
+              "Request #{request_num} - Collection Title",
+              "Request #{request_num} - Identifier/File Name/Description",
+              "Request #{request_num} - Notes",
+              "Request #{request_num} - Format",
+            ],
+          )
+        end
+
+        expect(csv.headers).to eq(expected_headers)
+
+        row = csv.first
+
+        expect(row["Name"]).to eq("AV Request User")
+        expect(row["Address"]).to eq("123 Main St | Philadelphia, PA")
+        expect(row["Outside Vendor Fees"]).to eq("Yes")
+
+        expect(row["Request 1 - Collection Title"]).to eq("Collection A")
+        expect(row["Request 1 - Format"]).to eq("Film: $30 per minute")
+
+        expect(row["Request 2 - Collection Title"]).to eq("Collection A2")
+        expect(row["Request 2 - Identifier/File Name/Description"]).to eq("Item 2")
+        expect(row["Request 2 - Notes"]).to eq("Second AV request")
+        expect(row["Request 2 - Format"]).to eq("Audio: $50 per tape/reel")
+      end
+
+      it "exports nested form attributes" do
+        nested_submission = FactoryBot.create(
+          :form_submission,
+          form_type: "av-requests",
+          form_attributes: {
+            "form" => {
+              "name" => "Nested CSV User",
+              "email" => "nested@example.com",
+              "collection_title" => "Nested CSV Collection",
+              "identifier" => "Nested CSV Item",
+              "format" => "audio",
+            },
+          },
+        )
+
+        get export_av_requests_csv_admin_form_submissions_path(format: :csv)
+
+        csv = CSV.parse(response.body, headers: true)
+        row = csv.find { |candidate| candidate["ID"] == nested_submission.id.to_s }
+
+        expect(row["Name"]).to eq("Nested CSV User")
+        expect(row["Request 1 - Collection Title"]).to eq("Nested CSV Collection")
+        expect(row["Request 1 - Identifier/File Name/Description"]).to eq("Nested CSV Item")
+        expect(row["Request 1 - Format"]).to eq("Audio: $50 per tape/reel")
       end
 
       it "includes an error row when a submission cannot be processed" do
@@ -268,6 +656,7 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response.media_type).to eq("text/csv")
         expect(response.body).to include("Error decrypting data")
       end
+
     end
 
     context "when authenticated without Form Submission manage access" do
@@ -301,7 +690,13 @@ RSpec.describe "Admin Form Submissions", type: :request do
           "folder" => "Folder 3",
           "identifier" => "Document 4",
           "estimated_pages" => "12",
-          "format" => "pdf"
+          "format" => "pdf",
+          "collection_title_01" => "Collection B2",
+          "box_01" => "Box 4",
+          "folder_01" => "Folder 5",
+          "identifier_01" => "Document 6",
+          "estimated_pages_01" => "24",
+          "format_01" => "photocopy",
         }
       )
     end
@@ -324,7 +719,12 @@ RSpec.describe "Admin Form Submissions", type: :request do
 
         expect(response).to have_http_status(:ok)
         expect(response.media_type).to eq("text/csv")
-        expect(response.headers["Content-Disposition"]).to include("copy_requests_")
+        expected_filename = "copy_requests_#{Date.current.strftime('%Y%m%d')}.csv"
+        expect(response.headers["Content-Disposition"]).to include(
+          "filename=\"#{expected_filename}\""
+        )
+
+        csv = CSV.parse(response.body, headers: true)
 
         expect(response.body).to include("Copy Request User")
         expect(response.body).to include("copy@example.com")
@@ -337,6 +737,72 @@ RSpec.describe "Admin Form Submissions", type: :request do
         expect(response.body).to include("PDF: $0.50 per page")
 
         expect(response.body).not_to include("AV Request User")
+
+        expected_headers = [
+          "ID",
+          "Submitted At",
+          "Name",
+          "Email",
+          "Phone",
+          "Affiliation",
+          "Address",
+          "Duplication Limits",
+          "Copyright Acknowledgment",
+        ]
+
+        (1..10).each do |request_num|
+          expected_headers.concat(
+            [
+              "Request #{request_num} - Collection Title",
+              "Request #{request_num} - Box",
+              "Request #{request_num} - Folder",
+              "Request #{request_num} - Title/Identifier/File Name/Description",
+              "Request #{request_num} - Estimated Number of Pages",
+              "Request #{request_num} - Format",
+            ],
+          )
+        end
+
+        expect(csv.headers).to eq(expected_headers)
+
+        row = csv.first
+
+        expect(row["Name"]).to eq("Copy Request User")
+        expect(row["Address"]).to eq("456 Broad St | Philadelphia, PA")
+        expect(row["Duplication Limits"]).to eq("Yes")
+        expect(row["Copyright Acknowledgment"]).to eq("Yes")
+
+        expect(row["Request 1 - Collection Title"]).to eq("Collection B")
+        expect(row["Request 1 - Box"]).to eq("Box 2")
+        expect(row["Request 1 - Folder"]).to eq("Folder 3")
+        expect(row["Request 1 - Estimated Number of Pages"]).to eq("12")
+        expect(row["Request 1 - Format"]).to eq("PDF: $0.50 per page")
+
+        expect(row["Request 2 - Collection Title"]).to eq("Collection B2")
+        expect(row["Request 2 - Box"]).to eq("Box 4")
+        expect(row["Request 2 - Folder"]).to eq("Folder 5")
+        expect(row["Request 2 - Title/Identifier/File Name/Description"]).to eq("Document 6")
+        expect(row["Request 2 - Estimated Number of Pages"]).to eq("24")
+        expect(row["Request 2 - Format"]).to eq("Photocopy: $0.50 per page plus postage")
+      end
+
+      it "includes an error row when a submission cannot be processed" do
+        relation = instance_double(ActiveRecord::Relation, order: [copy_submission])
+
+        allow(FormSubmission)
+          .to receive(:where)
+          .with(form_type: "copy-requests")
+          .and_return(relation)
+
+        allow(copy_submission)
+          .to receive(:form_attributes)
+          .and_raise(StandardError, "boom")
+
+        get export_copy_requests_csv_admin_form_submissions_path(format: :csv)
+
+        expect(response).to have_http_status(:ok)
+        expect(response.media_type).to eq("text/csv")
+        expect(response.body).to include("Error decrypting data")
       end
     end
 

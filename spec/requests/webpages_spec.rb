@@ -311,6 +311,46 @@ RSpec.describe "Webpages", type: :request do
     end
   end
 
+  describe "GET /watchpastprograms" do
+    it "redirects when Panopto authentication fails without making an API request" do
+      allow(HTTParty)
+        .to receive(:post)
+        .and_raise(StandardError, "authentication failed")
+
+      expect(HTTParty)
+        .not_to receive(:get)
+
+      get webpages_videos_all_path
+
+      expect(response).to redirect_to(root_path)
+      expect(flash[:notice]).to eq(
+        "Past programs are temporarily unavailable."
+      )
+    end
+
+    it "redirects when all Panopto category requests fail" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      allow(HTTParty)
+        .to receive(:get)
+        .and_raise(StandardError, "connection failed")
+
+      get webpages_videos_all_path
+
+      expect(response).to redirect_to(root_path)
+      expect(flash[:notice]).to eq(
+        "Past programs are temporarily unavailable."
+      )
+    end
+  end
+
   describe "GET /watchpastprograms/collections/:collection" do
     it "renders a collection when videos are returned" do
       videos = [{ Title: "Example Video" }]
@@ -334,6 +374,42 @@ RSpec.describe "Webpages", type: :request do
       get webpages_videos_collection_path(collection: "missing")
 
       expect(response).to redirect_to(webpages_videos_all_path)
+    end
+
+    it "displays an error message when a later collection page request fails" do
+      auth_response = double(
+        body: '{"access_token":"test-token"}',
+        code: 200
+      )
+
+      first_page = {
+        Results: 50.times.map do |i|
+          { Id: "video-#{i}", Name: "Video #{i}" }
+        end
+      }
+
+      allow(HTTParty)
+        .to receive(:post)
+        .and_return(auth_response)
+
+      call_count = 0
+
+      allow(HTTParty).to receive(:get) do
+        call_count += 1
+
+        if call_count == 1
+          double(body: first_page.to_json, code: 200)
+        else
+          raise StandardError, "connection failed"
+        end
+      end
+
+      get webpages_videos_collection_path(collection: "recent")
+
+      expect(response).to have_http_status(:success)
+      expect(response.body).to include(
+        I18n.t("manifold.webpages.videos.collection.retrieval_failed")
+      )
     end
   end
 
@@ -362,6 +438,34 @@ RSpec.describe "Webpages", type: :request do
 
       expect(response).to have_http_status(:success)
       expect(response.body).to include("livingstone")
+    end
+
+    it "redirects with an error when search results are unavailable" do
+      allow(Panopto::VideoDistributor)
+        .to receive(:call)
+        .with(type: "search", query: "livingstone")
+        .and_return(nil)
+
+      get webpages_videos_search_path(q: "livingstone")
+
+      expect(response).to redirect_to(webpages_videos_all_path)
+      expect(flash[:alert]).to eq(
+        I18n.t("manifold.webpages.videos.search.retrieval_failed")
+      )
+    end
+
+    it "redirects with an error when search retrieval fails" do
+      allow(Panopto::VideoDistributor)
+        .to receive(:call)
+        .with(type: "search", query: "livingstone")
+        .and_return(["livingstone", 0, [], :retrieval_failed])
+
+      get webpages_videos_search_path(q: "livingstone")
+
+      expect(response).to redirect_to(webpages_videos_all_path)
+      expect(flash[:alert]).to eq(
+        I18n.t("manifold.webpages.videos.search.retrieval_failed")
+      )
     end
 
     it "redirects when no search term is provided" do

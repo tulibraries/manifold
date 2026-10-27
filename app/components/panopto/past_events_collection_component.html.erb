@@ -7,17 +7,20 @@
       <h1><%= @collection %></h1>
     </div>
   </div>
-      
   <div class="row">
-    <% @videos.each do |video| %>
-    <div class="col-12 col-sm-6 col-lg-3 text-center video-block">
-      <%= link_to webpages_video_show_path(id: video[:Id]) do %>
-        <%= image_tag video[:Urls][:ThumbnailUrl] %>
-        <br>
-        <%= video[:Name].truncate(64) %>
-      <% end %>
-    </div>
-    <% end if @videos.present? %>
+    <% if @retrieval_failed %>
+      <p><%= t("manifold.webpages.videos.collection.retrieval_failed") %></p>
+    <% else %>
+      <% @videos.each do |video| %>
+        <div class="col-12 col-sm-6 col-lg-3 text-center video-block">
+          <%= link_to webpages_video_show_path(id: video[:Id]) do %>
+            <%= image_tag video[:Urls][:ThumbnailUrl] %>
+            <br>
+            <%= video[:Name].truncate(64) %>
+          <% end %>
+        </div>
+      <% end if @videos.present? %>
+    <% end %>
   </div>
 
 </div>

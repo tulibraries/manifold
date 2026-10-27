@@ -48,6 +48,41 @@ RSpec.describe MicrosoftExcelService do
       )
     end
 
+    it "formats AV requests with symbol-keyed fields" do
+      form_data = {
+        name: "Primary User",
+        email: "av@example.com",
+        collection_title: "Main Collection",
+        identifier: "Box 1",
+        notes: "Handle with care",
+        format: "film",
+        collection_title_01: "Second Collection",
+        identifier_01: "Box 2",
+        notes_01: "Notes for request 2",
+        format_01: "audio",
+      }
+
+      row = service.send(:format_form_data, form_data, "AV-Requests")
+
+      expect(row[5]).to eq(
+        "Request 1: Collection: Main Collection | Identifier: Box 1 | Notes: Handle with care | Format: Film\n" \
+        "Request 2: Collection: Second Collection | Identifier: Box 2 | Notes: Notes for request 2 | Format: Audio",
+      )
+    end
+
+    it "preserves false values from symbol-keyed fields" do
+      form_data = {
+        name: "Copy User",
+        duplication_limits: true,
+        copyright_acknowledgment: false,
+      }
+
+      row = service.send(:format_form_data, form_data, "Copy-Requests")
+
+      expect(row[6]).to eq("Yes")
+      expect(row[7]).to eq("No")
+    end
+
     it "formats Copy requests with additional requests" do
       form_data = {
         "name" => "Copy User",

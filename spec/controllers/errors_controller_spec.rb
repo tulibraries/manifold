@@ -36,7 +36,7 @@ RSpec.describe ErrorsController, type: :controller do
     before { get :not_found }
 
     it "points the footer gear link at the admin root" do
-      expect(response.body).to include(%(href="#{admin_root_path}"))
+      expect(Capybara.string(response.body)).to have_css("a#footer-admin-link[href='#{admin_root_path}']")
     end
   end
 

@@ -96,6 +96,9 @@ module ApplicationHelper
 
     controller == "libraries" ? controller = "buildings" : controller = controller_name
 
+    # No admin interface for this page (e.g. error pages), so link to the admin root.
+    return admin_root_path if "Admin::#{controller.camelize}Controller".safe_constantize.nil?
+
     unless exemptions.include?(controller)
       "/admin/#{controller}/#{id}?admin=show"
     else

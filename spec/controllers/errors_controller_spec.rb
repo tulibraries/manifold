@@ -32,6 +32,14 @@ RSpec.describe ErrorsController, type: :controller do
     end
   end
 
+  describe "layout on error pages" do
+    before { get :not_found }
+
+    it "points the footer gear link at the admin root" do
+      expect(response.body).to include(%(href="#{admin_root_path}"))
+    end
+  end
+
   describe "the 503 page" do
     before { get :service_unavailable }
     it "includes the render of the expected template" do

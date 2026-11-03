@@ -167,4 +167,31 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#edit_url" do
+    def visit_as(controller, path)
+      allow(helper).to receive(:controller_name).and_return(controller)
+      helper.request.env["PATH_INFO"] = path
+    end
+
+    it "links to the admin root when there is no admin controller" do
+      visit_as("errors", "/404")
+      expect(helper.edit_url).to eq(admin_root_path)
+    end
+
+    it "maps /libraries paths to the admin buildings record" do
+      visit_as("buildings", "/libraries/1")
+      expect(helper.edit_url).to eq("/admin/buildings/1?admin=show")
+    end
+
+    it "links to the admin record for a page with an admin controller" do
+      visit_as("events", "/events/1")
+      expect(helper.edit_url).to eq("/admin/events/1?admin=show")
+    end
+
+    it "links to the admin root for people pages" do
+      visit_as("persons", "/people/1")
+      expect(helper.edit_url).to eq(admin_root_path)
+    end
+  end
 end

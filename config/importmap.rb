@@ -19,4 +19,5 @@ pin "administrate-trix", to: "src/administrate-trix.js", preload: "application"
 pin "legacy-libs", to: "src/legacy-libs.js", preload: "application"
 pin "src/jquery", to: "src/jquery.js", preload: false
 pin "src/common-libs", to: "src/common-libs.js", preload: false
+pin "src/turbo-error-reload", to: "src/turbo-error-reload.js", preload: false
 pin_all_from "app/javascript/controllers", under: "controllers", preload: false

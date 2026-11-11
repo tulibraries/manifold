@@ -21,7 +21,7 @@ RUN apk add -U --no-cache \
       shared-mime-info=2.4-r7 \
       tzdata=2026f-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
-      git=2.54.0-r0 \
+      git=2.54.1-r0 \
       build-base=0.5-r4 \
       yaml=0.2.5-r2 \
       yaml-dev=0.2.5-r2 \

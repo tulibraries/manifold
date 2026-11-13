@@ -21,7 +21,7 @@ def pinned_packages(contents)
 
     in_apk_add = true if stripped.start_with?("RUN apk add ")
     if in_apk_add
-      match = stripped.match(/^([a-z0-9.+_-]+)=([^\s\\]+)\s*\\?$/i)
+      match = stripped.match(/^([a-z0-9.+_-]+)=([^\s\\]+)(?:\s+&&)?\s*\\?$/i)
       packages[match[1]] = match[2] if match
       in_apk_add = false unless stripped.end_with?("\\")
     end
@@ -94,15 +94,17 @@ def write_summary(updates)
   File.write(SUMMARY_PATH, body)
 end
 
-contents = read_dockerfile
-current_versions = pinned_packages(contents)
-available_versions = latest_versions(current_versions.keys)
-updated_contents, updates = apply_updates(contents, current_versions, available_versions)
+if $PROGRAM_NAME == __FILE__
+  contents = read_dockerfile
+  current_versions = pinned_packages(contents)
+  available_versions = latest_versions(current_versions.keys)
+  updated_contents, updates = apply_updates(contents, current_versions, available_versions)
 
-if updated_contents != contents
-  File.write(DOCKERFILE_PATH, updated_contents)
+  if updated_contents != contents
+    File.write(DOCKERFILE_PATH, updated_contents)
+  end
+
+  write_summary(updates)
+
+  puts(updates.empty? ? "No pinned APK updates available." : "Updated #{updates.size} pinned APK packages.")
 end
-
-write_summary(updates)
-
-puts(updates.empty? ? "No pinned APK updates available." : "Updated #{updates.size} pinned APK packages.")

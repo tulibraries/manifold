@@ -10,6 +10,7 @@ class Form < MailForm::Base
     filming-request
     graduate-locker-request
     group-visit
+    home-delivery
     ir
     library-instruction
     missing-book
@@ -193,6 +194,12 @@ class Form < MailForm::Base
   attribute :reason_for_request
   attribute :asrs_only
   attribute :id_acknowledgment
+  attribute :street_address
+  attribute :apartment_unit
+  attribute :city_state_zip
+  attribute :library_search_link
+  attribute :return_agreement
+  attribute :damage_responsibility
 
   # Copy-specific fields follow the other form attributes.
   # Shared AV/Copy fields retain their earlier registration positions.

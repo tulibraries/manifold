@@ -59,7 +59,7 @@
         <div class="row">
           <div class="col mx-3">
             <fieldset class="fieldset-border mb-4">
-              <legend class="fieldset-legend"><%= t("manifold.forms.shared.your_info") %></legend>
+              <legend class="fieldset-legend"><%= t("manifold.forms.#{@type.underscore}.your_info", default: t("manifold.forms.shared.your_info")) %></legend>
             <%= render "forms/#{@type}/personal_info", f: f %>
             </fieldset>
           </div>
@@ -70,7 +70,7 @@
         <div class="row">
           <div class="col mx-3">
             <fieldset class="fieldset-border">
-              <legend class="fieldset-legend"><%= t("manifold.forms.shared.request_info") %></legend>
+              <legend class="fieldset-legend"><%= t("manifold.forms.#{@type.underscore}.request_info", default: t("manifold.forms.shared.request_info")) %></legend>
               <%= render "forms/#{@type}/request-info", f: f %>
           </div>
         </div>

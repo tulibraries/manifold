@@ -41,6 +41,14 @@ RSpec.describe Google::HoursComponent, type: :component do
     end
   end
 
+  describe "Student Success Center" do
+    it "is listed under Charles as plain text" do
+      page = render_inline(described_class.new(hours:, date: nil))
+      expect(page.css("h3").map(&:text)).to include("Student Success Center")
+      expect(page.css("h3 a").map(&:text)).not_to include("Student Success Center")
+    end
+  end
+
   describe "date requests outside of range" do
     it "does not raise error" do
       expect { select_hours }.to_not raise_error

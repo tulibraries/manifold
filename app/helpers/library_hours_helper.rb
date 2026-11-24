@@ -2,6 +2,8 @@
 
 module LibraryHoursHelper
   def location_name(slug)
+    return "Student Success Center" if slug == "success_center"
+
     if slug == "online" || slug == "drop_in"
       name = "Online" if slug == "online"
       name = "Drop-in Research Help" if slug == "drop_in"
@@ -27,6 +29,8 @@ module LibraryHoursHelper
   end
 
   def location_link(slug)
+    return "Student Success Center" if slug == "success_center"
+
     if slug == "online" || slug == "drop_in"
       name = "Online" if slug == "online"
       name = link_to("Drop-in Research Help", Service.find_by(hours: "ask_a_librarian")) if slug == "drop_in"

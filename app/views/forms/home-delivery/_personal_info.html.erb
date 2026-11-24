@@ -1,0 +1,12 @@
+<%= f.input :name, label: t("manifold.forms.fields.name"), required: true %>
+<%= f.input :tu_id, label: t("manifold.forms.fields.tu_id"), required: true %>
+<%= f.input :email, as: :email, label: t("manifold.forms.fields.email"), required: true %>
+
+<fieldset class="mt-4">
+  <legend class="fs-5 fw-bold"><%= t("manifold.forms.fields.mailing_address") %></legend>
+  <%= f.input :street_address, label: t("manifold.forms.fields.street_address"), required: true %>
+  <%= f.input :apartment_unit, label: t("manifold.forms.fields.apartment_unit"), required: false %>
+  <%= f.input :city_state_zip, label: t("manifold.forms.fields.city_state_zip"), required: true,
+              hint: t("manifold.forms.home_delivery.distance_note"),
+              hint_html: { class: "fst-italic" } %>
+</fieldset>

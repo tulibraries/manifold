@@ -1,0 +1,11 @@
+<%= f.input :book_title, label: t("manifold.forms.fields.title"), required: true %>
+<%= f.input :author, label: t("manifold.forms.fields.author"), required: true %>
+<%= f.input :library_search_link, as: :url, label: t("manifold.forms.home_delivery.library_search_link"), required: true %>
+
+<fieldset class="mt-4">
+  <legend class="fs-5 fw-bold"><%= t("manifold.forms.home_delivery.terms_and_policies") %></legend>
+  <%= f.input :return_agreement, as: :boolean, required: true,
+              label: t("manifold.forms.home_delivery.return_agreement") %>
+  <%= f.input :damage_responsibility, as: :boolean, required: true,
+              label: t("manifold.forms.home_delivery.damage_responsibility") %>
+</fieldset>

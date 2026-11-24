@@ -271,6 +271,12 @@ en:
           asrs_only: ASRS only?
           copyright_acknowledgment: "Copyright Acknowledgement"
           id_acknowledgment: Valid ID Acknowledgement
+          street_address: Street Address
+          apartment_unit: Apartment / Unit
+          city_state_zip: City, State, Zip Code
+          library_search_link: Link to Library Search
+          return_agreement: Agrees to Return Terms
+          damage_responsibility: Accepts Responsibility for Lost or Damaged Items
           duplication_limits: "Duplication Limits"
           outside_vendor_fees: "Outside Vendor Fees"
           # AV Copy request form
@@ -744,6 +750,10 @@ en:
         department: Department
         phone_number: Phone Number
         tu_id: Temple ID Number
+        mailing_address: Mailing Address
+        street_address: Street Address
+        apartment_unit: Apartment / Unit
+        city_state_zip: City, State, Zip Code
         location:
           one: Charles Library
           two: Health Sciences Libraries
@@ -1053,6 +1063,16 @@ en:
         title: "Partners Borrowing Privileges Application/Renewal"
         partner_name: Name of Spouse/Partner
         partner_email: Email of Spouse/Partner
+
+      home_delivery:
+        title: "Library Book Home Delivery Request Form"
+        your_info: Patron Information
+        request_info: Book Request Details
+        distance_note: "Note: your residence must be at least 40 miles from Main Campus"
+        library_search_link: Link to Library Search
+        terms_and_policies: Terms and Policies
+        return_agreement: I agree to return the books by the specified due date using an insured carrier or by dropping them off at the library.
+        damage_responsibility: I understand that I am responsible for any lost or damaged items while checked out to my account.
 
       storage_request:
         title: "Recall item from Charles Library temporary storage"
